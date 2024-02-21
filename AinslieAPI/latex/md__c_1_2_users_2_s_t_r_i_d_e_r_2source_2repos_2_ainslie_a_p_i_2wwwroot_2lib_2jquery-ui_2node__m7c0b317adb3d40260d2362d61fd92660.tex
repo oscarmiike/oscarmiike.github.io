@@ -1,0 +1,125 @@
+\chapter{grunt-\/git-\/authors}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m7c0b317adb3d40260d2362d61fd92660}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m7c0b317adb3d40260d2362d61fd92660}\index{grunt-\/git-\/authors@{grunt-\/git-\/authors}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m7c0b317adb3d40260d2362d61fd92660_autotoc_md8993}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m7c0b317adb3d40260d2362d61fd92660_autotoc_md8993}%
+ A \href{https://github.com/gruntjs/grunt}{\texttt{ grunt}} plugin for generating a list of authors from the git history.
+
+Support this project by \href{https://gratipay.com/scottgonzalez/}{\texttt{ donating on Gratipay}}.
+
+This project supports both a Node API and a Grunt API.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m7c0b317adb3d40260d2362d61fd92660_autotoc_md8994}{}\doxysection{\texorpdfstring{Grunt compatibility}{Grunt compatibility}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m7c0b317adb3d40260d2362d61fd92660_autotoc_md8994}
+v1.\+1.\+0+ is compatible with Grunt 0.\+4. If you\textquotesingle{}re using Grunt 0.\+3, use v1.\+0.\+0.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m7c0b317adb3d40260d2362d61fd92660_autotoc_md8995}{}\doxysection{\texorpdfstring{Grunt API}{Grunt API}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m7c0b317adb3d40260d2362d61fd92660_autotoc_md8995}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m7c0b317adb3d40260d2362d61fd92660_autotoc_md8996}{}\doxysubsection{\texorpdfstring{Tasks}{Tasks}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m7c0b317adb3d40260d2362d61fd92660_autotoc_md8996}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m7c0b317adb3d40260d2362d61fd92660_autotoc_md8997}{}\doxysubsubsection{\texorpdfstring{authors}{authors}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m7c0b317adb3d40260d2362d61fd92660_autotoc_md8997}
+Generates a list of authors in the form {\ttfamily Name \texorpdfstring{$<$}{<}email\texorpdfstring{$>$}{>}} in order of first contribution.
+
+This task writes its output to the console, not to a file.
+
+You can optionally run this task against a subdirectory\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{grunt\ authors:path/to/directory}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m7c0b317adb3d40260d2362d61fd92660_autotoc_md8998}{}\doxysubsubsection{\texorpdfstring{update-\/authors}{update-\/authors}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m7c0b317adb3d40260d2362d61fd92660_autotoc_md8998}
+Creates or updates the file {\ttfamily AUTHORS.\+txt} with the list of authors.
+
+You can optionally run this task against a subdirectory (the {\ttfamily AUTHORS.\+txt} file will be placed inside that directory)\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{grunt\ update-\/authors:path/to/directory}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m7c0b317adb3d40260d2362d61fd92660_autotoc_md8999}{}\doxysubsubsection{\texorpdfstring{update-\/contributors}{update-\/contributors}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m7c0b317adb3d40260d2362d61fd92660_autotoc_md8999}
+Updates {\ttfamily package.\+json} with the list of authors.
+
+You can optionally run this task against a subdirectory (the {\ttfamily package.\+json} file inside that directory will be used)\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{grunt\ update-\/contributors:path/to/directory}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m7c0b317adb3d40260d2362d61fd92660_autotoc_md9000}{}\doxysubsection{\texorpdfstring{Config}{Config}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m7c0b317adb3d40260d2362d61fd92660_autotoc_md9000}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m7c0b317adb3d40260d2362d61fd92660_autotoc_md9001}{}\doxysubsubsection{\texorpdfstring{authors.\+order}{authors.\+order}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m7c0b317adb3d40260d2362d61fd92660_autotoc_md9001}
+Define the order of the list of authors. The default ordering is by first contribution {\ttfamily \{order\+: "{}date"{}\}}. An alternative ordering is by number of contributions {\ttfamily \{order\+: "{}count"{}\}}.
+
+{\itshape NOTE\+: This config value is used for the {\ttfamily update-\/authors} task as well.}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{grunt.initConfig(\{}
+\DoxyCodeLine{\ \ \ \ authors:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ order:\ "{}count"{}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m7c0b317adb3d40260d2362d61fd92660_autotoc_md9002}{}\doxysubsubsection{\texorpdfstring{authors.\+prior}{authors.\+prior}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m7c0b317adb3d40260d2362d61fd92660_autotoc_md9002}
+Define a list of authors that contributed prior to the first commit in the repo. This is useful if you\textquotesingle{}ve moved from another version control system.
+
+{\itshape NOTE\+: This config value is used for the {\ttfamily update-\/authors} task as well.}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{grunt.initConfig(\{}
+\DoxyCodeLine{\ \ \ \ authors:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ prior:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ "{}Jane\ Smith\ <jane.smith@example.com>"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ "{}John\ Doe\ <john.doe@example.com>"{}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ]}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m7c0b317adb3d40260d2362d61fd92660_autotoc_md9003}{}\doxysection{\texorpdfstring{Node API}{Node API}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m7c0b317adb3d40260d2362d61fd92660_autotoc_md9003}
+This module can also be used directly via {\ttfamily require( "{}grunt-\/git-\/authors"{} )}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m7c0b317adb3d40260d2362d61fd92660_autotoc_md9004}{}\doxysubsection{\texorpdfstring{get\+Authors( options, callback )}{get\+Authors( options, callback )}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m7c0b317adb3d40260d2362d61fd92660_autotoc_md9004}
+Gets the list of authors.
+
+
+\begin{DoxyItemize}
+\item {\ttfamily options} (Object)
+\begin{DoxyItemize}
+\item {\ttfamily dir} (String)\+: Which directory to inspect for authors (defaults to {\ttfamily "{}."{}}).
+\item {\ttfamily prior\+Authors} (Array)\+: An array of authors that contributed prior to the first commit in the repo.
+\item {\ttfamily order} (String)\+: Which criteria to use for ordering the authors. {\ttfamily "{}date"{}} will order by first contribution; {\ttfamily "{}count"{}} will order by number of contributions. Defaults to {\ttfamily "{}date"{}}.
+\end{DoxyItemize}
+\item {\ttfamily callback} ({\ttfamily function( error, authors )})\+: A callback to invoke with the list of authors.
+\begin{DoxyItemize}
+\item {\ttfamily authors}\+: An array of authors in the form of {\ttfamily Name \texorpdfstring{$<$}{<}email\texorpdfstring{$>$}{>}}.
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m7c0b317adb3d40260d2362d61fd92660_autotoc_md9005}{}\doxysubsection{\texorpdfstring{update\+Authors( options, callback )}{update\+Authors( options, callback )}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m7c0b317adb3d40260d2362d61fd92660_autotoc_md9005}
+Creates or updates an authors file with all authors.
+
+
+\begin{DoxyItemize}
+\item {\ttfamily options} (Object)
+\begin{DoxyItemize}
+\item {\ttfamily dir} (String)\+: Which directory to inspect for authors (defaults to {\ttfamily "{}."{}}).
+\item {\ttfamily prior\+Authors} (Array)\+: An array of authors that contributed prior to the first commit in the repo.
+\item {\ttfamily order} (String)\+: Which criteria to use for ordering the authors. {\ttfamily "{}date"{}} will order by first contribution; {\ttfamily "{}count"{}} will order by number of contributions. Defaults to {\ttfamily "{}date"{}}.
+\item {\ttfamily filename} (String)\+: Which file to create (defaults to {\ttfamily "{}\+AUTHORS.\+txt"{}}).
+\item {\ttfamily banner} (String)\+: Text to place at the top of the file (defaults to {\ttfamily "{}\+Authors ordered by first contribution"{}}).
+\end{DoxyItemize}
+\item {\ttfamily callback (}function( error, filename ){\ttfamily )\+: A callback to invoke after writing the file. \texorpdfstring{$\ast$}{*}}filename\`{}\+: The path of the file that was written.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m7c0b317adb3d40260d2362d61fd92660_autotoc_md9006}{}\doxysubsection{\texorpdfstring{update\+Package\+Json( options, callback )}{update\+Package\+Json( options, callback )}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m7c0b317adb3d40260d2362d61fd92660_autotoc_md9006}
+Updates {\ttfamily package.\+json} with all authors.
+
+
+\begin{DoxyItemize}
+\item {\ttfamily options} (Object)
+\begin{DoxyItemize}
+\item {\ttfamily dir} (String)\+: Which directory to inspect for authors (defaults to {\ttfamily "{}."{}}).
+\item {\ttfamily prior\+Authors} (Array)\+: An array of authors that contributed prior to the first commit in the repo.
+\item {\ttfamily order} (String)\+: Which criteria to use for ordering the authors. {\ttfamily "{}date"{}} will order by first contribution; {\ttfamily "{}count"{}} will order by number of contributions. Defaults to {\ttfamily "{}date"{}}.
+\end{DoxyItemize}
+\item {\ttfamily callback (}function( error )\`{})\+: A callback to invoke after writing the file.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m7c0b317adb3d40260d2362d61fd92660_autotoc_md9007}{}\doxysection{\texorpdfstring{Mailmap}{Mailmap}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m7c0b317adb3d40260d2362d61fd92660_autotoc_md9007}
+This task respects mailmap, so if you have messy author info in your commits, you can correct the data in your mailmap and this task with output the cleaned up information. For more information, about using a mailmap, see the docs for {\ttfamily git-\/shortlog} or read Shane da Silva\textquotesingle{}s blog post about \href{http://shane.io/2011/10/07/git-shortlog-and-mailmap.html}{\texttt{ Git Shortlog and Mailmap}}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m7c0b317adb3d40260d2362d61fd92660_autotoc_md9008}{}\doxysection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m7c0b317adb3d40260d2362d61fd92660_autotoc_md9008}
+Copyright Scott González. Released under the terms of the MIT license.
+
+\DoxyHorRuler{0}
+
+
+Support this project by \href{https://gratipay.com/scottgonzalez/}{\texttt{ donating on Gratipay}}. 

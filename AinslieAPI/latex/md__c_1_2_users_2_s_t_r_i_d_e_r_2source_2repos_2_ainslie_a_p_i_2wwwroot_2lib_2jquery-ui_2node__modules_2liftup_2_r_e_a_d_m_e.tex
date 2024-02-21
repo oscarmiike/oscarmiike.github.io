@@ -1,0 +1,543 @@
+\chapter{liftup}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2liftup_2_r_e_a_d_m_e}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2liftup_2_r_e_a_d_m_e}\index{liftup@{liftup}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2liftup_2_r_e_a_d_m_e_autotoc_md10011}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2liftup_2_r_e_a_d_m_e_autotoc_md10011}%
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2liftup_2_r_e_a_d_m_e_autotoc_md10012}{}\doxysection{\texorpdfstring{Fork of \href{https://github.com/js-cli/js-liftoff}{\texttt{ https\+://github.\+com/js-\/cli/js-\/liftoff}} since version 2.\+2.\+1}{Fork of \href{https://github.com/js-cli/js-liftoff}{\texttt{ https\+://github.\+com/js-\/cli/js-\/liftoff}} since version 2.\+2.\+1}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2liftup_2_r_e_a_d_m_e_autotoc_md10012}
+\begin{quote}
+Launch your command line tool with ease. \end{quote}
+\href{https://nodei.co/npm/liftup/}{\texttt{ }}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2liftup_2_r_e_a_d_m_e_autotoc_md10013}{}\doxysection{\texorpdfstring{What is it?}{What is it?}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2liftup_2_r_e_a_d_m_e_autotoc_md10013}
+\href{http://weblog.bocoup.com/building-command-line-tools-in-node-with-liftoff/}{\texttt{ See this blog post}}, \href{https://github.com/js-cli/js-hacker}{\texttt{ check out this proof of concept}}, or read on.
+
+Say you\textquotesingle{}re writing a CLI tool. Let\textquotesingle{}s call it \href{https://github.com/js-cli/js-hacker}{\texttt{ hacker}}. You want to configure it using a {\ttfamily Hackerfile}. This is node, so you install {\ttfamily hacker} locally for each project you use it in. But, in order to get the {\ttfamily hacker} command in your PATH, you also install it globally.
+
+Now, when you run {\ttfamily hacker}, you want to configure what it does using the {\ttfamily Hackerfile} in your current directory, and you want it to execute using the local installation of your tool. Also, it\textquotesingle{}d be nice if the {\ttfamily hacker} command was smart enough to traverse up your folders until it finds a {\ttfamily Hackerfile}---for those times when you\textquotesingle{}re not in the root directory of your project. Heck, you might even want to launch {\ttfamily hacker} from a folder outside of your project by manually specifying a working directory. Liftoff manages this for you.
+
+So, everything is working great. Now you can find your local {\ttfamily hacker} and {\ttfamily Hackerfile} with ease. Unfortunately, it turns out you\textquotesingle{}ve authored your {\ttfamily Hackerfile} in coffee-\/script, or some other JS variant. In order to support {\itshape that}, you have to load the compiler for it, and then register the extension for it with node. Good news, Liftoff can do that, and a whole lot more, too.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2liftup_2_r_e_a_d_m_e_autotoc_md10014}{}\doxysection{\texorpdfstring{API}{API}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2liftup_2_r_e_a_d_m_e_autotoc_md10014}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2liftup_2_r_e_a_d_m_e_autotoc_md10015}{}\doxysubsection{\texorpdfstring{constructor(opts)}{constructor(opts)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2liftup_2_r_e_a_d_m_e_autotoc_md10015}
+Create an instance of Liftoff to invoke your application.
+
+An example utilizing all options\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ Hacker\ =\ new\ Liftoff(\{}
+\DoxyCodeLine{\ \ name:\ 'hacker',}
+\DoxyCodeLine{\ \ processTitle:\ 'hacker',}
+\DoxyCodeLine{\ \ moduleName:\ 'hacker',}
+\DoxyCodeLine{\ \ configName:\ 'hackerfile',}
+\DoxyCodeLine{\ \ extensions:\ \{}
+\DoxyCodeLine{\ \ \ \ '.js':\ null,}
+\DoxyCodeLine{\ \ \ \ '.json':\ null,}
+\DoxyCodeLine{\ \ \ \ '.coffee':\ 'coffee-\/script/register'}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ v8flags:\ ['-\/-\/harmony']\ //\ or\ v8flags:\ require('v8flags')}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2liftup_2_r_e_a_d_m_e_autotoc_md10016}{}\doxysubsubsection{\texorpdfstring{opts.\+name}{opts.\+name}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2liftup_2_r_e_a_d_m_e_autotoc_md10016}
+Sugar for setting {\ttfamily process\+Title}, {\ttfamily module\+Name}, {\ttfamily config\+Name} automatically.
+
+Type\+: {\ttfamily String} ~\newline
+ Default\+: {\ttfamily null}
+
+These are equivalent\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ Hacker\ =\ Liftoff(\{}
+\DoxyCodeLine{\ \ processTitle:\ 'hacker',}
+\DoxyCodeLine{\ \ moduleName:\ 'hacker',}
+\DoxyCodeLine{\ \ configName:\ 'hackerfile'}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ Hacker\ =\ Liftoff(\{name:'hacker'\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2liftup_2_r_e_a_d_m_e_autotoc_md10017}{}\doxysubsubsection{\texorpdfstring{opts.\+module\+Name}{opts.\+module\+Name}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2liftup_2_r_e_a_d_m_e_autotoc_md10017}
+Sets which module your application expects to find locally when being run.
+
+Type\+: {\ttfamily String} ~\newline
+ Default\+: {\ttfamily null}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2liftup_2_r_e_a_d_m_e_autotoc_md10018}{}\doxysubsubsection{\texorpdfstring{opts.\+config\+Name}{opts.\+config\+Name}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2liftup_2_r_e_a_d_m_e_autotoc_md10018}
+Sets the name of the configuration file Liftoff will attempt to find. Case-\/insensitive.
+
+Type\+: {\ttfamily String} ~\newline
+ Default\+: {\ttfamily null}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2liftup_2_r_e_a_d_m_e_autotoc_md10019}{}\doxysubsubsection{\texorpdfstring{opts.\+extensions}{opts.\+extensions}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2liftup_2_r_e_a_d_m_e_autotoc_md10019}
+Set extensions to include when searching for a configuration file. If an external module is needed to load a given extension (e.\+g. {\ttfamily .coffee}), the module name should be specified as the value for the key.
+
+Type\+: {\ttfamily Object} ~\newline
+ Default\+: {\ttfamily \{"{}.\+js"{}\+:null,"{}.\+json"{}\+:null\}}
+
+{\bfseries{Examples\+:}}
+
+In this example Liftoff will look for {\ttfamily myappfile\{.js,.json,.coffee\}}. If a config with the extension {\ttfamily .coffee} is found, Liftoff will try to require {\ttfamily coffee-\/script/require} from the current working directory. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ MyApp\ =\ new\ Liftoff(\{}
+\DoxyCodeLine{\ \ name:\ 'myapp',}
+\DoxyCodeLine{\ \ extensions:\ \{}
+\DoxyCodeLine{\ \ \ \ '.js':\ null,}
+\DoxyCodeLine{\ \ \ \ '.json':\ null,}
+\DoxyCodeLine{\ \ \ \ '.coffee':\ 'coffee-\/script/register'}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+In this example, Liftoff will look for {\ttfamily .myapp\{rc\}}. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ MyApp\ =\ new\ Liftoff(\{}
+\DoxyCodeLine{\ \ name:\ 'myapp',}
+\DoxyCodeLine{\ \ configName:\ '.myapp',}
+\DoxyCodeLine{\ \ extensions:\ \{}
+\DoxyCodeLine{\ \ \ \ 'rc':\ null}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+In this example, Liftoff will automatically attempt to load the correct module for any javascript variant supported by \href{https://github.com/js-cli/js-interpret}{\texttt{ interpret}} (as long as it does not require a register method).
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ MyApp\ =\ new\ Liftoff(\{}
+\DoxyCodeLine{\ \ name:\ 'myapp',}
+\DoxyCodeLine{\ \ extensions:\ require('interpret').jsVariants}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2liftup_2_r_e_a_d_m_e_autotoc_md10020}{}\doxysubsubsection{\texorpdfstring{opts.\+v8flags}{opts.\+v8flags}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2liftup_2_r_e_a_d_m_e_autotoc_md10020}
+Any flag specified here will be applied to node, not your program. Useful for supporting invocations like {\ttfamily myapp -\/-\/harmony command}, where {\ttfamily -\/-\/harmony} should be passed to node, not your program. This functionality is implemented using \href{http://github.com/js-cli/js-flagged-respawn}{\texttt{ flagged-\/respawn}}. To support all v8flags, see \href{https://github.com/js-cli/js-v8flags}{\texttt{ v8flags}}.
+
+Type\+: {\ttfamily Array\texorpdfstring{$\vert$}{|}\+Function} ~\newline
+ Default\+: {\ttfamily null}
+
+If this method is a function, it should take a node-\/style callback that yields an array of flags.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2liftup_2_r_e_a_d_m_e_autotoc_md10021}{}\doxysubsubsection{\texorpdfstring{opts.\+process\+Title}{opts.\+process\+Title}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2liftup_2_r_e_a_d_m_e_autotoc_md10021}
+Sets what the \href{http://nodejs.org/api/process.html\#process_process_title}{\texttt{ process title}} will be.
+
+Type\+: {\ttfamily String} ~\newline
+ Default\+: {\ttfamily null}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2liftup_2_r_e_a_d_m_e_autotoc_md10022}{}\doxysubsubsection{\texorpdfstring{opts.\+completions(type)}{opts.\+completions(type)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2liftup_2_r_e_a_d_m_e_autotoc_md10022}
+A method to handle bash/zsh/whatever completions.
+
+Type\+: {\ttfamily Function} ~\newline
+ Default\+: {\ttfamily null}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2liftup_2_r_e_a_d_m_e_autotoc_md10023}{}\doxysubsubsection{\texorpdfstring{opts.\+config\+Files}{opts.\+config\+Files}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2liftup_2_r_e_a_d_m_e_autotoc_md10023}
+An object of configuration files to find. Each property is keyed by the default basename of the file being found, and the value is an object of path arguments keyed by unique names.
+
+{\bfseries{Note\+:}} This option is useful if, for example, you want to support an {\ttfamily .apprc} file in addition to an {\ttfamily appfile.\+js}. If you only need a single configuration file, you probably don\textquotesingle{}t need this. In addition to letting you find multiple files, this option allows more fine-\/grained control over how configuration files are located.
+
+Type\+: {\ttfamily Object} ~\newline
+ Default\+: {\ttfamily null}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2liftup_2_r_e_a_d_m_e_autotoc_md10024}{}\doxysubsubsection{\texorpdfstring{Path arguments}{Path arguments}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2liftup_2_r_e_a_d_m_e_autotoc_md10024}
+The \href{https://github.com/js-cli/fined}{\texttt{ {\ttfamily fined}}} module accepts a string representing the path to search or an object with the following keys\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily path} \+\_\+\+\_\+(required)\+\_\+\+\_\+
+
+The path to search. Using only a string expands to this property.
+
+Type\+: {\ttfamily String} ~\newline
+ Default\+: {\ttfamily null}
+\item {\ttfamily name}
+
+The basename of the file to find. Extensions are appended during lookup.
+
+Type\+: {\ttfamily String} ~\newline
+ Default\+: Top-\/level key in {\ttfamily config\+Files}
+\item {\ttfamily extensions}
+
+The extensions to append to {\ttfamily name} during lookup. See also\+: \`{}opts.extensions\`{}.
+
+Type\+: {\ttfamily String\texorpdfstring{$\vert$}{|}\+Array\texorpdfstring{$\vert$}{|}\+Object} ~\newline
+ Default\+: The value of \`{}opts.extensions\`{}
+\item {\ttfamily cwd}
+
+The base directory of {\ttfamily path} (if relative).
+
+Type\+: {\ttfamily String} ~\newline
+ Default\+: The value of \`{}opts.cwd\`{}
+\item {\ttfamily find\+Up}
+
+Whether the {\ttfamily path} should be traversed up to find the file.
+
+Type\+: {\ttfamily Boolean} ~\newline
+ Default\+: {\ttfamily false}
+\end{DoxyItemize}
+
+{\bfseries{Examples\+:}}
+
+In this example Liftoff will look for the {\ttfamily .hacker.\+js} file relative to the {\ttfamily cwd} as declared in {\ttfamily config\+Files}. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ MyApp\ =\ new\ Liftoff(\{}
+\DoxyCodeLine{\ \ name:\ 'hacker',}
+\DoxyCodeLine{\ \ configFiles:\ \{}
+\DoxyCodeLine{\ \ \ \ '.hacker':\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ cwd:\ '.'}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+In this example, Liftoff will look for {\ttfamily .hackerrc} in the home directory. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ MyApp\ =\ new\ Liftoff(\{}
+\DoxyCodeLine{\ \ name:\ 'hacker',}
+\DoxyCodeLine{\ \ configFiles:\ \{}
+\DoxyCodeLine{\ \ \ \ '.hacker':\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ home:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ path:\ '\string~',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ extensions:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ 'rc':\ null}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+In this example, Liftoff will look in the {\ttfamily cwd} and then lookup the tree for the {\ttfamily .hacker.\+js} file. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ MyApp\ =\ new\ Liftoff(\{}
+\DoxyCodeLine{\ \ name:\ 'hacker',}
+\DoxyCodeLine{\ \ configFiles:\ \{}
+\DoxyCodeLine{\ \ \ \ '.hacker':\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ up:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ path:\ '.',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ findUp:\ true}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+In this example, the {\ttfamily name} is overridden and the key is ignored so Liftoff looks for {\ttfamily .override.\+js}. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ MyApp\ =\ new\ Liftoff(\{}
+\DoxyCodeLine{\ \ name:\ 'hacker',}
+\DoxyCodeLine{\ \ configFiles:\ \{}
+\DoxyCodeLine{\ \ \ \ hacker:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ override:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ path:\ '.',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ name:\ '.override'}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+In this example, Liftoff will use the home directory as the {\ttfamily cwd} and looks for {\ttfamily \texorpdfstring{$\sim$}{\string~}/.hacker.\+js}. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ MyApp\ =\ new\ Liftoff(\{}
+\DoxyCodeLine{\ \ name:\ 'hacker',}
+\DoxyCodeLine{\ \ configFiles:\ \{}
+\DoxyCodeLine{\ \ \ \ '.hacker':\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ home:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ path:\ '.',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ cwd:\ '\string~'}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2liftup_2_r_e_a_d_m_e_autotoc_md10025}{}\doxysubsection{\texorpdfstring{prepare(opts, callback(env))}{prepare(opts, callback(env))}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2liftup_2_r_e_a_d_m_e_autotoc_md10025}
+Prepares the environment for your application with provided options, and invokes your callback with the calculated environment as the first argument. The environment can be modified before using it as the first argument to {\ttfamily execute}.
+
+{\bfseries{Example Configuration w/ Options Parsing\+:}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ Liftoff\ =\ require('liftoff');}
+\DoxyCodeLine{const\ MyApp\ =\ new\ Liftoff(\{name:'myapp'\});}
+\DoxyCodeLine{const\ argv\ =\ require('minimist')(process.argv.slice(2));}
+\DoxyCodeLine{const\ onExecute\ =\ function\ (env,\ argv)\ \{}
+\DoxyCodeLine{\ \ //\ Do\ post-\/execute\ things}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{const\ onPrepare\ =\ function\ (env)\ \{}
+\DoxyCodeLine{\ \ console.log('my\ environment\ is:',\ env);}
+\DoxyCodeLine{\ \ console.log('my\ liftoff\ config\ is:',\ this);}
+\DoxyCodeLine{\ \ MyApp.execute(env,\ onExecute);}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{MyApp.prepare(\{}
+\DoxyCodeLine{\ \ cwd:\ argv.cwd,}
+\DoxyCodeLine{\ \ configPath:\ argv.myappfile,}
+\DoxyCodeLine{\ \ preload:\ argv.preload,}
+\DoxyCodeLine{\ \ completion:\ argv.completion}
+\DoxyCodeLine{\},\ onPrepare);}
+
+\end{DoxyCode}
+
+
+{\bfseries{Example w/ modified environment}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ Liftoff\ =\ require('liftoff');}
+\DoxyCodeLine{const\ Hacker\ =\ new\ Liftoff(\{}
+\DoxyCodeLine{\ \ name:\ 'hacker',}
+\DoxyCodeLine{\ \ configFiles:\ \{}
+\DoxyCodeLine{\ \ \ \ '.hacker':\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ home:\ \{\ path:\ '.',\ cwd:\ '\string~'\ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{const\ onExecute\ =\ function\ (env,\ argv)\ \{}
+\DoxyCodeLine{\ \ //\ Do\ post-\/execute\ things}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{const\ onPrepare\ =\ function\ (env)\ \{}
+\DoxyCodeLine{\ \ \ env.configProps\ =\ ['home',\ 'cwd'].map(function(dirname)\ \{}
+\DoxyCodeLine{\ \ \ \ return\ env.configFiles['.hacker'][dirname]}
+\DoxyCodeLine{\ \ \}).filter(function(filePath)\ \{}
+\DoxyCodeLine{\ \ \ \ return\ Boolean(filePath);}
+\DoxyCodeLine{\ \ \}).reduce(function(config,\ filePath)\ \{}
+\DoxyCodeLine{\ \ \ \ return\ mergeDeep(config,\ require(filePath));}
+\DoxyCodeLine{\ \ \},\ \{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ if\ (env.configProps.hackerfile)\ \{}
+\DoxyCodeLine{\ \ \ \ env.configPath\ =\ path.resolve(env.configProps.hackerfile);}
+\DoxyCodeLine{\ \ \ \ env.configBase\ =\ path.dirname(env.configPath);}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ Hacker.execute(env,\ onExecute);}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{Hacker.prepare(\{\},\ onPrepare);}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2liftup_2_r_e_a_d_m_e_autotoc_md10026}{}\doxysubsubsection{\texorpdfstring{opts.\+cwd}{opts.\+cwd}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2liftup_2_r_e_a_d_m_e_autotoc_md10026}
+Change the current working directory for this launch. Relative paths are calculated against {\ttfamily process.\+cwd()}.
+
+Type\+: {\ttfamily String} ~\newline
+ Default\+: {\ttfamily process.\+cwd()}
+
+{\bfseries{Example Configuration\+:}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ argv\ =\ require('minimist')(process.argv.slice(2));}
+\DoxyCodeLine{MyApp.launch(\{}
+\DoxyCodeLine{\ \ cwd:\ argv.cwd}
+\DoxyCodeLine{\},\ invoke);}
+
+\end{DoxyCode}
+
+
+{\bfseries{Matching CLI Invocation\+:}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{myapp\ -\/-\/cwd\ ../}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2liftup_2_r_e_a_d_m_e_autotoc_md10027}{}\doxysubsubsection{\texorpdfstring{opts.\+config\+Path}{opts.\+config\+Path}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2liftup_2_r_e_a_d_m_e_autotoc_md10027}
+Don\textquotesingle{}t search for a config, use the one provided. {\bfseries{Note\+:}} Liftoff will assume the current working directory is the directory containing the config file unless an alternate location is explicitly specified using {\ttfamily cwd}.
+
+Type\+: {\ttfamily String} ~\newline
+ Default\+: {\ttfamily null}
+
+{\bfseries{Example Configuration\+:}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ argv\ =\ require('minimist')(process.argv.slice(2));}
+\DoxyCodeLine{MyApp.launch(\{}
+\DoxyCodeLine{\ \ configPath:\ argv.myappfile}
+\DoxyCodeLine{\},\ invoke);}
+
+\end{DoxyCode}
+
+
+{\bfseries{Matching CLI Invocation\+:}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{myapp\ -\/-\/myappfile\ /var/www/project/Myappfile.js}
+
+\end{DoxyCode}
+
+
+{\bfseries{Examples using {\ttfamily cwd} and {\ttfamily config\+Path} together\+:}}
+
+These are functionally identical\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{myapp\ -\/-\/myappfile\ /var/www/project/Myappfile.js}
+\DoxyCodeLine{myapp\ -\/-\/cwd\ /var/www/project}
+
+\end{DoxyCode}
+
+
+These can run myapp from a shared directory as though it were located in another project\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{myapp\ -\/-\/myappfile\ /Users/name/Myappfile.js\ -\/-\/cwd\ /var/www/project1}
+\DoxyCodeLine{myapp\ -\/-\/myappfile\ /Users/name/Myappfile.js\ -\/-\/cwd\ /var/www/project2}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2liftup_2_r_e_a_d_m_e_autotoc_md10028}{}\doxysubsubsection{\texorpdfstring{opts.\+preload}{opts.\+preload}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2liftup_2_r_e_a_d_m_e_autotoc_md10028}
+A string or array of modules to attempt requiring from the local working directory before invoking the launch callback.
+
+Type\+: {\ttfamily String\texorpdfstring{$\vert$}{|}\+Array} ~\newline
+ Default\+: {\ttfamily null}
+
+{\bfseries{Example Configuration\+:}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ argv\ =\ require('minimist')(process.argv.slice(2));}
+\DoxyCodeLine{MyApp.launch(\{}
+\DoxyCodeLine{\ \ preload:\ argv.preload}
+\DoxyCodeLine{\},\ invoke);}
+
+\end{DoxyCode}
+
+
+{\bfseries{Matching CLI Invocation\+:}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{myapp\ -\/-\/preload\ coffee-\/script/register}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2liftup_2_r_e_a_d_m_e_autotoc_md10029}{}\doxysubsubsection{\texorpdfstring{callback(env)}{callback(env)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2liftup_2_r_e_a_d_m_e_autotoc_md10029}
+A function called after your environment is prepared. A good place to modify the environment before calling {\ttfamily execute}. When invoked, {\ttfamily this} will be your instance of Liftoff. The {\ttfamily env} param will contain the following keys\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily cwd}\+: the current working directory
+\item {\ttfamily preload}\+: an array of modules that liftoff tried to pre-\/load
+\item {\ttfamily config\+Name\+Search}\+: the config files searched for
+\item {\ttfamily config\+Path}\+: the full path to your configuration file (if found)
+\item {\ttfamily config\+Base}\+: the base directory of your configuration file (if found)
+\item {\ttfamily module\+Path}\+: the full path to the local module your project relies on (if found)
+\item {\ttfamily module\+Package}\+: the contents of the local module\textquotesingle{}s package.\+json (if found)
+\item {\ttfamily config\+Files}\+: an object of filepaths for each found config file (filepath values will be null if not found)
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2liftup_2_r_e_a_d_m_e_autotoc_md10030}{}\doxysubsection{\texorpdfstring{execute(env, \mbox{[}forced\+Flags\mbox{]}, callback(env, argv))}{execute(env, \mbox{[}forced\+Flags\mbox{]}, callback(env, argv))}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2liftup_2_r_e_a_d_m_e_autotoc_md10030}
+A function to start your application, based on the {\ttfamily env} given. Optionally takes an array of {\ttfamily forced\+Flags}, which will force a respawn with those node or V8 flags during startup. Invokes your callback with the environment and command-\/line arguments (minus node \& v8 flags) after the application has been executed.
+
+{\bfseries{Example\+:}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ Liftoff\ =\ require('liftoff');}
+\DoxyCodeLine{const\ MyApp\ =\ new\ Liftoff(\{name:'myapp'\});}
+\DoxyCodeLine{const\ onExecute\ =\ function\ (env,\ argv)\ \{}
+\DoxyCodeLine{\ \ //\ Do\ post-\/execute\ things}
+\DoxyCodeLine{\ \ console.log('my\ environment\ is:',\ env);}
+\DoxyCodeLine{\ \ console.log('my\ cli\ options\ are:',\ argv);}
+\DoxyCodeLine{\ \ console.log('my\ liftoff\ config\ is:',\ this);}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{const\ onPrepare\ =\ function\ (env)\ \{}
+\DoxyCodeLine{\ \ var\ forcedFlags\ =\ ['-\/-\/trace-\/deprecation'];}
+\DoxyCodeLine{\ \ MyApp.execute(env,\ forcedFlags,\ onExecute);}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{MyApp.prepare(\{\},\ onPrepare);}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2liftup_2_r_e_a_d_m_e_autotoc_md10031}{}\doxysubsubsection{\texorpdfstring{callback(env, argv)}{callback(env, argv)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2liftup_2_r_e_a_d_m_e_autotoc_md10031}
+A function called after your application is executed. When invoked, {\ttfamily this} will be your instance of Liftoff, {\ttfamily argv} will be all command-\/line arguments (minus node \& v8 flags), and {\ttfamily env} will contain the following keys\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily cwd}\+: the current working directory
+\item {\ttfamily preload}\+: an array of modules that liftoff tried to pre-\/load
+\item {\ttfamily config\+Name\+Search}\+: the config files searched for
+\item {\ttfamily config\+Path}\+: the full path to your configuration file (if found)
+\item {\ttfamily config\+Base}\+: the base directory of your configuration file (if found)
+\item {\ttfamily module\+Path}\+: the full path to the local module your project relies on (if found)
+\item {\ttfamily module\+Package}\+: the contents of the local module\textquotesingle{}s package.\+json (if found)
+\item {\ttfamily config\+Files}\+: an object of filepaths for each found config file (filepath values will be null if not found)
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2liftup_2_r_e_a_d_m_e_autotoc_md10032}{}\doxysubsection{\texorpdfstring{events}{events}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2liftup_2_r_e_a_d_m_e_autotoc_md10032}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2liftup_2_r_e_a_d_m_e_autotoc_md10033}{}\doxysubsubsection{\texorpdfstring{`on(\textquotesingle{}preload\+:before', function(name) \{\})\`{}}{`on(\textquotesingle{}preload\+:before', function(name) \{\})\`{}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2liftup_2_r_e_a_d_m_e_autotoc_md10033}
+Emitted before a module is pre-\/load. (But for only a module which is specified by {\ttfamily opts.\+preload}.)
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ Hacker\ =\ new\ Liftoff(\{name:'hacker',\ preload:'coffee-\/script'\});}
+\DoxyCodeLine{Hacker.on('preload:before',\ function\ (name)\ \{}
+\DoxyCodeLine{\ \ console.log('Requiring\ external\ module:\ '+name+'...');}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2liftup_2_r_e_a_d_m_e_autotoc_md10034}{}\doxysubsubsection{\texorpdfstring{`on(\textquotesingle{}preload\+:success', function(name, module) \{\})\`{}}{`on(\textquotesingle{}preload\+:success', function(name, module) \{\})\`{}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2liftup_2_r_e_a_d_m_e_autotoc_md10034}
+Emitted when a module has been pre-\/loaded.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ Hacker\ =\ new\ Liftoff(\{name:'hacker'\});}
+\DoxyCodeLine{Hacker.on('preload:success',\ function\ (name,\ module)\ \{}
+\DoxyCodeLine{\ \ console.log('Required\ external\ module:\ '+name+'...');}
+\DoxyCodeLine{\ \ //\ automatically\ register\ coffee-\/script\ extensions}
+\DoxyCodeLine{\ \ if\ (name\ ===\ 'coffee-\/script')\ \{}
+\DoxyCodeLine{\ \ \ \ module.register();}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2liftup_2_r_e_a_d_m_e_autotoc_md10035}{}\doxysubsubsection{\texorpdfstring{`on(\textquotesingle{}preload\+:failure', function(name, err) \{\})\`{}}{`on(\textquotesingle{}preload\+:failure', function(name, err) \{\})\`{}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2liftup_2_r_e_a_d_m_e_autotoc_md10035}
+Emitted when a requested module cannot be preloaded.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ Hacker\ =\ new\ Liftoff(\{name:'hacker'\});}
+\DoxyCodeLine{Hacker.on('preload:failure',\ function\ (name,\ err)\ \{}
+\DoxyCodeLine{\ \ console.log('Unable\ to\ load:',\ name,\ err);}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2liftup_2_r_e_a_d_m_e_autotoc_md10036}{}\doxysubsubsection{\texorpdfstring{{\ttfamily on(\textquotesingle{}loader\+:success, function(name, module) \{\})}}{{\ttfamily on(\textquotesingle{}loader\+:success, function(name, module) \{\})}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2liftup_2_r_e_a_d_m_e_autotoc_md10036}
+Emitted when a loader that matches an extension has been loaded.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ Hacker\ =\ new\ Liftoff(\{}
+\DoxyCodeLine{\ \ name:\ 'hacker',}
+\DoxyCodeLine{\ \ extensions:\ \{}
+\DoxyCodeLine{\ \ \ \ '.ts':\ 'ts-\/node/register'}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{Hacker.on('loader:success',\ function\ (name,\ module)\ \{}
+\DoxyCodeLine{\ \ console.log('Required\ external\ module:\ '+name+'...');}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2liftup_2_r_e_a_d_m_e_autotoc_md10037}{}\doxysubsubsection{\texorpdfstring{`on(\textquotesingle{}loader\+:failure', function(name, err) \{\})\`{}}{`on(\textquotesingle{}loader\+:failure', function(name, err) \{\})\`{}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2liftup_2_r_e_a_d_m_e_autotoc_md10037}
+Emitted when no loader for an extension can be loaded. Emits an error for each failed loader.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ Hacker\ =\ new\ Liftoff(\{}
+\DoxyCodeLine{\ \ name:\ 'hacker',}
+\DoxyCodeLine{\ \ extensions:\ \{}
+\DoxyCodeLine{\ \ \ \ '.ts':\ 'ts-\/node/register'}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{Hacker.on('loader:failure',\ function\ (name,\ err)\ \{}
+\DoxyCodeLine{\ \ console.log('Unable\ to\ load:',\ name,\ err);}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2liftup_2_r_e_a_d_m_e_autotoc_md10038}{}\doxysubsubsection{\texorpdfstring{`on(\textquotesingle{}respawn', function(flags, child) \{\})\`{}}{`on(\textquotesingle{}respawn', function(flags, child) \{\})\`{}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2liftup_2_r_e_a_d_m_e_autotoc_md10038}
+Emitted when Liftoff re-\/spawns your process (when a \`{}v8flags\`{} is detected).
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ Hacker\ =\ new\ Liftoff(\{}
+\DoxyCodeLine{\ \ name:\ 'hacker',}
+\DoxyCodeLine{\ \ v8flags:\ ['-\/-\/harmony']}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{Hacker.on('respawn',\ function\ (flags,\ child)\ \{}
+\DoxyCodeLine{\ \ console.log('Detected\ node\ flags:',\ flags);}
+\DoxyCodeLine{\ \ console.log('Respawned\ to\ PID:',\ child.pid);}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+Event will be triggered for this command\+: {\ttfamily hacker -\/-\/harmony commmand}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2liftup_2_r_e_a_d_m_e_autotoc_md10039}{}\doxysection{\texorpdfstring{Examples}{Examples}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2liftup_2_r_e_a_d_m_e_autotoc_md10039}
+Check out how \href{https://github.com/gulpjs/gulp-cli/blob/master/index.js}{\texttt{ gulp}} uses Liftoff.
+
+For a bare-\/bones example, try \href{https://github.com/js-cli/js-hacker/blob/master/bin/hacker.js}{\texttt{ the hacker project}}.
+
+To try the example, do the following\+:
+
+
+\begin{DoxyEnumerate}
+\item Install the sample project {\ttfamily hacker} with {\ttfamily npm install -\/g hacker}.
+\item Make a {\ttfamily Hackerfile.\+js} with some arbitrary javascript it.
+\item Install hacker next to it with {\ttfamily npm install hacker}.
+\end{DoxyEnumerate}
+\begin{DoxyEnumerate}
+\item Run {\ttfamily hacker} while in the same parent folder. 
+\end{DoxyEnumerate}

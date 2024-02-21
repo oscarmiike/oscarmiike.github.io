@@ -1,0 +1,288 @@
+\chapter{grunt-\/contrib-\/concat v1.0.1 \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/gruntjs/grunt-\/contrib-\/concat"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+org/gruntjs/grunt-\/contrib-\/concat.\+svg?branch=master"{} alt="{}\+Build Status\+: Linux"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}a href="{}https\+://ci.\+appveyor.\+com/project/gruntjs/grunt-\/contrib-\/concat/branch/master"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://ci.\+appveyor.\+com/api/projects/status/l42173901ms416km/branch/master?svg=true"{} alt="{}\+Build Status\+: Windows"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m613460b9874b925827239cb5467a45c4}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m613460b9874b925827239cb5467a45c4}\index{grunt-\/contrib-\/concat v1.0.1 $<$a href="{}https://travis-\/ci.org/gruntjs/grunt-\/contrib-\/concat"{} $>$$<$img src="{}https://travis-\/ci.org/gruntjs/grunt-\/contrib-\/concat.svg?branch=master"{} alt="{}Build Status: Linux"{}/$>$$<$/a$>$ $<$a href="{}https://ci.appveyor.com/project/gruntjs/grunt-\/contrib-\/concat/branch/master"{} $>$$<$img src="{}https://ci.appveyor.com/api/projects/status/l42173901ms416km/branch/master?svg=true"{} alt="{}Build Status: Windows"{}/$>$$<$/a$>$@{grunt-\/contrib-\/concat v1.0.1 $<$a href=""https://travis-\/ci.org/gruntjs/grunt-\/contrib-\/concat"" $>$$<$img src=""https://travis-\/ci.org/gruntjs/grunt-\/contrib-\/concat.svg?branch=master"" alt=""Build Status: Linux""/$>$$<$/a$>$ $<$a href=""https://ci.appveyor.com/project/gruntjs/grunt-\/contrib-\/concat/branch/master"" $>$$<$img src=""https://ci.appveyor.com/api/projects/status/l42173901ms416km/branch/master?svg=true"" alt=""Build Status: Windows""/$>$$<$/a$>$}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m613460b9874b925827239cb5467a45c4_autotoc_md8737}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m613460b9874b925827239cb5467a45c4_autotoc_md8737}%
+ \begin{quote}
+Concatenate files. \end{quote}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m613460b9874b925827239cb5467a45c4_autotoc_md8738}{}\doxysection{\texorpdfstring{Getting Started}{Getting Started}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m613460b9874b925827239cb5467a45c4_autotoc_md8738}
+If you haven\textquotesingle{}t used \href{http://gruntjs.com/}{\texttt{ Grunt}} before, be sure to check out the \href{http://gruntjs.com/getting-started}{\texttt{ Getting Started}} guide, as it explains how to create a \href{http://gruntjs.com/sample-gruntfile}{\texttt{ Gruntfile}} as well as install and use Grunt plugins. Once you\textquotesingle{}re familiar with that process, you may install this plugin with this command\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ grunt-\/contrib-\/concat\ -\/-\/save-\/dev}
+
+\end{DoxyCode}
+
+
+Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of Java\+Script\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{grunt.loadNpmTasks('grunt-\/contrib-\/concat');}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m613460b9874b925827239cb5467a45c4_autotoc_md8739}{}\doxysection{\texorpdfstring{Concat task}{Concat task}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m613460b9874b925827239cb5467a45c4_autotoc_md8739}
+{\itshape Run this task with the {\ttfamily grunt concat} command.}
+
+Task targets, files and options may be specified according to the Grunt \href{http://gruntjs.com/configuring-tasks}{\texttt{ Configuring tasks}} guide.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m613460b9874b925827239cb5467a45c4_autotoc_md8740}{}\doxysubsection{\texorpdfstring{Options}{Options}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m613460b9874b925827239cb5467a45c4_autotoc_md8740}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m613460b9874b925827239cb5467a45c4_autotoc_md8741}{}\doxysubsubsection{\texorpdfstring{separator}{separator}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m613460b9874b925827239cb5467a45c4_autotoc_md8741}
+Type\+: {\ttfamily String} ~\newline
+ Default\+: {\ttfamily grunt.\+util.\+linefeed}
+
+Concatenated files will be joined on this string. If you\textquotesingle{}re post-\/processing concatenated Java\+Script files with a minifier, you may need to use a semicolon `';~\newline
+\textquotesingle{}\`{} as the separator.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m613460b9874b925827239cb5467a45c4_autotoc_md8742}{}\doxysubsubsection{\texorpdfstring{banner}{banner}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m613460b9874b925827239cb5467a45c4_autotoc_md8742}
+Type\+: {\ttfamily String} ~\newline
+ Default\+: `'\textquotesingle{}\`{}
+
+This string will be prepended to the beginning of the concatenated output. It is processed using \href{https://github.com/gruntjs/grunt-docs/blob/master/grunt.template.md\#grunttemplateprocess}{\texttt{ grunt.\+template.\+process}}, using the default options.
+
+\+\_\+(Default processing options are explained in the \href{https://github.com/gruntjs/grunt-docs/blob/master/grunt.template.md\#grunttemplateprocess}{\texttt{ grunt.\+template.\+process}} documentation)\+\_\+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m613460b9874b925827239cb5467a45c4_autotoc_md8743}{}\doxysubsubsection{\texorpdfstring{footer}{footer}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m613460b9874b925827239cb5467a45c4_autotoc_md8743}
+Type\+: {\ttfamily String} ~\newline
+ Default\+: `'\textquotesingle{}\`{}
+
+This string will be appended to the end of the concatenated output. It is processed using \href{https://github.com/gruntjs/grunt-docs/blob/master/grunt.template.md\#grunttemplateprocess}{\texttt{ grunt.\+template.\+process}}, using the default options.
+
+\+\_\+(Default processing options are explained in the \href{https://github.com/gruntjs/grunt-docs/blob/master/grunt.template.md\#grunttemplateprocess}{\texttt{ grunt.\+template.\+process}} documentation)\+\_\+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m613460b9874b925827239cb5467a45c4_autotoc_md8744}{}\doxysubsubsection{\texorpdfstring{strip\+Banners}{strip\+Banners}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m613460b9874b925827239cb5467a45c4_autotoc_md8744}
+Type\+: {\ttfamily Boolean} {\ttfamily Object} ~\newline
+ Default\+: {\ttfamily false}
+
+Strip Java\+Script banner comments from source files.
+
+
+\begin{DoxyItemize}
+\item {\ttfamily false} -\/ No comments are stripped.
+\item {\ttfamily true} -\/ {\ttfamily /\texorpdfstring{$\ast$}{*} ... \texorpdfstring{$\ast$}{*}/} block comments are stripped, but {\itshape NOT} {\ttfamily /\texorpdfstring{$\ast$}{*}! ... \texorpdfstring{$\ast$}{*}/} comments.
+\item {\ttfamily options} object\+:
+\begin{DoxyItemize}
+\item By default, behaves as if {\ttfamily true} were specified.
+\item {\ttfamily block} -\/ If true, {\itshape all} block comments are stripped.
+\item {\ttfamily line} -\/ If true, any contiguous {\itshape leading} {\ttfamily //} line comments are stripped.
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m613460b9874b925827239cb5467a45c4_autotoc_md8745}{}\doxysubsubsection{\texorpdfstring{process}{process}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m613460b9874b925827239cb5467a45c4_autotoc_md8745}
+Type\+: {\ttfamily Boolean} {\ttfamily Object} {\ttfamily Function} ~\newline
+ Default\+: {\ttfamily false}
+
+Process source files before concatenating, either as \href{https://github.com/gruntjs/grunt-docs/blob/master/grunt.template.md}{\texttt{ templates}} or with a custom function.
+
+
+\begin{DoxyItemize}
+\item {\ttfamily false} -\/ No processing will occur.
+\item {\ttfamily true} -\/ Process source files using \href{https://github.com/gruntjs/grunt-docs/blob/master/grunt.template.md\#grunttemplateprocess}{\texttt{ grunt.\+template.\+process}} defaults.
+\item {\ttfamily data} object -\/ Process source files using \href{https://github.com/gruntjs/grunt-docs/blob/master/grunt.template.md\#grunttemplateprocess}{\texttt{ grunt.\+template.\+process}}, using the specified options.
+\item {\ttfamily function(src, filepath)} -\/ Process source files using the given function, called once for each file. The returned value will be used as source code.
+\end{DoxyItemize}
+
+\+\_\+(Default processing options are explained in the \href{https://github.com/gruntjs/grunt-docs/blob/master/grunt.template.md\#grunttemplateprocess}{\texttt{ grunt.\+template.\+process}} documentation)\+\_\+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m613460b9874b925827239cb5467a45c4_autotoc_md8746}{}\doxysubsubsection{\texorpdfstring{source\+Map}{source\+Map}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m613460b9874b925827239cb5467a45c4_autotoc_md8746}
+Type\+: {\ttfamily Boolean} ~\newline
+ Default\+: {\ttfamily false}
+
+Set to true to create a source map. The source map will be created alongside the destination file, and share the same file name with the {\ttfamily .map} extension appended to it.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m613460b9874b925827239cb5467a45c4_autotoc_md8747}{}\doxysubsubsection{\texorpdfstring{source\+Map\+Name}{source\+Map\+Name}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m613460b9874b925827239cb5467a45c4_autotoc_md8747}
+Type\+: {\ttfamily String} {\ttfamily Function} ~\newline
+ Default\+: {\ttfamily undefined}
+
+To customize the name or location of the generated source map, pass a string to indicate where to write the source map to. If a function is provided, the concat destination is passed as the argument and the return value will be used as the file name.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m613460b9874b925827239cb5467a45c4_autotoc_md8748}{}\doxysubsubsection{\texorpdfstring{source\+Map\+Style}{source\+Map\+Style}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m613460b9874b925827239cb5467a45c4_autotoc_md8748}
+Type\+: {\ttfamily String} ~\newline
+ Default\+: {\ttfamily embed}
+
+Determines the type of source map that is generated. The default value, {\ttfamily embed}, places the content of the sources directly into the map. {\ttfamily link} will reference the original sources in the map as links. {\ttfamily inline} will store the entire map as a data URI in the destination file.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m613460b9874b925827239cb5467a45c4_autotoc_md8749}{}\doxysubsection{\texorpdfstring{Usage Examples}{Usage Examples}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m613460b9874b925827239cb5467a45c4_autotoc_md8749}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m613460b9874b925827239cb5467a45c4_autotoc_md8750}{}\doxysubsubsection{\texorpdfstring{Concatenating with a custom separator}{Concatenating with a custom separator}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m613460b9874b925827239cb5467a45c4_autotoc_md8750}
+In this example, running {\ttfamily grunt concat\+:dist} (or {\ttfamily grunt concat} because {\ttfamily concat} is a \href{http://gruntjs.com/creating-tasks\#multi-tasks}{\texttt{ multi task}}) will concatenate the three specified source files (in order), joining files with {\ttfamily ;} and writing the output to {\ttfamily dist/built.\+js}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Project\ configuration.}
+\DoxyCodeLine{grunt.initConfig(\{}
+\DoxyCodeLine{\ \ concat:\ \{}
+\DoxyCodeLine{\ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ separator:\ ';',}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ dist:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ src:\ ['src/intro.js',\ 'src/project.js',\ 'src/outro.js'],}
+\DoxyCodeLine{\ \ \ \ \ \ dest:\ 'dist/built.js',}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m613460b9874b925827239cb5467a45c4_autotoc_md8751}{}\doxysubsubsection{\texorpdfstring{Banner comments}{Banner comments}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m613460b9874b925827239cb5467a45c4_autotoc_md8751}
+In this example, running {\ttfamily grunt concat\+:dist} will first strip any preexisting banner comment from the {\ttfamily src/project.\+js} file, then concatenate the result with a newly-\/generated banner comment, writing the output to {\ttfamily dist/built.\+js}.
+
+This generated banner will be the contents of the {\ttfamily banner} template string interpolated with the config object. In this case, those properties are the values imported from the {\ttfamily package.\+json} file (which are available via the {\ttfamily pkg} config property) plus today\textquotesingle{}s date.
+
+{\itshape Note\+: you don\textquotesingle{}t have to use an external JSON file. It\textquotesingle{}s also valid to create the {\ttfamily pkg} object inline in the config. That being said, if you already have a JSON file, you might as well reference it.}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Project\ configuration.}
+\DoxyCodeLine{grunt.initConfig(\{}
+\DoxyCodeLine{\ \ pkg:\ grunt.file.readJSON('package.json'),}
+\DoxyCodeLine{\ \ concat:\ \{}
+\DoxyCodeLine{\ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ stripBanners:\ true,}
+\DoxyCodeLine{\ \ \ \ \ \ banner:\ '/*!\ <\%=\ pkg.name\ \%>\ -\/\ v<\%=\ pkg.version\ \%>\ -\/\ '\ +}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ '<\%=\ grunt.template.today("{}yyyy-\/mm-\/dd"{})\ \%>\ */',}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ dist:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ src:\ ['src/project.js'],}
+\DoxyCodeLine{\ \ \ \ \ \ dest:\ 'dist/built.js',}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m613460b9874b925827239cb5467a45c4_autotoc_md8752}{}\doxysubsubsection{\texorpdfstring{Multiple targets}{Multiple targets}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m613460b9874b925827239cb5467a45c4_autotoc_md8752}
+In this example, running {\ttfamily grunt concat} will build two separate files. One "{}basic"{} version, with the main file essentially just copied to {\ttfamily dist/basic.\+js}, and another "{}with\+\_\+extras"{} concatenated version written to {\ttfamily dist/with\+\_\+extras.\+js}.
+
+While each concat target can be built individually by running {\ttfamily grunt concat\+:basic} or {\ttfamily grunt concat\+:extras}, running {\ttfamily grunt concat} will build all concat targets. This is because {\ttfamily concat} is a \href{http://gruntjs.com/creating-tasks\#multi-tasks}{\texttt{ multi task}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Project\ configuration.}
+\DoxyCodeLine{grunt.initConfig(\{}
+\DoxyCodeLine{\ \ concat:\ \{}
+\DoxyCodeLine{\ \ \ \ basic:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ src:\ ['src/main.js'],}
+\DoxyCodeLine{\ \ \ \ \ \ dest:\ 'dist/basic.js',}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ extras:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ src:\ ['src/main.js',\ 'src/extras.js'],}
+\DoxyCodeLine{\ \ \ \ \ \ dest:\ 'dist/with\_extras.js',}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m613460b9874b925827239cb5467a45c4_autotoc_md8753}{}\doxysubsubsection{\texorpdfstring{Multiple files per target}{Multiple files per target}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m613460b9874b925827239cb5467a45c4_autotoc_md8753}
+Like the previous example, in this example running {\ttfamily grunt concat} will build two separate files. One "{}basic"{} version, with the main file essentially just copied to {\ttfamily dist/basic.\+js}, and another "{}with\+\_\+extras"{} concatenated version written to {\ttfamily dist/with\+\_\+extras.\+js}.
+
+This example differs in that both files are built under the same target.
+
+Using the {\ttfamily files} object, you can have list any number of source-\/destination pairs.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Project\ configuration.}
+\DoxyCodeLine{grunt.initConfig(\{}
+\DoxyCodeLine{\ \ concat:\ \{}
+\DoxyCodeLine{\ \ \ \ basic\_and\_extras:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ files:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ 'dist/basic.js':\ ['src/main.js'],}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ 'dist/with\_extras.js':\ ['src/main.js',\ 'src/extras.js'],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m613460b9874b925827239cb5467a45c4_autotoc_md8754}{}\doxysubsubsection{\texorpdfstring{Dynamic filenames}{Dynamic filenames}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m613460b9874b925827239cb5467a45c4_autotoc_md8754}
+Filenames can be generated dynamically by using {\ttfamily \texorpdfstring{$<$}{<}\%= \%\texorpdfstring{$>$}{>}} delimited underscore templates as filenames.
+
+In this example, running {\ttfamily grunt concat\+:dist} generates a destination file whose name is generated from the {\ttfamily name} and {\ttfamily version} properties of the referenced {\ttfamily package.\+json} file (via the {\ttfamily pkg} config property).
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Project\ configuration.}
+\DoxyCodeLine{grunt.initConfig(\{}
+\DoxyCodeLine{\ \ pkg:\ grunt.file.readJSON('package.json'),}
+\DoxyCodeLine{\ \ concat:\ \{}
+\DoxyCodeLine{\ \ \ \ dist:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ src:\ ['src/main.js'],}
+\DoxyCodeLine{\ \ \ \ \ \ dest:\ 'dist/<\%=\ pkg.name\ \%>-\/<\%=\ pkg.version\ \%>.js',}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m613460b9874b925827239cb5467a45c4_autotoc_md8755}{}\doxysubsubsection{\texorpdfstring{Advanced dynamic filenames}{Advanced dynamic filenames}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m613460b9874b925827239cb5467a45c4_autotoc_md8755}
+In this more involved example, running {\ttfamily grunt concat} will build two separate files (because {\ttfamily concat} is a \href{http://gruntjs.com/creating-tasks\#multi-tasks}{\texttt{ multi task}}). The destination file paths will be expanded dynamically based on the specified templates, recursively if necessary.
+
+For example, if the {\ttfamily package.\+json} file contained {\ttfamily \{"{}name"{}\+: "{}awesome"{}, "{}version"{}\+: "{}1.\+0.\+0"{}\}}, the files {\ttfamily dist/awesome/1.\+0.\+0/basic.js} and {\ttfamily dist/awesome/1.\+0.\+0/with\+\_\+extras.js} would be generated.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Project\ configuration.}
+\DoxyCodeLine{grunt.initConfig(\{}
+\DoxyCodeLine{\ \ pkg:\ grunt.file.readJSON('package.json'),}
+\DoxyCodeLine{\ \ dirs:\ \{}
+\DoxyCodeLine{\ \ \ \ src:\ 'src/files',}
+\DoxyCodeLine{\ \ \ \ dest:\ 'dist/<\%=\ pkg.name\ \%>/<\%=\ pkg.version\ \%>',}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ concat:\ \{}
+\DoxyCodeLine{\ \ \ \ basic:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ src:\ ['<\%=\ dirs.src\ \%>/main.js'],}
+\DoxyCodeLine{\ \ \ \ \ \ dest:\ '<\%=\ dirs.dest\ \%>/basic.js',}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ extras:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ src:\ ['<\%=\ dirs.src\ \%>/main.js',\ '<\%=\ dirs.src\ \%>/extras.js'],}
+\DoxyCodeLine{\ \ \ \ \ \ dest:\ '<\%=\ dirs.dest\ \%>/with\_extras.js',}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m613460b9874b925827239cb5467a45c4_autotoc_md8756}{}\doxysubsubsection{\texorpdfstring{Invalid or Missing Files Warning}{Invalid or Missing Files Warning}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m613460b9874b925827239cb5467a45c4_autotoc_md8756}
+If you would like the {\ttfamily concat} task to warn if a given file is missing or invalid be sure to set {\ttfamily nonull} to {\ttfamily true}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{grunt.initConfig(\{}
+\DoxyCodeLine{\ \ concat:\ \{}
+\DoxyCodeLine{\ \ \ \ missing:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ src:\ ['src/invalid\_or\_missing\_file'],}
+\DoxyCodeLine{\ \ \ \ \ \ dest:\ 'compiled.js',}
+\DoxyCodeLine{\ \ \ \ \ \ nonull:\ true,}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+See \href{http://gruntjs.com/configuring-tasks\#files}{\texttt{ configuring files for a task}} for how to configure file globbing in Grunt.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m613460b9874b925827239cb5467a45c4_autotoc_md8757}{}\doxysubsubsection{\texorpdfstring{Custom process function}{Custom process function}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m613460b9874b925827239cb5467a45c4_autotoc_md8757}
+If you would like to do any custom processing before concatenating, use a custom process function\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{grunt.initConfig(\{}
+\DoxyCodeLine{\ \ concat:\ \{}
+\DoxyCodeLine{\ \ \ \ dist:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ Replace\ all\ 'use\ strict'\ statements\ in\ the\ code\ with\ a\ single\ one\ at\ the\ top}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ banner:\ "{}'use\ strict';\(\backslash\)n"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ process:\ function(src,\ filepath)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ return\ '//\ Source:\ '\ +\ filepath\ +\ '\(\backslash\)n'\ +}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ src.replace(/(\string^|\(\backslash\)n)[\ \(\backslash\)t]*('use\ strict'|"{}use\ strict"{});?\(\backslash\)s*/g,\ '\$1');}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ files:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ 'dist/built.js':\ ['src/project.js'],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m613460b9874b925827239cb5467a45c4_autotoc_md8758}{}\doxysection{\texorpdfstring{Release History}{Release History}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m613460b9874b925827239cb5467a45c4_autotoc_md8758}
+
+\begin{DoxyItemize}
+\item 2016-\/04-\/20   v1.0.\+1   \+Fix for concatenating multiple source map files.
+\item 2016-\/02-\/20   v1.0.\+0   \+Update source-\/map to 0.\+5.\+3. Tag Grunt as peer\+Dep to \texorpdfstring{$>$}{>}=0.\+4.\+0. Make source maps generation a little faster. Add {\ttfamily charset\+:utf-\/8} to {\ttfamily source\+Mapping\+URL}.
+\item 2015-\/02-\/20   v0.5.\+1   \+Fix path issues with source maps on Windows.
+\item 2014-\/07-\/19   v0.5.\+0   \+Adds {\ttfamily source\+Map} option.
+\item 2014-\/03-\/21   v0.4.\+0   \+README updates. Output updates.
+\item 2013-\/04-\/25   v0.3.\+0   \+Add option to process files with a custom function.
+\item 2013-\/04-\/08   v0.2.\+0   \+Don\textquotesingle{}t normalize separator to allow user to set LF even on a Windows environment.
+\item 2013-\/02-\/22   v0.1.\+3   \+Support footer option.
+\item 2013-\/02-\/15   v0.1.\+2   \+First official release for Grunt 0.\+4.\+0.
+\item 2013-\/01-\/18   v0.1.\+2rc6   \+Updating grunt/gruntplugin dependencies to rc6. Changing in-\/development grunt/gruntplugin dependency versions from tilde version ranges to specific versions.
+\item 2013-\/01-\/09   v0.1.\+2rc5   \+Updating to work with grunt v0.\+4.\+0rc5. Switching back to {\ttfamily this.\+files} API.
+\item 2012-\/11-\/13   v0.1.\+1   \+Switch to {\ttfamily this.\+file} API internally.
+\item 2012-\/10-\/03   v0.1.\+0   \+Work in progress, not yet officially released.
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+
+
+Task submitted by \href{http://benalman.com/}{\texttt{ "{}Cowboy"{} Ben Alman}}
+
+{\itshape This file was generated on Wed Apr 20 2016 08\+:41\+:44.} 

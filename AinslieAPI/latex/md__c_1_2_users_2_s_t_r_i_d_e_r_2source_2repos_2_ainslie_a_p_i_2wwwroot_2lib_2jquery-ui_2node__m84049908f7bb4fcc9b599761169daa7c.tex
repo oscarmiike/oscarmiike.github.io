@@ -1,0 +1,46 @@
+\chapter{time}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m84049908f7bb4fcc9b599761169daa7c}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m84049908f7bb4fcc9b599761169daa7c}\index{time@{time}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m84049908f7bb4fcc9b599761169daa7c_autotoc_md1450}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m84049908f7bb4fcc9b599761169daa7c_autotoc_md1450}%
+ Utilities for time manipulation.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m84049908f7bb4fcc9b599761169daa7c_autotoc_md1451}{}\doxysection{\texorpdfstring{convert(value, source\+Unit, \mbox{[}destination\+Unit\mbox{]})\+:Number}{convert(value, source\+Unit, \mbox{[}destination\+Unit\mbox{]})\+:Number}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m84049908f7bb4fcc9b599761169daa7c_autotoc_md1451}
+Converts time between units.
+
+Available units\+: {\ttfamily millisecond}, {\ttfamily second}, {\ttfamily minute}, {\ttfamily hour}, {\ttfamily day}, {\ttfamily week}. Abbreviations\+: {\ttfamily ms}, {\ttfamily s}, {\ttfamily m}, {\ttfamily h}, {\ttfamily d}, {\ttfamily w}.
+
+We do {\bfseries{not}} support year and month as a time unit since their values are not fixed.
+
+The default {\ttfamily destination\+Unit} is {\ttfamily ms}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{convert(1,\ 'minute');\ \ \ \ //\ 60000}
+\DoxyCodeLine{convert(2.5,\ 's',\ 'ms');\ //\ 2500}
+\DoxyCodeLine{convert(2,\ 'm',\ 's');\ \ \ \ //\ 120}
+\DoxyCodeLine{convert(500,\ 'ms',\ 's');\ //\ 0.5}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m84049908f7bb4fcc9b599761169daa7c_autotoc_md1452}{}\doxysection{\texorpdfstring{now()\+:Number}{now()\+:Number}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m84049908f7bb4fcc9b599761169daa7c_autotoc_md1452}
+Returns the number of milliseconds elapsed since 1 January 1970 00\+:00\+:00 UTC. Uses {\ttfamily Date.\+now()} if available.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m84049908f7bb4fcc9b599761169daa7c_autotoc_md1453}{}\doxysubsection{\texorpdfstring{Example}{Example}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m84049908f7bb4fcc9b599761169daa7c_autotoc_md1453}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{now();\ //\ 1335449614650}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m84049908f7bb4fcc9b599761169daa7c_autotoc_md1454}{}\doxysection{\texorpdfstring{parse\+Ms(ms)\+:Object}{parse\+Ms(ms)\+:Object}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m84049908f7bb4fcc9b599761169daa7c_autotoc_md1454}
+Parse timestamp (milliseconds) into an object {\ttfamily \{milliseconds\+:number, seconds\+:number, minutes\+:number, hours\+:number, days\+:number\}}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m84049908f7bb4fcc9b599761169daa7c_autotoc_md1455}{}\doxysubsection{\texorpdfstring{Example}{Example}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m84049908f7bb4fcc9b599761169daa7c_autotoc_md1455}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ \{days:27,\ hours:4,\ minutes:26,\ seconds:5,\ milliseconds:454\}}
+\DoxyCodeLine{parseMs(2348765454);}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m84049908f7bb4fcc9b599761169daa7c_autotoc_md1456}{}\doxysection{\texorpdfstring{to\+Time\+String(ms)\+:String}{to\+Time\+String(ms)\+:String}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m84049908f7bb4fcc9b599761169daa7c_autotoc_md1456}
+Convert timestamp (milliseconds) into a time string in the format "{}\mbox{[}\+H\+:\mbox{]}\+MM\+:\+SS"{}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m84049908f7bb4fcc9b599761169daa7c_autotoc_md1457}{}\doxysubsection{\texorpdfstring{Example}{Example}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m84049908f7bb4fcc9b599761169daa7c_autotoc_md1457}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{toTimeString(12513);\ \ \ //\ "{}00:12"{}}
+\DoxyCodeLine{toTimeString(951233);\ \ //\ "{}15:51"{}}
+\DoxyCodeLine{toTimeString(8765235);\ //\ "{}2:26:05"{}}
+
+\end{DoxyCode}
+ 

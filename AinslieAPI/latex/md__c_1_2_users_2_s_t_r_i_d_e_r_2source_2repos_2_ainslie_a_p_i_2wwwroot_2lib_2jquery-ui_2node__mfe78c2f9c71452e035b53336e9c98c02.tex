@@ -1,0 +1,102 @@
+\chapter{semver(1) -- The semantic versioner for npm}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfe78c2f9c71452e035b53336e9c98c02}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfe78c2f9c71452e035b53336e9c98c02}\index{semver(1) -- The semantic versioner for npm@{semver(1) -- The semantic versioner for npm}}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfe78c2f9c71452e035b53336e9c98c02_autotoc_md4556}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfe78c2f9c71452e035b53336e9c98c02_autotoc_md4556}
+\begin{DoxyVerb}$ npm install semver
+
+semver.valid('1.2.3') // '1.2.3'
+semver.valid('a.b.c') // null
+semver.clean('  =v1.2.3   ') // '1.2.3'
+semver.satisfies('1.2.3', '1.x || >=2.5.0 || 5.0.0 - 7.2.3') // true
+semver.gt('1.2.3', '9.8.7') // false
+semver.lt('1.2.3', '9.8.7') // true
+\end{DoxyVerb}
+ As a command-\/line utility\+: \begin{DoxyVerb}$ semver -h
+
+Usage: semver <version> [<version> [...]] [-r <range> | -i <inc> | -d <dec>]
+Test if version(s) satisfy the supplied range(s), and sort them.
+
+Multiple versions or ranges may be supplied, unless increment
+or decrement options are specified.  In that case, only a single
+version may be used, and it is incremented by the specified level
+
+Program exits successfully if any valid version satisfies
+all supplied ranges, and prints all satisfying versions.
+
+If no versions are valid, or ranges are not satisfied,
+then exits failure.
+
+Versions are printed in ascending order, so supplying
+multiple versions to the utility will just sort them.
+\end{DoxyVerb}
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfe78c2f9c71452e035b53336e9c98c02_autotoc_md4557}{}\doxysection{\texorpdfstring{Versions}{Versions}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfe78c2f9c71452e035b53336e9c98c02_autotoc_md4557}
+A "{}version"{} is described by the {\ttfamily v2.\+0.\+0} specification found at \href{http://semver.org/}{\texttt{ http\+://semver.\+org/}}.
+
+A leading {\ttfamily "{}="{}} or {\ttfamily "{}v"{}} character is stripped off and ignored.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfe78c2f9c71452e035b53336e9c98c02_autotoc_md4558}{}\doxysection{\texorpdfstring{Ranges}{Ranges}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfe78c2f9c71452e035b53336e9c98c02_autotoc_md4558}
+The following range styles are supported\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily 1.\+2.\+3} A specific version. When nothing else will do. Must be a full version number, with major, minor, and patch versions specified. Note that build metadata is still ignored, so {\ttfamily 1.\+2.\+3+build2012} will satisfy this range.
+\item {\ttfamily \texorpdfstring{$>$}{>}1.\+2.\+3} Greater than a specific version.
+\item {\ttfamily \texorpdfstring{$<$}{<}1.\+2.\+3} Less than a specific version. If there is no prerelease tag on the version range, then no prerelease version will be allowed either, even though these are technically "{}less than"{}.
+\item {\ttfamily \texorpdfstring{$>$}{>}=1.\+2.\+3} Greater than or equal to. Note that prerelease versions are NOT equal to their "{}normal"{} equivalents, so {\ttfamily 1.\+2.\+3-\/beta} will not satisfy this range, but {\ttfamily 2.\+3.\+0-\/beta} will.
+\item {\ttfamily \texorpdfstring{$<$}{<}=1.\+2.\+3} Less than or equal to. In this case, prerelease versions ARE allowed, so {\ttfamily 1.\+2.\+3-\/beta} would satisfy.
+\item {\ttfamily 1.\+2.\+3 -\/ 2.\+3.\+4} \+:= {\ttfamily \texorpdfstring{$>$}{>}=1.\+2.\+3 \texorpdfstring{$<$}{<}=2.\+3.\+4}
+\item {\ttfamily \texorpdfstring{$\sim$}{\string~}1.2.\+3} \+:= {\ttfamily \texorpdfstring{$>$}{>}=1.\+2.\+3-\/0 \texorpdfstring{$<$}{<}1.\+3.\+0-\/0} "{}\+Reasonably close to \`{}1.\+2.\+3\`{}"{}. When using tilde operators, prerelease versions are supported as well, but a prerelease of the next significant digit will NOT be satisfactory, so {\ttfamily 1.\+3.\+0-\/beta} will not satisfy {\ttfamily \texorpdfstring{$\sim$}{\string~}1.2.\+3}.
+\item {\ttfamily \texorpdfstring{$^\wedge$}{\string^}1.2.\+3} \+:= {\ttfamily \texorpdfstring{$>$}{>}=1.\+2.\+3-\/0 \texorpdfstring{$<$}{<}2.\+0.\+0-\/0} "{}\+Compatible with \`{}1.\+2.\+3\`{}"{}. When using caret operators, anything from the specified version (including prerelease) will be supported up to, but not including, the next major version (or its prereleases). {\ttfamily 1.\+5.\+1} will satisfy {\ttfamily \texorpdfstring{$^\wedge$}{\string^}1.2.\+3}, while {\ttfamily 1.\+2.\+2} and {\ttfamily 2.\+0.\+0-\/beta} will not.
+\item {\ttfamily \texorpdfstring{$^\wedge$}{\string^}0.1.\+3} \+:= {\ttfamily \texorpdfstring{$>$}{>}=0.\+1.\+3-\/0 \texorpdfstring{$<$}{<}0.\+2.\+0-\/0} "{}\+Compatible with \`{}0.\+1.\+3\`{}"{}. {\ttfamily 0.\+x.\+x} versions are special\+: the first non-\/zero component indicates potentially breaking changes, meaning the caret operator matches any version with the same first non-\/zero component starting at the specified version.
+\item {\ttfamily \texorpdfstring{$^\wedge$}{\string^}0.0.\+2} \+:= {\ttfamily =0.\+0.\+2} "{}\+Only the version \`{}0.\+0.\+2\`{} is considered compatible"{}
+\item {\ttfamily \texorpdfstring{$\sim$}{\string~}1.2} \+:= {\ttfamily \texorpdfstring{$>$}{>}=1.\+2.\+0-\/0 \texorpdfstring{$<$}{<}1.\+3.\+0-\/0} "{}\+Any version starting with \`{}1.\+2\`{}"{}
+\item {\ttfamily \texorpdfstring{$^\wedge$}{\string^}1.2} \+:= {\ttfamily \texorpdfstring{$>$}{>}=1.\+2.\+0-\/0 \texorpdfstring{$<$}{<}2.\+0.\+0-\/0} "{}\+Any version compatible with \`{}1.\+2\`{}"{}
+\item {\ttfamily 1.\+2.\+x} \+:= {\ttfamily \texorpdfstring{$>$}{>}=1.\+2.\+0-\/0 \texorpdfstring{$<$}{<}1.\+3.\+0-\/0} "{}\+Any version starting with \`{}1.\+2\`{}"{}
+\item {\ttfamily 1.\+2.\texorpdfstring{$\ast$}{*}} Same as {\ttfamily 1.\+2.\+x}.
+\item {\ttfamily 1.\+2} Same as {\ttfamily 1.\+2.\+x}.
+\item {\ttfamily \texorpdfstring{$\sim$}{\string~}1} \+:= {\ttfamily \texorpdfstring{$>$}{>}=1.\+0.\+0-\/0 \texorpdfstring{$<$}{<}2.\+0.\+0-\/0} "{}\+Any version starting with \`{}1\`{}"{}
+\item {\ttfamily \texorpdfstring{$^\wedge$}{\string^}1} \+:= {\ttfamily \texorpdfstring{$>$}{>}=1.\+0.\+0-\/0 \texorpdfstring{$<$}{<}2.\+0.\+0-\/0} "{}\+Any version compatible with \`{}1\`{}"{}
+\item {\ttfamily 1.\+x} \+:= {\ttfamily \texorpdfstring{$>$}{>}=1.\+0.\+0-\/0 \texorpdfstring{$<$}{<}2.\+0.\+0-\/0} "{}\+Any version starting with \`{}1\`{}"{}
+\item {\ttfamily 1.\texorpdfstring{$\ast$}{*}} Same as {\ttfamily 1.\+x}.
+\item {\ttfamily 1} Same as {\ttfamily 1.\+x}.
+\item {\ttfamily \texorpdfstring{$\ast$}{*}} Any version whatsoever.
+\item {\ttfamily x} Same as {\ttfamily \texorpdfstring{$\ast$}{*}}.
+\item {\ttfamily "{}"{}} (just an empty string) Same as {\ttfamily \texorpdfstring{$\ast$}{*}}.
+\end{DoxyItemize}
+
+Ranges can be joined with either a space (which implies "{}and"{}) or a {\ttfamily \texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|}} (which implies "{}or"{}).\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfe78c2f9c71452e035b53336e9c98c02_autotoc_md4559}{}\doxysection{\texorpdfstring{Functions}{Functions}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfe78c2f9c71452e035b53336e9c98c02_autotoc_md4559}
+All methods and classes take a final {\ttfamily loose} boolean argument that, if true, will be more forgiving about not-\/quite-\/valid semver strings. The resulting output will always be 100\% strict, of course.
+
+Strict-\/mode Comparators and Ranges will be strict about the Sem\+Ver strings that they parse.
+
+
+\begin{DoxyItemize}
+\item {\ttfamily valid(v)}\+: Return the parsed version, or null if it\textquotesingle{}s not valid.
+\item {\ttfamily inc(v, release)}\+: Return the version incremented by the release type ({\ttfamily major}, {\ttfamily premajor}, {\ttfamily minor}, {\ttfamily preminor}, {\ttfamily patch}, {\ttfamily prepatch}, or {\ttfamily prerelease}), or null if it\textquotesingle{}s not valid
+\begin{DoxyItemize}
+\item {\ttfamily premajor} in one call will bump the version up to the next major version and down to a prerelease of that major version. {\ttfamily preminor}, and {\ttfamily prepatch} work the same way.
+\item If called from a non-\/prerelease version, the {\ttfamily prerelease} will work the same as {\ttfamily prepatch}. It increments the patch version, then makes a prerelease. If the input version is already a prerelease it simply increments it.
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfe78c2f9c71452e035b53336e9c98c02_autotoc_md4560}{}\doxysubsection{\texorpdfstring{Comparison}{Comparison}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfe78c2f9c71452e035b53336e9c98c02_autotoc_md4560}
+
+\begin{DoxyItemize}
+\item {\ttfamily gt(v1, v2)}\+: {\ttfamily v1 \texorpdfstring{$>$}{>} v2}
+\item {\ttfamily gte(v1, v2)}\+: {\ttfamily v1 \texorpdfstring{$>$}{>}= v2}
+\item {\ttfamily lt(v1, v2)}\+: {\ttfamily v1 \texorpdfstring{$<$}{<} v2}
+\item {\ttfamily lte(v1, v2)}\+: {\ttfamily v1 \texorpdfstring{$<$}{<}= v2}
+\item {\ttfamily eq(v1, v2)}\+: {\ttfamily v1 == v2} This is true if they\textquotesingle{}re logically equivalent, even if they\textquotesingle{}re not the exact same string. You already know how to compare strings.
+\item {\ttfamily neq(v1, v2)}\+: {\ttfamily v1 != v2} The opposite of {\ttfamily eq}.
+\item {\ttfamily cmp(v1, comparator, v2)}\+: Pass in a comparison string, and it\textquotesingle{}ll call the corresponding function above. {\ttfamily "{}==="{}} and {\ttfamily "{}!=="{}} do simple string comparison, but are included for completeness. Throws if an invalid comparison string is provided.
+\item {\ttfamily compare(v1, v2)}\+: Return {\ttfamily 0} if {\ttfamily v1 == v2}, or {\ttfamily 1} if {\ttfamily v1} is greater, or {\ttfamily -\/1} if {\ttfamily v2} is greater. Sorts in ascending order if passed to {\ttfamily Array.\+sort()}.
+\item {\ttfamily rcompare(v1, v2)}\+: The reverse of compare. Sorts an array of versions in descending order when passed to {\ttfamily Array.\+sort()}.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfe78c2f9c71452e035b53336e9c98c02_autotoc_md4561}{}\doxysubsection{\texorpdfstring{Ranges}{Ranges}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfe78c2f9c71452e035b53336e9c98c02_autotoc_md4561}
+
+\begin{DoxyItemize}
+\item {\ttfamily valid\+Range(range)}\+: Return the valid range or null if it\textquotesingle{}s not valid
+\item {\ttfamily satisfies(version, range)}\+: Return true if the version satisfies the range.
+\item {\ttfamily max\+Satisfying(versions, range)}\+: Return the highest version in the list that satisfies the range, or {\ttfamily null} if none of them do.
+\item {\ttfamily gtr(version, range)}\+: Return {\ttfamily true} if version is greater than all the versions possible in the range.
+\item {\ttfamily ltr(version, range)}\+: Return {\ttfamily true} if version is less than all the versions possible in the range.
+\item {\ttfamily outside(version, range, hilo)}\+: Return true if the version is outside the bounds of the range in either the high or low direction. The {\ttfamily hilo} argument must be either the string `'\texorpdfstring{$>$}{>}\textquotesingle{}{\ttfamily or}\textquotesingle{}\texorpdfstring{$<$}{<}\textquotesingle{}{\ttfamily . (This is the function called by}gtr{\ttfamily and}ltr\`{}.)
+\end{DoxyItemize}
+
+Note that, since ranges may be non-\/contiguous, a version might not be greater than a range, less than a range, {\itshape or} satisfy a range! For example, the range {\ttfamily 1.\+2 \texorpdfstring{$<$}{<}1.\+2.\+9 \texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|} \texorpdfstring{$>$}{>}2.\+0.\+0} would have a hole from {\ttfamily 1.\+2.\+9} until {\ttfamily 2.\+0.\+0}, so the version {\ttfamily 1.\+2.\+10} would not be greater than the range (because {\ttfamily 2.\+0.\+1} satisfies, which is higher), nor less than the range (since {\ttfamily 1.\+2.\+8} satisfies, which is lower), and it also does not satisfy the range.
+
+If you want to know if a version satisfies or does not satisfy a range, use the {\ttfamily satisfies(version, range)} function. 

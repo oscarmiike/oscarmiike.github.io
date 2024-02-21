@@ -1,0 +1,14 @@
+\chapter{jsonify}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mefb7a414d110d5d02e247791f37e3445}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mefb7a414d110d5d02e247791f37e3445}\index{jsonify@{jsonify}}
+This module provides Douglas Crockford\textquotesingle{}s JSON implementation without modifying any globals.
+
+{\ttfamily stringify} and {\ttfamily parse} are merely exported without respect to whether or not a global {\ttfamily JSON} object exists.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mefb7a414d110d5d02e247791f37e3445_autotoc_md3093}{}\doxysection{\texorpdfstring{methods}{methods}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mefb7a414d110d5d02e247791f37e3445_autotoc_md3093}
+var json = require(\textquotesingle{}jsonify\textquotesingle{});\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mefb7a414d110d5d02e247791f37e3445_autotoc_md3094}{}\doxysubsection{\texorpdfstring{json.\+parse(source, reviver)}{json.\+parse(source, reviver)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mefb7a414d110d5d02e247791f37e3445_autotoc_md3094}
+Return a new javascript object from a parse of the {\ttfamily source} string.
+
+If a {\ttfamily reviver} function is specified, walk the structure passing each name/value pair to {\ttfamily reviver.\+call(parent, key, value)} to transform the {\ttfamily value} before parsing it.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mefb7a414d110d5d02e247791f37e3445_autotoc_md3095}{}\doxysubsection{\texorpdfstring{json.\+stringify(value, replacer, space)}{json.\+stringify(value, replacer, space)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mefb7a414d110d5d02e247791f37e3445_autotoc_md3095}
+Return a string representation for {\ttfamily value}.
+
+If {\ttfamily replacer} is specified, walk the structure passing each name/value pair to {\ttfamily replacer.\+call(parent, key, value)} to transform the {\ttfamily value} before stringifying it.
+
+If {\ttfamily space} is a number, indent the result by that many spaces. If {\ttfamily space} is a string, use {\ttfamily space} as the indentation. 

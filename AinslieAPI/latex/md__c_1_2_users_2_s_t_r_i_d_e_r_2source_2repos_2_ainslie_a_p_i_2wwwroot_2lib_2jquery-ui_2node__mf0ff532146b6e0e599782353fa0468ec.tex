@@ -1,0 +1,153 @@
+\chapter{promptly}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mf0ff532146b6e0e599782353fa0468ec}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mf0ff532146b6e0e599782353fa0468ec}\index{promptly@{promptly}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mf0ff532146b6e0e599782353fa0468ec_autotoc_md3995}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mf0ff532146b6e0e599782353fa0468ec_autotoc_md3995}%
+ \href{http://travis-ci.org/IndigoUnited/node-promptly.png}{\texttt{ }}
+
+Simple command line prompting utility.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mf0ff532146b6e0e599782353fa0468ec_autotoc_md3996}{}\doxysection{\texorpdfstring{Installation}{Installation}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mf0ff532146b6e0e599782353fa0468ec_autotoc_md3996}
+{\ttfamily \$ npm install promptly}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mf0ff532146b6e0e599782353fa0468ec_autotoc_md3997}{}\doxysection{\texorpdfstring{API}{API}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mf0ff532146b6e0e599782353fa0468ec_autotoc_md3997}
+Note that the {\ttfamily options} argument is optional for all the commands.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mf0ff532146b6e0e599782353fa0468ec_autotoc_md3998}{}\doxysubsection{\texorpdfstring{.prompt(message, opts, fn)}{.prompt(message, opts, fn)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mf0ff532146b6e0e599782353fa0468ec_autotoc_md3998}
+Prompts for a value, printing the {\ttfamily message} and waiting for the input. ~\newline
+ When done, calls {\ttfamily fn} with {\ttfamily error} and {\ttfamily value}.
+
+Default options\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ //\ The\ default\ value.\ If\ not\ supplied,\ the\ input\ is\ mandatory}
+\DoxyCodeLine{\ \ \ \ 'default':\ null,}
+\DoxyCodeLine{\ \ \ \ //\ Automatically\ trim\ the\ input}
+\DoxyCodeLine{\ \ \ \ 'trim':\ true,}
+\DoxyCodeLine{\ \ \ \ //\ A\ validator\ or\ an\ array\ of\ validators.}
+\DoxyCodeLine{\ \ \ \ 'validator':\ null,}
+\DoxyCodeLine{\ \ \ \ //\ Automatically\ retry\ if\ a\ validator\ fails}
+\DoxyCodeLine{\ \ \ \ 'retry':\ true,}
+\DoxyCodeLine{\ \ \ \ //\ Do\ not\ print\ what\ the\ user\ types}
+\DoxyCodeLine{\ \ \ \ 'silent':\ false,}
+\DoxyCodeLine{\ \ \ \ //\ Input\ and\ output\ streams\ to\ read\ and\ write\ to}
+\DoxyCodeLine{\ \ \ \ 'input':\ process.stdin,}
+\DoxyCodeLine{\ \ \ \ 'output':\ process.stdout}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+The validators have two purposes\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{function\ (value)\ \{}
+\DoxyCodeLine{\ \ \ \ //\ Validation\ example,\ throwing\ an\ error\ when\ invalid}
+\DoxyCodeLine{\ \ \ \ if\ (value.length\ !==\ 2)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ throw\ new\ Error('Length\ must\ be\ 2');}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ //\ Parse\ the\ value,\ modifying\ it}
+\DoxyCodeLine{\ \ \ \ return\ value.replace('aa',\ 'bb');}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Example usages
+
+Ask for a name\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{promptly.prompt('Name:\ ',\ function\ (err,\ value)\ \{}
+\DoxyCodeLine{\ \ \ \ //\ err\ is\ always\ null\ in\ this\ case,\ because\ no\ validators\ are\ set}
+\DoxyCodeLine{\ \ \ \ console.log(value);}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+Ask for a name with a constraint (non-\/empty value and length \texorpdfstring{$>$}{>} 2)\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ validator\ =\ function\ (value)\ \{}
+\DoxyCodeLine{\ \ \ \ if\ (value.length\ <\ 2)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ throw\ new\ Error('Min\ length\ of\ 2');}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ return\ value;}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{promptly.prompt('Name:\ ',\ \{\ validator:\ validator\ \},\ function\ (err,\ value)\ \{}
+\DoxyCodeLine{\ \ \ \ //\ Since\ retry\ is\ true\ by\ default,\ err\ is\ always\ null}
+\DoxyCodeLine{\ \ \ \ //\ because\ promptly\ will\ be\ prompting\ for\ a\ name\ until\ it\ validates}
+\DoxyCodeLine{\ \ \ \ //\ Between\ each\ prompt,\ the\ error\ message\ from\ the\ validator\ will\ be\ printed}
+\DoxyCodeLine{\ \ \ \ console.log('Name\ is:',\ value);}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+Same as above but do not retry automatically\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ validator\ =\ function\ (value)\ \{}
+\DoxyCodeLine{\ \ \ \ if\ (value.length\ <\ 2)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ throw\ new\ Error('Min\ length\ of\ 2');}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ return\ value;}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{promptly.prompt('Name:\ ',\ \{\ validator:\ validator,\ retry:\ false\ \},\ function\ (err,\ value)\ \{}
+\DoxyCodeLine{\ \ \ \ if\ (err)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ console.error('Invalid\ name:',\ e.message);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ Manually\ call\ retry}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ The\ passed\ error\ has\ a\ retry\ method\ to\ easily\ prompt\ again.}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ return\ err.retry();}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ console.log('Name\ is:',\ value);}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mf0ff532146b6e0e599782353fa0468ec_autotoc_md3999}{}\doxysubsection{\texorpdfstring{.confirm(message, opts, fn)}{.confirm(message, opts, fn)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mf0ff532146b6e0e599782353fa0468ec_autotoc_md3999}
+Ask the user to confirm something. ~\newline
+ Calls {\ttfamily fn} with {\ttfamily error} and {\ttfamily value} (true or false).
+
+Truthy values are\+: {\ttfamily y}, {\ttfamily yes} and {\ttfamily 1}. ~\newline
+ Falsy values are {\ttfamily n}, {\ttfamily no}, and {\ttfamily 0}. ~\newline
+ Comparison is made in a case insensitive way.
+
+Example usage\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{promptly.confirm('Are\ you\ sure?\ ',\ function\ (err,\ value)\ \{}
+\DoxyCodeLine{\ \ \ \ console.log('Answer:',\ value);}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mf0ff532146b6e0e599782353fa0468ec_autotoc_md4000}{}\doxysubsection{\texorpdfstring{.choose(message, choices, opts, fn)}{.choose(message, choices, opts, fn)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mf0ff532146b6e0e599782353fa0468ec_autotoc_md4000}
+Ask the user to choose between multiple {\ttfamily choices} (array of choices). ~\newline
+ Calls {\ttfamily fn} with {\ttfamily error} and {\ttfamily value}.
+
+Example usage\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{promptly.choose('Do\ you\ want\ an\ apple\ or\ an\ orange?\ ',\ ['apple',\ 'orange'],\ function\ (err,\ value)\ \{}
+\DoxyCodeLine{\ \ \ \ console.log('Answer:',\ value);}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mf0ff532146b6e0e599782353fa0468ec_autotoc_md4001}{}\doxysubsection{\texorpdfstring{.password(message, opts, fn)}{.password(message, opts, fn)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mf0ff532146b6e0e599782353fa0468ec_autotoc_md4001}
+Prompts for a password, printing the {\ttfamily message} and waiting for the input. ~\newline
+ When available, calls {\ttfamily fn} with {\ttfamily error} and {\ttfamily value}.
+
+The available options are the same, except that {\ttfamily trim} and {\ttfamily silent} default to {\ttfamily false} and {\ttfamily default} is an empty string (to allow empty passwords).
+
+Example usage\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{promptly.password('Type\ a\ password:\ ',\ function\ (err,\ value)\ \{}
+\DoxyCodeLine{\ \ \ \ console.log('Password\ is:',\ value);}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mf0ff532146b6e0e599782353fa0468ec_autotoc_md4002}{}\doxysection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mf0ff532146b6e0e599782353fa0468ec_autotoc_md4002}
+Released under the \href{http://www.opensource.org/licenses/mit-license.php}{\texttt{ MIT License}}. 

@@ -1,0 +1,107 @@
+\doxysection{Ainslie\+API.\+Helpers.\+Shared\+Tools Class Reference}
+\hypertarget{class_ainslie_a_p_i_1_1_helpers_1_1_shared_tools}{}\label{class_ainslie_a_p_i_1_1_helpers_1_1_shared_tools}\index{AinslieAPI.Helpers.SharedTools@{AinslieAPI.Helpers.SharedTools}}
+
+
+Provides utility methods for common data manipulation tasks, such as stripping HTML and removing non-\/alphanumeric characters from strings.  
+
+
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static string \mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_shared_tools_ab15e610eab2e8c51c9b48d81b9da0104}{Strip\+HTML}} (string str\+HTML)
+\begin{DoxyCompactList}\small\item\em Removes HTML tags from a string and decodes HTML entities. \end{DoxyCompactList}\item 
+static string \mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_shared_tools_ab5709314b631b14e5aa75638cc5f6352}{Remove\+Non\+Alpha\+Chars}} (string o\+String, string replace\+With)
+\begin{DoxyCompactList}\small\item\em Removes all non-\/alphanumeric characters from a string, optionally replacing them with a specified string. \end{DoxyCompactList}\item 
+static ? Date\+Time \mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_shared_tools_a5d26beaa558c5d4b15370f0308f447bf}{Unix\+Time\+Seconds\+To\+Local\+Time}} (long unix\+Timestamp)
+\begin{DoxyCompactList}\small\item\em Converts a Unix timestamp to a local Date\+Time. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Provides utility methods for common data manipulation tasks, such as stripping HTML and removing non-\/alphanumeric characters from strings. 
+
+Definition at line \mbox{\hyperlink{_shared_tools_8cs_source_l00009}{9}} of file \mbox{\hyperlink{_shared_tools_8cs_source}{Shared\+Tools.\+cs}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_ainslie_a_p_i_1_1_helpers_1_1_shared_tools_ab5709314b631b14e5aa75638cc5f6352}\label{class_ainslie_a_p_i_1_1_helpers_1_1_shared_tools_ab5709314b631b14e5aa75638cc5f6352} 
+\index{AinslieAPI.Helpers.SharedTools@{AinslieAPI.Helpers.SharedTools}!RemoveNonAlphaChars@{RemoveNonAlphaChars}}
+\index{RemoveNonAlphaChars@{RemoveNonAlphaChars}!AinslieAPI.Helpers.SharedTools@{AinslieAPI.Helpers.SharedTools}}
+\doxysubsubsection{\texorpdfstring{RemoveNonAlphaChars()}{RemoveNonAlphaChars()}}
+{\footnotesize\ttfamily static string Ainslie\+API.\+Helpers.\+Shared\+Tools.\+Remove\+Non\+Alpha\+Chars (\begin{DoxyParamCaption}\item[{string}]{o\+String,  }\item[{string}]{replace\+With }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Removes all non-\/alphanumeric characters from a string, optionally replacing them with a specified string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em o\+String} & The original string to process.\\
+\hline
+{\em replace\+With} & The string to replace non-\/alphanumeric characters with.\\
+\hline
+\end{DoxyParams}
+
+
+\begin{DoxyReturn}{Returns}
+A string with non-\/alphanumeric characters removed or replaced.
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_shared_tools_8cs_source_l00033}{33}} of file \mbox{\hyperlink{_shared_tools_8cs_source}{Shared\+Tools.\+cs}}.
+
+\Hypertarget{class_ainslie_a_p_i_1_1_helpers_1_1_shared_tools_ab15e610eab2e8c51c9b48d81b9da0104}\label{class_ainslie_a_p_i_1_1_helpers_1_1_shared_tools_ab15e610eab2e8c51c9b48d81b9da0104} 
+\index{AinslieAPI.Helpers.SharedTools@{AinslieAPI.Helpers.SharedTools}!StripHTML@{StripHTML}}
+\index{StripHTML@{StripHTML}!AinslieAPI.Helpers.SharedTools@{AinslieAPI.Helpers.SharedTools}}
+\doxysubsubsection{\texorpdfstring{StripHTML()}{StripHTML()}}
+{\footnotesize\ttfamily static string Ainslie\+API.\+Helpers.\+Shared\+Tools.\+Strip\+HTML (\begin{DoxyParamCaption}\item[{string}]{str\+HTML }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Removes HTML tags from a string and decodes HTML entities. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str\+HTML} & The HTML string to process.\\
+\hline
+\end{DoxyParams}
+
+
+\begin{DoxyReturn}{Returns}
+A plain text string with HTML tags and entities removed.
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_shared_tools_8cs_source_l00018}{18}} of file \mbox{\hyperlink{_shared_tools_8cs_source}{Shared\+Tools.\+cs}}.
+
+\Hypertarget{class_ainslie_a_p_i_1_1_helpers_1_1_shared_tools_a5d26beaa558c5d4b15370f0308f447bf}\label{class_ainslie_a_p_i_1_1_helpers_1_1_shared_tools_a5d26beaa558c5d4b15370f0308f447bf} 
+\index{AinslieAPI.Helpers.SharedTools@{AinslieAPI.Helpers.SharedTools}!UnixTimeSecondsToLocalTime@{UnixTimeSecondsToLocalTime}}
+\index{UnixTimeSecondsToLocalTime@{UnixTimeSecondsToLocalTime}!AinslieAPI.Helpers.SharedTools@{AinslieAPI.Helpers.SharedTools}}
+\doxysubsubsection{\texorpdfstring{UnixTimeSecondsToLocalTime()}{UnixTimeSecondsToLocalTime()}}
+{\footnotesize\ttfamily static ? Date\+Time Ainslie\+API.\+Helpers.\+Shared\+Tools.\+Unix\+Time\+Seconds\+To\+Local\+Time (\begin{DoxyParamCaption}\item[{long}]{unix\+Timestamp }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Converts a Unix timestamp to a local Date\+Time. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em unix\+Timestamp} & The Unix timestamp in seconds.\\
+\hline
+\end{DoxyParams}
+
+
+\begin{DoxyReturn}{Returns}
+The local Date\+Time representation of the Unix timestamp, or null if conversion fails.
+\end{DoxyReturn}
+
+
+Assumes the timestamp is in seconds since the Unix epoch (1 January 1970). Returns null if the timestamp is zero or conversion fails. 
+
+Definition at line \mbox{\hyperlink{_shared_tools_8cs_source_l00060}{60}} of file \mbox{\hyperlink{_shared_tools_8cs_source}{Shared\+Tools.\+cs}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+STRIDER/source/repos/\+Ainslie\+API/\+Helpers/\mbox{\hyperlink{_shared_tools_8cs}{Shared\+Tools.\+cs}}\end{DoxyCompactItemize}

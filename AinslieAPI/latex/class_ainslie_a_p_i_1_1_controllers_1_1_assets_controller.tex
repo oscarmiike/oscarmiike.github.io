@@ -1,0 +1,102 @@
+\doxysection{Ainslie\+API.\+Controllers.\+Assets\+Controller Class Reference}
+\hypertarget{class_ainslie_a_p_i_1_1_controllers_1_1_assets_controller}{}\label{class_ainslie_a_p_i_1_1_controllers_1_1_assets_controller}\index{AinslieAPI.Controllers.AssetsController@{AinslieAPI.Controllers.AssetsController}}
+
+
+Controls asset-\/related endpoints, handling requests to fetch asset pricing data.  
+
+
+
+
+Inheritance diagram for Ainslie\+API.\+Controllers.\+Assets\+Controller\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=224pt]{class_ainslie_a_p_i_1_1_controllers_1_1_assets_controller__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Ainslie\+API.\+Controllers.\+Assets\+Controller\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=224pt]{class_ainslie_a_p_i_1_1_controllers_1_1_assets_controller__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_assets_controller_a34b276ad6cf56e732ea60044dfe9d1a4}{Assets\+Controller}} (IHttp\+Context\+Accessor http\+Context\+Accessor, \mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service}{Internal\+Api\+Service}} ia\+Service, \mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{Log\+Service}} logger)
+\begin{DoxyCompactList}\small\item\em Initialises a new instance of the Assets\+Controller with necessary services. \end{DoxyCompactList}\item 
+IAction\+Result \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_assets_controller_a0c9bb1df19027458fd189101528c48c9}{Price\+List}} ()
+\begin{DoxyCompactList}\small\item\em Fetches current asset prices. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Controls asset-\/related endpoints, handling requests to fetch asset pricing data. 
+
+Definition at line \mbox{\hyperlink{_assets_controller_8cs_source_l00020}{20}} of file \mbox{\hyperlink{_assets_controller_8cs_source}{Assets\+Controller.\+cs}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_ainslie_a_p_i_1_1_controllers_1_1_assets_controller_a34b276ad6cf56e732ea60044dfe9d1a4}\label{class_ainslie_a_p_i_1_1_controllers_1_1_assets_controller_a34b276ad6cf56e732ea60044dfe9d1a4} 
+\index{AinslieAPI.Controllers.AssetsController@{AinslieAPI.Controllers.AssetsController}!AssetsController@{AssetsController}}
+\index{AssetsController@{AssetsController}!AinslieAPI.Controllers.AssetsController@{AinslieAPI.Controllers.AssetsController}}
+\doxysubsubsection{\texorpdfstring{AssetsController()}{AssetsController()}}
+{\footnotesize\ttfamily Ainslie\+API.\+Controllers.\+Assets\+Controller.\+Assets\+Controller (\begin{DoxyParamCaption}\item[{IHttp\+Context\+Accessor}]{http\+Context\+Accessor,  }\item[{\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service}{Internal\+Api\+Service}}}]{ia\+Service,  }\item[{\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{Log\+Service}}}]{logger }\end{DoxyParamCaption})}
+
+
+
+Initialises a new instance of the Assets\+Controller with necessary services. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em http\+Context\+Accessor} & Provides access to the HTTP context to retrieve user information.\\
+\hline
+{\em ia\+Service} & The service for internal API operations related to assets.\\
+\hline
+{\em logger} & The logging service for recording application activity.\\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_assets_controller_8cs_source_l00034}{34}} of file \mbox{\hyperlink{_assets_controller_8cs_source}{Assets\+Controller.\+cs}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_ainslie_a_p_i_1_1_controllers_1_1_assets_controller_a0c9bb1df19027458fd189101528c48c9}\label{class_ainslie_a_p_i_1_1_controllers_1_1_assets_controller_a0c9bb1df19027458fd189101528c48c9} 
+\index{AinslieAPI.Controllers.AssetsController@{AinslieAPI.Controllers.AssetsController}!PriceList@{PriceList}}
+\index{PriceList@{PriceList}!AinslieAPI.Controllers.AssetsController@{AinslieAPI.Controllers.AssetsController}}
+\doxysubsubsection{\texorpdfstring{PriceList()}{PriceList()}}
+{\footnotesize\ttfamily IAction\+Result Ainslie\+API.\+Controllers.\+Assets\+Controller.\+Price\+List (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Fetches current asset prices. 
+
+\begin{DoxyReturn}{Returns}
+An IAction\+Result with asset prices or an error message.
+\end{DoxyReturn}
+
+
+The method logs the request and authenticated user\textquotesingle{}s email, retrieves asset pricing via Internal\+Api\+Service, and returns this data in an HTTP response. Access is secured through the \mbox{[}Api\+Authorize\mbox{]} attribute, ensuring only authorised roles have entry. 
+
+Definition at line \mbox{\hyperlink{_assets_controller_8cs_source_l00055}{55}} of file \mbox{\hyperlink{_assets_controller_8cs_source}{Assets\+Controller.\+cs}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_ainslie_a_p_i_1_1_controllers_1_1_assets_controller_a0c9bb1df19027458fd189101528c48c9_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+STRIDER/source/repos/\+Ainslie\+API/\+Controllers/\mbox{\hyperlink{_assets_controller_8cs}{Assets\+Controller.\+cs}}\end{DoxyCompactItemize}

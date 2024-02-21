@@ -1,0 +1,680 @@
+\chapter{object}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7}\index{object@{object}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1294}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1294}%
+ Object utilities.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1295}{}\doxysection{\texorpdfstring{bind\+All(obj, \mbox{[}...\+method\+Names\mbox{]})\+:void}{bind\+All(obj, \mbox{[}...\+method\+Names\mbox{]})\+:void}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1295}
+Bind methods of the target object to always execute on its own context (ovewritting the original function).
+
+See\+: \href{./function.html\#bind}{\texttt{ function/bind}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ view\ =\ \{}
+\DoxyCodeLine{\ \ \ \ name:\ 'Lorem\ Ipsum',}
+\DoxyCodeLine{\ \ \ \ logNameOnClick:\ function()\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ console.log(this.name);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ binds\ all\ methods\ by\ default}
+\DoxyCodeLine{bindAll(view);}
+\DoxyCodeLine{jQuery('\#docs').on('click',\ view.logNameOnClick);}
+
+\end{DoxyCode}
+
+
+You can also specify the list of methods that you want to bind (in case you just want to bind a few of them).
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ only\ the\ listed\ methods\ will\ be\ bound\ to\ \`{}obj`\ context}
+\DoxyCodeLine{bindAll(obj,\ 'logNameOnClick',\ 'doAwesomeStuffOnDrag');}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1296}{}\doxysection{\texorpdfstring{contains(obj, value)\+:Boolean}{contains(obj, value)\+:Boolean}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1296}
+Similar to \href{array.html\#contains}{\texttt{ Array/contains}}. Checks if Object contains value.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ obj\ =\ \{}
+\DoxyCodeLine{\ \ \ \ a:\ 1,}
+\DoxyCodeLine{\ \ \ \ b:\ 2,}
+\DoxyCodeLine{\ \ \ \ c:\ 'bar'}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{contains(obj,\ 2);\ \ \ \ \ \ //\ true}
+\DoxyCodeLine{contains(obj,\ 'foo');\ \ //\ false}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1297}{}\doxysection{\texorpdfstring{deep\+Fill\+In(target, ...\+objects)\+:Object}{deep\+Fill\+In(target, ...\+objects)\+:Object}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1297}
+Fill missing properties recursively.
+
+It\textquotesingle{}s different from {\ttfamily deep\+Mix\+In} since it won\textquotesingle{}t override any existing property. It\textquotesingle{}s also different from {\ttfamily merge} since it won\textquotesingle{}t clone child objects during the process.
+
+It returns the target object and mutates it in place.
+
+See\+: \`{}fill\+In()\`{}, \`{}deep\+Mix\+In()\`{}, \`{}merge()\`{}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ base\ =\ \{}
+\DoxyCodeLine{\ \ \ \ foo\ :\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ bar\ :\ 123}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ lorem\ :\ 'ipsum'}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{var\ options\ =\ deepFillIn(\{foo\ :\ \{\ baz\ :\ 45\ \},\ lorem\ :\ 'amet'\},\ base);}
+\DoxyCodeLine{//\ >\ \{foo:\ \{bar:123,\ baz\ :\ 45\},\ lorem\ :\ 'amet'\}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1298}{}\doxysection{\texorpdfstring{deep\+Matches(target, pattern)\+:Boolean}{deep\+Matches(target, pattern)\+:Boolean}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1298}
+Recursively checks if object contains all properties/value pairs. When both the target and pattern values are arrays, it checks that the target value contain matches for all the items in the pattern array (independent of order).
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ john\ =\ \{}
+\DoxyCodeLine{\ \ \ \ name:\ 'John',}
+\DoxyCodeLine{\ \ \ \ age:\ 22,}
+\DoxyCodeLine{\ \ \ \ pets:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{\ type:\ 'cat',\ name:\ 'Grumpy\ Cat'\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{\ type:\ 'dog',\ name:\ 'Hawk'\ \}}
+\DoxyCodeLine{\ \ \ \ ]}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{deepMatches(john,\ \{\ name:\ 'John'\ \});\ //\ true}
+\DoxyCodeLine{deepMatches(john,\ \{\ age:\ 21\ \});\ //\ false}
+\DoxyCodeLine{deepMatches(john,\ \{\ pets:\ [\ \{\ type:\ 'cat'\ \}\ ]\ \});\ //\ true}
+\DoxyCodeLine{deepMatches(john,\ \{\ pets:\ [\ \{\ name:\ 'Hawk'\ \}\ ]\ \});\ //\ true}
+\DoxyCodeLine{deepMatches(john,\ \{\ pets:\ [\ \{\ name:\ 'Hairball'\ \}\ ]\ \});\ //\ false}
+
+\end{DoxyCode}
+
+
+See \`{}matches()\`{}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1299}{}\doxysection{\texorpdfstring{deep\+Mix\+In(target, ...\+objects)\+:Object}{deep\+Mix\+In(target, ...\+objects)\+:Object}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1299}
+Mixes objects into the target object, recursively mixing existing child objects as well.
+
+It will only recursively mix objects if both (existing and new) values are plain objects.
+
+Returns the target object. Like \`{}merge()\`{}, but mutates the target object, and does not clone child objects.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ target\ =\ \{}
+\DoxyCodeLine{\ \ \ \ foo:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ name:\ "{}foo"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ id:\ 1}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{deepMixIn(target,\ \{\ foo:\ \{\ id:\ 2\ \}\ \});}
+\DoxyCodeLine{console.log(target);\ //\ \{\ foo:\ \{\ name:\ "{}foo"{},\ id:\ 2\ \}\ \}}
+
+\end{DoxyCode}
+
+
+See\+: \`{}mix\+In()\`{}, \`{}merge()\`{}, \`{}deep\+Fill\+In()\`{}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1300}{}\doxysection{\texorpdfstring{equals(a, b, \mbox{[}callback\mbox{]})\+:Boolean}{equals(a, b, \mbox{[}callback\mbox{]})\+:Boolean}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1300}
+Tests whether two objects contain the same keys and values.
+
+{\ttfamily callback} specifies the equality comparison function used to compare the values. It defaults to using \href{lang.html\#is}{\texttt{ lang/is}}.
+
+It will only check the keys and values contained by the objects; it will not check the objects\textquotesingle{} prototypes. If either of the values are not objects, they will be compared using the {\ttfamily callback} function.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{equals(\{\},\ \{\});\ //\ true}
+\DoxyCodeLine{equals(\{\ a:\ 1\ \},\ \{\ a:\ 1\ \});\ //\ true}
+\DoxyCodeLine{equals(\{\ a:\ 1\ \},\ \{\ a:\ 2\ \});\ //\ false}
+\DoxyCodeLine{equals(\{\ a:\ 1,\ b:\ 2\ \},\ \{\ a:\ 1\ \});\ //\ false}
+\DoxyCodeLine{equals(\{\ a:\ 1\ \},\ \{\ a:\ 1,\ b:\ 2\ \});\ //\ false}
+\DoxyCodeLine{equals(null,\ null);\ //\ true}
+\DoxyCodeLine{equals(null,\ \{\});\ //\ false}
+\DoxyCodeLine{equals(\{\ a:\ 1\ \},\ \{\ a:\ '1'\ \},\ function(a,\ b)\ \{\ return\ a\ ==\ b;\ \});\ //\ true}
+
+\end{DoxyCode}
+
+
+See\+: \href{array.html\#equals}{\texttt{ array/equals}}, \href{lang.html\#deepEquals}{\texttt{ lang/deep\+Equals}}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1301}{}\doxysection{\texorpdfstring{every(obj, callback, \mbox{[}this\+Obj\mbox{]})\+:Boolean}{every(obj, callback, \mbox{[}this\+Obj\mbox{]})\+:Boolean}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1301}
+Similar to \href{array.html\#every}{\texttt{ Array/every}}. Tests whether all properties in the object pass the test implemented by the provided callback.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ obj\ =\ \{}
+\DoxyCodeLine{\ \ \ \ a:\ 1,}
+\DoxyCodeLine{\ \ \ \ b:\ 2,}
+\DoxyCodeLine{\ \ \ \ c:\ 3,}
+\DoxyCodeLine{\ \ \ \ d:\ 'string'}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{every(obj,\ isNumber);\ //\ false}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1302}{}\doxysection{\texorpdfstring{fill\+In(obj, ...\+default)\+:Object}{fill\+In(obj, ...\+default)\+:Object}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1302}
+Fill in missing properties in object with values from the {\itshape defaults} objects. \begin{DoxyVerb}var base = {
+    foo : 'bar',
+    num : 123
+};
+
+fillIn({foo:'ipsum'}, base); // {foo:'ipsum', num:123}
+\end{DoxyVerb}
+ PS\+: it allows merging multiple objects at once, the first ones will take precedence.
+
+See\+: \`{}mix\+In()\`{}, \`{}merge()\`{}, \`{}deep\+Fill\+In()\`{}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1303}{}\doxysection{\texorpdfstring{filter(obj, callback, \mbox{[}this\+Obj\mbox{]})}{filter(obj, callback, \mbox{[}this\+Obj\mbox{]})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1303}
+Returns a new object containing all properties where {\ttfamily callback} returns true, similar to Array/filter. It does not use properties from the object\textquotesingle{}s prototype.
+
+Callback receives the same arguments as {\ttfamily for\+Own()}.
+
+See\+: \`{}for\+Own()\`{}, \`{}for\+In()\`{}, \`{}pick()\`{}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ obj\ =\ \{}
+\DoxyCodeLine{\ \ \ \ foo:\ 'value',}
+\DoxyCodeLine{\ \ \ \ bar:\ 'bar\ value'}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ returns\ \{\ bar:\ 'bar\ value'\ \}}
+\DoxyCodeLine{filter(obj,\ function(v)\ \{\ return\ v.length\ >\ 5;\ \});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ returns\ \{\ foo:\ 'value'\ \}}
+\DoxyCodeLine{filter(obj,\ function(v,\ k)\ \{\ return\ k\ ===\ 'foo';\ \});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1304}{}\doxysection{\texorpdfstring{find(obj, callback, \mbox{[}this\+Obj\mbox{]})}{find(obj, callback, \mbox{[}this\+Obj\mbox{]})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1304}
+Loops through all the properties in the Object and returns the first one that passes a truth test (callback), similar to \href{array.html\#find}{\texttt{ Array/find}}. Unlike Array/find, order of iteration is not guaranteed.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ obj\ =\ \{}
+\DoxyCodeLine{\ \ \ \ a:\ 'foo',}
+\DoxyCodeLine{\ \ \ \ b:\ 12}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{find(obj,\ isString);\ //\ 'foo'}
+\DoxyCodeLine{find(obj,\ isNumber);\ //\ 12}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1305}{}\doxysection{\texorpdfstring{flatten(object, \mbox{[}level\mbox{]})\+:Object}{flatten(object, \mbox{[}level\mbox{]})\+:Object}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1305}
+Recursively flattens an object. A new object containing all the values is returned. If {\ttfamily level} is specified, it will only flatten up to that level. Note that objects within arrays will not be flattened.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1306}{}\doxysubsection{\texorpdfstring{Example}{Example}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1306}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{flatten(\{\ a:\ 1,\ b:\ \{\ c:\ 2,\ d:\ \{\ e:\ 3\ \}\ \}\ \});}
+\DoxyCodeLine{//\ >\ \{\ a:\ 1,\ 'b.c':\ 2,\ 'b.d.e':\ 3\ \}}
+\DoxyCodeLine{flatten(\{\ a:\ 1,\ b:\ \{\ c:\ 2,\ d:\ \{\ e:\ 3\ \}\ \}\ \},\ 1);}
+\DoxyCodeLine{//\ >\ \{\ a:\ 1,\ 'b.c':\ 2,\ 'b.d':\ \{\ e:\ 3\ \}\ \}}
+
+\end{DoxyCode}
+
+
+See\+: \href{./array.html\#flatten}{\texttt{ {\ttfamily array/flatten()}}}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1307}{}\doxysection{\texorpdfstring{for\+In(obj, callback\mbox{[}, this\+Obj\mbox{]})}{for\+In(obj, callback\mbox{[}, this\+Obj\mbox{]})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1307}
+Iterate over all properties of an Object, similar to \href{array.html\#forEach}{\texttt{ Array/for\+Each}}.
+
+It \href{https://developer.mozilla.org/en/ECMAScript_DontEnum_attribute\#JScript_DontEnum_Bug}{\texttt{ avoids don\textquotesingle{}t enum bug on IE}}. It {\bfseries{will}} iterate over inherited (enumerable) properties from the prototype.
+
+It allows exiting the iteration early by returning {\ttfamily false} on the callback.
+
+See\+: \`{}for\+Own()\`{}, \`{}keys()\`{}, \`{}values()\`{}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1308}{}\doxysubsection{\texorpdfstring{Callback arguments}{Callback arguments}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1308}
+Callback will receive the following arguments\+:
+
+
+\begin{DoxyEnumerate}
+\item Property Value (\texorpdfstring{$\ast$}{*})
+\item Key name (String)
+\item Target object (Object)
+\end{DoxyEnumerate}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1309}{}\doxysubsection{\texorpdfstring{Example}{Example}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1309}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{function\ Foo()\{}
+\DoxyCodeLine{\ \ \ \ this.foo\ =\ 1;}
+\DoxyCodeLine{\ \ \ \ this.bar\ =\ 2;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{Foo.prototype.lorem\ =\ 4;}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ obj\ =\ new\ Foo();}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ result\ =\ 0;}
+\DoxyCodeLine{var\ keys\ =\ [];}
+\DoxyCodeLine{}
+\DoxyCodeLine{forIn(obj,\ function(val,\ key,\ o)\{}
+\DoxyCodeLine{\ \ \ \ result\ +=\ val;}
+\DoxyCodeLine{\ \ \ \ keys.push(key);}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log(result);\ //\ 7}
+\DoxyCodeLine{console.log(keys);\ \ \ //\ ['foo',\ 'bar',\ 'lorem']}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1310}{}\doxysection{\texorpdfstring{for\+Own(obj, callback\mbox{[}, this\+Obj\mbox{]})}{for\+Own(obj, callback\mbox{[}, this\+Obj\mbox{]})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1310}
+Iterate over all own properties from an Object, similar to \href{array.html\#forEach}{\texttt{ Array/for\+Each}}.
+
+It \href{https://developer.mozilla.org/en/ECMAScript_DontEnum_attribute\#JScript_DontEnum_Bug}{\texttt{ avoids don\textquotesingle{}t enum bug on IE}}. Notice that it {\bfseries{won\textquotesingle{}t}} iterate over properties from the prototype.
+
+It allows exiting the iteration early by returning {\ttfamily false} on the callback.
+
+See\+: \`{}for\+In()\`{}, \`{}keys()\`{}, \`{}values()\`{}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1311}{}\doxysubsection{\texorpdfstring{Callback arguments}{Callback arguments}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1311}
+Callback will receive the following arguments\+:
+
+
+\begin{DoxyEnumerate}
+\item Property Value (\texorpdfstring{$\ast$}{*})
+\item Key name (String)
+\item Target object (Object)
+\end{DoxyEnumerate}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1312}{}\doxysubsection{\texorpdfstring{Example}{Example}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1312}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{function\ Foo()\{}
+\DoxyCodeLine{\ \ \ \ this.foo\ =\ 1;}
+\DoxyCodeLine{\ \ \ \ this.bar\ =\ 2;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ will\ be\ ignored}
+\DoxyCodeLine{Foo.prototype.lorem\ =\ 4;}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ obj\ =\ new\ Foo();}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ result\ =\ 0;}
+\DoxyCodeLine{var\ keys\ =\ [];}
+\DoxyCodeLine{}
+\DoxyCodeLine{forOwn(obj,\ function(val,\ key,\ o)\{}
+\DoxyCodeLine{\ \ \ \ result\ +=\ val;}
+\DoxyCodeLine{\ \ \ \ keys.push(key);}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log(result);\ //\ 3}
+\DoxyCodeLine{console.log(keys);\ \ \ //\ ['foo',\ 'bar']}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1313}{}\doxysection{\texorpdfstring{functions(obj)\+:Array}{functions(obj)\+:Array}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1313}
+Returns a sorted list of all enumerable properties that have function values (including inherited properties).
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ obj\ =\ \{}
+\DoxyCodeLine{\ \ \ \ foo\ :\ function()\{\},}
+\DoxyCodeLine{\ \ \ \ bar\ :\ 'baz'}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{functions(obj);\ //\ ['foo']}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1314}{}\doxysection{\texorpdfstring{get(obj, prop\+Name)\+:\texorpdfstring{$\ast$}{*}}{get(obj, prop\+Name)\+:\texorpdfstring{$\ast$}{*}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1314}
+Returns nested property value. Will return {\ttfamily undefined} if property doesn\textquotesingle{}t exist.
+
+See\+: \`{}set()\`{}, \`{}namespace()\`{}, \`{}has()\`{}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ lorem\ =\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ipsum\ :\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ dolor\ :\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sit\ :\ 'amet'}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{get(lorem,\ 'ipsum.dolor.sit');\ //\ "{}amet"{}}
+\DoxyCodeLine{get(lorem,\ 'foo.bar');\ \ \ \ \ \ \ \ \ //\ undefined}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1315}{}\doxysection{\texorpdfstring{has(obj, prop\+Name)\+:Boolean}{has(obj, prop\+Name)\+:Boolean}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1315}
+Checks if object contains a child property. Useful for cases where you need to check if an object contain a {\itshape nested} property. It will get properties inherited by the prototype.
+
+see\+: \`{}has\+Own()\`{}, \doxylink{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27426faa4528a9b6b8064fc94fba0a69_get}{\`{}get()\`{}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ a\ =\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ b\ :\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ c\ :\ 123}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{has(a,\ 'b.c');\ \ \ //\ true}
+\DoxyCodeLine{has(a,\ 'foo.c');\ //\ false}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1316}{}\doxysubsection{\texorpdfstring{Common use case}{Common use case}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1316}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{if(\ has(a,\ 'foo.c')\ )\{\ //\ false}
+\DoxyCodeLine{\ \ \ \ //\ ...}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{if(\ a.foo.c\ )\{\ //\ ReferenceError:\ \`{}foo`\ is\ not\ defined}
+\DoxyCodeLine{\ \ \ \ //\ ...}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1317}{}\doxysection{\texorpdfstring{has\+Own(obj, prop\+Name)\+:Boolean}{has\+Own(obj, prop\+Name)\+:Boolean}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1317}
+Safer {\ttfamily Object.\+has\+Own\+Property}. Returns a boolean indicating whether the object has the specified property.
+
+see\+: \`{}has()\`{}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ obj\ =\ \{}
+\DoxyCodeLine{\ \ \ \ foo:\ 1,}
+\DoxyCodeLine{\ \ \ \ hasOwnProperty\ :\ 'bar'}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{obj.hasOwnProperty('foo');\ //\ ERROR!\ hasOwnProperty\ is\ not\ a\ function}
+\DoxyCodeLine{}
+\DoxyCodeLine{hasOwn(obj,\ 'foo');\ \ \ \ \ \ \ \ \ \ \ \ //\ true}
+\DoxyCodeLine{hasOwn(obj,\ 'hasOwnProperty');\ //\ true}
+\DoxyCodeLine{hasOwn(obj,\ 'toString');\ \ \ \ \ \ \ //\ false}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1318}{}\doxysection{\texorpdfstring{keys(obj)\+:Array}{keys(obj)\+:Array}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1318}
+Returns an array of all own enumerable properties found upon a given object. It will use the native {\ttfamily Object.\+keys} if present.
+
+PS\+: it won\textquotesingle{}t return properties from the prototype.
+
+See\+: \`{}for\+Own()\`{}, \`{}values()\`{}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ obj\ =\ \{}
+\DoxyCodeLine{\ \ \ \ foo\ :\ 1,}
+\DoxyCodeLine{\ \ \ \ bar\ :\ 2,}
+\DoxyCodeLine{\ \ \ \ lorem\ :\ 3}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{keys(obj);\ //\ ['foo',\ 'bar',\ 'lorem']}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1319}{}\doxysection{\texorpdfstring{map(obj, callback, \mbox{[}this\+Obj\mbox{]})\+:Object}{map(obj, callback, \mbox{[}this\+Obj\mbox{]})\+:Object}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1319}
+Returns a new object where the property values are the result of calling the callback for each property in the original object, similar to Array/map.
+
+The callback function receives the same arguments as in {\ttfamily for\+Own()}.
+
+See\+: \`{}for\+Own()\`{}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ obj\ =\ \{\ foo:\ 1,\ bar:\ 2\ \},}
+\DoxyCodeLine{\ \ \ \ data\ =\ \{\ foo:\ 0,\ bar:\ 1\ \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{map(obj,\ function(v)\ \{\ return\ v\ +\ 1;\ \});\ //\ \{\ foo:\ 2,\ bar:\ 3\ \}}
+\DoxyCodeLine{map(obj,\ function(v,\ k)\ \{\ return\ k;\ \});\ //\ \{\ foo:\ "{}foo"{},\ bar:\ "{}bar"{}\ \}}
+\DoxyCodeLine{map(obj,\ function(v,\ k)\ \{\ return\ this[k];\ \},\ data);\ //\ \{\ foo:\ 0,\ bar:\ 1\ \}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1320}{}\doxysection{\texorpdfstring{matches(obj, props)\+:Boolean}{matches(obj, props)\+:Boolean}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1320}
+Checks if object contains all properties/values pairs. Useful for validation and filtering.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ john\ =\ \{age:25,\ hair:'long',\ beard:true\};}
+\DoxyCodeLine{var\ mark\ =\ \{age:27,\ hair:'short',\ beard:false\};}
+\DoxyCodeLine{var\ hippie\ =\ \{hair:'long',\ beard:true\};}
+\DoxyCodeLine{matches(john,\ hippie);\ //\ true}
+\DoxyCodeLine{matches(mark,\ hippie);\ //\ false}
+
+\end{DoxyCode}
+
+
+See \`{}deep\+Matches()\`{}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1321}{}\doxysection{\texorpdfstring{merge(...\+objects)\+:Object}{merge(...\+objects)\+:Object}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1321}
+Deep merges objects. Note that objects and properties will be cloned during the process to avoid undesired side effects. It return a new object and won\textquotesingle{}t affect source objects.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ obj1\ =\ \{a:\ \{b:\ 1,\ c:\ 1,\ d:\ \{e:\ 1,\ f:\ 1\}\}\};}
+\DoxyCodeLine{var\ obj2\ =\ \{a:\ \{b:\ 2,\ d\ :\ \{f\ :\ 'yeah'\}\ \}\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{merge(obj1,\ obj2);\ //\ \{a:\ \{b\ :\ 2,\ c\ :\ 1,\ d\ :\ \{e\ :\ 1,\ f\ :\ 'yeah'\}\}\}}
+
+\end{DoxyCode}
+
+
+See\+: \`{}deep\+Mix\+In()\`{}, \`{}deep\+Fill\+In()\`{}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1322}{}\doxysection{\texorpdfstring{max(obj\mbox{[}, iterator\mbox{]})\+:\texorpdfstring{$\ast$}{*}}{max(obj\mbox{[}, iterator\mbox{]})\+:\texorpdfstring{$\ast$}{*}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1322}
+Returns maximum value inside object or use a custom iterator to define how items should be compared. Similar to \href{array.html\#max}{\texttt{ Array/max}}.
+
+See\+: \`{}min()\`{}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{max(\{a:\ 100,\ b:\ 2,\ c:\ 1,\ d:\ 3,\ e:\ 200\});\ //\ 200}
+\DoxyCodeLine{max(\{a:\ 'foo',\ b:\ 'lorem',\ c:\ 'amet'\},\ function(val)\{}
+\DoxyCodeLine{\ \ \ \ return\ val.length;}
+\DoxyCodeLine{\});\ //\ 'lorem'}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1323}{}\doxysection{\texorpdfstring{min(obj\mbox{[}, iterator\mbox{]})\+:\texorpdfstring{$\ast$}{*}}{min(obj\mbox{[}, iterator\mbox{]})\+:\texorpdfstring{$\ast$}{*}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1323}
+Returns minimum value inside object or use a custom iterator to define how items should be compared. Similar to \href{array.html\#min}{\texttt{ Array/min}}.
+
+See\+: \`{}max()\`{}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{min(\{a:\ 100,\ b:\ 2,\ c:\ 1,\ d:\ 3,\ e:\ 200\});\ //\ 1}
+\DoxyCodeLine{min(\{a:\ 'foo',\ b:\ 'lorem',\ c:\ 'amet'\},\ function(val)\{}
+\DoxyCodeLine{\ \ \ \ return\ val.length;}
+\DoxyCodeLine{\});\ //\ 'foo'}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1324}{}\doxysection{\texorpdfstring{mix\+In(target, ...\+objects)\+:Object}{mix\+In(target, ...\+objects)\+:Object}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1324}
+Combine properties from all the objects into first one.
+
+This method affects target object in place, if you want to create a new Object pass an empty object as first parameter.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1325}{}\doxysubsection{\texorpdfstring{Arguments}{Arguments}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1325}
+
+\begin{DoxyEnumerate}
+\item {\ttfamily target} (Object) \+: Target Object.
+\item {\ttfamily ...objects} (...Object) \+: Objects to be combined (0...n objects).
+\end{DoxyEnumerate}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1326}{}\doxysubsection{\texorpdfstring{Example}{Example}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1326}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ a\ =\ \{foo:\ "{}bar"{}\};}
+\DoxyCodeLine{var\ b\ =\ \{lorem:\ 123\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{mixIn(\{\},\ a,\ b);\ //\ \{foo:\ "{}bar"{},\ lorem:\ 123\}}
+\DoxyCodeLine{console.log(a);\ \ //\ \{foo:\ "{}bar"{}\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{mixIn(a,\ b);\ \ \ \ \ //\ \{foo:\ "{}bar"{},\ lorem:\ 123\}}
+\DoxyCodeLine{console.log(a);\ \ //\ \{foo:\ "{}bar"{},\ lorem:\ 123\}}
+
+\end{DoxyCode}
+
+
+See\+: \`{}fill\+In()\`{}, \`{}merge()\`{}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1327}{}\doxysection{\texorpdfstring{namespace(obj, prop\+Name)\+:Object}{namespace(obj, prop\+Name)\+:Object}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1327}
+Creates an empty object inside namespace if not existent. Will return created object or existing object.
+
+See\+: \doxylink{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27426faa4528a9b6b8064fc94fba0a69_get}{\`{}get()\`{}}, \`{}set()\`{}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ obj\ =\ \{\};}
+\DoxyCodeLine{namespace(obj,\ 'foo.bar');\ //\ \{\}}
+\DoxyCodeLine{console.log(obj);\ \ \ \ \ \ \ \ \ \ //\ \{foo:\{bar:\{\}\}\}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1328}{}\doxysection{\texorpdfstring{omit(obj, ...\+keys)\+:Object}{omit(obj, ...\+keys)\+:Object}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1328}
+Return a copy of the object without the blacklisted keys.
+
+See\+: \doxylink{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfac3b70891d99551a76fc616c3878c08_filter}{\`{}filter()\`{}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ user\ =\ \{}
+\DoxyCodeLine{\ \ \ \ firstName\ :\ 'John',}
+\DoxyCodeLine{\ \ \ \ lastName\ :\ 'Doe',}
+\DoxyCodeLine{\ \ \ \ dob\ :\ '1985/07/23',}
+\DoxyCodeLine{\ \ \ \ gender\ :\ 'male'}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ can\ pass\ an\ array\ of\ keys\ as\ second\ argument}
+\DoxyCodeLine{var\ keys\ =\ ['firstName',\ 'dob']}
+\DoxyCodeLine{omit(user,\ keys);\ //\ \{lastName\ :\ 'Doe',\ gender\ :\ 'male'\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ or\ multiple\ arguments}
+\DoxyCodeLine{omit(user,\ 'firstName',\ 'lastName');\ //\ \{dob\ :\ '1985/07/23',\ gender\ :\ 'male'\}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1329}{}\doxysection{\texorpdfstring{pick(obj, ...\+keys)\+:Object}{pick(obj, ...\+keys)\+:Object}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1329}
+Return a copy of the object that contains only the whitelisted keys.
+
+See\+: \doxylink{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfac3b70891d99551a76fc616c3878c08_filter}{\`{}filter()\`{}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ user\ =\ \{}
+\DoxyCodeLine{\ \ \ \ firstName\ :\ 'John',}
+\DoxyCodeLine{\ \ \ \ lastName\ :\ 'Doe',}
+\DoxyCodeLine{\ \ \ \ dob\ :\ '1985/07/23',}
+\DoxyCodeLine{\ \ \ \ gender\ :\ 'male'}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ can\ pass\ an\ array\ of\ keys\ as\ second\ argument}
+\DoxyCodeLine{var\ keys\ =\ ['firstName',\ 'dob']}
+\DoxyCodeLine{pick(user,\ keys);\ //\ \{firstName:"{}John"{},\ dob:\ "{}1985/07/23"{}\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ or\ multiple\ arguments}
+\DoxyCodeLine{pick(user,\ 'firstName',\ 'lastName');\ //\ \{firstName:"{}John"{},\ lastName:\ "{}Doe"{}\}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1330}{}\doxysection{\texorpdfstring{pluck(obj, prop\+Name)\+:Object}{pluck(obj, prop\+Name)\+:Object}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1330}
+Extract an object containing property values with keys as they appear in the passed object.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ users\ =\ \{}
+\DoxyCodeLine{\ \ \ \ first:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ name\ :\ 'John',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ age\ :\ 21}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ second:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ name\ :\ 'Mary',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ age\ :\ 25}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{pluck(users,\ 'name');\ //\ \{first:\ 'John',\ second:\ 'Mary'\}\ );}
+\DoxyCodeLine{pluck(users,\ 'age');\ \ //\ \{first:\ 21,\ second:\ 25\}\ );}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1331}{}\doxysection{\texorpdfstring{reduce(obj, callback, initial, \mbox{[}this\+Obj\mbox{]})\+:\texorpdfstring{$\ast$}{*}}{reduce(obj, callback, initial, \mbox{[}this\+Obj\mbox{]})\+:\texorpdfstring{$\ast$}{*}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1331}
+Similar to \href{array.html\#reduce}{\texttt{ Array/reduce}}.
+
+Apply a function against an accumulator and each property of the object (order is undefined) as to reduce it to a single value.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ obj\ =\ \{a:\ 1,\ b:\ 2,\ c:\ 3,\ d:\ 4\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{function\ sum(prev,\ cur,\ key,\ list)\ \{}
+\DoxyCodeLine{\ \ \ \ compare1.push(prev);}
+\DoxyCodeLine{\ \ \ \ return\ prev\ +\ cur;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{reduce(obj,\ sum);\ //\ 10}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1332}{}\doxysection{\texorpdfstring{reject(obj, callback, this\+Obj)\+:Object}{reject(obj, callback, this\+Obj)\+:Object}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1332}
+Returns a new object containing all properties where {\ttfamily callback} returns true, similar to \href{array.html\#reject}{\texttt{ Array/reject}}. It does not use properties from the object\textquotesingle{}s prototype. Opposite of \doxylink{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfac3b70891d99551a76fc616c3878c08_filter}{\`{}filter()\`{}}.
+
+See \doxylink{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfac3b70891d99551a76fc616c3878c08_filter}{\`{}filter()\`{}}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1333}{}\doxysubsection{\texorpdfstring{Example}{Example}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1333}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ obj\ =\ \{a:\ 1,\ b:\ 2,\ c:\ 3,\ d:\ 4,\ e:\ 5\};}
+\DoxyCodeLine{reject(obj,\ function(x)\ \{\ return\ (x\ \%\ 2)\ !==\ 0;\ \});\ //\ \{b:\ 2,\ d:\ 4\}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1334}{}\doxysection{\texorpdfstring{values(obj)\+:Array}{values(obj)\+:Array}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1334}
+Returns an array of all own enumerable properties values found upon a given object.
+
+PS\+: it won\textquotesingle{}t return properties from the prototype.
+
+See\+: \`{}for\+Own()\`{}, \`{}keys()\`{}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ obj\ =\ \{}
+\DoxyCodeLine{\ \ \ \ foo\ :\ 1,}
+\DoxyCodeLine{\ \ \ \ bar\ :\ 2,}
+\DoxyCodeLine{\ \ \ \ lorem\ :\ 3}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{values(obj);\ //\ [1,\ 2,\ 3]}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1335}{}\doxysection{\texorpdfstring{set(obj, prop\+Name, value)}{set(obj, prop\+Name, value)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1335}
+Sets a nested property value.
+
+See\+: \doxylink{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27426faa4528a9b6b8064fc94fba0a69_get}{\`{}get()\`{}}, \`{}namespace()\`{}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ obj\ =\ \{\};}
+\DoxyCodeLine{set(obj,\ 'foo.bar',\ 123);}
+\DoxyCodeLine{console.log(obj.foo.bar);\ //\ 123}
+\DoxyCodeLine{console.log(obj);\ \ \ \ \ \ \ \ \ //\ \{foo:\{bar:123\}\}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1336}{}\doxysection{\texorpdfstring{size(obj)\+:Number}{size(obj)\+:Number}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1336}
+Returns the count of own enumerable properties found upon a given object.
+
+PS\+: it won\textquotesingle{}t return properties from the prototype.
+
+See\+: \`{}for\+Own()\`{}, \`{}keys()\`{}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ obj\ =\ \{}
+\DoxyCodeLine{\ \ \ \ foo\ :\ 1,}
+\DoxyCodeLine{\ \ \ \ bar\ :\ 2,}
+\DoxyCodeLine{\ \ \ \ lorem\ :\ 3}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{size(obj);\ //\ 3}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1337}{}\doxysection{\texorpdfstring{some(obj, callback, \mbox{[}this\+Obj\mbox{]})\+:Boolean}{some(obj, callback, \mbox{[}this\+Obj\mbox{]})\+:Boolean}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1337}
+Similar to \href{array.html\#some}{\texttt{ Array/some}}. Tests whether any properties in the object pass the test implemented by the provided callback.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ obj\ =\ \{}
+\DoxyCodeLine{\ \ \ \ a:\ 1,}
+\DoxyCodeLine{\ \ \ \ b:\ 2,}
+\DoxyCodeLine{\ \ \ \ c:\ 3,}
+\DoxyCodeLine{\ \ \ \ d:\ 'string'}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{some(obj,\ isNumber);\ //\ true}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1338}{}\doxysection{\texorpdfstring{unset(obj, prop\+Name)\+:Boolean}{unset(obj, prop\+Name)\+:Boolean}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1338}
+Delete object property if existent and returns a boolean indicating succes. It will also return {\ttfamily true} if property doesn\textquotesingle{}t exist.
+
+Some properties can\textquotesingle{}t be deleted, to understand why \href{http://perfectionkills.com/understanding-delete/}{\texttt{ check this article}}.
+
+See\+: \`{}set()\`{}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ lorem\ =\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ipsum\ :\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ dolor\ :\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sit\ :\ 'amet'}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{unset(lorem,\ 'ipsum.dolor.sit');\ //\ true}
+\DoxyCodeLine{console.log(lorem.ipsum.dolor);\ \ //\ \{\}}
+\DoxyCodeLine{unset(lorem,\ 'foo.bar');\ \ \ \ \ \ \ \ \ //\ true}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1339}{}\doxysection{\texorpdfstring{result(object, property)\+:Mixed}{result(object, property)\+:Mixed}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa0c089bd2e89a981e4a5ee0bce720a7_autotoc_md1339}
+Evaluates an objects property and returns result.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ person\ =\ \{}
+\DoxyCodeLine{\ \ \ \ name:\ 'john',}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ mood:\ function()\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ some\ dynamic\ calculated\ property.}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ return\ 'happy';}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ name\ =\ result(person,\ 'name'),\ //\ john}
+\DoxyCodeLine{\ \ \ \ mood\ =\ result(person,\ 'mood');\ //\ happy}
+
+\end{DoxyCode}
+ 

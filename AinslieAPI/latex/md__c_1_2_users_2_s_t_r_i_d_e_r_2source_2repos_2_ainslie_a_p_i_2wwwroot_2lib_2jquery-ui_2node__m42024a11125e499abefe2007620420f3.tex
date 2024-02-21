@@ -1,0 +1,124 @@
+\chapter{grunt-\/compare-\/size}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m42024a11125e499abefe2007620420f3}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m42024a11125e499abefe2007620420f3}\index{grunt-\/compare-\/size@{grunt-\/compare-\/size}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m42024a11125e499abefe2007620420f3_autotoc_md8732}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m42024a11125e499abefe2007620420f3_autotoc_md8732}%
+ Compare file sizes on this branch to master\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m42024a11125e499abefe2007620420f3_autotoc_md8733}{}\doxysection{\texorpdfstring{Getting Started}{Getting Started}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m42024a11125e499abefe2007620420f3_autotoc_md8733}
+Add this to your project\textquotesingle{}s {\ttfamily Gruntfile.\+js} gruntfile\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{grunt.loadNpmTasks('grunt-\/compare-\/size');}
+
+\end{DoxyCode}
+
+
+Then add "{}grunt-\/compare-\/size"{} to your package.\+json dependencies.
+
+Then install the plugin with\+: {\ttfamily npm install}
+
+The name to use in your own task definitions is {\ttfamily compare\+\_\+size} (with an underscore).\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m42024a11125e499abefe2007620420f3_autotoc_md8734}{}\doxysection{\texorpdfstring{Documentation}{Documentation}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m42024a11125e499abefe2007620420f3_autotoc_md8734}
+Add an entry to your Gruntfile.\+js\textquotesingle{}s {\ttfamily init\+Config} object, which will define the files to measure the size of. The last file in the list will also be gzipped and measured.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{...}
+\DoxyCodeLine{}
+\DoxyCodeLine{compare\_size:\ \{}
+\DoxyCodeLine{\ \ files:\ [}
+\DoxyCodeLine{\ \ \ \ "{}library.js"{},}
+\DoxyCodeLine{\ \ \ \ "{}library.min.js"{}}
+\DoxyCodeLine{\ \ ],}
+\DoxyCodeLine{\ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ //\ Location\ of\ stored\ size\ data}
+\DoxyCodeLine{\ \ \ \ cache:\ "{}.sizecache.json"{},}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ //\ Compressor\ label-\/function\ pairs}
+\DoxyCodeLine{\ \ \ \ compress:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ gz:\ function(\ fileContents\ )\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ return\ require("{}gzip-\/js"{}).zip(\ fileContents,\ \{\}\ ).length;}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ otherCompressorLabel:\ function(\ fileContents\ )\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ return\ compressedSize(\ fileContents\ );}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ ...}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{...}
+
+\end{DoxyCode}
+
+
+To run a size comparison\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{grunt\ compare\_size}
+
+\end{DoxyCode}
+
+
+To get compressed comparisons of a single file\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{grunt\ compare\_size::<file>}
+
+\end{DoxyCode}
+
+
+To add a labeled measurement to the saved list of measurements\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{grunt\ compare\_size:add:<label>:...}
+
+\end{DoxyCode}
+
+
+To remove a labeled measurement\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{grunt\ compare\_size:remove:<label>:...}
+
+\end{DoxyCode}
+
+
+To view all saved measurements\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{grunt\ compare\_size:list}
+
+\end{DoxyCode}
+
+
+To clear out all saved measurements\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{grunt\ compare\_size:empty}
+
+\end{DoxyCode}
+
+
+To clear out all but some saved measurements\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{grunt\ compare\_size:prune:keep:alsoKeep:...}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m42024a11125e499abefe2007620420f3_autotoc_md8735}{}\doxysection{\texorpdfstring{Testing}{Testing}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m42024a11125e499abefe2007620420f3_autotoc_md8735}
+Run tests like\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ bash}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\ local\ grunt\ install}
+\DoxyCodeLine{\$\ grunt}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m42024a11125e499abefe2007620420f3_autotoc_md8736}{}\doxysection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m42024a11125e499abefe2007620420f3_autotoc_md8736}
+Copyright (c) 2012 Rick Waldron \href{mailto:waldron.rick@gmail.com}{\texttt{ waldron.\+rick@gmail.\+com}}, Corey Frang \href{mailto:gnarf@gnarf.net}{\texttt{ gnarf@gnarf.\+net}}, Richard Gibson \href{mailto:richard.gibson@gmail.com}{\texttt{ richard.\+gibson@gmail.\+com}}, Mike Sherov \href{mailto:mike.sherov@gmail.com}{\texttt{ mike.\+sherov@gmail.\+com}} Licensed under the MIT license. 

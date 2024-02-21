@@ -1,0 +1,162 @@
+\chapter{Rx\+JS Lite Module}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc53cc05a6e6821d5ec2b85cd35a4ea48}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc53cc05a6e6821d5ec2b85cd35a4ea48}\index{RxJS Lite Module@{RxJS Lite Module}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc53cc05a6e6821d5ec2b85cd35a4ea48_autotoc_md2891}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc53cc05a6e6821d5ec2b85cd35a4ea48_autotoc_md2891}%
+ The Reactive Extensions for Java\+Script Lite version is a lightweight version of the Reactive Extensions for Java\+Script which covers most of the day to day operators you might use all in a single library. Functionality such as bridging to events, promises, callbacks, Node.\+js-\/style callbacks, time-\/based operations and more are built right in. This comes with {\ttfamily rx.\+lite.\+js} which is for use in modern development environments such as \texorpdfstring{$>$}{>} IE9 and server-\/side environments such as Node.\+js.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc53cc05a6e6821d5ec2b85cd35a4ea48_autotoc_md2892}{}\doxysection{\texorpdfstring{Getting Started}{Getting Started}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc53cc05a6e6821d5ec2b85cd35a4ea48_autotoc_md2892}
+There are a number of ways to get started with Rx\+JS.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc53cc05a6e6821d5ec2b85cd35a4ea48_autotoc_md2893}{}\doxysubsection{\texorpdfstring{Installing with \href{https://npmjs.org/}{\texttt{ NPM}}}{Installing with \href{https://npmjs.org/}{\texttt{ NPM}}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc53cc05a6e6821d5ec2b85cd35a4ea48_autotoc_md2893}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \`{}}
+\DoxyCodeLine{\$\ npm\ install\ rx-\/lite}
+\DoxyCodeLine{\$\ npm\ install\ -\/g\ rx-\/lite}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc53cc05a6e6821d5ec2b85cd35a4ea48_autotoc_md2894}{}\doxysubsection{\texorpdfstring{Using with Node.\+js and Ringo.\+js}{Using with Node.\+js and Ringo.\+js}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc53cc05a6e6821d5ec2b85cd35a4ea48_autotoc_md2894}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ Rx\ =\ require('rx-\/lite');}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc53cc05a6e6821d5ec2b85cd35a4ea48_autotoc_md2895}{}\doxysubsection{\texorpdfstring{In a Browser\+:}{In a Browser\+:}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc53cc05a6e6821d5ec2b85cd35a4ea48_autotoc_md2895}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<!-\/-\/\ Just\ the\ core\ RxJS\ -\/-\/>}
+\DoxyCodeLine{<script\ src="{}path/to/rx.lite.js"{}></script>}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc53cc05a6e6821d5ec2b85cd35a4ea48_autotoc_md2896}{}\doxysection{\texorpdfstring{Included Observable Operators}{Included Observable Operators}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc53cc05a6e6821d5ec2b85cd35a4ea48_autotoc_md2896}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc53cc05a6e6821d5ec2b85cd35a4ea48_autotoc_md2897}{}\doxysubsection{\texorpdfstring{{\ttfamily Observable Methods}}{{\ttfamily Observable Methods}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc53cc05a6e6821d5ec2b85cd35a4ea48_autotoc_md2897}
+
+\begin{DoxyItemize}
+\item {\ttfamily catch \texorpdfstring{$\vert$}{|} catch\+Exception}
+\item {\ttfamily concat}
+\item {\ttfamily create \texorpdfstring{$\vert$}{|} create\+With\+Disposable}
+\item {\ttfamily defer}
+\item {\ttfamily empty}
+\item {\ttfamily from}
+\item {\ttfamily from\+Array}
+\item {\ttfamily from\+Callback}
+\item {\ttfamily from\+Event}
+\item {\ttfamily from\+Event\+Pattern}
+\item {\ttfamily from\+Node\+Callback}
+\item {\ttfamily from\+Promise}
+\item {\ttfamily interval}
+\item {\ttfamily just}
+\item {\ttfamily merge}
+\item {\ttfamily merge\+Delay\+Error}
+\item {\ttfamily never}
+\item {\ttfamily of}
+\item {\ttfamily of\+With\+Scheduler}
+\item {\ttfamily range}
+\item {\ttfamily repeat}
+\item {\ttfamily return \texorpdfstring{$\vert$}{|} return\+Value}
+\item {\ttfamily throw \texorpdfstring{$\vert$}{|} throw\+Error \texorpdfstring{$\vert$}{|} throw\+Exception}
+\item {\ttfamily timer}
+\item {\ttfamily zip}
+\item {\ttfamily zip\+Array}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc53cc05a6e6821d5ec2b85cd35a4ea48_autotoc_md2898}{}\doxysubsection{\texorpdfstring{{\ttfamily Observable Instance Methods}}{{\ttfamily Observable Instance Methods}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc53cc05a6e6821d5ec2b85cd35a4ea48_autotoc_md2898}
+
+\begin{DoxyItemize}
+\item {\ttfamily as\+Observable}
+\item {\ttfamily catch \texorpdfstring{$\vert$}{|} catch\+Exception}
+\item {\ttfamily combine\+Latest}
+\item {\ttfamily concat}
+\item {\ttfamily concat\+Map}
+\item {\ttfamily connect}
+\item {\ttfamily debounce} ~\newline
+
+\item {\ttfamily default\+If\+Empty}
+\item {\ttfamily delay}
+\item {\ttfamily dematerialize}
+\item {\ttfamily distinct\+Until\+Changed}
+\item {\ttfamily do \texorpdfstring{$\vert$}{|} do\+Action}
+\item {\ttfamily do\+On\+Next}
+\item {\ttfamily do\+On\+Error}
+\item {\ttfamily do\+On\+Completed}
+\item {\ttfamily filter}
+\item {\ttfamily finally \texorpdfstring{$\vert$}{|} finally\+Action}
+\item {\ttfamily flat\+Map}
+\item {\ttfamily flat\+Map\+Latest}
+\item {\ttfamily ignore\+Elements}
+\item {\ttfamily map}
+\item {\ttfamily merge}
+\item {\ttfamily merge\+Observable \texorpdfstring{$\vert$}{|} merge\+All}
+\item {\ttfamily multicast}
+\item {\ttfamily publish}
+\item {\ttfamily publish\+Last}
+\item {\ttfamily publish\+Value}
+\item {\ttfamily ref\+Count}
+\item {\ttfamily repeat}
+\item {\ttfamily replay}
+\item {\ttfamily retry}
+\item {\ttfamily retry\+When}
+\item {\ttfamily sample}
+\item {\ttfamily scan}
+\item {\ttfamily select}
+\item {\ttfamily select\+Concat}
+\item {\ttfamily select\+Many}
+\item {\ttfamily select\+Switch}
+\item {\ttfamily single\+Instance}
+\item {\ttfamily skip}
+\item {\ttfamily skip\+Last}
+\item {\ttfamily skip\+Until}
+\item {\ttfamily skip\+While}
+\item {\ttfamily start\+With}
+\item {\ttfamily subscribe \texorpdfstring{$\vert$}{|} for\+Each}
+\item {\ttfamily subscribe\+On\+Next}
+\item {\ttfamily subscribe\+On\+Error}
+\item {\ttfamily subscribe\+On\+Completed}
+\item {\ttfamily switch \texorpdfstring{$\vert$}{|} switch\+Latest}
+\item {\ttfamily take}
+\item {\ttfamily take\+Last}
+\item {\ttfamily take\+Until}
+\item {\ttfamily take\+While}
+\item {\ttfamily tap}
+\item {\ttfamily tap\+On\+Next}
+\item {\ttfamily tap\+On\+Error}
+\item {\ttfamily tap\+On\+Completed}
+\item {\ttfamily throttle}
+\item {\ttfamily throttle\+First}
+\item {\ttfamily timeout}
+\item {\ttfamily timestamp}
+\item {\ttfamily to\+Array}
+\item {\ttfamily transduce}
+\item {\ttfamily where}
+\item {\ttfamily with\+Latest\+From}
+\item {\ttfamily zip}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc53cc05a6e6821d5ec2b85cd35a4ea48_autotoc_md2899}{}\doxysection{\texorpdfstring{Included Classes}{Included Classes}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc53cc05a6e6821d5ec2b85cd35a4ea48_autotoc_md2899}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc53cc05a6e6821d5ec2b85cd35a4ea48_autotoc_md2900}{}\doxysubsection{\texorpdfstring{Core Objects}{Core Objects}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc53cc05a6e6821d5ec2b85cd35a4ea48_autotoc_md2900}
+
+\begin{DoxyItemize}
+\item {\ttfamily Rx.Observer}
+\item {\ttfamily Rx.Notification}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc53cc05a6e6821d5ec2b85cd35a4ea48_autotoc_md2901}{}\doxysubsection{\texorpdfstring{Subjects}{Subjects}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc53cc05a6e6821d5ec2b85cd35a4ea48_autotoc_md2901}
+
+\begin{DoxyItemize}
+\item {\ttfamily Rx.Async\+Subject}
+\item {\ttfamily Rx.Behavior\+Subject}
+\item {\ttfamily Rx.Replay\+Subject}
+\item {\ttfamily Rx.Subject}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc53cc05a6e6821d5ec2b85cd35a4ea48_autotoc_md2902}{}\doxysubsection{\texorpdfstring{Schedulers}{Schedulers}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc53cc05a6e6821d5ec2b85cd35a4ea48_autotoc_md2902}
+
+\begin{DoxyItemize}
+\item {\ttfamily Rx.Scheduler}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc53cc05a6e6821d5ec2b85cd35a4ea48_autotoc_md2903}{}\doxysubsection{\texorpdfstring{Disposables}{Disposables}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc53cc05a6e6821d5ec2b85cd35a4ea48_autotoc_md2903}
+
+\begin{DoxyItemize}
+\item {\ttfamily Rx.Composite\+Disposable}
+\item {\ttfamily Rx.Disposable}
+\item {\ttfamily Rx.Ref\+Count\+Disposable}
+\item {\ttfamily Rx.Serial\+Disposable}
+\item {\ttfamily Rx.Single\+Assignment\+Disposable}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc53cc05a6e6821d5ec2b85cd35a4ea48_autotoc_md2904}{}\doxysection{\texorpdfstring{Contributing}{Contributing}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc53cc05a6e6821d5ec2b85cd35a4ea48_autotoc_md2904}
+There are lots of ways to contribute to the project, and we appreciate our \href{https://github.com/Reactive-Extensions/RxJS/wiki/Contributors}{\texttt{ contributors}}. If you wish to contribute, check out our \href{(https://github.com/Reactive-Extensions/RxJS/tree/master/doc/contributing)}{\texttt{ style guide}}.
+
+You can contribute by reviewing and sending feedback on code checkins, suggesting and trying out new features as they are implemented, submit bugs and help us verify fixes as they are checked in, as well as submit code fixes or code contributions of your own. Note that all code submissions will be rigorously reviewed and tested by the Rx Team, and only those that meet an extremely high bar for both quality and design/roadmap appropriateness will be merged into the source.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc53cc05a6e6821d5ec2b85cd35a4ea48_autotoc_md2905}{}\doxysection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc53cc05a6e6821d5ec2b85cd35a4ea48_autotoc_md2905}
+Copyright (c) Microsoft Open Technologies, Inc. All rights reserved. Microsoft Open Technologies would like to thank its contributors, a list of whom are at \href{https://github.com/Reactive-Extensions/RxJS/wiki/Contributors}{\texttt{ https\+://github.\+com/\+Reactive-\/\+Extensions/\+Rx\+JS/wiki/\+Contributors}}.
+
+Licensed under the Apache License, Version 2.\+0 (the "{}\+License"{}); you may not use this file except in compliance with the License. You may obtain a copy of the License at
+
+\href{http://www.apache.org/licenses/LICENSE-2.0}{\texttt{ http\+://www.\+apache.\+org/licenses/\+LICENSE-\/2.\+0}}
+
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "{}\+AS IS"{} BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. 

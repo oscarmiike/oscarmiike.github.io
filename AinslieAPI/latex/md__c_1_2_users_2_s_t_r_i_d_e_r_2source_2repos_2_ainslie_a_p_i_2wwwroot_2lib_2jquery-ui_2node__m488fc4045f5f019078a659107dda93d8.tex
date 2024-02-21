@@ -1,0 +1,149 @@
+\chapter{resolve}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m488fc4045f5f019078a659107dda93d8}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m488fc4045f5f019078a659107dda93d8}\index{resolve@{resolve}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m488fc4045f5f019078a659107dda93d8_autotoc_md4422}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m488fc4045f5f019078a659107dda93d8_autotoc_md4422}%
+ implements the \href{https://nodejs.org/api/modules.html\#modules_all_together}{\texttt{ node {\ttfamily require.\+resolve()} algorithm}} such that you can {\ttfamily require.\+resolve()} on behalf of a file asynchronously and synchronously
+
+\href{http://travis-ci.org/substack/node-resolve}{\texttt{ }}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m488fc4045f5f019078a659107dda93d8_autotoc_md4423}{}\doxysection{\texorpdfstring{example}{example}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m488fc4045f5f019078a659107dda93d8_autotoc_md4423}
+asynchronously resolve\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ js}
+\DoxyCodeLine{var\ resolve\ =\ require('resolve');}
+\DoxyCodeLine{resolve('tap',\ \{\ basedir:\ \_\_dirname\ \},\ function\ (err,\ res)\ \{}
+\DoxyCodeLine{\ \ \ \ if\ (err)\ console.error(err)}
+\DoxyCodeLine{\ \ \ \ else\ console.log(res)}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ node\ example/async.js}
+\DoxyCodeLine{/home/substack/projects/node-\/resolve/node\_modules/tap/lib/main.js}
+
+\end{DoxyCode}
+
+
+synchronously resolve\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ js}
+\DoxyCodeLine{var\ resolve\ =\ require('resolve');}
+\DoxyCodeLine{var\ res\ =\ resolve.sync('tap',\ \{\ basedir:\ \_\_dirname\ \});}
+\DoxyCodeLine{console.log(res);}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ node\ example/sync.js}
+\DoxyCodeLine{/home/substack/projects/node-\/resolve/node\_modules/tap/lib/main.js}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m488fc4045f5f019078a659107dda93d8_autotoc_md4424}{}\doxysection{\texorpdfstring{methods}{methods}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m488fc4045f5f019078a659107dda93d8_autotoc_md4424}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ js}
+\DoxyCodeLine{var\ resolve\ =\ require('resolve')}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m488fc4045f5f019078a659107dda93d8_autotoc_md4425}{}\doxysubsection{\texorpdfstring{resolve(id, opts=\{\}, cb)}{resolve(id, opts=\{\}, cb)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m488fc4045f5f019078a659107dda93d8_autotoc_md4425}
+Asynchronously resolve the module path string {\ttfamily id} into {\ttfamily cb(err, res \mbox{[}, pkg\mbox{]})}, where {\ttfamily pkg} (if defined) is the data from {\ttfamily package.\+json}.
+
+options are\+:
+
+
+\begin{DoxyItemize}
+\item opts.\+basedir -\/ directory to begin resolving from
+\item opts.\+package -\/ {\ttfamily package.\+json} data applicable to the module being loaded
+\item opts.\+extensions -\/ array of file extensions to search in order
+\item opts.\+read\+File -\/ how to read files asynchronously
+\item opts.\+is\+File -\/ function to asynchronously test whether a file exists
+\item opts.\+package\+Filter -\/ transform the parsed package.\+json contents before looking at the "{}main"{} field
+\item opts.\+path\+Filter(pkg, path, relative\+Path) -\/ transform a path within a package
+\begin{DoxyItemize}
+\item pkg -\/ package data
+\item path -\/ the path being resolved
+\item relative\+Path -\/ the path relative from the package.\+json location
+\item returns -\/ a relative path that will be joined from the package.\+json location
+\end{DoxyItemize}
+\item opts.\+paths -\/ require.\+paths array to use if nothing is found on the normal node\+\_\+modules recursive walk (probably don\textquotesingle{}t use this)
+\item opts.\+module\+Directory -\/ directory (or directories) in which to recursively look for modules. default\+: {\ttfamily "{}node\+\_\+modules"{}}
+\item opts.\+preserve\+Symlinks -\/ if true, doesn\textquotesingle{}t resolve {\ttfamily basedir} to real path before resolving. This is the way Node resolves dependencies when executed with the \href{https://nodejs.org/api/all.html\#cli_preserve_symlinks}{\texttt{ --preserve-\/symlinks}} flag. {\bfseries{Note\+:}} this property is currently {\ttfamily true} by default but it will be changed to {\ttfamily false} in the next major version because {\itshape Node\textquotesingle{}s resolution algorithm does not preserve symlinks by default}.
+\end{DoxyItemize}
+
+default {\ttfamily opts} values\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ javascript}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ paths:\ [],}
+\DoxyCodeLine{\ \ \ \ basedir:\ \_\_dirname,}
+\DoxyCodeLine{\ \ \ \ extensions:\ [\ '.js'\ ],}
+\DoxyCodeLine{\ \ \ \ readFile:\ fs.readFile,}
+\DoxyCodeLine{\ \ \ \ isFile:\ function\ (file,\ cb)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ fs.stat(file,\ function\ (err,\ stat)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ if\ (err\ \&\&\ err.code\ ===\ 'ENOENT')\ cb(null,\ false)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ else\ if\ (err)\ cb(err)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ else\ cb(null,\ stat.isFile())}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ moduleDirectory:\ 'node\_modules',}
+\DoxyCodeLine{\ \ \ \ preserveSymlinks:\ true}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m488fc4045f5f019078a659107dda93d8_autotoc_md4426}{}\doxysubsection{\texorpdfstring{resolve.\+sync(id, opts)}{resolve.\+sync(id, opts)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m488fc4045f5f019078a659107dda93d8_autotoc_md4426}
+Synchronously resolve the module path string {\ttfamily id}, returning the result and throwing an error when {\ttfamily id} can\textquotesingle{}t be resolved.
+
+options are\+:
+
+
+\begin{DoxyItemize}
+\item opts.\+basedir -\/ directory to begin resolving from
+\item opts.\+extensions -\/ array of file extensions to search in order
+\item opts.\+read\+File -\/ how to read files synchronously
+\item opts.\+is\+File -\/ function to synchronously test whether a file exists
+\item {\ttfamily opts.\+package\+Filter(pkg, pkgfile)} -\/ transform the parsed package.\+json
+\item contents before looking at the "{}main"{} field
+\item opts.\+paths -\/ require.\+paths array to use if nothing is found on the normal node\+\_\+modules recursive walk (probably don\textquotesingle{}t use this)
+\item opts.\+module\+Directory -\/ directory (or directories) in which to recursively look for modules. default\+: {\ttfamily "{}node\+\_\+modules"{}}
+\item opts.\+preserve\+Symlinks -\/ if true, doesn\textquotesingle{}t resolve {\ttfamily basedir} to real path before resolving. This is the way Node resolves dependencies when executed with the \href{https://nodejs.org/api/all.html\#cli_preserve_symlinks}{\texttt{ --preserve-\/symlinks}} flag. {\bfseries{Note\+:}} this property is currently {\ttfamily true} by default but it will be changed to {\ttfamily false} in the next major version because {\itshape Node\textquotesingle{}s resolution algorithm does not preserve symlinks by default}.
+\end{DoxyItemize}
+
+default {\ttfamily opts} values\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ javascript}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ paths:\ [],}
+\DoxyCodeLine{\ \ \ \ basedir:\ \_\_dirname,}
+\DoxyCodeLine{\ \ \ \ extensions:\ [\ '.js'\ ],}
+\DoxyCodeLine{\ \ \ \ readFileSync:\ fs.readFileSync,}
+\DoxyCodeLine{\ \ \ \ isFile:\ function\ (file)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ try\ \{\ return\ fs.statSync(file).isFile()\ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ catch\ (e)\ \{\ return\ false\ \}}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ moduleDirectory:\ 'node\_modules',}
+\DoxyCodeLine{\ \ \ \ preserveSymlinks:\ true}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{\`{}\`{}\`{}\`{}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\#\ resolve.isCore(pkg)}
+\DoxyCodeLine{}
+\DoxyCodeLine{Return\ whether\ a\ package\ is\ in\ core.}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\ install}
+\DoxyCodeLine{}
+\DoxyCodeLine{With\ [npm](https://npmjs.org)\ do:}
+
+\end{DoxyCode}
+ npm install resolve \`{}\`{}\`{}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m488fc4045f5f019078a659107dda93d8_autotoc_md4427}{}\doxysection{\texorpdfstring{license}{license}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m488fc4045f5f019078a659107dda93d8_autotoc_md4427}
+MIT 

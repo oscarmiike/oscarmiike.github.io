@@ -1,0 +1,64 @@
+\chapter{locate-\/path \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/sindresorhus/locate-\/path"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+org/sindresorhus/locate-\/path.\+svg?branch=master"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2locate-path_2readme}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2locate-path_2readme}\index{locate-\/path $<$a href="{}https://travis-\/ci.org/sindresorhus/locate-\/path"{} $>$$<$img src="{}https://travis-\/ci.org/sindresorhus/locate-\/path.svg?branch=master"{} alt="{}Build Status"{}/$>$$<$/a$>$@{locate-\/path $<$a href=""https://travis-\/ci.org/sindresorhus/locate-\/path"" $>$$<$img src=""https://travis-\/ci.org/sindresorhus/locate-\/path.svg?branch=master"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2locate-path_2readme_autotoc_md10059}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2locate-path_2readme_autotoc_md10059}%
+ \begin{quote}
+Get the first path that exists on disk of multiple paths \end{quote}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2locate-path_2readme_autotoc_md10060}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2locate-path_2readme_autotoc_md10060}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ locate-\/path}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2locate-path_2readme_autotoc_md10061}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2locate-path_2readme_autotoc_md10061}
+Here we find the first file that exists on disk, in array order.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ locatePath\ =\ require('locate-\/path');}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ files\ =\ [}
+\DoxyCodeLine{\ \ \ \ 'unicorn.png',}
+\DoxyCodeLine{\ \ \ \ 'rainbow.png',\ //\ Only\ this\ one\ actually\ exists\ on\ disk}
+\DoxyCodeLine{\ \ \ \ 'pony.png'}
+\DoxyCodeLine{];}
+\DoxyCodeLine{}
+\DoxyCodeLine{(async\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ console(await\ locatePath(files));}
+\DoxyCodeLine{\ \ \ \ //=>\ 'rainbow'}
+\DoxyCodeLine{\})();}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2locate-path_2readme_autotoc_md10062}{}\doxysection{\texorpdfstring{API}{API}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2locate-path_2readme_autotoc_md10062}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2locate-path_2readme_autotoc_md10063}{}\doxysubsection{\texorpdfstring{locate\+Path(input, \mbox{[}options\mbox{]})}{locate\+Path(input, \mbox{[}options\mbox{]})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2locate-path_2readme_autotoc_md10063}
+Returns a {\ttfamily Promise} for the first path that exists or {\ttfamily undefined} if none exists.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2locate-path_2readme_autotoc_md10064}{}\doxysubsubsection{\texorpdfstring{input}{input}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2locate-path_2readme_autotoc_md10064}
+Type\+: {\ttfamily Iterable\texorpdfstring{$<$}{<}string\texorpdfstring{$>$}{>}}
+
+Paths to check.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2locate-path_2readme_autotoc_md10065}{}\doxysubsubsection{\texorpdfstring{options}{options}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2locate-path_2readme_autotoc_md10065}
+Type\+: {\ttfamily Object}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2locate-path_2readme_autotoc_md10066}{}\doxyparagraph{\texorpdfstring{concurrency}{concurrency}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2locate-path_2readme_autotoc_md10066}
+Type\+: {\ttfamily number}~\newline
+ Default\+: {\ttfamily Infinity}~\newline
+ Minimum\+: {\ttfamily 1}
+
+Number of concurrently pending promises.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2locate-path_2readme_autotoc_md10067}{}\doxyparagraph{\texorpdfstring{preserve\+Order}{preserve\+Order}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2locate-path_2readme_autotoc_md10067}
+Type\+: {\ttfamily boolean}~\newline
+ Default\+: {\ttfamily true}
+
+Preserve {\ttfamily input} order when searching.
+
+Disable this to improve performance if you don\textquotesingle{}t care about the order.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2locate-path_2readme_autotoc_md10068}{}\doxyparagraph{\texorpdfstring{cwd}{cwd}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2locate-path_2readme_autotoc_md10068}
+Type\+: {\ttfamily string}~\newline
+ Default\+: {\ttfamily process.\+cwd()}
+
+Current working directory.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2locate-path_2readme_autotoc_md10069}{}\doxysubsection{\texorpdfstring{locate\+Path.\+sync(input, \mbox{[}options\mbox{]})}{locate\+Path.\+sync(input, \mbox{[}options\mbox{]})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2locate-path_2readme_autotoc_md10069}
+Returns the first path that exists or {\ttfamily undefined} if none exists.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2locate-path_2readme_autotoc_md10070}{}\doxysubsubsection{\texorpdfstring{input}{input}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2locate-path_2readme_autotoc_md10070}
+Type\+: {\ttfamily Iterable\texorpdfstring{$<$}{<}string\texorpdfstring{$>$}{>}}
+
+Paths to check.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2locate-path_2readme_autotoc_md10071}{}\doxysubsubsection{\texorpdfstring{options}{options}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2locate-path_2readme_autotoc_md10071}
+Type\+: {\ttfamily Object}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2locate-path_2readme_autotoc_md10072}{}\doxyparagraph{\texorpdfstring{cwd}{cwd}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2locate-path_2readme_autotoc_md10072}
+Same as above.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2locate-path_2readme_autotoc_md10073}{}\doxysection{\texorpdfstring{Related}{Related}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2locate-path_2readme_autotoc_md10073}
+
+\begin{DoxyItemize}
+\item \href{https://github.com/sindresorhus/path-exists}{\texttt{ path-\/exists}} -\/ Check if a path exists
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2locate-path_2readme_autotoc_md10074}{}\doxysection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2locate-path_2readme_autotoc_md10074}
+MIT © \href{https://sindresorhus.com}{\texttt{ Sindre Sorhus}} 

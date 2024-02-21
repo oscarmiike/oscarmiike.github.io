@@ -1,0 +1,5 @@
+var searchData=
+[
+  ['9_200_0',['0.9.0',['../md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfa408485586e4bf4cf754144fc00f48b.html',1,'']]],
+  ['92_20brightgreen_20svg_20alt_20chat_20room_20a_20a_20href_20https_3a_20github_20com_20validator_20validator_20releases_20latest_20img_20src_20https_3a_20img_20shields_20io_20badge_20download_20latest_2020e2_2086_2092_20blue_20svg_20alt_20download_20latest_20a_1',['The Nu Html Checker (v.Nu) &lt;a href=&quot;https://matrix.to/#/#validator_validator:gitter.im&quot; &gt;&lt;img src=&quot;https://img.shields.io/badge/[matrix]-chat%20E2%86%92-brightgreen.svg&quot; alt=&quot;Chat room&quot;/&gt;&lt;/a&gt; &lt;a href=&quot;https://github.com/validator/validator/releases/latest&quot; &gt;&lt;img src=&quot;https://img.shields.io/badge/download-latest%20E2%86%92-blue.svg&quot; alt=&quot;Download latest&quot;/&gt;&lt;/a&gt;',['../md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2vnu-jar_2_r_e_a_d_m_e.html',1,'']]]
+];

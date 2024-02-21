@@ -1,0 +1,1078 @@
+\chapter{Request -\/ Simplified HTTP client}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0b817d42b35c2c8ce8cf32d0c52cad01}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0b817d42b35c2c8ce8cf32d0c52cad01}\index{Request -\/ Simplified HTTP client@{Request -\/ Simplified HTTP client}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0b817d42b35c2c8ce8cf32d0c52cad01_autotoc_md4333}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0b817d42b35c2c8ce8cf32d0c52cad01_autotoc_md4333}%
+ \href{https://nodei.co/npm/request/}{\texttt{ }}
+
+\href{https://travis-ci.org/request/request}{\texttt{ }} \href{https://codecov.io/github/request/request?branch=master}{\texttt{ }} \href{https://coveralls.io/r/request/request}{\texttt{ }} \href{https://david-dm.org/request/request}{\texttt{ }} \href{https://gitter.im/request/request?utm_source=badge}{\texttt{ }}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0b817d42b35c2c8ce8cf32d0c52cad01_autotoc_md4334}{}\doxysection{\texorpdfstring{Super simple to use}{Super simple to use}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0b817d42b35c2c8ce8cf32d0c52cad01_autotoc_md4334}
+Request is designed to be the simplest way possible to make http calls. It supports HTTPS and follows redirects by default.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ request\ =\ require('request');}
+\DoxyCodeLine{request('http://www.google.com',\ function\ (error,\ response,\ body)\ \{}
+\DoxyCodeLine{\ \ if\ (!error\ \&\&\ response.statusCode\ ==\ 200)\ \{}
+\DoxyCodeLine{\ \ \ \ console.log(body)\ //\ Show\ the\ HTML\ for\ the\ Google\ homepage.}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\})}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0b817d42b35c2c8ce8cf32d0c52cad01_autotoc_md4335}{}\doxysection{\texorpdfstring{Table of contents}{Table of contents}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0b817d42b35c2c8ce8cf32d0c52cad01_autotoc_md4335}
+
+\begin{DoxyItemize}
+\item Streaming
+\item Forms
+\item HTTP Authentication
+\item Custom HTTP Headers
+\item OAuth Signing
+\item Proxies
+\item Unix Domain Sockets
+\item TLS/\+SSL Protocol
+\item Support for HAR 1.2
+\item \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\+All Available Options\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
+\end{DoxyItemize}
+
+Request also offers convenience methods like {\ttfamily request.\+defaults} and {\ttfamily request.\+post}, and there are lots of usage examples and several debugging techniques.
+
+\DoxyHorRuler{0}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0b817d42b35c2c8ce8cf32d0c52cad01_autotoc_md4337}{}\doxysection{\texorpdfstring{Streaming}{Streaming}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0b817d42b35c2c8ce8cf32d0c52cad01_autotoc_md4337}
+You can stream any response to a file stream.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{request('http://google.com/doodle.png').pipe(fs.createWriteStream('doodle.png'))}
+
+\end{DoxyCode}
+
+
+You can also stream a file to a PUT or POST request. This method will also check the file extension against a mapping of file extensions to content-\/types (in this case {\ttfamily application/json}) and use the proper {\ttfamily content-\/type} in the PUT request (if the headers don’t already provide one).
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{fs.createReadStream('file.json').pipe(request.put('http://mysite.com/obj.json'))}
+
+\end{DoxyCode}
+
+
+Request can also {\ttfamily pipe} to itself. When doing so, {\ttfamily content-\/type} and {\ttfamily content-\/length} are preserved in the PUT headers.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{request.get('http://google.com/img.png').pipe(request.put('http://mysite.com/img.png'))}
+
+\end{DoxyCode}
+
+
+Request emits a "{}response"{} event when a response is received. The {\ttfamily response} argument will be an instance of \href{http://nodejs.org/api/http.html\#http_http_incomingmessage}{\texttt{ http.\+Incoming\+Message}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{request}
+\DoxyCodeLine{\ \ .get('http://google.com/img.png')}
+\DoxyCodeLine{\ \ .on('response',\ function(response)\ \{}
+\DoxyCodeLine{\ \ \ \ console.log(response.statusCode)\ //\ 200}
+\DoxyCodeLine{\ \ \ \ console.log(response.headers['content-\/type'])\ //\ 'image/png'}
+\DoxyCodeLine{\ \ \})}
+\DoxyCodeLine{\ \ .pipe(request.put('http://mysite.com/img.png'))}
+
+\end{DoxyCode}
+
+
+To easily handle errors when streaming requests, listen to the {\ttfamily error} event before piping\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{request}
+\DoxyCodeLine{\ \ .get('http://mysite.com/doodle.png')}
+\DoxyCodeLine{\ \ .on('error',\ function(err)\ \{}
+\DoxyCodeLine{\ \ \ \ console.log(err)}
+\DoxyCodeLine{\ \ \})}
+\DoxyCodeLine{\ \ .pipe(fs.createWriteStream('doodle.png'))}
+
+\end{DoxyCode}
+
+
+Now let’s get fancy.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{http.createServer(function\ (req,\ resp)\ \{}
+\DoxyCodeLine{\ \ if\ (req.url\ ===\ '/doodle.png')\ \{}
+\DoxyCodeLine{\ \ \ \ if\ (req.method\ ===\ 'PUT')\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ req.pipe(request.put('http://mysite.com/doodle.png'))}
+\DoxyCodeLine{\ \ \ \ \}\ else\ if\ (req.method\ ===\ 'GET'\ ||\ req.method\ ===\ 'HEAD')\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ request.get('http://mysite.com/doodle.png').pipe(resp)}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\})}
+
+\end{DoxyCode}
+
+
+You can also {\ttfamily pipe()} from {\ttfamily http.\+Server\+Request} instances, as well as to {\ttfamily http.\+Server\+Response} instances. The HTTP method, headers, and entity-\/body data will be sent. Which means that, if you don\textquotesingle{}t really care about security, you can do\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{http.createServer(function\ (req,\ resp)\ \{}
+\DoxyCodeLine{\ \ if\ (req.url\ ===\ '/doodle.png')\ \{}
+\DoxyCodeLine{\ \ \ \ var\ x\ =\ request('http://mysite.com/doodle.png')}
+\DoxyCodeLine{\ \ \ \ req.pipe(x)}
+\DoxyCodeLine{\ \ \ \ x.pipe(resp)}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\})}
+
+\end{DoxyCode}
+
+
+And since {\ttfamily pipe()} returns the destination stream in ≥ Node 0.\+5.\+x you can do one line proxying. \+:)
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{req.pipe(request('http://mysite.com/doodle.png')).pipe(resp)}
+
+\end{DoxyCode}
+
+
+Also, none of this new functionality conflicts with requests previous features, it just expands them.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ r\ =\ request.defaults(\{'proxy':'http://localproxy.com'\})}
+\DoxyCodeLine{}
+\DoxyCodeLine{http.createServer(function\ (req,\ resp)\ \{}
+\DoxyCodeLine{\ \ if\ (req.url\ ===\ '/doodle.png')\ \{}
+\DoxyCodeLine{\ \ \ \ r.get('http://google.com/doodle.png').pipe(resp)}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\})}
+
+\end{DoxyCode}
+
+
+You can still use intermediate proxies, the requests will still follow HTTP forwards, etc.
+
+back to top
+
+\DoxyHorRuler{0}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0b817d42b35c2c8ce8cf32d0c52cad01_autotoc_md4339}{}\doxysection{\texorpdfstring{Forms}{Forms}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0b817d42b35c2c8ce8cf32d0c52cad01_autotoc_md4339}
+{\ttfamily request} supports {\ttfamily application/x-\/www-\/form-\/urlencoded} and {\ttfamily multipart/form-\/data} form uploads. For {\ttfamily multipart/related} refer to the {\ttfamily multipart} API.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0b817d42b35c2c8ce8cf32d0c52cad01_autotoc_md4340}{}\doxysubsubsection{\texorpdfstring{application/x-\/www-\/form-\/urlencoded (URL-\/\+Encoded Forms)}{application/x-\/www-\/form-\/urlencoded (URL-\/\+Encoded Forms)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0b817d42b35c2c8ce8cf32d0c52cad01_autotoc_md4340}
+URL-\/encoded forms are simple.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{request.post('http://service.com/upload',\ \{form:\{key:'value'\}\})}
+\DoxyCodeLine{//\ or}
+\DoxyCodeLine{request.post('http://service.com/upload').form(\{key:'value'\})}
+\DoxyCodeLine{//\ or}
+\DoxyCodeLine{request.post(\{url:'http://service.com/upload',\ form:\ \{key:'value'\}\},\ function(err,httpResponse,body)\{\ /*\ ...\ */\ \})}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0b817d42b35c2c8ce8cf32d0c52cad01_autotoc_md4341}{}\doxysubsubsection{\texorpdfstring{multipart/form-\/data (Multipart Form Uploads)}{multipart/form-\/data (Multipart Form Uploads)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0b817d42b35c2c8ce8cf32d0c52cad01_autotoc_md4341}
+For {\ttfamily multipart/form-\/data} we use the \href{https://github.com/form-data/form-data}{\texttt{ form-\/data}} library by \href{https://github.com/felixge}{\texttt{ @felixge}}. For the most cases, you can pass your upload form data via the {\ttfamily form\+Data} option.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ formData\ =\ \{}
+\DoxyCodeLine{\ \ //\ Pass\ a\ simple\ key-\/value\ pair}
+\DoxyCodeLine{\ \ my\_field:\ 'my\_value',}
+\DoxyCodeLine{\ \ //\ Pass\ data\ via\ Buffers}
+\DoxyCodeLine{\ \ my\_buffer:\ new\ Buffer([1,\ 2,\ 3]),}
+\DoxyCodeLine{\ \ //\ Pass\ data\ via\ Streams}
+\DoxyCodeLine{\ \ my\_file:\ fs.createReadStream(\_\_dirname\ +\ '/unicycle.jpg'),}
+\DoxyCodeLine{\ \ //\ Pass\ multiple\ values\ /w\ an\ Array}
+\DoxyCodeLine{\ \ attachments:\ [}
+\DoxyCodeLine{\ \ \ \ fs.createReadStream(\_\_dirname\ +\ '/attachment1.jpg'),}
+\DoxyCodeLine{\ \ \ \ fs.createReadStream(\_\_dirname\ +\ '/attachment2.jpg')}
+\DoxyCodeLine{\ \ ],}
+\DoxyCodeLine{\ \ //\ Pass\ optional\ meta-\/data\ with\ an\ 'options'\ object\ with\ style:\ \{value:\ DATA,\ options:\ OPTIONS\}}
+\DoxyCodeLine{\ \ //\ Use\ case:\ for\ some\ types\ of\ streams,\ you'll\ need\ to\ provide\ "{}file"{}-\/related\ information\ manually.}
+\DoxyCodeLine{\ \ //\ See\ the\ \`{}form-\/data`\ README\ for\ more\ information\ about\ options:\ https://github.com/form-\/data/form-\/data}
+\DoxyCodeLine{\ \ custom\_file:\ \{}
+\DoxyCodeLine{\ \ \ \ value:\ \ fs.createReadStream('/dev/urandom'),}
+\DoxyCodeLine{\ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ filename:\ 'topsecret.jpg',}
+\DoxyCodeLine{\ \ \ \ \ \ contentType:\ 'image/jpg'}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{request.post(\{url:'http://service.com/upload',\ formData:\ formData\},\ function\ optionalCallback(err,\ httpResponse,\ body)\ \{}
+\DoxyCodeLine{\ \ if\ (err)\ \{}
+\DoxyCodeLine{\ \ \ \ return\ console.error('upload\ failed:',\ err);}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\ \ console.log('Upload\ successful!\ \ Server\ responded\ with:',\ body);}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+For advanced cases, you can access the form-\/data object itself via {\ttfamily r.\+form()}. This can be modified until the request is fired on the next cycle of the event-\/loop. (Note that this calling {\ttfamily form()} will clear the currently set form data for that request.)
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ NOTE:\ Advanced\ use-\/case,\ for\ normal\ use\ see\ 'formData'\ usage\ above}
+\DoxyCodeLine{var\ r\ =\ request.post('http://service.com/upload',\ function\ optionalCallback(err,\ httpResponse,\ body)\ \{...\})}
+\DoxyCodeLine{var\ form\ =\ r.form();}
+\DoxyCodeLine{form.append('my\_field',\ 'my\_value');}
+\DoxyCodeLine{form.append('my\_buffer',\ new\ Buffer([1,\ 2,\ 3]));}
+\DoxyCodeLine{form.append('custom\_file',\ fs.createReadStream(\_\_dirname\ +\ '/unicycle.jpg'),\ \{filename:\ 'unicycle.jpg'\});}
+
+\end{DoxyCode}
+ See the \href{https://github.com/form-data/form-data}{\texttt{ form-\/data README}} for more information \& examples.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0b817d42b35c2c8ce8cf32d0c52cad01_autotoc_md4342}{}\doxysubsubsection{\texorpdfstring{multipart/related}{multipart/related}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0b817d42b35c2c8ce8cf32d0c52cad01_autotoc_md4342}
+Some variations in different HTTP implementations require a newline/\+CRLF before, after, or both before and after the boundary of a {\ttfamily multipart/related} request (using the multipart option). This has been observed in the .NET Web\+API version 4.\+0. You can turn on a boundary preamble\+CRLF or postamble by passing them as {\ttfamily true} to your request options.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{request(\{}
+\DoxyCodeLine{\ \ method:\ 'PUT',}
+\DoxyCodeLine{\ \ preambleCRLF:\ true,}
+\DoxyCodeLine{\ \ postambleCRLF:\ true,}
+\DoxyCodeLine{\ \ uri:\ 'http://service.com/upload',}
+\DoxyCodeLine{\ \ multipart:\ [}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ 'content-\/type':\ 'application/json',}
+\DoxyCodeLine{\ \ \ \ \ \ body:\ JSON.stringify(\{foo:\ 'bar',\ \_attachments:\ \{'message.txt':\ \{follows:\ true,\ length:\ 18,\ 'content\_type':\ 'text/plain'\ \}\}\})}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \{\ body:\ 'I\ am\ an\ attachment'\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ body:\ fs.createReadStream('image.png')\ \}}
+\DoxyCodeLine{\ \ ],}
+\DoxyCodeLine{\ \ //\ alternatively\ pass\ an\ object\ containing\ additional\ options}
+\DoxyCodeLine{\ \ multipart:\ \{}
+\DoxyCodeLine{\ \ \ \ chunked:\ false,}
+\DoxyCodeLine{\ \ \ \ data:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ 'content-\/type':\ 'application/json',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ body:\ JSON.stringify(\{foo:\ 'bar',\ \_attachments:\ \{'message.txt':\ \{follows:\ true,\ length:\ 18,\ 'content\_type':\ 'text/plain'\ \}\}\})}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \{\ body:\ 'I\ am\ an\ attachment'\ \}}
+\DoxyCodeLine{\ \ \ \ ]}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\},}
+\DoxyCodeLine{function\ (error,\ response,\ body)\ \{}
+\DoxyCodeLine{\ \ if\ (error)\ \{}
+\DoxyCodeLine{\ \ \ \ return\ console.error('upload\ failed:',\ error);}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\ \ console.log('Upload\ successful!\ \ Server\ responded\ with:',\ body);}
+\DoxyCodeLine{\})}
+
+\end{DoxyCode}
+
+
+back to top
+
+\DoxyHorRuler{0}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0b817d42b35c2c8ce8cf32d0c52cad01_autotoc_md4344}{}\doxysection{\texorpdfstring{HTTP Authentication}{HTTP Authentication}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0b817d42b35c2c8ce8cf32d0c52cad01_autotoc_md4344}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{request.get('http://some.server.com/').auth('username',\ 'password',\ false);}
+\DoxyCodeLine{//\ or}
+\DoxyCodeLine{request.get('http://some.server.com/',\ \{}
+\DoxyCodeLine{\ \ 'auth':\ \{}
+\DoxyCodeLine{\ \ \ \ 'user':\ 'username',}
+\DoxyCodeLine{\ \ \ \ 'pass':\ 'password',}
+\DoxyCodeLine{\ \ \ \ 'sendImmediately':\ false}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{//\ or}
+\DoxyCodeLine{request.get('http://some.server.com/').auth(null,\ null,\ true,\ 'bearerToken');}
+\DoxyCodeLine{//\ or}
+\DoxyCodeLine{request.get('http://some.server.com/',\ \{}
+\DoxyCodeLine{\ \ 'auth':\ \{}
+\DoxyCodeLine{\ \ \ \ 'bearer':\ 'bearerToken'}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+If passed as an option, {\ttfamily auth} should be a hash containing values\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily user} \texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|} {\ttfamily username}
+\item {\ttfamily pass} \texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|} {\ttfamily password}
+\item {\ttfamily send\+Immediately} (optional)
+\item {\ttfamily bearer} (optional)
+\end{DoxyItemize}
+
+The method form takes parameters {\ttfamily auth(username, password, send\+Immediately, bearer)}.
+
+{\ttfamily send\+Immediately} defaults to {\ttfamily true}, which causes a basic or bearer authentication header to be sent. If {\ttfamily send\+Immediately} is {\ttfamily false}, then {\ttfamily request} will retry with a proper authentication header after receiving a {\ttfamily 401} response from the server (which must contain a {\ttfamily WWW-\/\+Authenticate} header indicating the required authentication method).
+
+Note that you can also specify basic authentication using the URL itself, as detailed in \href{http://www.ietf.org/rfc/rfc1738.txt}{\texttt{ RFC 1738}}. Simply pass the {\ttfamily user\+:password} before the host with an {\ttfamily @} sign\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ username\ =\ 'username',}
+\DoxyCodeLine{\ \ \ \ password\ =\ 'password',}
+\DoxyCodeLine{\ \ \ \ url\ =\ 'http://'\ +\ username\ +\ ':'\ +\ password\ +\ '@some.server.com';}
+\DoxyCodeLine{}
+\DoxyCodeLine{request(\{url:\ url\},\ function\ (error,\ response,\ body)\ \{}
+\DoxyCodeLine{\ \ \ //\ Do\ more\ stuff\ with\ 'body'\ here}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+Digest authentication is supported, but it only works with {\ttfamily send\+Immediately} set to {\ttfamily false}; otherwise {\ttfamily request} will send basic authentication on the initial request, which will probably cause the request to fail.
+
+Bearer authentication is supported, and is activated when the {\ttfamily bearer} value is available. The value may be either a {\ttfamily String} or a {\ttfamily Function} returning a {\ttfamily String}. Using a function to supply the bearer token is particularly useful if used in conjunction with {\ttfamily defaults} to allow a single function to supply the last known token at the time of sending a request, or to compute one on the fly.
+
+back to top
+
+\DoxyHorRuler{0}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0b817d42b35c2c8ce8cf32d0c52cad01_autotoc_md4346}{}\doxysection{\texorpdfstring{Custom HTTP Headers}{Custom HTTP Headers}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0b817d42b35c2c8ce8cf32d0c52cad01_autotoc_md4346}
+HTTP Headers, such as {\ttfamily User-\/\+Agent}, can be set in the {\ttfamily options} object. In the example below, we call the github API to find out the number of stars and forks for the request repository. This requires a custom {\ttfamily User-\/\+Agent} header as well as https.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ request\ =\ require('request');}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ options\ =\ \{}
+\DoxyCodeLine{\ \ url:\ 'https://api.github.com/repos/request/request',}
+\DoxyCodeLine{\ \ headers:\ \{}
+\DoxyCodeLine{\ \ \ \ 'User-\/Agent':\ 'request'}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{function\ callback(error,\ response,\ body)\ \{}
+\DoxyCodeLine{\ \ if\ (!error\ \&\&\ response.statusCode\ ==\ 200)\ \{}
+\DoxyCodeLine{\ \ \ \ var\ info\ =\ JSON.parse(body);}
+\DoxyCodeLine{\ \ \ \ console.log(info.stargazers\_count\ +\ "{}\ Stars"{});}
+\DoxyCodeLine{\ \ \ \ console.log(info.forks\_count\ +\ "{}\ Forks"{});}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{request(options,\ callback);}
+
+\end{DoxyCode}
+
+
+back to top
+
+\DoxyHorRuler{0}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0b817d42b35c2c8ce8cf32d0c52cad01_autotoc_md4348}{}\doxysection{\texorpdfstring{OAuth Signing}{OAuth Signing}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0b817d42b35c2c8ce8cf32d0c52cad01_autotoc_md4348}
+\href{https://tools.ietf.org/html/rfc5849}{\texttt{ OAuth version 1.\+0}} is supported. The default signing algorithm is \href{https://tools.ietf.org/html/rfc5849\#section-3.4.2}{\texttt{ HMAC-\/\+SHA1}}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ OAuth1.0\ -\/\ 3-\/legged\ server\ side\ flow\ (Twitter\ example)}
+\DoxyCodeLine{//\ step\ 1}
+\DoxyCodeLine{var\ qs\ =\ require('querystring')}
+\DoxyCodeLine{\ \ ,\ oauth\ =}
+\DoxyCodeLine{\ \ \ \ \{\ callback:\ 'http://mysite.com/callback/'}
+\DoxyCodeLine{\ \ \ \ ,\ consumer\_key:\ CONSUMER\_KEY}
+\DoxyCodeLine{\ \ \ \ ,\ consumer\_secret:\ CONSUMER\_SECRET}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ ,\ url\ =\ 'https://api.twitter.com/oauth/request\_token'}
+\DoxyCodeLine{\ \ ;}
+\DoxyCodeLine{request.post(\{url:url,\ oauth:oauth\},\ function\ (e,\ r,\ body)\ \{}
+\DoxyCodeLine{\ \ //\ Ideally,\ you\ would\ take\ the\ body\ in\ the\ response}
+\DoxyCodeLine{\ \ //\ and\ construct\ a\ URL\ that\ a\ user\ clicks\ on\ (like\ a\ sign\ in\ button).}
+\DoxyCodeLine{\ \ //\ The\ verifier\ is\ only\ available\ in\ the\ response\ after\ a\ user\ has}
+\DoxyCodeLine{\ \ //\ verified\ with\ twitter\ that\ they\ are\ authorizing\ your\ app.}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ //\ step\ 2}
+\DoxyCodeLine{\ \ var\ req\_data\ =\ qs.parse(body)}
+\DoxyCodeLine{\ \ var\ uri\ =\ 'https://api.twitter.com/oauth/authenticate'}
+\DoxyCodeLine{\ \ \ \ +\ '?'\ +\ qs.stringify(\{oauth\_token:\ req\_data.oauth\_token\})}
+\DoxyCodeLine{\ \ //\ redirect\ the\ user\ to\ the\ authorize\ uri}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ //\ step\ 3}
+\DoxyCodeLine{\ \ //\ after\ the\ user\ is\ redirected\ back\ to\ your\ server}
+\DoxyCodeLine{\ \ var\ auth\_data\ =\ qs.parse(body)}
+\DoxyCodeLine{\ \ \ \ ,\ oauth\ =}
+\DoxyCodeLine{\ \ \ \ \ \ \{\ consumer\_key:\ CONSUMER\_KEY}
+\DoxyCodeLine{\ \ \ \ \ \ ,\ consumer\_secret:\ CONSUMER\_SECRET}
+\DoxyCodeLine{\ \ \ \ \ \ ,\ token:\ auth\_data.oauth\_token}
+\DoxyCodeLine{\ \ \ \ \ \ ,\ token\_secret:\ req\_data.oauth\_token\_secret}
+\DoxyCodeLine{\ \ \ \ \ \ ,\ verifier:\ auth\_data.oauth\_verifier}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ ,\ url\ =\ 'https://api.twitter.com/oauth/access\_token'}
+\DoxyCodeLine{\ \ \ \ ;}
+\DoxyCodeLine{\ \ request.post(\{url:url,\ oauth:oauth\},\ function\ (e,\ r,\ body)\ \{}
+\DoxyCodeLine{\ \ \ \ //\ ready\ to\ make\ signed\ requests\ on\ behalf\ of\ the\ user}
+\DoxyCodeLine{\ \ \ \ var\ perm\_data\ =\ qs.parse(body)}
+\DoxyCodeLine{\ \ \ \ \ \ ,\ oauth\ =}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{\ consumer\_key:\ CONSUMER\_KEY}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ,\ consumer\_secret:\ CONSUMER\_SECRET}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ,\ token:\ perm\_data.oauth\_token}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ,\ token\_secret:\ perm\_data.oauth\_token\_secret}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ ,\ url\ =\ 'https://api.twitter.com/1.1/users/show.json'}
+\DoxyCodeLine{\ \ \ \ \ \ ,\ qs\ =}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{\ screen\_name:\ perm\_data.screen\_name}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ,\ user\_id:\ perm\_data.user\_id}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ ;}
+\DoxyCodeLine{\ \ \ \ request.get(\{url:url,\ oauth:oauth,\ qs:qs,\ json:true\},\ function\ (e,\ r,\ user)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ console.log(user)}
+\DoxyCodeLine{\ \ \ \ \})}
+\DoxyCodeLine{\ \ \})}
+\DoxyCodeLine{\})}
+
+\end{DoxyCode}
+
+
+For \href{https://tools.ietf.org/html/rfc5849\#section-3.4.3}{\texttt{ RSA-\/\+SHA1 signing}}, make the following changes to the OAuth options object\+:
+\begin{DoxyItemize}
+\item Pass `signature\+\_\+method \+: \textquotesingle{}RSA-\/\+SHA1'{\ttfamily }
+\item {\ttfamily Instead of}consumer\+\_\+secret{\ttfamily , specify a}private\+\_\+key\`{} string in \href{http://how2ssl.com/articles/working_with_pem_files/}{\texttt{ PEM format}}
+\end{DoxyItemize}
+
+For \href{http://oauth.net/core/1.0/\#anchor22}{\texttt{ PLAINTEXT signing}}, make the following changes to the OAuth options object\+:
+\begin{DoxyItemize}
+\item Pass `signature\+\_\+method \+: \textquotesingle{}PLAINTEXT'\`{}
+\end{DoxyItemize}
+
+To send OAuth parameters via query params or in a post body as described in The \href{http://oauth.net/core/1.0/\#consumer_req_param}{\texttt{ Consumer Request Parameters}} section of the oauth1 spec\+:
+\begin{DoxyItemize}
+\item Pass `transport\+\_\+method \+: \textquotesingle{}query'{\ttfamily or}transport\+\_\+method \+: \textquotesingle{}body\textquotesingle{}{\ttfamily in the OAuth options object. \texorpdfstring{$\ast$}{*}}transport\+\_\+method{\ttfamily defaults to}\textquotesingle{}header\textquotesingle{}\`{}
+\end{DoxyItemize}
+
+To use \href{https://oauth.googlecode.com/svn/spec/ext/body_hash/1.0/oauth-bodyhash.html}{\texttt{ Request Body Hash}} you can either
+\begin{DoxyItemize}
+\item Manually generate the body hash and pass it as a string `body\+\_\+hash\+: '...\textquotesingle{}{\ttfamily }
+\item {\ttfamily Automatically generate the body hash by passing}body\+\_\+hash\+: true\`{}
+\end{DoxyItemize}
+
+back to top
+
+\DoxyHorRuler{0}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0b817d42b35c2c8ce8cf32d0c52cad01_autotoc_md4350}{}\doxysection{\texorpdfstring{Proxies}{Proxies}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0b817d42b35c2c8ce8cf32d0c52cad01_autotoc_md4350}
+If you specify a {\ttfamily proxy} option, then the request (and any subsequent redirects) will be sent via a connection to the proxy server.
+
+If your endpoint is an {\ttfamily https} url, and you are using a proxy, then request will send a {\ttfamily CONNECT} request to the proxy server {\itshape first}, and then use the supplied connection to connect to the endpoint.
+
+That is, first it will make a request like\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{HTTP/1.1\ CONNECT\ endpoint-\/server.com:80}
+\DoxyCodeLine{Host:\ proxy-\/server.com}
+\DoxyCodeLine{User-\/Agent:\ whatever\ user\ agent\ you\ specify}
+
+\end{DoxyCode}
+
+
+and then the proxy server make a TCP connection to {\ttfamily endpoint-\/server} on port {\ttfamily 80}, and return a response that looks like\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{HTTP/1.1\ 200\ OK}
+
+\end{DoxyCode}
+
+
+At this point, the connection is left open, and the client is communicating directly with the {\ttfamily endpoint-\/server.\+com} machine.
+
+See \href{https://en.wikipedia.org/wiki/HTTP_tunnel}{\texttt{ the wikipedia page on HTTP Tunneling}} for more information.
+
+By default, when proxying {\ttfamily http} traffic, request will simply make a standard proxied {\ttfamily http} request. This is done by making the {\ttfamily url} section of the initial line of the request a fully qualified url to the endpoint.
+
+For example, it will make a single request that looks like\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{HTTP/1.1\ GET\ http://endpoint-\/server.com/some-\/url}
+\DoxyCodeLine{Host:\ proxy-\/server.com}
+\DoxyCodeLine{Other-\/Headers:\ all\ go\ here}
+\DoxyCodeLine{}
+\DoxyCodeLine{request\ body\ or\ whatever}
+
+\end{DoxyCode}
+
+
+Because a pure "{}http over http"{} tunnel offers no additional security or other features, it is generally simpler to go with a straightforward HTTP proxy in this case. However, if you would like to force a tunneling proxy, you may set the {\ttfamily tunnel} option to {\ttfamily true}.
+
+You can also make a standard proxied {\ttfamily http} request by explicitly setting {\ttfamily tunnel \+: false}, but {\bfseries{note that this will allow the proxy to see the traffic to/from the destination server}}.
+
+If you are using a tunneling proxy, you may set the {\ttfamily proxy\+Header\+White\+List} to share certain headers with the proxy.
+
+You can also set the {\ttfamily proxy\+Header\+Exclusive\+List} to share certain headers only with the proxy and not with destination host.
+
+By default, this set is\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{accept}
+\DoxyCodeLine{accept-\/charset}
+\DoxyCodeLine{accept-\/encoding}
+\DoxyCodeLine{accept-\/language}
+\DoxyCodeLine{accept-\/ranges}
+\DoxyCodeLine{cache-\/control}
+\DoxyCodeLine{content-\/encoding}
+\DoxyCodeLine{content-\/language}
+\DoxyCodeLine{content-\/length}
+\DoxyCodeLine{content-\/location}
+\DoxyCodeLine{content-\/md5}
+\DoxyCodeLine{content-\/range}
+\DoxyCodeLine{content-\/type}
+\DoxyCodeLine{connection}
+\DoxyCodeLine{date}
+\DoxyCodeLine{expect}
+\DoxyCodeLine{max-\/forwards}
+\DoxyCodeLine{pragma}
+\DoxyCodeLine{proxy-\/authorization}
+\DoxyCodeLine{referer}
+\DoxyCodeLine{te}
+\DoxyCodeLine{transfer-\/encoding}
+\DoxyCodeLine{user-\/agent}
+\DoxyCodeLine{via}
+
+\end{DoxyCode}
+
+
+Note that, when using a tunneling proxy, the {\ttfamily proxy-\/authorization} header and any headers from custom {\ttfamily proxy\+Header\+Exclusive\+List} are {\itshape never} sent to the endpoint server, but only to the proxy server.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0b817d42b35c2c8ce8cf32d0c52cad01_autotoc_md4351}{}\doxysubsection{\texorpdfstring{Controlling proxy behaviour using environment variables}{Controlling proxy behaviour using environment variables}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0b817d42b35c2c8ce8cf32d0c52cad01_autotoc_md4351}
+The following environment variables are respected by {\ttfamily request}\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily HTTP\+\_\+\+PROXY} / {\ttfamily http\+\_\+proxy}
+\item {\ttfamily HTTPS\+\_\+\+PROXY} / {\ttfamily https\+\_\+proxy}
+\item {\ttfamily NO\+\_\+\+PROXY} / {\ttfamily no\+\_\+proxy}
+\end{DoxyItemize}
+
+When {\ttfamily HTTP\+\_\+\+PROXY} / {\ttfamily http\+\_\+proxy} are set, they will be used to proxy non-\/\+SSL requests that do not have an explicit {\ttfamily proxy} configuration option present. Similarly, {\ttfamily HTTPS\+\_\+\+PROXY} / {\ttfamily https\+\_\+proxy} will be respected for SSL requests that do not have an explicit {\ttfamily proxy} configuration option. It is valid to define a proxy in one of the environment variables, but then override it for a specific request, using the {\ttfamily proxy} configuration option. Furthermore, the {\ttfamily proxy} configuration option can be explicitly set to false / null to opt out of proxying altogether for that request.
+
+{\ttfamily request} is also aware of the {\ttfamily NO\+\_\+\+PROXY}/{\ttfamily no\+\_\+proxy} environment variables. These variables provide a granular way to opt out of proxying, on a per-\/host basis. It should contain a comma separated list of hosts to opt out of proxying. It is also possible to opt of proxying when a particular destination port is used. Finally, the variable may be set to {\ttfamily \texorpdfstring{$\ast$}{*}} to opt out of the implicit proxy configuration of the other environment variables.
+
+Here\textquotesingle{}s some examples of valid {\ttfamily no\+\_\+proxy} values\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily google.\+com} -\/ don\textquotesingle{}t proxy HTTP/\+HTTPS requests to Google.
+\item {\ttfamily google.\+com\+:443} -\/ don\textquotesingle{}t proxy HTTPS requests to Google, but {\itshape do} proxy HTTP requests to Google.
+\item {\ttfamily google.\+com\+:443, yahoo.\+com\+:80} -\/ don\textquotesingle{}t proxy HTTPS requests to Google, and don\textquotesingle{}t proxy HTTP requests to Yahoo!
+\item {\ttfamily \texorpdfstring{$\ast$}{*}} -\/ ignore {\ttfamily https\+\_\+proxy}/{\ttfamily http\+\_\+proxy} environment variables altogether.
+\end{DoxyItemize}
+
+back to top
+
+\DoxyHorRuler{0}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0b817d42b35c2c8ce8cf32d0c52cad01_autotoc_md4353}{}\doxysection{\texorpdfstring{UNIX Domain Sockets}{UNIX Domain Sockets}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0b817d42b35c2c8ce8cf32d0c52cad01_autotoc_md4353}
+{\ttfamily request} supports making requests to \href{https://en.wikipedia.org/wiki/Unix_domain_socket}{\texttt{ UNIX Domain Sockets}}. To make one, use the following URL scheme\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{/*\ Pattern\ */\ 'http://unix:SOCKET:PATH'}
+\DoxyCodeLine{/*\ Example\ */\ request.get('http://unix:/absolute/path/to/unix.socket:/request/path')}
+
+\end{DoxyCode}
+
+
+Note\+: The {\ttfamily SOCKET} path is assumed to be absolute to the root of the host file system.
+
+back to top
+
+\DoxyHorRuler{0}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0b817d42b35c2c8ce8cf32d0c52cad01_autotoc_md4355}{}\doxysection{\texorpdfstring{TLS/\+SSL Protocol}{TLS/\+SSL Protocol}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0b817d42b35c2c8ce8cf32d0c52cad01_autotoc_md4355}
+TLS/\+SSL Protocol options, such as {\ttfamily cert}, {\ttfamily key} and {\ttfamily passphrase}, can be set directly in {\ttfamily options} object, in the {\ttfamily agent\+Options} property of the {\ttfamily options} object, or even in {\ttfamily https.\+global\+Agent.\+options}. Keep in mind that, although {\ttfamily agent\+Options} allows for a slightly wider range of configurations, the recommended way is via {\ttfamily options} object directly, as using {\ttfamily agent\+Options} or {\ttfamily https.\+global\+Agent.\+options} would not be applied in the same way in proxied environments (as data travels through a TLS connection instead of an http/https agent).
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ fs\ =\ require('fs')}
+\DoxyCodeLine{\ \ \ \ ,\ path\ =\ require('path')}
+\DoxyCodeLine{\ \ \ \ ,\ certFile\ =\ path.resolve(\_\_dirname,\ 'ssl/client.crt')}
+\DoxyCodeLine{\ \ \ \ ,\ keyFile\ =\ path.resolve(\_\_dirname,\ 'ssl/client.key')}
+\DoxyCodeLine{\ \ \ \ ,\ caFile\ =\ path.resolve(\_\_dirname,\ 'ssl/ca.cert.pem')}
+\DoxyCodeLine{\ \ \ \ ,\ request\ =\ require('request');}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ options\ =\ \{}
+\DoxyCodeLine{\ \ \ \ url:\ 'https://api.some-\/server.com/',}
+\DoxyCodeLine{\ \ \ \ cert:\ fs.readFileSync(certFile),}
+\DoxyCodeLine{\ \ \ \ key:\ fs.readFileSync(keyFile),}
+\DoxyCodeLine{\ \ \ \ passphrase:\ 'password',}
+\DoxyCodeLine{\ \ \ \ ca:\ fs.readFileSync(caFile)}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{request.get(options);}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0b817d42b35c2c8ce8cf32d0c52cad01_autotoc_md4356}{}\doxysubsection{\texorpdfstring{Using {\ttfamily options.\+agent\+Options}}{Using {\ttfamily options.\+agent\+Options}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0b817d42b35c2c8ce8cf32d0c52cad01_autotoc_md4356}
+In the example below, we call an API requires client side SSL certificate (in PEM format) with passphrase protected private key (in PEM format) and disable the SSLv3 protocol\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ fs\ =\ require('fs')}
+\DoxyCodeLine{\ \ \ \ ,\ path\ =\ require('path')}
+\DoxyCodeLine{\ \ \ \ ,\ certFile\ =\ path.resolve(\_\_dirname,\ 'ssl/client.crt')}
+\DoxyCodeLine{\ \ \ \ ,\ keyFile\ =\ path.resolve(\_\_dirname,\ 'ssl/client.key')}
+\DoxyCodeLine{\ \ \ \ ,\ request\ =\ require('request');}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ options\ =\ \{}
+\DoxyCodeLine{\ \ \ \ url:\ 'https://api.some-\/server.com/',}
+\DoxyCodeLine{\ \ \ \ agentOptions:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ cert:\ fs.readFileSync(certFile),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ key:\ fs.readFileSync(keyFile),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ Or\ use\ \`{}pfx`\ property\ replacing\ \`{}cert`\ and\ \`{}key`\ when\ using\ private\ key,\ certificate\ and\ CA\ certs\ in\ PFX\ or\ PKCS12\ format:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ pfx:\ fs.readFileSync(pfxFilePath),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ passphrase:\ 'password',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ securityOptions:\ 'SSL\_OP\_NO\_SSLv3'}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{request.get(options);}
+
+\end{DoxyCode}
+
+
+It is able to force using SSLv3 only by specifying {\ttfamily secure\+Protocol}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{request.get(\{}
+\DoxyCodeLine{\ \ \ \ url:\ 'https://api.some-\/server.com/',}
+\DoxyCodeLine{\ \ \ \ agentOptions:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ secureProtocol:\ 'SSLv3\_method'}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+It is possible to accept other certificates than those signed by generally allowed Certificate Authorities (CAs). This can be useful, for example, when using self-\/signed certificates. To require a different root certificate, you can specify the signing CA by adding the contents of the CA\textquotesingle{}s certificate file to the {\ttfamily agent\+Options}. The certificate the domain presents must be signed by the root certificate specified\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{request.get(\{}
+\DoxyCodeLine{\ \ \ \ url:\ 'https://api.some-\/server.com/',}
+\DoxyCodeLine{\ \ \ \ agentOptions:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ca:\ fs.readFileSync('ca.cert.pem')}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+back to top
+
+\DoxyHorRuler{0}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0b817d42b35c2c8ce8cf32d0c52cad01_autotoc_md4358}{}\doxysection{\texorpdfstring{Support for HAR 1.\+2}{Support for HAR 1.\+2}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0b817d42b35c2c8ce8cf32d0c52cad01_autotoc_md4358}
+The {\ttfamily options.\+har} property will override the values\+: {\ttfamily url}, {\ttfamily method}, {\ttfamily qs}, {\ttfamily headers}, {\ttfamily form}, {\ttfamily form\+Data}, {\ttfamily body}, {\ttfamily json}, as well as construct multipart data and read files from disk when {\ttfamily request.\+post\+Data.\+params\mbox{[}\mbox{]}.file\+Name} is present without a matching {\ttfamily value}.
+
+a validation step will check if the HAR Request format matches the latest spec (v1.\+2) and will skip parsing if not matching.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ request\ =\ require('request')}
+\DoxyCodeLine{request(\{}
+\DoxyCodeLine{\ \ //\ will\ be\ ignored}
+\DoxyCodeLine{\ \ method:\ 'GET',}
+\DoxyCodeLine{\ \ uri:\ 'http://www.google.com',}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ //\ HTTP\ Archive\ Request\ Object}
+\DoxyCodeLine{\ \ har:\ \{}
+\DoxyCodeLine{\ \ \ \ url:\ 'http://www.mockbin.com/har',}
+\DoxyCodeLine{\ \ \ \ method:\ 'POST',}
+\DoxyCodeLine{\ \ \ \ headers:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ name:\ 'content-\/type',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ value:\ 'application/x-\/www-\/form-\/urlencoded'}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ postData:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ mimeType:\ 'application/x-\/www-\/form-\/urlencoded',}
+\DoxyCodeLine{\ \ \ \ \ \ params:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ name:\ 'foo',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ value:\ 'bar'}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ name:\ 'hello',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ value:\ 'world'}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ ]}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\})}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ a\ POST\ request\ will\ be\ sent\ to\ http://www.mockbin.com}
+\DoxyCodeLine{//\ with\ body\ an\ application/x-\/www-\/form-\/urlencoded\ body:}
+\DoxyCodeLine{//\ foo=bar\&hello=world}
+
+\end{DoxyCode}
+
+
+back to top
+
+\DoxyHorRuler{0}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0b817d42b35c2c8ce8cf32d0c52cad01_autotoc_md4360}{}\doxysection{\texorpdfstring{request(options, callback)}{request(options, callback)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0b817d42b35c2c8ce8cf32d0c52cad01_autotoc_md4360}
+The first argument can be either a {\ttfamily url} or an {\ttfamily options} object. The only required option is {\ttfamily uri}; all others are optional.
+
+
+\begin{DoxyItemize}
+\item {\ttfamily uri} \texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|} {\ttfamily url} -\/ fully qualified uri or a parsed url object from {\ttfamily url.\+parse()}
+\item {\ttfamily base\+Url} -\/ fully qualified uri string used as the base url. Most useful with {\ttfamily request.\+defaults}, for example when you want to do many requests to the same domain. If {\ttfamily base\+Url} is {\ttfamily \href{https://example.com/api/}{\texttt{ https\+://example.\+com/api/}}}, then requesting {\ttfamily /end/point?test=true} will fetch {\ttfamily \href{https://example.com/api/end/point?test=true}{\texttt{ https\+://example.\+com/api/end/point?test=true}}}. When {\ttfamily base\+Url} is given, {\ttfamily uri} must also be a string.
+\item {\ttfamily method} -\/ http method (default\+: {\ttfamily "{}\+GET"{}})
+\item {\ttfamily headers} -\/ http headers (default\+: {\ttfamily \{\}})
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily qs} -\/ object containing querystring values to be appended to the {\ttfamily uri}
+\item {\ttfamily qs\+Parse\+Options} -\/ object containing options to pass to the \href{https://github.com/hapijs/qs\#parsing-objects}{\texttt{ qs.\+parse}} method. Alternatively pass options to the \href{https://nodejs.org/docs/v0.12.0/api/querystring.html\#querystring_querystring_parse_str_sep_eq_options}{\texttt{ querystring.\+parse}} method using this format `\{sep\+:';\textquotesingle{}, eq\+:\textquotesingle{}\+:\textquotesingle{}, options\+:\{\}\}{\ttfamily  -\/}qs\+Stringify\+Options{\ttfamily -\/ object containing options to pass to the \mbox{[}qs.\+stringify\mbox{]}(\href{https://github.com/hapijs/qs}{\texttt{ https\+://github.\+com/hapijs/qs}}\#stringifying) method. Alternatively pass options to the \mbox{[}querystring.\+stringify\mbox{]}(\href{https://nodejs.org/docs/v0.12.0/api/querystring.html}{\texttt{ https\+://nodejs.\+org/docs/v0.\+12.\+0/api/querystring.\+html}}\#querystring\+\_\+querystring\+\_\+stringify\+\_\+obj\+\_\+sep\+\_\+eq\+\_\+options) method using this format}\{sep\+:\textquotesingle{};\textquotesingle{}, eq\+:\textquotesingle{}\+:\textquotesingle{}, options\+:\{\}\}{\ttfamily . For example, to change the way arrays are converted to query strings using the}qs{\ttfamily module pass the}array\+Format{\ttfamily option with one of}indices\texorpdfstring{$\vert$}{|}brackets\texorpdfstring{$\vert$}{|}repeat{\ttfamily  -\/}use\+Querystring{\ttfamily -\/ If true, use}querystring{\ttfamily to stringify and parse querystrings, otherwise use}qs{\ttfamily (default\+:}false{\ttfamily ). Set this option to }true{\ttfamily if you need arrays to be serialized as}foo=bar\&foo=baz{\ttfamily instead of the default}foo\mbox{[}0\mbox{]}=bar\&foo\mbox{[}1\mbox{]}=baz\`{}.
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily body} -\/ entity body for PATCH, POST and PUT requests. Must be a {\ttfamily Buffer} or {\ttfamily String}, unless {\ttfamily json} is {\ttfamily true}. If {\ttfamily json} is {\ttfamily true}, then {\ttfamily body} must be a JSON-\/serializable object.
+\item {\ttfamily form} -\/ when passed an object or a querystring, this sets {\ttfamily body} to a querystring representation of value, and adds {\ttfamily Content-\/type\+: application/x-\/www-\/form-\/urlencoded} header. When passed no options, a {\ttfamily Form\+Data} instance is returned (and is piped to request). See "{}\+Forms"{} section above.
+\item {\ttfamily form\+Data} -\/ Data to pass for a {\ttfamily multipart/form-\/data} request. See Forms section above.
+\item {\ttfamily multipart} -\/ array of objects which contain their own headers and {\ttfamily body} attributes. Sends a {\ttfamily multipart/related} request. See Forms section above.
+\begin{DoxyItemize}
+\item Alternatively you can pass in an object {\ttfamily \{chunked\+: false, data\+: \mbox{[}\mbox{]}\}} where {\ttfamily chunked} is used to specify whether the request is sent in \href{https://en.wikipedia.org/wiki/Chunked_transfer_encoding}{\texttt{ chunked transfer encoding}} In non-\/chunked requests, data items with body streams are not allowed.
+\end{DoxyItemize}
+\item {\ttfamily preamble\+CRLF} -\/ append a newline/\+CRLF before the boundary of your {\ttfamily multipart/form-\/data} request.
+\item {\ttfamily postamble\+CRLF} -\/ append a newline/\+CRLF at the end of the boundary of your {\ttfamily multipart/form-\/data} request.
+\item {\ttfamily json} -\/ sets {\ttfamily body} to JSON representation of value and adds {\ttfamily Content-\/type\+: application/json} header. Additionally, parses the response body as JSON.
+\item {\ttfamily json\+Reviver} -\/ a \href{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse}{\texttt{ reviver function}} that will be passed to {\ttfamily JSON.\+parse()} when parsing a JSON response body.
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily auth} -\/ A hash containing values {\ttfamily user} \texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|} {\ttfamily username}, {\ttfamily pass} \texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|} {\ttfamily password}, and {\ttfamily send\+Immediately} (optional). See documentation above.
+\item {\ttfamily oauth} -\/ Options for OAuth HMAC-\/\+SHA1 signing. See documentation above.
+\item {\ttfamily hawk} -\/ Options for \href{https://github.com/hueniverse/hawk}{\texttt{ Hawk signing}}. The {\ttfamily credentials} key must contain the necessary signing info, \href{https://github.com/hueniverse/hawk\#usage-example}{\texttt{ see hawk docs for details}}.
+\item {\ttfamily aws} -\/ {\ttfamily object} containing AWS signing information. Should have the properties {\ttfamily key}, {\ttfamily secret}. Also requires the property {\ttfamily bucket}, unless you’re specifying your {\ttfamily bucket} as part of the path, or the request doesn’t use a bucket (i.\+e. GET Services)
+\item {\ttfamily http\+Signature} -\/ Options for the \href{https://github.com/joyent/node-http-signature/blob/master/http_signing.md}{\texttt{ HTTP Signature Scheme}} using \href{https://github.com/joyent/node-http-signature}{\texttt{ Joyent\textquotesingle{}s library}}. The {\ttfamily key\+Id} and {\ttfamily key} properties must be specified. See the docs for other options.
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily follow\+Redirect} -\/ follow HTTP 3xx responses as redirects (default\+: {\ttfamily true}). This property can also be implemented as function which gets {\ttfamily response} object as a single argument and should return {\ttfamily true} if redirects should continue or {\ttfamily false} otherwise.
+\item {\ttfamily follow\+All\+Redirects} -\/ follow non-\/\+GET HTTP 3xx responses as redirects (default\+: {\ttfamily false})
+\item {\ttfamily max\+Redirects} -\/ the maximum number of redirects to follow (default\+: {\ttfamily 10})
+\item {\ttfamily remove\+Referer\+Header} -\/ removes the referer header when a redirect happens (default\+: {\ttfamily false}). {\bfseries{Note\+:}} if true, referer header set in the initial request is preserved during redirect chain.
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily encoding} -\/ Encoding to be used on {\ttfamily set\+Encoding} of response data. If {\ttfamily null}, the {\ttfamily body} is returned as a {\ttfamily Buffer}. Anything else \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}(including the default value of {\ttfamily undefined})\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} will be passed as the \href{http://nodejs.org/api/buffer.html\#buffer_buffer}{\texttt{ encoding}} parameter to {\ttfamily to\+String()} (meaning this is effectively {\ttfamily utf8} by default). ({\bfseries{Note\+:}} if you expect binary data, you should set {\ttfamily encoding\+: null}.)
+\item {\ttfamily gzip} -\/ If {\ttfamily true}, add an {\ttfamily Accept-\/\+Encoding} header to request compressed content encodings from the server (if not already present) and decode supported content encodings in the response. {\bfseries{Note\+:}} Automatic decoding of the response content is performed on the body data returned through {\ttfamily request} (both through the {\ttfamily request} stream and passed to the callback function) but is not performed on the {\ttfamily response} stream (available from the {\ttfamily response} event) which is the unmodified {\ttfamily http.\+Incoming\+Message} object which may contain compressed data. See example below.
+\item {\ttfamily jar} -\/ If {\ttfamily true}, remember cookies for future use (or define your custom cookie jar; see examples section)
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily agent} -\/ {\ttfamily http(s).Agent} instance to use
+\item {\ttfamily agent\+Class} -\/ alternatively specify your agent\textquotesingle{}s class name
+\item {\ttfamily agent\+Options} -\/ and pass its options. {\bfseries{Note\+:}} for HTTPS see \href{http://nodejs.org/api/tls.html\#tls_tls_connect_options_callback}{\texttt{ tls API doc for TLS/\+SSL options}} and the documentation above.
+\item {\ttfamily forever} -\/ set to {\ttfamily true} to use the \href{https://github.com/request/forever-agent}{\texttt{ forever-\/agent}} {\bfseries{Note\+:}} Defaults to {\ttfamily http(s).Agent(\{keep\+Alive\+:true\})} in node 0.\+12+
+\item {\ttfamily pool} -\/ An object describing which agents to use for the request. If this option is omitted the request will use the global agent (as long as your options allow for it). Otherwise, request will search the pool for your custom agent. If no custom agent is found, a new agent will be created and added to the pool. {\bfseries{Note\+:}} {\ttfamily pool} is used only when the {\ttfamily agent} option is not specified.
+\begin{DoxyItemize}
+\item A {\ttfamily max\+Sockets} property can also be provided on the {\ttfamily pool} object to set the max number of sockets for all agents created (ex\+: {\ttfamily pool\+: \{max\+Sockets\+: Infinity\}}).
+\item Note that if you are sending multiple requests in a loop and creating multiple new {\ttfamily pool} objects, {\ttfamily max\+Sockets} will not work as intended. To work around this, either use \`{}request.defaults\`{} with your pool options or create the pool object with the {\ttfamily max\+Sockets} property outside of the loop.
+\end{DoxyItemize}
+\item {\ttfamily timeout} -\/ Integer containing the number of milliseconds to wait for a server to send response headers (and start the response body) before aborting the request. Note that if the underlying TCP connection cannot be established, the OS-\/wide TCP connection timeout will overrule the {\ttfamily timeout} option (\href{http://www.sekuda.com/overriding_the_default_linux_kernel_20_second_tcp_socket_connect_timeout}{\texttt{ the default in Linux can be anywhere from 20-\/120 seconds}}).
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily local\+Address} -\/ Local interface to bind for network connections.
+\item {\ttfamily proxy} -\/ An HTTP proxy to be used. Supports proxy Auth with Basic Auth, identical to support for the {\ttfamily url} parameter (by embedding the auth info in the {\ttfamily uri})
+\item {\ttfamily strict\+SSL} -\/ If {\ttfamily true}, requires SSL certificates be valid. {\bfseries{Note\+:}} to use your own certificate authority, you need to specify an agent that was created with that CA as an option.
+\item {\ttfamily tunnel} -\/ controls the behavior of \href{https://en.wikipedia.org/wiki/HTTP_tunnel\#HTTP_CONNECT_tunneling}{\texttt{ HTTP {\ttfamily CONNECT} tunneling}} as follows\+:
+\begin{DoxyItemize}
+\item {\ttfamily undefined} (default) -\/ {\ttfamily true} if the destination is {\ttfamily https}, {\ttfamily false} otherwise
+\item {\ttfamily true} -\/ always tunnel to the destination by making a {\ttfamily CONNECT} request to the proxy
+\item {\ttfamily false} -\/ request the destination as a {\ttfamily GET} request.
+\end{DoxyItemize}
+\item {\ttfamily proxy\+Header\+White\+List} -\/ A whitelist of headers to send to a tunneling proxy.
+\item {\ttfamily proxy\+Header\+Exclusive\+List} -\/ A whitelist of headers to send exclusively to a tunneling proxy and not to destination.
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+
+
+
+\begin{DoxyItemize}
+\item {\ttfamily time} -\/ If {\ttfamily true}, the request-\/response cycle (including all redirects) is timed at millisecond resolution, and the result provided on the response\textquotesingle{}s {\ttfamily elapsed\+Time} property.
+\item {\ttfamily har} -\/ A \href{http://www.softwareishard.com/blog/har-12-spec/\#request}{\texttt{ HAR 1.\+2 Request Object}}, will be processed from HAR format into options overwriting matching values \texorpdfstring{$\ast$}{*}(see the HAR 1.2 section for details)\texorpdfstring{$\ast$}{*}
+\end{DoxyItemize}
+
+The callback argument gets 3 arguments\+:
+
+
+\begin{DoxyEnumerate}
+\item An {\ttfamily error} when applicable (usually from \href{http://nodejs.org/api/http.html\#http_class_http_clientrequest}{\texttt{ {\ttfamily http.\+Client\+Request}}} object)
+\item An \href{http://nodejs.org/api/http.html\#http_http_incomingmessage}{\texttt{ {\ttfamily http.\+Incoming\+Message}}} object
+\item The third is the {\ttfamily response} body ({\ttfamily String} or {\ttfamily Buffer}, or JSON object if the {\ttfamily json} option is supplied)
+\end{DoxyEnumerate}
+
+back to top
+
+\DoxyHorRuler{0}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0b817d42b35c2c8ce8cf32d0c52cad01_autotoc_md4370}{}\doxysection{\texorpdfstring{Convenience methods}{Convenience methods}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0b817d42b35c2c8ce8cf32d0c52cad01_autotoc_md4370}
+There are also shorthand methods for different HTTP METHODs and some other conveniences.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0b817d42b35c2c8ce8cf32d0c52cad01_autotoc_md4371}{}\doxysubsection{\texorpdfstring{request.\+defaults(options)}{request.\+defaults(options)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0b817d42b35c2c8ce8cf32d0c52cad01_autotoc_md4371}
+This method {\bfseries{returns a wrapper}} around the normal request API that defaults to whatever options you pass to it.
+
+{\bfseries{Note\+:}} {\ttfamily request.\+defaults()} {\bfseries{does not}} modify the global request API; instead, it {\bfseries{returns a wrapper}} that has your default settings applied to it.
+
+{\bfseries{Note\+:}} You can call {\ttfamily .defaults()} on the wrapper that is returned from {\ttfamily request.\+defaults} to add/override defaults that were previously defaulted.
+
+For example\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//requests\ using\ baseRequest()\ will\ set\ the\ 'x-\/token'\ header}
+\DoxyCodeLine{var\ baseRequest\ =\ request.defaults(\{}
+\DoxyCodeLine{\ \ headers:\ \{'x-\/token':\ 'my-\/token'\}}
+\DoxyCodeLine{\})}
+\DoxyCodeLine{}
+\DoxyCodeLine{//requests\ using\ specialRequest()\ will\ include\ the\ 'x-\/token'\ header\ set\ in}
+\DoxyCodeLine{//baseRequest\ and\ will\ also\ include\ the\ 'special'\ header}
+\DoxyCodeLine{var\ specialRequest\ =\ baseRequest.defaults(\{}
+\DoxyCodeLine{\ \ headers:\ \{special:\ 'special\ value'\}}
+\DoxyCodeLine{\})}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0b817d42b35c2c8ce8cf32d0c52cad01_autotoc_md4372}{}\doxysubsection{\texorpdfstring{request.\+put}{request.\+put}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0b817d42b35c2c8ce8cf32d0c52cad01_autotoc_md4372}
+Same as {\ttfamily request()}, but defaults to {\ttfamily method\+: "{}\+PUT"{}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{request.put(url)}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0b817d42b35c2c8ce8cf32d0c52cad01_autotoc_md4373}{}\doxysubsection{\texorpdfstring{request.\+patch}{request.\+patch}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0b817d42b35c2c8ce8cf32d0c52cad01_autotoc_md4373}
+Same as {\ttfamily request()}, but defaults to {\ttfamily method\+: "{}\+PATCH"{}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{request.patch(url)}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0b817d42b35c2c8ce8cf32d0c52cad01_autotoc_md4374}{}\doxysubsection{\texorpdfstring{request.\+post}{request.\+post}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0b817d42b35c2c8ce8cf32d0c52cad01_autotoc_md4374}
+Same as {\ttfamily request()}, but defaults to {\ttfamily method\+: "{}\+POST"{}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{request.post(url)}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0b817d42b35c2c8ce8cf32d0c52cad01_autotoc_md4375}{}\doxysubsection{\texorpdfstring{request.\+head}{request.\+head}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0b817d42b35c2c8ce8cf32d0c52cad01_autotoc_md4375}
+Same as {\ttfamily request()}, but defaults to {\ttfamily method\+: "{}\+HEAD"{}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{request.head(url)}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0b817d42b35c2c8ce8cf32d0c52cad01_autotoc_md4376}{}\doxysubsection{\texorpdfstring{request.\+del}{request.\+del}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0b817d42b35c2c8ce8cf32d0c52cad01_autotoc_md4376}
+Same as {\ttfamily request()}, but defaults to {\ttfamily method\+: "{}\+DELETE"{}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{request.del(url)}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0b817d42b35c2c8ce8cf32d0c52cad01_autotoc_md4377}{}\doxysubsection{\texorpdfstring{request.\+get}{request.\+get}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0b817d42b35c2c8ce8cf32d0c52cad01_autotoc_md4377}
+Same as {\ttfamily request()} (for uniformity).
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{request.get(url)}
+
+\end{DoxyCode}
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0b817d42b35c2c8ce8cf32d0c52cad01_autotoc_md4378}{}\doxysubsection{\texorpdfstring{request.\+cookie}{request.\+cookie}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0b817d42b35c2c8ce8cf32d0c52cad01_autotoc_md4378}
+Function that creates a new cookie.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{request.cookie('key1=value1')}
+
+\end{DoxyCode}
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0b817d42b35c2c8ce8cf32d0c52cad01_autotoc_md4379}{}\doxysubsection{\texorpdfstring{request.\+jar()}{request.\+jar()}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0b817d42b35c2c8ce8cf32d0c52cad01_autotoc_md4379}
+Function that creates a new cookie jar.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{request.jar()}
+
+\end{DoxyCode}
+
+
+back to top
+
+\DoxyHorRuler{0}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0b817d42b35c2c8ce8cf32d0c52cad01_autotoc_md4381}{}\doxysection{\texorpdfstring{Debugging}{Debugging}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0b817d42b35c2c8ce8cf32d0c52cad01_autotoc_md4381}
+There are at least three ways to debug the operation of {\ttfamily request}\+:
+
+
+\begin{DoxyEnumerate}
+\item Launch the node process like {\ttfamily NODE\+\_\+\+DEBUG=request node script.\+js} ({\ttfamily lib,request,otherlib} works too).
+\item Set `require(\textquotesingle{}request').debug = true\`{} at any time (this does the same thing as \#1).
+\item Use the \href{https://github.com/request/request-debug}{\texttt{ request-\/debug module}} to view request and response headers and bodies.
+\end{DoxyEnumerate}
+
+back to top
+
+\DoxyHorRuler{0}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0b817d42b35c2c8ce8cf32d0c52cad01_autotoc_md4383}{}\doxysection{\texorpdfstring{Timeouts}{Timeouts}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0b817d42b35c2c8ce8cf32d0c52cad01_autotoc_md4383}
+Most requests to external servers should have a timeout attached, in case the server is not responding in a timely manner. Without a timeout, your code may have a socket open/consume resources for minutes or more.
+
+There are two main types of timeouts\+: {\bfseries{connection timeouts}} and {\bfseries{read timeouts}}. A connect timeout occurs if the timeout is hit while your client is attempting to establish a connection to a remote machine (corresponding to the \href{http://linux.die.net/man/2/connect}{\texttt{ connect() call}} on the socket). A read timeout occurs any time the server is too slow to send back a part of the response.
+
+These two situations have widely different implications for what went wrong with the request, so it\textquotesingle{}s useful to be able to distinguish them. You can detect timeout errors by checking {\ttfamily err.\+code} for an \textquotesingle{}ETIMEDOUT\textquotesingle{} value. Further, you can detect whether the timeout was a connection timeout by checking if the {\ttfamily err.\+connect} property is set to {\ttfamily true}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{request.get('http://10.255.255.1',\ \{timeout:\ 1500\},\ function(err)\ \{}
+\DoxyCodeLine{\ \ \ \ console.log(err.code\ ===\ 'ETIMEDOUT');}
+\DoxyCodeLine{\ \ \ \ //\ Set\ to\ \`{}true`\ if\ the\ timeout\ was\ a\ connection\ timeout,\ \`{}false`\ or}
+\DoxyCodeLine{\ \ \ \ //\ \`{}undefined`\ otherwise.}
+\DoxyCodeLine{\ \ \ \ console.log(err.connect\ ===\ true);}
+\DoxyCodeLine{\ \ \ \ process.exit(0);}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0b817d42b35c2c8ce8cf32d0c52cad01_autotoc_md4384}{}\doxysection{\texorpdfstring{Examples\+:}{Examples\+:}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0b817d42b35c2c8ce8cf32d0c52cad01_autotoc_md4384}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ request\ =\ require('request')}
+\DoxyCodeLine{\ \ ,\ rand\ =\ Math.floor(Math.random()*100000000).toString()}
+\DoxyCodeLine{\ \ ;}
+\DoxyCodeLine{request(}
+\DoxyCodeLine{\ \ \{\ method:\ 'PUT'}
+\DoxyCodeLine{\ \ ,\ uri:\ 'http://mikeal.iriscouch.com/testjs/'\ +\ rand}
+\DoxyCodeLine{\ \ ,\ multipart:}
+\DoxyCodeLine{\ \ \ \ [\ \{\ 'content-\/type':\ 'application/json'}
+\DoxyCodeLine{\ \ \ \ \ \ ,\ \ body:\ JSON.stringify(\{foo:\ 'bar',\ \_attachments:\ \{'message.txt':\ \{follows:\ true,\ length:\ 18,\ 'content\_type':\ 'text/plain'\ \}\}\})}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ ,\ \{\ body:\ 'I\ am\ an\ attachment'\ \}}
+\DoxyCodeLine{\ \ \ \ ]}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{,\ function\ (error,\ response,\ body)\ \{}
+\DoxyCodeLine{\ \ \ \ if(response.statusCode\ ==\ 201)\{}
+\DoxyCodeLine{\ \ \ \ \ \ console.log('document\ saved\ as:\ http://mikeal.iriscouch.com/testjs/'+\ rand)}
+\DoxyCodeLine{\ \ \ \ \}\ else\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ console.log('error:\ '+\ response.statusCode)}
+\DoxyCodeLine{\ \ \ \ \ \ console.log(body)}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+
+
+For backwards-\/compatibility, response compression is not supported by default. To accept gzip-\/compressed responses, set the {\ttfamily gzip} option to {\ttfamily true}. Note that the body data passed through {\ttfamily request} is automatically decompressed while the response object is unmodified and will contain compressed data if the server sent a compressed response.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ request\ =\ require('request')}
+\DoxyCodeLine{request(}
+\DoxyCodeLine{\ \ \{\ method:\ 'GET'}
+\DoxyCodeLine{\ \ ,\ uri:\ 'http://www.google.com'}
+\DoxyCodeLine{\ \ ,\ gzip:\ true}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{,\ function\ (error,\ response,\ body)\ \{}
+\DoxyCodeLine{\ \ \ \ //\ body\ is\ the\ decompressed\ response\ body}
+\DoxyCodeLine{\ \ \ \ console.log('server\ encoded\ the\ data\ as:\ '\ +\ (response.headers['content-\/encoding']\ ||\ 'identity'))}
+\DoxyCodeLine{\ \ \ \ console.log('the\ decoded\ data\ is:\ '\ +\ body)}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{).on('data',\ function(data)\ \{}
+\DoxyCodeLine{\ \ //\ decompressed\ data\ as\ it\ is\ received}
+\DoxyCodeLine{\ \ console.log('decoded\ chunk:\ '\ +\ data)}
+\DoxyCodeLine{\})}
+\DoxyCodeLine{.on('response',\ function(response)\ \{}
+\DoxyCodeLine{\ \ //\ unmodified\ http.IncomingMessage\ object}
+\DoxyCodeLine{\ \ response.on('data',\ function(data)\ \{}
+\DoxyCodeLine{\ \ \ \ //\ compressed\ data\ as\ it\ is\ received}
+\DoxyCodeLine{\ \ \ \ console.log('received\ '\ +\ data.length\ +\ '\ bytes\ of\ compressed\ data')}
+\DoxyCodeLine{\ \ \})}
+\DoxyCodeLine{\})}
+
+\end{DoxyCode}
+
+
+Cookies are disabled by default (else, they would be used in subsequent requests). To enable cookies, set {\ttfamily jar} to {\ttfamily true} (either in {\ttfamily defaults} or {\ttfamily options}).
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ request\ =\ request.defaults(\{jar:\ true\})}
+\DoxyCodeLine{request('http://www.google.com',\ function\ ()\ \{}
+\DoxyCodeLine{\ \ request('http://images.google.com')}
+\DoxyCodeLine{\})}
+
+\end{DoxyCode}
+
+
+To use a custom cookie jar (instead of {\ttfamily request}’s global cookie jar), set {\ttfamily jar} to an instance of {\ttfamily request.\+jar()} (either in {\ttfamily defaults} or {\ttfamily options})
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ j\ =\ request.jar()}
+\DoxyCodeLine{var\ request\ =\ request.defaults(\{jar:j\})}
+\DoxyCodeLine{request('http://www.google.com',\ function\ ()\ \{}
+\DoxyCodeLine{\ \ request('http://images.google.com')}
+\DoxyCodeLine{\})}
+
+\end{DoxyCode}
+
+
+OR
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ j\ =\ request.jar();}
+\DoxyCodeLine{var\ cookie\ =\ request.cookie('key1=value1');}
+\DoxyCodeLine{var\ url\ =\ 'http://www.google.com';}
+\DoxyCodeLine{j.setCookie(cookie,\ url);}
+\DoxyCodeLine{request(\{url:\ url,\ jar:\ j\},\ function\ ()\ \{}
+\DoxyCodeLine{\ \ request('http://images.google.com')}
+\DoxyCodeLine{\})}
+
+\end{DoxyCode}
+
+
+To use a custom cookie store (such as a \href{https://github.com/mitsuru/tough-cookie-filestore}{\texttt{ {\ttfamily File\+Cookie\+Store}}} which supports saving to and restoring from JSON files), pass it as a parameter to {\ttfamily request.\+jar()}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ FileCookieStore\ =\ require('tough-\/cookie-\/filestore');}
+\DoxyCodeLine{//\ NOTE\ -\/\ currently\ the\ 'cookies.json'\ file\ must\ already\ exist!}
+\DoxyCodeLine{var\ j\ =\ request.jar(new\ FileCookieStore('cookies.json'));}
+\DoxyCodeLine{request\ =\ request.defaults(\{\ jar\ :\ j\ \})}
+\DoxyCodeLine{request('http://www.google.com',\ function()\ \{}
+\DoxyCodeLine{\ \ request('http://images.google.com')}
+\DoxyCodeLine{\})}
+
+\end{DoxyCode}
+
+
+The cookie store must be a \href{https://github.com/SalesforceEng/tough-cookie}{\texttt{ {\ttfamily tough-\/cookie}}} store and it must support synchronous operations; see the \href{https://github.com/SalesforceEng/tough-cookie\#cookiestore-api}{\texttt{ {\ttfamily Cookie\+Store} API docs}} for details.
+
+To inspect your cookie jar after a request\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ j\ =\ request.jar()}
+\DoxyCodeLine{request(\{url:\ 'http://www.google.com',\ jar:\ j\},\ function\ ()\ \{}
+\DoxyCodeLine{\ \ var\ cookie\_string\ =\ j.getCookieString(url);\ //\ "{}key1=value1;\ key2=value2;\ ..."{}}
+\DoxyCodeLine{\ \ var\ cookies\ =\ j.getCookies(url);}
+\DoxyCodeLine{\ \ //\ [\{key:\ 'key1',\ value:\ 'value1',\ domain:\ "{}www.google.com"{},\ ...\},\ ...]}
+\DoxyCodeLine{\})}
+
+\end{DoxyCode}
+
+
+back to top 

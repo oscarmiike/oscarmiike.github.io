@@ -1,0 +1,55 @@
+\chapter{registry-\/url \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/sindresorhus/registry-\/url"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+org/sindresorhus/registry-\/url.\+svg?branch=master"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m82f708b3ff0d774009df24203f1a7075}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m82f708b3ff0d774009df24203f1a7075}\index{registry-\/url $<$a href="{}https://travis-\/ci.org/sindresorhus/registry-\/url"{} $>$$<$img src="{}https://travis-\/ci.org/sindresorhus/registry-\/url.svg?branch=master"{} alt="{}Build Status"{}/$>$$<$/a$>$@{registry-\/url $<$a href=""https://travis-\/ci.org/sindresorhus/registry-\/url"" $>$$<$img src=""https://travis-\/ci.org/sindresorhus/registry-\/url.svg?branch=master"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m82f708b3ff0d774009df24203f1a7075_autotoc_md4232}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m82f708b3ff0d774009df24203f1a7075_autotoc_md4232}%
+ \begin{quote}
+Get the set npm registry URL \end{quote}
+It\textquotesingle{}s usually {\ttfamily \href{https://registry.npmjs.org/}{\texttt{ https\+://registry.\+npmjs.\+org/}}}, but \href{https://www.npmjs.org/doc/misc/npm-config.html\#registry}{\texttt{ configurable}}.
+
+Use this if you do anything with the npm registry as users will expect it to use their configured registry.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m82f708b3ff0d774009df24203f1a7075_autotoc_md4233}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m82f708b3ff0d774009df24203f1a7075_autotoc_md4233}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ -\/-\/save\ registry-\/url}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m82f708b3ff0d774009df24203f1a7075_autotoc_md4234}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m82f708b3ff0d774009df24203f1a7075_autotoc_md4234}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\ .npmrc}
+\DoxyCodeLine{registry\ =\ 'https://custom-\/registry.com/'}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ registryUrl\ =\ require('registry-\/url');}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log(registryUrl());}
+\DoxyCodeLine{//=>\ 'https://custom-\/registry.com/'}
+
+\end{DoxyCode}
+
+
+It can also retrieve the registry URL associated with an \href{https://docs.npmjs.com/misc/scope}{\texttt{ npm scope}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\ .npmrc}
+\DoxyCodeLine{@myco:registry\ =\ 'https://custom-\/registry.com/'}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ registryUrl\ =\ require('registry-\/url');}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log(registryUrl('@myco'));}
+\DoxyCodeLine{//=>\ 'https://custom-\/registry.com/'}
+
+\end{DoxyCode}
+
+
+If the provided scope is not in the user\textquotesingle{}s {\ttfamily .npmrc} file, then {\ttfamily registry-\/url} will check for the existence of {\ttfamily registry}, or if that\textquotesingle{}s not set, fallback to the default npm registry.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m82f708b3ff0d774009df24203f1a7075_autotoc_md4235}{}\doxysection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m82f708b3ff0d774009df24203f1a7075_autotoc_md4235}
+MIT © \href{http://sindresorhus.com}{\texttt{ Sindre Sorhus}} 

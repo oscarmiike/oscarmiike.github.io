@@ -1,0 +1,241 @@
+\chapter{Form-\/\+Data \texorpdfstring{$<$}{<}a href="{}https\+://www.\+npmjs.\+com/package/form-\/data"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://img.\+shields.\+io/npm/v/form-\/data.\+svg"{} alt="{}\+NPM Module"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}a href="{}https\+://gitter.\+im/form-\/data/form-\/data"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}http\+://form-\/data.\+github.\+io/images/gitterbadge.\+svg"{} alt="{}\+Join the chat at https\+://gitter.\+im/form-\/data/form-\/data"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m705bc9b6047423c8108d7ae17d8b7c3d}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m705bc9b6047423c8108d7ae17d8b7c3d}\index{Form-\/Data $<$a href="{}https://www.npmjs.com/package/form-\/data"{} $>$$<$img src="{}https://img.shields.io/npm/v/form-\/data.svg"{} alt="{}NPM Module"{}/$>$$<$/a$>$ $<$a href="{}https://gitter.im/form-\/data/form-\/data"{} $>$$<$img src="{}http://form-\/data.github.io/images/gitterbadge.svg"{} alt="{}Join the chat at https://gitter.im/form-\/data/form-\/data"{}/$>$$<$/a$>$@{Form-\/Data $<$a href=""https://www.npmjs.com/package/form-\/data"" $>$$<$img src=""https://img.shields.io/npm/v/form-\/data.svg"" alt=""NPM Module""/$>$$<$/a$>$ $<$a href=""https://gitter.im/form-\/data/form-\/data"" $>$$<$img src=""http://form-\/data.github.io/images/gitterbadge.svg"" alt=""Join the chat at https://gitter.im/form-\/data/form-\/data""/$>$$<$/a$>$}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m705bc9b6047423c8108d7ae17d8b7c3d_autotoc_md2355}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m705bc9b6047423c8108d7ae17d8b7c3d_autotoc_md2355}%
+ A library to create readable {\ttfamily "{}multipart/form-\/data"{}} streams. Can be used to submit forms and file uploads to other web applications.
+
+The API of this library is inspired by the \href{http://dev.w3.org/2006/webapi/XMLHttpRequest-2/Overview.html\#the-formdata-interface}{\texttt{ XMLHttp\+Request-\/2 Form\+Data Interface}}.
+
+\href{https://travis-ci.org/form-data/form-data}{\texttt{ }} \href{https://ci.appveyor.com/project/alexindigo/form-data}{\texttt{ }} \href{https://coveralls.io/github/form-data/form-data?branch=master}{\texttt{ }}
+
+\href{https://david-dm.org/form-data/form-data}{\texttt{ }} \href{https://www.bithound.io/github/form-data/form-data}{\texttt{ }}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m705bc9b6047423c8108d7ae17d8b7c3d_autotoc_md2356}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m705bc9b6047423c8108d7ae17d8b7c3d_autotoc_md2356}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ -\/-\/save\ form-\/data}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m705bc9b6047423c8108d7ae17d8b7c3d_autotoc_md2357}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m705bc9b6047423c8108d7ae17d8b7c3d_autotoc_md2357}
+In this example we are constructing a form with 3 fields that contain a string, a buffer and a file stream.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ javascript}
+\DoxyCodeLine{var\ FormData\ =\ require('form-\/data');}
+\DoxyCodeLine{var\ fs\ =\ require('fs');}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ form\ =\ new\ FormData();}
+\DoxyCodeLine{form.append('my\_field',\ 'my\ value');}
+\DoxyCodeLine{form.append('my\_buffer',\ new\ Buffer(10));}
+\DoxyCodeLine{form.append('my\_file',\ fs.createReadStream('/foo/bar.jpg'));}
+
+\end{DoxyCode}
+
+
+Also you can use http-\/response stream\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ javascript}
+\DoxyCodeLine{var\ FormData\ =\ require('form-\/data');}
+\DoxyCodeLine{var\ http\ =\ require('http');}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ form\ =\ new\ FormData();}
+\DoxyCodeLine{}
+\DoxyCodeLine{http.request('http://nodejs.org/images/logo.png',\ function(response)\ \{}
+\DoxyCodeLine{\ \ form.append('my\_field',\ 'my\ value');}
+\DoxyCodeLine{\ \ form.append('my\_buffer',\ new\ Buffer(10));}
+\DoxyCodeLine{\ \ form.append('my\_logo',\ response);}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+Or @mikeal\textquotesingle{}s \href{https://github.com/request/request}{\texttt{ request}} stream\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ javascript}
+\DoxyCodeLine{var\ FormData\ =\ require('form-\/data');}
+\DoxyCodeLine{var\ request\ =\ require('request');}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ form\ =\ new\ FormData();}
+\DoxyCodeLine{}
+\DoxyCodeLine{form.append('my\_field',\ 'my\ value');}
+\DoxyCodeLine{form.append('my\_buffer',\ new\ Buffer(10));}
+\DoxyCodeLine{form.append('my\_logo',\ request('http://nodejs.org/images/logo.png'));}
+
+\end{DoxyCode}
+
+
+In order to submit this form to a web application, call {\ttfamily submit(url, \mbox{[}callback\mbox{]})} method\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ javascript}
+\DoxyCodeLine{form.submit('http://example.org/',\ function(err,\ res)\ \{}
+\DoxyCodeLine{\ \ //\ res\ –\ response\ object\ (http.IncomingMessage)\ \ //}
+\DoxyCodeLine{\ \ res.resume();}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+For more advanced request manipulations {\ttfamily submit()} method returns {\ttfamily http.\+Client\+Request} object, or you can choose from one of the alternative submission methods.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m705bc9b6047423c8108d7ae17d8b7c3d_autotoc_md2358}{}\doxysubsection{\texorpdfstring{Alternative submission methods}{Alternative submission methods}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m705bc9b6047423c8108d7ae17d8b7c3d_autotoc_md2358}
+You can use node\textquotesingle{}s http client interface\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ javascript}
+\DoxyCodeLine{var\ http\ =\ require('http');}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ request\ =\ http.request(\{}
+\DoxyCodeLine{\ \ method:\ 'post',}
+\DoxyCodeLine{\ \ host:\ 'example.org',}
+\DoxyCodeLine{\ \ path:\ '/upload',}
+\DoxyCodeLine{\ \ headers:\ form.getHeaders()}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{form.pipe(request);}
+\DoxyCodeLine{}
+\DoxyCodeLine{request.on('response',\ function(res)\ \{}
+\DoxyCodeLine{\ \ console.log(res.statusCode);}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+Or if you would prefer the `\textquotesingle{}Content-\/\+Length'\`{} header to be set for you\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ javascript}
+\DoxyCodeLine{form.submit('example.org/upload',\ function(err,\ res)\ \{}
+\DoxyCodeLine{\ \ console.log(res.statusCode);}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+To use custom headers and pre-\/known length in parts\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ javascript}
+\DoxyCodeLine{var\ CRLF\ =\ '\(\backslash\)r\(\backslash\)n';}
+\DoxyCodeLine{var\ form\ =\ new\ FormData();}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ options\ =\ \{}
+\DoxyCodeLine{\ \ header:\ CRLF\ +\ '-\/-\/'\ +\ form.getBoundary()\ +\ CRLF\ +\ 'X-\/Custom-\/Header:\ 123'\ +\ CRLF\ +\ CRLF,}
+\DoxyCodeLine{\ \ knownLength:\ 1}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{form.append('my\_buffer',\ buffer,\ options);}
+\DoxyCodeLine{}
+\DoxyCodeLine{form.submit('http://example.com/',\ function(err,\ res)\ \{}
+\DoxyCodeLine{\ \ if\ (err)\ throw\ err;}
+\DoxyCodeLine{\ \ console.log('Done');}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+Form-\/\+Data can recognize and fetch all the required information from common types of streams ({\ttfamily fs.\+read\+Stream}, {\ttfamily http.\+response} and {\ttfamily mikeal\textquotesingle{}s request}), for some other types of streams you\textquotesingle{}d need to provide "{}file"{}-\/related information manually\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ javascript}
+\DoxyCodeLine{someModule.stream(function(err,\ stdout,\ stderr)\ \{}
+\DoxyCodeLine{\ \ if\ (err)\ throw\ err;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ var\ form\ =\ new\ FormData();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ form.append('file',\ stdout,\ \{}
+\DoxyCodeLine{\ \ \ \ filename:\ 'unicycle.jpg',}
+\DoxyCodeLine{\ \ \ \ contentType:\ 'image/jpg',}
+\DoxyCodeLine{\ \ \ \ knownLength:\ 19806}
+\DoxyCodeLine{\ \ \});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ form.submit('http://example.com/',\ function(err,\ res)\ \{}
+\DoxyCodeLine{\ \ \ \ if\ (err)\ throw\ err;}
+\DoxyCodeLine{\ \ \ \ console.log('Done');}
+\DoxyCodeLine{\ \ \});}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+For edge cases, like POST request to URL with query string or to pass HTTP auth credentials, object can be passed to {\ttfamily form.\+submit()} as first parameter\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ javascript}
+\DoxyCodeLine{form.submit(\{}
+\DoxyCodeLine{\ \ host:\ 'example.com',}
+\DoxyCodeLine{\ \ path:\ '/probably.php?extra=params',}
+\DoxyCodeLine{\ \ auth:\ 'username:password'}
+\DoxyCodeLine{\},\ function(err,\ res)\ \{}
+\DoxyCodeLine{\ \ console.log(res.statusCode);}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+In case you need to also send custom HTTP headers with the POST request, you can use the {\ttfamily headers} key in first parameter of {\ttfamily form.\+submit()}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ javascript}
+\DoxyCodeLine{form.submit(\{}
+\DoxyCodeLine{\ \ host:\ 'example.com',}
+\DoxyCodeLine{\ \ path:\ '/surelynot.php',}
+\DoxyCodeLine{\ \ headers:\ \{'x-\/test-\/header':\ 'test-\/header-\/value'\}}
+\DoxyCodeLine{\},\ function(err,\ res)\ \{}
+\DoxyCodeLine{\ \ console.log(res.statusCode);}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m705bc9b6047423c8108d7ae17d8b7c3d_autotoc_md2359}{}\doxysubsection{\texorpdfstring{Integration with other libraries}{Integration with other libraries}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m705bc9b6047423c8108d7ae17d8b7c3d_autotoc_md2359}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m705bc9b6047423c8108d7ae17d8b7c3d_autotoc_md2360}{}\doxysubsubsection{\texorpdfstring{Request}{Request}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m705bc9b6047423c8108d7ae17d8b7c3d_autotoc_md2360}
+Form submission using \href{https://github.com/request/request}{\texttt{ request}}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ formData\ =\ \{}
+\DoxyCodeLine{\ \ my\_field:\ 'my\_value',}
+\DoxyCodeLine{\ \ my\_file:\ fs.createReadStream(\_\_dirname\ +\ '/unicycle.jpg'),}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{request.post(\{url:'http://service.com/upload',\ formData:\ formData\},\ function(err,\ httpResponse,\ body)\ \{}
+\DoxyCodeLine{\ \ if\ (err)\ \{}
+\DoxyCodeLine{\ \ \ \ return\ console.error('upload\ failed:',\ err);}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\ \ console.log('Upload\ successful!\ \ Server\ responded\ with:',\ body);}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+For more details see \href{https://github.com/request/request\#multipartform-data-multipart-form-uploads}{\texttt{ request readme}}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m705bc9b6047423c8108d7ae17d8b7c3d_autotoc_md2361}{}\doxysubsubsection{\texorpdfstring{node-\/fetch}{node-\/fetch}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m705bc9b6047423c8108d7ae17d8b7c3d_autotoc_md2361}
+You can also submit a form using \href{https://github.com/bitinn/node-fetch}{\texttt{ node-\/fetch}}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ form\ =\ new\ FormData();}
+\DoxyCodeLine{}
+\DoxyCodeLine{form.append('a',\ 1);}
+\DoxyCodeLine{}
+\DoxyCodeLine{fetch('http://example.com',\ \{\ method:\ 'POST',\ body:\ form\ \})}
+\DoxyCodeLine{\ \ \ \ .then(function(res)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ return\ res.json();}
+\DoxyCodeLine{\ \ \ \ \}).then(function(json)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ console.log(json);}
+\DoxyCodeLine{\ \ \ \ \});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m705bc9b6047423c8108d7ae17d8b7c3d_autotoc_md2362}{}\doxysection{\texorpdfstring{Notes}{Notes}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m705bc9b6047423c8108d7ae17d8b7c3d_autotoc_md2362}
+
+\begin{DoxyItemize}
+\item {\ttfamily get\+Length\+Sync()} method DOESN\textquotesingle{}T calculate length for streams, use {\ttfamily known\+Length} options as workaround.
+\item If it feels like Form\+Data hangs after submit, please check \href{http://nodejs.org/api/stream.html\#stream_compatibility_with_older_node_versions}{\texttt{ Compatibility with Older Node Versions}}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m705bc9b6047423c8108d7ae17d8b7c3d_autotoc_md2363}{}\doxysection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m705bc9b6047423c8108d7ae17d8b7c3d_autotoc_md2363}
+Form-\/\+Data is released under the \mbox{[}MIT\mbox{]}(License) license. 

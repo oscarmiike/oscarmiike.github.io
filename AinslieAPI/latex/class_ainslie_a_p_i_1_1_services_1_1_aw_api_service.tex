@@ -1,0 +1,87 @@
+\doxysection{Ainslie\+API.\+Services.\+Aw\+Api\+Service Class Reference}
+\hypertarget{class_ainslie_a_p_i_1_1_services_1_1_aw_api_service}{}\label{class_ainslie_a_p_i_1_1_services_1_1_aw_api_service}\index{AinslieAPI.Services.AwApiService@{AinslieAPI.Services.AwApiService}}
+
+
+Provides services for interacting with the AW API, including retrieving GSS pricing information.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_aw_api_service_a799cac6d2cd0c1e7a21f8f892740b343}{Aw\+Api\+Service}} (IOptions$<$ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings}{App\+Settings}} $>$ app\+Settings, \mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{Log\+Service}} log\+Service)
+\begin{DoxyCompactList}\small\item\em Initialises a new instance of the Aw\+Api\+Service with application settings and logging service. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_g_s_s_1_1_g_s_s_price_data}{GSSPrice\+Data}}? \mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_aw_api_service_a94685f746f003ef92fe3a7f4ef545efe}{Get\+Gss\+Pricing}} (string user\+Name)
+\begin{DoxyCompactList}\small\item\em Fetches GSS pricing data for a specified user from the AW API. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Provides services for interacting with the AW API, including retrieving GSS pricing information. 
+
+Definition at line \mbox{\hyperlink{_aw_api_service_8cs_source_l00019}{19}} of file \mbox{\hyperlink{_aw_api_service_8cs_source}{Aw\+Api\+Service.\+cs}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_ainslie_a_p_i_1_1_services_1_1_aw_api_service_a799cac6d2cd0c1e7a21f8f892740b343}\label{class_ainslie_a_p_i_1_1_services_1_1_aw_api_service_a799cac6d2cd0c1e7a21f8f892740b343} 
+\index{AinslieAPI.Services.AwApiService@{AinslieAPI.Services.AwApiService}!AwApiService@{AwApiService}}
+\index{AwApiService@{AwApiService}!AinslieAPI.Services.AwApiService@{AinslieAPI.Services.AwApiService}}
+\doxysubsubsection{\texorpdfstring{AwApiService()}{AwApiService()}}
+{\footnotesize\ttfamily Ainslie\+API.\+Services.\+Aw\+Api\+Service.\+Aw\+Api\+Service (\begin{DoxyParamCaption}\item[{IOptions$<$ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings}{App\+Settings}} $>$}]{app\+Settings,  }\item[{\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{Log\+Service}}}]{log\+Service }\end{DoxyParamCaption})}
+
+
+
+Initialises a new instance of the Aw\+Api\+Service with application settings and logging service. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em app\+Settings} & Application settings for configuration.\\
+\hline
+{\em log\+Service} & Service for logging errors and information.\\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_aw_api_service_8cs_source_l00030}{30}} of file \mbox{\hyperlink{_aw_api_service_8cs_source}{Aw\+Api\+Service.\+cs}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_ainslie_a_p_i_1_1_services_1_1_aw_api_service_a94685f746f003ef92fe3a7f4ef545efe}\label{class_ainslie_a_p_i_1_1_services_1_1_aw_api_service_a94685f746f003ef92fe3a7f4ef545efe} 
+\index{AinslieAPI.Services.AwApiService@{AinslieAPI.Services.AwApiService}!GetGssPricing@{GetGssPricing}}
+\index{GetGssPricing@{GetGssPricing}!AinslieAPI.Services.AwApiService@{AinslieAPI.Services.AwApiService}}
+\doxysubsubsection{\texorpdfstring{GetGssPricing()}{GetGssPricing()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_g_s_s_1_1_g_s_s_price_data}{GSSPrice\+Data}}? Ainslie\+API.\+Services.\+Aw\+Api\+Service.\+Get\+Gss\+Pricing (\begin{DoxyParamCaption}\item[{string}]{user\+Name }\end{DoxyParamCaption})}
+
+
+
+Fetches GSS pricing data for a specified user from the AW API. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em user\+Name} & The username for which to retrieve GSS pricing data.\\
+\hline
+\end{DoxyParams}
+
+
+\begin{DoxyReturn}{Returns}
+GSSPrice\+Data containing the pricing information, or an empty GSSPrice\+Data if the fetch fails.
+\end{DoxyReturn}
+
+
+Makes a GET request to the AW API using basic authentication. Logs errors if the request fails or if parsing the response encounters issues. 
+
+Definition at line \mbox{\hyperlink{_aw_api_service_8cs_source_l00047}{47}} of file \mbox{\hyperlink{_aw_api_service_8cs_source}{Aw\+Api\+Service.\+cs}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_ainslie_a_p_i_1_1_services_1_1_aw_api_service_a94685f746f003ef92fe3a7f4ef545efe_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+STRIDER/source/repos/\+Ainslie\+API/\+Services/\mbox{\hyperlink{_aw_api_service_8cs}{Aw\+Api\+Service.\+cs}}\end{DoxyCompactItemize}

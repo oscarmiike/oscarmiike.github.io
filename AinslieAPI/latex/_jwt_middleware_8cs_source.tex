@@ -1,0 +1,29 @@
+\doxysection{Jwt\+Middleware.\+cs}
+\hypertarget{_jwt_middleware_8cs_source}{}\label{_jwt_middleware_8cs_source}\index{C:/Users/STRIDER/source/repos/AinslieAPI/Authentication/JwtMiddleware.cs@{C:/Users/STRIDER/source/repos/AinslieAPI/Authentication/JwtMiddleware.cs}}
+\mbox{\hyperlink{_jwt_middleware_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_jwt_middleware_8cs_source_l00001}00001\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_ainslie_a_p_i_1_1_authentication}{AinslieAPI.Authentication}};}
+\DoxyCodeLine{\Hypertarget{_jwt_middleware_8cs_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_jwt_middleware_8cs_source_l00006}\mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_middleware}{00006}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_middleware}{JwtMiddleware}}}
+\DoxyCodeLine{\Hypertarget{_jwt_middleware_8cs_source_l00007}00007\ \{}
+\DoxyCodeLine{\Hypertarget{_jwt_middleware_8cs_source_l00008}00008\ \ \ \ \ \textcolor{keyword}{private}\ readonly\ RequestDelegate\ \_next;}
+\DoxyCodeLine{\Hypertarget{_jwt_middleware_8cs_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{_jwt_middleware_8cs_source_l00015}\mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_middleware_a187ee68b4121e840300c03598913ab9f}{00015}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_middleware_a187ee68b4121e840300c03598913ab9f}{JwtMiddleware}}(RequestDelegate\ next)}
+\DoxyCodeLine{\Hypertarget{_jwt_middleware_8cs_source_l00016}00016\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_jwt_middleware_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \_next\ =\ next;}
+\DoxyCodeLine{\Hypertarget{_jwt_middleware_8cs_source_l00018}00018\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_jwt_middleware_8cs_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_jwt_middleware_8cs_source_l00035}\mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_middleware_acde1344b114bea6f8a9c175b5e7b5b94}{00035}}\ \ \ \ \ \textcolor{keyword}{public}\ async\ Task\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_middleware_acde1344b114bea6f8a9c175b5e7b5b94}{Invoke}}(HttpContext\ context,\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils}{JwtUtils}}\ jwtUtils)}
+\DoxyCodeLine{\Hypertarget{_jwt_middleware_8cs_source_l00036}00036\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_jwt_middleware_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ var\ token\ =\ context.Request.Headers[\textcolor{stringliteral}{"{}Authorization"{}}].FirstOrDefault()?.Split(\textcolor{stringliteral}{"{}\ "{}}).Last();}
+\DoxyCodeLine{\Hypertarget{_jwt_middleware_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ var\ user\ =\ jwtUtils.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils_a1ed447f2fb5b17b1c8ce593034a61808}{ValidateToken}}(token);}
+\DoxyCodeLine{\Hypertarget{_jwt_middleware_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!(user\ ==\ \textcolor{keyword}{null})\ \&\&\ !\textcolor{keywordtype}{string}.IsNullOrEmpty(user.EmailAddress))}
+\DoxyCodeLine{\Hypertarget{_jwt_middleware_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_jwt_middleware_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ attach\ user\ to\ context\ on\ successful\ jwt\ validation}}
+\DoxyCodeLine{\Hypertarget{_jwt_middleware_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ context.Items[\textcolor{stringliteral}{"{}user"{}}]\ =\ user;}
+\DoxyCodeLine{\Hypertarget{_jwt_middleware_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_jwt_middleware_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ await\ \_next(context);}
+\DoxyCodeLine{\Hypertarget{_jwt_middleware_8cs_source_l00045}00045\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_jwt_middleware_8cs_source_l00046}00046\ \}}
+
+\end{DoxyCode}

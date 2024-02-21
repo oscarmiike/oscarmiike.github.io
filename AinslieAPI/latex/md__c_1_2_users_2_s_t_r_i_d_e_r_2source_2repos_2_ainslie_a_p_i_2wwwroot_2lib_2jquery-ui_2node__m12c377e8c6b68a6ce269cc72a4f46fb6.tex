@@ -1,0 +1,73 @@
+\chapter{p-\/throttler \texorpdfstring{$<$}{<}a href="{}http\+://travis-\/ci.\+org/\+Indigo\+United/node-\/p-\/throttler.\+png"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://secure.\+travis-\/ci.\+org/\+Indigo\+United/node-\/p-\/throttler.\+png"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m12c377e8c6b68a6ce269cc72a4f46fb6}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m12c377e8c6b68a6ce269cc72a4f46fb6}\index{p-\/throttler $<$a href="{}http://travis-\/ci.org/IndigoUnited/node-\/p-\/throttler.png"{} $>$$<$img src="{}https://secure.travis-\/ci.org/IndigoUnited/node-\/p-\/throttler.png"{} alt="{}Build Status"{}/$>$$<$/a$>$@{p-\/throttler $<$a href=""http://travis-\/ci.org/IndigoUnited/node-\/p-\/throttler.png"" $>$$<$img src=""https://secure.travis-\/ci.org/IndigoUnited/node-\/p-\/throttler.png"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m12c377e8c6b68a6ce269cc72a4f46fb6_autotoc_md3934}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m12c377e8c6b68a6ce269cc72a4f46fb6_autotoc_md3934}%
+ A promise based throttler responsible for limiting execution of parallel tasks. The number of parallel tasks may be limited and configured per type.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m12c377e8c6b68a6ce269cc72a4f46fb6_autotoc_md3935}{}\doxysection{\texorpdfstring{Installation}{Installation}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m12c377e8c6b68a6ce269cc72a4f46fb6_autotoc_md3935}
+{\ttfamily \$ npm install p-\/throttler}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m12c377e8c6b68a6ce269cc72a4f46fb6_autotoc_md3936}{}\doxysection{\texorpdfstring{API}{API}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m12c377e8c6b68a6ce269cc72a4f46fb6_autotoc_md3936}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m12c377e8c6b68a6ce269cc72a4f46fb6_autotoc_md3937}{}\doxysubsection{\texorpdfstring{\#create(default\+Concurrency, types)}{\#create(default\+Concurrency, types)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m12c377e8c6b68a6ce269cc72a4f46fb6_autotoc_md3937}
+Constructs a new throttler.
+
+The {\ttfamily default\+Concurrency} is the default maximum concurrent functions being run (-\/1 to specify no limits). ~\newline
+ The {\ttfamily types} allows you to specify different concurrencies for different types. ~\newline
+
+
+Example\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ throttler\ =\ PThrottler.create(15,\ \{\ \ //\ or\ new\ PThrottler()}
+\DoxyCodeLine{\ \ \ \ 'network\_io':\ 10,}
+\DoxyCodeLine{\ \ \ \ 'disk\_io':\ 50}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m12c377e8c6b68a6ce269cc72a4f46fb6_autotoc_md3938}{}\doxysubsection{\texorpdfstring{.enqueue(func, \mbox{[}type\mbox{]})\+: Promise}{.enqueue(func, \mbox{[}type\mbox{]})\+: Promise}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m12c377e8c6b68a6ce269cc72a4f46fb6_autotoc_md3938}
+Enqueues a function to be ran. The function is expected to return a promise or a value. ~\newline
+ The returned promise is resolved when the function finishes execution.
+
+The {\ttfamily type} argument is optional and can be a {\ttfamily string} or an array of {\ttfamily strings}. ~\newline
+ Use it to specify the type(s) associated with the function. ~\newline
+
+
+The function will run as soon as a free slot is available for every {\ttfamily type}. ~\newline
+ If no {\ttfamily type} is passed or is unknown, the {\ttfamily default\+Concurrency} is used. ~\newline
+
+
+The execution order is guaranteed for functions enqueued with the exact same {\ttfamily type} argument.
+
+Example\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ method\ =\ function\ ()\ \{}
+\DoxyCodeLine{\ \ \ \ return\ Q.resolve('foo');}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ throttler\ =\ PThrottler.create(15,\ \{}
+\DoxyCodeLine{\ \ \ \ 'foo':\ 1,}
+\DoxyCodeLine{\ \ \ \ 'bar':\ 2}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Single\ type,\ will\ only\ run\ when\ a\ free\ slot\ for}
+\DoxyCodeLine{//\ "{}foo"{}\ is\ available}
+\DoxyCodeLine{throttler.enqueue(function\ ()\ \{}
+\DoxyCodeLine{\ \ \ \ return\ method();\ \ \ \ //\ method()\ returns\ some\ promise}
+\DoxyCodeLine{\},\ 'foo')}
+\DoxyCodeLine{.then(function\ (value)\ \{}
+\DoxyCodeLine{\ \ \ \ console.log(value);}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Multiple\ type,\ will\ only\ run\ when\ a\ free\ slot\ for}
+\DoxyCodeLine{//\ "{}foo"{}\ and\ "{}bar"{}\ are\ available}
+\DoxyCodeLine{throttler.enqueue(function\ ()\ \{}
+\DoxyCodeLine{\ \ \ \ return\ method();\ \ \ \ //\ method()\ returns\ some\ promise}
+\DoxyCodeLine{\},\ ['foo',\ 'bar'])}
+\DoxyCodeLine{.then(function\ (value)\ \{}
+\DoxyCodeLine{\ \ \ \ console.log(value);}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m12c377e8c6b68a6ce269cc72a4f46fb6_autotoc_md3939}{}\doxysubsection{\texorpdfstring{.abort()\+: Promise}{.abort()\+: Promise}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m12c377e8c6b68a6ce269cc72a4f46fb6_autotoc_md3939}
+Aborts all current work being done. Returns a promise that is resolved when the current running functions finish to execute. ~\newline
+ Any function that was in the queue waiting to be ran is removed immediately.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m12c377e8c6b68a6ce269cc72a4f46fb6_autotoc_md3940}{}\doxysection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m12c377e8c6b68a6ce269cc72a4f46fb6_autotoc_md3940}
+Released under the \href{http://www.opensource.org/licenses/mit-license.php}{\texttt{ MIT License}}. 

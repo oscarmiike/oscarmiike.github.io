@@ -1,0 +1,52 @@
+\doxysection{Products\+Controller.\+cs}
+\hypertarget{_products_controller_8cs_source}{}\label{_products_controller_8cs_source}\index{C:/Users/STRIDER/source/repos/AinslieAPI/Controllers/ProductsController.cs@{C:/Users/STRIDER/source/repos/AinslieAPI/Controllers/ProductsController.cs}}
+\mbox{\hyperlink{_products_controller_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_products_controller_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }Microsoft.AspNetCore.Http;}
+\DoxyCodeLine{\Hypertarget{_products_controller_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }Microsoft.AspNetCore.Mvc;}
+\DoxyCodeLine{\Hypertarget{_products_controller_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }System.Security.Claims;}
+\DoxyCodeLine{\Hypertarget{_products_controller_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_ainslie_a_p_i_1_1_authentication_1_1_authorization}{AinslieAPI.Authentication.Authorization}};}
+\DoxyCodeLine{\Hypertarget{_products_controller_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_ainslie_a_p_i_1_1_d_t_o_1_1_user_helper}{AinslieAPI.DTO.UserHelper}};}
+\DoxyCodeLine{\Hypertarget{_products_controller_8cs_source_l00006}00006\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_ainslie_a_p_i_1_1_helpers}{AinslieAPI.Helpers}};}
+\DoxyCodeLine{\Hypertarget{_products_controller_8cs_source_l00007}00007\ \textcolor{keyword}{using\ }Newtonsoft.Json;}
+\DoxyCodeLine{\Hypertarget{_products_controller_8cs_source_l00008}00008\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_ainslie_a_p_i_1_1_d_t_o_1_1_priceapp}{AinslieAPI.DTO.Priceapp}};}
+\DoxyCodeLine{\Hypertarget{_products_controller_8cs_source_l00009}00009\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_ainslie_a_p_i_1_1_services}{AinslieAPI.Services}};}
+\DoxyCodeLine{\Hypertarget{_products_controller_8cs_source_l00010}00010\ \textcolor{keyword}{using\ }System.Net;}
+\DoxyCodeLine{\Hypertarget{_products_controller_8cs_source_l00011}00011\ \textcolor{keyword}{using\ }Microsoft.Extensions.Options;}
+\DoxyCodeLine{\Hypertarget{_products_controller_8cs_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_products_controller_8cs_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{_products_controller_8cs_source_l00017}00017\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_ainslie_a_p_i_1_1_controllers}{AinslieAPI.Controllers}}}
+\DoxyCodeLine{\Hypertarget{_products_controller_8cs_source_l00018}00018\ \{}
+\DoxyCodeLine{\Hypertarget{_products_controller_8cs_source_l00019}00019\ \ \ \ \ [ApiAuthorize]}
+\DoxyCodeLine{\Hypertarget{_products_controller_8cs_source_l00020}00020\ \ \ \ \ [Route(\textcolor{stringliteral}{"{}[controller]"{}})]}
+\DoxyCodeLine{\Hypertarget{_products_controller_8cs_source_l00021}00021\ \ \ \ \ [ApiController]}
+\DoxyCodeLine{\Hypertarget{_products_controller_8cs_source_l00022}\mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_products_controller}{00022}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_products_controller}{ProductsController}}\ :\ ControllerBase}
+\DoxyCodeLine{\Hypertarget{_products_controller_8cs_source_l00023}00023\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_products_controller_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_user_helper_1_1_authenticated_user}{AuthenticatedUser}}?\ JwtUser;}
+\DoxyCodeLine{\Hypertarget{_products_controller_8cs_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_products_controller_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ HttpContext?\ \_httpContext\ \{\ \textcolor{keyword}{get};\ \textcolor{keyword}{set};\ \}}
+\DoxyCodeLine{\Hypertarget{_products_controller_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings}{AppSettings}}\ \_appSettings\ \{\ \textcolor{keyword}{get};\ \textcolor{keyword}{set};\ \}}
+\DoxyCodeLine{\Hypertarget{_products_controller_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service}{InternalApiService}}\ \_iaService\ \{\ \textcolor{keyword}{get};\ \textcolor{keyword}{set};\ \}}
+\DoxyCodeLine{\Hypertarget{_products_controller_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{LogService}}\ \_logger\ \{\ \textcolor{keyword}{get};\ \textcolor{keyword}{set};\ \}}
+\DoxyCodeLine{\Hypertarget{_products_controller_8cs_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_products_controller_8cs_source_l00038}\mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_products_controller_a902aa9119bd7712674f28f8b5a1a2fb0}{00038}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_products_controller_a902aa9119bd7712674f28f8b5a1a2fb0}{ProductsController}}(IHttpContextAccessor\ httpContextAccessor,\ IOptions<AppSettings>\ appSettings,\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service}{InternalApiService}}\ iaService,\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{LogService}}\ logger)}
+\DoxyCodeLine{\Hypertarget{_products_controller_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_products_controller_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ JwtUser\ =\ (\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_user_helper_1_1_authenticated_user}{AuthenticatedUser}}?)httpContextAccessor.HttpContext?.Items[\textcolor{stringliteral}{"{}user"{}}];}
+\DoxyCodeLine{\Hypertarget{_products_controller_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \_httpContext\ \ =\ httpContextAccessor.HttpContext;}
+\DoxyCodeLine{\Hypertarget{_products_controller_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \_appSettings\ =\ appSettings.Value;}
+\DoxyCodeLine{\Hypertarget{_products_controller_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \_iaService\ =\ iaService;}
+\DoxyCodeLine{\Hypertarget{_products_controller_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger\ =\ logger;}
+\DoxyCodeLine{\Hypertarget{_products_controller_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_products_controller_8cs_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{_products_controller_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ [ApiAuthorize(\textcolor{stringliteral}{"{}AinslieAPI\_Admin,\ AinslieAPI\_ProductPrice\_Read"{}})]}
+\DoxyCodeLine{\Hypertarget{_products_controller_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ [HttpGet(\textcolor{stringliteral}{"{}pricelist"{}})]}
+\DoxyCodeLine{\Hypertarget{_products_controller_8cs_source_l00059}\mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_products_controller_ac20bed843f55f212dfb5ffe45d411f8f}{00059}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ IActionResult\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_products_controller_ac20bed843f55f212dfb5ffe45d411f8f}{PriceList}}()}
+\DoxyCodeLine{\Hypertarget{_products_controller_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_products_controller_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a917b9af360c0c6521ce36f4acbc72023}{LogInformation}}(\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_ab557dc1394f5cf56cfb78c765fdfffe6}{LogSources}}.ProductsController,\ \$\textcolor{stringliteral}{"{}request\ received\ on\ products/pricelist"{}},\ \$\textcolor{stringliteral}{"{}authenticated\ user:\ \{JwtUser?.EmailAddress\}"{}});}
+\DoxyCodeLine{\Hypertarget{_products_controller_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ var\ productPricing\ =\ \_iaService.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service_a0c4c5cccb2233540343e36fe0e8a0acc}{GetProductPricing}}();}
+\DoxyCodeLine{\Hypertarget{_products_controller_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Ok(productPricing);}
+\DoxyCodeLine{\Hypertarget{_products_controller_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_products_controller_8cs_source_l00065}00065\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_products_controller_8cs_source_l00066}00066\ \}}
+
+\end{DoxyCode}

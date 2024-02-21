@@ -1,0 +1,169 @@
+\doxysection{Ainslie\+API.\+Helpers.\+Enums\+Helper Class Reference}
+\hypertarget{class_ainslie_a_p_i_1_1_helpers_1_1_enums_helper}{}\label{class_ainslie_a_p_i_1_1_helpers_1_1_enums_helper}\index{AinslieAPI.Helpers.EnumsHelper@{AinslieAPI.Helpers.EnumsHelper}}
+
+
+Provides utility methods for working with enums, including conversion to dictionary, fetching descriptions, and parsing.  
+
+
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static Dictionary$<$ int, string $>$ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_enums_helper_a1b24a227e189f2843f9f69389d76fb8c}{Enum\+To\+Dict}} (Type enum\+Type)
+\begin{DoxyCompactList}\small\item\em Converts an enum to a dictionary mapping integer values to descriptions or names. \end{DoxyCompactList}\item 
+static string \mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_enums_helper_aaf950fe96340a07fe99ce27fb5c1a441}{Get\+Enum\+Description}} (Enum enum\+Value)
+\begin{DoxyCompactList}\small\item\em Retrieves the description or name of an enum value. \end{DoxyCompactList}\item 
+static int \mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_enums_helper_adaf2098c1345fac921d4fc308c581ade}{Get\+Enum\+Value}} (Enum enum\+Value)
+\begin{DoxyCompactList}\small\item\em Gets the integer value of an enum. \end{DoxyCompactList}\item 
+static Enum \mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_enums_helper_aac0389e0dec0efd420ed77198f3b0b35}{Get\+Enum\+From\+Description}} (string description, Type enum\+Type)
+\begin{DoxyCompactList}\small\item\em Finds an enum value by its description. \end{DoxyCompactList}\item 
+static Enum \mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_enums_helper_ad8dc941f1c61a1a91146981461e822b6}{Get\+Enum\+From\+Name}} (string value, Type enum\+Type)
+\begin{DoxyCompactList}\small\item\em Retrieves an enum value from its name as a string. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Provides utility methods for working with enums, including conversion to dictionary, fetching descriptions, and parsing. 
+
+Definition at line \mbox{\hyperlink{_enums_helper_8cs_source_l00009}{9}} of file \mbox{\hyperlink{_enums_helper_8cs_source}{Enums\+Helper.\+cs}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_ainslie_a_p_i_1_1_helpers_1_1_enums_helper_a1b24a227e189f2843f9f69389d76fb8c}\label{class_ainslie_a_p_i_1_1_helpers_1_1_enums_helper_a1b24a227e189f2843f9f69389d76fb8c} 
+\index{AinslieAPI.Helpers.EnumsHelper@{AinslieAPI.Helpers.EnumsHelper}!EnumToDict@{EnumToDict}}
+\index{EnumToDict@{EnumToDict}!AinslieAPI.Helpers.EnumsHelper@{AinslieAPI.Helpers.EnumsHelper}}
+\doxysubsubsection{\texorpdfstring{EnumToDict()}{EnumToDict()}}
+{\footnotesize\ttfamily static Dictionary$<$ int, string $>$ Ainslie\+API.\+Helpers.\+Enums\+Helper.\+Enum\+To\+Dict (\begin{DoxyParamCaption}\item[{Type}]{enum\+Type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Converts an enum to a dictionary mapping integer values to descriptions or names. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em enum\+Type} & The type of the enum to convert.\\
+\hline
+\end{DoxyParams}
+
+
+\begin{DoxyReturn}{Returns}
+A Dictionary$<$\+TKey, TValue$>$ with enum values as keys and descriptions or names as values.
+\end{DoxyReturn}
+
+
+Utilises the Description\+Attribute for the dictionary values when available; falls back to enum names otherwise. useage Enums.\+Enum\+To\+Dict(New Product\+Filters().Get\+Type) 
+
+Definition at line \mbox{\hyperlink{_enums_helper_8cs_source_l00024}{24}} of file \mbox{\hyperlink{_enums_helper_8cs_source}{Enums\+Helper.\+cs}}.
+
+\Hypertarget{class_ainslie_a_p_i_1_1_helpers_1_1_enums_helper_aaf950fe96340a07fe99ce27fb5c1a441}\label{class_ainslie_a_p_i_1_1_helpers_1_1_enums_helper_aaf950fe96340a07fe99ce27fb5c1a441} 
+\index{AinslieAPI.Helpers.EnumsHelper@{AinslieAPI.Helpers.EnumsHelper}!GetEnumDescription@{GetEnumDescription}}
+\index{GetEnumDescription@{GetEnumDescription}!AinslieAPI.Helpers.EnumsHelper@{AinslieAPI.Helpers.EnumsHelper}}
+\doxysubsubsection{\texorpdfstring{GetEnumDescription()}{GetEnumDescription()}}
+{\footnotesize\ttfamily static string Ainslie\+API.\+Helpers.\+Enums\+Helper.\+Get\+Enum\+Description (\begin{DoxyParamCaption}\item[{Enum}]{enum\+Value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Retrieves the description or name of an enum value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em enum\+Value} & The enum value to describe.\\
+\hline
+\end{DoxyParams}
+
+
+\begin{DoxyReturn}{Returns}
+The description attribute or name of the enum value as a string
+\end{DoxyReturn}
+
+
+Prefers the Description\+Attribute value if present; otherwise, returns the enum\textquotesingle{}s name. useage Enums.\+Get\+Enum\+Description(Product\+Filters.\+Price\+Low\+High) 
+
+Definition at line \mbox{\hyperlink{_enums_helper_8cs_source_l00060}{60}} of file \mbox{\hyperlink{_enums_helper_8cs_source}{Enums\+Helper.\+cs}}.
+
+\Hypertarget{class_ainslie_a_p_i_1_1_helpers_1_1_enums_helper_aac0389e0dec0efd420ed77198f3b0b35}\label{class_ainslie_a_p_i_1_1_helpers_1_1_enums_helper_aac0389e0dec0efd420ed77198f3b0b35} 
+\index{AinslieAPI.Helpers.EnumsHelper@{AinslieAPI.Helpers.EnumsHelper}!GetEnumFromDescription@{GetEnumFromDescription}}
+\index{GetEnumFromDescription@{GetEnumFromDescription}!AinslieAPI.Helpers.EnumsHelper@{AinslieAPI.Helpers.EnumsHelper}}
+\doxysubsubsection{\texorpdfstring{GetEnumFromDescription()}{GetEnumFromDescription()}}
+{\footnotesize\ttfamily static Enum Ainslie\+API.\+Helpers.\+Enums\+Helper.\+Get\+Enum\+From\+Description (\begin{DoxyParamCaption}\item[{string}]{description,  }\item[{Type}]{enum\+Type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Finds an enum value by its description. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em description} & The description to search for.\\
+\hline
+{\em enum\+Type} & The enum type to search within.\\
+\hline
+\end{DoxyParams}
+
+
+\begin{DoxyReturn}{Returns}
+The Enum value matching the description, or null if not found.
+\end{DoxyReturn}
+
+
+Matches the enum value whose Description\+Attribute matches the provided description. 
+
+Definition at line \mbox{\hyperlink{_enums_helper_8cs_source_l00118}{118}} of file \mbox{\hyperlink{_enums_helper_8cs_source}{Enums\+Helper.\+cs}}.
+
+\Hypertarget{class_ainslie_a_p_i_1_1_helpers_1_1_enums_helper_ad8dc941f1c61a1a91146981461e822b6}\label{class_ainslie_a_p_i_1_1_helpers_1_1_enums_helper_ad8dc941f1c61a1a91146981461e822b6} 
+\index{AinslieAPI.Helpers.EnumsHelper@{AinslieAPI.Helpers.EnumsHelper}!GetEnumFromName@{GetEnumFromName}}
+\index{GetEnumFromName@{GetEnumFromName}!AinslieAPI.Helpers.EnumsHelper@{AinslieAPI.Helpers.EnumsHelper}}
+\doxysubsubsection{\texorpdfstring{GetEnumFromName()}{GetEnumFromName()}}
+{\footnotesize\ttfamily static Enum Ainslie\+API.\+Helpers.\+Enums\+Helper.\+Get\+Enum\+From\+Name (\begin{DoxyParamCaption}\item[{string}]{value,  }\item[{Type}]{enum\+Type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Retrieves an enum value from its name as a string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & The name of the enum value.\\
+\hline
+{\em enum\+Type} & The type of the enum.\\
+\hline
+\end{DoxyParams}
+
+
+\begin{DoxyReturn}{Returns}
+The Enum value matching the name, or null if not found.
+\end{DoxyReturn}
+
+
+Parses the string as an enum of the provided type. 
+
+Definition at line \mbox{\hyperlink{_enums_helper_8cs_source_l00146}{146}} of file \mbox{\hyperlink{_enums_helper_8cs_source}{Enums\+Helper.\+cs}}.
+
+\Hypertarget{class_ainslie_a_p_i_1_1_helpers_1_1_enums_helper_adaf2098c1345fac921d4fc308c581ade}\label{class_ainslie_a_p_i_1_1_helpers_1_1_enums_helper_adaf2098c1345fac921d4fc308c581ade} 
+\index{AinslieAPI.Helpers.EnumsHelper@{AinslieAPI.Helpers.EnumsHelper}!GetEnumValue@{GetEnumValue}}
+\index{GetEnumValue@{GetEnumValue}!AinslieAPI.Helpers.EnumsHelper@{AinslieAPI.Helpers.EnumsHelper}}
+\doxysubsubsection{\texorpdfstring{GetEnumValue()}{GetEnumValue()}}
+{\footnotesize\ttfamily static int Ainslie\+API.\+Helpers.\+Enums\+Helper.\+Get\+Enum\+Value (\begin{DoxyParamCaption}\item[{Enum}]{enum\+Value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Gets the integer value of an enum. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em enum\+Value} & The enum to get the value from.\\
+\hline
+\end{DoxyParams}
+
+
+\begin{DoxyReturn}{Returns}
+The int value of the enum.
+\end{DoxyReturn}
+
+
+Converts the enum to its underlying integer value. 
+
+Definition at line \mbox{\hyperlink{_enums_helper_8cs_source_l00094}{94}} of file \mbox{\hyperlink{_enums_helper_8cs_source}{Enums\+Helper.\+cs}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+STRIDER/source/repos/\+Ainslie\+API/\+Helpers/\mbox{\hyperlink{_enums_helper_8cs}{Enums\+Helper.\+cs}}\end{DoxyCompactItemize}

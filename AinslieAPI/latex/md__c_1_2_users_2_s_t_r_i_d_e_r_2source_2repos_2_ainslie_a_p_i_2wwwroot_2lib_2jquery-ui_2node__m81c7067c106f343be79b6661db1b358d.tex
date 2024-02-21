@@ -1,0 +1,154 @@
+\chapter{Controlling Flow\+: callbacks are easy}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m81c7067c106f343be79b6661db1b358d}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m81c7067c106f343be79b6661db1b358d}\index{Controlling Flow: callbacks are easy@{Controlling Flow: callbacks are easy}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m81c7067c106f343be79b6661db1b358d_autotoc_md4575}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m81c7067c106f343be79b6661db1b358d_autotoc_md4575}%
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m81c7067c106f343be79b6661db1b358d_autotoc_md4576}{}\doxysection{\texorpdfstring{What\textquotesingle{}s actually hard?}{What\textquotesingle{}s actually hard?}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m81c7067c106f343be79b6661db1b358d_autotoc_md4576}
+
+\begin{DoxyItemize}
+\item Doing a bunch of things in a specific order.
+\item Knowing when stuff is done.
+\item Handling failures.
+\item Breaking up functionality into parts (avoid nested inline callbacks)
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m81c7067c106f343be79b6661db1b358d_autotoc_md4577}{}\doxysection{\texorpdfstring{Common Mistakes}{Common Mistakes}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m81c7067c106f343be79b6661db1b358d_autotoc_md4577}
+
+\begin{DoxyItemize}
+\item Abandoning convention and consistency.
+\item Putting all callbacks inline.
+\item Using libraries without grokking them.
+\item Trying to make async code look sync.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m81c7067c106f343be79b6661db1b358d_autotoc_md4578}{}\doxysection{\texorpdfstring{Define Conventions}{Define Conventions}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m81c7067c106f343be79b6661db1b358d_autotoc_md4578}
+
+\begin{DoxyItemize}
+\item Two kinds of functions\+: {\itshape actors} take action, {\itshape callbacks} get results.
+\item Essentially the continuation pattern. Resulting code {\itshape looks} similar to fibers, but is {\itshape much} simpler to implement.
+\item Node works this way in the lowlevel APIs already, and it\textquotesingle{}s very ﬂexible.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m81c7067c106f343be79b6661db1b358d_autotoc_md4579}{}\doxysection{\texorpdfstring{Callbacks}{Callbacks}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m81c7067c106f343be79b6661db1b358d_autotoc_md4579}
+
+\begin{DoxyItemize}
+\item Simple responders
+\item Must always be prepared to handle errors, that\textquotesingle{}s why it\textquotesingle{}s the first argument.
+\item Often inline anonymous, but not always.
+\item Can trap and call other callbacks with modified data, or pass errors upwards.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m81c7067c106f343be79b6661db1b358d_autotoc_md4580}{}\doxysection{\texorpdfstring{Actors}{Actors}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m81c7067c106f343be79b6661db1b358d_autotoc_md4580}
+
+\begin{DoxyItemize}
+\item Last argument is a callback.
+\item If any error occurs, and can\textquotesingle{}t be handled, pass it to the callback and return.
+\item Must not throw. Return value ignored.
+\item return x ==\texorpdfstring{$>$}{>} return cb(null, x)
+\item throw er ==\texorpdfstring{$>$}{>} return cb(er)
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ return\ true\ if\ a\ path\ is\ either}
+\DoxyCodeLine{//\ a\ symlink\ or\ a\ directory.}
+\DoxyCodeLine{function\ isLinkOrDir\ (path,\ cb)\ \{}
+\DoxyCodeLine{\ \ fs.lstat(path,\ function\ (er,\ s)\ \{}
+\DoxyCodeLine{\ \ \ \ if\ (er)\ return\ cb(er)}
+\DoxyCodeLine{\ \ \ \ return\ cb(null,\ s.isDirectory()\ ||\ s.isSymbolicLink())}
+\DoxyCodeLine{\ \ \})}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m81c7067c106f343be79b6661db1b358d_autotoc_md4581}{}\doxysection{\texorpdfstring{async\+Map}{async\+Map}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m81c7067c106f343be79b6661db1b358d_autotoc_md4581}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m81c7067c106f343be79b6661db1b358d_autotoc_md4582}{}\doxysubsection{\texorpdfstring{Usecases}{Usecases}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m81c7067c106f343be79b6661db1b358d_autotoc_md4582}
+
+\begin{DoxyItemize}
+\item I have a list of 10 files, and need to read all of them, and then continue when they\textquotesingle{}re all done.
+\item I have a dozen URLs, and need to fetch them all, and then continue when they\textquotesingle{}re all done.
+\item I have 4 connected users, and need to send a message to all of them, and then continue when that\textquotesingle{}s done.
+\item I have a list of n things, and I need to dosomething with all of them, in parallel, and get the results once they\textquotesingle{}re all complete.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m81c7067c106f343be79b6661db1b358d_autotoc_md4583}{}\doxysubsection{\texorpdfstring{Solution}{Solution}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m81c7067c106f343be79b6661db1b358d_autotoc_md4583}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ asyncMap\ =\ require("{}slide"{}).asyncMap}
+\DoxyCodeLine{function\ writeFiles\ (files,\ what,\ cb)\ \{}
+\DoxyCodeLine{\ \ asyncMap(files,\ function\ (f,\ cb)\ \{}
+\DoxyCodeLine{\ \ \ \ fs.writeFile(f,\ what,\ cb)}
+\DoxyCodeLine{\ \ \},\ cb)}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{writeFiles([my,\ file,\ list],\ "{}foo"{},\ cb)}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m81c7067c106f343be79b6661db1b358d_autotoc_md4584}{}\doxysection{\texorpdfstring{chain}{chain}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m81c7067c106f343be79b6661db1b358d_autotoc_md4584}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m81c7067c106f343be79b6661db1b358d_autotoc_md4585}{}\doxysubsection{\texorpdfstring{Usecases}{Usecases}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m81c7067c106f343be79b6661db1b358d_autotoc_md4585}
+
+\begin{DoxyItemize}
+\item I have to do a bunch of things, in order. Get db credentials out of a file, read the data from the db, write that data to another file.
+\item If anything fails, do not continue.
+\item I still have to provide an array of functions, which is a lot of boilerplate, and a pita if your functions take args like
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{function\ (cb)\ \{}
+\DoxyCodeLine{\ \ blah(a,\ b,\ c,\ cb)}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item Results are discarded, which is a bit lame.
+\item No way to branch.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m81c7067c106f343be79b6661db1b358d_autotoc_md4586}{}\doxysubsection{\texorpdfstring{Solution}{Solution}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m81c7067c106f343be79b6661db1b358d_autotoc_md4586}
+
+\begin{DoxyItemize}
+\item reduces boilerplate by converting an array of \mbox{[}fn, args\mbox{]} to an actor that takes no arguments (except cb)
+\item A bit like Function\+::bind, but tailored for our use-\/case.
+\item bind\+Actor(obj, "{}method"{}, a, b, c)
+\item bind\+Actor(fn, a, b, c)
+\item bind\+Actor(obj, fn, a, b, c)
+\item branching, skipping over falsey arguments
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{chain([}
+\DoxyCodeLine{\ \ doThing\ \&\&\ [thing,\ a,\ b,\ c]}
+\DoxyCodeLine{,\ isFoo\ \&\&\ [doFoo,\ "{}foo"{}]}
+\DoxyCodeLine{,\ subChain\ \&\&\ [chain,\ [one,\ two]]}
+\DoxyCodeLine{],\ cb)}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item tracking results\+: results are stored in an optional array passed as argument, last result is always in results\mbox{[}results.\+length -\/ 1\mbox{]}.
+\item treat chain.\+first and chain.\+last as placeholders for the first/last result up until that point.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m81c7067c106f343be79b6661db1b358d_autotoc_md4587}{}\doxysubsection{\texorpdfstring{Non-\/trivial example}{Non-\/trivial example}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m81c7067c106f343be79b6661db1b358d_autotoc_md4587}
+
+\begin{DoxyItemize}
+\item Read number files in a directory
+\item Add the results together
+\item Ping a web service with the result
+\item Write the response to a file
+\item Delete the number files
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ chain\ =\ require("{}slide"{}).chain}
+\DoxyCodeLine{function\ myProgram\ (cb)\ \{}
+\DoxyCodeLine{\ \ var\ res\ =\ [],\ last\ =\ chain.last,\ first\ =\ chain.first}
+\DoxyCodeLine{\ \ chain([}
+\DoxyCodeLine{\ \ \ \ [fs,\ "{}readdir"{},\ "{}the-\/directory"{}]}
+\DoxyCodeLine{\ \ ,\ [readFiles,\ "{}the-\/directory"{},\ last]}
+\DoxyCodeLine{\ \ ,\ [sum,\ last]}
+\DoxyCodeLine{\ \ ,\ [ping,\ "{}POST"{},\ "{}example.com"{},\ 80,\ "{}/foo"{},\ last]}
+\DoxyCodeLine{\ \ ,\ [fs,\ "{}writeFile"{},\ "{}result.txt"{},\ last]}
+\DoxyCodeLine{\ \ ,\ [rmFiles,\ "{}./the-\/directory"{},\ first]}
+\DoxyCodeLine{\ \ ],\ res,\ cb)}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m81c7067c106f343be79b6661db1b358d_autotoc_md4588}{}\doxysection{\texorpdfstring{Conclusion\+: Convention Profits}{Conclusion\+: Convention Profits}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m81c7067c106f343be79b6661db1b358d_autotoc_md4588}
+
+\begin{DoxyItemize}
+\item Consistent API from top to bottom.
+\item Sneak in at any point to inject functionality. Testable, reusable, ...
+\item When ruby and python users whine, you can smile condescendingly. 
+\end{DoxyItemize}

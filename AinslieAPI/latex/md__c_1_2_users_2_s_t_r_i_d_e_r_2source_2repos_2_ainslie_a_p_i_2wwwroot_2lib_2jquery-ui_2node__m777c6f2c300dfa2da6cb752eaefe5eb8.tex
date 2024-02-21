@@ -1,0 +1,61 @@
+\chapter{registry-\/auth-\/token}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m777c6f2c300dfa2da6cb752eaefe5eb8}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m777c6f2c300dfa2da6cb752eaefe5eb8}\index{registry-\/auth-\/token@{registry-\/auth-\/token}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m777c6f2c300dfa2da6cb752eaefe5eb8_autotoc_md4226}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m777c6f2c300dfa2da6cb752eaefe5eb8_autotoc_md4226}%
+ \href{http://browsenpm.org/package/registry-auth-token}{\texttt{ }}\href{https://travis-ci.org/rexxars/registry-auth-token}{\texttt{ }}
+
+Get the auth token set for an npm registry from {\ttfamily .npmrc}. Also allows fetching the configured registry URL for a given npm scope.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m777c6f2c300dfa2da6cb752eaefe5eb8_autotoc_md4227}{}\doxysection{\texorpdfstring{Installing}{Installing}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m777c6f2c300dfa2da6cb752eaefe5eb8_autotoc_md4227}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ -\/-\/save\ registry-\/auth-\/token}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m777c6f2c300dfa2da6cb752eaefe5eb8_autotoc_md4228}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m777c6f2c300dfa2da6cb752eaefe5eb8_autotoc_md4228}
+Returns an object containing {\ttfamily token} and {\ttfamily type}, or {\ttfamily undefined} if no token can be found. {\ttfamily type} can be either {\ttfamily Bearer} or {\ttfamily Basic}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ getAuthToken\ =\ require('registry-\/auth-\/token')}
+\DoxyCodeLine{var\ getRegistryUrl\ =\ require('registry-\/auth-\/token/registry-\/url')}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Get\ auth\ token\ and\ type\ for\ default\ \`{}registry`\ set\ in\ \`{}.npmrc`}
+\DoxyCodeLine{console.log(getAuthToken())\ //\ \{token:\ 'someToken',\ type:\ 'Bearer'\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Get\ auth\ token\ for\ a\ specific\ registry\ URL}
+\DoxyCodeLine{console.log(getAuthToken('//registry.foo.bar'))}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Find\ the\ registry\ auth\ token\ for\ a\ given\ URL\ (with\ deep\ path):}
+\DoxyCodeLine{//\ If\ registry\ is\ at\ \`{}//some.host/registry`}
+\DoxyCodeLine{//\ URL\ passed\ is\ \`{}//some.host/registry/deep/path`}
+\DoxyCodeLine{//\ Will\ find\ token\ the\ closest\ matching\ path;\ \`{}//some.host/registry`}
+\DoxyCodeLine{console.log(getAuthToken('//some.host/registry/deep/path',\ \{recursive:\ true\}))}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Find\ the\ configured\ registry\ url\ for\ scope\ \`{}@foobar`.}
+\DoxyCodeLine{//\ Falls\ back\ to\ the\ global\ registry\ if\ not\ defined.}
+\DoxyCodeLine{console.log(getRegistryUrl('@foobar'))}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Use\ the\ npm\ config\ that\ is\ passed\ in}
+\DoxyCodeLine{console.log(getRegistryUrl('http://registry.foobar.eu/',\ \{}
+\DoxyCodeLine{\ \ npmrc:\ \{}
+\DoxyCodeLine{\ \ \ \ 'registry':\ 'http://registry.foobar.eu/',}
+\DoxyCodeLine{\ \ \ \ '//registry.foobar.eu/:\_authToken':\ 'qar'}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}))}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m777c6f2c300dfa2da6cb752eaefe5eb8_autotoc_md4229}{}\doxysection{\texorpdfstring{Return value}{Return value}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m777c6f2c300dfa2da6cb752eaefe5eb8_autotoc_md4229}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ If\ auth\ info\ can\ be\ found:}
+\DoxyCodeLine{\{token:\ 'someToken',\ type:\ 'Bearer'\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Or:}
+\DoxyCodeLine{\{token:\ 'someOtherToken',\ type:\ 'Basic'\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Or,\ if\ nothing\ is\ found:}
+\DoxyCodeLine{undefined}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m777c6f2c300dfa2da6cb752eaefe5eb8_autotoc_md4230}{}\doxysection{\texorpdfstring{Security}{Security}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m777c6f2c300dfa2da6cb752eaefe5eb8_autotoc_md4230}
+Please be careful when using this. Leaking your auth token is dangerous.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m777c6f2c300dfa2da6cb752eaefe5eb8_autotoc_md4231}{}\doxysection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m777c6f2c300dfa2da6cb752eaefe5eb8_autotoc_md4231}
+MIT-\/licensed. See LICENSE. 

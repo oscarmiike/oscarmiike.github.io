@@ -1,0 +1,57 @@
+\doxysection{Ainslie\+Api\+Controller.\+cs}
+\hypertarget{_ainslie_api_controller_8cs_source}{}\label{_ainslie_api_controller_8cs_source}\index{C:/Users/STRIDER/source/repos/TaskAPI/Controllers/AinslieApiController.cs@{C:/Users/STRIDER/source/repos/TaskAPI/Controllers/AinslieApiController.cs}}
+\mbox{\hyperlink{_ainslie_api_controller_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_ainslie_api_controller_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_task_a_p_i_1_1_contexts}{TaskAPI.Contexts}};}
+\DoxyCodeLine{\Hypertarget{_ainslie_api_controller_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_task_a_p_i_1_1_services}{TaskAPI.Services}};}
+\DoxyCodeLine{\Hypertarget{_ainslie_api_controller_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }Microsoft.AspNetCore.Http;}
+\DoxyCodeLine{\Hypertarget{_ainslie_api_controller_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }Microsoft.AspNetCore.Mvc;}
+\DoxyCodeLine{\Hypertarget{_ainslie_api_controller_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }Microsoft.EntityFrameworkCore;}
+\DoxyCodeLine{\Hypertarget{_ainslie_api_controller_8cs_source_l00006}00006\ \textcolor{keyword}{using\ }System.Runtime;}
+\DoxyCodeLine{\Hypertarget{_ainslie_api_controller_8cs_source_l00007}00007\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_task_a_p_i_1_1_helpers}{TaskAPI.Helpers}};}
+\DoxyCodeLine{\Hypertarget{_ainslie_api_controller_8cs_source_l00008}00008\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i}{TaskAPI.Models.DTO.InternalAPI}};}
+\DoxyCodeLine{\Hypertarget{_ainslie_api_controller_8cs_source_l00009}00009\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_task_a_p_i_1_1_helpers_1_1_settings}{TaskAPI.Helpers.Settings}};}
+\DoxyCodeLine{\Hypertarget{_ainslie_api_controller_8cs_source_l00010}00010\ \textcolor{keyword}{using\ }Microsoft.Extensions.Options;}
+\DoxyCodeLine{\Hypertarget{_ainslie_api_controller_8cs_source_l00011}00011\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_task_a_p_i_1_1_models_1_1_d_t_o}{TaskAPI.Models.DTO}};}
+\DoxyCodeLine{\Hypertarget{_ainslie_api_controller_8cs_source_l00012}00012\ \textcolor{keyword}{using\ }Newtonsoft.Json;}
+\DoxyCodeLine{\Hypertarget{_ainslie_api_controller_8cs_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{_ainslie_api_controller_8cs_source_l00014}00014\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_task_a_p_i_1_1_controllers}{TaskAPI.Controllers}};}
+\DoxyCodeLine{\Hypertarget{_ainslie_api_controller_8cs_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{_ainslie_api_controller_8cs_source_l00016}00016\ [Route(\textcolor{stringliteral}{"{}[controller]"{}})]}
+\DoxyCodeLine{\Hypertarget{_ainslie_api_controller_8cs_source_l00017}00017\ [ApiController]}
+\DoxyCodeLine{\Hypertarget{_ainslie_api_controller_8cs_source_l00018}\mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_ainslie_api_controller}{00018}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_ainslie_api_controller}{AinslieApiController}}\ :\ ControllerBase}
+\DoxyCodeLine{\Hypertarget{_ainslie_api_controller_8cs_source_l00019}00019\ \{}
+\DoxyCodeLine{\Hypertarget{_ainslie_api_controller_8cs_source_l00020}00020\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}\ \_logService;}
+\DoxyCodeLine{\Hypertarget{_ainslie_api_controller_8cs_source_l00021}00021\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service}{InternalAPIService}}\ \_iapiService;}
+\DoxyCodeLine{\Hypertarget{_ainslie_api_controller_8cs_source_l00022}00022\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings}{TaskAPISettings}}\ \_settings;}
+\DoxyCodeLine{\Hypertarget{_ainslie_api_controller_8cs_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{_ainslie_api_controller_8cs_source_l00024}\mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_ainslie_api_controller_a5659b2ee9b31de60fd642ab0e61a0f75}{00024}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_ainslie_api_controller_a5659b2ee9b31de60fd642ab0e61a0f75}{AinslieApiController}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}\ logService,\ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service}{InternalAPIService}}\ internalAPIService,\ IOptions<TaskAPISettings>\ settings)}
+\DoxyCodeLine{\Hypertarget{_ainslie_api_controller_8cs_source_l00025}00025\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ainslie_api_controller_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \_logService\ =\ logService;}
+\DoxyCodeLine{\Hypertarget{_ainslie_api_controller_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \_iapiService\ =\ internalAPIService;}
+\DoxyCodeLine{\Hypertarget{_ainslie_api_controller_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \_settings\ =\ settings.Value;}
+\DoxyCodeLine{\Hypertarget{_ainslie_api_controller_8cs_source_l00029}00029\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ainslie_api_controller_8cs_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_ainslie_api_controller_8cs_source_l00031}00031\ \ \ \ \ [HttpGet(\textcolor{stringliteral}{"{}trimlogs"{}})]}
+\DoxyCodeLine{\Hypertarget{_ainslie_api_controller_8cs_source_l00032}\mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_ainslie_api_controller_a6b53c8ff5898ee660ce3eec1d8e9d13e}{00032}}\ \ \ \ \ \textcolor{keyword}{public}\ ActionResult<LogTrimResult>\ \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_ainslie_api_controller_a6b53c8ff5898ee660ce3eec1d8e9d13e}{TrimLogs}}()}
+\DoxyCodeLine{\Hypertarget{_ainslie_api_controller_8cs_source_l00033}00033\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ainslie_api_controller_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a5c2a67dbd8beb6f821c46b8d052d59ea}{LogInformation}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.AinslieApiController,\ \textcolor{stringliteral}{"{}ainslie\ api\ log\ trim\ initiated"{}});}
+\DoxyCodeLine{\Hypertarget{_ainslie_api_controller_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result}{LogTrimResult}}\ result\ =\ \_iapiService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_a8a31c4c8d5371ef13d5ab0da08186829}{AinslieApiTrimLogs}}();}
+\DoxyCodeLine{\Hypertarget{_ainslie_api_controller_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (result.\mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result_ac0dcb80f3d1f49fc0fdc79aca9faf210}{error}})}
+\DoxyCodeLine{\Hypertarget{_ainslie_api_controller_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ainslie_api_controller_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \_iapiService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_aeffeb1d3d59aeeab65dfe72691d21600}{SendEmail}}(\textcolor{keyword}{new}\ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_email_post}{EmailPost}}()}
+\DoxyCodeLine{\Hypertarget{_ainslie_api_controller_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ainslie_api_controller_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ EmailFrom\ =\ \_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_af39dc0933cd608b26e7bc4f82951d356}{GeneralSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings_ac0a0b89d2e7cf7f820e5663a1a4cffbf}{NotificationEmailFrom}},}
+\DoxyCodeLine{\Hypertarget{_ainslie_api_controller_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ EmailTo\ =\ \_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_af39dc0933cd608b26e7bc4f82951d356}{GeneralSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings_a25434a5471214771ae507f7152073898}{NotificationEmailTo}},}
+\DoxyCodeLine{\Hypertarget{_ainslie_api_controller_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ NameFrom\ =\ \_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_af39dc0933cd608b26e7bc4f82951d356}{GeneralSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings_a082a8e92b97a7d83196f1d0056241042}{NotificationEmailName}},}
+\DoxyCodeLine{\Hypertarget{_ainslie_api_controller_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Subject\ =\ \textcolor{stringliteral}{"{}Error\ trimming\ ainslie\ api\ logs"{}},}
+\DoxyCodeLine{\Hypertarget{_ainslie_api_controller_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ HTMLBody\ =\ \$\textcolor{stringliteral}{"{}Task\ API\ was\ unable\ to\ trim\ ainslie\ api\ logs<br><br>\{JsonConvert.SerializeObject(result)\}"{}}}
+\DoxyCodeLine{\Hypertarget{_ainslie_api_controller_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_ainslie_api_controller_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ainslie_api_controller_8cs_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_ainslie_api_controller_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a5c2a67dbd8beb6f821c46b8d052d59ea}{LogInformation}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.AinslieApiController,\ \$\textcolor{stringliteral}{"{}ainslie\ api\ log\ trim\ completed"{}},\ result);}
+\DoxyCodeLine{\Hypertarget{_ainslie_api_controller_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Ok(result);}
+\DoxyCodeLine{\Hypertarget{_ainslie_api_controller_8cs_source_l00050}00050\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ainslie_api_controller_8cs_source_l00051}00051\ \}}
+
+\end{DoxyCode}

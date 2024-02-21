@@ -1,0 +1,43 @@
+\chapter{lockfile}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc7fb1fd85b2934e3348b2f39926939c3}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc7fb1fd85b2934e3348b2f39926939c3}\index{lockfile@{lockfile}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc7fb1fd85b2934e3348b2f39926939c3_autotoc_md3168}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc7fb1fd85b2934e3348b2f39926939c3_autotoc_md3168}%
+ A very polite lock file utility, which endeavors to not litter, and to wait patiently for others.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc7fb1fd85b2934e3348b2f39926939c3_autotoc_md3169}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc7fb1fd85b2934e3348b2f39926939c3_autotoc_md3169}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ lockFile\ =\ require('lockfile')}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ opts\ is\ optional,\ and\ defaults\ to\ \{\}}
+\DoxyCodeLine{lockFile.lock('some-\/file.lock',\ opts,\ function\ (er)\ \{}
+\DoxyCodeLine{\ \ //\ if\ the\ er\ happens,\ then\ it\ failed\ to\ acquire\ a\ lock.}
+\DoxyCodeLine{\ \ //\ if\ there\ was\ not\ an\ error,\ then\ the\ file\ was\ created,}
+\DoxyCodeLine{\ \ //\ and\ won't\ be\ deleted\ until\ we\ unlock\ it.}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ //\ do\ my\ stuff,\ free\ of\ interruptions}
+\DoxyCodeLine{\ \ //\ then,\ some\ time\ later,\ do:}
+\DoxyCodeLine{\ \ lockFile.unlock('some-\/file.lock',\ function\ (er)\ \{}
+\DoxyCodeLine{\ \ \ \ //\ er\ means\ that\ an\ error\ happened,\ and\ is\ probably\ bad.}
+\DoxyCodeLine{\ \ \})}
+\DoxyCodeLine{\})}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc7fb1fd85b2934e3348b2f39926939c3_autotoc_md3170}{}\doxysection{\texorpdfstring{Methods}{Methods}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc7fb1fd85b2934e3348b2f39926939c3_autotoc_md3170}
+Sync methods return the value/throw the error, others don\textquotesingle{}t. Standard node fs stuff.
+
+All known locks are removed when the process exits. Of course, it\textquotesingle{}s possible for certain types of failures to cause this to fail, but a best effort is made to not be a litterbug.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc7fb1fd85b2934e3348b2f39926939c3_autotoc_md3171}{}\doxysubsection{\texorpdfstring{lock\+File.\+lock(path, \mbox{[}opts\mbox{]}, cb)}{lock\+File.\+lock(path, \mbox{[}opts\mbox{]}, cb)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc7fb1fd85b2934e3348b2f39926939c3_autotoc_md3171}
+Acquire a file lock on the specified path\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc7fb1fd85b2934e3348b2f39926939c3_autotoc_md3172}{}\doxysubsection{\texorpdfstring{lock\+File.\+lock\+Sync(path, \mbox{[}opts\mbox{]})}{lock\+File.\+lock\+Sync(path, \mbox{[}opts\mbox{]})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc7fb1fd85b2934e3348b2f39926939c3_autotoc_md3172}
+Acquire a file lock on the specified path\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc7fb1fd85b2934e3348b2f39926939c3_autotoc_md3173}{}\doxysubsection{\texorpdfstring{lock\+File.\+unlock(path, cb)}{lock\+File.\+unlock(path, cb)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc7fb1fd85b2934e3348b2f39926939c3_autotoc_md3173}
+Close and unlink the lockfile.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc7fb1fd85b2934e3348b2f39926939c3_autotoc_md3174}{}\doxysubsection{\texorpdfstring{lock\+File.\+unlock\+Sync(path)}{lock\+File.\+unlock\+Sync(path)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc7fb1fd85b2934e3348b2f39926939c3_autotoc_md3174}
+Close and unlink the lockfile.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc7fb1fd85b2934e3348b2f39926939c3_autotoc_md3175}{}\doxysubsection{\texorpdfstring{lock\+File.\+check(path, \mbox{[}opts\mbox{]}, cb)}{lock\+File.\+check(path, \mbox{[}opts\mbox{]}, cb)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc7fb1fd85b2934e3348b2f39926939c3_autotoc_md3175}
+Check if the lockfile is locked and not stale.
+
+Callback is called with {\ttfamily cb(error, is\+Locked)}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc7fb1fd85b2934e3348b2f39926939c3_autotoc_md3176}{}\doxysubsection{\texorpdfstring{lock\+File.\+check\+Sync(path, \mbox{[}opts\mbox{]})}{lock\+File.\+check\+Sync(path, \mbox{[}opts\mbox{]})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc7fb1fd85b2934e3348b2f39926939c3_autotoc_md3176}
+Check if the lockfile is locked and not stale.
+
+Returns boolean.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc7fb1fd85b2934e3348b2f39926939c3_autotoc_md3177}{}\doxysection{\texorpdfstring{Options}{Options}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc7fb1fd85b2934e3348b2f39926939c3_autotoc_md3177}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc7fb1fd85b2934e3348b2f39926939c3_autotoc_md3178}{}\doxysubsection{\texorpdfstring{opts.\+wait}{opts.\+wait}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc7fb1fd85b2934e3348b2f39926939c3_autotoc_md3178}
+A number of milliseconds to wait for locks to expire before giving up. Only used by lock\+File.\+lock. Poll for {\ttfamily opts.\+wait} ms. If the lock is not cleared by the time the wait expires, then it returns with the original error.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc7fb1fd85b2934e3348b2f39926939c3_autotoc_md3179}{}\doxysubsection{\texorpdfstring{opts.\+poll\+Period}{opts.\+poll\+Period}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc7fb1fd85b2934e3348b2f39926939c3_autotoc_md3179}
+When using {\ttfamily opts.\+wait}, this is the period in ms in which it polls to check if the lock has expired. Defaults to {\ttfamily 100}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc7fb1fd85b2934e3348b2f39926939c3_autotoc_md3180}{}\doxysubsection{\texorpdfstring{opts.\+stale}{opts.\+stale}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc7fb1fd85b2934e3348b2f39926939c3_autotoc_md3180}
+A number of milliseconds before locks are considered to have expired.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc7fb1fd85b2934e3348b2f39926939c3_autotoc_md3181}{}\doxysubsection{\texorpdfstring{opts.\+retries}{opts.\+retries}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc7fb1fd85b2934e3348b2f39926939c3_autotoc_md3181}
+Used by lock and lock\+Sync. Retry {\ttfamily n} number of times before giving up.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc7fb1fd85b2934e3348b2f39926939c3_autotoc_md3182}{}\doxysubsection{\texorpdfstring{opts.\+retry\+Wait}{opts.\+retry\+Wait}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc7fb1fd85b2934e3348b2f39926939c3_autotoc_md3182}
+Used by lock. Wait {\ttfamily n} milliseconds before retrying. 

@@ -1,0 +1,228 @@
+\chapter{string}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca}\index{string@{string}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1378}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1378}%
+ String utilities.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1379}{}\doxysection{\texorpdfstring{camel\+Case(str)\+:String}{camel\+Case(str)\+:String}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1379}
+Convert string to "{}camel\+Case"{} text.
+
+See\+: \`{}pascal\+Case()\`{}, \`{}un\+Camel\+Case()\`{}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1380}{}\doxysubsection{\texorpdfstring{Example}{Example}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1380}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{camelCase('lorem-\/ipsum-\/dolor');\ //\ "{}loremIpsumDolor"{}}
+\DoxyCodeLine{camelCase('lorem\ ipsum\ dolor');\ //\ "{}loremIpsumDolor"{}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1381}{}\doxysection{\texorpdfstring{contains(str, substring, \mbox{[}from\+Index\mbox{]})\+:Boolean}{contains(str, substring, \mbox{[}from\+Index\mbox{]})\+:Boolean}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1381}
+Checks if string contains the given substring.
+
+See\+: \`{}starts\+With()\`{}, \`{}ends\+With()\`{}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1382}{}\doxysubsection{\texorpdfstring{Example}{Example}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1382}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{contains('lorem',\ 'or');\ \ //\ true}
+\DoxyCodeLine{contains('lorem',\ 'bar');\ //\ false}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1383}{}\doxysection{\texorpdfstring{crop(str, max\+Chars, \mbox{[}append\mbox{]})\+:String}{crop(str, max\+Chars, \mbox{[}append\mbox{]})\+:String}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1383}
+Truncate string at full words. Alias to {\ttfamily truncate(str, max\+Chars, append, true);}.
+
+See\+: \`{}truncate()\`{}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1384}{}\doxysubsection{\texorpdfstring{Example}{Example}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1384}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{crop('lorem\ ipsum\ dolor',\ 10);\ \ \ \ \ \ //\ "{}lorem..."{}}
+\DoxyCodeLine{crop('lorem\ ipsum\ dolor',\ 10,\ '+');\ //\ "{}lorem+"{}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1385}{}\doxysection{\texorpdfstring{ends\+With(str, suffix)\+:Boolean}{ends\+With(str, suffix)\+:Boolean}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1385}
+Checks if string ends with specified suffix.
+
+See\+: \`{}starts\+With()\`{}, \`{}contains()\`{}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1386}{}\doxysubsection{\texorpdfstring{Example}{Example}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1386}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{endsWith('lorem\ ipsum',\ 'lorem');\ //\ false}
+\DoxyCodeLine{endsWith('lorem\ ipsum',\ 'ipsum');\ //\ true}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1387}{}\doxysection{\texorpdfstring{escape\+Html(str)\+:String}{escape\+Html(str)\+:String}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1387}
+Escapes the following special characters for use in HTML\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \&} becomes {\ttfamily \&amp;}
+\item {\ttfamily \texorpdfstring{$<$}{<}} becomes {\ttfamily \&lt;}
+\item {\ttfamily \texorpdfstring{$>$}{>}} becomes {\ttfamily \&gt;}
+\item `'{\ttfamily becomes}\&\#39;{\ttfamily  \texorpdfstring{$\ast$}{*}}"{}$<$tt$>$becomes$<$/tt$>$"{}\`{}  \+No other characters are escaped. To HTML-\/escape other characters as well, use a third-\/party library like $<$a href="{}\href{http://mths.be/he}{\texttt{ http\+://mths.\+be/he}}"{} $>$$<$em$>$he$<$/em$>$$<$/a$>$.  \+See\+: @ref "{}unescape\+Html"{} "{}\`{}unescape\+Html()\`{}"{}  @subsection autotoc\+\_\+md1388 Example  @icode\{js\}  escape\+Html(\textquotesingle{}lorem \& "{}ipsum"{}\textquotesingle{}); // "{}lorem \&amp; \&quot;ipsum\&quot;"{} @endicode     @section autotoc\+\_\+md1389 escape\+Reg\+Exp(str)\+:\+String  \+Escape special chars to be used as literals in Reg\+Exp constructors.  @subsection autotoc\+\_\+md1390 Example  @icode\{js\}  str = escape\+Reg\+Exp(\textquotesingle{}\mbox{[}lorem.\+ipsum\mbox{]}\textquotesingle{}); // "{}\textbackslash{}\mbox{[}lorem\textbackslash{}.ipsum\textbackslash{}\mbox{]}"{} reg = new Reg\+Exp(str);               // /\textbackslash{}\mbox{[}lorem\textbackslash{}.\+ipsum\textbackslash{}\mbox{]}/ @endicode     @section autotoc\+\_\+md1391 escape\+Unicode(str\mbox{[}, should\+Escape\+Printable\mbox{]})\+:\+String  \+Unicode escape chars.  \+It will only escape non-\/printable ASCII chars unless $<$tt$>$should\+Escape\+Printable$<$/tt$>$ is set to $<$tt$>$true$<$/tt$>$.  \+See\+: @ref "{}unescape\+Unicode"{} "{}\`{}unescape\+Unicode()\`{}"{}  @icode\{js\}  escape\+Unicode(\textquotesingle{}føo bår\textquotesingle{}); // $>$ "{}f\textbackslash{}u00f8o b\textbackslash{}u00e5r"{} escape\+Unicode(\textquotesingle{}føo bår\textquotesingle{}, true); // $>$ "{}\textbackslash{}u0066\textbackslash{}u00f8\textbackslash{}u006f\textbackslash{}u0020\textbackslash{}u0062\textbackslash{}u00e5\textbackslash{}u0072"{} @endicode     @section autotoc\+\_\+md1392 hyphenate(str)\+:\+String  \+Replaces spaces with hyphens, split camel\+Case text, remove non-\/word chars, remove accents and convert to lower case.  \+See\+: @ref "{}slugify"{} "{}\`{}slugify()\`{}"{}, @ref "{}underscore"{} "{}\`{}underscore()\`{}"{}, @ref "{}unhyphenate"{} "{}\`{}unhyphenate\`{}"{}  @icode\{js\}  hyphenate(\textquotesingle{} \%\# lorem ipsum  ? \$  dolor\textquotesingle{}); // "{}lorem-\/ipsum-\/dolor"{} hyphenate(\textquotesingle{}spéçïãl çhârs\textquotesingle{});               // "{}special-\/chars"{} hyphenate(\textquotesingle{}lorem\+Ipsum\textquotesingle{});                  // "{}lorem-\/ipsum"{} @endicode     @section autotoc\+\_\+md1393 insert(str, index, partial)\+:\+String  \+Inserts a $<$tt$>$partial$<$/tt$>$ before the given $<$tt$>$index$<$/tt$>$ in the provided $<$tt$>$str$<$/tt$>$. \+If the index is larger than the length of the string the partial is appended at the end. \+A negative index is treated as $<$tt$>$length -\/ index$<$/tt$>$ where $<$tt$>$length$<$/tt$>$ is the length or the string.  @icode\{js\}  insert(\textquotesingle{}this is a sentence\textquotesingle{}, 10, \textquotesingle{}sample \textquotesingle{}); // "{}this is a sample sentence"{} insert(\textquotesingle{}foo\textquotesingle{}, 100, \textquotesingle{}bar\textquotesingle{}); // "{}foobar"{} insert(\textquotesingle{}image.\+png\textquotesingle{}, -\/4, \textquotesingle{}-\/large\textquotesingle{}); // "{}image-\/large.\+png"{} @endicode   @section autotoc\+\_\+md1394 interpolate(str, replacements\mbox{[}, syntax\mbox{]})\+:\+String  \+String interpolation. Format/replace tokens with object properties.  @icode\{js\}  var tmpl = \textquotesingle{}\+Hello \{\{name\}\}!\textquotesingle{}; interpolate(tmpl, \{name\+: \textquotesingle{}\+World\textquotesingle{}\});       // "{}Hello World!"{} interpolate(tmpl, \{name\+: \textquotesingle{}\+Lorem Ipsum\textquotesingle{}\}); // "{}Hello Lorem Ipsum!"{}  tmpl = \textquotesingle{}\+Hello \{\{name.\+first\}\}!\textquotesingle{}; interpolate(tmpl, \{name\+: \{first\+: \textquotesingle{}\+Lorem\textquotesingle{}\}\}); // "{}Hello Lorem!"{} @endicode   \+It uses a mustache-\/like syntax by default but you can set your own format if needed. You can also use Arrays for the replacements (since Arrays are objects as well)\+:  @icode\{js\}  // matches everything inside "{}\$\{\}"{} var syntax = /\textbackslash{}\$\textbackslash{}\{(\mbox{[}\texorpdfstring{$^\wedge$}{\string^}\}\mbox{]}+)\textbackslash{}\}/g; var tmpl = "{}Hello \$\{0\}!"{}; interpolate(tmpl, \mbox{[}\textquotesingle{}\+Foo Bar\textquotesingle{}\mbox{]}, syntax); // "{}Hello Foo Bar!"{} @endicode     @section autotoc\+\_\+md1395 lower\+Case(str)\+:\+String  "{}Safer"{} $<$tt$>$\+String.\+to\+Lower\+Case()$<$/tt$>$. (\+Used internally)  @subsection autotoc\+\_\+md1396 Example  @icode\{js\}  (null).\+to\+Lower\+Case();      // Error! (undefined).\+to\+Lower\+Case(); // Error! lower\+Case(null);           // "{}"{} lower\+Case(undefined);      // "{}"{} @endicode     @section autotoc\+\_\+md1397 lpad(str, min\+Length\mbox{[}, char\mbox{]})\+:\+String  \+Pad string from left with $<$tt$>$char$<$/tt$>$ if its\textquotesingle{} length is smaller than $<$tt$>$min\+Len$<$/tt$>$.  \+See\+: @ref "{}rpad"{} "{}\`{}rpad()\`{}"{}  @subsection autotoc\+\_\+md1398 Example  @icode\{js\}  lpad(\textquotesingle{}a\textquotesingle{}, 5);        // "{} a"{} lpad(\textquotesingle{}a\textquotesingle{}, 5, \textquotesingle{}-\/\textquotesingle{});   // "{}-\/-\/-\/-\/a"{} lpad(\textquotesingle{}abc\textquotesingle{}, 3, \textquotesingle{}-\/\textquotesingle{}); // "{}abc"{} lpad(\textquotesingle{}abc\textquotesingle{}, 4, \textquotesingle{}-\/\textquotesingle{}); // "{}-\/abc"{} @endicode     @section autotoc\+\_\+md1399 ltrim(str, \mbox{[}chars\mbox{]})\+:\+String  \+Remove chars or white-\/spaces from beginning of string.  $<$tt$>$chars$<$/tt$>$ is an array of chars to remove from the beginning of the string. If $<$tt$>$chars$<$/tt$>$ is not specified, Unicode whitespace chars will be used instead.  \+See\+: @ref "{}rtrim"{} "{}\`{}rtrim()\`{}"{}, @ref "{}trim"{} "{}\`{}trim()\`{}"{}  @subsection autotoc\+\_\+md1400 Example  @icode\{js\}  ltrim(\textquotesingle{}   lorem ipsum   \textquotesingle{});      // "{}lorem ipsum "{} ltrim(\textquotesingle{}-\/-\/lorem ipsum-\/-\/\textquotesingle{}, \mbox{[}\textquotesingle{}-\/\textquotesingle{}\mbox{]}); // "{}lorem ipsum-\/-\/"{} @endicode     @section autotoc\+\_\+md1401 make\+Path(...\+args)\+:\+String  \+Group arguments as path segments, if any of the args is $<$tt$>$null$<$/tt$>$ or $<$tt$>$undefined$<$/tt$>$ it will be ignored from resulting path. It will also remove duplicate "{}/"{}.  \+See\+: $<$a href="{}array.\+html\+::join"{} $>$$<$tt$>$array/join()$<$/tt$>$$<$/a$>$  @subsection autotoc\+\_\+md1402 Example  @icode\{js\}  make\+Path(\textquotesingle{}lorem\textquotesingle{}, \textquotesingle{}ipsum\textquotesingle{}, null, \textquotesingle{}dolor\textquotesingle{}); // "{}lorem/ipsum/dolor"{} make\+Path(\textquotesingle{}foo///bar/\textquotesingle{});                    // "{}foo/bar/"{} @endicode     @section autotoc\+\_\+md1403 normalize\+Line\+Breaks(str, \mbox{[}line\+Break\mbox{]})\+:\+String  \+Normalize line breaks to a single format. Defaults to Unix $<$tt$>$\textbackslash{}\textbackslash{}n$<$/tt$>$.  \+It handles DOS ($<$tt$>$\textbackslash{}\textbackslash{}r\textbackslash{}\textbackslash{}n$<$/tt$>$), Mac ($<$tt$>$\textbackslash{}\textbackslash{}r$<$/tt$>$) and Unix ($<$tt$>$\textbackslash{}\textbackslash{}n$<$/tt$>$) formats.  @subsection autotoc\+\_\+md1404 Example  @icode\{js\}  // "{}foo\textbackslash{}nbar\textbackslash{}nlorem\textbackslash{}nipsum"{} normalize\+Line\+Breaks(\textquotesingle{}foo\textbackslash{}nbar\textbackslash{}r\textbackslash{}nlorem\textbackslash{}ripsum\textquotesingle{});  // "{}foo\textbackslash{}rbar\textbackslash{}rlorem\textbackslash{}ripsum"{} normalize\+Line\+Breaks(\textquotesingle{}foo\textbackslash{}nbar\textbackslash{}r\textbackslash{}nlorem\textbackslash{}ripsum\textquotesingle{}, \textquotesingle{}\textbackslash{}r\textquotesingle{});  // "{}foo bar lorem ipsum"{} normalize\+Line\+Breaks(\textquotesingle{}foo\textbackslash{}nbar\textbackslash{}r\textbackslash{}nlorem\textbackslash{}ripsum\textquotesingle{}, \textquotesingle{} \textquotesingle{}); @endicode     @section autotoc\+\_\+md1405 pascal\+Case(str)\+:\+String  \+Convert string to "{}Pascal\+Case"{} text.  \+See\+: @ref "{}camel\+Case"{} "{}\`{}camel\+Case()\`{}"{}  @subsection autotoc\+\_\+md1406 Example  @icode\{js\}  pascal\+Case(\textquotesingle{}lorem-\/ipsum-\/dolor\textquotesingle{}); // "{}Lorem\+Ipsum\+Dolor"{} pascal\+Case(\textquotesingle{}lorem ipsum dolor\textquotesingle{}); // "{}Lorem\+Ipsum\+Dolor"{} @endicode     @section autotoc\+\_\+md1407 proper\+Case(str)\+:\+String  \+UPPERCASE first char of each word, lowercase other chars.  @subsection autotoc\+\_\+md1408 Example  @icode\{js\}  proper\+Case(\textquotesingle{}lo\+Rem i\+PSum\textquotesingle{}); // "{}Lorem Ipsum"{} @endicode     @section autotoc\+\_\+md1409 remove\+Non\+ASCII(str)\+:\+String  \+Remove $<$a href="{}\href{http://en.wikipedia.org/wiki/ASCII\#ASCII_printable_characters}{\texttt{ http\+://en.\+wikipedia.\+org/wiki/\+ASCII\#\+ASCII\+\_\+printable\+\_\+characters}}"{}  $>$non-\/printable ASCII chars$<$/a$>$.  @subsection autotoc\+\_\+md1410 Example  @icode\{js\}  remove\+Non\+ASCII(\textquotesingle{}äÄçÇéÉêlorem-\/ipsumöÖÐþúÚ\textquotesingle{}); // "{}lorem-\/ipsum"{} @endicode     @section autotoc\+\_\+md1411 remove\+Non\+Word(str)\+:\+String  \+Remove non-\/word chars.  @subsection autotoc\+\_\+md1412 Example  @icode\{js\}  var str = \textquotesingle{}lorem \texorpdfstring{$\sim$}{\string~}!@\#\$\%\texorpdfstring{$^\wedge$}{\string^}\&\texorpdfstring{$\ast$}{*}()\+\_\++\`{}-\/=\{\}\mbox{[}$\,$\mbox{]}\texorpdfstring{$\vert$}{|}\textbackslash{}\textbackslash{}\+:"{};\textbackslash{}\textquotesingle{}/?\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}., ipsum\textquotesingle{}; remove\+Non\+Word(str); // "{}lorem -\/ ipsum"{} 
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1413}{}\doxysection{\texorpdfstring{repeat(str, n)\+:String}{repeat(str, n)\+:String}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1413}
+Repeat string n-\/times.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1414}{}\doxysubsection{\texorpdfstring{Example}{Example}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1414}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{repeat('a',\ 3);\ \ //\ "{}aaa"{}}
+\DoxyCodeLine{repeat('bc',\ 2);\ //\ "{}bcbc"{}}
+\DoxyCodeLine{repeat('a',\ 0);\ \ //\ "{}"{}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1415}{}\doxysection{\texorpdfstring{replace(str, search, replacements)\+:String}{replace(str, search, replacements)\+:String}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1415}
+Replace string(s) with the replacement(s) in the source.
+
+{\ttfamily search} and {\ttfamily replacements} can be an array, or a single item. For every item in {\ttfamily search}, it will call {\ttfamily str.\+replace} with the search item and the matching replacement in {\ttfamily replacements}. If {\ttfamily replacements} only contains one replacement, it will be used for all the searches, otherwise it will use the replacement at the same index as the search.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1416}{}\doxysubsection{\texorpdfstring{Example}{Example}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1416}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{replace('foo\ bar',\ 'foo',\ 'test');\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ "{}test\ bar"{}}
+\DoxyCodeLine{replace('test\ 1\ 2',\ ['1',\ '2'],\ 'n');\ \ \ \ \ \ \ \ \ \ \ \ \ //\ "{}test\ n\ n"{}}
+\DoxyCodeLine{replace('test\ 1\ 2',\ ['1',\ '2'],\ ['one',\ 'two']);\ \ //\ "{}test\ one\ two"{}}
+\DoxyCodeLine{replace('123abc',\ [/\(\backslash\)d/g,\ /[a-\/z]/g],\ ['0',\ '.']);\ //\ "{}000..."{}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1417}{}\doxysection{\texorpdfstring{replace\+Accents(str)\+:String}{replace\+Accents(str)\+:String}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1417}
+Replaces all accented chars with regular ones.
+
+{\bfseries{Important\+:}} Only covers {\bfseries{Basic Latin}} and {\bfseries{Latin-\/1}} unicode chars.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1418}{}\doxysubsection{\texorpdfstring{Example}{Example}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1418}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{replaceAccents('spéçïãl\ çhârs');\ //\ "{}special\ chars"{}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1419}{}\doxysection{\texorpdfstring{rpad(str, min\+Length\mbox{[}, char\mbox{]})\+:String}{rpad(str, min\+Length\mbox{[}, char\mbox{]})\+:String}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1419}
+Pad string from right with {\ttfamily char} if its\textquotesingle{} length is smaller than {\ttfamily min\+Len}.
+
+See\+: \`{}lpad()\`{}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1420}{}\doxysubsection{\texorpdfstring{Example}{Example}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1420}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{rpad('a',\ 5);\ \ \ \ \ \ \ \ //\ "{}a\ \ \ \ "{}}
+\DoxyCodeLine{rpad('a',\ 5,\ '-\/');\ \ \ //\ "{}a-\/-\/-\/-\/"{}}
+\DoxyCodeLine{rpad('abc',\ 3,\ '-\/');\ //\ "{}abc"{}}
+\DoxyCodeLine{rpad('abc',\ 4,\ '-\/');\ //\ "{}abc-\/"{}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1421}{}\doxysection{\texorpdfstring{rtrim(str, \mbox{[}chars\mbox{]})\+:String}{rtrim(str, \mbox{[}chars\mbox{]})\+:String}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1421}
+Remove chars or white-\/spaces from end of string.
+
+{\ttfamily chars} is an array of chars to remove from the end of the string. If {\ttfamily chars} is not specified, Unicode whitespace chars will be used instead.
+
+See\+: \`{}trim()\`{}, \`{}ltrim()\`{}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1422}{}\doxysubsection{\texorpdfstring{Example}{Example}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1422}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{rtrim('\ \ \ lorem\ ipsum\ \ \ ');\ \ \ \ \ \ //\ "{}\ \ \ lorem\ ipsum"{}}
+\DoxyCodeLine{rtrim('-\/-\/lorem\ ipsum-\/-\/',\ ['-\/']);\ //\ "{}-\/-\/lorem\ ipsum"{}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1423}{}\doxysection{\texorpdfstring{sentence\+Case(str)\+:String}{sentence\+Case(str)\+:String}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1423}
+UPPERCASE first char of each sentence and lowercase other chars.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1424}{}\doxysubsection{\texorpdfstring{Example}{Example}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1424}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ str\ =\ 'Lorem\ IpSum\ DoLOr.\ maeCeNnas\ Ullamcor.';}
+\DoxyCodeLine{sentenceCase(str);\ //\ "{}Lorem\ ipsum\ dolor.\ Maecennas\ ullamcor."{}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1425}{}\doxysection{\texorpdfstring{strip\+Html\+Tags(str)\+:String}{strip\+Html\+Tags(str)\+:String}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1425}
+Remove HTML/\+XML tags from string.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1426}{}\doxysubsection{\texorpdfstring{Example}{Example}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1426}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ str\ =\ '<p><em>lorem</em>\ <strong>ipsum</strong></p>';}
+\DoxyCodeLine{stripHtmlTags(str);\ //\ "{}lorem\ ipsum"{}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1427}{}\doxysection{\texorpdfstring{starts\+With(str, prefix)\+:Boolean}{starts\+With(str, prefix)\+:Boolean}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1427}
+Checks if string starts with specified prefix.
+
+See\+: \`{}ends\+With()\`{}, \`{}contains()\`{}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1428}{}\doxysubsection{\texorpdfstring{Example}{Example}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1428}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{startsWith('lorem\ ipsum',\ 'lorem');\ //\ true}
+\DoxyCodeLine{startsWith('lorem\ ipsum',\ 'ipsum');\ //\ false}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1429}{}\doxysection{\texorpdfstring{slugify(str\mbox{[}, delimeter\mbox{]})\+:String}{slugify(str\mbox{[}, delimeter\mbox{]})\+:String}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1429}
+Convert to lower case, remove accents, remove non-\/word chars and replace spaces with the delimeter. The default delimeter is a hyphen.
+
+Note that this does not split camel\+Case text.
+
+See\+: \`{}hyphenate()\`{} and \`{}underscore()\`{}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1430}{}\doxysubsection{\texorpdfstring{Example}{Example}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1430}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ str\ =\ 'loremIpsum\ dolor\ spéçïãl\ chârs';}
+\DoxyCodeLine{slugify(str);\ //\ "{}loremipsum-\/dolor-\/special-\/chars"{}}
+\DoxyCodeLine{slugify(str,\ '\_');\ //\ "{}loremipsum\_dolor\_special\_chars"{}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1431}{}\doxysection{\texorpdfstring{trim(str, \mbox{[}chars\mbox{]})\+:String}{trim(str, \mbox{[}chars\mbox{]})\+:String}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1431}
+Remove chars or white-\/spaces from beginning and end of string.
+
+{\ttfamily chars} is an array of chars to remove from the beginning and end of the string. If {\ttfamily chars} is not specified, Unicode whitespace chars will be used instead.
+
+See\+: \`{}rtrim()\`{}, \`{}ltrim()\`{}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1432}{}\doxysubsection{\texorpdfstring{Example}{Example}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1432}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{trim('\ \ \ lorem\ ipsum\ \ \ ');\ \ \ \ \ \ \ \ \ \ \ \ \ //\ "{}lorem\ ipsum"{}}
+\DoxyCodeLine{trim('-\/+-\/lorem\ ipsum-\/+-\/',\ ['-\/',\ '+']);\ //\ "{}lorem\ ipsum"{}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1433}{}\doxysection{\texorpdfstring{truncate(str, max\+Chars, \mbox{[}append\mbox{]}, \mbox{[}only\+Full\+Words\mbox{]})\+:String}{truncate(str, max\+Chars, \mbox{[}append\mbox{]}, \mbox{[}only\+Full\+Words\mbox{]})\+:String}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1433}
+Limit number of chars. Returned string {\ttfamily length} will be {\ttfamily \texorpdfstring{$<$}{<}= max\+Chars}.
+
+See\+: \`{}crop()\`{}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1434}{}\doxysubsection{\texorpdfstring{Arguments}{Arguments}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1434}
+
+\begin{DoxyEnumerate}
+\item {\ttfamily str} (String) \+: String
+\item {\ttfamily max\+Chars} (Number) \+: Maximum number of characters including {\ttfamily append.\+length}.
+\item {\ttfamily \mbox{[}append\mbox{]}} (String) \+: Value that should be added to the end of string. Defaults to "{}..."{}.
+\item {\ttfamily \mbox{[}only\+Full\+Words\mbox{]}} (Boolean) \+: If it shouldn\textquotesingle{}t break words. Default is {\ttfamily false}. (favor \`{}crop()\`{} since code will be clearer).
+\end{DoxyEnumerate}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1435}{}\doxysubsection{\texorpdfstring{Example}{Example}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1435}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{truncate('lorem\ ipsum\ dolor',\ 11);\ \ \ \ \ \ \ \ \ \ \ \ \ //\ "{}lorem\ ip..."{}}
+\DoxyCodeLine{truncate('lorem\ ipsum\ dolor',\ 11,\ '+');\ \ \ \ \ \ \ \ //\ "{}lorem\ ipsu+"{}}
+\DoxyCodeLine{truncate('lorem\ ipsum\ dolor',\ 11,\ null,\ true);\ //\ "{}lorem..."{}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1436}{}\doxysection{\texorpdfstring{typecast(str)\+:\texorpdfstring{$\ast$}{*}}{typecast(str)\+:\texorpdfstring{$\ast$}{*}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1436}
+Parses string and convert it into a native value.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1437}{}\doxysubsection{\texorpdfstring{Example}{Example}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1437}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{typecast('lorem\ ipsum');\ //\ "{}lorem\ ipsum"{}}
+\DoxyCodeLine{typecast('123');\ \ \ \ \ \ \ \ \ //\ 123}
+\DoxyCodeLine{typecast('123.45');\ \ \ \ \ \ //\ 123.45}
+\DoxyCodeLine{typecast('false');\ \ \ \ \ \ \ //\ false}
+\DoxyCodeLine{typecast('true');\ \ \ \ \ \ \ \ //\ true}
+\DoxyCodeLine{typecast('null');\ \ \ \ \ \ \ \ //\ null}
+\DoxyCodeLine{typecast('undefined');\ \ \ //\ undefined}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1438}{}\doxysection{\texorpdfstring{un\+Camel\+Case(str, \mbox{[}delimiter\mbox{]})\+:String}{un\+Camel\+Case(str, \mbox{[}delimiter\mbox{]})\+:String}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1438}
+Add the delimiter between camel\+Case text and convert first char of each word to lower case.
+
+The delimiter defaults to a space character.
+
+See\+: \mbox{[}{\ttfamily camel\+Case()}\mbox{]}\mbox{[}\#camel\+Case\mbox{]}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1439}{}\doxysubsection{\texorpdfstring{Example}{Example}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1439}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{unCamelCase('loremIpsumDolor');\ //\ "{}lorem\ ipsum\ dolor"{}}
+\DoxyCodeLine{unCamelCase('loremIpsumDolor',\ '-\/');\ //\ "{}lorem-\/ipsum-\/color"{}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1440}{}\doxysection{\texorpdfstring{underscore(str)\+:String}{underscore(str)\+:String}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1440}
+Replaces spaces with underscores, split camel\+Case text, remove non-\/word chars, remove accents and convert to lower case.
+
+See\+: \`{}slugify()\`{}, \`{}hyphenate()\`{}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{underscore('\ \%\#\ lorem\ ipsum\ \ ?\ \$\ \ dolor');\ //\ "{}lorem\_ipsum\_dolor"{}}
+\DoxyCodeLine{underscore('spéçïãl\ çhârs');\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ "{}special\_chars"{}}
+\DoxyCodeLine{underscore('loremIpsum');\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ "{}lorem\_ipsum"{}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1441}{}\doxysection{\texorpdfstring{unescape\+Html(str)\+:String}{unescape\+Html(str)\+:String}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1d255f2c2c175416c7662618df7cbaca_autotoc_md1441}
+Unescapes the following HTML character references back into the raw symbol they map to\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \&amp;} becomes {\ttfamily \&}
+\item {\ttfamily \&lt;} becomes {\ttfamily \texorpdfstring{$<$}{<}}
+\item {\ttfamily \&gt;} becomes {\ttfamily \texorpdfstring{$>$}{>}}
+\item {\ttfamily \&\#39;} becomes `'{\ttfamily  \texorpdfstring{$\ast$}{*}}"{}{\ttfamily becomes}"{}\`{}  \+No other HTML character references are unescaped. To HTML-\/unescape other entities as well, use a third-\/party library like $<$a href="{}\href{http://mths.be/he}{\texttt{ http\+://mths.\+be/he}}"{} $>$$<$em$>$he$<$/em$>$$<$/a$>$.   \+See\+: @ref "{}escape\+Html"{} "{}\`{}escape\+Html()\`{}"{}  @subsection autotoc\+\_\+md1442 Example  @icode\{js\}  unescape\+Html(\textquotesingle{}lorem \&amp; \&quot;ipsum\&quot;\textquotesingle{}); // \textquotesingle{}lorem \& "{}ipsum"{}\textquotesingle{} @endicode     @section autotoc\+\_\+md1443 unescape\+Unicode(str)\+:\+String  \+Unescapes unicode char sequences.  \+See\+: @ref "{}escape\+Unicode"{} "{}\`{}escape\+Unicode()\`{}"{}  @icode\{js\}  unescape\+Unicode(\textquotesingle{}\textbackslash{}\textbackslash{}u0066\textbackslash{}\textbackslash{}u00f8\textbackslash{}\textbackslash{}u006f\textbackslash{}\textbackslash{}u0020\textbackslash{}\textbackslash{}u0062\textbackslash{}\textbackslash{}u00e5\textbackslash{}\textbackslash{}u0072\textquotesingle{}); // $>$ \textquotesingle{}føo bår\textquotesingle{} @endicode     @section autotoc\+\_\+md1444 unhyphenate(str)\+:\+String  \+Replaces hyphens with spaces. (only hyphens between word chars)  \+See \+: @ref "{}hyphenate"{} "{}\`{}hyphenate()\`{}"{}  @subsection autotoc\+\_\+md1445 Example  @icode\{js\}  unhyphenate(\textquotesingle{}lorem-\/ipsum-\/dolor\textquotesingle{}); // "{}lorem ipsum dolor"{} @endicode    @section autotoc\+\_\+md1446 upper\+Case(str)\+:\+String  "{}Safer"{} $<$tt$>$\+String.\+to\+Upper\+Case()$<$/tt$>$. (\+Used internally)  @subsection autotoc\+\_\+md1447 Example  @icode\{js\}  (null).\+to\+Upper\+Case();      // Error! (undefined).\+to\+Upper\+Case(); // Error! upper\+Case(null);           // "{}"{} upper\+Case(undefined);      // "{}"{} @endicode     @section autotoc\+\_\+md1448 WHITE\+\_\+\+SPACES\+:\+Array  \+Constant array of all $<$a href="{}\href{http://en.wikipedia.org/wiki/Whitespace_character}{\texttt{ http\+://en.\+wikipedia.\+org/wiki/\+Whitespace\+\_\+character}}"{} \texorpdfstring{$>$}{>}Unicode white-\/space characters.
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+
+
+For more usage examples check specs inside {\ttfamily /tests} folder. Unit tests are the best documentation you can get... 

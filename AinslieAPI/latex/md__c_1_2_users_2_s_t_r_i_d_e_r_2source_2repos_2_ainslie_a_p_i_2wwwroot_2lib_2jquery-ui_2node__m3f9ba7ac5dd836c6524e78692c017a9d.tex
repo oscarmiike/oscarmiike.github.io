@@ -1,0 +1,201 @@
+\chapter{number}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m3f9ba7ac5dd836c6524e78692c017a9d}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m3f9ba7ac5dd836c6524e78692c017a9d}\index{number@{number}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m3f9ba7ac5dd836c6524e78692c017a9d_autotoc_md3592}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m3f9ba7ac5dd836c6524e78692c017a9d_autotoc_md3592}%
+ Number utilities.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m3f9ba7ac5dd836c6524e78692c017a9d_autotoc_md3593}{}\doxysection{\texorpdfstring{abbreviate(val\mbox{[}, n\+Decimal\+Digits, dictionary\mbox{]})\+:String}{abbreviate(val\mbox{[}, n\+Decimal\+Digits, dictionary\mbox{]})\+:String}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m3f9ba7ac5dd836c6524e78692c017a9d_autotoc_md3593}
+Abbreviate number to thousands (K), millions (M) or billions (B).
+
+The default value for {\ttfamily n\+Decimal\+Digits} is {\ttfamily 1}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m3f9ba7ac5dd836c6524e78692c017a9d_autotoc_md3594}{}\doxysubsection{\texorpdfstring{Example}{Example}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m3f9ba7ac5dd836c6524e78692c017a9d_autotoc_md3594}
+\begin{DoxyVerb}abbreviate(123456);     // "123.5K"
+abbreviate(12345678);   // "12.3M"
+abbreviate(1234567890); // "1.2B"
+\end{DoxyVerb}
+ You can set the amount of decimal digits (default is {\ttfamily 1})\+: \begin{DoxyVerb}abbreviate(543);    // "0.5K"
+abbreviate(543, 1); // "0.5K"
+abbreviate(543, 2); // "0.54K"
+abbreviate(543, 3); // "0.543K"
+\end{DoxyVerb}
+ You can customize the abbreviation by passing a custom "{}dictionary"{}\+: \begin{DoxyVerb}var _ptbrDict = {
+    thousand: ' mil',
+    million: ' Mi',
+    billion: ' Bi'
+};
+function customAbbr(val) {
+    return abbreviate(val, 1, _ptbrDict);
+}
+
+customAbbr(123456); // "123.5 mil"
+customAbbr(12345678); // "12.3 Mi"
+customAbbr(1234567890); // "1.2 Bi"
+\end{DoxyVerb}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m3f9ba7ac5dd836c6524e78692c017a9d_autotoc_md3595}{}\doxysection{\texorpdfstring{currency\+Format(val\mbox{[}, n\+Decimal\+Digits, decimal\+Separator, thousands\+Separator\mbox{]})\+:String}{currency\+Format(val\mbox{[}, n\+Decimal\+Digits, decimal\+Separator, thousands\+Separator\mbox{]})\+:String}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m3f9ba7ac5dd836c6524e78692c017a9d_autotoc_md3595}
+Format a number as currency.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m3f9ba7ac5dd836c6524e78692c017a9d_autotoc_md3596}{}\doxysubsection{\texorpdfstring{Example\+:}{Example\+:}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m3f9ba7ac5dd836c6524e78692c017a9d_autotoc_md3596}
+\begin{DoxyVerb}currencyFormat(1000);              // "1,000.00"
+currencyFormat(1000, 1);           // "1,000.0"
+currencyFormat(1000, 2, ',', '.'); // "1.000,00"
+\end{DoxyVerb}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m3f9ba7ac5dd836c6524e78692c017a9d_autotoc_md3597}{}\doxysection{\texorpdfstring{enforce\+Precision(val, n\+Decimal\+Digits)\+:Number}{enforce\+Precision(val, n\+Decimal\+Digits)\+:Number}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m3f9ba7ac5dd836c6524e78692c017a9d_autotoc_md3597}
+Enforce a specific amount of decimal digits and also fix floating point rounding issues.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m3f9ba7ac5dd836c6524e78692c017a9d_autotoc_md3598}{}\doxysubsection{\texorpdfstring{Example\+:}{Example\+:}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m3f9ba7ac5dd836c6524e78692c017a9d_autotoc_md3598}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{enforcePrecision(0.615,\ 2);\ //\ 0.62}
+\DoxyCodeLine{enforcePrecision(0.625,\ 2);\ //\ 0.63}
+\DoxyCodeLine{//floating\ point\ rounding\ "{}error"{}\ (rounds\ to\ odd\ number)}
+\DoxyCodeLine{+(0.615).toFixed(2);\ \ \ \ \ \ \ \ //\ 0.61}
+\DoxyCodeLine{+(0.625).toFixed(2);\ \ \ \ \ \ \ \ //\ 0.63}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m3f9ba7ac5dd836c6524e78692c017a9d_autotoc_md3599}{}\doxysection{\texorpdfstring{is\+Na\+N(val)\+:Boolean}{is\+Na\+N(val)\+:Boolean}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m3f9ba7ac5dd836c6524e78692c017a9d_autotoc_md3599}
+ES6 {\ttfamily Number.\+is\+Na\+N()}, checks if supplied value is {\ttfamily NaN}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ only\ returns\ \`{}true`\ for\ \`{}NaN`}
+\DoxyCodeLine{isNaN(NaN);\ \ \ \ //\ true}
+\DoxyCodeLine{isNaN(0\ /\ 0);\ \ //\ true}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ everything\ else\ is\ \`{}false`}
+\DoxyCodeLine{isNaN(true);\ \ \ //\ false}
+\DoxyCodeLine{isNaN(123);\ \ \ \ //\ false}
+\DoxyCodeLine{isNaN('asd');\ \ //\ false}
+\DoxyCodeLine{isNaN('NaN');\ \ //\ false}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m3f9ba7ac5dd836c6524e78692c017a9d_autotoc_md3600}{}\doxysection{\texorpdfstring{MAX\+\_\+\+INT\+:Number}{MAX\+\_\+\+INT\+:Number}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m3f9ba7ac5dd836c6524e78692c017a9d_autotoc_md3600}
+Maximum 32-\/bit signed integer value. {\ttfamily Math.\+pow(2, 31) -\/ 1}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m3f9ba7ac5dd836c6524e78692c017a9d_autotoc_md3601}{}\doxysubsection{\texorpdfstring{Example\+:}{Example\+:}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m3f9ba7ac5dd836c6524e78692c017a9d_autotoc_md3601}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{console.log(\ MAX\_INT\ );\ //\ 2147483647}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m3f9ba7ac5dd836c6524e78692c017a9d_autotoc_md3602}{}\doxysection{\texorpdfstring{MAX\+\_\+\+SAFE\+\_\+\+INTEGER\+:Number}{MAX\+\_\+\+SAFE\+\_\+\+INTEGER\+:Number}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m3f9ba7ac5dd836c6524e78692c017a9d_autotoc_md3602}
+Maximum safe integer. {\ttfamily Math.\+pow(2,53) − 1}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m3f9ba7ac5dd836c6524e78692c017a9d_autotoc_md3603}{}\doxysection{\texorpdfstring{MAX\+\_\+\+UINT\+:Number}{MAX\+\_\+\+UINT\+:Number}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m3f9ba7ac5dd836c6524e78692c017a9d_autotoc_md3603}
+Maximum 32-\/bit unsigned integer value. {\ttfamily Math.\+pow(2, 32) -\/ 1}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m3f9ba7ac5dd836c6524e78692c017a9d_autotoc_md3604}{}\doxysubsection{\texorpdfstring{Example\+:}{Example\+:}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m3f9ba7ac5dd836c6524e78692c017a9d_autotoc_md3604}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{console.log(\ MAX\_UINT\ );\ //\ 4294967295}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m3f9ba7ac5dd836c6524e78692c017a9d_autotoc_md3605}{}\doxysection{\texorpdfstring{MIN\+\_\+\+INT\+:Number}{MIN\+\_\+\+INT\+:Number}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m3f9ba7ac5dd836c6524e78692c017a9d_autotoc_md3605}
+Minimum 32-\/bit signed integer value. {\ttfamily Math.\+pow(2, 31) \texorpdfstring{$\ast$}{*} -\/1}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m3f9ba7ac5dd836c6524e78692c017a9d_autotoc_md3606}{}\doxysubsection{\texorpdfstring{Example\+:}{Example\+:}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m3f9ba7ac5dd836c6524e78692c017a9d_autotoc_md3606}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{console.log(\ MIN\_INT\ );\ //\ -\/2147483648}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m3f9ba7ac5dd836c6524e78692c017a9d_autotoc_md3607}{}\doxysection{\texorpdfstring{nth(n)\+:String}{nth(n)\+:String}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m3f9ba7ac5dd836c6524e78692c017a9d_autotoc_md3607}
+Returns the "{}nth"{} of number. ({\ttfamily "{}st"{}}, {\ttfamily "{}nd"{}}, {\ttfamily "{}rd"{}}, {\ttfamily "{}th"{}})
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{nth(1);\ //\ "{}st"{}}
+\DoxyCodeLine{nth(2);\ //\ "{}nd"{}}
+\DoxyCodeLine{nth(12);\ //\ "{}th"{}}
+\DoxyCodeLine{nth(22);\ //\ "{}nd"{}}
+\DoxyCodeLine{nth(23);\ //\ "{}rd"{}}
+\DoxyCodeLine{nth(34);\ //\ "{}th"{}}
+
+\end{DoxyCode}
+
+
+See\+: \`{}ordinal()\`{}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m3f9ba7ac5dd836c6524e78692c017a9d_autotoc_md3608}{}\doxysection{\texorpdfstring{ordinal(n)\+:String}{ordinal(n)\+:String}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m3f9ba7ac5dd836c6524e78692c017a9d_autotoc_md3608}
+Converts number into ordinal form (1st, 2nd, 3rd, 4th, ...)
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ordinal(1);\ //\ "{}1st"{}}
+\DoxyCodeLine{ordinal(2);\ //\ "{}2nd"{}}
+\DoxyCodeLine{ordinal(3);\ //\ "{}3rd"{}}
+\DoxyCodeLine{ordinal(14);\ //\ "{}14th"{}}
+\DoxyCodeLine{ordinal(21);\ //\ "{}21st"{}}
+
+\end{DoxyCode}
+
+
+See\+: \`{}nth()\`{}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m3f9ba7ac5dd836c6524e78692c017a9d_autotoc_md3609}{}\doxysection{\texorpdfstring{pad(n, min\+Length\mbox{[}, char\mbox{]})\+:String}{pad(n, min\+Length\mbox{[}, char\mbox{]})\+:String}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m3f9ba7ac5dd836c6524e78692c017a9d_autotoc_md3609}
+Add padding zeros if {\ttfamily n.\+length} \texorpdfstring{$<$}{<} {\ttfamily min\+Length}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m3f9ba7ac5dd836c6524e78692c017a9d_autotoc_md3610}{}\doxysubsection{\texorpdfstring{Example\+:}{Example\+:}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m3f9ba7ac5dd836c6524e78692c017a9d_autotoc_md3610}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{pad(1,\ 5);\ \ \ \ \ \ //\ "{}00001"{}}
+\DoxyCodeLine{pad(12,\ 5);\ \ \ \ \ //\ "{}00012"{}}
+\DoxyCodeLine{pad(123,\ 5);\ \ \ \ //\ "{}00123"{}}
+\DoxyCodeLine{pad(1234,\ 5);\ \ \ //\ "{}01234"{}}
+\DoxyCodeLine{pad(12345,\ 5);\ \ //\ "{}12345"{}}
+\DoxyCodeLine{pad(123456,\ 5);\ //\ "{}123456"{}}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ you\ can\ also\ specify\ the\ "{}char"{}\ used\ for\ padding}
+\DoxyCodeLine{pad(12,\ 5,\ '\_');\ //\ "{}\_\_\_12"{}}
+
+\end{DoxyCode}
+
+
+see\+: \href{./string.html\#lpad}{\texttt{ string/lpad}}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m3f9ba7ac5dd836c6524e78692c017a9d_autotoc_md3611}{}\doxysection{\texorpdfstring{rol(val, shift)\+:Number}{rol(val, shift)\+:Number}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m3f9ba7ac5dd836c6524e78692c017a9d_autotoc_md3611}
+Bitwise circular shift left.
+
+More info at \href{http://en.wikipedia.org/wiki/Circular_shift}{\texttt{ Wikipedia\+::\+Circular\+\_\+shift}}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m3f9ba7ac5dd836c6524e78692c017a9d_autotoc_md3612}{}\doxysection{\texorpdfstring{ror(val, shift)\+:Number}{ror(val, shift)\+:Number}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m3f9ba7ac5dd836c6524e78692c017a9d_autotoc_md3612}
+Bitwise circular shift right.
+
+More info at \href{http://en.wikipedia.org/wiki/Circular_shift}{\texttt{ Wikipedia\+::\+Circular\+\_\+shift}}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m3f9ba7ac5dd836c6524e78692c017a9d_autotoc_md3613}{}\doxysection{\texorpdfstring{sign(val)\+:Number}{sign(val)\+:Number}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m3f9ba7ac5dd836c6524e78692c017a9d_autotoc_md3613}
+Returns {\ttfamily -\/1} if value is negative, {\ttfamily 0} if the value is {\ttfamily 0} and {\ttfamily 1} if value is positive. Useful for multiplications.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{sign(-\/123);\ //\ -\/1}
+\DoxyCodeLine{sign(123);\ \ //\ 1}
+\DoxyCodeLine{sign(0);\ \ \ \ //\ 0}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m3f9ba7ac5dd836c6524e78692c017a9d_autotoc_md3614}{}\doxysection{\texorpdfstring{to\+Int(val)\+:Number}{to\+Int(val)\+:Number}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m3f9ba7ac5dd836c6524e78692c017a9d_autotoc_md3614}
+"{}\+Convert"{} value into an 32-\/bit integer. Works like {\ttfamily Math.\+floor} if {\ttfamily val \texorpdfstring{$>$}{>} 0} and {\ttfamily Math.\+ceil} if {\ttfamily val \texorpdfstring{$<$}{<} 0}.
+
+{\bfseries{IMPORTANT\+:}} val will wrap at number/\+MIN\+\_\+\+INT and number/\+MAX\+\_\+\+INT.
+
+Created because most people don\textquotesingle{}t know bitwise operations and also because this feature is commonly needed.
+
+\href{http://jsperf.com/vs-vs-parseint-bitwise-operators/7}{\texttt{ Perf tests}}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m3f9ba7ac5dd836c6524e78692c017a9d_autotoc_md3615}{}\doxysubsection{\texorpdfstring{Example\+:}{Example\+:}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m3f9ba7ac5dd836c6524e78692c017a9d_autotoc_md3615}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{toInt(1.25);\ \ \ //\ 1}
+\DoxyCodeLine{toInt(0.75);\ \ \ //\ 0}
+\DoxyCodeLine{toInt(-\/0.55);\ \ //\ 0}
+\DoxyCodeLine{toInt(-\/5.0001)\ //\ -\/5}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m3f9ba7ac5dd836c6524e78692c017a9d_autotoc_md3616}{}\doxysection{\texorpdfstring{to\+UInt(val)\+:Number}{to\+UInt(val)\+:Number}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m3f9ba7ac5dd836c6524e78692c017a9d_autotoc_md3616}
+"{}\+Convert"{} value into an 32-\/bit unsigned integer.
+
+Works like AS3\+::uint().
+
+{\bfseries{IMPORTANT\+:}} val will wrap at 2\texorpdfstring{$^\wedge$}{\string^}32.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m3f9ba7ac5dd836c6524e78692c017a9d_autotoc_md3617}{}\doxysubsection{\texorpdfstring{Example\+:}{Example\+:}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m3f9ba7ac5dd836c6524e78692c017a9d_autotoc_md3617}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{toUInt(1.25);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ 1}
+\DoxyCodeLine{toUInt(0.75);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ 0}
+\DoxyCodeLine{toUInt(-\/0.55);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ 0}
+\DoxyCodeLine{toUInt(-\/5.0001);\ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ 4294967291}
+\DoxyCodeLine{toUInt(Math.pow(2,32)\ -\/\ 0.5);\ //\ 4294967295}
+\DoxyCodeLine{toUInt(Math.pow(2,32)\ +\ 0.5);\ //\ 0}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m3f9ba7ac5dd836c6524e78692c017a9d_autotoc_md3618}{}\doxysection{\texorpdfstring{to\+UInt31(val)\+:Number}{to\+UInt31(val)\+:Number}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m3f9ba7ac5dd836c6524e78692c017a9d_autotoc_md3618}
+"{}\+Convert"{} value into an 31-\/bit unsigned integer (since 1 bit is used for sign).
+
+Useful since all bitwise operators besides {\ttfamily \texorpdfstring{$>$}{>}\texorpdfstring{$>$}{>}\texorpdfstring{$>$}{>}} treat numbers as signed integers.
+
+{\bfseries{IMPORTANT\+:}} val will wrap at 2\texorpdfstring{$^\wedge$}{\string^}31 and negative numbers will be treated as {\ttfamily zero}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m3f9ba7ac5dd836c6524e78692c017a9d_autotoc_md3619}{}\doxysubsection{\texorpdfstring{Example\+:}{Example\+:}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m3f9ba7ac5dd836c6524e78692c017a9d_autotoc_md3619}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{toUInt31(1.25);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ 1}
+\DoxyCodeLine{toUInt31(0.75);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ 0}
+\DoxyCodeLine{toUInt31(-\/0.55);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ 0}
+\DoxyCodeLine{toUInt31(-\/5.0001);\ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ 0}
+\DoxyCodeLine{toUInt31(Math.pow(2,31)\ -\/\ 0.5);\ //\ 21474836470}
+\DoxyCodeLine{toUInt31(Math.pow(2,31)\ +\ 0.5);\ //\ 0}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+
+
+For more usage examples check specs inside {\ttfamily /tests} folder. Unit tests are the best documentation you can get... 

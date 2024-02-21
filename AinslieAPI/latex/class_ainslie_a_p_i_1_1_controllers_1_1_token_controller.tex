@@ -1,0 +1,100 @@
+\doxysection{Ainslie\+API.\+Controllers.\+Token\+Controller Class Reference}
+\hypertarget{class_ainslie_a_p_i_1_1_controllers_1_1_token_controller}{}\label{class_ainslie_a_p_i_1_1_controllers_1_1_token_controller}\index{AinslieAPI.Controllers.TokenController@{AinslieAPI.Controllers.TokenController}}
+
+
+Controller responsible for generating authentication tokens for authorised users.  
+
+
+
+
+Inheritance diagram for Ainslie\+API.\+Controllers.\+Token\+Controller\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=220pt]{class_ainslie_a_p_i_1_1_controllers_1_1_token_controller__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Ainslie\+API.\+Controllers.\+Token\+Controller\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=220pt]{class_ainslie_a_p_i_1_1_controllers_1_1_token_controller__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_token_controller_a4ee708fb4e38986bb0b67119aaeb7e62}{Token\+Controller}} (IOptions$<$ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings}{App\+Settings}} $>$ app\+Settings, \mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils}{Jwt\+Utils}} jwt\+Utils)
+\begin{DoxyCompactList}\small\item\em Initialises a new instance of the Token\+Controller with necessary configuration settings and utilities for JWT token operations. \end{DoxyCompactList}\item 
+IAction\+Result \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_token_controller_a5df864329f89cc6a7320304a65cc9002}{Generate\+Token}} ()
+\begin{DoxyCompactList}\small\item\em Generates an authentication token for the current authenticated user. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Controller responsible for generating authentication tokens for authorised users. 
+
+Definition at line \mbox{\hyperlink{_token_controller_8cs_source_l00018}{18}} of file \mbox{\hyperlink{_token_controller_8cs_source}{Token\+Controller.\+cs}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_ainslie_a_p_i_1_1_controllers_1_1_token_controller_a4ee708fb4e38986bb0b67119aaeb7e62}\label{class_ainslie_a_p_i_1_1_controllers_1_1_token_controller_a4ee708fb4e38986bb0b67119aaeb7e62} 
+\index{AinslieAPI.Controllers.TokenController@{AinslieAPI.Controllers.TokenController}!TokenController@{TokenController}}
+\index{TokenController@{TokenController}!AinslieAPI.Controllers.TokenController@{AinslieAPI.Controllers.TokenController}}
+\doxysubsubsection{\texorpdfstring{TokenController()}{TokenController()}}
+{\footnotesize\ttfamily Ainslie\+API.\+Controllers.\+Token\+Controller.\+Token\+Controller (\begin{DoxyParamCaption}\item[{IOptions$<$ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings}{App\+Settings}} $>$}]{app\+Settings,  }\item[{\mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils}{Jwt\+Utils}}}]{jwt\+Utils }\end{DoxyParamCaption})}
+
+
+
+Initialises a new instance of the Token\+Controller with necessary configuration settings and utilities for JWT token operations. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em app\+Settings} & The application configuration settings.\\
+\hline
+{\em jwt\+Utils} & Utilities for handling JWT token generation and validation.\\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_token_controller_8cs_source_l00029}{29}} of file \mbox{\hyperlink{_token_controller_8cs_source}{Token\+Controller.\+cs}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_ainslie_a_p_i_1_1_controllers_1_1_token_controller_a5df864329f89cc6a7320304a65cc9002}\label{class_ainslie_a_p_i_1_1_controllers_1_1_token_controller_a5df864329f89cc6a7320304a65cc9002} 
+\index{AinslieAPI.Controllers.TokenController@{AinslieAPI.Controllers.TokenController}!GenerateToken@{GenerateToken}}
+\index{GenerateToken@{GenerateToken}!AinslieAPI.Controllers.TokenController@{AinslieAPI.Controllers.TokenController}}
+\doxysubsubsection{\texorpdfstring{GenerateToken()}{GenerateToken()}}
+{\footnotesize\ttfamily IAction\+Result Ainslie\+API.\+Controllers.\+Token\+Controller.\+Generate\+Token (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Generates an authentication token for the current authenticated user. 
+
+\begin{DoxyReturn}{Returns}
+An IAction\+Result containing the generated token or an Unauthorized result.
+\end{DoxyReturn}
+
+
+This endpoint checks if the user is authenticated and generates a token using user details. The generated token enables the user to access protected resources. It requires the user to be previously authenticated. 
+
+Definition at line \mbox{\hyperlink{_token_controller_8cs_source_l00046}{46}} of file \mbox{\hyperlink{_token_controller_8cs_source}{Token\+Controller.\+cs}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_ainslie_a_p_i_1_1_controllers_1_1_token_controller_a5df864329f89cc6a7320304a65cc9002_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+STRIDER/source/repos/\+Ainslie\+API/\+Controllers/\mbox{\hyperlink{_token_controller_8cs}{Token\+Controller.\+cs}}\end{DoxyCompactItemize}

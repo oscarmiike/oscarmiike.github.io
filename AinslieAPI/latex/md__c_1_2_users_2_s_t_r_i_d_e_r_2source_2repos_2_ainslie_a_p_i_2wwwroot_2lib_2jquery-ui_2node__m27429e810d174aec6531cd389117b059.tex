@@ -1,0 +1,343 @@
+\chapter{readme}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27429e810d174aec6531cd389117b059}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27429e810d174aec6531cd389117b059}\index{readme@{readme}}
+\doxysection*{~\newline
+  ~\newline
+ ~\newline
+ ~\newline
+ }
+
+\begin{quote}
+Simplified HTTP/\+HTTPS requests \end{quote}
+\href{https://travis-ci.org/sindresorhus/got}{\texttt{ }} \href{https://coveralls.io/github/sindresorhus/got?branch=master}{\texttt{ }} \href{https://npmjs.com/got}{\texttt{ }}
+
+A nicer interface to the built-\/in \href{http://nodejs.org/api/http.html}{\texttt{ {\ttfamily http}}} module.
+
+It supports following redirects, promises, streams, retries, automagically handling gzip/deflate and some convenience options.
+
+Created because \href{https://github.com/mikeal/request}{\texttt{ {\ttfamily request}}} is bloated \texorpdfstring{$\ast$}{*}(several megabytes!)\texorpdfstring{$\ast$}{*}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27429e810d174aec6531cd389117b059_autotoc_md2456}{}\doxysubsection{\texorpdfstring{Install}{Install}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27429e810d174aec6531cd389117b059_autotoc_md2456}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ -\/-\/save\ got}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27429e810d174aec6531cd389117b059_autotoc_md2457}{}\doxysubsection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27429e810d174aec6531cd389117b059_autotoc_md2457}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ got\ =\ require('got');}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Callback\ mode}
+\DoxyCodeLine{got('todomvc.com',\ (error,\ body,\ response)\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ console.log(body);}
+\DoxyCodeLine{\ \ \ \ //=>\ '<!doctype\ html>\ ...'}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Promise\ mode}
+\DoxyCodeLine{got('todomvc.com')}
+\DoxyCodeLine{\ \ \ \ .then(response\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ console.log(response.body);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //=>\ '<!doctype\ html>\ ...'}
+\DoxyCodeLine{\ \ \ \ \})}
+\DoxyCodeLine{\ \ \ \ .catch(error\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ console.log(error.response.body);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //=>\ 'Internal\ server\ error\ ...'}
+\DoxyCodeLine{\ \ \ \ \});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Stream\ mode}
+\DoxyCodeLine{got.stream('todomvc.com').pipe(fs.createWriteStream('index.html'));}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ For\ POST,\ PUT\ and\ PATCH\ methods\ got.stream\ returns\ a\ WritableStream}
+\DoxyCodeLine{fs.createReadStream('index.html').pipe(got.stream.post('todomvc.com'));}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27429e810d174aec6531cd389117b059_autotoc_md2458}{}\doxysubsubsection{\texorpdfstring{API}{API}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27429e810d174aec6531cd389117b059_autotoc_md2458}
+It\textquotesingle{}s a {\ttfamily GET} request by default, but can be changed in {\ttfamily options}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27429e810d174aec6531cd389117b059_autotoc_md2459}{}\doxyparagraph{\texorpdfstring{got(url, \mbox{[}options\mbox{]}, \mbox{[}callback\mbox{]})}{got(url, \mbox{[}options\mbox{]}, \mbox{[}callback\mbox{]})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27429e810d174aec6531cd389117b059_autotoc_md2459}
+Returns a Promise for a {\ttfamily response} object with a {\ttfamily body} property, a {\ttfamily url} property with the request URL or the final URL after redirects, and a {\ttfamily request\+Url} property with the original request URL.
+
+Otherwise calls callback with {\ttfamily response} object (same as in previous case).
+
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27429e810d174aec6531cd389117b059_autotoc_md2460}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27429e810d174aec6531cd389117b059_autotoc_md2460}%
+ \doxysubparagraph*{url}
+
+Type\+: {\ttfamily string}, {\ttfamily object}
+
+The URL to request or a \href{https://nodejs.org/api/http.html\#http_http_request_options_callback}{\texttt{ {\ttfamily http.\+request} options}} object.
+
+Properties from {\ttfamily options} will override properties in the parsed {\ttfamily url}.
+
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27429e810d174aec6531cd389117b059_autotoc_md2461}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27429e810d174aec6531cd389117b059_autotoc_md2461}%
+ \doxysubparagraph*{options}
+
+Type\+: {\ttfamily object}
+
+Any of the \href{http://nodejs.org/api/http.html\#http_http_request_options_callback}{\texttt{ {\ttfamily http.\+request}}} options.
+
+\doxysubparagraph*{body}
+
+Type\+: {\ttfamily string}, {\ttfamily buffer}, {\ttfamily readable\+Stream}, {\ttfamily object} ~\newline
+
+
+{\itshape This is mutually exclusive with stream mode.}
+
+Body that will be sent with a {\ttfamily POST} request.
+
+If present in {\ttfamily options} and {\ttfamily options.\+method} is not set, {\ttfamily options.\+method} will be set to {\ttfamily POST}.
+
+If {\ttfamily content-\/length} or {\ttfamily transfer-\/encoding} is not set in {\ttfamily options.\+headers} and {\ttfamily body} is a string or buffer, {\ttfamily content-\/length} will be set to the body length.
+
+If {\ttfamily body} is a plain object, it will be stringified with \href{https://nodejs.org/api/querystring.html\#querystring_querystring_stringify_obj_sep_eq_options}{\texttt{ {\ttfamily querystring.\+stringify}}} and sent as {\ttfamily application/x-\/www-\/form-\/urlencoded}.
+
+\doxysubparagraph*{encoding}
+
+Type\+: {\ttfamily string}, {\ttfamily null} ~\newline
+ Default\+: `\textquotesingle{}utf8'\`{}
+
+Encoding to be used on {\ttfamily set\+Encoding} of the response data. If {\ttfamily null}, the body is returned as a Buffer.
+
+\doxysubparagraph*{json}
+
+Type\+: {\ttfamily boolean} ~\newline
+ Default\+: {\ttfamily false}
+
+{\itshape This is mutually exclusive with stream mode.}
+
+Parse response body with {\ttfamily JSON.\+parse} and set {\ttfamily accept} header to {\ttfamily application/json}.
+
+\doxysubparagraph*{query}
+
+Type\+: {\ttfamily string}, {\ttfamily object} ~\newline
+
+
+Query string object that will be added to the request URL. This will override the query string in {\ttfamily url}.
+
+\doxysubparagraph*{timeout}
+
+Type\+: {\ttfamily number}
+
+Milliseconds after which the request will be aborted and an error event with {\ttfamily ETIMEDOUT} code will be emitted.
+
+\doxysubparagraph*{retries}
+
+Type\+: {\ttfamily number}, {\ttfamily function} ~\newline
+ Default\+: {\ttfamily 5}
+
+Number of request retries when network errors happens. Delays between retries counts with function {\ttfamily 1000 \texorpdfstring{$\ast$}{*} Math.\+pow(2, retry) + Math.\+random() \texorpdfstring{$\ast$}{*} 100}, where {\ttfamily retry} is attempt number (starts from 0).
+
+Option accepts {\ttfamily function} with {\ttfamily retry} and {\ttfamily error} arguments. Function must return delay in milliseconds ({\ttfamily 0} return value cancels retry).
+
+{\bfseries{Note\+:}} if {\ttfamily retries} is {\ttfamily number}, {\ttfamily ENOTFOUND} and {\ttfamily ENETUNREACH} error will not be retried (see full list in \href{https://github.com/floatdrop/is-retry-allowed/blob/master/index.js\#L12}{\texttt{ {\ttfamily is-\/retry-\/allowed}}} module).
+
+\doxysubparagraph*{follow\+Redirect}
+
+Type\+: {\ttfamily boolean}~\newline
+ Default\+: {\ttfamily true}
+
+Defines if redirect responses should be followed automatically.
+
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27429e810d174aec6531cd389117b059_autotoc_md2462}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27429e810d174aec6531cd389117b059_autotoc_md2462}%
+ \doxysubparagraph*{callback(error, data, response)}
+
+Function to be called when error or data are received. If omitted, a promise will be returned.
+
+\doxysubparagraph*{error}
+
+{\ttfamily Error} object with HTTP status code as {\ttfamily status\+Code} property.
+
+The data you requested.
+
+\doxysubparagraph*{response}
+
+The \href{http://nodejs.org/api/http.html\#http_http_incomingmessage}{\texttt{ response object}}.
+
+When in stream mode, you can listen for events\+:
+
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27429e810d174aec6531cd389117b059_autotoc_md2463}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27429e810d174aec6531cd389117b059_autotoc_md2463}%
+ \doxysubparagraph*{.on(\textquotesingle{}request\textquotesingle{}, request)}
+
+{\ttfamily request} event to get the request object of the request.
+
+{\bfseries{Tip}}\+: You can use {\ttfamily request} event to abort request\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{got.stream('github.com')}
+\DoxyCodeLine{\ \ \ \ .on('request',\ req\ =>\ setTimeout(()\ =>\ req.abort(),\ 50));}
+
+\end{DoxyCode}
+
+
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27429e810d174aec6531cd389117b059_autotoc_md2464}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27429e810d174aec6531cd389117b059_autotoc_md2464}%
+ \doxysubparagraph*{.on(\textquotesingle{}response\textquotesingle{}, response)}
+
+{\ttfamily response} event to get the response object of the final request.
+
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27429e810d174aec6531cd389117b059_autotoc_md2465}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27429e810d174aec6531cd389117b059_autotoc_md2465}%
+ \doxysubparagraph*{.on(\textquotesingle{}redirect\textquotesingle{}, response, next\+Options)}
+
+{\ttfamily redirect} event to get the response object of a redirect. The second argument is options for the next request to the redirect location.
+
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27429e810d174aec6531cd389117b059_autotoc_md2466}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27429e810d174aec6531cd389117b059_autotoc_md2466}%
+ \doxysubparagraph*{.on(\textquotesingle{}error\textquotesingle{}, error, body, response)}
+
+{\ttfamily error} event emitted in case of protocol error (like {\ttfamily ENOTFOUND} etc.) or status error (4xx or 5xx). The second argument is the body of the server response in case of status error. The third argument is response object.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27429e810d174aec6531cd389117b059_autotoc_md2467}{}\doxyparagraph{\texorpdfstring{got.\+get(url, \mbox{[}options\mbox{]}, \mbox{[}callback\mbox{]})}{got.\+get(url, \mbox{[}options\mbox{]}, \mbox{[}callback\mbox{]})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27429e810d174aec6531cd389117b059_autotoc_md2467}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27429e810d174aec6531cd389117b059_autotoc_md2468}{}\doxyparagraph{\texorpdfstring{got.\+post(url, \mbox{[}options\mbox{]}, \mbox{[}callback\mbox{]})}{got.\+post(url, \mbox{[}options\mbox{]}, \mbox{[}callback\mbox{]})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27429e810d174aec6531cd389117b059_autotoc_md2468}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27429e810d174aec6531cd389117b059_autotoc_md2469}{}\doxyparagraph{\texorpdfstring{got.\+put(url, \mbox{[}options\mbox{]}, \mbox{[}callback\mbox{]})}{got.\+put(url, \mbox{[}options\mbox{]}, \mbox{[}callback\mbox{]})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27429e810d174aec6531cd389117b059_autotoc_md2469}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27429e810d174aec6531cd389117b059_autotoc_md2470}{}\doxyparagraph{\texorpdfstring{got.\+patch(url, \mbox{[}options\mbox{]}, \mbox{[}callback\mbox{]})}{got.\+patch(url, \mbox{[}options\mbox{]}, \mbox{[}callback\mbox{]})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27429e810d174aec6531cd389117b059_autotoc_md2470}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27429e810d174aec6531cd389117b059_autotoc_md2471}{}\doxyparagraph{\texorpdfstring{got.\+head(url, \mbox{[}options\mbox{]}, \mbox{[}callback\mbox{]})}{got.\+head(url, \mbox{[}options\mbox{]}, \mbox{[}callback\mbox{]})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27429e810d174aec6531cd389117b059_autotoc_md2471}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27429e810d174aec6531cd389117b059_autotoc_md2472}{}\doxyparagraph{\texorpdfstring{got.\+delete(url, \mbox{[}options\mbox{]}, \mbox{[}callback\mbox{]})}{got.\+delete(url, \mbox{[}options\mbox{]}, \mbox{[}callback\mbox{]})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27429e810d174aec6531cd389117b059_autotoc_md2472}
+Sets {\ttfamily options.\+method} to the method name and makes a request.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27429e810d174aec6531cd389117b059_autotoc_md2473}{}\doxysubsection{\texorpdfstring{Errors}{Errors}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27429e810d174aec6531cd389117b059_autotoc_md2473}
+Each error contains (if available) {\ttfamily status\+Code}, {\ttfamily status\+Message}, {\ttfamily host}, {\ttfamily hostname}, {\ttfamily method} and {\ttfamily path} properties to make debugging easier.
+
+In Promise mode, the {\ttfamily response} is attached to the error.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27429e810d174aec6531cd389117b059_autotoc_md2474}{}\doxyparagraph{\texorpdfstring{got.\+Request\+Error}{got.\+Request\+Error}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27429e810d174aec6531cd389117b059_autotoc_md2474}
+When a request fails. Contains a {\ttfamily code} property with error class code, like {\ttfamily ECONNREFUSED}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27429e810d174aec6531cd389117b059_autotoc_md2475}{}\doxyparagraph{\texorpdfstring{got.\+Read\+Error}{got.\+Read\+Error}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27429e810d174aec6531cd389117b059_autotoc_md2475}
+When reading from response stream fails.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27429e810d174aec6531cd389117b059_autotoc_md2476}{}\doxyparagraph{\texorpdfstring{got.\+Parse\+Error}{got.\+Parse\+Error}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27429e810d174aec6531cd389117b059_autotoc_md2476}
+When {\ttfamily json} option is enabled and {\ttfamily JSON.\+parse} fails.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27429e810d174aec6531cd389117b059_autotoc_md2477}{}\doxyparagraph{\texorpdfstring{got.\+HTTPError}{got.\+HTTPError}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27429e810d174aec6531cd389117b059_autotoc_md2477}
+When server response code is not 2xx. Contains {\ttfamily status\+Code} and {\ttfamily status\+Message}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27429e810d174aec6531cd389117b059_autotoc_md2478}{}\doxyparagraph{\texorpdfstring{got.\+Max\+Redirects\+Error}{got.\+Max\+Redirects\+Error}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27429e810d174aec6531cd389117b059_autotoc_md2478}
+When server redirects you more than 10 times.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27429e810d174aec6531cd389117b059_autotoc_md2479}{}\doxysubsection{\texorpdfstring{Proxies}{Proxies}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27429e810d174aec6531cd389117b059_autotoc_md2479}
+You can use the \href{https://github.com/koichik/node-tunnel}{\texttt{ {\ttfamily tunnel}}} module with the {\ttfamily agent} option to work with proxies\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ got\ =\ require('got');}
+\DoxyCodeLine{const\ tunnel\ =\ require('tunnel');}
+\DoxyCodeLine{}
+\DoxyCodeLine{got('todomvc.com',\ \{}
+\DoxyCodeLine{\ \ \ \ agent:\ tunnel.httpOverHttp(\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ proxy:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ host:\ 'localhost'}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \})}
+\DoxyCodeLine{\},\ ()\ =>\ \{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27429e810d174aec6531cd389117b059_autotoc_md2480}{}\doxysubsection{\texorpdfstring{Cookies}{Cookies}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27429e810d174aec6531cd389117b059_autotoc_md2480}
+You can use the \href{https://github.com/jshttp/cookie}{\texttt{ {\ttfamily cookie}}} module to include cookies in a request\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ got\ =\ require('got');}
+\DoxyCodeLine{const\ cookie\ =\ require('cookie');}
+\DoxyCodeLine{}
+\DoxyCodeLine{got('google.com',\ \{}
+\DoxyCodeLine{\ \ \ \ headers:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ cookie:\ cookie.serialize('foo',\ 'bar')}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27429e810d174aec6531cd389117b059_autotoc_md2481}{}\doxysubsection{\texorpdfstring{Form data}{Form data}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27429e810d174aec6531cd389117b059_autotoc_md2481}
+You can use the \href{https://github.com/form-data/form-data}{\texttt{ {\ttfamily form-\/data}}} module to create POST request with form data\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ fs\ =\ require('fs');}
+\DoxyCodeLine{const\ got\ =\ require('got');}
+\DoxyCodeLine{const\ FormData\ =\ require('form-\/data');}
+\DoxyCodeLine{const\ form\ =\ new\ FormData();}
+\DoxyCodeLine{}
+\DoxyCodeLine{form.append('my\_file',\ fs.createReadStream('/foo/bar.jpg'));}
+\DoxyCodeLine{}
+\DoxyCodeLine{got.post('google.com',\ \{}
+\DoxyCodeLine{\ \ \ \ body:\ form}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27429e810d174aec6531cd389117b059_autotoc_md2482}{}\doxysubsection{\texorpdfstring{OAuth}{OAuth}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27429e810d174aec6531cd389117b059_autotoc_md2482}
+You can use the \href{https://github.com/ddo/oauth-1.0a}{\texttt{ {\ttfamily oauth-\/1.\+0a}}} module to create a signed OAuth request\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ got\ =\ require('got');}
+\DoxyCodeLine{const\ OAuth\ =\ require('oauth-\/1.0a');}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ oauth\ =\ OAuth(\{}
+\DoxyCodeLine{\ \ \ \ consumer:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ public:\ process.env.CONSUMER\_KEY,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ secret:\ process.env.CONSUMER\_SECRET}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ signature\_method:\ 'HMAC-\/SHA1'}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ token\ =\ \{}
+\DoxyCodeLine{\ \ \ \ public:\ process.env.ACCESS\_TOKEN,}
+\DoxyCodeLine{\ \ \ \ secret:\ process.env.ACCESS\_TOKEN\_SECRET}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ url\ =\ 'https://api.twitter.com/1.1/statuses/home\_timeline.json';}
+\DoxyCodeLine{}
+\DoxyCodeLine{got(url,\ \{}
+\DoxyCodeLine{\ \ \ \ headers:\ oauth.toHeader(oauth.authorize(\{url,\ method:\ 'GET'\},\ token)),}
+\DoxyCodeLine{\ \ \ \ json:\ true}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27429e810d174aec6531cd389117b059_autotoc_md2483}{}\doxysubsection{\texorpdfstring{Unix Domain Sockets}{Unix Domain Sockets}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27429e810d174aec6531cd389117b059_autotoc_md2483}
+Requests can also be sent via \href{http://serverfault.com/questions/124517/whats-the-difference-between-unix-socket-and-tcp-ip-socket}{\texttt{ unix domain sockets}}. Use the following URL scheme\+: {\ttfamily PROTOCOL\+://unix\+:SOCKET\+:PATH}.
+
+
+\begin{DoxyItemize}
+\item {\ttfamily PROTOCOL} -\/ {\ttfamily http} or {\ttfamily https} \texorpdfstring{$\ast$}{*}(optional)\texorpdfstring{$\ast$}{*}
+\item {\ttfamily SOCKET} -\/ absolute path to a unix domain socket, e.\+g. {\ttfamily /var/run/docker.sock}
+\item {\ttfamily PATH} -\/ request path, e.\+g. {\ttfamily /v2/keys}
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{got('http://unix:/var/run/docker.sock:/containers/json');}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ or\ without\ protocol\ (http\ by\ default)}
+\DoxyCodeLine{got('unix:/var/run/docker.sock:/containers/json');}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27429e810d174aec6531cd389117b059_autotoc_md2484}{}\doxysubsection{\texorpdfstring{Tip}{Tip}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27429e810d174aec6531cd389117b059_autotoc_md2484}
+It\textquotesingle{}s a good idea to set the `\textquotesingle{}user-\/agent'\`{} header so the provider can more easily see how their resource is used. By default, it\textquotesingle{}s the URL to this repo.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ got\ =\ require('got');}
+\DoxyCodeLine{var\ pkg\ =\ require('./package.json');}
+\DoxyCodeLine{}
+\DoxyCodeLine{got('todomvc.com',\ \{}
+\DoxyCodeLine{\ \ \ \ headers:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ 'user-\/agent':\ 'my-\/module/'\ +\ pkg.version\ +\ '\ (https://github.com/username/my-\/module)'}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\},\ function\ ()\ \{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27429e810d174aec6531cd389117b059_autotoc_md2485}{}\doxysubsection{\texorpdfstring{Node.\+js 0.\+10.\+x}{Node.\+js 0.\+10.\+x}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27429e810d174aec6531cd389117b059_autotoc_md2485}
+It is a known issue with old good Node 0.\+10.\+x \href{https://nodejs.org/docs/v0.10.39/api/http.html\#http_class_http_agent}{\texttt{ {\ttfamily http.\+Agent}}} and {\ttfamily agent.\+max\+Sockets}, which is set to {\ttfamily 5}. This can cause low performance and in rare cases deadlocks. To avoid this you can set it manually\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{require('http').globalAgent.maxSockets\ =\ Infinity;}
+\DoxyCodeLine{require('https').globalAgent.maxSockets\ =\ Infinity;}
+
+\end{DoxyCode}
+
+
+This should only ever be done if you have Node version 0.\+10.\+x and at the top-\/level app layer.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27429e810d174aec6531cd389117b059_autotoc_md2486}{}\doxysubsection{\texorpdfstring{Related}{Related}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27429e810d174aec6531cd389117b059_autotoc_md2486}
+
+\begin{DoxyItemize}
+\item \href{https://github.com/sindresorhus/gh-got}{\texttt{ gh-\/got}} -\/ Convenience wrapper for interacting with the Git\+Hub API
+\item \href{https://github.com/samverschueren/travis-got}{\texttt{ travis-\/got}} -\/ Convenience wrapper for interacting with the Travis API
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27429e810d174aec6531cd389117b059_autotoc_md2487}{}\doxysubsection{\texorpdfstring{Created by}{Created by}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27429e810d174aec6531cd389117b059_autotoc_md2487}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ \href{http://sindresorhus.com}{\texttt{ }}   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ \href{https://github.com/floatdrop}{\texttt{ }}    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ \href{http://sindresorhus.com}{\texttt{ }}   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ \href{https://github.com/floatdrop}{\texttt{ }}    }\\\cline{1-2}
+\endhead
+\href{http://sindresorhus.com}{\texttt{ Sindre Sorhus}}   &\href{https://github.com/floatdrop}{\texttt{ Vsevolod Strukchinsky}}   \\\cline{1-2}
+\end{longtabu}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27429e810d174aec6531cd389117b059_autotoc_md2488}{}\doxysubsection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27429e810d174aec6531cd389117b059_autotoc_md2488}
+MIT © \href{http://sindresorhus.com}{\texttt{ Sindre Sorhus}} 

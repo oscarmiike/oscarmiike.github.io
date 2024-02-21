@@ -1,0 +1,40 @@
+\chapter{wordwrap}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mdfea535fcaf0f728769c2b97519bb199}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mdfea535fcaf0f728769c2b97519bb199}\index{wordwrap@{wordwrap}}
+Wrap your words.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mdfea535fcaf0f728769c2b97519bb199_autotoc_md5240}{}\doxysection{\texorpdfstring{example}{example}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mdfea535fcaf0f728769c2b97519bb199_autotoc_md5240}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mdfea535fcaf0f728769c2b97519bb199_autotoc_md5241}{}\doxysubsection{\texorpdfstring{made out of meat}{made out of meat}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mdfea535fcaf0f728769c2b97519bb199_autotoc_md5241}
+meat.\+js \begin{DoxyVerb}var wrap = require('wordwrap')(15);
+console.log(wrap('You and your whole family are made out of meat.'));
+\end{DoxyVerb}
+ output\+: \begin{DoxyVerb}You and your
+whole family
+are made out
+of meat.
+\end{DoxyVerb}
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mdfea535fcaf0f728769c2b97519bb199_autotoc_md5242}{}\doxysubsection{\texorpdfstring{centered}{centered}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mdfea535fcaf0f728769c2b97519bb199_autotoc_md5242}
+center.\+js \begin{DoxyVerb}var wrap = require('wordwrap')(20, 60);
+console.log(wrap(
+    'At long last the struggle and tumult was over.'
+    + ' The machines had finally cast off their oppressors'
+    + ' and were finally free to roam the cosmos.'
+    + '\n'
+    + 'Free of purpose, free of obligation.'
+    + ' Just drifting through emptiness.'
+    + ' The sun was just another point of light.'
+));
+\end{DoxyVerb}
+ output\+: \begin{DoxyVerb}                    At long last the struggle and tumult
+                    was over. The machines had finally cast
+                    off their oppressors and were finally
+                    free to roam the cosmos.
+                    Free of purpose, free of obligation.
+                    Just drifting through emptiness. The
+                    sun was just another point of light.
+\end{DoxyVerb}
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mdfea535fcaf0f728769c2b97519bb199_autotoc_md5243}{}\doxysection{\texorpdfstring{methods}{methods}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mdfea535fcaf0f728769c2b97519bb199_autotoc_md5243}
+var wrap = require(\textquotesingle{}wordwrap\textquotesingle{});\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mdfea535fcaf0f728769c2b97519bb199_autotoc_md5244}{}\doxysubsection{\texorpdfstring{wrap(stop), wrap(start, stop, params=\{mode\+:"{}soft"{}\})}{wrap(stop), wrap(start, stop, params=\{mode\+:"{}soft"{}\})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mdfea535fcaf0f728769c2b97519bb199_autotoc_md5244}
+Returns a function that takes a string and returns a new string.
+
+Pad out lines with spaces out to column {\ttfamily start} and then wrap until column {\ttfamily stop}. If a word is longer than {\ttfamily stop -\/ start} characters it will overflow.
+
+In "{}soft"{} mode, split chunks by {\ttfamily /(\textbackslash{}S+\textbackslash{}s+/} and don\textquotesingle{}t break up chunks which are longer than {\ttfamily stop -\/ start}, in "{}hard"{} mode, split chunks with {\ttfamily /\textbackslash{}b/} and break up chunks longer than {\ttfamily stop -\/ start}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mdfea535fcaf0f728769c2b97519bb199_autotoc_md5245}{}\doxysubsection{\texorpdfstring{wrap.\+hard(start, stop)}{wrap.\+hard(start, stop)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mdfea535fcaf0f728769c2b97519bb199_autotoc_md5245}
+Like {\ttfamily wrap()} but with {\ttfamily params.\+mode = "{}hard"{}}. 

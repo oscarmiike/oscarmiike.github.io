@@ -1,0 +1,183 @@
+\doxysection{Ainslie\+API.\+Controllers.\+Logs\+Controller Class Reference}
+\hypertarget{class_ainslie_a_p_i_1_1_controllers_1_1_logs_controller}{}\label{class_ainslie_a_p_i_1_1_controllers_1_1_logs_controller}\index{AinslieAPI.Controllers.LogsController@{AinslieAPI.Controllers.LogsController}}
+
+
+Controller responsible for managing log-\/related actions, including retrieval and manipulation of log entries.  
+
+
+
+
+Inheritance diagram for Ainslie\+API.\+Controllers.\+Logs\+Controller\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=215pt]{class_ainslie_a_p_i_1_1_controllers_1_1_logs_controller__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Ainslie\+API.\+Controllers.\+Logs\+Controller\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=215pt]{class_ainslie_a_p_i_1_1_controllers_1_1_logs_controller__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_logs_controller_afb713b2cb90756230e4704cffd8d613f}{Logs\+Controller}} (IOptions$<$ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings}{App\+Settings}} $>$ app\+Settings, \mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils}{Jwt\+Utils}} jwt\+Utils, \mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{Log\+Service}} log\+Service, \mbox{\hyperlink{class_ainslie_a_p_i_1_1_data_1_1_contexts_1_1_local_context}{Local\+Context}} local\+Context, \mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service}{Internal\+Api\+Service}} iapi\+Service)
+\begin{DoxyCompactList}\small\item\em Initialises a new instance of the Logs\+Controller class, injecting dependencies for application settings, JWT utilities, logging, database context, and internal API services. \end{DoxyCompactList}\item 
+IAction\+Result \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_logs_controller_a3ef80287ee6fcd427b335c7f37e366d8}{Get\+Logs}} (\mbox{[}From\+Body\mbox{]} \mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_internal_api_1_1_log_request}{Log\+Request}} log\+Request)
+\begin{DoxyCompactList}\small\item\em Retrieves logs based on specified criteria, including time range and filters. \end{DoxyCompactList}\item 
+IAction\+Result \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_logs_controller_a97c028c3db2a6e6190127d5a1a67cda3}{Get\+Log\+Sources}} ()
+\begin{DoxyCompactList}\small\item\em Fetches distinct log sources from the database. \end{DoxyCompactList}\item 
+IAction\+Result \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_logs_controller_a950cc099b42028053588effab1e1c578}{Get\+Log\+Types}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves distinct log types from the database. \end{DoxyCompactList}\item 
+IAction\+Result \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_logs_controller_aea8072dbf59418b035df6b786ecae9c0}{Trim\+Logs}} ()
+\begin{DoxyCompactList}\small\item\em Trims logs based on predefined criteria to manage database size. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Controller responsible for managing log-\/related actions, including retrieval and manipulation of log entries. 
+
+Definition at line \mbox{\hyperlink{_logs_controller_8cs_source_l00024}{24}} of file \mbox{\hyperlink{_logs_controller_8cs_source}{Logs\+Controller.\+cs}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_ainslie_a_p_i_1_1_controllers_1_1_logs_controller_afb713b2cb90756230e4704cffd8d613f}\label{class_ainslie_a_p_i_1_1_controllers_1_1_logs_controller_afb713b2cb90756230e4704cffd8d613f} 
+\index{AinslieAPI.Controllers.LogsController@{AinslieAPI.Controllers.LogsController}!LogsController@{LogsController}}
+\index{LogsController@{LogsController}!AinslieAPI.Controllers.LogsController@{AinslieAPI.Controllers.LogsController}}
+\doxysubsubsection{\texorpdfstring{LogsController()}{LogsController()}}
+{\footnotesize\ttfamily Ainslie\+API.\+Controllers.\+Logs\+Controller.\+Logs\+Controller (\begin{DoxyParamCaption}\item[{IOptions$<$ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings}{App\+Settings}} $>$}]{app\+Settings,  }\item[{\mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils}{Jwt\+Utils}}}]{jwt\+Utils,  }\item[{\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{Log\+Service}}}]{log\+Service,  }\item[{\mbox{\hyperlink{class_ainslie_a_p_i_1_1_data_1_1_contexts_1_1_local_context}{Local\+Context}}}]{local\+Context,  }\item[{\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service}{Internal\+Api\+Service}}}]{iapi\+Service }\end{DoxyParamCaption})}
+
+
+
+Initialises a new instance of the Logs\+Controller class, injecting dependencies for application settings, JWT utilities, logging, database context, and internal API services. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em app\+Settings} & The application settings, including configuration values.\\
+\hline
+{\em jwt\+Utils} & Utilities for JWT token operations, such as validation and generation.\\
+\hline
+{\em log\+Service} & Service for creating and managing log entries.\\
+\hline
+{\em local\+Context} & The database context for accessing application data.\\
+\hline
+{\em iapi\+Service} & Service for internal API operations, facilitating interaction with internal systems and services.\\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_logs_controller_8cs_source_l00040}{40}} of file \mbox{\hyperlink{_logs_controller_8cs_source}{Logs\+Controller.\+cs}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_ainslie_a_p_i_1_1_controllers_1_1_logs_controller_a3ef80287ee6fcd427b335c7f37e366d8}\label{class_ainslie_a_p_i_1_1_controllers_1_1_logs_controller_a3ef80287ee6fcd427b335c7f37e366d8} 
+\index{AinslieAPI.Controllers.LogsController@{AinslieAPI.Controllers.LogsController}!GetLogs@{GetLogs}}
+\index{GetLogs@{GetLogs}!AinslieAPI.Controllers.LogsController@{AinslieAPI.Controllers.LogsController}}
+\doxysubsubsection{\texorpdfstring{GetLogs()}{GetLogs()}}
+{\footnotesize\ttfamily IAction\+Result Ainslie\+API.\+Controllers.\+Logs\+Controller.\+Get\+Logs (\begin{DoxyParamCaption}\item[{\mbox{[}\+From\+Body\mbox{]} \mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_internal_api_1_1_log_request}{Log\+Request}}}]{log\+Request }\end{DoxyParamCaption})}
+
+
+
+Retrieves logs based on specified criteria, including time range and filters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em log\+Request} & Details of the log request, such as time range, type, source, and search string.\\
+\hline
+\end{DoxyParams}
+
+
+\begin{DoxyReturn}{Returns}
+An IAction\+Result containing logs matching the criteria.
+\end{DoxyReturn}
+
+
+This method enables both initial and follow-\/up log retrieval, featuring\+: 
+\begin{DoxyItemize}
+\item Time conversions from Unix/\+UTC to local, ensuring accurate time frame queries. 
+\item Filter application by log type, source, and search string for targeted searches. 
+\item Pagination via \textquotesingle{}initial\textquotesingle{} flag and \textquotesingle{}start\+Hour\textquotesingle{}, adjusting queries for specific log segments. 
+\item Descending order sorting by creation date for recent logs prioritisation. 
+\item Adaptation to request \textquotesingle{}max\+Logs\textquotesingle{} limit for controlled data retrieval. 
+\end{DoxyItemize}
+
+Definition at line \mbox{\hyperlink{_logs_controller_8cs_source_l00068}{68}} of file \mbox{\hyperlink{_logs_controller_8cs_source}{Logs\+Controller.\+cs}}.
+
+\Hypertarget{class_ainslie_a_p_i_1_1_controllers_1_1_logs_controller_a97c028c3db2a6e6190127d5a1a67cda3}\label{class_ainslie_a_p_i_1_1_controllers_1_1_logs_controller_a97c028c3db2a6e6190127d5a1a67cda3} 
+\index{AinslieAPI.Controllers.LogsController@{AinslieAPI.Controllers.LogsController}!GetLogSources@{GetLogSources}}
+\index{GetLogSources@{GetLogSources}!AinslieAPI.Controllers.LogsController@{AinslieAPI.Controllers.LogsController}}
+\doxysubsubsection{\texorpdfstring{GetLogSources()}{GetLogSources()}}
+{\footnotesize\ttfamily IAction\+Result Ainslie\+API.\+Controllers.\+Logs\+Controller.\+Get\+Log\+Sources (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Fetches distinct log sources from the database. 
+
+\begin{DoxyReturn}{Returns}
+An IAction\+Result containing unique log sources.
+\end{DoxyReturn}
+
+
+This method queries the Log\+Entries table for distinct sources, facilitating filter creation on the client side. 
+
+Definition at line \mbox{\hyperlink{_logs_controller_8cs_source_l00125}{125}} of file \mbox{\hyperlink{_logs_controller_8cs_source}{Logs\+Controller.\+cs}}.
+
+\Hypertarget{class_ainslie_a_p_i_1_1_controllers_1_1_logs_controller_a950cc099b42028053588effab1e1c578}\label{class_ainslie_a_p_i_1_1_controllers_1_1_logs_controller_a950cc099b42028053588effab1e1c578} 
+\index{AinslieAPI.Controllers.LogsController@{AinslieAPI.Controllers.LogsController}!GetLogTypes@{GetLogTypes}}
+\index{GetLogTypes@{GetLogTypes}!AinslieAPI.Controllers.LogsController@{AinslieAPI.Controllers.LogsController}}
+\doxysubsubsection{\texorpdfstring{GetLogTypes()}{GetLogTypes()}}
+{\footnotesize\ttfamily IAction\+Result Ainslie\+API.\+Controllers.\+Logs\+Controller.\+Get\+Log\+Types (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retrieves distinct log types from the database. 
+
+\begin{DoxyReturn}{Returns}
+An IAction\+Result containing unique log types.
+\end{DoxyReturn}
+
+
+Similar to Get\+Log\+Sources, this method aids in generating client-\/side filters by providing distinct log types. 
+
+Definition at line \mbox{\hyperlink{_logs_controller_8cs_source_l00141}{141}} of file \mbox{\hyperlink{_logs_controller_8cs_source}{Logs\+Controller.\+cs}}.
+
+\Hypertarget{class_ainslie_a_p_i_1_1_controllers_1_1_logs_controller_aea8072dbf59418b035df6b786ecae9c0}\label{class_ainslie_a_p_i_1_1_controllers_1_1_logs_controller_aea8072dbf59418b035df6b786ecae9c0} 
+\index{AinslieAPI.Controllers.LogsController@{AinslieAPI.Controllers.LogsController}!TrimLogs@{TrimLogs}}
+\index{TrimLogs@{TrimLogs}!AinslieAPI.Controllers.LogsController@{AinslieAPI.Controllers.LogsController}}
+\doxysubsubsection{\texorpdfstring{TrimLogs()}{TrimLogs()}}
+{\footnotesize\ttfamily IAction\+Result Ainslie\+API.\+Controllers.\+Logs\+Controller.\+Trim\+Logs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Trims logs based on predefined criteria to manage database size. 
+
+\begin{DoxyReturn}{Returns}
+An IAction\+Result indicating the success or failure of the operation.
+\end{DoxyReturn}
+
+
+Initiates a log trimming operation to remove older logs. 
+
+Definition at line \mbox{\hyperlink{_logs_controller_8cs_source_l00157}{157}} of file \mbox{\hyperlink{_logs_controller_8cs_source}{Logs\+Controller.\+cs}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_ainslie_a_p_i_1_1_controllers_1_1_logs_controller_aea8072dbf59418b035df6b786ecae9c0_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+STRIDER/source/repos/\+Ainslie\+API/\+Controllers/\mbox{\hyperlink{_logs_controller_8cs}{Logs\+Controller.\+cs}}\end{DoxyCompactItemize}

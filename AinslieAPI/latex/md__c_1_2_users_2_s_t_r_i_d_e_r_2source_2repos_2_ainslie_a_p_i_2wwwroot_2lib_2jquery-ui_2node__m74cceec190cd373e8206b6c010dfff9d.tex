@@ -1,0 +1,112 @@
+\chapter{find-\/up \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/sindresorhus/find-\/up"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+org/sindresorhus/find-\/up.\+svg?branch=master"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m74cceec190cd373e8206b6c010dfff9d}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m74cceec190cd373e8206b6c010dfff9d}\index{find-\/up $<$a href="{}https://travis-\/ci.org/sindresorhus/find-\/up"{} $>$$<$img src="{}https://travis-\/ci.org/sindresorhus/find-\/up.svg?branch=master"{} alt="{}Build Status"{}/$>$$<$/a$>$@{find-\/up $<$a href=""https://travis-\/ci.org/sindresorhus/find-\/up"" $>$$<$img src=""https://travis-\/ci.org/sindresorhus/find-\/up.svg?branch=master"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m74cceec190cd373e8206b6c010dfff9d_autotoc_md10764}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m74cceec190cd373e8206b6c010dfff9d_autotoc_md10764}%
+ \begin{quote}
+Find a file or directory by walking up parent directories \end{quote}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m74cceec190cd373e8206b6c010dfff9d_autotoc_md10765}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m74cceec190cd373e8206b6c010dfff9d_autotoc_md10765}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ find-\/up}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m74cceec190cd373e8206b6c010dfff9d_autotoc_md10766}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m74cceec190cd373e8206b6c010dfff9d_autotoc_md10766}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{/}
+\DoxyCodeLine{└──\ Users}
+\DoxyCodeLine{\ \ \ \ └──\ sindresorhus}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ├──\ unicorn.png}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ └──\ foo}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ └──\ bar}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ├──\ baz}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ └──\ example.js}
+
+\end{DoxyCode}
+
+
+{\ttfamily example.\+js}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ path\ =\ require('path');}
+\DoxyCodeLine{const\ findUp\ =\ require('find-\/up');}
+\DoxyCodeLine{}
+\DoxyCodeLine{(async\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ console.log(await\ findUp('unicorn.png'));}
+\DoxyCodeLine{\ \ \ \ //=>\ '/Users/sindresorhus/unicorn.png'}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ console.log(await\ findUp(['rainbow.png',\ 'unicorn.png']));}
+\DoxyCodeLine{\ \ \ \ //=>\ '/Users/sindresorhus/unicorn.png'}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ console.log(await\ findUp(async\ directory\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ const\ hasUnicorns\ =\ await\ findUp.exists(path.join(directory,\ 'unicorn.png'));}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ return\ hasUnicorns\ \&\&\ directory;}
+\DoxyCodeLine{\ \ \ \ \},\ \{type:\ 'directory'\}));}
+\DoxyCodeLine{\ \ \ \ //=>\ '/Users/sindresorhus'}
+\DoxyCodeLine{\})();}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m74cceec190cd373e8206b6c010dfff9d_autotoc_md10767}{}\doxysection{\texorpdfstring{API}{API}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m74cceec190cd373e8206b6c010dfff9d_autotoc_md10767}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m74cceec190cd373e8206b6c010dfff9d_autotoc_md10768}{}\doxysubsection{\texorpdfstring{find\+Up(name, options?)}{find\+Up(name, options?)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m74cceec190cd373e8206b6c010dfff9d_autotoc_md10768}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m74cceec190cd373e8206b6c010dfff9d_autotoc_md10769}{}\doxysubsection{\texorpdfstring{find\+Up(matcher, options?)}{find\+Up(matcher, options?)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m74cceec190cd373e8206b6c010dfff9d_autotoc_md10769}
+Returns a {\ttfamily Promise} for either the path or {\ttfamily undefined} if it couldn\textquotesingle{}t be found.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m74cceec190cd373e8206b6c010dfff9d_autotoc_md10770}{}\doxysubsection{\texorpdfstring{find\+Up(\mbox{[}...name\mbox{]}, options?)}{find\+Up(\mbox{[}...name\mbox{]}, options?)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m74cceec190cd373e8206b6c010dfff9d_autotoc_md10770}
+Returns a {\ttfamily Promise} for either the first path found (by respecting the order of the array) or {\ttfamily undefined} if none could be found.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m74cceec190cd373e8206b6c010dfff9d_autotoc_md10771}{}\doxysubsection{\texorpdfstring{find\+Up.\+sync(name, options?)}{find\+Up.\+sync(name, options?)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m74cceec190cd373e8206b6c010dfff9d_autotoc_md10771}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m74cceec190cd373e8206b6c010dfff9d_autotoc_md10772}{}\doxysubsection{\texorpdfstring{find\+Up.\+sync(matcher, options?)}{find\+Up.\+sync(matcher, options?)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m74cceec190cd373e8206b6c010dfff9d_autotoc_md10772}
+Returns a path or {\ttfamily undefined} if it couldn\textquotesingle{}t be found.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m74cceec190cd373e8206b6c010dfff9d_autotoc_md10773}{}\doxysubsection{\texorpdfstring{find\+Up.\+sync(\mbox{[}...name\mbox{]}, options?)}{find\+Up.\+sync(\mbox{[}...name\mbox{]}, options?)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m74cceec190cd373e8206b6c010dfff9d_autotoc_md10773}
+Returns the first path found (by respecting the order of the array) or {\ttfamily undefined} if none could be found.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m74cceec190cd373e8206b6c010dfff9d_autotoc_md10774}{}\doxysubsubsection{\texorpdfstring{name}{name}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m74cceec190cd373e8206b6c010dfff9d_autotoc_md10774}
+Type\+: {\ttfamily string}
+
+Name of the file or directory to find.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m74cceec190cd373e8206b6c010dfff9d_autotoc_md10775}{}\doxysubsubsection{\texorpdfstring{matcher}{matcher}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m74cceec190cd373e8206b6c010dfff9d_autotoc_md10775}
+Type\+: {\ttfamily Function}
+
+A function that will be called with each directory until it returns a {\ttfamily string} with the path, which stops the search, or the root directory has been reached and nothing was found. Useful if you want to match files with certain patterns, set of permissions, or other advanced use-\/cases.
+
+When using async mode, the {\ttfamily matcher} may optionally be an async or promise-\/returning function that returns the path.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m74cceec190cd373e8206b6c010dfff9d_autotoc_md10776}{}\doxysubsubsection{\texorpdfstring{options}{options}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m74cceec190cd373e8206b6c010dfff9d_autotoc_md10776}
+Type\+: {\ttfamily object}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m74cceec190cd373e8206b6c010dfff9d_autotoc_md10777}{}\doxyparagraph{\texorpdfstring{cwd}{cwd}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m74cceec190cd373e8206b6c010dfff9d_autotoc_md10777}
+Type\+: {\ttfamily string}~\newline
+ Default\+: {\ttfamily process.\+cwd()}
+
+Directory to start from.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m74cceec190cd373e8206b6c010dfff9d_autotoc_md10778}{}\doxyparagraph{\texorpdfstring{type}{type}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m74cceec190cd373e8206b6c010dfff9d_autotoc_md10778}
+Type\+: {\ttfamily string}~\newline
+ Default\+: `\textquotesingle{}file'{\ttfamily \texorpdfstring{$<$}{<}br\texorpdfstring{$>$}{>} Values\+:}\textquotesingle{}file\textquotesingle{}\textquotesingle{}directory\textquotesingle{}\`{}
+
+The type of paths that can match.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m74cceec190cd373e8206b6c010dfff9d_autotoc_md10779}{}\doxyparagraph{\texorpdfstring{allow\+Symlinks}{allow\+Symlinks}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m74cceec190cd373e8206b6c010dfff9d_autotoc_md10779}
+Type\+: {\ttfamily boolean}~\newline
+ Default\+: {\ttfamily true}
+
+Allow symbolic links to match if they point to the chosen path type.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m74cceec190cd373e8206b6c010dfff9d_autotoc_md10780}{}\doxysubsection{\texorpdfstring{find\+Up.\+exists(path)}{find\+Up.\+exists(path)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m74cceec190cd373e8206b6c010dfff9d_autotoc_md10780}
+Returns a {\ttfamily Promise\texorpdfstring{$<$}{<}boolean\texorpdfstring{$>$}{>}} of whether the path exists.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m74cceec190cd373e8206b6c010dfff9d_autotoc_md10781}{}\doxysubsection{\texorpdfstring{find\+Up.\+sync.\+exists(path)}{find\+Up.\+sync.\+exists(path)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m74cceec190cd373e8206b6c010dfff9d_autotoc_md10781}
+Returns a {\ttfamily boolean} of whether the path exists.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m74cceec190cd373e8206b6c010dfff9d_autotoc_md10782}{}\doxysubsubsection{\texorpdfstring{path}{path}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m74cceec190cd373e8206b6c010dfff9d_autotoc_md10782}
+Type\+: {\ttfamily string}
+
+Path to a file or directory.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m74cceec190cd373e8206b6c010dfff9d_autotoc_md10783}{}\doxysubsection{\texorpdfstring{find\+Up.\+stop}{find\+Up.\+stop}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m74cceec190cd373e8206b6c010dfff9d_autotoc_md10783}
+A \href{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol}{\texttt{ {\ttfamily Symbol}}} that can be returned by a {\ttfamily matcher} function to stop the search and cause {\ttfamily find\+Up} to immediately return {\ttfamily undefined}. Useful as a performance optimization in case the current working directory is deeply nested in the filesystem.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ path\ =\ require('path');}
+\DoxyCodeLine{const\ findUp\ =\ require('find-\/up');}
+\DoxyCodeLine{}
+\DoxyCodeLine{(async\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ await\ findUp(directory\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ return\ path.basename(directory)\ ===\ 'work'\ ?\ findUp.stop\ :\ 'logo.png';}
+\DoxyCodeLine{\ \ \ \ \});}
+\DoxyCodeLine{\})();}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m74cceec190cd373e8206b6c010dfff9d_autotoc_md10784}{}\doxysection{\texorpdfstring{Related}{Related}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m74cceec190cd373e8206b6c010dfff9d_autotoc_md10784}
+
+\begin{DoxyItemize}
+\item \href{https://github.com/sindresorhus/find-up-cli}{\texttt{ find-\/up-\/cli}} -\/ CLI for this module
+\item \href{https://github.com/sindresorhus/pkg-up}{\texttt{ pkg-\/up}} -\/ Find the closest package.\+json file
+\item \href{https://github.com/sindresorhus/pkg-dir}{\texttt{ pkg-\/dir}} -\/ Find the root directory of an npm package
+\item \href{https://github.com/sindresorhus/resolve-from}{\texttt{ resolve-\/from}} -\/ Resolve the path of a module like {\ttfamily require.\+resolve()} but from a given path
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+
+
+ {\bfseries{ \href{https://tidelift.com/subscription/pkg/npm-find-up?utm_source=npm-find-up&utm_medium=referral&utm_campaign=readme}{\texttt{ Get professional support for \textquotesingle{}find-\/up\textquotesingle{} with a Tidelift subscription}} }} ~\newline
+ \textsubscript{ Tidelift helps make open source sustainable for maintainers while giving companies~\newline
+assurances about security, maintenance, and licensing for their dependencies. }  

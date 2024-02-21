@@ -1,0 +1,228 @@
+\chapter{grunt-\/bowercopy}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma36e0cef80818b3a9a826ed899d51ed3}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma36e0cef80818b3a9a826ed899d51ed3}\index{grunt-\/bowercopy@{grunt-\/bowercopy}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma36e0cef80818b3a9a826ed899d51ed3_autotoc_md8698}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma36e0cef80818b3a9a826ed899d51ed3_autotoc_md8698}%
+\href{https://travis-ci.org/timmywil/grunt-bowercopy}{\texttt{ }} \href{https://greenkeeper.io/}{\texttt{ }}
+
+\begin{quote}
+Wrangle those bower dependencies and place each one where it\textquotesingle{}s supposed to be. \end{quote}
+
+\begin{DoxyItemize}
+\item Consistently positions your dependencies where you want them in your repository.
+\item Conveniently facilitates \href{http://addyosmani.com/blog/checking-in-front-end-dependencies/}{\texttt{ tracking your dependencies}} without committing the entire Bower components folder.
+\item Has the potential to reduce build times dramatically. For instance, if you were building a particular source folder for your webapp or website (compiling, concatenating, and minifying Java\+Script and CSS), you were forced to include the entire {\ttfamily bower\+\_\+components} directory in your build to make it work. This plugin clears the detritus.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma36e0cef80818b3a9a826ed899d51ed3_autotoc_md8699}{}\doxysection{\texorpdfstring{Workflow}{Workflow}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma36e0cef80818b3a9a826ed899d51ed3_autotoc_md8699}
+Whenever you add a new bower dependency, add which file should be copied and where to your Gruntfile {\ttfamily "{}bowercopy"{}} config. Then, run {\ttfamily grunt bowercopy}.
+
+By default, bowercopy runs {\ttfamily bower install} for you (turn this off with the {\ttfamily runbower} option). Your bower directory is not removed so you can see which files you need from each component. It is suggested that you add the bower directory (usually `\textquotesingle{}bower\+\_\+components'{\ttfamily ) to your}.gitignore\`{}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma36e0cef80818b3a9a826ed899d51ed3_autotoc_md8700}{}\doxysection{\texorpdfstring{Getting Started}{Getting Started}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma36e0cef80818b3a9a826ed899d51ed3_autotoc_md8700}
+This plugin requires Grunt.
+
+If you haven\textquotesingle{}t used \href{http://gruntjs.com/}{\texttt{ Grunt}} before, be sure to check out the \href{http://gruntjs.com/getting-started}{\texttt{ Getting Started}} guide, as it explains how to create a \href{http://gruntjs.com/sample-gruntfile}{\texttt{ Gruntfile}} as well as install and use Grunt plugins. Once you\textquotesingle{}re familiar with that process, you may install this plugin with this command\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ grunt-\/bowercopy\ -\/-\/save-\/dev}
+
+\end{DoxyCode}
+
+
+Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of Java\+Script\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{grunt.loadNpmTasks('grunt-\/bowercopy');}
+
+\end{DoxyCode}
+
+
+{\itshape Note\+: have a look at \href{https://github.com/sindresorhus/load-grunt-tasks}{\texttt{ load-\/grunt-\/tasks}} so you can skip this step for all your grunt plugins.}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma36e0cef80818b3a9a826ed899d51ed3_autotoc_md8701}{}\doxysection{\texorpdfstring{The "{}bowercopy"{} task}{The "{}bowercopy"{} task}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma36e0cef80818b3a9a826ed899d51ed3_autotoc_md8701}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma36e0cef80818b3a9a826ed899d51ed3_autotoc_md8702}{}\doxysubsection{\texorpdfstring{Overview}{Overview}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma36e0cef80818b3a9a826ed899d51ed3_autotoc_md8702}
+In your project\textquotesingle{}s Gruntfile, add a section named {\ttfamily bowercopy} to the data object passed into {\ttfamily grunt.\+init\+Config()}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{grunt.initConfig(\{}
+\DoxyCodeLine{\ \ \ \ bowercopy:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ //\ Task-\/specific\ options\ go\ here}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ your\_target:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ //\ Target-\/specific\ file\ lists\ and/or\ options\ go\ here}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma36e0cef80818b3a9a826ed899d51ed3_autotoc_md8703}{}\doxysubsection{\texorpdfstring{Options}{Options}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma36e0cef80818b3a9a826ed899d51ed3_autotoc_md8703}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma36e0cef80818b3a9a826ed899d51ed3_autotoc_md8704}{}\doxysubsubsection{\texorpdfstring{options.\+src\+Prefix}{options.\+src\+Prefix}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma36e0cef80818b3a9a826ed899d51ed3_autotoc_md8704}
+Type\+: {\ttfamily String} ~\newline
+ Default value\+: The {\ttfamily directory} property value in your {\ttfamily .bowerrc} or `\textquotesingle{}bower\+\_\+components'{\ttfamily if the}.bowerrc\`{} cannot be found.
+
+{\ttfamily src\+Prefix} will prefix your source locations with the correct bower folder location.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma36e0cef80818b3a9a826ed899d51ed3_autotoc_md8705}{}\doxysubsubsection{\texorpdfstring{options.\+dest\+Prefix}{options.\+dest\+Prefix}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma36e0cef80818b3a9a826ed899d51ed3_autotoc_md8705}
+Type\+: {\ttfamily String} ~\newline
+ Default value\+: `'\textquotesingle{}\`{}
+
+{\ttfamily dest\+Prefix} will be used as the prefix for destinations.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma36e0cef80818b3a9a826ed899d51ed3_autotoc_md8706}{}\doxysubsubsection{\texorpdfstring{options.\+run\+Bower}{options.\+run\+Bower}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma36e0cef80818b3a9a826ed899d51ed3_autotoc_md8706}
+Type\+: {\ttfamily Boolean} ~\newline
+ Default value\+: {\ttfamily true}
+
+Run {\ttfamily bower install} in conjunction with the {\ttfamily bowercopy} task.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma36e0cef80818b3a9a826ed899d51ed3_autotoc_md8707}{}\doxysubsubsection{\texorpdfstring{options.\+report}{options.\+report}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma36e0cef80818b3a9a826ed899d51ed3_autotoc_md8707}
+Type\+: {\ttfamily Boolean} ~\newline
+ Default value\+: {\ttfamily true}
+
+Report any modules in your bower.\+json that have not been configured to copy at least one file with {\ttfamily bowercopy}.
+
+{\bfseries{Note\+:}} {\itshape The clean option reports the same thing, so this option is ignored if clean is true.}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma36e0cef80818b3a9a826ed899d51ed3_autotoc_md8708}{}\doxysubsubsection{\texorpdfstring{options.\+clean}{options.\+clean}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma36e0cef80818b3a9a826ed899d51ed3_autotoc_md8708}
+Type\+: {\ttfamily Boolean} ~\newline
+ Default value\+: {\ttfamily false}
+
+Removes the bower components directory on completion. The folder path that is removed is {\ttfamily options.\+src\+Prefix}.
+
+{\bfseries{Note\+: the directory will only be removed if the following conditions are met.}}
+
+
+\begin{DoxyEnumerate}
+\item All task targets are run (i.\+e. grunt-\/bowercopy was run with the command {\ttfamily grunt bowercopy} and not {\ttfamily grunt bowercopy\+:target}).
+\item At least one thing was copied from each bower component (grunt-\/bowercopy tracks this for you).
+\end{DoxyEnumerate}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma36e0cef80818b3a9a826ed899d51ed3_autotoc_md8709}{}\doxysubsubsection{\texorpdfstring{options.\+ignore}{options.\+ignore}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma36e0cef80818b3a9a826ed899d51ed3_autotoc_md8709}
+Type\+: {\ttfamily Array} ~\newline
+ Default value\+: {\ttfamily \mbox{[}\mbox{]}}
+
+Using the {\ttfamily report} or {\ttfamily clean} option, {\ttfamily grunt-\/bowercopy} tracks which dependencies have at least one file copied. The {\ttfamily ignore} option can be used to specify any bower dependencies that aren\textquotesingle{}t copied, but need to be defined in your {\ttfamily bower.\+json} anyway.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma36e0cef80818b3a9a826ed899d51ed3_autotoc_md8710}{}\doxysubsubsection{\texorpdfstring{options.\+copy\+Options}{options.\+copy\+Options}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma36e0cef80818b3a9a826ed899d51ed3_autotoc_md8710}
+Type\+: {\ttfamily Object} ~\newline
+ Default value\+: {\ttfamily \{\}}
+
+Options to pass to {\ttfamily grunt.\+file.\+copy} when copying the files. See \href{http://gruntjs.com/api/grunt.file\#grunt.file.copy}{\texttt{ grunt.\+file.\+copy}}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma36e0cef80818b3a9a826ed899d51ed3_autotoc_md8711}{}\doxysubsection{\texorpdfstring{Usage Examples}{Usage Examples}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma36e0cef80818b3a9a826ed899d51ed3_autotoc_md8711}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{grunt.initConfig(\{}
+\DoxyCodeLine{\ \ \ \ bowercopy:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ //\ Bower\ components\ folder\ will\ be\ removed\ afterwards}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ clean:\ true}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ Anything\ can\ be\ copied}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ test:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ destPrefix:\ 'test/js'}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ files:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ Keys\ are\ destinations\ (prefixed\ with\ \`{}options.destPrefix`)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ Values\ are\ sources\ (prefixed\ with\ \`{}options.srcPrefix`);\ One\ source\ per\ destination}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ e.g.\ 'bower\_components/chai/lib/chai.js'\ will\ be\ copied\ to\ 'test/js/libs/chai.js'}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 'libs/chai.js':\ 'chai/lib/chai.js',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 'mocha/mocha.js':\ 'libs/mocha/mocha.js',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 'mocha/mocha.css':\ 'libs/mocha/mocha.css'}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ Javascript}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ libs:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ destPrefix:\ 'public/js/libs'}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ files:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 'jquery.js':\ 'jquery/jquery.js',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 'require.js':\ 'requirejs/require.js'}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ plugins:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ destPrefix:\ 'public/js/plugins'}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ files:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ Make\ dependencies\ follow\ your\ naming\ conventions}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 'jquery.chosen.js':\ 'chosen/public/chosen.js'}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ Less}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ less:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ destPrefix:\ 'less'}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ files:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ If\ either\ the\ src\ or\ the\ dest\ is\ not\ present,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ the\ specified\ location\ will\ be\ used\ for\ both.}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ In\ other\ words,\ this\ will\ copy}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ 'bower\_components/bootstrap/less/dropdowns.less'\ to\ 'less/bootstrap/less/dropdowns.less'}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ See\ http://gruntjs.com/configuring-\/tasks\#files\ for\ recommended\ files\ formats}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ src:\ 'bootstrap/less/dropdowns.less'}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ Images}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ images:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ destPrefix:\ 'public/images'}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ files:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 'account/chosen-\/sprite.png':\ 'chosen/public/chosen-\/sprite.png',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 'account/chosen-\/sprite@2x.png':\ 'chosen/public/chosen-\/sprite@2x.png'}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ Entire\ folders}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ folders:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ files:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ Note:\ when\ copying\ folders,\ the\ destination\ (key)\ will\ be\ used\ as\ the\ location\ for\ the\ folder}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 'public/js/libs/lodash':\ 'lodash',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ The\ destination\ can\ also\ be\ a\ folder}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ Note:\ if\ the\ basename\ of\ the\ location\ does\ not\ have\ a\ period('.'),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ it\ is\ assumed\ that\ you'd\ like\ a\ folder\ to\ be\ created\ if\ none\ exists}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ and\ the\ source\ filename\ will\ be\ used}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 'public/js/libs':\ 'lodash/dist/lodash.js'}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ Glob\ patterns}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ glob:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ files:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ When\ using\ glob\ patterns,\ destinations\ are\ *always*\ folder\ names}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ into\ which\ matching\ files\ will\ be\ copied}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ Also\ note\ that\ subdirectories\ are\ **not**\ maintained}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ if\ a\ destination\ is\ specified}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ For\ example,\ one\ of\ the\ files\ copied\ here\ is}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ 'lodash/dist/lodash.js'\ -\/>\ 'public/js/libs/lodash/lodash.js'}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 'public/js/libs/lodash':\ 'lodash/dist/*.js'}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ Glob\ without\ destination}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ globSrc:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ destPrefix:\ 'public/js/libs'}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ //\ By\ not\ specifying\ a\ destination,\ you\ are\ denoting}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ //\ that\ the\ lodash\ directory\ structure\ should\ be\ maintained}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ //\ when\ copying.}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ //\ For\ example,\ one\ of\ the\ files\ copied\ here\ is}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ //\ 'lodash/dist/lodash.js'\ -\/>\ 'public/js/libs/lodash/dist/lodash.js'}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ src:\ 'lodash/**/*.js'}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ Main\ pragma}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ Adding\ :main\ to\ the\ end\ of\ a\ source\ path\ will\ retrieve\ the\ main\ file(s)\ for\ that\ package}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ If\ the\ main\ property\ is\ not\ specified\ by\ a\ package,\ bowercopy\ will\ fail}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ main:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ src:\ 'jquery.minlight:main',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ dest:\ 'public/js/plugins/'}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma36e0cef80818b3a9a826ed899d51ed3_autotoc_md8712}{}\doxysection{\texorpdfstring{Contributing}{Contributing}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma36e0cef80818b3a9a826ed899d51ed3_autotoc_md8712}
+Follow the same coding style present in the repo and add tests for any bug fix or feature addition.
+
+See the \href{https://github.com/timmywil/grunt-bowercopy/blob/master/CONTRIBUTING.md}{\texttt{ CONTRIBUTING.\+md}} for more info.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma36e0cef80818b3a9a826ed899d51ed3_autotoc_md8713}{}\doxysection{\texorpdfstring{Release History}{Release History}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma36e0cef80818b3a9a826ed899d51ed3_autotoc_md8713}
+
+\begin{DoxyItemize}
+\item {\bfseries{1.\+1.\+0}} ({\itshape 6-\/23-\/2014}) Add \+:main pragma and {\ttfamily ignore} option.
+\item {\bfseries{1.\+0.\+1}} ({\itshape 6-\/12-\/2014}) Updated node modules
+\item {\bfseries{1.\+0.\+0}} ({\itshape 3-\/26-\/2014}) Version 1
+\item {\bfseries{0.\+9.\+0}} ({\itshape 3-\/3-\/2014}) Warn if a source location was not found.
+\item {\bfseries{0.\+8.\+0}} ({\itshape 2-\/21-\/2014}) Adds support for folders for destinations when copying individual files.
+\item {\bfseries{0.\+7.\+1}} ({\itshape 1-\/20-\/2014}) Fix Windows issue with path seperators.
+\item {\bfseries{0.\+7.\+0}} ({\itshape 1-\/13-\/2014}) Add {\ttfamily options.\+report}. Camelcase {\ttfamily options.\+run\+Bower}. Fix an issue with a source format (gh-\/9).
+\item {\bfseries{0.\+6.\+0}} ({\itshape 1-\/13-\/2014}) Add glob matcher.
+\item {\bfseries{0.\+5.\+0}} ({\itshape 12-\/31-\/2013}) Add {\ttfamily options.\+copy\+Options} to be passed along to {\ttfamily grunt.\+file.\+copy} and fix issue with local-\/only bower usage.
+\item {\bfseries{0.\+4.\+0}} ({\itshape 12-\/3-\/2013}) Update grunt to 0.\+4.\+2. Add the ability to copy folders.
+\item {\bfseries{0.\+3.\+0}} ({\itshape 12-\/2-\/2013}) Add clean option for removing the bower components directory on full task completion.
+\item {\bfseries{0.\+2.\+0}} ({\itshape 11-\/19-\/2013}) Report any bower components not configured to be copied when all targets are run together.
+\item {\bfseries{0.\+1.\+0}} ({\itshape 11-\/19-\/2013}) First Release
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma36e0cef80818b3a9a826ed899d51ed3_autotoc_md8714}{}\doxysection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma36e0cef80818b3a9a826ed899d51ed3_autotoc_md8714}
+Copyright (c) 2014 Timmy Willison. Licensed under the MIT license. 

@@ -1,0 +1,41 @@
+\chapter{maxmin \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/sindresorhus/maxmin"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+org/sindresorhus/maxmin.\+svg?branch=master"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2maxmin_2readme}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2maxmin_2readme}\index{maxmin $<$a href="{}https://travis-\/ci.org/sindresorhus/maxmin"{} $>$$<$img src="{}https://travis-\/ci.org/sindresorhus/maxmin.svg?branch=master"{} alt="{}Build Status"{}/$>$$<$/a$>$@{maxmin $<$a href=""https://travis-\/ci.org/sindresorhus/maxmin"" $>$$<$img src=""https://travis-\/ci.org/sindresorhus/maxmin.svg?branch=master"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2maxmin_2readme_autotoc_md10109}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2maxmin_2readme_autotoc_md10109}%
+ \begin{quote}
+Get a pretty output of the original, minified, gzipped size of a string or buffer \end{quote}
+
+
+Useful for logging the difference between original and minified file in e.\+g. a build-\/system.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2maxmin_2readme_autotoc_md10110}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2maxmin_2readme_autotoc_md10110}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ -\/-\/save\ maxmin}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2maxmin_2readme_autotoc_md10111}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2maxmin_2readme_autotoc_md10111}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ maxmin\ =\ require('maxmin');}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ max\ =\ 'function\ smoothRangeRandom(min,max)\{var\ num=Math.floor(Math.random()*(max-\/min+1)+min);return\ this.prev=num===this.prev?++num:num\};';}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ min\ =\ '(function(b,c)\{var\ a=Math.floor(Math.random()*(c-\/b+1)+b);return\ this.a=a===this.a?++a:a\})()';}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log(maxmin(max,\ min,\ true));}
+\DoxyCodeLine{//=>\ '130\ B\ →\ 91\ B\ →\ 53\ B\ (gzip)'}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2maxmin_2readme_autotoc_md10112}{}\doxysection{\texorpdfstring{API}{API}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2maxmin_2readme_autotoc_md10112}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2maxmin_2readme_autotoc_md10113}{}\doxysubsection{\texorpdfstring{maxmin(max, min, \mbox{[}use\+Gzip\mbox{]})}{maxmin(max, min, \mbox{[}use\+Gzip\mbox{]})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2maxmin_2readme_autotoc_md10113}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2maxmin_2readme_autotoc_md10114}{}\doxysubsubsection{\texorpdfstring{max}{max}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2maxmin_2readme_autotoc_md10114}
+Type\+: {\ttfamily string}, {\ttfamily buffer}, {\ttfamily number}
+
+Original string or its size in bytes.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2maxmin_2readme_autotoc_md10115}{}\doxysubsubsection{\texorpdfstring{min}{min}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2maxmin_2readme_autotoc_md10115}
+Type\+: {\ttfamily string}, {\ttfamily buffer}, {\ttfamily number}
+
+Minified string or its size in bytes.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2maxmin_2readme_autotoc_md10116}{}\doxysubsubsection{\texorpdfstring{use\+Gzip}{use\+Gzip}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2maxmin_2readme_autotoc_md10116}
+Type\+: {\ttfamily boolean} ~\newline
+ Default\+: {\ttfamily false}
+
+Show gzipped size of {\ttfamily min}. Pretty slow. Not shown when {\ttfamily min} is a {\ttfamily number}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2maxmin_2readme_autotoc_md10117}{}\doxysection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2maxmin_2readme_autotoc_md10117}
+MIT © \href{http://sindresorhus.com}{\texttt{ Sindre Sorhus}} 

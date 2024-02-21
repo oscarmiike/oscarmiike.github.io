@@ -1,0 +1,87 @@
+\doxysection{Ainslie\+API.\+Authentication.\+Jwt\+Middleware Class Reference}
+\hypertarget{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_middleware}{}\label{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_middleware}\index{AinslieAPI.Authentication.JwtMiddleware@{AinslieAPI.Authentication.JwtMiddleware}}
+
+
+Middleware for JWT authentication, responsible for validating tokens and attaching the authenticated user to the HTTP context.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_middleware_a187ee68b4121e840300c03598913ab9f}{Jwt\+Middleware}} (Request\+Delegate next)
+\begin{DoxyCompactList}\small\item\em Initializes a new instance of the Jwt\+Middleware class. \end{DoxyCompactList}\item 
+async Task \mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_middleware_acde1344b114bea6f8a9c175b5e7b5b94}{Invoke}} (Http\+Context context, \mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils}{Jwt\+Utils}} jwt\+Utils)
+\begin{DoxyCompactList}\small\item\em Processes each HTTP request, attempting to validate JWT tokens and attach authenticated users to the context. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Middleware for JWT authentication, responsible for validating tokens and attaching the authenticated user to the HTTP context. 
+
+Definition at line \mbox{\hyperlink{_jwt_middleware_8cs_source_l00006}{6}} of file \mbox{\hyperlink{_jwt_middleware_8cs_source}{Jwt\+Middleware.\+cs}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_middleware_a187ee68b4121e840300c03598913ab9f}\label{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_middleware_a187ee68b4121e840300c03598913ab9f} 
+\index{AinslieAPI.Authentication.JwtMiddleware@{AinslieAPI.Authentication.JwtMiddleware}!JwtMiddleware@{JwtMiddleware}}
+\index{JwtMiddleware@{JwtMiddleware}!AinslieAPI.Authentication.JwtMiddleware@{AinslieAPI.Authentication.JwtMiddleware}}
+\doxysubsubsection{\texorpdfstring{JwtMiddleware()}{JwtMiddleware()}}
+{\footnotesize\ttfamily Ainslie\+API.\+Authentication.\+Jwt\+Middleware.\+Jwt\+Middleware (\begin{DoxyParamCaption}\item[{Request\+Delegate}]{next }\end{DoxyParamCaption})}
+
+
+
+Initializes a new instance of the Jwt\+Middleware class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em next} & The next middleware in the pipeline.\\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_jwt_middleware_8cs_source_l00015}{15}} of file \mbox{\hyperlink{_jwt_middleware_8cs_source}{Jwt\+Middleware.\+cs}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_middleware_acde1344b114bea6f8a9c175b5e7b5b94}\label{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_middleware_acde1344b114bea6f8a9c175b5e7b5b94} 
+\index{AinslieAPI.Authentication.JwtMiddleware@{AinslieAPI.Authentication.JwtMiddleware}!Invoke@{Invoke}}
+\index{Invoke@{Invoke}!AinslieAPI.Authentication.JwtMiddleware@{AinslieAPI.Authentication.JwtMiddleware}}
+\doxysubsubsection{\texorpdfstring{Invoke()}{Invoke()}}
+{\footnotesize\ttfamily async Task Ainslie\+API.\+Authentication.\+Jwt\+Middleware.\+Invoke (\begin{DoxyParamCaption}\item[{Http\+Context}]{context,  }\item[{\mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils}{Jwt\+Utils}}}]{jwt\+Utils }\end{DoxyParamCaption})}
+
+
+
+Processes each HTTP request, attempting to validate JWT tokens and attach authenticated users to the context. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em context} & The Http\+Context for the current request.\\
+\hline
+{\em jwt\+Utils} & Utility class for JWT token validation.\\
+\hline
+\end{DoxyParams}
+
+
+\begin{DoxyReturn}{Returns}
+A Task representing the asynchronous operation.
+\end{DoxyReturn}
+
+
+This middleware extracts the JWT token from the Authorisation header, validates it, and, if successful, attaches the decoded Authenticated\+User object to the context for downstream use. Note\+: This does not integrate with .NET Core\textquotesingle{}s built-\/in authentication system and considers no user as authenticated by default. Future improvements may include integrating JWT authentication middleware to work alongside existing authentication mechanisms. 
+
+Definition at line \mbox{\hyperlink{_jwt_middleware_8cs_source_l00035}{35}} of file \mbox{\hyperlink{_jwt_middleware_8cs_source}{Jwt\+Middleware.\+cs}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_middleware_acde1344b114bea6f8a9c175b5e7b5b94_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+STRIDER/source/repos/\+Ainslie\+API/\+Authentication/\mbox{\hyperlink{_jwt_middleware_8cs}{Jwt\+Middleware.\+cs}}\end{DoxyCompactItemize}

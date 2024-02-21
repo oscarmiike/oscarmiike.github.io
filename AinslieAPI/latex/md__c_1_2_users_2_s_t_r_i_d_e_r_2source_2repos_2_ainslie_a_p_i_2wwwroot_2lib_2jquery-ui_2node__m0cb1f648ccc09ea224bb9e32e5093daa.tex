@@ -1,0 +1,102 @@
+\chapter{README}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0cb1f648ccc09ea224bb9e32e5093daa}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0cb1f648ccc09ea224bb9e32e5093daa}\index{README@{README}}
+\href{https://travis-ci.org/wycats/handlebars.js}{\texttt{ }} \href{https://ci.appveyor.com/project/wycats/handlebars-js}{\texttt{ }} \href{https://saucelabs.com/u/handlebars}{\texttt{ }}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0cb1f648ccc09ea224bb9e32e5093daa_autotoc_md2500}{}\doxysection{\texorpdfstring{Handlebars.\+js}{Handlebars.\+js}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0cb1f648ccc09ea224bb9e32e5093daa_autotoc_md2500}
+Handlebars.\+js is an extension to the \href{http://mustache.github.com/}{\texttt{ Mustache templating language}} created by Chris Wanstrath. Handlebars.\+js and Mustache are both logicless templating languages that keep the view and the code separated like we all know they should be.
+
+Checkout the official Handlebars docs site at \href{http://www.handlebarsjs.com}{\texttt{ http\+://www.\+handlebarsjs.\+com}} and the live demo at \href{http://tryhandlebarsjs.com/}{\texttt{ http\+://tryhandlebarsjs.\+com/}}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0cb1f648ccc09ea224bb9e32e5093daa_autotoc_md2501}{}\doxysubsection{\texorpdfstring{Installing}{Installing}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0cb1f648ccc09ea224bb9e32e5093daa_autotoc_md2501}
+See our \href{http://handlebarsjs.com/installation.html}{\texttt{ installation documentation}}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0cb1f648ccc09ea224bb9e32e5093daa_autotoc_md2502}{}\doxysubsection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0cb1f648ccc09ea224bb9e32e5093daa_autotoc_md2502}
+In general, the syntax of Handlebars.\+js templates is a superset of Mustache templates. For basic syntax, check out the \href{http://mustache.github.com/mustache.5.html}{\texttt{ Mustache manpage}}.
+
+Once you have a template, use the {\ttfamily Handlebars.\+compile} method to compile the template into a function. The generated function takes a context argument, which will be used to render the template.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ source\ =\ "{}<p>Hello,\ my\ name\ is\ \{\{name\}\}.\ I\ am\ from\ \{\{hometown\}\}.\ I\ have\ "{}\ +}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ "{}\{\{kids.length\}\}\ kids:</p>"{}\ +}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ "{}<ul>\{\{\#kids\}\}<li>\{\{name\}\}\ is\ \{\{age\}\}</li>\{\{/kids\}\}</ul>"{};}
+\DoxyCodeLine{var\ template\ =\ Handlebars.compile(source);}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ data\ =\ \{\ "{}name"{}:\ "{}Alan"{},\ "{}hometown"{}:\ "{}Somewhere,\ TX"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ "{}kids"{}:\ [\{"{}name"{}:\ "{}Jimmy"{},\ "{}age"{}:\ "{}12"{}\},\ \{"{}name"{}:\ "{}Sally"{},\ "{}age"{}:\ "{}4"{}\}]\};}
+\DoxyCodeLine{var\ result\ =\ template(data);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Would\ render:}
+\DoxyCodeLine{//\ <p>Hello,\ my\ name\ is\ Alan.\ I\ am\ from\ Somewhere,\ TX.\ I\ have\ 2\ kids:</p>}
+\DoxyCodeLine{//\ <ul>}
+\DoxyCodeLine{//\ \ \ <li>Jimmy\ is\ 12</li>}
+\DoxyCodeLine{//\ \ \ <li>Sally\ is\ 4</li>}
+\DoxyCodeLine{//\ </ul>}
+
+\end{DoxyCode}
+
+
+Full documentation and more examples are at \href{http://handlebarsjs.com/}{\texttt{ handlebarsjs.\+com}}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0cb1f648ccc09ea224bb9e32e5093daa_autotoc_md2503}{}\doxysubsection{\texorpdfstring{Precompiling Templates}{Precompiling Templates}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0cb1f648ccc09ea224bb9e32e5093daa_autotoc_md2503}
+Handlebars allows templates to be precompiled and included as javascript code rather than the handlebars template allowing for faster startup time. Full details are located \href{http://handlebarsjs.com/precompilation.html}{\texttt{ here}}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0cb1f648ccc09ea224bb9e32e5093daa_autotoc_md2504}{}\doxysubsection{\texorpdfstring{Differences Between Handlebars.\+js and Mustache}{Differences Between Handlebars.\+js and Mustache}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0cb1f648ccc09ea224bb9e32e5093daa_autotoc_md2504}
+Handlebars.\+js adds a couple of additional features to make writing templates easier and also changes a tiny detail of how partials work.
+
+
+\begin{DoxyItemize}
+\item \href{http://handlebarsjs.com/\#paths}{\texttt{ Nested Paths}}
+\item \href{http://handlebarsjs.com/\#helpers}{\texttt{ Helpers}}
+\item \href{http://handlebarsjs.com/\#block-expressions}{\texttt{ Block Expressions}}
+\item \href{http://handlebarsjs.com/\#literals}{\texttt{ Literal Values}}
+\item \href{http://handlebarsjs.com/\#comments}{\texttt{ Delimited Comments}}
+\end{DoxyItemize}
+
+Block expressions have the same syntax as mustache sections but should not be confused with one another. Sections are akin to an implicit {\ttfamily each} or {\ttfamily with} statement depending on the input data and helpers are explicit pieces of code that are free to implement whatever behavior they like. The \href{http://mustache.github.io/mustache.5.html}{\texttt{ mustache spec}} defines the exact behavior of sections. In the case of name conflicts, helpers are given priority.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0cb1f648ccc09ea224bb9e32e5093daa_autotoc_md2505}{}\doxysubsubsection{\texorpdfstring{Compatibility}{Compatibility}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0cb1f648ccc09ea224bb9e32e5093daa_autotoc_md2505}
+There are a few Mustache behaviors that Handlebars does not implement.
+\begin{DoxyItemize}
+\item Handlebars deviates from Mustache slightly in that it does not perform recursive lookup by default. The compile time {\ttfamily compat} flag must be set to enable this functionality. Users should note that there is a performance cost for enabling this flag. The exact cost varies by template, but it\textquotesingle{}s recommended that performance sensitive operations should avoid this mode and instead opt for explicit path references.
+\item The optional Mustache-\/style lambdas are not supported. Instead Handlebars provides its own lambda resolution that follows the behaviors of helpers.
+\item Alternative delimiters are not supported.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0cb1f648ccc09ea224bb9e32e5093daa_autotoc_md2506}{}\doxysubsection{\texorpdfstring{Supported Environments}{Supported Environments}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0cb1f648ccc09ea224bb9e32e5093daa_autotoc_md2506}
+Handlebars has been designed to work in any ECMAScript 3 environment. This includes
+
+
+\begin{DoxyItemize}
+\item Node.\+js
+\item Chrome
+\item Firefox
+\item Safari 5+
+\item Opera 11+
+\item IE 6+
+\end{DoxyItemize}
+
+Older versions and other runtimes are likely to work but have not been formally tested. The compiler requires {\ttfamily JSON.\+stringify} to be implemented natively or via a polyfill. If using the precompiler this is not necessary.
+
+\href{https://saucelabs.com/u/handlebars}{\texttt{ }}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0cb1f648ccc09ea224bb9e32e5093daa_autotoc_md2507}{}\doxysubsection{\texorpdfstring{Performance}{Performance}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0cb1f648ccc09ea224bb9e32e5093daa_autotoc_md2507}
+In a rough performance test, precompiled Handlebars.\+js templates (in the original version of Handlebars.\+js) rendered in about half the time of Mustache templates. It would be a shame if it were any other way, since they were precompiled, but the difference in architecture does have some big performance advantages. Justin Marney, a.\+k.\+a. \href{http://github.com/gotascii}{\texttt{ gotascii}}, confirmed that with an \href{http://sorescode.com/2010/09/12/benchmarks.html}{\texttt{ independent test}}. The rewritten Handlebars (current version) is faster than the old version, with many \href{https://travis-ci.org/wycats/handlebars.js/builds/33392182\#L538}{\texttt{ performance tests}} being 5 to 7 times faster than the Mustache equivalent.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0cb1f648ccc09ea224bb9e32e5093daa_autotoc_md2508}{}\doxysubsection{\texorpdfstring{Upgrading}{Upgrading}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0cb1f648ccc09ea224bb9e32e5093daa_autotoc_md2508}
+See \href{https://github.com/wycats/handlebars.js/blob/master/release-notes.md}{\texttt{ release-\/notes.\+md}} for upgrade notes.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0cb1f648ccc09ea224bb9e32e5093daa_autotoc_md2509}{}\doxysubsection{\texorpdfstring{Known Issues}{Known Issues}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0cb1f648ccc09ea224bb9e32e5093daa_autotoc_md2509}
+See \href{https://github.com/wycats/handlebars.js/blob/master/FAQ.md}{\texttt{ FAQ.\+md}} for known issues and common pitfalls.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0cb1f648ccc09ea224bb9e32e5093daa_autotoc_md2510}{}\doxysubsection{\texorpdfstring{Handlebars in the Wild}{Handlebars in the Wild}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0cb1f648ccc09ea224bb9e32e5093daa_autotoc_md2510}
+
+\begin{DoxyItemize}
+\item \href{http://assemble.io}{\texttt{ Assemble}}, by \href{https://github.com/jonschlinkert}{\texttt{ @jonschlinkert}} and \href{https://github.com/doowb}{\texttt{ @doowb}}, is a static site generator that uses Handlebars.\+js as its template engine.
+\item \href{https://github.com/leo/cory}{\texttt{ Cory}}, by \href{https://github.com/leo}{\texttt{ @leo}}, is another tiny static site generator
+\item \href{http://coschedule.com}{\texttt{ Co\+Schedule}} An editorial calendar for Word\+Press that uses Handlebars.\+js
+\item \href{https://github.com/pismute/dashbars}{\texttt{ dashbars}} A modern helper library for Handlebars.\+js.
+\item \href{http://www.emberjs.com}{\texttt{ Ember.\+js}} makes Handlebars.\+js the primary way to structure your views, also with automatic data binding support.
+\item \href{https://ghost.org/}{\texttt{ Ghost}} Just a blogging platform.
+\item \href{http://github.com/leshill/handlebars_assets}{\texttt{ handlebars\+\_\+assets}}\+: A Rails Asset Pipeline gem from Les Hill (@leshill).
+\item \href{https://github.com/assemble/handlebars-helpers}{\texttt{ handlebars-\/helpers}} is an extensive library with 100+ handlebars helpers.
+\item \href{https://github.com/shannonmoeller/handlebars-layouts}{\texttt{ handlebars-\/layouts}} is a set of helpers which implement extendible and embeddable layout blocks as seen in other popular templating languages.
+\item \href{http://github.com/donpark/hbs}{\texttt{ hbs}}\+: An Express.\+js view engine adapter for Handlebars.\+js, from Don Park.
+\item \href{https://github.com/jwilm/koa-hbs}{\texttt{ koa-\/hbs}}\+: \href{https://github.com/koajs/koa}{\texttt{ koa}} generator based renderer for Handlebars.\+js.
+\item \href{http://github.com/jblotus}{\texttt{ jblotus}} created \href{http://tryhandlebarsjs.com}{\texttt{ http\+://tryhandlebarsjs.\+com}} for anyone who would like to try out Handlebars.\+js in their browser.
+\item \href{http://71104.github.io/jquery-handlebars/}{\texttt{ j\+Query plugin}}\+: allows you to use Handlebars.\+js with \href{http://jquery.com/}{\texttt{ j\+Query}}.
+\item \href{http://walmartlabs.github.io/lumbar}{\texttt{ Lumbar}} provides easy module-\/based template management for handlebars projects.
+\item \href{https://github.com/hashchange/marionette.handlebars}{\texttt{ Marionette.\+Handlebars}} adds support for Handlebars and Mustache templates to Marionette.
+\item \href{http://github.com/quirkey/sammy}{\texttt{ sammy.\+js}} by Aaron Quint, a.\+k.\+a. quirkey, supports Handlebars.\+js as one of its template plugins.
+\item \href{http://www.sproutcore.com}{\texttt{ Sprout\+Core}} uses Handlebars.\+js as its main templating engine, extending it with automatic data binding support.
+\item \href{http://yuilibrary.com/yui/docs/handlebars/}{\texttt{ YUI}} implements a port of handlebars
+\item \href{https://github.com/elving/swag}{\texttt{ Swag}} by \href{https://github.com/elving}{\texttt{ @elving}} is a growing collection of helpers for handlebars.\+js. Give your handlebars.\+js templates some swag son!
+\item \href{https://github.com/blakeembrey/dombars}{\texttt{ DOMBars}} is a DOM-\/based templating engine built on the Handlebars parser and runtime {\bfseries{DEPRECATED}}
+\item \href{https://github.com/nknapp/promised-handlebars}{\texttt{ promised-\/handlebars}} is a wrapper for Handlebars that allows helpers to return Promises.
+\item \href{https://github.com/leapfrogtechnology/just-handlebars-helpers}{\texttt{ just-\/handlebars-\/helpers}} A fully tested lightweight package with common Handlebars helpers.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0cb1f648ccc09ea224bb9e32e5093daa_autotoc_md2511}{}\doxysubsection{\texorpdfstring{External Resources}{External Resources}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0cb1f648ccc09ea224bb9e32e5093daa_autotoc_md2511}
+
+\begin{DoxyItemize}
+\item \href{https://gist.github.com/2287070}{\texttt{ Gist about Synchronous and asynchronous loading of external handlebars templates}}
+\end{DoxyItemize}
+
+Have a project using Handlebars? Send us a \href{https://github.com/wycats/handlebars.js/pull/new/master}{\texttt{ pull request}}!\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0cb1f648ccc09ea224bb9e32e5093daa_autotoc_md2512}{}\doxysubsection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0cb1f648ccc09ea224bb9e32e5093daa_autotoc_md2512}
+Handlebars.\+js is released under the MIT license. 

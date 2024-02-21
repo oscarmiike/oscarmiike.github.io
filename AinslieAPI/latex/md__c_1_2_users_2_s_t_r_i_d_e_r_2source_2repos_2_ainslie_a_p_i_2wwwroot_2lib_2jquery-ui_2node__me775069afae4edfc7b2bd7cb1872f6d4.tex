@@ -1,0 +1,74 @@
+\chapter{strip-\/json-\/comments \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/sindresorhus/strip-\/json-\/comments"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+org/sindresorhus/strip-\/json-\/comments.\+svg?branch=master"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__me775069afae4edfc7b2bd7cb1872f6d4}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__me775069afae4edfc7b2bd7cb1872f6d4}\index{strip-\/json-\/comments $<$a href="{}https://travis-\/ci.org/sindresorhus/strip-\/json-\/comments"{} $>$$<$img src="{}https://travis-\/ci.org/sindresorhus/strip-\/json-\/comments.svg?branch=master"{} alt="{}Build Status"{}/$>$$<$/a$>$@{strip-\/json-\/comments $<$a href=""https://travis-\/ci.org/sindresorhus/strip-\/json-\/comments"" $>$$<$img src=""https://travis-\/ci.org/sindresorhus/strip-\/json-\/comments.svg?branch=master"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__me775069afae4edfc7b2bd7cb1872f6d4_autotoc_md4402}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__me775069afae4edfc7b2bd7cb1872f6d4_autotoc_md4402}%
+ \begin{quote}
+Strip comments from JSON. Lets you use comments in your JSON files! \end{quote}
+This is now possible\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ //\ rainbows}
+\DoxyCodeLine{\ \ \ \ "{}unicorn"{}:\ /*\ ❤\ */\ "{}cake"{}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+It will remove single-\/line comments {\ttfamily //} and mult-\/line comments {\ttfamily /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}/}.
+
+Also available as a \href{https://github.com/sindresorhus/gulp-strip-json-comments}{\texttt{ gulp}}/\href{https://github.com/sindresorhus/grunt-strip-json-comments}{\texttt{ grunt}}/\href{https://github.com/sindresorhus/broccoli-strip-json-comments}{\texttt{ broccoli}} plugin and a \href{https://github.com/uTest/autostrip-json-comments}{\texttt{ require hook}}.
+
+{\itshape There\textquotesingle{}s already \href{https://npmjs.org/package/json-comments}{\texttt{ json-\/comments}}, but it\textquotesingle{}s only for Node.\+js and uses a naive regex to strip comments which fails on simple cases like {\ttfamily \{"{}a"{}\+:"{}//"{}\}}. This module however parses out the comments.}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__me775069afae4edfc7b2bd7cb1872f6d4_autotoc_md4403}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__me775069afae4edfc7b2bd7cb1872f6d4_autotoc_md4403}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ -\/-\/save\ strip-\/json-\/comments}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ bower\ install\ -\/-\/save\ strip-\/json-\/comments}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ component\ install\ sindresorhus/strip-\/json-\/comments}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__me775069afae4edfc7b2bd7cb1872f6d4_autotoc_md4404}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__me775069afae4edfc7b2bd7cb1872f6d4_autotoc_md4404}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ json\ =\ '\{/*rainbows*/"{}unicorn"{}:"{}cake"{}\}';}
+\DoxyCodeLine{JSON.parse(stripJsonComments(json));}
+\DoxyCodeLine{//=>\ \{unicorn:\ 'cake'\}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__me775069afae4edfc7b2bd7cb1872f6d4_autotoc_md4405}{}\doxysection{\texorpdfstring{API}{API}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__me775069afae4edfc7b2bd7cb1872f6d4_autotoc_md4405}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__me775069afae4edfc7b2bd7cb1872f6d4_autotoc_md4406}{}\doxysubsection{\texorpdfstring{strip\+Json\+Comments(input)}{strip\+Json\+Comments(input)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__me775069afae4edfc7b2bd7cb1872f6d4_autotoc_md4406}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__me775069afae4edfc7b2bd7cb1872f6d4_autotoc_md4407}{}\doxysubsubsection{\texorpdfstring{input}{input}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__me775069afae4edfc7b2bd7cb1872f6d4_autotoc_md4407}
+Type\+: {\ttfamily string}
+
+Accepts a string with JSON and returns a string without comments.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__me775069afae4edfc7b2bd7cb1872f6d4_autotoc_md4408}{}\doxysection{\texorpdfstring{CLI}{CLI}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__me775069afae4edfc7b2bd7cb1872f6d4_autotoc_md4408}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ -\/-\/global\ strip-\/json-\/comments}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ strip-\/json-\/comments\ -\/-\/help}
+\DoxyCodeLine{}
+\DoxyCodeLine{strip-\/json-\/comments\ <input-\/file>\ >\ <output-\/file>}
+\DoxyCodeLine{\#\ or}
+\DoxyCodeLine{cat\ <input-\/file>\ |\ strip-\/json-\/comments\ >\ <output-\/file>}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__me775069afae4edfc7b2bd7cb1872f6d4_autotoc_md4409}{}\doxysection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__me775069afae4edfc7b2bd7cb1872f6d4_autotoc_md4409}
+MIT © \href{http://sindresorhus.com}{\texttt{ Sindre Sorhus}} 

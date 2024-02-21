@@ -1,0 +1,42 @@
+\chapter{p-\/try \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/sindresorhus/p-\/try"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+org/sindresorhus/p-\/try.\+svg?branch=master"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2p-try_2readme}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2p-try_2readme}\index{p-\/try $<$a href="{}https://travis-\/ci.org/sindresorhus/p-\/try"{} $>$$<$img src="{}https://travis-\/ci.org/sindresorhus/p-\/try.svg?branch=master"{} alt="{}Build Status"{}/$>$$<$/a$>$@{p-\/try $<$a href=""https://travis-\/ci.org/sindresorhus/p-\/try"" $>$$<$img src=""https://travis-\/ci.org/sindresorhus/p-\/try.svg?branch=master"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2p-try_2readme_autotoc_md10590}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2p-try_2readme_autotoc_md10590}%
+ \begin{quote}
+Start a promise chain \end{quote}
+\href{http://cryto.net/~joepie91/blog/2016/05/11/what-is-promise-try-and-why-does-it-matter/}{\texttt{ How is it useful?}}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2p-try_2readme_autotoc_md10591}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2p-try_2readme_autotoc_md10591}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ p-\/try}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2p-try_2readme_autotoc_md10592}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2p-try_2readme_autotoc_md10592}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ pTry\ =\ require('p-\/try');}
+\DoxyCodeLine{}
+\DoxyCodeLine{(async\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ try\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ const\ value\ =\ await\ pTry(()\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ return\ synchronousFunctionThatMightThrow();}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ console.log(value);}
+\DoxyCodeLine{\ \ \ \ \}\ catch\ (error)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ console.error(error);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\})();}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2p-try_2readme_autotoc_md10593}{}\doxysection{\texorpdfstring{API}{API}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2p-try_2readme_autotoc_md10593}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2p-try_2readme_autotoc_md10594}{}\doxysubsection{\texorpdfstring{p\+Try(fn, ...\+arguments)}{p\+Try(fn, ...\+arguments)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2p-try_2readme_autotoc_md10594}
+Returns a {\ttfamily Promise} resolved with the value of calling {\ttfamily fn(...\+arguments)}. If the function throws an error, the returned {\ttfamily Promise} will be rejected with that error.
+
+Support for passing arguments on to the {\ttfamily fn} is provided in order to be able to avoid creating unnecessary closures. You probably don\textquotesingle{}t need this optimization unless you\textquotesingle{}re pushing a {\itshape lot} of functions.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2p-try_2readme_autotoc_md10595}{}\doxysubsubsection{\texorpdfstring{fn}{fn}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2p-try_2readme_autotoc_md10595}
+The function to run to start the promise chain.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2p-try_2readme_autotoc_md10596}{}\doxysubsubsection{\texorpdfstring{arguments}{arguments}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2p-try_2readme_autotoc_md10596}
+Arguments to pass to {\ttfamily fn}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2p-try_2readme_autotoc_md10597}{}\doxysection{\texorpdfstring{Related}{Related}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2p-try_2readme_autotoc_md10597}
+
+\begin{DoxyItemize}
+\item \href{https://github.com/sindresorhus/p-finally}{\texttt{ p-\/finally}} -\/ {\ttfamily Promise\#finally()} ponyfill -\/ Invoked when the promise is settled regardless of outcome
+\item \href{https://github.com/sindresorhus/promise-fun}{\texttt{ More…}}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2p-try_2readme_autotoc_md10598}{}\doxysection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2p-try_2readme_autotoc_md10598}
+MIT © \href{https://sindresorhus.com}{\texttt{ Sindre Sorhus}} 

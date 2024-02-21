@@ -1,0 +1,52 @@
+\doxysection{Shared\+Tools.\+cs}
+\hypertarget{_shared_tools_8cs_source}{}\label{_shared_tools_8cs_source}\index{C:/Users/STRIDER/source/repos/AinslieAPI/Helpers/SharedTools.cs@{C:/Users/STRIDER/source/repos/AinslieAPI/Helpers/SharedTools.cs}}
+\mbox{\hyperlink{_shared_tools_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_shared_tools_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System.Text.RegularExpressions;}
+\DoxyCodeLine{\Hypertarget{_shared_tools_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Web;}
+\DoxyCodeLine{\Hypertarget{_shared_tools_8cs_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_shared_tools_8cs_source_l00004}00004\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_ainslie_a_p_i_1_1_helpers}{AinslieAPI.Helpers}}}
+\DoxyCodeLine{\Hypertarget{_shared_tools_8cs_source_l00005}00005\ \{}
+\DoxyCodeLine{\Hypertarget{_shared_tools_8cs_source_l00009}\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_shared_tools}{00009}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_shared_tools}{SharedTools}}}
+\DoxyCodeLine{\Hypertarget{_shared_tools_8cs_source_l00010}00010\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_shared_tools_8cs_source_l00018}\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_shared_tools_ab15e610eab2e8c51c9b48d81b9da0104}{00018}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_shared_tools_ab15e610eab2e8c51c9b48d81b9da0104}{StripHTML}}(\textcolor{keywordtype}{string}\ strHTML)}
+\DoxyCodeLine{\Hypertarget{_shared_tools_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_shared_tools_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \ \ \ \ strHTML\ =\ Regex.Replace(HttpUtility.HtmlDecode(strHTML),\ \textcolor{stringliteral}{@"{}<(.|\(\backslash\)n)*?>"{}},\ \textcolor{keywordtype}{string}.Empty);}
+\DoxyCodeLine{\Hypertarget{_shared_tools_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \ \ \ \ strHTML\ =\ strHTML.Replace(\textcolor{stringliteral}{"{}\&\#160;"{}},\ \textcolor{stringliteral}{"{}\ "{}});}
+\DoxyCodeLine{\Hypertarget{_shared_tools_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ strHTML;}
+\DoxyCodeLine{\Hypertarget{_shared_tools_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_shared_tools_8cs_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_shared_tools_8cs_source_l00033}\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_shared_tools_ab5709314b631b14e5aa75638cc5f6352}{00033}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_shared_tools_ab5709314b631b14e5aa75638cc5f6352}{RemoveNonAlphaChars}}(\textcolor{keywordtype}{string}\ oString,\ \textcolor{keywordtype}{string}\ replaceWith)}
+\DoxyCodeLine{\Hypertarget{_shared_tools_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_shared_tools_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ alphaString\ =\ Regex.Replace(oString\ ??\ \textcolor{stringliteral}{"{}"{}},\ \textcolor{stringliteral}{"{}[\string^a-\/zA-\/Z0-\/9]+"{}},\ replaceWith);}
+\DoxyCodeLine{\Hypertarget{_shared_tools_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//remove\ leading\ hyphen}}
+\DoxyCodeLine{\Hypertarget{_shared_tools_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (alphaString.Length\ >\ 0\ \&\&\ alphaString[0].ToString()\ ==\ replaceWith)}
+\DoxyCodeLine{\Hypertarget{_shared_tools_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_shared_tools_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ alphaString\ =\ alphaString.Substring(1);}
+\DoxyCodeLine{\Hypertarget{_shared_tools_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_shared_tools_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//remove\ trailing\ hyphen}}
+\DoxyCodeLine{\Hypertarget{_shared_tools_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (alphaString.Length\ >\ 0\ \&\&\ alphaString[alphaString.Length\ -\/\ 1].ToString()\ ==\ replaceWith)}
+\DoxyCodeLine{\Hypertarget{_shared_tools_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_shared_tools_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ alphaString\ =\ alphaString.Substring(0,\ alphaString.Length\ -\/\ 1);}
+\DoxyCodeLine{\Hypertarget{_shared_tools_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_shared_tools_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ alphaString;}
+\DoxyCodeLine{\Hypertarget{_shared_tools_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_shared_tools_8cs_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_shared_tools_8cs_source_l00060}\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_shared_tools_a5d26beaa558c5d4b15370f0308f447bf}{00060}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ DateTime?\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_shared_tools_a5d26beaa558c5d4b15370f0308f447bf}{UnixTimeSecondsToLocalTime}}(\textcolor{keywordtype}{long}\ unixTimestamp)}
+\DoxyCodeLine{\Hypertarget{_shared_tools_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_shared_tools_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (unixTimestamp\ ==\ 0)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_shared_tools_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{_shared_tools_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_shared_tools_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ DateTime\ dateTime\ =\ \textcolor{keyword}{new}\ DateTime(1970,\ 1,\ 1,\ 0,\ 0,\ 0,\ 0,\ DateTimeKind.Utc);}
+\DoxyCodeLine{\Hypertarget{_shared_tools_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ dateTime\ =\ dateTime.AddSeconds(unixTimestamp).ToLocalTime();}
+\DoxyCodeLine{\Hypertarget{_shared_tools_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ dateTime;}
+\DoxyCodeLine{\Hypertarget{_shared_tools_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_shared_tools_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}}
+\DoxyCodeLine{\Hypertarget{_shared_tools_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_shared_tools_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_shared_tools_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_shared_tools_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_shared_tools_8cs_source_l00074}00074\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_shared_tools_8cs_source_l00075}00075\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,69 @@
+\doxysection{test.\+py}
+\hypertarget{test_8py_source}{}\label{test_8py_source}\index{C:/Users/STRIDER/source/repos/AinslieAPI/wwwroot/lib/jquery-\/ui/node\_modules/flatted/python/test.py@{C:/Users/STRIDER/source/repos/AinslieAPI/wwwroot/lib/jquery-\/ui/node\_modules/flatted/python/test.py}}
+\mbox{\hyperlink{test_8py}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00001}\mbox{\hyperlink{namespacetest}{00001}}\ \textcolor{keyword}{from}\ flatted\ \textcolor{keyword}{import}\ stringify\ \textcolor{keyword}{as}\ \_stringify,\ parse}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00003}\mbox{\hyperlink{namespacetest_a3e9643329e363118815480e8a80f85e5}{00003}}\ \textcolor{keyword}{def\ }\mbox{\hyperlink{namespacetest_a3e9643329e363118815480e8a80f85e5}{stringify}}(value):}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00004}00004\ \ \ \ \ \textcolor{keywordflow}{return}\ \_stringify(value,\ separators=(\textcolor{stringliteral}{','},\ \textcolor{stringliteral}{':'}))}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00006}00006\ \textcolor{keyword}{assert}\ stringify([\textcolor{keywordtype}{None},\ \textcolor{keywordtype}{None}])\ ==\ \textcolor{stringliteral}{'[[null,null]]'}}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00008}\mbox{\hyperlink{namespacetest_a3ecd241c6e69707ba8433fcfae04e00c}{00008}}\ a\ =\ []}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00009}\mbox{\hyperlink{namespacetest_a0c69b21477794c3ee99267b898ed0e32}{00009}}\ o\ =\ \{\}}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00011}00011\ \textcolor{keyword}{assert}\ stringify(a)\ ==\ \textcolor{stringliteral}{'[[]]'}}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00012}00012\ \textcolor{keyword}{assert}\ stringify(o)\ ==\ \textcolor{stringliteral}{'[\{\}]'}}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00014}00014\ a.append(a)}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00015}00015\ o[\textcolor{stringliteral}{'o'}]\ =\ o}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00017}00017\ \textcolor{keyword}{assert}\ stringify(a)\ ==\ \textcolor{stringliteral}{'[["{}0"{}]]'}}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00018}00018\ \textcolor{keyword}{assert}\ stringify(o)\ ==\ \textcolor{stringliteral}{'[\{"{}o"{}:"{}0"{}\}]'}}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00020}\mbox{\hyperlink{namespacetest_a0f45e01f998f32bf815adc0cbe886405}{00020}}\ b\ =\ parse(stringify(a))}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00021}00021\ \textcolor{keyword}{assert}\ isinstance(b,\ list)\ \textcolor{keywordflow}{and}\ b[0]\ ==\ b}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00023}00023\ a.append(1)}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00024}00024\ a.append(\textcolor{stringliteral}{'two'})}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00025}00025\ a.append(\textcolor{keyword}{True})}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00026}00026\ o[\textcolor{stringliteral}{'one'}]\ =\ 1}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00027}00027\ o[\textcolor{stringliteral}{'two'}]\ =\ \textcolor{stringliteral}{'two'}}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00028}00028\ o[\textcolor{stringliteral}{'three'}]\ =\ \textcolor{keyword}{True}}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00030}00030\ \textcolor{keyword}{assert}\ stringify(a)\ ==\ \textcolor{stringliteral}{'[["{}0"{},1,"{}1"{},true],"{}two"{}]'}}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00031}00031\ \textcolor{keyword}{assert}\ stringify(o)\ ==\ \textcolor{stringliteral}{'[\{"{}o"{}:"{}0"{},"{}one"{}:1,"{}two"{}:"{}1"{},"{}three"{}:true\},"{}two"{}]'}}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00033}00033\ a.append(o)}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00034}00034\ o[\textcolor{stringliteral}{'a'}]\ =\ a}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00036}00036\ \textcolor{keyword}{assert}\ stringify(a)\ ==\ \textcolor{stringliteral}{'[["{}0"{},1,"{}1"{},true,"{}2"{}],"{}two"{},\{"{}o"{}:"{}2"{},"{}one"{}:1,"{}two"{}:"{}1"{},"{}three"{}:true,"{}a"{}:"{}0"{}\}]'}}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00037}00037\ \textcolor{keyword}{assert}\ stringify(o)\ ==\ \textcolor{stringliteral}{'[\{"{}o"{}:"{}0"{},"{}one"{}:1,"{}two"{}:"{}1"{},"{}three"{}:true,"{}a"{}:"{}2"{}\},"{}two"{},["{}2"{},1,"{}1"{},true,"{}0"{}]]'}}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00039}00039\ a.append(\{\textcolor{stringliteral}{'test'}:\ \textcolor{stringliteral}{'OK'}\})}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00040}00040\ a.append([1,\ 2,\ 3])}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00042}00042\ o[\textcolor{stringliteral}{'test'}]\ =\ \{\textcolor{stringliteral}{'test'}:\ \textcolor{stringliteral}{'OK'}\}}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00043}00043\ o[\textcolor{stringliteral}{'array'}]\ =\ [1,\ 2,\ 3]}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00045}00045\ \textcolor{keyword}{assert}\ stringify(a)\ ==\ \textcolor{stringliteral}{'[["{}0"{},1,"{}1"{},true,"{}2"{},"{}3"{},"{}4"{}],"{}two"{},\{"{}o"{}:"{}2"{},"{}one"{}:1,"{}two"{}:"{}1"{},"{}three"{}:true,"{}a"{}:"{}0"{},"{}test"{}:"{}3"{},"{}array"{}:"{}4"{}\},\{"{}test"{}:"{}5"{}\},[1,2,3],"{}OK"{}]'}}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00046}00046\ \textcolor{keyword}{assert}\ stringify(o)\ ==\ \textcolor{stringliteral}{'[\{"{}o"{}:"{}0"{},"{}one"{}:1,"{}two"{}:"{}1"{},"{}three"{}:true,"{}a"{}:"{}2"{},"{}test"{}:"{}3"{},"{}array"{}:"{}4"{}\},"{}two"{},["{}2"{},1,"{}1"{},true,"{}0"{},"{}3"{},"{}4"{}],\{"{}test"{}:"{}5"{}\},[1,2,3],"{}OK"{}]'}}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00048}\mbox{\hyperlink{namespacetest_a29b04aeba2defe24340384ce164906ca}{00048}}\ a2\ =\ parse(stringify(a));}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00049}\mbox{\hyperlink{namespacetest_a387ba17f1b041bf5b6915bef14d47154}{00049}}\ o2\ =\ parse(stringify(o));}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00051}00051\ \textcolor{keyword}{assert}\ a2[0]\ ==\ a2}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00052}00052\ \textcolor{keyword}{assert}\ o2[\textcolor{stringliteral}{'o'}]\ ==\ o2}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00054}00054\ \textcolor{keyword}{assert}\ a2[1]\ ==\ 1\ \textcolor{keywordflow}{and}\ a2[2]\ ==\ \textcolor{stringliteral}{'two'}\ \textcolor{keywordflow}{and}\ a2[3]\ ==\ \textcolor{keyword}{True}\ \textcolor{keywordflow}{and}\ isinstance(a2[4],\ dict)}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00055}00055\ \textcolor{keyword}{assert}\ a2[4]\ ==\ a2[4][\textcolor{stringliteral}{'o'}]\ \textcolor{keywordflow}{and}\ a2\ ==\ a2[4][\textcolor{stringliteral}{'o'}][\textcolor{stringliteral}{'a'}]}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00057}\mbox{\hyperlink{namespacetest_a25d1c08ead5d6fa93dd0f4422aff1228}{00057}}\ str\ =\ parse(\textcolor{stringliteral}{'[\{"{}prop"{}:"{}1"{},"{}a"{}:"{}2"{},"{}b"{}:"{}3"{}\},\{"{}value"{}:123\},["{}4"{},"{}5"{}],\{"{}e"{}:"{}6"{},"{}t"{}:"{}7"{},"{}p"{}:4\},\{\},\{"{}b"{}:"{}8"{}\},"{}f"{},\{"{}a"{}:"{}9"{}\},["{}10"{}],"{}sup"{},\{"{}a"{}:1,"{}d"{}:2,"{}c"{}:"{}7"{},"{}z"{}:"{}11"{},"{}h"{}:1\},\{"{}g"{}:2,"{}a"{}:"{}7"{},"{}b"{}:"{}12"{},"{}f"{}:6\},\{"{}r"{}:4,"{}u"{}:"{}7"{},"{}c"{}:5\}]'})}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00058}00058\ \textcolor{keyword}{assert}\ str[\textcolor{stringliteral}{'b'}][\textcolor{stringliteral}{'t'}][\textcolor{stringliteral}{'a'}]\ ==\ \textcolor{stringliteral}{'sup'}\ \textcolor{keywordflow}{and}\ str[\textcolor{stringliteral}{'a'}][1][\textcolor{stringliteral}{'b'}][0][\textcolor{stringliteral}{'c'}]\ ==\ str[\textcolor{stringliteral}{'b'}][\textcolor{stringliteral}{'t'}]}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00060}\mbox{\hyperlink{namespacetest_ac59bf2908b7b0d4a8b7d22460f8624d8}{00060}}\ oo\ =\ parse(\textcolor{stringliteral}{'[\{"{}a"{}:"{}1"{},"{}b"{}:"{}0"{},"{}c"{}:"{}2"{}\},\{"{}aa"{}:"{}3"{}\},\{"{}ca"{}:"{}4"{},"{}cb"{}:"{}5"{},"{}cc"{}:"{}6"{},"{}cd"{}:"{}7"{},"{}ce"{}:"{}8"{},"{}cf"{}:"{}9"{}\},\{"{}aaa"{}:"{}10"{}\},\{"{}caa"{}:"{}4"{}\},\{"{}cba"{}:"{}5"{}\},\{"{}cca"{}:"{}2"{}\},\{"{}cda"{}:"{}4"{}\},"{}value2"{},"{}value3"{},"{}value1"{}]'});}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00061}00061\ \textcolor{keyword}{assert}\ oo[\textcolor{stringliteral}{'a'}][\textcolor{stringliteral}{'aa'}][\textcolor{stringliteral}{'aaa'}]\ ==\ \textcolor{stringliteral}{'value1'}\ \textcolor{keywordflow}{and}\ oo\ ==\ oo[\textcolor{stringliteral}{'b'}]\ \textcolor{keywordflow}{and}\ oo[\textcolor{stringliteral}{'c'}][\textcolor{stringliteral}{'ca'}][\textcolor{stringliteral}{'caa'}]\ ==\ oo[\textcolor{stringliteral}{'c'}][\textcolor{stringliteral}{'ca'}]}
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{test_8py_source_l00063}00063\ print(\textcolor{stringliteral}{'OK'})}
+
+\end{DoxyCode}

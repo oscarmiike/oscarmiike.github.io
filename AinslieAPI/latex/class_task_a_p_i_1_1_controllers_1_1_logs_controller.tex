@@ -1,0 +1,157 @@
+\doxysection{Task\+API.\+Controllers.\+Logs\+Controller Class Reference}
+\hypertarget{class_task_a_p_i_1_1_controllers_1_1_logs_controller}{}\label{class_task_a_p_i_1_1_controllers_1_1_logs_controller}\index{TaskAPI.Controllers.LogsController@{TaskAPI.Controllers.LogsController}}
+
+
+Inheritance diagram for Task\+API.\+Controllers.\+Logs\+Controller\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=206pt]{class_task_a_p_i_1_1_controllers_1_1_logs_controller__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Task\+API.\+Controllers.\+Logs\+Controller\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=206pt]{class_task_a_p_i_1_1_controllers_1_1_logs_controller__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_logs_controller_1_1_alert}{Alert}}
+\item 
+class \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_logs_controller_1_1_log_request}{Log\+Request}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_logs_controller_aa3ff1ef899107537f53be4b06f342d05}{Logs\+Controller}} (\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{Log\+Service}} log\+Service, \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service}{Internal\+APIService}} internal\+APIService, IOptions$<$ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings}{Task\+APISettings}} $>$ settings, \mbox{\hyperlink{class_task_a_p_i_1_1_contexts_1_1_task_a_p_i_context}{Task\+APIContext}} context, IOptions$<$ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_log_notifications_settings}{Log\+Notifications\+Settings}} $>$ log\+Notifications\+Settings, IWeb\+Host\+Environment env)
+\item 
+IAction\+Result \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_logs_controller_a7b16dda3feb664234c4307c88b54dbc5}{Get\+Logs}} (\mbox{[}From\+Body\mbox{]} \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_logs_controller_1_1_log_request}{Log\+Request}} log\+Request)
+\item 
+IAction\+Result \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_logs_controller_a12e6a10e13d0182e8d356f0679bb85b1}{Get\+Log\+Sources}} ()
+\item 
+IAction\+Result \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_logs_controller_acbc81c5d0d03a76497d699754de63afd}{Get\+Log\+Types}} ()
+\item 
+Action\+Result$<$ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result}{Log\+Trim\+Result}} $>$ \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_logs_controller_af8b7f41074892eb4a70a447d64a055c6}{Trim\+Logs}} ()
+\item 
+IAction\+Result \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_logs_controller_aa1bbb95b5f70e8d5a457fdca962479e3}{Check\+For\+All\+Alerts}} ()
+\begin{DoxyCompactList}\small\item\em Checks for alerts across all configured API sources as defined in Log\+Notifications\+Settings. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_logs_controller_8cs_source_l00026}{26}} of file \mbox{\hyperlink{_logs_controller_8cs_source}{Logs\+Controller.\+cs}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_task_a_p_i_1_1_controllers_1_1_logs_controller_aa3ff1ef899107537f53be4b06f342d05}\label{class_task_a_p_i_1_1_controllers_1_1_logs_controller_aa3ff1ef899107537f53be4b06f342d05} 
+\index{TaskAPI.Controllers.LogsController@{TaskAPI.Controllers.LogsController}!LogsController@{LogsController}}
+\index{LogsController@{LogsController}!TaskAPI.Controllers.LogsController@{TaskAPI.Controllers.LogsController}}
+\doxysubsubsection{\texorpdfstring{LogsController()}{LogsController()}}
+{\footnotesize\ttfamily Task\+API.\+Controllers.\+Logs\+Controller.\+Logs\+Controller (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{Log\+Service}}}]{log\+Service,  }\item[{\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service}{Internal\+APIService}}}]{internal\+APIService,  }\item[{IOptions$<$ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings}{Task\+APISettings}} $>$}]{settings,  }\item[{\mbox{\hyperlink{class_task_a_p_i_1_1_contexts_1_1_task_a_p_i_context}{Task\+APIContext}}}]{context,  }\item[{IOptions$<$ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_log_notifications_settings}{Log\+Notifications\+Settings}} $>$}]{log\+Notifications\+Settings,  }\item[{IWeb\+Host\+Environment}]{env }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_logs_controller_8cs_source_l00036}{36}} of file \mbox{\hyperlink{_logs_controller_8cs_source}{Logs\+Controller.\+cs}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_task_a_p_i_1_1_controllers_1_1_logs_controller_aa1bbb95b5f70e8d5a457fdca962479e3}\label{class_task_a_p_i_1_1_controllers_1_1_logs_controller_aa1bbb95b5f70e8d5a457fdca962479e3} 
+\index{TaskAPI.Controllers.LogsController@{TaskAPI.Controllers.LogsController}!CheckForAllAlerts@{CheckForAllAlerts}}
+\index{CheckForAllAlerts@{CheckForAllAlerts}!TaskAPI.Controllers.LogsController@{TaskAPI.Controllers.LogsController}}
+\doxysubsubsection{\texorpdfstring{CheckForAllAlerts()}{CheckForAllAlerts()}}
+{\footnotesize\ttfamily IAction\+Result Task\+API.\+Controllers.\+Logs\+Controller.\+Check\+For\+All\+Alerts (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Checks for alerts across all configured API sources as defined in Log\+Notifications\+Settings. 
+
+\begin{DoxyReturn}{Returns}
+Returns a status code 200 with a message and list of processed sources if all API sources are processed successfully. Returns a status code 500 along with a message if Log\+Notifications\+Settings are not found or any API sources fail to process. 
+\end{DoxyReturn}
+
+
+Iterates through all API sources specified in the Log\+Notifications\+Settings configuration. Each source is processed to check for alerts. Logs the exception and adds the source to a list of failed processes if any source fails to process. 
+
+$<$response code="{}200"{}$>$All API sources processed for alerts. Includes environment name and lists processed sources.$<$/response$>$ $<$response code="{}500"{}$>$Indicates either Log\+Notifications\+Settings not found or some API sources failed to process. Includes failed sources.$<$/response$>$ 
+
+Definition at line \mbox{\hyperlink{_logs_controller_8cs_source_l00133}{133}} of file \mbox{\hyperlink{_logs_controller_8cs_source}{Logs\+Controller.\+cs}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_task_a_p_i_1_1_controllers_1_1_logs_controller_aa1bbb95b5f70e8d5a457fdca962479e3_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_task_a_p_i_1_1_controllers_1_1_logs_controller_a7b16dda3feb664234c4307c88b54dbc5}\label{class_task_a_p_i_1_1_controllers_1_1_logs_controller_a7b16dda3feb664234c4307c88b54dbc5} 
+\index{TaskAPI.Controllers.LogsController@{TaskAPI.Controllers.LogsController}!GetLogs@{GetLogs}}
+\index{GetLogs@{GetLogs}!TaskAPI.Controllers.LogsController@{TaskAPI.Controllers.LogsController}}
+\doxysubsubsection{\texorpdfstring{GetLogs()}{GetLogs()}}
+{\footnotesize\ttfamily IAction\+Result Task\+API.\+Controllers.\+Logs\+Controller.\+Get\+Logs (\begin{DoxyParamCaption}\item[{\mbox{[}\+From\+Body\mbox{]} \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_logs_controller_1_1_log_request}{Log\+Request}}}]{log\+Request }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_logs_controller_8cs_source_l00078}{78}} of file \mbox{\hyperlink{_logs_controller_8cs_source}{Logs\+Controller.\+cs}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_task_a_p_i_1_1_controllers_1_1_logs_controller_a7b16dda3feb664234c4307c88b54dbc5_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_task_a_p_i_1_1_controllers_1_1_logs_controller_a12e6a10e13d0182e8d356f0679bb85b1}\label{class_task_a_p_i_1_1_controllers_1_1_logs_controller_a12e6a10e13d0182e8d356f0679bb85b1} 
+\index{TaskAPI.Controllers.LogsController@{TaskAPI.Controllers.LogsController}!GetLogSources@{GetLogSources}}
+\index{GetLogSources@{GetLogSources}!TaskAPI.Controllers.LogsController@{TaskAPI.Controllers.LogsController}}
+\doxysubsubsection{\texorpdfstring{GetLogSources()}{GetLogSources()}}
+{\footnotesize\ttfamily IAction\+Result Task\+API.\+Controllers.\+Logs\+Controller.\+Get\+Log\+Sources (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_logs_controller_8cs_source_l00085}{85}} of file \mbox{\hyperlink{_logs_controller_8cs_source}{Logs\+Controller.\+cs}}.
+
+\Hypertarget{class_task_a_p_i_1_1_controllers_1_1_logs_controller_acbc81c5d0d03a76497d699754de63afd}\label{class_task_a_p_i_1_1_controllers_1_1_logs_controller_acbc81c5d0d03a76497d699754de63afd} 
+\index{TaskAPI.Controllers.LogsController@{TaskAPI.Controllers.LogsController}!GetLogTypes@{GetLogTypes}}
+\index{GetLogTypes@{GetLogTypes}!TaskAPI.Controllers.LogsController@{TaskAPI.Controllers.LogsController}}
+\doxysubsubsection{\texorpdfstring{GetLogTypes()}{GetLogTypes()}}
+{\footnotesize\ttfamily IAction\+Result Task\+API.\+Controllers.\+Logs\+Controller.\+Get\+Log\+Types (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_logs_controller_8cs_source_l00092}{92}} of file \mbox{\hyperlink{_logs_controller_8cs_source}{Logs\+Controller.\+cs}}.
+
+\Hypertarget{class_task_a_p_i_1_1_controllers_1_1_logs_controller_af8b7f41074892eb4a70a447d64a055c6}\label{class_task_a_p_i_1_1_controllers_1_1_logs_controller_af8b7f41074892eb4a70a447d64a055c6} 
+\index{TaskAPI.Controllers.LogsController@{TaskAPI.Controllers.LogsController}!TrimLogs@{TrimLogs}}
+\index{TrimLogs@{TrimLogs}!TaskAPI.Controllers.LogsController@{TaskAPI.Controllers.LogsController}}
+\doxysubsubsection{\texorpdfstring{TrimLogs()}{TrimLogs()}}
+{\footnotesize\ttfamily Action\+Result$<$ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result}{Log\+Trim\+Result}} $>$ Task\+API.\+Controllers.\+Logs\+Controller.\+Trim\+Logs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_logs_controller_8cs_source_l00099}{99}} of file \mbox{\hyperlink{_logs_controller_8cs_source}{Logs\+Controller.\+cs}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_task_a_p_i_1_1_controllers_1_1_logs_controller_af8b7f41074892eb4a70a447d64a055c6_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+STRIDER/source/repos/\+Task\+API/\+Controllers/\mbox{\hyperlink{_logs_controller_8cs}{Logs\+Controller.\+cs}}\end{DoxyCompactItemize}

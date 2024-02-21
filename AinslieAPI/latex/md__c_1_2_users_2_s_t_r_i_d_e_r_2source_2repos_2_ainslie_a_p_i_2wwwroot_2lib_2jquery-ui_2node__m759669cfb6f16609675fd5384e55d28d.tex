@@ -1,0 +1,257 @@
+\chapter{grunt-\/contrib-\/qunit v5.1.1 \texorpdfstring{$<$}{<}a href="{}https\+://github.\+com/gruntjs/grunt-\/contrib-\/qunit/actions?workflow=\+Tests"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://github.\+com/gruntjs/grunt-\/contrib-\/qunit/workflows/\+Tests/badge.\+svg"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m759669cfb6f16609675fd5384e55d28d}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m759669cfb6f16609675fd5384e55d28d}\index{grunt-\/contrib-\/qunit v5.1.1 $<$a href="{}https://github.com/gruntjs/grunt-\/contrib-\/qunit/actions?workflow=Tests"{} $>$$<$img src="{}https://github.com/gruntjs/grunt-\/contrib-\/qunit/workflows/Tests/badge.svg"{} alt="{}Build Status"{}/$>$$<$/a$>$@{grunt-\/contrib-\/qunit v5.1.1 $<$a href=""https://github.com/gruntjs/grunt-\/contrib-\/qunit/actions?workflow=Tests"" $>$$<$img src=""https://github.com/gruntjs/grunt-\/contrib-\/qunit/workflows/Tests/badge.svg"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m759669cfb6f16609675fd5384e55d28d_autotoc_md8799}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m759669cfb6f16609675fd5384e55d28d_autotoc_md8799}%
+ \begin{quote}
+Run QUnit unit tests in a headless Chrome instance \end{quote}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m759669cfb6f16609675fd5384e55d28d_autotoc_md8800}{}\doxysection{\texorpdfstring{Getting Started}{Getting Started}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m759669cfb6f16609675fd5384e55d28d_autotoc_md8800}
+If you haven\textquotesingle{}t used \href{https://gruntjs.com/}{\texttt{ Grunt}} before, be sure to check out the \href{https://gruntjs.com/getting-started}{\texttt{ Getting Started}} guide, as it explains how to create a \href{https://gruntjs.com/sample-gruntfile}{\texttt{ Gruntfile}} as well as install and use Grunt plugins. Once you\textquotesingle{}re familiar with that process, you may install this plugin with this command\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ grunt-\/contrib-\/qunit\ -\/-\/save-\/dev}
+
+\end{DoxyCode}
+
+
+Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of Java\+Script\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{grunt.loadNpmTasks('grunt-\/contrib-\/qunit');}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m759669cfb6f16609675fd5384e55d28d_autotoc_md8801}{}\doxysection{\texorpdfstring{Qunit task}{Qunit task}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m759669cfb6f16609675fd5384e55d28d_autotoc_md8801}
+{\itshape Run this task with the {\ttfamily grunt qunit} command.}
+
+You have chosen to write your unit tests using \href{https://qunitjs.com/}{\texttt{ QUnit}}, you have written a html page which reports the summary and individual details of your unit tests, you are happy with this but realize you miss the ability to have your unit test suite run automatically each time you commit changes to your code.
+
+This is where the {\ttfamily grunt-\/contrib-\/qunit} plugin comes in the play\+: {\ttfamily grunt-\/contrib-\/qunit} lets you run your tests in the invisible \mbox{[}Chrome\mbox{]}\mbox{[}\mbox{]} browser, thus converting your unit test suite into something you can run from a script, a script you can have automatically run on travis-\/ci (or the Continuous Integration service of your choice) which in turn can alert you of any rule-\/breaking commit to your code.
+
+You can still monitor the status of your unit tests suite visiting your html test page in your browser, but with {\ttfamily grunt-\/contrib-\/qunit} you can also run the same suite from the command line interface.
+
+This plugin defines one single task\+: {\ttfamily qunit}. Configure it in your {\ttfamily Gruntfile.\+js}, run it with the {\ttfamily grunt qunit} command.
+
+Please read about specifying task targets, files and options in the grunt \href{https://gruntjs.com/configuring-tasks}{\texttt{ Configuring tasks}} guide.
+
+When installed by npm, this plugin will automatically download and install a local \mbox{[}Chrome\mbox{]}\mbox{[}\mbox{]} binary within the {\ttfamily node\+\_\+modules} directory of the \href{https://pptr.dev/}{\texttt{ puppeteer}} library, which is used for launching a Chrome process. If your system already provides an installation of Chrome, you can configure this plugin to use the globally installed executable by specifying a custom {\ttfamily executable\+Path} in the puppeteer launch options. ~\newline
+ This will almost certainly be needed in order to run Chrome in a CI environment\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m759669cfb6f16609675fd5384e55d28d_autotoc_md8802}{}\doxysubsubsection{\texorpdfstring{OS Dependencies}{OS Dependencies}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m759669cfb6f16609675fd5384e55d28d_autotoc_md8802}
+This plugin uses Puppeteer to run tests in a Chrome process. Chrome requires a number of dependencies that must be installed, depending on your OS. ~\newline
+ Please see Puppeteer\textquotesingle{}s docs to see the latest docs for what dependencies you need for your OS\+:
+
+\href{https://github.com/GoogleChrome/puppeteer/blob/master/docs/troubleshooting.md}{\texttt{ https\+://github.\+com/\+Google\+Chrome/puppeteer/blob/master/docs/troubleshooting.\+md}} \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m759669cfb6f16609675fd5384e55d28d_autotoc_md8803}{}\doxysubsection{\texorpdfstring{Options}{Options}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m759669cfb6f16609675fd5384e55d28d_autotoc_md8803}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m759669cfb6f16609675fd5384e55d28d_autotoc_md8804}{}\doxysubsubsection{\texorpdfstring{timeout}{timeout}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m759669cfb6f16609675fd5384e55d28d_autotoc_md8804}
+Type\+: {\ttfamily Number} ~\newline
+ Default\+: {\ttfamily 5000}
+
+The amount of time (in milliseconds) that grunt will wait for a QUnit {\ttfamily start()} call before failing the task with an error.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m759669cfb6f16609675fd5384e55d28d_autotoc_md8805}{}\doxysubsubsection{\texorpdfstring{inject}{inject}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m759669cfb6f16609675fd5384e55d28d_autotoc_md8805}
+Type\+: {\ttfamily String}\texorpdfstring{$\vert$}{|}{\ttfamily Array} ~\newline
+ Default\+: {\ttfamily chrome/bridge.\+js}
+
+One or multiple (array) Java\+Script file names to inject into the html test page. Defaults to the path of the QUnit-\/\+Chrome bridge file.
+
+You may want to inject something different than the provided QUnit-\/\+Chrome bridge, or to inject more than just the provided bridge. See \href{https://github.com/gruntjs/grunt-contrib-qunit/blob/master/chrome/bridge.js}{\texttt{ the built-\/in bridge}} for more information.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m759669cfb6f16609675fd5384e55d28d_autotoc_md8806}{}\doxysubsubsection{\texorpdfstring{http\+Base}{http\+Base}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m759669cfb6f16609675fd5384e55d28d_autotoc_md8806}
+Type\+: {\ttfamily String} ~\newline
+ Default\+: {\ttfamily "{}"{}}
+
+Create URLs for the {\ttfamily src} files, all {\ttfamily src} files are prefixed with that base.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m759669cfb6f16609675fd5384e55d28d_autotoc_md8807}{}\doxysubsubsection{\texorpdfstring{console}{console}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m759669cfb6f16609675fd5384e55d28d_autotoc_md8807}
+Type\+: {\ttfamily boolean} ~\newline
+ Default\+: {\ttfamily true}
+
+By default, {\ttfamily console.\mbox{[}log\texorpdfstring{$\vert$}{|}warn\texorpdfstring{$\vert$}{|}error\mbox{]}} output from the Chrome browser will be piped into QUnit console. Set to {\ttfamily false} to disable this behavior.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m759669cfb6f16609675fd5384e55d28d_autotoc_md8808}{}\doxysubsubsection{\texorpdfstring{urls}{urls}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m759669cfb6f16609675fd5384e55d28d_autotoc_md8808}
+Type\+: {\ttfamily Array} ~\newline
+ Default\+: {\ttfamily \mbox{[}\mbox{]}}
+
+Absolute {\ttfamily \href{http://}{\texttt{ http\+://}}} or {\ttfamily \href{https://}{\texttt{ https\+://}}} urls to be passed to Chrome. Specified URLs will be merged with any specified {\ttfamily src} files first. Note that urls must be served by a web server, and since this task doesn\textquotesingle{}t contain a web server, one will need to be configured separately. The \href{https://github.com/gruntjs/grunt-contrib-connect}{\texttt{ grunt-\/contrib-\/connect plugin}} provides a basic web server.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m759669cfb6f16609675fd5384e55d28d_autotoc_md8809}{}\doxysubsubsection{\texorpdfstring{force}{force}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m759669cfb6f16609675fd5384e55d28d_autotoc_md8809}
+Type\+: {\ttfamily boolean} ~\newline
+ Default\+: {\ttfamily false}
+
+When true, the whole task will not fail when there are individual test failures, or when no assertions for a test have run. This can be set to true when you always want other tasks in the queue to be executed.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m759669cfb6f16609675fd5384e55d28d_autotoc_md8810}{}\doxysubsubsection{\texorpdfstring{summary\+Only}{summary\+Only}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m759669cfb6f16609675fd5384e55d28d_autotoc_md8810}
+Type\+: {\ttfamily boolean} ~\newline
+ Default\+: {\ttfamily false}
+
+When true, this will suppress the default logging for individually failed tests. Customized logging can be performed by listening to and responding to {\ttfamily qunit.\+log} events.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m759669cfb6f16609675fd5384e55d28d_autotoc_md8811}{}\doxysubsubsection{\texorpdfstring{puppeteer}{puppeteer}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m759669cfb6f16609675fd5384e55d28d_autotoc_md8811}
+Type\+: {\ttfamily Object} ~\newline
+ Default\+: {\ttfamily \{ headless\+: true \}}
+
+Arguments to be used when {\ttfamily puppeteer.\+launch()} is invoked. This may be useful for specifying a custom Chrome executable path, running in non-\/headless mode, specifying environment variables to use when launching Chrome, etc. See the \href{https://pptr.dev/\#?product=Puppeteer&version=v5.1.0}{\texttt{ Puppeteer API Reference}} for a list of launch options that are available.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m759669cfb6f16609675fd5384e55d28d_autotoc_md8812}{}\doxysubsubsection{\texorpdfstring{no\+Globals}{no\+Globals}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m759669cfb6f16609675fd5384e55d28d_autotoc_md8812}
+Type\+: {\ttfamily boolean} ~\newline
+ Default\+: {\ttfamily false}
+
+Fail a test when the global namespace is polluted. See the \href{https://api.qunitjs.com/config/noglobals/}{\texttt{ {\ttfamily QUnit.\+config.\+noglobals}}} for more information.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m759669cfb6f16609675fd5384e55d28d_autotoc_md8813}{}\doxysubsection{\texorpdfstring{Command line options}{Command line options}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m759669cfb6f16609675fd5384e55d28d_autotoc_md8813}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m759669cfb6f16609675fd5384e55d28d_autotoc_md8814}{}\doxysubsubsection{\texorpdfstring{Filtering by module name\+: {\ttfamily -\/-\/modules}}{Filtering by module name\+: {\ttfamily -\/-\/modules}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m759669cfb6f16609675fd5384e55d28d_autotoc_md8814}
+{\ttfamily grunt qunit -\/-\/modules="{}foo"{}}
+
+Will run the module {\ttfamily foo}. You can specify one or multiple, comma-\/separated modules to run.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m759669cfb6f16609675fd5384e55d28d_autotoc_md8815}{}\doxysubsubsection{\texorpdfstring{Running tests in seeded-\/random order\+: {\ttfamily -\/-\/seed}}{Running tests in seeded-\/random order\+: {\ttfamily -\/-\/seed}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m759669cfb6f16609675fd5384e55d28d_autotoc_md8815}
+{\ttfamily grunt qunit -\/-\/seed="{}a-\/string"{}}
+
+Specify the seed to pass to QUnit, to run tests in random, but deterministic order. See \href{https://api.qunitjs.com/config/seed/}{\texttt{ {\ttfamily QUnit.\+config.\+seed}}} docs for more information.
+
+{\itshape Note\+: You must be using {\ttfamily QUnit} version {\ttfamily 1.\+23.\+0} or greater for these features to work properly.}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m759669cfb6f16609675fd5384e55d28d_autotoc_md8816}{}\doxysubsection{\texorpdfstring{Usage examples}{Usage examples}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m759669cfb6f16609675fd5384e55d28d_autotoc_md8816}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m759669cfb6f16609675fd5384e55d28d_autotoc_md8817}{}\doxysubsubsection{\texorpdfstring{Wildcards}{Wildcards}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m759669cfb6f16609675fd5384e55d28d_autotoc_md8817}
+In this example, {\ttfamily grunt qunit\+:all} will test all {\ttfamily .html} files in the test directory {\itshape and all subdirectories}. First, the wildcard is expanded to match each individual file. Then, each matched filename is passed to \mbox{[}Chrome\mbox{]}\mbox{[}\mbox{]} (one at a time).
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Project\ configuration.}
+\DoxyCodeLine{grunt.initConfig(\{}
+\DoxyCodeLine{\ \ qunit:\ \{}
+\DoxyCodeLine{\ \ \ \ all:\ ['test/**/*.html']}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m759669cfb6f16609675fd5384e55d28d_autotoc_md8818}{}\doxysubsubsection{\texorpdfstring{Testing via \href{http://}{\texttt{ http\+://}} or \href{https://}{\texttt{ https\+://}}}{Testing via \href{http://}{\texttt{ http\+://}} or \href{https://}{\texttt{ https\+://}}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m759669cfb6f16609675fd5384e55d28d_autotoc_md8818}
+In circumstances where running unit tests from local files is inadequate, you can specify {\ttfamily \href{http://}{\texttt{ http\+://}}} or {\ttfamily \href{https://}{\texttt{ https\+://}}} URLs via the {\ttfamily urls} option. Each URL is passed to \mbox{[}Chrome\mbox{]}\mbox{[}\mbox{]} (one at a time).
+
+In this example, {\ttfamily grunt qunit} will test two files, served from the server running at {\ttfamily localhost\+:8000}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Project\ configuration.}
+\DoxyCodeLine{grunt.initConfig(\{}
+\DoxyCodeLine{\ \ qunit:\ \{}
+\DoxyCodeLine{\ \ \ \ all:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ urls:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ 'http://localhost:8000/test/foo.html',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ 'http://localhost:8000/test/bar.html'}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ]}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+Wildcards and URLs may be combined by specifying both.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m759669cfb6f16609675fd5384e55d28d_autotoc_md8819}{}\doxysubsubsection{\texorpdfstring{Using the grunt-\/contrib-\/connect plugin}{Using the grunt-\/contrib-\/connect plugin}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m759669cfb6f16609675fd5384e55d28d_autotoc_md8819}
+It\textquotesingle{}s important to note that grunt does not automatically start a {\ttfamily localhost} web server. That being said, the \href{https://github.com/gruntjs/grunt-contrib-connect}{\texttt{ grunt-\/contrib-\/connect plugin}} {\ttfamily connect} task can be run before the {\ttfamily qunit} task to serve files via a simple \href{http://www.senchalabs.org/connect/}{\texttt{ connect}} web server.
+
+In the following example, if a web server isn\textquotesingle{}t running at {\ttfamily localhost\+:8000}, running {\ttfamily grunt qunit} with the following configuration will fail because the {\ttfamily qunit} task won\textquotesingle{}t be able to load the specified URLs. However, running {\ttfamily grunt connect qunit} will first start a static \href{http://www.senchalabs.org/connect/}{\texttt{ connect}} web server at {\ttfamily localhost\+:8000} with its base path set to the Gruntfile\textquotesingle{}s directory. Then, the {\ttfamily qunit} task will be run, requesting the specified URLs.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Project\ configuration.}
+\DoxyCodeLine{grunt.initConfig(\{}
+\DoxyCodeLine{\ \ qunit:\ \{}
+\DoxyCodeLine{\ \ \ \ all:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ urls:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ 'http://localhost:8000/test/foo.html',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ 'http://localhost:8000/test/bar.html',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ]}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ connect:\ \{}
+\DoxyCodeLine{\ \ \ \ server:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ port:\ 8000,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ base:\ '.'}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ This\ plugin\ provides\ the\ "{}connect"{}\ task.}
+\DoxyCodeLine{grunt.loadNpmTasks('grunt-\/contrib-\/connect');}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ A\ convenient\ task\ alias.}
+\DoxyCodeLine{grunt.registerTask('test',\ ['connect',\ 'qunit']);}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m759669cfb6f16609675fd5384e55d28d_autotoc_md8820}{}\doxysubsubsection{\texorpdfstring{Custom timeouts and Puppeteer options}{Custom timeouts and Puppeteer options}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m759669cfb6f16609675fd5384e55d28d_autotoc_md8820}
+In the following example, the default timeout value of {\ttfamily 5000} is overridden with the value {\ttfamily 10000} (timeout values are in milliseconds). Custom options to use when launching Puppeteer can be specified using {\ttfamily options.\+puppeteer}, with all property names corresponding directly to options supported by \href{https://pptr.dev/\#?product=Puppeteer&version=v1.3.0&show=api-puppeteerlaunchoptions}{\texttt{ {\ttfamily puppeteer.\+launch()}}}. For example, the following configuration sets the TZ environment variable and invokes a custom Chrome executable at "{}/usr/bin/chromium"{}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Project\ configuration.}
+\DoxyCodeLine{grunt.initConfig(\{}
+\DoxyCodeLine{\ \ qunit:\ \{}
+\DoxyCodeLine{\ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ timeout:\ 10000,}
+\DoxyCodeLine{\ \ \ \ \ \ puppeteer:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ env:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ TZ:\ "{}UTC"{}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ executablePath:\ "{}/usr/bin/chromium"{}}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ all:\ ['test/**/*.html']}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m759669cfb6f16609675fd5384e55d28d_autotoc_md8821}{}\doxysubsubsection{\texorpdfstring{Loading QUnit with AMD}{Loading QUnit with AMD}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m759669cfb6f16609675fd5384e55d28d_autotoc_md8821}
+When using AMD to load QUnit and your tests, make sure to have a path for the {\ttfamily qunit} module defined.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m759669cfb6f16609675fd5384e55d28d_autotoc_md8822}{}\doxysubsubsection{\texorpdfstring{Events and reporting}{Events and reporting}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m759669cfb6f16609675fd5384e55d28d_autotoc_md8822}
+\href{http://api.qunitjs.com/category/callbacks/}{\texttt{ QUnit callback}} methods and arguments are also emitted through grunt\textquotesingle{}s event system so that you may build custom reporting tools. Please refer to to the QUnit documentation for more information.
+
+The events, with arguments, are as follows\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily qunit.\+begin}
+\item {\ttfamily qunit.\+module\+Start} {\ttfamily (name)}
+\item {\ttfamily qunit.\+test\+Start} {\ttfamily (name)}
+\item {\ttfamily qunit.\+log} {\ttfamily (result, actual, expected, message, source)}
+\item {\ttfamily qunit.\+test\+Done} {\ttfamily (name, failed, passed, total, duration)}
+\item {\ttfamily qunit.\+module\+Done} {\ttfamily (name, failed, passed, total)}
+\item {\ttfamily qunit.\+done} {\ttfamily (failed, passed, total, runtime)}
+\end{DoxyItemize}
+
+In addition to QUnit callback-\/named events, the following events are emitted by Grunt\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily qunit.\+spawn} {\ttfamily (url)}\+: when \mbox{[}Chrome\mbox{]}\mbox{[}\mbox{]} is spawned for a test
+\item {\ttfamily qunit.\+fail.\+load} {\ttfamily (url)}\+: when \mbox{[}Chrome\mbox{]}\mbox{[}\mbox{]} could not open the given url
+\item {\ttfamily qunit.\+fail.\+timeout}\+: when a QUnit test times out, usually due to a missing {\ttfamily QUnit.\+start()} call
+\item {\ttfamily qunit.\+error.\+on\+Error} {\ttfamily (message, stack\+Trace)}\+: when a Java\+Script execution error occurs
+\end{DoxyItemize}
+
+You may listen for these events like so\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{grunt.event.on('qunit.spawn',\ function\ (url)\ \{}
+\DoxyCodeLine{\ \ grunt.log.ok('Running\ test:\ '\ +\ url);}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m759669cfb6f16609675fd5384e55d28d_autotoc_md8823}{}\doxysection{\texorpdfstring{Release History}{Release History}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m759669cfb6f16609675fd5384e55d28d_autotoc_md8823}
+
+\begin{DoxyItemize}
+\item 2021-\/04-\/18   v5.0.\+0   \+Puppeteer version to \texorpdfstring{$^\wedge$}{\string^}5.0.\+0. Dependency updates.
+\item 2020-\/06-\/17   v4.0.\+0   \+Puppeteer version to v4.\+0.\+0. Dependency updates and typo fixes. Minimum node version is now version 10.
+\item 2018-\/12-\/29   v3.1.\+0   \+Updated to puppeteer \texorpdfstring{$^\wedge$}{\string^}1.11.\+0.
+\item 2018-\/08-\/12   v3.0.\+1   \+Fixed regressions.
+\item 2018-\/07-\/24   v3.0.\+0   \+Switch to using headless chrome / puppeteer instead of phantomjs
+\item 2017-\/04-\/04   v2.0.\+0   \+Remove usage of {\ttfamily QUnit.\+js\+Dump} Upgrade qunitjs to 2.\+3.\+0 (\#123) adding an Introduction to the README (\#140)
+\item 2017-\/02-\/07   v1.3.\+0   \+Add ability to run tests in seeded-\/random order through {\ttfamily -\/-\/seed} flag Add note about min version of QUnit required to use the CLI flags Implement support for todo tests and revamp reporting logic (\#137)
+\item 2016-\/04-\/14   v1.2.\+0   \+Add support for filtering running modules using command line (--modules) Removed \textquotesingle{}grunt.\+warn\textquotesingle{} output from {\ttfamily error.\+on\+Error} handler, onus now on end user binding to event. Update docs.
+\item 2016-\/03-\/11   v1.1.\+0   \+Adding support for \textquotesingle{}summary\+Only\textquotesingle{}. Fix {\ttfamily options.\+force}. Fix query string for {\ttfamily no\+Globals}. Update docs.
+\item 2016-\/02-\/05   v1.0.\+1   \+Change {\ttfamily QUnit.\+js\+Dump} to {\ttfamily QUnit.\+dump}.
+\item 2016-\/02-\/05   v1.0.\+0   \+Update grunt-\/lib-\/phantomjs to 1.\+0.\+0, effectively upgrading to phantomjs 2.\+x. Remove grunt as a peer\+Dependency.
+\item 2015-\/04-\/03   v0.7.\+0   \+Log Phantom\+JS errors as warnings.
+\item 2015-\/03-\/31   v0.6.\+0   \+Add no\+Globals option, forwarded to QUnit. Report proper exit code to grunt based on failures. Add support for AMD.
+\item 2014-\/07-\/09   v0.5.\+2   \+Added support for reporting the duration of {\ttfamily test\+Done}. Other minor fixes.
+\item 2014-\/05-\/31   v0.5.\+1   \+Updates grunt-\/lib-\/phantomjs.
+\item 2014-\/05-\/31   v0.5.\+0   \+Add ability to hide Phantom\+JS console output. Add option for binding phantomjs console to grunt output. Default is {\ttfamily true} (do bind). Add {\ttfamily http\+Base} option. Only call {\ttfamily js\+Dump.\+parse()} if a test failed.
+\item 2014-\/01-\/17   v0.4.\+0   \+Update grunt-\/lib-\/phantomjs to v0.\+5.\+0. Explicitly set files to publish to npm. Ref gruntjs/gruntjs.\+com\#65. Update qunit-\/overview.\+md, include Cent\+OS dependencies. Closes gh-\/49.
+\item 2013-\/09-\/29   v0.3.\+0   \+Update grunt-\/lib-\/phantomjs to v0.\+4.\+0. Add {\ttfamily qunit.\+fail.\+load} and {\ttfamily qunit.\+fail.\+timeout} events. Update QUnit to v1.\+12.\+0. Add {\ttfamily force} option. Propagate {\ttfamily on\+Error} events from phantomjs through the {\ttfamily qunit.\+error.\+on\+Error} event. Remove confusing error message.
+\item 2013-\/06-\/06   v0.2.\+2   \+Warn if no assertions ran in a single test. Spaces instead of newlines for clickable URLs. Wrap bridge.\+js in a IIFE.
+\item 2013-\/04-\/05   v0.2.\+1   \+Update to use Phantom\+JS 1.\+9.\+0. Fixes Phantom\+JS not found errors.
+\item 2013-\/02-\/28   v0.2.\+0   \+Update to use Phantom\+JS 1.\+8.\+1.
+\item 2013-\/02-\/15   v0.1.\+1   \+First official release for Grunt 0.\+4.\+0.
+\item 2013-\/01-\/18   v0.1.\+1rc6   \+Updating grunt/gruntplugin dependencies to rc6. Changing in-\/development grunt/gruntplugin dependency versions from tilde version ranges to specific versions.
+\item 2013-\/01-\/09   v0.1.\+1rc5   \+Updating to work with grunt v0.\+4.\+0rc5. Switching to {\ttfamily this.\+files\+Src} API. Adding {\ttfamily urls} option for specifying absolute test URLs.
+\item 2012-\/10-\/05   v0.1.\+0   \+Work in progress, not yet officially released.
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+
+
+Task submitted by \href{http://benalman.com/}{\texttt{ "{}Cowboy"{} Ben Alman}}
+
+{\itshape This file was generated on Fri Oct 01 2021 22\+:38\+:18.} 

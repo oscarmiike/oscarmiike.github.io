@@ -1,0 +1,2044 @@
+\chapter{README}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e}\index{README@{README}}
+\doxysection*{Enquirer}
+
+
+
+\href{https://npmjs.org/package/enquirer}{\texttt{  }} \href{https://npmjs.org/package/enquirer}{\texttt{  }} 
+
+~\newline
+ ~\newline
+
+
+
+
+{\bfseries{Stylish CLI prompts that are user-\/friendly, intuitive and easy to create.}}~\newline
+ \textsubscript{\texorpdfstring{$>$}{>}\+\_\+ Prompts should be more like conversations than inquisitions▌} 
+
+~\newline
+
+
+
+
+\textsubscript{(Example shows Enquirer\textquotesingle{}s \href{\#survey-prompt}{\texttt{ Survey Prompt}})} ~\newline
+ \textsubscript{The terminal in all examples is \href{https://hyper.is/}{\texttt{ Hyper}}, theme is \href{https://github.com/jonschlinkert/hyper-monokai-extended}{\texttt{ hyper-\/monokai-\/extended}}.}~\newline
+~\newline
+ \href{\#built-in-prompts}{\texttt{ {\bfseries{See more prompt examples}}}} 
+
+~\newline
+ ~\newline
+
+
+Created by \href{https://github.com/jonschlinkert}{\texttt{ jonschlinkert}} and \href{https://github.com/doowb}{\texttt{ doowb}}, Enquirer is fast, easy to use, and lightweight enough for small projects, while also being powerful and customizable enough for the most advanced use cases.
+
+
+\begin{DoxyItemize}
+\item {\bfseries{Fast}} -\/ Loads in \texorpdfstring{$\sim$}{\string~}4ms (that\textquotesingle{}s about {\itshape 3-\/4 times faster than a \href{http://www.endmemo.com/sconvert/framespersecondframespermillisecond.php}{\texttt{ single frame of a HD movie}} at 60fps})
+\item {\bfseries{Lightweight}} -\/ Only one dependency, the excellent \href{https://github.com/doowb/ansi-colors}{\texttt{ ansi-\/colors}} by \href{https://github.com/doowb}{\texttt{ Brian Woodward}}.
+\item {\bfseries{Easy to implement}} -\/ Uses promises and async/await and sensible defaults to make prompts easy to create and implement.
+\item {\bfseries{Easy to use}} -\/ Thrill your users with a better experience! Navigating around input and choices is a breeze. You can even create \href{examples/fun/countdown.js}{\texttt{ quizzes}}, or \href{examples/fun/record.js}{\texttt{ record}} and \href{examples/fun/play.js}{\texttt{ playback}} key bindings to aid with tutorials and videos.
+\item {\bfseries{Intuitive}} -\/ Keypress combos are available to simplify usage.
+\item {\bfseries{Flexible}} -\/ All prompts can be used standalone or chained together.
+\item {\bfseries{Stylish}} -\/ Easily override semantic styles and symbols for any part of the prompt.
+\item {\bfseries{Extensible}} -\/ Easily create and use custom prompts by extending Enquirer\textquotesingle{}s built-\/in prompts.
+\item {\bfseries{Pluggable}} -\/ Add advanced features to Enquirer using plugins.
+\item {\bfseries{Validation}} -\/ Optionally validate user input with any prompt.
+\item {\bfseries{Well tested}} -\/ All prompts are well-\/tested, and tests are easy to create without having to use brittle, hacky solutions to spy on prompts or "{}inject"{} values.
+\item {\bfseries{Examples}} -\/ There are numerous \mbox{[}examples\mbox{]}(examples) available to help you get started.
+\end{DoxyItemize}
+
+If you like Enquirer, please consider starring or tweeting about this project to show your support. Thanks!
+
+~\newline
+
+
+
+
+{\bfseries{\texorpdfstring{$>$}{>}\+\_\+ Ready to start making prompts your users will love? ▌}}~\newline
+  
+
+~\newline
+ ~\newline
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7878}{}\doxysubsection{\texorpdfstring{❯ Getting started}{❯ Getting started}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7878}
+Get started with Enquirer, the most powerful and easy-\/to-\/use Node.\+js library for creating interactive CLI prompts.
+
+
+\begin{DoxyItemize}
+\item Install
+\item Usage
+\item Enquirer
+\item Prompts
+\begin{DoxyItemize}
+\item Built-\/in Prompts
+\item Custom Prompts
+\end{DoxyItemize}
+\item Key Bindings
+\item Options
+\item Release History
+\item Performance
+\item About
+\end{DoxyItemize}
+
+~\newline
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7879}{}\doxysubsection{\texorpdfstring{❯ Install}{❯ Install}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7879}
+Install with \href{https://www.npmjs.com/}{\texttt{ npm}}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ enquirer\ -\/-\/save}
+
+\end{DoxyCode}
+ Install with \href{https://yarnpkg.com/en/}{\texttt{ yarn}}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{yarn\ add\ enquirer}
+
+\end{DoxyCode}
+
+
+ 
+
+\+\_\+(Requires Node.\+js 8.\+6 or higher. Please let us know if you need support for an earlier version by creating an \href{../../issues/new}{\texttt{ issue}}.)\+\_\+
+
+~\newline
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7880}{}\doxysubsection{\texorpdfstring{❯ Usage}{❯ Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7880}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7881}{}\doxysubsubsection{\texorpdfstring{Single prompt}{Single prompt}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7881}
+The easiest way to get started with enquirer is to pass a question object to the {\ttfamily prompt} method.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ \{\ prompt\ \}\ =\ require('enquirer');}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ response\ =\ await\ prompt(\{}
+\DoxyCodeLine{\ \ type:\ 'input',}
+\DoxyCodeLine{\ \ name:\ 'username',}
+\DoxyCodeLine{\ \ message:\ 'What\ is\ your\ username?'}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log(response);\ //\ \{\ username:\ 'jonschlinkert'\ \}}
+
+\end{DoxyCode}
+
+
+\+\_\+(Examples with {\ttfamily await} need to be run inside an {\ttfamily async} function)\+\_\+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7882}{}\doxysubsubsection{\texorpdfstring{Multiple prompts}{Multiple prompts}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7882}
+Pass an array of "{}question"{} objects to run a series of prompts.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ response\ =\ await\ prompt([}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ type:\ 'input',}
+\DoxyCodeLine{\ \ \ \ name:\ 'name',}
+\DoxyCodeLine{\ \ \ \ message:\ 'What\ is\ your\ name?'}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ type:\ 'input',}
+\DoxyCodeLine{\ \ \ \ name:\ 'username',}
+\DoxyCodeLine{\ \ \ \ message:\ 'What\ is\ your\ username?'}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{]);}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log(response);\ //\ \{\ name:\ 'Edward\ Chan',\ username:\ 'edwardmchan'\ \}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7883}{}\doxysubsubsection{\texorpdfstring{Different ways to run enquirer}{Different ways to run enquirer}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7883}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7884}{}\doxyparagraph{\texorpdfstring{1. By importing the specific {\ttfamily built-\/in prompt}}{1. By importing the specific {\ttfamily built-\/in prompt}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7884}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ \{\ Confirm\ \}\ =\ require('enquirer');}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ prompt\ =\ new\ Confirm(\{}
+\DoxyCodeLine{\ \ name:\ 'question',}
+\DoxyCodeLine{\ \ message:\ 'Did\ you\ like\ enquirer?'}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{prompt.run()}
+\DoxyCodeLine{\ \ .then(answer\ =>\ console.log('Answer:',\ answer));}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7885}{}\doxyparagraph{\texorpdfstring{2. By passing the options to {\ttfamily prompt}}{2. By passing the options to {\ttfamily prompt}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7885}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ \{\ prompt\ \}\ =\ require('enquirer');}
+\DoxyCodeLine{}
+\DoxyCodeLine{prompt(\{}
+\DoxyCodeLine{\ \ type:\ 'confirm',}
+\DoxyCodeLine{\ \ name:\ 'question',}
+\DoxyCodeLine{\ \ message:\ 'Did\ you\ like\ enquirer?'}
+\DoxyCodeLine{\})}
+\DoxyCodeLine{\ \ .then(answer\ =>\ console.log('Answer:',\ answer));}
+
+\end{DoxyCode}
+
+
+{\bfseries{Jump to}}\+: Getting Started · Prompts · Options · Key Bindings
+
+~\newline
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7886}{}\doxysubsection{\texorpdfstring{❯ Enquirer}{❯ Enquirer}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7886}
+{\bfseries{Enquirer is a prompt runner}}
+
+Add Enquirer to your Java\+Script project with following line of code.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ Enquirer\ =\ require('enquirer');}
+
+\end{DoxyCode}
+
+
+The main export of this library is the {\ttfamily Enquirer} class, which has methods and features designed to simplify running prompts.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ \{\ prompt\ \}\ =\ require('enquirer');}
+\DoxyCodeLine{const\ questions\ =\ [}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ type:\ 'input',}
+\DoxyCodeLine{\ \ \ \ name:\ 'username',}
+\DoxyCodeLine{\ \ \ \ message:\ 'What\ is\ your\ username?'}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ type:\ 'password',}
+\DoxyCodeLine{\ \ \ \ name:\ 'password',}
+\DoxyCodeLine{\ \ \ \ message:\ 'What\ is\ your\ password?'}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{];}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ answers\ =\ await\ prompt(questions);}
+\DoxyCodeLine{console.log(answers);}
+
+\end{DoxyCode}
+
+
+{\bfseries{Prompts control how values are rendered and returned}}
+
+Each individual prompt is a class with special features and functionality for rendering the types of values you want to show users in the terminal, and subsequently returning the types of values you need to use in your application.
+
+{\bfseries{How can I customize prompts?}}
+
+Below in this guide you will find information about creating custom prompts. For now, we\textquotesingle{}ll focus on how to customize an existing prompt.
+
+All of the individual prompt classes in this library are exposed as static properties on Enquirer. This allows them to be used directly without using {\ttfamily enquirer.\+prompt()}.
+
+Use this approach if you need to modify a prompt instance, or listen for events on the prompt.
+
+{\bfseries{Example}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ \{\ Input\ \}\ =\ require('enquirer');}
+\DoxyCodeLine{const\ prompt\ =\ new\ Input(\{}
+\DoxyCodeLine{\ \ name:\ 'username',}
+\DoxyCodeLine{\ \ message:\ 'What\ is\ your\ username?'}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{prompt.run()}
+\DoxyCodeLine{\ \ .then(answer\ =>\ console.log('Username:',\ answer))}
+\DoxyCodeLine{\ \ .catch(console.error);}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7887}{}\doxysubsubsection{\texorpdfstring{\href{index.js\#L20}{\texttt{ Enquirer}}}{\href{index.js\#L20}{\texttt{ Enquirer}}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7887}
+Create an instance of {\ttfamily Enquirer}.
+
+{\bfseries{Params}}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily options} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\{Object\}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\+: (optional) Options to use with all prompts.
+\item {\ttfamily answers} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\{Object\}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\+: (optional) Answers object to initialize with.
+\end{DoxyItemize}
+
+{\bfseries{Example}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ Enquirer\ =\ require('enquirer');}
+\DoxyCodeLine{const\ enquirer\ =\ new\ Enquirer();}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7888}{}\doxysubsubsection{\texorpdfstring{\href{index.js\#L42}{\texttt{ register()}}}{\href{index.js\#L42}{\texttt{ register()}}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7888}
+Register a custom prompt type.
+
+{\bfseries{Params}}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily type} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\{String\}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
+\item {\ttfamily fn} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\{Function\texorpdfstring{$\vert$}{|}\+Prompt\}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\+: {\ttfamily Prompt} class, or a function that returns a {\ttfamily Prompt} class.
+\item {\ttfamily returns} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\{Object\}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\+: Returns the Enquirer instance
+\end{DoxyItemize}
+
+{\bfseries{Example}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ Enquirer\ =\ require('enquirer');}
+\DoxyCodeLine{const\ enquirer\ =\ new\ Enquirer();}
+\DoxyCodeLine{enquirer.register('customType',\ require('./custom-\/prompt'));}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7889}{}\doxysubsubsection{\texorpdfstring{\href{index.js\#L81}{\texttt{ prompt()}}}{\href{index.js\#L81}{\texttt{ prompt()}}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7889}
+Prompt function that takes a "{}question"{} object or array of question objects, and returns an object with responses from the user.
+
+{\bfseries{Params}}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily questions} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\{Array\texorpdfstring{$\vert$}{|}\+Object\}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\+: Options objects for one or more prompts to run.
+\item {\ttfamily returns} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\{Promise\}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\+: Promise that returns an "{}answers"{} object with the user\textquotesingle{}s responses.
+\end{DoxyItemize}
+
+{\bfseries{Example}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ Enquirer\ =\ require('enquirer');}
+\DoxyCodeLine{const\ enquirer\ =\ new\ Enquirer();}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ response\ =\ await\ enquirer.prompt(\{}
+\DoxyCodeLine{\ \ type:\ 'input',}
+\DoxyCodeLine{\ \ name:\ 'username',}
+\DoxyCodeLine{\ \ message:\ 'What\ is\ your\ username?'}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{console.log(response);}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7890}{}\doxysubsubsection{\texorpdfstring{\href{index.js\#L164}{\texttt{ use()}}}{\href{index.js\#L164}{\texttt{ use()}}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7890}
+Use an enquirer plugin.
+
+{\bfseries{Params}}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily plugin} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\{Function\}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\+: Plugin function that takes an instance of Enquirer.
+\item {\ttfamily returns} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\{Object\}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\+: Returns the Enquirer instance.
+\end{DoxyItemize}
+
+{\bfseries{Example}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ Enquirer\ =\ require('enquirer');}
+\DoxyCodeLine{const\ enquirer\ =\ new\ Enquirer();}
+\DoxyCodeLine{const\ plugin\ =\ enquirer\ =>\ \{}
+\DoxyCodeLine{\ \ //\ do\ stuff\ to\ enquire\ instance}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{enquirer.use(plugin);}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7891}{}\doxysubsubsection{\texorpdfstring{\href{index.js\#L214}{\texttt{ Enquirer\+::prompt}}}{\href{index.js\#L214}{\texttt{ Enquirer\+::prompt}}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7891}
+Prompt function that takes a "{}question"{} object or array of question objects, and returns an object with responses from the user.
+
+{\bfseries{Params}}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily questions} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\{Array\texorpdfstring{$\vert$}{|}\+Object\}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\+: Options objects for one or more prompts to run.
+\item {\ttfamily returns} \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\{Promise\}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\+: Promise that returns an "{}answers"{} object with the user\textquotesingle{}s responses.
+\end{DoxyItemize}
+
+{\bfseries{Example}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ \{\ prompt\ \}\ =\ require('enquirer');}
+\DoxyCodeLine{const\ response\ =\ await\ prompt(\{}
+\DoxyCodeLine{\ \ type:\ 'input',}
+\DoxyCodeLine{\ \ name:\ 'username',}
+\DoxyCodeLine{\ \ message:\ 'What\ is\ your\ username?'}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{console.log(response);}
+
+\end{DoxyCode}
+
+
+~\newline
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7892}{}\doxysubsection{\texorpdfstring{❯ Prompts}{❯ Prompts}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7892}
+This section is about Enquirer\textquotesingle{}s prompts\+: what they look like, how they work, how to run them, available options, and how to customize the prompts or create your own prompt concept.
+
+{\bfseries{Getting started with Enquirer\textquotesingle{}s prompts}}
+
+
+\begin{DoxyItemize}
+\item Prompt -\/ The base {\ttfamily Prompt} class used by other prompts
+\begin{DoxyItemize}
+\item Prompt Options
+\end{DoxyItemize}
+\item Built-\/in prompts
+\item Prompt Types -\/ The base {\ttfamily Prompt} class used by other prompts
+\item Custom prompts -\/ Enquirer 2.\+0 introduced the concept of prompt "{}types"{}, with the goal of making custom prompts easier than ever to create and use.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7893}{}\doxysubsubsection{\texorpdfstring{Prompt}{Prompt}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7893}
+The base {\ttfamily Prompt} class is used to create all other prompts.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ \{\ Prompt\ \}\ =\ require('enquirer');}
+\DoxyCodeLine{class\ MyCustomPrompt\ extends\ Prompt\ \{\}}
+
+\end{DoxyCode}
+
+
+See the documentation for creating custom prompts to learn more about how this works.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7894}{}\doxyparagraph{\texorpdfstring{Prompt Options}{Prompt Options}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7894}
+Each prompt takes an options object (aka "{}question"{} object), that implements the following interface\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ //\ required}
+\DoxyCodeLine{\ \ type:\ string\ |\ function,}
+\DoxyCodeLine{\ \ name:\ string\ |\ function,}
+\DoxyCodeLine{\ \ message:\ string\ |\ function\ |\ async\ function,}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ //\ optional}
+\DoxyCodeLine{\ \ skip:\ boolean\ |\ function\ |\ async\ function,}
+\DoxyCodeLine{\ \ initial:\ string\ |\ function\ |\ async\ function,}
+\DoxyCodeLine{\ \ format:\ function\ |\ async\ function,}
+\DoxyCodeLine{\ \ result:\ function\ |\ async\ function,}
+\DoxyCodeLine{\ \ validate:\ function\ |\ async\ function,}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+ Each property of the options object is described below\+:
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{Property}}   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{Required?}}   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{Type}}   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{Description}}    }\\\cline{1-4}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{Property}}   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{Required?}}   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{Type}}   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{Description}}    }\\\cline{1-4}
+\endhead
+{\ttfamily type}   &yes   &{\ttfamily string\textbackslash{}\texorpdfstring{$\vert$}{|}function}   &Enquirer uses this value to determine the type of prompt to run, but it\textquotesingle{}s optional when prompts are run directly.    \\\cline{1-4}
+{\ttfamily name}   &yes   &{\ttfamily string\textbackslash{}\texorpdfstring{$\vert$}{|}function}   &Used as the key for the answer on the returned values (answers) object.    \\\cline{1-4}
+{\ttfamily message}   &yes   &{\ttfamily string\textbackslash{}\texorpdfstring{$\vert$}{|}function}   &The message to display when the prompt is rendered in the terminal.    \\\cline{1-4}
+{\ttfamily skip}   &no   &{\ttfamily boolean\textbackslash{}\texorpdfstring{$\vert$}{|}function}   &If {\ttfamily true} it will not ask that prompt.    \\\cline{1-4}
+{\ttfamily initial}   &no   &{\ttfamily string\textbackslash{}\texorpdfstring{$\vert$}{|}function}   &The default value to return if the user does not supply a value.    \\\cline{1-4}
+{\ttfamily format}   &no   &{\ttfamily function}   &Function to format user input in the terminal.    \\\cline{1-4}
+{\ttfamily result}   &no   &{\ttfamily function}   &Function to format the final submitted value before it\textquotesingle{}s returned.    \\\cline{1-4}
+{\ttfamily validate}   &no   &{\ttfamily function}   &Function to validate the submitted value before it\textquotesingle{}s returned. This function may return a boolean or a string. If a string is returned it will be used as the validation error message.   \\\cline{1-4}
+\end{longtabu}
+
+
+{\bfseries{Example usage}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ \{\ prompt\ \}\ =\ require('enquirer');}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ question\ =\ \{}
+\DoxyCodeLine{\ \ type:\ 'input',}
+\DoxyCodeLine{\ \ name:\ 'username',}
+\DoxyCodeLine{\ \ message:\ 'What\ is\ your\ username?'}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{prompt(question)}
+\DoxyCodeLine{\ \ .then(answer\ =>\ console.log('Answer:',\ answer))}
+\DoxyCodeLine{\ \ .catch(console.error);}
+
+\end{DoxyCode}
+
+
+~\newline
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7895}{}\doxysubsubsection{\texorpdfstring{Built-\/in prompts}{Built-\/in prompts}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7895}
+
+\begin{DoxyItemize}
+\item Auto\+Complete Prompt
+\item Basic\+Auth Prompt
+\item Confirm Prompt
+\item Form Prompt
+\item Input Prompt
+\item Invisible Prompt
+\item List Prompt
+\item Multi\+Select Prompt
+\item Numeral Prompt
+\item Password Prompt
+\item Quiz Prompt
+\item Survey Prompt
+\item Scale Prompt
+\item Select Prompt
+\item Sort Prompt
+\item Snippet Prompt
+\item Toggle Prompt
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7896}{}\doxysubsubsection{\texorpdfstring{Auto\+Complete Prompt}{Auto\+Complete Prompt}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7896}
+Prompt that auto-\/completes as the user types, and returns the selected value as a string.
+
+ 
+
+{\bfseries{Example Usage}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ \{\ AutoComplete\ \}\ =\ require('enquirer');}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ prompt\ =\ new\ AutoComplete(\{}
+\DoxyCodeLine{\ \ name:\ 'flavor',}
+\DoxyCodeLine{\ \ message:\ 'Pick\ your\ favorite\ flavor',}
+\DoxyCodeLine{\ \ limit:\ 10,}
+\DoxyCodeLine{\ \ initial:\ 2,}
+\DoxyCodeLine{\ \ choices:\ [}
+\DoxyCodeLine{\ \ \ \ 'Almond',}
+\DoxyCodeLine{\ \ \ \ 'Apple',}
+\DoxyCodeLine{\ \ \ \ 'Banana',}
+\DoxyCodeLine{\ \ \ \ 'Blackberry',}
+\DoxyCodeLine{\ \ \ \ 'Blueberry',}
+\DoxyCodeLine{\ \ \ \ 'Cherry',}
+\DoxyCodeLine{\ \ \ \ 'Chocolate',}
+\DoxyCodeLine{\ \ \ \ 'Cinnamon',}
+\DoxyCodeLine{\ \ \ \ 'Coconut',}
+\DoxyCodeLine{\ \ \ \ 'Cranberry',}
+\DoxyCodeLine{\ \ \ \ 'Grape',}
+\DoxyCodeLine{\ \ \ \ 'Nougat',}
+\DoxyCodeLine{\ \ \ \ 'Orange',}
+\DoxyCodeLine{\ \ \ \ 'Pear',}
+\DoxyCodeLine{\ \ \ \ 'Pineapple',}
+\DoxyCodeLine{\ \ \ \ 'Raspberry',}
+\DoxyCodeLine{\ \ \ \ 'Strawberry',}
+\DoxyCodeLine{\ \ \ \ 'Vanilla',}
+\DoxyCodeLine{\ \ \ \ 'Watermelon',}
+\DoxyCodeLine{\ \ \ \ 'Wintergreen'}
+\DoxyCodeLine{\ \ ]}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{prompt.run()}
+\DoxyCodeLine{\ \ .then(answer\ =>\ console.log('Answer:',\ answer))}
+\DoxyCodeLine{\ \ .catch(console.error);}
+
+\end{DoxyCode}
+
+
+{\bfseries{Auto\+Complete Options}}
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Option   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Type   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Default   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-4}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Option   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Type   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Default   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-4}
+\endhead
+{\ttfamily highlight}   &{\ttfamily function}   &{\ttfamily dim} version of primary style   &The color to use when "{}highlighting"{} characters in the list that match user input.    \\\cline{1-4}
+{\ttfamily multiple}   &{\ttfamily boolean}   &{\ttfamily false}   &Allow multiple choices to be selected.    \\\cline{1-4}
+{\ttfamily suggest}   &{\ttfamily function}   &Greedy match, returns choices where {\ttfamily choice.\+message} contains the input string.   &Function that filters choices. Takes user input and a choices array, and returns a list of matching choices.    \\\cline{1-4}
+{\ttfamily initial}   &{\ttfamily number}   &0   &Preselected item in the list of choices.    \\\cline{1-4}
+{\ttfamily footer}   &{\ttfamily function}   &None   &Function that displays \href{https://github.com/enquirer/enquirer/blob/6c2819518a1e2ed284242a99a685655fbaabfa28/examples/autocomplete/option-footer.js\#L10}{\texttt{ footer text}}   \\\cline{1-4}
+\end{longtabu}
+
+
+{\bfseries{Related prompts}}
+
+
+\begin{DoxyItemize}
+\item Select
+\item Multi\+Select
+\item Survey
+\end{DoxyItemize}
+
+{\bfseries{↑ back to\+:}} Getting Started · Prompts
+
+\DoxyHorRuler{0}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7897}{}\doxysubsubsection{\texorpdfstring{Basic\+Auth Prompt}{Basic\+Auth Prompt}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7897}
+Prompt that asks for username and password to authenticate the user. The default implementation of {\ttfamily authenticate} function in {\ttfamily Basic\+Auth} prompt is to compare the username and password with the values supplied while running the prompt. The implementer is expected to override the {\ttfamily authenticate} function with a custom logic such as making an API request to a server to authenticate the username and password entered and expect a token back.
+
+ 
+
+{\bfseries{Example Usage}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ \{\ BasicAuth\ \}\ =\ require('enquirer');}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ const\ prompt\ =\ new\ BasicAuth(\{}
+\DoxyCodeLine{\ \ name:\ 'password',}
+\DoxyCodeLine{\ \ message:\ 'Please\ enter\ your\ password',}
+\DoxyCodeLine{\ \ username:\ 'rajat-\/sr',}
+\DoxyCodeLine{\ \ password:\ '123',}
+\DoxyCodeLine{\ \ showPassword:\ true}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ prompt}
+\DoxyCodeLine{\ \ .run()}
+\DoxyCodeLine{\ \ .then(answer\ =>\ console.log('Answer:',\ answer))}
+\DoxyCodeLine{\ \ .catch(console.error);}
+
+\end{DoxyCode}
+
+
+{\bfseries{↑ back to\+:}} Getting Started · Prompts
+
+\DoxyHorRuler{0}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7898}{}\doxysubsubsection{\texorpdfstring{Confirm Prompt}{Confirm Prompt}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7898}
+Prompt that returns {\ttfamily true} or {\ttfamily false}.
+
+ 
+
+{\bfseries{Example Usage}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ \{\ Confirm\ \}\ =\ require('enquirer');}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ prompt\ =\ new\ Confirm(\{}
+\DoxyCodeLine{\ \ name:\ 'question',}
+\DoxyCodeLine{\ \ message:\ 'Want\ to\ answer?'}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{prompt.run()}
+\DoxyCodeLine{\ \ .then(answer\ =>\ console.log('Answer:',\ answer))}
+\DoxyCodeLine{\ \ .catch(console.error);}
+
+\end{DoxyCode}
+
+
+{\bfseries{Related prompts}}
+
+
+\begin{DoxyItemize}
+\item Input
+\item Numeral
+\item Password
+\end{DoxyItemize}
+
+{\bfseries{↑ back to\+:}} Getting Started · Prompts
+
+\DoxyHorRuler{0}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7899}{}\doxysubsubsection{\texorpdfstring{Form Prompt}{Form Prompt}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7899}
+Prompt that allows the user to enter and submit multiple values on a single terminal screen.
+
+ 
+
+{\bfseries{Example Usage}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ \{\ Form\ \}\ =\ require('enquirer');}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ prompt\ =\ new\ Form(\{}
+\DoxyCodeLine{\ \ name:\ 'user',}
+\DoxyCodeLine{\ \ message:\ 'Please\ provide\ the\ following\ information:',}
+\DoxyCodeLine{\ \ choices:\ [}
+\DoxyCodeLine{\ \ \ \ \{\ name:\ 'firstname',\ message:\ 'First\ Name',\ initial:\ 'Jon'\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ name:\ 'lastname',\ message:\ 'Last\ Name',\ initial:\ 'Schlinkert'\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ name:\ 'username',\ message:\ 'GitHub\ username',\ initial:\ 'jonschlinkert'\ \}}
+\DoxyCodeLine{\ \ ]}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{prompt.run()}
+\DoxyCodeLine{\ \ .then(value\ =>\ console.log('Answer:',\ value))}
+\DoxyCodeLine{\ \ .catch(console.error);}
+
+\end{DoxyCode}
+
+
+{\bfseries{Related prompts}}
+
+
+\begin{DoxyItemize}
+\item Input
+\item Survey
+\end{DoxyItemize}
+
+{\bfseries{↑ back to\+:}} Getting Started · Prompts
+
+\DoxyHorRuler{0}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7900}{}\doxysubsubsection{\texorpdfstring{Input Prompt}{Input Prompt}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7900}
+Prompt that takes user input and returns a string.
+
+ 
+
+{\bfseries{Example Usage}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ \{\ Input\ \}\ =\ require('enquirer');}
+\DoxyCodeLine{const\ prompt\ =\ new\ Input(\{}
+\DoxyCodeLine{\ \ message:\ 'What\ is\ your\ username?',}
+\DoxyCodeLine{\ \ initial:\ 'jonschlinkert'}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{prompt.run()}
+\DoxyCodeLine{\ \ .then(answer\ =>\ console.log('Answer:',\ answer))}
+\DoxyCodeLine{\ \ .catch(console.log);}
+
+\end{DoxyCode}
+
+
+You can use \href{https://github.com/jonschlinkert/data-store}{\texttt{ data-\/store}} to store \href{https://github.com/enquirer/enquirer/blob/master/examples/input/option-history.js}{\texttt{ input history}} that the user can cycle through (see \href{https://github.com/enquirer/enquirer/blob/8407dc3579123df5e6e20215078e33bb605b0c37/lib/prompts/input.js}{\texttt{ source}}).
+
+{\bfseries{Related prompts}}
+
+
+\begin{DoxyItemize}
+\item Confirm
+\item Numeral
+\item Password
+\end{DoxyItemize}
+
+{\bfseries{↑ back to\+:}} Getting Started · Prompts
+
+\DoxyHorRuler{0}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7901}{}\doxysubsubsection{\texorpdfstring{Invisible Prompt}{Invisible Prompt}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7901}
+Prompt that takes user input, hides it from the terminal, and returns a string.
+
+ 
+
+{\bfseries{Example Usage}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ \{\ Invisible\ \}\ =\ require('enquirer');}
+\DoxyCodeLine{const\ prompt\ =\ new\ Invisible(\{}
+\DoxyCodeLine{\ \ name:\ 'secret',}
+\DoxyCodeLine{\ \ message:\ 'What\ is\ your\ secret?'}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{prompt.run()}
+\DoxyCodeLine{\ \ .then(answer\ =>\ console.log('Answer:',\ \{\ secret:\ answer\ \}))}
+\DoxyCodeLine{\ \ .catch(console.error);}
+
+\end{DoxyCode}
+
+
+{\bfseries{Related prompts}}
+
+
+\begin{DoxyItemize}
+\item Password
+\item Input
+\end{DoxyItemize}
+
+{\bfseries{↑ back to\+:}} Getting Started · Prompts
+
+\DoxyHorRuler{0}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7902}{}\doxysubsubsection{\texorpdfstring{List Prompt}{List Prompt}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7902}
+Prompt that returns a list of values, created by splitting the user input. The default split character is {\ttfamily ,} with optional trailing whitespace.
+
+ 
+
+{\bfseries{Example Usage}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ \{\ List\ \}\ =\ require('enquirer');}
+\DoxyCodeLine{const\ prompt\ =\ new\ List(\{}
+\DoxyCodeLine{\ \ name:\ 'keywords',}
+\DoxyCodeLine{\ \ message:\ 'Type\ comma-\/separated\ keywords'}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{prompt.run()}
+\DoxyCodeLine{\ \ .then(answer\ =>\ console.log('Answer:',\ answer))}
+\DoxyCodeLine{\ \ .catch(console.error);}
+
+\end{DoxyCode}
+
+
+{\bfseries{Related prompts}}
+
+
+\begin{DoxyItemize}
+\item Sort
+\item Select
+\end{DoxyItemize}
+
+{\bfseries{↑ back to\+:}} Getting Started · Prompts
+
+\DoxyHorRuler{0}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7903}{}\doxysubsubsection{\texorpdfstring{Multi\+Select Prompt}{Multi\+Select Prompt}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7903}
+Prompt that allows the user to select multiple items from a list of options.
+
+ 
+
+{\bfseries{Example Usage}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ \{\ MultiSelect\ \}\ =\ require('enquirer');}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ prompt\ =\ new\ MultiSelect(\{}
+\DoxyCodeLine{\ \ name:\ 'value',}
+\DoxyCodeLine{\ \ message:\ 'Pick\ your\ favorite\ colors',}
+\DoxyCodeLine{\ \ limit:\ 7,}
+\DoxyCodeLine{\ \ choices:\ [}
+\DoxyCodeLine{\ \ \ \ \{\ name:\ 'aqua',\ value:\ '\#00ffff'\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ name:\ 'black',\ value:\ '\#000000'\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ name:\ 'blue',\ value:\ '\#0000ff'\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ name:\ 'fuchsia',\ value:\ '\#ff00ff'\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ name:\ 'gray',\ value:\ '\#808080'\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ name:\ 'green',\ value:\ '\#008000'\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ name:\ 'lime',\ value:\ '\#00ff00'\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ name:\ 'maroon',\ value:\ '\#800000'\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ name:\ 'navy',\ value:\ '\#000080'\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ name:\ 'olive',\ value:\ '\#808000'\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ name:\ 'purple',\ value:\ '\#800080'\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ name:\ 'red',\ value:\ '\#ff0000'\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ name:\ 'silver',\ value:\ '\#c0c0c0'\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ name:\ 'teal',\ value:\ '\#008080'\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ name:\ 'white',\ value:\ '\#ffffff'\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ name:\ 'yellow',\ value:\ '\#ffff00'\ \}}
+\DoxyCodeLine{\ \ ]}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{prompt.run()}
+\DoxyCodeLine{\ \ .then(answer\ =>\ console.log('Answer:',\ answer))}
+\DoxyCodeLine{\ \ .catch(console.error);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Answer:\ ['aqua',\ 'blue',\ 'fuchsia']}
+
+\end{DoxyCode}
+
+
+{\bfseries{Example key-\/value pairs}}
+
+Optionally, pass a {\ttfamily result} function and use the {\ttfamily .map} method to return an object of key-\/value pairs of the selected names and values\+: \href{./examples/multiselect/option-result.js}{\texttt{ example}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ \{\ MultiSelect\ \}\ =\ require('enquirer');}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ prompt\ =\ new\ MultiSelect(\{}
+\DoxyCodeLine{\ \ name:\ 'value',}
+\DoxyCodeLine{\ \ message:\ 'Pick\ your\ favorite\ colors',}
+\DoxyCodeLine{\ \ limit:\ 7,}
+\DoxyCodeLine{\ \ choices:\ [}
+\DoxyCodeLine{\ \ \ \ \{\ name:\ 'aqua',\ value:\ '\#00ffff'\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ name:\ 'black',\ value:\ '\#000000'\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ name:\ 'blue',\ value:\ '\#0000ff'\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ name:\ 'fuchsia',\ value:\ '\#ff00ff'\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ name:\ 'gray',\ value:\ '\#808080'\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ name:\ 'green',\ value:\ '\#008000'\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ name:\ 'lime',\ value:\ '\#00ff00'\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ name:\ 'maroon',\ value:\ '\#800000'\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ name:\ 'navy',\ value:\ '\#000080'\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ name:\ 'olive',\ value:\ '\#808000'\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ name:\ 'purple',\ value:\ '\#800080'\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ name:\ 'red',\ value:\ '\#ff0000'\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ name:\ 'silver',\ value:\ '\#c0c0c0'\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ name:\ 'teal',\ value:\ '\#008080'\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ name:\ 'white',\ value:\ '\#ffffff'\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ name:\ 'yellow',\ value:\ '\#ffff00'\ \}}
+\DoxyCodeLine{\ \ ],}
+\DoxyCodeLine{\ \ result(names)\ \{}
+\DoxyCodeLine{\ \ \ return\ this.map(names);}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{prompt.run()}
+\DoxyCodeLine{\ \ .then(answer\ =>\ console.log('Answer:',\ answer))}
+\DoxyCodeLine{\ \ .catch(console.error);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Answer:\ \{\ aqua:\ '\#00ffff',\ blue:\ '\#0000ff',\ fuchsia:\ '\#ff00ff'\ \}}
+
+\end{DoxyCode}
+
+
+{\bfseries{Example alternate labels}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ \{\ MultiSelect\ \}\ =\ require('enquirer');}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ prompt\ =\ new\ MultiSelect(\{}
+\DoxyCodeLine{\ \ name:\ 'color',}
+\DoxyCodeLine{\ \ message:\ 'Pick\ a\ flavor',}
+\DoxyCodeLine{\ \ choices:\ [}
+\DoxyCodeLine{\ \ \ \ \{\ message:\ 'Negative\ Red',\ name:\ 'cyan',\ value:\ '\#00ffff'\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ message:\ 'Lights\ Out',\ name:\ 'black',\ value:\ '\#000000'\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ message:\ 'The\ Ocean',\ name:\ 'blue',\ value:\ '\#0000ff'\ \},}
+\DoxyCodeLine{\ \ ]}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{prompt.run()}
+\DoxyCodeLine{\ \ .then(answer\ =>\ console.log('Answer:',\ answer))}
+\DoxyCodeLine{\ \ .catch(console.error);}
+
+\end{DoxyCode}
+
+
+{\bfseries{Related prompts}}
+
+
+\begin{DoxyItemize}
+\item Auto\+Complete
+\item Select
+\item Survey
+\end{DoxyItemize}
+
+{\bfseries{↑ back to\+:}} Getting Started · Prompts
+
+\DoxyHorRuler{0}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7904}{}\doxysubsubsection{\texorpdfstring{Numeral Prompt}{Numeral Prompt}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7904}
+Prompt that takes a number as input.
+
+ 
+
+{\bfseries{Example Usage}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ \{\ NumberPrompt\ \}\ =\ require('enquirer');}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ prompt\ =\ new\ NumberPrompt(\{}
+\DoxyCodeLine{\ \ name:\ 'number',}
+\DoxyCodeLine{\ \ message:\ 'Please\ enter\ a\ number'}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{prompt.run()}
+\DoxyCodeLine{\ \ .then(answer\ =>\ console.log('Answer:',\ answer))}
+\DoxyCodeLine{\ \ .catch(console.error);}
+
+\end{DoxyCode}
+
+
+{\bfseries{Related prompts}}
+
+
+\begin{DoxyItemize}
+\item Input
+\item Confirm
+\end{DoxyItemize}
+
+{\bfseries{↑ back to\+:}} Getting Started · Prompts
+
+\DoxyHorRuler{0}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7905}{}\doxysubsubsection{\texorpdfstring{Password Prompt}{Password Prompt}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7905}
+Prompt that takes user input and masks it in the terminal. Also see the invisible prompt
+
+ 
+
+{\bfseries{Example Usage}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ \{\ Password\ \}\ =\ require('enquirer');}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ prompt\ =\ new\ Password(\{}
+\DoxyCodeLine{\ \ name:\ 'password',}
+\DoxyCodeLine{\ \ message:\ 'What\ is\ your\ password?'}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{prompt.run()}
+\DoxyCodeLine{\ \ .then(answer\ =>\ console.log('Answer:',\ answer))}
+\DoxyCodeLine{\ \ .catch(console.error);}
+
+\end{DoxyCode}
+
+
+{\bfseries{Related prompts}}
+
+
+\begin{DoxyItemize}
+\item Input
+\item Invisible
+\end{DoxyItemize}
+
+{\bfseries{↑ back to\+:}} Getting Started · Prompts
+
+\DoxyHorRuler{0}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7906}{}\doxysubsubsection{\texorpdfstring{Quiz Prompt}{Quiz Prompt}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7906}
+Prompt that allows the user to play multiple-\/choice quiz questions.
+
+ 
+
+{\bfseries{Example Usage}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ \{\ Quiz\ \}\ =\ require('enquirer');}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ const\ prompt\ =\ new\ Quiz(\{}
+\DoxyCodeLine{\ \ name:\ 'countries',}
+\DoxyCodeLine{\ \ message:\ 'How\ many\ countries\ are\ there\ in\ the\ world?',}
+\DoxyCodeLine{\ \ choices:\ ['165',\ '175',\ '185',\ '195',\ '205'],}
+\DoxyCodeLine{\ \ correctChoice:\ 3}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ prompt}
+\DoxyCodeLine{\ \ .run()}
+\DoxyCodeLine{\ \ .then(answer\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ if\ (answer.correct)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ console.log('Correct!');}
+\DoxyCodeLine{\ \ \ \ \}\ else\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ console.log(`Wrong!\ Correct\ answer\ is\ \$\{answer.correctAnswer\}`);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \})}
+\DoxyCodeLine{\ \ .catch(console.error);}
+
+\end{DoxyCode}
+
+
+{\bfseries{Quiz Options}}
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Option   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Type   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Required   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-4}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Option   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Type   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Required   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-4}
+\endhead
+{\ttfamily choices}   &{\ttfamily array}   &Yes   &The list of possible answers to the quiz question.    \\\cline{1-4}
+{\ttfamily correct\+Choice}   &{\ttfamily number}   &Yes   &Index of the correct choice from the {\ttfamily choices} array.   \\\cline{1-4}
+\end{longtabu}
+
+
+{\bfseries{↑ back to\+:}} Getting Started · Prompts
+
+\DoxyHorRuler{0}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7907}{}\doxysubsubsection{\texorpdfstring{Survey Prompt}{Survey Prompt}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7907}
+Prompt that allows the user to provide feedback for a list of questions.
+
+ 
+
+{\bfseries{Example Usage}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ \{\ Survey\ \}\ =\ require('enquirer');}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ prompt\ =\ new\ Survey(\{}
+\DoxyCodeLine{\ \ name:\ 'experience',}
+\DoxyCodeLine{\ \ message:\ 'Please\ rate\ your\ experience',}
+\DoxyCodeLine{\ \ \ scale:\ [}
+\DoxyCodeLine{\ \ \ \ \{\ name:\ '1',\ message:\ 'Strongly\ Disagree'\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ name:\ '2',\ message:\ 'Disagree'\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ name:\ '3',\ message:\ 'Neutral'\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ name:\ '4',\ message:\ 'Agree'\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ name:\ '5',\ message:\ 'Strongly\ Agree'\ \}}
+\DoxyCodeLine{\ \ ],}
+\DoxyCodeLine{\ \ margin:\ [0,\ 0,\ 2,\ 1],}
+\DoxyCodeLine{\ \ choices:\ [}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ name:\ 'interface',}
+\DoxyCodeLine{\ \ \ \ \ \ message:\ 'The\ website\ has\ a\ friendly\ interface.'}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ name:\ 'navigation',}
+\DoxyCodeLine{\ \ \ \ \ \ message:\ 'The\ website\ is\ easy\ to\ navigate.'}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ name:\ 'images',}
+\DoxyCodeLine{\ \ \ \ \ \ message:\ 'The\ website\ usually\ has\ good\ images.'}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ name:\ 'upload',}
+\DoxyCodeLine{\ \ \ \ \ \ message:\ 'The\ website\ makes\ it\ easy\ to\ upload\ images.'}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ name:\ 'colors',}
+\DoxyCodeLine{\ \ \ \ \ \ message:\ 'The\ website\ has\ a\ pleasing\ color\ palette.'}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ ]}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{prompt.run()}
+\DoxyCodeLine{\ \ .then(value\ =>\ console.log('ANSWERS:',\ value))}
+\DoxyCodeLine{\ \ .catch(console.error);}
+
+\end{DoxyCode}
+
+
+{\bfseries{Related prompts}}
+
+
+\begin{DoxyItemize}
+\item Scale
+\item Snippet
+\item Select
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7908}{}\doxysubsubsection{\texorpdfstring{Scale Prompt}{Scale Prompt}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7908}
+A more compact version of the Survey prompt, the Scale prompt allows the user to quickly provide feedback using a \href{https://en.wikipedia.org/wiki/Likert_scale}{\texttt{ Likert Scale}}.
+
+ 
+
+{\bfseries{Example Usage}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ \{\ Scale\ \}\ =\ require('enquirer');}
+\DoxyCodeLine{const\ prompt\ =\ new\ Scale(\{}
+\DoxyCodeLine{\ \ name:\ 'experience',}
+\DoxyCodeLine{\ \ message:\ 'Please\ rate\ your\ experience',}
+\DoxyCodeLine{\ \ scale:\ [}
+\DoxyCodeLine{\ \ \ \ \{\ name:\ '1',\ message:\ 'Strongly\ Disagree'\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ name:\ '2',\ message:\ 'Disagree'\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ name:\ '3',\ message:\ 'Neutral'\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ name:\ '4',\ message:\ 'Agree'\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ name:\ '5',\ message:\ 'Strongly\ Agree'\ \}}
+\DoxyCodeLine{\ \ ],}
+\DoxyCodeLine{\ \ margin:\ [0,\ 0,\ 2,\ 1],}
+\DoxyCodeLine{\ \ choices:\ [}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ name:\ 'interface',}
+\DoxyCodeLine{\ \ \ \ \ \ message:\ 'The\ website\ has\ a\ friendly\ interface.',}
+\DoxyCodeLine{\ \ \ \ \ \ initial:\ 2}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ name:\ 'navigation',}
+\DoxyCodeLine{\ \ \ \ \ \ message:\ 'The\ website\ is\ easy\ to\ navigate.',}
+\DoxyCodeLine{\ \ \ \ \ \ initial:\ 2}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ name:\ 'images',}
+\DoxyCodeLine{\ \ \ \ \ \ message:\ 'The\ website\ usually\ has\ good\ images.',}
+\DoxyCodeLine{\ \ \ \ \ \ initial:\ 2}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ name:\ 'upload',}
+\DoxyCodeLine{\ \ \ \ \ \ message:\ 'The\ website\ makes\ it\ easy\ to\ upload\ images.',}
+\DoxyCodeLine{\ \ \ \ \ \ initial:\ 2}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ name:\ 'colors',}
+\DoxyCodeLine{\ \ \ \ \ \ message:\ 'The\ website\ has\ a\ pleasing\ color\ palette.',}
+\DoxyCodeLine{\ \ \ \ \ \ initial:\ 2}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ ]}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{prompt.run()}
+\DoxyCodeLine{\ \ .then(value\ =>\ console.log('ANSWERS:',\ value))}
+\DoxyCodeLine{\ \ .catch(console.error);}
+
+\end{DoxyCode}
+
+
+{\bfseries{Related prompts}}
+
+
+\begin{DoxyItemize}
+\item Auto\+Complete
+\item Select
+\item Survey
+\end{DoxyItemize}
+
+{\bfseries{↑ back to\+:}} Getting Started · Prompts
+
+\DoxyHorRuler{0}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7909}{}\doxysubsubsection{\texorpdfstring{Select Prompt}{Select Prompt}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7909}
+Prompt that allows the user to select from a list of options.
+
+ 
+
+{\bfseries{Example Usage}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ \{\ Select\ \}\ =\ require('enquirer');}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ prompt\ =\ new\ Select(\{}
+\DoxyCodeLine{\ \ name:\ 'color',}
+\DoxyCodeLine{\ \ message:\ 'Pick\ a\ flavor',}
+\DoxyCodeLine{\ \ choices:\ ['apple',\ 'grape',\ 'watermelon',\ 'cherry',\ 'orange']}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{prompt.run()}
+\DoxyCodeLine{\ \ .then(answer\ =>\ console.log('Answer:',\ answer))}
+\DoxyCodeLine{\ \ .catch(console.error);}
+
+\end{DoxyCode}
+
+
+{\bfseries{Example key-\/value pairs}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ \{\ Select\ \}\ =\ require('enquirer');}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ prompt\ =\ new\ Select(\{}
+\DoxyCodeLine{\ \ name:\ 'color',}
+\DoxyCodeLine{\ \ message:\ 'Pick\ a\ color',}
+\DoxyCodeLine{\ \ choices:\ [}
+\DoxyCodeLine{\ \ \ \ \{\ name:\ 'cyan',\ value:\ '\#00ffff'\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ name:\ 'black',\ value:\ '\#000000'\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ name:\ 'blue',\ value:\ '\#0000ff'\ \},}
+\DoxyCodeLine{\ \ ]}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{prompt.run()}
+\DoxyCodeLine{\ \ .then(answer\ =>\ console.log('Answer:',\ answer))}
+\DoxyCodeLine{\ \ .catch(console.error);}
+
+\end{DoxyCode}
+
+
+{\bfseries{Example alternate labels}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ \{\ Select\ \}\ =\ require('enquirer');}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ prompt\ =\ new\ Select(\{}
+\DoxyCodeLine{\ \ name:\ 'color',}
+\DoxyCodeLine{\ \ message:\ 'Pick\ a\ color',}
+\DoxyCodeLine{\ \ choices:\ [}
+\DoxyCodeLine{\ \ \ \ \{\ message:\ 'Negative\ Red',\ name:\ 'cyan',\ value:\ '\#00ffff'\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ message:\ 'Lights\ Out',\ name:\ 'black',\ value:\ '\#000000'\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ message:\ 'The\ Ocean',\ name:\ 'blue',\ value:\ '\#0000ff'\ \},}
+\DoxyCodeLine{\ \ ]}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{prompt.run()}
+\DoxyCodeLine{\ \ .then(answer\ =>\ console.log('Answer:',\ answer))}
+\DoxyCodeLine{\ \ .catch(console.error);}
+
+\end{DoxyCode}
+
+
+{\bfseries{Related prompts}}
+
+
+\begin{DoxyItemize}
+\item Auto\+Complete
+\item Multi\+Select
+\end{DoxyItemize}
+
+{\bfseries{↑ back to\+:}} Getting Started · Prompts
+
+\DoxyHorRuler{0}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7910}{}\doxysubsubsection{\texorpdfstring{Sort Prompt}{Sort Prompt}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7910}
+Prompt that allows the user to sort items in a list.
+
+{\bfseries{Example}}
+
+In this \href{https://github.com/enquirer/enquirer/raw/master/examples/sort/prompt.js}{\texttt{ example}}, custom styling is applied to the returned values to make it easier to see what\textquotesingle{}s happening.
+
+ 
+
+{\bfseries{Example Usage}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ colors\ =\ require('ansi-\/colors');}
+\DoxyCodeLine{const\ \{\ Sort\ \}\ =\ require('enquirer');}
+\DoxyCodeLine{const\ prompt\ =\ new\ Sort(\{}
+\DoxyCodeLine{\ \ name:\ 'colors',}
+\DoxyCodeLine{\ \ message:\ 'Sort\ the\ colors\ in\ order\ of\ preference',}
+\DoxyCodeLine{\ \ hint:\ 'Top\ is\ best,\ bottom\ is\ worst',}
+\DoxyCodeLine{\ \ numbered:\ true,}
+\DoxyCodeLine{\ \ choices:\ ['red',\ 'white',\ 'green',\ 'cyan',\ 'yellow'].map(n\ =>\ (\{}
+\DoxyCodeLine{\ \ \ \ name:\ n,}
+\DoxyCodeLine{\ \ \ \ message:\ colors[n](n)}
+\DoxyCodeLine{\ \ \}))}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{prompt.run()}
+\DoxyCodeLine{\ \ .then(function(answer\ =\ [])\ \{}
+\DoxyCodeLine{\ \ \ \ console.log(answer);}
+\DoxyCodeLine{\ \ \ \ console.log('Your\ preferred\ order\ of\ colors\ is:');}
+\DoxyCodeLine{\ \ \ \ console.log(answer.map(key\ =>\ colors[key](key)).join('\(\backslash\)n'));}
+\DoxyCodeLine{\ \ \})}
+\DoxyCodeLine{\ \ .catch(console.error);}
+
+\end{DoxyCode}
+
+
+{\bfseries{Related prompts}}
+
+
+\begin{DoxyItemize}
+\item List
+\item Select
+\end{DoxyItemize}
+
+{\bfseries{↑ back to\+:}} Getting Started · Prompts
+
+\DoxyHorRuler{0}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7911}{}\doxysubsubsection{\texorpdfstring{Snippet Prompt}{Snippet Prompt}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7911}
+Prompt that allows the user to replace placeholders in a snippet of code or text.
+
+ 
+
+{\bfseries{Example Usage}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ semver\ =\ require('semver');}
+\DoxyCodeLine{const\ \{\ Snippet\ \}\ =\ require('enquirer');}
+\DoxyCodeLine{const\ prompt\ =\ new\ Snippet(\{}
+\DoxyCodeLine{\ \ name:\ 'username',}
+\DoxyCodeLine{\ \ message:\ 'Fill\ out\ the\ fields\ in\ package.json',}
+\DoxyCodeLine{\ \ required:\ true,}
+\DoxyCodeLine{\ \ fields:\ [}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ name:\ 'author\_name',}
+\DoxyCodeLine{\ \ \ \ \ \ message:\ 'Author\ Name'}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ name:\ 'version',}
+\DoxyCodeLine{\ \ \ \ \ \ validate(value,\ state,\ item,\ index)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ if\ (item\ \&\&\ item.name\ ===\ 'version'\ \&\&\ !semver.valid(value))\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ return\ prompt.styles.danger('version\ should\ be\ a\ valid\ semver\ value');}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ return\ true;}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ ],}
+\DoxyCodeLine{\ \ template:\ \`{}\{}
+\DoxyCodeLine{\ \ "{}name"{}:\ "{}\(\backslash\)\$\{name\}"{},}
+\DoxyCodeLine{\ \ "{}description"{}:\ "{}\(\backslash\)\$\{description\}"{},}
+\DoxyCodeLine{\ \ "{}version"{}:\ "{}\(\backslash\)\$\{version\}"{},}
+\DoxyCodeLine{\ \ "{}homepage"{}:\ "{}https://github.com/\(\backslash\)\$\{username\}/\(\backslash\)\$\{name\}"{},}
+\DoxyCodeLine{\ \ "{}author"{}:\ "{}\(\backslash\)\$\{author\_name\}\ (https://github.com/\(\backslash\)\$\{username\})"{},}
+\DoxyCodeLine{\ \ "{}repository"{}:\ "{}\(\backslash\)\$\{username\}/\(\backslash\)\$\{name\}"{},}
+\DoxyCodeLine{\ \ "{}license"{}:\ "{}\(\backslash\)\$\{license:ISC\}"{}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{\`{}}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{prompt.run()}
+\DoxyCodeLine{\ \ .then(answer\ =>\ console.log('Answer:',\ answer.result))}
+\DoxyCodeLine{\ \ .catch(console.error);}
+
+\end{DoxyCode}
+
+
+{\bfseries{Related prompts}}
+
+
+\begin{DoxyItemize}
+\item Survey
+\item Auto\+Complete
+\end{DoxyItemize}
+
+{\bfseries{↑ back to\+:}} Getting Started · Prompts
+
+\DoxyHorRuler{0}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7912}{}\doxysubsubsection{\texorpdfstring{Toggle Prompt}{Toggle Prompt}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7912}
+Prompt that allows the user to toggle between two values then returns {\ttfamily true} or {\ttfamily false}.
+
+ 
+
+{\bfseries{Example Usage}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ \{\ Toggle\ \}\ =\ require('enquirer');}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ prompt\ =\ new\ Toggle(\{}
+\DoxyCodeLine{\ \ message:\ 'Want\ to\ answer?',}
+\DoxyCodeLine{\ \ enabled:\ 'Yep',}
+\DoxyCodeLine{\ \ disabled:\ 'Nope'}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{prompt.run()}
+\DoxyCodeLine{\ \ .then(answer\ =>\ console.log('Answer:',\ answer))}
+\DoxyCodeLine{\ \ .catch(console.error);}
+
+\end{DoxyCode}
+
+
+{\bfseries{Related prompts}}
+
+
+\begin{DoxyItemize}
+\item Confirm
+\item Input
+\item Sort
+\end{DoxyItemize}
+
+{\bfseries{↑ back to\+:}} Getting Started · Prompts
+
+\DoxyHorRuler{0}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7913}{}\doxysubsubsection{\texorpdfstring{Prompt Types}{Prompt Types}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7913}
+There are 5 (soon to be 6!) type classes\+:
+
+
+\begin{DoxyItemize}
+\item Array\+Prompt
+\begin{DoxyItemize}
+\item Options
+\item Properties
+\item Methods
+\item Choices
+\item Defining choices
+\item Choice properties
+\item Related prompts
+\end{DoxyItemize}
+\item Auth\+Prompt
+\item Boolean\+Prompt
+\item Date\+Prompt (Coming Soon!)
+\item Number\+Prompt
+\item String\+Prompt
+\end{DoxyItemize}
+
+Each type is a low-\/level class that may be used as a starting point for creating higher level prompts. Continue reading to learn how.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7914}{}\doxysubsubsection{\texorpdfstring{Array\+Prompt}{Array\+Prompt}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7914}
+The {\ttfamily Array\+Prompt} class is used for creating prompts that display a list of choices in the terminal. For example, Enquirer uses this class as the basis for the Select and Survey prompts.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7915}{}\doxyparagraph{\texorpdfstring{Options}{Options}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7915}
+In addition to the options available to all prompts, Array prompts also support the following options.
+
+\texorpdfstring{$\vert$}{|} {\bfseries{Option}} \texorpdfstring{$\vert$}{|} {\bfseries{Required?}} \texorpdfstring{$\vert$}{|} {\bfseries{Type}} \texorpdfstring{$\vert$}{|} {\bfseries{Description}} \texorpdfstring{$\vert$}{|} \texorpdfstring{$\vert$}{|} --- \texorpdfstring{$\vert$}{|} --- \texorpdfstring{$\vert$}{|} --- \texorpdfstring{$\vert$}{|} --- \texorpdfstring{$\vert$}{|} \texorpdfstring{$\vert$}{|} {\ttfamily autofocus} \texorpdfstring{$\vert$}{|} {\ttfamily no} \texorpdfstring{$\vert$}{|} {\ttfamily string\textbackslash{}\texorpdfstring{$\vert$}{|}number} \texorpdfstring{$\vert$}{|} The index or name of the choice that should have focus when the prompt loads. Only one choice may have focus at a time. \texorpdfstring{$\vert$}{|} \texorpdfstring{$\vert$}{|} \texorpdfstring{$\vert$}{|} {\ttfamily stdin} \texorpdfstring{$\vert$}{|} {\ttfamily no} \texorpdfstring{$\vert$}{|} {\ttfamily stream} \texorpdfstring{$\vert$}{|} The input stream to use for emitting keypress events. Defaults to {\ttfamily process.\+stdin}. \texorpdfstring{$\vert$}{|} \texorpdfstring{$\vert$}{|} {\ttfamily stdout} \texorpdfstring{$\vert$}{|} {\ttfamily no} \texorpdfstring{$\vert$}{|} {\ttfamily stream} \texorpdfstring{$\vert$}{|} The output stream to use for writing the prompt to the terminal. Defaults to {\ttfamily process.\+stdout}. \texorpdfstring{$\vert$}{|} \texorpdfstring{$\vert$}{|} \texorpdfstring{$\vert$}{|}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7916}{}\doxyparagraph{\texorpdfstring{Properties}{Properties}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7916}
+Array prompts have the following instance properties and getters.
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{Property name}}   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{Type}}   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{Description}}    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{Property name}}   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{Type}}   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{Description}}    }\\\cline{1-3}
+\endhead
+{\ttfamily choices}   &{\ttfamily array}   &Array of choices that have been normalized from choices passed on the prompt options.    \\\cline{1-3}
+{\ttfamily cursor}   &{\ttfamily number}   &Position of the cursor relative to the {\itshape user input (string)}.    \\\cline{1-3}
+{\ttfamily enabled}   &{\ttfamily array}   &Returns an array of enabled choices.    \\\cline{1-3}
+{\ttfamily focused}   &{\ttfamily array}   &Returns the currently selected choice in the visible list of choices. This is similar to the concept of focus in HTML and CSS. Focused choices are always visible (on-\/screen). When a list of choices is longer than the list of visible choices, and an off-\/screen choice is {\itshape focused}, the list will scroll to the focused choice and re-\/render.   \\\cline{1-3}
+\end{longtabu}
+\texorpdfstring{$\vert$}{|} {\ttfamily focused} \texorpdfstring{$\vert$}{|} Gets the currently selected choice. Equivalent to {\ttfamily prompt.\+choices\mbox{[}prompt.\+index\mbox{]}}. \texorpdfstring{$\vert$}{|} \texorpdfstring{$\vert$}{|} {\ttfamily index} \texorpdfstring{$\vert$}{|} {\ttfamily number} \texorpdfstring{$\vert$}{|} Position of the pointer in the {\itshape visible list (array) of choices}. \texorpdfstring{$\vert$}{|} \texorpdfstring{$\vert$}{|} {\ttfamily limit} \texorpdfstring{$\vert$}{|} {\ttfamily number} \texorpdfstring{$\vert$}{|} The number of choices to display on-\/screen. \texorpdfstring{$\vert$}{|} \texorpdfstring{$\vert$}{|} {\ttfamily selected} \texorpdfstring{$\vert$}{|} {\ttfamily array} \texorpdfstring{$\vert$}{|} Either a list of enabled choices (when {\ttfamily options.\+multiple} is true) or the currently focused choice. \texorpdfstring{$\vert$}{|} \texorpdfstring{$\vert$}{|} {\ttfamily visible} \texorpdfstring{$\vert$}{|} {\ttfamily string} \texorpdfstring{$\vert$}{|} \texorpdfstring{$\vert$}{|}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7917}{}\doxyparagraph{\texorpdfstring{Methods}{Methods}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7917}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{Method}}   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{Description}}    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{Method}}   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{Description}}    }\\\cline{1-2}
+\endhead
+{\ttfamily pointer()}   &Returns the visual symbol to use to identify the choice that currently has focus. The {\ttfamily ❯} symbol is often used for this. The pointer is not always visible, as with the {\ttfamily autocomplete} prompt.    \\\cline{1-2}
+{\ttfamily indicator()}   &Returns the visual symbol that indicates whether or not a choice is checked/enabled.    \\\cline{1-2}
+{\ttfamily focus()}   &Sets focus on a choice, if it can be focused.   \\\cline{1-2}
+\end{longtabu}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7918}{}\doxyparagraph{\texorpdfstring{Choices}{Choices}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7918}
+Array prompts support the {\ttfamily choices} option, which is the array of choices users will be able to select from when rendered in the terminal.
+
+{\bfseries{Type}}\+: {\ttfamily string\texorpdfstring{$\vert$}{|}object}
+
+{\bfseries{Example}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ \{\ prompt\ \}\ =\ require('enquirer');}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ questions\ =\ [\{}
+\DoxyCodeLine{\ \ type:\ 'select',}
+\DoxyCodeLine{\ \ name:\ 'color',}
+\DoxyCodeLine{\ \ message:\ 'Favorite\ color?',}
+\DoxyCodeLine{\ \ initial:\ 1,}
+\DoxyCodeLine{\ \ choices:\ [}
+\DoxyCodeLine{\ \ \ \ \{\ name:\ 'red',\ \ \ message:\ 'Red',\ \ \ value:\ '\#ff0000'\ \},\ //<=\ choice\ object}
+\DoxyCodeLine{\ \ \ \ \{\ name:\ 'green',\ message:\ 'Green',\ value:\ '\#00ff00'\ \},\ //<=\ choice\ object}
+\DoxyCodeLine{\ \ \ \ \{\ name:\ 'blue',\ \ message:\ 'Blue',\ \ value:\ '\#0000ff'\ \}\ \ //<=\ choice\ object}
+\DoxyCodeLine{\ \ ]}
+\DoxyCodeLine{\}];}
+\DoxyCodeLine{}
+\DoxyCodeLine{let\ answers\ =\ await\ prompt(questions);}
+\DoxyCodeLine{console.log('Answer:',\ answers.color);}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7919}{}\doxyparagraph{\texorpdfstring{Defining choices}{Defining choices}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7919}
+Whether defined as a string or object, choices are normalized to the following interface\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ name:\ string;}
+\DoxyCodeLine{\ \ message:\ string\ |\ undefined;}
+\DoxyCodeLine{\ \ value:\ string\ |\ undefined;}
+\DoxyCodeLine{\ \ hint:\ string\ |\ undefined;}
+\DoxyCodeLine{\ \ disabled:\ boolean\ |\ string\ |\ undefined;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+{\bfseries{Example}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ question\ =\ \{}
+\DoxyCodeLine{\ \ name:\ 'fruit',}
+\DoxyCodeLine{\ \ message:\ 'Favorite\ fruit?',}
+\DoxyCodeLine{\ \ choices:\ ['Apple',\ 'Orange',\ 'Raspberry']}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+Normalizes to the following when the prompt is run\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ question\ =\ \{}
+\DoxyCodeLine{\ \ name:\ 'fruit',}
+\DoxyCodeLine{\ \ message:\ 'Favorite\ fruit?',}
+\DoxyCodeLine{\ \ choices:\ [}
+\DoxyCodeLine{\ \ \ \ \{\ name:\ 'Apple',\ message:\ 'Apple',\ value:\ 'Apple'\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ name:\ 'Orange',\ message:\ 'Orange',\ value:\ 'Orange'\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ name:\ 'Raspberry',\ message:\ 'Raspberry',\ value:\ 'Raspberry'\ \}}
+\DoxyCodeLine{\ \ ]}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7920}{}\doxyparagraph{\texorpdfstring{Choice properties}{Choice properties}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7920}
+The following properties are supported on {\ttfamily choice} objects.
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{Option}}   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{Type}}   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{Description}}    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{Option}}   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{Type}}   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{Description}}    }\\\cline{1-3}
+\endhead
+{\ttfamily name}   &{\ttfamily string}   &The unique key to identify a choice    \\\cline{1-3}
+{\ttfamily message}   &{\ttfamily string}   &The message to display in the terminal. {\ttfamily name} is used when this is undefined.    \\\cline{1-3}
+{\ttfamily value}   &{\ttfamily string}   &Value to associate with the choice. Useful for creating key-\/value pairs from user choices. {\ttfamily name} is used when this is undefined.    \\\cline{1-3}
+{\ttfamily choices}   &{\ttfamily array}   &Array of "{}child"{} choices.    \\\cline{1-3}
+{\ttfamily hint}   &{\ttfamily string}   &Help message to display next to a choice.    \\\cline{1-3}
+{\ttfamily role}   &{\ttfamily string}   &Determines how the choice will be displayed. Currently the only role supported is {\ttfamily separator}. Additional roles may be added in the future (like {\ttfamily heading}, etc). Please create a \mbox{[}feature request\mbox{]}    \\\cline{1-3}
+{\ttfamily enabled}   &{\ttfamily boolean}   &Enabled a choice by default. This is only supported when {\ttfamily options.\+multiple} is true or on prompts that support multiple choices, like Multi\+Select.    \\\cline{1-3}
+{\ttfamily disabled}   &{\ttfamily boolean\textbackslash{}\texorpdfstring{$\vert$}{|}string}   &Disable a choice so that it cannot be selected. This value may either be {\ttfamily true}, {\ttfamily false}, or a message to display.    \\\cline{1-3}
+{\ttfamily indicator}   &{\ttfamily string\textbackslash{}\texorpdfstring{$\vert$}{|}function}   &Custom indicator to render for a choice (like a check or radio button).   \\\cline{1-3}
+\end{longtabu}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7921}{}\doxyparagraph{\texorpdfstring{Related prompts}{Related prompts}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7921}
+
+\begin{DoxyItemize}
+\item Auto\+Complete
+\item Form
+\item Multi\+Select
+\item Select
+\item Survey
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7922}{}\doxysubsubsection{\texorpdfstring{Auth\+Prompt}{Auth\+Prompt}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7922}
+The {\ttfamily Auth\+Prompt} is used to create prompts to log in user using any authentication method. For example, Enquirer uses this class as the basis for the Basic\+Auth Prompt. You can also find prompt examples in {\ttfamily examples/auth/} folder that utilizes {\ttfamily Auth\+Prompt} to create OAuth based authentication prompt or a prompt that authenticates using time-\/based OTP, among others.
+
+{\ttfamily Auth\+Prompt} has a factory function that creates an instance of {\ttfamily Auth\+Prompt} class and it expects an {\ttfamily authenticate} function, as an argument, which overrides the {\ttfamily authenticate} function of the {\ttfamily Auth\+Prompt} class.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7923}{}\doxyparagraph{\texorpdfstring{Methods}{Methods}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7923}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{Method}}   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{Description}}    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{Method}}   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{Description}}    }\\\cline{1-2}
+\endhead
+{\ttfamily authenticate()}   &Contain all the authentication logic. This function should be overridden to implement custom authentication logic. The default {\ttfamily authenticate} function throws an error if no other function is provided.   \\\cline{1-2}
+\end{longtabu}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7924}{}\doxyparagraph{\texorpdfstring{Choices}{Choices}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7924}
+Auth prompt supports the {\ttfamily choices} option, which is the similar to the choices used in Form Prompt.
+
+{\bfseries{Example}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ \{\ AuthPrompt\ \}\ =\ require('enquirer');}
+\DoxyCodeLine{}
+\DoxyCodeLine{function\ authenticate(value,\ state)\ \{}
+\DoxyCodeLine{\ \ if\ (value.username\ ===\ this.options.username\ \&\&\ value.password\ ===\ this.options.password)\ \{}
+\DoxyCodeLine{\ \ \ \ return\ true;}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\ \ return\ false;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ CustomAuthPrompt\ =\ AuthPrompt.create(authenticate);}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ prompt\ =\ new\ CustomAuthPrompt(\{}
+\DoxyCodeLine{\ \ name:\ 'password',}
+\DoxyCodeLine{\ \ message:\ 'Please\ enter\ your\ password',}
+\DoxyCodeLine{\ \ username:\ 'rajat-\/sr',}
+\DoxyCodeLine{\ \ password:\ '1234567',}
+\DoxyCodeLine{\ \ choices:\ [}
+\DoxyCodeLine{\ \ \ \ \{\ name:\ 'username',\ message:\ 'username'\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ name:\ 'password',\ message:\ 'password'\ \}}
+\DoxyCodeLine{\ \ ]}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{prompt}
+\DoxyCodeLine{\ \ .run()}
+\DoxyCodeLine{\ \ .then(answer\ =>\ console.log('Authenticated?',\ answer))}
+\DoxyCodeLine{\ \ .catch(console.error);}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7925}{}\doxyparagraph{\texorpdfstring{Related prompts}{Related prompts}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7925}
+
+\begin{DoxyItemize}
+\item Basic\+Auth Prompt
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7926}{}\doxysubsubsection{\texorpdfstring{Boolean\+Prompt}{Boolean\+Prompt}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7926}
+The {\ttfamily Boolean\+Prompt} class is used for creating prompts that display and return a boolean value.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ \{\ BooleanPrompt\ \}\ =\ require('enquirer');}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ \ prompt\ =\ new\ \ BooleanPrompt(\{}
+\DoxyCodeLine{\ \ header:\ \ '========================',}
+\DoxyCodeLine{\ \ message:\ \ 'Do\ you\ love\ enquirer?',}
+\DoxyCodeLine{\ \ footer:\ \ '========================',}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{prompt.run()}
+\DoxyCodeLine{\ \ .then(answer\ \ =>\ \ console.log('Selected:',\ answer))}
+\DoxyCodeLine{\ \ .catch(console.error);}
+
+\end{DoxyCode}
+
+
+{\bfseries{Returns}}\+: {\ttfamily boolean}
+
+\DoxyHorRuler{0}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7927}{}\doxysubsubsection{\texorpdfstring{Number\+Prompt}{Number\+Prompt}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7927}
+The {\ttfamily Number\+Prompt} class is used for creating prompts that display and return a numerical value.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ \{\ NumberPrompt\ \}\ =\ require('enquirer');}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ \ prompt\ =\ new\ \ NumberPrompt(\{}
+\DoxyCodeLine{\ \ header:\ \ '************************',}
+\DoxyCodeLine{\ \ message:\ \ 'Input\ the\ Numbers:',}
+\DoxyCodeLine{\ \ footer:\ \ '************************',}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{prompt.run()}
+\DoxyCodeLine{\ \ .then(answer\ \ =>\ \ console.log('Numbers\ are:',\ answer))}
+\DoxyCodeLine{\ \ .catch(console.error);}
+
+\end{DoxyCode}
+
+
+{\bfseries{Returns}}\+: {\ttfamily string\texorpdfstring{$\vert$}{|}number} (number, or number formatted as a string)
+
+\DoxyHorRuler{0}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7928}{}\doxysubsubsection{\texorpdfstring{String\+Prompt}{String\+Prompt}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7928}
+The {\ttfamily String\+Prompt} class is used for creating prompts that display and return a string value.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ \{\ StringPrompt\ \}\ =\ require('enquirer');}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ prompt\ =\ new\ StringPrompt(\{}
+\DoxyCodeLine{\ \ header:\ '************************',}
+\DoxyCodeLine{\ \ message:\ 'Input\ the\ String:',}
+\DoxyCodeLine{\ \ footer:\ '************************'}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{prompt.run()}
+\DoxyCodeLine{\ \ .then(answer\ =>\ console.log('String\ is:',\ answer))}
+\DoxyCodeLine{\ \ .catch(console.error);}
+
+\end{DoxyCode}
+
+
+{\bfseries{Returns}}\+: {\ttfamily string}
+
+~\newline
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7929}{}\doxysubsection{\texorpdfstring{❯ Custom prompts}{❯ Custom prompts}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7929}
+With Enquirer 2.\+0, custom prompts are easier than ever to create and use.
+
+{\bfseries{How do I create a custom prompt?}}
+
+Custom prompts are created by extending either\+:
+
+
+\begin{DoxyItemize}
+\item Enquirer\textquotesingle{}s {\ttfamily Prompt} class
+\item one of the built-\/in prompts, or
+\item low-\/level types.
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ \{\ Prompt\ \}\ =\ require('enquirer');}
+\DoxyCodeLine{}
+\DoxyCodeLine{class\ HaiKarate\ extends\ Prompt\ \{}
+\DoxyCodeLine{\ \ constructor(options\ =\ \{\})\ \{}
+\DoxyCodeLine{\ \ \ \ super(options);}
+\DoxyCodeLine{\ \ \ \ this.value\ =\ options.initial\ ||\ 0;}
+\DoxyCodeLine{\ \ \ \ this.cursorHide();}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\ \ up()\ \{}
+\DoxyCodeLine{\ \ \ \ this.value++;}
+\DoxyCodeLine{\ \ \ \ this.render();}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\ \ down()\ \{}
+\DoxyCodeLine{\ \ \ \ this.value-\/-\/;}
+\DoxyCodeLine{\ \ \ \ this.render();}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\ \ render()\ \{}
+\DoxyCodeLine{\ \ \ \ this.clear();\ //\ clear\ previously\ rendered\ prompt\ from\ the\ terminal}
+\DoxyCodeLine{\ \ \ \ this.write(`\$\{this.state.message\}:\ \$\{this.value\}`);}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Use\ the\ prompt\ by\ creating\ an\ instance\ of\ your\ custom\ prompt\ class.}
+\DoxyCodeLine{const\ prompt\ =\ new\ HaiKarate(\{}
+\DoxyCodeLine{\ \ message:\ 'How\ many\ sprays\ do\ you\ want?',}
+\DoxyCodeLine{\ \ initial:\ 10}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{prompt.run()}
+\DoxyCodeLine{\ \ .then(answer\ =>\ console.log('Sprays:',\ answer))}
+\DoxyCodeLine{\ \ .catch(console.error);}
+
+\end{DoxyCode}
+
+
+If you want to be able to specify your prompt by {\ttfamily type} so that it may be used alongside other prompts, you will need to first create an instance of {\ttfamily Enquirer}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ Enquirer\ =\ require('enquirer');}
+\DoxyCodeLine{const\ enquirer\ =\ new\ Enquirer();}
+
+\end{DoxyCode}
+
+
+Then use the {\ttfamily .register()} method to add your custom prompt.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{enquirer.register('haikarate',\ HaiKarate);}
+
+\end{DoxyCode}
+
+
+Now you can do the following when defining "{}questions"{}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{let\ spritzer\ =\ require('cologne-\/drone');}
+\DoxyCodeLine{let\ answers\ =\ await\ enquirer.prompt([}
+\DoxyCodeLine{\ \ \{}
+\DoxyCodeLine{\ \ \ \ type:\ 'haikarate',}
+\DoxyCodeLine{\ \ \ \ name:\ 'cologne',}
+\DoxyCodeLine{\ \ \ \ message:\ 'How\ many\ sprays\ do\ you\ need?',}
+\DoxyCodeLine{\ \ \ \ initial:\ 10,}
+\DoxyCodeLine{\ \ \ \ async\ onSubmit(name,\ value)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ await\ spritzer.activate(value);\ //<=\ activate\ drone}
+\DoxyCodeLine{\ \ \ \ \ \ return\ value;}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{]);}
+
+\end{DoxyCode}
+
+
+~\newline
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7930}{}\doxysubsection{\texorpdfstring{❯ Key Bindings}{❯ Key Bindings}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7930}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7931}{}\doxysubsubsection{\texorpdfstring{All prompts}{All prompts}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7931}
+These key combinations may be used with all prompts.
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{command}}   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{description}}    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{command}}   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{description}}    }\\\cline{1-2}
+\endhead
+{\ttfamily ctrl} + {\ttfamily c}   &Cancel the prompt.    \\\cline{1-2}
+{\ttfamily ctrl} + {\ttfamily g}   &Reset the prompt to its initial state.   \\\cline{1-2}
+\end{longtabu}
+
+
+~\newline
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7932}{}\doxysubsubsection{\texorpdfstring{Move cursor}{Move cursor}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7932}
+These combinations may be used on prompts that support user input (eg. input prompt, password prompt, and invisible prompt).
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{command}}   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{description}}    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{command}}   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{description}}    }\\\cline{1-2}
+\endhead
+{\ttfamily left}   &Move the cursor back one character.    \\\cline{1-2}
+{\ttfamily right}   &Move the cursor forward one character.    \\\cline{1-2}
+{\ttfamily ctrl} + {\ttfamily a}   &Move cursor to the start of the line    \\\cline{1-2}
+{\ttfamily ctrl} + {\ttfamily e}   &Move cursor to the end of the line    \\\cline{1-2}
+{\ttfamily ctrl} + {\ttfamily b}   &Move cursor back one character    \\\cline{1-2}
+{\ttfamily ctrl} + {\ttfamily f}   &Move cursor forward one character    \\\cline{1-2}
+{\ttfamily ctrl} + {\ttfamily x}   &Toggle between first and cursor position   \\\cline{1-2}
+\end{longtabu}
+
+
+~\newline
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7933}{}\doxysubsubsection{\texorpdfstring{Edit Input}{Edit Input}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7933}
+These key combinations may be used on prompts that support user input (eg. input prompt, password prompt, and invisible prompt).
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{command}}   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{description}}    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{command}}   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{description}}    }\\\cline{1-2}
+\endhead
+{\ttfamily ctrl} + {\ttfamily a}   &Move cursor to the start of the line    \\\cline{1-2}
+{\ttfamily ctrl} + {\ttfamily e}   &Move cursor to the end of the line    \\\cline{1-2}
+{\ttfamily ctrl} + {\ttfamily b}   &Move cursor back one character    \\\cline{1-2}
+{\ttfamily ctrl} + {\ttfamily f}   &Move cursor forward one character    \\\cline{1-2}
+{\ttfamily ctrl} + {\ttfamily x}   &Toggle between first and cursor position   \\\cline{1-2}
+\end{longtabu}
+
+
+~\newline
+
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{command (Mac)}}   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{command (Windows)}}   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{description}}    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{command (Mac)}}   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{command (Windows)}}   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{description}}    }\\\cline{1-3}
+\endhead
+{\ttfamily delete}   &{\ttfamily backspace}   &Delete one character to the left.    \\\cline{1-3}
+{\ttfamily fn} + {\ttfamily delete}   &{\ttfamily delete}   &Delete one character to the right.    \\\cline{1-3}
+{\ttfamily option} + {\ttfamily up}   &{\ttfamily alt} + {\ttfamily up}   &Scroll to the previous item in history (Input prompt only, when \href{examples/input/option-history.js}{\texttt{ history is enabled}}).    \\\cline{1-3}
+{\ttfamily option} + {\ttfamily down}   &{\ttfamily alt} + {\ttfamily down}   &Scroll to the next item in history (Input prompt only, when \href{examples/input/option-history.js}{\texttt{ history is enabled}}).   \\\cline{1-3}
+\end{longtabu}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7934}{}\doxysubsubsection{\texorpdfstring{Select choices}{Select choices}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7934}
+These key combinations may be used on prompts that support {\itshape multiple} choices, such as the multiselect prompt, or the select prompt when the {\ttfamily multiple} options is true.
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{command}}   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{description}}    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{command}}   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{description}}    }\\\cline{1-2}
+\endhead
+{\ttfamily space}   &Toggle the currently selected choice when {\ttfamily options.\+multiple} is true.    \\\cline{1-2}
+{\ttfamily number}   &Move the pointer to the choice at the given index. Also toggles the selected choice when {\ttfamily options.\+multiple} is true.    \\\cline{1-2}
+{\ttfamily a}   &Toggle all choices to be enabled or disabled.    \\\cline{1-2}
+{\ttfamily i}   &Invert the current selection of choices.    \\\cline{1-2}
+{\ttfamily g}   &Toggle the current choice group.   \\\cline{1-2}
+\end{longtabu}
+
+
+~\newline
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7935}{}\doxysubsubsection{\texorpdfstring{Hide/show choices}{Hide/show choices}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7935}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{command}}   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{description}}    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{command}}   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{description}}    }\\\cline{1-2}
+\endhead
+{\ttfamily fn} + {\ttfamily up}   &Decrease the number of visible choices by one.    \\\cline{1-2}
+{\ttfamily fn} + {\ttfamily down}   &Increase the number of visible choices by one.   \\\cline{1-2}
+\end{longtabu}
+
+
+~\newline
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7936}{}\doxysubsubsection{\texorpdfstring{Move/lock Pointer}{Move/lock Pointer}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7936}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{command}}   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{description}}    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{command}}   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{description}}    }\\\cline{1-2}
+\endhead
+{\ttfamily number}   &Move the pointer to the choice at the given index. Also toggles the selected choice when {\ttfamily options.\+multiple} is true.    \\\cline{1-2}
+{\ttfamily up}   &Move the pointer up.    \\\cline{1-2}
+{\ttfamily down}   &Move the pointer down.    \\\cline{1-2}
+{\ttfamily ctrl} + {\ttfamily a}   &Move the pointer to the first {\itshape visible} choice.    \\\cline{1-2}
+{\ttfamily ctrl} + {\ttfamily e}   &Move the pointer to the last {\itshape visible} choice.    \\\cline{1-2}
+{\ttfamily shift} + {\ttfamily up}   &Scroll up one choice without changing pointer position (locks the pointer while scrolling).    \\\cline{1-2}
+{\ttfamily shift} + {\ttfamily down}   &Scroll down one choice without changing pointer position (locks the pointer while scrolling).   \\\cline{1-2}
+\end{longtabu}
+
+
+~\newline
+
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{command (Mac)}}   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{command (Windows)}}   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{description}}    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{command (Mac)}}   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{command (Windows)}}   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{description}}    }\\\cline{1-3}
+\endhead
+{\ttfamily fn} + {\ttfamily left}   &{\ttfamily home}   &Move the pointer to the first choice in the choices array.    \\\cline{1-3}
+{\ttfamily fn} + {\ttfamily right}   &{\ttfamily end}   &Move the pointer to the last choice in the choices array.   \\\cline{1-3}
+\end{longtabu}
+
+
+~\newline
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7937}{}\doxysubsection{\texorpdfstring{❯ Release History}{❯ Release History}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7937}
+Please see \doxylink{which_2_c_h_a_n_g_e_l_o_g_8md}{CHANGELOG.md}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7938}{}\doxysubsection{\texorpdfstring{❯ Performance}{❯ Performance}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7938}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7939}{}\doxysubsubsection{\texorpdfstring{System specs}{System specs}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7939}
+Mac\+Book Pro, Intel Core i7, 2.\+5 GHz, 16 GB.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7940}{}\doxysubsubsection{\texorpdfstring{Load time}{Load time}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7940}
+Time it takes for the module to load the first time (average of 3 runs)\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{enquirer:\ 4.013ms}
+\DoxyCodeLine{inquirer:\ 286.717ms}
+
+\end{DoxyCode}
+
+
+~\newline
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7941}{}\doxysubsection{\texorpdfstring{❯ About}{❯ About}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7941}
+
+
+{\bfseries{{\bfseries{Contributing}}}}\begin{adjustwidth}{1em}{0em}
+
+
+Pull requests and stars are always welcome. For bugs and feature requests, \href{../../issues/new}{\texttt{ please create an issue}}.
+
+\end{adjustwidth}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7942}{}\doxysubsubsection{\texorpdfstring{Todo}{Todo}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7942}
+We\textquotesingle{}re currently working on documentation for the following items. Please star and watch the repository for updates!
+
+
+\begin{DoxyItemize}
+\item \mbox{[} \mbox{]} Customizing symbols
+\item \mbox{[} \mbox{]} Customizing styles (palette)
+\item \mbox{[} \mbox{]} Customizing rendered input
+\item \mbox{[} \mbox{]} Customizing returned values
+\item \mbox{[} \mbox{]} Customizing key bindings
+\item \mbox{[} \mbox{]} Question validation
+\item \mbox{[} \mbox{]} Choice validation
+\item \mbox{[} \mbox{]} Skipping questions
+\item \mbox{[} \mbox{]} Async choices
+\item \mbox{[} \mbox{]} Async timers\+: loaders, spinners and other animations
+\item \mbox{[} \mbox{]} Links to examples 
+\end{DoxyItemize}
+
+
+
+{\bfseries{{\bfseries{Running Tests}}}}\begin{adjustwidth}{1em}{0em}
+
+
+Running and reviewing unit tests is a great way to get familiarized with a library and its API. You can install dependencies and run tests with the following command\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ \&\&\ npm\ test}
+
+\end{DoxyCode}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{yarn\ \&\&\ yarn\ test}
+
+\end{DoxyCode}
+
+
+\end{adjustwidth}
+
+
+
+
+{\bfseries{{\bfseries{Building docs}}}}\begin{adjustwidth}{1em}{0em}
+
+
+\+\_\+(This project\textquotesingle{}s readme.\+md is generated by \href{https://github.com/verbose/verb-generate-readme}{\texttt{ verb}}, please don\textquotesingle{}t edit the readme directly. Any changes to the readme must be made in the .verb.md readme template.)\+\_\+
+
+To generate the readme, run the following command\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ -\/g\ verbose/verb\#dev\ verb-\/generate-\/readme\ \&\&\ verb}
+
+\end{DoxyCode}
+
+
+\end{adjustwidth}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7943}{}\doxyparagraph{\texorpdfstring{Contributors}{Contributors}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7943}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{Commits}}   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{Contributor}}    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{Commits}}   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\bfseries{Contributor}}    }\\\cline{1-2}
+\endhead
+312   &\href{https://github.com/jonschlinkert}{\texttt{ jonschlinkert}}    \\\cline{1-2}
+86   &\href{https://github.com/doowb}{\texttt{ doowb}}    \\\cline{1-2}
+32   &\href{https://github.com/rajat-sr}{\texttt{ rajat-\/sr}}    \\\cline{1-2}
+20   &\href{https://github.com/318097}{\texttt{ 318097}}    \\\cline{1-2}
+15   &\href{https://github.com/g-plane}{\texttt{ g-\/plane}}    \\\cline{1-2}
+12   &\href{https://github.com/pixelass}{\texttt{ pixelass}}    \\\cline{1-2}
+5   &\href{https://github.com/adityavyas611}{\texttt{ adityavyas611}}    \\\cline{1-2}
+5   &\href{https://github.com/satotake}{\texttt{ satotake}}    \\\cline{1-2}
+3   &\href{https://github.com/hongaar}{\texttt{ hongaar}}    \\\cline{1-2}
+3   &\href{https://github.com/Ovyerus}{\texttt{ Ovyerus}}    \\\cline{1-2}
+3   &\href{https://github.com/swyxio}{\texttt{ swyxio}}    \\\cline{1-2}
+2   &\href{https://github.com/GabeL7r}{\texttt{ Gabe\+L7r}}    \\\cline{1-2}
+2   &\href{https://github.com/Andarist}{\texttt{ Andarist}}    \\\cline{1-2}
+1   &\href{https://github.com/ahmadawais}{\texttt{ ahmadawais}}    \\\cline{1-2}
+1   &\href{https://github.com/AlCalzone}{\texttt{ Al\+Calzone}}    \\\cline{1-2}
+1   &\href{https://github.com/hipstersmoothie}{\texttt{ hipstersmoothie}}    \\\cline{1-2}
+1   &\href{https://github.com/TrySound}{\texttt{ Try\+Sound}}    \\\cline{1-2}
+1   &\href{https://github.com/brentjanderson}{\texttt{ brentjanderson}}    \\\cline{1-2}
+1   &\href{https://github.com/camilaibs}{\texttt{ camilaibs}}    \\\cline{1-2}
+1   &\href{https://github.com/AgentEnder}{\texttt{ Agent\+Ender}}    \\\cline{1-2}
+1   &\href{https://github.com/danieldelcore}{\texttt{ danieldelcore}}    \\\cline{1-2}
+1   &\href{https://github.com/deve-sh}{\texttt{ deve-\/sh}}    \\\cline{1-2}
+1   &\href{https://github.com/shortercode}{\texttt{ shortercode}}    \\\cline{1-2}
+1   &\href{https://github.com/ImgBotApp}{\texttt{ Img\+Bot\+App}}    \\\cline{1-2}
+1   &\href{https://github.com/shumkov}{\texttt{ shumkov}}    \\\cline{1-2}
+1   &\href{https://github.com/jsonkao}{\texttt{ jsonkao}}    \\\cline{1-2}
+1   &\href{https://github.com/JounQin}{\texttt{ Joun\+Qin}}    \\\cline{1-2}
+1   &\href{https://github.com/knpwrs}{\texttt{ knpwrs}}    \\\cline{1-2}
+1   &\href{https://github.com/yeskunall}{\texttt{ yeskunall}}    \\\cline{1-2}
+1   &\href{https://github.com/mischah}{\texttt{ mischah}}    \\\cline{1-2}
+1   &\href{https://github.com/starpit}{\texttt{ starpit}}    \\\cline{1-2}
+1   &\href{https://github.com/remcohaszing}{\texttt{ remcohaszing}}    \\\cline{1-2}
+1   &\href{https://github.com/renarsvilnis}{\texttt{ renarsvilnis}}    \\\cline{1-2}
+1   &\href{https://github.com/rstagi}{\texttt{ rstagi}}    \\\cline{1-2}
+1   &\href{https://github.com/sbugert}{\texttt{ sbugert}}    \\\cline{1-2}
+1   &\href{https://github.com/skellock}{\texttt{ skellock}}    \\\cline{1-2}
+1   &\href{https://github.com/tinesoft}{\texttt{ tinesoft}}    \\\cline{1-2}
+1   &\href{https://github.com/busticated}{\texttt{ busticated}}    \\\cline{1-2}
+1   &\href{https://github.com/cha147}{\texttt{ cha147}}    \\\cline{1-2}
+1   &\href{https://github.com/jmlee2k}{\texttt{ jmlee2k}}    \\\cline{1-2}
+1   &\href{https://github.com/lef237}{\texttt{ lef237}}    \\\cline{1-2}
+1   &\href{https://github.com/peterroe}{\texttt{ peterroe}}    \\\cline{1-2}
+1   &\href{https://github.com/spwoodall}{\texttt{ spwoodall}}    \\\cline{1-2}
+1   &\href{https://github.com/whxaxes}{\texttt{ whxaxes}}    \\\cline{1-2}
+1   &\href{https://github.com/holynewbie}{\texttt{ holynewbie}}    \\\cline{1-2}
+1   &\href{https://github.com/xulingling0}{\texttt{ xulingling0}}   \\\cline{1-2}
+\end{longtabu}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7944}{}\doxyparagraph{\texorpdfstring{Author}{Author}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7944}
+{\bfseries{Jon Schlinkert}}
+
+
+\begin{DoxyItemize}
+\item \href{https://github.com/jonschlinkert}{\texttt{ Git\+Hub Profile}}
+\item \href{https://twitter.com/jonschlinkert}{\texttt{ Twitter Profile}}
+\item \href{https://linkedin.com/in/jonschlinkert}{\texttt{ Linked\+In Profile}}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7945}{}\doxyparagraph{\texorpdfstring{Credit}{Credit}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7945}
+Thanks to \href{https://github.com/derhuerst}{\texttt{ derhuerst}}, creator of prompt libraries such as \href{https://github.com/derhuerst/prompt-skeleton}{\texttt{ prompt-\/skeleton}}, which influenced some of the concepts we used in our prompts.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7946}{}\doxyparagraph{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2enquirer_2_r_e_a_d_m_e_autotoc_md7946}
+Copyright © 2018-\/present, \href{https://github.com/jonschlinkert}{\texttt{ Jon Schlinkert}}. Released under the \mbox{[}MIT License\mbox{]}(LICENSE). 

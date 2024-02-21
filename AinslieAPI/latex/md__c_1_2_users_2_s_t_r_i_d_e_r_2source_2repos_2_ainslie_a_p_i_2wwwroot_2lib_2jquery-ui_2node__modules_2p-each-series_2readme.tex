@@ -1,0 +1,70 @@
+\chapter{p-\/each-\/series \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+com/github/sindresorhus/p-\/each-\/series"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+com/sindresorhus/p-\/each-\/series.\+svg?branch=master"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2p-each-series_2readme}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2p-each-series_2readme}\index{p-\/each-\/series $<$a href="{}https://travis-\/ci.com/github/sindresorhus/p-\/each-\/series"{} $>$$<$img src="{}https://travis-\/ci.com/sindresorhus/p-\/each-\/series.svg?branch=master"{} alt="{}Build Status"{}/$>$$<$/a$>$@{p-\/each-\/series $<$a href=""https://travis-\/ci.com/github/sindresorhus/p-\/each-\/series"" $>$$<$img src=""https://travis-\/ci.com/sindresorhus/p-\/each-\/series.svg?branch=master"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2p-each-series_2readme_autotoc_md10553}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2p-each-series_2readme_autotoc_md10553}%
+ \begin{quote}
+Iterate over promises serially \end{quote}
+Useful as a side-\/effect iterator. Prefer \href{https://github.com/sindresorhus/p-map}{\texttt{ {\ttfamily p-\/map}}} if you don\textquotesingle{}t need side-\/effects, as it\textquotesingle{}s concurrent.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2p-each-series_2readme_autotoc_md10554}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2p-each-series_2readme_autotoc_md10554}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ p-\/each-\/series}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2p-each-series_2readme_autotoc_md10555}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2p-each-series_2readme_autotoc_md10555}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ pEachSeries\ =\ require('p-\/each-\/series');}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ keywords\ =\ [}
+\DoxyCodeLine{\ \ \ \ getTopKeyword(),\ //=>\ Promise}
+\DoxyCodeLine{\ \ \ \ 'rainbow',}
+\DoxyCodeLine{\ \ \ \ 'pony'}
+\DoxyCodeLine{];}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ iterator\ =\ async\ element\ =>\ saveToDiskPromise(element);}
+\DoxyCodeLine{}
+\DoxyCodeLine{(async\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ console.log(await\ pEachSeries(keywords,\ iterator));}
+\DoxyCodeLine{\ \ \ \ //=>\ ['unicorn',\ 'rainbow',\ 'pony']}
+\DoxyCodeLine{\})();}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2p-each-series_2readme_autotoc_md10556}{}\doxysection{\texorpdfstring{API}{API}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2p-each-series_2readme_autotoc_md10556}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2p-each-series_2readme_autotoc_md10557}{}\doxysubsection{\texorpdfstring{p\+Each\+Series(input, iterator)}{p\+Each\+Series(input, iterator)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2p-each-series_2readme_autotoc_md10557}
+Returns a {\ttfamily Promise} that is fulfilled when all promises in {\ttfamily input} and ones returned from {\ttfamily iterator} are fulfilled, or rejects if any of the promises reject. The fulfillment value is the original {\ttfamily input}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2p-each-series_2readme_autotoc_md10558}{}\doxysubsubsection{\texorpdfstring{input}{input}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2p-each-series_2readme_autotoc_md10558}
+Type\+: {\ttfamily Iterable\texorpdfstring{$<$}{<}Promise \texorpdfstring{$\vert$}{|} unknown\texorpdfstring{$>$}{>}}
+
+Iterated over serially in the {\ttfamily iterator} function.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2p-each-series_2readme_autotoc_md10559}{}\doxysubsubsection{\texorpdfstring{iterator(element, index)}{iterator(element, index)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2p-each-series_2readme_autotoc_md10559}
+Type\+: {\ttfamily Function}
+
+Return value is ignored unless it\textquotesingle{}s {\ttfamily Promise}, then it\textquotesingle{}s awaited before continuing with the next iteration.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2p-each-series_2readme_autotoc_md10560}{}\doxysubsection{\texorpdfstring{p\+Each\+Series.\+stop}{p\+Each\+Series.\+stop}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2p-each-series_2readme_autotoc_md10560}
+Stop iterating through items by returning {\ttfamily p\+Each\+Series.\+stop} from the iterator function.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ pEachSeries\ =\ require('p-\/each-\/series');}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Logs\ \`{}a`\ and\ \`{}b`.}
+\DoxyCodeLine{const\ result\ =\ await\ pEachSeries(['a',\ 'b',\ 'c'],\ value\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ console.log(value);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ if\ (value\ ===\ 'b')\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ return\ pEachSeries.stop;}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log(result);}
+\DoxyCodeLine{//=>\ ['a',\ 'b',\ 'c']}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2p-each-series_2readme_autotoc_md10561}{}\doxysection{\texorpdfstring{Related}{Related}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2p-each-series_2readme_autotoc_md10561}
+
+\begin{DoxyItemize}
+\item \href{https://github.com/sindresorhus/p-map-series}{\texttt{ p-\/map-\/series}} -\/ Map over promises serially
+\item \href{https://github.com/sindresorhus/p-series}{\texttt{ p-\/series}} -\/ Run promise-\/returning \& async functions in series
+\item \href{https://github.com/sindresorhus/p-pipe}{\texttt{ p-\/pipe}} -\/ Compose promise-\/returning \& async functions into a reusable pipeline
+\item \href{https://github.com/sindresorhus/p-waterfall}{\texttt{ p-\/waterfall}} -\/ Run promise-\/returning \& async functions in series, each passing its result to the next
+\item \href{https://github.com/sindresorhus/p-reduce}{\texttt{ p-\/reduce}} -\/ Reduce a list of values using promises into a promise for a value
+\item \href{https://github.com/sindresorhus/p-map}{\texttt{ p-\/map}} -\/ Map over promises concurrently
+\item \href{https://github.com/sindresorhus/promise-fun}{\texttt{ More…}} 
+\end{DoxyItemize}

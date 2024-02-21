@@ -1,0 +1,531 @@
+\chapter{grunt-\/contrib-\/uglify v5.0.0 \texorpdfstring{$<$}{<}a href="{}https\+://github.\+com/gruntjs/grunt-\/contrib-\/uglify/actions?workflow=\+Tests"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://github.\+com/gruntjs/grunt-\/contrib-\/uglify/workflows/\+Tests/badge.\+svg"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064}\index{grunt-\/contrib-\/uglify v5.0.0 $<$a href="{}https://github.com/gruntjs/grunt-\/contrib-\/uglify/actions?workflow=Tests"{} $>$$<$img src="{}https://github.com/gruntjs/grunt-\/contrib-\/uglify/workflows/Tests/badge.svg"{} alt="{}Build Status"{}/$>$$<$/a$>$@{grunt-\/contrib-\/uglify v5.0.0 $<$a href=""https://github.com/gruntjs/grunt-\/contrib-\/uglify/actions?workflow=Tests"" $>$$<$img src=""https://github.com/gruntjs/grunt-\/contrib-\/uglify/workflows/Tests/badge.svg"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8876}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8876}%
+ \begin{quote}
+Minify Java\+Script files with Uglify\+JS \end{quote}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8877}{}\doxysection{\texorpdfstring{Getting Started}{Getting Started}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8877}
+If you haven\textquotesingle{}t used \href{https://gruntjs.com/}{\texttt{ Grunt}} before, be sure to check out the \href{https://gruntjs.com/getting-started}{\texttt{ Getting Started}} guide, as it explains how to create a \href{https://gruntjs.com/sample-gruntfile}{\texttt{ Gruntfile}} as well as install and use Grunt plugins. Once you\textquotesingle{}re familiar with that process, you may install this plugin with this command\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ grunt-\/contrib-\/uglify\ -\/-\/save-\/dev}
+
+\end{DoxyCode}
+
+
+Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of Java\+Script\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{grunt.loadNpmTasks('grunt-\/contrib-\/uglify');}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8878}{}\doxysection{\texorpdfstring{Uglify task}{Uglify task}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8878}
+{\itshape Run this task with the {\ttfamily grunt uglify} command.}
+
+Task targets, files and options may be specified according to the grunt \href{https://gruntjs.com/configuring-tasks}{\texttt{ Configuring tasks}} guide.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8879}{}\doxysubsection{\texorpdfstring{Options}{Options}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8879}
+This task primarily delegates to \href{https://github.com/mishoo/UglifyJS2}{\texttt{ Uglify\+JS}}, so please consider their documentation as required reading for advanced configuration.
+
+\doxysubparagraph*{Deprecated options from {\ttfamily 2.\+x}}
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Option   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Replacement    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Option   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Replacement    }\\\cline{1-2}
+\endhead
+ASCIIOnly   &output.\+ascii\+\_\+only    \\\cline{1-2}
+enclose   &---    \\\cline{1-2}
+export\+All   &---    \\\cline{1-2}
+expression   &parse.\+expression    \\\cline{1-2}
+indent\+Level   &output.\+indent\+\_\+level    \\\cline{1-2}
+mangle\+Properties   &mangle.\+properties    \\\cline{1-2}
+max\+Line\+Len   &output.\+max\+\_\+line\+\_\+len    \\\cline{1-2}
+preserve\+Comments   &output.\+comments    \\\cline{1-2}
+quote\+Style   &output.\+quote\+\_\+style    \\\cline{1-2}
+screw\+IE8   &!ie8    \\\cline{1-2}
+source\+Map\+Include\+Sources   &source\+Map.\+include\+Sources    \\\cline{1-2}
+source\+Map\+Root   &source\+Map.\+root    \\\cline{1-2}
+source\+Map\+Url   &source\+Map.\+url   \\\cline{1-2}
+\end{longtabu}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8880}{}\doxysubsubsection{\texorpdfstring{mangle}{mangle}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8880}
+Type\+: {\ttfamily Boolean} {\ttfamily Object} ~\newline
+ Default\+: {\ttfamily \{\}}
+
+Turn on or off mangling with default options. If an {\ttfamily Object} is specified, it is passed directly to {\ttfamily ast.\+mangle\+\_\+names()} {\itshape and} {\ttfamily ast.\+compute\+\_\+char\+\_\+frequency()} (mimicking command line behavior). \href{https://github.com/mishoo/UglifyJS2\#mangle-options}{\texttt{ View all options here}}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8881}{}\doxysubsubsection{\texorpdfstring{compress}{compress}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8881}
+Type\+: {\ttfamily Boolean} {\ttfamily Object} ~\newline
+ Default\+: {\ttfamily \{\}}
+
+Turn on or off source compression with default options. If an {\ttfamily Object} is specified, it is passed as options to {\ttfamily Uglify\+JS.\+Compressor()}. \href{https://github.com/mishoo/UglifyJS2\#compress-options}{\texttt{ View all options here}}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8882}{}\doxysubsubsection{\texorpdfstring{beautify}{beautify}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8882}
+Type\+: {\ttfamily Boolean} {\ttfamily Object} ~\newline
+ Default\+: {\ttfamily false}
+
+Turns on beautification of the generated source code. \href{https://github.com/mishoo/UglifyJS2\#output-options}{\texttt{ View all options here}}
+
+\doxysubparagraph*{parse.\+expression}
+
+Type\+: {\ttfamily Boolean} ~\newline
+ Default\+: {\ttfamily false}
+
+Parse a single expression, rather than a program (for parsing JSON)\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8883}{}\doxysubsubsection{\texorpdfstring{report}{report}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8883}
+Type\+: {\ttfamily string} ~\newline
+ Choices\+: `\textquotesingle{}min'{\ttfamily ,}\textquotesingle{}gzip\textquotesingle{}{\ttfamily \texorpdfstring{$<$}{<}br\texorpdfstring{$>$}{>} Default\+:}\textquotesingle{}min\textquotesingle{}\`{}
+
+Report minification result or both minification and gzip results. This is useful to see exactly how well uglify-\/js is performing but using `\textquotesingle{}gzip'\`{} will make the task take 5-\/10x longer to complete. \href{https://github.com/sindresorhus/maxmin\#readme}{\texttt{ Example output}}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8884}{}\doxysubsubsection{\texorpdfstring{source\+Map}{source\+Map}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8884}
+Type\+: {\ttfamily Boolean} ~\newline
+ Default\+: {\ttfamily false}
+
+If {\ttfamily true}, a source map file will be generated in the same directory as the {\ttfamily dest} file. By default it will have the same basename as the {\ttfamily dest} file, but with a {\ttfamily .map} extension.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8885}{}\doxysubsubsection{\texorpdfstring{source\+Map\+Name}{source\+Map\+Name}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8885}
+Type\+: {\ttfamily String} {\ttfamily Function} ~\newline
+ Default\+: {\ttfamily undefined}
+
+To customize the name or location of the generated source map, pass a string to indicate where to write the source map to. If a function is provided, the uglify destination is passed as the argument and the return value will be used as the file name.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8886}{}\doxysubsubsection{\texorpdfstring{source\+Map\+In}{source\+Map\+In}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8886}
+Type\+: {\ttfamily String} {\ttfamily Function} ~\newline
+ Default\+: {\ttfamily undefined}
+
+The location of an input source map from an earlier compilation, e.\+g. from Coffee\+Script. If a function is provided, the uglify source is passed as the argument and the return value will be used as the source\+Map name. This only makes sense when there\textquotesingle{}s one source file.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8887}{}\doxysubsubsection{\texorpdfstring{source\+Map.\+include\+Sources}{source\+Map.\+include\+Sources}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8887}
+Type\+: {\ttfamily Boolean} ~\newline
+ Default\+: {\ttfamily false}
+
+Pass this flag if you want to include the content of source files in the source map as sources\+Content property.
+
+\doxysubparagraph*{source\+Map.\+root}
+
+Type\+: {\ttfamily String} ~\newline
+ Default\+: {\ttfamily undefined}
+
+With this option you can customize root URL that browser will use when looking for sources.
+
+If the sources are not absolute URLs after prepending of the {\ttfamily source\+Map.\+root}, the sources are resolved relative to the source map.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8888}{}\doxysubsubsection{\texorpdfstring{source\+Map.\+url}{source\+Map.\+url}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8888}
+Type\+: {\ttfamily String} ~\newline
+ Default\+: {\ttfamily undefined}
+
+Override the calculated value for {\ttfamily source\+Mapping\+URL} in the source map. This is useful if the source map location is not relative to the base path of the minified file, i.\+e. when using a CDN\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8889}{}\doxysubsubsection{\texorpdfstring{wrap}{wrap}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8889}
+Type\+: {\ttfamily String} ~\newline
+ Default\+: {\ttfamily undefined}
+
+Wrap all of the code in a closure, an easy way to make sure nothing is leaking. For variables that need to be public {\ttfamily exports} and {\ttfamily global} variables are made available. The value of wrap is the global variable exports will be available as.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8890}{}\doxysubsubsection{\texorpdfstring{output.\+ascii\+\_\+only}{output.\+ascii\+\_\+only}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8890}
+Type\+: {\ttfamily Boolean} ~\newline
+ Default\+: {\ttfamily false}
+
+Enables to encode non-\/\+ASCII characters as \textbackslash{}u\+XXXX.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8891}{}\doxysubsubsection{\texorpdfstring{output.\+comments}{output.\+comments}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8891}
+Type\+: {\ttfamily Boolean} {\ttfamily String} {\ttfamily Function} ~\newline
+ Default\+: {\ttfamily undefined} ~\newline
+ Options\+: {\ttfamily false} `\textquotesingle{}all'\textquotesingle{}some\textquotesingle{}\`{}
+
+Turn on preservation of comments.
+
+
+\begin{DoxyItemize}
+\item {\ttfamily false} will strip all comments
+\item `\textquotesingle{}all'{\ttfamily will preserve all comments in code blocks that have not been squashed or dropped -\/}\textquotesingle{}some\textquotesingle{}{\ttfamily will preserve all comments that include a closure compiler style directive (}@preserve@license@cc\+\_\+on{\ttfamily ) -\/}Function{\ttfamily specify your own comment preservation function. You will be passed the current node and the current comment and are expected to return either}true{\ttfamily or}false{\ttfamily  -\/}Reg\+Exp\textquotesingle{}/\mbox{[}Reg\+Exp\mbox{]}/\textquotesingle{}\`{} will preserve comments matching given Reg\+Exp or stringified Reg\+Exp
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8892}{}\doxysubsubsection{\texorpdfstring{banner}{banner}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8892}
+Type\+: {\ttfamily String} ~\newline
+ Default\+: `'\textquotesingle{}\`{}
+
+This string will be prepended to the minified output. Template strings (e.\+g. {\ttfamily \texorpdfstring{$<$}{<}\%= config.\+value \%\texorpdfstring{$>$}{>}}) will be expanded automatically.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8893}{}\doxysubsubsection{\texorpdfstring{footer}{footer}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8893}
+Type\+: {\ttfamily String} ~\newline
+ Default\+: `'\textquotesingle{}\`{}
+
+This string will be appended to the minified output. Template strings (e.\+g. {\ttfamily \texorpdfstring{$<$}{<}\%= config.\+value \%\texorpdfstring{$>$}{>}}) will be expanded automatically.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8894}{}\doxysubsubsection{\texorpdfstring{ie8}{ie8}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8894}
+Type\+: {\ttfamily Boolean} ~\newline
+ Default\+: {\ttfamily false}
+
+Set this to {\ttfamily true} if you still care about full compliance with Internet Explorer 6-\/8 quirks.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8895}{}\doxysubsubsection{\texorpdfstring{mangle.\+properties}{mangle.\+properties}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8895}
+Type\+: {\ttfamily Boolean} {\ttfamily Object} ~\newline
+ Default\+: {\ttfamily false}
+
+Turn on or off property mangling with default options. If an {\ttfamily Object} is specified, it is passed directly to {\ttfamily ast.\+mangle\+\_\+properties()} (mimicking command line behavior). \href{https://github.com/mishoo/UglifyJS2\#mangle-options}{\texttt{ View all options here}}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8896}{}\doxysubsubsection{\texorpdfstring{reserve\+DOMProperties}{reserve\+DOMProperties}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8896}
+Type\+: {\ttfamily Boolean} ~\newline
+ Default\+: {\ttfamily false}
+
+Use this flag in conjunction with {\ttfamily mangle.\+properties} to prevent built-\/in browser object properties from being mangled.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8897}{}\doxysubsubsection{\texorpdfstring{exceptions\+Files}{exceptions\+Files}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8897}
+Type\+: {\ttfamily Array} ~\newline
+ Default\+: {\ttfamily \mbox{[}\mbox{]}}
+
+Use this with {\ttfamily mangle.\+properties} to pass one or more JSON files containing a list of variables and object properties that should not be mangled. See the \href{https://www.npmjs.com/package/uglify-js}{\texttt{ Uglify\+JS docs}} for more info on the file syntax.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8898}{}\doxysubsubsection{\texorpdfstring{name\+Cache}{name\+Cache}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8898}
+Type\+: {\ttfamily String} ~\newline
+ Default\+: `'\textquotesingle{}\`{}
+
+A string that is a path to a JSON cache file that uglify will create and use to coordinate symbol mangling between multiple runs of uglify. Note\+: this generated file uses the same JSON format as the {\ttfamily exceptions\+Files} files.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8899}{}\doxysubsubsection{\texorpdfstring{output.\+quote\+\_\+style}{output.\+quote\+\_\+style}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8899}
+Type\+: {\ttfamily Integer} ~\newline
+ Default\+: {\ttfamily 0}
+
+Preserve or enforce quotation mark style.
+
+
+\begin{DoxyItemize}
+\item {\ttfamily 0} will use single or double quotes such as to minimize the number of bytes (prefers double quotes when both will do)
+\item {\ttfamily 1} will always use single quotes
+\item {\ttfamily 2} will always use double quotes
+\item {\ttfamily 3} will preserve original quotation marks
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8900}{}\doxysubsection{\texorpdfstring{Usage examples}{Usage examples}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8900}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8901}{}\doxysubsubsection{\texorpdfstring{Basic compression}{Basic compression}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8901}
+This configuration will compress and mangle the input files using the default options.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Project\ configuration.}
+\DoxyCodeLine{grunt.initConfig(\{}
+\DoxyCodeLine{\ \ uglify:\ \{}
+\DoxyCodeLine{\ \ \ \ my\_target:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ files:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ 'dest/output.min.js':\ ['src/input1.js',\ 'src/input2.js']}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8902}{}\doxysubsubsection{\texorpdfstring{No mangling}{No mangling}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8902}
+Specify {\ttfamily mangle\+: false} to prevent changes to your variable and function names.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Project\ configuration.}
+\DoxyCodeLine{grunt.initConfig(\{}
+\DoxyCodeLine{\ \ uglify:\ \{}
+\DoxyCodeLine{\ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ mangle:\ false}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ my\_target:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ files:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ 'dest/output.min.js':\ ['src/input.js']}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8903}{}\doxysubsubsection{\texorpdfstring{Reserved identifiers}{Reserved identifiers}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8903}
+You can specify identifiers to leave untouched with an {\ttfamily reserved} array in the {\ttfamily mangle} options.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Project\ configuration.}
+\DoxyCodeLine{grunt.initConfig(\{}
+\DoxyCodeLine{\ \ uglify:\ \{}
+\DoxyCodeLine{\ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ mangle:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ reserved:\ ['jQuery',\ 'Backbone']}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ my\_target:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ files:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ 'dest/output.min.js':\ ['src/input.js']}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8904}{}\doxysubsubsection{\texorpdfstring{Source maps}{Source maps}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8904}
+Generate a source map by setting the {\ttfamily source\+Map} option to {\ttfamily true}. The generated source map will be in the same directory as the destination file. Its name will be the basename of the destination file with a {\ttfamily .map} extension. Override these defaults with the {\ttfamily source\+Map\+Name} attribute.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Project\ configuration.}
+\DoxyCodeLine{grunt.initConfig(\{}
+\DoxyCodeLine{\ \ uglify:\ \{}
+\DoxyCodeLine{\ \ \ \ my\_target:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ sourceMap:\ true,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ sourceMapName:\ 'path/to/sourcemap.map'}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ files:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ 'dest/output.min.js':\ ['src/input.js']}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8905}{}\doxysubsubsection{\texorpdfstring{Advanced source maps}{Advanced source maps}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8905}
+Set the {\ttfamily source\+Map.\+include\+Sources} option to {\ttfamily true} to embed your sources directly into the map. To include a source map from a previous compilation pass it as the value of the {\ttfamily source\+Map\+In} option.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Project\ configuration.}
+\DoxyCodeLine{grunt.initConfig(\{}
+\DoxyCodeLine{\ \ uglify:\ \{}
+\DoxyCodeLine{\ \ \ \ my\_target:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ sourceMap:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ includeSources:\ true}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ sourceMapIn:\ 'example/coffeescript-\/sourcemap.js',\ //\ input\ sourcemap\ from\ a\ previous\ compilation}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ files:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ 'dest/output.min.js':\ ['src/input.js'],}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+Refer to the \href{https://github.com/mishoo/UglifyJS2\#source-map-options}{\texttt{ Uglify\+JS Source\+Map Documentation}} for more information.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8906}{}\doxysubsubsection{\texorpdfstring{Turn off console warnings}{Turn off console warnings}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8906}
+Specify {\ttfamily drop\+\_\+console\+: true} as part of the {\ttfamily compress} options to discard calls to {\ttfamily console.\texorpdfstring{$\ast$}{*}} functions. This will suppress warning messages in the console.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Project\ configuration.}
+\DoxyCodeLine{grunt.initConfig(\{}
+\DoxyCodeLine{\ \ uglify:\ \{}
+\DoxyCodeLine{\ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ compress:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ drop\_console:\ true}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ my\_target:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ files:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ 'dest/output.min.js':\ ['src/input.js']}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8907}{}\doxysubsubsection{\texorpdfstring{Beautify}{Beautify}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8907}
+Specify {\ttfamily beautify\+: true} to beautify your code for debugging/troubleshooting purposes. Pass an object to manually configure any other output options.
+
+See \href{https://github.com/mishoo/UglifyJS2\#output-options}{\texttt{ Uglify\+JS documentation}} for more information.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Project\ configuration.}
+\DoxyCodeLine{grunt.initConfig(\{}
+\DoxyCodeLine{\ \ uglify:\ \{}
+\DoxyCodeLine{\ \ \ \ my\_target:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ beautify:\ true}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ files:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ 'dest/output.min.js':\ ['src/input.js']}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ my\_advanced\_target:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ beautify:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ width:\ 80}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ files:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ 'dest/output.min.js':\ ['src/input.js']}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8908}{}\doxysubsubsection{\texorpdfstring{Banner comments}{Banner comments}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8908}
+In this example, running {\ttfamily grunt uglify\+:my\+\_\+target} will prepend a banner created by interpolating the {\ttfamily banner} template string with the config object. Here, those properties are the values imported from the {\ttfamily package.\+json} file (which are available via the {\ttfamily pkg} config property) plus today\textquotesingle{}s date.
+
+{\itshape Note\+: you don\textquotesingle{}t have to use an external JSON file. It\textquotesingle{}s also valid to create the {\ttfamily pkg} object inline in the config. That being said, if you already have a JSON file, you might as well reference it.}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Project\ configuration.}
+\DoxyCodeLine{grunt.initConfig(\{}
+\DoxyCodeLine{\ \ pkg:\ grunt.file.readJSON('package.json'),}
+\DoxyCodeLine{\ \ uglify:\ \{}
+\DoxyCodeLine{\ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ banner:\ '/*!\ <\%=\ pkg.name\ \%>\ -\/\ v<\%=\ pkg.version\ \%>\ -\/\ '\ +}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ '<\%=\ grunt.template.today("{}yyyy-\/mm-\/dd"{})\ \%>\ */'}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ my\_target:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ files:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ 'dest/output.min.js':\ ['src/input.js']}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8909}{}\doxysubsubsection{\texorpdfstring{Conditional compilation}{Conditional compilation}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8909}
+You can also enable Uglify\+JS conditional compilation. This is commonly used to remove debug code blocks for production builds. This is equivalent to the command line {\ttfamily -\/-\/define} option.
+
+See \href{https://github.com/mishoo/UglifyJS2\#conditional-compilation}{\texttt{ Uglify\+JS global definitions documentation}} for more information.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Project\ configuration.}
+\DoxyCodeLine{grunt.initConfig(\{}
+\DoxyCodeLine{\ \ uglify:\ \{}
+\DoxyCodeLine{\ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ compress:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ global\_defs:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ 'DEBUG':\ false}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ dead\_code:\ true}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ my\_target:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ files:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ 'dest/output.min.js':\ ['src/input.js']}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8910}{}\doxysubsubsection{\texorpdfstring{Compiling all files in a folder dynamically}{Compiling all files in a folder dynamically}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8910}
+This configuration will compress and mangle the files dynamically.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Project\ configuration.}
+\DoxyCodeLine{grunt.initConfig(\{}
+\DoxyCodeLine{\ \ uglify:\ \{}
+\DoxyCodeLine{\ \ \ \ my\_target:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ files:\ [\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ expand:\ true,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ cwd:\ 'src/js',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ src:\ '**/*.js',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ dest:\ 'dest/js'}
+\DoxyCodeLine{\ \ \ \ \ \ \}]}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8911}{}\doxysubsubsection{\texorpdfstring{Compiling all files separately on the each their path}{Compiling all files separately on the each their path}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8911}
+This configuration will compress and mangle all js files separately in each folder.
+
+Also exclude j\+Query for mangling and ignore all {\ttfamily \texorpdfstring{$\ast$}{*}.min.\+js} files.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Project\ configuration.}
+\DoxyCodeLine{uglify:\ \{}
+\DoxyCodeLine{\ \ dev:\ \{}
+\DoxyCodeLine{\ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ mangle:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ reserved:\ ['jQuery']}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ files:\ [\{}
+\DoxyCodeLine{\ \ \ \ \ \ expand:\ true,}
+\DoxyCodeLine{\ \ \ \ \ \ src:\ ['dist/assets/js/*.js',\ '!dist/assets/js/*.min.js'],}
+\DoxyCodeLine{\ \ \ \ \ \ dest:\ 'dist/assets',}
+\DoxyCodeLine{\ \ \ \ \ \ cwd:\ '.',}
+\DoxyCodeLine{\ \ \ \ \ \ rename:\ function\ (dst,\ src)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ To\ keep\ the\ source\ js\ files\ and\ make\ new\ files\ as\ \`{}*.min.js`:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ return\ dst\ +\ '/'\ +\ src.replace('.js',\ '.min.js');}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ Or\ to\ override\ to\ src:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ return\ src;}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}]}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\},}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8912}{}\doxysubsubsection{\texorpdfstring{Turn on object property name mangling}{Turn on object property name mangling}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8912}
+This configuration will turn on object property name mangling, but not mangle built-\/in browser object properties. Additionally, variables and object properties listed in the {\ttfamily my\+Exceptions\+File.\+json} will be mangled. For more info, on the format of the exception file format please see the \href{https://www.npmjs.com/package/uglify-js}{\texttt{ Uglify\+JS docs}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Project\ configuration.}
+\DoxyCodeLine{grunt.initConfig(\{}
+\DoxyCodeLine{\ \ uglify:\ \{}
+\DoxyCodeLine{\ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ mangle:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ properties:\ true}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ reserveDOMCache:\ true,}
+\DoxyCodeLine{\ \ \ \ \ \ exceptionsFiles:\ [\ 'myExceptionsFile.json'\ ]}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ my\_target:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ files:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ 'dest/output.min.js':\ ['src/input.js']}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8913}{}\doxysubsubsection{\texorpdfstring{Turn on use of name mangling cache}{Turn on use of name mangling cache}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8913}
+Turn on use of name mangling cache to coordinate mangled symbols between outputted uglify files. uglify will the generate a JSON cache file with the name provided in the options. Note\+: this generated file uses the same JSON format as the {\ttfamily exceptions\+Files} files.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Project\ configuration.}
+\DoxyCodeLine{grunt.initConfig(\{}
+\DoxyCodeLine{\ \ uglify:\ \{}
+\DoxyCodeLine{\ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ nameCache:\ '.tmp/grunt-\/uglify-\/cache.json',}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ my\_target:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ files:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ 'dest/output1.min.js':\ ['src/input1.js'],}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ 'dest/output2.min.js':\ ['src/input2.js']}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8914}{}\doxysection{\texorpdfstring{Release History}{Release History}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9581c02a1ebd0095c518af3fc64e1064_autotoc_md8914}
+
+\begin{DoxyItemize}
+\item 2020-\/07-\/16   v5.0.\+0   \+Requires node 10+. Update dependencies.
+\item 2019-\/03-\/21   v4.0.\+1   \+Update uglify-\/js to v3.\+5.\+0. Update dependencies.
+\item 2018-\/08-\/26   v4.0.\+0   \+Update dependencies. Requires Node.\+js \texorpdfstring{$>$}{>}= 6.
+\item 2018-\/07-\/29   v3.4.\+0   \+Update uglify-\/js to v3.\+4.\+0.
+\item 2017-\/12-\/24   v3.3.\+0   \+Update uglify-\/js to v3.\+3.\+0.
+\item 2017-\/11-\/26   v3.2.\+1   \+Update uglify-\/js to v3.\+2.\+0.
+\item 2017-\/09-\/11   v3.1.\+0   \+Update uglify-\/js to v3.\+1.\+0.
+\item 2017-\/05-\/20   v3.0.\+1   \+Fix toplevel option.
+\item 2017-\/05-\/12   v3.0.\+0   \+Update uglify-\/js to v3.\+0.\+4.
+\item 2017-\/04-\/05   v2.3.\+0   \+Make CLI output less verbose.
+\item 2017-\/03-\/31   v2.2.\+1   \+Fix banner option.
+\item 2017-\/03-\/01   v2.2.\+0   \+Update uglify-\/js to v2.\+8.\+3.
+\item 2017-\/02-\/08   v2.1.\+0   \+Show size changes in output. Switch to {\ttfamily object.\+assign}.
+\item 2016-\/07-\/19   v2.0.\+0   \+Update uglify-\/js to v2.\+7.\+0. {\ttfamily screw\+IE8} is enabled by default.
+\item 2016-\/07-\/19   v1.0.\+2   \+Update grunt to \texorpdfstring{$^\wedge$}{\string^}1.0.\+0. Fix {\ttfamily beautify} when passed as an object. Fix docs about {\ttfamily report} values.
+\item 2016-\/03-\/16   v1.0.\+1   \+Downgrade maxmin for Node.\+js 0.\+10.
+\item 2016-\/03-\/04   v1.0.\+0   \+Use uglify-\/js \texorpdfstring{$\sim$}{\string~}2.6.\+2 to fix sourcemap issue. Improve docs for {\ttfamily global-\/defs} and {\ttfamily -\/-\/define} options. Add {\ttfamily source\+Map\+Url} option. Add {\ttfamily bare\+\_\+returns} option. Optionally set report verbosity level using report option.
+\item 2016-\/01-\/29   v0.11.\+1   \+Update lodash to \texorpdfstring{$^\wedge$}{\string^}4.0.\+1. Update grunt-\/contrib-\/clean to \texorpdfstring{$^\wedge$}{\string^}0.7.\+0. Update grunt-\/contrib-\/jshint to \texorpdfstring{$^\wedge$}{\string^}0.12.\+0.
+\item 2015-\/11-\/20   v0.11.\+0   \+Update uglify-\/js to \texorpdfstring{$\sim$}{\string~}2.6.\+0.
+\item 2015-\/11-\/12   v0.10.\+1   \+Update uglify-\/js to \texorpdfstring{$\sim$}{\string~}2.5.
+\item 2015-\/10-\/27   v0.10.\+0   \+Update uglify-\/js to \texorpdfstring{$^\wedge$}{\string^}2.5.
+\item 2015-\/08-\/24   v0.9.\+2   \+Update uglify-\/js to \texorpdfstring{$^\wedge$}{\string^}2.4.\+24
+\item 2015-\/04-\/07   v0.9.\+1   \+More fixes for {\ttfamily mangle} options.
+\item 2015-\/04-\/07   v0.9.\+0   \+Add hook into uglify-\/js\textquotesingle{}s mangling functionality.
+\item 2015-\/03-\/30   v0.8.\+1   \+Lock uglify-\/js to 2.\+4.\+17 due to breaking changes.
+\item 2015-\/02-\/19   v0.8.\+0   \+Add {\ttfamily screw\+IE8} option. Fix issue with explicit {\ttfamily compress} in Node.\+js 0.\+12.\+0.
+\item 2014-\/12-\/23   v0.7.\+0   \+Add {\ttfamily source\+Map\+Root} options. Update readme descriptions. Remove reference to clean-\/css.
+\item 2014-\/09-\/17   v0.6.\+0   \+Output fixes. Add {\ttfamily ASCIIOnly} option. Other fixes.
+\item 2014-\/07-\/25   v0.5.\+1   \+Update chalk to \texorpdfstring{$^\wedge$}{\string^}0.5.\+1. Output updates.
+\item 2014-\/03-\/01   v0.4.\+0   \+Remove grunt-\/lib-\/contrib dependency and add more colors.
+\item 2014-\/02-\/27   v0.3.\+3   \+Remove unnecessary calls to {\ttfamily grunt.\+template.\+process}.
+\item 2014-\/01-\/22   v0.3.\+2   \+Fix handling of {\ttfamily source\+Map\+Include\+Sources} option.
+\item 2014-\/01-\/20   v0.3.\+1   \+Fix relative path issue in sourcemaps.
+\item 2014-\/01-\/16   v0.3.\+0   \+Refactor sourcemap support.
+\item 2013-\/11-\/09   v0.2.\+7   \+Prepend banner if {\ttfamily source\+Map} option not set, addresses \#109.
+\item 2013-\/11-\/08   v0.2.\+6   \+Merge \#45, \#53, \#85 (\#105 by way of duping \#53). Add support for banners in uglified files with sourcemaps. Update docs.
+\item 2013-\/10-\/28   v0.2.\+5   \+Add warning for banners when using sourcemaps.
+\item 2013-\/09-\/02   v0.2.\+4   \+Update sourcemap format via \#83.
+\item 2013-\/06-\/10   v0.2.\+3   \+Add {\ttfamily footer} option.
+\item 2013-\/05-\/31   v0.2.\+2   \+Revert \#56 due to \#58 until \href{https://code.google.com/p/chromium/issues/detail?id=239660&q=sourcemappingurl&colspec=ID\%20Pri\%20M\%20Iteration\%20ReleaseBlock\%20Cr\%20Status\%20Owner\%20Summary\%20OS\%20Modified}{\texttt{ chrome/239660}} \href{https://bugzilla.mozilla.org/show_bug.cgi?id=870361}{\texttt{ firefox/870361}} drop.
+\item 2013-\/05-\/22   v0.2.\+1   \+Update uglify-\/js to \texorpdfstring{$\sim$}{\string~}2.3.\+5 \#55 \#40. Change {\ttfamily sourcemapping\+Url} syntax \#56. Disable sorting of names for consistent mangling \#44. Update docs for {\ttfamily source\+Map\+Root} \#47 \#25.
+\item 2013-\/03-\/14   v0.2.\+0   \+No longer report gzip results by default. Support {\ttfamily report} option.
+\item 2013-\/01-\/30   v0.1.\+2   \+Add better error reporting. Support for dynamic names of multiple sourcemaps.
+\item 2013-\/02-\/15   v0.1.\+1   \+First official release for Grunt 0.\+4.\+0.
+\item 2013-\/01-\/18   v0.1.\+1rc6   \+Update grunt/gruntplugin dependencies to rc6. Change in-\/development grunt/gruntplugin dependency versions from tilde version ranges to specific versions.
+\item 2013-\/01-\/09   v0.1.\+1rc5   \+Update to work with grunt v0.\+4.\+0rc5. Switch back to {\ttfamily this.\+files} API.
+\item 2012-\/11-\/28   v0.1.\+0   \+Work in progress, not officially released yet.
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+
+
+Task submitted by \href{http://benalman.com}{\texttt{ "{}Cowboy"{} Ben Alman}}
+
+{\itshape This file was generated on Thu Jul 16 2020 10\+:08\+:35.} 

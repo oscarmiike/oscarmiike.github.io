@@ -1,0 +1,136 @@
+\doxysection{Program.\+cs}
+\hypertarget{_program_8cs_source}{}\label{_program_8cs_source}\index{C:/Users/STRIDER/source/repos/AinslieAPI/Program.cs@{C:/Users/STRIDER/source/repos/AinslieAPI/Program.cs}}
+\mbox{\hyperlink{_program_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }Microsoft.AspNetCore.Authentication.JwtBearer;}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }Microsoft.AspNetCore.Authorization;}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }Microsoft.IdentityModel.Tokens;}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }System.Security.Claims;}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }Auth0.AspNetCore.Authentication;}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00006}00006\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_ainslie_a_p_i_1_1_helpers}{AinslieAPI.Helpers}};}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00007}00007\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_ainslie_a_p_i_1_1_authentication}{AinslieAPI.Authentication}};}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00008}00008\ \textcolor{keyword}{using\ }Microsoft.EntityFrameworkCore;}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00009}00009\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_ainslie_a_p_i_1_1_data_1_1_contexts}{AinslieAPI.Data.Contexts}};}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00010}00010\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_ainslie_a_p_i_1_1_services}{AinslieAPI.Services}};}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00011}00011\ \textcolor{keyword}{using\ }Microsoft.AspNetCore.Mvc.Infrastructure;}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00012}00012\ \textcolor{keyword}{using\ }Microsoft.Extensions.DependencyInjection;}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00013}00013\ \textcolor{keyword}{using\ }Microsoft.AspNetCore.Authentication.OpenIdConnect;}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00014}00014\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_ainslie_a_p_i_1_1_d_t_o_1_1_cache}{AinslieAPI.DTO.Cache}};}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00015}00015\ \textcolor{keyword}{using\ }Microsoft.OpenApi.Models;}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00016}00016\ \textcolor{keyword}{using\ }System.Reflection;}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00018}\mbox{\hyperlink{_program_8cs_a2f78352277081c620fd4cf92a5ce15e5}{00018}}\ var\ \mbox{\hyperlink{_program_8cs_a2f78352277081c620fd4cf92a5ce15e5}{builder}}\ =\ WebApplication.CreateBuilder(args);}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00020}00020\ \textcolor{comment}{//\ Learn\ more\ about\ configuring\ Swagger/OpenAPI\ at\ https://aka.ms/aspnetcore/swashbuckle}}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00021}\mbox{\hyperlink{_program_8cs_a0d7859f9cad50e8e9fdf015100780e07}{00021}}\ \mbox{\hyperlink{_program_8cs_a2f78352277081c620fd4cf92a5ce15e5}{builder}}.Services.AddEndpointsApiExplorer();}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00022}00022\ \textcolor{comment}{//\ enable\ xml\ comments\ for\ swagger}}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00023}\mbox{\hyperlink{_program_8cs_a58f9d04a5e5f84a62222f6b6ea1e4ee8}{00023}}\ \mbox{\hyperlink{_program_8cs_a2f78352277081c620fd4cf92a5ce15e5}{builder}}.Services.AddSwaggerGen(c\ =>}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00024}00024\ \{}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00025}00025\ \ \ \ \ c.SwaggerDoc(\textcolor{stringliteral}{"{}v1"{}},\ \textcolor{keyword}{new}\ OpenApiInfo\ \{\ Title\ =\ \textcolor{stringliteral}{"{}AinslieAPI"{}},\ Version\ =\ \textcolor{stringliteral}{"{}v1"{}}\ \});}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00027}00027\ \ \ \ \ var\ xmlFile\ =\ \$\textcolor{stringliteral}{"{}\{Assembly.GetExecutingAssembly().GetName().Name\}.xml"{}};}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00028}00028\ \ \ \ \ var\ xmlPath\ =\ Path.Combine(AppContext.BaseDirectory,\ xmlFile);}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00029}00029\ \ \ \ \ c.IncludeXmlComments(xmlPath);}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00030}00030\ \});}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00032}00032\ \textcolor{comment}{//\ Add\ services\ to\ the\ container.}}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00033}\mbox{\hyperlink{_program_8cs_abc3694a0e15618f2499e5a540264f833}{00033}}\ \mbox{\hyperlink{_program_8cs_a2f78352277081c620fd4cf92a5ce15e5}{builder}}.Services.AddControllers();}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00034}\mbox{\hyperlink{_program_8cs_a27653fc519cbff432dba883ffc999da9}{00034}}\ \mbox{\hyperlink{_program_8cs_a2f78352277081c620fd4cf92a5ce15e5}{builder}}.Services.AddControllersWithViews().AddRazorRuntimeCompilation();}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00036}00036\ \textcolor{comment}{//\ for\ MVC}}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00037}\mbox{\hyperlink{_program_8cs_a3a03be9c45b6cd98c2fe776773abd93b}{00037}}\ \mbox{\hyperlink{_program_8cs_a2f78352277081c620fd4cf92a5ce15e5}{builder}}.Services.AddMvc();}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00040}00040\ \textcolor{comment}{//builder.Services.AddEndpointsApiExplorer();}}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00041}00041\ \textcolor{comment}{//builder.Services.AddSwaggerGen();}}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00043}\mbox{\hyperlink{_program_8cs_ae1ff017e7d27d3d7ceb892e42523f056}{00043}}\ \mbox{\hyperlink{_program_8cs_a2f78352277081c620fd4cf92a5ce15e5}{builder}}.Services.AddDataProtection();}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00045}00045\ \textcolor{comment}{//\ Auth0\ integration}}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00046}\mbox{\hyperlink{_program_8cs_a5f7387dcdc9224fb2465abfedb39f33e}{00046}}\ \mbox{\hyperlink{_program_8cs_a2f78352277081c620fd4cf92a5ce15e5}{builder}}.Services.AddAuth0WebAppAuthentication(options\ =>\ \{}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00047}00047\ \ \ \ \ options.Domain\ =\ \mbox{\hyperlink{_program_8cs_a2f78352277081c620fd4cf92a5ce15e5}{builder}}.Configuration[\textcolor{stringliteral}{"{}AppSettings:Auth0Settings:Domain"{}}];}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00048}00048\ \ \ \ \ options.ClientId\ =\ \mbox{\hyperlink{_program_8cs_a2f78352277081c620fd4cf92a5ce15e5}{builder}}.Configuration[\textcolor{stringliteral}{"{}AppSettings:Auth0Settings:WebAppClientId"{}}];}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00049}00049\ \ \ \ \ options.Scope\ =\ \textcolor{stringliteral}{"{}openid\ profile\ email\ roles"{}};}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00050}00050\ \ \ \ \ options.OpenIdConnectEvents\ =\ \textcolor{keyword}{new}\ OpenIdConnectEvents()}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00051}00051\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ OnTicketReceived\ =\ context\ =>}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ catch\ new\ login}}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ var\ user\ =\ (ClaimsIdentity?)context.Principal?.Identity;}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ var\ logger\ =\ context.HttpContext.RequestServices.GetService<\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{LogService}}>();}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ logger?.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a917b9af360c0c6521ce36f4acbc72023}{LogInformation}}(\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_ab557dc1394f5cf56cfb78c765fdfffe6}{LogSources}}.OpenIdConnect,\ \$\textcolor{stringliteral}{"{}user\ \{user?.FindFirst(c\ =>\ c.Type\ ==\ ClaimTypes.Email)?.Value\}\ logged\ in"{}});}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Task.CompletedTask;}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00060}00060\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00061}00061\ \});}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00062}\mbox{\hyperlink{_program_8cs_aadf8f9cc7c83268596f33edad615d484}{00062}}\ \mbox{\hyperlink{_program_8cs_a2f78352277081c620fd4cf92a5ce15e5}{builder}}.Services.AddAuthorization(options\ =>}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00063}00063\ \{}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00064}00064\ \ \ \ \ options.AddPolicy(\textcolor{stringliteral}{"{}Admin"{}},\ policy\ =>\ policy.RequireRole(\textcolor{stringliteral}{"{}AinslieAPI\_Admin"{}}));}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00065}00065\ \ \ \ \ options.AddPolicy(\textcolor{stringliteral}{"{}User"{}},\ policy\ =>\ policy.RequireRole(\textcolor{stringliteral}{"{}AinslieAPI\_User"{}},\ \textcolor{stringliteral}{"{}AinslieAPI\_Admin"{}}));}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00066}00066\ \});}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00068}00068\ \textcolor{comment}{//\ configure\ strongly\ typed\ settings\ object}}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00069}\mbox{\hyperlink{_program_8cs_a551ec9df50e88d92ca7d435f85eb84ac}{00069}}\ \mbox{\hyperlink{_program_8cs_a2f78352277081c620fd4cf92a5ce15e5}{builder}}.Services.Configure<\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings}{AppSettings}}>(\mbox{\hyperlink{_program_8cs_a2f78352277081c620fd4cf92a5ce15e5}{builder}}.Configuration.GetSection(\textcolor{stringliteral}{"{}AppSettings"{}}));}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00071}00071\ \textcolor{comment}{//\ contexts}}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00072}\mbox{\hyperlink{_program_8cs_a8dd4492ea72c4099811f7078a065319c}{00072}}\ \mbox{\hyperlink{_program_8cs_a2f78352277081c620fd4cf92a5ce15e5}{builder}}.Services.AddDbContext<\mbox{\hyperlink{class_ainslie_a_p_i_1_1_data_1_1_contexts_1_1_local_context}{LocalContext}}>(options\ =>}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ options.UseSqlServer(\mbox{\hyperlink{_program_8cs_a2f78352277081c620fd4cf92a5ce15e5}{builder}}.Configuration.GetConnectionString(\textcolor{stringliteral}{"{}AinslieApiContext"{}})));}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00074}\mbox{\hyperlink{_program_8cs_ae69e0bf7a1dd60d1c3f7777f8148a501}{00074}}\ \mbox{\hyperlink{_program_8cs_a2f78352277081c620fd4cf92a5ce15e5}{builder}}.Services.AddDbContext<\mbox{\hyperlink{class_ainslie_a_p_i_1_1_data_1_1_contexts_1_1_tdcr_context}{TdcrContext}}>(options\ =>}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ options.UseSqlServer(\mbox{\hyperlink{_program_8cs_a2f78352277081c620fd4cf92a5ce15e5}{builder}}.Configuration.GetConnectionString(\textcolor{stringliteral}{"{}TdcrContext"{}})));}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00077}00077\ \textcolor{comment}{//\ configure\ DI\ for\ application\ services}}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00078}\mbox{\hyperlink{_program_8cs_af3fa75acc5bf8a4417fddd90098a2ff1}{00078}}\ \mbox{\hyperlink{_program_8cs_a2f78352277081c620fd4cf92a5ce15e5}{builder}}.Services.AddScoped<\mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils}{JwtUtils}}>();}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00079}\mbox{\hyperlink{_program_8cs_a637e10e5a52497bab492fa8388a6730e}{00079}}\ \mbox{\hyperlink{_program_8cs_a2f78352277081c620fd4cf92a5ce15e5}{builder}}.Services.AddScoped<\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{LogService}}>();}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00080}\mbox{\hyperlink{_program_8cs_ad8ea17c5acedc932375ba84ff4fa450b}{00080}}\ \mbox{\hyperlink{_program_8cs_a2f78352277081c620fd4cf92a5ce15e5}{builder}}.Services.AddScoped<\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service}{InternalApiService}}>();}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00081}\mbox{\hyperlink{_program_8cs_a929a7fadb5a85f16c0764c57c1a90cc2}{00081}}\ \mbox{\hyperlink{_program_8cs_a2f78352277081c620fd4cf92a5ce15e5}{builder}}.Services.AddScoped<\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_aw_api_service}{AwApiService}}>();}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00082}\mbox{\hyperlink{_program_8cs_a4ab72142ee0e35850f332092c6db6ee9}{00082}}\ \mbox{\hyperlink{_program_8cs_a2f78352277081c620fd4cf92a5ce15e5}{builder}}.Services.AddScoped<\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_netsuite_helper}{NetsuiteHelper}}>();}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00083}\mbox{\hyperlink{_program_8cs_aa3b0f5921a9783783575838334e4b83e}{00083}}\ \mbox{\hyperlink{_program_8cs_a2f78352277081c620fd4cf92a5ce15e5}{builder}}.Services.AddScoped<\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_cache_data_helper}{CacheDataHelper}}>();}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00084}\mbox{\hyperlink{_program_8cs_a00bcc4f608ced00ac9935a9d73ef5a18}{00084}}\ \mbox{\hyperlink{_program_8cs_a2f78352277081c620fd4cf92a5ce15e5}{builder}}.Services.AddSingleton<\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_cache_1_1_cached_data}{CachedData}}>();}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00085}\mbox{\hyperlink{_program_8cs_a0651b1cc6b2ec2a500b3fbaaaba6ac6c}{00085}}\ \mbox{\hyperlink{_program_8cs_a2f78352277081c620fd4cf92a5ce15e5}{builder}}.Services.AddHttpContextAccessor();}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00087}\mbox{\hyperlink{_program_8cs_a7b225fcb720e4d5ed2bbf60e28a25e6d}{00087}}\ var\ \mbox{\hyperlink{_program_8cs_a7b225fcb720e4d5ed2bbf60e28a25e6d}{app}}\ =\ \mbox{\hyperlink{_program_8cs_a2f78352277081c620fd4cf92a5ce15e5}{builder}}.Build();}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00089}\mbox{\hyperlink{_program_8cs_a79a944c7f0e25196ca3c5a8638b919b9}{00089}}\ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{_program_8cs_a7b225fcb720e4d5ed2bbf60e28a25e6d}{app}}.Environment.IsDevelopment())}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00090}00090\ \{}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00091}00091\ \ \ \ \ \mbox{\hyperlink{_program_8cs_a7b225fcb720e4d5ed2bbf60e28a25e6d}{app}}.UseDeveloperExceptionPage();}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00092}00092\ \ \ \ \ \mbox{\hyperlink{_program_8cs_a7b225fcb720e4d5ed2bbf60e28a25e6d}{app}}.UseSwagger();}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00093}00093\ \ \ \ \ \mbox{\hyperlink{_program_8cs_a7b225fcb720e4d5ed2bbf60e28a25e6d}{app}}.UseSwaggerUI();}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00094}00094\ \}}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00095}\mbox{\hyperlink{_program_8cs_a0544c3fe466e421738dae463968b70ba}{00095}}\ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00096}00096\ \{}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00097}00097\ \ \ \ \ \mbox{\hyperlink{_program_8cs_a7b225fcb720e4d5ed2bbf60e28a25e6d}{app}}.UseExceptionHandler(\textcolor{stringliteral}{"{}/Home/Error"{}});}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00098}00098\ \}}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00099}00099\ }
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00100}00100\ \textcolor{comment}{//\ custom\ jwt\ auth\ middleware}}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00101}\mbox{\hyperlink{_program_8cs_a2d9cdf8a59417af654fe357c417cdbf3}{00101}}\ \mbox{\hyperlink{_program_8cs_a7b225fcb720e4d5ed2bbf60e28a25e6d}{app}}.UseMiddleware<\mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_middleware}{JwtMiddleware}}>();}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00102}00102\ }
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00103}\mbox{\hyperlink{_program_8cs_a906a3ce545279a7a73941f1d7b64d7cf}{00103}}\ \mbox{\hyperlink{_program_8cs_a7b225fcb720e4d5ed2bbf60e28a25e6d}{app}}.UseStaticFiles();}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00104}00104\ }
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00106}00106\ \textcolor{comment}{//if\ (app.Environment.IsDevelopment())}}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00107}00107\ \textcolor{comment}{//\{}}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00108}00108\ \textcolor{comment}{//\ \ \ \ app.UseSwagger();}}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00109}00109\ \textcolor{comment}{//\ \ \ \ app.UseSwaggerUI();}}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00110}00110\ \textcolor{comment}{//\}}}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00111}00111\ }
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00112}\mbox{\hyperlink{_program_8cs_aa4d447fc3129a3aa301d736b8bd04ae9}{00112}}\ \mbox{\hyperlink{_program_8cs_a7b225fcb720e4d5ed2bbf60e28a25e6d}{app}}.UseHttpsRedirection();}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00113}00113\ }
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00114}00114\ \textcolor{comment}{//\ for\ MVC}}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00115}\mbox{\hyperlink{_program_8cs_a94c810d266751293a2d511a720a5625f}{00115}}\ \mbox{\hyperlink{_program_8cs_a7b225fcb720e4d5ed2bbf60e28a25e6d}{app}}.UseRouting();}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00116}00116\ }
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00117}00117\ \textcolor{comment}{//\ Auth0\ integration}}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00118}\mbox{\hyperlink{_program_8cs_a6435d8beeff4999dc0b0c6d60a86a4e2}{00118}}\ \mbox{\hyperlink{_program_8cs_a7b225fcb720e4d5ed2bbf60e28a25e6d}{app}}.UseAuthentication();}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00120}\mbox{\hyperlink{_program_8cs_af6f72d752b2e73aa0292f74bd13237ab}{00120}}\ \mbox{\hyperlink{_program_8cs_a7b225fcb720e4d5ed2bbf60e28a25e6d}{app}}.UseAuthorization();}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00121}00121\ }
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00122}00122\ \textcolor{comment}{//\ for\ MVC}}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00123}\mbox{\hyperlink{_program_8cs_a3f9367d9535f74074e3558463a01f337}{00123}}\ \mbox{\hyperlink{_program_8cs_a7b225fcb720e4d5ed2bbf60e28a25e6d}{app}}.UseEndpoints(endpoints\ =>}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00124}00124\ \{}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00125}00125\ \ \ \ \ endpoints.MapControllerRoute(\textcolor{stringliteral}{"{}default"{}},\ \textcolor{stringliteral}{"{}\{controller=Home\}/\{action=Index\}"{}});}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00126}00126\ \});}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00127}00127\ }
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00128}00128\ }
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00129}00129\ }
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00130}\mbox{\hyperlink{_program_8cs_a9e2ee3170aa6279b68eefd1651f7d96c}{00130}}\ \mbox{\hyperlink{_program_8cs_a7b225fcb720e4d5ed2bbf60e28a25e6d}{app}}.MapControllers();}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00131}00131\ }
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00132}\mbox{\hyperlink{_program_8cs_aaa3dbf02e269c3ef7e8546d290c6b3dd}{00132}}\ \mbox{\hyperlink{_program_8cs_a7b225fcb720e4d5ed2bbf60e28a25e6d}{app}}.Run();}
+
+\end{DoxyCode}

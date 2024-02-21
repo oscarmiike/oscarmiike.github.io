@@ -1,0 +1,76 @@
+\chapter{decompress-\/zip \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/bower/decompress-\/zip"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+org/bower/decompress-\/zip.\+svg?branch=master"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}a href="{}https\+://coveralls.\+io/r/bower/decompress-\/zip?branch=master"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://coveralls.\+io/repos/bower/decompress-\/zip/badge.\+png?branch=master"{} alt="{}\+Coverage Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m2af8c525ed2c58541f9392ff2df64fd8}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m2af8c525ed2c58541f9392ff2df64fd8}\index{decompress-\/zip $<$a href="{}https://travis-\/ci.org/bower/decompress-\/zip"{} $>$$<$img src="{}https://travis-\/ci.org/bower/decompress-\/zip.svg?branch=master"{} alt="{}Build Status"{}/$>$$<$/a$>$ $<$a href="{}https://coveralls.io/r/bower/decompress-\/zip?branch=master"{} $>$$<$img src="{}https://coveralls.io/repos/bower/decompress-\/zip/badge.png?branch=master"{} alt="{}Coverage Status"{}/$>$$<$/a$>$@{decompress-\/zip $<$a href=""https://travis-\/ci.org/bower/decompress-\/zip"" $>$$<$img src=""https://travis-\/ci.org/bower/decompress-\/zip.svg?branch=master"" alt=""Build Status""/$>$$<$/a$>$ $<$a href=""https://coveralls.io/r/bower/decompress-\/zip?branch=master"" $>$$<$img src=""https://coveralls.io/repos/bower/decompress-\/zip/badge.png?branch=master"" alt=""Coverage Status""/$>$$<$/a$>$}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m2af8c525ed2c58541f9392ff2df64fd8_autotoc_md2164}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m2af8c525ed2c58541f9392ff2df64fd8_autotoc_md2164}%
+ \begin{quote}
+Extract files from a ZIP archive \end{quote}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m2af8c525ed2c58541f9392ff2df64fd8_autotoc_md2165}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m2af8c525ed2c58541f9392ff2df64fd8_autotoc_md2165}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m2af8c525ed2c58541f9392ff2df64fd8_autotoc_md2166}{}\doxysubsection{\texorpdfstring{.extract(options)}{.extract(options)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m2af8c525ed2c58541f9392ff2df64fd8_autotoc_md2166}
+Extracts the contents of the ZIP archive {\ttfamily file}.
+
+Returns an Event\+Emitter with two possible events -\/ {\ttfamily error} on an error, and {\ttfamily extract} when the extraction has completed. The value passed to the {\ttfamily extract} event is a basic log of each file and how it was compressed.
+
+{\bfseries{Options}}
+\begin{DoxyItemize}
+\item {\bfseries{path}} {\itshape String} -\/ Path to extract into (default {\ttfamily .})
+\item {\bfseries{follow}} {\itshape Boolean} -\/ If true, rather than create stored symlinks as symlinks make a shallow copy of the target instead (default {\ttfamily false})
+\item {\bfseries{filter}} {\itshape Function} -\/ A function that will be called once for each file in the archive. It takes one argument which is an object containing details of the file. Return true for any file that you want to extract, and false otherwise. (default {\ttfamily null})
+\item {\bfseries{strip}} {\itshape Number} -\/ Remove leading folders in the path structure. Equivalent to {\ttfamily -\/-\/strip-\/components} for tar.
+\item {\bfseries{restrict}} {\itshape Boolean} -\/ If true, will restrict files from being created outside {\ttfamily options.\+path}. Setting to {\ttfamily false} has significant security \href{https://snyk.io/research/zip-slip-vulnerability}{\texttt{ implications}} if you are extracting untrusted data. (default {\ttfamily true})
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ DecompressZip\ =\ require('decompress-\/zip');}
+\DoxyCodeLine{var\ unzipper\ =\ new\ DecompressZip(filename)}
+\DoxyCodeLine{}
+\DoxyCodeLine{unzipper.on('error',\ function\ (err)\ \{}
+\DoxyCodeLine{\ \ \ \ console.log('Caught\ an\ error');}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{unzipper.on('extract',\ function\ (log)\ \{}
+\DoxyCodeLine{\ \ \ \ console.log('Finished\ extracting');}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{unzipper.on('progress',\ function\ (fileIndex,\ fileCount)\ \{}
+\DoxyCodeLine{\ \ \ \ console.log('Extracted\ file\ '\ +\ (fileIndex\ +\ 1)\ +\ '\ of\ '\ +\ fileCount);}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{unzipper.extract(\{}
+\DoxyCodeLine{\ \ \ \ path:\ 'some/path',}
+\DoxyCodeLine{\ \ \ \ filter:\ function\ (file)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ return\ file.type\ !==\ "{}SymbolicLink"{};}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+If {\ttfamily path} does not exist, decompress-\/zip will attempt to create it first.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m2af8c525ed2c58541f9392ff2df64fd8_autotoc_md2167}{}\doxysubsection{\texorpdfstring{.list()}{.list()}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m2af8c525ed2c58541f9392ff2df64fd8_autotoc_md2167}
+Much like extract, except\+:
+\begin{DoxyItemize}
+\item the success event is {\ttfamily list}
+\item the data for the event is an array of paths
+\item no files are actually extracted
+\item there are no options
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ DecompressZip\ =\ require('decompress-\/zip');}
+\DoxyCodeLine{var\ unzipper\ =\ new\ DecompressZip(filename)}
+\DoxyCodeLine{}
+\DoxyCodeLine{unzipper.on('error',\ function\ (err)\ \{}
+\DoxyCodeLine{\ \ \ \ console.log('Caught\ an\ error');}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{unzipper.on('list',\ function\ (files)\ \{}
+\DoxyCodeLine{\ \ \ \ console.log('The\ archive\ contains:');}
+\DoxyCodeLine{\ \ \ \ console.log(files);}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{unzipper.list();}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m2af8c525ed2c58541f9392ff2df64fd8_autotoc_md2168}{}\doxysection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m2af8c525ed2c58541f9392ff2df64fd8_autotoc_md2168}
+MIT © Bower team 

@@ -1,0 +1,99 @@
+\doxysection{Ainslie\+API.\+Controllers.\+Products\+Controller Class Reference}
+\hypertarget{class_ainslie_a_p_i_1_1_controllers_1_1_products_controller}{}\label{class_ainslie_a_p_i_1_1_controllers_1_1_products_controller}\index{AinslieAPI.Controllers.ProductsController@{AinslieAPI.Controllers.ProductsController}}
+
+
+Inheritance diagram for Ainslie\+API.\+Controllers.\+Products\+Controller\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=233pt]{class_ainslie_a_p_i_1_1_controllers_1_1_products_controller__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Ainslie\+API.\+Controllers.\+Products\+Controller\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=233pt]{class_ainslie_a_p_i_1_1_controllers_1_1_products_controller__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_products_controller_a902aa9119bd7712674f28f8b5a1a2fb0}{Products\+Controller}} (IHttp\+Context\+Accessor http\+Context\+Accessor, IOptions$<$ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings}{App\+Settings}} $>$ app\+Settings, \mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service}{Internal\+Api\+Service}} ia\+Service, \mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{Log\+Service}} logger)
+\begin{DoxyCompactList}\small\item\em Constructs the Products\+Controller with necessary dependencies for handling HTTP context, application settings, internal API services, and logging. \end{DoxyCompactList}\item 
+IAction\+Result \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_products_controller_ac20bed843f55f212dfb5ffe45d411f8f}{Price\+List}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves a list of current product prices. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_products_controller_8cs_source_l00022}{22}} of file \mbox{\hyperlink{_products_controller_8cs_source}{Products\+Controller.\+cs}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_ainslie_a_p_i_1_1_controllers_1_1_products_controller_a902aa9119bd7712674f28f8b5a1a2fb0}\label{class_ainslie_a_p_i_1_1_controllers_1_1_products_controller_a902aa9119bd7712674f28f8b5a1a2fb0} 
+\index{AinslieAPI.Controllers.ProductsController@{AinslieAPI.Controllers.ProductsController}!ProductsController@{ProductsController}}
+\index{ProductsController@{ProductsController}!AinslieAPI.Controllers.ProductsController@{AinslieAPI.Controllers.ProductsController}}
+\doxysubsubsection{\texorpdfstring{ProductsController()}{ProductsController()}}
+{\footnotesize\ttfamily Ainslie\+API.\+Controllers.\+Products\+Controller.\+Products\+Controller (\begin{DoxyParamCaption}\item[{IHttp\+Context\+Accessor}]{http\+Context\+Accessor,  }\item[{IOptions$<$ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings}{App\+Settings}} $>$}]{app\+Settings,  }\item[{\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service}{Internal\+Api\+Service}}}]{ia\+Service,  }\item[{\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{Log\+Service}}}]{logger }\end{DoxyParamCaption})}
+
+
+
+Constructs the Products\+Controller with necessary dependencies for handling HTTP context, application settings, internal API services, and logging. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em http\+Context\+Accessor} & Provides access to the HTTP context to retrieve the current user.\\
+\hline
+{\em app\+Settings} & Application settings for configuration purposes.\\
+\hline
+{\em ia\+Service} & Service for internal API calls related to products.\\
+\hline
+{\em logger} & Service for logging information and errors.\\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_products_controller_8cs_source_l00038}{38}} of file \mbox{\hyperlink{_products_controller_8cs_source}{Products\+Controller.\+cs}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_ainslie_a_p_i_1_1_controllers_1_1_products_controller_ac20bed843f55f212dfb5ffe45d411f8f}\label{class_ainslie_a_p_i_1_1_controllers_1_1_products_controller_ac20bed843f55f212dfb5ffe45d411f8f} 
+\index{AinslieAPI.Controllers.ProductsController@{AinslieAPI.Controllers.ProductsController}!PriceList@{PriceList}}
+\index{PriceList@{PriceList}!AinslieAPI.Controllers.ProductsController@{AinslieAPI.Controllers.ProductsController}}
+\doxysubsubsection{\texorpdfstring{PriceList()}{PriceList()}}
+{\footnotesize\ttfamily IAction\+Result Ainslie\+API.\+Controllers.\+Products\+Controller.\+Price\+List (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retrieves a list of current product prices. 
+
+\begin{DoxyReturn}{Returns}
+An IAction\+Result containing the product pricing information or an error message.
+\end{DoxyReturn}
+
+
+This endpoint requires authorisation and is accessible only to users with specific roles. It fetches product pricing data using the Internal\+Api\+Service and returns this data within an HTTP response. Logging is performed to capture the request context and authenticated user\textquotesingle{}s details. 
+
+Definition at line \mbox{\hyperlink{_products_controller_8cs_source_l00059}{59}} of file \mbox{\hyperlink{_products_controller_8cs_source}{Products\+Controller.\+cs}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_ainslie_a_p_i_1_1_controllers_1_1_products_controller_ac20bed843f55f212dfb5ffe45d411f8f_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+STRIDER/source/repos/\+Ainslie\+API/\+Controllers/\mbox{\hyperlink{_products_controller_8cs}{Products\+Controller.\+cs}}\end{DoxyCompactItemize}

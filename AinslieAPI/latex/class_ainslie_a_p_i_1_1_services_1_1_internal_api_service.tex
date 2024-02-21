@@ -1,0 +1,297 @@
+\doxysection{Ainslie\+API.\+Services.\+Internal\+Api\+Service Class Reference}
+\hypertarget{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service}{}\label{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service}\index{AinslieAPI.Services.InternalApiService@{AinslieAPI.Services.InternalApiService}}
+
+
+Provides services for interacting with Internal API, particularly for retrieving Green ID customer data.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service_aa12cb20e0b39fccf99037e24cec32cda}{Internal\+Api\+Service}} (IOptions$<$ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings}{App\+Settings}} $>$ app\+Settings, \mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{Log\+Service}} log\+Service)
+\begin{DoxyCompactList}\small\item\em Initialises a new instance of the Internal\+Api\+Service with application settings and a logging service. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_green_id_1_1_green_id_customer}{Green\+Id\+Customer}} \mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service_ac96a3e52c78c6b67de6a0f244fd70a60}{Get\+Green\+Id\+Customer}} (string branch, string user\+Id)
+\begin{DoxyCompactList}\small\item\em Retrieves Green ID customer data from Internal API based on the specified branch and user ID. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service_a7a070bb565246fb698283432930d9cd1}{Post\+Netsuite\+Customer}} (\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_netsuite_customer_request}{Netsuite\+Customer\+Request}} netsuite\+Customer\+Request)
+\begin{DoxyCompactList}\small\item\em Submits customer data to Netsuite via Internal API and retrieves the Netsuite customer ID. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service_aa8c183f663dbc4061a007aee4e5cf28e}{Update\+Green\+Id\+Db\+Netsuite\+Id}} (string green\+Id\+Ref, int netsuite\+Id)
+\begin{DoxyCompactList}\small\item\em Updates the Netsuite ID associated with a specific Green ID record in the database. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service_af507e96372a12f14e6ae166a5d495ef2}{Send\+Email}} (\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_internal_api_1_1_email_post}{Email\+Post}} email)
+\begin{DoxyCompactList}\small\item\em Sends an email using the details provided in the Email\+Post object via Internal API. \end{DoxyCompactList}\item 
+List$<$ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_priceapp_1_1_product_price}{Product\+Price}} $>$? \mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service_a0c4c5cccb2233540343e36fe0e8a0acc}{Get\+Product\+Pricing}} ()
+\begin{DoxyCompactList}\small\item\em Fetches the current product pricing from the internal API and deserialises the response into a list of Product\+Price objects. \end{DoxyCompactList}\item 
+List$<$ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_priceapp_1_1_asset_price}{Asset\+Price}} $>$? \mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service_a09c4662b56f1cf03cfecb9928e1e884a}{Get\+Asset\+Pricing}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves the current asset pricing from Internal API and deserialises the response into a list of Asset\+Price objects. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Provides services for interacting with Internal API, particularly for retrieving Green ID customer data. 
+
+Definition at line \mbox{\hyperlink{_internal_api_service_8cs_source_l00017}{17}} of file \mbox{\hyperlink{_internal_api_service_8cs_source}{Internal\+Api\+Service.\+cs}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service_aa12cb20e0b39fccf99037e24cec32cda}\label{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service_aa12cb20e0b39fccf99037e24cec32cda} 
+\index{AinslieAPI.Services.InternalApiService@{AinslieAPI.Services.InternalApiService}!InternalApiService@{InternalApiService}}
+\index{InternalApiService@{InternalApiService}!AinslieAPI.Services.InternalApiService@{AinslieAPI.Services.InternalApiService}}
+\doxysubsubsection{\texorpdfstring{InternalApiService()}{InternalApiService()}}
+{\footnotesize\ttfamily Ainslie\+API.\+Services.\+Internal\+Api\+Service.\+Internal\+Api\+Service (\begin{DoxyParamCaption}\item[{IOptions$<$ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings}{App\+Settings}} $>$}]{app\+Settings,  }\item[{\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{Log\+Service}}}]{log\+Service }\end{DoxyParamCaption})}
+
+
+
+Initialises a new instance of the Internal\+Api\+Service with application settings and a logging service. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em app\+Settings} & Application settings for configuration.\\
+\hline
+{\em log\+Service} & Service for logging errors and information.\\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_internal_api_service_8cs_source_l00028}{28}} of file \mbox{\hyperlink{_internal_api_service_8cs_source}{Internal\+Api\+Service.\+cs}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service_a09c4662b56f1cf03cfecb9928e1e884a}\label{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service_a09c4662b56f1cf03cfecb9928e1e884a} 
+\index{AinslieAPI.Services.InternalApiService@{AinslieAPI.Services.InternalApiService}!GetAssetPricing@{GetAssetPricing}}
+\index{GetAssetPricing@{GetAssetPricing}!AinslieAPI.Services.InternalApiService@{AinslieAPI.Services.InternalApiService}}
+\doxysubsubsection{\texorpdfstring{GetAssetPricing()}{GetAssetPricing()}}
+{\footnotesize\ttfamily List$<$ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_priceapp_1_1_asset_price}{Asset\+Price}} $>$? Ainslie\+API.\+Services.\+Internal\+Api\+Service.\+Get\+Asset\+Pricing (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retrieves the current asset pricing from Internal API and deserialises the response into a list of Asset\+Price objects. 
+
+\begin{DoxyReturn}{Returns}
+A list of Asset\+Price objects, or null if the request fails or encounters an error.
+\end{DoxyReturn}
+
+
+Initiates a GET request to Internal API\textquotesingle{}s asset list endpoint. Errors during the request or deserialisation process are logged. 
+
+Definition at line \mbox{\hyperlink{_internal_api_service_8cs_source_l00284}{284}} of file \mbox{\hyperlink{_internal_api_service_8cs_source}{Internal\+Api\+Service.\+cs}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service_a09c4662b56f1cf03cfecb9928e1e884a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service_a09c4662b56f1cf03cfecb9928e1e884a_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service_ac96a3e52c78c6b67de6a0f244fd70a60}\label{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service_ac96a3e52c78c6b67de6a0f244fd70a60} 
+\index{AinslieAPI.Services.InternalApiService@{AinslieAPI.Services.InternalApiService}!GetGreenIdCustomer@{GetGreenIdCustomer}}
+\index{GetGreenIdCustomer@{GetGreenIdCustomer}!AinslieAPI.Services.InternalApiService@{AinslieAPI.Services.InternalApiService}}
+\doxysubsubsection{\texorpdfstring{GetGreenIdCustomer()}{GetGreenIdCustomer()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_green_id_1_1_green_id_customer}{Green\+Id\+Customer}} Ainslie\+API.\+Services.\+Internal\+Api\+Service.\+Get\+Green\+Id\+Customer (\begin{DoxyParamCaption}\item[{string}]{branch,  }\item[{string}]{user\+Id }\end{DoxyParamCaption})}
+
+
+
+Retrieves Green ID customer data from Internal API based on the specified branch and user ID. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em branch} & The branch identifier for the customer data request.\\
+\hline
+{\em user\+Id} & The user ID associated with the Green ID customer data.\\
+\hline
+\end{DoxyParams}
+
+
+\begin{DoxyReturn}{Returns}
+A Green\+Id\+Customer object containing the customer\textquotesingle{}s details, or null if no data is found or an error occurs.
+\end{DoxyReturn}
+
+
+Makes a GET request to Internal API using branch and user ID as parameters. Logs detailed errors if the request fails. 
+
+Definition at line \mbox{\hyperlink{_internal_api_service_8cs_source_l00046}{46}} of file \mbox{\hyperlink{_internal_api_service_8cs_source}{Internal\+Api\+Service.\+cs}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service_ac96a3e52c78c6b67de6a0f244fd70a60_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service_ac96a3e52c78c6b67de6a0f244fd70a60_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service_a0c4c5cccb2233540343e36fe0e8a0acc}\label{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service_a0c4c5cccb2233540343e36fe0e8a0acc} 
+\index{AinslieAPI.Services.InternalApiService@{AinslieAPI.Services.InternalApiService}!GetProductPricing@{GetProductPricing}}
+\index{GetProductPricing@{GetProductPricing}!AinslieAPI.Services.InternalApiService@{AinslieAPI.Services.InternalApiService}}
+\doxysubsubsection{\texorpdfstring{GetProductPricing()}{GetProductPricing()}}
+{\footnotesize\ttfamily List$<$ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_priceapp_1_1_product_price}{Product\+Price}} $>$? Ainslie\+API.\+Services.\+Internal\+Api\+Service.\+Get\+Product\+Pricing (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Fetches the current product pricing from the internal API and deserialises the response into a list of Product\+Price objects. 
+
+\begin{DoxyReturn}{Returns}
+A list of Product\+Price objects, or null if the request fails or encounters an error.
+\end{DoxyReturn}
+
+
+Sends a GET request to the internal API\textquotesingle{}s product list endpoint. Logs errors or exceptions to aid in diagnosing issues with fetching or deserialising the data. 
+
+Definition at line \mbox{\hyperlink{_internal_api_service_8cs_source_l00238}{238}} of file \mbox{\hyperlink{_internal_api_service_8cs_source}{Internal\+Api\+Service.\+cs}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service_a0c4c5cccb2233540343e36fe0e8a0acc_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service_a0c4c5cccb2233540343e36fe0e8a0acc_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service_a7a070bb565246fb698283432930d9cd1}\label{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service_a7a070bb565246fb698283432930d9cd1} 
+\index{AinslieAPI.Services.InternalApiService@{AinslieAPI.Services.InternalApiService}!PostNetsuiteCustomer@{PostNetsuiteCustomer}}
+\index{PostNetsuiteCustomer@{PostNetsuiteCustomer}!AinslieAPI.Services.InternalApiService@{AinslieAPI.Services.InternalApiService}}
+\doxysubsubsection{\texorpdfstring{PostNetsuiteCustomer()}{PostNetsuiteCustomer()}}
+{\footnotesize\ttfamily int Ainslie\+API.\+Services.\+Internal\+Api\+Service.\+Post\+Netsuite\+Customer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_netsuite_customer_request}{Netsuite\+Customer\+Request}}}]{netsuite\+Customer\+Request }\end{DoxyParamCaption})}
+
+
+
+Submits customer data to Netsuite via Internal API and retrieves the Netsuite customer ID. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em netsuite\+Customer\+Request} & The customer data to be submitted to Netsuite.\\
+\hline
+\end{DoxyParams}
+
+
+\begin{DoxyReturn}{Returns}
+The Netsuite customer ID on success, or 0 if the submission fails.
+\end{DoxyReturn}
+
+
+This method attempts to post the provided customer data to Netsuite using an API call. It handles errors and exceptions by logging detailed messages for troubleshooting. Success or failure is determined by the response status. 
+
+Definition at line \mbox{\hyperlink{_internal_api_service_8cs_source_l00099}{99}} of file \mbox{\hyperlink{_internal_api_service_8cs_source}{Internal\+Api\+Service.\+cs}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service_a7a070bb565246fb698283432930d9cd1_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service_a7a070bb565246fb698283432930d9cd1_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service_af507e96372a12f14e6ae166a5d495ef2}\label{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service_af507e96372a12f14e6ae166a5d495ef2} 
+\index{AinslieAPI.Services.InternalApiService@{AinslieAPI.Services.InternalApiService}!SendEmail@{SendEmail}}
+\index{SendEmail@{SendEmail}!AinslieAPI.Services.InternalApiService@{AinslieAPI.Services.InternalApiService}}
+\doxysubsubsection{\texorpdfstring{SendEmail()}{SendEmail()}}
+{\footnotesize\ttfamily bool Ainslie\+API.\+Services.\+Internal\+Api\+Service.\+Send\+Email (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_internal_api_1_1_email_post}{Email\+Post}}}]{email }\end{DoxyParamCaption})}
+
+
+
+Sends an email using the details provided in the Email\+Post object via Internal API. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em email} & The email details, including recipients, subject, and body.\\
+\hline
+\end{DoxyParams}
+
+
+\begin{DoxyReturn}{Returns}
+bool indicating success {\ttfamily (true)} or failure {\ttfamily (false)}
+\end{DoxyReturn}
+
+
+Executes a POST request to Internal API\textquotesingle{}s email endpoint, serialising the Email\+Post object as JSON in the request body. Logs errors or exceptions encountered during the process. 
+
+Definition at line \mbox{\hyperlink{_internal_api_service_8cs_source_l00208}{208}} of file \mbox{\hyperlink{_internal_api_service_8cs_source}{Internal\+Api\+Service.\+cs}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service_af507e96372a12f14e6ae166a5d495ef2_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service_aa8c183f663dbc4061a007aee4e5cf28e}\label{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service_aa8c183f663dbc4061a007aee4e5cf28e} 
+\index{AinslieAPI.Services.InternalApiService@{AinslieAPI.Services.InternalApiService}!UpdateGreenIdDbNetsuiteId@{UpdateGreenIdDbNetsuiteId}}
+\index{UpdateGreenIdDbNetsuiteId@{UpdateGreenIdDbNetsuiteId}!AinslieAPI.Services.InternalApiService@{AinslieAPI.Services.InternalApiService}}
+\doxysubsubsection{\texorpdfstring{UpdateGreenIdDbNetsuiteId()}{UpdateGreenIdDbNetsuiteId()}}
+{\footnotesize\ttfamily bool Ainslie\+API.\+Services.\+Internal\+Api\+Service.\+Update\+Green\+Id\+Db\+Netsuite\+Id (\begin{DoxyParamCaption}\item[{string}]{green\+Id\+Ref,  }\item[{int}]{netsuite\+Id }\end{DoxyParamCaption})}
+
+
+
+Updates the Netsuite ID associated with a specific Green ID record in the database. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em green\+Id\+Ref} & The reference identifier for the Green ID record.\\
+\hline
+{\em netsuite\+Id} & The Netsuite ID to associate with the Green ID record.\\
+\hline
+\end{DoxyParams}
+
+
+\begin{DoxyReturn}{Returns}
+bool indicating success {\ttfamily (true)} or failure {\ttfamily (false)}
+\end{DoxyReturn}
+
+
+Attempts to update the Green ID database record with the specified Netsuite ID via Internal API call. 
+
+Definition at line \mbox{\hyperlink{_internal_api_service_8cs_source_l00154}{154}} of file \mbox{\hyperlink{_internal_api_service_8cs_source}{Internal\+Api\+Service.\+cs}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service_aa8c183f663dbc4061a007aee4e5cf28e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service_aa8c183f663dbc4061a007aee4e5cf28e_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+STRIDER/source/repos/\+Ainslie\+API/\+Services/\mbox{\hyperlink{_internal_api_service_8cs}{Internal\+Api\+Service.\+cs}}\end{DoxyCompactItemize}

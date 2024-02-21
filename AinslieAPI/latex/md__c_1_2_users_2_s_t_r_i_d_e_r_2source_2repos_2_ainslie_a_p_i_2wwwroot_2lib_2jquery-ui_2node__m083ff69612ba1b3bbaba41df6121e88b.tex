@@ -1,0 +1,835 @@
+\chapter{Uglify\+JS 3}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m083ff69612ba1b3bbaba41df6121e88b}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m083ff69612ba1b3bbaba41df6121e88b}\index{UglifyJS 3@{UglifyJS 3}}
+Uglify\+JS is a Java\+Script parser, minifier, compressor and beautifier toolkit.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m083ff69612ba1b3bbaba41df6121e88b_autotoc_md5080}{}\doxysubsubsection{\texorpdfstring{Note\+:}{Note\+:}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m083ff69612ba1b3bbaba41df6121e88b_autotoc_md5080}
+
+\begin{DoxyItemize}
+\item \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}{\ttfamily uglify-\/js@3} has a simplified API and CLI that is not backwards compatible with \href{https://github.com/mishoo/UglifyJS2/tree/v2.x}{\texttt{ {\ttfamily uglify-\/js@2}}}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}.
+\item {\bfseries{Documentation for Uglify\+JS {\ttfamily 2.\+x} releases can be found \href{https://github.com/mishoo/UglifyJS2/tree/v2.x}{\texttt{ here}}}}.
+\item {\ttfamily uglify-\/js} only supports Java\+Script (ECMAScript 5).
+\item To minify ECMAScript 2015 or above, transpile using tools like \href{https://babeljs.io/}{\texttt{ Babel}}.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m083ff69612ba1b3bbaba41df6121e88b_autotoc_md5081}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m083ff69612ba1b3bbaba41df6121e88b_autotoc_md5081}
+First make sure you have installed the latest version of \href{http://nodejs.org/}{\texttt{ node.\+js}} (You may need to restart your computer after this step).
+
+From NPM for use as a command line app\+: \begin{DoxyVerb}npm install uglify-js -g
+\end{DoxyVerb}
+ From NPM for programmatic use\+: \begin{DoxyVerb}npm install uglify-js
+\end{DoxyVerb}
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m083ff69612ba1b3bbaba41df6121e88b_autotoc_md5082}{}\doxysection{\texorpdfstring{Command line usage}{Command line usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m083ff69612ba1b3bbaba41df6121e88b_autotoc_md5082}
+\begin{DoxyVerb}uglifyjs [input files] [options]
+\end{DoxyVerb}
+ Uglify\+JS can take multiple input files. It\textquotesingle{}s recommended that you pass the input files first, then pass the options. Uglify\+JS will parse input files in sequence and apply any compression options. The files are parsed in the same global scope, that is, a reference from a file to some variable/function declared in another file will be matched properly.
+
+If no input file is specified, Uglify\+JS will read from STDIN.
+
+If you wish to pass your options before the input files, separate the two with a double dash to prevent input files being used as option arguments\+: \begin{DoxyVerb}uglifyjs --compress --mangle -- input.js
+\end{DoxyVerb}
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m083ff69612ba1b3bbaba41df6121e88b_autotoc_md5083}{}\doxysubsubsection{\texorpdfstring{Command line options}{Command line options}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m083ff69612ba1b3bbaba41df6121e88b_autotoc_md5083}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{-\/h,\ -\/-\/help\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Print\ usage\ information.}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \`{}-\/-\/help\ options`\ for\ details\ on\ available\ options.}
+\DoxyCodeLine{-\/V,\ -\/-\/version\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Print\ version\ number.}
+\DoxyCodeLine{-\/p,\ -\/-\/parse\ <options>\ \ \ \ \ \ \ Specify\ parser\ options:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \`{}acorn`\ \ Use\ Acorn\ for\ parsing.}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \`{}bare\_returns`\ \ Allow\ return\ outside\ of\ functions.}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Useful\ when\ minifying\ CommonJS}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ modules\ and\ Userscripts\ that\ may}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ be\ anonymous\ function\ wrapped\ (IIFE)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ by\ the\ .user.js\ engine\ \`{}caller`.}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \`{}expression`\ \ Parse\ a\ single\ expression,\ rather\ than}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ a\ program\ (for\ parsing\ JSON).}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \`{}spidermonkey`\ \ Assume\ input\ files\ are\ SpiderMonkey}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ AST\ format\ (as\ JSON).}
+\DoxyCodeLine{-\/c,\ -\/-\/compress\ [options]\ \ \ \ Enable\ compressor/specify\ compressor\ options:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \`{}pure\_funcs`\ \ List\ of\ functions\ that\ can\ be\ safely}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ removed\ when\ their\ return\ values\ are}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ not\ used.}
+\DoxyCodeLine{-\/m,\ -\/-\/mangle\ [options]\ \ \ \ \ \ Mangle\ names/specify\ mangler\ options:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \`{}reserved`\ \ List\ of\ names\ that\ should\ not\ be\ mangled.}
+\DoxyCodeLine{-\/-\/mangle-\/props\ [options]\ \ \ \ Mangle\ properties/specify\ mangler\ options:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \`{}builtins`\ \ Mangle\ property\ names\ that\ overlaps}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ with\ standard\ JavaScript\ globals.}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \`{}debug`\ \ Add\ debug\ prefix\ and\ suffix.}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \`{}domprops`\ \ Mangle\ property\ names\ that\ overlaps}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ with\ DOM\ properties.}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \`{}keep\_quoted`\ \ Only\ mangle\ unquoted\ properties.}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \`{}regex`\ \ Only\ mangle\ matched\ property\ names.}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \`{}reserved`\ \ List\ of\ names\ that\ should\ not\ be\ mangled.}
+\DoxyCodeLine{-\/b,\ -\/-\/beautify\ [options]\ \ \ \ Beautify\ output/specify\ output\ options:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \`{}beautify`\ \ Enabled\ with\ \`{}-\/-\/beautify`\ by\ default.}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \`{}preamble`\ \ Preamble\ to\ prepend\ to\ the\ output.\ You}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ can\ use\ this\ to\ insert\ a\ comment,\ for}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ example\ for\ licensing\ information.}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ This\ will\ not\ be\ parsed,\ but\ the\ source}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ map\ will\ adjust\ for\ its\ presence.}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \`{}quote\_style`\ \ Quote\ style:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0\ -\/\ auto}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 1\ -\/\ single}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 2\ -\/\ double}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 3\ -\/\ original}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \`{}wrap\_iife`\ \ Wrap\ IIFEs\ in\ parenthesis.\ Note:\ you\ may}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ want\ to\ disable\ \`{}negate\_iife`\ under}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ compressor\ options.}
+\DoxyCodeLine{-\/o,\ -\/-\/output\ <file>\ \ \ \ \ \ \ \ \ Output\ file\ path\ (default\ STDOUT).\ Specify\ \`{}ast`\ or}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \`{}spidermonkey`\ to\ write\ UglifyJS\ or\ SpiderMonkey\ AST}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ as\ JSON\ to\ STDOUT\ respectively.}
+\DoxyCodeLine{-\/-\/comments\ [filter]\ \ \ \ \ \ \ \ \ Preserve\ copyright\ comments\ in\ the\ output.\ By}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ default\ this\ works\ like\ Google\ Closure,\ keeping}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ JSDoc-\/style\ comments\ that\ contain\ "{}@license"{}\ or}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}@preserve"{}.\ You\ can\ optionally\ pass\ one\ of\ the}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ following\ arguments\ to\ this\ flag:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/\ "{}all"{}\ to\ keep\ all\ comments}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/\ a\ valid\ JS\ RegExp\ like\ \`{}/foo/`\ or\ \`{}/\string^!/`\ to}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ keep\ only\ matching\ comments.}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Note\ that\ currently\ not\ *all*\ comments\ can\ be}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ kept\ when\ compression\ is\ on,\ because\ of\ dead}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ code\ removal\ or\ cascading\ statements\ into}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sequences.}
+\DoxyCodeLine{-\/-\/config-\/file\ <file>\ \ \ \ \ \ \ \ Read\ \`{}minify()`\ options\ from\ JSON\ file.}
+\DoxyCodeLine{-\/d,\ -\/-\/define\ <expr>[=value]\ Global\ definitions.}
+\DoxyCodeLine{-\/e,\ -\/-\/enclose\ [arg[:value]]\ Embed\ everything\ in\ a\ big\ function,\ with\ configurable}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ argument(s)\ \&\ value(s).}
+\DoxyCodeLine{-\/-\/ie8\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Support\ non-\/standard\ Internet\ Explorer\ 8.}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Equivalent\ to\ setting\ \`{}ie8:\ true`\ in\ \`{}minify()`}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for\ \`{}compress`,\ \`{}mangle`\ and\ \`{}output`\ options.}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ By\ default\ UglifyJS\ will\ not\ try\ to\ be\ IE-\/proof.}
+\DoxyCodeLine{-\/-\/keep-\/fnames\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Do\ not\ mangle/drop\ function\ names.\ \ Useful\ for}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ code\ relying\ on\ Function.prototype.name.}
+\DoxyCodeLine{-\/-\/name-\/cache\ <file>\ \ \ \ \ \ \ \ \ File\ to\ hold\ mangled\ name\ mappings.}
+\DoxyCodeLine{-\/-\/self\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Build\ UglifyJS\ as\ a\ library\ (implies\ -\/-\/wrap\ UglifyJS)}
+\DoxyCodeLine{-\/-\/source-\/map\ [options]\ \ \ \ \ \ Enable\ source\ map/specify\ source\ map\ options:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \`{}base`\ \ Path\ to\ compute\ relative\ paths\ from\ input\ files.}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \`{}content`\ \ Input\ source\ map,\ useful\ if\ you're\ compressing}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ JS\ that\ was\ generated\ from\ some\ other\ original}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ code.\ Specify\ "{}inline"{}\ if\ the\ source\ map\ is}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ included\ within\ the\ sources.}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \`{}filename`\ \ Filename\ and/or\ location\ of\ the\ output\ source}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (sets\ \`{}file`\ attribute\ in\ source\ map).}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \`{}includeSources`\ \ Pass\ this\ flag\ if\ you\ want\ to\ include}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ the\ content\ of\ source\ files\ in\ the}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ source\ map\ as\ sourcesContent\ property.}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \`{}root`\ \ Path\ to\ the\ original\ source\ to\ be\ included\ in}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ the\ source\ map.}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \`{}url`\ \ If\ specified,\ path\ to\ the\ source\ map\ to\ append\ in}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \`{}//\#\ sourceMappingURL`.}
+\DoxyCodeLine{-\/-\/timings\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Display\ operations\ run\ time\ on\ STDERR.}
+\DoxyCodeLine{-\/-\/toplevel\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Compress\ and/or\ mangle\ variables\ in\ top\ level\ scope.}
+\DoxyCodeLine{-\/-\/verbose\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Print\ diagnostic\ messages.}
+\DoxyCodeLine{-\/-\/warn\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Print\ warning\ messages.}
+\DoxyCodeLine{-\/-\/wrap\ <name>\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Embed\ everything\ in\ a\ big\ function,\ making\ the}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ “exports”\ and\ “global”\ variables\ available.\ You}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ need\ to\ pass\ an\ argument\ to\ this\ option\ to}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ specify\ the\ name\ that\ your\ module\ will\ take}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ when\ included\ in,\ say,\ a\ browser.}
+
+\end{DoxyCode}
+
+
+Specify {\ttfamily -\/-\/output} ({\ttfamily -\/o}) to declare the output file. Otherwise the output goes to STDOUT.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m083ff69612ba1b3bbaba41df6121e88b_autotoc_md5084}{}\doxysubsection{\texorpdfstring{CLI source map options}{CLI source map options}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m083ff69612ba1b3bbaba41df6121e88b_autotoc_md5084}
+Uglify\+JS can generate a source map file, which is highly useful for debugging your compressed Java\+Script. To get a source map, pass {\ttfamily -\/-\/source-\/map -\/-\/output output.\+js} (source map will be written out to {\ttfamily output.\+js.\+map}).
+
+Additional options\+:
+
+
+\begin{DoxyItemize}
+\item `-\/-\/source-\/map "{}filename='$<$\+NAME$>$\textquotesingle{}"{}{\ttfamily to specify the name of the source map. The value of }filename{\ttfamily is only used to set}file\`{} attribute (see \href{https://docs.google.com/document/d/1U1RGAehQwRypUTovF1KRlpiOFze0b-_2gc6fAH0KY0k}{\texttt{ the spec}}) in source map file.
+\item `-\/-\/source-\/map "{}root='$<$\+URL$>$\textquotesingle{}"{}\`{} to pass the URL where the original files can be found.
+\item `-\/-\/source-\/map "{}url='$<$\+URL$>$\textquotesingle{}"{}{\ttfamily to specify the URL where the source map can be found. Otherwise Uglify\+JS assumes HTTP}X-\/\+Source\+Map{\ttfamily is being used and will omit the }//\# source\+Mapping\+URL=\`{} directive.
+\end{DoxyItemize}
+
+For example\+: \begin{DoxyVerb}uglifyjs js/file1.js js/file2.js \
+         -o foo.min.js -c -m \
+         --source-map "root='http://foo.com/src',url='foo.min.js.map'"
+\end{DoxyVerb}
+ The above will compress and mangle {\ttfamily file1.\+js} and {\ttfamily file2.\+js}, will drop the output in {\ttfamily foo.\+min.\+js} and the source map in {\ttfamily foo.\+min.\+js.\+map}. The source mapping will refer to {\ttfamily \href{http://foo.com/src/js/file1.js}{\texttt{ http\+://foo.\+com/src/js/file1.\+js}}} and {\ttfamily \href{http://foo.com/src/js/file2.js}{\texttt{ http\+://foo.\+com/src/js/file2.\+js}}} (in fact it will list {\ttfamily \href{http://foo.com/src}{\texttt{ http\+://foo.\+com/src}}} as the source map root, and the original files as {\ttfamily js/file1.\+js} and {\ttfamily js/file2.\+js}).\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m083ff69612ba1b3bbaba41df6121e88b_autotoc_md5085}{}\doxysubsubsection{\texorpdfstring{Composed source map}{Composed source map}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m083ff69612ba1b3bbaba41df6121e88b_autotoc_md5085}
+When you\textquotesingle{}re compressing JS code that was output by a compiler such as Coffee\+Script, mapping to the JS code won\textquotesingle{}t be too helpful. Instead, you\textquotesingle{}d like to map back to the original code (i.\+e. Coffee\+Script). Uglify\+JS has an option to take an input source map. Assuming you have a mapping from Coffee\+Script → compiled JS, Uglify\+JS can generate a map from Coffee\+Script → compressed JS by mapping every token in the compiled JS to its original location.
+
+To use this feature pass `-\/-\/source-\/map "{}content='/path/to/input/source.\+map\textquotesingle{}"{}\`{} or \`{}-\/-\/source-\/map "{}content=inline"{}\`{} if the source map is included inline with the sources.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m083ff69612ba1b3bbaba41df6121e88b_autotoc_md5086}{}\doxysubsection{\texorpdfstring{CLI compress options}{CLI compress options}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m083ff69612ba1b3bbaba41df6121e88b_autotoc_md5086}
+You need to pass {\ttfamily -\/-\/compress} ({\ttfamily -\/c}) to enable the compressor. Optionally you can pass a comma-\/separated list of compress options.
+
+Options are in the form {\ttfamily foo=bar}, or just {\ttfamily foo} (the latter implies a boolean option that you want to set {\ttfamily true}; it\textquotesingle{}s effectively a shortcut for {\ttfamily foo=true}).
+
+Example\+: \begin{DoxyVerb}uglifyjs file.js -c toplevel,sequences=false
+\end{DoxyVerb}
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m083ff69612ba1b3bbaba41df6121e88b_autotoc_md5087}{}\doxysubsection{\texorpdfstring{CLI mangle options}{CLI mangle options}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m083ff69612ba1b3bbaba41df6121e88b_autotoc_md5087}
+To enable the mangler you need to pass {\ttfamily -\/-\/mangle} ({\ttfamily -\/m}). The following (comma-\/separated) options are supported\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily toplevel} (default {\ttfamily false}) -- mangle names declared in the top level scope.
+\item {\ttfamily eval} (default {\ttfamily false}) -- mangle names visible in scopes where {\ttfamily eval} or {\ttfamily with} are used.
+\end{DoxyItemize}
+
+When mangling is enabled but you want to prevent certain names from being mangled, you can declare those names with {\ttfamily -\/-\/mangle reserved} — pass a comma-\/separated list of names. For example\+: \begin{DoxyVerb}uglifyjs ... -m reserved=['$','require','exports']
+\end{DoxyVerb}
+ to prevent the {\ttfamily require}, {\ttfamily exports} and {\ttfamily \$} names from being changed.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m083ff69612ba1b3bbaba41df6121e88b_autotoc_md5088}{}\doxysubsubsection{\texorpdfstring{CLI mangling property names ({\ttfamily -\/-\/mangle-\/props})}{CLI mangling property names ({\ttfamily -\/-\/mangle-\/props})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m083ff69612ba1b3bbaba41df6121e88b_autotoc_md5088}
+{\bfseries{Note\+:}} THIS WILL PROBABLY BREAK YOUR CODE. Mangling property names is a separate step, different from variable name mangling. Pass {\ttfamily -\/-\/mangle-\/props} to enable it. It will mangle all properties in the input code with the exception of built in DOM properties and properties in core Java\+Script classes. For example\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ example.js}
+\DoxyCodeLine{var\ x\ =\ \{}
+\DoxyCodeLine{\ \ \ \ baz\_:\ 0,}
+\DoxyCodeLine{\ \ \ \ foo\_:\ 1,}
+\DoxyCodeLine{\ \ \ \ calc:\ function()\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ return\ this.foo\_\ +\ this.baz\_;}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{x.bar\_\ =\ 2;}
+\DoxyCodeLine{x["{}baz\_"{}]\ =\ 3;}
+\DoxyCodeLine{console.log(x.calc());}
+
+\end{DoxyCode}
+ Mangle all properties (except for Java\+Script {\ttfamily builtins})\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ uglifyjs\ example.js\ -\/c\ -\/m\ -\/-\/mangle-\/props}
+
+\end{DoxyCode}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ x=\{o:0,\_:1,l:function()\{return\ this.\_+this.o\}\};x.t=2,x.o=3,console.log(x.l());}
+
+\end{DoxyCode}
+ Mangle all properties except for {\ttfamily reserved} properties\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ uglifyjs\ example.js\ -\/c\ -\/m\ -\/-\/mangle-\/props\ reserved=[foo\_,bar\_]}
+
+\end{DoxyCode}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ x=\{o:0,foo\_:1,\_:function()\{return\ this.foo\_+this.o\}\};x.bar\_=2,x.o=3,console.log(x.\_());}
+
+\end{DoxyCode}
+ Mangle all properties matching a {\ttfamily regex}\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ uglifyjs\ example.js\ -\/c\ -\/m\ -\/-\/mangle-\/props\ regex=/\_\$/}
+
+\end{DoxyCode}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ x=\{o:0,\_:1,calc:function()\{return\ this.\_+this.o\}\};x.l=2,x.o=3,console.log(x.calc());}
+
+\end{DoxyCode}
+
+
+Combining mangle properties options\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ uglifyjs\ example.js\ -\/c\ -\/m\ -\/-\/mangle-\/props\ regex=/\_\$/,reserved=[bar\_]}
+
+\end{DoxyCode}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ x=\{o:0,\_:1,calc:function()\{return\ this.\_+this.o\}\};x.bar\_=2,x.o=3,console.log(x.calc());}
+
+\end{DoxyCode}
+
+
+In order for this to be of any use, we avoid mangling standard JS names by default ({\ttfamily -\/-\/mangle-\/props builtins} to override).
+
+A default exclusion file is provided in {\ttfamily tools/domprops.\+json} which should cover most standard JS and DOM properties defined in various browsers. Pass {\ttfamily -\/-\/mangle-\/props domprops} to disable this feature.
+
+A regular expression can be used to define which property names should be mangled. For example, {\ttfamily -\/-\/mangle-\/props regex=/\texorpdfstring{$^\wedge$}{\string^}\+\_\+/} will only mangle property names that start with an underscore.
+
+When you compress multiple files using this option, in order for them to work together in the end we need to ensure somehow that one property gets mangled to the same name in all of them. For this, pass {\ttfamily -\/-\/name-\/cache filename.\+json} and Uglify\+JS will maintain these mappings in a file which can then be reused. It should be initially empty. Example\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ rm\ -\/f\ /tmp/cache.json\ \ \#\ start\ fresh}
+\DoxyCodeLine{\$\ uglifyjs\ file1.js\ file2.js\ -\/-\/mangle-\/props\ -\/-\/name-\/cache\ /tmp/cache.json\ -\/o\ part1.js}
+\DoxyCodeLine{\$\ uglifyjs\ file3.js\ file4.js\ -\/-\/mangle-\/props\ -\/-\/name-\/cache\ /tmp/cache.json\ -\/o\ part2.js}
+
+\end{DoxyCode}
+
+
+Now, {\ttfamily part1.\+js} and {\ttfamily part2.\+js} will be consistent with each other in terms of mangled property names.
+
+Using the name cache is not necessary if you compress all your files in a single call to Uglify\+JS.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m083ff69612ba1b3bbaba41df6121e88b_autotoc_md5089}{}\doxysubsubsection{\texorpdfstring{Mangling unquoted names ({\ttfamily -\/-\/mangle-\/props keep\+\_\+quoted})}{Mangling unquoted names ({\ttfamily -\/-\/mangle-\/props keep\+\_\+quoted})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m083ff69612ba1b3bbaba41df6121e88b_autotoc_md5089}
+Using quoted property name ({\ttfamily o\mbox{[}"{}foo"{}\mbox{]}}) reserves the property name ({\ttfamily foo}) so that it is not mangled throughout the entire script even when used in an unquoted style ({\ttfamily o.\+foo}). Example\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ stuff.js}
+\DoxyCodeLine{var\ o\ =\ \{}
+\DoxyCodeLine{\ \ \ \ "{}foo"{}:\ 1,}
+\DoxyCodeLine{\ \ \ \ bar:\ 3}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{o.foo\ +=\ o.bar;}
+\DoxyCodeLine{console.log(o.foo);}
+
+\end{DoxyCode}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ uglifyjs\ stuff.js\ -\/-\/mangle-\/props\ keep\_quoted\ -\/c\ -\/m}
+
+\end{DoxyCode}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ o=\{foo:1,o:3\};o.foo+=o.o,console.log(o.foo);}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m083ff69612ba1b3bbaba41df6121e88b_autotoc_md5090}{}\doxysubsubsection{\texorpdfstring{Debugging property name mangling}{Debugging property name mangling}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m083ff69612ba1b3bbaba41df6121e88b_autotoc_md5090}
+You can also pass {\ttfamily -\/-\/mangle-\/props debug} in order to mangle property names without completely obscuring them. For example the property {\ttfamily o.\+foo} would mangle to {\ttfamily o.\+\_\+\$foo\$\+\_\+} with this option. This allows property mangling of a large codebase while still being able to debug the code and identify where mangling is breaking things.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ uglifyjs\ stuff.js\ -\/-\/mangle-\/props\ debug\ -\/c\ -\/m}
+
+\end{DoxyCode}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ o=\{\_\$foo\$\_:1,\_\$bar\$\_:3\};o.\_\$foo\$\_+=o.\_\$bar\$\_,console.log(o.\_\$foo\$\_);}
+
+\end{DoxyCode}
+
+
+You can also pass a custom suffix using {\ttfamily -\/-\/mangle-\/props debug=XYZ}. This would then mangle {\ttfamily o.\+foo} to {\ttfamily o.\+\_\+\$foo\$XYZ\+\_\+}. You can change this each time you compile a script to identify how a property got mangled. One technique is to pass a random number on every compile to simulate mangling changing with different inputs (e.\+g. as you update the input script with new properties), and to help identify mistakes like writing mangled keys to storage.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m083ff69612ba1b3bbaba41df6121e88b_autotoc_md5091}{}\doxysection{\texorpdfstring{API Reference}{API Reference}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m083ff69612ba1b3bbaba41df6121e88b_autotoc_md5091}
+Assuming installation via NPM, you can load Uglify\+JS in your application like this\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ UglifyJS\ =\ require("{}uglify-\/js"{});}
+
+\end{DoxyCode}
+
+
+There is a single high level function, \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}{\ttfamily minify(code, options)}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}, which will perform all minification phases in a configurable manner. By default {\ttfamily minify()} will enable the options \`{}compress\`{} and \`{}mangle\`{}. Example\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ code\ =\ "{}function\ add(first,\ second)\ \{\ return\ first\ +\ second;\ \}"{};}
+\DoxyCodeLine{var\ result\ =\ UglifyJS.minify(code);}
+\DoxyCodeLine{console.log(result.error);\ //\ runtime\ error,\ or\ \`{}undefined`\ if\ no\ error}
+\DoxyCodeLine{console.log(result.code);\ \ //\ minified\ output:\ function\ add(n,d)\{return\ n+d\}}
+
+\end{DoxyCode}
+
+
+You can {\ttfamily minify} more than one Java\+Script file at a time by using an object for the first argument where the keys are file names and the values are source code\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ code\ =\ \{}
+\DoxyCodeLine{\ \ \ \ "{}file1.js"{}:\ "{}function\ add(first,\ second)\ \{\ return\ first\ +\ second;\ \}"{},}
+\DoxyCodeLine{\ \ \ \ "{}file2.js"{}:\ "{}console.log(add(1\ +\ 2,\ 3\ +\ 4));"{}}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{var\ result\ =\ UglifyJS.minify(code);}
+\DoxyCodeLine{console.log(result.code);}
+\DoxyCodeLine{//\ function\ add(d,n)\{return\ d+n\}console.log(add(3,7));}
+
+\end{DoxyCode}
+
+
+The {\ttfamily toplevel} option\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ code\ =\ \{}
+\DoxyCodeLine{\ \ \ \ "{}file1.js"{}:\ "{}function\ add(first,\ second)\ \{\ return\ first\ +\ second;\ \}"{},}
+\DoxyCodeLine{\ \ \ \ "{}file2.js"{}:\ "{}console.log(add(1\ +\ 2,\ 3\ +\ 4));"{}}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{var\ options\ =\ \{\ toplevel:\ true\ \};}
+\DoxyCodeLine{var\ result\ =\ UglifyJS.minify(code,\ options);}
+\DoxyCodeLine{console.log(result.code);}
+\DoxyCodeLine{//\ console.log(3+7);}
+
+\end{DoxyCode}
+
+
+The {\ttfamily name\+Cache} option\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ options\ =\ \{}
+\DoxyCodeLine{\ \ \ \ mangle:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ toplevel:\ true,}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ nameCache:\ \{\}}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{var\ result1\ =\ UglifyJS.minify(\{}
+\DoxyCodeLine{\ \ \ \ "{}file1.js"{}:\ "{}function\ add(first,\ second)\ \{\ return\ first\ +\ second;\ \}"{}}
+\DoxyCodeLine{\},\ options);}
+\DoxyCodeLine{var\ result2\ =\ UglifyJS.minify(\{}
+\DoxyCodeLine{\ \ \ \ "{}file2.js"{}:\ "{}console.log(add(1\ +\ 2,\ 3\ +\ 4));"{}}
+\DoxyCodeLine{\},\ options);}
+\DoxyCodeLine{console.log(result1.code);}
+\DoxyCodeLine{//\ function\ n(n,r)\{return\ n+r\}}
+\DoxyCodeLine{console.log(result2.code);}
+\DoxyCodeLine{//\ console.log(n(3,7));}
+
+\end{DoxyCode}
+
+
+You may persist the name cache to the file system in the following way\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ cacheFileName\ =\ "{}/tmp/cache.json"{};}
+\DoxyCodeLine{var\ options\ =\ \{}
+\DoxyCodeLine{\ \ \ \ mangle:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ properties:\ true,}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ nameCache:\ JSON.parse(fs.readFileSync(cacheFileName,\ "{}utf8"{}))}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{fs.writeFileSync("{}part1.js"{},\ UglifyJS.minify(\{}
+\DoxyCodeLine{\ \ \ \ "{}file1.js"{}:\ fs.readFileSync("{}file1.js"{},\ "{}utf8"{}),}
+\DoxyCodeLine{\ \ \ \ "{}file2.js"{}:\ fs.readFileSync("{}file2.js"{},\ "{}utf8"{})}
+\DoxyCodeLine{\},\ options).code,\ "{}utf8"{});}
+\DoxyCodeLine{fs.writeFileSync("{}part2.js"{},\ UglifyJS.minify(\{}
+\DoxyCodeLine{\ \ \ \ "{}file3.js"{}:\ fs.readFileSync("{}file3.js"{},\ "{}utf8"{}),}
+\DoxyCodeLine{\ \ \ \ "{}file4.js"{}:\ fs.readFileSync("{}file4.js"{},\ "{}utf8"{})}
+\DoxyCodeLine{\},\ options).code,\ "{}utf8"{});}
+\DoxyCodeLine{fs.writeFileSync(cacheFileName,\ JSON.stringify(options.nameCache),\ "{}utf8"{});}
+
+\end{DoxyCode}
+
+
+An example of a combination of {\ttfamily minify()} options\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ code\ =\ \{}
+\DoxyCodeLine{\ \ \ \ "{}file1.js"{}:\ "{}function\ add(first,\ second)\ \{\ return\ first\ +\ second;\ \}"{},}
+\DoxyCodeLine{\ \ \ \ "{}file2.js"{}:\ "{}console.log(add(1\ +\ 2,\ 3\ +\ 4));"{}}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{var\ options\ =\ \{}
+\DoxyCodeLine{\ \ \ \ toplevel:\ true,}
+\DoxyCodeLine{\ \ \ \ compress:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ global\_defs:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ "{}@console.log"{}:\ "{}alert"{}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ passes:\ 2}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ output:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ beautify:\ false,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ preamble:\ "{}/*\ uglified\ */"{}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{var\ result\ =\ UglifyJS.minify(code,\ options);}
+\DoxyCodeLine{console.log(result.code);}
+\DoxyCodeLine{//\ /*\ uglified\ */}
+\DoxyCodeLine{//\ alert(10);"{}}
+
+\end{DoxyCode}
+
+
+To produce warnings\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ code\ =\ "{}function\ f()\{\ var\ u;\ return\ 2\ +\ 3;\ \}"{};}
+\DoxyCodeLine{var\ options\ =\ \{\ warnings:\ true\ \};}
+\DoxyCodeLine{var\ result\ =\ UglifyJS.minify(code,\ options);}
+\DoxyCodeLine{console.log(result.error);\ \ \ \ //\ runtime\ error,\ \`{}undefined`\ in\ this\ case}
+\DoxyCodeLine{console.log(result.warnings);\ //\ [\ 'Dropping\ unused\ variable\ u\ [0:1,18]'\ ]}
+\DoxyCodeLine{console.log(result.code);\ \ \ \ \ //\ function\ f()\{return\ 5\}}
+
+\end{DoxyCode}
+
+
+An error example\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ result\ =\ UglifyJS.minify(\{"{}foo.js"{}\ :\ "{}if\ (0)\ else\ console.log(1);"{}\});}
+\DoxyCodeLine{console.log(JSON.stringify(result.error));}
+\DoxyCodeLine{//\ \{"{}message"{}:"{}Unexpected\ token:\ keyword\ (else)"{},"{}filename"{}:"{}foo.js"{},"{}line"{}:1,"{}col"{}:7,"{}pos"{}:7\}}
+
+\end{DoxyCode}
+ Note\+: unlike {\ttfamily uglify-\/js@2.\+x}, the {\ttfamily 3.\+x} API does not throw errors. To achieve a similar effect one could do the following\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ result\ =\ UglifyJS.minify(code,\ options);}
+\DoxyCodeLine{if\ (result.error)\ throw\ result.error;}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m083ff69612ba1b3bbaba41df6121e88b_autotoc_md5092}{}\doxysubsection{\texorpdfstring{Minify options}{Minify options}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m083ff69612ba1b3bbaba41df6121e88b_autotoc_md5092}
+
+\begin{DoxyItemize}
+\item {\ttfamily compress} (default {\ttfamily \{\}}) — pass {\ttfamily false} to skip compressing entirely. Pass an object to specify custom compress options.
+\item {\ttfamily ie8} (default {\ttfamily false}) -- set to {\ttfamily true} to support IE8.
+\item {\ttfamily keep\+\_\+fnames} (default\+: {\ttfamily false}) -- pass {\ttfamily true} to prevent discarding or mangling of function names. Useful for code relying on {\ttfamily Function.\+prototype.\+name}.
+\item {\ttfamily mangle} (default {\ttfamily true}) — pass {\ttfamily false} to skip mangling names, or pass an object to specify mangle options (see below).
+\begin{DoxyItemize}
+\item {\ttfamily mangle.\+properties} (default {\ttfamily false}) — a subcategory of the mangle option. Pass an object to specify custom mangle property options.
+\end{DoxyItemize}
+\item {\ttfamily name\+Cache} (default {\ttfamily null}) -- pass an empty object {\ttfamily \{\}} or a previously used {\ttfamily name\+Cache} object if you wish to cache mangled variable and property names across multiple invocations of {\ttfamily minify()}. Note\+: this is a read/write property. {\ttfamily minify()} will read the name cache state of this object and update it during minification so that it may be reused or externally persisted by the user.
+\item {\ttfamily output} (default {\ttfamily null}) — pass an object if you wish to specify additional output options. The defaults are optimized for best compression.
+\item {\ttfamily parse} (default {\ttfamily \{\}}) — pass an object if you wish to specify some additional parse options.
+\item {\ttfamily source\+Map} (default {\ttfamily false}) -- pass an object if you wish to specify source map options.
+\item {\ttfamily toplevel} (default {\ttfamily false}) -- set to {\ttfamily true} if you wish to enable top level variable and function name mangling and to drop unused variables and functions.
+\item {\ttfamily warnings} (default {\ttfamily false}) — pass {\ttfamily true} to return compressor warnings in {\ttfamily result.\+warnings}. Use the value {\ttfamily "{}verbose"{}} for more detailed warnings.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m083ff69612ba1b3bbaba41df6121e88b_autotoc_md5093}{}\doxysubsection{\texorpdfstring{Minify options structure}{Minify options structure}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m083ff69612ba1b3bbaba41df6121e88b_autotoc_md5093}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ parse:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ parse\ options}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ compress:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ compress\ options}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ mangle:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ mangle\ options}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ properties:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ //\ mangle\ property\ options}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ output:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ output\ options}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ sourceMap:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ source\ map\ options}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ nameCache:\ null,\ //\ or\ specify\ a\ name\ cache\ object}
+\DoxyCodeLine{\ \ \ \ toplevel:\ false,}
+\DoxyCodeLine{\ \ \ \ ie8:\ false,}
+\DoxyCodeLine{\ \ \ \ warnings:\ false,}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m083ff69612ba1b3bbaba41df6121e88b_autotoc_md5094}{}\doxysubsubsection{\texorpdfstring{Source map options}{Source map options}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m083ff69612ba1b3bbaba41df6121e88b_autotoc_md5094}
+To generate a source map\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ result\ =\ UglifyJS.minify(\{"{}file1.js"{}:\ "{}var\ a\ =\ function()\ \{\};"{}\},\ \{}
+\DoxyCodeLine{\ \ \ \ sourceMap:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ filename:\ "{}out.js"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ url:\ "{}out.js.map"{}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{console.log(result.code);\ //\ minified\ output}
+\DoxyCodeLine{console.log(result.map);\ \ //\ source\ map}
+
+\end{DoxyCode}
+
+
+Note that the source map is not saved in a file, it\textquotesingle{}s just returned in {\ttfamily result.\+map}. The value passed for {\ttfamily source\+Map.\+url} is only used to set {\ttfamily //\# source\+Mapping\+URL=out.\+js.\+map} in {\ttfamily result.\+code}. The value of {\ttfamily filename} is only used to set {\ttfamily file} attribute (see \href{https://docs.google.com/document/d/1U1RGAehQwRypUTovF1KRlpiOFze0b-_2gc6fAH0KY0k}{\texttt{ the spec}}) in source map file.
+
+You can set option {\ttfamily source\+Map.\+url} to be {\ttfamily "{}inline"{}} and source map will be appended to code.
+
+You can also specify source\+Root property to be included in source map\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ result\ =\ UglifyJS.minify(\{"{}file1.js"{}:\ "{}var\ a\ =\ function()\ \{\};"{}\},\ \{}
+\DoxyCodeLine{\ \ \ \ sourceMap:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ root:\ "{}http://example.com/src"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ url:\ "{}out.js.map"{}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+If you\textquotesingle{}re compressing compiled Java\+Script and have a source map for it, you can use {\ttfamily source\+Map.\+content}\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ result\ =\ UglifyJS.minify(\{"{}compiled.js"{}:\ "{}compiled\ code"{}\},\ \{}
+\DoxyCodeLine{\ \ \ \ sourceMap:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ content:\ "{}content\ from\ compiled.js.map"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ url:\ "{}minified.js.map"{}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{//\ same\ as\ before,\ it\ returns\ \`{}code`\ and\ \`{}map`}
+
+\end{DoxyCode}
+
+
+If you\textquotesingle{}re using the {\ttfamily X-\/\+Source\+Map} header instead, you can just omit {\ttfamily source\+Map.\+url}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m083ff69612ba1b3bbaba41df6121e88b_autotoc_md5095}{}\doxysubsection{\texorpdfstring{Parse options}{Parse options}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m083ff69612ba1b3bbaba41df6121e88b_autotoc_md5095}
+
+\begin{DoxyItemize}
+\item {\ttfamily bare\+\_\+returns} (default {\ttfamily false}) -- support top level {\ttfamily return} statements
+\item {\ttfamily html5\+\_\+comments} (default {\ttfamily true})
+\item {\ttfamily shebang} (default {\ttfamily true}) -- support {\ttfamily \#!command} as the first line
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m083ff69612ba1b3bbaba41df6121e88b_autotoc_md5096}{}\doxysubsection{\texorpdfstring{Compress options}{Compress options}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m083ff69612ba1b3bbaba41df6121e88b_autotoc_md5096}
+
+\begin{DoxyItemize}
+\item {\ttfamily arguments} (default\+: {\ttfamily true}) -- replace {\ttfamily arguments\mbox{[}index\mbox{]}} with function parameter name whenever possible.
+\item {\ttfamily assignments} (default\+: {\ttfamily true}) -- apply optimizations to assignment expressions.
+\item {\ttfamily booleans} (default\+: {\ttfamily true}) -- various optimizations for boolean context, for example {\ttfamily !!a ? b \+: c → a ? b \+: c}
+\item {\ttfamily collapse\+\_\+vars} (default\+: {\ttfamily true}) -- Collapse single-\/use non-\/constant variables, side effects permitting.
+\item {\ttfamily comparisons} (default\+: {\ttfamily true}) -- apply certain optimizations to binary nodes, e.\+g. {\ttfamily !(a \texorpdfstring{$<$}{<}= b) → a \texorpdfstring{$>$}{>} b}, attempts to negate binary nodes, e.\+g. {\ttfamily a = !b \&\& !c \&\& !d \&\& !e → a=!(b\texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|}c\texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|}d\texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|}e)} etc.
+\item {\ttfamily conditionals} (default\+: {\ttfamily true}) -- apply optimizations for {\ttfamily if}-\/s and conditional expressions
+\item {\ttfamily dead\+\_\+code} (default\+: {\ttfamily true}) -- remove unreachable code
+\item {\ttfamily directives} (default\+: {\ttfamily true}) -- remove redundant or non-\/standard directives
+\item {\ttfamily drop\+\_\+console} (default\+: {\ttfamily false}) -- Pass {\ttfamily true} to discard calls to {\ttfamily console.\texorpdfstring{$\ast$}{*}} functions. If you wish to drop a specific function call such as {\ttfamily console.\+info} and/or retain side effects from function arguments after dropping the function call then use {\ttfamily pure\+\_\+funcs} instead.
+\item {\ttfamily drop\+\_\+debugger} (default\+: {\ttfamily true}) -- remove {\ttfamily debugger;} statements
+\item {\ttfamily evaluate} (default\+: {\ttfamily true}) -- Evaluate expression for shorter constant representation. Pass {\ttfamily "{}eager"{}} to always replace function calls whenever possible, or a positive integer to specify an upper bound for each individual evaluation in number of characters.
+\item {\ttfamily expression} (default\+: {\ttfamily false}) -- Pass {\ttfamily true} to preserve completion values from terminal statements without {\ttfamily return}, e.\+g. in bookmarklets.
+\item {\ttfamily functions} (default\+: {\ttfamily true}) -- convert declarations from {\ttfamily var}to {\ttfamily function} whenever possible.
+\item {\ttfamily global\+\_\+defs} (default\+: {\ttfamily \{\}}) -- see conditional compilation
+\item {\ttfamily hoist\+\_\+funs} (default\+: {\ttfamily false}) -- hoist function declarations
+\item {\ttfamily hoist\+\_\+props} (default\+: {\ttfamily true}) -- hoist properties from constant object and array literals into regular variables subject to a set of constraints. For example\+: {\ttfamily var o=\{p\+:1, q\+:2\}; f(o.\+p, o.\+q);} is converted to {\ttfamily f(1, 2);}. Note\+: {\ttfamily hoist\+\_\+props} works best with {\ttfamily mangle} enabled, the {\ttfamily compress} option {\ttfamily passes} set to {\ttfamily 2} or higher, and the {\ttfamily compress} option {\ttfamily toplevel} enabled.
+\item {\ttfamily hoist\+\_\+vars} (default\+: {\ttfamily false}) -- hoist {\ttfamily var} declarations (this is {\ttfamily false} by default because it seems to increase the size of the output in general)
+\item {\ttfamily if\+\_\+return} (default\+: {\ttfamily true}) -- optimizations for if/return and if/continue
+\item {\ttfamily inline} (default\+: {\ttfamily true}) -- inline calls to function with simple/{\ttfamily return} statement\+:
+\begin{DoxyItemize}
+\item {\ttfamily false} -- same as {\ttfamily 0}
+\item {\ttfamily 0} -- disabled inlining
+\item {\ttfamily 1} -- inline simple functions
+\item {\ttfamily 2} -- inline functions with arguments
+\item {\ttfamily 3} -- inline functions with arguments and variables
+\item {\ttfamily true} -- same as {\ttfamily 3}
+\end{DoxyItemize}
+\item {\ttfamily join\+\_\+vars} (default\+: {\ttfamily true}) -- join consecutive {\ttfamily var} statements
+\item {\ttfamily keep\+\_\+fargs} (default\+: {\ttfamily strict}) -- Discard unused function arguments. Code which relies on {\ttfamily Function.\+length} will break if this is done indiscriminately, i.\+e. when passing {\ttfamily true}. Pass {\ttfamily false} to always retain function arguments.
+\item {\ttfamily keep\+\_\+fnames} (default\+: {\ttfamily false}) -- Pass {\ttfamily true} to prevent the compressor from discarding function names. Useful for code relying on {\ttfamily Function.\+prototype.\+name}. See also\+: the {\ttfamily keep\+\_\+fnames} mangle option.
+\item {\ttfamily keep\+\_\+infinity} (default\+: {\ttfamily false}) -- Pass {\ttfamily true} to prevent {\ttfamily Infinity} from being compressed into {\ttfamily 1/0}, which may cause performance issues on Chrome.
+\item {\ttfamily loops} (default\+: {\ttfamily true}) -- optimizations for {\ttfamily do}, {\ttfamily while} and {\ttfamily for} loops when we can statically determine the condition.
+\item {\ttfamily negate\+\_\+iife} (default\+: {\ttfamily true}) -- negate "{}\+Immediately-\/\+Called Function Expressions"{} where the return value is discarded, to avoid the parens that the code generator would insert.
+\item {\ttfamily objects} (default\+: {\ttfamily true}) -- compact duplicate keys in object literals.
+\item {\ttfamily passes} (default\+: {\ttfamily 1}) -- The maximum number of times to run compress. In some cases more than one pass leads to further compressed code. Keep in mind more passes will take more time.
+\item {\ttfamily properties} (default\+: {\ttfamily true}) -- rewrite property access using the dot notation, for example {\ttfamily foo\mbox{[}"{}bar"{}\mbox{]} → foo.\+bar}
+\item {\ttfamily pure\+\_\+funcs} (default\+: {\ttfamily null}) -- You can pass an array of names and Uglify\+JS will assume that those functions do not produce side effects. DANGER\+: will not check if the name is redefined in scope. An example case here, for instance {\ttfamily var q = Math.\+floor(a/b)}. If variable {\ttfamily q} is not used elsewhere, Uglify\+JS will drop it, but will still keep the {\ttfamily Math.\+floor(a/b)}, not knowing what it does. You can pass `pure\+\_\+funcs\+: \mbox{[} \textquotesingle{}Math.\+floor' \mbox{]}{\ttfamily to let it know that this function won\textquotesingle{}t produce any side effect, in which case the whole statement would get discarded. The current implementation adds some overhead (compression will be slower). Make sure symbols under}pure\+\_\+funcs{\ttfamily  are also under}mangle.\+reserved\`{} to avoid mangling.
+\item {\ttfamily pure\+\_\+getters} (default\+: {\ttfamily "{}strict"{}}) -- If you pass {\ttfamily true} for this, Uglify\+JS will assume that object property access (e.\+g. {\ttfamily foo.\+bar} or {\ttfamily foo\mbox{[}"{}bar"{}\mbox{]}}) doesn\textquotesingle{}t have any side effects. Specify {\ttfamily "{}strict"{}} to treat {\ttfamily foo.\+bar} as side-\/effect-\/free only when {\ttfamily foo} is certain to not throw, i.\+e. not {\ttfamily null} or {\ttfamily undefined}.
+\item {\ttfamily reduce\+\_\+funcs} (default\+: {\ttfamily true}) -- Allows single-\/use functions to be inlined as function expressions when permissible allowing further optimization. Enabled by default. Option depends on {\ttfamily reduce\+\_\+vars} being enabled. Some code runs faster in the Chrome V8 engine if this option is disabled. Does not negatively impact other major browsers.
+\item {\ttfamily reduce\+\_\+vars} (default\+: {\ttfamily true}) -- Improve optimization on variables assigned with and used as constant values.
+\item {\ttfamily sequences} (default\+: {\ttfamily true}) -- join consecutive simple statements using the comma operator. May be set to a positive integer to specify the maximum number of consecutive comma sequences that will be generated. If this option is set to {\ttfamily true} then the default {\ttfamily sequences} limit is {\ttfamily 200}. Set option to {\ttfamily false} or {\ttfamily 0} to disable. The smallest {\ttfamily sequences} length is {\ttfamily 2}. A {\ttfamily sequences} value of {\ttfamily 1} is grandfathered to be equivalent to {\ttfamily true} and as such means {\ttfamily 200}. On rare occasions the default sequences limit leads to very slow compress times in which case a value of {\ttfamily 20} or less is recommended.
+\item {\ttfamily side\+\_\+effects} (default\+: {\ttfamily true}) -- Pass {\ttfamily false} to disable potentially dropping functions marked as "{}pure"{}. A function call is marked as "{}pure"{} if a comment annotation {\ttfamily /\texorpdfstring{$\ast$}{*}@\+\_\+\+\_\+\+PURE\+\_\+\+\_\+\texorpdfstring{$\ast$}{*}/} or {\ttfamily /\texorpdfstring{$\ast$}{*}\#\+\_\+\+\_\+\+PURE\+\_\+\+\_\+\texorpdfstring{$\ast$}{*}/} immediately precedes the call. For example\+: {\ttfamily /\texorpdfstring{$\ast$}{*}@\+\_\+\+\_\+\+PURE\+\_\+\+\_\+\texorpdfstring{$\ast$}{*}/foo();}
+\item {\ttfamily switches} (default\+: {\ttfamily true}) -- de-\/duplicate and remove unreachable {\ttfamily switch} branches
+\item {\ttfamily toplevel} (default\+: {\ttfamily false}) -- drop unreferenced functions ({\ttfamily "{}funcs"{}}) and/or variables ({\ttfamily "{}vars"{}}) in the top level scope ({\ttfamily false} by default, {\ttfamily true} to drop both unreferenced functions and variables)
+\item {\ttfamily top\+\_\+retain} (default\+: {\ttfamily null}) -- prevent specific toplevel functions and variables from {\ttfamily unused} removal (can be array, comma-\/separated, Reg\+Exp or function. Implies {\ttfamily toplevel})
+\item {\ttfamily typeofs} (default\+: {\ttfamily true}) -- Transforms {\ttfamily typeof foo == "{}undefined"{}} into {\ttfamily foo === void 0}. Note\+: recommend to set this value to {\ttfamily false} for IE10 and earlier versions due to known issues.
+\item {\ttfamily unsafe} (default\+: {\ttfamily false}) -- apply "{}unsafe"{} transformations (discussion below)
+\item {\ttfamily unsafe\+\_\+comps} (default\+: {\ttfamily false}) -- compress expressions like {\ttfamily a \texorpdfstring{$<$}{<}= b} assuming none of the operands can be (coerced to) {\ttfamily NaN}.
+\item {\ttfamily unsafe\+\_\+\+Function} (default\+: {\ttfamily false}) -- compress and mangle {\ttfamily Function(args, code)} when both {\ttfamily args} and {\ttfamily code} are string literals.
+\item {\ttfamily unsafe\+\_\+math} (default\+: {\ttfamily false}) -- optimize numerical expressions like {\ttfamily 2 \texorpdfstring{$\ast$}{*} x \texorpdfstring{$\ast$}{*} 3} into {\ttfamily 6 \texorpdfstring{$\ast$}{*} x}, which may give imprecise floating point results.
+\item {\ttfamily unsafe\+\_\+proto} (default\+: {\ttfamily false}) -- optimize expressions like {\ttfamily Array.\+prototype.\+slice.\+call(a)} into {\ttfamily \mbox{[}\mbox{]}.slice.\+call(a)}
+\item {\ttfamily unsafe\+\_\+regexp} (default\+: {\ttfamily false}) -- enable substitutions of variables with {\ttfamily Reg\+Exp} values the same way as if they are constants.
+\item {\ttfamily unsafe\+\_\+undefined} (default\+: {\ttfamily false}) -- substitute {\ttfamily void 0} if there is a variable named {\ttfamily undefined} in scope (variable name will be mangled, typically reduced to a single character)
+\item {\ttfamily unused} (default\+: {\ttfamily true}) -- drop unreferenced functions and variables (simple direct variable assignments do not count as references unless set to {\ttfamily "{}keep\+\_\+assign"{}})
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m083ff69612ba1b3bbaba41df6121e88b_autotoc_md5097}{}\doxysubsection{\texorpdfstring{Mangle options}{Mangle options}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m083ff69612ba1b3bbaba41df6121e88b_autotoc_md5097}
+
+\begin{DoxyItemize}
+\item {\ttfamily eval} (default {\ttfamily false}) -- Pass {\ttfamily true} to mangle names visible in scopes where {\ttfamily eval} or {\ttfamily with} are used.
+\item {\ttfamily keep\+\_\+fnames} (default {\ttfamily false}) -- Pass {\ttfamily true} to not mangle function names. Useful for code relying on {\ttfamily Function.\+prototype.\+name}. See also\+: the {\ttfamily keep\+\_\+fnames} compress option.
+\item {\ttfamily reserved} (default {\ttfamily \mbox{[}\mbox{]}}) -- Pass an array of identifiers that should be excluded from mangling. Example\+: {\ttfamily \mbox{[}"{}foo"{}, "{}bar"{}\mbox{]}}.
+\item {\ttfamily toplevel} (default {\ttfamily false}) -- Pass {\ttfamily true} to mangle names declared in the top level scope.
+\end{DoxyItemize}
+
+Examples\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ test.js}
+\DoxyCodeLine{var\ globalVar;}
+\DoxyCodeLine{function\ funcName(firstLongName,\ anotherLongName)\ \{}
+\DoxyCodeLine{\ \ \ \ var\ myVariable\ =\ firstLongName\ +\ \ anotherLongName;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ code\ =\ fs.readFileSync("{}test.js"{},\ "{}utf8"{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{UglifyJS.minify(code).code;}
+\DoxyCodeLine{//\ 'function\ funcName(a,n)\{\}var\ globalVar;'}
+\DoxyCodeLine{}
+\DoxyCodeLine{UglifyJS.minify(code,\ \{\ mangle:\ \{\ reserved:\ ['firstLongName']\ \}\ \}).code;}
+\DoxyCodeLine{//\ 'function\ funcName(firstLongName,a)\{\}var\ globalVar;'}
+\DoxyCodeLine{}
+\DoxyCodeLine{UglifyJS.minify(code,\ \{\ mangle:\ \{\ toplevel:\ true\ \}\ \}).code;}
+\DoxyCodeLine{//\ 'function\ n(n,a)\{\}var\ a;'}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m083ff69612ba1b3bbaba41df6121e88b_autotoc_md5098}{}\doxysubsubsection{\texorpdfstring{Mangle properties options}{Mangle properties options}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m083ff69612ba1b3bbaba41df6121e88b_autotoc_md5098}
+
+\begin{DoxyItemize}
+\item {\ttfamily builtins} (default\+: {\ttfamily false}) -- Use {\ttfamily true} to allow the mangling of builtin DOM properties. Not recommended to override this setting.
+\item {\ttfamily debug} (default\+: {\ttfamily false}) -\/— Mangle names with the original name still present. Pass an empty string {\ttfamily "{}"{}} to enable, or a non-\/empty string to set the debug suffix.
+\item {\ttfamily keep\+\_\+quoted} (default\+: {\ttfamily false}) -\/— Only mangle unquoted property names.
+\item {\ttfamily regex} (default\+: {\ttfamily null}) -\/— Pass a Reg\+Exp literal to only mangle property names matching the regular expression.
+\item {\ttfamily reserved} (default\+: {\ttfamily \mbox{[}\mbox{]}}) -- Do not mangle property names listed in the {\ttfamily reserved} array.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m083ff69612ba1b3bbaba41df6121e88b_autotoc_md5099}{}\doxysubsection{\texorpdfstring{Output options}{Output options}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m083ff69612ba1b3bbaba41df6121e88b_autotoc_md5099}
+The code generator tries to output shortest code possible by default. In case you want beautified output, pass {\ttfamily -\/-\/beautify} ({\ttfamily -\/b}). Optionally you can pass additional arguments that control the code output\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily ascii\+\_\+only} (default {\ttfamily false}) -- escape Unicode characters in strings and regexps (affects directives with non-\/ascii characters becoming invalid)
+\item {\ttfamily beautify} (default {\ttfamily true}) -- whether to actually beautify the output. Passing {\ttfamily -\/b} will set this to true, but you might need to pass {\ttfamily -\/b} even when you want to generate minified code, in order to specify additional arguments, so you can use {\ttfamily -\/b beautify=false} to override it.
+\item {\ttfamily braces} (default {\ttfamily false}) -- always insert braces in {\ttfamily if}, {\ttfamily for}, {\ttfamily do}, {\ttfamily while} or {\ttfamily with} statements, even if their body is a single statement.
+\item {\ttfamily comments} (default {\ttfamily false}) -- pass {\ttfamily true} or {\ttfamily "{}all"{}} to preserve all comments, {\ttfamily "{}some"{}} to preserve some comments, a regular expression string (e.\+g. {\ttfamily /\texorpdfstring{$^\wedge$}{\string^}!/}) or a function.
+\item {\ttfamily indent\+\_\+level} (default {\ttfamily 4})
+\item {\ttfamily indent\+\_\+start} (default {\ttfamily 0}) -- prefix all lines by that many spaces
+\item {\ttfamily inline\+\_\+script} (default {\ttfamily true}) -- escape HTML comments and the slash in occurrences of {\ttfamily \texorpdfstring{$<$}{<}/script\texorpdfstring{$>$}{>}} in strings
+\item {\ttfamily keep\+\_\+quoted\+\_\+props} (default {\ttfamily false}) -- when turned on, prevents stripping quotes from property names in object literals.
+\item {\ttfamily max\+\_\+line\+\_\+len} (default {\ttfamily false}) -- maximum line length (for uglified code)
+\item {\ttfamily preamble} (default {\ttfamily null}) -- when passed it must be a string and it will be prepended to the output literally. The source map will adjust for this text. Can be used to insert a comment containing licensing information, for example.
+\item {\ttfamily preserve\+\_\+line} (default {\ttfamily false}) -- pass {\ttfamily true} to retain line numbering on a best effort basis.
+\item {\ttfamily quote\+\_\+keys} (default {\ttfamily false}) -- pass {\ttfamily true} to quote all keys in literal objects
+\item {\ttfamily quote\+\_\+style} (default {\ttfamily 0}) -- preferred quote style for strings (affects quoted property names and directives as well)\+:
+\begin{DoxyItemize}
+\item {\ttfamily 0} -- prefers double quotes, switches to single quotes when there are more double quotes in the string itself. {\ttfamily 0} is best for gzip size.
+\item {\ttfamily 1} -- always use single quotes
+\item {\ttfamily 2} -- always use double quotes
+\item {\ttfamily 3} -- always use the original quotes
+\end{DoxyItemize}
+\item {\ttfamily semicolons} (default {\ttfamily true}) -- separate statements with semicolons. If you pass {\ttfamily false} then whenever possible we will use a newline instead of a semicolon, leading to more readable output of uglified code (size before gzip could be smaller; size after gzip insignificantly larger).
+\item {\ttfamily shebang} (default {\ttfamily true}) -- preserve shebang {\ttfamily \#!} in preamble (bash scripts)
+\item {\ttfamily webkit} (default {\ttfamily false}) -- enable workarounds for Web\+Kit bugs. Phantom\+JS users should set this option to {\ttfamily true}.
+\item {\ttfamily width} (default {\ttfamily 80}) -- only takes effect when beautification is on, this specifies an (orientative) line width that the beautifier will try to obey. It refers to the width of the line text (excluding indentation). It doesn\textquotesingle{}t work very well currently, but it does make the code generated by Uglify\+JS more readable.
+\item {\ttfamily wrap\+\_\+iife} (default {\ttfamily false}) -- pass {\ttfamily true} to wrap immediately invoked function expressions. See \href{https://github.com/mishoo/UglifyJS2/issues/640}{\texttt{ \#640}} for more details.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m083ff69612ba1b3bbaba41df6121e88b_autotoc_md5100}{}\doxysection{\texorpdfstring{Miscellaneous}{Miscellaneous}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m083ff69612ba1b3bbaba41df6121e88b_autotoc_md5100}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m083ff69612ba1b3bbaba41df6121e88b_autotoc_md5101}{}\doxysubsubsection{\texorpdfstring{Keeping copyright notices or other comments}{Keeping copyright notices or other comments}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m083ff69612ba1b3bbaba41df6121e88b_autotoc_md5101}
+You can pass {\ttfamily -\/-\/comments} to retain certain comments in the output. By default it will keep JSDoc-\/style comments that contain "{}@preserve"{}, "{}@license"{} or "{}@cc\+\_\+on"{} (conditional compilation for IE). You can pass {\ttfamily -\/-\/comments all} to keep all the comments, or a valid Java\+Script regexp to keep only comments that match this regexp. For example {\ttfamily -\/-\/comments /\texorpdfstring{$^\wedge$}{\string^}!/} will keep comments like {\ttfamily /\texorpdfstring{$\ast$}{*}! Copyright Notice \texorpdfstring{$\ast$}{*}/}.
+
+Note, however, that there might be situations where comments are lost. For example\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{function\ f()\ \{}
+\DoxyCodeLine{\ \ \ \ /**\ @preserve\ Foo\ Bar\ */}
+\DoxyCodeLine{\ \ \ \ function\ g()\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ this\ function\ is\ never\ called}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ return\ something();}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Even though it has "{}@preserve"{}, the comment will be lost because the inner function {\ttfamily g} (which is the AST node to which the comment is attached to) is discarded by the compressor as not referenced.
+
+The safest comments where to place copyright information (or other info that needs to be kept in the output) are comments attached to toplevel nodes.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m083ff69612ba1b3bbaba41df6121e88b_autotoc_md5102}{}\doxysubsubsection{\texorpdfstring{The {\ttfamily unsafe} {\ttfamily compress} option}{The {\ttfamily unsafe} {\ttfamily compress} option}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m083ff69612ba1b3bbaba41df6121e88b_autotoc_md5102}
+It enables some transformations that {\itshape might} break code logic in certain contrived cases, but should be fine for most code. You might want to try it on your own code, it should reduce the minified size. Here\textquotesingle{}s what happens when this flag is on\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily new Array(1, 2, 3)} or {\ttfamily Array(1, 2, 3)} → {\ttfamily \mbox{[} 1, 2, 3 \mbox{]}}
+\item {\ttfamily new Object()} → {\ttfamily \{\}}
+\item {\ttfamily String(exp)} or {\ttfamily exp.\+to\+String()} → {\ttfamily "{}"{} + exp}
+\item {\ttfamily new Object/\+Reg\+Exp/\+Function/\+Error/\+Array (...)} → we discard the {\ttfamily new}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m083ff69612ba1b3bbaba41df6121e88b_autotoc_md5103}{}\doxysubsubsection{\texorpdfstring{Conditional compilation}{Conditional compilation}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m083ff69612ba1b3bbaba41df6121e88b_autotoc_md5103}
+You can use the {\ttfamily -\/-\/define} ({\ttfamily -\/d}) switch in order to declare global variables that Uglify\+JS will assume to be constants (unless defined in scope). For example if you pass {\ttfamily -\/-\/define DEBUG=false} then, coupled with dead code removal Uglify\+JS will discard the following from the output\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{if\ (DEBUG)\ \{}
+\DoxyCodeLine{\ \ \ \ console.log("{}debug\ stuff"{});}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+You can specify nested constants in the form of {\ttfamily -\/-\/define env.\+DEBUG=false}.
+
+Uglify\+JS will warn about the condition being always false and about dropping unreachable code; for now there is no option to turn off only this specific warning, you can pass {\ttfamily warnings=false} to turn off {\itshape all} warnings.
+
+Another way of doing that is to declare your globals as constants in a separate file and include it into the build. For example you can have a {\ttfamily build/defines.\+js} file with the following\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ DEBUG\ =\ false;}
+\DoxyCodeLine{var\ PRODUCTION\ =\ true;}
+\DoxyCodeLine{//\ etc.}
+
+\end{DoxyCode}
+
+
+and build your code like this\+: \begin{DoxyVerb}uglifyjs build/defines.js js/foo.js js/bar.js... -c
+\end{DoxyVerb}
+ Uglify\+JS will notice the constants and, since they cannot be altered, it will evaluate references to them to the value itself and drop unreachable code as usual. The build will contain the {\ttfamily const} declarations if you use them. If you are targeting \texorpdfstring{$<$}{<} ES6 environments which does not support {\ttfamily const}, using {\ttfamily var} with {\ttfamily reduce\+\_\+vars} (enabled by default) should suffice.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m083ff69612ba1b3bbaba41df6121e88b_autotoc_md5104}{}\doxysubsubsection{\texorpdfstring{Conditional compilation API}{Conditional compilation API}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m083ff69612ba1b3bbaba41df6121e88b_autotoc_md5104}
+You can also use conditional compilation via the programmatic API. With the difference that the property name is {\ttfamily global\+\_\+defs} and is a compressor property\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ result\ =\ UglifyJS.minify(fs.readFileSync("{}input.js"{},\ "{}utf8"{}),\ \{}
+\DoxyCodeLine{\ \ \ \ compress:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ dead\_code:\ true,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ global\_defs:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ DEBUG:\ false}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+To replace an identifier with an arbitrary non-\/constant expression it is necessary to prefix the {\ttfamily global\+\_\+defs} key with {\ttfamily "{}@"{}} to instruct Uglify\+JS to parse the value as an expression\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{UglifyJS.minify("{}alert('hello');"{},\ \{}
+\DoxyCodeLine{\ \ \ \ compress:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ global\_defs:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ "{}@alert"{}:\ "{}console.log"{}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}).code;}
+\DoxyCodeLine{//\ returns:\ 'console.log("{}hello"{});'}
+
+\end{DoxyCode}
+
+
+Otherwise it would be replaced as string literal\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{UglifyJS.minify("{}alert('hello');"{},\ \{}
+\DoxyCodeLine{\ \ \ \ compress:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ global\_defs:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ "{}alert"{}:\ "{}console.log"{}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}).code;}
+\DoxyCodeLine{//\ returns:\ '"{}console.log"{}("{}hello"{});'}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m083ff69612ba1b3bbaba41df6121e88b_autotoc_md5105}{}\doxysubsubsection{\texorpdfstring{Using native Uglify AST with {\ttfamily minify()}}{Using native Uglify AST with {\ttfamily minify()}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m083ff69612ba1b3bbaba41df6121e88b_autotoc_md5105}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ example:\ parse\ only,\ produce\ native\ Uglify\ AST}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ result\ =\ UglifyJS.minify(code,\ \{}
+\DoxyCodeLine{\ \ \ \ parse:\ \{\},}
+\DoxyCodeLine{\ \ \ \ compress:\ false,}
+\DoxyCodeLine{\ \ \ \ mangle:\ false,}
+\DoxyCodeLine{\ \ \ \ output:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ast:\ true,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ code:\ false\ \ //\ optional\ -\/\ faster\ if\ false}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ result.ast\ contains\ native\ Uglify\ AST}
+
+\end{DoxyCode}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ example:\ accept\ native\ Uglify\ AST\ input\ and\ then\ compress\ and\ mangle}
+\DoxyCodeLine{//\ \ \ \ \ \ \ \ \ \ to\ produce\ both\ code\ and\ native\ AST.}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ result\ =\ UglifyJS.minify(ast,\ \{}
+\DoxyCodeLine{\ \ \ \ compress:\ \{\},}
+\DoxyCodeLine{\ \ \ \ mangle:\ \{\},}
+\DoxyCodeLine{\ \ \ \ output:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ast:\ true,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ code:\ true\ \ //\ optional\ -\/\ faster\ if\ false}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ result.ast\ contains\ native\ Uglify\ AST}
+\DoxyCodeLine{//\ result.code\ contains\ the\ minified\ code\ in\ string\ form.}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m083ff69612ba1b3bbaba41df6121e88b_autotoc_md5106}{}\doxysubsubsection{\texorpdfstring{Working with Uglify AST}{Working with Uglify AST}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m083ff69612ba1b3bbaba41df6121e88b_autotoc_md5106}
+Transversal and transformation of the native AST can be performed through \href{https://github.com/mishoo/UglifyJS2/blob/master/lib/ast.js}{\texttt{ {\ttfamily Tree\+Walker}}} and \href{https://github.com/mishoo/UglifyJS2/blob/master/lib/transform.js}{\texttt{ {\ttfamily Tree\+Transformer}}} respectively.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m083ff69612ba1b3bbaba41df6121e88b_autotoc_md5107}{}\doxysubsubsection{\texorpdfstring{ESTree / Spider\+Monkey AST}{ESTree / Spider\+Monkey AST}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m083ff69612ba1b3bbaba41df6121e88b_autotoc_md5107}
+Uglify\+JS has its own abstract syntax tree format; for \href{http://lisperator.net/blog/uglifyjs-why-not-switching-to-spidermonkey-ast/}{\texttt{ practical reasons}} we can\textquotesingle{}t easily change to using the Spider\+Monkey AST internally. However, Uglify\+JS now has a converter which can import a Spider\+Monkey AST.
+
+For example \href{https://github.com/ternjs/acorn}{\texttt{ Acorn}} is a super-\/fast parser that produces a Spider\+Monkey AST. It has a small CLI utility that parses one file and dumps the AST in JSON on the standard output. To use Uglify\+JS to mangle and compress that\+: \begin{DoxyVerb}acorn file.js | uglifyjs -p spidermonkey -m -c
+\end{DoxyVerb}
+ The {\ttfamily -\/p spidermonkey} option tells Uglify\+JS that all input files are not Java\+Script, but JS code described in Spider\+Monkey AST in JSON. Therefore we don\textquotesingle{}t use our own parser in this case, but just transform that AST into our internal AST.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m083ff69612ba1b3bbaba41df6121e88b_autotoc_md5108}{}\doxysubsubsection{\texorpdfstring{Use Acorn for parsing}{Use Acorn for parsing}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m083ff69612ba1b3bbaba41df6121e88b_autotoc_md5108}
+More for fun, I added the {\ttfamily -\/p acorn} option which will use Acorn to do all the parsing. If you pass this option, Uglify\+JS will {\ttfamily require("{}acorn"{})}.
+
+Acorn is really fast (e.\+g. 250ms instead of 380ms on some 650K code), but converting the Spider\+Monkey tree that Acorn produces takes another 150ms so in total it\textquotesingle{}s a bit more than just using Uglify\+JS\textquotesingle{}s own parser.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m083ff69612ba1b3bbaba41df6121e88b_autotoc_md5109}{}\doxysubsubsection{\texorpdfstring{Uglify Fast Minify Mode}{Uglify Fast Minify Mode}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m083ff69612ba1b3bbaba41df6121e88b_autotoc_md5109}
+It\textquotesingle{}s not well known, but whitespace removal and symbol mangling accounts for 95\% of the size reduction in minified code for most Java\+Script -\/ not elaborate code transforms. One can simply disable {\ttfamily compress} to speed up Uglify builds by 3 to 4 times. In this fast {\ttfamily mangle}-\/only mode Uglify has comparable minify speeds and gzip sizes to \href{https://www.npmjs.com/package/butternut}{\texttt{ {\ttfamily butternut}}}\+:
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ d3.\+js   }&\PBS\raggedleft \cellcolor{\tableheadbgcolor}\textbf{ minify size   }&\PBS\raggedleft \cellcolor{\tableheadbgcolor}\textbf{ gzip size   }&\PBS\raggedleft \cellcolor{\tableheadbgcolor}\textbf{ minify time (seconds)    }\\\cline{1-4}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ d3.\+js   }&\PBS\raggedleft \cellcolor{\tableheadbgcolor}\textbf{ minify size   }&\PBS\raggedleft \cellcolor{\tableheadbgcolor}\textbf{ gzip size   }&\PBS\raggedleft \cellcolor{\tableheadbgcolor}\textbf{ minify time (seconds)    }\\\cline{1-4}
+\endhead
+original   &\PBS\raggedleft 451,131   &\PBS\raggedleft 108,733   &\PBS\raggedleft -\/    \\\cline{1-4}
+\href{mailto:uglify-js@3.0.24}{\texttt{ uglify-\/js@3.\+0.\+24}} mangle=false, compress=false   &\PBS\raggedleft 316,600   &\PBS\raggedleft 85,245   &\PBS\raggedleft 0.\+70    \\\cline{1-4}
+\href{mailto:uglify-js@3.0.24}{\texttt{ uglify-\/js@3.\+0.\+24}} mangle=true, compress=false   &\PBS\raggedleft 220,216   &\PBS\raggedleft 72,730   &\PBS\raggedleft 1.\+13    \\\cline{1-4}
+butternut@0.\+4.\+6   &\PBS\raggedleft 217,568   &\PBS\raggedleft 72,738   &\PBS\raggedleft 1.\+41    \\\cline{1-4}
+\href{mailto:uglify-js@3.0.24}{\texttt{ uglify-\/js@3.\+0.\+24}} mangle=true, compress=true   &\PBS\raggedleft 212,511   &\PBS\raggedleft 71,560   &\PBS\raggedleft 3.\+36    \\\cline{1-4}
+babili@0.\+1.\+4   &\PBS\raggedleft 210,713   &\PBS\raggedleft 72,140   &\PBS\raggedleft 12.\+64   \\\cline{1-4}
+\end{longtabu}
+
+
+To enable fast minify mode from the CLI use\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{uglifyjs\ file.js\ -\/m}
+
+\end{DoxyCode}
+ To enable fast minify mode with the API use\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{UglifyJS.minify(code,\ \{\ compress:\ false,\ mangle:\ true\ \});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m083ff69612ba1b3bbaba41df6121e88b_autotoc_md5110}{}\doxyparagraph{\texorpdfstring{Source maps and debugging}{Source maps and debugging}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m083ff69612ba1b3bbaba41df6121e88b_autotoc_md5110}
+Various {\ttfamily compress} transforms that simplify, rearrange, inline and remove code are known to have an adverse effect on debugging with source maps. This is expected as code is optimized and mappings are often simply not possible as some code no longer exists. For highest fidelity in source map debugging disable the Uglify {\ttfamily compress} option and just use {\ttfamily mangle}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m083ff69612ba1b3bbaba41df6121e88b_autotoc_md5111}{}\doxysubsubsection{\texorpdfstring{Compiler assumptions}{Compiler assumptions}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m083ff69612ba1b3bbaba41df6121e88b_autotoc_md5111}
+To allow for better optimizations, the compiler makes various assumptions\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily .to\+String()} and {\ttfamily .value\+Of()} don\textquotesingle{}t have side effects, and for built-\/in objects they have not been overridden.
+\item {\ttfamily undefined}, {\ttfamily NaN} and {\ttfamily Infinity} have not been externally redefined.
+\item {\ttfamily arguments.\+callee}, {\ttfamily arguments.\+caller} and {\ttfamily Function.\+prototype.\+caller} are not used.
+\item The code doesn\textquotesingle{}t expect the contents of {\ttfamily Function.\+prototype.\+to\+String()} or {\ttfamily Error.\+prototype.\+stack} to be anything in particular.
+\item Getting and setting properties on a plain object does not cause other side effects (using {\ttfamily .watch()} or {\ttfamily Proxy}).
+\item Object properties can be added, removed and modified (not prevented with {\ttfamily Object.\+define\+Property()}, {\ttfamily Object.\+define\+Properties()}, {\ttfamily Object.\+freeze()}, {\ttfamily Object.\+prevent\+Extensions()} or {\ttfamily Object.\+seal()}). 
+\end{DoxyItemize}

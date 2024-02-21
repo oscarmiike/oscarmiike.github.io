@@ -1,0 +1,24 @@
+\chapter{Contributing}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mae8952d8fce97fc219ea70549d4f596a}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mae8952d8fce97fc219ea70549d4f596a}\index{Contributing@{Contributing}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mae8952d8fce97fc219ea70549d4f596a_autotoc_md11971}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mae8952d8fce97fc219ea70549d4f596a_autotoc_md11971}%
+
+\begin{DoxyItemize}
+\item Always add tests
+\item Update documentation if needed
+\item Do not commit build artifacts in the {\ttfamily dist} directory
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mae8952d8fce97fc219ea70549d4f596a_autotoc_md11972}{}\doxysection{\texorpdfstring{Bug fixes}{Bug fixes}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mae8952d8fce97fc219ea70549d4f596a_autotoc_md11972}
+Always add a test for the bug in a separate commit so we can easily cherry pick it for verification.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mae8952d8fce97fc219ea70549d4f596a_autotoc_md11973}{}\doxysection{\texorpdfstring{New features}{New features}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mae8952d8fce97fc219ea70549d4f596a_autotoc_md11973}
+It\textquotesingle{}s recommended to open an issue before sending a pull request to avoid unnecessary work. There are quite few areas we consider to be out of scope for this library. Idea is to add few generic string helpers for Javascript. For example anything related to internationalization or is too language specific is out of scope.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mae8952d8fce97fc219ea70549d4f596a_autotoc_md11974}{}\doxysection{\texorpdfstring{Release checklist}{Release checklist}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mae8952d8fce97fc219ea70549d4f596a_autotoc_md11974}
+(for maintainers)
+
+
+\begin{DoxyItemize}
+\item Write a changelog entry to {\ttfamily \doxylink{_c_h_a_n_g_e_l_o_g_8markdown}{CHANGELOG.\+markdown}}
+\begin{DoxyItemize}
+\item Use Github compare to see what has changed from previous tag. Ex \href{https://github.com/epeli/underscore.string/compare/3.0.0...master}{\texttt{ https\+://github.\+com/epeli/underscore.\+string/compare/3.\+0.\+0...\+master}}
+\end{DoxyItemize}
+\item Update the version in the {\ttfamily package.\+json}
+\item Publish a new version of \+\_\+.\+string {\ttfamily npm run release}
+\item Update the \href{https://github.com/epeli/underscore.string/tree/gh-pages}{\texttt{ gh-\/pages}} branch {\ttfamily npm run bump} 
+\end{DoxyItemize}

@@ -1,0 +1,71 @@
+\chapter{sntp}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m8afa82b6efbe25ea8ca92baffc1e5fdc}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m8afa82b6efbe25ea8ca92baffc1e5fdc}\index{sntp@{sntp}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m8afa82b6efbe25ea8ca92baffc1e5fdc_autotoc_md4589}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m8afa82b6efbe25ea8ca92baffc1e5fdc_autotoc_md4589}%
+ An SNTP v4 client (RFC4330) for node. Simpy connects to the NTP or SNTP server requested and returns the server time along with the roundtrip duration and clock offset. To adjust the local time to the NTP time, add the returned {\ttfamily t} offset to the local time.
+
+\href{http://travis-ci.org/hueniverse/sntp}{\texttt{ }}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m8afa82b6efbe25ea8ca92baffc1e5fdc_autotoc_md4590}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m8afa82b6efbe25ea8ca92baffc1e5fdc_autotoc_md4590}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ Sntp\ =\ require('sntp');}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ All\ options\ are\ optional}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ options\ =\ \{}
+\DoxyCodeLine{\ \ \ \ host:\ 'nist1-\/sj.ustiming.org',\ \ //\ Defaults\ to\ pool.ntp.org}
+\DoxyCodeLine{\ \ \ \ port:\ 123,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ Defaults\ to\ 123\ (NTP)}
+\DoxyCodeLine{\ \ \ \ resolveReference:\ true,\ \ \ \ \ \ \ \ \ //\ Default\ to\ false\ (not\ resolving)}
+\DoxyCodeLine{\ \ \ \ timeout:\ 1000\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ Defaults\ to\ zero\ (no\ timeout)}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Request\ server\ time}
+\DoxyCodeLine{}
+\DoxyCodeLine{Sntp.time(options,\ function\ (err,\ time)\ \{}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ if\ (err)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ console.log('Failed:\ '\ +\ err.message);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ process.exit(1);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ console.log('Local\ clock\ is\ off\ by:\ '\ +\ time.t\ +\ '\ milliseconds');}
+\DoxyCodeLine{\ \ \ \ process.exit(0);}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+If an application needs to maintain continuous time synchronization, the module provides a stateful method for querying the current offset only when the last one is too old (defaults to daily).
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Request\ offset\ once}
+\DoxyCodeLine{}
+\DoxyCodeLine{Sntp.offset(function\ (err,\ offset)\ \{}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ console.log(offset);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ New\ (served\ fresh)}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ //\ Request\ offset\ again}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ Sntp.offset(function\ (err,\ offset)\ \{}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ console.log(offset);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ Identical\ (served\ from\ cache)}
+\DoxyCodeLine{\ \ \ \ \});}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+To set a background offset refresh, start the interval and use the provided now() method. If for any reason the client fails to obtain an up-\/to-\/date offset, the current system clock is used.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ before\ =\ Sntp.now();\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ System\ time\ without\ offset}
+\DoxyCodeLine{}
+\DoxyCodeLine{Sntp.start(function\ ()\ \{}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ var\ now\ =\ Sntp.now();\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ With\ offset}
+\DoxyCodeLine{\ \ \ \ Sntp.stop();}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+ 

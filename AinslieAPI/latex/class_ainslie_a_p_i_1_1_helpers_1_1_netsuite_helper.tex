@@ -1,0 +1,82 @@
+\doxysection{Ainslie\+API.\+Helpers.\+Netsuite\+Helper Class Reference}
+\hypertarget{class_ainslie_a_p_i_1_1_helpers_1_1_netsuite_helper}{}\label{class_ainslie_a_p_i_1_1_helpers_1_1_netsuite_helper}\index{AinslieAPI.Helpers.NetsuiteHelper@{AinslieAPI.Helpers.NetsuiteHelper}}
+
+
+Provides functionalities to create requests for Netsuite operations, particularly for customer data management.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_netsuite_helper_a58d3f1b43d3a3da38b17ad33fe238feb}{Netsuite\+Helper}} (IOptions$<$ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings}{App\+Settings}} $>$ app\+Settings, \mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service}{Internal\+Api\+Service}} ia\+Service)
+\begin{DoxyCompactList}\small\item\em Initialises a new instance of the Netsuite\+Helper with application settings and internal API service. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_netsuite_customer_request}{Netsuite\+Customer\+Request}} \mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_netsuite_helper_aaade37ab8e2956507c377c5b30af6a0a}{Create\+Netsuite\+Customer\+Request}} (string branch, \mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_green_id_1_1_green_id_customer}{Green\+Id\+Customer}} green\+IDCustomer)
+\begin{DoxyCompactList}\small\item\em Creates a request object for creating or updating a customer in Netsuite based on Green ID verification data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Provides functionalities to create requests for Netsuite operations, particularly for customer data management. 
+
+Definition at line \mbox{\hyperlink{_netsuite_helper_8cs_source_l00011}{11}} of file \mbox{\hyperlink{_netsuite_helper_8cs_source}{Netsuite\+Helper.\+cs}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_ainslie_a_p_i_1_1_helpers_1_1_netsuite_helper_a58d3f1b43d3a3da38b17ad33fe238feb}\label{class_ainslie_a_p_i_1_1_helpers_1_1_netsuite_helper_a58d3f1b43d3a3da38b17ad33fe238feb} 
+\index{AinslieAPI.Helpers.NetsuiteHelper@{AinslieAPI.Helpers.NetsuiteHelper}!NetsuiteHelper@{NetsuiteHelper}}
+\index{NetsuiteHelper@{NetsuiteHelper}!AinslieAPI.Helpers.NetsuiteHelper@{AinslieAPI.Helpers.NetsuiteHelper}}
+\doxysubsubsection{\texorpdfstring{NetsuiteHelper()}{NetsuiteHelper()}}
+{\footnotesize\ttfamily Ainslie\+API.\+Helpers.\+Netsuite\+Helper.\+Netsuite\+Helper (\begin{DoxyParamCaption}\item[{IOptions$<$ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings}{App\+Settings}} $>$}]{app\+Settings,  }\item[{\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service}{Internal\+Api\+Service}}}]{ia\+Service }\end{DoxyParamCaption})}
+
+
+
+Initialises a new instance of the Netsuite\+Helper with application settings and internal API service. 
+
+
+
+Definition at line \mbox{\hyperlink{_netsuite_helper_8cs_source_l00019}{19}} of file \mbox{\hyperlink{_netsuite_helper_8cs_source}{Netsuite\+Helper.\+cs}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_ainslie_a_p_i_1_1_helpers_1_1_netsuite_helper_aaade37ab8e2956507c377c5b30af6a0a}\label{class_ainslie_a_p_i_1_1_helpers_1_1_netsuite_helper_aaade37ab8e2956507c377c5b30af6a0a} 
+\index{AinslieAPI.Helpers.NetsuiteHelper@{AinslieAPI.Helpers.NetsuiteHelper}!CreateNetsuiteCustomerRequest@{CreateNetsuiteCustomerRequest}}
+\index{CreateNetsuiteCustomerRequest@{CreateNetsuiteCustomerRequest}!AinslieAPI.Helpers.NetsuiteHelper@{AinslieAPI.Helpers.NetsuiteHelper}}
+\doxysubsubsection{\texorpdfstring{CreateNetsuiteCustomerRequest()}{CreateNetsuiteCustomerRequest()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_netsuite_customer_request}{Netsuite\+Customer\+Request}} Ainslie\+API.\+Helpers.\+Netsuite\+Helper.\+Create\+Netsuite\+Customer\+Request (\begin{DoxyParamCaption}\item[{string}]{branch,  }\item[{\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_green_id_1_1_green_id_customer}{Green\+Id\+Customer}}}]{green\+IDCustomer }\end{DoxyParamCaption})}
+
+
+
+Creates a request object for creating or updating a customer in Netsuite based on Green ID verification data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em branch} & The branch identifier, used for setting the subsidiary in Netsuite.\\
+\hline
+{\em green\+IDCustomer} & The customer\textquotesingle{}s Green ID verification details.\\
+\hline
+\end{DoxyParams}
+
+
+\begin{DoxyReturn}{Returns}
+A populated Netsuite\+Customer\+Request object.
+\end{DoxyReturn}
+
+
+Maps Green ID customer data to the Netsuite customer request format, preparing data for integration with Netsuite CRM. Includes handling for personal details, contact information, and address, with specific attention to Netsuite\textquotesingle{}s data structure. 
+
+Definition at line \mbox{\hyperlink{_netsuite_helper_8cs_source_l00038}{38}} of file \mbox{\hyperlink{_netsuite_helper_8cs_source}{Netsuite\+Helper.\+cs}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_ainslie_a_p_i_1_1_helpers_1_1_netsuite_helper_aaade37ab8e2956507c377c5b30af6a0a_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+STRIDER/source/repos/\+Ainslie\+API/\+Helpers/\mbox{\hyperlink{_netsuite_helper_8cs}{Netsuite\+Helper.\+cs}}\end{DoxyCompactItemize}

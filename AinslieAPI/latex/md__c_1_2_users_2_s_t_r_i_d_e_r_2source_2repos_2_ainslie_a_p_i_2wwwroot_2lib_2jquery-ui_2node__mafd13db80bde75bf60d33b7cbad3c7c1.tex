@@ -1,0 +1,242 @@
+\chapter{grunt-\/contrib-\/csslint v2.0.0 \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/gruntjs/grunt-\/contrib-\/csslint"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+org/gruntjs/grunt-\/contrib-\/csslint.\+svg?branch=master"{} alt="{}\+Build Status\+: Linux"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}a href="{}https\+://ci.\+appveyor.\+com/project/gruntjs/grunt-\/contrib-\/csslint/branch/master"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://ci.\+appveyor.\+com/api/projects/status/ls0y0jy0qni18gby/branch/master?svg=true"{} alt="{}\+Build Status\+: Windows"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mafd13db80bde75bf60d33b7cbad3c7c1}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mafd13db80bde75bf60d33b7cbad3c7c1}\index{grunt-\/contrib-\/csslint v2.0.0 $<$a href="{}https://travis-\/ci.org/gruntjs/grunt-\/contrib-\/csslint"{} $>$$<$img src="{}https://travis-\/ci.org/gruntjs/grunt-\/contrib-\/csslint.svg?branch=master"{} alt="{}Build Status: Linux"{}/$>$$<$/a$>$ $<$a href="{}https://ci.appveyor.com/project/gruntjs/grunt-\/contrib-\/csslint/branch/master"{} $>$$<$img src="{}https://ci.appveyor.com/api/projects/status/ls0y0jy0qni18gby/branch/master?svg=true"{} alt="{}Build Status: Windows"{}/$>$$<$/a$>$@{grunt-\/contrib-\/csslint v2.0.0 $<$a href=""https://travis-\/ci.org/gruntjs/grunt-\/contrib-\/csslint"" $>$$<$img src=""https://travis-\/ci.org/gruntjs/grunt-\/contrib-\/csslint.svg?branch=master"" alt=""Build Status: Linux""/$>$$<$/a$>$ $<$a href=""https://ci.appveyor.com/project/gruntjs/grunt-\/contrib-\/csslint/branch/master"" $>$$<$img src=""https://ci.appveyor.com/api/projects/status/ls0y0jy0qni18gby/branch/master?svg=true"" alt=""Build Status: Windows""/$>$$<$/a$>$}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mafd13db80bde75bf60d33b7cbad3c7c1_autotoc_md8760}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mafd13db80bde75bf60d33b7cbad3c7c1_autotoc_md8760}%
+ \begin{quote}
+Lint CSS files \end{quote}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mafd13db80bde75bf60d33b7cbad3c7c1_autotoc_md8761}{}\doxysection{\texorpdfstring{Getting Started}{Getting Started}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mafd13db80bde75bf60d33b7cbad3c7c1_autotoc_md8761}
+If you haven\textquotesingle{}t used \href{http://gruntjs.com/}{\texttt{ Grunt}} before, be sure to check out the \href{http://gruntjs.com/getting-started}{\texttt{ Getting Started}} guide, as it explains how to create a \href{http://gruntjs.com/sample-gruntfile}{\texttt{ Gruntfile}} as well as install and use Grunt plugins. Once you\textquotesingle{}re familiar with that process, you may install this plugin with this command\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ grunt-\/contrib-\/csslint\ -\/-\/save-\/dev}
+
+\end{DoxyCode}
+
+
+Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of Java\+Script\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{grunt.loadNpmTasks('grunt-\/contrib-\/csslint');}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mafd13db80bde75bf60d33b7cbad3c7c1_autotoc_md8762}{}\doxysection{\texorpdfstring{Csslint task}{Csslint task}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mafd13db80bde75bf60d33b7cbad3c7c1_autotoc_md8762}
+{\itshape Run this task with the {\ttfamily grunt csslint} command.}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mafd13db80bde75bf60d33b7cbad3c7c1_autotoc_md8763}{}\doxysubsection{\texorpdfstring{Options}{Options}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mafd13db80bde75bf60d33b7cbad3c7c1_autotoc_md8763}
+Any specified option will be passed through directly to \href{http://csslint.net/}{\texttt{ csslint}}, thus you can specify any option that csslint supports. The csslint API is a bit awkward\+: For each rule, a value of {\ttfamily false} ignores the rule, a value of {\ttfamily 2} will set it to become an error. Otherwise all rules are considered warnings.
+
+For the current csslint version, these rules are available\+:
+
+
+\begin{DoxyItemize}
+\item \href{https://github.com/CSSLint/csslint/wiki/Disallow-\%21important}{\texttt{ important}}
+\item \href{https://github.com/CSSLint/csslint/wiki/Disallow-adjoining-classes}{\texttt{ adjoining-\/classes}}
+\item \href{https://github.com/CSSLint/csslint/wiki/Require-use-of-known-properties}{\texttt{ known-\/properties}}
+\item \href{https://github.com/CSSLint/csslint/wiki/Disallow-box-sizing}{\texttt{ box-\/sizing}}
+\item \href{https://github.com/CSSLint/csslint/wiki/Beware-of-box-model-size}{\texttt{ box-\/model}}
+\item \href{https://github.com/CSSLint/csslint/wiki/Disallow-overqualified-elements}{\texttt{ overqualified-\/elements}}
+\item \href{https://github.com/CSSLint/csslint/wiki/Require-properties-appropriate-for-display}{\texttt{ display-\/property-\/grouping}}
+\item \href{https://github.com/CSSLint/csslint/wiki/Bulletproof-font-face}{\texttt{ bulletproof-\/font-\/face}}
+\item \href{https://github.com/CSSLint/csslint/wiki/Require-compatible-vendor-prefixes}{\texttt{ compatible-\/vendor-\/prefixes}}
+\item \href{https://github.com/CSSLint/csslint/wiki/Disallow-selectors-that-look-like-regular-expressions}{\texttt{ regex-\/selectors}}
+\item errors
+\item \href{https://github.com/CSSLint/csslint/wiki/Disallow-duplicate-background-images}{\texttt{ duplicate-\/background-\/images}}
+\item \href{https://github.com/CSSLint/csslint/wiki/Disallow-duplicate-properties}{\texttt{ duplicate-\/properties}}
+\item \href{https://github.com/CSSLint/csslint/wiki/Disallow-empty-rules}{\texttt{ empty-\/rules}}
+\item selector-\/max-\/approaching
+\item \href{https://github.com/CSSLint/csslint/wiki/Require-all-gradient-definitions}{\texttt{ gradients}}
+\item \href{https://github.com/CSSLint/csslint/wiki/Require-fallback-colors}{\texttt{ fallback-\/colors}}
+\item \href{https://github.com/CSSLint/csslint/wiki/Don\%27t-use-too-many-font-size-declarations}{\texttt{ font-\/sizes}}
+\item \href{https://github.com/CSSLint/csslint/wiki/Don\%27t-use-too-many-web-fonts}{\texttt{ font-\/faces}}
+\item \href{https://github.com/CSSLint/csslint/wiki/Disallow-too-many-floats}{\texttt{ floats}}
+\item \href{https://github.com/CSSLint/csslint/wiki/Disallow-star-hack}{\texttt{ star-\/property-\/hack}}
+\item \href{https://github.com/CSSLint/csslint/wiki/Disallow-outline\%3Anone}{\texttt{ outline-\/none}}
+\item \href{https://github.com/CSSLint/csslint/wiki/Disallow-\%40import}{\texttt{ import}}
+\item \href{https://github.com/CSSLint/csslint/wiki/Disallow-IDs-in-selectors}{\texttt{ ids}}
+\item \href{https://github.com/CSSLint/csslint/wiki/Disallow-underscore-hack}{\texttt{ underscore-\/property-\/hack}}
+\item rules-\/count
+\item \href{https://github.com/CSSLint/csslint/wiki/Disallow-qualified-headings}{\texttt{ qualified-\/headings}}
+\item selector-\/max
+\item \href{https://github.com/CSSLint/csslint/wiki/Require-shorthand-properties}{\texttt{ shorthand}}
+\item \href{https://github.com/CSSLint/csslint/wiki/Disallow-negative-text-indent}{\texttt{ text-\/indent}}
+\item \href{https://github.com/CSSLint/csslint/wiki/Headings-should-only-be-defined-once}{\texttt{ unique-\/headings}}
+\item \href{https://github.com/CSSLint/csslint/wiki/Disallow-universal-selector}{\texttt{ universal-\/selector}}
+\item \href{https://github.com/CSSLint/csslint/wiki/Disallow-unqualified-attribute-selectors}{\texttt{ unqualified-\/attributes}}
+\item \href{https://github.com/CSSLint/csslint/wiki/Require-standard-property-with-vendor-prefix}{\texttt{ vendor-\/prefix}}
+\item \href{https://github.com/CSSLint/csslint/wiki/Disallow-units-for-zero-values}{\texttt{ zero-\/units}}
+\end{DoxyItemize}
+
+For an explanation of those rules, \href{https://github.com/stubbornella/csslint/wiki/Rules}{\texttt{ check the csslint wiki}}.
+
+{\itshape Side note\+: To update this list, run this\+:}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{node\ -\/e\ "{}require('csslint').CSSLint.getRules().forEach(function(x)\ \{\ console.log(x.id)\ \})"{}}
+
+\end{DoxyCode}
+
+
+A few additional options are supported\+:\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mafd13db80bde75bf60d33b7cbad3c7c1_autotoc_md8764}{}\doxysubsubsection{\texorpdfstring{csslintrc}{csslintrc}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mafd13db80bde75bf60d33b7cbad3c7c1_autotoc_md8764}
+Type\+: {\ttfamily string} ~\newline
+ Default\+: {\ttfamily null}
+
+If this filename is specified, options and globals defined therein will be used. Task and target options override the options within the {\ttfamily .csslintrc} file. It should be a JSON file, but it supports comments\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ //\ unicorns}
+\DoxyCodeLine{\ \ "{}qualified-\/headings"{}:\ true,}
+\DoxyCodeLine{\ \ "{}unique-\/headings"{}:\ true,}
+\DoxyCodeLine{\ \ "{}known-\/properties"{}:\ false}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mafd13db80bde75bf60d33b7cbad3c7c1_autotoc_md8765}{}\doxysubsubsection{\texorpdfstring{formatters}{formatters}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mafd13db80bde75bf60d33b7cbad3c7c1_autotoc_md8765}
+Type\+: {\ttfamily array} ~\newline
+ Default\+: {\ttfamily null}
+
+If the formatters options is specified, the grunt csslint task is able to use the all formatters provided by csslint.
+
+For the current csslint version, the following formatters are included out of the box\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily text}
+\item {\ttfamily compact}
+\item {\ttfamily lint-\/xml}
+\item {\ttfamily csslint-\/xml}
+\item {\ttfamily checkstyle-\/xml}
+\item {\ttfamily junit-\/xml}
+\end{DoxyItemize}
+
+For an explanation of those formatters, \href{https://github.com/stubbornella/csslint/wiki/Command-line-interface}{\texttt{ check the csslint wiki}}, section Options/--format.
+
+You are also able to supply your own custom formatter, such as \href{https://www.npmjs.com/package/csslint-stylish}{\texttt{ csslint-\/stylish}}. Note that you have to provide the complete module, not just the id. See example.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mafd13db80bde75bf60d33b7cbad3c7c1_autotoc_md8766}{}\doxysubsubsection{\texorpdfstring{absolute\+File\+Paths\+For\+Formatters}{absolute\+File\+Paths\+For\+Formatters}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mafd13db80bde75bf60d33b7cbad3c7c1_autotoc_md8766}
+Type\+: {\ttfamily boolean} ~\newline
+ Default\+: {\ttfamily false}
+
+If the {\ttfamily absolute\+File\+Paths\+For\+Formatters} option is specified and set to {\ttfamily true}, the file names in the generated reports are absolute.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mafd13db80bde75bf60d33b7cbad3c7c1_autotoc_md8767}{}\doxysubsubsection{\texorpdfstring{quiet}{quiet}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mafd13db80bde75bf60d33b7cbad3c7c1_autotoc_md8767}
+Type\+: {\ttfamily boolean} ~\newline
+ Default\+: {\ttfamily false}
+
+Only output errors.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mafd13db80bde75bf60d33b7cbad3c7c1_autotoc_md8768}{}\doxysubsubsection{\texorpdfstring{quiet\+\_\+all}{quiet\+\_\+all}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mafd13db80bde75bf60d33b7cbad3c7c1_autotoc_md8768}
+Type\+: {\ttfamily boolean} ~\newline
+ Default\+: {\ttfamily false}
+
+Outputs without errors and warnings.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mafd13db80bde75bf60d33b7cbad3c7c1_autotoc_md8769}{}\doxysubsection{\texorpdfstring{Usage Examples}{Usage Examples}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mafd13db80bde75bf60d33b7cbad3c7c1_autotoc_md8769}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{csslint:\ \{}
+\DoxyCodeLine{\ \ strict:\ \{}
+\DoxyCodeLine{\ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ import:\ 2}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ src:\ ['path/to/**/*.css']}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ lax:\ \{}
+\DoxyCodeLine{\ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ import:\ false}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ src:\ ['path/to/**/*.css']}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mafd13db80bde75bf60d33b7cbad3c7c1_autotoc_md8770}{}\doxysubsubsection{\texorpdfstring{Loading rules from an external file}{Loading rules from an external file}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mafd13db80bde75bf60d33b7cbad3c7c1_autotoc_md8770}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{csslint:\ \{}
+\DoxyCodeLine{\ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ csslintrc:\ '.csslintrc'}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ strict:\ \{}
+\DoxyCodeLine{\ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ import:\ 2}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ src:\ ['path/to/**/*.css']}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ lax:\ \{}
+\DoxyCodeLine{\ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ import:\ false}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ src:\ ['path/to/**/*.css']}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mafd13db80bde75bf60d33b7cbad3c7c1_autotoc_md8771}{}\doxysubsubsection{\texorpdfstring{Specifiying output formatters}{Specifiying output formatters}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mafd13db80bde75bf60d33b7cbad3c7c1_autotoc_md8771}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{csslint:\ \{}
+\DoxyCodeLine{\ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ csslintrc:\ '.csslintrc',}
+\DoxyCodeLine{\ \ \ \ formatters:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{id:\ 'junit-\/xml',\ dest:\ 'report/csslint\_junit.xml'\},}
+\DoxyCodeLine{\ \ \ \ \ \ \{id:\ 'csslint-\/xml',\ dest:\ 'report/csslint.xml'\}}
+\DoxyCodeLine{\ \ \ \ ]}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ strict:\ \{}
+\DoxyCodeLine{\ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ import:\ 2}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ src:\ ['path/to/**/*.css']}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mafd13db80bde75bf60d33b7cbad3c7c1_autotoc_md8772}{}\doxysubsubsection{\texorpdfstring{Providing a custom formatter}{Providing a custom formatter}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mafd13db80bde75bf60d33b7cbad3c7c1_autotoc_md8772}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{csslint:\ \{}
+\DoxyCodeLine{\ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ csslintrc:\ '.csslintrc',}
+\DoxyCodeLine{\ \ \ \ formatters:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{id:\ require('csslint-\/stylish'),\ dest:\ 'report/csslint\_stylish.xml'\}}
+\DoxyCodeLine{\ \ \ \ ]}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ strict:\ \{}
+\DoxyCodeLine{\ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ import:\ 2}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ src:\ ['path/to/**/*.css']}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mafd13db80bde75bf60d33b7cbad3c7c1_autotoc_md8773}{}\doxysubsubsection{\texorpdfstring{Using absolute file paths in the output formatters}{Using absolute file paths in the output formatters}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mafd13db80bde75bf60d33b7cbad3c7c1_autotoc_md8773}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{csslint:\ \{}
+\DoxyCodeLine{\ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ absoluteFilePathsForFormatters:\ true,}
+\DoxyCodeLine{\ \ \ \ formatters:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{id:\ 'junit-\/xml',\ dest:\ 'report/csslint\_junit.xml'\},}
+\DoxyCodeLine{\ \ \ \ \ \ \{id:\ 'csslint-\/xml',\ dest:\ 'report/csslint.xml'\}}
+\DoxyCodeLine{\ \ \ \ ]}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mafd13db80bde75bf60d33b7cbad3c7c1_autotoc_md8774}{}\doxysection{\texorpdfstring{Release History}{Release History}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mafd13db80bde75bf60d33b7cbad3c7c1_autotoc_md8774}
+
+\begin{DoxyItemize}
+\item 2016-\/09-\/22   v2.0.\+0   \+Update (dev)dependecies including to csslint to v1.\+0.\+3.
+\item 2016-\/03-\/04   v1.0.\+0   \+Point main to task and remove peer\+Deps. Updates to docs.
+\item 2015-\/07-\/18   v0.5.\+0   \+Add ability to register custom formatters.
+\item 2015-\/01-\/18   v0.4.\+0   \+The {\ttfamily .csslintrc} file can now contain comments.
+\item 2014-\/09-\/07   v0.3.\+1   \+Show affected browsers in errors and warnings.
+\item 2014-\/09-\/07   v0.3.\+0   \+CSSLint "{}warnings"{} no longer fail build. Updated dependencies.
+\item 2013-\/12-\/02   v0.2.\+0   \+Bump to csslint 0.\+10.\+0
+\item 2013-\/04-\/02   v0.1.\+2   \+Allow absolute filepaths in reports.
+\item 2013-\/03-\/14   v0.1.\+1   \+Support formatters. Support .csslintrc.
+\item 2013-\/03-\/07   v0.1.\+0   \+Initial release.
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+
+
+Task submitted by \href{http://bassistance.de}{\texttt{ Jörn Zaefferer}}
+
+{\itshape This file was generated on Thu Sep 22 2016 02\+:55\+:13.} 

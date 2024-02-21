@@ -1,0 +1,383 @@
+\chapter{lang}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba}\index{lang@{lang}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3528}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3528}%
+ Language Utilities. Easier inheritance, scope handling, type checks.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3529}{}\doxysection{\texorpdfstring{clone(val)\+:\texorpdfstring{$\ast$}{*}}{clone(val)\+:\texorpdfstring{$\ast$}{*}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3529}
+Clone native types like Object, Array, Reg\+Exp, Date and primitives.
+
+This method will not clone values that are referenced within {\ttfamily val}. It will only copy the value reference to the new value. If the value is not a plain object but is an object, it will return the value unchanged.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3530}{}\doxysubsection{\texorpdfstring{Example}{Example}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3530}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ a\ =\ \{\ foo:\ 'bar'\ \};}
+\DoxyCodeLine{var\ b\ =\ clone(a);}
+\DoxyCodeLine{console.log(a\ ===\ b);\ //\ false}
+\DoxyCodeLine{console.log(a.foo\ ===\ b.foo);\ //\ true}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ c\ =\ [1,\ 2,\ 3];}
+\DoxyCodeLine{var\ d\ =\ clone(b);}
+\DoxyCodeLine{console.log(c\ ===\ d);\ //\ false}
+\DoxyCodeLine{console.log(c);\ //\ [1,\ 2,\ 3]}
+
+\end{DoxyCode}
+
+
+See\+: \`{}deep\+Clone()\`{}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3531}{}\doxysection{\texorpdfstring{create\+Object(parent, \mbox{[}props\mbox{]})\+:Object}{create\+Object(parent, \mbox{[}props\mbox{]})\+:Object}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3531}
+Create Object using prototypal inheritance and setting custom properties.
+
+Mix between \href{http://javascript.crockford.com/prototypal.html}{\texttt{ Douglas Crockford Prototypal Inheritance}} and \href{./object.html\#mixIn}{\texttt{ {\ttfamily object/mix\+In}}}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3532}{}\doxysubsection{\texorpdfstring{Arguments}{Arguments}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3532}
+
+\begin{DoxyEnumerate}
+\item {\ttfamily parent} (Object) \+: Parent Object
+\item {\ttfamily \mbox{[}props\mbox{]}} (Object) \+: Object properties
+\end{DoxyEnumerate}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3533}{}\doxysubsection{\texorpdfstring{Example}{Example}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3533}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ base\ =\ \{}
+\DoxyCodeLine{\ \ \ \ trace\ :\ function()\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ console.log(this.name);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ myObject\ =\ createObject(base,\ \{}
+\DoxyCodeLine{\ \ \ \ name\ :\ 'Lorem\ Ipsum'}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{myObject.trace();\ //\ "{}Lorem\ Ipsum"{}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3534}{}\doxysection{\texorpdfstring{ctor\+Apply(constructor, args)\+:Object}{ctor\+Apply(constructor, args)\+:Object}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3534}
+Do {\ttfamily Function.\+prototype.\+apply()} on a constructor while maintaining prototype chain.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{function\ Person(name,\ surname)\ \{}
+\DoxyCodeLine{\ \ \ \ this.name\ =\ name;}
+\DoxyCodeLine{\ \ \ \ this.surname\ =\ surname;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{Person.prototype.walk\ =\ function()\{}
+\DoxyCodeLine{\ \ \ \ console.log(this.name\ +'\ is\ walking');}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ args\ =\ ['John',\ 'Doe'];}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ "{}similar"{}\ effect\ as\ calling\ \`{}new\ Person("{}John"{},\ "{}Doe"{})`}
+\DoxyCodeLine{var\ john\ =\ ctorApply(Person,\ args);}
+\DoxyCodeLine{john.walk();\ //\ "{}John\ is\ walking"{}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3535}{}\doxysection{\texorpdfstring{deep\+Clone(val, \mbox{[}instance\+Clone\mbox{]})\+:\texorpdfstring{$\ast$}{*}}{deep\+Clone(val, \mbox{[}instance\+Clone\mbox{]})\+:\texorpdfstring{$\ast$}{*}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3535}
+Deep clone native types like Object, Array, Reg\+Exp, Date and primitives.
+
+The {\ttfamily instance\+Clone} function will be invoked to clone objects that are not "{}plain"{} objects (as defined by \`{}is\+Plain\+Object\`{}) if it is provided. If {\ttfamily instance\+Clone} is not specified, it will not attempt to clone non-\/plain objects, and will copy the object reference.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3536}{}\doxysubsection{\texorpdfstring{Example}{Example}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3536}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ a\ =\ \{foo:'bar',\ obj:\ \{a:1,\ b:2\}\};}
+\DoxyCodeLine{var\ b\ =\ deepClone(a);\ //\ \{foo:'bar',\ obj:\ \{a:1,\ b:2\}\}}
+\DoxyCodeLine{console.log(\ a\ ===\ b\ );\ //\ false}
+\DoxyCodeLine{console.log(\ a.obj\ ===\ b.obj\ );\ //\ false}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ c\ =\ [1,\ 2,\ [3,\ 4]];}
+\DoxyCodeLine{var\ d\ =\ deepClone(c);\ //\ [1,\ 2,\ [3,\ 4]]}
+\DoxyCodeLine{var\ e\ =\ c.concat();\ //\ [1,\ 2,\ [3,\ 4]]}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log(\ c[2]\ ===\ d[2]\ );\ //\ false}
+\DoxyCodeLine{//\ concat\ doesn't\ do\ a\ deep\ clone,\ arrays\ are\ passed\ by\ reference}
+\DoxyCodeLine{console.log(\ e[2]\ ===\ d[2]\ );\ //\ true}
+\DoxyCodeLine{}
+\DoxyCodeLine{function\ Custom()\ \{\ \}}
+\DoxyCodeLine{function\ cloneCustom(x)\ \{\ return\ new\ Custom();\ \}}
+\DoxyCodeLine{var\ f\ =\ \{\ test:\ new\ Custom()\ \};}
+\DoxyCodeLine{var\ g\ =\ deepClone(f,\ cloneCustom);}
+\DoxyCodeLine{g.test\ ===\ f.test\ //\ false,\ since\ new\ Custom\ instance\ will\ be\ created}
+
+\end{DoxyCode}
+
+
+See\+: \`{}clone()\`{}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3537}{}\doxysection{\texorpdfstring{deep\+Equals(a, b, \mbox{[}callback\mbox{]})\+:Boolean}{deep\+Equals(a, b, \mbox{[}callback\mbox{]})\+:Boolean}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3537}
+Recursively tests whether two values contains the same keys and values.
+
+{\ttfamily callback} specifies the equality comparison function used to compare non-\/object values. It defaults to using the \`{}is()\`{} function.
+
+If the values are both an object or array, it will recurse into both values, checking if their keys/values are equal. It will only check the keys and values contained by the objects; it will not check the objects\textquotesingle{} prototypes. If either of the values are not objects, they will be checked using the {\ttfamily callback} function.
+
+Example\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{deepEquals(\{\ a:\ 1\ \},\ \{\ a:\ 1\ \});\ //\ true}
+\DoxyCodeLine{deepEquals(\{\ value:\ \{\ a:\ 1\ \}\ \},\ \{\ value:\ \{\ a:\ 1\ \}\ \});\ //\ true}
+\DoxyCodeLine{deepEquals(\{\ value:\ \{\ a:\ 1\ \}\ \},\ \{\ value:\ \{\ a:\ 2\ \}\ \});\ //\ false}
+\DoxyCodeLine{deepEquals(\{\ value:\ \{\ a:\ 1\ \}\ \},\ \{\ value:\ \{\ a:\ 1,\ b:\ 2\ \}\ \});\ //\ false}
+\DoxyCodeLine{deepEquals(\{\},\ null);\ //\ false}
+\DoxyCodeLine{deepEquals(null,\ null);\ //\ true}
+\DoxyCodeLine{deepEquals(}
+\DoxyCodeLine{\ \ \ \ \{\ a:\ \{\ b:\ 1\ \}\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ a:\ \{\ b:\ '1'\ \}\ \},}
+\DoxyCodeLine{\ \ \ \ function(a,\ b)\ \{\ return\ a\ ==\ b;\ \});\ //\ true}
+
+\end{DoxyCode}
+
+
+See\+: \href{object.html\#equals}{\texttt{ object/equals}}, \href{array.html\#equals}{\texttt{ array/equals}}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3538}{}\doxysection{\texorpdfstring{defaults(val, ...\+defaults)\+:void}{defaults(val, ...\+defaults)\+:void}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3538}
+Return first value that isn\textquotesingle{}t {\ttfamily null} or {\ttfamily undefined}. \begin{DoxyVerb}function doSomethingAwesome(foo, bar) {
+    // default arguments
+    foo = defaults(foo, 'lorem');
+    bar = defaults(bar, 123);
+    // ...
+}
+\end{DoxyVerb}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3539}{}\doxysection{\texorpdfstring{GLOBAL\+:Object}{GLOBAL\+:Object}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3539}
+Reference to the global context ({\ttfamily window} inside a browser, {\ttfamily global} on node.\+js). Works on ES3 and ES5 strict-\/mode.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3540}{}\doxysection{\texorpdfstring{inherit\+Prototype(child\+Ctor, parent\+Ctor)\+:Object}{inherit\+Prototype(child\+Ctor, parent\+Ctor)\+:Object}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3540}
+Inherit the prototype methods from one constructor into another.
+
+Similar to \href{http://nodejs.org/docs/latest/api/util.html\#util_util_inherits_constructor_superconstructor}{\texttt{ node.\+js util/inherits}}.
+
+It returns the the {\ttfamily child\+Ctor.\+prototype} for convenience.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{function\ Foo(name)\{}
+\DoxyCodeLine{\ \ \ \ this.name\ =\ name;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{Foo.prototype\ =\ \{}
+\DoxyCodeLine{\ \ \ \ getName\ :\ function()\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ return\ this.name;}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{function\ Bar(name)\{}
+\DoxyCodeLine{\ \ \ \ Foo.call(this,\ name);}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{//should\ be\ called\ before\ calling\ constructor}
+\DoxyCodeLine{var\ proto\ =\ inheritPrototype(Bar,\ Foo);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ for\ convenience\ we\ return\ the\ new\ prototype\ object}
+\DoxyCodeLine{console.log(proto\ ===\ Bar.prototype);\ //\ true}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ myObj\ =\ new\ Bar('lorem\ ipsum');}
+\DoxyCodeLine{myObj.getName();\ //\ "{}lorem\ ipsum"{}}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log(myObj\ instanceof\ Foo);\ //\ true}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ you\ also\ have\ access\ to\ the\ "{}super"{}\ constructor}
+\DoxyCodeLine{console.log(Bar.super\_\ ===\ Foo);\ //\ true}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3541}{}\doxysection{\texorpdfstring{is(x, y)\+:Boolean}{is(x, y)\+:Boolean}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3541}
+Check if both values are identical/egal.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ wtfjs}
+\DoxyCodeLine{NaN\ ===\ NaN;\ //\ false}
+\DoxyCodeLine{-\/0\ ===\ +0;\ \ \ //\ true}
+\DoxyCodeLine{}
+\DoxyCodeLine{is(NaN,\ NaN);\ //\ true}
+\DoxyCodeLine{is(-\/0,\ +0);\ \ \ //\ false}
+\DoxyCodeLine{is('a',\ 'b');\ //\ false}
+
+\end{DoxyCode}
+
+
+See\+: \`{}isnt()\`{}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3542}{}\doxysection{\texorpdfstring{isnt(x, y)\+:Boolean}{isnt(x, y)\+:Boolean}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3542}
+Check if both values are not identical/egal.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ wtfjs}
+\DoxyCodeLine{NaN\ ===\ NaN;\ //\ false}
+\DoxyCodeLine{-\/0\ ===\ +0;\ \ \ //\ true}
+\DoxyCodeLine{}
+\DoxyCodeLine{isnt(NaN,\ NaN);\ //\ false}
+\DoxyCodeLine{isnt(-\/0,\ +0);\ \ \ //\ true}
+\DoxyCodeLine{isnt('a',\ 'b');\ //\ true}
+
+\end{DoxyCode}
+
+
+See\+: \`{}is()\`{}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3543}{}\doxysection{\texorpdfstring{is\+Arguments(val)\+:Boolean}{is\+Arguments(val)\+:Boolean}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3543}
+If value is an "{}\+Arguments"{} object.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3544}{}\doxysection{\texorpdfstring{is\+Array(val)\+:Boolean}{is\+Array(val)\+:Boolean}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3544}
+If value is an Array. Uses native ES5 {\ttfamily Array.\+is\+Array()} if available.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3545}{}\doxysection{\texorpdfstring{is\+Boolean(val)\+:Boolean}{is\+Boolean(val)\+:Boolean}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3545}
+If value is a Boolean.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3546}{}\doxysection{\texorpdfstring{is\+Date(val)\+:Boolean}{is\+Date(val)\+:Boolean}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3546}
+If value is a Date.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3547}{}\doxysection{\texorpdfstring{is\+Empty(val)\+:Boolean}{is\+Empty(val)\+:Boolean}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3547}
+Checks if Array/\+Object/\+String is empty.
+
+Will return {\ttfamily true} for any object that doesn\textquotesingle{}t contain enumerable properties and also to any type of value that isn\textquotesingle{}t considered a collection (boolean, null, undefined, function, etc).
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{isEmpty('');\ \ \ \ \ \ \ \ \ //\ true}
+\DoxyCodeLine{isEmpty('bar');\ \ \ \ \ \ //\ false}
+\DoxyCodeLine{isEmpty([]);\ \ \ \ \ \ \ \ \ //\ true}
+\DoxyCodeLine{isEmpty([1,\ 2]);\ \ \ \ \ //\ false}
+\DoxyCodeLine{isEmpty(\{\});\ \ \ \ \ \ \ \ \ //\ true}
+\DoxyCodeLine{isEmpty(\{a:1,\ b:2\});\ //\ false}
+\DoxyCodeLine{//\ null,\ undefined,\ booleans,\ numbers\ are\ considered\ as\ "{}empty"{}\ values}
+\DoxyCodeLine{isEmpty(null);\ \ \ \ \ \ \ //\ true}
+\DoxyCodeLine{isEmpty(undefined);\ \ //\ true}
+\DoxyCodeLine{isEmpty(123);\ \ \ \ \ \ \ \ //\ true}
+\DoxyCodeLine{isEmpty(true);\ \ \ \ \ \ \ //\ true}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3548}{}\doxysection{\texorpdfstring{is\+Finite(val)\+:Boolean}{is\+Finite(val)\+:Boolean}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3548}
+Checks if value is Finite.
+
+{\bfseries{IMPORTANT\+:}} This is not the same as native {\ttfamily is\+Finite}, which will return {\ttfamily true} for values that can be coerced into finite numbers. See \href{http://es5.github.com/\#x15.1.2.5}{\texttt{ http\+://es5.\+github.\+com/\#x15.\+1.\+2.\+5}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{isFinite(123);\ \ \ \ \ \ //\ true}
+\DoxyCodeLine{isFinite(Infinity);\ //\ false}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ this\ is\ different\ than\ native\ behavior}
+\DoxyCodeLine{isFinite('');\ \ \ //\ false}
+\DoxyCodeLine{isFinite(true);\ //\ false}
+\DoxyCodeLine{isFinite([]);\ \ \ //\ false}
+\DoxyCodeLine{isFinite(null);\ //\ false}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3549}{}\doxysection{\texorpdfstring{is\+Function(val)\+:Boolean}{is\+Function(val)\+:Boolean}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3549}
+If value is a Function.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3550}{}\doxysection{\texorpdfstring{is\+Kind(val, kind)\+:Boolean}{is\+Kind(val, kind)\+:Boolean}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3550}
+If value is of "{}kind"{}. (used internally by some of the {\itshape is\+Something} checks).
+
+Favor the other methods since strings are commonly mistyped and also because some "{}kinds"{} can only be accurately checked by using other methods (e.\+g. {\ttfamily Arguments}), some of the other checks are also faster.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{isKind([1,2],\ 'Array');\ //\ true}
+\DoxyCodeLine{isKind(3,\ 'Array');\ \ \ \ \ //\ false}
+\DoxyCodeLine{isKind(3,\ 'Number');\ \ \ \ //\ true}
+
+\end{DoxyCode}
+
+
+See\+: \`{}kind\+Of()\`{}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3551}{}\doxysection{\texorpdfstring{is\+Integer(val)\+:Boolean}{is\+Integer(val)\+:Boolean}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3551}
+Check if value is an integer.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{isInteger(123);\ \ \ \ //\ true}
+\DoxyCodeLine{isInteger(123.45);\ //\ false}
+\DoxyCodeLine{isInteger(\{\});\ \ \ \ \ //\ false}
+\DoxyCodeLine{isInteger('foo');\ \ //\ false}
+\DoxyCodeLine{isInteger('123');\ \ //\ false}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3552}{}\doxysection{\texorpdfstring{is\+Na\+N(val)\+:Boolean}{is\+Na\+N(val)\+:Boolean}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3552}
+Check if value is not a number.
+
+It doesn\textquotesingle{}t coerce value into number before doing the check, giving better results than native {\ttfamily is\+NaN}. Returns {\ttfamily true} for everything besides numeric values.
+
+{\bfseries{IMPORTANT\+:}} behavior is very different than the native {\ttfamily is\+NaN} and way more useful!!! See\+: \href{http://es5.github.io/\#x15.1.2.4}{\texttt{ http\+://es5.\+github.\+io/\#x15.\+1.\+2.\+4}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{isNaN(123);\ \ \ \ \ \ \ //\ false}
+\DoxyCodeLine{}
+\DoxyCodeLine{isNaN(NaN);\ \ \ \ \ \ \ //\ true}
+\DoxyCodeLine{isNaN(\{\});\ \ \ \ \ \ \ \ //\ true}
+\DoxyCodeLine{isNaN(undefined);\ //\ true}
+\DoxyCodeLine{isNaN([4,5]);\ \ \ \ \ //\ true}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ these\ are\ all\ "{}false"{}\ on\ native\ isNaN\ and\ main\ reason\ why\ this\ module\ exists}
+\DoxyCodeLine{isNaN('');\ \ \ \ //\ true}
+\DoxyCodeLine{isNaN(null);\ \ //\ true}
+\DoxyCodeLine{isNaN(true);\ \ //\ true}
+\DoxyCodeLine{isNaN(false);\ //\ true}
+\DoxyCodeLine{isNaN("{}123"{});\ //\ true}
+\DoxyCodeLine{isNaN([]);\ \ \ \ //\ true}
+\DoxyCodeLine{isNaN([5]);\ \ \ //\ true}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3553}{}\doxysection{\texorpdfstring{is\+Null(val)\+:Boolean}{is\+Null(val)\+:Boolean}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3553}
+If value is {\ttfamily null}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3554}{}\doxysection{\texorpdfstring{is\+Number(val)\+:Boolean}{is\+Number(val)\+:Boolean}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3554}
+If value is a Number.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3555}{}\doxysection{\texorpdfstring{is\+Object(val)\+:Boolean}{is\+Object(val)\+:Boolean}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3555}
+If value is an Object.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3556}{}\doxysection{\texorpdfstring{is\+Plain\+Object(val)\+:Boolean}{is\+Plain\+Object(val)\+:Boolean}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3556}
+If the value is an Object created by the Object constructor.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3557}{}\doxysection{\texorpdfstring{is\+Reg\+Exp(val)\+:Boolean}{is\+Reg\+Exp(val)\+:Boolean}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3557}
+If value is a Reg\+Exp.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3558}{}\doxysection{\texorpdfstring{is\+String(val)\+:Boolean}{is\+String(val)\+:Boolean}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3558}
+If value is a String.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3559}{}\doxysection{\texorpdfstring{is\+Undefined(val)\+:Boolean}{is\+Undefined(val)\+:Boolean}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3559}
+If value is {\ttfamily undefined}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3560}{}\doxysection{\texorpdfstring{kind\+Of(val)\+:String}{kind\+Of(val)\+:String}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3560}
+Gets kind of value (e.\+g. "{}\+String"{}, "{}\+Number"{}, "{}\+Reg\+Exp"{}, "{}\+Null"{}, "{}\+Date"{}). Used internally by {\ttfamily is\+Kind()} and most of the other {\itshape is\+Something} checks.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{kindOf([1,2]);\ //\ "{}Array"{}}
+\DoxyCodeLine{kindOf('foo');\ //\ "{}String"{}}
+\DoxyCodeLine{kindOf(3);\ \ \ \ \ //\ "{}Number"{}}
+
+\end{DoxyCode}
+
+
+See\+: \`{}is\+Kind()\`{}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3561}{}\doxysection{\texorpdfstring{to\+Array(val)\+:Array}{to\+Array(val)\+:Array}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3561}
+Convert array-\/like object into Array or wrap value into Array.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{toArray(\{}
+\DoxyCodeLine{\ \ \ \ "{}0"{}\ :\ "{}foo"{},}
+\DoxyCodeLine{\ \ \ \ "{}1"{}\ :\ "{}bar"{},}
+\DoxyCodeLine{\ \ \ \ "{}length"{}\ :\ 2}
+\DoxyCodeLine{\});\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ ["{}foo"{},\ "{}bar"{}]}
+\DoxyCodeLine{}
+\DoxyCodeLine{function\ foo()\{}
+\DoxyCodeLine{\ \ \ \ return\ toArray(arguments);}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{foo("{}lorem"{},\ 123);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ ["{}lorem"{},\ 123]}
+\DoxyCodeLine{}
+\DoxyCodeLine{toArray("{}lorem\ ipsum"{});\ \ \ \ \ \ \ \ \ \ //\ ["{}lorem\ ipsum"{}]}
+\DoxyCodeLine{toArray(window);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ [window]}
+\DoxyCodeLine{toArray(\{foo:"{}bar"{},\ lorem:123\});\ //\ [\{foo:"{}bar"{},\ lorem:123\}]}
+
+\end{DoxyCode}
+
+
+See\+: object/values()\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3562}{}\doxysection{\texorpdfstring{to\+Number(val)\+:Number}{to\+Number(val)\+:Number}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3562}
+Convert value into number.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ numeric\ values\ are\ typecasted\ as\ Number}
+\DoxyCodeLine{toNumber('123');\ \ \ \ \ //\ 123}
+\DoxyCodeLine{toNumber(-\/567);\ \ \ \ \ \ //\ -\/567}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ falsy\ values\ returns\ zero}
+\DoxyCodeLine{toNumber('');\ \ \ \ \ \ \ \ //\ 0}
+\DoxyCodeLine{toNumber(null);\ \ \ \ \ \ //\ 0}
+\DoxyCodeLine{toNumber(undefined);\ //\ 0}
+\DoxyCodeLine{toNumber(false);\ \ \ \ \ //\ 0}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ non-\/numeric\ values\ returns\ NaN}
+\DoxyCodeLine{toNumber('asd');\ \ \ \ \ //\ NaN}
+\DoxyCodeLine{toNumber(\{\});\ \ \ \ \ \ \ \ //\ NaN}
+\DoxyCodeLine{toNumber([]);\ \ \ \ \ \ \ \ //\ NaN}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Date\ objects\ return\ milliseconds\ since\ epoch}
+\DoxyCodeLine{toNumber(new\ Date(1985,\ 6,\ 23));\ //\ 490935600000}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3563}{}\doxysection{\texorpdfstring{to\+String(val)\+:String}{to\+String(val)\+:String}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m981b437d19ffc36f12012bc8adedfdba_autotoc_md3563}
+Convert any value to its string representation.
+
+Will return an empty string for {\ttfamily undefined} or {\ttfamily null}, otherwise will convert the value to its string representation.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ null\ and\ undefined\ are\ converted\ into\ empty\ strings}
+\DoxyCodeLine{toString(null);\ \ \ \ \ \ //\ "{}"{}}
+\DoxyCodeLine{toString(undefined);\ //\ "{}"{}}
+\DoxyCodeLine{}
+\DoxyCodeLine{toString(1);\ \ \ \ \ \ \ //\ "{}1"{}}
+\DoxyCodeLine{toString([1,2,3]);\ //\ "{}1,2,3"{}}
+\DoxyCodeLine{toString(false);\ \ \ //\ "{}false"{}}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ uses\ \`{}val.toString()`\ to\ convert\ value}
+\DoxyCodeLine{toString(\{toString:funtion()\{\ return\ 'foo';\ \}\});\ //\ "{}foo"{}}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+
+
+For more usage examples check specs inside {\ttfamily /tests} folder. Unit tests are the best documentation you can get... 

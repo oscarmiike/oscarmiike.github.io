@@ -1,0 +1,203 @@
+\doxysection{Ainslie\+API.\+Authentication.\+Jwt\+Utils Class Reference}
+\hypertarget{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils}{}\label{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils}\index{AinslieAPI.Authentication.JwtUtils@{AinslieAPI.Authentication.JwtUtils}}
+
+
+Utility class for JWT operations, including token generation and validation.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils_a7e6794aab45891297310eac2de6db345}{Jwt\+Utils}} (IOptions$<$ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings}{App\+Settings}} $>$ app\+Settings, IData\+Protection\+Provider provider)
+\begin{DoxyCompactList}\small\item\em Initialises a new instance of the Jwt\+Utils class. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils_ac667c75c6805eb3e6943cc1e8aec0573}{Generate\+Token}} (\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_user_helper_1_1_authenticated_user}{Authenticated\+User}} user)
+\begin{DoxyCompactList}\small\item\em Generates a JWT for an authenticated user. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_user_helper_1_1_authenticated_user}{Authenticated\+User}}? \mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils_a1ed447f2fb5b17b1c8ce593034a61808}{Validate\+Token}} (string token)
+\begin{DoxyCompactList}\small\item\em Validates a JWT and extracts the authenticated user\textquotesingle{}s information. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils_aa124f3e1cb759c23d54327faccbee020}{Encrypt}} (string plain\+Text)
+\begin{DoxyCompactList}\small\item\em Encrypts a plaintext string using the application\textquotesingle{}s data protection provider. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils_afa1dbac5d4a38a9fd6d4283ba29a5683}{Decrypt}} (string cipher\+Text)
+\begin{DoxyCompactList}\small\item\em Decrypts a ciphertext string using the application\textquotesingle{}s data protection provider. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Utility class for JWT operations, including token generation and validation. 
+
+Definition at line \mbox{\hyperlink{_jwt_utils_8cs_source_l00018}{18}} of file \mbox{\hyperlink{_jwt_utils_8cs_source}{Jwt\+Utils.\+cs}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils_a7e6794aab45891297310eac2de6db345}\label{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils_a7e6794aab45891297310eac2de6db345} 
+\index{AinslieAPI.Authentication.JwtUtils@{AinslieAPI.Authentication.JwtUtils}!JwtUtils@{JwtUtils}}
+\index{JwtUtils@{JwtUtils}!AinslieAPI.Authentication.JwtUtils@{AinslieAPI.Authentication.JwtUtils}}
+\doxysubsubsection{\texorpdfstring{JwtUtils()}{JwtUtils()}}
+{\footnotesize\ttfamily Ainslie\+API.\+Authentication.\+Jwt\+Utils.\+Jwt\+Utils (\begin{DoxyParamCaption}\item[{IOptions$<$ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings}{App\+Settings}} $>$}]{app\+Settings,  }\item[{IData\+Protection\+Provider}]{provider }\end{DoxyParamCaption})}
+
+
+
+Initialises a new instance of the Jwt\+Utils class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em app\+Settings} & Application settings containing JWT configuration.\\
+\hline
+{\em provider} & Data protection provider for encrypting and decrypting claims.\\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_jwt_utils_8cs_source_l00029}{29}} of file \mbox{\hyperlink{_jwt_utils_8cs_source}{Jwt\+Utils.\+cs}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils_afa1dbac5d4a38a9fd6d4283ba29a5683}\label{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils_afa1dbac5d4a38a9fd6d4283ba29a5683} 
+\index{AinslieAPI.Authentication.JwtUtils@{AinslieAPI.Authentication.JwtUtils}!Decrypt@{Decrypt}}
+\index{Decrypt@{Decrypt}!AinslieAPI.Authentication.JwtUtils@{AinslieAPI.Authentication.JwtUtils}}
+\doxysubsubsection{\texorpdfstring{Decrypt()}{Decrypt()}}
+{\footnotesize\ttfamily string Ainslie\+API.\+Authentication.\+Jwt\+Utils.\+Decrypt (\begin{DoxyParamCaption}\item[{string}]{cipher\+Text }\end{DoxyParamCaption})}
+
+
+
+Decrypts a ciphertext string using the application\textquotesingle{}s data protection provider. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cipher\+Text} & The ciphertext to decrypt.\\
+\hline
+\end{DoxyParams}
+
+
+\begin{DoxyReturn}{Returns}
+The decrypted string.
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_jwt_utils_8cs_source_l00119}{119}} of file \mbox{\hyperlink{_jwt_utils_8cs_source}{Jwt\+Utils.\+cs}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils_afa1dbac5d4a38a9fd6d4283ba29a5683_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils_aa124f3e1cb759c23d54327faccbee020}\label{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils_aa124f3e1cb759c23d54327faccbee020} 
+\index{AinslieAPI.Authentication.JwtUtils@{AinslieAPI.Authentication.JwtUtils}!Encrypt@{Encrypt}}
+\index{Encrypt@{Encrypt}!AinslieAPI.Authentication.JwtUtils@{AinslieAPI.Authentication.JwtUtils}}
+\doxysubsubsection{\texorpdfstring{Encrypt()}{Encrypt()}}
+{\footnotesize\ttfamily string Ainslie\+API.\+Authentication.\+Jwt\+Utils.\+Encrypt (\begin{DoxyParamCaption}\item[{string}]{plain\+Text }\end{DoxyParamCaption})}
+
+
+
+Encrypts a plaintext string using the application\textquotesingle{}s data protection provider. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em plain\+Text} & The plaintext to encrypt.\\
+\hline
+\end{DoxyParams}
+
+
+\begin{DoxyReturn}{Returns}
+The encrypted string.
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_jwt_utils_8cs_source_l00106}{106}} of file \mbox{\hyperlink{_jwt_utils_8cs_source}{Jwt\+Utils.\+cs}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils_aa124f3e1cb759c23d54327faccbee020_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils_ac667c75c6805eb3e6943cc1e8aec0573}\label{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils_ac667c75c6805eb3e6943cc1e8aec0573} 
+\index{AinslieAPI.Authentication.JwtUtils@{AinslieAPI.Authentication.JwtUtils}!GenerateToken@{GenerateToken}}
+\index{GenerateToken@{GenerateToken}!AinslieAPI.Authentication.JwtUtils@{AinslieAPI.Authentication.JwtUtils}}
+\doxysubsubsection{\texorpdfstring{GenerateToken()}{GenerateToken()}}
+{\footnotesize\ttfamily string Ainslie\+API.\+Authentication.\+Jwt\+Utils.\+Generate\+Token (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_user_helper_1_1_authenticated_user}{Authenticated\+User}}}]{user }\end{DoxyParamCaption})}
+
+
+
+Generates a JWT for an authenticated user. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em user} & The user for whom the token is generated.\\
+\hline
+\end{DoxyParams}
+
+
+\begin{DoxyReturn}{Returns}
+A JWT as a string.
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_jwt_utils_8cs_source_l00042}{42}} of file \mbox{\hyperlink{_jwt_utils_8cs_source}{Jwt\+Utils.\+cs}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils_ac667c75c6805eb3e6943cc1e8aec0573_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils_ac667c75c6805eb3e6943cc1e8aec0573_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils_a1ed447f2fb5b17b1c8ce593034a61808}\label{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils_a1ed447f2fb5b17b1c8ce593034a61808} 
+\index{AinslieAPI.Authentication.JwtUtils@{AinslieAPI.Authentication.JwtUtils}!ValidateToken@{ValidateToken}}
+\index{ValidateToken@{ValidateToken}!AinslieAPI.Authentication.JwtUtils@{AinslieAPI.Authentication.JwtUtils}}
+\doxysubsubsection{\texorpdfstring{ValidateToken()}{ValidateToken()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_user_helper_1_1_authenticated_user}{Authenticated\+User}}? Ainslie\+API.\+Authentication.\+Jwt\+Utils.\+Validate\+Token (\begin{DoxyParamCaption}\item[{string}]{token }\end{DoxyParamCaption})}
+
+
+
+Validates a JWT and extracts the authenticated user\textquotesingle{}s information. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em token} & The JWT to validate.\\
+\hline
+\end{DoxyParams}
+
+
+\begin{DoxyReturn}{Returns}
+An Authenticated\+User instance if the token is valid; otherwise, null.
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_jwt_utils_8cs_source_l00066}{66}} of file \mbox{\hyperlink{_jwt_utils_8cs_source}{Jwt\+Utils.\+cs}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils_a1ed447f2fb5b17b1c8ce593034a61808_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils_a1ed447f2fb5b17b1c8ce593034a61808_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+STRIDER/source/repos/\+Ainslie\+API/\+Authentication/\mbox{\hyperlink{_jwt_utils_8cs}{Jwt\+Utils.\+cs}}\end{DoxyCompactItemize}

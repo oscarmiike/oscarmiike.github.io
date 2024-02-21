@@ -1,0 +1,44 @@
+\chapter{request-\/replay \texorpdfstring{$<$}{<}a href="{}http\+://travis-\/ci.\+org/\+Indigo\+United/node-\/request-\/replay.\+png"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://secure.\+travis-\/ci.\+org/\+Indigo\+United/node-\/request-\/replay.\+png"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m569f389c871f1baa9aabe4aad2ce51e5}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m569f389c871f1baa9aabe4aad2ce51e5}\index{request-\/replay $<$a href="{}http://travis-\/ci.org/IndigoUnited/node-\/request-\/replay.png"{} $>$$<$img src="{}https://secure.travis-\/ci.org/IndigoUnited/node-\/request-\/replay.png"{} alt="{}Build Status"{}/$>$$<$/a$>$@{request-\/replay $<$a href=""http://travis-\/ci.org/IndigoUnited/node-\/request-\/replay.png"" $>$$<$img src=""https://secure.travis-\/ci.org/IndigoUnited/node-\/request-\/replay.png"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m569f389c871f1baa9aabe4aad2ce51e5_autotoc_md4245}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m569f389c871f1baa9aabe4aad2ce51e5_autotoc_md4245}%
+ Replays a \href{https://github.com/mikeal/request}{\texttt{ request}} when a network error occurs using the \href{https://github.com/felixge/node-retry}{\texttt{ retry}} module.
+
+{\bfseries{DO NOT}} use this module if you are piping {\ttfamily request} instances. If you are listening to {\ttfamily data} events to buffer, beware that you must reset everything when a {\ttfamily replay} occurs. This is why {\ttfamily pipping} is not supported.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m569f389c871f1baa9aabe4aad2ce51e5_autotoc_md4246}{}\doxysection{\texorpdfstring{Installation}{Installation}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m569f389c871f1baa9aabe4aad2ce51e5_autotoc_md4246}
+{\ttfamily \$ npm install request-\/replay}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m569f389c871f1baa9aabe4aad2ce51e5_autotoc_md4247}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m569f389c871f1baa9aabe4aad2ce51e5_autotoc_md4247}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ fs\ =\ require('fs');}
+\DoxyCodeLine{var\ request\ =\ require('request');}
+\DoxyCodeLine{var\ replay\ =\ require('request-\/replay');}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Note\ that\ the\ options\ argument\ is\ optional}
+\DoxyCodeLine{//\ Accepts\ the\ same\ options\ the\ retry\ module\ does\ and\ an\ additional}
+\DoxyCodeLine{//\ errorCodes\ array\ that\ default\ to\ ['EADDRINFO',\ 'ETIMEDOUT',\ 'ECONNRESET',\ 'ESOCKETTIMEDOUT']}
+\DoxyCodeLine{replay(request('http://google.com/doodle.png',\ function\ (err,\ response,\ body)\ \{}
+\DoxyCodeLine{\ \ \ \ //\ Do\ things}
+\DoxyCodeLine{\}),\ \{}
+\DoxyCodeLine{\ \ \ \ retries:\ 10,}
+\DoxyCodeLine{\ \ \ \ factor:\ 3}
+\DoxyCodeLine{\})}
+\DoxyCodeLine{.on('replay',\ function\ (replay)\ \{}
+\DoxyCodeLine{\ \ \ \ //\ "{}replay"{}\ is\ an\ object\ that\ contains\ some\ useful\ information}
+\DoxyCodeLine{\ \ \ \ console.log('request\ failed:\ '\ +\ replay.error.code\ +\ '\ '\ +\ replay.error.message);}
+\DoxyCodeLine{\ \ \ \ console.log('replay\ nr:\ \#'\ +\ replay.number);}
+\DoxyCodeLine{\ \ \ \ console.log('will\ retry\ in:\ '\ +\ replay.delay\ +\ 'ms')}
+\DoxyCodeLine{\})}
+
+\end{DoxyCode}
+
+
+Note that the default retry options are modified to be more appropriate for requests\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily retries}\+: The maximum amount of times to retry the operation. Default is {\ttfamily 5}.
+\item {\ttfamily factor}\+: The exponential factor to use. Default is {\ttfamily 2}.
+\item {\ttfamily min\+Timeout}\+: The amount of time before starting the first retry. Default is {\ttfamily 2000}.
+\item {\ttfamily max\+Timeout}\+: The maximum amount of time between two retries. Default is {\ttfamily 35000}.
+\item {\ttfamily randomize}\+: Randomizes the timeouts by multiplying with a factor between {\ttfamily 1} to {\ttfamily 2}. Default is {\ttfamily true}.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m569f389c871f1baa9aabe4aad2ce51e5_autotoc_md4248}{}\doxysection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m569f389c871f1baa9aabe4aad2ce51e5_autotoc_md4248}
+Released under the \href{http://www.opensource.org/licenses/mit-license.php}{\texttt{ MIT License}}. 

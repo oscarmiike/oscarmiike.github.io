@@ -1,0 +1,49 @@
+\doxysection{Forex\+Service.\+cs}
+\hypertarget{_forex_service_8cs_source}{}\label{_forex_service_8cs_source}\index{C:/Users/STRIDER/source/repos/TaskAPI/Services/ForexService.cs@{C:/Users/STRIDER/source/repos/TaskAPI/Services/ForexService.cs}}
+\mbox{\hyperlink{_forex_service_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_forex_service_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }Microsoft.Extensions.Options;}
+\DoxyCodeLine{\Hypertarget{_forex_service_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }Newtonsoft.Json;}
+\DoxyCodeLine{\Hypertarget{_forex_service_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }RestSharp;}
+\DoxyCodeLine{\Hypertarget{_forex_service_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_task_a_p_i_1_1_helpers_1_1_settings}{TaskAPI.Helpers.Settings}};}
+\DoxyCodeLine{\Hypertarget{_forex_service_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_task_a_p_i_1_1_models_1_1_d_t_o}{TaskAPI.Models.DTO}};}
+\DoxyCodeLine{\Hypertarget{_forex_service_8cs_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{_forex_service_8cs_source_l00007}00007\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_task_a_p_i_1_1_services}{TaskAPI.Services}};}
+\DoxyCodeLine{\Hypertarget{_forex_service_8cs_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{_forex_service_8cs_source_l00009}\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_forex_service}{00009}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_forex_service}{ForexService}}}
+\DoxyCodeLine{\Hypertarget{_forex_service_8cs_source_l00010}00010\ \{}
+\DoxyCodeLine{\Hypertarget{_forex_service_8cs_source_l00011}00011\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}\ \_logService;}
+\DoxyCodeLine{\Hypertarget{_forex_service_8cs_source_l00012}00012\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings}{TaskAPISettings}}\ \_settings;}
+\DoxyCodeLine{\Hypertarget{_forex_service_8cs_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{_forex_service_8cs_source_l00014}\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_forex_service_a01dc8f1f84152b5bf6a7f35e4838f31f}{00014}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_forex_service_a01dc8f1f84152b5bf6a7f35e4838f31f}{ForexService}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}\ logService,\ IOptions<TaskAPISettings>\ taskAPISettings)}
+\DoxyCodeLine{\Hypertarget{_forex_service_8cs_source_l00015}00015\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_forex_service_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ \_logService\ =\ logService;}
+\DoxyCodeLine{\Hypertarget{_forex_service_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \_settings\ =\ taskAPISettings.Value;}
+\DoxyCodeLine{\Hypertarget{_forex_service_8cs_source_l00018}00018\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_forex_service_8cs_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_forex_service_8cs_source_l00020}\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_forex_service_a45ca436cc529b87e410d8b208abea3b1}{00020}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_forex_response}{ForexResponse}}\ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_forex_service_a45ca436cc529b87e410d8b208abea3b1}{PullFeed}}()}
+\DoxyCodeLine{\Hypertarget{_forex_service_8cs_source_l00021}00021\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_forex_service_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_forex_response}{ForexResponse}}\ forexResponse\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_forex_service_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{_forex_service_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_forex_service_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient(\_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_a0eb4318ad18306881384e7097caaa9f0}{ForexSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_forexsettings_ad4123f4462401f82896a80d9f2028814}{FeedURL}});}
+\DoxyCodeLine{\Hypertarget{_forex_service_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ var\ request\ =\ \textcolor{keyword}{new}\ RestRequest(\textcolor{stringliteral}{"{}"{}},\ Method.Get);}
+\DoxyCodeLine{\Hypertarget{_forex_service_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ var\ response\ =\ client.Execute(request);}
+\DoxyCodeLine{\Hypertarget{_forex_service_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response.IsSuccessful\ \&\&\ response.IsSuccessStatusCode)}
+\DoxyCodeLine{\Hypertarget{_forex_service_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_forex_service_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ forexResponse\ =\ JsonConvert.DeserializeObject<\mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_forex_response}{ForexResponse}}>(response.Content);}
+\DoxyCodeLine{\Hypertarget{_forex_service_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_forex_service_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_forex_service_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_forex_service_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a46dc9bf58bc9605c7e17dfee38b94354}{LogError}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.ForexService,\ \textcolor{stringliteral}{"{}error\ getting\ forex\ data\ feed,\ response\ was\ not\ successful"{}},\ \$\textcolor{stringliteral}{"{}response\ status:\ \{response.ResponseStatus\}"{}},\ \$\textcolor{stringliteral}{"{}response\ status\ description:\ \{response.StatusDescription\}"{}});}
+\DoxyCodeLine{\Hypertarget{_forex_service_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_forex_service_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_forex_service_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{\Hypertarget{_forex_service_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_forex_service_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a78c9df658858fa3099eed69421423898}{LogException}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.ForexService,\ \textcolor{stringliteral}{"{}exception\ getting\ forex\ feed\ data"{}},\ ex);}
+\DoxyCodeLine{\Hypertarget{_forex_service_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_forex_service_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ forexResponse;}
+\DoxyCodeLine{\Hypertarget{_forex_service_8cs_source_l00042}00042\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_forex_service_8cs_source_l00043}00043\ \}}
+
+\end{DoxyCode}

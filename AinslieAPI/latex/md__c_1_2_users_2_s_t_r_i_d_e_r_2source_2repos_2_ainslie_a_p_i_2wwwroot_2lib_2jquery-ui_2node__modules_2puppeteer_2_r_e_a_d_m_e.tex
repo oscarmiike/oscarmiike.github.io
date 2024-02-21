@@ -1,0 +1,428 @@
+\chapter{Puppeteer}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2puppeteer_2_r_e_a_d_m_e}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2puppeteer_2_r_e_a_d_m_e}\index{Puppeteer@{Puppeteer}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2puppeteer_2_r_e_a_d_m_e_autotoc_md10935}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2puppeteer_2_r_e_a_d_m_e_autotoc_md10935}%
+
+
+\href{https://travis-ci.com/puppeteer/puppeteer}{\texttt{ }} \href{https://npmjs.org/package/puppeteer}{\texttt{ }} \href{https://github.com/puppeteer/puppeteer/issues}{\texttt{ }}
+
+
+
+\doxysubparagraph*{\href{https://github.com/puppeteer/puppeteer/blob/v5.5.0/docs/api.md}{\texttt{ API}} \texorpdfstring{$\vert$}{|} @ref "{}faq"{} "{}\+FAQ"{} \texorpdfstring{$\vert$}{|} \href{https://github.com/puppeteer/puppeteer/blob/main/CONTRIBUTING.md}{\texttt{ Contributing}} \texorpdfstring{$\vert$}{|} \href{https://github.com/puppeteer/puppeteer/blob/main/docs/troubleshooting.md}{\texttt{ Troubleshooting}}}
+
+\begin{quote}
+Puppeteer is a Node library which provides a high-\/level API to control Chrome or Chromium over the \href{https://chromedevtools.github.io/devtools-protocol/}{\texttt{ Dev\+Tools Protocol}}. Puppeteer runs \href{https://developers.google.com/web/updates/2017/04/headless-chrome}{\texttt{ headless}} by default, but can be configured to run full (non-\/headless) Chrome or Chromium. \end{quote}
+
+
+\doxysubparagraph*{What can I do?}
+
+Most things that you can do manually in the browser can be done using Puppeteer! Here are a few examples to get you started\+:
+
+
+\begin{DoxyItemize}
+\item Generate screenshots and PDFs of pages.
+\item Crawl a SPA (Single-\/\+Page Application) and generate pre-\/rendered content (i.\+e. "{}\+SSR"{} (Server-\/\+Side Rendering)).
+\item Automate form submission, UI testing, keyboard input, etc.
+\item Create an up-\/to-\/date, automated testing environment. Run your tests directly in the latest version of Chrome using the latest Java\+Script and browser features.
+\item Capture a \href{https://developers.google.com/web/tools/chrome-devtools/evaluate-performance/reference}{\texttt{ timeline trace}} of your site to help diagnose performance issues.
+\item Test Chrome Extensions.
+\end{DoxyItemize}
+
+Give it a spin\+: \href{https://try-puppeteer.appspot.com/}{\texttt{ https\+://try-\/puppeteer.\+appspot.\+com/}}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2puppeteer_2_r_e_a_d_m_e_autotoc_md10936}{}\doxysection{\texorpdfstring{Getting Started}{Getting Started}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2puppeteer_2_r_e_a_d_m_e_autotoc_md10936}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2puppeteer_2_r_e_a_d_m_e_autotoc_md10937}{}\doxysubsection{\texorpdfstring{Installation}{Installation}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2puppeteer_2_r_e_a_d_m_e_autotoc_md10937}
+To use Puppeteer in your project, run\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ i\ puppeteer}
+\DoxyCodeLine{\#\ or\ "{}yarn\ add\ puppeteer"{}}
+
+\end{DoxyCode}
+
+
+Note\+: When you install Puppeteer, it downloads a recent version of Chromium (\texorpdfstring{$\sim$}{\string~}170\+MB Mac, \texorpdfstring{$\sim$}{\string~}282\+MB Linux, \texorpdfstring{$\sim$}{\string~}280\+MB Win) that is guaranteed to work with the API. To skip the download, or to download a different browser, see \href{https://github.com/puppeteer/puppeteer/blob/v5.5.0/docs/api.md\#environment-variables}{\texttt{ Environment variables}}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2puppeteer_2_r_e_a_d_m_e_autotoc_md10938}{}\doxysubsection{\texorpdfstring{puppeteer-\/core}{puppeteer-\/core}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2puppeteer_2_r_e_a_d_m_e_autotoc_md10938}
+Since version 1.\+7.\+0 we publish the \href{https://www.npmjs.com/package/puppeteer-core}{\texttt{ {\ttfamily puppeteer-\/core}}} package, a version of Puppeteer that doesn\textquotesingle{}t download any browser by default.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ i\ puppeteer-\/core}
+\DoxyCodeLine{\#\ or\ "{}yarn\ add\ puppeteer-\/core"{}}
+
+\end{DoxyCode}
+
+
+{\ttfamily puppeteer-\/core} is intended to be a lightweight version of Puppeteer for launching an existing browser installation or for connecting to a remote one. Be sure that the version of puppeteer-\/core you install is compatible with the browser you intend to connect to.
+
+See \href{https://github.com/puppeteer/puppeteer/blob/main/docs/api.md\#puppeteer-vs-puppeteer-core}{\texttt{ puppeteer vs puppeteer-\/core}}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2puppeteer_2_r_e_a_d_m_e_autotoc_md10939}{}\doxysubsection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2puppeteer_2_r_e_a_d_m_e_autotoc_md10939}
+Puppeteer follows the latest \href{https://github.com/nodejs/Release\#release-schedule}{\texttt{ maintenance LTS}} version of Node.
+
+Note\+: Prior to v1.\+18.\+1, Puppeteer required at least Node v6.\+4.\+0. Versions from v1.\+18.\+1 to v2.\+1.\+0 rely on Node 8.\+9.\+0+. Starting from v3.\+0.\+0 Puppeteer starts to rely on Node 10.\+18.\+1+. All examples below use async/await which is only supported in Node v7.\+6.\+0 or greater.
+
+Puppeteer will be familiar to people using other browser testing frameworks. You create an instance of {\ttfamily Browser}, open pages, and then manipulate them with \href{https://github.com/puppeteer/puppeteer/blob/v5.5.0/docs/api.md\#}{\texttt{ Puppeteer\textquotesingle{}s API}}.
+
+{\bfseries{Example}} -\/ navigating to \href{https://example.com}{\texttt{ https\+://example.\+com}} and saving a screenshot as {\itshape example.\+png}\+:
+
+Save file as {\bfseries{example.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ puppeteer\ =\ require('puppeteer');}
+\DoxyCodeLine{}
+\DoxyCodeLine{(async\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ const\ browser\ =\ await\ puppeteer.launch();}
+\DoxyCodeLine{\ \ const\ page\ =\ await\ browser.newPage();}
+\DoxyCodeLine{\ \ await\ page.goto('https://example.com');}
+\DoxyCodeLine{\ \ await\ page.screenshot(\{path:\ 'example.png'\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ await\ browser.close();}
+\DoxyCodeLine{\})();}
+
+\end{DoxyCode}
+
+
+Execute script on the command line
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{node\ example.js}
+
+\end{DoxyCode}
+
+
+Puppeteer sets an initial page size to 800×600px, which defines the screenshot size. The page size can be customized with \href{https://github.com/puppeteer/puppeteer/blob/v5.5.0/docs/api.md\#pagesetviewportviewport}{\texttt{ {\ttfamily Page.\+set\+Viewport()}}}.
+
+{\bfseries{Example}} -\/ create a PDF.
+
+Save file as {\bfseries{hn.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ puppeteer\ =\ require('puppeteer');}
+\DoxyCodeLine{}
+\DoxyCodeLine{(async\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ const\ browser\ =\ await\ puppeteer.launch();}
+\DoxyCodeLine{\ \ const\ page\ =\ await\ browser.newPage();}
+\DoxyCodeLine{\ \ await\ page.goto('https://news.ycombinator.com',\ \{waitUntil:\ 'networkidle2'\});}
+\DoxyCodeLine{\ \ await\ page.pdf(\{path:\ 'hn.pdf',\ format:\ 'A4'\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ await\ browser.close();}
+\DoxyCodeLine{\})();}
+
+\end{DoxyCode}
+
+
+Execute script on the command line
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{node\ hn.js}
+
+\end{DoxyCode}
+
+
+See \href{https://github.com/puppeteer/puppeteer/blob/v5.5.0/docs/api.md\#pagepdfoptions}{\texttt{ {\ttfamily Page.\+pdf()}}} for more information about creating pdfs.
+
+{\bfseries{Example}} -\/ evaluate script in the context of the page
+
+Save file as {\bfseries{get-\/dimensions.\+js}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ puppeteer\ =\ require('puppeteer');}
+\DoxyCodeLine{}
+\DoxyCodeLine{(async\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ const\ browser\ =\ await\ puppeteer.launch();}
+\DoxyCodeLine{\ \ const\ page\ =\ await\ browser.newPage();}
+\DoxyCodeLine{\ \ await\ page.goto('https://example.com');}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ //\ Get\ the\ "{}viewport"{}\ of\ the\ page,\ as\ reported\ by\ the\ page.}
+\DoxyCodeLine{\ \ const\ dimensions\ =\ await\ page.evaluate(()\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ return\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ width:\ document.documentElement.clientWidth,}
+\DoxyCodeLine{\ \ \ \ \ \ height:\ document.documentElement.clientHeight,}
+\DoxyCodeLine{\ \ \ \ \ \ deviceScaleFactor:\ window.devicePixelRatio}
+\DoxyCodeLine{\ \ \ \ \};}
+\DoxyCodeLine{\ \ \});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ console.log('Dimensions:',\ dimensions);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ await\ browser.close();}
+\DoxyCodeLine{\})();}
+
+\end{DoxyCode}
+
+
+Execute script on the command line
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{node\ get-\/dimensions.js}
+
+\end{DoxyCode}
+
+
+See \href{https://github.com/puppeteer/puppeteer/blob/v5.5.0/docs/api.md\#pageevaluatepagefunction-args}{\texttt{ {\ttfamily Page.\+evaluate()}}} for more information on {\ttfamily evaluate} and related methods like {\ttfamily evaluate\+On\+New\+Document} and {\ttfamily expose\+Function}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2puppeteer_2_r_e_a_d_m_e_autotoc_md10940}{}\doxysection{\texorpdfstring{Default runtime settings}{Default runtime settings}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2puppeteer_2_r_e_a_d_m_e_autotoc_md10940}
+{\bfseries{1. Uses Headless mode}}
+
+Puppeteer launches Chromium in \href{https://developers.google.com/web/updates/2017/04/headless-chrome}{\texttt{ headless mode}}. To launch a full version of Chromium, set the \href{https://github.com/puppeteer/puppeteer/blob/v5.5.0/docs/api.md\#puppeteerlaunchoptions}{\texttt{ {\ttfamily headless} option}} when launching a browser\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ browser\ =\ await\ puppeteer.launch(\{headless:\ false\});\ //\ default\ is\ true}
+
+\end{DoxyCode}
+
+
+{\bfseries{2. Runs a bundled version of Chromium}}
+
+By default, Puppeteer downloads and uses a specific version of Chromium so its API is guaranteed to work out of the box. To use Puppeteer with a different version of Chrome or Chromium, pass in the executable\textquotesingle{}s path when creating a {\ttfamily Browser} instance\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ browser\ =\ await\ puppeteer.launch(\{executablePath:\ '/path/to/Chrome'\});}
+
+\end{DoxyCode}
+
+
+You can also use Puppeteer with Firefox Nightly (experimental support). See \href{https://github.com/puppeteer/puppeteer/blob/v5.5.0/docs/api.md\#puppeteerlaunchoptions}{\texttt{ {\ttfamily Puppeteer.\+launch()}}} for more information.
+
+See \href{https://www.howtogeek.com/202825/what\%E2\%80\%99s-the-difference-between-chromium-and-chrome/}{\texttt{ {\ttfamily this article}}} for a description of the differences between Chromium and Chrome. \href{https://chromium.googlesource.com/chromium/src/+/master/docs/chromium_browser_vs_google_chrome.md}{\texttt{ {\ttfamily This article}}} describes some differences for Linux users.
+
+{\bfseries{3. Creates a fresh user profile}}
+
+Puppeteer creates its own browser user profile which it {\bfseries{cleans up on every run}}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2puppeteer_2_r_e_a_d_m_e_autotoc_md10941}{}\doxysection{\texorpdfstring{Resources}{Resources}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2puppeteer_2_r_e_a_d_m_e_autotoc_md10941}
+
+\begin{DoxyItemize}
+\item \href{https://github.com/puppeteer/puppeteer/blob/v5.5.0/docs/api.md}{\texttt{ API Documentation}}
+\item \href{https://github.com/puppeteer/puppeteer/tree/main/examples/}{\texttt{ Examples}}
+\item \href{https://github.com/transitive-bullshit/awesome-puppeteer}{\texttt{ Community list of Puppeteer resources}}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2puppeteer_2_r_e_a_d_m_e_autotoc_md10942}{}\doxysection{\texorpdfstring{Debugging tips}{Debugging tips}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2puppeteer_2_r_e_a_d_m_e_autotoc_md10942}
+
+\begin{DoxyEnumerate}
+\item Turn off headless mode -\/ sometimes it\textquotesingle{}s useful to see what the browser is displaying. Instead of launching in headless mode, launch a full version of the browser using {\ttfamily headless\+: false}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ browser\ =\ await\ puppeteer.launch(\{headless:\ false\});}
+
+\end{DoxyCode}
+
+\item Slow it down -\/ the {\ttfamily slow\+Mo} option slows down Puppeteer operations by the specified amount of milliseconds. It\textquotesingle{}s another way to help see what\textquotesingle{}s going on.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ browser\ =\ await\ puppeteer.launch(\{}
+\DoxyCodeLine{\ \ headless:\ false,}
+\DoxyCodeLine{\ \ slowMo:\ 250\ //\ slow\ down\ by\ 250ms}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+\item Capture console output -\/ You can listen for the {\ttfamily console} event. This is also handy when debugging code in {\ttfamily page.\+evaluate()}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{page.on('console',\ msg\ =>\ console.log('PAGE\ LOG:',\ msg.text()));}
+\DoxyCodeLine{}
+\DoxyCodeLine{await\ page.evaluate(()\ =>\ console.log(`url\ is\ \$\{location.href\}`));}
+
+\end{DoxyCode}
+
+\item Use debugger in application code browser
+
+There are two execution context\+: node.\+js that is running test code, and the browser running application code being tested. This lets you debug code in the application code browser; ie code inside {\ttfamily evaluate()}.
+\begin{DoxyItemize}
+\item Use {\ttfamily \{devtools\+: true\}} when launching Puppeteer\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ browser\ =\ await\ puppeteer.launch(\{devtools:\ true\});}
+
+\end{DoxyCode}
+
+\item Change default test timeout\+:
+
+jest\+: {\ttfamily jest.\+set\+Timeout(100000);}
+
+jasmine\+: {\ttfamily jasmine.\+DEFAULT\+\_\+\+TIMEOUT\+\_\+\+INTERVAL = 100000;}
+
+mocha\+: {\ttfamily this.\+timeout(100000);} (don\textquotesingle{}t forget to change test to use \href{https://stackoverflow.com/a/23492442}{\texttt{ function and not \textquotesingle{}=\texorpdfstring{$>$}{>}\textquotesingle{}}})
+\item Add an evaluate statement with {\ttfamily debugger} inside / add {\ttfamily debugger} to an existing evaluate statement\+:
+
+{\ttfamily js await page.\+evaluate(() =\texorpdfstring{$>$}{>} \{debugger;\}); }
+
+The test will now stop executing in the above evaluate statement, and chromium will stop in debug mode.
+\end{DoxyItemize}
+\item Use debugger in node.\+js
+
+This will let you debug test code. For example, you can step over {\ttfamily await page.\+click()} in the node.\+js script and see the click happen in the application code browser.
+
+Note that you won\textquotesingle{}t be able to run {\ttfamily await page.\+click()} in Dev\+Tools console due to this \href{https://bugs.chromium.org/p/chromium/issues/detail?id=833928}{\texttt{ Chromium bug}}. So if you want to try something out, you have to add it to your test file.
+\begin{DoxyItemize}
+\item Add {\ttfamily debugger;} to your test, eg\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{debugger;}
+\DoxyCodeLine{await\ page.click('a[target=\_blank]');}
+
+\end{DoxyCode}
+
+\item Set {\ttfamily headless} to {\ttfamily false}
+\item Run {\ttfamily node -\/-\/inspect-\/brk}, eg {\ttfamily node -\/-\/inspect-\/brk node\+\_\+modules/.bin/jest tests}
+\item In Chrome open {\ttfamily chrome\+://inspect/\#devices} and click {\ttfamily inspect}
+\item In the newly opened test browser, type {\ttfamily F8} to resume test execution
+\item Now your {\ttfamily debugger} will be hit and you can debug in the test browser
+\end{DoxyItemize}
+\item Enable verbose logging -\/ internal Dev\+Tools protocol traffic will be logged via the \href{https://github.com/visionmedia/debug}{\texttt{ {\ttfamily debug}}} module under the {\ttfamily puppeteer} namespace. \begin{DoxyVerb} # Basic verbose logging
+ env DEBUG="puppeteer:*" node script.js
+
+ # Protocol traffic can be rather noisy. This example filters out all Network domain messages
+ env DEBUG="puppeteer:*" env DEBUG_COLORS=true node script.js 2>&1 | grep -v '"Network'
+\end{DoxyVerb}
+
+\item Debug your Puppeteer (node) code easily, using \href{https://github.com/GoogleChromeLabs/ndb}{\texttt{ ndb}}
+\begin{DoxyItemize}
+\item {\ttfamily npm install -\/g ndb} (or even better, use \href{https://github.com/zkat/npx}{\texttt{ npx}}!)
+\item add a {\ttfamily debugger} to your Puppeteer (node) code
+\item add {\ttfamily ndb} (or {\ttfamily npx ndb}) before your test command. For example\+:
+
+{\ttfamily ndb jest} or {\ttfamily ndb mocha} (or {\ttfamily npx ndb jest} / {\ttfamily npx ndb mocha})
+\item debug your test inside chromium like a boss!
+\end{DoxyItemize}
+\end{DoxyEnumerate}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2puppeteer_2_r_e_a_d_m_e_autotoc_md10943}{}\doxysection{\texorpdfstring{Usage with Type\+Script}{Usage with Type\+Script}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2puppeteer_2_r_e_a_d_m_e_autotoc_md10943}
+We have recently completed a migration to move the Puppeteer source code from Java\+Script to Type\+Script and we\textquotesingle{}re currently working on shipping type definitions for Type\+Script with Puppeteer\textquotesingle{}s npm package.
+
+Until this work is complete we recommend installing the Puppeteer type definitions from the \href{https://definitelytyped.org/}{\texttt{ Definitely\+Typed}} repository\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ -\/-\/save-\/dev\ @types/puppeteer}
+
+\end{DoxyCode}
+
+
+The types that you\textquotesingle{}ll see appearing in the Puppeteer source code are based off the great work of those who have contributed to the {\ttfamily @types/puppeteer} package. We really appreciate the hard work those people put in to providing high quality Type\+Script definitions for Puppeteer\textquotesingle{}s users.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2puppeteer_2_r_e_a_d_m_e_autotoc_md10944}{}\doxysection{\texorpdfstring{Contributing to Puppeteer}{Contributing to Puppeteer}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2puppeteer_2_r_e_a_d_m_e_autotoc_md10944}
+Check out \href{https://github.com/puppeteer/puppeteer/blob/main/CONTRIBUTING.md}{\texttt{ contributing guide}} to get an overview of Puppeteer development.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2puppeteer_2_r_e_a_d_m_e_autotoc_md10945}{}\doxysection{\texorpdfstring{FAQ}{FAQ}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2puppeteer_2_r_e_a_d_m_e_autotoc_md10945}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2puppeteer_2_r_e_a_d_m_e_autotoc_md10946}{}\doxyparagraph{\texorpdfstring{Q\+: Who maintains Puppeteer?}{Q\+: Who maintains Puppeteer?}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2puppeteer_2_r_e_a_d_m_e_autotoc_md10946}
+The Chrome Dev\+Tools team maintains the library, but we\textquotesingle{}d love your help and expertise on the project! See \href{https://github.com/puppeteer/puppeteer/blob/main/CONTRIBUTING.md}{\texttt{ Contributing}}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2puppeteer_2_r_e_a_d_m_e_autotoc_md10947}{}\doxyparagraph{\texorpdfstring{Q\+: What is the status of cross-\/browser support?}{Q\+: What is the status of cross-\/browser support?}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2puppeteer_2_r_e_a_d_m_e_autotoc_md10947}
+Official Firefox support is currently experimental. The ongoing collaboration with Mozilla aims to support common end-\/to-\/end testing use cases, for which developers expect cross-\/browser coverage. The Puppeteer team needs input from users to stabilize Firefox support and to bring missing APIs to our attention.
+
+From Puppeteer v2.\+1.\+0 onwards you can specify \href{https://github.com/puppeteer/puppeteer/blob/v5.5.0/docs/api.md\#puppeteerlaunchoptions}{\texttt{ `puppeteer.\+launch(\{product\+: \textquotesingle{}firefox'\})\`{}}} to run your Puppeteer scripts in Firefox Nightly, without any additional custom patches. While \href{https://www.npmjs.com/package/puppeteer-firefox}{\texttt{ an older experiment}} required a patched version of Firefox, \href{https://wiki.mozilla.org/Remote}{\texttt{ the current approach}} works with “stock” Firefox.
+
+We will continue to collaborate with other browser vendors to bring Puppeteer support to browsers such as Safari. This effort includes exploration of a standard for executing cross-\/browser commands (instead of relying on the non-\/standard Dev\+Tools Protocol used by Chrome).\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2puppeteer_2_r_e_a_d_m_e_autotoc_md10948}{}\doxyparagraph{\texorpdfstring{Q\+: What are Puppeteer’s goals and principles?}{Q\+: What are Puppeteer’s goals and principles?}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2puppeteer_2_r_e_a_d_m_e_autotoc_md10948}
+The goals of the project are\+:
+
+
+\begin{DoxyItemize}
+\item Provide a slim, canonical library that highlights the capabilities of the \href{https://chromedevtools.github.io/devtools-protocol/}{\texttt{ Dev\+Tools Protocol}}.
+\item Provide a reference implementation for similar testing libraries. Eventually, these other frameworks could adopt Puppeteer as their foundational layer.
+\item Grow the adoption of headless/automated browser testing.
+\item Help dogfood new Dev\+Tools Protocol features...and catch bugs!
+\item Learn more about the pain points of automated browser testing and help fill those gaps.
+\end{DoxyItemize}
+
+We adapt \href{https://www.chromium.org/developers/core-principles}{\texttt{ Chromium principles}} to help us drive product decisions\+:
+\begin{DoxyItemize}
+\item {\bfseries{Speed}}\+: Puppeteer has almost zero performance overhead over an automated page.
+\item {\bfseries{Security}}\+: Puppeteer operates off-\/process with respect to Chromium, making it safe to automate potentially malicious pages.
+\item {\bfseries{Stability}}\+: Puppeteer should not be flaky and should not leak memory.
+\item {\bfseries{Simplicity}}\+: Puppeteer provides a high-\/level API that’s easy to use, understand, and debug.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2puppeteer_2_r_e_a_d_m_e_autotoc_md10949}{}\doxyparagraph{\texorpdfstring{Q\+: Is Puppeteer replacing Selenium/\+Web\+Driver?}{Q\+: Is Puppeteer replacing Selenium/\+Web\+Driver?}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2puppeteer_2_r_e_a_d_m_e_autotoc_md10949}
+{\bfseries{No}}. Both projects are valuable for very different reasons\+:
+\begin{DoxyItemize}
+\item Selenium/\+Web\+Driver focuses on cross-\/browser automation; its value proposition is a single standard API that works across all major browsers.
+\item Puppeteer focuses on Chromium; its value proposition is richer functionality and higher reliability.
+\end{DoxyItemize}
+
+That said, you {\bfseries{can}} use Puppeteer to run tests against Chromium, e.\+g. using the community-\/driven \href{https://github.com/smooth-code/jest-puppeteer}{\texttt{ jest-\/puppeteer}}. While this probably shouldn’t be your only testing solution, it does have a few good points compared to Web\+Driver\+:
+
+
+\begin{DoxyItemize}
+\item Puppeteer requires zero setup and comes bundled with the Chromium version it works best with, making it \href{https://github.com/puppeteer/puppeteer/\#getting-started}{\texttt{ very easy to start with}}. At the end of the day, it’s better to have a few tests running chromium-\/only, than no tests at all.
+\item Puppeteer has event-\/driven architecture, which removes a lot of potential flakiness. There’s no need for evil “sleep(1000)” calls in puppeteer scripts.
+\item Puppeteer runs headless by default, which makes it fast to run. Puppeteer v1.\+5.\+0 also exposes browser contexts, making it possible to efficiently parallelize test execution.
+\item Puppeteer shines when it comes to debugging\+: flip the “headless” bit to false, add “slow\+Mo”, and you’ll see what the browser is doing. You can even open Chrome Dev\+Tools to inspect the test environment.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2puppeteer_2_r_e_a_d_m_e_autotoc_md10950}{}\doxyparagraph{\texorpdfstring{Q\+: Why doesn’t Puppeteer v.\+XXX work with Chromium v.\+YYY?}{Q\+: Why doesn’t Puppeteer v.\+XXX work with Chromium v.\+YYY?}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2puppeteer_2_r_e_a_d_m_e_autotoc_md10950}
+We see Puppeteer as an {\bfseries{indivisible entity}} with Chromium. Each version of Puppeteer bundles a specific version of Chromium – {\bfseries{the only}} version it is guaranteed to work with.
+
+This is not an artificial constraint\+: A lot of work on Puppeteer is actually taking place in the Chromium repository. Here’s a typical story\+:
+\begin{DoxyItemize}
+\item A Puppeteer bug is reported\+: \href{https://github.com/puppeteer/puppeteer/issues/2709}{\texttt{ https\+://github.\+com/puppeteer/puppeteer/issues/2709}}
+\item It turned out this is an issue with the Dev\+Tools protocol, so we’re fixing it in Chromium\+: \href{https://chromium-review.googlesource.com/c/chromium/src/+/1102154}{\texttt{ https\+://chromium-\/review.\+googlesource.\+com/c/chromium/src/+/1102154}}
+\item Once the upstream fix is landed, we roll updated Chromium into Puppeteer\+: \href{https://github.com/puppeteer/puppeteer/pull/2769}{\texttt{ https\+://github.\+com/puppeteer/puppeteer/pull/2769}}
+\end{DoxyItemize}
+
+However, oftentimes it is desirable to use Puppeteer with the official Google Chrome rather than Chromium. For this to work, you should install a {\ttfamily puppeteer-\/core} version that corresponds to the Chrome version.
+
+For example, in order to drive Chrome 71 with puppeteer-\/core, use {\ttfamily chrome-\/71} npm tag\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ puppeteer-\/core@chrome-\/71}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2puppeteer_2_r_e_a_d_m_e_autotoc_md10951}{}\doxyparagraph{\texorpdfstring{Q\+: Which Chromium version does Puppeteer use?}{Q\+: Which Chromium version does Puppeteer use?}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2puppeteer_2_r_e_a_d_m_e_autotoc_md10951}
+Look for the {\ttfamily chromium} entry in \href{https://github.com/puppeteer/puppeteer/blob/main/src/revisions.ts}{\texttt{ revisions.\+ts}}. To find the corresponding Chromium commit and version number, search for the revision prefixed by an {\ttfamily r} in \href{https://omahaproxy.appspot.com/}{\texttt{ Omaha\+Proxy}}\textquotesingle{}s "{}\+Find Releases"{} section.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2puppeteer_2_r_e_a_d_m_e_autotoc_md10952}{}\doxyparagraph{\texorpdfstring{Q\+: Which Firefox version does Puppeteer use?}{Q\+: Which Firefox version does Puppeteer use?}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2puppeteer_2_r_e_a_d_m_e_autotoc_md10952}
+Since Firefox support is experimental, Puppeteer downloads the latest \href{https://wiki.mozilla.org/Nightly}{\texttt{ Firefox Nightly}} when the {\ttfamily PUPPETEER\+\_\+\+PRODUCT} environment variable is set to {\ttfamily firefox}. That\textquotesingle{}s also why the value of {\ttfamily firefox} in \href{https://github.com/puppeteer/puppeteer/blob/main/src/revisions.ts}{\texttt{ revisions.\+ts}} is {\ttfamily latest} -- Puppeteer isn\textquotesingle{}t tied to a particular Firefox version.
+
+To fetch Firefox Nightly as part of Puppeteer installation\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{PUPPETEER\_PRODUCT=firefox\ npm\ i\ puppeteer}
+\DoxyCodeLine{\#\ or\ "{}yarn\ add\ puppeteer"{}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2puppeteer_2_r_e_a_d_m_e_autotoc_md10953}{}\doxyparagraph{\texorpdfstring{Q\+: What’s considered a “\+Navigation”?}{Q\+: What’s considered a “\+Navigation”?}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2puppeteer_2_r_e_a_d_m_e_autotoc_md10953}
+From Puppeteer’s standpoint, {\bfseries{“navigation” is anything that changes a page’s URL}}. Aside from regular navigation where the browser hits the network to fetch a new document from the web server, this includes \href{https://www.w3.org/TR/html5/single-page.html\#scroll-to-fragid}{\texttt{ anchor navigations}} and \href{https://developer.mozilla.org/en-US/docs/Web/API/History_API}{\texttt{ History API}} usage.
+
+With this definition of “navigation,” {\bfseries{Puppeteer works seamlessly with single-\/page applications.}}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2puppeteer_2_r_e_a_d_m_e_autotoc_md10954}{}\doxyparagraph{\texorpdfstring{Q\+: What’s the difference between a “trusted"{} and "{}untrusted"{} input event?}{Q\+: What’s the difference between a “trusted"{} and "{}untrusted"{} input event?}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2puppeteer_2_r_e_a_d_m_e_autotoc_md10954}
+In browsers, input events could be divided into two big groups\+: trusted vs. untrusted.
+
+
+\begin{DoxyItemize}
+\item {\bfseries{Trusted events}}\+: events generated by users interacting with the page, e.\+g. using a mouse or keyboard.
+\item {\bfseries{Untrusted event}}\+: events generated by Web APIs, e.\+g. {\ttfamily document.\+create\+Event} or {\ttfamily element.\+click()} methods.
+\end{DoxyItemize}
+
+Websites can distinguish between these two groups\+:
+\begin{DoxyItemize}
+\item using an \href{https://developer.mozilla.org/en-US/docs/Web/API/Event/isTrusted}{\texttt{ {\ttfamily Event.\+is\+Trusted}}} event flag
+\item sniffing for accompanying events. For example, every trusted `\textquotesingle{}click'{\ttfamily event is preceded by}\textquotesingle{}mousedown\textquotesingle{}{\ttfamily and}\textquotesingle{}mouseup\textquotesingle{}\`{} events.
+\end{DoxyItemize}
+
+For automation purposes it’s important to generate trusted events. {\bfseries{All input events generated with Puppeteer are trusted and fire proper accompanying events.}} If, for some reason, one needs an untrusted event, it’s always possible to hop into a page context with {\ttfamily page.\+evaluate} and generate a fake event\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{await\ page.evaluate(()\ =>\ \{}
+\DoxyCodeLine{\ \ document.querySelector('button[type=submit]').click();}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2puppeteer_2_r_e_a_d_m_e_autotoc_md10955}{}\doxyparagraph{\texorpdfstring{Q\+: What features does Puppeteer not support?}{Q\+: What features does Puppeteer not support?}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2puppeteer_2_r_e_a_d_m_e_autotoc_md10955}
+You may find that Puppeteer does not behave as expected when controlling pages that incorporate audio and video. (For example, \href{https://github.com/puppeteer/puppeteer/issues/291}{\texttt{ video playback/screenshots is likely to fail}}.) There are two reasons for this\+:
+
+
+\begin{DoxyItemize}
+\item Puppeteer is bundled with Chromium — not Chrome — and so by default, it inherits all of \href{https://www.chromium.org/audio-video}{\texttt{ Chromium\textquotesingle{}s media-\/related limitations}}. This means that Puppeteer does not support licensed formats such as AAC or H.\+264. (However, it is possible to force Puppeteer to use a separately-\/installed version Chrome instead of Chromium via the \href{https://github.com/puppeteer/puppeteer/blob/v5.5.0/docs/api.md\#puppeteerlaunchoptions}{\texttt{ {\ttfamily executable\+Path} option to {\ttfamily puppeteer.\+launch}}}. You should only use this configuration if you need an official release of Chrome that supports these media formats.)
+\item Since Puppeteer (in all configurations) controls a desktop version of Chromium/\+Chrome, features that are only supported by the mobile version of Chrome are not supported. This means that Puppeteer \href{https://caniuse.com/\#feat=http-live-streaming}{\texttt{ does not support HTTP Live Streaming (HLS)}}.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2puppeteer_2_r_e_a_d_m_e_autotoc_md10956}{}\doxyparagraph{\texorpdfstring{Q\+: I am having trouble installing / running Puppeteer in my test environment. Where should I look for help?}{Q\+: I am having trouble installing / running Puppeteer in my test environment. Where should I look for help?}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2puppeteer_2_r_e_a_d_m_e_autotoc_md10956}
+We have a \href{https://github.com/puppeteer/puppeteer/blob/main/docs/troubleshooting.md}{\texttt{ troubleshooting}} guide for various operating systems that lists the required dependencies.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2puppeteer_2_r_e_a_d_m_e_autotoc_md10957}{}\doxyparagraph{\texorpdfstring{Q\+: How do I try/test a prerelease version of Puppeteer?}{Q\+: How do I try/test a prerelease version of Puppeteer?}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2puppeteer_2_r_e_a_d_m_e_autotoc_md10957}
+You can check out this repo or install the latest prerelease from npm\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ i\ -\/-\/save\ puppeteer@next}
+
+\end{DoxyCode}
+
+
+Please note that prerelease may be unstable and contain bugs.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2puppeteer_2_r_e_a_d_m_e_autotoc_md10958}{}\doxyparagraph{\texorpdfstring{Q\+: I have more questions! Where do I ask?}{Q\+: I have more questions! Where do I ask?}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2puppeteer_2_r_e_a_d_m_e_autotoc_md10958}
+There are many ways to get help on Puppeteer\+:
+\begin{DoxyItemize}
+\item \href{https://github.com/puppeteer/puppeteer/issues}{\texttt{ bugtracker}}
+\item \href{https://stackoverflow.com/questions/tagged/puppeteer}{\texttt{ Stack Overflow}}
+\item \href{https://join.slack.com/t/puppeteer/shared_invite/enQtMzU4MjIyMDA5NTM4LWI0YTE0MjM0NWQzYmE2MTRmNjM1ZTBkN2MxNmJmNTIwNTJjMmFhOWFjMGExMDViYjk2YjU2ZmYzMmE1NmExYzc}{\texttt{ slack channel}}
+\end{DoxyItemize}
+
+Make sure to search these channels before posting your question. 

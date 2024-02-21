@@ -1,0 +1,823 @@
+\chapter{array}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0}\index{array@{array}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3413}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3413}%
+ Array utilities.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3414}{}\doxysection{\texorpdfstring{append(arr1, arr2)\+:Array}{append(arr1, arr2)\+:Array}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3414}
+Appends an array to the end of the other. The first array will be modified and will contain the appended items.
+
+See\+: \`{}union()\`{}, \`{}combine()\`{}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ foo\ =\ ['a',\ 'b'],}
+\DoxyCodeLine{\ \ \ \ bar\ =\ ['b',\ 'd'];}
+\DoxyCodeLine{}
+\DoxyCodeLine{append(foo,\ bar);\ //\ ['a',\ 'b',\ 'b',\ 'd']}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3415}{}\doxysection{\texorpdfstring{collect(arr, callback, \mbox{[}this\+Obj\mbox{]})\+:Array}{collect(arr, callback, \mbox{[}this\+Obj\mbox{]})\+:Array}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3415}
+Maps the items in {\ttfamily arr} and concatenates the resulting arrays.
+
+See\+: \doxylink{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfac3b70891d99551a76fc616c3878c08_map}{\`{}map()\`{}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{collect([1,\ 2,\ 3],\ function(val)\ \{}
+\DoxyCodeLine{\ \ \ \ return\ [val,\ val\ \%\ 2];}
+\DoxyCodeLine{\});\ //\ [1,\ 1,\ 2,\ 0,\ 3,\ 1];}
+\DoxyCodeLine{}
+\DoxyCodeLine{collect(['a',\ 'bb',\ ''],\ function(val)\ \{}
+\DoxyCodeLine{\ \ \ \ return\ val.split('');}
+\DoxyCodeLine{\});\ //\ ['a',\ 'b',\ 'b']}
+
+\end{DoxyCode}
+
+
+It also supports a shorthand syntax\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ items\ =\ [\{\ a:\ [1]\ \},\ \{\ b:\ 'foo'\ \},\ \{\ a:\ [2,\ 3]\ \}];}
+\DoxyCodeLine{collect(items,\ 'a');\ //\ [1,\ 2,\ 3];}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3416}{}\doxysection{\texorpdfstring{combine(arr1, arr2)\+:Array}{combine(arr1, arr2)\+:Array}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3416}
+Combines an array with all the items of another. The first array will be modified and will contain the combined items. Does not allow duplicates and is case and type sensitive.
+
+See\+: \`{}union()\`{}, \doxylink{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m27426faa4528a9b6b8064fc94fba0a69_append}{\`{}append()\`{}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ foo\ =\ ['a',\ 'b'],}
+\DoxyCodeLine{\ \ \ \ bar\ =\ ['b',\ 'd'];}
+\DoxyCodeLine{}
+\DoxyCodeLine{combine(foo,\ bar);\ //\ ['a',\ 'b',\ 'd']}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3417}{}\doxysection{\texorpdfstring{compact(arr)\+:Array}{compact(arr)\+:Array}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3417}
+Returns a new Array without any {\ttfamily null} or {\ttfamily undefined} values. Note that it will keep empty strings and other falsy values (simillar to Ruby Array\+::compact).
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ arr\ =\ [0,\ 1,\ null,\ false,\ '',\ 'foo',\ undefined,\ 'bar'];}
+\DoxyCodeLine{compact(arr);\ //\ [0,\ 1,\ false,\ '',\ 'foo',\ 'bar'];}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3418}{}\doxysection{\texorpdfstring{contains(arr, value)\+:Boolean}{contains(arr, value)\+:Boolean}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3418}
+Checks if Array contains value. Alias to {\ttfamily index\+Of(arr, val) !== -\/1}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ arr\ =\ [1,\ 2,\ 3];}
+\DoxyCodeLine{contains(arr,\ 2);\ \ \ \ \ \ //\ true}
+\DoxyCodeLine{contains(arr,\ 'foo');\ \ //\ false}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3419}{}\doxysection{\texorpdfstring{difference(...\+arrs)\+:Array}{difference(...\+arrs)\+:Array}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3419}
+Return a new Array with elements that aren\textquotesingle{}t present in the other Arrays besides the first one.
+
+Works like \href{http://docs.python.org/library/stdtypes.html\#set.difference}{\texttt{ Python set\+::difference}}.
+
+It will remove duplicates.
+
+See\+: \`{}xor()\`{}, \`{}intersection()\`{}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ a\ =\ ['a',\ 'b',\ 1];}
+\DoxyCodeLine{var\ b\ =\ ['c',\ 1];}
+\DoxyCodeLine{difference(a,\ b);\ //\ ['a',\ 'b']}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3420}{}\doxysection{\texorpdfstring{equals(a, b, \mbox{[}compare\mbox{]})\+:Boolean}{equals(a, b, \mbox{[}compare\mbox{]})\+:Boolean}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3420}
+Checks if both arrays are equal.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{equals([1,\ 2],\ [1,\ 2]);\ //\ true}
+\DoxyCodeLine{equals([2,\ 4],\ [1,\ 2]);\ //\ false}
+
+\end{DoxyCode}
+
+
+By default it uses the \href{lang.html\#is}{\texttt{ lang/is}} as the {\ttfamily compare} function but you can pass a custom function to change the behavior.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{function\ loose(a,\ b)\ \{}
+\DoxyCodeLine{\ \ \ \ return\ a\ ==\ b;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{equals(['1',\ 2],\ [1,\ 2],\ loose);\ //\ true}
+
+\end{DoxyCode}
+
+
+See\+: \href{object.html\#equals}{\texttt{ object/equals}}, \href{lang.html\#deepEquals}{\texttt{ lang/deep\+Equals}}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3421}{}\doxysection{\texorpdfstring{every(arr, callback, \mbox{[}this\+Obj\mbox{]})\+:Array}{every(arr, callback, \mbox{[}this\+Obj\mbox{]})\+:Array}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3421}
+Crossbrowser {\ttfamily Array.\+every()}.
+
+Tests whether all elements in the array pass the test implemented by the provided function.
+
+It differs from ES5 since it will also loop over sparse items in the array to normalize the behavior across browsers (avoid inconsistencies).
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ items\ =\ [1,\ 'foo',\ 'bar'];}
+\DoxyCodeLine{every(items,\ isString);\ \ \ //\ false}
+\DoxyCodeLine{every(items,\ isFunction);\ //\ false}
+\DoxyCodeLine{every(items,\ function(val,\ key,\ arr)\{}
+\DoxyCodeLine{\ \ \ \ return\ val\ !=\ null;}
+\DoxyCodeLine{\});\ //\ true}
+
+\end{DoxyCode}
+
+
+more info at \href{https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array/every}{\texttt{ MDN Array\+::every}}
+
+It also supports a shorthand syntax\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ items\ =\ [\{id:1,\ active:true\},\ \{id:3,\ active:true\},\ \{id:8,\ active:true\}];}
+\DoxyCodeLine{//\ all\ items\ with\ \`{}id\ ===\ 8`}
+\DoxyCodeLine{every(items,\ \{id:8\});\ //\ false}
+\DoxyCodeLine{//\ \`{}active`\ is\ truthy\ on\ all\ items}
+\DoxyCodeLine{every(items,\ 'active');\ //\ true}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3422}{}\doxysection{\texorpdfstring{filter(arr, callback, \mbox{[}this\+Obj\mbox{]})\+:Array}{filter(arr, callback, \mbox{[}this\+Obj\mbox{]})\+:Array}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3422}
+Crossbrowser {\ttfamily Array.\+filter()}.
+
+Creates a new array with all elements that pass the callback test.
+
+It differs from ES5 since it will also loop over sparse items in the array to normalize the behavior across browsers (avoid inconsistencies).
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ nums\ =\ [1,\ 2,\ 3,\ 4,\ 5,\ 6];}
+\DoxyCodeLine{var\ oddNumbers\ =\ filter(nums,\ function(val,\ key,\ arr)\{}
+\DoxyCodeLine{\ \ \ \ return\ (val\ \%\ 2)\ !==\ 0;}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{//\ >\ [1,\ 3,\ 5]}
+
+\end{DoxyCode}
+
+
+more info at \href{https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array/filter}{\texttt{ MDN Array\+::filter}}
+
+Filter also supports shorthand notation\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ users\ =\ [}
+\DoxyCodeLine{\ \ \ \ \{name:'john',\ surname:'connor',\ beard:false\},}
+\DoxyCodeLine{\ \ \ \ \{name:'john',\ surname:'doe',\ beard:true\},}
+\DoxyCodeLine{\ \ \ \ \{name:'jane',\ surname:'doe',\ beard:false\}}
+\DoxyCodeLine{];}
+\DoxyCodeLine{//\ filter\ item\ that\ matches\ all\ properties/values\ pairs}
+\DoxyCodeLine{filter(arr,\ \{name:'john',\ beard:false\});}
+\DoxyCodeLine{//\ >\ [\{name:'john',\ surnname:'connor',\ beard:false\}]}
+\DoxyCodeLine{//\ items\ where\ 'beard'\ is\ a\ truthy\ value}
+\DoxyCodeLine{filter(arr,\ 'beard');}
+\DoxyCodeLine{//\ >\ [\{name:'john',\ surnname:'doe',\ beard:true\}]}
+
+\end{DoxyCode}
+
+
+See \doxylink{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfac3b70891d99551a76fc616c3878c08_reject}{\`{}reject()\`{}}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3423}{}\doxysection{\texorpdfstring{find(arr, callback, \mbox{[}this\+Obj\mbox{]})\+:\texorpdfstring{$\ast$}{*}}{find(arr, callback, \mbox{[}this\+Obj\mbox{]})\+:\texorpdfstring{$\ast$}{*}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3423}
+Loops through all the items in the Array and returns the first one that passes a truth test (callback).
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ arr\ =\ [123,\ \{a:'b'\},\ 'foo',\ 'bar'];}
+\DoxyCodeLine{find(arr,\ isString);\ //\ "{}foo"{}}
+\DoxyCodeLine{find(arr,\ isNumber);\ //\ 123}
+\DoxyCodeLine{find(arr,\ isObject);\ //\ \{a:'b'\}}
+
+\end{DoxyCode}
+
+
+Find also supports shorthand notation\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ users\ =\ [}
+\DoxyCodeLine{\ \ \ \ \{name:'john',\ surname:'connor',\ beard:false\},}
+\DoxyCodeLine{\ \ \ \ \{name:'john',\ surname:'doe',\ beard:true\}}
+\DoxyCodeLine{];}
+\DoxyCodeLine{//\ first\ item\ that\ matches\ all\ properties/values\ pairs}
+\DoxyCodeLine{find(arr,\ \{name:'john'\});\ //\ \{name:'john',\ surnname:'connor',\ beard:false\}}
+\DoxyCodeLine{//\ first\ item\ where\ 'beard'\ is\ a\ truthy\ value}
+\DoxyCodeLine{find(arr,\ 'beard');\ //\ \{name:'john',\ surnname:'doe',\ beard:true\}}
+
+\end{DoxyCode}
+
+
+See\+: find\+Index(), find\+Last(), find\+Last\+Index()\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3424}{}\doxysection{\texorpdfstring{find\+Last(arr, callback, \mbox{[}this\+Obj\mbox{]})\+:\texorpdfstring{$\ast$}{*}}{find\+Last(arr, callback, \mbox{[}this\+Obj\mbox{]})\+:\texorpdfstring{$\ast$}{*}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3424}
+Loops through all the items in the Array (starting from last item) and returns the first one that passes a truth test (callback).
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ arr\ =\ [123,\ \{a:'b'\},\ 'foo',\ 'bar'];}
+\DoxyCodeLine{findLast(arr,\ isString);\ //\ "{}bar"{}}
+\DoxyCodeLine{findLast(arr,\ isNumber);\ //\ 123}
+\DoxyCodeLine{findLast(arr,\ isObject);\ //\ \{a:'b'\}}
+
+\end{DoxyCode}
+
+
+{\ttfamily find\+Last} also supports shorthand notation\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ users\ =\ [}
+\DoxyCodeLine{\ \ \ \ \{name:'john',\ surname:'connor',\ beard:false\},}
+\DoxyCodeLine{\ \ \ \ \{name:'john',\ surname:'doe',\ beard:true\}}
+\DoxyCodeLine{];}
+\DoxyCodeLine{//\ last\ item\ that\ matches\ all\ properties/values\ pairs}
+\DoxyCodeLine{findLast(arr,\ \{name:'john'\});\ //\ \{name:'john',\ surnname:'doe',\ beard:true\}}
+\DoxyCodeLine{//\ last\ item\ where\ 'beard'\ is\ a\ truthy\ value}
+\DoxyCodeLine{findLast(arr,\ 'beard');\ //\ \{name:'john',\ surnname:'doe',\ beard:true\}}
+
+\end{DoxyCode}
+
+
+See\+: find(), find\+Index(), find\+Last\+Index()\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3425}{}\doxysection{\texorpdfstring{find\+Index(arr, iterator, \mbox{[}this\+Obj\mbox{]})\+:Number}{find\+Index(arr, iterator, \mbox{[}this\+Obj\mbox{]})\+:Number}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3425}
+Loops through the items in the Array and returns the index of the first one that passes a truth test (callback).
+
+Returns {\ttfamily -\/1} if no item was found that passes the truth test.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ arr\ =\ [1,\ \{\ a:\ 1\ \},\ 'foo',\ 'bar'];}
+\DoxyCodeLine{findIndex(arr,\ isString);\ //\ 2}
+\DoxyCodeLine{findIndex(arr,\ isNumber);\ //\ 0}
+\DoxyCodeLine{findIndex(arr,\ isObject);\ //\ 1}
+\DoxyCodeLine{findIndex(arr,\ isRegExp);\ //\ -\/1}
+
+\end{DoxyCode}
+
+
+{\ttfamily find\+Index} also supports shorthand notation\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ pets\ =\ [}
+\DoxyCodeLine{\ \ \ \ \{\ pet:\ 'dog',\ name:\ 'Sam'\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ pet:\ 'dog',\ name:\ 'Maggie'\ \}}
+\DoxyCodeLine{];}
+\DoxyCodeLine{}
+\DoxyCodeLine{findIndex(pets,\ \{\ pet:\ 'dog'\ \});\ //\ 0}
+\DoxyCodeLine{findIndex(pets,\ \{\ name:\ 'Maggie'\ \});\ //\ 1}
+
+\end{DoxyCode}
+
+
+See\+: find(), find\+Last\+Index()\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3426}{}\doxysection{\texorpdfstring{find\+Last\+Index(arr, iterator, \mbox{[}this\+Obj\mbox{]})\+:Number}{find\+Last\+Index(arr, iterator, \mbox{[}this\+Obj\mbox{]})\+:Number}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3426}
+Loops through the items in the Array on the reverse order and returns the index of the first one that passes a truth test (callback).
+
+Returns {\ttfamily -\/1} if no item was found that passes the truth test.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ arr\ =\ [1,\ \{\ a:\ 1\ \},\ 'foo',\ 'bar'];}
+\DoxyCodeLine{findLastIndex(arr,\ isString);\ //\ 3}
+\DoxyCodeLine{findLastIndex(arr,\ isNumber);\ //\ 0}
+\DoxyCodeLine{findLastIndex(arr,\ isObject);\ //\ 1}
+\DoxyCodeLine{findLastIndex(arr,\ isRegExp);\ //\ -\/1}
+
+\end{DoxyCode}
+
+
+{\ttfamily find\+Lastndex} also supports shorthand notation\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ pets\ =\ [}
+\DoxyCodeLine{\ \ \ \ \{\ pet:\ 'dog',\ name:\ 'Sam'\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ pet:\ 'dog',\ name:\ 'Maggie'\ \}}
+\DoxyCodeLine{];}
+\DoxyCodeLine{}
+\DoxyCodeLine{findLastIndex(pets,\ \{\ pet:\ 'dog'\ \});\ //\ 1}
+\DoxyCodeLine{findLastIndex(pets,\ \{\ name:\ 'Sam'\ \});\ //\ 0}
+
+\end{DoxyCode}
+
+
+See\+: find(), find\+Index()\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3427}{}\doxysection{\texorpdfstring{flatten(arr, \mbox{[}level\mbox{]})\+:Array}{flatten(arr, \mbox{[}level\mbox{]})\+:Array}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3427}
+Recursively flattens an array. A new array containing all the elements is returned. If {\ttfamily level} is specified, it will only flatten up to that level. Note that arrays within objects will not be flattened.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3428}{}\doxysubsection{\texorpdfstring{Example}{Example}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3428}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{flatten([1,\ [2],\ [3,\ [4,\ 5]]]);}
+\DoxyCodeLine{//\ >\ [1,\ 2,\ 3,\ 4,\ 5]}
+\DoxyCodeLine{flatten([1,\ [2],\ [3,\ [4,\ 5]]],\ 1);}
+\DoxyCodeLine{//\ >\ [1,\ 2,\ 3,\ [4,\ 5]]}
+
+\end{DoxyCode}
+
+
+See\+: \href{./object.html\#flatten}{\texttt{ {\ttfamily object/flatten()}}}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3429}{}\doxysection{\texorpdfstring{for\+Each(arr, callback, \mbox{[}this\+Obj\mbox{]})\+:void}{for\+Each(arr, callback, \mbox{[}this\+Obj\mbox{]})\+:void}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3429}
+Crossbrowser {\ttfamily Array.\+for\+Each()}.
+
+It allows exiting the iteration early by returning {\ttfamily false} on the callback.
+
+It differs from ES5 since it will also loop over sparse items in the array to normalize the behavior across browsers (avoid inconsistencies).
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ items\ =\ ['foo',\ 'bar',\ 'lorem',\ 'ipsum'];}
+\DoxyCodeLine{forEach(items,\ function(val,\ key,\ arr)\{}
+\DoxyCodeLine{\ \ \ \ console.log(key\ +'\ :\ '+\ val);}
+\DoxyCodeLine{\ \ \ \ if\ (val\ ===\ 'lorem')\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ stop\ iteration\ (break)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ return\ false;}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+more info at \href{https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array/forEach}{\texttt{ MDN Array\+::for\+Each}}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3430}{}\doxysection{\texorpdfstring{group\+By(arr, \mbox{[}categorize=identity\mbox{]}, \mbox{[}this\+Obj\mbox{]})\+:Object}{group\+By(arr, \mbox{[}categorize=identity\mbox{]}, \mbox{[}this\+Obj\mbox{]})\+:Object}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3430}
+Groups array elements by the {\ttfamily key} returned from the {\ttfamily categorize} function.
+
+It will use the \href{function.html\#identity}{\texttt{ function/identity}} as the default {\ttfamily categorize} function.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ items\ =\ ['lorem',\ 'ipsum',\ 'foo',\ 'bar',\ 'baz'];}
+\DoxyCodeLine{groupBy(items,\ function(val)\ \{\ return\ val.length\ \});}
+\DoxyCodeLine{//\ >\ \{'3':\ ['foo',\ 'bar',\ 'baz'],\ '5':\ ['lorem',\ 'ipsum']\}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3431}{}\doxysection{\texorpdfstring{index\+Of(arr, item, \mbox{[}from\+Index\mbox{]})\+:Number}{index\+Of(arr, item, \mbox{[}from\+Index\mbox{]})\+:Number}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3431}
+Crossbrowser {\ttfamily Array.\+index\+Of()}.
+
+It differs from ES5 since it will also loop over sparse items in the array to normalize the behavior across browsers (avoid inconsistencies).
+
+more info at \href{https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array/indexOf}{\texttt{ MDN Array\+::index\+Of}}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3432}{}\doxysection{\texorpdfstring{insert(arr, ...\+items)\+:Number}{insert(arr, ...\+items)\+:Number}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3432}
+Push items into array only if they aren\textquotesingle{}t contained by it. Returns the new {\ttfamily length} of the array.
+
+See\+: \`{}remove()\`{}, \`{}remove\+All()\`{}, \`{}contains()\`{}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ arr\ =\ ['a',\ 'b'];}
+\DoxyCodeLine{insert(arr,\ 'a');\ \ \ \ \ \ \ //\ 2\ :\ ['a',\ 'b']}
+\DoxyCodeLine{insert(arr,\ 'c');\ \ \ \ \ \ \ //\ 3\ :\ ['a',\ 'b',\ 'c']}
+\DoxyCodeLine{insert(arr,\ 1,\ 2,\ 'b');\ //\ 5\ :\ ['a',\ 'b',\ 'c',\ 1,\ 2]}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3433}{}\doxysection{\texorpdfstring{intersection(...\+arrs)\+:Array}{intersection(...\+arrs)\+:Array}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3433}
+Return a new Array with elements common to all Arrays.
+
+Similar to Python set\+::intersection and underscore.\+js intersection.
+
+It will remove duplicates.
+
+See\+: \`{}difference()\`{}, \`{}xor()\`{}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ a\ =\ ['a',\ 'b',\ 1],}
+\DoxyCodeLine{\ \ \ \ b\ =\ ['c',\ 1],}
+\DoxyCodeLine{\ \ \ \ c\ =\ [1,\ 2,\ 3];}
+\DoxyCodeLine{intersection(a,\ b,\ c);\ //\ [1]}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3434}{}\doxysection{\texorpdfstring{invoke(arr, method\+Name\mbox{[}, ...\+args\mbox{]})\+:Array}{invoke(arr, method\+Name\mbox{[}, ...\+args\mbox{]})\+:Array}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3434}
+Call {\ttfamily method\+Name} on each item of the array passing custom arguments if needed.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{invoke([[3,2,1],\ [9,5,2]],\ 'sort');\ //\ [[1,2,3],\ [2,5,9]]}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3435}{}\doxysection{\texorpdfstring{join(arr, \mbox{[}separator\mbox{]})\+:String}{join(arr, \mbox{[}separator\mbox{]})\+:String}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3435}
+Joins the strings in {\ttfamily arr}, inserting {\ttfamily separator} between each value.
+
+This ignores null values and empty strings that are in the array. {\ttfamily separator} defaults to an empty string. This will convert all non-\/string objects in the array to a string.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3436}{}\doxysubsection{\texorpdfstring{Example}{Example}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3436}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{join(['a',\ 'b',\ 'c']);\ //\ 'abc'}
+\DoxyCodeLine{join(['foo',\ 'bar'],\ ',\ ');\ //\ 'foo,\ bar'}
+\DoxyCodeLine{join([null,\ 'foo',\ '',\ 'bar',\ undefined],\ ':');\ //\ 'foo:bar'}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3437}{}\doxysection{\texorpdfstring{last(arr)\+:\texorpdfstring{$\ast$}{*}}{last(arr)\+:\texorpdfstring{$\ast$}{*}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3437}
+Returns the last element of an array without modifying the array.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{last(\ [1,\ 2,\ 3,\ 4]\ )\ //\ >\ 4}
+\DoxyCodeLine{last(\ ['foo',\ 'bar']\ )\ //\ >\ 'bar'}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3438}{}\doxysection{\texorpdfstring{last\+Index\+Of(arr, item, \mbox{[}from\+Index\mbox{]})\+:Number}{last\+Index\+Of(arr, item, \mbox{[}from\+Index\mbox{]})\+:Number}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3438}
+Crossbrowser {\ttfamily Array.\+last\+Index\+Of()}.
+
+It differs from ES5 since it will also loop over sparse items in the array to normalize the behavior across browsers (avoid inconsistencies).
+
+more info at \href{https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array/lastIndexOf}{\texttt{ MDN Array\+::last\+Index\+Of}}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3439}{}\doxysection{\texorpdfstring{map(arr, callback, \mbox{[}this\+Obj\mbox{]}\mbox{]})\+:Array}{map(arr, callback, \mbox{[}this\+Obj\mbox{]}\mbox{]})\+:Array}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3439}
+Crossbrowser {\ttfamily Array.\+map()}.
+
+Creates a new array with the results of calling a provided function on every element in this array.
+
+It differs from ES5 since it will also loop over sparse items in the array to normalize the behavior across browsers (avoid inconsistencies).
+
+See\+: \`{}collect()\`{}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ nums\ =\ [1,2,3,4];}
+\DoxyCodeLine{var\ double\ =\ map(nums,\ function(val,\ key,\ arr)\{}
+\DoxyCodeLine{\ \ \ \ return\ val\ *\ 2;}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{//\ >\ [2,\ 4,\ 6,\ 8]}
+
+\end{DoxyCode}
+
+
+more info at \href{https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array/map}{\texttt{ MDN Array\+::map}}
+
+It also supports a shorthand notation which can be used to achieve same result as \`{}array/pluck\`{}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ src\ =\ ['lorem',\ 'ipsum',\ 'foo',\ 'amet'];}
+\DoxyCodeLine{//\ grab\ the\ "{}length"{}\ property\ of\ all\ items}
+\DoxyCodeLine{var\ lengths\ =\ map(src,\ 'length');\ //\ [5,\ 5,\ 3,\ 4]}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3440}{}\doxysection{\texorpdfstring{max(arr, \mbox{[}iterator\mbox{]}, \mbox{[}this\+Obj\mbox{]})\+:\texorpdfstring{$\ast$}{*}}{max(arr, \mbox{[}iterator\mbox{]}, \mbox{[}this\+Obj\mbox{]})\+:\texorpdfstring{$\ast$}{*}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3440}
+Returns maximum value inside array or use a custom iterator to define how items should be compared.
+
+See\+: \`{}min()\`{}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{max([10,\ 2,\ 7]);\ //\ 10}
+\DoxyCodeLine{max(['foo',\ 'lorem',\ 'amet'],\ function(val)\{}
+\DoxyCodeLine{\ \ \ \ return\ val.length;}
+\DoxyCodeLine{\});\ //\ 'lorem'}
+
+\end{DoxyCode}
+
+
+It also supports a shorthand notation\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{max(['foo',\ 'lorem',\ 'amet'],\ 'length');\ //\ "{}lorem"{}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3441}{}\doxysection{\texorpdfstring{min(arr, \mbox{[}iterator\mbox{]}, \mbox{[}this\+Obj\mbox{]})\+:\texorpdfstring{$\ast$}{*}}{min(arr, \mbox{[}iterator\mbox{]}, \mbox{[}this\+Obj\mbox{]})\+:\texorpdfstring{$\ast$}{*}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3441}
+Returns minimum value inside array or use a custom iterator to define how items should be compared.
+
+See\+: \`{}max()\`{}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{min([10,\ 2,\ 7]);\ //\ 2}
+\DoxyCodeLine{min(['foo',\ 'lorem',\ 'amet'],\ function(val)\{}
+\DoxyCodeLine{\ \ \ \ return\ val.length;}
+\DoxyCodeLine{\});\ //\ 'foo'}
+
+\end{DoxyCode}
+
+
+It also supports a shorthand notation\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{min(['foo',\ 'lorem',\ 'amet'],\ 'length');\ //\ "{}foo"{}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3442}{}\doxysection{\texorpdfstring{pick(arr, \mbox{[}n\+Items\mbox{]})\+:\texorpdfstring{$\ast$}{*}}{pick(arr, \mbox{[}n\+Items\mbox{]})\+:\texorpdfstring{$\ast$}{*}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3442}
+Gets random item(s) and removes it from the original array.
+
+If {\ttfamily n\+Items} is specified it will return a new Array contained the {\itshape picked} items otherwise it returns a single item.
+
+See\+: \href{./random.html\#choice}{\texttt{ {\ttfamily random/choice()}}}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3443}{}\doxysubsection{\texorpdfstring{Example\+:}{Example\+:}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3443}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ arr\ =\ [1,\ 2,\ 3,\ 4,\ 5,\ 6];}
+\DoxyCodeLine{var\ item1\ =\ pick(arr);\ //\ 4}
+\DoxyCodeLine{var\ item2\ =\ pick(arr);\ //\ 1}
+\DoxyCodeLine{var\ items\ =\ pick(arr,\ 2);\ //\ [5,\ 2]}
+\DoxyCodeLine{console.log(arr);\ //\ [3,\ 6]}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3444}{}\doxysection{\texorpdfstring{pluck(arr, prop\+Name)\+:Array}{pluck(arr, prop\+Name)\+:Array}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3444}
+Extract a list of property values.
+
+See\+: \href{function.html\#prop}{\texttt{ {\ttfamily function/prop()}}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ users\ =\ [\{name\ :\ 'John',\ age:\ 21\},\ \{name:\ 'Jane',\ age\ :\ 27\}];}
+\DoxyCodeLine{var\ names\ =\ pluck(users,\ 'name');\ //\ ["{}John"{},\ "{}Jane"{}]}
+\DoxyCodeLine{var\ ages\ =\ pluck(users,\ 'age');\ //\ [21,\ 27]}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3445}{}\doxysection{\texorpdfstring{range(\mbox{[}start\mbox{]}, stop\mbox{[}, step\mbox{]})\+:Array}{range(\mbox{[}start\mbox{]}, stop\mbox{[}, step\mbox{]})\+:Array}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3445}
+Creates a new Array with all the values inside the range. Works similarly to Python\+::range or PHP\+::range.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3446}{}\doxysubsection{\texorpdfstring{Arguments}{Arguments}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3446}
+
+\begin{DoxyEnumerate}
+\item {\ttfamily \mbox{[}start\mbox{]}} (Number) \+: Range start. Default is {\ttfamily 0}.
+\item {\ttfamily stop} (Number) \+: Range limit.
+\item {\ttfamily \mbox{[}step\mbox{]}} (Number) \+: Step size. Default is {\ttfamily 1}.
+\end{DoxyEnumerate}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3447}{}\doxysubsection{\texorpdfstring{Example}{Example}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3447}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{range(5);\ \ \ \ \ \ \ \ \ //\ [0,\ 1,\ 2,\ 3,\ 4,\ 5]}
+\DoxyCodeLine{range(0,\ 5);\ \ \ \ \ \ //\ [0,\ 1,\ 2,\ 3,\ 4,\ 5]}
+\DoxyCodeLine{range(0,\ 5,\ 2);\ \ \ //\ [0,\ 2,\ 4]}
+\DoxyCodeLine{range(20,\ 40,\ 5);\ //\ [20,\ 25,\ 30,\ 35,\ 40]}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3448}{}\doxysection{\texorpdfstring{reduce(arr, fn)\+:\texorpdfstring{$\ast$}{*}}{reduce(arr, fn)\+:\texorpdfstring{$\ast$}{*}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3448}
+Crossbrowser {\ttfamily Array.\+reduce()}.
+
+Apply a function against an accumulator and each value of the array (from left-\/to-\/right) as to reduce it to a single value.
+
+It differs from ES5 since it will also loop over sparse items in the array to normalize the behavior across browsers (avoid inconsistencies).
+
+more info at \href{https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array/reduce}{\texttt{ MDN Array\+::reduce}}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3449}{}\doxysection{\texorpdfstring{reduce\+Right(arr, fn)\+:\texorpdfstring{$\ast$}{*}}{reduce\+Right(arr, fn)\+:\texorpdfstring{$\ast$}{*}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3449}
+Crossbrowser {\ttfamily Array.\+reduce\+Right()}.
+
+Apply a function simultaneously against two values of the array (from right-\/to-\/left) as to reduce it to a single value.
+
+It differs from ES5 since it will also loop over sparse items in the array to normalize the behavior across browsers (avoid inconsistencies).
+
+more info at \href{https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array/reduceRight}{\texttt{ MDN Array\+::reduce\+Right}}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3450}{}\doxysection{\texorpdfstring{reject(arr, fn, this\+Obj)\+:Array}{reject(arr, fn, this\+Obj)\+:Array}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3450}
+Creates a new array with all the elements that do {\bfseries{not}} pass the truth test. Opposite of \doxylink{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfac3b70891d99551a76fc616c3878c08_filter}{\`{}filter()\`{}}.
+
+See \doxylink{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfac3b70891d99551a76fc616c3878c08_filter}{\`{}filter()\`{}}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3451}{}\doxysubsection{\texorpdfstring{Example}{Example}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3451}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ numbers\ =\ [1,\ 2,\ 3,\ 4,\ 5,\ 6];}
+\DoxyCodeLine{reject(numbers,\ function(x)\ \{\ return\ (x\ \%\ 2)\ !==\ 0;\ \});\ //\ [2,\ 4,\ 6]}
+
+\end{DoxyCode}
+
+
+It also supports a shorthand syntax\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ users\ =\ [}
+\DoxyCodeLine{\ \ \ \ \{name:'john',\ surname:'connor',\ beard:false\},}
+\DoxyCodeLine{\ \ \ \ \{name:'john',\ surname:'doe',\ beard:true\},}
+\DoxyCodeLine{\ \ \ \ \{name:'jane',\ surname:'doe',\ beard:false\}}
+\DoxyCodeLine{];}
+\DoxyCodeLine{//\ reject\ items\ that\ matches\ all\ properties/values\ pairs}
+\DoxyCodeLine{reject(arr,\ \{name:'john'\});}
+\DoxyCodeLine{//\ >\ [\{name:'jane',\ surnname:'doe',\ beard:false\}]}
+\DoxyCodeLine{//\ reject\ items\ where\ 'beard'\ is\ a\ truthy\ value}
+\DoxyCodeLine{filter(arr,\ 'beard');}
+\DoxyCodeLine{//\ >\ [\{name:'john',\ surnname:'connor',\ beard:false\},}
+\DoxyCodeLine{//\ \ \ \ \{name:'jane',\ surname:'doe',\ beard:false\}]}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3452}{}\doxysection{\texorpdfstring{remove(arr, item)\+:void}{remove(arr, item)\+:void}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3452}
+Remove a single item from the array.
+
+IMPORTANT\+: it won\textquotesingle{}t remove duplicates, just a single item.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3453}{}\doxysubsection{\texorpdfstring{Example}{Example}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3453}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ foo\ =\ [1,\ 2,\ 3,\ 4];}
+\DoxyCodeLine{remove(foo,\ 2);}
+\DoxyCodeLine{console.log(foo);\ //\ [1,\ 3,\ 4]}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3454}{}\doxysection{\texorpdfstring{remove\+All(arr, item)\+:void}{remove\+All(arr, item)\+:void}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3454}
+Remove all instances of an item from the array.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3455}{}\doxysubsection{\texorpdfstring{Example}{Example}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3455}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ foo\ =\ [1,\ 2,\ 3,\ 4,\ 2,\ 2];}
+\DoxyCodeLine{removeAll(foo,\ 2);}
+\DoxyCodeLine{console.log(foo);\ //\ [1,\ 3,\ 4];}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3456}{}\doxysection{\texorpdfstring{reverse(arr)\+:void}{reverse(arr)\+:void}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3456}
+Returns a copy of the array with all elements in reversed order.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3457}{}\doxysubsection{\texorpdfstring{Example}{Example}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3457}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ foo\ =\ [1,\ 2,\ 3,\ 4,\ 5];}
+\DoxyCodeLine{var\ bar\ =\ reverse(foo);}
+\DoxyCodeLine{console.log(bar);\ //\ [5,\ 4,\ 3,\ 2,\ 1];}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log(foo);\ //\ [1,\ 2,\ 3,\ 4,\ 5];}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3458}{}\doxysection{\texorpdfstring{shuffle(arr)\+:Array}{shuffle(arr)\+:Array}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3458}
+Returns a new Array with items randomly sorted (shuffled). Similar to Ruby Array\+::shuffle.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3459}{}\doxysubsection{\texorpdfstring{Example}{Example}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3459}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ arr\ =\ ['a',\ 'b',\ 'c',\ 'd',\ 'e'];}
+\DoxyCodeLine{shuffle(arr);\ //\ ['b',\ 'd',\ 'e',\ 'c',\ 'a']}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3460}{}\doxysection{\texorpdfstring{slice(arr, \mbox{[}start\mbox{]}, \mbox{[}end\mbox{]})\+:Array}{slice(arr, \mbox{[}start\mbox{]}, \mbox{[}end\mbox{]})\+:Array}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3460}
+Returns a new array containing the items from {\ttfamily arr} from the start index to the end index.
+
+If {\ttfamily start} is omitted, it will start at {\ttfamily 0}. If {\ttfamily end} is omitted, it will used the last index of the array. If {\ttfamily start} or {\ttfamily end} is negative, it is used as an offset from the end of the array.
+
+It will also convert array-\/like objects to arrays.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3461}{}\doxysubsection{\texorpdfstring{Example}{Example}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3461}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{slice([1,\ 2,\ 3,\ 4],\ 1,\ 2);\ //\ [2,\ 3]}
+\DoxyCodeLine{slice([1,\ 2,\ 3],\ 1);\ //\ [2,\ 3]}
+\DoxyCodeLine{slice([1,\ 2,\ 3]);\ //\ [1,\ 2,\ 3]}
+\DoxyCodeLine{slice(\{\ length:\ 2,\ 0:\ 'a',\ 1:\ 'b'\ \});\ //\ ['a',\ 'b']}
+\DoxyCodeLine{slice([1,\ 2,\ 3],\ 0,\ -\/1);\ //\ [1,\ 2]}
+\DoxyCodeLine{slice([1,\ 2,\ 3],\ -\/2);\ //\ [2,\ 3]}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3462}{}\doxysection{\texorpdfstring{some(arr, callback, \mbox{[}this\+Obj\mbox{]})\+:Array}{some(arr, callback, \mbox{[}this\+Obj\mbox{]})\+:Array}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3462}
+Crossbrowser {\ttfamily Array.\+some()}.
+
+Tests whether some element in the array passes the test implemented by the provided function.
+
+It differs from ES5 since it will also loop over sparse items in the array to normalize the behavior across browsers (avoid inconsistencies).
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ items\ =\ [1,\ 'foo',\ 'bar'];}
+\DoxyCodeLine{some(items,\ isString);\ \ \ //\ true}
+\DoxyCodeLine{some(items,\ isFunction);\ //\ false}
+
+\end{DoxyCode}
+
+
+more info at \href{https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array/some}{\texttt{ MDN Array\+::some}}
+
+It also supports a shorthand syntax\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ items\ =\ [\{id:1,\ active:true\},\ \{id:3,\ active:false\},\ \{id:8,\ active:false\}];}
+\DoxyCodeLine{//\ at\ least\ one\ item\ with\ \`{}id\ ===\ 8`}
+\DoxyCodeLine{some(items,\ \{id:8\});\ //\ true}
+\DoxyCodeLine{//\ \`{}active`\ is\ truthy\ on\ at\ least\ one\ item}
+\DoxyCodeLine{some(items,\ 'active');\ //\ true}
+
+\end{DoxyCode}
+
+
+see also\+: \href{object.html\#matches}{\texttt{ {\ttfamily object/matches}}}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3463}{}\doxysection{\texorpdfstring{sort(arr, \mbox{[}compare\+Fn\mbox{]})\+:Array}{sort(arr, \mbox{[}compare\+Fn\mbox{]})\+:Array}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3463}
+Returns a sorted Array using the \href{http://en.wikipedia.org/wiki/Merge_sort}{\texttt{ Merge Sort}} algorithm (stable sort).
+
+The {\ttfamily Array.\+prototype.\+sort} browser implementations differ since the sorting algorithm isn\textquotesingle{}t described in the ES spec -\/ \href{http://code.google.com/p/v8/issues/detail?id=90}{\texttt{ in V8 it isn\textquotesingle{}t stable}} and \href{https://bugzilla.mozilla.org/show_bug.cgi?id=224128}{\texttt{ on Firefox it is stable}} -\/ so this function doesn\textquotesingle{}t use the browser native implementation and is recommended in cases where a stable sort is required (items should preserve same order if already sorted).
+
+{\bfseries{Important\+:}} It does logical comparisson by default (greater/less than) and not a string comparisson like the native {\ttfamily Array\#sort}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3464}{}\doxysubsection{\texorpdfstring{compare\+Fn}{compare\+Fn}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3464}
+If {\ttfamily compare\+Fn} is supplied elements are sorted based on the value returned by the {\ttfamily compare\+Fn}.
+
+
+\begin{DoxyItemize}
+\item If {\ttfamily compare\+Fn(a, b)} is less than {\ttfamily 0}, sort {\ttfamily a} to a lower index than {\ttfamily b}.
+\item If {\ttfamily compare\+Fn(a, b)} returns {\ttfamily 0}, leave {\ttfamily a} and {\ttfamily b} unchanged with respect to each other, but sorted with respect to all different elements.
+\item If {\ttfamily compare\+Fn(a, b)} is greater than {\ttfamily 0}, sort {\ttfamily b} to a lower index than {\ttfamily a}.
+\end{DoxyItemize}
+
+See\+: \doxylink{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfac3b70891d99551a76fc616c3878c08_sortBy}{\`{}sort\+By\`{}}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3465}{}\doxysubsection{\texorpdfstring{Example}{Example}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3465}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{sort([187,\ 23,\ 47,\ 987,\ 12,\ 59,\ 0]);\ //\ [0,\ 12,\ 23,\ 47,\ 59,\ 187,\ 987]}
+\DoxyCodeLine{sort(['a',\ 'z',\ 'c',\ 'beta',\ 'b']);\ //\ ['a',\ 'b',\ 'beta',\ 'c',\ 'z']}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ ['sit',\ 'amet',\ 'lorem',\ 'ipsum']}
+\DoxyCodeLine{sort(['lorem',\ 'ipsum',\ 'sit',\ 'amet'],\ function(a,\ b)\{}
+\DoxyCodeLine{\ \ \ \ //\ sort\ by\ length,\ items\ with\ same\ length}
+\DoxyCodeLine{\ \ \ \ //\ will\ keep\ the\ relative\ order\ (stable)}
+\DoxyCodeLine{\ \ \ \ return\ a.length\ -\/\ b.length;}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ [4,\ 3,\ 2,\ 1]}
+\DoxyCodeLine{sort([2,\ 3,\ 1,\ 4],\ function(a,\ b)\{}
+\DoxyCodeLine{\ \ \ \ //\ reverse\ sort}
+\DoxyCodeLine{\ \ \ \ return\ b\ -\/\ a;}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3466}{}\doxysection{\texorpdfstring{sort\+By(arr, callback, \mbox{[}context\mbox{]})\+:Array}{sort\+By(arr, callback, \mbox{[}context\mbox{]})\+:Array}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3466}
+Returns an array sorted by the result of the callback.
+
+The callback is called for each item that is to be sorted, and the results of the callback are used to sort the array. The callback is called with the item as the first parameter, optionally with the provided context.
+
+It also supports a shorthand notation which can be used to sort by a property name.
+
+See\+: \`{}sort\`{}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Returns\ [\{\ a:\ 1\ \},\ \{\ a:\ 2\ \},\ \{\ a:\ 3\ \}]}
+\DoxyCodeLine{sortBy([\{\ a:\ 1\ \},\ \{\ a:\ 3\ \},\ \{\ a:\ 2\ \}],}
+\DoxyCodeLine{\ \ \ \ function(item)\ \{\ return\ item.a;\ \});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Same\ as\ above,\ using\ shorthand\ notation}
+\DoxyCodeLine{sortBy([\{\ a:\ 1\ \},\ \{\ a:\ 3\ \},\ \{\ a:\ 2\ \}],\ 'a');}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3467}{}\doxysection{\texorpdfstring{split(arr, \mbox{[}segments\mbox{]})\+:Array}{split(arr, \mbox{[}segments\mbox{]})\+:Array}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3467}
+Splits an array into a fixed number of segments.
+
+The number of segments is specified by {\ttfamily segments} and defaults to 2. If the array cannot be evenly split, the first segments will contain the extra items. If {\ttfamily arr} is empty, an empty array is returned. If {\ttfamily arr.\+length} is less than {\ttfamily segments}, then the resulting array will have {\ttfamily arr.\+length} number of single-\/element arrays.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3468}{}\doxysubsection{\texorpdfstring{Example}{Example}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3468}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{split([1,\ 2,\ 3,\ 4,\ 5],\ 3)\ //\ [\ [1,\ 2],\ [3,\ 4],\ [5]\ ]}
+\DoxyCodeLine{split([1,\ 2,\ 3,\ 4,\ 5])\ //\ [\ [1,\ 2,\ 3],\ [4,\ 5]\ ]}
+\DoxyCodeLine{split([])\ //\ []}
+\DoxyCodeLine{split([1,\ 2],\ 3)\ //\ [\ [1],\ [2]\ ]}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3469}{}\doxysection{\texorpdfstring{take(times, callback, \mbox{[}this\+Obj\mbox{]})\+:Array}{take(times, callback, \mbox{[}this\+Obj\mbox{]})\+:Array}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3469}
+Builds a new array based on the returned values from the given {\ttfamily callback}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{take(4,\ function(i,\ total)\ \{}
+\DoxyCodeLine{\ \ \ \ return\ i\ /\ total;}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{//\ >\ [0,\ 0.25,\ 0.5,\ 0.75]}
+
+\end{DoxyCode}
+
+
+see\+: \href{../function.html\#times}{\texttt{ function/times}}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3470}{}\doxysection{\texorpdfstring{to\+Lookup(arr, key)\+:Object}{to\+Lookup(arr, key)\+:Object}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3470}
+Create an object that indexes the items in the array by a key. If {\ttfamily key} is a function, the key for each value in the resulting object will be the result of calling the function with the value as an argument. Otherwise {\ttfamily key} specifies the property on each value to use as the key.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3471}{}\doxysubsection{\texorpdfstring{Example}{Example}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3471}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ foo\ =\ [\{\ name:\ 'a',\ thing:\ 1\ \},\ \{\ name:\ 'b',\ thing:\ 2\ \}];}
+\DoxyCodeLine{//\ \{\ a:\ \{\ name:\ 'a',\ thing:\ 1\ \},\ b:\ \{\ name:\ 'b',\ thing:\ 2\ \}\ \}}
+\DoxyCodeLine{toLookup(foo,\ 'name');}
+\DoxyCodeLine{//\ same\ as\ above}
+\DoxyCodeLine{toLookup(foo,\ function\ (value)\ \{\ return\ value.name;\ \});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3472}{}\doxysection{\texorpdfstring{union(...\+arrs)\+:Array}{union(...\+arrs)\+:Array}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3472}
+Concat multiple arrays removing duplicates.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ a\ =\ ['a',\ 'b'],}
+\DoxyCodeLine{\ \ \ \ b\ =\ ['c',\ 'a'],}
+\DoxyCodeLine{\ \ \ \ c\ =\ [1,\ 'b',\ 2,\ 3,\ 'a'];}
+\DoxyCodeLine{}
+\DoxyCodeLine{//note\ that\ unique\ remove\ from\ begin\ to\ end}
+\DoxyCodeLine{union(a,\ b,\ c);\ //\ ['c',\ 1,\ 'b',\ 2,\ 3,\ 'a']}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3473}{}\doxysection{\texorpdfstring{unique(arr, \mbox{[}compare\mbox{]})\+:Array}{unique(arr, \mbox{[}compare\mbox{]})\+:Array}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3473}
+Return a new Array of unique items.
+
+{\bfseries{IMPORTANT\+:}} duplicates are removed starting from begining of array.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ arr\ =\ [1,\ 2,\ 3,\ 4,\ 2,\ 2,\ 4];}
+\DoxyCodeLine{var\ foo\ =\ unique(arr);}
+\DoxyCodeLine{console.log(foo);}
+\DoxyCodeLine{//\ >\ [1,\ 3,\ 2,\ 4];}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ you\ also\ have\ the\ option\ to\ set\ a\ custom\ compare\ function}
+\DoxyCodeLine{var\ users\ =\ [\{name:\ 'john'\},\ \{name:\ 'paul'\},\ \{name:\ 'john'\}];}
+\DoxyCodeLine{var\ uniqueNames\ =\ unique(arr,\ function(a,\ b)\{}
+\DoxyCodeLine{\ \ \ \ return\ a.name\ ===\ b.name;}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{console.log(uniqueNames);}
+\DoxyCodeLine{//\ >\ [\{name:\ 'paul'\},\ \{name:\ 'john'\}]}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3474}{}\doxysection{\texorpdfstring{xor(arr1, arr2)\+:Array}{xor(arr1, arr2)\+:Array}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3474}
+Exclusive OR. Returns items that are present in a single array.
+
+Works like \href{http://docs.python.org/library/stdtypes.html\#set.symmetric_difference}{\texttt{ Python set\+::symmetric\+\_\+difference}} renamed for brevity.
+
+It will remove duplicates.
+
+See\+: \`{}difference()\`{}, \`{}intersection()\`{}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ a\ =\ ['a',\ 'b',\ 1];}
+\DoxyCodeLine{var\ b\ =\ ['c',\ 1];}
+\DoxyCodeLine{xor(a,\ b);\ //\ ['a',\ 'b',\ 'c']}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3475}{}\doxysection{\texorpdfstring{zip(...\+arrs)\+:Array}{zip(...\+arrs)\+:Array}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma9ea29c6c514cb1a06f22e16acf18cd0_autotoc_md3475}
+Groups the elements of each array at their corresponding indexes.
+
+Useful for separate data sources that are coordinated through matching array indexes. For a matrix of nested arrays, {\ttfamily zip.\+apply(...)} can transpose the matrix in a similar fashion.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ [['moe',\ 30,\ true],\ ['larry',\ 40,\ false],\ ['curly',\ 50,\ false]]}
+\DoxyCodeLine{zip(['moe',\ 'larry',\ 'curly'],\ [30,\ 40,\ 50],\ [true,\ false,\ false]);}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+
+
+For more usage examples check specs inside {\ttfamily /tests} folder. Unit tests are the best documentation you can get... 

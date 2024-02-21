@@ -1,0 +1,99 @@
+\chapter{query\+String}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m03aa78ac2d6dad0dcc04f7b658087f43}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m03aa78ac2d6dad0dcc04f7b658087f43}\index{queryString@{queryString}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m03aa78ac2d6dad0dcc04f7b658087f43_autotoc_md3667}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m03aa78ac2d6dad0dcc04f7b658087f43_autotoc_md3667}%
+ Utilities for query string manipulation.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m03aa78ac2d6dad0dcc04f7b658087f43_autotoc_md3668}{}\doxysection{\texorpdfstring{contains(url, param\+Name)\+:Boolen}{contains(url, param\+Name)\+:Boolen}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m03aa78ac2d6dad0dcc04f7b658087f43_autotoc_md3668}
+Checks if query string contains parameter.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m03aa78ac2d6dad0dcc04f7b658087f43_autotoc_md3669}{}\doxysubsection{\texorpdfstring{Arguments\+:}{Arguments\+:}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m03aa78ac2d6dad0dcc04f7b658087f43_autotoc_md3669}
+
+\begin{DoxyEnumerate}
+\item {\ttfamily url} (String) \+: URL or query string.
+\item {\ttfamily param\+Name} (String) \+: Parameter name.
+\end{DoxyEnumerate}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m03aa78ac2d6dad0dcc04f7b658087f43_autotoc_md3670}{}\doxysubsection{\texorpdfstring{Example\+:}{Example\+:}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m03aa78ac2d6dad0dcc04f7b658087f43_autotoc_md3670}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ url\ =\ 'example.com/?lorem=ipsum';}
+\DoxyCodeLine{contains(url,\ 'lorem');\ //\ true}
+\DoxyCodeLine{contains(url,\ 'foo');\ \ \ //false}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m03aa78ac2d6dad0dcc04f7b658087f43_autotoc_md3671}{}\doxysection{\texorpdfstring{decode(query\+Str\mbox{[}, should\+Typecast\mbox{]})\+:Object}{decode(query\+Str\mbox{[}, should\+Typecast\mbox{]})\+:Object}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m03aa78ac2d6dad0dcc04f7b658087f43_autotoc_md3671}
+Parses query string and creates an object of keys =\texorpdfstring{$>$}{>} vals.
+
+Will typecast value with \href{string.html\#typecast}{\texttt{ {\ttfamily string/typecast}}} by default and decode string parameters using {\ttfamily decode\+URIComponent()}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ query\ =\ '?foo=bar\&lorem=123';}
+\DoxyCodeLine{decode(query);\ \ \ \ \ \ \ \ //\ \{foo:\ "{}bar"{},\ lorem:\ 123\}}
+\DoxyCodeLine{decode(query,\ false);\ //\ \{foo:\ "{}bar"{},\ lorem:\ "{}123"{}\}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m03aa78ac2d6dad0dcc04f7b658087f43_autotoc_md3672}{}\doxysection{\texorpdfstring{encode(obj)\+:String}{encode(obj)\+:String}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m03aa78ac2d6dad0dcc04f7b658087f43_autotoc_md3672}
+Encode object into a query string.
+
+Will encode parameters with {\ttfamily encode\+URIComponent()}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{encode(\{foo:\ "{}bar"{},\ lorem:\ 123\});\ //\ "{}?foo=bar\&lorem=123"{}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m03aa78ac2d6dad0dcc04f7b658087f43_autotoc_md3673}{}\doxysection{\texorpdfstring{get\+Param(url, param\mbox{[}, should\+Typecast\mbox{]})\+:\texorpdfstring{$\ast$}{*}}{get\+Param(url, param\mbox{[}, should\+Typecast\mbox{]})\+:\texorpdfstring{$\ast$}{*}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m03aa78ac2d6dad0dcc04f7b658087f43_autotoc_md3673}
+Get query parameter value.
+
+Will typecast value with \href{string.html\#typecast}{\texttt{ {\ttfamily string/typecast}}} by default.
+
+See\+: \`{}set\+Param()\`{}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m03aa78ac2d6dad0dcc04f7b658087f43_autotoc_md3674}{}\doxysubsection{\texorpdfstring{Arguments\+:}{Arguments\+:}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m03aa78ac2d6dad0dcc04f7b658087f43_autotoc_md3674}
+
+\begin{DoxyEnumerate}
+\item {\ttfamily url} (String) \+: Url.
+\item {\ttfamily param} (String) \+: Parameter name.
+\item {\ttfamily \mbox{[}should\+Typecast\mbox{]}} (Boolean) \+: If it should typecast value.
+\end{DoxyEnumerate}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m03aa78ac2d6dad0dcc04f7b658087f43_autotoc_md3675}{}\doxysubsection{\texorpdfstring{Example\+:}{Example\+:}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m03aa78ac2d6dad0dcc04f7b658087f43_autotoc_md3675}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ url\ =\ 'example.com/?foo=bar\&lorem=123\&ipsum=false';}
+\DoxyCodeLine{getParam(url,\ 'dolor');\ \ \ \ \ \ \ \ //\ "{}amet"{}}
+\DoxyCodeLine{getParam(url,\ 'lorem');\ \ \ \ \ \ \ \ //\ 123}
+\DoxyCodeLine{getParam(url,\ 'lorem',\ false);\ //\ "{}123"{}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m03aa78ac2d6dad0dcc04f7b658087f43_autotoc_md3676}{}\doxysection{\texorpdfstring{parse(url\mbox{[}, should\+Typecast\mbox{]})\+:Object}{parse(url\mbox{[}, should\+Typecast\mbox{]})\+:Object}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m03aa78ac2d6dad0dcc04f7b658087f43_autotoc_md3676}
+Parses URL, extracts query string and decodes it.
+
+It will typecast all properties of the query object unless second argument is {\ttfamily false}.
+
+Alias to\+: {\ttfamily decode(get\+Query(url))}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ url\ =\ 'example.com/?lorem=ipsum\&a=123';}
+\DoxyCodeLine{parse(url);\ \ \ \ \ \ \ \ //\ \{lorem:\ "{}ipsum"{},\ a:\ 123\}}
+\DoxyCodeLine{parse(url,\ false);\ //\ \{lorem:\ "{}ipsum"{},\ a:\ "{}123"{}\}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m03aa78ac2d6dad0dcc04f7b658087f43_autotoc_md3677}{}\doxysection{\texorpdfstring{get\+Query(url)\+:String}{get\+Query(url)\+:String}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m03aa78ac2d6dad0dcc04f7b658087f43_autotoc_md3677}
+Gets full query as string with all special chars decoded.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{getQuery('example.com/?lorem=ipsum');\ //\ "{}?lorem=ipsum"{}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m03aa78ac2d6dad0dcc04f7b658087f43_autotoc_md3678}{}\doxysection{\texorpdfstring{set\+Param(url, param\+Name, value)\+:String}{set\+Param(url, param\+Name, value)\+:String}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m03aa78ac2d6dad0dcc04f7b658087f43_autotoc_md3678}
+Add new query string parameter to URL or update existing value.
+
+See\+: \`{}get\+Param()\`{}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{setParam('?foo=bar\&lorem=0',\ 'lorem',\ 'ipsum');\ //\ '?foo=bar\&lorem=ipsum'}
+\DoxyCodeLine{setParam('?lorem=1',\ 'foo',\ 123);\ //\ '?lorem=1\&foo=123'}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+
+
+For more usage examples check specs inside {\ttfamily /tests} folder. Unit tests are the best documentation you can get... 

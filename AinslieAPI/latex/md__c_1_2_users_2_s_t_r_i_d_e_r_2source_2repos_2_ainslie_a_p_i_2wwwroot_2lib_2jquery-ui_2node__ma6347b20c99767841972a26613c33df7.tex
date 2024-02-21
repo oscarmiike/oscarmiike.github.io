@@ -1,0 +1,457 @@
+\chapter{aws4}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma6347b20c99767841972a26613c33df7}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma6347b20c99767841972a26613c33df7}\index{aws4@{aws4}}
+\href{http://travis-ci.org/mhart/aws4}{\texttt{ }}
+
+A small utility to sign vanilla node.\+js http(s) request options using Amazon\textquotesingle{}s \href{http://docs.amazonwebservices.com/general/latest/gr/signature-version-4.html}{\texttt{ AWS Signature Version 4}}.
+
+Can also be used \href{./browser}{\texttt{ in the browser}}.
+
+This signature is supported by nearly all Amazon services, including \href{http://docs.aws.amazon.com/AmazonS3/latest/API/}{\texttt{ S3}}, \href{http://docs.aws.amazon.com/AWSEC2/latest/APIReference/}{\texttt{ EC2}}, \href{http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/API.html}{\texttt{ Dynamo\+DB}}, \href{http://docs.aws.amazon.com/kinesis/latest/APIReference/}{\texttt{ Kinesis}}, \href{http://docs.aws.amazon.com/lambda/latest/dg/API_Reference.html}{\texttt{ Lambda}}, \href{http://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/}{\texttt{ SQS}}, \href{http://docs.aws.amazon.com/sns/latest/api/}{\texttt{ SNS}}, \href{http://docs.aws.amazon.com/IAM/latest/APIReference/}{\texttt{ IAM}}, \href{http://docs.aws.amazon.com/STS/latest/APIReference/}{\texttt{ STS}}, \href{http://docs.aws.amazon.com/AmazonRDS/latest/APIReference/}{\texttt{ RDS}}, \href{http://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/}{\texttt{ Cloud\+Watch}}, \href{http://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/}{\texttt{ Cloud\+Watch Logs}}, \href{http://docs.aws.amazon.com/codedeploy/latest/APIReference/}{\texttt{ Code\+Deploy}}, \href{http://docs.aws.amazon.com/AmazonCloudFront/latest/APIReference/}{\texttt{ Cloud\+Front}}, \href{http://docs.aws.amazon.com/awscloudtrail/latest/APIReference/}{\texttt{ Cloud\+Trail}}, \href{http://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/}{\texttt{ Elasti\+Cache}}, \href{http://docs.aws.amazon.com/ElasticMapReduce/latest/API/}{\texttt{ EMR}}, \href{http://docs.aws.amazon.com/amazonglacier/latest/dev/amazon-glacier-api.html}{\texttt{ Glacier}}, \href{http://docs.aws.amazon.com/cloudsearch/latest/developerguide/APIReq.html}{\texttt{ Cloud\+Search}}, \href{http://docs.aws.amazon.com/ElasticLoadBalancing/latest/APIReference/}{\texttt{ Elastic Load Balancing}}, \href{http://docs.aws.amazon.com/elastictranscoder/latest/developerguide/api-reference.html}{\texttt{ Elastic Transcoder}}, \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/}{\texttt{ Cloud\+Formation}}, \href{http://docs.aws.amazon.com/elasticbeanstalk/latest/api/}{\texttt{ Elastic Beanstalk}}, \href{http://docs.aws.amazon.com/storagegateway/latest/userguide/AWSStorageGatewayAPI.html}{\texttt{ Storage Gateway}}, \href{http://docs.aws.amazon.com/datapipeline/latest/APIReference/}{\texttt{ Data Pipeline}}, \href{http://docs.aws.amazon.com/directconnect/latest/APIReference/}{\texttt{ Direct Connect}}, \href{http://docs.aws.amazon.com/redshift/latest/APIReference/}{\texttt{ Redshift}}, \href{http://docs.aws.amazon.com/opsworks/latest/APIReference/}{\texttt{ Ops\+Works}}, \href{http://docs.aws.amazon.com/ses/latest/APIReference/}{\texttt{ SES}}, \href{http://docs.aws.amazon.com/amazonswf/latest/apireference/}{\texttt{ SWF}}, \href{http://docs.aws.amazon.com/AutoScaling/latest/APIReference/}{\texttt{ Auto\+Scaling}}, \href{http://docs.aws.amazon.com/mobileanalytics/latest/ug/server-reference.html}{\texttt{ Mobile Analytics}}, \href{http://docs.aws.amazon.com/cognitoidentity/latest/APIReference/}{\texttt{ Cognito Identity}}, \href{http://docs.aws.amazon.com/cognitosync/latest/APIReference/}{\texttt{ Cognito Sync}}, \href{http://docs.aws.amazon.com/AmazonECS/latest/APIReference/}{\texttt{ Container Service}}, \href{http://docs.aws.amazon.com/appstream/latest/developerguide/appstream-api-rest.html}{\texttt{ App\+Stream}}, \href{http://docs.aws.amazon.com/kms/latest/APIReference/}{\texttt{ Key Management Service}}, \href{http://docs.aws.amazon.com/config/latest/APIReference/}{\texttt{ Config}}, \href{http://docs.aws.amazon.com/cloudhsm/latest/dg/api-ref.html}{\texttt{ Cloud\+HSM}}, \href{http://docs.aws.amazon.com/Route53/latest/APIReference/requests-rest.html}{\texttt{ Route53}} and \href{http://docs.aws.amazon.com/Route53/latest/APIReference/requests-rpc.html}{\texttt{ Route53 Domains}}.
+
+Indeed, the only AWS services that {\itshape don\textquotesingle{}t} support v4 as of 2014-\/12-\/30 are \href{http://docs.aws.amazon.com/AWSImportExport/latest/DG/api-reference.html}{\texttt{ Import/\+Export}} and \href{http://docs.aws.amazon.com/AmazonSimpleDB/latest/DeveloperGuide/SDB_API.html}{\texttt{ Simple\+DB}} (they only support \href{https://github.com/mhart/aws2}{\texttt{ AWS Signature Version 2}}).
+
+It also provides defaults for a number of core AWS headers and request parameters, making it very easy to query AWS services, or build out a fully-\/featured AWS library.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma6347b20c99767841972a26613c33df7_autotoc_md864}{}\doxysection{\texorpdfstring{Example}{Example}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma6347b20c99767841972a26613c33df7_autotoc_md864}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ http\ \ =\ require('http'),}
+\DoxyCodeLine{\ \ \ \ https\ =\ require('https'),}
+\DoxyCodeLine{\ \ \ \ aws4\ \ =\ require('aws4')}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ given\ an\ options\ object\ you\ could\ pass\ to\ http.request}
+\DoxyCodeLine{var\ opts\ =\ \{host:\ 'sqs.us-\/east-\/1.amazonaws.com',\ path:\ '/?Action=ListQueues'\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ alternatively\ (as\ aws4\ can\ infer\ the\ host):}
+\DoxyCodeLine{opts\ =\ \{service:\ 'sqs',\ region:\ 'us-\/east-\/1',\ path:\ '/?Action=ListQueues'\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ alternatively\ (as\ us-\/east-\/1\ is\ default):}
+\DoxyCodeLine{opts\ =\ \{service:\ 'sqs',\ path:\ '/?Action=ListQueues'\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{aws4.sign(opts)\ //\ assumes\ AWS\ credentials\ are\ available\ in\ process.env}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log(opts)}
+\DoxyCodeLine{/*}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ host:\ 'sqs.us-\/east-\/1.amazonaws.com',}
+\DoxyCodeLine{\ \ path:\ '/?Action=ListQueues',}
+\DoxyCodeLine{\ \ headers:\ \{}
+\DoxyCodeLine{\ \ \ \ Host:\ 'sqs.us-\/east-\/1.amazonaws.com',}
+\DoxyCodeLine{\ \ \ \ 'X-\/Amz-\/Date':\ '20121226T061030Z',}
+\DoxyCodeLine{\ \ \ \ Authorization:\ 'AWS4-\/HMAC-\/SHA256\ Credential=ABCDEF/20121226/us-\/east-\/1/sqs/aws4\_request,\ ...'}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{*/}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ we\ can\ now\ use\ this\ to\ query\ AWS\ using\ the\ standard\ node.js\ http\ API}
+\DoxyCodeLine{http.request(opts,\ function(res)\ \{\ res.pipe(process.stdout)\ \}).end()}
+\DoxyCodeLine{/*}
+\DoxyCodeLine{<?xml\ version="{}1.0"{}?>}
+\DoxyCodeLine{<ListQueuesResponse\ xmlns="{}http://queue.amazonaws.com/doc/2012-\/11-\/05/"{}>}
+\DoxyCodeLine{...}
+\DoxyCodeLine{*/}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma6347b20c99767841972a26613c33df7_autotoc_md865}{}\doxysection{\texorpdfstring{More options}{More options}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma6347b20c99767841972a26613c33df7_autotoc_md865}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ you\ can\ also\ pass\ AWS\ credentials\ in\ explicitly\ (otherwise\ taken\ from\ process.env)}
+\DoxyCodeLine{aws4.sign(opts,\ \{accessKeyId:\ '',\ secretAccessKey:\ ''\})}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ can\ also\ add\ the\ signature\ to\ query\ strings}
+\DoxyCodeLine{aws4.sign(\{service:\ 's3',\ path:\ '/my-\/bucket?X-\/Amz-\/Expires=12345',\ signQuery:\ true\})}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ create\ a\ utility\ function\ to\ pipe\ to\ stdout\ (with\ https\ this\ time)}
+\DoxyCodeLine{function\ request(o)\ \{\ https.request(o,\ function(res)\ \{\ res.pipe(process.stdout)\ \}).end(o.body\ ||\ '')\ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ aws4\ can\ infer\ the\ HTTP\ method\ if\ a\ body\ is\ passed\ in}
+\DoxyCodeLine{//\ method\ will\ be\ POST\ and\ Content-\/Type:\ 'application/x-\/www-\/form-\/urlencoded;\ charset=utf-\/8'}
+\DoxyCodeLine{request(aws4.sign(\{service:\ 'iam',\ body:\ 'Action=ListGroups\&Version=2010-\/05-\/08'\}))}
+\DoxyCodeLine{/*}
+\DoxyCodeLine{<ListGroupsResponse\ xmlns="{}https://iam.amazonaws.com/doc/2010-\/05-\/08/"{}>}
+\DoxyCodeLine{...}
+\DoxyCodeLine{*/}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ can\ specify\ any\ custom\ option\ or\ header\ as\ per\ usual}
+\DoxyCodeLine{request(aws4.sign(\{}
+\DoxyCodeLine{\ \ service:\ 'dynamodb',}
+\DoxyCodeLine{\ \ region:\ 'ap-\/southeast-\/2',}
+\DoxyCodeLine{\ \ method:\ 'POST',}
+\DoxyCodeLine{\ \ path:\ '/',}
+\DoxyCodeLine{\ \ headers:\ \{}
+\DoxyCodeLine{\ \ \ \ 'Content-\/Type':\ 'application/x-\/amz-\/json-\/1.0',}
+\DoxyCodeLine{\ \ \ \ 'X-\/Amz-\/Target':\ 'DynamoDB\_20120810.ListTables'}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ body:\ '\{\}'}
+\DoxyCodeLine{\}))}
+\DoxyCodeLine{/*}
+\DoxyCodeLine{\{"{}TableNames"{}:[]\}}
+\DoxyCodeLine{...}
+\DoxyCodeLine{*/}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ works\ with\ all\ other\ services\ that\ support\ Signature\ Version\ 4}
+\DoxyCodeLine{}
+\DoxyCodeLine{request(aws4.sign(\{service:\ 's3',\ path:\ '/',\ signQuery:\ true\}))}
+\DoxyCodeLine{/*}
+\DoxyCodeLine{<ListAllMyBucketsResult\ xmlns="{}http://s3.amazonaws.com/doc/2006-\/03-\/01/"{}>}
+\DoxyCodeLine{...}
+\DoxyCodeLine{*/}
+\DoxyCodeLine{}
+\DoxyCodeLine{request(aws4.sign(\{service:\ 'ec2',\ path:\ '/?Action=DescribeRegions\&Version=2014-\/06-\/15'\}))}
+\DoxyCodeLine{/*}
+\DoxyCodeLine{<DescribeRegionsResponse\ xmlns="{}http://ec2.amazonaws.com/doc/2014-\/06-\/15/"{}>}
+\DoxyCodeLine{...}
+\DoxyCodeLine{*/}
+\DoxyCodeLine{}
+\DoxyCodeLine{request(aws4.sign(\{service:\ 'sns',\ path:\ '/?Action=ListTopics\&Version=2010-\/03-\/31'\}))}
+\DoxyCodeLine{/*}
+\DoxyCodeLine{<ListTopicsResponse\ xmlns="{}http://sns.amazonaws.com/doc/2010-\/03-\/31/"{}>}
+\DoxyCodeLine{...}
+\DoxyCodeLine{*/}
+\DoxyCodeLine{}
+\DoxyCodeLine{request(aws4.sign(\{service:\ 'sts',\ path:\ '/?Action=GetSessionToken\&Version=2011-\/06-\/15'\}))}
+\DoxyCodeLine{/*}
+\DoxyCodeLine{<GetSessionTokenResponse\ xmlns="{}https://sts.amazonaws.com/doc/2011-\/06-\/15/"{}>}
+\DoxyCodeLine{...}
+\DoxyCodeLine{*/}
+\DoxyCodeLine{}
+\DoxyCodeLine{request(aws4.sign(\{service:\ 'cloudsearch',\ path:\ '/?Action=ListDomainNames\&Version=2013-\/01-\/01'\}))}
+\DoxyCodeLine{/*}
+\DoxyCodeLine{<ListDomainNamesResponse\ xmlns="{}http://cloudsearch.amazonaws.com/doc/2013-\/01-\/01/"{}>}
+\DoxyCodeLine{...}
+\DoxyCodeLine{*/}
+\DoxyCodeLine{}
+\DoxyCodeLine{request(aws4.sign(\{service:\ 'ses',\ path:\ '/?Action=ListIdentities\&Version=2010-\/12-\/01'\}))}
+\DoxyCodeLine{/*}
+\DoxyCodeLine{<ListIdentitiesResponse\ xmlns="{}http://ses.amazonaws.com/doc/2010-\/12-\/01/"{}>}
+\DoxyCodeLine{...}
+\DoxyCodeLine{*/}
+\DoxyCodeLine{}
+\DoxyCodeLine{request(aws4.sign(\{service:\ 'autoscaling',\ path:\ '/?Action=DescribeAutoScalingInstances\&Version=2011-\/01-\/01'\}))}
+\DoxyCodeLine{/*}
+\DoxyCodeLine{<DescribeAutoScalingInstancesResponse\ xmlns="{}http://autoscaling.amazonaws.com/doc/2011-\/01-\/01/"{}>}
+\DoxyCodeLine{...}
+\DoxyCodeLine{*/}
+\DoxyCodeLine{}
+\DoxyCodeLine{request(aws4.sign(\{service:\ 'elasticloadbalancing',\ path:\ '/?Action=DescribeLoadBalancers\&Version=2012-\/06-\/01'\}))}
+\DoxyCodeLine{/*}
+\DoxyCodeLine{<DescribeLoadBalancersResponse\ xmlns="{}http://elasticloadbalancing.amazonaws.com/doc/2012-\/06-\/01/"{}>}
+\DoxyCodeLine{...}
+\DoxyCodeLine{*/}
+\DoxyCodeLine{}
+\DoxyCodeLine{request(aws4.sign(\{service:\ 'cloudformation',\ path:\ '/?Action=ListStacks\&Version=2010-\/05-\/15'\}))}
+\DoxyCodeLine{/*}
+\DoxyCodeLine{<ListStacksResponse\ xmlns="{}http://cloudformation.amazonaws.com/doc/2010-\/05-\/15/"{}>}
+\DoxyCodeLine{...}
+\DoxyCodeLine{*/}
+\DoxyCodeLine{}
+\DoxyCodeLine{request(aws4.sign(\{service:\ 'elasticbeanstalk',\ path:\ '/?Action=ListAvailableSolutionStacks\&Version=2010-\/12-\/01'\}))}
+\DoxyCodeLine{/*}
+\DoxyCodeLine{<ListAvailableSolutionStacksResponse\ xmlns="{}http://elasticbeanstalk.amazonaws.com/docs/2010-\/12-\/01/"{}>}
+\DoxyCodeLine{...}
+\DoxyCodeLine{*/}
+\DoxyCodeLine{}
+\DoxyCodeLine{request(aws4.sign(\{service:\ 'rds',\ path:\ '/?Action=DescribeDBInstances\&Version=2012-\/09-\/17'\}))}
+\DoxyCodeLine{/*}
+\DoxyCodeLine{<DescribeDBInstancesResponse\ xmlns="{}http://rds.amazonaws.com/doc/2012-\/09-\/17/"{}>}
+\DoxyCodeLine{...}
+\DoxyCodeLine{*/}
+\DoxyCodeLine{}
+\DoxyCodeLine{request(aws4.sign(\{service:\ 'monitoring',\ path:\ '/?Action=ListMetrics\&Version=2010-\/08-\/01'\}))}
+\DoxyCodeLine{/*}
+\DoxyCodeLine{<ListMetricsResponse\ xmlns="{}http://monitoring.amazonaws.com/doc/2010-\/08-\/01/"{}>}
+\DoxyCodeLine{...}
+\DoxyCodeLine{*/}
+\DoxyCodeLine{}
+\DoxyCodeLine{request(aws4.sign(\{service:\ 'redshift',\ path:\ '/?Action=DescribeClusters\&Version=2012-\/12-\/01'\}))}
+\DoxyCodeLine{/*}
+\DoxyCodeLine{<DescribeClustersResponse\ xmlns="{}http://redshift.amazonaws.com/doc/2012-\/12-\/01/"{}>}
+\DoxyCodeLine{...}
+\DoxyCodeLine{*/}
+\DoxyCodeLine{}
+\DoxyCodeLine{request(aws4.sign(\{service:\ 'cloudfront',\ path:\ '/2014-\/05-\/31/distribution'\}))}
+\DoxyCodeLine{/*}
+\DoxyCodeLine{<DistributionList\ xmlns="{}http://cloudfront.amazonaws.com/doc/2014-\/05-\/31/"{}>}
+\DoxyCodeLine{...}
+\DoxyCodeLine{*/}
+\DoxyCodeLine{}
+\DoxyCodeLine{request(aws4.sign(\{service:\ 'elasticache',\ path:\ '/?Action=DescribeCacheClusters\&Version=2014-\/07-\/15'\}))}
+\DoxyCodeLine{/*}
+\DoxyCodeLine{<DescribeCacheClustersResponse\ xmlns="{}http://elasticache.amazonaws.com/doc/2014-\/07-\/15/"{}>}
+\DoxyCodeLine{...}
+\DoxyCodeLine{*/}
+\DoxyCodeLine{}
+\DoxyCodeLine{request(aws4.sign(\{service:\ 'elasticmapreduce',\ path:\ '/?Action=DescribeJobFlows\&Version=2009-\/03-\/31'\}))}
+\DoxyCodeLine{/*}
+\DoxyCodeLine{<DescribeJobFlowsResponse\ xmlns="{}http://elasticmapreduce.amazonaws.com/doc/2009-\/03-\/31"{}>}
+\DoxyCodeLine{...}
+\DoxyCodeLine{*/}
+\DoxyCodeLine{}
+\DoxyCodeLine{request(aws4.sign(\{service:\ 'route53',\ path:\ '/2013-\/04-\/01/hostedzone'\}))}
+\DoxyCodeLine{/*}
+\DoxyCodeLine{<ListHostedZonesResponse\ xmlns="{}https://route53.amazonaws.com/doc/2013-\/04-\/01/"{}>}
+\DoxyCodeLine{...}
+\DoxyCodeLine{*/}
+\DoxyCodeLine{}
+\DoxyCodeLine{request(aws4.sign(\{service:\ 'appstream',\ path:\ '/applications'\}))}
+\DoxyCodeLine{/*}
+\DoxyCodeLine{\{"{}\_links"{}:\{"{}curie"{}:[\{"{}href"{}:"{}http://docs.aws.amazon.com/appstream/latest/...}
+\DoxyCodeLine{...}
+\DoxyCodeLine{*/}
+\DoxyCodeLine{}
+\DoxyCodeLine{request(aws4.sign(\{service:\ 'cognito-\/sync',\ path:\ '/identitypools'\}))}
+\DoxyCodeLine{/*}
+\DoxyCodeLine{\{"{}Count"{}:0,"{}IdentityPoolUsages"{}:[],"{}MaxResults"{}:16,"{}NextToken"{}:null\}}
+\DoxyCodeLine{...}
+\DoxyCodeLine{*/}
+\DoxyCodeLine{}
+\DoxyCodeLine{request(aws4.sign(\{service:\ 'elastictranscoder',\ path:\ '/2012-\/09-\/25/pipelines'\}))}
+\DoxyCodeLine{/*}
+\DoxyCodeLine{\{"{}NextPageToken"{}:null,"{}Pipelines"{}:[]\}}
+\DoxyCodeLine{...}
+\DoxyCodeLine{*/}
+\DoxyCodeLine{}
+\DoxyCodeLine{request(aws4.sign(\{service:\ 'lambda',\ path:\ '/2014-\/11-\/13/functions/'\}))}
+\DoxyCodeLine{/*}
+\DoxyCodeLine{\{"{}Functions"{}:[],"{}NextMarker"{}:null\}}
+\DoxyCodeLine{...}
+\DoxyCodeLine{*/}
+\DoxyCodeLine{}
+\DoxyCodeLine{request(aws4.sign(\{service:\ 'ecs',\ path:\ '/?Action=ListClusters\&Version=2014-\/11-\/13'\}))}
+\DoxyCodeLine{/*}
+\DoxyCodeLine{<ListClustersResponse\ xmlns="{}http://ecs.amazonaws.com/doc/2014-\/11-\/13/"{}>}
+\DoxyCodeLine{...}
+\DoxyCodeLine{*/}
+\DoxyCodeLine{}
+\DoxyCodeLine{request(aws4.sign(\{service:\ 'glacier',\ path:\ '/-\//vaults',\ headers:\ \{'X-\/Amz-\/Glacier-\/Version':\ '2012-\/06-\/01'\}\}))}
+\DoxyCodeLine{/*}
+\DoxyCodeLine{\{"{}Marker"{}:null,"{}VaultList"{}:[]\}}
+\DoxyCodeLine{...}
+\DoxyCodeLine{*/}
+\DoxyCodeLine{}
+\DoxyCodeLine{request(aws4.sign(\{service:\ 'storagegateway',\ body:\ '\{\}',\ headers:\ \{}
+\DoxyCodeLine{\ \ 'Content-\/Type':\ 'application/x-\/amz-\/json-\/1.1',}
+\DoxyCodeLine{\ \ 'X-\/Amz-\/Target':\ 'StorageGateway\_20120630.ListGateways'}
+\DoxyCodeLine{\}\}))}
+\DoxyCodeLine{/*}
+\DoxyCodeLine{\{"{}Gateways"{}:[]\}}
+\DoxyCodeLine{...}
+\DoxyCodeLine{*/}
+\DoxyCodeLine{}
+\DoxyCodeLine{request(aws4.sign(\{service:\ 'datapipeline',\ body:\ '\{\}',\ headers:\ \{}
+\DoxyCodeLine{\ \ 'Content-\/Type':\ 'application/x-\/amz-\/json-\/1.1',}
+\DoxyCodeLine{\ \ 'X-\/Amz-\/Target':\ 'DataPipeline.ListPipelines'}
+\DoxyCodeLine{\}\}))}
+\DoxyCodeLine{/*}
+\DoxyCodeLine{\{"{}hasMoreResults"{}:false,"{}pipelineIdList"{}:[]\}}
+\DoxyCodeLine{...}
+\DoxyCodeLine{*/}
+\DoxyCodeLine{}
+\DoxyCodeLine{request(aws4.sign(\{service:\ 'opsworks',\ body:\ '\{\}',\ headers:\ \{}
+\DoxyCodeLine{\ \ 'Content-\/Type':\ 'application/x-\/amz-\/json-\/1.1',}
+\DoxyCodeLine{\ \ 'X-\/Amz-\/Target':\ 'OpsWorks\_20130218.DescribeStacks'}
+\DoxyCodeLine{\}\}))}
+\DoxyCodeLine{/*}
+\DoxyCodeLine{\{"{}Stacks"{}:[]\}}
+\DoxyCodeLine{...}
+\DoxyCodeLine{*/}
+\DoxyCodeLine{}
+\DoxyCodeLine{request(aws4.sign(\{service:\ 'route53domains',\ body:\ '\{\}',\ headers:\ \{}
+\DoxyCodeLine{\ \ 'Content-\/Type':\ 'application/x-\/amz-\/json-\/1.1',}
+\DoxyCodeLine{\ \ 'X-\/Amz-\/Target':\ 'Route53Domains\_v20140515.ListDomains'}
+\DoxyCodeLine{\}\}))}
+\DoxyCodeLine{/*}
+\DoxyCodeLine{\{"{}Domains"{}:[]\}}
+\DoxyCodeLine{...}
+\DoxyCodeLine{*/}
+\DoxyCodeLine{}
+\DoxyCodeLine{request(aws4.sign(\{service:\ 'kinesis',\ body:\ '\{\}',\ headers:\ \{}
+\DoxyCodeLine{\ \ 'Content-\/Type':\ 'application/x-\/amz-\/json-\/1.1',}
+\DoxyCodeLine{\ \ 'X-\/Amz-\/Target':\ 'Kinesis\_20131202.ListStreams'}
+\DoxyCodeLine{\}\}))}
+\DoxyCodeLine{/*}
+\DoxyCodeLine{\{"{}HasMoreStreams"{}:false,"{}StreamNames"{}:[]\}}
+\DoxyCodeLine{...}
+\DoxyCodeLine{*/}
+\DoxyCodeLine{}
+\DoxyCodeLine{request(aws4.sign(\{service:\ 'cloudtrail',\ body:\ '\{\}',\ headers:\ \{}
+\DoxyCodeLine{\ \ 'Content-\/Type':\ 'application/x-\/amz-\/json-\/1.1',}
+\DoxyCodeLine{\ \ 'X-\/Amz-\/Target':\ 'CloudTrail\_20131101.DescribeTrails'}
+\DoxyCodeLine{\}\}))}
+\DoxyCodeLine{/*}
+\DoxyCodeLine{\{"{}trailList"{}:[]\}}
+\DoxyCodeLine{...}
+\DoxyCodeLine{*/}
+\DoxyCodeLine{}
+\DoxyCodeLine{request(aws4.sign(\{service:\ 'logs',\ body:\ '\{\}',\ headers:\ \{}
+\DoxyCodeLine{\ \ 'Content-\/Type':\ 'application/x-\/amz-\/json-\/1.1',}
+\DoxyCodeLine{\ \ 'X-\/Amz-\/Target':\ 'Logs\_20140328.DescribeLogGroups'}
+\DoxyCodeLine{\}\}))}
+\DoxyCodeLine{/*}
+\DoxyCodeLine{\{"{}logGroups"{}:[]\}}
+\DoxyCodeLine{...}
+\DoxyCodeLine{*/}
+\DoxyCodeLine{}
+\DoxyCodeLine{request(aws4.sign(\{service:\ 'codedeploy',\ body:\ '\{\}',\ headers:\ \{}
+\DoxyCodeLine{\ \ 'Content-\/Type':\ 'application/x-\/amz-\/json-\/1.1',}
+\DoxyCodeLine{\ \ 'X-\/Amz-\/Target':\ 'CodeDeploy\_20141006.ListApplications'}
+\DoxyCodeLine{\}\}))}
+\DoxyCodeLine{/*}
+\DoxyCodeLine{\{"{}applications"{}:[]\}}
+\DoxyCodeLine{...}
+\DoxyCodeLine{*/}
+\DoxyCodeLine{}
+\DoxyCodeLine{request(aws4.sign(\{service:\ 'directconnect',\ body:\ '\{\}',\ headers:\ \{}
+\DoxyCodeLine{\ \ 'Content-\/Type':\ 'application/x-\/amz-\/json-\/1.1',}
+\DoxyCodeLine{\ \ 'X-\/Amz-\/Target':\ 'OvertureService.DescribeConnections'}
+\DoxyCodeLine{\}\}))}
+\DoxyCodeLine{/*}
+\DoxyCodeLine{\{"{}connections"{}:[]\}}
+\DoxyCodeLine{...}
+\DoxyCodeLine{*/}
+\DoxyCodeLine{}
+\DoxyCodeLine{request(aws4.sign(\{service:\ 'kms',\ body:\ '\{\}',\ headers:\ \{}
+\DoxyCodeLine{\ \ 'Content-\/Type':\ 'application/x-\/amz-\/json-\/1.1',}
+\DoxyCodeLine{\ \ 'X-\/Amz-\/Target':\ 'TrentService.ListKeys'}
+\DoxyCodeLine{\}\}))}
+\DoxyCodeLine{/*}
+\DoxyCodeLine{\{"{}Keys"{}:[],"{}Truncated"{}:false\}}
+\DoxyCodeLine{...}
+\DoxyCodeLine{*/}
+\DoxyCodeLine{}
+\DoxyCodeLine{request(aws4.sign(\{service:\ 'config',\ body:\ '\{\}',\ headers:\ \{}
+\DoxyCodeLine{\ \ 'Content-\/Type':\ 'application/x-\/amz-\/json-\/1.1',}
+\DoxyCodeLine{\ \ 'X-\/Amz-\/Target':\ 'StarlingDoveService.DescribeDeliveryChannels'}
+\DoxyCodeLine{\}\}))}
+\DoxyCodeLine{/*}
+\DoxyCodeLine{\{"{}DeliveryChannels"{}:[]\}}
+\DoxyCodeLine{...}
+\DoxyCodeLine{*/}
+\DoxyCodeLine{}
+\DoxyCodeLine{request(aws4.sign(\{service:\ 'cloudhsm',\ body:\ '\{\}',\ headers:\ \{}
+\DoxyCodeLine{\ \ 'Content-\/Type':\ 'application/x-\/amz-\/json-\/1.1',}
+\DoxyCodeLine{\ \ 'X-\/Amz-\/Target':\ 'CloudHsmFrontendService.ListAvailableZones'}
+\DoxyCodeLine{\}\}))}
+\DoxyCodeLine{/*}
+\DoxyCodeLine{\{"{}AZList"{}:["{}us-\/east-\/1a"{},"{}us-\/east-\/1b"{},"{}us-\/east-\/1c"{}]\}}
+\DoxyCodeLine{...}
+\DoxyCodeLine{*/}
+\DoxyCodeLine{}
+\DoxyCodeLine{request(aws4.sign(\{}
+\DoxyCodeLine{\ \ service:\ 'swf',}
+\DoxyCodeLine{\ \ body:\ '\{"{}registrationStatus"{}:"{}REGISTERED"{}\}',}
+\DoxyCodeLine{\ \ headers:\ \{}
+\DoxyCodeLine{\ \ \ \ 'Content-\/Type':\ 'application/x-\/amz-\/json-\/1.0',}
+\DoxyCodeLine{\ \ \ \ 'X-\/Amz-\/Target':\ 'SimpleWorkflowService.ListDomains'}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}))}
+\DoxyCodeLine{/*}
+\DoxyCodeLine{\{"{}domainInfos"{}:[]\}}
+\DoxyCodeLine{...}
+\DoxyCodeLine{*/}
+\DoxyCodeLine{}
+\DoxyCodeLine{request(aws4.sign(\{}
+\DoxyCodeLine{\ \ service:\ 'cognito-\/identity',}
+\DoxyCodeLine{\ \ body:\ '\{"{}MaxResults"{}:\ 1\}',}
+\DoxyCodeLine{\ \ headers:\ \{}
+\DoxyCodeLine{\ \ \ \ 'Content-\/Type':\ 'application/x-\/amz-\/json-\/1.1',}
+\DoxyCodeLine{\ \ \ \ 'X-\/Amz-\/Target':\ 'AWSCognitoIdentityService.ListIdentityPools'}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}))}
+\DoxyCodeLine{/*}
+\DoxyCodeLine{\{"{}IdentityPools"{}:[]\}}
+\DoxyCodeLine{...}
+\DoxyCodeLine{*/}
+\DoxyCodeLine{}
+\DoxyCodeLine{request(aws4.sign(\{}
+\DoxyCodeLine{\ \ service:\ 'mobileanalytics',}
+\DoxyCodeLine{\ \ path:\ '/2014-\/06-\/05/events',}
+\DoxyCodeLine{\ \ body:\ JSON.stringify(\{events:[\{}
+\DoxyCodeLine{\ \ \ \ eventType:\ 'a',}
+\DoxyCodeLine{\ \ \ \ timestamp:\ new\ Date().toISOString(),}
+\DoxyCodeLine{\ \ \ \ session:\ \{\},}
+\DoxyCodeLine{\ \ \}]\}),}
+\DoxyCodeLine{\ \ headers:\ \{}
+\DoxyCodeLine{\ \ \ \ 'Content-\/Type':\ 'application/json',}
+\DoxyCodeLine{\ \ \ \ 'X-\/Amz-\/Client-\/Context':\ JSON.stringify(\{}
+\DoxyCodeLine{\ \ \ \ \ \ client:\ \{client\_id:\ 'a',\ app\_title:\ 'a'\},}
+\DoxyCodeLine{\ \ \ \ \ \ custom:\ \{\},}
+\DoxyCodeLine{\ \ \ \ \ \ env:\ \{platform:\ 'a'\},}
+\DoxyCodeLine{\ \ \ \ \ \ services:\ \{\},}
+\DoxyCodeLine{\ \ \ \ \}),}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}))}
+\DoxyCodeLine{/*}
+\DoxyCodeLine{(HTTP\ 202,\ empty\ response)}
+\DoxyCodeLine{*/}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Generate\ CodeCommit\ Git\ access\ password}
+\DoxyCodeLine{var\ signer\ =\ new\ aws4.RequestSigner(\{}
+\DoxyCodeLine{\ \ service:\ 'codecommit',}
+\DoxyCodeLine{\ \ host:\ 'git-\/codecommit.us-\/east-\/1.amazonaws.com',}
+\DoxyCodeLine{\ \ method:\ 'GIT',}
+\DoxyCodeLine{\ \ path:\ '/v1/repos/MyAwesomeRepo',}
+\DoxyCodeLine{\})}
+\DoxyCodeLine{var\ password\ =\ signer.getDateTime()\ +\ 'Z'\ +\ signer.signature()}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma6347b20c99767841972a26613c33df7_autotoc_md866}{}\doxysection{\texorpdfstring{API}{API}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma6347b20c99767841972a26613c33df7_autotoc_md866}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma6347b20c99767841972a26613c33df7_autotoc_md867}{}\doxysubsection{\texorpdfstring{aws4.\+sign(request\+Options, \mbox{[}credentials\mbox{]})}{aws4.\+sign(request\+Options, \mbox{[}credentials\mbox{]})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma6347b20c99767841972a26613c33df7_autotoc_md867}
+This calculates and populates the {\ttfamily Authorization} header of {\ttfamily request\+Options}, and any other necessary AWS headers and/or request options. Returns {\ttfamily request\+Options} as a convenience for chaining.
+
+{\ttfamily request\+Options} is an object holding the same options that the node.\+js \href{http://nodejs.org/docs/latest/api/http.html\#http_http_request_options_callback}{\texttt{ http.\+request}} function takes.
+
+The following properties of {\ttfamily request\+Options} are used in the signing or populated if they don\textquotesingle{}t already exist\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily hostname} or {\ttfamily host} (will be determined from {\ttfamily service} and {\ttfamily region} if not given)
+\item {\ttfamily method} (will use `\textquotesingle{}GET'{\ttfamily if not given or}\textquotesingle{}POST\textquotesingle{}{\ttfamily if there is a}body{\ttfamily ) -\/}path{\ttfamily (will use}\textquotesingle{}/\textquotesingle{}{\ttfamily if not given) -\/}body{\ttfamily (will use}\textquotesingle{}\textquotesingle{}{\ttfamily if not given) -\/}service{\ttfamily (will be calculated from}hostname{\ttfamily or}host{\ttfamily if not given) -\/}region{\ttfamily (will be calculated from}hostname{\ttfamily or}host{\ttfamily or use}\textquotesingle{}us-\/east-\/1\textquotesingle{}{\ttfamily if not given) -\/}headers\mbox{[}\textquotesingle{}Host\textquotesingle{}\mbox{]}{\ttfamily (will use}hostname{\ttfamily or}host{\ttfamily or be calculated if not given) -\/}headers\mbox{[}\textquotesingle{}Content-\/\+Type\textquotesingle{}\mbox{]}{\ttfamily (will use}\textquotesingle{}application/x-\/www-\/form-\/urlencoded; charset=utf-\/8\textquotesingle{}{\ttfamily  if not given and there is a}body{\ttfamily ) -\/}headers\mbox{[}\textquotesingle{}Date\textquotesingle{}\mbox{]}{\ttfamily (used to calculate the signature date if given, otherwise}new Date\`{} is used)
+\end{DoxyItemize}
+
+Your AWS credentials (which can be found in your \href{https://portal.aws.amazon.com/gp/aws/securityCredentials}{\texttt{ AWS console}}) can be specified in one of two ways\+:
+
+
+\begin{DoxyItemize}
+\item As the second argument, like this\+:
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{aws4.sign(requestOptions,\ \{}
+\DoxyCodeLine{\ \ secretAccessKey:\ "{}<your-\/secret-\/access-\/key>"{},}
+\DoxyCodeLine{\ \ accessKeyId:\ "{}<your-\/access-\/key-\/id>"{},}
+\DoxyCodeLine{\ \ sessionToken:\ "{}<your-\/session-\/token>"{}}
+\DoxyCodeLine{\})}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item From {\ttfamily process.\+env}, such as this\+:
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{export\ AWS\_SECRET\_ACCESS\_KEY="{}<your-\/secret-\/access-\/key>"{}}
+\DoxyCodeLine{export\ AWS\_ACCESS\_KEY\_ID="{}<your-\/access-\/key-\/id>"{}}
+\DoxyCodeLine{export\ AWS\_SESSION\_TOKEN="{}<your-\/session-\/token>"{}}
+
+\end{DoxyCode}
+
+
+(will also use {\ttfamily AWS\+\_\+\+ACCESS\+\_\+\+KEY} and {\ttfamily AWS\+\_\+\+SECRET\+\_\+\+KEY} if available)
+
+The {\ttfamily session\+Token} property and {\ttfamily AWS\+\_\+\+SESSION\+\_\+\+TOKEN} environment variable are optional for signing with \href{http://docs.aws.amazon.com/STS/latest/UsingSTS/using-temp-creds.html}{\texttt{ IAM STS temporary credentials}}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma6347b20c99767841972a26613c33df7_autotoc_md868}{}\doxysection{\texorpdfstring{Installation}{Installation}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma6347b20c99767841972a26613c33df7_autotoc_md868}
+With \href{http://npmjs.org/}{\texttt{ npm}} do\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ aws4}
+
+\end{DoxyCode}
+
+
+Can also be used \href{./browser}{\texttt{ in the browser}}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma6347b20c99767841972a26613c33df7_autotoc_md869}{}\doxysection{\texorpdfstring{Thanks}{Thanks}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma6347b20c99767841972a26613c33df7_autotoc_md869}
+Thanks to \href{https://github.com/jed}{\texttt{ @jed}} for his \href{https://github.com/jed/dynamo-client}{\texttt{ dynamo-\/client}} lib where I first committed and subsequently extracted this code.
+
+Also thanks to the \href{https://github.com/aws/aws-sdk-js}{\texttt{ official node.\+js AWS SDK}} for giving me a start on implementing the v4 signature. 

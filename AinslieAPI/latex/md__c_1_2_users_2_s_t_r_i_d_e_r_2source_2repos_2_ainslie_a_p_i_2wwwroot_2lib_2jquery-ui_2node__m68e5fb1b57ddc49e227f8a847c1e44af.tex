@@ -1,0 +1,36 @@
+\chapter{timed-\/out \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/floatdrop/timed-\/out"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+org/floatdrop/timed-\/out.\+svg?branch=master"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m68e5fb1b57ddc49e227f8a847c1e44af}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m68e5fb1b57ddc49e227f8a847c1e44af}\index{timed-\/out $<$a href="{}https://travis-\/ci.org/floatdrop/timed-\/out"{} $>$$<$img src="{}https://travis-\/ci.org/floatdrop/timed-\/out.svg?branch=master"{} alt="{}Build Status"{}/$>$$<$/a$>$@{timed-\/out $<$a href=""https://travis-\/ci.org/floatdrop/timed-\/out"" $>$$<$img src=""https://travis-\/ci.org/floatdrop/timed-\/out.svg?branch=master"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m68e5fb1b57ddc49e227f8a847c1e44af_autotoc_md4868}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m68e5fb1b57ddc49e227f8a847c1e44af_autotoc_md4868}%
+ \begin{quote}
+Timeout HTTP/\+HTTPS requests \end{quote}
+Emit Error object with {\ttfamily code} property equal {\ttfamily ETIMEDOUT} or {\ttfamily ESOCKETTIMEDOUT} when Client\+Request is hanged.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m68e5fb1b57ddc49e227f8a847c1e44af_autotoc_md4869}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m68e5fb1b57ddc49e227f8a847c1e44af_autotoc_md4869}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ get\ =\ require('http').get;}
+\DoxyCodeLine{var\ timeout\ =\ require('timed-\/out');}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ req\ =\ get('http://www.google.ru');}
+\DoxyCodeLine{timeout(req,\ 2000);\ //\ Set\ 2\ seconds\ limit}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m68e5fb1b57ddc49e227f8a847c1e44af_autotoc_md4870}{}\doxysubsection{\texorpdfstring{API}{API}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m68e5fb1b57ddc49e227f8a847c1e44af_autotoc_md4870}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m68e5fb1b57ddc49e227f8a847c1e44af_autotoc_md4871}{}\doxysubsubsection{\texorpdfstring{timedout(request, time)}{timedout(request, time)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m68e5fb1b57ddc49e227f8a847c1e44af_autotoc_md4871}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m68e5fb1b57ddc49e227f8a847c1e44af_autotoc_md4872}{}\doxyparagraph{\texorpdfstring{request}{request}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m68e5fb1b57ddc49e227f8a847c1e44af_autotoc_md4872}
+{\itshape Required} ~\newline
+ Type\+: \href{http://nodejs.org/api/http.html\#http_class_http_clientrequest}{\texttt{ {\ttfamily Client\+Request}}}
+
+The request to watch on.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m68e5fb1b57ddc49e227f8a847c1e44af_autotoc_md4873}{}\doxyparagraph{\texorpdfstring{time}{time}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m68e5fb1b57ddc49e227f8a847c1e44af_autotoc_md4873}
+{\itshape Required} ~\newline
+ Type\+: {\ttfamily number} or {\ttfamily object}
+
+Time in milliseconds to wait for {\ttfamily connect} event on socket and also time to wait on inactive socket.
+
+Or you can pass Object with following fields\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily connect} -\/ time to wait for connection
+\item {\ttfamily socket} -\/ time to wait for activity on socket
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m68e5fb1b57ddc49e227f8a847c1e44af_autotoc_md4874}{}\doxysection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m68e5fb1b57ddc49e227f8a847c1e44af_autotoc_md4874}
+MIT © \href{floatdrop@gmail.com}{\texttt{ Vsevolod Strukchinsky}} 

@@ -1,0 +1,46 @@
+\chapter{create-\/error-\/class \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/floatdrop/create-\/error-\/class"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+org/floatdrop/create-\/error-\/class.\+svg?branch=master"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m6c7e4a28065f3de9714bf8693788ec83}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m6c7e4a28065f3de9714bf8693788ec83}\index{create-\/error-\/class $<$a href="{}https://travis-\/ci.org/floatdrop/create-\/error-\/class"{} $>$$<$img src="{}https://travis-\/ci.org/floatdrop/create-\/error-\/class.svg?branch=master"{} alt="{}Build Status"{}/$>$$<$/a$>$@{create-\/error-\/class $<$a href=""https://travis-\/ci.org/floatdrop/create-\/error-\/class"" $>$$<$img src=""https://travis-\/ci.org/floatdrop/create-\/error-\/class.svg?branch=master"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m6c7e4a28065f3de9714bf8693788ec83_autotoc_md2106}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m6c7e4a28065f3de9714bf8693788ec83_autotoc_md2106}%
+ \begin{quote}
+Create error class \end{quote}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m6c7e4a28065f3de9714bf8693788ec83_autotoc_md2107}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m6c7e4a28065f3de9714bf8693788ec83_autotoc_md2107}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ -\/-\/save\ create-\/error-\/class}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m6c7e4a28065f3de9714bf8693788ec83_autotoc_md2108}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m6c7e4a28065f3de9714bf8693788ec83_autotoc_md2108}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ createErrorClass\ =\ require('create-\/error-\/class');}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ HTTPError\ =\ createErrorClass('HTTPError',\ function\ (props)\ \{}
+\DoxyCodeLine{\ \ \ \ this.message\ =\ 'Status\ code\ is\ '\ +\ props.statusCode;}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{throw\ new\ HTTPError(\{statusCode:\ 404\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m6c7e4a28065f3de9714bf8693788ec83_autotoc_md2109}{}\doxysection{\texorpdfstring{API}{API}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m6c7e4a28065f3de9714bf8693788ec83_autotoc_md2109}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m6c7e4a28065f3de9714bf8693788ec83_autotoc_md2110}{}\doxysubsection{\texorpdfstring{create\+Error\+Class(class\+Name, \mbox{[}setup\mbox{]})}{create\+Error\+Class(class\+Name, \mbox{[}setup\mbox{]})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m6c7e4a28065f3de9714bf8693788ec83_autotoc_md2110}
+Return constructor of Errors with {\ttfamily class\+Name}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m6c7e4a28065f3de9714bf8693788ec83_autotoc_md2111}{}\doxysubsubsection{\texorpdfstring{class\+Name}{class\+Name}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m6c7e4a28065f3de9714bf8693788ec83_autotoc_md2111}
+{\itshape Required} ~\newline
+ Type\+: {\ttfamily string}
+
+Class name of Error Object. Should contain characters from {\ttfamily \mbox{[}0-\/9a-\/z\+A-\/\+Z\+\_\+\$\mbox{]}} range.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m6c7e4a28065f3de9714bf8693788ec83_autotoc_md2112}{}\doxysubsubsection{\texorpdfstring{setup}{setup}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m6c7e4a28065f3de9714bf8693788ec83_autotoc_md2112}
+Type\+: {\ttfamily function}
+
+Setup function, that will be called after each Error object is created from constructor with context of Error object.
+
+By default {\ttfamily setup} function sets {\ttfamily this.\+message} as first argument\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ MyError\ =\ createErrorClass('MyError');}
+\DoxyCodeLine{}
+\DoxyCodeLine{new\ MyError('Something\ gone\ wrong!').message;\ //\ =>\ 'Something\ gone\ wrong!'}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m6c7e4a28065f3de9714bf8693788ec83_autotoc_md2113}{}\doxysection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m6c7e4a28065f3de9714bf8693788ec83_autotoc_md2113}
+MIT © \href{http://github.com/floatdrop}{\texttt{ Vsevolod Strukchinsky}} 

@@ -1,0 +1,269 @@
+\chapter{uuid \texorpdfstring{$<$}{<}a href="{}http\+://travis-\/ci.\+org/kelektiv/node-\/uuid"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://secure.\+travis-\/ci.\+org/kelektiv/node-\/uuid.\+svg?branch=master"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9c9c007b07b9a23edbb0769f68cc80c7}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9c9c007b07b9a23edbb0769f68cc80c7}\index{uuid $<$a href="{}http://travis-\/ci.org/kelektiv/node-\/uuid"{} $>$$<$img src="{}https://secure.travis-\/ci.org/kelektiv/node-\/uuid.svg?branch=master"{} alt="{}Build Status"{}/$>$$<$/a$>$@{uuid $<$a href=""http://travis-\/ci.org/kelektiv/node-\/uuid"" $>$$<$img src=""https://secure.travis-\/ci.org/kelektiv/node-\/uuid.svg?branch=master"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9c9c007b07b9a23edbb0769f68cc80c7_autotoc_md1809}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9c9c007b07b9a23edbb0769f68cc80c7_autotoc_md1809}%
+ Simple, fast generation of \href{http://www.ietf.org/rfc/rfc4122.txt}{\texttt{ RFC4122}} UUIDS.
+
+Features\+:
+
+
+\begin{DoxyItemize}
+\item Support for version 1, 4 and 5 UUIDs
+\item Cross-\/platform
+\item Uses cryptographically-\/strong random number APIs (when available)
+\item Zero-\/dependency, small footprint (... but not \href{https://gist.github.com/982883}{\texttt{ this small}})
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9c9c007b07b9a23edbb0769f68cc80c7_autotoc_md1810}{}\doxysection{\texorpdfstring{Quickstart -\/ Common\+JS (Recommended)}{Quickstart -\/ Common\+JS (Recommended)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9c9c007b07b9a23edbb0769f68cc80c7_autotoc_md1810}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ uuid}
+
+\end{DoxyCode}
+
+
+Then generate your uuid version of choice ...
+
+Version 1 (timestamp)\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ uuidv1\ =\ require('uuid/v1');}
+\DoxyCodeLine{uuidv1();\ //\ -\/>\ '6c84fb90-\/12c4-\/11e1-\/840d-\/7b25c5ee775a'}
+
+\end{DoxyCode}
+
+
+Version 4 (random)\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ uuidv4\ =\ require('uuid/v4');}
+\DoxyCodeLine{uuidv4();\ //\ -\/>\ '110ec58a-\/a0f2-\/4ac4-\/8393-\/c866d813b8d1'}
+
+\end{DoxyCode}
+
+
+Version 5 (namespace)\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ uuidv5\ =\ require('uuid/v5');}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ ...\ using\ predefined\ DNS\ namespace\ (for\ domain\ names)}
+\DoxyCodeLine{uuidv5('hello.example.com',\ uuidv5.DNS));\ //\ -\/>\ 'fdda765f-\/fc57-\/5604-\/a269-\/52a7df8164ec'}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ ...\ using\ predefined\ URL\ namespace\ (for,\ well,\ URLs)}
+\DoxyCodeLine{uuidv5('http://example.com/hello',\ uuidv5.URL);\ //\ -\/>\ '3bbcee75-\/cecc-\/5b56-\/8031-\/b6641c1ed1f1'}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ ...\ using\ a\ custom\ namespace}
+\DoxyCodeLine{const\ MY\_NAMESPACE\ =\ '<UUID\ string\ you\ previously\ generated\ elsewhere>';}
+\DoxyCodeLine{uuidv5('Hello,\ World!',\ MY\_NAMESPACE);\ //\ -\/>\ '90123e1c-\/7512-\/523e-\/bb28-\/76fab9f2f73d'}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9c9c007b07b9a23edbb0769f68cc80c7_autotoc_md1811}{}\doxysection{\texorpdfstring{Quickstart -\/ Browser-\/ready Versions}{Quickstart -\/ Browser-\/ready Versions}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9c9c007b07b9a23edbb0769f68cc80c7_autotoc_md1811}
+Browser-\/ready versions of this module are available via \href{https://github.com/jfhbrook/wzrd.in}{\texttt{ wzrd.\+in}}.
+
+For version 1 uuids\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<script\ src="{}http://wzrd.in/standalone/uuid\%2Fv1@latest"{}></script>}
+\DoxyCodeLine{<script>}
+\DoxyCodeLine{uuidv1();\ //\ -\/>\ v1\ UUID}
+\DoxyCodeLine{</script>}
+
+\end{DoxyCode}
+
+
+For version 4 uuids\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<script\ src="{}http://wzrd.in/standalone/uuid\%2Fv4@latest"{}></script>}
+\DoxyCodeLine{<script>}
+\DoxyCodeLine{uuidv4();\ //\ -\/>\ v4\ UUID}
+\DoxyCodeLine{</script>}
+
+\end{DoxyCode}
+
+
+For version 5 uuids\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<script\ src="{}http://wzrd.in/standalone/uuid\%2Fv5@latest"{}></script>}
+\DoxyCodeLine{<script>}
+\DoxyCodeLine{uuidv5('http://example.com/hello',\ uuidv5.URL);\ //\ -\/>\ v5\ UUID}
+\DoxyCodeLine{</script>}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9c9c007b07b9a23edbb0769f68cc80c7_autotoc_md1812}{}\doxysection{\texorpdfstring{API}{API}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9c9c007b07b9a23edbb0769f68cc80c7_autotoc_md1812}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9c9c007b07b9a23edbb0769f68cc80c7_autotoc_md1813}{}\doxysubsection{\texorpdfstring{Version 1}{Version 1}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9c9c007b07b9a23edbb0769f68cc80c7_autotoc_md1813}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ uuidv1\ =\ require('uuid/v1');}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Allowed\ arguments}
+\DoxyCodeLine{uuidv1();}
+\DoxyCodeLine{uuidv1(options);}
+\DoxyCodeLine{uuidv1(options,\ buffer,\ offset);}
+
+\end{DoxyCode}
+
+
+Generate and return a RFC4122 v1 (timestamp-\/based) UUID.
+
+
+\begin{DoxyItemize}
+\item {\ttfamily options} -\/ (Object) Optional uuid state to apply. Properties may include\+:
+\begin{DoxyItemize}
+\item {\ttfamily node} -\/ (Array) Node id as Array of 6 bytes (per 4.\+1.\+6). Default\+: Randomly generated ID. See note 1.
+\item {\ttfamily clockseq} -\/ (Number between 0 -\/ 0x3fff) RFC clock sequence. Default\+: An internally maintained clockseq is used.
+\item {\ttfamily msecs} -\/ (Number \texorpdfstring{$\vert$}{|} Date) Time in milliseconds since unix Epoch. Default\+: The current time is used.
+\item {\ttfamily nsecs} -\/ (Number between 0-\/9999) additional time, in 100-\/nanosecond units. Ignored if {\ttfamily msecs} is unspecified. Default\+: internal uuid counter is used, as per 4.\+2.\+1.\+2.
+\end{DoxyItemize}
+\item {\ttfamily buffer} -\/ (Array \texorpdfstring{$\vert$}{|} Buffer) Array or buffer where UUID bytes are to be written.
+\item {\ttfamily offset} -\/ (Number) Starting index in {\ttfamily buffer} at which to begin writing.
+\end{DoxyItemize}
+
+Returns {\ttfamily buffer}, if specified, otherwise the string form of the UUID
+
+Note\+: The $<$node$>$ id is generated guaranteed to stay constant for the lifetime of the current JS runtime. (Future versions of this module may use persistent storage mechanisms to extend this guarantee.)
+
+Example\+: Generate string UUID with fully-\/specified options
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{uuidv1(\{}
+\DoxyCodeLine{\ \ node:\ [0x01,\ 0x23,\ 0x45,\ 0x67,\ 0x89,\ 0xab],}
+\DoxyCodeLine{\ \ clockseq:\ 0x1234,}
+\DoxyCodeLine{\ \ msecs:\ new\ Date('2011-\/11-\/01').getTime(),}
+\DoxyCodeLine{\ \ nsecs:\ 5678}
+\DoxyCodeLine{\});\ \ \ //\ -\/>\ "{}710b962e-\/041c-\/11e1-\/9234-\/0123456789ab"{}}
+
+\end{DoxyCode}
+
+
+Example\+: In-\/place generation of two binary IDs
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Generate\ two\ ids\ in\ an\ array}
+\DoxyCodeLine{const\ arr\ =\ new\ Array(32);\ //\ -\/>\ []}
+\DoxyCodeLine{uuidv1(null,\ arr,\ 0);\ \ \ //\ -\/>\ [02\ a2\ ce\ 90\ 14\ 32\ 11\ e1\ 85\ 58\ 0b\ 48\ 8e\ 4f\ c1\ 15]}
+\DoxyCodeLine{uuidv1(null,\ arr,\ 16);\ \ //\ -\/>\ [02\ a2\ ce\ 90\ 14\ 32\ 11\ e1\ 85\ 58\ 0b\ 48\ 8e\ 4f\ c1\ 15\ 02\ a3\ 1c\ b0\ 14\ 32\ 11\ e1\ 85\ 58\ 0b\ 48\ 8e\ 4f\ c1\ 15]}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9c9c007b07b9a23edbb0769f68cc80c7_autotoc_md1814}{}\doxysubsection{\texorpdfstring{Version 4}{Version 4}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9c9c007b07b9a23edbb0769f68cc80c7_autotoc_md1814}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ uuidv4\ =\ require('uuid/v4')}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Allowed\ arguments}
+\DoxyCodeLine{uuidv4();}
+\DoxyCodeLine{uuidv4(options);}
+\DoxyCodeLine{uuidv4(options,\ buffer,\ offset);}
+
+\end{DoxyCode}
+
+
+Generate and return a RFC4122 v4 UUID.
+
+
+\begin{DoxyItemize}
+\item {\ttfamily options} -\/ (Object) Optional uuid state to apply. Properties may include\+:
+\begin{DoxyItemize}
+\item {\ttfamily random} -\/ (Number\mbox{[}16\mbox{]}) Array of 16 numbers (0-\/255) to use in place of randomly generated values
+\item {\ttfamily rng} -\/ (Function) Random \# generator function that returns an Array\mbox{[}16\mbox{]} of byte values (0-\/255)
+\end{DoxyItemize}
+\item {\ttfamily buffer} -\/ (Array \texorpdfstring{$\vert$}{|} Buffer) Array or buffer where UUID bytes are to be written.
+\item {\ttfamily offset} -\/ (Number) Starting index in {\ttfamily buffer} at which to begin writing.
+\end{DoxyItemize}
+
+Returns {\ttfamily buffer}, if specified, otherwise the string form of the UUID
+
+Example\+: Generate string UUID with fully-\/specified options
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{uuid.v4(\{}
+\DoxyCodeLine{\ \ random:\ [}
+\DoxyCodeLine{\ \ \ \ 0x10,\ 0x91,\ 0x56,\ 0xbe,\ 0xc4,\ 0xfb,\ 0xc1,\ 0xea,}
+\DoxyCodeLine{\ \ \ \ 0x71,\ 0xb4,\ 0xef,\ 0xe1,\ 0x67,\ 0x1c,\ 0x58,\ 0x36}
+\DoxyCodeLine{\ \ ]}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{//\ -\/>\ "{}109156be-\/c4fb-\/41ea-\/b1b4-\/efe1671c5836"{}}
+
+\end{DoxyCode}
+
+
+Example\+: Generate two IDs in a single buffer
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ buffer\ =\ new\ Array(32);\ //\ (or\ 'new\ Buffer'\ in\ node.js)}
+\DoxyCodeLine{uuid.v4(null,\ buffer,\ 0);}
+\DoxyCodeLine{uuid.v4(null,\ buffer,\ 16);}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9c9c007b07b9a23edbb0769f68cc80c7_autotoc_md1815}{}\doxysubsection{\texorpdfstring{Version 5}{Version 5}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9c9c007b07b9a23edbb0769f68cc80c7_autotoc_md1815}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ uuidv5\ =\ require('uuid/v4');}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Allowed\ arguments}
+\DoxyCodeLine{uuidv5(name,\ namespace);}
+\DoxyCodeLine{uuidv5(name,\ namespace,\ buffer);}
+\DoxyCodeLine{uuidv5(name,\ namespace,\ buffer,\ offset);}
+
+\end{DoxyCode}
+
+
+Generate and return a RFC4122 v4 UUID.
+
+
+\begin{DoxyItemize}
+\item {\ttfamily name} -\/ (String \texorpdfstring{$\vert$}{|} Array\mbox{[}\mbox{]}) "{}name"{} to create UUID with
+\item {\ttfamily namespace} -\/ (String \texorpdfstring{$\vert$}{|} Array\mbox{[}\mbox{]}) "{}namespace"{} UUID either as a String or Array\mbox{[}16\mbox{]} of byte values
+\item {\ttfamily buffer} -\/ (Array \texorpdfstring{$\vert$}{|} Buffer) Array or buffer where UUID bytes are to be written.
+\item {\ttfamily offset} -\/ (Number) Starting index in {\ttfamily buffer} at which to begin writing. Default = 0
+\end{DoxyItemize}
+
+Returns {\ttfamily buffer}, if specified, otherwise the string form of the UUID
+
+Example\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Generate\ a\ unique\ \ namespace\ (typically\ you\ would\ do\ this\ once,\ outside\ of}
+\DoxyCodeLine{//\ your\ project,\ then\ bake\ this\ value\ into\ your\ code)}
+\DoxyCodeLine{const\ uuidv4\ =\ require('uuid/v4');}
+\DoxyCodeLine{const\ MY\_NAMESPACE\ =\ uuidv4();\ \ //}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Generate\ a\ couple\ namespace\ uuids}
+\DoxyCodeLine{const\ uuidv5\ =\ require('uuid/v5');}
+\DoxyCodeLine{uuidv5('hello',\ MY\_NAMESPACE);}
+\DoxyCodeLine{uuidv5('world',\ MY\_NAMESPACE);}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9c9c007b07b9a23edbb0769f68cc80c7_autotoc_md1816}{}\doxysection{\texorpdfstring{Testing}{Testing}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9c9c007b07b9a23edbb0769f68cc80c7_autotoc_md1816}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ test}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9c9c007b07b9a23edbb0769f68cc80c7_autotoc_md1817}{}\doxysection{\texorpdfstring{Deprecated / Browser-\/ready API}{Deprecated / Browser-\/ready API}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9c9c007b07b9a23edbb0769f68cc80c7_autotoc_md1817}
+The API below is available for legacy purposes and is not expected to be available post-\/3.\+X
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ uuid\ =\ require('uuid');}
+\DoxyCodeLine{}
+\DoxyCodeLine{uuid.v1(...);\ //\ alias\ of\ uuid/v1}
+\DoxyCodeLine{uuid.v4(...);\ //\ alias\ of\ uuid/v4}
+\DoxyCodeLine{uuid(...);\ \ \ \ //\ alias\ of\ uuid/v4}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ uuid.v5()\ is\ not\ supported\ in\ this\ API}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9c9c007b07b9a23edbb0769f68cc80c7_autotoc_md1818}{}\doxysection{\texorpdfstring{Legacy node-\/uuid package}{Legacy node-\/uuid package}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9c9c007b07b9a23edbb0769f68cc80c7_autotoc_md1818}
+The code for the legacy node-\/uuid package is available in the {\ttfamily node-\/uuid} branch. 

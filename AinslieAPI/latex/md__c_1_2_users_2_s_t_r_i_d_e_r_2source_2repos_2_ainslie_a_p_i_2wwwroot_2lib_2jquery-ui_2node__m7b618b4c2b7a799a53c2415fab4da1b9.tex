@@ -1,0 +1,94 @@
+\chapter{resolve-\/dir \texorpdfstring{$<$}{<}a href="{}https\+://www.\+npmjs.\+com/package/resolve-\/dir"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://img.\+shields.\+io/npm/v/resolve-\/dir.\+svg?style=flat"{} alt="{}\+NPM version"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}a href="{}https\+://npmjs.\+org/package/resolve-\/dir"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://img.\+shields.\+io/npm/dm/resolve-\/dir.\+svg?style=flat"{} alt="{}\+NPM downloads"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/jonschlinkert/resolve-\/dir"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://img.\+shields.\+io/travis/jonschlinkert/resolve-\/dir.\+svg?style=flat\&label=\+Travis"{} alt="{}\+Linux Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m7b618b4c2b7a799a53c2415fab4da1b9}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m7b618b4c2b7a799a53c2415fab4da1b9}\index{resolve-\/dir $<$a href="{}https://www.npmjs.com/package/resolve-\/dir"{} $>$$<$img src="{}https://img.shields.io/npm/v/resolve-\/dir.svg?style=flat"{} alt="{}NPM version"{}/$>$$<$/a$>$ $<$a href="{}https://npmjs.org/package/resolve-\/dir"{} $>$$<$img src="{}https://img.shields.io/npm/dm/resolve-\/dir.svg?style=flat"{} alt="{}NPM downloads"{}/$>$$<$/a$>$ $<$a href="{}https://travis-\/ci.org/jonschlinkert/resolve-\/dir"{} $>$$<$img src="{}https://img.shields.io/travis/jonschlinkert/resolve-\/dir.svg?style=flat\&label=Travis"{} alt="{}Linux Build Status"{}/$>$$<$/a$>$@{resolve-\/dir $<$a href=""https://www.npmjs.com/package/resolve-\/dir"" $>$$<$img src=""https://img.shields.io/npm/v/resolve-\/dir.svg?style=flat"" alt=""NPM version""/$>$$<$/a$>$ $<$a href=""https://npmjs.org/package/resolve-\/dir"" $>$$<$img src=""https://img.shields.io/npm/dm/resolve-\/dir.svg?style=flat"" alt=""NPM downloads""/$>$$<$/a$>$ $<$a href=""https://travis-\/ci.org/jonschlinkert/resolve-\/dir"" $>$$<$img src=""https://img.shields.io/travis/jonschlinkert/resolve-\/dir.svg?style=flat\&label=Travis"" alt=""Linux Build Status""/$>$$<$/a$>$}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m7b618b4c2b7a799a53c2415fab4da1b9_autotoc_md11178}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m7b618b4c2b7a799a53c2415fab4da1b9_autotoc_md11178}%
+ \begin{quote}
+Resolve a directory that is either local, global or in the user\textquotesingle{}s home directory. \end{quote}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m7b618b4c2b7a799a53c2415fab4da1b9_autotoc_md11179}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m7b618b4c2b7a799a53c2415fab4da1b9_autotoc_md11179}
+Install with \href{https://www.npmjs.com/}{\texttt{ npm}}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ -\/-\/save\ resolve-\/dir}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m7b618b4c2b7a799a53c2415fab4da1b9_autotoc_md11180}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m7b618b4c2b7a799a53c2415fab4da1b9_autotoc_md11180}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ resolve\ =\ require('resolve-\/dir');}
+
+\end{DoxyCode}
+
+
+Returns a local directory path unchanged
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{resolve('a')}
+\DoxyCodeLine{//=>\ 'a'}
+
+\end{DoxyCode}
+
+
+Resolves the path to user home
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{resolve('\string~')}
+\DoxyCodeLine{//=>\ '/Users/jonschlinkert'}
+\DoxyCodeLine{resolve('\string~/foo')}
+\DoxyCodeLine{//=>\ '/Users/jonschlinkert/foo'}
+
+\end{DoxyCode}
+
+
+Resolves the path to global npm modules
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{resolve('@')}
+\DoxyCodeLine{//=>\ '/usr/local/lib/node\_modules'}
+\DoxyCodeLine{resolve('@/foo')}
+\DoxyCodeLine{//=>\ '/usr/local/lib/node\_modules/foo'}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m7b618b4c2b7a799a53c2415fab4da1b9_autotoc_md11181}{}\doxysection{\texorpdfstring{About}{About}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m7b618b4c2b7a799a53c2415fab4da1b9_autotoc_md11181}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m7b618b4c2b7a799a53c2415fab4da1b9_autotoc_md11182}{}\doxysubsection{\texorpdfstring{Related projects}{Related projects}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m7b618b4c2b7a799a53c2415fab4da1b9_autotoc_md11182}
+
+\begin{DoxyItemize}
+\item \href{https://www.npmjs.com/package/expand-tilde}{\texttt{ expand-\/tilde}}\+: Bash-\/like tilde expansion for node.\+js. Expands a leading tilde in a file path to the… \href{https://github.com/jonschlinkert/expand-tilde}{\texttt{ more}} \texorpdfstring{$\vert$}{|} \href{https://github.com/jonschlinkert/expand-tilde}{\texttt{ homepage}}
+\item \href{https://www.npmjs.com/package/findup-sync}{\texttt{ findup-\/sync}}\+: Find the first file matching a given pattern in the current directory or the nearest… \href{https://github.com/cowboy/node-findup-sync}{\texttt{ more}} \texorpdfstring{$\vert$}{|} \href{https://github.com/cowboy/node-findup-sync}{\texttt{ homepage}}
+\item \href{https://www.npmjs.com/package/resolve-modules}{\texttt{ resolve-\/modules}}\+: Resolves local and global npm modules that match specified patterns, and returns a configuration object… \href{https://github.com/jonschlinkert/resolve-modules}{\texttt{ more}} \texorpdfstring{$\vert$}{|} \href{https://github.com/jonschlinkert/resolve-modules}{\texttt{ homepage}}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m7b618b4c2b7a799a53c2415fab4da1b9_autotoc_md11183}{}\doxysubsection{\texorpdfstring{Contributing}{Contributing}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m7b618b4c2b7a799a53c2415fab4da1b9_autotoc_md11183}
+Pull requests and stars are always welcome. For bugs and feature requests, \href{../../issues/new}{\texttt{ please create an issue}}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m7b618b4c2b7a799a53c2415fab4da1b9_autotoc_md11184}{}\doxysubsection{\texorpdfstring{Building docs}{Building docs}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m7b618b4c2b7a799a53c2415fab4da1b9_autotoc_md11184}
+\+\_\+(This document was generated by \href{https://github.com/verbose/verb-generate-readme}{\texttt{ verb-\/generate-\/readme}} (a \href{https://github.com/verbose/verb}{\texttt{ verb}} generator), please don\textquotesingle{}t edit the readme directly. Any changes to the readme must be made in .verb.md.)\+\_\+
+
+To generate the readme and API documentation with \href{https://github.com/verbose/verb}{\texttt{ verb}}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ -\/g\ verb\ verb-\/generate-\/readme\ \&\&\ verb}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m7b618b4c2b7a799a53c2415fab4da1b9_autotoc_md11185}{}\doxysubsection{\texorpdfstring{Running tests}{Running tests}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m7b618b4c2b7a799a53c2415fab4da1b9_autotoc_md11185}
+Install dev dependencies\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ -\/d\ \&\&\ npm\ test}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m7b618b4c2b7a799a53c2415fab4da1b9_autotoc_md11186}{}\doxysubsection{\texorpdfstring{Author}{Author}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m7b618b4c2b7a799a53c2415fab4da1b9_autotoc_md11186}
+{\bfseries{Jon Schlinkert}}
+
+
+\begin{DoxyItemize}
+\item \href{https://github.com/jonschlinkert}{\texttt{ github/jonschlinkert}}
+\item \href{http://twitter.com/jonschlinkert}{\texttt{ twitter/jonschlinkert}}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m7b618b4c2b7a799a53c2415fab4da1b9_autotoc_md11187}{}\doxysubsection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m7b618b4c2b7a799a53c2415fab4da1b9_autotoc_md11187}
+Copyright © 2016, \href{https://github.com/jonschlinkert}{\texttt{ Jon Schlinkert}}. Released under the \href{https://github.com/jonschlinkert/resolve-dir/blob/master/LICENSE}{\texttt{ MIT license}}.
+
+\DoxyHorRuler{0}
+
+
+{\itshape This file was generated by \href{https://github.com/verbose/verb-generate-readme}{\texttt{ verb-\/generate-\/readme}}, v0.\+2.\+0, on October 18, 2016.} 

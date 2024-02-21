@@ -1,0 +1,58 @@
+\chapter{has-\/flag \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/sindresorhus/has-\/flag"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+org/sindresorhus/has-\/flag.\+svg?branch=master"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2has-flag_2readme}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2has-flag_2readme}\index{has-\/flag $<$a href="{}https://travis-\/ci.org/sindresorhus/has-\/flag"{} $>$$<$img src="{}https://travis-\/ci.org/sindresorhus/has-\/flag.svg?branch=master"{} alt="{}Build Status"{}/$>$$<$/a$>$@{has-\/flag $<$a href=""https://travis-\/ci.org/sindresorhus/has-\/flag"" $>$$<$img src=""https://travis-\/ci.org/sindresorhus/has-\/flag.svg?branch=master"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2has-flag_2readme_autotoc_md9246}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2has-flag_2readme_autotoc_md9246}%
+ \begin{quote}
+Check if \href{https://nodejs.org/docs/latest/api/process.html\#process_process_argv}{\texttt{ {\ttfamily argv}}} has a specific flag \end{quote}
+Correctly stops looking after an {\ttfamily -\/-\/} argument terminator.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2has-flag_2readme_autotoc_md9247}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2has-flag_2readme_autotoc_md9247}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ has-\/flag}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2has-flag_2readme_autotoc_md9248}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2has-flag_2readme_autotoc_md9248}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ foo.js}
+\DoxyCodeLine{const\ hasFlag\ =\ require('has-\/flag');}
+\DoxyCodeLine{}
+\DoxyCodeLine{hasFlag('unicorn');}
+\DoxyCodeLine{//=>\ true}
+\DoxyCodeLine{}
+\DoxyCodeLine{hasFlag('-\/-\/unicorn');}
+\DoxyCodeLine{//=>\ true}
+\DoxyCodeLine{}
+\DoxyCodeLine{hasFlag('f');}
+\DoxyCodeLine{//=>\ true}
+\DoxyCodeLine{}
+\DoxyCodeLine{hasFlag('-\/f');}
+\DoxyCodeLine{//=>\ true}
+\DoxyCodeLine{}
+\DoxyCodeLine{hasFlag('foo=bar');}
+\DoxyCodeLine{//=>\ true}
+\DoxyCodeLine{}
+\DoxyCodeLine{hasFlag('foo');}
+\DoxyCodeLine{//=>\ false}
+\DoxyCodeLine{}
+\DoxyCodeLine{hasFlag('rainbow');}
+\DoxyCodeLine{//=>\ false}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ node\ foo.js\ -\/f\ -\/-\/unicorn\ -\/-\/foo=bar\ -\/-\/\ -\/-\/rainbow}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2has-flag_2readme_autotoc_md9249}{}\doxysection{\texorpdfstring{API}{API}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2has-flag_2readme_autotoc_md9249}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2has-flag_2readme_autotoc_md9250}{}\doxysubsection{\texorpdfstring{has\+Flag(flag, \mbox{[}argv\mbox{]})}{has\+Flag(flag, \mbox{[}argv\mbox{]})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2has-flag_2readme_autotoc_md9250}
+Returns a boolean for whether the flag exists.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2has-flag_2readme_autotoc_md9251}{}\doxysubsubsection{\texorpdfstring{flag}{flag}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2has-flag_2readme_autotoc_md9251}
+Type\+: {\ttfamily string}
+
+CLI flag to look for. The {\ttfamily -\/-\/} prefix is optional.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2has-flag_2readme_autotoc_md9252}{}\doxysubsubsection{\texorpdfstring{argv}{argv}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2has-flag_2readme_autotoc_md9252}
+Type\+: {\ttfamily string\mbox{[}\mbox{]}}~\newline
+ Default\+: {\ttfamily process.\+argv}
+
+CLI arguments.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2has-flag_2readme_autotoc_md9253}{}\doxysection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2has-flag_2readme_autotoc_md9253}
+MIT © \href{https://sindresorhus.com}{\texttt{ Sindre Sorhus}} 

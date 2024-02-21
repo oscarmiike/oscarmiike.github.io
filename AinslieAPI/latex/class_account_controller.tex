@@ -1,0 +1,155 @@
+\doxysection{Account\+Controller Class Reference}
+\hypertarget{class_account_controller}{}\label{class_account_controller}\index{AccountController@{AccountController}}
+
+
+Controller responsible for handling account-\/related actions such as login, logout, and profile viewing, integrating Auth0 for authentication.  
+
+
+
+
+Inheritance diagram for Account\+Controller\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=173pt]{class_account_controller__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Account\+Controller\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=173pt]{class_account_controller__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+async Task \mbox{\hyperlink{class_account_controller_ad1534316ac5f56cb4b483786a0d63caf}{Login}} (string return\+Url="{}/"{})
+\begin{DoxyCompactList}\small\item\em Initiates the login process by redirecting the user to the Auth0 login page, with a return URL specified. \end{DoxyCompactList}\item 
+IAction\+Result \mbox{\hyperlink{class_account_controller_ac7c9100b6447131f9569be8f76a8b49f}{Profile}} ()
+\begin{DoxyCompactList}\small\item\em Displays the profile page for a logged-\/in user, restricted to users with the "{}\+User"{} role. \end{DoxyCompactList}\item 
+IAction\+Result \mbox{\hyperlink{class_account_controller_a08036d988f8cbbf5be7f256252470116}{Admin\+Profile}} ()
+\begin{DoxyCompactList}\small\item\em Displays the admin profile page, accessible only by users with the "{}\+Admin"{} role. Demonstrates the use of the ASP.\+NET Core \mbox{[}Authorize\mbox{]} attribute with a policy. \end{DoxyCompactList}\item 
+async Task \mbox{\hyperlink{class_account_controller_a3d41f9019393ea0c25a97021a9298501}{Logout}} ()
+\begin{DoxyCompactList}\small\item\em Logs the user out from both the application and Auth0, then redirects to the home page. \end{DoxyCompactList}\item 
+IAction\+Result \mbox{\hyperlink{class_account_controller_a8a459b48676311f841121b3831f047da}{Access\+Denied}} ()
+\begin{DoxyCompactList}\small\item\em Displays the access denied view when a user tries to access resources without appropriate permissions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Controller responsible for handling account-\/related actions such as login, logout, and profile viewing, integrating Auth0 for authentication. 
+
+Definition at line \mbox{\hyperlink{_account_controller_8cs_source_l00014}{14}} of file \mbox{\hyperlink{_account_controller_8cs_source}{Account\+Controller.\+cs}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_account_controller_a8a459b48676311f841121b3831f047da}\label{class_account_controller_a8a459b48676311f841121b3831f047da} 
+\index{AccountController@{AccountController}!AccessDenied@{AccessDenied}}
+\index{AccessDenied@{AccessDenied}!AccountController@{AccountController}}
+\doxysubsubsection{\texorpdfstring{AccessDenied()}{AccessDenied()}}
+{\footnotesize\ttfamily IAction\+Result Account\+Controller.\+Access\+Denied (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Displays the access denied view when a user tries to access resources without appropriate permissions. 
+
+\begin{DoxyReturn}{Returns}
+The access denied view.
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_account_controller_8cs_source_l00089}{89}} of file \mbox{\hyperlink{_account_controller_8cs_source}{Account\+Controller.\+cs}}.
+
+\Hypertarget{class_account_controller_a08036d988f8cbbf5be7f256252470116}\label{class_account_controller_a08036d988f8cbbf5be7f256252470116} 
+\index{AccountController@{AccountController}!AdminProfile@{AdminProfile}}
+\index{AdminProfile@{AdminProfile}!AccountController@{AccountController}}
+\doxysubsubsection{\texorpdfstring{AdminProfile()}{AdminProfile()}}
+{\footnotesize\ttfamily IAction\+Result Account\+Controller.\+Admin\+Profile (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Displays the admin profile page, accessible only by users with the "{}\+Admin"{} role. Demonstrates the use of the ASP.\+NET Core \mbox{[}Authorize\mbox{]} attribute with a policy. 
+
+\begin{DoxyReturn}{Returns}
+The profile view for the authenticated admin.
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_account_controller_8cs_source_l00055}{55}} of file \mbox{\hyperlink{_account_controller_8cs_source}{Account\+Controller.\+cs}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_account_controller_a08036d988f8cbbf5be7f256252470116_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_account_controller_ad1534316ac5f56cb4b483786a0d63caf}\label{class_account_controller_ad1534316ac5f56cb4b483786a0d63caf} 
+\index{AccountController@{AccountController}!Login@{Login}}
+\index{Login@{Login}!AccountController@{AccountController}}
+\doxysubsubsection{\texorpdfstring{Login()}{Login()}}
+{\footnotesize\ttfamily async Task Account\+Controller.\+Login (\begin{DoxyParamCaption}\item[{string}]{return\+Url = {\ttfamily "{}/"{}} }\end{DoxyParamCaption})}
+
+
+
+Initiates the login process by redirecting the user to the Auth0 login page, with a return URL specified. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em return\+Url} & The URL to redirect the user after a successful login. Defaults to the home page.\\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_account_controller_8cs_source_l00022}{22}} of file \mbox{\hyperlink{_account_controller_8cs_source}{Account\+Controller.\+cs}}.
+
+\Hypertarget{class_account_controller_a3d41f9019393ea0c25a97021a9298501}\label{class_account_controller_a3d41f9019393ea0c25a97021a9298501} 
+\index{AccountController@{AccountController}!Logout@{Logout}}
+\index{Logout@{Logout}!AccountController@{AccountController}}
+\doxysubsubsection{\texorpdfstring{Logout()}{Logout()}}
+{\footnotesize\ttfamily async Task Account\+Controller.\+Logout (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Logs the user out from both the application and Auth0, then redirects to the home page. 
+
+
+
+Definition at line \mbox{\hyperlink{_account_controller_8cs_source_l00064}{64}} of file \mbox{\hyperlink{_account_controller_8cs_source}{Account\+Controller.\+cs}}.
+
+\Hypertarget{class_account_controller_ac7c9100b6447131f9569be8f76a8b49f}\label{class_account_controller_ac7c9100b6447131f9569be8f76a8b49f} 
+\index{AccountController@{AccountController}!Profile@{Profile}}
+\index{Profile@{Profile}!AccountController@{AccountController}}
+\doxysubsubsection{\texorpdfstring{Profile()}{Profile()}}
+{\footnotesize\ttfamily IAction\+Result Account\+Controller.\+Profile (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Displays the profile page for a logged-\/in user, restricted to users with the "{}\+User"{} role. 
+
+\begin{DoxyReturn}{Returns}
+The profile view for the authenticated user.
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_account_controller_8cs_source_l00043}{43}} of file \mbox{\hyperlink{_account_controller_8cs_source}{Account\+Controller.\+cs}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_account_controller_ac7c9100b6447131f9569be8f76a8b49f_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+STRIDER/source/repos/\+Ainslie\+API/\+Controllers/\mbox{\hyperlink{_account_controller_8cs}{Account\+Controller.\+cs}}\end{DoxyCompactItemize}

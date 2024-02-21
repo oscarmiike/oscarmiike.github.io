@@ -1,0 +1,60 @@
+\chapter{ESLint\+RC Library}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1f0dbe6d03fcbb2367b33d6fcf4a2987}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1f0dbe6d03fcbb2367b33d6fcf4a2987}\index{ESLintRC Library@{ESLintRC Library}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1f0dbe6d03fcbb2367b33d6fcf4a2987_autotoc_md76}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1f0dbe6d03fcbb2367b33d6fcf4a2987_autotoc_md76}%
+ This repository contains the legacy ESLint\+RC configuration file format for ESLint.
+
+{\bfseries{Note\+:}} This package is not intended for use outside of the ESLint ecosystem. It is ESLint-\/specific and not intended for use in other programs.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1f0dbe6d03fcbb2367b33d6fcf4a2987_autotoc_md77}{}\doxysection{\texorpdfstring{Installation}{Installation}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1f0dbe6d03fcbb2367b33d6fcf4a2987_autotoc_md77}
+You can install the package as follows\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ @eslint/eslintrc\ -\/-\/save-\/dev}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\ or}
+\DoxyCodeLine{}
+\DoxyCodeLine{yarn\ add\ @eslint/eslintrc\ -\/D}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1f0dbe6d03fcbb2367b33d6fcf4a2987_autotoc_md78}{}\doxysection{\texorpdfstring{Future Usage}{Future Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1f0dbe6d03fcbb2367b33d6fcf4a2987_autotoc_md78}
+{\bfseries{Note\+:}} This package is not intended for public use at this time. The following is an example of how it will be used in the future.
+
+The primary class in this package is {\ttfamily Flat\+Compat}, which is a utility to translate ESLint\+RC-\/style configs into flat configs. Here\textquotesingle{}s how you use it inside of your {\ttfamily eslint.\+config.\+js} file\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ \{\ FlatCompat\ \}\ from\ "{}@eslint/eslintrc"{};}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ compat\ =\ new\ FlatCompat();}
+\DoxyCodeLine{}
+\DoxyCodeLine{export\ default\ [}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ //\ mimic\ ESLintRC-\/style\ extends}
+\DoxyCodeLine{\ \ \ \ compat.extends("{}standard"{},\ "{}example"{}),}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ //\ mimic\ environments}
+\DoxyCodeLine{\ \ \ \ compat.env(\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ es2020:\ true,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ node:\ true}
+\DoxyCodeLine{\ \ \ \ \}),}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ //\ mimic\ plugins}
+\DoxyCodeLine{\ \ \ \ compat.plugins("{}airbnb"{},\ "{}react"{}),}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ //\ translate\ an\ entire\ config}
+\DoxyCodeLine{\ \ \ \ compat.config(\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ plugins:\ ["{}airbnb"{},\ "{}react"{}],}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ extends:\ "{}standard"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ env:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ es2020:\ true,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ node:\ true}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ rules:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ semi:\ "{}error"{}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \})}
+\DoxyCodeLine{];}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1f0dbe6d03fcbb2367b33d6fcf4a2987_autotoc_md79}{}\doxysection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m1f0dbe6d03fcbb2367b33d6fcf4a2987_autotoc_md79}
+MIT License 

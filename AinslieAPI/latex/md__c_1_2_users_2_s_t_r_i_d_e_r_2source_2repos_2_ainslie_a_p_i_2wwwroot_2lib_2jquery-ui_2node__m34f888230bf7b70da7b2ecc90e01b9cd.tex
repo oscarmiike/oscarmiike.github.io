@@ -1,0 +1,36 @@
+\chapter{xdg-\/basedir \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/sindresorhus/xdg-\/basedir"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+org/sindresorhus/xdg-\/basedir.\+svg?branch=master"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m34f888230bf7b70da7b2ecc90e01b9cd}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m34f888230bf7b70da7b2ecc90e01b9cd}\index{xdg-\/basedir $<$a href="{}https://travis-\/ci.org/sindresorhus/xdg-\/basedir"{} $>$$<$img src="{}https://travis-\/ci.org/sindresorhus/xdg-\/basedir.svg?branch=master"{} alt="{}Build Status"{}/$>$$<$/a$>$@{xdg-\/basedir $<$a href=""https://travis-\/ci.org/sindresorhus/xdg-\/basedir"" $>$$<$img src=""https://travis-\/ci.org/sindresorhus/xdg-\/basedir.svg?branch=master"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m34f888230bf7b70da7b2ecc90e01b9cd_autotoc_md5250}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m34f888230bf7b70da7b2ecc90e01b9cd_autotoc_md5250}%
+ \begin{quote}
+Get \href{http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html}{\texttt{ XDG Base Directory}} paths \end{quote}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m34f888230bf7b70da7b2ecc90e01b9cd_autotoc_md5251}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m34f888230bf7b70da7b2ecc90e01b9cd_autotoc_md5251}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ -\/-\/save\ xdg-\/basedir}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m34f888230bf7b70da7b2ecc90e01b9cd_autotoc_md5252}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m34f888230bf7b70da7b2ecc90e01b9cd_autotoc_md5252}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ xdgBasedir\ =\ require('xdg-\/basedir');}
+\DoxyCodeLine{}
+\DoxyCodeLine{xdgBasedir.data;}
+\DoxyCodeLine{//=>\ '/home/sindresorhus/.local/share'}
+\DoxyCodeLine{}
+\DoxyCodeLine{xdgBasedir.config;}
+\DoxyCodeLine{//=>\ '/home/sindresorhus/.config'}
+\DoxyCodeLine{}
+\DoxyCodeLine{xdgBasedir.dataDirs}
+\DoxyCodeLine{//=>\ ['/home/sindresorhus/.local/share',\ '/usr/local/share/',\ '/usr/share/']}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m34f888230bf7b70da7b2ecc90e01b9cd_autotoc_md5253}{}\doxysection{\texorpdfstring{API}{API}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m34f888230bf7b70da7b2ecc90e01b9cd_autotoc_md5253}
+The properties {\ttfamily .data}, {\ttfamily .config}, {\ttfamily .cache}, {\ttfamily .runtime} will return {\ttfamily null} in the uncommon case that both the XDG environment variable is not set and the users home directory can\textquotesingle{}t be found. You need to handle this case. A common solution is to \href{https://github.com/yeoman/configstore/blob/b82690fc401318ad18dcd7d151a0003a4898a314/index.js\#L15}{\texttt{ fall back to a temp directory}}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m34f888230bf7b70da7b2ecc90e01b9cd_autotoc_md5254}{}\doxysubsection{\texorpdfstring{.data}{.data}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m34f888230bf7b70da7b2ecc90e01b9cd_autotoc_md5254}
+Directory for user specific data files.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m34f888230bf7b70da7b2ecc90e01b9cd_autotoc_md5255}{}\doxysubsection{\texorpdfstring{.config}{.config}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m34f888230bf7b70da7b2ecc90e01b9cd_autotoc_md5255}
+Directory for user specific configuration files.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m34f888230bf7b70da7b2ecc90e01b9cd_autotoc_md5256}{}\doxysubsection{\texorpdfstring{.cache}{.cache}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m34f888230bf7b70da7b2ecc90e01b9cd_autotoc_md5256}
+Directory for user specific non-\/essential data files.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m34f888230bf7b70da7b2ecc90e01b9cd_autotoc_md5257}{}\doxysubsection{\texorpdfstring{.runtime}{.runtime}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m34f888230bf7b70da7b2ecc90e01b9cd_autotoc_md5257}
+Directory for user-\/specific non-\/essential runtime files and other file objects (such as sockets, named pipes, etc).\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m34f888230bf7b70da7b2ecc90e01b9cd_autotoc_md5258}{}\doxysubsection{\texorpdfstring{.data\+Dirs}{.data\+Dirs}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m34f888230bf7b70da7b2ecc90e01b9cd_autotoc_md5258}
+Preference-\/ordered array of base directories to search for data files in addition to {\ttfamily .data}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m34f888230bf7b70da7b2ecc90e01b9cd_autotoc_md5259}{}\doxysubsection{\texorpdfstring{.config\+Dirs}{.config\+Dirs}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m34f888230bf7b70da7b2ecc90e01b9cd_autotoc_md5259}
+Preference-\/ordered array of base directories to search for configuration files in addition to {\ttfamily .config}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m34f888230bf7b70da7b2ecc90e01b9cd_autotoc_md5260}{}\doxysection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m34f888230bf7b70da7b2ecc90e01b9cd_autotoc_md5260}
+MIT © \href{http://sindresorhus.com}{\texttt{ Sindre Sorhus}} 

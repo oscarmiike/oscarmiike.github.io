@@ -1,0 +1,1410 @@
+\chapter{Stream}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db}\index{Stream@{Stream}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md899}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md899}%
+\begin{DoxyVerb}Stability: 2 - Stable
+\end{DoxyVerb}
+ A stream is an abstract interface implemented by various objects in Node.\+js. For example a \href{https://nodejs.org/docs/v5.8.0/api/http.html\#http_class_http_incomingmessage}{\texttt{ request to an HTTP server}} is a stream, as is \href{https://nodejs.org/docs/v5.8.0/api/process.html\#process_process_stdout}{\texttt{ {\ttfamily process.\+stdout}}}. Streams are readable, writable, or both. All streams are instances of \href{https://nodejs.org/docs/v5.8.0/api/events.html\#events_class_eventemitter}{\texttt{ {\ttfamily Event\+Emitter}}}.
+
+You can load the Stream base classes by doing `require(\textquotesingle{}stream')\`{}. There are base classes provided for Readable streams, Writable streams, Duplex streams, and Transform streams.
+
+This document is split up into 3 sections\+:
+
+
+\begin{DoxyEnumerate}
+\item The first section explains the parts of the API that you need to be aware of to use streams in your programs.
+\item The second section explains the parts of the API that you need to use if you implement your own custom streams yourself. The API is designed to make this easy for you to do.
+\item The third section goes into more depth about how streams work, including some of the internal mechanisms and functions that you should probably not modify unless you definitely know what you are doing.
+\end{DoxyEnumerate}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md900}{}\doxysection{\texorpdfstring{API for Stream Consumers}{API for Stream Consumers}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md900}
+Streams can be either Readable, Writable, or both (Duplex).
+
+All streams are Event\+Emitters, but they also have other custom methods and properties depending on whether they are Readable, Writable, or Duplex.
+
+If a stream is both Readable and Writable, then it implements all of the methods and events. So, a Duplex or Transform stream is fully described by this API, though their implementation may be somewhat different.
+
+It is not necessary to implement Stream interfaces in order to consume streams in your programs. If you {\bfseries{are}} implementing streaming interfaces in your own program, please also refer to API for Stream Implementors.
+
+Almost all Node.\+js programs, no matter how simple, use Streams in some way. Here is an example of using Streams in an Node.\+js program\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ http\ =\ require('http');}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ server\ =\ http.createServer(\ (req,\ res)\ =>\ \{}
+\DoxyCodeLine{\ \ //\ req\ is\ an\ http.IncomingMessage,\ which\ is\ a\ Readable\ Stream}
+\DoxyCodeLine{\ \ //\ res\ is\ an\ http.ServerResponse,\ which\ is\ a\ Writable\ Stream}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ var\ body\ =\ '';}
+\DoxyCodeLine{\ \ //\ we\ want\ to\ get\ the\ data\ as\ utf8\ strings}
+\DoxyCodeLine{\ \ //\ If\ you\ don't\ set\ an\ encoding,\ then\ you'll\ get\ Buffer\ objects}
+\DoxyCodeLine{\ \ req.setEncoding('utf8');}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ //\ Readable\ streams\ emit\ 'data'\ events\ once\ a\ listener\ is\ added}
+\DoxyCodeLine{\ \ req.on('data',\ (chunk)\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ body\ +=\ chunk;}
+\DoxyCodeLine{\ \ \});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ //\ the\ end\ event\ tells\ you\ that\ you\ have\ entire\ body}
+\DoxyCodeLine{\ \ req.on('end',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ try\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ var\ data\ =\ JSON.parse(body);}
+\DoxyCodeLine{\ \ \ \ \}\ catch\ (er)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ //\ uh\ oh!\ \ bad\ json!}
+\DoxyCodeLine{\ \ \ \ \ \ res.statusCode\ =\ 400;}
+\DoxyCodeLine{\ \ \ \ \ \ return\ res.end(`error:\ \$\{er.message\}`);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ //\ write\ back\ something\ interesting\ to\ the\ user:}
+\DoxyCodeLine{\ \ \ \ res.write(typeof\ data);}
+\DoxyCodeLine{\ \ \ \ res.end();}
+\DoxyCodeLine{\ \ \});}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{server.listen(1337);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ \$\ curl\ localhost:1337\ -\/d\ '\{\}'}
+\DoxyCodeLine{//\ object}
+\DoxyCodeLine{//\ \$\ curl\ localhost:1337\ -\/d\ '"{}foo"{}'}
+\DoxyCodeLine{//\ string}
+\DoxyCodeLine{//\ \$\ curl\ localhost:1337\ -\/d\ 'not\ json'}
+\DoxyCodeLine{//\ error:\ Unexpected\ token\ o}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md901}{}\doxysubsection{\texorpdfstring{Class\+: stream.\+Duplex}{Class\+: stream.\+Duplex}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md901}
+Duplex streams are streams that implement both the Readable and Writable interfaces.
+
+Examples of Duplex streams include\+:
+
+
+\begin{DoxyItemize}
+\item \href{https://nodejs.org/docs/v5.8.0/api/net.html\#net_class_net_socket}{\texttt{ TCP sockets}}
+\item \href{zlib.html}{\texttt{ zlib streams}}
+\item \href{crypto.html}{\texttt{ crypto streams}}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md902}{}\doxysubsection{\texorpdfstring{Class\+: stream.\+Readable}{Class\+: stream.\+Readable}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md902}
+The Readable stream interface is the abstraction for a {\itshape source} of data that you are reading from. In other words, data comes {\itshape out} of a Readable stream.
+
+A Readable stream will not start emitting data until you indicate that you are ready to receive it.
+
+Readable streams have two "{}modes"{}\+: a {\bfseries{flowing mode}} and a {\bfseries{paused mode}}. When in flowing mode, data is read from the underlying system and provided to your program as fast as possible. In paused mode, you must explicitly call \`{}stream.read()\`{} to get chunks of data out. Streams start out in paused mode.
+
+{\bfseries{Note}}\+: If no data event handlers are attached, and there are no \`{}stream.pipe()\`{} destinations, and the stream is switched into flowing mode, then data will be lost.
+
+You can switch to flowing mode by doing any of the following\+:
+
+
+\begin{DoxyItemize}
+\item Adding a \`{}\textquotesingle{}data\textquotesingle{}\`{} event handler to listen for data.
+\item Calling the \`{}stream.resume()\`{} method to explicitly open the flow.
+\item Calling the \`{}stream.pipe()\`{} method to send the data to a Writable.
+\end{DoxyItemize}
+
+You can switch back to paused mode by doing either of the following\+:
+
+
+\begin{DoxyItemize}
+\item If there are no pipe destinations, by calling the \`{}stream.pause()\`{} method.
+\item If there are pipe destinations, by removing any \`{}\textquotesingle{}data\textquotesingle{}\`{} event handlers, and removing all pipe destinations by calling the \`{}stream.unpipe()\`{} method.
+\end{DoxyItemize}
+
+Note that, for backwards compatibility reasons, removing \`{}\textquotesingle{}data\textquotesingle{}\`{} event handlers will {\bfseries{not}} automatically pause the stream. Also, if there are piped destinations, then calling \`{}stream.pause()\`{} will not guarantee that the stream will {\itshape remain} paused once those destinations drain and ask for more data.
+
+Examples of readable streams include\+:
+
+
+\begin{DoxyItemize}
+\item \href{https://nodejs.org/docs/v5.8.0/api/http.html\#http_class_http_incomingmessage}{\texttt{ HTTP responses, on the client}}
+\item \href{https://nodejs.org/docs/v5.8.0/api/http.html\#http_class_http_incomingmessage}{\texttt{ HTTP requests, on the server}}
+\item \href{https://nodejs.org/docs/v5.8.0/api/fs.html\#fs_class_fs_readstream}{\texttt{ fs read streams}}
+\item \href{zlib.html}{\texttt{ zlib streams}}
+\item \href{crypto.html}{\texttt{ crypto streams}}
+\item \href{https://nodejs.org/docs/v5.8.0/api/net.html\#net_class_net_socket}{\texttt{ TCP sockets}}
+\item \href{https://nodejs.org/docs/v5.8.0/api/child_process.html\#child_process_child_stdout}{\texttt{ child process stdout and stderr}}
+\item \href{https://nodejs.org/docs/v5.8.0/api/process.html\#process_process_stdin}{\texttt{ {\ttfamily process.\+stdin}}}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md903}{}\doxysubsubsection{\texorpdfstring{Event\+: \textquotesingle{}close\textquotesingle{}}{Event\+: \textquotesingle{}close\textquotesingle{}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md903}
+Emitted when the stream and any of its underlying resources (a file descriptor, for example) have been closed. The event indicates that no more events will be emitted, and no further computation will occur.
+
+Not all streams will emit the `\textquotesingle{}close'\`{} event.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md904}{}\doxysubsubsection{\texorpdfstring{Event\+: \textquotesingle{}data\textquotesingle{}}{Event\+: \textquotesingle{}data\textquotesingle{}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md904}
+
+\begin{DoxyItemize}
+\item {\ttfamily chunk} \{Buffer\texorpdfstring{$\vert$}{|}\+String\} The chunk of data.
+\end{DoxyItemize}
+
+Attaching a `\textquotesingle{}data'\`{} event listener to a stream that has not been explicitly paused will switch the stream into flowing mode. Data will then be passed as soon as it is available.
+
+If you just want to get all the data out of the stream as fast as possible, this is the best way to do so.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ readable\ =\ getReadableStreamSomehow();}
+\DoxyCodeLine{readable.on('data',\ (chunk)\ =>\ \{}
+\DoxyCodeLine{\ \ console.log('got\ \%d\ bytes\ of\ data',\ chunk.length);}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md905}{}\doxysubsubsection{\texorpdfstring{Event\+: \textquotesingle{}end\textquotesingle{}}{Event\+: \textquotesingle{}end\textquotesingle{}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md905}
+This event fires when there will be no more data to read.
+
+Note that the `\textquotesingle{}end'{\ttfamily event \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}will not fire\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} unless the data is completely consumed. This can be done by switching into flowing mode, or by calling \mbox{[}}stream.\+read()\`{}\mbox{]}stream-\/read repeatedly until you get to the end.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ readable\ =\ getReadableStreamSomehow();}
+\DoxyCodeLine{readable.on('data',\ (chunk)\ =>\ \{}
+\DoxyCodeLine{\ \ console.log('got\ \%d\ bytes\ of\ data',\ chunk.length);}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{readable.on('end',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ console.log('there\ will\ be\ no\ more\ data.');}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md906}{}\doxysubsubsection{\texorpdfstring{Event\+: \textquotesingle{}error\textquotesingle{}}{Event\+: \textquotesingle{}error\textquotesingle{}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md906}
+
+\begin{DoxyItemize}
+\item \{Error Object\}
+\end{DoxyItemize}
+
+Emitted if there was an error receiving data.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md907}{}\doxysubsubsection{\texorpdfstring{Event\+: \textquotesingle{}readable\textquotesingle{}}{Event\+: \textquotesingle{}readable\textquotesingle{}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md907}
+When a chunk of data can be read from the stream, it will emit a `\textquotesingle{}readable'\`{} event.
+
+In some cases, listening for a `\textquotesingle{}readable'\`{} event will cause some data to be read into the internal buffer from the underlying system, if it hadn\textquotesingle{}t already.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ readable\ =\ getReadableStreamSomehow();}
+\DoxyCodeLine{readable.on('readable',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ //\ there\ is\ some\ data\ to\ read\ now}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+Once the internal buffer is drained, a `\textquotesingle{}readable'\`{} event will fire again when more data is available.
+
+The `\textquotesingle{}readable'\`{} event is not emitted in the "{}flowing"{} mode with the sole exception of the last one, on end-\/of-\/stream.
+
+The `\textquotesingle{}readable'{\ttfamily event indicates that the stream has new information\+: either new data is available or the end of the stream has been reached. In the former case, \mbox{[}}stream.\+read(){\ttfamily \mbox{]}\mbox{[}stream-\/read\mbox{]} will return that data. In the latter case, \mbox{[}}stream.\+read(){\ttfamily \mbox{]}\mbox{[}stream-\/read\mbox{]} will return null. For instance, in the following example,}foo.\+txt\`{} is an empty file\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ fs\ =\ require('fs');}
+\DoxyCodeLine{var\ rr\ =\ fs.createReadStream('foo.txt');}
+\DoxyCodeLine{rr.on('readable',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ console.log('readable:',\ rr.read());}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{rr.on('end',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ console.log('end');}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+The output of running this script is\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ node\ test.js}
+\DoxyCodeLine{readable:\ null}
+\DoxyCodeLine{end}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md908}{}\doxysubsubsection{\texorpdfstring{readable.\+is\+Paused()}{readable.\+is\+Paused()}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md908}
+
+\begin{DoxyItemize}
+\item Return\+: \{Boolean\}
+\end{DoxyItemize}
+
+This method returns whether or not the {\ttfamily readable} has been {\bfseries{explicitly}} paused by client code (using \`{}stream.pause()\`{} without a corresponding \`{}stream.resume()\`{}).
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ readable\ =\ new\ stream.Readable}
+\DoxyCodeLine{}
+\DoxyCodeLine{readable.isPaused()\ //\ ===\ false}
+\DoxyCodeLine{readable.pause()}
+\DoxyCodeLine{readable.isPaused()\ //\ ===\ true}
+\DoxyCodeLine{readable.resume()}
+\DoxyCodeLine{readable.isPaused()\ //\ ===\ false}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md909}{}\doxysubsubsection{\texorpdfstring{readable.\+pause()}{readable.\+pause()}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md909}
+
+\begin{DoxyItemize}
+\item Return\+: {\ttfamily this}
+\end{DoxyItemize}
+
+This method will cause a stream in flowing mode to stop emitting \`{}\textquotesingle{}data\textquotesingle{}\`{} events, switching out of flowing mode. Any data that becomes available will remain in the internal buffer.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ readable\ =\ getReadableStreamSomehow();}
+\DoxyCodeLine{readable.on('data',\ (chunk)\ =>\ \{}
+\DoxyCodeLine{\ \ console.log('got\ \%d\ bytes\ of\ data',\ chunk.length);}
+\DoxyCodeLine{\ \ readable.pause();}
+\DoxyCodeLine{\ \ console.log('there\ will\ be\ no\ more\ data\ for\ 1\ second');}
+\DoxyCodeLine{\ \ setTimeout(()\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ console.log('now\ data\ will\ start\ flowing\ again');}
+\DoxyCodeLine{\ \ \ \ readable.resume();}
+\DoxyCodeLine{\ \ \},\ 1000);}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md910}{}\doxysubsubsection{\texorpdfstring{readable.\+pipe(destination\mbox{[}, options\mbox{]})}{readable.\+pipe(destination\mbox{[}, options\mbox{]})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md910}
+
+\begin{DoxyItemize}
+\item {\ttfamily destination} \{stream.\+Writable\} The destination for writing data
+\item {\ttfamily options} \{Object\} Pipe options
+\begin{DoxyItemize}
+\item {\ttfamily end} \{Boolean\} End the writer when the reader ends. Default = {\ttfamily true}
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+This method pulls all the data out of a readable stream, and writes it to the supplied destination, automatically managing the flow so that the destination is not overwhelmed by a fast readable stream.
+
+Multiple destinations can be piped to safely.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ readable\ =\ getReadableStreamSomehow();}
+\DoxyCodeLine{var\ writable\ =\ fs.createWriteStream('file.txt');}
+\DoxyCodeLine{//\ All\ the\ data\ from\ readable\ goes\ into\ 'file.txt'}
+\DoxyCodeLine{readable.pipe(writable);}
+
+\end{DoxyCode}
+
+
+This function returns the destination stream, so you can set up pipe chains like so\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ r\ =\ fs.createReadStream('file.txt');}
+\DoxyCodeLine{var\ z\ =\ zlib.createGzip();}
+\DoxyCodeLine{var\ w\ =\ fs.createWriteStream('file.txt.gz');}
+\DoxyCodeLine{r.pipe(z).pipe(w);}
+
+\end{DoxyCode}
+
+
+For example, emulating the Unix {\ttfamily cat} command\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{process.stdin.pipe(process.stdout);}
+
+\end{DoxyCode}
+
+
+By default \`{}stream.end()\`{} is called on the destination when the source stream emits \`{}\textquotesingle{}end\textquotesingle{}\`{}, so that {\ttfamily destination} is no longer writable. Pass {\ttfamily \{ end\+: false \}} as {\ttfamily options} to keep the destination stream open.
+
+This keeps {\ttfamily writer} open so that "{}\+Goodbye"{} can be written at the end.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{reader.pipe(writer,\ \{\ end:\ false\ \});}
+\DoxyCodeLine{reader.on('end',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ writer.end('Goodbye\(\backslash\)n');}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+Note that \href{https://nodejs.org/docs/v5.8.0/api/process.html\#process_process_stderr}{\texttt{ {\ttfamily process.\+stderr}}} and \href{https://nodejs.org/docs/v5.8.0/api/process.html\#process_process_stdout}{\texttt{ {\ttfamily process.\+stdout}}} are never closed until the process exits, regardless of the specified options.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md911}{}\doxysubsubsection{\texorpdfstring{readable.\+read(\mbox{[}size\mbox{]})}{readable.\+read(\mbox{[}size\mbox{]})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md911}
+
+\begin{DoxyItemize}
+\item {\ttfamily size} \{Number\} Optional argument to specify how much data to read.
+\item Return \{String\texorpdfstring{$\vert$}{|}\+Buffer\texorpdfstring{$\vert$}{|}\+Null\}
+\end{DoxyItemize}
+
+The {\ttfamily read()} method pulls some data out of the internal buffer and returns it. If there is no data available, then it will return {\ttfamily null}.
+
+If you pass in a {\ttfamily size} argument, then it will return that many bytes. If {\ttfamily size} bytes are not available, then it will return {\ttfamily null}, unless we\textquotesingle{}ve ended, in which case it will return the data remaining in the buffer.
+
+If you do not specify a {\ttfamily size} argument, then it will return all the data in the internal buffer.
+
+This method should only be called in paused mode. In flowing mode, this method is called automatically until the internal buffer is drained.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ readable\ =\ getReadableStreamSomehow();}
+\DoxyCodeLine{readable.on('readable',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ var\ chunk;}
+\DoxyCodeLine{\ \ while\ (null\ !==\ (chunk\ =\ readable.read()))\ \{}
+\DoxyCodeLine{\ \ \ \ console.log('got\ \%d\ bytes\ of\ data',\ chunk.length);}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+If this method returns a data chunk, then it will also trigger the emission of a \`{}\textquotesingle{}data\textquotesingle{}\`{} event.
+
+Note that calling \`{}stream.read(\mbox{[}size\mbox{]})\`{} after the \`{}\textquotesingle{}end\textquotesingle{}\`{} event has been triggered will return {\ttfamily null}. No runtime error will be raised.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md912}{}\doxysubsubsection{\texorpdfstring{readable.\+resume()}{readable.\+resume()}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md912}
+
+\begin{DoxyItemize}
+\item Return\+: {\ttfamily this}
+\end{DoxyItemize}
+
+This method will cause the readable stream to resume emitting \`{}\textquotesingle{}data\textquotesingle{}\`{} events.
+
+This method will switch the stream into flowing mode. If you do {\itshape not} want to consume the data from a stream, but you {\itshape do} want to get to its \`{}\textquotesingle{}end\textquotesingle{}\`{} event, you can call \`{}stream.resume()\`{} to open the flow of data.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ readable\ =\ getReadableStreamSomehow();}
+\DoxyCodeLine{readable.resume();}
+\DoxyCodeLine{readable.on('end',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ console.log('got\ to\ the\ end,\ but\ did\ not\ read\ anything');}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md913}{}\doxysubsubsection{\texorpdfstring{readable.\+set\+Encoding(encoding)}{readable.\+set\+Encoding(encoding)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md913}
+
+\begin{DoxyItemize}
+\item {\ttfamily encoding} \{String\} The encoding to use.
+\item Return\+: {\ttfamily this}
+\end{DoxyItemize}
+
+Call this function to cause the stream to return strings of the specified encoding instead of Buffer objects. For example, if you do `readable.\+set\+Encoding(\textquotesingle{}utf8'){\ttfamily , then the output data will be interpreted as UTF-\/8 data, and returned as strings. If you do}readable.\+set\+Encoding(\textquotesingle{}hex\textquotesingle{})\`{}, then the data will be encoded in hexadecimal string format.
+
+This properly handles multi-\/byte characters that would otherwise be potentially mangled if you simply pulled the Buffers directly and called \href{https://nodejs.org/docs/v5.8.0/api/buffer.html\#buffer_buf_tostring_encoding_start_end}{\texttt{ {\ttfamily buf.\+to\+String(encoding)}}} on them. If you want to read the data as strings, always use this method.
+
+Also you can disable any encoding at all with {\ttfamily readable.\+set\+Encoding(null)}. This approach is very useful if you deal with binary data or with large multi-\/byte strings spread out over multiple chunks.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ readable\ =\ getReadableStreamSomehow();}
+\DoxyCodeLine{readable.setEncoding('utf8');}
+\DoxyCodeLine{readable.on('data',\ (chunk)\ =>\ \{}
+\DoxyCodeLine{\ \ assert.equal(typeof\ chunk,\ 'string');}
+\DoxyCodeLine{\ \ console.log('got\ \%d\ characters\ of\ string\ data',\ chunk.length);}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md914}{}\doxysubsubsection{\texorpdfstring{readable.\+unpipe(\mbox{[}destination\mbox{]})}{readable.\+unpipe(\mbox{[}destination\mbox{]})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md914}
+
+\begin{DoxyItemize}
+\item {\ttfamily destination} \{stream.\+Writable\} Optional specific stream to unpipe
+\end{DoxyItemize}
+
+This method will remove the hooks set up for a previous \`{}stream.pipe()\`{} call.
+
+If the destination is not specified, then all pipes are removed.
+
+If the destination is specified, but no pipe is set up for it, then this is a no-\/op.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ readable\ =\ getReadableStreamSomehow();}
+\DoxyCodeLine{var\ writable\ =\ fs.createWriteStream('file.txt');}
+\DoxyCodeLine{//\ All\ the\ data\ from\ readable\ goes\ into\ 'file.txt',}
+\DoxyCodeLine{//\ but\ only\ for\ the\ first\ second}
+\DoxyCodeLine{readable.pipe(writable);}
+\DoxyCodeLine{setTimeout(()\ =>\ \{}
+\DoxyCodeLine{\ \ console.log('stop\ writing\ to\ file.txt');}
+\DoxyCodeLine{\ \ readable.unpipe(writable);}
+\DoxyCodeLine{\ \ console.log('manually\ close\ the\ file\ stream');}
+\DoxyCodeLine{\ \ writable.end();}
+\DoxyCodeLine{\},\ 1000);}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md915}{}\doxysubsubsection{\texorpdfstring{readable.\+unshift(chunk)}{readable.\+unshift(chunk)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md915}
+
+\begin{DoxyItemize}
+\item {\ttfamily chunk} \{Buffer\texorpdfstring{$\vert$}{|}\+String\} Chunk of data to unshift onto the read queue
+\end{DoxyItemize}
+
+This is useful in certain cases where a stream is being consumed by a parser, which needs to "{}un-\/consume"{} some data that it has optimistically pulled out of the source, so that the stream can be passed on to some other party.
+
+Note that {\ttfamily stream.\+unshift(chunk)} cannot be called after the \`{}\textquotesingle{}end\textquotesingle{}\`{} event has been triggered; a runtime error will be raised.
+
+If you find that you must often call {\ttfamily stream.\+unshift(chunk)} in your programs, consider implementing a Transform stream instead. (See \mbox{[}API for Stream Implementors\mbox{]}\mbox{[}\mbox{]}.)
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Pull\ off\ a\ header\ delimited\ by\ \(\backslash\)n\(\backslash\)n}
+\DoxyCodeLine{//\ use\ unshift()\ if\ we\ get\ too\ much}
+\DoxyCodeLine{//\ Call\ the\ callback\ with\ (error,\ header,\ stream)}
+\DoxyCodeLine{const\ StringDecoder\ =\ require('string\_decoder').StringDecoder;}
+\DoxyCodeLine{function\ parseHeader(stream,\ callback)\ \{}
+\DoxyCodeLine{\ \ stream.on('error',\ callback);}
+\DoxyCodeLine{\ \ stream.on('readable',\ onReadable);}
+\DoxyCodeLine{\ \ var\ decoder\ =\ new\ StringDecoder('utf8');}
+\DoxyCodeLine{\ \ var\ header\ =\ '';}
+\DoxyCodeLine{\ \ function\ onReadable()\ \{}
+\DoxyCodeLine{\ \ \ \ var\ chunk;}
+\DoxyCodeLine{\ \ \ \ while\ (null\ !==\ (chunk\ =\ stream.read()))\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ var\ str\ =\ decoder.write(chunk);}
+\DoxyCodeLine{\ \ \ \ \ \ if\ (str.match(/\(\backslash\)n\(\backslash\)n/))\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ found\ the\ header\ boundary}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ var\ split\ =\ str.split(/\(\backslash\)n\(\backslash\)n/);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ header\ +=\ split.shift();}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ var\ remaining\ =\ split.join('\(\backslash\)n\(\backslash\)n');}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ var\ buf\ =\ new\ Buffer(remaining,\ 'utf8');}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ if\ (buf.length)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ stream.unshift(buf);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ stream.removeListener('error',\ callback);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ stream.removeListener('readable',\ onReadable);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ now\ the\ body\ of\ the\ message\ can\ be\ read\ from\ the\ stream.}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ callback(null,\ header,\ stream);}
+\DoxyCodeLine{\ \ \ \ \ \ \}\ else\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ still\ reading\ the\ header.}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ header\ +=\ str;}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Note that, unlike \`{}stream.push(chunk)\`{}, {\ttfamily stream.\+unshift(chunk)} will not end the reading process by resetting the internal reading state of the stream. This can cause unexpected results if {\ttfamily unshift()} is called during a read (i.\+e. from within a \`{}stream.\+\_\+read()\`{} implementation on a custom stream). Following the call to {\ttfamily unshift()} with an immediate \`{}stream.push(\textquotesingle{}\textquotesingle{})\`{} will reset the reading state appropriately, however it is best to simply avoid calling {\ttfamily unshift()} while in the process of performing a read.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md916}{}\doxysubsubsection{\texorpdfstring{readable.\+wrap(stream)}{readable.\+wrap(stream)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md916}
+
+\begin{DoxyItemize}
+\item {\ttfamily stream} \{Stream\} An "{}old style"{} readable stream
+\end{DoxyItemize}
+
+Versions of Node.\+js prior to v0.\+10 had streams that did not implement the entire Streams API as it is today. (See Compatibility for more information.)
+
+If you are using an older Node.\+js library that emits \`{}\textquotesingle{}data\textquotesingle{}\`{} events and has a \`{}stream.pause()\`{} method that is advisory only, then you can use the {\ttfamily wrap()} method to create a Readable stream that uses the old stream as its data source.
+
+You will very rarely ever need to call this function, but it exists as a convenience for interacting with old Node.\+js programs and libraries.
+
+For example\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ OldReader\ =\ require('./old-\/api-\/module.js').OldReader;}
+\DoxyCodeLine{const\ Readable\ =\ require('stream').Readable;}
+\DoxyCodeLine{const\ oreader\ =\ new\ OldReader;}
+\DoxyCodeLine{const\ myReader\ =\ new\ Readable().wrap(oreader);}
+\DoxyCodeLine{}
+\DoxyCodeLine{myReader.on('readable',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ myReader.read();\ //\ etc.}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md917}{}\doxysubsection{\texorpdfstring{Class\+: stream.\+Transform}{Class\+: stream.\+Transform}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md917}
+Transform streams are Duplex streams where the output is in some way computed from the input. They implement both the Readable and Writable interfaces.
+
+Examples of Transform streams include\+:
+
+
+\begin{DoxyItemize}
+\item \href{zlib.html}{\texttt{ zlib streams}}
+\item \href{crypto.html}{\texttt{ crypto streams}}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md918}{}\doxysubsection{\texorpdfstring{Class\+: stream.\+Writable}{Class\+: stream.\+Writable}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md918}
+The Writable stream interface is an abstraction for a {\itshape destination} that you are writing data {\itshape to}.
+
+Examples of writable streams include\+:
+
+
+\begin{DoxyItemize}
+\item \href{https://nodejs.org/docs/v5.8.0/api/http.html\#http_class_http_clientrequest}{\texttt{ HTTP requests, on the client}}
+\item \href{https://nodejs.org/docs/v5.8.0/api/http.html\#http_class_http_serverresponse}{\texttt{ HTTP responses, on the server}}
+\item \href{https://nodejs.org/docs/v5.8.0/api/fs.html\#fs_class_fs_writestream}{\texttt{ fs write streams}}
+\item \href{zlib.html}{\texttt{ zlib streams}}
+\item \href{crypto.html}{\texttt{ crypto streams}}
+\item \href{https://nodejs.org/docs/v5.8.0/api/net.html\#net_class_net_socket}{\texttt{ TCP sockets}}
+\item \href{https://nodejs.org/docs/v5.8.0/api/child_process.html\#child_process_child_stdin}{\texttt{ child process stdin}}
+\item \href{https://nodejs.org/docs/v5.8.0/api/process.html\#process_process_stdout}{\texttt{ {\ttfamily process.\+stdout}}}, \href{https://nodejs.org/docs/v5.8.0/api/process.html\#process_process_stderr}{\texttt{ {\ttfamily process.\+stderr}}}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md919}{}\doxysubsubsection{\texorpdfstring{Event\+: \textquotesingle{}drain\textquotesingle{}}{Event\+: \textquotesingle{}drain\textquotesingle{}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md919}
+If a \`{}stream.write(chunk)\`{} call returns {\ttfamily false}, then the `\textquotesingle{}drain'\`{} event will indicate when it is appropriate to begin writing more data to the stream.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Write\ the\ data\ to\ the\ supplied\ writable\ stream\ one\ million\ times.}
+\DoxyCodeLine{//\ Be\ attentive\ to\ back-\/pressure.}
+\DoxyCodeLine{function\ writeOneMillionTimes(writer,\ data,\ encoding,\ callback)\ \{}
+\DoxyCodeLine{\ \ var\ i\ =\ 1000000;}
+\DoxyCodeLine{\ \ write();}
+\DoxyCodeLine{\ \ function\ write()\ \{}
+\DoxyCodeLine{\ \ \ \ var\ ok\ =\ true;}
+\DoxyCodeLine{\ \ \ \ do\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ i\ -\/=\ 1;}
+\DoxyCodeLine{\ \ \ \ \ \ if\ (i\ ===\ 0)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ last\ time!}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ writer.write(data,\ encoding,\ callback);}
+\DoxyCodeLine{\ \ \ \ \ \ \}\ else\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ see\ if\ we\ should\ continue,\ or\ wait}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ don't\ pass\ the\ callback,\ because\ we're\ not\ done\ yet.}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ ok\ =\ writer.write(data,\ encoding);}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}\ while\ (i\ >\ 0\ \&\&\ ok);}
+\DoxyCodeLine{\ \ \ \ if\ (i\ >\ 0)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ //\ had\ to\ stop\ early!}
+\DoxyCodeLine{\ \ \ \ \ \ //\ write\ some\ more\ once\ it\ drains}
+\DoxyCodeLine{\ \ \ \ \ \ writer.once('drain',\ write);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md920}{}\doxysubsubsection{\texorpdfstring{Event\+: \textquotesingle{}error\textquotesingle{}}{Event\+: \textquotesingle{}error\textquotesingle{}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md920}
+
+\begin{DoxyItemize}
+\item \{Error\}
+\end{DoxyItemize}
+
+Emitted if there was an error when writing or piping data.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md921}{}\doxysubsubsection{\texorpdfstring{Event\+: \textquotesingle{}finish\textquotesingle{}}{Event\+: \textquotesingle{}finish\textquotesingle{}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md921}
+When the \`{}stream.end()\`{} method has been called, and all data has been flushed to the underlying system, this event is emitted.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ writer\ =\ getWritableStreamSomehow();}
+\DoxyCodeLine{for\ (var\ i\ =\ 0;\ i\ <\ 100;\ i\ ++)\ \{}
+\DoxyCodeLine{\ \ writer.write('hello,\ \#\$\{i\}!\(\backslash\)n');}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{writer.end('this\ is\ the\ end\(\backslash\)n');}
+\DoxyCodeLine{writer.on('finish',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ console.error('all\ writes\ are\ now\ complete.');}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md922}{}\doxysubsubsection{\texorpdfstring{Event\+: \textquotesingle{}pipe\textquotesingle{}}{Event\+: \textquotesingle{}pipe\textquotesingle{}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md922}
+
+\begin{DoxyItemize}
+\item {\ttfamily src} \{stream.\+Readable\} source stream that is piping to this writable
+\end{DoxyItemize}
+
+This is emitted whenever the \`{}stream.pipe()\`{} method is called on a readable stream, adding this writable to its set of destinations.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ writer\ =\ getWritableStreamSomehow();}
+\DoxyCodeLine{var\ reader\ =\ getReadableStreamSomehow();}
+\DoxyCodeLine{writer.on('pipe',\ (src)\ =>\ \{}
+\DoxyCodeLine{\ \ console.error('something\ is\ piping\ into\ the\ writer');}
+\DoxyCodeLine{\ \ assert.equal(src,\ reader);}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{reader.pipe(writer);}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md923}{}\doxysubsubsection{\texorpdfstring{Event\+: \textquotesingle{}unpipe\textquotesingle{}}{Event\+: \textquotesingle{}unpipe\textquotesingle{}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md923}
+
+\begin{DoxyItemize}
+\item {\ttfamily src} \{Readable Stream\} The source stream that unpiped this writable
+\end{DoxyItemize}
+
+This is emitted whenever the \`{}stream.unpipe()\`{} method is called on a readable stream, removing this writable from its set of destinations.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ writer\ =\ getWritableStreamSomehow();}
+\DoxyCodeLine{var\ reader\ =\ getReadableStreamSomehow();}
+\DoxyCodeLine{writer.on('unpipe',\ (src)\ =>\ \{}
+\DoxyCodeLine{\ \ console.error('something\ has\ stopped\ piping\ into\ the\ writer');}
+\DoxyCodeLine{\ \ assert.equal(src,\ reader);}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{reader.pipe(writer);}
+\DoxyCodeLine{reader.unpipe(writer);}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md924}{}\doxysubsubsection{\texorpdfstring{writable.\+cork()}{writable.\+cork()}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md924}
+Forces buffering of all writes.
+
+Buffered data will be flushed either at \`{}stream.uncork()\`{} or at \`{}stream.end()\`{} call.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md925}{}\doxysubsubsection{\texorpdfstring{writable.\+end(\mbox{[}chunk\mbox{]}\mbox{[}, encoding\mbox{]}\mbox{[}, callback\mbox{]})}{writable.\+end(\mbox{[}chunk\mbox{]}\mbox{[}, encoding\mbox{]}\mbox{[}, callback\mbox{]})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md925}
+
+\begin{DoxyItemize}
+\item {\ttfamily chunk} \{String\texorpdfstring{$\vert$}{|}\+Buffer\} Optional data to write
+\item {\ttfamily encoding} \{String\} The encoding, if {\ttfamily chunk} is a String
+\item {\ttfamily callback} \{Function\} Optional callback for when the stream is finished
+\end{DoxyItemize}
+
+Call this method when no more data will be written to the stream. If supplied, the callback is attached as a listener on the \`{}\textquotesingle{}finish\textquotesingle{}\`{} event.
+
+Calling \`{}stream.write()\`{} after calling \`{}stream.end()\`{} will raise an error.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ write\ 'hello,\ '\ and\ then\ end\ with\ 'world!'}
+\DoxyCodeLine{var\ file\ =\ fs.createWriteStream('example.txt');}
+\DoxyCodeLine{file.write('hello,\ ');}
+\DoxyCodeLine{file.end('world!');}
+\DoxyCodeLine{//\ writing\ more\ now\ is\ not\ allowed!}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md926}{}\doxysubsubsection{\texorpdfstring{writable.\+set\+Default\+Encoding(encoding)}{writable.\+set\+Default\+Encoding(encoding)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md926}
+
+\begin{DoxyItemize}
+\item {\ttfamily encoding} \{String\} The new default encoding
+\end{DoxyItemize}
+
+Sets the default encoding for a writable stream.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md927}{}\doxysubsubsection{\texorpdfstring{writable.\+uncork()}{writable.\+uncork()}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md927}
+Flush all data, buffered since \`{}stream.cork()\`{} call.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md928}{}\doxysubsubsection{\texorpdfstring{writable.\+write(chunk\mbox{[}, encoding\mbox{]}\mbox{[}, callback\mbox{]})}{writable.\+write(chunk\mbox{[}, encoding\mbox{]}\mbox{[}, callback\mbox{]})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md928}
+
+\begin{DoxyItemize}
+\item {\ttfamily chunk} \{String\texorpdfstring{$\vert$}{|}\+Buffer\} The data to write
+\item {\ttfamily encoding} \{String\} The encoding, if {\ttfamily chunk} is a String
+\item {\ttfamily callback} \{Function\} Callback for when this chunk of data is flushed
+\item Returns\+: \{Boolean\} {\ttfamily true} if the data was handled completely.
+\end{DoxyItemize}
+
+This method writes some data to the underlying system, and calls the supplied callback once the data has been fully handled.
+
+The return value indicates if you should continue writing right now. If the data had to be buffered internally, then it will return {\ttfamily false}. Otherwise, it will return {\ttfamily true}.
+
+This return value is strictly advisory. You MAY continue to write, even if it returns {\ttfamily false}. However, writes will be buffered in memory, so it is best not to do this excessively. Instead, wait for the \`{}\textquotesingle{}drain\textquotesingle{}\`{} event before writing more data.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md929}{}\doxysection{\texorpdfstring{API for Stream Implementors}{API for Stream Implementors}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md929}
+To implement any sort of stream, the pattern is the same\+:
+
+
+\begin{DoxyEnumerate}
+\item Extend the appropriate parent class in your own subclass. (The \href{https://nodejs.org/docs/v5.8.0/api/util.html\#util_util_inherits_constructor_superconstructor}{\texttt{ {\ttfamily util.\+inherits()}}} method is particularly helpful for this.)
+\item Call the appropriate parent class constructor in your constructor, to be sure that the internal mechanisms are set up properly.
+\item Implement one or more specific methods, as detailed below.
+\end{DoxyEnumerate}
+
+The class to extend and the method(s) to implement depend on the sort of stream class you are writing\+:
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\cellcolor{\tableheadbgcolor}\textbf{ 
+
+Use-\/case
+
+}&\cellcolor{\tableheadbgcolor}\textbf{ 
+
+Class
+
+}&\cellcolor{\tableheadbgcolor}\textbf{ 
+
+Method(s) to implement
+
+}\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\cellcolor{\tableheadbgcolor}\textbf{ 
+
+Use-\/case
+
+}&\cellcolor{\tableheadbgcolor}\textbf{ 
+
+Class
+
+}&\cellcolor{\tableheadbgcolor}\textbf{ 
+
+Method(s) to implement
+
+}\\\cline{1-3}
+\endhead
+
+
+Reading only
+
+&
+
+Readable
+
+&
+
+{\ttfamily \+\_\+read}
+
+\\\cline{1-3}
+
+
+Writing only
+
+&
+
+Writable
+
+&
+
+{\ttfamily \+\_\+write}, {\ttfamily \+\_\+writev}
+
+\\\cline{1-3}
+
+
+Reading and writing
+
+&
+
+Duplex
+
+&
+
+{\ttfamily \+\_\+read}, {\ttfamily \+\_\+write}, {\ttfamily \+\_\+writev}
+
+\\\cline{1-3}
+
+
+Operate on written data, then read the result
+
+&
+
+Transform
+
+&
+
+{\ttfamily \+\_\+transform}, {\ttfamily \+\_\+flush}
+
+\\\cline{1-3}
+\end{longtabu}
+
+
+In your implementation code, it is very important to never call the methods described in API for Stream Consumers. Otherwise, you can potentially cause adverse side effects in programs that consume your streaming interfaces.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md930}{}\doxysubsection{\texorpdfstring{Class\+: stream.\+Duplex}{Class\+: stream.\+Duplex}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md930}
+A "{}duplex"{} stream is one that is both Readable and Writable, such as a TCP socket connection.
+
+Note that {\ttfamily stream.\+Duplex} is an abstract class designed to be extended with an underlying implementation of the \`{}stream.\+\_\+read(size)\`{} and \`{}stream.\+\_\+write(chunk, encoding, callback)\`{} methods as you would with a Readable or Writable stream class.
+
+Since Java\+Script doesn\textquotesingle{}t have multiple prototypal inheritance, this class prototypally inherits from Readable, and then parasitically from Writable. It is thus up to the user to implement both the low-\/level \`{}stream.\+\_\+read(n)\`{} method as well as the low-\/level \`{}stream.\+\_\+write(chunk, encoding, callback)\`{} method on extension duplex classes.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md931}{}\doxysubsubsection{\texorpdfstring{new stream.\+Duplex(options)}{new stream.\+Duplex(options)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md931}
+
+\begin{DoxyItemize}
+\item {\ttfamily options} \{Object\} Passed to both Writable and Readable constructors. Also has the following fields\+:
+\begin{DoxyItemize}
+\item {\ttfamily allow\+Half\+Open} \{Boolean\} Default = {\ttfamily true}. If set to {\ttfamily false}, then the stream will automatically end the readable side when the writable side ends and vice versa.
+\item {\ttfamily readable\+Object\+Mode} \{Boolean\} Default = {\ttfamily false}. Sets {\ttfamily object\+Mode} for readable side of the stream. Has no effect if {\ttfamily object\+Mode} is {\ttfamily true}.
+\item {\ttfamily writable\+Object\+Mode} \{Boolean\} Default = {\ttfamily false}. Sets {\ttfamily object\+Mode} for writable side of the stream. Has no effect if {\ttfamily object\+Mode} is {\ttfamily true}.
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+In classes that extend the Duplex class, make sure to call the constructor so that the buffering settings can be properly initialized.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md932}{}\doxysubsection{\texorpdfstring{Class\+: stream.\+Pass\+Through}{Class\+: stream.\+Pass\+Through}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md932}
+This is a trivial implementation of a Transform stream that simply passes the input bytes across to the output. Its purpose is mainly for examples and testing, but there are occasionally use cases where it can come in handy as a building block for novel sorts of streams.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md933}{}\doxysubsection{\texorpdfstring{Class\+: stream.\+Readable}{Class\+: stream.\+Readable}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md933}
+{\ttfamily stream.\+Readable} is an abstract class designed to be extended with an underlying implementation of the \`{}stream.\+\_\+read(size)\`{} method.
+
+Please see API for Stream Consumers for how to consume streams in your programs. What follows is an explanation of how to implement Readable streams in your programs.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md934}{}\doxysubsubsection{\texorpdfstring{new stream.\+Readable(\mbox{[}options\mbox{]})}{new stream.\+Readable(\mbox{[}options\mbox{]})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md934}
+
+\begin{DoxyItemize}
+\item {\ttfamily options} \{Object\}
+\begin{DoxyItemize}
+\item {\ttfamily high\+Water\+Mark} \{Number\} The maximum number of bytes to store in the internal buffer before ceasing to read from the underlying resource. Default = {\ttfamily 16384} (16kb), or {\ttfamily 16} for {\ttfamily object\+Mode} streams
+\item {\ttfamily encoding} \{String\} If specified, then buffers will be decoded to strings using the specified encoding. Default = {\ttfamily null}
+\item {\ttfamily object\+Mode} \{Boolean\} Whether this stream should behave as a stream of objects. Meaning that \`{}stream.read(n)\`{} returns a single value instead of a Buffer of size n. Default = {\ttfamily false}
+\item {\ttfamily read} \{Function\} Implementation for the \`{}stream.\+\_\+read()\`{} method.
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+In classes that extend the Readable class, make sure to call the Readable constructor so that the buffering settings can be properly initialized.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md935}{}\doxysubsubsection{\texorpdfstring{readable.\+\_\+read(size)}{readable.\+\_\+read(size)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md935}
+
+\begin{DoxyItemize}
+\item {\ttfamily size} \{Number\} Number of bytes to read asynchronously
+\end{DoxyItemize}
+
+Note\+: {\bfseries{Implement this method, but do NOT call it directly.}}
+
+This method is prefixed with an underscore because it is internal to the class that defines it and should only be called by the internal Readable class methods. All Readable stream implementations must provide a \+\_\+read method to fetch data from the underlying resource.
+
+When {\ttfamily \+\_\+read()} is called, if data is available from the resource, the {\ttfamily \+\_\+read()} implementation should start pushing that data into the read queue by calling \`{}this.push(data\+Chunk)\`{}. {\ttfamily \+\_\+read()} should continue reading from the resource and pushing data until push returns {\ttfamily false}, at which point it should stop reading from the resource. Only when {\ttfamily \+\_\+read()} is called again after it has stopped should it start reading more data from the resource and pushing that data onto the queue.
+
+Note\+: once the {\ttfamily \+\_\+read()} method is called, it will not be called again until the \`{}stream.push()\`{} method is called.
+
+The {\ttfamily size} argument is advisory. Implementations where a "{}read"{} is a single call that returns data can use this to know how much data to fetch. Implementations where that is not relevant, such as TCP or TLS, may ignore this argument, and simply provide data whenever it becomes available. There is no need, for example to "{}wait"{} until {\ttfamily size} bytes are available before calling \`{}stream.push(chunk)\`{}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md936}{}\doxysubsubsection{\texorpdfstring{readable.\+push(chunk\mbox{[}, encoding\mbox{]})}{readable.\+push(chunk\mbox{[}, encoding\mbox{]})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md936}
+
+\begin{DoxyItemize}
+\item {\ttfamily chunk} \{Buffer\texorpdfstring{$\vert$}{|}\+Null\texorpdfstring{$\vert$}{|}\+String\} Chunk of data to push into the read queue
+\item {\ttfamily encoding} \{String\} Encoding of String chunks. Must be a valid Buffer encoding, such as `\textquotesingle{}utf8'{\ttfamily or}\textquotesingle{}ascii\textquotesingle{}\`{}
+\item return \{Boolean\} Whether or not more pushes should be performed
+\end{DoxyItemize}
+
+Note\+: {\bfseries{This method should be called by Readable implementors, NOT by consumers of Readable streams.}}
+
+If a value other than null is passed, The {\ttfamily push()} method adds a chunk of data into the queue for subsequent stream processors to consume. If {\ttfamily null} is passed, it signals the end of the stream (EOF), after which no more data can be written.
+
+The data added with {\ttfamily push()} can be pulled out by calling the \`{}stream.read()\`{} method when the \`{}\textquotesingle{}readable\textquotesingle{}\`{} event fires.
+
+This API is designed to be as flexible as possible. For example, you may be wrapping a lower-\/level source which has some sort of pause/resume mechanism, and a data callback. In those cases, you could wrap the low-\/level source object by doing something like this\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ source\ is\ an\ object\ with\ readStop()\ and\ readStart()\ methods,}
+\DoxyCodeLine{//\ and\ an\ \`{}ondata`\ member\ that\ gets\ called\ when\ it\ has\ data,\ and}
+\DoxyCodeLine{//\ an\ \`{}onend`\ member\ that\ gets\ called\ when\ the\ data\ is\ over.}
+\DoxyCodeLine{}
+\DoxyCodeLine{util.inherits(SourceWrapper,\ Readable);}
+\DoxyCodeLine{}
+\DoxyCodeLine{function\ SourceWrapper(options)\ \{}
+\DoxyCodeLine{\ \ Readable.call(this,\ options);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ this.\_source\ =\ getLowlevelSourceObject();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ //\ Every\ time\ there's\ data,\ we\ push\ it\ into\ the\ internal\ buffer.}
+\DoxyCodeLine{\ \ this.\_source.ondata\ =\ (chunk)\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ //\ if\ push()\ returns\ false,\ then\ we\ need\ to\ stop\ reading\ from\ source}
+\DoxyCodeLine{\ \ \ \ if\ (!this.push(chunk))}
+\DoxyCodeLine{\ \ \ \ \ \ this.\_source.readStop();}
+\DoxyCodeLine{\ \ \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ //\ When\ the\ source\ ends,\ we\ push\ the\ EOF-\/signaling\ \`{}null`\ chunk}
+\DoxyCodeLine{\ \ this.\_source.onend\ =\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ this.push(null);}
+\DoxyCodeLine{\ \ \};}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ \_read\ will\ be\ called\ when\ the\ stream\ wants\ to\ pull\ more\ data\ in}
+\DoxyCodeLine{//\ the\ advisory\ size\ argument\ is\ ignored\ in\ this\ case.}
+\DoxyCodeLine{SourceWrapper.prototype.\_read\ =\ function(size)\ \{}
+\DoxyCodeLine{\ \ this.\_source.readStart();}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md937}{}\doxysubsubsection{\texorpdfstring{Example\+: A Counting Stream}{Example\+: A Counting Stream}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md937}
+This is a basic example of a Readable stream. It emits the numerals from 1 to 1,000,000 in ascending order, and then ends.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ Readable\ =\ require('stream').Readable;}
+\DoxyCodeLine{const\ util\ =\ require('util');}
+\DoxyCodeLine{util.inherits(Counter,\ Readable);}
+\DoxyCodeLine{}
+\DoxyCodeLine{function\ Counter(opt)\ \{}
+\DoxyCodeLine{\ \ Readable.call(this,\ opt);}
+\DoxyCodeLine{\ \ this.\_max\ =\ 1000000;}
+\DoxyCodeLine{\ \ this.\_index\ =\ 1;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{Counter.prototype.\_read\ =\ function()\ \{}
+\DoxyCodeLine{\ \ var\ i\ =\ this.\_index++;}
+\DoxyCodeLine{\ \ if\ (i\ >\ this.\_max)}
+\DoxyCodeLine{\ \ \ \ this.push(null);}
+\DoxyCodeLine{\ \ else\ \{}
+\DoxyCodeLine{\ \ \ \ var\ str\ =\ ''\ +\ i;}
+\DoxyCodeLine{\ \ \ \ var\ buf\ =\ new\ Buffer(str,\ 'ascii');}
+\DoxyCodeLine{\ \ \ \ this.push(buf);}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md938}{}\doxysubsubsection{\texorpdfstring{Example\+: Simple\+Protocol v1 (Sub-\/optimal)}{Example\+: Simple\+Protocol v1 (Sub-\/optimal)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md938}
+This is similar to the {\ttfamily parse\+Header} function described here, but implemented as a custom stream. Also, note that this implementation does not convert the incoming data to a string.
+
+However, this would be better implemented as a Transform stream. See Simple\+Protocol v2 for a better implementation.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ A\ parser\ for\ a\ simple\ data\ protocol.}
+\DoxyCodeLine{//\ The\ "{}header"{}\ is\ a\ JSON\ object,\ followed\ by\ 2\ \(\backslash\)n\ characters,\ and}
+\DoxyCodeLine{//\ then\ a\ message\ body.}
+\DoxyCodeLine{//}
+\DoxyCodeLine{//\ NOTE:\ This\ can\ be\ done\ more\ simply\ as\ a\ Transform\ stream!}
+\DoxyCodeLine{//\ Using\ Readable\ directly\ for\ this\ is\ sub-\/optimal.\ See\ the}
+\DoxyCodeLine{//\ alternative\ example\ below\ under\ the\ Transform\ section.}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ Readable\ =\ require('stream').Readable;}
+\DoxyCodeLine{const\ util\ =\ require('util');}
+\DoxyCodeLine{}
+\DoxyCodeLine{util.inherits(SimpleProtocol,\ Readable);}
+\DoxyCodeLine{}
+\DoxyCodeLine{function\ SimpleProtocol(source,\ options)\ \{}
+\DoxyCodeLine{\ \ if\ (!(this\ instanceof\ SimpleProtocol))}
+\DoxyCodeLine{\ \ \ \ return\ new\ SimpleProtocol(source,\ options);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ Readable.call(this,\ options);}
+\DoxyCodeLine{\ \ this.\_inBody\ =\ false;}
+\DoxyCodeLine{\ \ this.\_sawFirstCr\ =\ false;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ //\ source\ is\ a\ readable\ stream,\ such\ as\ a\ socket\ or\ file}
+\DoxyCodeLine{\ \ this.\_source\ =\ source;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ var\ self\ =\ this;}
+\DoxyCodeLine{\ \ source.on('end',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ self.push(null);}
+\DoxyCodeLine{\ \ \});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ //\ give\ it\ a\ kick\ whenever\ the\ source\ is\ readable}
+\DoxyCodeLine{\ \ //\ read(0)\ will\ not\ consume\ any\ bytes}
+\DoxyCodeLine{\ \ source.on('readable',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ self.read(0);}
+\DoxyCodeLine{\ \ \});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ this.\_rawHeader\ =\ [];}
+\DoxyCodeLine{\ \ this.header\ =\ null;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{SimpleProtocol.prototype.\_read\ =\ function(n)\ \{}
+\DoxyCodeLine{\ \ if\ (!this.\_inBody)\ \{}
+\DoxyCodeLine{\ \ \ \ var\ chunk\ =\ this.\_source.read();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ //\ if\ the\ source\ doesn't\ have\ data,\ we\ don't\ have\ data\ yet.}
+\DoxyCodeLine{\ \ \ \ if\ (chunk\ ===\ null)}
+\DoxyCodeLine{\ \ \ \ \ \ return\ this.push('');}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ //\ check\ if\ the\ chunk\ has\ a\ \(\backslash\)n\(\backslash\)n}
+\DoxyCodeLine{\ \ \ \ var\ split\ =\ -\/1;}
+\DoxyCodeLine{\ \ \ \ for\ (var\ i\ =\ 0;\ i\ <\ chunk.length;\ i++)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ if\ (chunk[i]\ ===\ 10)\ \{\ //\ '\(\backslash\)n'}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ if\ (this.\_sawFirstCr)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ split\ =\ i;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ break;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}\ else\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ this.\_sawFirstCr\ =\ true;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \}\ else\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ this.\_sawFirstCr\ =\ false;}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ if\ (split\ ===\ -\/1)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ //\ still\ waiting\ for\ the\ \(\backslash\)n\(\backslash\)n}
+\DoxyCodeLine{\ \ \ \ \ \ //\ stash\ the\ chunk,\ and\ try\ again.}
+\DoxyCodeLine{\ \ \ \ \ \ this.\_rawHeader.push(chunk);}
+\DoxyCodeLine{\ \ \ \ \ \ this.push('');}
+\DoxyCodeLine{\ \ \ \ \}\ else\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ this.\_inBody\ =\ true;}
+\DoxyCodeLine{\ \ \ \ \ \ var\ h\ =\ chunk.slice(0,\ split);}
+\DoxyCodeLine{\ \ \ \ \ \ this.\_rawHeader.push(h);}
+\DoxyCodeLine{\ \ \ \ \ \ var\ header\ =\ Buffer.concat(this.\_rawHeader).toString();}
+\DoxyCodeLine{\ \ \ \ \ \ try\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ this.header\ =\ JSON.parse(header);}
+\DoxyCodeLine{\ \ \ \ \ \ \}\ catch\ (er)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ this.emit('error',\ new\ Error('invalid\ simple\ protocol\ data'));}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ return;}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ //\ now,\ because\ we\ got\ some\ extra\ data,\ unshift\ the\ rest}
+\DoxyCodeLine{\ \ \ \ \ \ //\ back\ into\ the\ read\ queue\ so\ that\ our\ consumer\ will\ see\ it.}
+\DoxyCodeLine{\ \ \ \ \ \ var\ b\ =\ chunk.slice(split);}
+\DoxyCodeLine{\ \ \ \ \ \ this.unshift(b);}
+\DoxyCodeLine{\ \ \ \ \ \ //\ calling\ unshift\ by\ itself\ does\ not\ reset\ the\ reading\ state}
+\DoxyCodeLine{\ \ \ \ \ \ //\ of\ the\ stream;\ since\ we're\ inside\ \_read,\ doing\ an\ additional}
+\DoxyCodeLine{\ \ \ \ \ \ //\ push('')\ will\ reset\ the\ state\ appropriately.}
+\DoxyCodeLine{\ \ \ \ \ \ this.push('');}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ //\ and\ let\ them\ know\ that\ we\ are\ done\ parsing\ the\ header.}
+\DoxyCodeLine{\ \ \ \ \ \ this.emit('header',\ this.header);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \}\ else\ \{}
+\DoxyCodeLine{\ \ \ \ //\ from\ there\ on,\ just\ provide\ the\ data\ to\ our\ consumer.}
+\DoxyCodeLine{\ \ \ \ //\ careful\ not\ to\ push(null),\ since\ that\ would\ indicate\ EOF.}
+\DoxyCodeLine{\ \ \ \ var\ chunk\ =\ this.\_source.read();}
+\DoxyCodeLine{\ \ \ \ if\ (chunk)\ this.push(chunk);}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Usage:}
+\DoxyCodeLine{//\ var\ parser\ =\ new\ SimpleProtocol(source);}
+\DoxyCodeLine{//\ Now\ parser\ is\ a\ readable\ stream\ that\ will\ emit\ 'header'}
+\DoxyCodeLine{//\ with\ the\ parsed\ header\ data.}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md939}{}\doxysubsection{\texorpdfstring{Class\+: stream.\+Transform}{Class\+: stream.\+Transform}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md939}
+A "{}transform"{} stream is a duplex stream where the output is causally connected in some way to the input, such as a \href{zlib.html}{\texttt{ zlib}} stream or a \href{crypto.html}{\texttt{ crypto}} stream.
+
+There is no requirement that the output be the same size as the input, the same number of chunks, or arrive at the same time. For example, a Hash stream will only ever have a single chunk of output which is provided when the input is ended. A zlib stream will produce output that is either much smaller or much larger than its input.
+
+Rather than implement the \`{}stream.\+\_\+read()\`{} and \`{}stream.\+\_\+write()\`{} methods, Transform classes must implement the \`{}stream.\+\_\+transform()\`{} method, and may optionally also implement the \`{}stream.\+\_\+flush()\`{} method. (See below.)\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md940}{}\doxysubsubsection{\texorpdfstring{new stream.\+Transform(\mbox{[}options\mbox{]})}{new stream.\+Transform(\mbox{[}options\mbox{]})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md940}
+
+\begin{DoxyItemize}
+\item {\ttfamily options} \{Object\} Passed to both Writable and Readable constructors. Also has the following fields\+:
+\begin{DoxyItemize}
+\item {\ttfamily transform} \{Function\} Implementation for the \`{}stream.\+\_\+transform()\`{} method.
+\item {\ttfamily flush} \{Function\} Implementation for the \`{}stream.\+\_\+flush()\`{} method.
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+In classes that extend the Transform class, make sure to call the constructor so that the buffering settings can be properly initialized.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md941}{}\doxysubsubsection{\texorpdfstring{Events\+: \textquotesingle{}finish\textquotesingle{} and \textquotesingle{}end\textquotesingle{}}{Events\+: \textquotesingle{}finish\textquotesingle{} and \textquotesingle{}end\textquotesingle{}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md941}
+The \`{}\textquotesingle{}finish\textquotesingle{}\`{} and \`{}\textquotesingle{}end\textquotesingle{}\`{} events are from the parent Writable and Readable classes respectively. The `\textquotesingle{}finish'{\ttfamily event is fired after \mbox{[}}stream.\+end(){\ttfamily \mbox{]}\mbox{[}stream-\/end\mbox{]} is called and all chunks have been processed by \mbox{[}}stream.\+\_\+transform(){\ttfamily \mbox{]}\mbox{[}stream-\/\+\_\+transform\mbox{]},}\textquotesingle{}end\textquotesingle{}{\ttfamily is fired after all data has been output which is after the callback in \mbox{[}}stream.\+\_\+flush()\`{}\mbox{]}stream-\/\+\_\+flush has been called.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md942}{}\doxysubsubsection{\texorpdfstring{transform.\+\_\+flush(callback)}{transform.\+\_\+flush(callback)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md942}
+
+\begin{DoxyItemize}
+\item {\ttfamily callback} \{Function\} Call this function (optionally with an error argument) when you are done flushing any remaining data.
+\end{DoxyItemize}
+
+Note\+: {\bfseries{This function MUST NOT be called directly.}} It MAY be implemented by child classes, and if so, will be called by the internal Transform class methods only.
+
+In some cases, your transform operation may need to emit a bit more data at the end of the stream. For example, a {\ttfamily Zlib} compression stream will store up some internal state so that it can optimally compress the output. At the end, however, it needs to do the best it can with what is left, so that the data will be complete.
+
+In those cases, you can implement a {\ttfamily \+\_\+flush()} method, which will be called at the very end, after all the written data is consumed, but before emitting \`{}\textquotesingle{}end\textquotesingle{}\`{} to signal the end of the readable side. Just like with \`{}stream.\+\_\+transform()\`{}, call {\ttfamily transform.\+push(chunk)} zero or more times, as appropriate, and call {\ttfamily callback} when the flush operation is complete.
+
+This method is prefixed with an underscore because it is internal to the class that defines it, and should not be called directly by user programs. However, you {\bfseries{are}} expected to override this method in your own extension classes.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md943}{}\doxysubsubsection{\texorpdfstring{transform.\+\_\+transform(chunk, encoding, callback)}{transform.\+\_\+transform(chunk, encoding, callback)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md943}
+
+\begin{DoxyItemize}
+\item {\ttfamily chunk} \{Buffer\texorpdfstring{$\vert$}{|}\+String\} The chunk to be transformed. Will {\bfseries{always}} be a buffer unless the {\ttfamily decode\+Strings} option was set to {\ttfamily false}.
+\item {\ttfamily encoding} \{String\} If the chunk is a string, then this is the encoding type. If chunk is a buffer, then this is the special value -\/ \textquotesingle{}buffer\textquotesingle{}, ignore it in this case.
+\item {\ttfamily callback} \{Function\} Call this function (optionally with an error argument and data) when you are done processing the supplied chunk.
+\end{DoxyItemize}
+
+Note\+: {\bfseries{This function MUST NOT be called directly.}} It should be implemented by child classes, and called by the internal Transform class methods only.
+
+All Transform stream implementations must provide a {\ttfamily \+\_\+transform()} method to accept input and produce output.
+
+{\ttfamily \+\_\+transform()} should do whatever has to be done in this specific Transform class, to handle the bytes being written, and pass them off to the readable portion of the interface. Do asynchronous I/O, process things, and so on.
+
+Call {\ttfamily transform.\+push(output\+Chunk)} 0 or more times to generate output from this input chunk, depending on how much data you want to output as a result of this chunk.
+
+Call the callback function only when the current chunk is completely consumed. Note that there may or may not be output as a result of any particular input chunk. If you supply a second argument to the callback it will be passed to the push method. In other words the following are equivalent\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{transform.prototype.\_transform\ =\ function\ (data,\ encoding,\ callback)\ \{}
+\DoxyCodeLine{\ \ this.push(data);}
+\DoxyCodeLine{\ \ callback();}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{transform.prototype.\_transform\ =\ function\ (data,\ encoding,\ callback)\ \{}
+\DoxyCodeLine{\ \ callback(null,\ data);}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+This method is prefixed with an underscore because it is internal to the class that defines it, and should not be called directly by user programs. However, you {\bfseries{are}} expected to override this method in your own extension classes.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md944}{}\doxysubsubsection{\texorpdfstring{Example\+: {\ttfamily Simple\+Protocol} parser v2}{Example\+: {\ttfamily Simple\+Protocol} parser v2}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md944}
+The example here of a simple protocol parser can be implemented simply by using the higher level Transform stream class, similar to the {\ttfamily parse\+Header} and {\ttfamily Simple\+Protocol v1} examples.
+
+In this example, rather than providing the input as an argument, it would be piped into the parser, which is a more idiomatic Node.\+js stream approach.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ util\ =\ require('util');}
+\DoxyCodeLine{const\ Transform\ =\ require('stream').Transform;}
+\DoxyCodeLine{util.inherits(SimpleProtocol,\ Transform);}
+\DoxyCodeLine{}
+\DoxyCodeLine{function\ SimpleProtocol(options)\ \{}
+\DoxyCodeLine{\ \ if\ (!(this\ instanceof\ SimpleProtocol))}
+\DoxyCodeLine{\ \ \ \ return\ new\ SimpleProtocol(options);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ Transform.call(this,\ options);}
+\DoxyCodeLine{\ \ this.\_inBody\ =\ false;}
+\DoxyCodeLine{\ \ this.\_sawFirstCr\ =\ false;}
+\DoxyCodeLine{\ \ this.\_rawHeader\ =\ [];}
+\DoxyCodeLine{\ \ this.header\ =\ null;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{SimpleProtocol.prototype.\_transform\ =\ function(chunk,\ encoding,\ done)\ \{}
+\DoxyCodeLine{\ \ if\ (!this.\_inBody)\ \{}
+\DoxyCodeLine{\ \ \ \ //\ check\ if\ the\ chunk\ has\ a\ \(\backslash\)n\(\backslash\)n}
+\DoxyCodeLine{\ \ \ \ var\ split\ =\ -\/1;}
+\DoxyCodeLine{\ \ \ \ for\ (var\ i\ =\ 0;\ i\ <\ chunk.length;\ i++)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ if\ (chunk[i]\ ===\ 10)\ \{\ //\ '\(\backslash\)n'}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ if\ (this.\_sawFirstCr)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ split\ =\ i;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ break;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}\ else\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ this.\_sawFirstCr\ =\ true;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \}\ else\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ this.\_sawFirstCr\ =\ false;}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ if\ (split\ ===\ -\/1)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ //\ still\ waiting\ for\ the\ \(\backslash\)n\(\backslash\)n}
+\DoxyCodeLine{\ \ \ \ \ \ //\ stash\ the\ chunk,\ and\ try\ again.}
+\DoxyCodeLine{\ \ \ \ \ \ this.\_rawHeader.push(chunk);}
+\DoxyCodeLine{\ \ \ \ \}\ else\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ this.\_inBody\ =\ true;}
+\DoxyCodeLine{\ \ \ \ \ \ var\ h\ =\ chunk.slice(0,\ split);}
+\DoxyCodeLine{\ \ \ \ \ \ this.\_rawHeader.push(h);}
+\DoxyCodeLine{\ \ \ \ \ \ var\ header\ =\ Buffer.concat(this.\_rawHeader).toString();}
+\DoxyCodeLine{\ \ \ \ \ \ try\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ this.header\ =\ JSON.parse(header);}
+\DoxyCodeLine{\ \ \ \ \ \ \}\ catch\ (er)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ this.emit('error',\ new\ Error('invalid\ simple\ protocol\ data'));}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ return;}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ //\ and\ let\ them\ know\ that\ we\ are\ done\ parsing\ the\ header.}
+\DoxyCodeLine{\ \ \ \ \ \ this.emit('header',\ this.header);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ //\ now,\ because\ we\ got\ some\ extra\ data,\ emit\ this\ first.}
+\DoxyCodeLine{\ \ \ \ \ \ this.push(chunk.slice(split));}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \}\ else\ \{}
+\DoxyCodeLine{\ \ \ \ //\ from\ there\ on,\ just\ provide\ the\ data\ to\ our\ consumer\ as-\/is.}
+\DoxyCodeLine{\ \ \ \ this.push(chunk);}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\ \ done();}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Usage:}
+\DoxyCodeLine{//\ var\ parser\ =\ new\ SimpleProtocol();}
+\DoxyCodeLine{//\ source.pipe(parser)}
+\DoxyCodeLine{//\ Now\ parser\ is\ a\ readable\ stream\ that\ will\ emit\ 'header'}
+\DoxyCodeLine{//\ with\ the\ parsed\ header\ data.}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md945}{}\doxysubsection{\texorpdfstring{Class\+: stream.\+Writable}{Class\+: stream.\+Writable}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md945}
+{\ttfamily stream.\+Writable} is an abstract class designed to be extended with an underlying implementation of the \`{}stream.\+\_\+write(chunk, encoding, callback)\`{} method.
+
+Please see API for Stream Consumers for how to consume writable streams in your programs. What follows is an explanation of how to implement Writable streams in your programs.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md946}{}\doxysubsubsection{\texorpdfstring{new stream.\+Writable(\mbox{[}options\mbox{]})}{new stream.\+Writable(\mbox{[}options\mbox{]})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md946}
+
+\begin{DoxyItemize}
+\item {\ttfamily options} \{Object\}
+\begin{DoxyItemize}
+\item {\ttfamily high\+Water\+Mark} \{Number\} Buffer level when \`{}stream.write()\`{} starts returning {\ttfamily false}. Default = {\ttfamily 16384} (16kb), or {\ttfamily 16} for {\ttfamily object\+Mode} streams.
+\item {\ttfamily decode\+Strings} \{Boolean\} Whether or not to decode strings into Buffers before passing them to \`{}stream.\+\_\+write()\`{}. Default = {\ttfamily true}
+\item {\ttfamily object\+Mode} \{Boolean\} Whether or not the \`{}stream.write(any\+Obj)\`{} is a valid operation. If set you can write arbitrary data instead of only {\ttfamily Buffer} / {\ttfamily String} data. Default = {\ttfamily false}
+\item {\ttfamily write} \{Function\} Implementation for the \`{}stream.\+\_\+write()\`{} method.
+\item {\ttfamily writev} \{Function\} Implementation for the \`{}stream.\+\_\+writev()\`{} method.
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+In classes that extend the Writable class, make sure to call the constructor so that the buffering settings can be properly initialized.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md947}{}\doxysubsubsection{\texorpdfstring{writable.\+\_\+write(chunk, encoding, callback)}{writable.\+\_\+write(chunk, encoding, callback)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md947}
+
+\begin{DoxyItemize}
+\item {\ttfamily chunk} \{Buffer\texorpdfstring{$\vert$}{|}\+String\} The chunk to be written. Will {\bfseries{always}} be a buffer unless the {\ttfamily decode\+Strings} option was set to {\ttfamily false}.
+\item {\ttfamily encoding} \{String\} If the chunk is a string, then this is the encoding type. If chunk is a buffer, then this is the special value -\/ \textquotesingle{}buffer\textquotesingle{}, ignore it in this case.
+\item {\ttfamily callback} \{Function\} Call this function (optionally with an error argument) when you are done processing the supplied chunk.
+\end{DoxyItemize}
+
+All Writable stream implementations must provide a \`{}stream.\+\_\+write()\`{} method to send data to the underlying resource.
+
+Note\+: {\bfseries{This function MUST NOT be called directly.}} It should be implemented by child classes, and called by the internal Writable class methods only.
+
+Call the callback using the standard {\ttfamily callback(error)} pattern to signal that the write completed successfully or with an error.
+
+If the {\ttfamily decode\+Strings} flag is set in the constructor options, then {\ttfamily chunk} may be a string rather than a Buffer, and {\ttfamily encoding} will indicate the sort of string that it is. This is to support implementations that have an optimized handling for certain string data encodings. If you do not explicitly set the {\ttfamily decode\+Strings} option to {\ttfamily false}, then you can safely ignore the {\ttfamily encoding} argument, and assume that {\ttfamily chunk} will always be a Buffer.
+
+This method is prefixed with an underscore because it is internal to the class that defines it, and should not be called directly by user programs. However, you {\bfseries{are}} expected to override this method in your own extension classes.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md948}{}\doxysubsubsection{\texorpdfstring{writable.\+\_\+writev(chunks, callback)}{writable.\+\_\+writev(chunks, callback)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md948}
+
+\begin{DoxyItemize}
+\item {\ttfamily chunks} \{Array\} The chunks to be written. Each chunk has following format\+: {\ttfamily \{ chunk\+: ..., encoding\+: ... \}}.
+\item {\ttfamily callback} \{Function\} Call this function (optionally with an error argument) when you are done processing the supplied chunks.
+\end{DoxyItemize}
+
+Note\+: {\bfseries{This function MUST NOT be called directly.}} It may be implemented by child classes, and called by the internal Writable class methods only.
+
+This function is completely optional to implement. In most cases it is unnecessary. If implemented, it will be called with all the chunks that are buffered in the write queue.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md949}{}\doxysection{\texorpdfstring{Simplified Constructor API}{Simplified Constructor API}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md949}
+In simple cases there is now the added benefit of being able to construct a stream without inheritance.
+
+This can be done by passing the appropriate methods as constructor options\+:
+
+Examples\+:\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md950}{}\doxysubsection{\texorpdfstring{Duplex}{Duplex}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md950}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ duplex\ =\ new\ stream.Duplex(\{}
+\DoxyCodeLine{\ \ read:\ function(n)\ \{}
+\DoxyCodeLine{\ \ \ \ //\ sets\ this.\_read\ under\ the\ hood}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ //\ push\ data\ onto\ the\ read\ queue,\ passing\ null}
+\DoxyCodeLine{\ \ \ \ //\ will\ signal\ the\ end\ of\ the\ stream\ (EOF)}
+\DoxyCodeLine{\ \ \ \ this.push(chunk);}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ write:\ function(chunk,\ encoding,\ next)\ \{}
+\DoxyCodeLine{\ \ \ \ //\ sets\ this.\_write\ under\ the\ hood}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ //\ An\ optional\ error\ can\ be\ passed\ as\ the\ first\ argument}
+\DoxyCodeLine{\ \ \ \ next()}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ or}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ duplex\ =\ new\ stream.Duplex(\{}
+\DoxyCodeLine{\ \ read:\ function(n)\ \{}
+\DoxyCodeLine{\ \ \ \ //\ sets\ this.\_read\ under\ the\ hood}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ //\ push\ data\ onto\ the\ read\ queue,\ passing\ null}
+\DoxyCodeLine{\ \ \ \ //\ will\ signal\ the\ end\ of\ the\ stream\ (EOF)}
+\DoxyCodeLine{\ \ \ \ this.push(chunk);}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ writev:\ function(chunks,\ next)\ \{}
+\DoxyCodeLine{\ \ \ \ //\ sets\ this.\_writev\ under\ the\ hood}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ //\ An\ optional\ error\ can\ be\ passed\ as\ the\ first\ argument}
+\DoxyCodeLine{\ \ \ \ next()}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md951}{}\doxysubsection{\texorpdfstring{Readable}{Readable}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md951}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ readable\ =\ new\ stream.Readable(\{}
+\DoxyCodeLine{\ \ read:\ function(n)\ \{}
+\DoxyCodeLine{\ \ \ \ //\ sets\ this.\_read\ under\ the\ hood}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ //\ push\ data\ onto\ the\ read\ queue,\ passing\ null}
+\DoxyCodeLine{\ \ \ \ //\ will\ signal\ the\ end\ of\ the\ stream\ (EOF)}
+\DoxyCodeLine{\ \ \ \ this.push(chunk);}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md952}{}\doxysubsection{\texorpdfstring{Transform}{Transform}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md952}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ transform\ =\ new\ stream.Transform(\{}
+\DoxyCodeLine{\ \ transform:\ function(chunk,\ encoding,\ next)\ \{}
+\DoxyCodeLine{\ \ \ \ //\ sets\ this.\_transform\ under\ the\ hood}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ //\ generate\ output\ as\ many\ times\ as\ needed}
+\DoxyCodeLine{\ \ \ \ //\ this.push(chunk);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ //\ call\ when\ the\ current\ chunk\ is\ consumed}
+\DoxyCodeLine{\ \ \ \ next();}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ flush:\ function(done)\ \{}
+\DoxyCodeLine{\ \ \ \ //\ sets\ this.\_flush\ under\ the\ hood}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ //\ generate\ output\ as\ many\ times\ as\ needed}
+\DoxyCodeLine{\ \ \ \ //\ this.push(chunk);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ done();}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md953}{}\doxysubsection{\texorpdfstring{Writable}{Writable}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md953}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ writable\ =\ new\ stream.Writable(\{}
+\DoxyCodeLine{\ \ write:\ function(chunk,\ encoding,\ next)\ \{}
+\DoxyCodeLine{\ \ \ \ //\ sets\ this.\_write\ under\ the\ hood}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ //\ An\ optional\ error\ can\ be\ passed\ as\ the\ first\ argument}
+\DoxyCodeLine{\ \ \ \ next()}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ or}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ writable\ =\ new\ stream.Writable(\{}
+\DoxyCodeLine{\ \ writev:\ function(chunks,\ next)\ \{}
+\DoxyCodeLine{\ \ \ \ //\ sets\ this.\_writev\ under\ the\ hood}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ //\ An\ optional\ error\ can\ be\ passed\ as\ the\ first\ argument}
+\DoxyCodeLine{\ \ \ \ next()}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md954}{}\doxysection{\texorpdfstring{Streams\+: Under the Hood}{Streams\+: Under the Hood}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md954}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md955}{}\doxysubsection{\texorpdfstring{Buffering}{Buffering}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md955}
+Both Writable and Readable streams will buffer data on an internal object which can be retrieved from {\ttfamily \+\_\+writable\+State.\+get\+Buffer()} or {\ttfamily \+\_\+readable\+State.\+buffer}, respectively.
+
+The amount of data that will potentially be buffered depends on the {\ttfamily high\+Water\+Mark} option which is passed into the constructor.
+
+Buffering in Readable streams happens when the implementation calls \`{}stream.push(chunk)\`{}. If the consumer of the Stream does not call \`{}stream.read()\`{}, then the data will sit in the internal queue until it is consumed.
+
+Buffering in Writable streams happens when the user calls \`{}stream.write(chunk)\`{} repeatedly, even when it returns {\ttfamily false}.
+
+The purpose of streams, especially with the \`{}stream.pipe()\`{} method, is to limit the buffering of data to acceptable levels, so that sources and destinations of varying speed will not overwhelm the available memory.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md956}{}\doxysubsection{\texorpdfstring{Compatibility with Older Node.\+js Versions}{Compatibility with Older Node.\+js Versions}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md956}
+In versions of Node.\+js prior to v0.\+10, the Readable stream interface was simpler, but also less powerful and less useful.
+
+
+\begin{DoxyItemize}
+\item Rather than waiting for you to call the \`{}stream.read()\`{} method, \`{}\textquotesingle{}data\textquotesingle{}\`{} events would start emitting immediately. If you needed to do some I/O to decide how to handle data, then you had to store the chunks in some kind of buffer so that they would not be lost.
+\item The \`{}stream.pause()\`{} method was advisory, rather than guaranteed. This meant that you still had to be prepared to receive \`{}\textquotesingle{}data\textquotesingle{}\`{} events even when the stream was in a paused state.
+\end{DoxyItemize}
+
+In Node.\+js v0.\+10, the Readable class was added. For backwards compatibility with older Node.\+js programs, Readable streams switch into "{}flowing mode"{} when a \`{}\textquotesingle{}data\textquotesingle{}\`{} event handler is added, or when the \`{}stream.resume()\`{} method is called. The effect is that, even if you are not using the new \`{}stream.read()\`{} method and \`{}\textquotesingle{}readable\textquotesingle{}\`{} event, you no longer have to worry about losing \`{}\textquotesingle{}data\textquotesingle{}\`{} chunks.
+
+Most programs will continue to function normally. However, this introduces an edge case in the following conditions\+:
+
+
+\begin{DoxyItemize}
+\item No \`{}\textquotesingle{}data\textquotesingle{}\`{} event handler is added.
+\item The \`{}stream.resume()\`{} method is never called.
+\item The stream is not piped to any writable destination.
+\end{DoxyItemize}
+
+For example, consider the following code\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ WARNING!\ \ BROKEN!}
+\DoxyCodeLine{net.createServer((socket)\ =>\ \{}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ //\ we\ add\ an\ 'end'\ method,\ but\ never\ consume\ the\ data}
+\DoxyCodeLine{\ \ socket.on('end',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ //\ It\ will\ never\ get\ here.}
+\DoxyCodeLine{\ \ \ \ socket.end('I\ got\ your\ message\ (but\ didnt\ read\ it)\(\backslash\)n');}
+\DoxyCodeLine{\ \ \});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\}).listen(1337);}
+
+\end{DoxyCode}
+
+
+In versions of Node.\+js prior to v0.\+10, the incoming message data would be simply discarded. However, in Node.\+js v0.\+10 and beyond, the socket will remain paused forever.
+
+The workaround in this situation is to call the \`{}stream.resume()\`{} method to start the flow of data\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Workaround}
+\DoxyCodeLine{net.createServer((socket)\ =>\ \{}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ socket.on('end',\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ socket.end('I\ got\ your\ message\ (but\ didnt\ read\ it)\(\backslash\)n');}
+\DoxyCodeLine{\ \ \});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ //\ start\ the\ flow\ of\ data,\ discarding\ it.}
+\DoxyCodeLine{\ \ socket.resume();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\}).listen(1337);}
+
+\end{DoxyCode}
+
+
+In addition to new Readable streams switching into flowing mode, pre-\/v0.\+10 style streams can be wrapped in a Readable class using the \`{}stream.wrap()\`{} method.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md957}{}\doxysubsection{\texorpdfstring{Object Mode}{Object Mode}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md957}
+Normally, Streams operate on Strings and Buffers exclusively.
+
+Streams that are in {\bfseries{object mode}} can emit generic Java\+Script values other than Buffers and Strings.
+
+A Readable stream in object mode will always return a single item from a call to \`{}stream.read(size)\`{}, regardless of what the size argument is.
+
+A Writable stream in object mode will always ignore the {\ttfamily encoding} argument to \`{}stream.write(data, encoding)\`{}.
+
+The special value {\ttfamily null} still retains its special value for object mode streams. That is, for object mode readable streams, {\ttfamily null} as a return value from \`{}stream.read()\`{} indicates that there is no more data, and \`{}stream.push(null)\`{} will signal the end of stream data ({\ttfamily EOF}).
+
+No streams in Node.\+js core are object mode streams. This pattern is only used by userland streaming libraries.
+
+You should set {\ttfamily object\+Mode} in your stream child class constructor on the options object. Setting {\ttfamily object\+Mode} mid-\/stream is not safe.
+
+For Duplex streams {\ttfamily object\+Mode} can be set exclusively for readable or writable side with {\ttfamily readable\+Object\+Mode} and {\ttfamily writable\+Object\+Mode} respectively. These options can be used to implement parsers and serializers with Transform streams.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ util\ =\ require('util');}
+\DoxyCodeLine{const\ StringDecoder\ =\ require('string\_decoder').StringDecoder;}
+\DoxyCodeLine{const\ Transform\ =\ require('stream').Transform;}
+\DoxyCodeLine{util.inherits(JSONParseStream,\ Transform);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Gets\ \(\backslash\)n-\/delimited\ JSON\ string\ data,\ and\ emits\ the\ parsed\ objects}
+\DoxyCodeLine{function\ JSONParseStream()\ \{}
+\DoxyCodeLine{\ \ if\ (!(this\ instanceof\ JSONParseStream))}
+\DoxyCodeLine{\ \ \ \ return\ new\ JSONParseStream();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ Transform.call(this,\ \{\ readableObjectMode\ :\ true\ \});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ this.\_buffer\ =\ '';}
+\DoxyCodeLine{\ \ this.\_decoder\ =\ new\ StringDecoder('utf8');}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{JSONParseStream.prototype.\_transform\ =\ function(chunk,\ encoding,\ cb)\ \{}
+\DoxyCodeLine{\ \ this.\_buffer\ +=\ this.\_decoder.write(chunk);}
+\DoxyCodeLine{\ \ //\ split\ on\ newlines}
+\DoxyCodeLine{\ \ var\ lines\ =\ this.\_buffer.split(/\(\backslash\)r?\(\backslash\)n/);}
+\DoxyCodeLine{\ \ //\ keep\ the\ last\ partial\ line\ buffered}
+\DoxyCodeLine{\ \ this.\_buffer\ =\ lines.pop();}
+\DoxyCodeLine{\ \ for\ (var\ l\ =\ 0;\ l\ <\ lines.length;\ l++)\ \{}
+\DoxyCodeLine{\ \ \ \ var\ line\ =\ lines[l];}
+\DoxyCodeLine{\ \ \ \ try\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ var\ obj\ =\ JSON.parse(line);}
+\DoxyCodeLine{\ \ \ \ \}\ catch\ (er)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ this.emit('error',\ er);}
+\DoxyCodeLine{\ \ \ \ \ \ return;}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ //\ push\ the\ parsed\ object\ out\ to\ the\ readable\ consumer}
+\DoxyCodeLine{\ \ \ \ this.push(obj);}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\ \ cb();}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{JSONParseStream.prototype.\_flush\ =\ function(cb)\ \{}
+\DoxyCodeLine{\ \ //\ Just\ handle\ any\ leftover}
+\DoxyCodeLine{\ \ var\ rem\ =\ this.\_buffer.trim();}
+\DoxyCodeLine{\ \ if\ (rem)\ \{}
+\DoxyCodeLine{\ \ \ \ try\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ var\ obj\ =\ JSON.parse(rem);}
+\DoxyCodeLine{\ \ \ \ \}\ catch\ (er)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ this.emit('error',\ er);}
+\DoxyCodeLine{\ \ \ \ \ \ return;}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ //\ push\ the\ parsed\ object\ out\ to\ the\ readable\ consumer}
+\DoxyCodeLine{\ \ \ \ this.push(obj);}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\ \ cb();}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md958}{}\doxysubsection{\texorpdfstring{{\ttfamily stream.\+read(0)}}{{\ttfamily stream.\+read(0)}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md958}
+There are some cases where you want to trigger a refresh of the underlying readable stream mechanisms, without actually consuming any data. In that case, you can call {\ttfamily stream.\+read(0)}, which will always return null.
+
+If the internal read buffer is below the {\ttfamily high\+Water\+Mark}, and the stream is not currently reading, then calling {\ttfamily stream.\+read(0)} will trigger a low-\/level \`{}stream.\+\_\+read()\`{} call.
+
+There is almost never a need to do this. However, you will see some cases in Node.\+js\textquotesingle{}s internals where this is done, particularly in the Readable stream class internals.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md959}{}\doxysubsection{\texorpdfstring{`stream.\+push('\textquotesingle{})\`{}}{`stream.\+push('\textquotesingle{})\`{}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__md4c992359fdd0a680928ea6d8f46c3db_autotoc_md959}
+Pushing a zero-\/byte string or Buffer (when not in Object mode) has an interesting side effect. Because it {\itshape is} a call to \`{}stream.push()\`{}, it will end the {\ttfamily reading} process. However, it does {\itshape not} add any data to the readable buffer, so there\textquotesingle{}s nothing for a user to consume.
+
+Very rarely, there are cases where you have no data to provide now, but the consumer of your stream (or, perhaps, another bit of your own code) will know when to check again, by calling \`{}stream.read(0)\`{}. In those cases, you {\itshape may} call `stream.\+push('\textquotesingle{})\`{}.
+
+So far, the only use case for this functionality is in the \href{https://nodejs.org/docs/v5.8.0/api/tls.html\#tls_class_cryptostream}{\texttt{ {\ttfamily tls.\+Crypto\+Stream}}} class, which is deprecated in Node.\+js/io.js v1.\+0. If you find that you have to use `stream.\+push('\textquotesingle{})\`{}, please consider another approach, because it almost certainly indicates that something is horribly wrong. 

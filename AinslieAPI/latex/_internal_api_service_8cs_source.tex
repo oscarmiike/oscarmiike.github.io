@@ -1,0 +1,252 @@
+\doxysection{Internal\+Api\+Service.\+cs}
+\hypertarget{_internal_api_service_8cs_source}{}\label{_internal_api_service_8cs_source}\index{C:/Users/STRIDER/source/repos/AinslieAPI/Services/InternalApiService.cs@{C:/Users/STRIDER/source/repos/AinslieAPI/Services/InternalApiService.cs}}
+\mbox{\hyperlink{_internal_api_service_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_ainslie_a_p_i_1_1_d_t_o_1_1_green_id}{AinslieAPI.DTO.GreenId}};}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_ainslie_a_p_i_1_1_d_t_o_1_1_internal_api}{AinslieAPI.DTO.InternalApi}};}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_ainslie_a_p_i_1_1_helpers}{AinslieAPI.Helpers}};}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_dto_1_1_netsuite}{InternalAPI.Dto.Netsuite}};}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }Microsoft.CodeAnalysis.CSharp.Syntax;}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00006}00006\ \textcolor{keyword}{using\ }Microsoft.DotNet.Scaffolding.Shared.CodeModifier.CodeChange;}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00007}00007\ \textcolor{keyword}{using\ }Microsoft.Extensions.Options;}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00008}00008\ \textcolor{keyword}{using\ }Newtonsoft.Json;}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00009}00009\ \textcolor{keyword}{using\ }RestSharp;}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00010}00010\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_ainslie_a_p_i_1_1_d_t_o_1_1_priceapp}{AinslieAPI.DTO.Priceapp}};}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00012}00012\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_ainslie_a_p_i_1_1_services}{AinslieAPI.Services}}}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00013}00013\ \{}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00017}\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service}{00017}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service}{InternalApiService}}}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00018}00018\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings}{AppSettings}}\ \_appSettings\ \{\ \textcolor{keyword}{get};\ \textcolor{keyword}{set};\ \}}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{LogService}}\ \_logger\ \{\ \textcolor{keyword}{get};\ \textcolor{keyword}{set};\ \}}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00028}\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service_aa12cb20e0b39fccf99037e24cec32cda}{00028}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service_aa12cb20e0b39fccf99037e24cec32cda}{InternalApiService}}(IOptions<AppSettings>\ appSettings,\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{LogService}}\ logService)}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \_appSettings\ =\ appSettings.Value;}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger\ =\ logService;}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00046}\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service_ac96a3e52c78c6b67de6a0f244fd70a60}{00046}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_green_id_1_1_green_id_customer}{GreenIdCustomer}}\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service_ac96a3e52c78c6b67de6a0f244fd70a60}{GetGreenIdCustomer}}(\textcolor{keywordtype}{string}\ branch,\ \textcolor{keywordtype}{string}\ userId)}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_green_id_1_1_green_id_customer}{GreenIdCustomer}}\ greenIdCustomer\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keywordtype}{string}.IsNullOrEmpty(branch)\ ||\ \textcolor{keywordtype}{string}.IsNullOrEmpty(userId))}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ greenIdCustomer;}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient(\_appSettings.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings_a51ac79da86ec47d7825bef5a33339cb9}{InternalApiSettings}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_internal_api_settings_a7ea819d8b324872a0ec9458348ceae97}{BaseUrl}});}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ var\ request\ =\ \textcolor{keyword}{new}\ RestRequest(\_appSettings.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings_a51ac79da86ec47d7825bef5a33339cb9}{InternalApiSettings}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_internal_api_settings_a3b3c81d65b952ce0d7530e2da69bcf2b}{Endpoint\_GreenIdCustomer}},\ RestSharp.Method.Get);}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddUrlSegment(\textcolor{stringliteral}{"{}branch"{}},\ branch);}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddUrlSegment(\textcolor{stringliteral}{"{}userid"{}},\ userId);}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ RestResponse\ response\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ response\ =\ client.Execute(request);}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response.IsSuccessful)}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ greenIdCustomer\ =\ JsonConvert.DeserializeObject<\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_green_id_1_1_green_id_customer}{GreenIdCustomer}}>(response.Content);}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a9bf79a218e0884ac9cabd3ac87b81321}{LogError}}(\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_ab557dc1394f5cf56cfb78c765fdfffe6}{LogSources}}.InternalApiService,}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}error\ getting\ greenid\ customer\ from\ internal\ api"{}},}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}StatusCode:\ \{(int)response.StatusCode\}"{}},}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}StatusDescription:\ \{response.StatusDescription\}"{}},}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}Content:\ \{response.Content\}"{}});}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a9bf79a218e0884ac9cabd3ac87b81321}{LogError}}(\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_ab557dc1394f5cf56cfb78c765fdfffe6}{LogSources}}.InternalApiService,}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}error\ getting\ greenid\ customer\ from\ internal\ api,\ response\ object\ is\ null"{}});}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a83bbf569dea7ea5a40e02fca200aad8c}{LogException}}(\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_ab557dc1394f5cf56cfb78c765fdfffe6}{LogSources}}.InternalApiService,\ \$\textcolor{stringliteral}{"{}Exception\ getting\ green\ id\ customer\ from\ internal\ api"{}},\ ex.ToString());}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ greenIdCustomer;}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00099}\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service_a7a070bb565246fb698283432930d9cd1}{00099}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service_a7a070bb565246fb698283432930d9cd1}{PostNetsuiteCustomer}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_netsuite_customer_request}{NetsuiteCustomerRequest}}\ netsuiteCustomerRequest)}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ netsuiteCustomerId\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (netsuiteCustomerRequest\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a9bf79a218e0884ac9cabd3ac87b81321}{LogError}}(\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_ab557dc1394f5cf56cfb78c765fdfffe6}{LogSources}}.InternalApiService,\ \$\textcolor{stringliteral}{"{}error\ posting\ customer\ to\ netsuite\ via\ internal\ api,\ netsuite\ customer\ is\ null"{}});}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ netsuiteCustomerId;}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient(\_appSettings.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings_a51ac79da86ec47d7825bef5a33339cb9}{InternalApiSettings}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_internal_api_settings_a7ea819d8b324872a0ec9458348ceae97}{BaseUrl}});}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00108}00108\ \ \ \ \ \ \ \ \ \ \ \ \ var\ request\ =\ \textcolor{keyword}{new}\ RestRequest(\_appSettings.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings_a51ac79da86ec47d7825bef5a33339cb9}{InternalApiSettings}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_internal_api_settings_a0476e4cb564fcb4a92e84a51d9208f53}{Endpoint\_NetsuiteCustomer}},\ RestSharp.Method.Post);}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddJsonBody(JsonConvert.SerializeObject(\ netsuiteCustomerRequest));}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00110}00110\ \ \ \ \ \ \ \ \ \ \ \ \ RestResponse\ response\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00113}00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ response\ =\ client.Execute(request);}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00115}00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00116}00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response.IsSuccessful)}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00117}00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00118}00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ netsuiteCustomerId\ =\ JsonConvert.DeserializeObject<\textcolor{keywordtype}{int}>(response.Content);}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00120}00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00121}00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00122}00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a9bf79a218e0884ac9cabd3ac87b81321}{LogError}}(\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_ab557dc1394f5cf56cfb78c765fdfffe6}{LogSources}}.InternalApiService,}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00123}00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}error\ posting\ customer\ to\ netsuite\ via\ internal\ api"{}},}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00124}00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}StatusCode:\ \{(int)response.StatusCode\}"{}},}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00125}00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}StatusDescription:\ \{response.StatusDescription\}"{}},}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00126}00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}Content:\ \{response.Content\}"{}});}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00127}00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00128}00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00129}00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00130}00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00131}00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a9bf79a218e0884ac9cabd3ac87b81321}{LogError}}(\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_ab557dc1394f5cf56cfb78c765fdfffe6}{LogSources}}.InternalApiService,}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00132}00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}error\ posting\ customer\ to\ netsuite\ via\ internal\ api,\ response\ object\ is\ null"{}});}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00133}00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00134}00134\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00135}00135\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00136}00136\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00137}00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a83bbf569dea7ea5a40e02fca200aad8c}{LogException}}(\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_ab557dc1394f5cf56cfb78c765fdfffe6}{LogSources}}.InternalApiService,\ \$\textcolor{stringliteral}{"{}Exception\ posting\ customer\ to\ netsuite\ via\ internal\ api"{}},\ ex.ToString());}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00138}00138\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00139}00139\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ netsuiteCustomerId;}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00140}00140\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00141}00141\ }
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00154}\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service_aa8c183f663dbc4061a007aee4e5cf28e}{00154}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service_aa8c183f663dbc4061a007aee4e5cf28e}{UpdateGreenIdDbNetsuiteId}}(\textcolor{keywordtype}{string}\ greenIdRef,\ \textcolor{keywordtype}{int}\ netsuiteId)}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00155}00155\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00156}00156\ \ \ \ \ \ \ \ \ \ \ \ \ dynamic?\ result\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00157}00157\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (netsuiteId\ ==\ 0)\ }
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00158}00158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00159}00159\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient(\_appSettings.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings_a51ac79da86ec47d7825bef5a33339cb9}{InternalApiSettings}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_internal_api_settings_a7ea819d8b324872a0ec9458348ceae97}{BaseUrl}});}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00160}00160\ \ \ \ \ \ \ \ \ \ \ \ \ var\ request\ =\ \textcolor{keyword}{new}\ RestRequest(\_appSettings.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings_a51ac79da86ec47d7825bef5a33339cb9}{InternalApiSettings}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_internal_api_settings_a8e7987d305669a17e80368284203ccac}{Endpoint\_UpdateGreenIdDbNetsuiteId}},\ RestSharp.Method.Get);}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00161}00161\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddUrlSegment(\textcolor{stringliteral}{"{}greenidref"{}},\ greenIdRef);}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00162}00162\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddQueryParameter(\textcolor{stringliteral}{"{}netsuiteid"{}},\ netsuiteId);}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00163}00163\ \ \ \ \ \ \ \ \ \ \ \ \ RestResponse\ response;}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00164}00164\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00165}00165\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00166}00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ response\ =\ client.Execute(request);}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00167}00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00168}00168\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00169}00169\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response.IsSuccessful)}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00170}00170\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00171}00171\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ result\ =\ JsonConvert.DeserializeObject<dynamic>(response.Content\ ??\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00172}00172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00173}00173\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00174}00174\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00175}00175\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a9bf79a218e0884ac9cabd3ac87b81321}{LogError}}(\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_ab557dc1394f5cf56cfb78c765fdfffe6}{LogSources}}.InternalApiService,}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00176}00176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}error\ updating\ greeniddb\ customer\ with\ netsuiteid"{}},}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00177}00177\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}StatusCode:\ \{(int)response.StatusCode\}"{}},}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00178}00178\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}StatusDescription:\ \{response.StatusDescription\}"{}},}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00179}00179\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}Content:\ \{response.Content\}"{}});}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00180}00180\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00181}00181\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00182}00182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00183}00183\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00184}00184\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a9bf79a218e0884ac9cabd3ac87b81321}{LogError}}(\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_ab557dc1394f5cf56cfb78c765fdfffe6}{LogSources}}.InternalApiService,}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00185}00185\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}error\ updating\ greeniddb\ customer\ with\ netsuiteid,\ response\ object\ is\ null"{}});}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00186}00186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00187}00187\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00188}00188\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00189}00189\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00190}00190\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a83bbf569dea7ea5a40e02fca200aad8c}{LogException}}(\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_ab557dc1394f5cf56cfb78c765fdfffe6}{LogSources}}.InternalApiService,\ \$\textcolor{stringliteral}{"{}exception\ updating\ greeniddb\ customer\ with\ netsuiteid"{}},\ ex.ToString());}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00191}00191\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00192}00192\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00193}00193\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result?.success\ ==\ \textcolor{keyword}{true}\ ?\ true\ :\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00194}00194\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00195}00195\ }
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00208}\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service_af507e96372a12f14e6ae166a5d495ef2}{00208}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service_af507e96372a12f14e6ae166a5d495ef2}{SendEmail}}(\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_internal_api_1_1_email_post}{EmailPost}}\ email)}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00209}00209\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00210}00210\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00211}00211\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00212}00212\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient(\_appSettings.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings_a51ac79da86ec47d7825bef5a33339cb9}{InternalApiSettings}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_internal_api_settings_a7ea819d8b324872a0ec9458348ceae97}{BaseUrl}});}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00213}00213\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ request\ =\ \textcolor{keyword}{new}\ RestRequest(\_appSettings.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings_a51ac79da86ec47d7825bef5a33339cb9}{InternalApiSettings}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_internal_api_settings_abf628e305958d76a6b0f1769ce132d1e}{Endpoint\_Email}},\ RestSharp.Method.Post);}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00214}00214\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ request.AddJsonBody(email);}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00215}00215\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ RestResponse\ response\ =\ client.Execute(request);}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00216}00216\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response.IsSuccessStatusCode)}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00217}00217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00218}00218\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00219}00219\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00220}00220\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a9bf79a218e0884ac9cabd3ac87b81321}{LogError}}(\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_ab557dc1394f5cf56cfb78c765fdfffe6}{LogSources}}.InternalApiService,\ \textcolor{stringliteral}{"{}unsuccessful\ response\ sending\ email\ through\ internal\ api"{}},\ \$\textcolor{stringliteral}{"{}StatusCode:\ \{response.StatusCode\}\ Description:\ \{response.StatusDescription\}\ Content:\ \{response.Content\}"{}});}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00221}00221\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00222}00222\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00223}00223\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00224}00224\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a83bbf569dea7ea5a40e02fca200aad8c}{LogException}}(\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_ab557dc1394f5cf56cfb78c765fdfffe6}{LogSources}}.InternalApiService,\ \textcolor{stringliteral}{"{}exception\ sending\ email\ through\ internal\ api"{}},\ ex.ToString());}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00225}00225\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00226}00226\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00227}00227\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00228}00228\ }
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00238}\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service_a0c4c5cccb2233540343e36fe0e8a0acc}{00238}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ List<ProductPrice>?\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service_a0c4c5cccb2233540343e36fe0e8a0acc}{GetProductPricing}}()}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00239}00239\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00240}00240\ \ \ \ \ \ \ \ \ \ \ \ \ List<ProductPrice>?\ priceList\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00241}00241\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient(\_appSettings.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings_a51ac79da86ec47d7825bef5a33339cb9}{InternalApiSettings}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_internal_api_settings_a7ea819d8b324872a0ec9458348ceae97}{BaseUrl}});}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00242}00242\ \ \ \ \ \ \ \ \ \ \ \ \ var\ request\ =\ \textcolor{keyword}{new}\ RestRequest(\_appSettings.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings_a51ac79da86ec47d7825bef5a33339cb9}{InternalApiSettings}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_internal_api_settings_a2a7258c704e05db98eb9bb29dab3db68}{Endpoint\_ABWebProductList}},\ RestSharp.Method.Get);}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00243}00243\ \ \ \ \ \ \ \ \ \ \ \ \ RestResponse\ response;}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00244}00244\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00245}00245\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00246}00246\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ response\ =\ client.Execute(request);}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00247}00247\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response?.Content\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00248}00248\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00249}00249\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response.IsSuccessful)}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00250}00250\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00251}00251\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ priceList\ =\ JsonConvert.DeserializeObject<List<ProductPrice>>(response.Content);}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00252}00252\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00253}00253\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00254}00254\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00255}00255\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a9bf79a218e0884ac9cabd3ac87b81321}{LogError}}(\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_ab557dc1394f5cf56cfb78c765fdfffe6}{LogSources}}.InternalApiService,}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00256}00256\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}error\ deserialising\ product\ pricing\ from\ internal\ api\ product\ list"{}},}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00257}00257\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}StatusCode:\ \{(int)response.StatusCode\}"{}},}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00258}00258\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}StatusDescription:\ \{response.StatusDescription\}"{}},}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00259}00259\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}Content:\ \{response.Content\}"{}});}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00260}00260\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00261}00261\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00262}00262\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00263}00263\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00264}00264\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a9bf79a218e0884ac9cabd3ac87b81321}{LogError}}(\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_ab557dc1394f5cf56cfb78c765fdfffe6}{LogSources}}.InternalApiService,}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00265}00265\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}error\ getting\ product\ list\ from\ internal\ api,\ response\ object\ is\ null"{}});}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00266}00266\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00267}00267\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00268}00268\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00269}00269\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00270}00270\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a83bbf569dea7ea5a40e02fca200aad8c}{LogException}}(\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_ab557dc1394f5cf56cfb78c765fdfffe6}{LogSources}}.InternalApiService,\ \$\textcolor{stringliteral}{"{}exception\ getting\ product\ list\ from\ internal\ api"{}},\ ex.ToString());}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00271}00271\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00272}00272\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ priceList;}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00273}00273\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00274}00274\ }
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00284}\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service_a09c4662b56f1cf03cfecb9928e1e884a}{00284}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ List<AssetPrice>?\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service_a09c4662b56f1cf03cfecb9928e1e884a}{GetAssetPricing}}()}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00285}00285\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00286}00286\ \ \ \ \ \ \ \ \ \ \ \ \ List<AssetPrice>?\ priceList\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00287}00287\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient(\_appSettings.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings_a51ac79da86ec47d7825bef5a33339cb9}{InternalApiSettings}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_internal_api_settings_a7ea819d8b324872a0ec9458348ceae97}{BaseUrl}});}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00288}00288\ \ \ \ \ \ \ \ \ \ \ \ \ var\ request\ =\ \textcolor{keyword}{new}\ RestRequest(\_appSettings.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings_a51ac79da86ec47d7825bef5a33339cb9}{InternalApiSettings}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_internal_api_settings_a387a97c92a494cb529c4a9ff5acc1013}{Endpoint\_PriceappAssetList}},\ RestSharp.Method.Get);}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00289}00289\ \ \ \ \ \ \ \ \ \ \ \ \ RestResponse\ response;}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00290}00290\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00291}00291\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00292}00292\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ response\ =\ client.Execute(request);}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00293}00293\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response?.Content\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00294}00294\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00295}00295\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response.IsSuccessful)}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00296}00296\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00297}00297\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ priceList\ =\ JsonConvert.DeserializeObject<List<AssetPrice>>(response.Content);}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00298}00298\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00299}00299\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00300}00300\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00301}00301\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a9bf79a218e0884ac9cabd3ac87b81321}{LogError}}(\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_ab557dc1394f5cf56cfb78c765fdfffe6}{LogSources}}.InternalApiService,}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00302}00302\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}error\ deserialising\ asset\ pricing\ from\ internal\ api\ asset\ list"{}},}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00303}00303\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}StatusCode:\ \{(int)response.StatusCode\}"{}},}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00304}00304\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}StatusDescription:\ \{response.StatusDescription\}"{}},}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00305}00305\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}Content:\ \{response.Content\}"{}});}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00306}00306\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00307}00307\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00308}00308\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00309}00309\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00310}00310\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a9bf79a218e0884ac9cabd3ac87b81321}{LogError}}(\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_ab557dc1394f5cf56cfb78c765fdfffe6}{LogSources}}.InternalApiService,}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00311}00311\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}error\ getting\ asset\ list\ from\ internal\ api,\ response\ object\ is\ null"{}});}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00312}00312\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00313}00313\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00314}00314\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00315}00315\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00316}00316\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a83bbf569dea7ea5a40e02fca200aad8c}{LogException}}(\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_ab557dc1394f5cf56cfb78c765fdfffe6}{LogSources}}.InternalApiService,\ \$\textcolor{stringliteral}{"{}exception\ getting\ asset\ list\ from\ internal\ api"{}},\ ex.ToString());}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00317}00317\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00318}00318\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ priceList;}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00319}00319\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00320}00320\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_internal_api_service_8cs_source_l00321}00321\ \}}
+
+\end{DoxyCode}

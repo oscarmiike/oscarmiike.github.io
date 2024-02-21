@@ -1,0 +1,187 @@
+\chapter{collection}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0bd984128464864e6d12f3943f53d7b4}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0bd984128464864e6d12f3943f53d7b4}\index{collection@{collection}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0bd984128464864e6d12f3943f53d7b4_autotoc_md1148}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0bd984128464864e6d12f3943f53d7b4_autotoc_md1148}%
+ Methods for dealing with collections (Array or Objects).\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0bd984128464864e6d12f3943f53d7b4_autotoc_md1149}{}\doxysection{\texorpdfstring{contains(list, value)\+:Boolean}{contains(list, value)\+:Boolean}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0bd984128464864e6d12f3943f53d7b4_autotoc_md1149}
+Checks if collection contains value.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{contains(\{a:\ 1,\ b:\ 2,\ c:\ 'bar'\},\ 2);\ //\ true}
+\DoxyCodeLine{contains([1,\ 2,\ 3],\ 'foo');\ \ //\ false}
+
+\end{DoxyCode}
+
+
+See\+: \href{array.html\#contains}{\texttt{ array/contains}}, \href{object.html\#contains}{\texttt{ object/contains}}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0bd984128464864e6d12f3943f53d7b4_autotoc_md1150}{}\doxysection{\texorpdfstring{every(list, callback, \mbox{[}this\+Obj\mbox{]})\+:Boolean}{every(list, callback, \mbox{[}this\+Obj\mbox{]})\+:Boolean}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0bd984128464864e6d12f3943f53d7b4_autotoc_md1150}
+Tests whether all values in the collection pass the test implemented by the provided callback.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ obj\ =\ \{}
+\DoxyCodeLine{\ \ \ \ a:\ 1,}
+\DoxyCodeLine{\ \ \ \ b:\ 2,}
+\DoxyCodeLine{\ \ \ \ c:\ 3,}
+\DoxyCodeLine{\ \ \ \ d:\ 'string'}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{every(obj,\ isNumber);\ //\ false}
+
+\end{DoxyCode}
+
+
+See\+: \href{array.html\#every}{\texttt{ array/every}}, \href{object.html\#every}{\texttt{ object/every}}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0bd984128464864e6d12f3943f53d7b4_autotoc_md1151}{}\doxysection{\texorpdfstring{filter(list, callback, \mbox{[}this\+Obj\mbox{]})\+:Array}{filter(list, callback, \mbox{[}this\+Obj\mbox{]})\+:Array}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0bd984128464864e6d12f3943f53d7b4_autotoc_md1151}
+Filter collection properties.
+
+See\+: \href{array.html\#filter}{\texttt{ array/filter}}, \href{object.html\#filter}{\texttt{ object/filter}}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0bd984128464864e6d12f3943f53d7b4_autotoc_md1152}{}\doxysection{\texorpdfstring{find(list, callback, \mbox{[}this\+Obj\mbox{]})\+:\texorpdfstring{$\ast$}{*}}{find(list, callback, \mbox{[}this\+Obj\mbox{]})\+:\texorpdfstring{$\ast$}{*}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0bd984128464864e6d12f3943f53d7b4_autotoc_md1152}
+Loops through all the values in the collection and returns the first one that passes a truth test (callback).
+
+{\bfseries{Important\+:}} loop order over objects properties isn\textquotesingle{}t guaranteed to be the same on all environments.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{find(\{a:\ 'foo',\ b:\ 12\},\ isString);\ //\ 'foo'}
+\DoxyCodeLine{find(['foo',\ 12],\ isNumber);\ //\ 12}
+
+\end{DoxyCode}
+
+
+See\+: \href{array.html\#find}{\texttt{ array/find}}, \href{object.html\#find}{\texttt{ object/find}}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0bd984128464864e6d12f3943f53d7b4_autotoc_md1153}{}\doxysection{\texorpdfstring{for\+Each(list, callback, \mbox{[}this\+Obj\mbox{]})}{for\+Each(list, callback, \mbox{[}this\+Obj\mbox{]})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0bd984128464864e6d12f3943f53d7b4_autotoc_md1153}
+Loop through all values of the collection.
+
+See\+: \href{array.html\#forEach}{\texttt{ array/for\+Each}}, \href{object.html\#forOwn}{\texttt{ object/for\+Own}}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0bd984128464864e6d12f3943f53d7b4_autotoc_md1154}{}\doxysection{\texorpdfstring{map(list, callback, \mbox{[}this\+Obj\mbox{]})\+:Array}{map(list, callback, \mbox{[}this\+Obj\mbox{]})\+:Array}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0bd984128464864e6d12f3943f53d7b4_autotoc_md1154}
+Returns a new collection where the properties values are the result of calling the callback for each property in the original collection.
+
+See\+: \href{array.html\#map}{\texttt{ array/map}}, \href{object.html\#map}{\texttt{ object/map}}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0bd984128464864e6d12f3943f53d7b4_autotoc_md1155}{}\doxysection{\texorpdfstring{max(list, \mbox{[}iterator\mbox{]})\+:\texorpdfstring{$\ast$}{*}}{max(list, \mbox{[}iterator\mbox{]})\+:\texorpdfstring{$\ast$}{*}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0bd984128464864e6d12f3943f53d7b4_autotoc_md1155}
+Returns maximum value inside collection or use a custom iterator to define how items should be compared.
+
+See\+: \`{}min()\`{}, \href{array.html\#max}{\texttt{ array/max}}, \href{object.html\#max}{\texttt{ object/max}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{max(\{a:\ 100,\ b:\ 2,\ c:\ 1,\ d:\ 3,\ e:\ 200\});\ //\ 200}
+\DoxyCodeLine{max(['foo',\ 'lorem',\ 'amet'],\ function(val)\{}
+\DoxyCodeLine{\ \ \ \ return\ val.length;}
+\DoxyCodeLine{\});\ //\ 'lorem'}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0bd984128464864e6d12f3943f53d7b4_autotoc_md1156}{}\doxysection{\texorpdfstring{min(list, \mbox{[}iterator\mbox{]})\+:\texorpdfstring{$\ast$}{*}}{min(list, \mbox{[}iterator\mbox{]})\+:\texorpdfstring{$\ast$}{*}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0bd984128464864e6d12f3943f53d7b4_autotoc_md1156}
+Returns minimum value inside collection or use a custom iterator to define how items should be compared.
+
+See\+: \`{}max()\`{}, \href{array.html\#min}{\texttt{ array/min}}, \href{object.html\#min}{\texttt{ object/min}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{min([10,\ 2,\ 7]);\ //\ 2}
+\DoxyCodeLine{min(\{a:\ 'foo',\ b:\ 'lorem',\ c:\ 'amet'\},\ function(val)\{}
+\DoxyCodeLine{\ \ \ \ return\ val.length;}
+\DoxyCodeLine{\});\ //\ 'foo'}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0bd984128464864e6d12f3943f53d7b4_autotoc_md1157}{}\doxysection{\texorpdfstring{pluck(list, prop\+Name)\+:Array}{pluck(list, prop\+Name)\+:Array}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0bd984128464864e6d12f3943f53d7b4_autotoc_md1157}
+Extract a list of property values.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ users\ =\ [}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ name\ :\ 'John',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ age\ :\ 21}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ name\ :\ 'Jane',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ age\ :\ 27}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{];}
+\DoxyCodeLine{}
+\DoxyCodeLine{pluck(users,\ 'name');\ //\ ["{}John"{},\ "{}Jane"{}]}
+\DoxyCodeLine{pluck(users,\ 'age');\ //\ [21,\ 27]}
+\DoxyCodeLine{}
+\DoxyCodeLine{users\ =\ \{}
+\DoxyCodeLine{\ \ \ \ first:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ name\ :\ 'John',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ age\ :\ 21}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ second:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ name\ :\ 'Mary',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ age\ :\ 25}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{pluck(users,\ 'name');\ //\ ['John',\ 'Mary']}
+
+\end{DoxyCode}
+
+
+See\+: \href{array.html\#pluck}{\texttt{ array/pluck}}, \href{object.html\#pluck}{\texttt{ object/pluck}}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0bd984128464864e6d12f3943f53d7b4_autotoc_md1158}{}\doxysection{\texorpdfstring{reduce(list, callback, initial, \mbox{[}this\+Obj\mbox{]})\+:\texorpdfstring{$\ast$}{*}}{reduce(list, callback, initial, \mbox{[}this\+Obj\mbox{]})\+:\texorpdfstring{$\ast$}{*}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0bd984128464864e6d12f3943f53d7b4_autotoc_md1158}
+Apply a function against an accumulator and each value in the collection as to reduce it to a single value.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ obj\ =\ \{a:\ 1,\ b:\ 2,\ c:\ 3,\ d:\ 4\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{function\ sum(prev,\ cur,\ key,\ list)\ \{}
+\DoxyCodeLine{\ \ \ \ return\ prev\ +\ cur;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{reduce(obj,\ sum);\ //\ 10}
+
+\end{DoxyCode}
+
+
+See\+: \href{array.html\#reduce}{\texttt{ array/reduce}}, \href{object.html\#reduce}{\texttt{ object/reduce}}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0bd984128464864e6d12f3943f53d7b4_autotoc_md1159}{}\doxysection{\texorpdfstring{reject(list, fn, \mbox{[}this\+Obj\mbox{]})\+:Array}{reject(list, fn, \mbox{[}this\+Obj\mbox{]})\+:Array}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0bd984128464864e6d12f3943f53d7b4_autotoc_md1159}
+Creates a new array with all the elements that do {\bfseries{not}} pass the truth test. Opposite of \doxylink{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mfac3b70891d99551a76fc616c3878c08_filter}{\`{}filter()\`{}}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0bd984128464864e6d12f3943f53d7b4_autotoc_md1160}{}\doxysubsection{\texorpdfstring{Example}{Example}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0bd984128464864e6d12f3943f53d7b4_autotoc_md1160}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ numbers\ =\ [1,\ 2,\ 3,\ 4,\ 5];}
+\DoxyCodeLine{reject(numbers,\ function(x)\ \{\ return\ (x\ \%\ 2)\ !==\ 0;\ \});\ //\ [2,\ 4]}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ obj\ =\ \{a:\ 1,\ b:\ 2,\ c:\ 3,\ d:\ 4,\ e:\ 5\};}
+\DoxyCodeLine{reject(obj,\ function(x)\ \{\ return\ (x\ \%\ 2)\ !==\ 0;\ \});\ //\ [2,\ 4]}
+
+\end{DoxyCode}
+
+
+See\+: \href{array.html\#reject}{\texttt{ array/reject}}, \href{object.html\#reject}{\texttt{ object/reject}}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0bd984128464864e6d12f3943f53d7b4_autotoc_md1161}{}\doxysection{\texorpdfstring{size(list)\+:Number}{size(list)\+:Number}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0bd984128464864e6d12f3943f53d7b4_autotoc_md1161}
+Returns the number of values in the collection.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ obj\ =\ \{}
+\DoxyCodeLine{\ \ \ \ foo\ :\ 1,}
+\DoxyCodeLine{\ \ \ \ bar\ :\ 2,}
+\DoxyCodeLine{\ \ \ \ lorem\ :\ 3}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{size(obj);\ \ \ \ \ //\ 3}
+\DoxyCodeLine{size([1,2,3]);\ //\ 3}
+\DoxyCodeLine{size(null);\ \ \ \ //\ 0}
+
+\end{DoxyCode}
+
+
+See\+: \href{object.html\#size}{\texttt{ object/size}}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0bd984128464864e6d12f3943f53d7b4_autotoc_md1162}{}\doxysection{\texorpdfstring{some(list, callback, \mbox{[}this\+Obj\mbox{]})\+:Boolean}{some(list, callback, \mbox{[}this\+Obj\mbox{]})\+:Boolean}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0bd984128464864e6d12f3943f53d7b4_autotoc_md1162}
+Tests whether any values in the collection pass the test implemented by the provided callback.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ obj\ =\ \{}
+\DoxyCodeLine{\ \ \ \ a:\ 1,}
+\DoxyCodeLine{\ \ \ \ b:\ 2,}
+\DoxyCodeLine{\ \ \ \ c:\ 3,}
+\DoxyCodeLine{\ \ \ \ d:\ 'string'}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{some(obj,\ isNumber);\ \ \ \ \ \ //\ true}
+\DoxyCodeLine{some(obj,\ isString);\ \ \ \ \ \ //\ true}
+\DoxyCodeLine{some([1,\ 2,\ 3],\ isNumber)\ //\ true}
+\DoxyCodeLine{some([1,\ 2,\ 3],\ isString)\ //\ false}
+
+\end{DoxyCode}
+
+
+See\+: \href{array.html\#some}{\texttt{ array/some}}, \href{object.html\#some}{\texttt{ object/some}}
+
+\DoxyHorRuler{0}
+
+
+For more usage examples check specs inside {\ttfamily /tests} folder. Unit tests are the best documentation you can get... 

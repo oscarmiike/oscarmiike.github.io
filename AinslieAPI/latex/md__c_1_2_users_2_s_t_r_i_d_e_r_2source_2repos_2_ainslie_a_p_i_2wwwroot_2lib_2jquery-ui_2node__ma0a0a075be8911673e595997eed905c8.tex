@@ -1,0 +1,37 @@
+\chapter{Contributing}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma0a0a075be8911673e595997eed905c8}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma0a0a075be8911673e595997eed905c8}\index{Contributing@{Contributing}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma0a0a075be8911673e595997eed905c8_autotoc_md3406}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma0a0a075be8911673e595997eed905c8_autotoc_md3406}%
+ Fork the repo at \href{https://github.com/mout/mout}{\texttt{ https\+://github.\+com/mout/mout}}
+
+\begin{quote}
+"{}\+Write clearly, don\textquotesingle{}t be too clever"{} -\/ The Elements of Programming Style \end{quote}
+Avoid unnamed functions and follow the other modules structure. By only using named functions it will be easier to extract the code from the AMD module if needed and it will also give better error messages, Java\+Script minifiers like \href{http://code.google.com/closure/compiler/}{\texttt{ Google Closure Compiler}} and \href{https://github.com/mishoo/UglifyJS}{\texttt{ Uglify\+JS}} will make sure code is as small/optimized as possible.
+
+\begin{quote}
+"{}\+Make it clear before you make it faster."{} -\/ The Elements of Programming Style \end{quote}
+Be sure to always create tests for each proposed module. Features will only be merged if they contain proper tests and documentation.
+
+\begin{quote}
+"{}\+Good code is its own best documentation."{} -\/ Steve Mc\+Connell \end{quote}
+We should do a code review before merging to make sure names makes sense and implementation is as good as possible.
+
+Try to split your pull requests into logical groups, the smaller the easier to be reviewed/merged.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma0a0a075be8911673e595997eed905c8_autotoc_md3407}{}\doxysection{\texorpdfstring{Tests \& Code Coverage}{Tests \& Code Coverage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma0a0a075be8911673e595997eed905c8_autotoc_md3407}
+Tests can be found inside the {\ttfamily tests} folder, to execute them in the browser open the {\ttfamily tests/runner.\+html}. The same tests also work on node.\+js by running {\ttfamily npm test}.
+
+We should have tests for all methods and ensure we have a high code coverage through our continuous integration server (\href{https://travis-ci.org/mout/mout}{\texttt{ travis}}). When you ask for a pull request Travis will automatically run the tests on node.\+js and check the code coverage as well.
+
+We run {\ttfamily node build pkg} automatically before any {\ttfamily npm test}, so specs and packages should always be in sync. (will avoid human mistakes)
+
+To check code coverage run {\ttfamily npm test -\/-\/coverage}, it will generate the reports inside the {\ttfamily coverage} folder and also log the results. Please note that node.\+js doesn\textquotesingle{}t execute all code branches since we have some conditionals that are only met on old Java\+Script engines (eg. IE 7-\/8), so we will never have 100\% code coverage (but should be close to it).\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma0a0a075be8911673e595997eed905c8_autotoc_md3408}{}\doxysection{\texorpdfstring{Build Script}{Build Script}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma0a0a075be8911673e595997eed905c8_autotoc_md3408}
+The \href{https://github.com/mout/mout/wiki/Build-Script}{\texttt{ build script}} can be extremely helpful and can avoid human mistakes, use it.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma0a0a075be8911673e595997eed905c8_autotoc_md3409}{}\doxysection{\texorpdfstring{Admins / Pull Requests}{Admins / Pull Requests}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma0a0a075be8911673e595997eed905c8_autotoc_md3409}
+Even if you are an admin (have commit rights) please do pull requests when adding new features or changing current behavior, that way we can review the work and discuss. Feel free to push changes that doesn\textquotesingle{}t affect behavior without asking for a pull request (readme, changelog, build script, typos, refactoring, ...).\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma0a0a075be8911673e595997eed905c8_autotoc_md3410}{}\doxysection{\texorpdfstring{Large changes}{Large changes}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma0a0a075be8911673e595997eed905c8_autotoc_md3410}
+If you are proposing some major change, please create an issue to discuss it first. (maybe it\textquotesingle{}s outside the scope of the project)\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma0a0a075be8911673e595997eed905c8_autotoc_md3411}{}\doxysection{\texorpdfstring{Questions / IRC / Wiki / Issue Tracker}{Questions / IRC / Wiki / Issue Tracker}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__ma0a0a075be8911673e595997eed905c8_autotoc_md3411}
+When in doubt ask someone on IRC to help you (\href{http://webchat.freenode.net/?channels=moutjs}{\texttt{ \#moutjs on irc.\+freenode.\+net}}) or create a \href{http://github.com/mout/mout/issues}{\texttt{ new issue}}.
+
+The \href{https://github.com/mout/mout/wiki}{\texttt{ project wiki}} can also be a good resource of information.
+
+\DoxyHorRuler{0}
+
+
+Check the \href{https://github.com/mout/mout/contributors}{\texttt{ contributors list at github}}. 

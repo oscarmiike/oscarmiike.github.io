@@ -1,0 +1,32 @@
+\chapter{is-\/retry-\/allowed \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/floatdrop/is-\/retry-\/allowed"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+org/floatdrop/is-\/retry-\/allowed.\+svg?branch=master"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5ee520ed78db6c4f2156390d9fbea301}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5ee520ed78db6c4f2156390d9fbea301}\index{is-\/retry-\/allowed $<$a href="{}https://travis-\/ci.org/floatdrop/is-\/retry-\/allowed"{} $>$$<$img src="{}https://travis-\/ci.org/floatdrop/is-\/retry-\/allowed.svg?branch=master"{} alt="{}Build Status"{}/$>$$<$/a$>$@{is-\/retry-\/allowed $<$a href=""https://travis-\/ci.org/floatdrop/is-\/retry-\/allowed"" $>$$<$img src=""https://travis-\/ci.org/floatdrop/is-\/retry-\/allowed.svg?branch=master"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5ee520ed78db6c4f2156390d9fbea301_autotoc_md2996}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5ee520ed78db6c4f2156390d9fbea301_autotoc_md2996}%
+ Is retry allowed for Error?\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5ee520ed78db6c4f2156390d9fbea301_autotoc_md2997}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5ee520ed78db6c4f2156390d9fbea301_autotoc_md2997}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ -\/-\/save\ is-\/retry-\/allowed}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5ee520ed78db6c4f2156390d9fbea301_autotoc_md2998}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5ee520ed78db6c4f2156390d9fbea301_autotoc_md2998}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ isRetryAllowed\ =\ require('is-\/retry-\/allowed');}
+\DoxyCodeLine{}
+\DoxyCodeLine{isRetryAllowed(\{code:\ 'ETIMEDOUT'\});}
+\DoxyCodeLine{//=>\ true}
+\DoxyCodeLine{}
+\DoxyCodeLine{isRetryAllowed(\{code:\ 'ENOTFOUND'\});}
+\DoxyCodeLine{//=>\ false}
+\DoxyCodeLine{}
+\DoxyCodeLine{isRetryAllowed(\{\});}
+\DoxyCodeLine{//=>\ true}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5ee520ed78db6c4f2156390d9fbea301_autotoc_md2999}{}\doxysection{\texorpdfstring{API}{API}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5ee520ed78db6c4f2156390d9fbea301_autotoc_md2999}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5ee520ed78db6c4f2156390d9fbea301_autotoc_md3000}{}\doxysubsection{\texorpdfstring{is\+Retry\+Allowed(error)}{is\+Retry\+Allowed(error)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5ee520ed78db6c4f2156390d9fbea301_autotoc_md3000}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5ee520ed78db6c4f2156390d9fbea301_autotoc_md3001}{}\doxysubsubsection{\texorpdfstring{error}{error}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5ee520ed78db6c4f2156390d9fbea301_autotoc_md3001}
+Type\+: {\ttfamily object}
+
+Object with {\ttfamily code} property, which will be used to determine retry.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5ee520ed78db6c4f2156390d9fbea301_autotoc_md3002}{}\doxysection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5ee520ed78db6c4f2156390d9fbea301_autotoc_md3002}
+MIT © \href{http://github.com/floatdrop}{\texttt{ Vsevolod Strukchinsky}} 

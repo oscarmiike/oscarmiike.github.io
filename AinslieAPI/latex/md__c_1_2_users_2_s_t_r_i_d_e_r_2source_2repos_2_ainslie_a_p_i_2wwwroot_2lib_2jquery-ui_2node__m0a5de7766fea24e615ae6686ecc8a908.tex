@@ -1,0 +1,75 @@
+\chapter{locate-\/path \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/sindresorhus/locate-\/path"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+org/sindresorhus/locate-\/path.\+svg?branch=master"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0a5de7766fea24e615ae6686ecc8a908}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0a5de7766fea24e615ae6686ecc8a908}\index{locate-\/path $<$a href="{}https://travis-\/ci.org/sindresorhus/locate-\/path"{} $>$$<$img src="{}https://travis-\/ci.org/sindresorhus/locate-\/path.svg?branch=master"{} alt="{}Build Status"{}/$>$$<$/a$>$@{locate-\/path $<$a href=""https://travis-\/ci.org/sindresorhus/locate-\/path"" $>$$<$img src=""https://travis-\/ci.org/sindresorhus/locate-\/path.svg?branch=master"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0a5de7766fea24e615ae6686ecc8a908_autotoc_md10786}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0a5de7766fea24e615ae6686ecc8a908_autotoc_md10786}%
+ \begin{quote}
+Get the first path that exists on disk of multiple paths \end{quote}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0a5de7766fea24e615ae6686ecc8a908_autotoc_md10787}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0a5de7766fea24e615ae6686ecc8a908_autotoc_md10787}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ locate-\/path}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0a5de7766fea24e615ae6686ecc8a908_autotoc_md10788}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0a5de7766fea24e615ae6686ecc8a908_autotoc_md10788}
+Here we find the first file that exists on disk, in array order.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ locatePath\ =\ require('locate-\/path');}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ files\ =\ [}
+\DoxyCodeLine{\ \ \ \ 'unicorn.png',}
+\DoxyCodeLine{\ \ \ \ 'rainbow.png',\ //\ Only\ this\ one\ actually\ exists\ on\ disk}
+\DoxyCodeLine{\ \ \ \ 'pony.png'}
+\DoxyCodeLine{];}
+\DoxyCodeLine{}
+\DoxyCodeLine{(async\ ()\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ console(await\ locatePath(files));}
+\DoxyCodeLine{\ \ \ \ //=>\ 'rainbow'}
+\DoxyCodeLine{\})();}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0a5de7766fea24e615ae6686ecc8a908_autotoc_md10789}{}\doxysection{\texorpdfstring{API}{API}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0a5de7766fea24e615ae6686ecc8a908_autotoc_md10789}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0a5de7766fea24e615ae6686ecc8a908_autotoc_md10790}{}\doxysubsection{\texorpdfstring{locate\+Path(paths, \mbox{[}options\mbox{]})}{locate\+Path(paths, \mbox{[}options\mbox{]})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0a5de7766fea24e615ae6686ecc8a908_autotoc_md10790}
+Returns a {\ttfamily Promise\texorpdfstring{$<$}{<}string\texorpdfstring{$>$}{>}} for the first path that exists or {\ttfamily undefined} if none exists.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0a5de7766fea24e615ae6686ecc8a908_autotoc_md10791}{}\doxysubsubsection{\texorpdfstring{paths}{paths}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0a5de7766fea24e615ae6686ecc8a908_autotoc_md10791}
+Type\+: {\ttfamily Iterable\texorpdfstring{$<$}{<}string\texorpdfstring{$>$}{>}}
+
+Paths to check.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0a5de7766fea24e615ae6686ecc8a908_autotoc_md10792}{}\doxysubsubsection{\texorpdfstring{options}{options}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0a5de7766fea24e615ae6686ecc8a908_autotoc_md10792}
+Type\+: {\ttfamily Object}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0a5de7766fea24e615ae6686ecc8a908_autotoc_md10793}{}\doxyparagraph{\texorpdfstring{concurrency}{concurrency}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0a5de7766fea24e615ae6686ecc8a908_autotoc_md10793}
+Type\+: {\ttfamily number}~\newline
+ Default\+: {\ttfamily Infinity}~\newline
+ Minimum\+: {\ttfamily 1}
+
+Number of concurrently pending promises.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0a5de7766fea24e615ae6686ecc8a908_autotoc_md10794}{}\doxyparagraph{\texorpdfstring{preserve\+Order}{preserve\+Order}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0a5de7766fea24e615ae6686ecc8a908_autotoc_md10794}
+Type\+: {\ttfamily boolean}~\newline
+ Default\+: {\ttfamily true}
+
+Preserve {\ttfamily paths} order when searching.
+
+Disable this to improve performance if you don\textquotesingle{}t care about the order.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0a5de7766fea24e615ae6686ecc8a908_autotoc_md10795}{}\doxyparagraph{\texorpdfstring{cwd}{cwd}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0a5de7766fea24e615ae6686ecc8a908_autotoc_md10795}
+Type\+: {\ttfamily string}~\newline
+ Default\+: {\ttfamily process.\+cwd()}
+
+Current working directory.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0a5de7766fea24e615ae6686ecc8a908_autotoc_md10796}{}\doxyparagraph{\texorpdfstring{type}{type}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0a5de7766fea24e615ae6686ecc8a908_autotoc_md10796}
+Type\+: {\ttfamily string}~\newline
+ Default\+: {\ttfamily file}~\newline
+ Values\+: {\ttfamily file} {\ttfamily directory}
+
+The type of paths that can match.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0a5de7766fea24e615ae6686ecc8a908_autotoc_md10797}{}\doxyparagraph{\texorpdfstring{allow\+Symlinks}{allow\+Symlinks}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0a5de7766fea24e615ae6686ecc8a908_autotoc_md10797}
+Type\+: {\ttfamily boolean}~\newline
+ Default\+: {\ttfamily true}
+
+Allow symbolic links to match if they point to the chosen path type.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0a5de7766fea24e615ae6686ecc8a908_autotoc_md10798}{}\doxysubsection{\texorpdfstring{locate\+Path.\+sync(paths, \mbox{[}options\mbox{]})}{locate\+Path.\+sync(paths, \mbox{[}options\mbox{]})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0a5de7766fea24e615ae6686ecc8a908_autotoc_md10798}
+Returns the first path that exists or {\ttfamily undefined} if none exists.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0a5de7766fea24e615ae6686ecc8a908_autotoc_md10799}{}\doxysubsubsection{\texorpdfstring{paths}{paths}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0a5de7766fea24e615ae6686ecc8a908_autotoc_md10799}
+Type\+: {\ttfamily Iterable\texorpdfstring{$<$}{<}string\texorpdfstring{$>$}{>}}
+
+Paths to check.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0a5de7766fea24e615ae6686ecc8a908_autotoc_md10800}{}\doxysubsubsection{\texorpdfstring{options}{options}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0a5de7766fea24e615ae6686ecc8a908_autotoc_md10800}
+Type\+: {\ttfamily Object}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0a5de7766fea24e615ae6686ecc8a908_autotoc_md10801}{}\doxyparagraph{\texorpdfstring{cwd}{cwd}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0a5de7766fea24e615ae6686ecc8a908_autotoc_md10801}
+Same as above.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0a5de7766fea24e615ae6686ecc8a908_autotoc_md10802}{}\doxyparagraph{\texorpdfstring{type}{type}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0a5de7766fea24e615ae6686ecc8a908_autotoc_md10802}
+Same as above.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0a5de7766fea24e615ae6686ecc8a908_autotoc_md10803}{}\doxyparagraph{\texorpdfstring{allow\+Symlinks}{allow\+Symlinks}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0a5de7766fea24e615ae6686ecc8a908_autotoc_md10803}
+Same as above.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0a5de7766fea24e615ae6686ecc8a908_autotoc_md10804}{}\doxysection{\texorpdfstring{Related}{Related}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0a5de7766fea24e615ae6686ecc8a908_autotoc_md10804}
+
+\begin{DoxyItemize}
+\item \href{https://github.com/sindresorhus/path-exists}{\texttt{ path-\/exists}} -\/ Check if a path exists
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0a5de7766fea24e615ae6686ecc8a908_autotoc_md10805}{}\doxysection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m0a5de7766fea24e615ae6686ecc8a908_autotoc_md10805}
+MIT © \href{https://sindresorhus.com}{\texttt{ Sindre Sorhus}} 

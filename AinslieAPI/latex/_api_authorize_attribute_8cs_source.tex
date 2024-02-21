@@ -1,0 +1,49 @@
+\doxysection{Api\+Authorize\+Attribute.\+cs}
+\hypertarget{_api_authorize_attribute_8cs_source}{}\label{_api_authorize_attribute_8cs_source}\index{C:/Users/STRIDER/source/repos/AinslieAPI/Authentication/Authorization/ApiAuthorizeAttribute.cs@{C:/Users/STRIDER/source/repos/AinslieAPI/Authentication/Authorization/ApiAuthorizeAttribute.cs}}
+\mbox{\hyperlink{_api_authorize_attribute_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_api_authorize_attribute_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }Microsoft.AspNetCore.Mvc;}
+\DoxyCodeLine{\Hypertarget{_api_authorize_attribute_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }Microsoft.AspNetCore.Mvc.Filters;}
+\DoxyCodeLine{\Hypertarget{_api_authorize_attribute_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_ainslie_a_p_i_1_1_models}{AinslieAPI.Models}};}
+\DoxyCodeLine{\Hypertarget{_api_authorize_attribute_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }System.Security.Policy;}
+\DoxyCodeLine{\Hypertarget{_api_authorize_attribute_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_ainslie_a_p_i_1_1_d_t_o_1_1_user_helper}{AinslieAPI.DTO.UserHelper}};}
+\DoxyCodeLine{\Hypertarget{_api_authorize_attribute_8cs_source_l00006}00006\ \textcolor{keyword}{using\ }Newtonsoft.Json.Linq;}
+\DoxyCodeLine{\Hypertarget{_api_authorize_attribute_8cs_source_l00007}00007\ \textcolor{keyword}{using\ }Newtonsoft.Json;}
+\DoxyCodeLine{\Hypertarget{_api_authorize_attribute_8cs_source_l00008}00008\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_ainslie_a_p_i_1_1_helpers}{AinslieAPI.Helpers}};}
+\DoxyCodeLine{\Hypertarget{_api_authorize_attribute_8cs_source_l00009}00009\ \textcolor{keyword}{using\ }System.Security.Claims;}
+\DoxyCodeLine{\Hypertarget{_api_authorize_attribute_8cs_source_l00010}00010\ \textcolor{keyword}{using\ }System.Net;}
+\DoxyCodeLine{\Hypertarget{_api_authorize_attribute_8cs_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{_api_authorize_attribute_8cs_source_l00012}00012\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_ainslie_a_p_i_1_1_authentication_1_1_authorization}{AinslieAPI.Authentication.Authorization}};}
+\DoxyCodeLine{\Hypertarget{_api_authorize_attribute_8cs_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{_api_authorize_attribute_8cs_source_l00017}00017\ [AttributeUsage(AttributeTargets.Class\ |\ AttributeTargets.Method)]}
+\DoxyCodeLine{\Hypertarget{_api_authorize_attribute_8cs_source_l00018}\mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_authorization_1_1_api_authorize_attribute}{00018}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_authorization_1_1_api_authorize_attribute}{ApiAuthorizeAttribute}}\ :\ Attribute,\ IAuthorizationFilter}
+\DoxyCodeLine{\Hypertarget{_api_authorize_attribute_8cs_source_l00019}00019\ \{}
+\DoxyCodeLine{\Hypertarget{_api_authorize_attribute_8cs_source_l00020}00020\ \ \ \ \ \textcolor{keyword}{private}\ readonly\ List<string>\ \_requiredRoles\ =\ \textcolor{keyword}{new}\ List<string>();}
+\DoxyCodeLine{\Hypertarget{_api_authorize_attribute_8cs_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{_api_authorize_attribute_8cs_source_l00025}\mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_authorization_1_1_api_authorize_attribute_ab556c47c48998eacd84d3d00c8cc67e3}{00025}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_authorization_1_1_api_authorize_attribute_ab556c47c48998eacd84d3d00c8cc67e3}{ApiAuthorizeAttribute}}()}
+\DoxyCodeLine{\Hypertarget{_api_authorize_attribute_8cs_source_l00026}00026\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_api_authorize_attribute_8cs_source_l00027}00027\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_api_authorize_attribute_8cs_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_api_authorize_attribute_8cs_source_l00033}\mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_authorization_1_1_api_authorize_attribute_a742cbf3356588eff30118d3f1ea7b75a}{00033}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_authorization_1_1_api_authorize_attribute_a742cbf3356588eff30118d3f1ea7b75a}{ApiAuthorizeAttribute}}(\textcolor{keywordtype}{string}\ roles)}
+\DoxyCodeLine{\Hypertarget{_api_authorize_attribute_8cs_source_l00034}00034\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_api_authorize_attribute_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \_requiredRoles\ =\ roles.Split(\textcolor{stringliteral}{"{},"{}}).Select(role\ =>\ role.Trim()).ToList();}
+\DoxyCodeLine{\Hypertarget{_api_authorize_attribute_8cs_source_l00036}00036\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_api_authorize_attribute_8cs_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_api_authorize_attribute_8cs_source_l00049}\mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_authorization_1_1_api_authorize_attribute_a4b1fdfb6a2c2c0549e48a267b3aa1750}{00049}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_authorization_1_1_api_authorize_attribute_a4b1fdfb6a2c2c0549e48a267b3aa1750}{OnAuthorization}}(AuthorizationFilterContext\ context)}
+\DoxyCodeLine{\Hypertarget{_api_authorize_attribute_8cs_source_l00050}00050\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_api_authorize_attribute_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ skip\ authorization\ if\ action\ is\ decorated\ with\ [AllowAnonymous]\ attribute}}
+\DoxyCodeLine{\Hypertarget{_api_authorize_attribute_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ var\ allowAnonymous\ =\ context.ActionDescriptor.EndpointMetadata.OfType<\mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_authorization_1_1_allow_anonymous_attribute}{AllowAnonymousAttribute}}>().Any();}
+\DoxyCodeLine{\Hypertarget{_api_authorize_attribute_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (allowAnonymous)}
+\DoxyCodeLine{\Hypertarget{_api_authorize_attribute_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_api_authorize_attribute_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ try\ cookie\ authenticated\ user\ first}}
+\DoxyCodeLine{\Hypertarget{_api_authorize_attribute_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_user_helper_1_1_authenticated_user}{AuthenticatedUser}}?\ user\ =\ context.HttpContext.User.Identity.IsAuthenticated\ ?\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_user_helper}{UserHelper}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_user_helper_a5aef940b2585ea4d9472c9f3e89a860f}{GetAuthenticatedUser}}(context.HttpContext.User)\ :\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_api_authorize_attribute_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (user\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_api_authorize_attribute_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ try\ authenticate\ via\ jwt\ second}}
+\DoxyCodeLine{\Hypertarget{_api_authorize_attribute_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ user\ =\ (\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_user_helper_1_1_authenticated_user}{AuthenticatedUser}}?)context.HttpContext.Items[\textcolor{stringliteral}{"{}user"{}}];}
+\DoxyCodeLine{\Hypertarget{_api_authorize_attribute_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (user\ ==\ \textcolor{keyword}{null}\ ||\ (\_requiredRoles.Count\ >\ 0\ \&\&\ !user.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_user_helper_1_1_authenticated_user_a55ecb49775511e5752b250ebad9d7dc5}{Roles}}.Intersect(\_requiredRoles).Any()))\ }
+\DoxyCodeLine{\Hypertarget{_api_authorize_attribute_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ context.Result\ =\ \textcolor{keyword}{new}\ JsonResult(\textcolor{keyword}{new}\ \{\ message\ =\ \textcolor{stringliteral}{"{}Unauthorized"{}}\ \})\ \{\ StatusCode\ =\ StatusCodes.Status401Unauthorized\ \};}
+\DoxyCodeLine{\Hypertarget{_api_authorize_attribute_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//context.Result\ =\ new\ UnauthorizedResult();}}
+\DoxyCodeLine{\Hypertarget{_api_authorize_attribute_8cs_source_l00063}00063\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_api_authorize_attribute_8cs_source_l00064}00064\ \}}
+
+\end{DoxyCode}

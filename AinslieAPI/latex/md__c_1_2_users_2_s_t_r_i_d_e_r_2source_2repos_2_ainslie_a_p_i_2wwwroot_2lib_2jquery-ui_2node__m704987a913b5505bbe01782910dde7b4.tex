@@ -1,0 +1,249 @@
+\chapter{Tmp}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m704987a913b5505bbe01782910dde7b4}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m704987a913b5505bbe01782910dde7b4}\index{Tmp@{Tmp}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m704987a913b5505bbe01782910dde7b4_autotoc_md4875}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m704987a913b5505bbe01782910dde7b4_autotoc_md4875}%
+ A simple temporary file and directory creator for \href{http://nodejs.org/}{\texttt{ node.\+js.}}
+
+\href{http://travis-ci.org/raszi/node-tmp}{\texttt{ }}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m704987a913b5505bbe01782910dde7b4_autotoc_md4876}{}\doxysection{\texorpdfstring{About}{About}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m704987a913b5505bbe01782910dde7b4_autotoc_md4876}
+This is a \href{https://www.npmjs.com/browse/depended/tmp}{\texttt{ widely used library}} to create temporary files and directories in a \href{http://nodejs.org/}{\texttt{ node.\+js}} environment.
+
+Tmp offers both an asynchronous and a synchronous API. For all API calls, all the parameters are optional.
+
+Tmp uses crypto for determining random file names, or, when using templates, a six letter random identifier. And just in case that you do not have that much entropy left on your system, Tmp will fall back to pseudo random numbers.
+
+You can set whether you want to remove the temporary file on process exit or not, and the destination directory can also be set.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m704987a913b5505bbe01782910dde7b4_autotoc_md4877}{}\doxysection{\texorpdfstring{How to install}{How to install}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m704987a913b5505bbe01782910dde7b4_autotoc_md4877}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ tmp}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m704987a913b5505bbe01782910dde7b4_autotoc_md4878}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m704987a913b5505bbe01782910dde7b4_autotoc_md4878}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m704987a913b5505bbe01782910dde7b4_autotoc_md4879}{}\doxysubsection{\texorpdfstring{Asynchronous file creation}{Asynchronous file creation}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m704987a913b5505bbe01782910dde7b4_autotoc_md4879}
+Simple temporary file creation, the file will be closed and unlinked on process exit.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ tmp\ =\ require('tmp');}
+\DoxyCodeLine{}
+\DoxyCodeLine{tmp.file(function\ \_tempFileCreated(err,\ path,\ fd,\ cleanupCallback)\ \{}
+\DoxyCodeLine{\ \ if\ (err)\ throw\ err;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ console.log("{}File:\ "{},\ path);}
+\DoxyCodeLine{\ \ console.log("{}Filedescriptor:\ "{},\ fd);}
+\DoxyCodeLine{\ \ }
+\DoxyCodeLine{\ \ //\ If\ we\ don't\ need\ the\ file\ anymore\ we\ could\ manually\ call\ the\ cleanupCallback}
+\DoxyCodeLine{\ \ //\ But\ that\ is\ not\ necessary\ if\ we\ didn't\ pass\ the\ keep\ option\ because\ the\ library}
+\DoxyCodeLine{\ \ //\ will\ clean\ after\ itself.}
+\DoxyCodeLine{\ \ cleanupCallback();}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m704987a913b5505bbe01782910dde7b4_autotoc_md4880}{}\doxysubsection{\texorpdfstring{Synchronous file creation}{Synchronous file creation}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m704987a913b5505bbe01782910dde7b4_autotoc_md4880}
+A synchronous version of the above.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ tmp\ =\ require('tmp');}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ tmpobj\ =\ tmp.fileSync();}
+\DoxyCodeLine{console.log("{}File:\ "{},\ tmpobj.name);}
+\DoxyCodeLine{console.log("{}Filedescriptor:\ "{},\ tmpobj.fd);}
+\DoxyCodeLine{\ \ }
+\DoxyCodeLine{//\ If\ we\ don't\ need\ the\ file\ anymore\ we\ could\ manually\ call\ the\ removeCallback}
+\DoxyCodeLine{//\ But\ that\ is\ not\ necessary\ if\ we\ didn't\ pass\ the\ keep\ option\ because\ the\ library}
+\DoxyCodeLine{//\ will\ clean\ after\ itself.}
+\DoxyCodeLine{tmpobj.removeCallback();}
+
+\end{DoxyCode}
+
+
+Note that this might throw an exception if either the maximum limit of retries for creating a temporary name fails, or, in case that you do not have the permission to write to the directory where the temporary file should be created in.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m704987a913b5505bbe01782910dde7b4_autotoc_md4881}{}\doxysubsection{\texorpdfstring{Asynchronous directory creation}{Asynchronous directory creation}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m704987a913b5505bbe01782910dde7b4_autotoc_md4881}
+Simple temporary directory creation, it will be removed on process exit.
+
+If the directory still contains items on process exit, then it won\textquotesingle{}t be removed.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ tmp\ =\ require('tmp');}
+\DoxyCodeLine{}
+\DoxyCodeLine{tmp.dir(function\ \_tempDirCreated(err,\ path,\ cleanupCallback)\ \{}
+\DoxyCodeLine{\ \ if\ (err)\ throw\ err;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ console.log("{}Dir:\ "{},\ path);}
+\DoxyCodeLine{\ \ }
+\DoxyCodeLine{\ \ //\ Manual\ cleanup}
+\DoxyCodeLine{\ \ cleanupCallback();}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+If you want to cleanup the directory even when there are entries in it, then you can pass the {\ttfamily unsafe\+Cleanup} option when creating it.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m704987a913b5505bbe01782910dde7b4_autotoc_md4882}{}\doxysubsection{\texorpdfstring{Synchronous directory creation}{Synchronous directory creation}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m704987a913b5505bbe01782910dde7b4_autotoc_md4882}
+A synchronous version of the above.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ tmp\ =\ require('tmp');}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ tmpobj\ =\ tmp.dirSync();}
+\DoxyCodeLine{console.log("{}Dir:\ "{},\ tmpobj.name);}
+\DoxyCodeLine{//\ Manual\ cleanup}
+\DoxyCodeLine{tmpobj.removeCallback();}
+
+\end{DoxyCode}
+
+
+Note that this might throw an exception if either the maximum limit of retries for creating a temporary name fails, or, in case that you do not have the permission to write to the directory where the temporary directory should be created in.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m704987a913b5505bbe01782910dde7b4_autotoc_md4883}{}\doxysubsection{\texorpdfstring{Asynchronous filename generation}{Asynchronous filename generation}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m704987a913b5505bbe01782910dde7b4_autotoc_md4883}
+It is possible with this library to generate a unique filename in the specified directory.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ tmp\ =\ require('tmp');}
+\DoxyCodeLine{}
+\DoxyCodeLine{tmp.tmpName(function\ \_tempNameGenerated(err,\ path)\ \{}
+\DoxyCodeLine{\ \ \ \ if\ (err)\ throw\ err;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ console.log("{}Created\ temporary\ filename:\ "{},\ path);}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m704987a913b5505bbe01782910dde7b4_autotoc_md4884}{}\doxysubsection{\texorpdfstring{Synchronous filename generation}{Synchronous filename generation}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m704987a913b5505bbe01782910dde7b4_autotoc_md4884}
+A synchronous version of the above.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ tmp\ =\ require('tmp');}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ name\ =\ tmp.tmpNameSync();}
+\DoxyCodeLine{console.log("{}Created\ temporary\ filename:\ "{},\ name);}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m704987a913b5505bbe01782910dde7b4_autotoc_md4885}{}\doxysection{\texorpdfstring{Advanced usage}{Advanced usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m704987a913b5505bbe01782910dde7b4_autotoc_md4885}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m704987a913b5505bbe01782910dde7b4_autotoc_md4886}{}\doxysubsection{\texorpdfstring{Asynchronous file creation}{Asynchronous file creation}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m704987a913b5505bbe01782910dde7b4_autotoc_md4886}
+Creates a file with mode {\ttfamily 0644}, prefix will be {\ttfamily prefix-\/} and postfix will be {\ttfamily .txt}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ tmp\ =\ require('tmp');}
+\DoxyCodeLine{}
+\DoxyCodeLine{tmp.file(\{\ mode:\ 0644,\ prefix:\ 'prefix-\/',\ postfix:\ '.txt'\ \},\ function\ \_tempFileCreated(err,\ path,\ fd)\ \{}
+\DoxyCodeLine{\ \ if\ (err)\ throw\ err;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ console.log("{}File:\ "{},\ path);}
+\DoxyCodeLine{\ \ console.log("{}Filedescriptor:\ "{},\ fd);}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m704987a913b5505bbe01782910dde7b4_autotoc_md4887}{}\doxysubsection{\texorpdfstring{Synchronous file creation}{Synchronous file creation}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m704987a913b5505bbe01782910dde7b4_autotoc_md4887}
+A synchronous version of the above.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ tmp\ =\ require('tmp');}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ tmpobj\ =\ tmp.fileSync(\{\ mode:\ 0644,\ prefix:\ 'prefix-\/',\ postfix:\ '.txt'\ \});}
+\DoxyCodeLine{console.log("{}File:\ "{},\ tmpobj.name);}
+\DoxyCodeLine{console.log("{}Filedescriptor:\ "{},\ tmpobj.fd);}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m704987a913b5505bbe01782910dde7b4_autotoc_md4888}{}\doxysubsection{\texorpdfstring{Asynchronous directory creation}{Asynchronous directory creation}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m704987a913b5505bbe01782910dde7b4_autotoc_md4888}
+Creates a directory with mode {\ttfamily 0755}, prefix will be {\ttfamily my\+Tmp\+Dir\+\_\+}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ tmp\ =\ require('tmp');}
+\DoxyCodeLine{}
+\DoxyCodeLine{tmp.dir(\{\ mode:\ 0750,\ prefix:\ 'myTmpDir\_'\ \},\ function\ \_tempDirCreated(err,\ path)\ \{}
+\DoxyCodeLine{\ \ if\ (err)\ throw\ err;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ console.log("{}Dir:\ "{},\ path);}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m704987a913b5505bbe01782910dde7b4_autotoc_md4889}{}\doxysubsection{\texorpdfstring{Synchronous directory creation}{Synchronous directory creation}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m704987a913b5505bbe01782910dde7b4_autotoc_md4889}
+Again, a synchronous version of the above.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ tmp\ =\ require('tmp');}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ tmpobj\ =\ tmp.dirSync(\{\ mode:\ 0750,\ prefix:\ 'myTmpDir\_'\ \});}
+\DoxyCodeLine{console.log("{}Dir:\ "{},\ tmpobj.name);}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m704987a913b5505bbe01782910dde7b4_autotoc_md4890}{}\doxysubsection{\texorpdfstring{mkstemps like, asynchronously}{mkstemps like, asynchronously}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m704987a913b5505bbe01782910dde7b4_autotoc_md4890}
+Creates a new temporary directory with mode {\ttfamily 0700} and filename like {\ttfamily /tmp/tmp-\/nk2\+J1u}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ tmp\ =\ require('tmp');}
+\DoxyCodeLine{}
+\DoxyCodeLine{tmp.dir(\{\ template:\ '/tmp/tmp-\/XXXXXX'\ \},\ function\ \_tempDirCreated(err,\ path)\ \{}
+\DoxyCodeLine{\ \ if\ (err)\ throw\ err;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ console.log("{}Dir:\ "{},\ path);}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m704987a913b5505bbe01782910dde7b4_autotoc_md4891}{}\doxysubsection{\texorpdfstring{mkstemps like, synchronously}{mkstemps like, synchronously}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m704987a913b5505bbe01782910dde7b4_autotoc_md4891}
+This will behave similarly to the asynchronous version.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ tmp\ =\ require('tmp');}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ tmpobj\ =\ tmp.dirSync(\{\ template:\ '/tmp/tmp-\/XXXXXX'\ \});}
+\DoxyCodeLine{console.log("{}Dir:\ "{},\ tmpobj.name);}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m704987a913b5505bbe01782910dde7b4_autotoc_md4892}{}\doxysubsection{\texorpdfstring{Asynchronous filename generation}{Asynchronous filename generation}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m704987a913b5505bbe01782910dde7b4_autotoc_md4892}
+The {\ttfamily tmp\+Name()} function accepts the {\ttfamily prefix}, {\ttfamily postfix}, {\ttfamily dir}, etc. parameters also\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ tmp\ =\ require('tmp');}
+\DoxyCodeLine{}
+\DoxyCodeLine{tmp.tmpName(\{\ template:\ '/tmp/tmp-\/XXXXXX'\ \},\ function\ \_tempNameGenerated(err,\ path)\ \{}
+\DoxyCodeLine{\ \ \ \ if\ (err)\ throw\ err;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ console.log("{}Created\ temporary\ filename:\ "{},\ path);}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m704987a913b5505bbe01782910dde7b4_autotoc_md4893}{}\doxysubsection{\texorpdfstring{Synchronous filename generation}{Synchronous filename generation}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m704987a913b5505bbe01782910dde7b4_autotoc_md4893}
+The {\ttfamily tmp\+Name\+Sync()} function works similarly to {\ttfamily tmp\+Name()}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ tmp\ =\ require('tmp');}
+\DoxyCodeLine{var\ tmpname\ =\ tmp.tmpNameSync(\{\ template:\ '/tmp/tmp-\/XXXXXX'\ \});}
+\DoxyCodeLine{console.log("{}Created\ temporary\ filename:\ "{},\ tmpname);}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m704987a913b5505bbe01782910dde7b4_autotoc_md4894}{}\doxysection{\texorpdfstring{Graceful cleanup}{Graceful cleanup}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m704987a913b5505bbe01782910dde7b4_autotoc_md4894}
+One may want to cleanup the temporary files even when an uncaught exception occurs. To enforce this, you can call the {\ttfamily set\+Graceful\+Cleanup()} method\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ tmp\ =\ require('tmp');}
+\DoxyCodeLine{}
+\DoxyCodeLine{tmp.setGracefulCleanup();}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m704987a913b5505bbe01782910dde7b4_autotoc_md4895}{}\doxysection{\texorpdfstring{Options}{Options}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m704987a913b5505bbe01782910dde7b4_autotoc_md4895}
+All options are optional \+:)
+
+
+\begin{DoxyItemize}
+\item {\ttfamily mode}\+: the file mode to create with, it fallbacks to {\ttfamily 0600} on file creation and {\ttfamily 0700} on directory creation
+\item {\ttfamily prefix}\+: the optional prefix, fallbacks to {\ttfamily tmp-\/} if not provided
+\item {\ttfamily postfix}\+: the optional postfix, fallbacks to {\ttfamily .tmp} on file creation
+\item {\ttfamily template}\+: \href{http://www.kernel.org/doc/man-pages/online/pages/man3/mkstemp.3.html}{\texttt{ {\ttfamily mkstemps}}} like filename template, no default
+\item {\ttfamily dir}\+: the optional temporary directory, fallbacks to system default (guesses from environment)
+\item {\ttfamily tries}\+: how many times should the function try to get a unique filename before giving up, default {\ttfamily 3}
+\item {\ttfamily keep}\+: signals that the temporary file or directory should not be deleted on exit, default is {\ttfamily false}, means delete
+\begin{DoxyItemize}
+\item Please keep in mind that it is recommended in this case to call the provided {\ttfamily cleanup\+Callback} function manually.
+\end{DoxyItemize}
+\item {\ttfamily unsafe\+Cleanup}\+: recursively removes the created temporary directory, even when it\textquotesingle{}s not empty. default is {\ttfamily false} 
+\end{DoxyItemize}

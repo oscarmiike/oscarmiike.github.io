@@ -1,0 +1,120 @@
+\chapter{bower-\/json}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m321ecea4f5b1fbba1d57be363f8b6fcc}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m321ecea4f5b1fbba1d57be363f8b6fcc}\index{bower-\/json@{bower-\/json}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m321ecea4f5b1fbba1d57be363f8b6fcc_autotoc_md5320}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m321ecea4f5b1fbba1d57be363f8b6fcc_autotoc_md5320}%
+ Read {\ttfamily bower.\+json} files with semantics, normalisation, defaults and validation.
+
+Install via \href{https://www.npmjs.org/package/bower-json}{\texttt{ npm}}\+: {\ttfamily npm install -\/-\/save bower-\/json}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m321ecea4f5b1fbba1d57be363f8b6fcc_autotoc_md5321}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m321ecea4f5b1fbba1d57be363f8b6fcc_autotoc_md5321}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m321ecea4f5b1fbba1d57be363f8b6fcc_autotoc_md5322}{}\doxysubsubsection{\texorpdfstring{.read(file, options, callback)}{.read(file, options, callback)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m321ecea4f5b1fbba1d57be363f8b6fcc_autotoc_md5322}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m321ecea4f5b1fbba1d57be363f8b6fcc_autotoc_md5323}{}\doxysubsubsection{\texorpdfstring{.read\+Sync(file, options)}{.read\+Sync(file, options)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m321ecea4f5b1fbba1d57be363f8b6fcc_autotoc_md5323}
+Reads {\ttfamily file} and applies normalisation, defaults and validation according to the {\ttfamily bower.\+json} spec. If the passed {\ttfamily file} does not exist, the callback is called with {\ttfamily error.\+code} equal to {\ttfamily ENOENT}. If the passed {\ttfamily file} contents are not valid JSON, the callback is called with {\ttfamily error.\+code} equal to {\ttfamily EMALFORMED}. If the {\ttfamily json} does not comply with the {\ttfamily bower.\+json} spec, the callback is called with {\ttfamily error.\+code} equal to {\ttfamily EINVALID}.
+
+If {\ttfamily file} is a directory, {\ttfamily find()} will be used to search for the json file. The {\ttfamily options} argument is optional and can be omitted. These options will be passed to {\ttfamily parse} method.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ bowerJson\ =\ require('bower-\/json');}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Can\ also\ be\ used\ by\ simply\ calling\ bowerJson()}
+\DoxyCodeLine{bowerJson.read('/path/to/bower.json',\ function\ (err,\ json)\ \{}
+\DoxyCodeLine{\ \ \ \ if\ (err)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ console.error('There\ was\ an\ error\ reading\ the\ file');}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ console.error(err.message);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ return;}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ console.log('JSON:\ ',\ json);}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m321ecea4f5b1fbba1d57be363f8b6fcc_autotoc_md5324}{}\doxysubsubsection{\texorpdfstring{.parse(json, options)}{.parse(json, options)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m321ecea4f5b1fbba1d57be363f8b6fcc_autotoc_md5324}
+Parses an object. Useful when you want to apply normalisation and validation directly to an object. If the {\ttfamily json} does not comply with the {\ttfamily bower.\+json} spec, an error is thrown with {\ttfamily error.\+code} equal to {\ttfamily EINVALID}.
+
+The {\ttfamily options} arguments is optional and can be omitted. Available options\+:
+
+
+\begin{DoxyItemize}
+\item validate\+: Apply validation, defaults to {\ttfamily true}
+\item normalize\+: Apply normalisation, defaults to {\ttfamily false}
+\item clone\+: clone, use and return the passed in {\ttfamily json} object instead of using it directly, defaults to {\ttfamily false}
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ bowerJson\ =\ require('bower-\/json');}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ json\ =\ \{}
+\DoxyCodeLine{\ \ \ \ name:\ 'my-\/package',}
+\DoxyCodeLine{\ \ \ \ version:\ '0.0.1'}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{try\ \{}
+\DoxyCodeLine{\ \ \ \ bowerJson.parse(json);}
+\DoxyCodeLine{\}\ catch\ (err)\ \{}
+\DoxyCodeLine{\ \ \ \ console.error('There\ was\ an\ error\ parsing\ the\ object');}
+\DoxyCodeLine{\ \ \ \ console.error(err.message);}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m321ecea4f5b1fbba1d57be363f8b6fcc_autotoc_md5325}{}\doxysubsubsection{\texorpdfstring{.get\+Issues(json) -\/ DEPRECATED}{.get\+Issues(json) -\/ DEPRECATED}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m321ecea4f5b1fbba1d57be363f8b6fcc_autotoc_md5325}
+Validates the passed {\ttfamily json} object.
+
+Returns an object with errors and warnings of this bower.\+json contents.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ bowerJson\ =\ require('bower-\/json');}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ json\ =\ \{}
+\DoxyCodeLine{\ \ \ \ name:\ 'myPackage',}
+\DoxyCodeLine{\ \ \ \ version:\ '0.0.1',}
+\DoxyCodeLine{\ \ \ \ main:\ \{\}}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ issues\ =\ bowerJson.getIssues(json);}
+\DoxyCodeLine{}
+\DoxyCodeLine{expect(issues).toEqual(\{}
+\DoxyCodeLine{\ \ errors:\ ['The\ "{}main"{}\ field\ has\ to\ be\ either\ an\ Array\ or\ a\ String'],}
+\DoxyCodeLine{\ \ warnings:\ ['The\ "{}name"{}\ must\ be\ lowercase']}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\#\#\#\ .validate(json)}
+\DoxyCodeLine{}
+\DoxyCodeLine{Validates\ the\ passed\ \`{}json`\ object.}
+\DoxyCodeLine{}
+\DoxyCodeLine{Throws\ an\ error\ with\ \`{}error.code`\ equal\ to\ \`{}EINVALID`\ if\ it\ does\ not\ comply\ with\ the\ spec.}
+
+\end{DoxyCode}
+ js var bower\+Json = require(\textquotesingle{}bower-\/json\textquotesingle{});
+
+var json = \{ name\+: \textquotesingle{}my\+Package\textquotesingle{}, version\+: \textquotesingle{}0.\+0.\+1\textquotesingle{} \};
+
+try \{ bower\+Json.\+validate(json); \} catch (err) \{ console.\+error(\textquotesingle{}There was an error validating the object\textquotesingle{}); console.\+error(err.\+message); \} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\#\#\#\ .normalize(json)}
+
+\end{DoxyCode}
+ js var bower\+Json = require(\textquotesingle{}bower-\/json\textquotesingle{});
+
+var json = \{ name\+: \textquotesingle{}my-\/package\textquotesingle{}, version\+: \textquotesingle{}0.\+0.\+1\textquotesingle{}, main\+: \textquotesingle{}foo.\+js,bar.\+js\textquotesingle{} \};
+
+bower\+Json.\+normalize(json); json.\+main // \mbox{[}\textquotesingle{}foo.\+js\textquotesingle{}, \textquotesingle{}bar.\+js\textquotesingle{}\mbox{]} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\#\#\#\ .find(folder,\ callback)}
+\DoxyCodeLine{\#\#\#\#\ .findSync(folder)}
+\DoxyCodeLine{}
+\DoxyCodeLine{Finds\ the\ \`{}json`\ filename\ inside\ a\ folder.}
+\DoxyCodeLine{Checks\ if\ a\ \`{}bower.json`\ exists,\ falling\ back\ to\ \`{}component.json`\ (deprecated)\ and\ \`{}.bower.json`.}
+\DoxyCodeLine{If\ no\ file\ was\ found,\ the\ callback\ is\ called\ with\ a\ \`{}error.code`\ of\ \`{}ENOENT`.}
+
+\end{DoxyCode}
+ js var bower\+Json = require(\textquotesingle{}bower-\/json\textquotesingle{});
+
+bower\+Json.\+find(\textquotesingle{}/path/to/folder\textquotesingle{}, function (err, filename) \{ if (err) \{ console.\+error(\textquotesingle{}There is no json file in the folder\textquotesingle{}); return; \}
+
+console.\+log(\textquotesingle{}Filename\+: \textquotesingle{}, filename);
+
+// Now that we got the filename, we can read its contents bower\+Json.\+read(filename, function (err, json) \{ if (err) \{ console.\+error(\textquotesingle{}There was an error reading the file\textquotesingle{}); console.\+error(err.\+message); return; \}
+
+console.\+log(\textquotesingle{}JSON\+: \textquotesingle{}, json); \}); \}); \`{}\`{}\`{}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m321ecea4f5b1fbba1d57be363f8b6fcc_autotoc_md5326}{}\doxysection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m321ecea4f5b1fbba1d57be363f8b6fcc_autotoc_md5326}
+Released under the \href{http://www.opensource.org/licenses/mit-license.php}{\texttt{ MIT License}}. 

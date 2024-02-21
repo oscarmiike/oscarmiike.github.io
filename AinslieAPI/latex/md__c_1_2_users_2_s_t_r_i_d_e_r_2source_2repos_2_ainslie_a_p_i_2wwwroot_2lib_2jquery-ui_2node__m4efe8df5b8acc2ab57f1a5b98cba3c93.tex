@@ -1,0 +1,59 @@
+\chapter{readme}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m4efe8df5b8acc2ab57f1a5b98cba3c93}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m4efe8df5b8acc2ab57f1a5b98cba3c93}\index{readme@{readme}}
+\doxysection*{~\newline
+  ~\newline
+ ~\newline
+ }
+
+\begin{quote}
+Itty bitty little widdle twinkie pinkie \href{https://people.mozilla.org/~jorendorff/es6-draft.html\#sec-promise-objects}{\texttt{ ES2015 Promise}} implementation \end{quote}
+\href{https://travis-ci.org/floatdrop/pinkie}{\texttt{ }} \href{https://coveralls.io/github/floatdrop/pinkie?branch=master}{\texttt{ }}
+
+There are \href{https://github.com/promises-aplus/promises-spec/blob/master/implementations.md\#standalone}{\texttt{ tons of Promise implementations}} out there, but all of them focus on browser compatibility and are often bloated with functionality.
+
+This module is an exact Promise specification polyfill (like \href{https://github.com/getify/native-promise-only}{\texttt{ native-\/promise-\/only}}), but in Node.\+js land (it should be browserify-\/able though).\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m4efe8df5b8acc2ab57f1a5b98cba3c93_autotoc_md3979}{}\doxysubsection{\texorpdfstring{Install}{Install}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m4efe8df5b8acc2ab57f1a5b98cba3c93_autotoc_md3979}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ -\/-\/save\ pinkie}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m4efe8df5b8acc2ab57f1a5b98cba3c93_autotoc_md3980}{}\doxysubsection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m4efe8df5b8acc2ab57f1a5b98cba3c93_autotoc_md3980}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ fs\ =\ require('fs');}
+\DoxyCodeLine{var\ Promise\ =\ require('pinkie');}
+\DoxyCodeLine{}
+\DoxyCodeLine{new\ Promise(function\ (resolve,\ reject)\ \{}
+\DoxyCodeLine{\ \ \ \ fs.readFile('foo.json',\ 'utf8',\ function\ (err,\ data)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ if\ (err)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ reject(err);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ return;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ resolve(data);}
+\DoxyCodeLine{\ \ \ \ \});}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{//=>\ Promise}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m4efe8df5b8acc2ab57f1a5b98cba3c93_autotoc_md3981}{}\doxysubsubsection{\texorpdfstring{API}{API}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m4efe8df5b8acc2ab57f1a5b98cba3c93_autotoc_md3981}
+{\ttfamily pinkie} exports bare \href{https://people.mozilla.org/~jorendorff/es6-draft.html\#sec-promise-objects}{\texttt{ ES2015 Promise}} implementation and polyfills \href{https://nodejs.org/api/process.html\#process_event_unhandledrejection}{\texttt{ Node.\+js rejection events}}. In case you forgot\+:\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m4efe8df5b8acc2ab57f1a5b98cba3c93_autotoc_md3982}{}\doxyparagraph{\texorpdfstring{new Promise(executor)}{new Promise(executor)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m4efe8df5b8acc2ab57f1a5b98cba3c93_autotoc_md3982}
+Returns new instance of {\ttfamily Promise}.
+
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m4efe8df5b8acc2ab57f1a5b98cba3c93_autotoc_md3983}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m4efe8df5b8acc2ab57f1a5b98cba3c93_autotoc_md3983}%
+ \doxysubparagraph*{executor}
+
+{\itshape Required} ~\newline
+ Type\+: {\ttfamily function}
+
+Function with two arguments {\ttfamily resolve} and {\ttfamily reject}. The first argument fulfills the promise, the second argument rejects it.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m4efe8df5b8acc2ab57f1a5b98cba3c93_autotoc_md3984}{}\doxyparagraph{\texorpdfstring{pinkie.\+all(promises)}{pinkie.\+all(promises)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m4efe8df5b8acc2ab57f1a5b98cba3c93_autotoc_md3984}
+Returns a promise that resolves when all of the promises in the {\ttfamily promises} Array argument have resolved.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m4efe8df5b8acc2ab57f1a5b98cba3c93_autotoc_md3985}{}\doxyparagraph{\texorpdfstring{pinkie.\+race(promises)}{pinkie.\+race(promises)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m4efe8df5b8acc2ab57f1a5b98cba3c93_autotoc_md3985}
+Returns a promise that resolves or rejects as soon as one of the promises in the {\ttfamily promises} Array resolves or rejects, with the value or reason from that promise.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m4efe8df5b8acc2ab57f1a5b98cba3c93_autotoc_md3986}{}\doxyparagraph{\texorpdfstring{pinkie.\+reject(reason)}{pinkie.\+reject(reason)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m4efe8df5b8acc2ab57f1a5b98cba3c93_autotoc_md3986}
+Returns a Promise object that is rejected with the given {\ttfamily reason}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m4efe8df5b8acc2ab57f1a5b98cba3c93_autotoc_md3987}{}\doxyparagraph{\texorpdfstring{pinkie.\+resolve(value)}{pinkie.\+resolve(value)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m4efe8df5b8acc2ab57f1a5b98cba3c93_autotoc_md3987}
+Returns a Promise object that is resolved with the given {\ttfamily value}. If the {\ttfamily value} is a thenable (i.\+e. has a then method), the returned promise will "{}follow"{} that thenable, adopting its eventual state; otherwise the returned promise will be fulfilled with the {\ttfamily value}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m4efe8df5b8acc2ab57f1a5b98cba3c93_autotoc_md3988}{}\doxysubsection{\texorpdfstring{Related}{Related}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m4efe8df5b8acc2ab57f1a5b98cba3c93_autotoc_md3988}
+
+\begin{DoxyItemize}
+\item \href{https://github.com/floatdrop/pinkie-promise}{\texttt{ pinkie-\/promise}} -\/ Returns the native Promise or this module
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m4efe8df5b8acc2ab57f1a5b98cba3c93_autotoc_md3989}{}\doxysubsection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m4efe8df5b8acc2ab57f1a5b98cba3c93_autotoc_md3989}
+MIT © \href{http://github.com/floatdrop}{\texttt{ Vsevolod Strukchinsky}} 

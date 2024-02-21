@@ -1,0 +1,49 @@
+\chapter{Nested stacktraces for Node.\+js!}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9298b383eea94668e5d8d6e0806106ea}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9298b383eea94668e5d8d6e0806106ea}\index{Nested stacktraces for Node.js"!@{Nested stacktraces for Node.js"!}}
+\href{https://travis-ci.org/mdlavin/nested-error-stacks}{\texttt{ }} \href{http://badge.fury.io/js/nested-error-stacks}{\texttt{ }} \href{https://david-dm.org/mdlavin/nested-error-stacks}{\texttt{ }}
+
+With this module, you can wrap a caught exception with extra context for better debugging. For example, a network error\textquotesingle{}s stack would normally look like this\+: \begin{DoxyVerb}Error: connect ECONNREFUSED
+    at errnoException (net.js:904:11)
+    at Object.afterConnect [as oncomplete] (net.js:895:19)
+\end{DoxyVerb}
+ Using this module, you can wrap the Error with more context to get a stack that looks like this\+: \begin{DoxyVerb}NestedError: Failed to communicate with localhost:8080
+    at Socket.<anonymous> (/Users/mattlavin/Projects/nested-stacks/demo.js:6:18)
+    at Socket.EventEmitter.emit (events.js:95:17)
+    at net.js:440:14
+    at process._tickCallback (node.js:415:13)
+Caused By: Error: connect ECONNREFUSED
+    at errnoException (net.js:904:11)
+    at Object.afterConnect [as oncomplete] (net.js:895:19)
+\end{DoxyVerb}
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9298b383eea94668e5d8d6e0806106ea_autotoc_md3820}{}\doxysection{\texorpdfstring{How to wrap errors}{How to wrap errors}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9298b383eea94668e5d8d6e0806106ea_autotoc_md3820}
+Here is an example program that uses this module to add more context to errors\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ NestedError\ =\ require('nested-\/error-\/stacks');}
+\DoxyCodeLine{var\ net\ =\ require('net');}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{var\ client\ =\ net.connect(\{port:\ 8080\});}
+\DoxyCodeLine{client.on('error',\ function\ (err)\ \{}
+\DoxyCodeLine{\ \ \ \ var\ newErr\ =\ new\ NestedError("{}Failed\ to\ communicate\ with\ localhost:8080"{},\ err);}
+\DoxyCodeLine{\ \ \ \ console.log(newErr.stack);}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9298b383eea94668e5d8d6e0806106ea_autotoc_md3821}{}\doxysection{\texorpdfstring{How to inherit}{How to inherit}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9298b383eea94668e5d8d6e0806106ea_autotoc_md3821}
+It is recomennded to use explicit names for Error classes. You can do it like this\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ util\ =\ require('util');}
+\DoxyCodeLine{var\ NestedError\ =\ require('nested-\/error-\/stacks');}
+\DoxyCodeLine{}
+\DoxyCodeLine{function\ MyError(message,\ nested)\ \{}
+\DoxyCodeLine{\ \ \ \ NestedError.call(this,\ message,\ nested);}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{util.inherits(MyError,\ NestedError);}
+\DoxyCodeLine{MyError.prototype.name\ =\ 'MyError';}
+
+\end{DoxyCode}
+ 

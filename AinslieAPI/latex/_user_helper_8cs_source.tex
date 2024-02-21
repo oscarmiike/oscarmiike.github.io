@@ -1,0 +1,29 @@
+\doxysection{User\+Helper.\+cs}
+\hypertarget{_user_helper_8cs_source}{}\label{_user_helper_8cs_source}\index{C:/Users/STRIDER/source/repos/AinslieAPI/Helpers/UserHelper.cs@{C:/Users/STRIDER/source/repos/AinslieAPI/Helpers/UserHelper.cs}}
+\mbox{\hyperlink{_user_helper_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_user_helper_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_ainslie_a_p_i_1_1_d_t_o_1_1_user_helper}{AinslieAPI.DTO.UserHelper}};}
+\DoxyCodeLine{\Hypertarget{_user_helper_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }Microsoft.CodeAnalysis.VisualBasic.Syntax;}
+\DoxyCodeLine{\Hypertarget{_user_helper_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }System.Data;}
+\DoxyCodeLine{\Hypertarget{_user_helper_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }System.Security.Claims;}
+\DoxyCodeLine{\Hypertarget{_user_helper_8cs_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_user_helper_8cs_source_l00006}00006\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_ainslie_a_p_i_1_1_helpers}{AinslieAPI.Helpers}}}
+\DoxyCodeLine{\Hypertarget{_user_helper_8cs_source_l00007}00007\ \{}
+\DoxyCodeLine{\Hypertarget{_user_helper_8cs_source_l00008}\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_user_helper}{00008}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_user_helper}{UserHelper}}}
+\DoxyCodeLine{\Hypertarget{_user_helper_8cs_source_l00009}00009\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_user_helper_8cs_source_l00022}\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_user_helper_a5aef940b2585ea4d9472c9f3e89a860f}{00022}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_user_helper_1_1_authenticated_user}{AuthenticatedUser}}\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_user_helper_a5aef940b2585ea4d9472c9f3e89a860f}{GetAuthenticatedUser}}(ClaimsPrincipal\ user)}
+\DoxyCodeLine{\Hypertarget{_user_helper_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_user_helper_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (user\ ==\ \textcolor{keyword}{null}\ ||\ !user.Identity.IsAuthenticated)}
+\DoxyCodeLine{\Hypertarget{_user_helper_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_user_helper_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_user_helper_1_1_authenticated_user}{AuthenticatedUser}}}
+\DoxyCodeLine{\Hypertarget{_user_helper_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_user_helper_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Name\ =\ user.Identity.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_user_helper_1_1_authenticated_user_acb5634a86fcc32a706c11b581745f992}{Name}},}
+\DoxyCodeLine{\Hypertarget{_user_helper_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ EmailAddress\ =\ user.Claims.FirstOrDefault(c\ =>\ c.Type\ ==\ ClaimTypes.Email)?.Value,}
+\DoxyCodeLine{\Hypertarget{_user_helper_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ProfileImage\ =\ user.Claims.FirstOrDefault(c\ =>\ c.Type\ ==\ \textcolor{stringliteral}{"{}picture"{}})?.Value,}
+\DoxyCodeLine{\Hypertarget{_user_helper_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Roles\ =\ user.Claims.Where(c\ =>\ c.Type\ ==\ ClaimTypes.Role).Select(role\ =>\ role.Value).ToList()}
+\DoxyCodeLine{\Hypertarget{_user_helper_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_user_helper_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_user_helper_8cs_source_l00034}00034\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_user_helper_8cs_source_l00035}00035\ \}}
+
+\end{DoxyCode}

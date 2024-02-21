@@ -1,0 +1,27 @@
+\chapter{uri-\/path}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2uri-path_2_r_e_a_d_m_e}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2uri-path_2_r_e_a_d_m_e}\index{uri-\/path@{uri-\/path}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2uri-path_2_r_e_a_d_m_e_autotoc_md12091}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2uri-path_2_r_e_a_d_m_e_autotoc_md12091}%
+\href{https://npmjs.org/package/uri-path}{\texttt{ }} \href{https://travis-ci.org/UltCombo/uri-path}{\texttt{ }} \href{https://david-dm.org/UltCombo/uri-path\#info=devDependencies}{\texttt{ }}
+
+Convert relative file system paths into safe URI paths\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2uri-path_2_r_e_a_d_m_e_autotoc_md12092}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2uri-path_2_r_e_a_d_m_e_autotoc_md12092}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ -\/-\/save\ uri-\/path}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2uri-path_2_r_e_a_d_m_e_autotoc_md12093}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2uri-path_2_r_e_a_d_m_e_autotoc_md12093}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ URIpath\ =\ require('uri-\/path');}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Properly\ encode\ URI\ path\ segments}
+\DoxyCodeLine{URIpath('../abc/@\#\$\%¨\&()[]\{\}-\/\_=+ß/môòñ\ 月\ قمر');}
+\DoxyCodeLine{//\ -\/>\ '../abc/\%40\%23\%24\%25\%C2\%A8\%26()\%5B\%5D\%7B\%7D-\/\_\%3D\%2B\%C3\%9F/m\%C3\%B4\%C3\%B2\%C3\%B1\%20\%E6\%9C\%88\%20\%D9\%82\%D9\%85\%D8\%B1'}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Also\ supports\ paths\ with\ Windows\ directory\ separators}
+\DoxyCodeLine{URIpath('a\(\backslash\)\(\backslash\)b\(\backslash\)\(\backslash\)c');}
+\DoxyCodeLine{//\ -\/>\ 'a/b/c'}
+
+\end{DoxyCode}
+ 

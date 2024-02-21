@@ -1,0 +1,620 @@
+\chapter{sshpk}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c}\index{sshpk@{sshpk}}
+Parse, convert, fingerprint and use SSH keys (both public and private) in pure node -- no {\ttfamily ssh-\/keygen} or other external dependencies.
+
+Supports RSA, DSA, ECDSA (nistp-\/\texorpdfstring{$\ast$}{*}) and ED25519 key types, in PEM (PKCS\#1, PKCS\#8) and Open\+SSH formats.
+
+This library has been extracted from \href{https://github.com/joyent/node-http-signature}{\texttt{ {\ttfamily node-\/http-\/signature}}} (work by \href{https://github.com/mcavage}{\texttt{ Mark Cavage}} and \href{https://github.com/bahamas10}{\texttt{ Dave Eddy}}) and \href{https://github.com/bahamas10/node-ssh-fingerprint}{\texttt{ {\ttfamily node-\/ssh-\/fingerprint}}} (work by Dave Eddy), with additions (including ECDSA support) by \href{https://github.com/arekinath}{\texttt{ Alex Wilson}}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4695}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4695}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ sshpk}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4696}{}\doxysection{\texorpdfstring{Examples}{Examples}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4696}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ sshpk\ =\ require('sshpk');}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ fs\ =\ require('fs');}
+\DoxyCodeLine{}
+\DoxyCodeLine{/*\ Read\ in\ an\ OpenSSH-\/format\ public\ key\ */}
+\DoxyCodeLine{var\ keyPub\ =\ fs.readFileSync('id\_rsa.pub');}
+\DoxyCodeLine{var\ key\ =\ sshpk.parseKey(keyPub,\ 'ssh');}
+\DoxyCodeLine{}
+\DoxyCodeLine{/*\ Get\ metadata\ about\ the\ key\ */}
+\DoxyCodeLine{console.log('type\ =>\ \%s',\ key.type);}
+\DoxyCodeLine{console.log('size\ =>\ \%d\ bits',\ key.size);}
+\DoxyCodeLine{console.log('comment\ =>\ \%s',\ key.comment);}
+\DoxyCodeLine{}
+\DoxyCodeLine{/*\ Compute\ key\ fingerprints,\ in\ new\ OpenSSH\ (>6.7)\ format,\ and\ old\ MD5\ */}
+\DoxyCodeLine{console.log('fingerprint\ =>\ \%s',\ key.fingerprint().toString());}
+\DoxyCodeLine{console.log('old-\/style\ fingerprint\ =>\ \%s',\ key.fingerprint('md5').toString());}
+
+\end{DoxyCode}
+
+
+Example output\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{type\ =>\ rsa}
+\DoxyCodeLine{size\ =>\ 2048\ bits}
+\DoxyCodeLine{comment\ =>\ foo@foo.com}
+\DoxyCodeLine{fingerprint\ =>\ SHA256:PYC9kPVC6J873CSIbfp0LwYeczP/W4ffObNCuDJ1u5w}
+\DoxyCodeLine{old-\/style\ fingerprint\ =>\ a0:c8:ad:6c:32:9a:32:fa:59:cc:a9:8c:0a:0d:6e:bd}
+
+\end{DoxyCode}
+
+
+More examples\+: converting between formats\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{/*\ Read\ in\ a\ PEM\ public\ key\ */}
+\DoxyCodeLine{var\ keyPem\ =\ fs.readFileSync('id\_rsa.pem');}
+\DoxyCodeLine{var\ key\ =\ sshpk.parseKey(keyPem,\ 'pem');}
+\DoxyCodeLine{}
+\DoxyCodeLine{/*\ Convert\ to\ PEM\ PKCS\#8\ public\ key\ format\ */}
+\DoxyCodeLine{var\ pemBuf\ =\ key.toBuffer('pkcs8');}
+\DoxyCodeLine{}
+\DoxyCodeLine{/*\ Convert\ to\ SSH\ public\ key\ format\ (and\ return\ as\ a\ string)\ */}
+\DoxyCodeLine{var\ sshKey\ =\ key.toString('ssh');}
+
+\end{DoxyCode}
+
+
+Signing and verifying\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{/*\ Read\ in\ an\ OpenSSH/PEM\ *private*\ key\ */}
+\DoxyCodeLine{var\ keyPriv\ =\ fs.readFileSync('id\_ecdsa');}
+\DoxyCodeLine{var\ key\ =\ sshpk.parsePrivateKey(keyPriv,\ 'pem');}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ data\ =\ 'some\ data';}
+\DoxyCodeLine{}
+\DoxyCodeLine{/*\ Sign\ some\ data\ with\ the\ key\ */}
+\DoxyCodeLine{var\ s\ =\ key.createSign('sha1');}
+\DoxyCodeLine{s.update(data);}
+\DoxyCodeLine{var\ signature\ =\ s.sign();}
+\DoxyCodeLine{}
+\DoxyCodeLine{/*\ Now\ load\ the\ public\ key\ (could\ also\ use\ just\ key.toPublic())\ */}
+\DoxyCodeLine{var\ keyPub\ =\ fs.readFileSync('id\_ecdsa.pub');}
+\DoxyCodeLine{key\ =\ sshpk.parseKey(keyPub,\ 'ssh');}
+\DoxyCodeLine{}
+\DoxyCodeLine{/*\ Make\ a\ crypto.Verifier\ with\ this\ key\ */}
+\DoxyCodeLine{var\ v\ =\ key.createVerify('sha1');}
+\DoxyCodeLine{v.update(data);}
+\DoxyCodeLine{var\ valid\ =\ v.verify(signature);}
+\DoxyCodeLine{/*\ =>\ true!\ */}
+
+\end{DoxyCode}
+
+
+Matching fingerprints with keys\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ fp\ =\ sshpk.parseFingerprint('SHA256:PYC9kPVC6J873CSIbfp0LwYeczP/W4ffObNCuDJ1u5w');}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ keys\ =\ [sshpk.parseKey(...),\ sshpk.parseKey(...),\ ...];}
+\DoxyCodeLine{}
+\DoxyCodeLine{keys.forEach(function\ (key)\ \{}
+\DoxyCodeLine{\ \ \ \ if\ (fp.matches(key))}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ console.log('found\ it!');}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4697}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4697}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4698}{}\doxysection{\texorpdfstring{Public keys}{Public keys}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4698}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4699}{}\doxysubsection{\texorpdfstring{`parse\+Key(data\mbox{[}, format = \textquotesingle{}auto'\mbox{[}, options\mbox{]}\mbox{]})\`{}}{`parse\+Key(data\mbox{[}, format = \textquotesingle{}auto'\mbox{[}, options\mbox{]}\mbox{]})\`{}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4699}
+Parses a key from a given data format and returns a new {\ttfamily Key} object.
+
+Parameters
+
+
+\begin{DoxyItemize}
+\item {\ttfamily data} -- Either a Buffer or String, containing the key
+\item {\ttfamily format} -- String name of format to use, valid options are\+:
+\begin{DoxyItemize}
+\item {\ttfamily auto}\+: choose automatically from all below
+\item {\ttfamily pem}\+: supports both PKCS\#1 and PKCS\#8
+\item {\ttfamily ssh}\+: standard Open\+SSH format,
+\item {\ttfamily pkcs1}, {\ttfamily pkcs8}\+: variants of {\ttfamily pem}
+\item {\ttfamily rfc4253}\+: raw Open\+SSH wire format
+\item {\ttfamily openssh}\+: new post-\/\+Open\+SSH 6.\+5 internal format, produced by {\ttfamily ssh-\/keygen -\/o}
+\item {\ttfamily dnssec}\+: {\ttfamily .key} file format output by {\ttfamily dnssec-\/keygen} etc
+\item {\ttfamily putty}\+: the Pu\+TTY {\ttfamily .ppk} file format (supports truncated variant without all the lines from {\ttfamily Private-\/\+Lines\+:} onwards)
+\end{DoxyItemize}
+\item {\ttfamily options} -- Optional Object, extra options, with keys\+:
+\begin{DoxyItemize}
+\item {\ttfamily filename} -- Optional String, name for the key being parsed (eg. the filename that was opened). Used to generate Error messages
+\item {\ttfamily passphrase} -- Optional String, encryption passphrase used to decrypt an encrypted PEM file
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4700}{}\doxysubsection{\texorpdfstring{{\ttfamily Key.\+is\+Key(obj)}}{{\ttfamily Key.\+is\+Key(obj)}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4700}
+Returns {\ttfamily true} if the given object is a valid {\ttfamily Key} object created by a version of {\ttfamily sshpk} compatible with this one.
+
+Parameters
+
+
+\begin{DoxyItemize}
+\item {\ttfamily obj} -- Object to identify
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4701}{}\doxysubsection{\texorpdfstring{{\ttfamily Key\#type}}{{\ttfamily Key\#type}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4701}
+String, the type of key. Valid options are {\ttfamily rsa}, {\ttfamily dsa}, {\ttfamily ecdsa}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4702}{}\doxysubsection{\texorpdfstring{{\ttfamily Key\#size}}{{\ttfamily Key\#size}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4702}
+Integer, "{}size"{} of the key in bits. For RSA/\+DSA this is the size of the modulus; for ECDSA this is the bit size of the curve in use.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4703}{}\doxysubsection{\texorpdfstring{{\ttfamily Key\#comment}}{{\ttfamily Key\#comment}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4703}
+Optional string, a key comment used by some formats (eg the {\ttfamily ssh} format).\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4704}{}\doxysubsection{\texorpdfstring{{\ttfamily Key\#curve}}{{\ttfamily Key\#curve}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4704}
+Only present if `this.\+type === \textquotesingle{}ecdsa'{\ttfamily , string containing the name of the named curve used with this key. Possible values include}nistp256{\ttfamily ,}nistp384{\ttfamily  and}nistp521\`{}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4705}{}\doxysubsection{\texorpdfstring{`Key\+::to\+Buffer(\mbox{[}format = \textquotesingle{}ssh'\mbox{]})\`{}}{`Key\+::to\+Buffer(\mbox{[}format = \textquotesingle{}ssh'\mbox{]})\`{}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4705}
+Convert the key into a given data format and return the serialized key as a Buffer.
+
+Parameters
+
+
+\begin{DoxyItemize}
+\item {\ttfamily format} -- String name of format to use, for valid options see {\ttfamily parse\+Key()}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4706}{}\doxysubsection{\texorpdfstring{{\ttfamily Key\#to\+String(\mbox{[}format = \textquotesingle{}ssh\mbox{]})}}{{\ttfamily Key\#to\+String(\mbox{[}format = \textquotesingle{}ssh\mbox{]})}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4706}
+Same as {\ttfamily this.\+to\+Buffer(format).to\+String()}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4707}{}\doxysubsection{\texorpdfstring{`Key\+::fingerprint(\mbox{[}algorithm = \textquotesingle{}sha256'\mbox{[}, hash\+Type = \textquotesingle{}ssh\textquotesingle{}\mbox{]}\mbox{]})\`{}}{`Key\+::fingerprint(\mbox{[}algorithm = \textquotesingle{}sha256'\mbox{[}, hash\+Type = \textquotesingle{}ssh\textquotesingle{}\mbox{]}\mbox{]})\`{}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4707}
+Creates a new {\ttfamily Fingerprint} object representing this Key\textquotesingle{}s fingerprint.
+
+Parameters
+
+
+\begin{DoxyItemize}
+\item {\ttfamily algorithm} -- String name of hash algorithm to use, valid options are {\ttfamily md5}, {\ttfamily sha1}, {\ttfamily sha256}, {\ttfamily sha384}, {\ttfamily sha512}
+\item {\ttfamily hash\+Type} -- String name of fingerprint hash type to use, valid options are {\ttfamily ssh} (the type of fingerprint used by Open\+SSH, e.\+g. in {\ttfamily ssh-\/keygen}), {\ttfamily spki} (used by HPKP, some Open\+SSL applications)
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4708}{}\doxysubsection{\texorpdfstring{{\ttfamily Key\#create\+Verify(\mbox{[}hash\+Algorithm\mbox{]})}}{{\ttfamily Key\#create\+Verify(\mbox{[}hash\+Algorithm\mbox{]})}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4708}
+Creates a {\ttfamily crypto.\+Verifier} specialized to use this Key (and the correct public key algorithm to match it). The returned Verifier has the same API as a regular one, except that the {\ttfamily verify()} function takes only the target signature as an argument.
+
+Parameters
+
+
+\begin{DoxyItemize}
+\item {\ttfamily hash\+Algorithm} -- optional String name of hash algorithm to use, any supported by Open\+SSL are valid, usually including {\ttfamily sha1}, {\ttfamily sha256}.
+\end{DoxyItemize}
+
+{\ttfamily v.\+verify(signature\mbox{[}, format\mbox{]})} Parameters
+
+
+\begin{DoxyItemize}
+\item {\ttfamily signature} -- either a Signature object, or a Buffer or String
+\item {\ttfamily format} -- optional String, name of format to interpret given String with. Not valid if {\ttfamily signature} is a Signature or Buffer.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4709}{}\doxysubsection{\texorpdfstring{{\ttfamily Key\#create\+Diffie\+Hellman()}}{{\ttfamily Key\#create\+Diffie\+Hellman()}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4709}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4710}{}\doxysubsection{\texorpdfstring{{\ttfamily Key\#create\+DH()}}{{\ttfamily Key\#create\+DH()}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4710}
+Creates a Diffie-\/\+Hellman key exchange object initialized with this key and all necessary parameters. This has the same API as a {\ttfamily crypto.\+Diffie\+Hellman} instance, except that functions take {\ttfamily Key} and {\ttfamily Private\+Key} objects as arguments, and return them where indicated for.
+
+This is only valid for keys belonging to a cryptosystem that supports DHE or a close analogue (i.\+e. {\ttfamily dsa}, {\ttfamily ecdsa} and {\ttfamily curve25519} keys). An attempt to call this function on other keys will yield an {\ttfamily Error}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4711}{}\doxysection{\texorpdfstring{Private keys}{Private keys}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4711}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4712}{}\doxysubsection{\texorpdfstring{`parse\+Private\+Key(data\mbox{[}, format = \textquotesingle{}auto'\mbox{[}, options\mbox{]}\mbox{]})\`{}}{`parse\+Private\+Key(data\mbox{[}, format = \textquotesingle{}auto'\mbox{[}, options\mbox{]}\mbox{]})\`{}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4712}
+Parses a private key from a given data format and returns a new {\ttfamily Private\+Key} object.
+
+Parameters
+
+
+\begin{DoxyItemize}
+\item {\ttfamily data} -- Either a Buffer or String, containing the key
+\item {\ttfamily format} -- String name of format to use, valid options are\+:
+\begin{DoxyItemize}
+\item {\ttfamily auto}\+: choose automatically from all below
+\item {\ttfamily pem}\+: supports both PKCS\#1 and PKCS\#8
+\item {\ttfamily ssh}, {\ttfamily openssh}\+: new post-\/\+Open\+SSH 6.\+5 internal format, produced by {\ttfamily ssh-\/keygen -\/o}
+\item {\ttfamily pkcs1}, {\ttfamily pkcs8}\+: variants of {\ttfamily pem}
+\item {\ttfamily rfc4253}\+: raw Open\+SSH wire format
+\item {\ttfamily dnssec}\+: {\ttfamily .private} format output by {\ttfamily dnssec-\/keygen} etc.
+\end{DoxyItemize}
+\item {\ttfamily options} -- Optional Object, extra options, with keys\+:
+\begin{DoxyItemize}
+\item {\ttfamily filename} -- Optional String, name for the key being parsed (eg. the filename that was opened). Used to generate Error messages
+\item {\ttfamily passphrase} -- Optional String, encryption passphrase used to decrypt an encrypted PEM file
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4713}{}\doxysubsection{\texorpdfstring{{\ttfamily generate\+Private\+Key(type\mbox{[}, options\mbox{]})}}{{\ttfamily generate\+Private\+Key(type\mbox{[}, options\mbox{]})}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4713}
+Generates a new private key of a certain key type, from random data.
+
+Parameters
+
+
+\begin{DoxyItemize}
+\item {\ttfamily type} -- String, type of key to generate. Currently supported are `\textquotesingle{}ecdsa'{\ttfamily  and}\textquotesingle{}ed25519\textquotesingle{}{\ttfamily  -\/}options{\ttfamily -\/-\/ optional Object, with keys\+: -\/}curve{\ttfamily -\/-\/ optional String, for}\textquotesingle{}ecdsa\textquotesingle{}{\ttfamily keys, specifies the curve to use. If ECDSA is specified and this option is not given, defaults to using}\textquotesingle{}nistp256\textquotesingle{}\`{}.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4714}{}\doxysubsection{\texorpdfstring{{\ttfamily Private\+Key.\+is\+Private\+Key(obj)}}{{\ttfamily Private\+Key.\+is\+Private\+Key(obj)}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4714}
+Returns {\ttfamily true} if the given object is a valid {\ttfamily Private\+Key} object created by a version of {\ttfamily sshpk} compatible with this one.
+
+Parameters
+
+
+\begin{DoxyItemize}
+\item {\ttfamily obj} -- Object to identify
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4715}{}\doxysubsection{\texorpdfstring{{\ttfamily Private\+Key\#type}}{{\ttfamily Private\+Key\#type}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4715}
+String, the type of key. Valid options are {\ttfamily rsa}, {\ttfamily dsa}, {\ttfamily ecdsa}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4716}{}\doxysubsection{\texorpdfstring{{\ttfamily Private\+Key\#size}}{{\ttfamily Private\+Key\#size}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4716}
+Integer, "{}size"{} of the key in bits. For RSA/\+DSA this is the size of the modulus; for ECDSA this is the bit size of the curve in use.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4717}{}\doxysubsection{\texorpdfstring{{\ttfamily Private\+Key\#curve}}{{\ttfamily Private\+Key\#curve}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4717}
+Only present if `this.\+type === \textquotesingle{}ecdsa'{\ttfamily , string containing the name of the named curve used with this key. Possible values include}nistp256{\ttfamily ,}nistp384{\ttfamily  and}nistp521\`{}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4718}{}\doxysubsection{\texorpdfstring{`Private\+Key\+::to\+Buffer(\mbox{[}format = \textquotesingle{}pkcs1'\mbox{]})\`{}}{`Private\+Key\+::to\+Buffer(\mbox{[}format = \textquotesingle{}pkcs1'\mbox{]})\`{}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4718}
+Convert the key into a given data format and return the serialized key as a Buffer.
+
+Parameters
+
+
+\begin{DoxyItemize}
+\item {\ttfamily format} -- String name of format to use, valid options are listed under {\ttfamily parse\+Private\+Key}. Note that ED25519 keys default to {\ttfamily openssh} format instead (as they have no {\ttfamily pkcs1} representation).
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4719}{}\doxysubsection{\texorpdfstring{`Private\+Key\+::to\+String(\mbox{[}format = \textquotesingle{}pkcs1'\mbox{]})\`{}}{`Private\+Key\+::to\+String(\mbox{[}format = \textquotesingle{}pkcs1'\mbox{]})\`{}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4719}
+Same as {\ttfamily this.\+to\+Buffer(format).to\+String()}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4720}{}\doxysubsection{\texorpdfstring{{\ttfamily Private\+Key\#to\+Public()}}{{\ttfamily Private\+Key\#to\+Public()}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4720}
+Extract just the public part of this private key, and return it as a {\ttfamily Key} object.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4721}{}\doxysubsection{\texorpdfstring{`Private\+Key\+::fingerprint(\mbox{[}algorithm = \textquotesingle{}sha256'\mbox{]})\`{}}{`Private\+Key\+::fingerprint(\mbox{[}algorithm = \textquotesingle{}sha256'\mbox{]})\`{}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4721}
+Same as {\ttfamily this.\+to\+Public().fingerprint()}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4722}{}\doxysubsection{\texorpdfstring{{\ttfamily Private\+Key\#create\+Verify(\mbox{[}hash\+Algorithm\mbox{]})}}{{\ttfamily Private\+Key\#create\+Verify(\mbox{[}hash\+Algorithm\mbox{]})}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4722}
+Same as {\ttfamily this.\+to\+Public().create\+Verify()}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4723}{}\doxysubsection{\texorpdfstring{{\ttfamily Private\+Key\#create\+Sign(\mbox{[}hash\+Algorithm\mbox{]})}}{{\ttfamily Private\+Key\#create\+Sign(\mbox{[}hash\+Algorithm\mbox{]})}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4723}
+Creates a {\ttfamily crypto.\+Sign} specialized to use this Private\+Key (and the correct key algorithm to match it). The returned Signer has the same API as a regular one, except that the {\ttfamily sign()} function takes no arguments, and returns a {\ttfamily Signature} object.
+
+Parameters
+
+
+\begin{DoxyItemize}
+\item {\ttfamily hash\+Algorithm} -- optional String name of hash algorithm to use, any supported by Open\+SSL are valid, usually including {\ttfamily sha1}, {\ttfamily sha256}.
+\end{DoxyItemize}
+
+{\ttfamily v.\+sign()} Parameters
+
+
+\begin{DoxyItemize}
+\item none
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4724}{}\doxysubsection{\texorpdfstring{{\ttfamily Private\+Key\#derive(new\+Type)}}{{\ttfamily Private\+Key\#derive(new\+Type)}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4724}
+Derives a related key of type {\ttfamily new\+Type} from this key. Currently this is only supported to change between {\ttfamily ed25519} and {\ttfamily curve25519} keys which are stored with the same private key (but usually distinct public keys in order to avoid degenerate keys that lead to a weak Diffie-\/\+Hellman exchange).
+
+Parameters
+
+
+\begin{DoxyItemize}
+\item {\ttfamily new\+Type} -- String, type of key to derive, either {\ttfamily ed25519} or {\ttfamily curve25519}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4725}{}\doxysection{\texorpdfstring{Fingerprints}{Fingerprints}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4725}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4726}{}\doxysubsection{\texorpdfstring{{\ttfamily parse\+Fingerprint(fingerprint\mbox{[}, options\mbox{]})}}{{\ttfamily parse\+Fingerprint(fingerprint\mbox{[}, options\mbox{]})}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4726}
+Pre-\/parses a fingerprint, creating a {\ttfamily Fingerprint} object that can be used to quickly locate a key by using the {\ttfamily Fingerprint\#matches} function.
+
+Parameters
+
+
+\begin{DoxyItemize}
+\item {\ttfamily fingerprint} -- String, the fingerprint value, in any supported format
+\item {\ttfamily options} -- Optional Object, with properties\+:
+\begin{DoxyItemize}
+\item {\ttfamily algorithms} -- Array of strings, names of hash algorithms to limit support to. If {\ttfamily fingerprint} uses a hash algorithm not on this list, throws {\ttfamily Invalid\+Algorithm\+Error}.
+\item {\ttfamily hash\+Type} -- String, the type of hash the fingerprint uses, either {\ttfamily ssh} or {\ttfamily spki} (normally auto-\/detected based on the format, but can be overridden)
+\item {\ttfamily type} -- String, the entity this fingerprint identifies, either {\ttfamily key} or {\ttfamily certificate}
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4727}{}\doxysubsection{\texorpdfstring{{\ttfamily Fingerprint.\+is\+Fingerprint(obj)}}{{\ttfamily Fingerprint.\+is\+Fingerprint(obj)}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4727}
+Returns {\ttfamily true} if the given object is a valid {\ttfamily Fingerprint} object created by a version of {\ttfamily sshpk} compatible with this one.
+
+Parameters
+
+
+\begin{DoxyItemize}
+\item {\ttfamily obj} -- Object to identify
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4728}{}\doxysubsection{\texorpdfstring{{\ttfamily Fingerprint\#to\+String(\mbox{[}format\mbox{]})}}{{\ttfamily Fingerprint\#to\+String(\mbox{[}format\mbox{]})}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4728}
+Returns a fingerprint as a string, in the given format.
+
+Parameters
+
+
+\begin{DoxyItemize}
+\item {\ttfamily format} -- Optional String, format to use, valid options are {\ttfamily hex} and {\ttfamily base64}. If this {\ttfamily Fingerprint} uses the {\ttfamily md5} algorithm, the default format is {\ttfamily hex}. Otherwise, the default is {\ttfamily base64}.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4729}{}\doxysubsection{\texorpdfstring{{\ttfamily Fingerprint\#matches(key\+Or\+Certificate)}}{{\ttfamily Fingerprint\#matches(key\+Or\+Certificate)}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4729}
+Verifies whether or not this {\ttfamily Fingerprint} matches a given {\ttfamily Key} or {\ttfamily Certificate}. This function uses double-\/hashing to avoid leaking timing information. Returns a boolean.
+
+Note that a {\ttfamily Key}-\/type Fingerprint will always return {\ttfamily false} if asked to match a {\ttfamily Certificate} and vice versa.
+
+Parameters
+
+
+\begin{DoxyItemize}
+\item {\ttfamily key\+Or\+Certificate} -- a {\ttfamily Key} object or {\ttfamily Certificate} object, the entity to match this fingerprint against
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4730}{}\doxysection{\texorpdfstring{Signatures}{Signatures}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4730}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4731}{}\doxysubsection{\texorpdfstring{{\ttfamily parse\+Signature(signature, algorithm, format)}}{{\ttfamily parse\+Signature(signature, algorithm, format)}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4731}
+Parses a signature in a given format, creating a {\ttfamily Signature} object. Useful for converting between the SSH and ASN.\+1 (PKCS/\+Open\+SSL) signature formats, and also returned as output from {\ttfamily Private\+Key\#create\+Sign().sign()}.
+
+A Signature object can also be passed to a verifier produced by {\ttfamily Key\#create\+Verify()} and it will automatically be converted internally into the correct format for verification.
+
+Parameters
+
+
+\begin{DoxyItemize}
+\item {\ttfamily signature} -- a Buffer (binary) or String (base64), data of the actual signature in the given format
+\item {\ttfamily algorithm} -- a String, name of the algorithm to be used, possible values are {\ttfamily rsa}, {\ttfamily dsa}, {\ttfamily ecdsa}
+\item {\ttfamily format} -- a String, either {\ttfamily asn1} or {\ttfamily ssh}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4732}{}\doxysubsection{\texorpdfstring{{\ttfamily Signature.\+is\+Signature(obj)}}{{\ttfamily Signature.\+is\+Signature(obj)}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4732}
+Returns {\ttfamily true} if the given object is a valid {\ttfamily Signature} object created by a version of {\ttfamily sshpk} compatible with this one.
+
+Parameters
+
+
+\begin{DoxyItemize}
+\item {\ttfamily obj} -- Object to identify
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4733}{}\doxysubsection{\texorpdfstring{`Signature\+::to\+Buffer(\mbox{[}format = \textquotesingle{}asn1'\mbox{]})\`{}}{`Signature\+::to\+Buffer(\mbox{[}format = \textquotesingle{}asn1'\mbox{]})\`{}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4733}
+Converts a Signature to the given format and returns it as a Buffer.
+
+Parameters
+
+
+\begin{DoxyItemize}
+\item {\ttfamily format} -- a String, either {\ttfamily asn1} or {\ttfamily ssh}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4734}{}\doxysubsection{\texorpdfstring{`Signature\+::to\+String(\mbox{[}format = \textquotesingle{}asn1'\mbox{]})\`{}}{`Signature\+::to\+String(\mbox{[}format = \textquotesingle{}asn1'\mbox{]})\`{}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4734}
+Same as `this.\+to\+Buffer(format).to\+String(\textquotesingle{}base64')\`{}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4735}{}\doxysection{\texorpdfstring{Certificates}{Certificates}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4735}
+{\ttfamily sshpk} includes basic support for parsing certificates in X.\+509 (PEM) format and the Open\+SSH certificate format. This feature is intended to be used mainly to access basic metadata about certificates, extract public keys from them, and also to generate simple self-\/signed certificates from an existing key.
+
+Notably, there is no implementation of CA chain-\/of-\/trust verification, and only very minimal support for key usage restrictions. Please do the security world a favour, and DO NOT use this code for certificate verification in the traditional X.\+509 CA chain style.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4736}{}\doxysubsection{\texorpdfstring{{\ttfamily parse\+Certificate(data, format)}}{{\ttfamily parse\+Certificate(data, format)}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4736}
+Parameters
+
+
+\begin{DoxyItemize}
+\item {\ttfamily data} -- a Buffer or String
+\item {\ttfamily format} -- a String, format to use, one of `\textquotesingle{}openssh'{\ttfamily ,}\textquotesingle{}pem\textquotesingle{}{\ttfamily (X.\+509 in a PEM wrapper), or}\textquotesingle{}x509\textquotesingle{}\`{} (raw DER encoded)
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4737}{}\doxysubsection{\texorpdfstring{{\ttfamily create\+Self\+Signed\+Certificate(subject, private\+Key\mbox{[}, options\mbox{]})}}{{\ttfamily create\+Self\+Signed\+Certificate(subject, private\+Key\mbox{[}, options\mbox{]})}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4737}
+Parameters
+
+
+\begin{DoxyItemize}
+\item {\ttfamily subject} -- an Identity, the subject of the certificate
+\item {\ttfamily private\+Key} -- a Private\+Key, the key of the subject\+: will be used both to be placed in the certificate and also to sign it (since this is a self-\/signed certificate)
+\item {\ttfamily options} -- optional Object, with keys\+:
+\begin{DoxyItemize}
+\item {\ttfamily lifetime} -- optional Number, lifetime of the certificate from now in seconds
+\item {\ttfamily valid\+From}, {\ttfamily valid\+Until} -- optional Dates, beginning and end of certificate validity period. If given {\ttfamily lifetime} will be ignored
+\item {\ttfamily serial} -- optional Buffer, the serial number of the certificate
+\item {\ttfamily purposes} -- optional Array of String, X.\+509 key usage restrictions
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4738}{}\doxysubsection{\texorpdfstring{{\ttfamily create\+Certificate(subject, key, issuer, issuer\+Key\mbox{[}, options\mbox{]})}}{{\ttfamily create\+Certificate(subject, key, issuer, issuer\+Key\mbox{[}, options\mbox{]})}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4738}
+Parameters
+
+
+\begin{DoxyItemize}
+\item {\ttfamily subject} -- an Identity, the subject of the certificate
+\item {\ttfamily key} -- a Key, the public key of the subject
+\item {\ttfamily issuer} -- an Identity, the issuer of the certificate who will sign it
+\item {\ttfamily issuer\+Key} -- a Private\+Key, the issuer\textquotesingle{}s private key for signing
+\item {\ttfamily options} -- optional Object, with keys\+:
+\begin{DoxyItemize}
+\item {\ttfamily lifetime} -- optional Number, lifetime of the certificate from now in seconds
+\item {\ttfamily valid\+From}, {\ttfamily valid\+Until} -- optional Dates, beginning and end of certificate validity period. If given {\ttfamily lifetime} will be ignored
+\item {\ttfamily serial} -- optional Buffer, the serial number of the certificate
+\item {\ttfamily purposes} -- optional Array of String, X.\+509 key usage restrictions
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4739}{}\doxysubsection{\texorpdfstring{{\ttfamily Certificate\#subjects}}{{\ttfamily Certificate\#subjects}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4739}
+Array of {\ttfamily Identity} instances describing the subject of this certificate.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4740}{}\doxysubsection{\texorpdfstring{{\ttfamily Certificate\#issuer}}{{\ttfamily Certificate\#issuer}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4740}
+The {\ttfamily Identity} of the Certificate\textquotesingle{}s issuer (signer).\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4741}{}\doxysubsection{\texorpdfstring{{\ttfamily Certificate\#subject\+Key}}{{\ttfamily Certificate\#subject\+Key}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4741}
+The public key of the subject of the certificate, as a {\ttfamily Key} instance.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4742}{}\doxysubsection{\texorpdfstring{{\ttfamily Certificate\#issuer\+Key}}{{\ttfamily Certificate\#issuer\+Key}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4742}
+The public key of the signing issuer of this certificate, as a {\ttfamily Key} instance. May be {\ttfamily undefined} if the issuer\textquotesingle{}s key is unknown (e.\+g. on an X509 certificate).\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4743}{}\doxysubsection{\texorpdfstring{{\ttfamily Certificate\#serial}}{{\ttfamily Certificate\#serial}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4743}
+The serial number of the certificate. As this is normally a 64-\/bit or wider integer, it is returned as a Buffer.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4744}{}\doxysubsection{\texorpdfstring{{\ttfamily Certificate\#purposes}}{{\ttfamily Certificate\#purposes}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4744}
+Array of Strings indicating the X.\+509 key usage purposes that this certificate is valid for. The possible strings at the moment are\+:
+
+
+\begin{DoxyItemize}
+\item `\textquotesingle{}signature'{\ttfamily -\/-\/ key can be used for digital signatures \texorpdfstring{$\ast$}{*}}\textquotesingle{}identity\textquotesingle{}{\ttfamily -\/-\/ key can be used to attest about the identity of the signer (X.\+509 calls this}non\+Repudiation{\ttfamily ) \texorpdfstring{$\ast$}{*}}\textquotesingle{}code\+Signing\textquotesingle{}{\ttfamily -\/-\/ key can be used to sign executable code \texorpdfstring{$\ast$}{*}}\textquotesingle{}key\+Encryption\textquotesingle{}{\ttfamily -\/-\/ key can be used to encrypt other keys \texorpdfstring{$\ast$}{*}}\textquotesingle{}encryption\textquotesingle{}{\ttfamily -\/-\/ key can be used to encrypt data (only applies for RSA) \texorpdfstring{$\ast$}{*}}\textquotesingle{}key\+Agreement\textquotesingle{}{\ttfamily -\/-\/ key can be used for key exchange protocols such as Diffie-\/\+Hellman \texorpdfstring{$\ast$}{*}}\textquotesingle{}ca\textquotesingle{}{\ttfamily -\/-\/ key can be used to sign other certificates (is a Certificate Authority) \texorpdfstring{$\ast$}{*}}\textquotesingle{}crl\textquotesingle{}\`{} -- key can be used to sign Certificate Revocation Lists (CRLs)
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4745}{}\doxysubsection{\texorpdfstring{{\ttfamily Certificate\#get\+Extension(name\+Or\+Oid)}}{{\ttfamily Certificate\#get\+Extension(name\+Or\+Oid)}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4745}
+Retrieves information about a certificate extension, if present, or returns {\ttfamily undefined} if not. The string argument {\ttfamily name\+Or\+Oid} should be either the OID (for X509 extensions) or the name (for Open\+SSH extensions) of the extension to retrieve.
+
+The object returned will have the following properties\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily format} -- String, set to either `\textquotesingle{}x509'{\ttfamily or}\textquotesingle{}openssh\textquotesingle{}{\ttfamily  \texorpdfstring{$\ast$}{*}}name{\ttfamily or}oid{\ttfamily -\/-\/ String, only one set based on value of}format{\ttfamily  \texorpdfstring{$\ast$}{*}}data\`{} -- Buffer, the raw data inside the extension
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4746}{}\doxysubsection{\texorpdfstring{{\ttfamily Certificate\#get\+Extensions()}}{{\ttfamily Certificate\#get\+Extensions()}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4746}
+Returns an Array of all present certificate extensions, in the same manner and format as {\ttfamily get\+Extension()}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4747}{}\doxysubsection{\texorpdfstring{{\ttfamily Certificate\#is\+Expired(\mbox{[}when\mbox{]})}}{{\ttfamily Certificate\#is\+Expired(\mbox{[}when\mbox{]})}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4747}
+Tests whether the Certificate is currently expired (i.\+e. the {\ttfamily valid\+From} and {\ttfamily valid\+Until} dates specify a range of time that does not include the current time).
+
+Parameters
+
+
+\begin{DoxyItemize}
+\item {\ttfamily when} -- optional Date, if specified, tests whether the Certificate was or will be expired at the specified time instead of now
+\end{DoxyItemize}
+
+Returns a Boolean.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4748}{}\doxysubsection{\texorpdfstring{{\ttfamily Certificate\#is\+Signed\+By\+Key(key)}}{{\ttfamily Certificate\#is\+Signed\+By\+Key(key)}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4748}
+Tests whether the Certificate was validly signed by the given (public) Key.
+
+Parameters
+
+
+\begin{DoxyItemize}
+\item {\ttfamily key} -- a Key instance
+\end{DoxyItemize}
+
+Returns a Boolean.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4749}{}\doxysubsection{\texorpdfstring{{\ttfamily Certificate\#is\+Signed\+By(certificate)}}{{\ttfamily Certificate\#is\+Signed\+By(certificate)}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4749}
+Tests whether this Certificate was validly signed by the subject of the given certificate. Also tests that the issuer Identity of this Certificate and the subject Identity of the other Certificate are equivalent.
+
+Parameters
+
+
+\begin{DoxyItemize}
+\item {\ttfamily certificate} -- another Certificate instance
+\end{DoxyItemize}
+
+Returns a Boolean.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4750}{}\doxysubsection{\texorpdfstring{{\ttfamily Certificate\#fingerprint(\mbox{[}hash\+Algo\mbox{]})}}{{\ttfamily Certificate\#fingerprint(\mbox{[}hash\+Algo\mbox{]})}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4750}
+Returns the X509-\/style fingerprint of the entire certificate (as a Fingerprint instance). This matches what a web-\/browser or similar would display as the certificate fingerprint and should not be confused with the fingerprint of the subject\textquotesingle{}s public key.
+
+Parameters
+
+
+\begin{DoxyItemize}
+\item {\ttfamily hash\+Algo} -- an optional String, any hash function name
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4751}{}\doxysubsection{\texorpdfstring{{\ttfamily Certificate\#to\+Buffer(\mbox{[}format\mbox{]})}}{{\ttfamily Certificate\#to\+Buffer(\mbox{[}format\mbox{]})}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4751}
+Serializes the Certificate to a Buffer and returns it.
+
+Parameters
+
+
+\begin{DoxyItemize}
+\item {\ttfamily format} -- an optional String, output format, one of `\textquotesingle{}openssh'{\ttfamily ,}\textquotesingle{}pem\textquotesingle{}{\ttfamily or }\textquotesingle{}x509\textquotesingle{}{\ttfamily . Defaults to}\textquotesingle{}x509\textquotesingle{}\`{}.
+\end{DoxyItemize}
+
+Returns a Buffer.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4752}{}\doxysubsection{\texorpdfstring{{\ttfamily Certificate\#to\+String(\mbox{[}format\mbox{]})}}{{\ttfamily Certificate\#to\+String(\mbox{[}format\mbox{]})}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4752}
+
+\begin{DoxyItemize}
+\item {\ttfamily format} -- an optional String, output format, one of `\textquotesingle{}openssh'{\ttfamily ,}\textquotesingle{}pem\textquotesingle{}{\ttfamily or }\textquotesingle{}x509\textquotesingle{}{\ttfamily . Defaults to}\textquotesingle{}pem\textquotesingle{}\`{}.
+\end{DoxyItemize}
+
+Returns a String.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4753}{}\doxysection{\texorpdfstring{Certificate identities}{Certificate identities}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4753}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4754}{}\doxysubsection{\texorpdfstring{{\ttfamily identity\+For\+Host(hostname)}}{{\ttfamily identity\+For\+Host(hostname)}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4754}
+Constructs a host-\/type Identity for a given hostname.
+
+Parameters
+
+
+\begin{DoxyItemize}
+\item {\ttfamily hostname} -- the fully qualified DNS name of the host
+\end{DoxyItemize}
+
+Returns an Identity instance.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4755}{}\doxysubsection{\texorpdfstring{{\ttfamily identity\+For\+User(uid)}}{{\ttfamily identity\+For\+User(uid)}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4755}
+Constructs a user-\/type Identity for a given UID.
+
+Parameters
+
+
+\begin{DoxyItemize}
+\item {\ttfamily uid} -- a String, user identifier (login name)
+\end{DoxyItemize}
+
+Returns an Identity instance.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4756}{}\doxysubsection{\texorpdfstring{{\ttfamily identity\+For\+Email(email)}}{{\ttfamily identity\+For\+Email(email)}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4756}
+Constructs an email-\/type Identity for a given email address.
+
+Parameters
+
+
+\begin{DoxyItemize}
+\item {\ttfamily email} -- a String, email address
+\end{DoxyItemize}
+
+Returns an Identity instance.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4757}{}\doxysubsection{\texorpdfstring{{\ttfamily identity\+From\+DN(dn)}}{{\ttfamily identity\+From\+DN(dn)}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4757}
+Parses an LDAP-\/style DN string (e.\+g. `\textquotesingle{}CN=foo, C=US'\`{}) and turns it into an Identity instance.
+
+Parameters
+
+
+\begin{DoxyItemize}
+\item {\ttfamily dn} -- a String
+\end{DoxyItemize}
+
+Returns an Identity instance.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4758}{}\doxysubsection{\texorpdfstring{{\ttfamily identity\+From\+Array(arr)}}{{\ttfamily identity\+From\+Array(arr)}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4758}
+Constructs an Identity from an array of DN components (see {\ttfamily Identity\#to\+Array()} for the format).
+
+Parameters
+
+
+\begin{DoxyItemize}
+\item {\ttfamily arr} -- an Array of Objects, DN components with {\ttfamily name} and {\ttfamily value}
+\end{DoxyItemize}
+
+Returns an Identity instance.
+
+Supported attributes in DNs\+:
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Attribute name   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ OID    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Attribute name   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ OID    }\\\cline{1-2}
+\endhead
+{\ttfamily cn}   &{\ttfamily 2.\+5.\+4.\+3}    \\\cline{1-2}
+{\ttfamily o}   &{\ttfamily 2.\+5.\+4.\+10}    \\\cline{1-2}
+{\ttfamily ou}   &{\ttfamily 2.\+5.\+4.\+11}    \\\cline{1-2}
+{\ttfamily l}   &{\ttfamily 2.\+5.\+4.\+7}    \\\cline{1-2}
+{\ttfamily s}   &{\ttfamily 2.\+5.\+4.\+8}    \\\cline{1-2}
+{\ttfamily c}   &{\ttfamily 2.\+5.\+4.\+6}    \\\cline{1-2}
+{\ttfamily sn}   &{\ttfamily 2.\+5.\+4.\+4}    \\\cline{1-2}
+{\ttfamily postal\+Code}   &{\ttfamily 2.\+5.\+4.\+17}    \\\cline{1-2}
+{\ttfamily serial\+Number}   &{\ttfamily 2.\+5.\+4.\+5}    \\\cline{1-2}
+{\ttfamily street}   &{\ttfamily 2.\+5.\+4.\+9}    \\\cline{1-2}
+{\ttfamily x500\+Unique\+Identifier}   &{\ttfamily 2.\+5.\+4.\+45}    \\\cline{1-2}
+{\ttfamily role}   &{\ttfamily 2.\+5.\+4.\+72}    \\\cline{1-2}
+{\ttfamily telephone\+Number}   &{\ttfamily 2.\+5.\+4.\+20}    \\\cline{1-2}
+{\ttfamily description}   &{\ttfamily 2.\+5.\+4.\+13}    \\\cline{1-2}
+{\ttfamily dc}   &{\ttfamily 0.\+9.\+2342.\+19200300.\+100.\+1.\+25}    \\\cline{1-2}
+{\ttfamily uid}   &{\ttfamily 0.\+9.\+2342.\+19200300.\+100.\+1.\+1}    \\\cline{1-2}
+{\ttfamily mail}   &{\ttfamily 0.\+9.\+2342.\+19200300.\+100.\+1.\+3}    \\\cline{1-2}
+{\ttfamily title}   &{\ttfamily 2.\+5.\+4.\+12}    \\\cline{1-2}
+{\ttfamily gn}   &{\ttfamily 2.\+5.\+4.\+42}    \\\cline{1-2}
+{\ttfamily initials}   &{\ttfamily 2.\+5.\+4.\+43}    \\\cline{1-2}
+{\ttfamily pseudonym}   &{\ttfamily 2.\+5.\+4.\+65}   \\\cline{1-2}
+\end{longtabu}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4759}{}\doxysubsection{\texorpdfstring{{\ttfamily Identity\#to\+String()}}{{\ttfamily Identity\#to\+String()}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4759}
+Returns the identity as an LDAP-\/style DN string. e.\+g. `\textquotesingle{}CN=foo, O=bar corp, C=us'\`{}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4760}{}\doxysubsection{\texorpdfstring{{\ttfamily Identity\#type}}{{\ttfamily Identity\#type}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4760}
+The type of identity. One of `\textquotesingle{}host'{\ttfamily ,}\textquotesingle{}user\textquotesingle{}{\ttfamily ,}\textquotesingle{}email\textquotesingle{}{\ttfamily or}\textquotesingle{}unknown\textquotesingle{}\`{}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4761}{}\doxysubsection{\texorpdfstring{{\ttfamily Identity\#hostname}}{{\ttfamily Identity\#hostname}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4761}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4762}{}\doxysubsection{\texorpdfstring{{\ttfamily Identity\#uid}}{{\ttfamily Identity\#uid}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4762}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4763}{}\doxysubsection{\texorpdfstring{{\ttfamily Identity\#email}}{{\ttfamily Identity\#email}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4763}
+Set when {\ttfamily type} is `\textquotesingle{}host'{\ttfamily ,}\textquotesingle{}user\textquotesingle{}{\ttfamily , or}\textquotesingle{}email\textquotesingle{}\`{}, respectively. Strings.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4764}{}\doxysubsection{\texorpdfstring{{\ttfamily Identity\#cn}}{{\ttfamily Identity\#cn}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4764}
+The value of the first {\ttfamily CN=} in the DN, if any. It\textquotesingle{}s probably better to use the {\ttfamily \#get()} method instead of this property.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4765}{}\doxysubsection{\texorpdfstring{{\ttfamily Identity\#get(name\mbox{[}, as\+Array\mbox{]})}}{{\ttfamily Identity\#get(name\mbox{[}, as\+Array\mbox{]})}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4765}
+Returns the value of a named attribute in the Identity DN. If there is no attribute of the given name, returns {\ttfamily undefined}. If multiple components of the DN contain an attribute of this name, an exception is thrown unless the {\ttfamily as\+Array} argument is given as {\ttfamily true} -- then they will be returned as an Array in the same order they appear in the DN.
+
+Parameters
+
+
+\begin{DoxyItemize}
+\item {\ttfamily name} -- a String
+\item {\ttfamily as\+Array} -- an optional Boolean
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4766}{}\doxysubsection{\texorpdfstring{{\ttfamily Identity\#to\+Array()}}{{\ttfamily Identity\#to\+Array()}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4766}
+Returns the Identity as an Array of DN component objects. This looks like\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{[\ \{}
+\DoxyCodeLine{\ \ "{}name"{}:\ "{}cn"{},}
+\DoxyCodeLine{\ \ "{}value"{}:\ "{}Joe\ Bloggs"{}}
+\DoxyCodeLine{\},}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ "{}name"{}:\ "{}o"{},}
+\DoxyCodeLine{\ \ "{}value"{}:\ "{}Organisation\ Ltd"{}}
+\DoxyCodeLine{\}\ ]}
+
+\end{DoxyCode}
+
+
+Each object has a {\ttfamily name} and a {\ttfamily value} property. The returned objects may be safely modified.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4767}{}\doxysection{\texorpdfstring{Errors}{Errors}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4767}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4768}{}\doxysubsection{\texorpdfstring{{\ttfamily Invalid\+Algorithm\+Error}}{{\ttfamily Invalid\+Algorithm\+Error}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4768}
+The specified algorithm is not valid, either because it is not supported, or because it was not included on a list of allowed algorithms.
+
+Thrown by {\ttfamily Fingerprint.\+parse}, {\ttfamily Key\#fingerprint}.
+
+Properties
+
+
+\begin{DoxyItemize}
+\item {\ttfamily algorithm} -- the algorithm that could not be validated
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4769}{}\doxysubsection{\texorpdfstring{{\ttfamily Fingerprint\+Format\+Error}}{{\ttfamily Fingerprint\+Format\+Error}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4769}
+The fingerprint string given could not be parsed as a supported fingerprint format, or the specified fingerprint format is invalid.
+
+Thrown by {\ttfamily Fingerprint.\+parse}, {\ttfamily Fingerprint\#to\+String}.
+
+Properties
+
+
+\begin{DoxyItemize}
+\item {\ttfamily fingerprint} -- if caused by a fingerprint, the string value given
+\item {\ttfamily format} -- if caused by an invalid format specification, the string value given
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4770}{}\doxysubsection{\texorpdfstring{{\ttfamily Key\+Parse\+Error}}{{\ttfamily Key\+Parse\+Error}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4770}
+The key data given could not be parsed as a valid key.
+
+Properties
+
+
+\begin{DoxyItemize}
+\item {\ttfamily key\+Name} -- {\ttfamily filename} that was given to {\ttfamily parse\+Key}
+\item {\ttfamily format} -- the {\ttfamily format} that was trying to parse the key (see {\ttfamily parse\+Key})
+\item {\ttfamily inner\+Err} -- the inner Error thrown by the format parser
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4771}{}\doxysubsection{\texorpdfstring{{\ttfamily Key\+Encrypted\+Error}}{{\ttfamily Key\+Encrypted\+Error}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4771}
+The key is encrypted with a symmetric key (ie, it is password protected). The parsing operation would succeed if it was given the {\ttfamily passphrase} option.
+
+Properties
+
+
+\begin{DoxyItemize}
+\item {\ttfamily key\+Name} -- {\ttfamily filename} that was given to {\ttfamily parse\+Key}
+\item {\ttfamily format} -- the {\ttfamily format} that was trying to parse the key (currently can only be {\ttfamily "{}pem"{}})
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4772}{}\doxysubsection{\texorpdfstring{{\ttfamily Certificate\+Parse\+Error}}{{\ttfamily Certificate\+Parse\+Error}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4772}
+The certificate data given could not be parsed as a valid certificate.
+
+Properties
+
+
+\begin{DoxyItemize}
+\item {\ttfamily cert\+Name} -- {\ttfamily filename} that was given to {\ttfamily parse\+Certificate}
+\item {\ttfamily format} -- the {\ttfamily format} that was trying to parse the key (see {\ttfamily parse\+Certificate})
+\item {\ttfamily inner\+Err} -- the inner Error thrown by the format parser
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4773}{}\doxysection{\texorpdfstring{Friends of sshpk}{Friends of sshpk}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mab3f3b0b74e8a4edcce4e0647e29e90c_autotoc_md4773}
+
+\begin{DoxyItemize}
+\item \href{https://github.com/arekinath/node-sshpk-agent}{\texttt{ {\ttfamily sshpk-\/agent}}} is a library for speaking the {\ttfamily ssh-\/agent} protocol from node.\+js, which uses {\ttfamily sshpk} 
+\end{DoxyItemize}

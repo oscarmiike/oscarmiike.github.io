@@ -1,0 +1,88 @@
+\chapter{mkdirp}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mb1e70e68a51cb9cc257f6c1c53cc49c5}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mb1e70e68a51cb9cc257f6c1c53cc49c5}\index{mkdirp@{mkdirp}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mb1e70e68a51cb9cc257f6c1c53cc49c5_autotoc_md3379}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mb1e70e68a51cb9cc257f6c1c53cc49c5_autotoc_md3379}%
+ Like {\ttfamily mkdir -\/p}, but in node.\+js!
+
+\href{http://travis-ci.org/substack/node-mkdirp}{\texttt{ }}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mb1e70e68a51cb9cc257f6c1c53cc49c5_autotoc_md3380}{}\doxysection{\texorpdfstring{example}{example}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mb1e70e68a51cb9cc257f6c1c53cc49c5_autotoc_md3380}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mb1e70e68a51cb9cc257f6c1c53cc49c5_autotoc_md3381}{}\doxysubsection{\texorpdfstring{pow.\+js}{pow.\+js}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mb1e70e68a51cb9cc257f6c1c53cc49c5_autotoc_md3381}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ mkdirp\ =\ require('mkdirp');}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{mkdirp('/tmp/foo/bar/baz',\ function\ (err)\ \{}
+\DoxyCodeLine{\ \ \ \ if\ (err)\ console.error(err)}
+\DoxyCodeLine{\ \ \ \ else\ console.log('pow!')}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+Output
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{pow!}
+
+\end{DoxyCode}
+
+
+And now /tmp/foo/bar/baz exists, huzzah!\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mb1e70e68a51cb9cc257f6c1c53cc49c5_autotoc_md3382}{}\doxysection{\texorpdfstring{methods}{methods}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mb1e70e68a51cb9cc257f6c1c53cc49c5_autotoc_md3382}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ mkdirp\ =\ require('mkdirp');}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mb1e70e68a51cb9cc257f6c1c53cc49c5_autotoc_md3383}{}\doxysubsection{\texorpdfstring{mkdirp(dir, opts, cb)}{mkdirp(dir, opts, cb)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mb1e70e68a51cb9cc257f6c1c53cc49c5_autotoc_md3383}
+Create a new directory and any necessary subdirectories at {\ttfamily dir} with octal permission string {\ttfamily opts.\+mode}. If {\ttfamily opts} is a non-\/object, it will be treated as the {\ttfamily opts.\+mode}.
+
+If {\ttfamily opts.\+mode} isn\textquotesingle{}t specified, it defaults to {\ttfamily 0777 \& (\texorpdfstring{$\sim$}{\string~}process.umask())}.
+
+{\ttfamily cb(err, made)} fires with the error or the first directory {\ttfamily made} that had to be created, if any.
+
+You can optionally pass in an alternate {\ttfamily fs} implementation by passing in {\ttfamily opts.\+fs}. Your implementation should have {\ttfamily opts.\+fs.\+mkdir(path, mode, cb)} and {\ttfamily opts.\+fs.\+stat(path, cb)}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mb1e70e68a51cb9cc257f6c1c53cc49c5_autotoc_md3384}{}\doxysubsection{\texorpdfstring{mkdirp.\+sync(dir, opts)}{mkdirp.\+sync(dir, opts)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mb1e70e68a51cb9cc257f6c1c53cc49c5_autotoc_md3384}
+Synchronously create a new directory and any necessary subdirectories at {\ttfamily dir} with octal permission string {\ttfamily opts.\+mode}. If {\ttfamily opts} is a non-\/object, it will be treated as the {\ttfamily opts.\+mode}.
+
+If {\ttfamily opts.\+mode} isn\textquotesingle{}t specified, it defaults to {\ttfamily 0777 \& (\texorpdfstring{$\sim$}{\string~}process.umask())}.
+
+Returns the first directory that had to be created, if any.
+
+You can optionally pass in an alternate {\ttfamily fs} implementation by passing in {\ttfamily opts.\+fs}. Your implementation should have {\ttfamily opts.\+fs.\+mkdir\+Sync(path, mode)} and {\ttfamily opts.\+fs.\+stat\+Sync(path)}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mb1e70e68a51cb9cc257f6c1c53cc49c5_autotoc_md3385}{}\doxysection{\texorpdfstring{usage}{usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mb1e70e68a51cb9cc257f6c1c53cc49c5_autotoc_md3385}
+This package also ships with a {\ttfamily mkdirp} command.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{usage:\ mkdirp\ [DIR1,DIR2..]\ \{OPTIONS\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ Create\ each\ supplied\ directory\ including\ any\ necessary\ parent\ directories\ that}
+\DoxyCodeLine{\ \ don't\ yet\ exist.}
+\DoxyCodeLine{\ \ }
+\DoxyCodeLine{\ \ If\ the\ directory\ already\ exists,\ do\ nothing.}
+\DoxyCodeLine{}
+\DoxyCodeLine{OPTIONS\ are:}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ -\/m,\ -\/-\/mode\ \ \ If\ a\ directory\ needs\ to\ be\ created,\ set\ the\ mode\ as\ an\ octal}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ permission\ string.}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mb1e70e68a51cb9cc257f6c1c53cc49c5_autotoc_md3386}{}\doxysection{\texorpdfstring{install}{install}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mb1e70e68a51cb9cc257f6c1c53cc49c5_autotoc_md3386}
+With \href{http://npmjs.org}{\texttt{ npm}} do\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ mkdirp}
+
+\end{DoxyCode}
+
+
+to get the library, or
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ -\/g\ mkdirp}
+
+\end{DoxyCode}
+
+
+to get the command.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mb1e70e68a51cb9cc257f6c1c53cc49c5_autotoc_md3387}{}\doxysection{\texorpdfstring{license}{license}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mb1e70e68a51cb9cc257f6c1c53cc49c5_autotoc_md3387}
+MIT 

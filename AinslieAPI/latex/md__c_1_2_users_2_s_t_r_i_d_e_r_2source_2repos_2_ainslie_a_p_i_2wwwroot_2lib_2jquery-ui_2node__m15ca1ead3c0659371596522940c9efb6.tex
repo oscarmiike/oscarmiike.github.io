@@ -1,0 +1,40 @@
+\chapter{README}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m15ca1ead3c0659371596522940c9efb6}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m15ca1ead3c0659371596522940c9efb6}\index{README@{README}}
+\href{http://badge.fury.io/js/unbzip2-stream}{\texttt{ }}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m15ca1ead3c0659371596522940c9efb6_autotoc_md11925}{}\doxysection{\texorpdfstring{unbzip2-\/stream}{unbzip2-\/stream}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m15ca1ead3c0659371596522940c9efb6_autotoc_md11925}
+streaming bzip2 decompressor in pure JS for Node and browserify.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m15ca1ead3c0659371596522940c9efb6_autotoc_md11926}{}\doxysubsection{\texorpdfstring{Buffers}{Buffers}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m15ca1ead3c0659371596522940c9efb6_autotoc_md11926}
+When browserified, the stream emits instances of \href{https://github.com/feross/buffer}{\texttt{ feross/buffer}} instead of raw Uint8\+Arrays to have a consistant API across browsers and Node.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m15ca1ead3c0659371596522940c9efb6_autotoc_md11927}{}\doxysubsection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m15ca1ead3c0659371596522940c9efb6_autotoc_md11927}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ js}
+\DoxyCodeLine{var\ bz2\ =\ require('unbzip2-\/stream');}
+\DoxyCodeLine{var\ fs\ =\ require('fs');}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ decompress\ test.bz2\ and\ output\ the\ result}
+\DoxyCodeLine{fs.createReadStream('./test.bz2').pipe(bz2()).pipe(process.stdout);}
+
+\end{DoxyCode}
+
+
+Also see \href{https://github.com/regular/unbzip2-stream/blob/master/test/browser/download.js}{\texttt{ test/browser/download.\+js}} for an example of decompressing a file while downloading.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m15ca1ead3c0659371596522940c9efb6_autotoc_md11928}{}\doxysubsection{\texorpdfstring{Or, using a \texorpdfstring{$<$}{<}script\texorpdfstring{$>$}{>} tag}{Or, using a \texorpdfstring{$<$}{<}script\texorpdfstring{$>$}{>} tag}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m15ca1ead3c0659371596522940c9efb6_autotoc_md11928}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<script\ src="{}https://npm-\/cdn.info/unbzip2-\/stream/dist/unbzip2-\/stream.min.js"{}></script>}
+\DoxyCodeLine{<script>}
+\DoxyCodeLine{\ \ \ \ var\ myStream\ =\ window.unbzip2Stream();}
+\DoxyCodeLine{\ \ \ \ //\ now\ pipe\ stuff\ through\ it\ (see\ above)}
+\DoxyCodeLine{</script>}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m15ca1ead3c0659371596522940c9efb6_autotoc_md11929}{}\doxysubsection{\texorpdfstring{Tests}{Tests}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m15ca1ead3c0659371596522940c9efb6_autotoc_md11929}
+To run tests in Node\+: \begin{DoxyVerb}npm run test
+\end{DoxyVerb}
+ To run tests in Phantom\+JS \begin{DoxyVerb}npm run browser-test
+\end{DoxyVerb}
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m15ca1ead3c0659371596522940c9efb6_autotoc_md11930}{}\doxysubsection{\texorpdfstring{Additional Tests}{Additional Tests}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m15ca1ead3c0659371596522940c9efb6_autotoc_md11930}
+There are two more tests that specifically test decompression of a very large file. Because I don\textquotesingle{}t want to include large binary files in this repository, the files are created by running an npm script. \begin{DoxyVerb}npm run prepare-long-test
+\end{DoxyVerb}
+ You can now \begin{DoxyVerb}npm run long-test
+\end{DoxyVerb}
+ And to run a test in chrome that downloads and decompresses a large binary file \begin{DoxyVerb}npm run download-test
+\end{DoxyVerb}
+ Open the browser\textquotesingle{}s console to see the output. 

@@ -1,0 +1,117 @@
+\doxysection{Logs\+Controller.\+cs}
+\hypertarget{_logs_controller_8cs_source}{}\label{_logs_controller_8cs_source}\index{C:/Users/STRIDER/source/repos/AinslieAPI/Controllers/LogsController.cs@{C:/Users/STRIDER/source/repos/AinslieAPI/Controllers/LogsController.cs}}
+\mbox{\hyperlink{_logs_controller_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00001}00001\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_ainslie_a_p_i_1_1_controllers}{AinslieAPI.Controllers}};}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }Microsoft.AspNetCore.Http;}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }Microsoft.AspNetCore.Mvc;}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }System.Security.Claims;}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00006}00006\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_ainslie_a_p_i_1_1_authentication}{AinslieAPI.Authentication}};}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00007}00007\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_ainslie_a_p_i_1_1_helpers}{AinslieAPI.Helpers}};}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00008}00008\ \textcolor{keyword}{using\ }Microsoft.Extensions.Options;}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00009}00009\ \textcolor{keyword}{using\ }Microsoft.AspNetCore.Authorization;}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00010}00010\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_ainslie_a_p_i_1_1_services}{AinslieAPI.Services}};}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00011}00011\ \textcolor{keyword}{using\ }Microsoft.EntityFrameworkCore;}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00012}00012\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_ainslie_a_p_i_1_1_data_1_1_contexts}{AinslieAPI.Data.Contexts}};}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00013}00013\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_ainslie_a_p_i_1_1_data_1_1_models}{AinslieAPI.Data.Models}};}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00014}00014\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_ainslie_a_p_i_1_1_d_t_o_1_1_internal_api}{AinslieAPI.DTO.InternalApi}};}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00015}00015\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_ainslie_a_p_i_1_1_authentication_1_1_authorization}{AinslieAPI.Authentication.Authorization}};}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00017}00017\ [ApiAuthorize]}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00018}00018\ [Route(\textcolor{stringliteral}{"{}[controller]"{}})]}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00019}00019\ [ApiController]}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00024}\mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_logs_controller}{00024}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_logs_controller}{LogsController}}\ :\ ControllerBase}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00025}00025\ \{}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00026}00026\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings}{AppSettings}}\ \_appSettings;}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00027}00027\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils}{JwtUtils}}\ \_jwtUtils;}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00028}00028\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{LogService}}\ \_logService;}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00029}00029\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_data_1_1_contexts_1_1_local_context}{LocalContext}}\ \_context;}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00030}00030\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service}{InternalApiService}}\ \_iapiService;}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00040}\mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_logs_controller_afb713b2cb90756230e4704cffd8d613f}{00040}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_logs_controller_afb713b2cb90756230e4704cffd8d613f}{LogsController}}(IOptions<AppSettings>\ appSettings,\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils}{JwtUtils}}\ jwtUtils,\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{LogService}}\ logService,\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_data_1_1_contexts_1_1_local_context}{LocalContext}}\ localContext,\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service}{InternalApiService}}\ iapiService)}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00041}00041\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \_appSettings\ =\ appSettings.Value;}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \_jwtUtils\ =\ jwtUtils;}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \_logService\ =\ logService;\ \ \ }
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \_context\ =\ localContext;}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \_iapiService\ =\ iapiService;}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00047}00047\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00067}00067\ \ \ \ \ [HttpPost(\textcolor{stringliteral}{"{}getlogs"{}})]}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00068}\mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_logs_controller_a3ef80287ee6fcd427b335c7f37e366d8}{00068}}\ \ \ \ \ \textcolor{keyword}{public}\ IActionResult\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_logs_controller_a3ef80287ee6fcd427b335c7f37e366d8}{GetLogs}}([FromBody]\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_internal_api_1_1_log_request}{LogRequest}}\ logRequest)}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00069}00069\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ DateTime\ fromDateTimeUTC\ =\ DateTime.MinValue;}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (logRequest.fromUnixUTCMilli\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ fromDateTimeUTC\ =\ DateTimeOffset.FromUnixTimeMilliseconds(logRequest.fromUnixUTCMilli).DateTime;}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ DateTime\ fromDateTimeLocal\ =\ fromDateTimeUTC.ToLocalTime();}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ var\ dateRangeStart\ =\ logRequest.dateRangeStartUTC.ToLocalTime();}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (logRequest.startHour\ >\ -\/1)}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ dateRangeStart\ =\ dateRangeStart.AddHours(logRequest.startHour);}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ var\ dateRangeEnd\ =\ logRequest.dateRangeEndUTC.ToLocalTime();}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ var\ logsQuery\ =\ \_context.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_data_1_1_contexts_1_1_local_context_a07ac1cd14ee90d7465dd18a3669e0fa4}{LogEntries}}.AsNoTracking()}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ .Where(le\ =>\ le.Created\ >=\ dateRangeStart\ \&\&\ le.Created\ <=\ dateRangeEnd)}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ .AsEnumerable();}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (logRequest.initial)}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ logsQuery\ =\ logsQuery}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .Where(le\ =>\ logRequest.logType\ ==\ \textcolor{keyword}{null}\ ||\ logRequest.logType.All(\textcolor{keywordtype}{string}.IsNullOrEmpty)\ ||\ logRequest.logType.Any(lt\ =>\ le.Type.ToLower()\ ==\ lt.ToLower()))}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .Where(le\ =>\ logRequest.logSource\ ==\ \textcolor{keyword}{null}\ ||\ logRequest.logSource.All(\textcolor{keywordtype}{string}.IsNullOrEmpty)\ ||\ logRequest.logSource.Any(ls\ =>\ le.Source.ToLower()\ ==\ ls.ToLower()))}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .Where(le\ =>\ \textcolor{keywordtype}{string}.IsNullOrEmpty(logRequest.searchString)\ ||\ le.Data.ToLower().Contains(logRequest.searchString.ToLower()));}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (logRequest.startHour\ >\ -\/1)}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//if\ specifying\ a\ start\ hour,\ take\ logs\ from\ the\ start\ hour,\ then\ order\ by\ descending}}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ logsQuery\ =\ logsQuery.Take(logRequest.maxLogs).OrderByDescending(le\ =>\ le.Created).ToList();}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//if\ not\ specifying\ start\ hour,\ order\ by\ descending\ and\ then\ take\ latest}}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ logsQuery\ =\ logsQuery.OrderByDescending(le\ =>\ le.Created).Take(logRequest.maxLogs).ToList();}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00098}00098\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ logsQuery\ =\ logsQuery}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .Where(le\ =>\ le.Created\ >\ fromDateTimeLocal)}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .Where(le\ =>\ logRequest.logType\ ==\ \textcolor{keyword}{null}\ ||\ logRequest.logType.All(\textcolor{keywordtype}{string}.IsNullOrEmpty)\ ||\ logRequest.logType.Any(lt\ =>\ le.Type.ToLower()\ ==\ lt.ToLower()))}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .Where(le\ =>\ logRequest.logSource\ ==\ \textcolor{keyword}{null}\ ||\ logRequest.logSource.All(\textcolor{keywordtype}{string}.IsNullOrEmpty)\ ||\ logRequest.logSource.Any(ls\ =>\ le.Source.ToLower()\ ==\ ls.ToLower()))}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .Where(le\ =>\ \textcolor{keywordtype}{string}.IsNullOrEmpty(logRequest.searchString)\ ||\ le.Data.ToLower().Contains(logRequest.searchString.ToLower()))}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .OrderByDescending(le\ =>\ le.Created);}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00107}00107\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00108}00108\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!logRequest.initial\ \&\&\ logsQuery.Count()\ <\ 1)}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00109}00109\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00110}00110\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Ok();}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00111}00111\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00112}00112\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Ok(logsQuery);}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00113}00113\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00114}00114\ }
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00124}00124\ \ \ \ \ [HttpGet(\textcolor{stringliteral}{"{}getlogsources"{}})]}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00125}\mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_logs_controller_a97c028c3db2a6e6190127d5a1a67cda3}{00125}}\ \ \ \ \ \textcolor{keyword}{public}\ IActionResult\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_logs_controller_a97c028c3db2a6e6190127d5a1a67cda3}{GetLogSources}}()}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00126}00126\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00127}00127\ \ \ \ \ \ \ \ \ var\ logSources\ =\ \_context.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_data_1_1_contexts_1_1_local_context_a07ac1cd14ee90d7465dd18a3669e0fa4}{LogEntries}}.AsNoTracking().Select(le\ =>\ le.Source).Distinct();}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00128}00128\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Ok(logSources);}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00129}00129\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00130}00130\ }
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00140}00140\ \ \ \ \ [HttpGet(\textcolor{stringliteral}{"{}getlogtypes"{}})]}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00141}\mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_logs_controller_a950cc099b42028053588effab1e1c578}{00141}}\ \ \ \ \ \textcolor{keyword}{public}\ IActionResult\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_logs_controller_a950cc099b42028053588effab1e1c578}{GetLogTypes}}()}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00142}00142\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00143}00143\ \ \ \ \ \ \ \ \ var\ logTypes\ =\ \_context.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_data_1_1_contexts_1_1_local_context_a07ac1cd14ee90d7465dd18a3669e0fa4}{LogEntries}}.AsNoTracking().Select(le\ =>\ le.Type).Distinct();}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00144}00144\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Ok(logTypes);}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00145}00145\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00146}00146\ }
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00156}00156\ \ \ \ \ [HttpGet(\textcolor{stringliteral}{"{}trimlogs"{}})]}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00157}\mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_logs_controller_aea8072dbf59418b035df6b786ecae9c0}{00157}}\ \ \ \ \ \textcolor{keyword}{public}\ IActionResult\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_logs_controller_aea8072dbf59418b035df6b786ecae9c0}{TrimLogs}}()}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00158}00158\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00159}00159\ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a917b9af360c0c6521ce36f4acbc72023}{LogInformation}}(\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_ab557dc1394f5cf56cfb78c765fdfffe6}{LogSources}}.LogsController,\ \textcolor{stringliteral}{"{}log\ trim\ initiated"{}});}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00160}00160\ \ \ \ \ \ \ \ \ dynamic\ result\ =\ \_logService.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_aea52f6628afd6bcb55105bd0a2f1d8da}{TrimLogs}}();}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00161}00161\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((\textcolor{keywordtype}{bool})result.error)}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00162}00162\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00163}00163\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ BadRequest(result);}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00164}00164\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00165}00165\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Ok(result);}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00166}00166\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_logs_controller_8cs_source_l00167}00167\ \}}
+
+\end{DoxyCode}

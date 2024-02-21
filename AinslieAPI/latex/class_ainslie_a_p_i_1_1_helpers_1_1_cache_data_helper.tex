@@ -1,0 +1,149 @@
+\doxysection{Ainslie\+API.\+Helpers.\+Cache\+Data\+Helper Class Reference}
+\hypertarget{class_ainslie_a_p_i_1_1_helpers_1_1_cache_data_helper}{}\label{class_ainslie_a_p_i_1_1_helpers_1_1_cache_data_helper}\index{AinslieAPI.Helpers.CacheDataHelper@{AinslieAPI.Helpers.CacheDataHelper}}
+
+
+Provides functionality to manage and refresh cached data, specifically for asset prices.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_cache_data_helper_af2a6b056688fb01875c35f9088701439}{Cache\+Data\+Helper}} (\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_cache_1_1_cached_data}{Cached\+Data}} cached\+Data, \mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{Log\+Service}} log\+Service, \mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service}{Internal\+Api\+Service}} iapi\+Service, \mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_aw_api_service}{Aw\+Api\+Service}} awapi\+Service, IOptions$<$ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings}{App\+Settings}} $>$ app\+Settings)
+\begin{DoxyCompactList}\small\item\em Initialises a new instance of the Cache\+Data\+Helper with required services and settings. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_g_s_s_1_1_g_s_s_price_data}{GSSPrice\+Data}} \mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_cache_data_helper_a533a0f6563d2e92e52c819c22c5009a6}{GSSPricing}} (string user\+Name)
+\begin{DoxyCompactList}\small\item\em Retrieves GSS pricing data for a specific user from cache or refreshes if necessary. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+List$<$ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_priceapp_1_1_asset_price}{Asset\+Price}} $>$ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_cache_data_helper_a467588e84833fe7a5914b1d4ab391e7a}{Priceapp\+Assets}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets a list of asset prices, either from cache or by refreshing if necessary. \end{DoxyCompactList}\item 
+List$<$ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_priceapp_1_1_product_price}{Product\+Price}} $>$ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_cache_data_helper_aca65b242b68bf55a30418a0d09cd9552}{Priceapp\+Products}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Retrieves cached product prices, refreshing the cache as needed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Provides functionality to manage and refresh cached data, specifically for asset prices. 
+
+Definition at line \mbox{\hyperlink{_cache_data_helper_8cs_source_l00014}{14}} of file \mbox{\hyperlink{_cache_data_helper_8cs_source}{Cache\+Data\+Helper.\+cs}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_ainslie_a_p_i_1_1_helpers_1_1_cache_data_helper_af2a6b056688fb01875c35f9088701439}\label{class_ainslie_a_p_i_1_1_helpers_1_1_cache_data_helper_af2a6b056688fb01875c35f9088701439} 
+\index{AinslieAPI.Helpers.CacheDataHelper@{AinslieAPI.Helpers.CacheDataHelper}!CacheDataHelper@{CacheDataHelper}}
+\index{CacheDataHelper@{CacheDataHelper}!AinslieAPI.Helpers.CacheDataHelper@{AinslieAPI.Helpers.CacheDataHelper}}
+\doxysubsubsection{\texorpdfstring{CacheDataHelper()}{CacheDataHelper()}}
+{\footnotesize\ttfamily Ainslie\+API.\+Helpers.\+Cache\+Data\+Helper.\+Cache\+Data\+Helper (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_cache_1_1_cached_data}{Cached\+Data}}}]{cached\+Data,  }\item[{\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{Log\+Service}}}]{log\+Service,  }\item[{\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service}{Internal\+Api\+Service}}}]{iapi\+Service,  }\item[{\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_aw_api_service}{Aw\+Api\+Service}}}]{awapi\+Service,  }\item[{IOptions$<$ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings}{App\+Settings}} $>$}]{app\+Settings }\end{DoxyParamCaption})}
+
+
+
+Initialises a new instance of the Cache\+Data\+Helper with required services and settings. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cached\+Data} & The cached data store.\\
+\hline
+{\em log\+Service} & Service for logging.\\
+\hline
+{\em iapi\+Service} & Internal API service for fetching asset prices.\\
+\hline
+{\em awapi\+Service} & Alternative API service for additional operations.\\
+\hline
+{\em app\+Settings} & Application settings for configuration values.\\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_cache_data_helper_8cs_source_l00031}{31}} of file \mbox{\hyperlink{_cache_data_helper_8cs_source}{Cache\+Data\+Helper.\+cs}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_ainslie_a_p_i_1_1_helpers_1_1_cache_data_helper_a533a0f6563d2e92e52c819c22c5009a6}\label{class_ainslie_a_p_i_1_1_helpers_1_1_cache_data_helper_a533a0f6563d2e92e52c819c22c5009a6} 
+\index{AinslieAPI.Helpers.CacheDataHelper@{AinslieAPI.Helpers.CacheDataHelper}!GSSPricing@{GSSPricing}}
+\index{GSSPricing@{GSSPricing}!AinslieAPI.Helpers.CacheDataHelper@{AinslieAPI.Helpers.CacheDataHelper}}
+\doxysubsubsection{\texorpdfstring{GSSPricing()}{GSSPricing()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_g_s_s_1_1_g_s_s_price_data}{GSSPrice\+Data}} Ainslie\+API.\+Helpers.\+Cache\+Data\+Helper.\+GSSPricing (\begin{DoxyParamCaption}\item[{string}]{user\+Name }\end{DoxyParamCaption})}
+
+
+
+Retrieves GSS pricing data for a specific user from cache or refreshes if necessary. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em user\+Name} & The username associated with the GSS pricing request.\\
+\hline
+\end{DoxyParams}
+
+
+\begin{DoxyReturn}{Returns}
+GSSPrice\+Data for the specified user.
+\end{DoxyReturn}
+
+
+Attempts to fetch GSS pricing data for the given user from cache. If the data is expired, absent, or fails casting, it refreshes the cache with new data. 
+
+Definition at line \mbox{\hyperlink{_cache_data_helper_8cs_source_l00233}{233}} of file \mbox{\hyperlink{_cache_data_helper_8cs_source}{Cache\+Data\+Helper.\+cs}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_ainslie_a_p_i_1_1_helpers_1_1_cache_data_helper_a533a0f6563d2e92e52c819c22c5009a6_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_ainslie_a_p_i_1_1_helpers_1_1_cache_data_helper_a533a0f6563d2e92e52c819c22c5009a6_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Property Documentation}
+\Hypertarget{class_ainslie_a_p_i_1_1_helpers_1_1_cache_data_helper_a467588e84833fe7a5914b1d4ab391e7a}\label{class_ainslie_a_p_i_1_1_helpers_1_1_cache_data_helper_a467588e84833fe7a5914b1d4ab391e7a} 
+\index{AinslieAPI.Helpers.CacheDataHelper@{AinslieAPI.Helpers.CacheDataHelper}!PriceappAssets@{PriceappAssets}}
+\index{PriceappAssets@{PriceappAssets}!AinslieAPI.Helpers.CacheDataHelper@{AinslieAPI.Helpers.CacheDataHelper}}
+\doxysubsubsection{\texorpdfstring{PriceappAssets}{PriceappAssets}}
+{\footnotesize\ttfamily List$<$\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_priceapp_1_1_asset_price}{Asset\+Price}}$>$ Ainslie\+API.\+Helpers.\+Cache\+Data\+Helper.\+Priceapp\+Assets\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Gets a list of asset prices, either from cache or by refreshing if necessary. 
+
+\begin{DoxyReturn}{Returns}
+A list of Asset\+Price from the cache or a refreshed list if the cache is expired or not present.
+\end{DoxyReturn}
+
+
+Checks the cache for current asset prices; if the cache is expired or not found, it refreshes the cache by fetching new data. Implements thread-\/safe cache refresh using a lock to prevent concurrent refresh operations. 
+
+Definition at line \mbox{\hyperlink{_cache_data_helper_8cs_source_l00050}{50}} of file \mbox{\hyperlink{_cache_data_helper_8cs_source}{Cache\+Data\+Helper.\+cs}}.
+
+\Hypertarget{class_ainslie_a_p_i_1_1_helpers_1_1_cache_data_helper_aca65b242b68bf55a30418a0d09cd9552}\label{class_ainslie_a_p_i_1_1_helpers_1_1_cache_data_helper_aca65b242b68bf55a30418a0d09cd9552} 
+\index{AinslieAPI.Helpers.CacheDataHelper@{AinslieAPI.Helpers.CacheDataHelper}!PriceappProducts@{PriceappProducts}}
+\index{PriceappProducts@{PriceappProducts}!AinslieAPI.Helpers.CacheDataHelper@{AinslieAPI.Helpers.CacheDataHelper}}
+\doxysubsubsection{\texorpdfstring{PriceappProducts}{PriceappProducts}}
+{\footnotesize\ttfamily List$<$\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_priceapp_1_1_product_price}{Product\+Price}}$>$ Ainslie\+API.\+Helpers.\+Cache\+Data\+Helper.\+Priceapp\+Products\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Retrieves cached product prices, refreshing the cache as needed. 
+
+\begin{DoxyReturn}{Returns}
+A list of Product\+Price, either cached or newly fetched.
+\end{DoxyReturn}
+
+
+Checks for current product prices in the cache, refreshing if expired or missing. Exceptions during data retrieval are logged, ensuring stability by returning an initialised list in any scenario. 
+
+Definition at line \mbox{\hyperlink{_cache_data_helper_8cs_source_l00142}{142}} of file \mbox{\hyperlink{_cache_data_helper_8cs_source}{Cache\+Data\+Helper.\+cs}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+STRIDER/source/repos/\+Ainslie\+API/\+Helpers/\mbox{\hyperlink{_cache_data_helper_8cs}{Cache\+Data\+Helper.\+cs}}\end{DoxyCompactItemize}

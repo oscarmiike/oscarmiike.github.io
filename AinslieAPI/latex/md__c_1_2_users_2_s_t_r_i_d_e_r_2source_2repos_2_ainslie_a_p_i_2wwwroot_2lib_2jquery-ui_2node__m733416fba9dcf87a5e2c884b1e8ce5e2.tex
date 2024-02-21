@@ -1,0 +1,487 @@
+\chapter{Changelog}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2}\index{Changelog@{Changelog}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9643}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9643}%
+ All notable changes to this project will be documented in this file.
+
+The format is based on \href{https://keepachangelog.com/en/1.0.0/}{\texttt{ Keep a Changelog}}, and this project adheres to \href{https://semver.org/spec/v2.0.0.html}{\texttt{ Semantic Versioning}}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9644}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/compare/3.14.0...3.14.1}{\texttt{ 3.\+14.\+1}} -\/ 2020-\/12-\/07}{\href{https://github.com/nodeca/js-yaml/compare/3.14.0...3.14.1}{\texttt{ 3.\+14.\+1}} -\/ 2020-\/12-\/07}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9644}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9645}{}\doxysubsection{\texorpdfstring{Security}{Security}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9645}
+
+\begin{DoxyItemize}
+\item Fix possible code execution in (already unsafe) {\ttfamily .load()} (in \&anchor).
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9646}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/compare/3.13.1...3.14.0}{\texttt{ 3.\+14.\+0}} -\/ 2020-\/05-\/22}{\href{https://github.com/nodeca/js-yaml/compare/3.13.1...3.14.0}{\texttt{ 3.\+14.\+0}} -\/ 2020-\/05-\/22}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9646}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9647}{}\doxysubsection{\texorpdfstring{Changed}{Changed}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9647}
+
+\begin{DoxyItemize}
+\item Support {\ttfamily safe/load\+All(input, options)} variant of call.
+\item CI\+: drop outdated nodejs versions.
+\item Dev deps bump.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9648}{}\doxysubsection{\texorpdfstring{Fixed}{Fixed}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9648}
+
+\begin{DoxyItemize}
+\item Quote {\ttfamily =} in plain scalars \#519.
+\item Check the node type for {\ttfamily !\texorpdfstring{$<$}{<}?\texorpdfstring{$>$}{>}} tag in case user manually specifies it.
+\item Verify that there are no null-\/bytes in input.
+\item Fix wrong quote position when writing condensed flow, \#526.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9649}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/compare/3.13.0...3.13.1}{\texttt{ 3.\+13.\+1}} -\/ 2019-\/04-\/05}{\href{https://github.com/nodeca/js-yaml/compare/3.13.0...3.13.1}{\texttt{ 3.\+13.\+1}} -\/ 2019-\/04-\/05}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9649}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9650}{}\doxysubsection{\texorpdfstring{Security}{Security}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9650}
+
+\begin{DoxyItemize}
+\item Fix possible code execution in (already unsafe) {\ttfamily .load()}, \#480.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9651}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/compare/3.12.2...3.13.0}{\texttt{ 3.\+13.\+0}} -\/ 2019-\/03-\/20}{\href{https://github.com/nodeca/js-yaml/compare/3.12.2...3.13.0}{\texttt{ 3.\+13.\+0}} -\/ 2019-\/03-\/20}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9651}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9652}{}\doxysubsection{\texorpdfstring{Security}{Security}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9652}
+
+\begin{DoxyItemize}
+\item Security fix\+: {\ttfamily safe\+Load()} can hang when arrays with nested refs used as key. Now throws exception for nested arrays. \#475.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9653}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/compare/3.12.1...3.12.2}{\texttt{ 3.\+12.\+2}} -\/ 2019-\/02-\/26}{\href{https://github.com/nodeca/js-yaml/compare/3.12.1...3.12.2}{\texttt{ 3.\+12.\+2}} -\/ 2019-\/02-\/26}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9653}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9654}{}\doxysubsection{\texorpdfstring{Fixed}{Fixed}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9654}
+
+\begin{DoxyItemize}
+\item Fix {\ttfamily no\+Array\+Indent} option for root level, \#468.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9655}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/compare/3.12.0...3.12.1}{\texttt{ 3.\+12.\+1}} -\/ 2019-\/01-\/05}{\href{https://github.com/nodeca/js-yaml/compare/3.12.0...3.12.1}{\texttt{ 3.\+12.\+1}} -\/ 2019-\/01-\/05}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9655}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9656}{}\doxysubsection{\texorpdfstring{Added}{Added}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9656}
+
+\begin{DoxyItemize}
+\item Added {\ttfamily no\+Array\+Indent} option, \#432.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9657}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/compare/3.11.0...3.12.0}{\texttt{ 3.\+12.\+0}} -\/ 2018-\/06-\/02}{\href{https://github.com/nodeca/js-yaml/compare/3.11.0...3.12.0}{\texttt{ 3.\+12.\+0}} -\/ 2018-\/06-\/02}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9657}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9658}{}\doxysubsection{\texorpdfstring{Changed}{Changed}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9658}
+
+\begin{DoxyItemize}
+\item Support arrow functions without a block statement, \#421.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9659}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/compare/3.10.0...3.11.0}{\texttt{ 3.\+11.\+0}} -\/ 2018-\/03-\/05}{\href{https://github.com/nodeca/js-yaml/compare/3.10.0...3.11.0}{\texttt{ 3.\+11.\+0}} -\/ 2018-\/03-\/05}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9659}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9660}{}\doxysubsection{\texorpdfstring{Added}{Added}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9660}
+
+\begin{DoxyItemize}
+\item Add arrow functions suport for {\ttfamily !!js/function}.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9661}{}\doxysubsection{\texorpdfstring{Fixed}{Fixed}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9661}
+
+\begin{DoxyItemize}
+\item Fix dump in bin/octal/hex formats for negative integers, \#399.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9662}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/compare/3.9.1...3.10.0}{\texttt{ 3.\+10.\+0}} -\/ 2017-\/09-\/10}{\href{https://github.com/nodeca/js-yaml/compare/3.9.1...3.10.0}{\texttt{ 3.\+10.\+0}} -\/ 2017-\/09-\/10}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9662}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9663}{}\doxysubsection{\texorpdfstring{Fixed}{Fixed}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9663}
+
+\begin{DoxyItemize}
+\item Fix {\ttfamily condense\+Flow} output (quote keys for sure, instead of spaces), \#371, \#370.
+\item Dump astrals as codepoints instead of surrogate pair, \#368.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9664}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/compare/3.9.0...3.9.1}{\texttt{ 3.\+9.\+1}} -\/ 2017-\/07-\/08}{\href{https://github.com/nodeca/js-yaml/compare/3.9.0...3.9.1}{\texttt{ 3.\+9.\+1}} -\/ 2017-\/07-\/08}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9664}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9665}{}\doxysubsection{\texorpdfstring{Fixed}{Fixed}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9665}
+
+\begin{DoxyItemize}
+\item Ensure stack is present for custom errors in node 7.+, \#351.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9666}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/compare/3.8.4...3.9.0}{\texttt{ 3.\+9.\+0}} -\/ 2017-\/07-\/08}{\href{https://github.com/nodeca/js-yaml/compare/3.8.4...3.9.0}{\texttt{ 3.\+9.\+0}} -\/ 2017-\/07-\/08}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9666}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9667}{}\doxysubsection{\texorpdfstring{Added}{Added}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9667}
+
+\begin{DoxyItemize}
+\item Add {\ttfamily condense\+Flow} option (to create pretty URL query params), \#346.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9668}{}\doxysubsection{\texorpdfstring{Fixed}{Fixed}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9668}
+
+\begin{DoxyItemize}
+\item Support array return from safe\+Load\+All/load\+All, \#350.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9669}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/compare/3.8.3...3.8.4}{\texttt{ 3.\+8.\+4}} -\/ 2017-\/05-\/08}{\href{https://github.com/nodeca/js-yaml/compare/3.8.3...3.8.4}{\texttt{ 3.\+8.\+4}} -\/ 2017-\/05-\/08}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9669}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9670}{}\doxysubsection{\texorpdfstring{Fixed}{Fixed}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9670}
+
+\begin{DoxyItemize}
+\item Dumper\+: prevent space after dash for arrays that wrap, \#343.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9671}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/compare/3.8.2...3.8.3}{\texttt{ 3.\+8.\+3}} -\/ 2017-\/04-\/05}{\href{https://github.com/nodeca/js-yaml/compare/3.8.2...3.8.3}{\texttt{ 3.\+8.\+3}} -\/ 2017-\/04-\/05}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9671}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9672}{}\doxysubsection{\texorpdfstring{Fixed}{Fixed}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9672}
+
+\begin{DoxyItemize}
+\item Should not allow numbers to begin and end with underscore, \#335.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9673}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/compare/3.8.1...3.8.2}{\texttt{ 3.\+8.\+2}} -\/ 2017-\/03-\/02}{\href{https://github.com/nodeca/js-yaml/compare/3.8.1...3.8.2}{\texttt{ 3.\+8.\+2}} -\/ 2017-\/03-\/02}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9673}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9674}{}\doxysubsection{\texorpdfstring{Fixed}{Fixed}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9674}
+
+\begin{DoxyItemize}
+\item Fix {\ttfamily !!float 123} (integers) parse, \#333.
+\item Don\textquotesingle{}t allow leading zeros in floats (except 0, 0.\+xxx).
+\item Allow positive exponent without sign in floats.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9675}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/compare/3.8.0...3.8.1}{\texttt{ 3.\+8.\+1}} -\/ 2017-\/02-\/07}{\href{https://github.com/nodeca/js-yaml/compare/3.8.0...3.8.1}{\texttt{ 3.\+8.\+1}} -\/ 2017-\/02-\/07}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9675}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9676}{}\doxysubsection{\texorpdfstring{Changed}{Changed}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9676}
+
+\begin{DoxyItemize}
+\item Maintenance\+: update browserified build.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9677}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/compare/3.7.0...3.8.0}{\texttt{ 3.\+8.\+0}} -\/ 2017-\/02-\/07}{\href{https://github.com/nodeca/js-yaml/compare/3.7.0...3.8.0}{\texttt{ 3.\+8.\+0}} -\/ 2017-\/02-\/07}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9677}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9678}{}\doxysubsection{\texorpdfstring{Fixed}{Fixed}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9678}
+
+\begin{DoxyItemize}
+\item Fix reported position for {\ttfamily duplicated mapping key} errors. Now points to block start instead of block end. (\#243, thanks to @shockey).
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9679}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/compare/3.6.1...3.7.0}{\texttt{ 3.\+7.\+0}} -\/ 2016-\/11-\/12}{\href{https://github.com/nodeca/js-yaml/compare/3.6.1...3.7.0}{\texttt{ 3.\+7.\+0}} -\/ 2016-\/11-\/12}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9679}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9680}{}\doxysubsection{\texorpdfstring{Added}{Added}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9680}
+
+\begin{DoxyItemize}
+\item Support polymorphism for tags (\#300, thanks to @monken).
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9681}{}\doxysubsection{\texorpdfstring{Fixed}{Fixed}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9681}
+
+\begin{DoxyItemize}
+\item Fix parsing of quotes followed by newlines (\#304, thanks to @dplepage).
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9682}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/compare/3.6.0...3.6.1}{\texttt{ 3.\+6.\+1}} -\/ 2016-\/05-\/11}{\href{https://github.com/nodeca/js-yaml/compare/3.6.0...3.6.1}{\texttt{ 3.\+6.\+1}} -\/ 2016-\/05-\/11}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9682}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9683}{}\doxysubsection{\texorpdfstring{Fixed}{Fixed}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9683}
+
+\begin{DoxyItemize}
+\item Fix output cut on a pipe, \#286.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9684}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/compare/3.5.5...3.6.0}{\texttt{ 3.\+6.\+0}} -\/ 2016-\/04-\/16}{\href{https://github.com/nodeca/js-yaml/compare/3.5.5...3.6.0}{\texttt{ 3.\+6.\+0}} -\/ 2016-\/04-\/16}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9684}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9685}{}\doxysubsection{\texorpdfstring{Fixed}{Fixed}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9685}
+
+\begin{DoxyItemize}
+\item Dumper rewrite, fix multiple bugs with trailing {\ttfamily \textbackslash{}n}. Big thanks to @aepsilon!
+\item Loader\+: fix leading/trailing newlines in block scalars, @aepsilon.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9686}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/compare/3.5.4...3.5.5}{\texttt{ 3.\+5.\+5}} -\/ 2016-\/03-\/17}{\href{https://github.com/nodeca/js-yaml/compare/3.5.4...3.5.5}{\texttt{ 3.\+5.\+5}} -\/ 2016-\/03-\/17}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9686}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9687}{}\doxysubsection{\texorpdfstring{Fixed}{Fixed}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9687}
+
+\begin{DoxyItemize}
+\item Date parse fix\+: don\textquotesingle{}t allow dates with on digit in month and day, \#268.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9688}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/compare/3.5.3...3.5.4}{\texttt{ 3.\+5.\+4}} -\/ 2016-\/03-\/09}{\href{https://github.com/nodeca/js-yaml/compare/3.5.3...3.5.4}{\texttt{ 3.\+5.\+4}} -\/ 2016-\/03-\/09}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9688}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9689}{}\doxysubsection{\texorpdfstring{Added}{Added}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9689}
+
+\begin{DoxyItemize}
+\item {\ttfamily no\+Compat\+Mode} for dumper, to disable quoting YAML 1.\+1 values.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9690}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/compare/3.5.2...3.5.3}{\texttt{ 3.\+5.\+3}} -\/ 2016-\/02-\/11}{\href{https://github.com/nodeca/js-yaml/compare/3.5.2...3.5.3}{\texttt{ 3.\+5.\+3}} -\/ 2016-\/02-\/11}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9690}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9691}{}\doxysubsection{\texorpdfstring{Changed}{Changed}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9691}
+
+\begin{DoxyItemize}
+\item Maintenance release.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9692}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/compare/3.5.1...3.5.2}{\texttt{ 3.\+5.\+2}} -\/ 2016-\/01-\/11}{\href{https://github.com/nodeca/js-yaml/compare/3.5.1...3.5.2}{\texttt{ 3.\+5.\+2}} -\/ 2016-\/01-\/11}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9692}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9693}{}\doxysubsection{\texorpdfstring{Changed}{Changed}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9693}
+
+\begin{DoxyItemize}
+\item Maintenance\+: missed comma in bower config.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9694}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/compare/3.5.0...3.5.1}{\texttt{ 3.\+5.\+1}} -\/ 2016-\/01-\/11}{\href{https://github.com/nodeca/js-yaml/compare/3.5.0...3.5.1}{\texttt{ 3.\+5.\+1}} -\/ 2016-\/01-\/11}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9694}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9695}{}\doxysubsection{\texorpdfstring{Changed}{Changed}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9695}
+
+\begin{DoxyItemize}
+\item Removed {\ttfamily inherit} dependency, \#239.
+\item Better browserify workaround for esprima load.
+\item Demo rewrite.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9696}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/compare/3.4.6...3.5.0}{\texttt{ 3.\+5.\+0}} -\/ 2016-\/01-\/10}{\href{https://github.com/nodeca/js-yaml/compare/3.4.6...3.5.0}{\texttt{ 3.\+5.\+0}} -\/ 2016-\/01-\/10}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9696}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9697}{}\doxysubsection{\texorpdfstring{Fixed}{Fixed}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9697}
+
+\begin{DoxyItemize}
+\item Dumper. Fold strings only, \#217.
+\item Dumper. {\ttfamily norefs} option, to clone linked objects, \#229.
+\item Loader. Throw a warning for duplicate keys, \#166.
+\item Improved browserify support (mark {\ttfamily esprima} \& {\ttfamily Buffer} excluded).
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9698}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/compare/3.4.5...3.4.6}{\texttt{ 3.\+4.\+6}} -\/ 2015-\/11-\/26}{\href{https://github.com/nodeca/js-yaml/compare/3.4.5...3.4.6}{\texttt{ 3.\+4.\+6}} -\/ 2015-\/11-\/26}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9698}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9699}{}\doxysubsection{\texorpdfstring{Changed}{Changed}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9699}
+
+\begin{DoxyItemize}
+\item Use standalone {\ttfamily inherit} to keep browserified files clear.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9700}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/compare/3.4.4...3.4.5}{\texttt{ 3.\+4.\+5}} -\/ 2015-\/11-\/23}{\href{https://github.com/nodeca/js-yaml/compare/3.4.4...3.4.5}{\texttt{ 3.\+4.\+5}} -\/ 2015-\/11-\/23}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9700}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9701}{}\doxysubsection{\texorpdfstring{Added}{Added}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9701}
+
+\begin{DoxyItemize}
+\item Added {\ttfamily line\+Width} option to dumper.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9702}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/compare/3.4.3...3.4.4}{\texttt{ 3.\+4.\+4}} -\/ 2015-\/11-\/21}{\href{https://github.com/nodeca/js-yaml/compare/3.4.3...3.4.4}{\texttt{ 3.\+4.\+4}} -\/ 2015-\/11-\/21}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9702}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9703}{}\doxysubsection{\texorpdfstring{Fixed}{Fixed}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9703}
+
+\begin{DoxyItemize}
+\item Fixed floats dump (missed dot for scientific format), \#220.
+\item Allow non-\/printable characters inside quoted scalars, \#192.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9704}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/compare/3.4.2...3.4.3}{\texttt{ 3.\+4.\+3}} -\/ 2015-\/10-\/10}{\href{https://github.com/nodeca/js-yaml/compare/3.4.2...3.4.3}{\texttt{ 3.\+4.\+3}} -\/ 2015-\/10-\/10}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9704}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9705}{}\doxysubsection{\texorpdfstring{Changed}{Changed}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9705}
+
+\begin{DoxyItemize}
+\item Maintenance release -\/ deps bump (esprima, argparse).
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9706}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/compare/3.4.1...3.4.2}{\texttt{ 3.\+4.\+2}} -\/ 2015-\/09-\/09}{\href{https://github.com/nodeca/js-yaml/compare/3.4.1...3.4.2}{\texttt{ 3.\+4.\+2}} -\/ 2015-\/09-\/09}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9706}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9707}{}\doxysubsection{\texorpdfstring{Fixed}{Fixed}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9707}
+
+\begin{DoxyItemize}
+\item Fixed serialization of duplicated entries in sequences, \#205. Thanks to @vogelsgesang.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9708}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/compare/3.4.0...3.4.1}{\texttt{ 3.\+4.\+1}} -\/ 2015-\/09-\/05}{\href{https://github.com/nodeca/js-yaml/compare/3.4.0...3.4.1}{\texttt{ 3.\+4.\+1}} -\/ 2015-\/09-\/05}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9708}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9709}{}\doxysubsection{\texorpdfstring{Fixed}{Fixed}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9709}
+
+\begin{DoxyItemize}
+\item Fixed stacktrace handling in generated errors, for browsers (FF/\+IE).
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9710}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/compare/3.3.1...3.4.0}{\texttt{ 3.\+4.\+0}} -\/ 2015-\/08-\/23}{\href{https://github.com/nodeca/js-yaml/compare/3.3.1...3.4.0}{\texttt{ 3.\+4.\+0}} -\/ 2015-\/08-\/23}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9710}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9711}{}\doxysubsection{\texorpdfstring{Changed}{Changed}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9711}
+
+\begin{DoxyItemize}
+\item Don\textquotesingle{}t throw on warnings anymore. Use {\ttfamily on\+Warning} option to catch.
+\item Throw error on unknown tags (was warning before).
+\item Reworked internals of error class.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9712}{}\doxysubsection{\texorpdfstring{Fixed}{Fixed}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9712}
+
+\begin{DoxyItemize}
+\item Fixed multiline keys dump, \#197. Thanks to @tcr.
+\item Fixed heading line breaks in some scalars (regression).
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9713}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/compare/3.3.0...3.3.1}{\texttt{ 3.\+3.\+1}} -\/ 2015-\/05-\/13}{\href{https://github.com/nodeca/js-yaml/compare/3.3.0...3.3.1}{\texttt{ 3.\+3.\+1}} -\/ 2015-\/05-\/13}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9713}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9714}{}\doxysubsection{\texorpdfstring{Added}{Added}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9714}
+
+\begin{DoxyItemize}
+\item Added {\ttfamily .sort\+Keys} dumper option, thanks to @rjmunro.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9715}{}\doxysubsection{\texorpdfstring{Fixed}{Fixed}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9715}
+
+\begin{DoxyItemize}
+\item Fixed astral characters support, \#191.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9716}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/compare/3.2.7...3.3.0}{\texttt{ 3.\+3.\+0}} -\/ 2015-\/04-\/26}{\href{https://github.com/nodeca/js-yaml/compare/3.2.7...3.3.0}{\texttt{ 3.\+3.\+0}} -\/ 2015-\/04-\/26}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9716}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9717}{}\doxysubsection{\texorpdfstring{Changed}{Changed}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9717}
+
+\begin{DoxyItemize}
+\item Significantly improved long strings formatting in dumper, thanks to @isaacs.
+\item Strip BOM if exists.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9718}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/compare/3.2.6...3.2.7}{\texttt{ 3.\+2.\+7}} -\/ 2015-\/02-\/19}{\href{https://github.com/nodeca/js-yaml/compare/3.2.6...3.2.7}{\texttt{ 3.\+2.\+7}} -\/ 2015-\/02-\/19}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9718}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9719}{}\doxysubsection{\texorpdfstring{Changed}{Changed}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9719}
+
+\begin{DoxyItemize}
+\item Maintenance release.
+\item Updated dependencies.
+\item HISTORY.\+md -\/\texorpdfstring{$>$}{>} CHANGELOG.\+md
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9720}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/compare/3.2.5...3.2.6}{\texttt{ 3.\+2.\+6}} -\/ 2015-\/02-\/07}{\href{https://github.com/nodeca/js-yaml/compare/3.2.5...3.2.6}{\texttt{ 3.\+2.\+6}} -\/ 2015-\/02-\/07}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9720}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9721}{}\doxysubsection{\texorpdfstring{Fixed}{Fixed}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9721}
+
+\begin{DoxyItemize}
+\item Fixed encoding of UTF-\/16 surrogate pairs. (e.\+g. "{}\textbackslash{}\+U0001\+F431"{} CAT FACE).
+\item Fixed demo dates dump (\#113, thanks to @\+Hypercubed).
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9722}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/compare/3.2.4...3.2.5}{\texttt{ 3.\+2.\+5}} -\/ 2014-\/12-\/28}{\href{https://github.com/nodeca/js-yaml/compare/3.2.4...3.2.5}{\texttt{ 3.\+2.\+5}} -\/ 2014-\/12-\/28}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9722}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9723}{}\doxysubsection{\texorpdfstring{Fixed}{Fixed}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9723}
+
+\begin{DoxyItemize}
+\item Fixed resolving of all built-\/in types on empty nodes.
+\item Fixed invalid warning on empty lines within quoted scalars and flow collections.
+\item Fixed bug\+: Tag on an empty node didn\textquotesingle{}t resolve in some cases.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9724}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/compare/3.2.3...3.2.4}{\texttt{ 3.\+2.\+4}} -\/ 2014-\/12-\/19}{\href{https://github.com/nodeca/js-yaml/compare/3.2.3...3.2.4}{\texttt{ 3.\+2.\+4}} -\/ 2014-\/12-\/19}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9724}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9725}{}\doxysubsection{\texorpdfstring{Fixed}{Fixed}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9725}
+
+\begin{DoxyItemize}
+\item Fixed resolving of !!null tag on an empty node.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9726}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/compare/3.2.2...3.2.3}{\texttt{ 3.\+2.\+3}} -\/ 2014-\/11-\/08}{\href{https://github.com/nodeca/js-yaml/compare/3.2.2...3.2.3}{\texttt{ 3.\+2.\+3}} -\/ 2014-\/11-\/08}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9726}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9727}{}\doxysubsection{\texorpdfstring{Fixed}{Fixed}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9727}
+
+\begin{DoxyItemize}
+\item Implemented dumping of objects with circular and cross references.
+\item Partially fixed aliasing of constructed objects. (see issue \#141 for details)
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9728}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/compare/3.2.1...3.2.2}{\texttt{ 3.\+2.\+2}} -\/ 2014-\/09-\/07}{\href{https://github.com/nodeca/js-yaml/compare/3.2.1...3.2.2}{\texttt{ 3.\+2.\+2}} -\/ 2014-\/09-\/07}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9728}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9729}{}\doxysubsection{\texorpdfstring{Fixed}{Fixed}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9729}
+
+\begin{DoxyItemize}
+\item Fixed infinite loop on unindented block scalars.
+\item Rewritten base64 encode/decode in binary type, to keep code licence clear.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9730}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/compare/3.2.0...3.2.1}{\texttt{ 3.\+2.\+1}} -\/ 2014-\/08-\/24}{\href{https://github.com/nodeca/js-yaml/compare/3.2.0...3.2.1}{\texttt{ 3.\+2.\+1}} -\/ 2014-\/08-\/24}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9730}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9731}{}\doxysubsection{\texorpdfstring{Fixed}{Fixed}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9731}
+
+\begin{DoxyItemize}
+\item Nothig new. Just fix npm publish error.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9732}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/compare/3.1.0...3.2.0}{\texttt{ 3.\+2.\+0}} -\/ 2014-\/08-\/24}{\href{https://github.com/nodeca/js-yaml/compare/3.1.0...3.2.0}{\texttt{ 3.\+2.\+0}} -\/ 2014-\/08-\/24}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9732}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9733}{}\doxysubsection{\texorpdfstring{Added}{Added}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9733}
+
+\begin{DoxyItemize}
+\item Added input piping support to CLI.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9734}{}\doxysubsection{\texorpdfstring{Fixed}{Fixed}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9734}
+
+\begin{DoxyItemize}
+\item Fixed typo, that could cause hand on initial indent (\#139).
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9735}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/compare/3.0.2...3.1.0}{\texttt{ 3.\+1.\+0}} -\/ 2014-\/07-\/07}{\href{https://github.com/nodeca/js-yaml/compare/3.0.2...3.1.0}{\texttt{ 3.\+1.\+0}} -\/ 2014-\/07-\/07}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9735}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9736}{}\doxysubsection{\texorpdfstring{Changed}{Changed}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9736}
+
+\begin{DoxyItemize}
+\item 1.\+5x-\/2x speed boost.
+\item Removed deprecated `require(\textquotesingle{}xxx.\+yml')\`{} support.
+\item Significant code cleanup and refactoring.
+\item Internal API changed. If you used custom types -\/ see updated examples. Others are not affected.
+\item Even if the input string has no trailing line break character, it will be parsed as if it has one.
+\item Added benchmark scripts.
+\item Moved bower files to /dist folder
+\item Bugfixes.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9737}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/compare/3.0.1...3.0.2}{\texttt{ 3.\+0.\+2}} -\/ 2014-\/02-\/27}{\href{https://github.com/nodeca/js-yaml/compare/3.0.1...3.0.2}{\texttt{ 3.\+0.\+2}} -\/ 2014-\/02-\/27}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9737}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9738}{}\doxysubsection{\texorpdfstring{Fixed}{Fixed}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9738}
+
+\begin{DoxyItemize}
+\item Fixed bug\+: "{}constructor"{} string parsed as {\ttfamily null}.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9739}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/compare/3.0.0...3.0.1}{\texttt{ 3.\+0.\+1}} -\/ 2013-\/12-\/22}{\href{https://github.com/nodeca/js-yaml/compare/3.0.0...3.0.1}{\texttt{ 3.\+0.\+1}} -\/ 2013-\/12-\/22}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9739}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9740}{}\doxysubsection{\texorpdfstring{Fixed}{Fixed}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9740}
+
+\begin{DoxyItemize}
+\item Fixed parsing of literal scalars. (issue \#108)
+\item Prevented adding unnecessary spaces in object dumps. (issue \#68)
+\item Fixed dumping of objects with very long (\texorpdfstring{$>$}{>} 1024 in length) keys.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9741}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/compare/2.1.3...3.0.0}{\texttt{ 3.\+0.\+0}} -\/ 2013-\/12-\/16}{\href{https://github.com/nodeca/js-yaml/compare/2.1.3...3.0.0}{\texttt{ 3.\+0.\+0}} -\/ 2013-\/12-\/16}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9741}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9742}{}\doxysubsection{\texorpdfstring{Changed}{Changed}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9742}
+
+\begin{DoxyItemize}
+\item Refactored code. Changed API for custom types.
+\item Removed output colors in CLI, dump json by default.
+\item Removed big dependencies from browser version (esprima, buffer). Load {\ttfamily esprima} manually, if {\ttfamily !!js/function} needed. {\ttfamily !!bin} now returns Array in browser
+\item AMD support.
+\item Don\textquotesingle{}t quote dumped strings because of {\ttfamily -\/} \& {\ttfamily ?} (if not first char).
+\item {\bfseries{Deprecated}} loading yaml files via {\ttfamily require()}, as not recommended behaviour for node.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9743}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/compare/2.1.2...2.1.3}{\texttt{ 2.\+1.\+3}} -\/ 2013-\/10-\/16}{\href{https://github.com/nodeca/js-yaml/compare/2.1.2...2.1.3}{\texttt{ 2.\+1.\+3}} -\/ 2013-\/10-\/16}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9743}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9744}{}\doxysubsection{\texorpdfstring{Fixed}{Fixed}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9744}
+
+\begin{DoxyItemize}
+\item Fix wrong loading of empty block scalars.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9745}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/compare/2.1.1...2.1.2}{\texttt{ 2.\+1.\+2}} -\/ 2013-\/10-\/07}{\href{https://github.com/nodeca/js-yaml/compare/2.1.1...2.1.2}{\texttt{ 2.\+1.\+2}} -\/ 2013-\/10-\/07}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9745}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9746}{}\doxysubsection{\texorpdfstring{Fixed}{Fixed}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9746}
+
+\begin{DoxyItemize}
+\item Fix unwanted line breaks in folded scalars.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9747}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/compare/2.1.0...2.1.1}{\texttt{ 2.\+1.\+1}} -\/ 2013-\/10-\/02}{\href{https://github.com/nodeca/js-yaml/compare/2.1.0...2.1.1}{\texttt{ 2.\+1.\+1}} -\/ 2013-\/10-\/02}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9747}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9748}{}\doxysubsection{\texorpdfstring{Fixed}{Fixed}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9748}
+
+\begin{DoxyItemize}
+\item Dumper now respects deprecated booleans syntax from YAML 1.\+0/1.1
+\item Fixed reader bug in JSON-\/like sequences/mappings.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9749}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/compare/2.0.5...2.1.0}{\texttt{ 2.\+1.\+0}} -\/ 2013-\/06-\/05}{\href{https://github.com/nodeca/js-yaml/compare/2.0.5...2.1.0}{\texttt{ 2.\+1.\+0}} -\/ 2013-\/06-\/05}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9749}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9750}{}\doxysubsection{\texorpdfstring{Added}{Added}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9750}
+
+\begin{DoxyItemize}
+\item Add standard YAML schemas\+: Failsafe ({\ttfamily FAILSAFE\+\_\+\+SCHEMA}), JSON ({\ttfamily JSON\+\_\+\+SCHEMA}) and Core ({\ttfamily CORE\+\_\+\+SCHEMA}).
+\item Add {\ttfamily skip\+Invalid} dumper option.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9751}{}\doxysubsection{\texorpdfstring{Changed}{Changed}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9751}
+
+\begin{DoxyItemize}
+\item Rename {\ttfamily DEFAULT\+\_\+\+SCHEMA} to {\ttfamily DEFAULT\+\_\+\+FULL\+\_\+\+SCHEMA} and {\ttfamily SAFE\+\_\+\+SCHEMA} to {\ttfamily DEFAULT\+\_\+\+SAFE\+\_\+\+SCHEMA}.
+\item Use {\ttfamily safe\+Load} for {\ttfamily require} extension.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9752}{}\doxysubsection{\texorpdfstring{Fixed}{Fixed}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9752}
+
+\begin{DoxyItemize}
+\item Bug fix\+: export {\ttfamily NIL} constant from the public interface.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9753}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/compare/2.0.4...2.0.5}{\texttt{ 2.\+0.\+5}} -\/ 2013-\/04-\/26}{\href{https://github.com/nodeca/js-yaml/compare/2.0.4...2.0.5}{\texttt{ 2.\+0.\+5}} -\/ 2013-\/04-\/26}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9753}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9754}{}\doxysubsection{\texorpdfstring{Security}{Security}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9754}
+
+\begin{DoxyItemize}
+\item Close security issue in !!js/function constructor. Big thanks to @nealpoole for security audit.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9755}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/compare/2.0.3...2.0.4}{\texttt{ 2.\+0.\+4}} -\/ 2013-\/04-\/08}{\href{https://github.com/nodeca/js-yaml/compare/2.0.3...2.0.4}{\texttt{ 2.\+0.\+4}} -\/ 2013-\/04-\/08}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9755}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9756}{}\doxysubsection{\texorpdfstring{Changed}{Changed}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9756}
+
+\begin{DoxyItemize}
+\item Updated .npmignore to reduce package size
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9757}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/compare/2.0.2...2.0.3}{\texttt{ 2.\+0.\+3}} -\/ 2013-\/02-\/26}{\href{https://github.com/nodeca/js-yaml/compare/2.0.2...2.0.3}{\texttt{ 2.\+0.\+3}} -\/ 2013-\/02-\/26}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9757}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9758}{}\doxysubsection{\texorpdfstring{Fixed}{Fixed}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9758}
+
+\begin{DoxyItemize}
+\item Fixed dumping of empty arrays ans objects. (\mbox{[}\mbox{]} and \{\} instead of null)
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9759}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/compare/2.0.1...2.0.2}{\texttt{ 2.\+0.\+2}} -\/ 2013-\/02-\/15}{\href{https://github.com/nodeca/js-yaml/compare/2.0.1...2.0.2}{\texttt{ 2.\+0.\+2}} -\/ 2013-\/02-\/15}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9759}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9760}{}\doxysubsection{\texorpdfstring{Fixed}{Fixed}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9760}
+
+\begin{DoxyItemize}
+\item Fixed input validation\+: tabs are printable characters.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9761}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/compare/2.0.0...2.0.1}{\texttt{ 2.\+0.\+1}} -\/ 2013-\/02-\/09}{\href{https://github.com/nodeca/js-yaml/compare/2.0.0...2.0.1}{\texttt{ 2.\+0.\+1}} -\/ 2013-\/02-\/09}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9761}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9762}{}\doxysubsection{\texorpdfstring{Fixed}{Fixed}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9762}
+
+\begin{DoxyItemize}
+\item Fixed error, when options not passed to function cass
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9763}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/compare/1.0.3...2.0.0}{\texttt{ 2.\+0.\+0}} -\/ 2013-\/02-\/09}{\href{https://github.com/nodeca/js-yaml/compare/1.0.3...2.0.0}{\texttt{ 2.\+0.\+0}} -\/ 2013-\/02-\/09}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9763}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9764}{}\doxysubsection{\texorpdfstring{Changed}{Changed}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9764}
+
+\begin{DoxyItemize}
+\item Full rewrite. New architecture. Fast one-\/stage parsing.
+\item Changed custom types API.
+\item Added YAML dumper.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9765}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/compare/1.0.2...1.0.3}{\texttt{ 1.\+0.\+3}} -\/ 2012-\/11-\/05}{\href{https://github.com/nodeca/js-yaml/compare/1.0.2...1.0.3}{\texttt{ 1.\+0.\+3}} -\/ 2012-\/11-\/05}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9765}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9766}{}\doxysubsection{\texorpdfstring{Fixed}{Fixed}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9766}
+
+\begin{DoxyItemize}
+\item Fixed utf-\/8 files loading.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9767}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/compare/1.0.1...1.0.2}{\texttt{ 1.\+0.\+2}} -\/ 2012-\/08-\/02}{\href{https://github.com/nodeca/js-yaml/compare/1.0.1...1.0.2}{\texttt{ 1.\+0.\+2}} -\/ 2012-\/08-\/02}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9767}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9768}{}\doxysubsection{\texorpdfstring{Fixed}{Fixed}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9768}
+
+\begin{DoxyItemize}
+\item Pull out hand-\/written shims. Use ES5-\/\+Shims for old browsers support. See \#44.
+\item Fix timstamps incorectly parsed in local time when no time part specified.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9769}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/compare/1.0.0...1.0.1}{\texttt{ 1.\+0.\+1}} -\/ 2012-\/07-\/07}{\href{https://github.com/nodeca/js-yaml/compare/1.0.0...1.0.1}{\texttt{ 1.\+0.\+1}} -\/ 2012-\/07-\/07}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9769}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9770}{}\doxysubsection{\texorpdfstring{Fixed}{Fixed}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9770}
+
+\begin{DoxyItemize}
+\item Fixes `Type\+Error\+: \textquotesingle{}undefined' is not an object\`{} under Safari. Thanks Phuong.
+\item Fix timestamps incorrectly parsed in local time. Thanks @caolan. Closes \#46.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9771}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/compare/0.3.7...1.0.0}{\texttt{ 1.\+0.\+0}} -\/ 2012-\/07-\/01}{\href{https://github.com/nodeca/js-yaml/compare/0.3.7...1.0.0}{\texttt{ 1.\+0.\+0}} -\/ 2012-\/07-\/01}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9771}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9772}{}\doxysubsection{\texorpdfstring{Changed}{Changed}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9772}
+
+\begin{DoxyItemize}
+\item {\ttfamily y}, {\ttfamily yes}, {\ttfamily n}, {\ttfamily no}, {\ttfamily on}, {\ttfamily off} are not converted to Booleans anymore. Fixes \#42.
+\item {\ttfamily require(filename)} now returns a single document and throws an Error if file contains more than one document.
+\item CLI was merged back from js-\/yaml.\+bin
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9773}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/compare/0.3.6...0.3.7}{\texttt{ 0.\+3.\+7}} -\/ 2012-\/02-\/28}{\href{https://github.com/nodeca/js-yaml/compare/0.3.6...0.3.7}{\texttt{ 0.\+3.\+7}} -\/ 2012-\/02-\/28}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9773}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9774}{}\doxysubsection{\texorpdfstring{Fixed}{Fixed}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9774}
+
+\begin{DoxyItemize}
+\item Fix export of {\ttfamily add\+Constructor()}. Closes \#39.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9775}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/compare/0.3.5...0.3.6}{\texttt{ 0.\+3.\+6}} -\/ 2012-\/02-\/22}{\href{https://github.com/nodeca/js-yaml/compare/0.3.5...0.3.6}{\texttt{ 0.\+3.\+6}} -\/ 2012-\/02-\/22}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9775}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9776}{}\doxysubsection{\texorpdfstring{Changed}{Changed}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9776}
+
+\begin{DoxyItemize}
+\item Removed AMD parts -\/ too buggy to use. Need help to rewrite from scratch
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9777}{}\doxysubsection{\texorpdfstring{Fixed}{Fixed}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9777}
+
+\begin{DoxyItemize}
+\item Removed YUI compressor warning (renamed {\ttfamily double} variable). Closes \#40.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9778}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/compare/0.3.4...0.3.5}{\texttt{ 0.\+3.\+5}} -\/ 2012-\/01-\/10}{\href{https://github.com/nodeca/js-yaml/compare/0.3.4...0.3.5}{\texttt{ 0.\+3.\+5}} -\/ 2012-\/01-\/10}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9778}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9779}{}\doxysubsection{\texorpdfstring{Fixed}{Fixed}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9779}
+
+\begin{DoxyItemize}
+\item Workagound for .npmignore fuckup under windows. Thanks to airportyh.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9780}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/compare/0.3.3...0.3.4}{\texttt{ 0.\+3.\+4}} -\/ 2011-\/12-\/24}{\href{https://github.com/nodeca/js-yaml/compare/0.3.3...0.3.4}{\texttt{ 0.\+3.\+4}} -\/ 2011-\/12-\/24}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9780}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9781}{}\doxysubsection{\texorpdfstring{Fixed}{Fixed}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9781}
+
+\begin{DoxyItemize}
+\item Fixes str\mbox{[}\mbox{]} for old\+IEs support.
+\item Adds better has change support for browserified demo.
+\item improves compact output of Error. Closes \#33.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9782}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/compare/0.3.2...0.3.3}{\texttt{ 0.\+3.\+3}} -\/ 2011-\/12-\/20}{\href{https://github.com/nodeca/js-yaml/compare/0.3.2...0.3.3}{\texttt{ 0.\+3.\+3}} -\/ 2011-\/12-\/20}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9782}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9783}{}\doxysubsection{\texorpdfstring{Added}{Added}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9783}
+
+\begin{DoxyItemize}
+\item adds {\ttfamily compact} stringification of Errors.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9784}{}\doxysubsection{\texorpdfstring{Changed}{Changed}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9784}
+
+\begin{DoxyItemize}
+\item jsyaml executable moved to separate module.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9785}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/compare/0.3.1...0.3.2}{\texttt{ 0.\+3.\+2}} -\/ 2011-\/12-\/16}{\href{https://github.com/nodeca/js-yaml/compare/0.3.1...0.3.2}{\texttt{ 0.\+3.\+2}} -\/ 2011-\/12-\/16}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9785}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9786}{}\doxysubsection{\texorpdfstring{Added}{Added}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9786}
+
+\begin{DoxyItemize}
+\item Added jsyaml executable.
+\item Added !!js/function support. Closes \#12.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9787}{}\doxysubsection{\texorpdfstring{Fixed}{Fixed}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9787}
+
+\begin{DoxyItemize}
+\item Fixes ug with block style scalars. Closes \#26.
+\item All sources are passing JSLint now.
+\item Fixes bug in Safari. Closes \#28.
+\item Fixes bug in Opers. Closes \#29.
+\item Improves browser support. Closes \#20.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9788}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/compare/0.3.0...0.3.1}{\texttt{ 0.\+3.\+1}} -\/ 2011-\/11-\/18}{\href{https://github.com/nodeca/js-yaml/compare/0.3.0...0.3.1}{\texttt{ 0.\+3.\+1}} -\/ 2011-\/11-\/18}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9788}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9789}{}\doxysubsection{\texorpdfstring{Added}{Added}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9789}
+
+\begin{DoxyItemize}
+\item Added AMD support for browserified version.
+\item Added permalinks for online demo YAML snippets. Now we have YPaste service, lol.
+\item Added !!js/regexp and !!js/undefined types. Partially solves \#12.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9790}{}\doxysubsection{\texorpdfstring{Changed}{Changed}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9790}
+
+\begin{DoxyItemize}
+\item Wrapped browserified js-\/yaml into closure.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9791}{}\doxysubsection{\texorpdfstring{Fixed}{Fixed}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9791}
+
+\begin{DoxyItemize}
+\item Fixed the resolvement of non-\/specific tags. Closes \#17.
+\item Fixed !!set mapping.
+\item Fixed month parse in dates. Closes \#19.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9792}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/compare/0.2.2...0.3.0}{\texttt{ 0.\+3.\+0}} -\/ 2011-\/11-\/09}{\href{https://github.com/nodeca/js-yaml/compare/0.2.2...0.3.0}{\texttt{ 0.\+3.\+0}} -\/ 2011-\/11-\/09}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9792}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9793}{}\doxysubsection{\texorpdfstring{Added}{Added}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9793}
+
+\begin{DoxyItemize}
+\item Added browserified version. Closes \#13.
+\item Added live demo of browserified version.
+\item Ported some of the Py\+YAML tests. See \#14.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9794}{}\doxysubsection{\texorpdfstring{Fixed}{Fixed}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9794}
+
+\begin{DoxyItemize}
+\item Removed JS.\+Class dependency. Closes \#3.
+\item Fixed timestamp bug when fraction was given.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9795}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/compare/0.2.1...0.2.2}{\texttt{ 0.\+2.\+2}} -\/ 2011-\/11-\/06}{\href{https://github.com/nodeca/js-yaml/compare/0.2.1...0.2.2}{\texttt{ 0.\+2.\+2}} -\/ 2011-\/11-\/06}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9795}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9796}{}\doxysubsection{\texorpdfstring{Fixed}{Fixed}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9796}
+
+\begin{DoxyItemize}
+\item Fixed crash on docs without ---. Closes \#8.
+\item Fixed multiline string parse
+\item Fixed tests/comments for using array as key
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9797}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/compare/0.2.0...0.2.1}{\texttt{ 0.\+2.\+1}} -\/ 2011-\/11-\/02}{\href{https://github.com/nodeca/js-yaml/compare/0.2.0...0.2.1}{\texttt{ 0.\+2.\+1}} -\/ 2011-\/11-\/02}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9797}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9798}{}\doxysubsection{\texorpdfstring{Fixed}{Fixed}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9798}
+
+\begin{DoxyItemize}
+\item Fixed short file read (\texorpdfstring{$<$}{<}4k). Closes \#9.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9799}{}\doxysection{\texorpdfstring{\href{https://github.com/nodeca/js-yaml/releases/tag/0.2.0}{\texttt{ 0.\+2.\+0}} -\/ 2011-\/11-\/02}{\href{https://github.com/nodeca/js-yaml/releases/tag/0.2.0}{\texttt{ 0.\+2.\+0}} -\/ 2011-\/11-\/02}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9799}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9800}{}\doxysubsection{\texorpdfstring{Changed}{Changed}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m733416fba9dcf87a5e2c884b1e8ce5e2_autotoc_md9800}
+
+\begin{DoxyItemize}
+\item First public release 
+\end{DoxyItemize}

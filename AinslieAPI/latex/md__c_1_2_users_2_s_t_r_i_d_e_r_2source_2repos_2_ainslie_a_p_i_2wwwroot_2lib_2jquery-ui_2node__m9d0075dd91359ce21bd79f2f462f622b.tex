@@ -1,0 +1,36 @@
+\chapter{CONTRIBUTING}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9d0075dd91359ce21bd79f2f462f622b}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9d0075dd91359ce21bd79f2f462f622b}\index{CONTRIBUTING@{CONTRIBUTING}}
+For pull requests\+:
+
+
+\begin{DoxyItemize}
+\item Be consistent with prevalent style and design decisions.
+\item Add a Jasmine spec to {\ttfamily specs/q-\/spec.\+js}.
+\item Use {\ttfamily npm test} to avoid regressions.
+\item Run tests in {\ttfamily q-\/spec/run.\+html} in as many supported browsers as you can find the will to deal with.
+\item Do not build minified versions; we do this each release.
+\item If you would be so kind, add a note to {\ttfamily CHANGES.\+md} in an appropriate section\+:
+\begin{DoxyItemize}
+\item {\ttfamily Next Major Version} if it introduces backward incompatibilities to code in the wild using documented features.
+\item {\ttfamily Next Minor Version} if it adds a new feature.
+\item {\ttfamily Next Patch Version} if it fixes a bug.
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+For releases\+:
+
+
+\begin{DoxyItemize}
+\item Run {\ttfamily npm test}.
+\item Run tests in {\ttfamily q-\/spec/run.\+html} in a representative sample of every browser under the sun.
+\item Run {\ttfamily npm run cover} and make sure you\textquotesingle{}re happy with the results.
+\item Run {\ttfamily npm run minify} and be sure to commit the resulting {\ttfamily q.\+min.\+js}.
+\item Note the Gzipped size output by the previous command, and update {\ttfamily README.\+md} if it has changed to 1 significant digit.
+\item Stash any local changes.
+\item Update {\ttfamily CHANGES.\+md} to reflect all changes in the differences between {\ttfamily HEAD} and the previous tagged version. Give credit where credit is due.
+\item Update {\ttfamily README.\+md} to address all new, non-\/experimental features.
+\item Update the API reference on the Wiki to reflect all non-\/experimental features.
+\item Use {\ttfamily npm version major\texorpdfstring{$\vert$}{|}minor\texorpdfstring{$\vert$}{|}patch} to update {\ttfamily package.\+json}, commit, and tag the new version.
+\item Use {\ttfamily npm publish} to send up a new release.
+\item Send an email to the q-\/continuum mailing list announcing the new release and the notes from the change log. This helps folks maintaining other package ecosystems. 
+\end{DoxyItemize}

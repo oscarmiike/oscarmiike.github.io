@@ -1,0 +1,223 @@
+\chapter{README}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__me2485d4c77b30c7c524dc22891485f22}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__me2485d4c77b30c7c524dc22891485f22}\index{README@{README}}
+\href{https://www.codeship.io/projects/11259}{\texttt{ }}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__me2485d4c77b30c7c524dc22891485f22_autotoc_md8190}{}\doxysection{\texorpdfstring{SYNOPSIS}{SYNOPSIS}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__me2485d4c77b30c7c524dc22891485f22_autotoc_md8190}
+Event\+Emitter2 is an implementation of the Event\+Emitter found in Node.\+js\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__me2485d4c77b30c7c524dc22891485f22_autotoc_md8191}{}\doxysection{\texorpdfstring{DESCRIPTION}{DESCRIPTION}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__me2485d4c77b30c7c524dc22891485f22_autotoc_md8191}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__me2485d4c77b30c7c524dc22891485f22_autotoc_md8192}{}\doxysubsubsection{\texorpdfstring{FEATURES}{FEATURES}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__me2485d4c77b30c7c524dc22891485f22_autotoc_md8192}
+
+\begin{DoxyItemize}
+\item Namespaces/\+Wildcards.
+\item Times To Listen (TTL), extends the {\ttfamily once} concept with {\ttfamily many}.
+\item Browser environment compatibility.
+\item Demonstrates good performance in benchmarks
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{EventEmitterHeatUp\ x\ 3,728,965\ ops/sec\ \(\backslash\)302\(\backslash\)2610.68\%\ (60\ runs\ sampled)}
+\DoxyCodeLine{EventEmitter\ x\ 2,822,904\ ops/sec\ \(\backslash\)302\(\backslash\)2610.74\%\ (63\ runs\ sampled)}
+\DoxyCodeLine{EventEmitter2\ x\ 7,251,227\ ops/sec\ \(\backslash\)302\(\backslash\)2610.55\%\ (58\ runs\ sampled)}
+\DoxyCodeLine{EventEmitter2\ (wild)\ x\ 3,220,268\ ops/sec\ \(\backslash\)302\(\backslash\)2610.44\%\ (65\ runs\ sampled)}
+\DoxyCodeLine{Fastest\ is\ EventEmitter2}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__me2485d4c77b30c7c524dc22891485f22_autotoc_md8193}{}\doxysubsubsection{\texorpdfstring{Differences (Non breaking, compatible with existing Event\+Emitter)}{Differences (Non breaking, compatible with existing Event\+Emitter)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__me2485d4c77b30c7c524dc22891485f22_autotoc_md8193}
+
+\begin{DoxyItemize}
+\item The constructor takes a configuration object.
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ EventEmitter2\ =\ require('eventemitter2').EventEmitter2;}
+\DoxyCodeLine{var\ server\ =\ new\ EventEmitter2(\{}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ //}
+\DoxyCodeLine{\ \ //\ use\ wildcards.}
+\DoxyCodeLine{\ \ //}
+\DoxyCodeLine{\ \ wildcard:\ true,}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ //}
+\DoxyCodeLine{\ \ //\ the\ delimiter\ used\ to\ segment\ namespaces,\ defaults\ to\ \`{}.`.}
+\DoxyCodeLine{\ \ //}
+\DoxyCodeLine{\ \ delimiter:\ '::',\ }
+\DoxyCodeLine{\ \ }
+\DoxyCodeLine{\ \ //}
+\DoxyCodeLine{\ \ //\ if\ you\ want\ to\ emit\ the\ newListener\ event\ set\ to\ true.}
+\DoxyCodeLine{\ \ //}
+\DoxyCodeLine{\ \ newListener:\ false,\ }
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ //}
+\DoxyCodeLine{\ \ //\ max\ listeners\ that\ can\ be\ assigned\ to\ an\ event,\ default\ 10.}
+\DoxyCodeLine{\ \ //}
+\DoxyCodeLine{\ \ maxListeners:\ 20}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item Getting the actual event that fired.
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{server.on('foo.*',\ function(value1,\ value2)\ \{}
+\DoxyCodeLine{\ \ console.log(this.event,\ value1,\ value2);}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item Fire an event N times and then remove it, an extension of the {\ttfamily once} concept.
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{server.many('foo',\ 4,\ function()\ \{}
+\DoxyCodeLine{\ \ console.log('hello');}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item Pass in a namespaced event as an array rather than a delimited string.
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{server.many(['foo',\ 'bar',\ 'bazz'],\ function()\ \{}
+\DoxyCodeLine{\ \ console.log('hello');}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__me2485d4c77b30c7c524dc22891485f22_autotoc_md8194}{}\doxysection{\texorpdfstring{API}{API}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__me2485d4c77b30c7c524dc22891485f22_autotoc_md8194}
+When an {\ttfamily Event\+Emitter} instance experiences an error, the typical action is to emit an {\ttfamily error} event. Error events are treated as a special case. If there is no listener for it, then the default action is to print a stack trace and exit the program.
+
+All Event\+Emitters emit the event {\ttfamily new\+Listener} when new listeners are added.
+
+{\bfseries{Namespaces}} with {\bfseries{Wildcards}} To use namespaces/wildcards, pass the {\ttfamily wildcard} option into the Event\+Emitter constructor. When namespaces/wildcards are enabled, events can either be strings ({\ttfamily foo.\+bar}) separated by a delimiter or arrays (`\mbox{[}\textquotesingle{}foo', \textquotesingle{}bar\textquotesingle{}\mbox{]}\`{}). The delimiter is also configurable as a constructor option.
+
+An event name passed to any event emitter method can contain a wild card (the {\ttfamily \texorpdfstring{$\ast$}{*}} character). If the event name is a string, a wildcard may appear as {\ttfamily foo.\texorpdfstring{$\ast$}{*}}. If the event name is an array, the wildcard may appear as `\mbox{[}\textquotesingle{}foo', \textquotesingle{}\texorpdfstring{$\ast$}{*}\textquotesingle{}\mbox{]}\`{}.
+
+If either of the above described events were passed to the {\ttfamily on} method, subsequent emits such as the following would be observed...
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{emitter.emit('foo.bazz');}
+\DoxyCodeLine{emitter.emit(['foo',\ 'bar']);}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__me2485d4c77b30c7c524dc22891485f22_autotoc_md8195}{}\doxysubsubsection{\texorpdfstring{emitter.\+add\+Listener(event, listener)}{emitter.\+add\+Listener(event, listener)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__me2485d4c77b30c7c524dc22891485f22_autotoc_md8195}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__me2485d4c77b30c7c524dc22891485f22_autotoc_md8196}{}\doxysubsubsection{\texorpdfstring{emitter.\+on(event, listener)}{emitter.\+on(event, listener)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__me2485d4c77b30c7c524dc22891485f22_autotoc_md8196}
+Adds a listener to the end of the listeners array for the specified event.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{server.on('data',\ function(value1,\ value2,\ value3,\ ...)\ \{}
+\DoxyCodeLine{\ \ console.log('The\ event\ was\ raised!');}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{server.on('data',\ function(value)\ \{}
+\DoxyCodeLine{\ \ console.log('The\ event\ was\ raised!');}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__me2485d4c77b30c7c524dc22891485f22_autotoc_md8197}{}\doxysubsubsection{\texorpdfstring{emitter.\+on\+Any(listener)}{emitter.\+on\+Any(listener)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__me2485d4c77b30c7c524dc22891485f22_autotoc_md8197}
+Adds a listener that will be fired when any event is emitted.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{server.onAny(function(value)\ \{}
+\DoxyCodeLine{\ \ console.log('All\ events\ trigger\ this.');}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__me2485d4c77b30c7c524dc22891485f22_autotoc_md8198}{}\doxysubsubsection{\texorpdfstring{emitter.\+off\+Any(listener)}{emitter.\+off\+Any(listener)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__me2485d4c77b30c7c524dc22891485f22_autotoc_md8198}
+Removes the listener that will be fired when any event is emitted.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{server.offAny(function(value)\ \{}
+\DoxyCodeLine{\ \ console.log('The\ event\ was\ raised!');}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__me2485d4c77b30c7c524dc22891485f22_autotoc_md8199}{}\doxyparagraph{\texorpdfstring{emitter.\+once(event, listener)}{emitter.\+once(event, listener)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__me2485d4c77b30c7c524dc22891485f22_autotoc_md8199}
+Adds a {\bfseries{one time}} listener for the event. The listener is invoked only the first time the event is fired, after which it is removed.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{server.once('get',\ function\ (value)\ \{}
+\DoxyCodeLine{\ \ console.log('Ah,\ we\ have\ our\ first\ value!');}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__me2485d4c77b30c7c524dc22891485f22_autotoc_md8200}{}\doxysubsubsection{\texorpdfstring{emitter.\+many(event, times\+To\+Listen, listener)}{emitter.\+many(event, times\+To\+Listen, listener)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__me2485d4c77b30c7c524dc22891485f22_autotoc_md8200}
+Adds a listener that will execute {\bfseries{n times}} for the event before being removed. The listener is invoked only the first {\bfseries{n times}} the event is fired, after which it is removed.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{server.many('get',\ 4,\ function\ (value)\ \{}
+\DoxyCodeLine{\ \ console.log('This\ event\ will\ be\ listened\ to\ exactly\ four\ times.');}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__me2485d4c77b30c7c524dc22891485f22_autotoc_md8201}{}\doxysubsubsection{\texorpdfstring{emitter.\+remove\+Listener(event, listener)}{emitter.\+remove\+Listener(event, listener)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__me2485d4c77b30c7c524dc22891485f22_autotoc_md8201}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__me2485d4c77b30c7c524dc22891485f22_autotoc_md8202}{}\doxysubsubsection{\texorpdfstring{emitter.\+off(event, listener)}{emitter.\+off(event, listener)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__me2485d4c77b30c7c524dc22891485f22_autotoc_md8202}
+Remove a listener from the listener array for the specified event. {\bfseries{Caution}}\+: changes array indices in the listener array behind the listener.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ callback\ =\ function(value)\ \{}
+\DoxyCodeLine{\ \ console.log('someone\ connected!');}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{server.on('get',\ callback);}
+\DoxyCodeLine{//\ ...}
+\DoxyCodeLine{server.removeListener('get',\ callback);}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__me2485d4c77b30c7c524dc22891485f22_autotoc_md8203}{}\doxysubsubsection{\texorpdfstring{emitter.\+remove\+All\+Listeners(\mbox{[}event\mbox{]})}{emitter.\+remove\+All\+Listeners(\mbox{[}event\mbox{]})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__me2485d4c77b30c7c524dc22891485f22_autotoc_md8203}
+Removes all listeners, or those of the specified event.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__me2485d4c77b30c7c524dc22891485f22_autotoc_md8204}{}\doxysubsubsection{\texorpdfstring{emitter.\+set\+Max\+Listeners(n)}{emitter.\+set\+Max\+Listeners(n)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__me2485d4c77b30c7c524dc22891485f22_autotoc_md8204}
+By default Event\+Emitters will print a warning if more than 10 listeners are added to it. This is a useful default which helps finding memory leaks. Obviously not all Emitters should be limited to 10. This function allows that to be increased. Set to zero for unlimited.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__me2485d4c77b30c7c524dc22891485f22_autotoc_md8205}{}\doxysubsubsection{\texorpdfstring{emitter.\+listeners(event)}{emitter.\+listeners(event)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__me2485d4c77b30c7c524dc22891485f22_autotoc_md8205}
+Returns an array of listeners for the specified event. This array can be manipulated, e.\+g. to remove listeners.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{server.on('get',\ function(value)\ \{}
+\DoxyCodeLine{\ \ console.log('someone\ connected!');}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{console.log(server.listeners('get'));\ //\ [\ [Function]\ ]}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__me2485d4c77b30c7c524dc22891485f22_autotoc_md8206}{}\doxysubsubsection{\texorpdfstring{emitter.\+listeners\+Any()}{emitter.\+listeners\+Any()}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__me2485d4c77b30c7c524dc22891485f22_autotoc_md8206}
+Returns an array of listeners that are listening for any event that is specified. This array can be manipulated, e.\+g. to remove listeners.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{server.onAny(function(value)\ \{}
+\DoxyCodeLine{\ \ console.log('someone\ connected!');}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{console.log(server.listenersAny()[0]);\ //\ [\ [Function]\ ]}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__me2485d4c77b30c7c524dc22891485f22_autotoc_md8207}{}\doxysubsubsection{\texorpdfstring{emitter.\+emit(event, \mbox{[}arg1\mbox{]}, \mbox{[}arg2\mbox{]}, \mbox{[}...\mbox{]})}{emitter.\+emit(event, \mbox{[}arg1\mbox{]}, \mbox{[}arg2\mbox{]}, \mbox{[}...\mbox{]})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__me2485d4c77b30c7c524dc22891485f22_autotoc_md8207}
+Execute each of the listeners that may be listening for the specified event name in order with the list of arguments.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__me2485d4c77b30c7c524dc22891485f22_autotoc_md8208}{}\doxysection{\texorpdfstring{LICENSE}{LICENSE}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__me2485d4c77b30c7c524dc22891485f22_autotoc_md8208}
+(The MIT License)
+
+Copyright (c) 2011 hij1nx \href{http://www.twitter.com/hij1nx}{\texttt{ http\+://www.\+twitter.\+com/hij1nx}}
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \textquotesingle{}Software\textquotesingle{}), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions\+:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED \textquotesingle{}AS IS\textquotesingle{}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. 

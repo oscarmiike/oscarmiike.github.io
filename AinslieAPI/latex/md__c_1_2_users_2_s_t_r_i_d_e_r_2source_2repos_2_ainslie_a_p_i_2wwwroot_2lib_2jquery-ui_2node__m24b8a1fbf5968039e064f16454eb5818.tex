@@ -1,0 +1,264 @@
+\chapter{date}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m24b8a1fbf5968039e064f16454eb5818}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m24b8a1fbf5968039e064f16454eb5818}\index{date@{date}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m24b8a1fbf5968039e064f16454eb5818_autotoc_md1164}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m24b8a1fbf5968039e064f16454eb5818_autotoc_md1164}%
+ Date utilities.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m24b8a1fbf5968039e064f16454eb5818_autotoc_md1165}{}\doxysection{\texorpdfstring{day\+Of\+The\+Year(date)\+:Number}{day\+Of\+The\+Year(date)\+:Number}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m24b8a1fbf5968039e064f16454eb5818_autotoc_md1165}
+How many days elapsed since begining of the year (following gregorian calendar).
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Jan\ 1st}
+\DoxyCodeLine{dayOfTheYear(new\ Date(2013,\ 0,\ 1));\ //\ 1}
+\DoxyCodeLine{//\ Dec\ 31th}
+\DoxyCodeLine{dayOfTheYear(new\ Date(2013,\ 11,\ 31));\ //\ 364}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m24b8a1fbf5968039e064f16454eb5818_autotoc_md1166}{}\doxysection{\texorpdfstring{diff(date1, date2, \mbox{[}unit\+Name\mbox{]})\+:Number}{diff(date1, date2, \mbox{[}unit\+Name\mbox{]})\+:Number}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m24b8a1fbf5968039e064f16454eb5818_autotoc_md1166}
+Calculate the difference between dates (range).
+
+The returned value is always positive. The default {\ttfamily unit\+Name} is {\ttfamily "{}ms"{}}.
+
+Available units\+: {\ttfamily year}, {\ttfamily month}, {\ttfamily week}, {\ttfamily day}, {\ttfamily hour}, {\ttfamily minute}, {\ttfamily second}, {\ttfamily millisecond}.
+
+See\+: \href{time.html\#convert}{\texttt{ {\ttfamily time/convert()}}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ d1\ =\ new\ Date(2012,\ 4,\ 5);}
+\DoxyCodeLine{var\ d2\ =\ new\ Date(2013,\ 4,\ 8);}
+\DoxyCodeLine{diff(d1,\ d2);\ \ \ \ \ \ \ \ \ \ //\ 31795200000}
+\DoxyCodeLine{diff(d1,\ d2,\ 'hour');\ \ //\ 8832}
+\DoxyCodeLine{diff(d1,\ d2,\ 'week');\ \ //\ 52.57142857142857}
+\DoxyCodeLine{diff(d1,\ d2,\ 'month');\ //\ 12.096774193548388}
+\DoxyCodeLine{diff(d1,\ d2,\ 'year');\ \ //\ 1.0082191780821919}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m24b8a1fbf5968039e064f16454eb5818_autotoc_md1167}{}\doxysection{\texorpdfstring{is\+Leap\+Year(full\+Year\texorpdfstring{$\vert$}{|}date)\+:Boolean}{is\+Leap\+Year(full\+Year\texorpdfstring{$\vert$}{|}date)\+:Boolean}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m24b8a1fbf5968039e064f16454eb5818_autotoc_md1167}
+Checks if it\textquotesingle{}s a \href{http://en.wikipedia.org/wiki/Leap_year}{\texttt{ leap year}} according to the Gregorian calendar.
+
+see\+: \`{}total\+Days\+In\+Month()\`{}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{isLeapYear(2012);\ //\ true}
+\DoxyCodeLine{isLeapYear(2013);\ //\ false}
+\DoxyCodeLine{isLeapYear(new\ Date(2012,\ 2,\ 28));\ //\ true}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m24b8a1fbf5968039e064f16454eb5818_autotoc_md1168}{}\doxysection{\texorpdfstring{is\+Same(date1, date2\mbox{[}, period\mbox{]})\+:Boolean}{is\+Same(date1, date2\mbox{[}, period\mbox{]})\+:Boolean}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m24b8a1fbf5968039e064f16454eb5818_autotoc_md1168}
+Check if both dates are the "{}same"{}.
+
+You can pass an optional {\itshape period} used to set the comparisson precision.
+
+Available periods\+: {\ttfamily year}, {\ttfamily month}, {\ttfamily week}, {\ttfamily day}, {\ttfamily hour}, {\ttfamily minute}, {\ttfamily second}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ date1\ =\ new\ Date(2013,\ 1,\ 3);}
+\DoxyCodeLine{var\ date2\ =\ new\ Date(2013,\ 2,\ 9);}
+\DoxyCodeLine{isSame(date1,\ date2);\ \ \ \ \ \ \ \ \ \ //\ false}
+\DoxyCodeLine{isSame(date1,\ date2,\ 'day');\ \ \ //\ false}
+\DoxyCodeLine{isSame(date1,\ date2,\ 'month');\ //\ false}
+\DoxyCodeLine{isSame(date1,\ date2,\ 'year');\ \ //\ true}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m24b8a1fbf5968039e064f16454eb5818_autotoc_md1169}{}\doxysection{\texorpdfstring{parse\+Iso(str)\+:Number}{parse\+Iso(str)\+:Number}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m24b8a1fbf5968039e064f16454eb5818_autotoc_md1169}
+Parses an \href{http://en.wikipedia.org/wiki/Iso8601}{\texttt{ ISO8601}} date and returns the number of milliseconds since January 1, 1970, 00\+:00\+:00 UTC, or {\ttfamily NaN} if it is not a valid ISO8601 date.
+
+This parses {\itshape all} ISO8601 dates, including dates without times, \href{https://en.wikipedia.org/wiki/ISO_8601\#Ordinal_dates}{\texttt{ ordinal dates}}, and the compact representation (omitting delimeters). The only exception is \href{https://en.wikipedia.org/wiki/ISO_week_date}{\texttt{ ISO week dates}}, which are not parsed.
+
+If no time zone offset is specified, it assumes UTC time.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Jan\ 01,\ 1970\ 00:00\ GMT}
+\DoxyCodeLine{parseIso('1970-\/01-\/01T00:00:00')\ \ \ \ //\ 0}
+\DoxyCodeLine{parseIso('1970-\/001')\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ 0}
+\DoxyCodeLine{parseIso('1970-\/01-\/01')\ \ \ \ \ \ \ \ \ \ \ \ \ //\ 0}
+\DoxyCodeLine{parseIso('19700101T000000.00')\ \ \ \ \ //\ 0}
+\DoxyCodeLine{parseIso('1970-\/01-\/01T02:00+02:00')\ //\ 0}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Jan\ 02,\ 2000\ 20:10\ GMT+04:00}
+\DoxyCodeLine{parseIso('2000-\/01-\/02T20:10+04:00')\ //\ 946829400000}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m24b8a1fbf5968039e064f16454eb5818_autotoc_md1170}{}\doxysection{\texorpdfstring{quarter(date)\+:Number}{quarter(date)\+:Number}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m24b8a1fbf5968039e064f16454eb5818_autotoc_md1170}
+Get a number between 1 to 4 that represents the quarter of the year.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{quarter(new\ Date(2013,\ 1,\ 19));\ //\ 1}
+\DoxyCodeLine{quarter(new\ Date(2013,\ 4,\ 12));\ //\ 2}
+\DoxyCodeLine{quarter(new\ Date(2013,\ 7,\ 25));\ //\ 3}
+\DoxyCodeLine{quarter(new\ Date(2013,\ 10,\ 8));\ //\ 4}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m24b8a1fbf5968039e064f16454eb5818_autotoc_md1171}{}\doxysection{\texorpdfstring{start\+Of(date, period)\+:Date}{start\+Of(date, period)\+:Date}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m24b8a1fbf5968039e064f16454eb5818_autotoc_md1171}
+Get a new Date at the start of the period.
+
+Available periods\+: {\ttfamily year}, {\ttfamily month}, {\ttfamily week}, {\ttfamily day}, {\ttfamily hour}, {\ttfamily minute}, {\ttfamily second}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Apr\ 05\ 2013\ 11:27:43}
+\DoxyCodeLine{var\ date\ =\ new\ Date(2013,\ 3,\ 5,\ 11,\ 27,\ 43,\ 123);}
+\DoxyCodeLine{startOf(date,\ 'year');\ \ //\ Jan\ 01\ 2013\ 00:00:00}
+\DoxyCodeLine{startOf(date,\ 'month');\ //\ Apr\ 01\ 2013\ 00:00:00}
+\DoxyCodeLine{startOf(date,\ 'day');\ \ \ //\ Apr\ 05\ 2013\ 00:00:00}
+\DoxyCodeLine{startOf(date,\ 'hour');\ \ //\ Apr\ 05\ 2013\ 11:00:00}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m24b8a1fbf5968039e064f16454eb5818_autotoc_md1172}{}\doxysection{\texorpdfstring{strftime(date, format, \mbox{[}l10n\mbox{]})\+:String}{strftime(date, format, \mbox{[}l10n\mbox{]})\+:String}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m24b8a1fbf5968039e064f16454eb5818_autotoc_md1172}
+Format date based on strftime format.
+
+Replaced tokens\+:
+
+
+\begin{DoxyDescription}
+\item[a]locale\textquotesingle{}s abbreviated weekday name. 
+\item[A]locale\textquotesingle{}s full weekday name. 
+\item[b]locale\textquotesingle{}s abbreviated month name. 
+\item[B]locale\textquotesingle{}s full month name. 
+\item[c]locale\textquotesingle{}s appropriate date and time representation. 
+\item[C]century number (the year divided by 100 and truncated to an integer) as a decimal number \mbox{[}00..99\mbox{]}. 
+\item[d]day of the month as a decimal number \mbox{[}01..31\mbox{]}. 
+\item[D]same as m/d/y. 
+\item[e]day of the month as a decimal number \mbox{[}1..31\mbox{]}; a single digit is preceded by a space. 
+\item[F]The ISO 8601 date format (Y-\/m-\/d) 
+\item[h]same as b. 
+\item[H]hour (24-\/hour clock) as a decimal number \mbox{[}00..23\mbox{]}. 
+\item[I]hour (12-\/hour clock) as a decimal number \mbox{[}01..12\mbox{]}. 
+\item[j]day of the year as a decimal number \mbox{[}001..366\mbox{]}. 
+\item[l]hour (12-\/hour clock) as a decimal number (range 1 to 12); single digits are preceded by a blank 
+\item[L]zero-\/padded milliseconds \mbox{[}000..999\mbox{]} 
+\item[m]month as a decimal number \mbox{[}01..12\mbox{]}. 
+\item[M]minute as a decimal number \mbox{[}00..59\mbox{]}. 
+\item[n]newline character. 
+\item[p]locale\textquotesingle{}s equivalent of either "{}am"{} or "{}pm"{} 
+\item[P]locale\textquotesingle{}s equivalent of either "{}\+AM"{} or "{}\+PM"{} 
+\item[r]time in a.\+m. and p.\+m. notation; in the POSIX locale this is equivalent to I\+:M\+:S p. 
+\item[R]time in 24 hour notation (H\+:M). 
+\item[s]seconds since Epoch (1970-\/01-\/01 00\+:00\+:00 UTC) 
+\item[S]second as a decimal number \mbox{[}00..60\mbox{]}. 
+\item[t]tab character. 
+\item[T]time (H\+:M\+:S). 
+\item[u]weekday as a decimal number \mbox{[}1..7\mbox{]}, with 1 representing Monday. 
+\item[U]week number of the year (Sunday as the first day of the week) as a decimal number \mbox{[}00..53\mbox{]}. \sout{}
+\item[V]\sout{ week number of the year (Monday as the first day of the week) as a decimal number \mbox{[}01..53\mbox{]}. If the week containing 1 January has four or more days in the new year, then it is considered week 1. Otherwise, it is the last week of the previous year, and the next week is week 1.} 
+\item[w]weekday as a decimal number \mbox{[}0..6\mbox{]}, with 0 representing Sunday. 
+\item[W]week number of the year (Monday as the first day of the week) as a decimal number \mbox{[}00..53\mbox{]}. All days in a new year preceding the first Monday are considered to be in week 0. 
+\item[x]locale\textquotesingle{}s appropriate date representation. 
+\item[X]locale\textquotesingle{}s appropriate time representation. 
+\item[y]year without century as a decimal number \mbox{[}00..99\mbox{]}. 
+\item[Y]year with century as a decimal number. 
+\item[Z]timezone name or abbreviation, or by no bytes if no timezone information exists. 
+\item[\%\%]is replaced by \%. 
+\end{DoxyDescription}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ date\ =\ new\ Date(2013,\ 3,\ 8,\ 9,\ 2,\ 4);}
+\DoxyCodeLine{strftime(date,\ '\%Y-\/\%m-\/\%d');\ //\ "{}2013-\/04-\/08"{}}
+\DoxyCodeLine{strftime(date,\ '\%R');\ //\ "{}09:02"{}}
+\DoxyCodeLine{strftime(date,\ '\%Y-\/\%m-\/\%dT\%H:\%M:\%S\%z');\ //\ "{}2013-\/04-\/08T09:02:04+0000"{}}
+
+\end{DoxyCode}
+
+
+You can also set a custom locale\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ ptBr\ =\ require('mout/date/i18n/pt-\/BR');}
+\DoxyCodeLine{strftime(date,\ '\%a,\ \%d\ \%b',\ ptBr);\ //\ 'Seg,\ 08\ Abr'}
+\DoxyCodeLine{strftime(date,\ '\%A,\ \%d\ \%B',\ ptBr);\ //\ 'Segunda,\ 08\ Abril'}
+
+\end{DoxyCode}
+
+
+To set it globally\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{require('mout/date/i18n\_').set(\ customLocaleData\ );}
+
+\end{DoxyCode}
+
+
+See \href{https://github.com/mout/mout/tree/master/src/date/i18n}{\texttt{ date/i18n}} for localization examples.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m24b8a1fbf5968039e064f16454eb5818_autotoc_md1173}{}\doxysection{\texorpdfstring{timezone\+Abbr(date)\+:String}{timezone\+Abbr(date)\+:String}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m24b8a1fbf5968039e064f16454eb5818_autotoc_md1173}
+Return timezone abbreviation or similar data.
+
+The result will vary based on the OS/browser since some environments doesn\textquotesingle{}t provide enough info about the current locale.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ IE\ 7-\/8}
+\DoxyCodeLine{timezoneAbbr(new\ Date());\ //\ "{}-\/0500"{}}
+\DoxyCodeLine{//\ Chrome,\ FF,\ V8}
+\DoxyCodeLine{timezoneAbbr(new\ Date());\ //\ "{}EST"{}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m24b8a1fbf5968039e064f16454eb5818_autotoc_md1174}{}\doxysection{\texorpdfstring{timezone\+Offset(date)\+:String}{timezone\+Offset(date)\+:String}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m24b8a1fbf5968039e064f16454eb5818_autotoc_md1174}
+Return time zone as hour and minute offset from UTC (e.\+g. +0900).
+
+It\textquotesingle{}s important to note that Java\+Script Date object will use the system locale info to determinate the \href{https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Date/getTimezoneOffset}{\texttt{ timezone offset}} and that daylight saving time affects the result.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ if\ system\ locale\ is\ EST}
+\DoxyCodeLine{timezoneOffset(new\ Date());\ //\ -\/0500}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m24b8a1fbf5968039e064f16454eb5818_autotoc_md1175}{}\doxysection{\texorpdfstring{total\+Days\+In\+Month(full\+Year, month\+Index)\+:Number}{total\+Days\+In\+Month(full\+Year, month\+Index)\+:Number}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m24b8a1fbf5968039e064f16454eb5818_autotoc_md1175}
+Returns the amount of days in the month taking into consideration leap years (following Gregorian calendar).
+
+see\+: \`{}is\+Leap\+Year()\`{}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{totalDaysInMonth(2008,\ 1);\ //\ 29\ (leap\ year)}
+\DoxyCodeLine{totalDaysInMonth(2009,\ 1);\ //\ 28}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ you\ can\ also\ pass\ a\ Date\ object\ as\ single\ argument}
+\DoxyCodeLine{totalDaysInMonth(\ new\ Date(2013,\ 0,\ 1)\ );\ //\ 31}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m24b8a1fbf5968039e064f16454eb5818_autotoc_md1176}{}\doxysection{\texorpdfstring{total\+Days\+In\+Year(full\+Year)\+:Number}{total\+Days\+In\+Year(full\+Year)\+:Number}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m24b8a1fbf5968039e064f16454eb5818_autotoc_md1176}
+Returns the amount of days in the year taking into consideration leap years (following Gregorian calendar).
+
+see\+: \`{}is\+Leap\+Year()\`{}, \`{}total\+Days\+In\+Month()\`{}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{totalDaysInYear(2008);\ //\ 366\ (leap\ year)}
+\DoxyCodeLine{totalDaysInYear(2009);\ //\ 365}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ you\ can\ also\ pass\ a\ Date\ object\ as\ single\ argument}
+\DoxyCodeLine{totalDaysInYear(\ new\ Date(2013,\ 0,\ 1)\ );\ //\ 365}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m24b8a1fbf5968039e064f16454eb5818_autotoc_md1177}{}\doxysection{\texorpdfstring{week\+Of\+The\+Year(date, \mbox{[}first\+Day\+Of\+Week\mbox{]})\+:Number}{week\+Of\+The\+Year(date, \mbox{[}first\+Day\+Of\+Week\mbox{]})\+:Number}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m24b8a1fbf5968039e064f16454eb5818_autotoc_md1177}
+Returns how many weeks elapsed since start of the year ({\ttfamily 0..53}).
+
+{\ttfamily first\+Day\+Of\+Week} can be {\ttfamily 0} (Sunday) or {\ttfamily 1} (Monday). By default weeks start at Sunday.
+
+It will return {\ttfamily 0} if {\ttfamily date} is before the first {\ttfamily first\+Day\+Of\+Week} of the year.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Tue\ Jan\ 01\ 2013}
+\DoxyCodeLine{weekOfTheYear(\ new\ Date(2013,0,1)\ );\ //\ 0}
+\DoxyCodeLine{//\ Wed\ Jan\ 09\ 2013}
+\DoxyCodeLine{weekOfTheYear(\ new\ Date(2013,0,9)\ );\ //\ 1}
+\DoxyCodeLine{//\ Sun\ Jan\ 01\ 2012}
+\DoxyCodeLine{weekOfTheYear(\ new\ Date(2012,0,1)\ );\ //\ 1}
+\DoxyCodeLine{//\ Mon\ Jan\ 09\ 2012}
+\DoxyCodeLine{weekOfTheYear(\ new\ Date(2012,0,9)\ );\ //\ 2}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+
+
+For more usage examples check specs inside {\ttfamily /tests} folder. Unit tests are the best documentation you can get... 

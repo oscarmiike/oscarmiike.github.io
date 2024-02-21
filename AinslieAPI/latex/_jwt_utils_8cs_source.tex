@@ -1,0 +1,93 @@
+\doxysection{Jwt\+Utils.\+cs}
+\hypertarget{_jwt_utils_8cs_source}{}\label{_jwt_utils_8cs_source}\index{C:/Users/STRIDER/source/repos/AinslieAPI/Authentication/JwtUtils.cs@{C:/Users/STRIDER/source/repos/AinslieAPI/Authentication/JwtUtils.cs}}
+\mbox{\hyperlink{_jwt_utils_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00001}00001\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_ainslie_a_p_i_1_1_authentication}{AinslieAPI.Authentication}};}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }Microsoft.Extensions.Options;}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }Microsoft.IdentityModel.Tokens;}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }System.IdentityModel.Tokens.Jwt;}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00006}00006\ \textcolor{keyword}{using\ }System.Security.Claims;}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00007}00007\ \textcolor{keyword}{using\ }System.Text;}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00008}00008\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_ainslie_a_p_i_1_1_helpers}{AinslieAPI.Helpers}};}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00009}00009\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_ainslie_a_p_i_1_1_models}{AinslieAPI.Models}};}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00010}00010\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_ainslie_a_p_i_1_1_d_t_o_1_1_user_helper}{AinslieAPI.DTO.UserHelper}};}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00011}00011\ \textcolor{keyword}{using\ }System.Text.Json.Serialization;}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00012}00012\ \textcolor{keyword}{using\ }Newtonsoft.Json;}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00013}00013\ \textcolor{keyword}{using\ }Microsoft.AspNetCore.DataProtection;}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00018}\mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils}{00018}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils}{JwtUtils}}}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00019}00019\ \{}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00020}00020\ \ \ \ \ \textcolor{keyword}{private}\ readonly\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings}{AppSettings}}\ \_appSettings;}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00021}00021\ \ \ \ \ \textcolor{keyword}{private}\ readonly\ IDataProtectionProvider\ \_provider;}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00029}\mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils_a7e6794aab45891297310eac2de6db345}{00029}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils_a7e6794aab45891297310eac2de6db345}{JwtUtils}}(IOptions<AppSettings>\ appSettings,\ IDataProtectionProvider\ provider)}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00030}00030\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \_appSettings\ =\ appSettings.Value;}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \_provider\ =\ provider;}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00033}00033\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00042}\mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils_ac667c75c6805eb3e6943cc1e8aec0573}{00042}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils_ac667c75c6805eb3e6943cc1e8aec0573}{GenerateToken}}(\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_user_helper_1_1_authenticated_user}{AuthenticatedUser}}\ user)}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00043}00043\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ var\ tokenHandler\ =\ \textcolor{keyword}{new}\ JwtSecurityTokenHandler();}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ var\ key\ =\ Encoding.ASCII.GetBytes(\_appSettings.JWTSettings.Secret);}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ var\ tokenDescriptor\ =\ \textcolor{keyword}{new}\ SecurityTokenDescriptor}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ Subject\ =\ \textcolor{keyword}{new}\ ClaimsIdentity(\textcolor{keyword}{new}[]\ \{\ }
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ Claim(\textcolor{stringliteral}{"{}email"{}},\ user.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_user_helper_1_1_authenticated_user_a0006f48f6dae109c197817a97fbf433b}{EmailAddress}}.ToString()),}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ Claim(\textcolor{stringliteral}{"{}data"{}},\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils_aa124f3e1cb759c23d54327faccbee020}{Encrypt}}(JsonConvert.SerializeObject(user)))}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \}),}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ Expires\ =\ DateTime.UtcNow.AddYears(10),}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ SigningCredentials\ =\ \textcolor{keyword}{new}\ SigningCredentials(\textcolor{keyword}{new}\ SymmetricSecurityKey(key),\ SecurityAlgorithms.HmacSha256Signature)}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ var\ token\ =\ tokenHandler.CreateToken(tokenDescriptor);}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ tokenHandler.WriteToken(token);}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00057}00057\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00066}\mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils_a1ed447f2fb5b17b1c8ce593034a61808}{00066}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_user_helper_1_1_authenticated_user}{AuthenticatedUser}}?\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils_a1ed447f2fb5b17b1c8ce593034a61808}{ValidateToken}}(\textcolor{keywordtype}{string}\ token)}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00067}00067\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (token\ ==\ \textcolor{keyword}{null})\ }
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ var\ tokenHandler\ =\ \textcolor{keyword}{new}\ JwtSecurityTokenHandler();}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ var\ key\ =\ Encoding.ASCII.GetBytes(\_appSettings.JWTSettings.Secret);}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ tokenHandler.ValidateToken(token,\ \textcolor{keyword}{new}\ TokenValidationParameters}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ValidateIssuerSigningKey\ =\ \textcolor{keyword}{true},}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ IssuerSigningKey\ =\ \textcolor{keyword}{new}\ SymmetricSecurityKey(key),}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ValidateIssuer\ =\ \textcolor{keyword}{false},}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ValidateAudience\ =\ \textcolor{keyword}{false},}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ clockskew\ to\ zero\ so\ tokens\ expire\ exactly\ at\ token\ expiration\ time\ (instead\ of\ 5\ minutes\ later)}}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ClockSkew\ =\ TimeSpan.Zero}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \},\ out\ SecurityToken\ validatedToken);}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ var\ jwtToken\ =\ (JwtSecurityToken)validatedToken;}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//var\ email\ =\ jwtToken.Claims.First(x\ =>\ x.Type\ ==\ "{}email"{})?.Value\ ??\ null;}}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_user_helper_1_1_authenticated_user}{AuthenticatedUser}}?\ user\ =\ JsonConvert.DeserializeObject<\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_user_helper_1_1_authenticated_user}{AuthenticatedUser}}>(\mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils_afa1dbac5d4a38a9fd6d4283ba29a5683}{Decrypt}}(jwtToken.Claims.FirstOrDefault(x\ =>\ x.Type\ ==\ \textcolor{stringliteral}{"{}data"{}})?.Value\ ??\ \textcolor{stringliteral}{"{}"{}}));}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ return\ user\ id\ from\ JWT\ token\ if\ validation\ successful}}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ user;}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00091}00091\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00092}00092\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00093}00093\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ return\ null\ if\ validation\ fails}}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00096}00096\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00097}00097\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00106}\mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils_aa124f3e1cb759c23d54327faccbee020}{00106}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils_aa124f3e1cb759c23d54327faccbee020}{Encrypt}}(\textcolor{keywordtype}{string}\ plainText)}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00107}00107\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00108}00108\ \ \ \ \ \ \ \ \ var\ protector\ =\ \_provider.CreateProtector(\_appSettings.JWTSettings.Secret);}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00109}00109\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ protector.Protect(plainText);}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00110}00110\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00111}00111\ }
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00119}\mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils_afa1dbac5d4a38a9fd6d4283ba29a5683}{00119}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils_afa1dbac5d4a38a9fd6d4283ba29a5683}{Decrypt}}(\textcolor{keywordtype}{string}\ cipherText)}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00120}00120\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00121}00121\ \ \ \ \ \ \ \ \ var\ protector\ =\ \_provider.CreateProtector(\_appSettings.JWTSettings.Secret);}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00122}00122\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ protector.Unprotect(cipherText);}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00123}00123\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_jwt_utils_8cs_source_l00124}00124\ \}}
+
+\end{DoxyCode}

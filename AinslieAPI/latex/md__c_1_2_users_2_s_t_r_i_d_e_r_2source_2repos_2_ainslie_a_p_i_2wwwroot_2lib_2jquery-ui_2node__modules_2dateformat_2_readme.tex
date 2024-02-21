@@ -1,0 +1,170 @@
+\chapter{dateformat}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2dateformat_2_readme}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2dateformat_2_readme}\index{dateformat@{dateformat}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2dateformat_2_readme_autotoc_md5675}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2dateformat_2_readme_autotoc_md5675}%
+ A node.\+js package for Steven Levithan\textquotesingle{}s excellent \href{http://blog.stevenlevithan.com/archives/date-time-format}{\texttt{ date\+Format()}} function.
+
+\href{https://travis-ci.org/felixge/node-dateformat}{\texttt{ }}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2dateformat_2_readme_autotoc_md5676}{}\doxysection{\texorpdfstring{Modifications}{Modifications}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2dateformat_2_readme_autotoc_md5676}
+
+\begin{DoxyItemize}
+\item Removed the {\ttfamily Date.\+prototype.\+format} method. Sorry folks, but extending native prototypes is for suckers.
+\item Added a {\ttfamily module.\+exports = date\+Format;} statement at the bottom
+\item Added the placeholder {\ttfamily N} to get the ISO 8601 numeric representation of the day of the week
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2dateformat_2_readme_autotoc_md5677}{}\doxysection{\texorpdfstring{Installation}{Installation}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2dateformat_2_readme_autotoc_md5677}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ dateformat}
+\DoxyCodeLine{\$\ dateformat\ -\/-\/help}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2dateformat_2_readme_autotoc_md5678}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2dateformat_2_readme_autotoc_md5678}
+As taken from Steven\textquotesingle{}s post, modified to match the Modifications listed above\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ dateFormat\ =\ require('dateformat');}
+\DoxyCodeLine{var\ now\ =\ new\ Date();}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Basic\ usage}
+\DoxyCodeLine{dateFormat(now,\ "{}dddd,\ mmmm\ dS,\ yyyy,\ h:MM:ss\ TT"{});}
+\DoxyCodeLine{//\ Saturday,\ June\ 9th,\ 2007,\ 5:46:21\ PM}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ You\ can\ use\ one\ of\ several\ named\ masks}
+\DoxyCodeLine{dateFormat(now,\ "{}isoDateTime"{});}
+\DoxyCodeLine{//\ 2007-\/06-\/09T17:46:21}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ ...Or\ add\ your\ own}
+\DoxyCodeLine{dateFormat.masks.hammerTime\ =\ 'HH:MM!\ "{}Can\(\backslash\)'t\ touch\ this!"{}';}
+\DoxyCodeLine{dateFormat(now,\ "{}hammerTime"{});}
+\DoxyCodeLine{//\ 17:46!\ Can't\ touch\ this!}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ You\ can\ also\ provide\ the\ date\ as\ a\ string}
+\DoxyCodeLine{dateFormat("{}Jun\ 9\ 2007"{},\ "{}fullDate"{});}
+\DoxyCodeLine{//\ Saturday,\ June\ 9,\ 2007}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Note\ that\ if\ you\ don't\ include\ the\ mask\ argument,}
+\DoxyCodeLine{//\ dateFormat.masks.default\ is\ used}
+\DoxyCodeLine{dateFormat(now);}
+\DoxyCodeLine{//\ Sat\ Jun\ 09\ 2007\ 17:46:21}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ And\ if\ you\ don't\ include\ the\ date\ argument,}
+\DoxyCodeLine{//\ the\ current\ date\ and\ time\ is\ used}
+\DoxyCodeLine{dateFormat();}
+\DoxyCodeLine{//\ Sat\ Jun\ 09\ 2007\ 17:46:22}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ You\ can\ also\ skip\ the\ date\ argument\ (as\ long\ as\ your\ mask\ doesn't}
+\DoxyCodeLine{//\ contain\ any\ numbers),\ in\ which\ case\ the\ current\ date/time\ is\ used}
+\DoxyCodeLine{dateFormat("{}longTime"{});}
+\DoxyCodeLine{//\ 5:46:22\ PM\ EST}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ And\ finally,\ you\ can\ convert\ local\ time\ to\ UTC\ time.\ Simply\ pass\ in}
+\DoxyCodeLine{//\ true\ as\ an\ additional\ argument\ (no\ argument\ skipping\ allowed\ in\ this\ case):}
+\DoxyCodeLine{dateFormat(now,\ "{}longTime"{},\ true);}
+\DoxyCodeLine{//\ 10:46:21\ PM\ UTC}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ ...Or\ add\ the\ prefix\ "{}UTC:"{}\ or\ "{}GMT:"{}\ to\ your\ mask.}
+\DoxyCodeLine{dateFormat(now,\ "{}UTC:h:MM:ss\ TT\ Z"{});}
+\DoxyCodeLine{//\ 10:46:21\ PM\ UTC}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ You\ can\ also\ get\ the\ ISO\ 8601\ week\ of\ the\ year:}
+\DoxyCodeLine{dateFormat(now,\ "{}W"{});}
+\DoxyCodeLine{//\ 42}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ and\ also\ get\ the\ ISO\ 8601\ numeric\ representation\ of\ the\ day\ of\ the\ week:}
+\DoxyCodeLine{dateFormat(now,"{}N"{});}
+\DoxyCodeLine{//\ 6}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2dateformat_2_readme_autotoc_md5679}{}\doxysubsection{\texorpdfstring{Mask options}{Mask options}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2dateformat_2_readme_autotoc_md5679}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{2}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Mask   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-2}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Mask   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-2}
+\endhead
+{\ttfamily d}   &Day of the month as digits; no leading zero for single-\/digit days.    \\\cline{1-2}
+{\ttfamily dd}   &Day of the month as digits; leading zero for single-\/digit days.    \\\cline{1-2}
+{\ttfamily ddd}   &Day of the week as a three-\/letter abbreviation.    \\\cline{1-2}
+{\ttfamily dddd}   &Day of the week as its full name.    \\\cline{1-2}
+{\ttfamily m}   &Month as digits; no leading zero for single-\/digit months.    \\\cline{1-2}
+{\ttfamily mm}   &Month as digits; leading zero for single-\/digit months.    \\\cline{1-2}
+{\ttfamily mmm}   &Month as a three-\/letter abbreviation.    \\\cline{1-2}
+{\ttfamily mmmm}   &Month as its full name.    \\\cline{1-2}
+{\ttfamily yy}   &Year as last two digits; leading zero for years less than 10.    \\\cline{1-2}
+{\ttfamily yyyy}   &Year represented by four digits.    \\\cline{1-2}
+{\ttfamily h}   &Hours; no leading zero for single-\/digit hours (12-\/hour clock).    \\\cline{1-2}
+{\ttfamily hh}   &Hours; leading zero for single-\/digit hours (12-\/hour clock).    \\\cline{1-2}
+{\ttfamily H}   &Hours; no leading zero for single-\/digit hours (24-\/hour clock).    \\\cline{1-2}
+{\ttfamily HH}   &Hours; leading zero for single-\/digit hours (24-\/hour clock).    \\\cline{1-2}
+{\ttfamily M}   &Minutes; no leading zero for single-\/digit minutes.    \\\cline{1-2}
+{\ttfamily MM}   &Minutes; leading zero for single-\/digit minutes.    \\\cline{1-2}
+{\ttfamily N}   &ISO 8601 numeric representation of the day of the week.    \\\cline{1-2}
+{\ttfamily o}   &GMT/\+UTC timezone offset, e.\+g. -\/0500 or +0230.    \\\cline{1-2}
+{\ttfamily s}   &Seconds; no leading zero for single-\/digit seconds.    \\\cline{1-2}
+{\ttfamily ss}   &Seconds; leading zero for single-\/digit seconds.    \\\cline{1-2}
+{\ttfamily S}   &The date\textquotesingle{}s ordinal suffix (st, nd, rd, or th). Works well with {\ttfamily d}.    \\\cline{1-2}
+{\ttfamily l}   &Milliseconds; gives 3 digits.    \\\cline{1-2}
+{\ttfamily L}   &Milliseconds; gives 2 digits.    \\\cline{1-2}
+{\ttfamily t}   &Lowercase, single-\/character time marker string\+: a or p.    \\\cline{1-2}
+{\ttfamily tt}   &Lowercase, two-\/character time marker string\+: am or pm.    \\\cline{1-2}
+{\ttfamily T}   &Uppercase, single-\/character time marker string\+: A or P.    \\\cline{1-2}
+{\ttfamily TT}   &Uppercase, two-\/character time marker string\+: AM or PM.    \\\cline{1-2}
+{\ttfamily W}   &ISO 8601 week number of the year, e.\+g. 42    \\\cline{1-2}
+{\ttfamily Z}   &US timezone abbreviation, e.\+g. EST or MDT. With non-\/\+US timezones or in the    \\\cline{1-2}
+`'...\textquotesingle{}{\ttfamily ,}"{}..."{}{\ttfamily \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+None"{}\texorpdfstring{$>$}{>} Literal character sequence. Surrounding quotes are removed. \textbackslash{}ilinebr \texorpdfstring{$<$}{<}/td\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}/tr\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}tr class="{}markdown\+Table\+Row\+Odd"{}\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}td class="{}markdown\+Table\+Body\+None"{}\texorpdfstring{$>$}{>}}UTC\+:\`{}   &Must be the first four characters of the mask. Converts the date from local time to UTC/\+GMT/\+Zulu time before applying the mask. The "{}\+UTC\+:"{} prefix is removed.   \\\cline{1-2}
+\end{longtabu}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2dateformat_2_readme_autotoc_md5680}{}\doxysubsection{\texorpdfstring{Named Formats}{Named Formats}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2dateformat_2_readme_autotoc_md5680}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Name   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Mask   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Example    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Name   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Mask   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Example    }\\\cline{1-3}
+\endhead
+{\ttfamily default}   &{\ttfamily ddd mmm dd yyyy HH\+:\+MM\+:ss}   &Sat Jun 09 2007 17\+:46\+:21    \\\cline{1-3}
+{\ttfamily short\+Date}   &{\ttfamily m/d/yy}   &6/9/07    \\\cline{1-3}
+{\ttfamily medium\+Date}   &{\ttfamily mmm d, yyyy}   &Jun 9, 2007    \\\cline{1-3}
+{\ttfamily long\+Date}   &{\ttfamily mmmm d, yyyy}   &June 9, 2007    \\\cline{1-3}
+{\ttfamily full\+Date}   &{\ttfamily dddd, mmmm d, yyyy}   &Saturday, June 9, 2007    \\\cline{1-3}
+{\ttfamily short\+Time}   &{\ttfamily h\+:MM TT}   &5\+:46 PM    \\\cline{1-3}
+{\ttfamily medium\+Time}   &{\ttfamily h\+:\+MM\+:ss TT}   &5\+:46\+:21 PM    \\\cline{1-3}
+{\ttfamily long\+Time}   &{\ttfamily h\+:\+MM\+:ss TT Z}   &5\+:46\+:21 PM EST    \\\cline{1-3}
+{\ttfamily iso\+Date}   &{\ttfamily yyyy-\/mm-\/dd}   &2007-\/06-\/09    \\\cline{1-3}
+{\ttfamily iso\+Time}   &{\ttfamily HH\+:\+MM\+:ss}   &17\+:46\+:21    \\\cline{1-3}
+{\ttfamily iso\+Date\+Time}   &{\ttfamily yyyy-\/mm-\/dd\textquotesingle{}T\textquotesingle{}HH\+:\+MM\+:ss}   &2007-\/06-\/09T17\+:46\+:21    \\\cline{1-3}
+{\ttfamily iso\+Utc\+Date\+Time}   &`UTC\+:yyyy-\/mm-\/dd\textquotesingle{}T\textquotesingle{}HH\+:\+MM\+:ss\textquotesingle{}Z'\`{}   &2007-\/06-\/09T22\+:46\+:21Z   \\\cline{1-3}
+\end{longtabu}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2dateformat_2_readme_autotoc_md5681}{}\doxysubsection{\texorpdfstring{Localization}{Localization}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2dateformat_2_readme_autotoc_md5681}
+Day names, month names and the AM/\+PM indicators can be localized by passing an object with the necessary strings. For example\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ dateFormat\ =\ require('dateformat');}
+\DoxyCodeLine{dateFormat.i18n\ =\ \{}
+\DoxyCodeLine{\ \ \ \ dayNames:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ 'Sun',\ 'Mon',\ 'Tue',\ 'Wed',\ 'Thu',\ 'Fri',\ 'Sat',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ 'Sunday',\ 'Monday',\ 'Tuesday',\ 'Wednesday',\ 'Thursday',\ 'Friday',\ 'Saturday'}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ monthNames:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ 'Jan',\ 'Feb',\ 'Mar',\ 'Apr',\ 'May',\ 'Jun',\ 'Jul',\ 'Aug',\ 'Sep',\ 'Oct',\ 'Nov',\ 'Dec',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ 'January',\ 'February',\ 'March',\ 'April',\ 'May',\ 'June',\ 'July',\ 'August',\ 'September',\ 'October',\ 'November',\ 'December'}
+\DoxyCodeLine{\ \ \ \ ],}
+\DoxyCodeLine{\ \ \ \ timeNames:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ 'a',\ 'p',\ 'am',\ 'pm',\ 'A',\ 'P',\ 'AM',\ 'PM'}
+\DoxyCodeLine{\ \ \ \ ]}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+ \begin{quote}
+Notice that only one language is supported at a time and all strings {\itshape must} be present in the new value. \end{quote}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2dateformat_2_readme_autotoc_md5682}{}\doxysubsection{\texorpdfstring{Breaking change in 2.\+1.\+0}{Breaking change in 2.\+1.\+0}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2dateformat_2_readme_autotoc_md5682}
+
+\begin{DoxyItemize}
+\item 2.\+1.\+0 was published with a breaking change, for those using localized strings.
+\item 2.\+2.\+0 has been published without the change, to keep packages refering to \texorpdfstring{$^\wedge$}{\string^}2.0.\+0 to continue working. This is now branch v2\+\_\+2.
+\item 3.\+0.\texorpdfstring{$\ast$}{*} contains the localized AM/\+PM change.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2dateformat_2_readme_autotoc_md5683}{}\doxysection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2dateformat_2_readme_autotoc_md5683}
+(c) 2007-\/2009 Steven Levithan \href{http://stevenlevithan.com/}{\texttt{ stevenlevithan.\+com}}, MIT license. 

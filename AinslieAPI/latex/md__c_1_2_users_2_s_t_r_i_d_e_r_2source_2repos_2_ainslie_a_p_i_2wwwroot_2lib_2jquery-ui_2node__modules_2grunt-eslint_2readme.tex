@@ -1,0 +1,75 @@
+\chapter{grunt-\/eslint \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+com/github/sindresorhus/grunt-\/eslint"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+com/sindresorhus/grunt-\/eslint.\+svg?branch=master"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2grunt-eslint_2readme}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2grunt-eslint_2readme}\index{grunt-\/eslint $<$a href="{}https://travis-\/ci.com/github/sindresorhus/grunt-\/eslint"{} $>$$<$img src="{}https://travis-\/ci.com/sindresorhus/grunt-\/eslint.svg?branch=master"{} alt="{}Build Status"{}/$>$$<$/a$>$@{grunt-\/eslint $<$a href=""https://travis-\/ci.com/github/sindresorhus/grunt-\/eslint"" $>$$<$img src=""https://travis-\/ci.com/sindresorhus/grunt-\/eslint.svg?branch=master"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2grunt-eslint_2readme_autotoc_md8981}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2grunt-eslint_2readme_autotoc_md8981}%
+ \begin{quote}
+Validate files with \href{https://eslint.org}{\texttt{ ESLint}} \end{quote}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2grunt-eslint_2readme_autotoc_md8982}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2grunt-eslint_2readme_autotoc_md8982}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ -\/-\/save-\/dev\ grunt-\/eslint}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2grunt-eslint_2readme_autotoc_md8983}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2grunt-eslint_2readme_autotoc_md8983}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{require('load-\/grunt-\/tasks')(grunt);}
+\DoxyCodeLine{}
+\DoxyCodeLine{grunt.initConfig(\{}
+\DoxyCodeLine{\ \ \ \ eslint:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ target:\ ['file.js']}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{grunt.registerTask('default',\ ['eslint']);}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2grunt-eslint_2readme_autotoc_md8984}{}\doxysection{\texorpdfstring{Examples}{Examples}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2grunt-eslint_2readme_autotoc_md8984}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2grunt-eslint_2readme_autotoc_md8985}{}\doxysubsection{\texorpdfstring{Custom config and rules}{Custom config and rules}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2grunt-eslint_2readme_autotoc_md8985}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{grunt.initConfig(\{}
+\DoxyCodeLine{\ \ \ \ eslint:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ configFile:\ 'conf/eslint.json',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ rulePaths:\ ['conf/rules']}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ target:\ ['file.js']}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2grunt-eslint_2readme_autotoc_md8986}{}\doxysubsection{\texorpdfstring{Custom formatter}{Custom formatter}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2grunt-eslint_2readme_autotoc_md8986}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{grunt.initConfig(\{}
+\DoxyCodeLine{\ \ \ \ eslint:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ format:\ require('eslint-\/tap')}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ target:\ ['file.js']}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2grunt-eslint_2readme_autotoc_md8987}{}\doxysection{\texorpdfstring{Options}{Options}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2grunt-eslint_2readme_autotoc_md8987}
+See the \href{https://eslint.org/docs/developer-guide/nodejs-api\#cliengine}{\texttt{ ESLint options}}.
+
+In addition the following options are supported\+:\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2grunt-eslint_2readme_autotoc_md8988}{}\doxysubsection{\texorpdfstring{format}{format}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2grunt-eslint_2readme_autotoc_md8988}
+Type\+: {\ttfamily string}\textbackslash{} Default\+: `\textquotesingle{}stylish'\`{}
+
+Name of a \href{https://github.com/eslint/eslint/tree/master/lib/cli-engine/formatters}{\texttt{ built-\/in formatter}} or path to a custom one.
+
+Some formatters you might find useful\+: \href{https://github.com/sindresorhus/eslint-json}{\texttt{ eslint-\/json}}, \href{https://github.com/sindresorhus/eslint-tap}{\texttt{ eslint-\/tap}}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2grunt-eslint_2readme_autotoc_md8989}{}\doxysubsection{\texorpdfstring{output\+File}{output\+File}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2grunt-eslint_2readme_autotoc_md8989}
+Type\+: {\ttfamily string}\textbackslash{} Default\+: `'\textquotesingle{}\`{}
+
+Output the report to a file.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2grunt-eslint_2readme_autotoc_md8990}{}\doxysubsection{\texorpdfstring{quiet}{quiet}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2grunt-eslint_2readme_autotoc_md8990}
+Type\+: {\ttfamily boolean}\textbackslash{} Default\+: {\ttfamily false}
+
+Report errors only.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2grunt-eslint_2readme_autotoc_md8991}{}\doxysubsection{\texorpdfstring{max\+Warnings}{max\+Warnings}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2grunt-eslint_2readme_autotoc_md8991}
+Type\+: {\ttfamily number}\textbackslash{} Default\+: {\ttfamily -\/1} \texorpdfstring{$\ast$}{*}(Means no limit)\texorpdfstring{$\ast$}{*}
+
+Number of warnings to trigger non-\/zero exit code.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2grunt-eslint_2readme_autotoc_md8992}{}\doxysubsection{\texorpdfstring{fail\+On\+Error}{fail\+On\+Error}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__modules_2grunt-eslint_2readme_autotoc_md8992}
+Type\+: {\ttfamily boolean}\textbackslash{} Default\+: {\ttfamily true}
+
+Fail the build if ESLint found any errors. 

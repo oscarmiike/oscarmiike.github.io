@@ -1,0 +1,74 @@
+\chapter{requireg \texorpdfstring{$<$}{<}a href="{}http\+://travis-\/ci.\+org/h2non/requireg"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://secure.\+travis-\/ci.\+org/h2non/requireg.\+png?branch=master"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}a href="{}http\+://badge.\+fury.\+io/js/requireg"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://badge.\+fury.\+io/js/requireg.\+png"{} alt="{}\+NPM version"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5457326d58cddce0efed6c4704a1766d}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5457326d58cddce0efed6c4704a1766d}\index{requireg  $<$a href="{}http://travis-\/ci.org/h2non/requireg"{} $>$$<$img src="{}https://secure.travis-\/ci.org/h2non/requireg.png?branch=master"{} alt="{}Build Status"{}/$>$$<$/a$>$ $<$a href="{}http://badge.fury.io/js/requireg"{} $>$$<$img src="{}https://badge.fury.io/js/requireg.png"{} alt="{}NPM version"{}/$>$$<$/a$>$@{requireg  $<$a href=""http://travis-\/ci.org/h2non/requireg"" $>$$<$img src=""https://secure.travis-\/ci.org/h2non/requireg.png?branch=master"" alt=""Build Status""/$>$$<$/a$>$ $<$a href=""http://badge.fury.io/js/requireg"" $>$$<$img src=""https://badge.fury.io/js/requireg.png"" alt=""NPM version""/$>$$<$/a$>$}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5457326d58cddce0efed6c4704a1766d_autotoc_md4410}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5457326d58cddce0efed6c4704a1766d_autotoc_md4410}%
+ Require and resolve global modules in node/io.\+js like a boss\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5457326d58cddce0efed6c4704a1766d_autotoc_md4411}{}\doxysection{\texorpdfstring{Differences with require()}{Differences with require()}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5457326d58cddce0efed6c4704a1766d_autotoc_md4411}
+{\ttfamily requireg} tries to find modules in global locations which are not natively supported by the node.\+js \href{http://nodejs.org/docs/latest/api/modules.html\#modules_all_together}{\texttt{ module resolve algorithm}}.
+
+Supported locations\+:
+
+
+\begin{DoxyItemize}
+\item \$\+HOME/node\+\_\+modules (instead of \$\+HOME/.node\+\_\+modules)
+\item \$\+HOME/node\+\_\+libraries (instead of \$\+HOME/.node\+\_\+libraries)
+\item \$\+HOME/node\+\_\+packages (specific of {\ttfamily requireg})
+\item \$\+PREFIX/lib/node\+\_\+modules (instead of \$\+PREFIX/lib/node)
+\item \$\+NODE\+\_\+\+MODULES (use the specific modules path environment variable)
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5457326d58cddce0efed6c4704a1766d_autotoc_md4412}{}\doxysection{\texorpdfstring{Resolution priority}{Resolution priority}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5457326d58cddce0efed6c4704a1766d_autotoc_md4412}
+
+\begin{DoxyEnumerate}
+\item Resolve via native {\ttfamily require()}
+\item User home directory ({\ttfamily \$HOME} or {\ttfamily USERPROFILE\%})
+\item Node installation path
+\item \$\+NODE\+\_\+\+MODULES (can have different multiple paths, semicolon separated)
+\item Common operative system installation paths
+\end{DoxyEnumerate}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5457326d58cddce0efed6c4704a1766d_autotoc_md4413}{}\doxysection{\texorpdfstring{Installation}{Installation}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5457326d58cddce0efed6c4704a1766d_autotoc_md4413}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ requireg\ -\/-\/save[-\/dev]}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5457326d58cddce0efed6c4704a1766d_autotoc_md4414}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5457326d58cddce0efed6c4704a1766d_autotoc_md4414}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5457326d58cddce0efed6c4704a1766d_autotoc_md4415}{}\doxysubsection{\texorpdfstring{Load global modules}{Load global modules}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5457326d58cddce0efed6c4704a1766d_autotoc_md4415}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ requireg\ =\ require('requireg')}
+\DoxyCodeLine{//\ require\ a\ globally\ installed\ package}
+\DoxyCodeLine{var\ npm\ =\ requireg('npm')}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5457326d58cddce0efed6c4704a1766d_autotoc_md4416}{}\doxysubsection{\texorpdfstring{Resolve module path}{Resolve module path}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5457326d58cddce0efed6c4704a1766d_autotoc_md4416}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ modulePath\ =\ requireg.resolve('npm')}
+\DoxyCodeLine{//\ returns\ '/usr/local/lib/node\_modules/npm/lib/npm.js'}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5457326d58cddce0efed6c4704a1766d_autotoc_md4417}{}\doxysubsection{\texorpdfstring{Globalize it}{Globalize it}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5457326d58cddce0efed6c4704a1766d_autotoc_md4417}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{require('requireg').globalize()}
+
+\end{DoxyCode}
+
+
+Now it is globally available from any source file
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ globalModule\ =\ requireg('npm')}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5457326d58cddce0efed6c4704a1766d_autotoc_md4418}{}\doxysubsection{\texorpdfstring{Module not found}{Module not found}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5457326d58cddce0efed6c4704a1766d_autotoc_md4418}
+{\ttfamily requireg} maintains the same behavior as the native {\ttfamily require()}. It will throw an {\ttfamily Error} exception if the module was not found\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5457326d58cddce0efed6c4704a1766d_autotoc_md4419}{}\doxysection{\texorpdfstring{Considerations}{Considerations}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5457326d58cddce0efed6c4704a1766d_autotoc_md4419}
+
+\begin{DoxyItemize}
+\item Require global modules in node.\+js are considered anti-\/pattern. Note that you can experiment unreliability or inconsistency across different environments. I hope you know exactly what you do with {\ttfamily requireg}
+\item Only node packages installed with \href{https://npmjs.org}{\texttt{ NPM}} are supported (which means only standardized NPM paths are supported)
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5457326d58cddce0efed6c4704a1766d_autotoc_md4420}{}\doxysection{\texorpdfstring{Wish list}{Wish list}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5457326d58cddce0efed6c4704a1766d_autotoc_md4420}
+
+\begin{DoxyItemize}
+\item Custom environment variable with custom path to resolve global modules
+\item Possible configuration object (force to use only global modules...)
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5457326d58cddce0efed6c4704a1766d_autotoc_md4421}{}\doxysection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5457326d58cddce0efed6c4704a1766d_autotoc_md4421}
+Released under MIT license 

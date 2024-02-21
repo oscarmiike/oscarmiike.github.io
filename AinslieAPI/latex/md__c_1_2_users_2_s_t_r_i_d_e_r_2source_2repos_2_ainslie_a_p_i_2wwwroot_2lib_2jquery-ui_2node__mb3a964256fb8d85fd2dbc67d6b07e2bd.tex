@@ -1,0 +1,152 @@
+\chapter{Java\+Script Git\+Hub API for Node.\+JS}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mb3a964256fb8d85fd2dbc67d6b07e2bd}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mb3a964256fb8d85fd2dbc67d6b07e2bd}\index{JavaScript GitHub API for Node.JS@{JavaScript GitHub API for Node.JS}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mb3a964256fb8d85fd2dbc67d6b07e2bd_autotoc_md2393}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mb3a964256fb8d85fd2dbc67d6b07e2bd_autotoc_md2393}%
+ A Node.\+JS module, which provides an object oriented wrapper for the Git\+Hub v3 API.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mb3a964256fb8d85fd2dbc67d6b07e2bd_autotoc_md2394}{}\doxysection{\texorpdfstring{Installation}{Installation}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mb3a964256fb8d85fd2dbc67d6b07e2bd_autotoc_md2394}
+Install with the Node.\+JS package manager \href{http://npmjs.org/}{\texttt{ npm}} \+: \begin{DoxyVerb}$ npm install github
+\end{DoxyVerb}
+ or
+
+Install via git clone\+: \begin{DoxyVerb}$ git clone git://github.com/mikedeboer/node-github.git
+$ cd node-github
+$ npm install
+\end{DoxyVerb}
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mb3a964256fb8d85fd2dbc67d6b07e2bd_autotoc_md2395}{}\doxysection{\texorpdfstring{Documentation}{Documentation}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mb3a964256fb8d85fd2dbc67d6b07e2bd_autotoc_md2395}
+You can find the docs for the API of this client at \href{http://mikedeboer.github.com/node-github/}{\texttt{ http\+://mikedeboer.\+github.\+com/node-\/github/}}
+
+Additionally, the \href{https://developer.github.com/v3/}{\texttt{ official Github documentation}} is a very useful resource.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mb3a964256fb8d85fd2dbc67d6b07e2bd_autotoc_md2396}{}\doxysection{\texorpdfstring{Example}{Example}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mb3a964256fb8d85fd2dbc67d6b07e2bd_autotoc_md2396}
+Print all followers of the user "{}mikedeboer"{} to the console. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ GitHubApi\ =\ require("{}github"{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ github\ =\ new\ GitHubApi(\{}
+\DoxyCodeLine{\ \ \ \ //\ required}
+\DoxyCodeLine{\ \ \ \ version:\ "{}3.0.0"{},}
+\DoxyCodeLine{\ \ \ \ //\ optional}
+\DoxyCodeLine{\ \ \ \ debug:\ true,}
+\DoxyCodeLine{\ \ \ \ protocol:\ "{}https"{},}
+\DoxyCodeLine{\ \ \ \ host:\ "{}github.my-\/GHE-\/enabled-\/company.com"{},\ //\ should\ be\ api.github.com\ for\ GitHub}
+\DoxyCodeLine{\ \ \ \ pathPrefix:\ "{}/api/v3"{},\ //\ for\ some\ GHEs;\ none\ for\ GitHub}
+\DoxyCodeLine{\ \ \ \ timeout:\ 5000,}
+\DoxyCodeLine{\ \ \ \ headers:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ "{}user-\/agent"{}:\ "{}My-\/Cool-\/GitHub-\/App"{}\ //\ GitHub\ is\ happy\ with\ a\ unique\ user\ agent}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{github.user.getFollowingFromUser(\{}
+\DoxyCodeLine{\ \ \ \ //\ optional:}
+\DoxyCodeLine{\ \ \ \ //\ headers:\ \{}
+\DoxyCodeLine{\ \ \ \ //\ \ \ \ \ "{}cookie"{}:\ "{}blahblah"{}}
+\DoxyCodeLine{\ \ \ \ //\ \},}
+\DoxyCodeLine{\ \ \ \ user:\ "{}mikedeboer"{}}
+\DoxyCodeLine{\},\ function(err,\ res)\ \{}
+\DoxyCodeLine{\ \ \ \ console.log(JSON.stringify(res));}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+First the {\itshape Git\+Hub\+Api} class is imported from the {\itshape node-\/github} module. This class provides access to all of Git\+Hub\textquotesingle{}s APIs (e.\+g. user, issues or repo APIs). The {\itshape get\+Following\+From\+User} method lists all followers of a given Git\+Hub user. Is is part of the user API. It takes the user name as first argument and a callback as last argument. Once the follower list is returned from the server, the callback is called.
+
+Like in Node.\+JS, callbacks are always the last argument. If the functions fails an error object is passed as first argument to the callback.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mb3a964256fb8d85fd2dbc67d6b07e2bd_autotoc_md2397}{}\doxysection{\texorpdfstring{Authentication}{Authentication}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mb3a964256fb8d85fd2dbc67d6b07e2bd_autotoc_md2397}
+Most Git\+Hub API calls don\textquotesingle{}t require authentication. As a rule of thumb\+: If you can see the information by visiting the site without being logged in, you don\textquotesingle{}t have to be authenticated to retrieve the same information through the API. Of course calls, which change data or read sensitive information have to be authenticated.
+
+You need the Git\+Hub user name and the API key for authentication. The API key can be found in the user\textquotesingle{}s {\itshape Account Settings} page.
+
+This example shows how to authenticate and then change {\itshape location} field of the account settings to {\itshape Argentina}\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{github.authenticate(\{}
+\DoxyCodeLine{\ \ \ \ type:\ "{}basic"{},}
+\DoxyCodeLine{\ \ \ \ username:\ username,}
+\DoxyCodeLine{\ \ \ \ password:\ password}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{github.user.update(\{}
+\DoxyCodeLine{\ \ \ \ location:\ "{}Argentina"{}}
+\DoxyCodeLine{\},\ function(err)\ \{}
+\DoxyCodeLine{\ \ \ \ console.log("{}done!"{});}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+ Note that the {\itshape authenticate} method is synchronous because it only stores the credentials for the next request.
+
+Other examples for the various authentication methods\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ OAuth2}
+\DoxyCodeLine{github.authenticate(\{}
+\DoxyCodeLine{\ \ \ \ type:\ "{}oauth"{},}
+\DoxyCodeLine{\ \ \ \ token:\ token}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ OAuth2\ Key/Secret}
+\DoxyCodeLine{github.authenticate(\{}
+\DoxyCodeLine{\ \ \ \ type:\ "{}oauth"{},}
+\DoxyCodeLine{\ \ \ \ key:\ "{}clientID"{},}
+\DoxyCodeLine{\ \ \ \ secret:\ "{}clientSecret"{}}
+\DoxyCodeLine{\})}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Deprecated\ Gihub\ API\ token\ (seems\ not\ to\ be\ working\ with\ the\ v3\ API)}
+\DoxyCodeLine{github.authenticate(\{}
+\DoxyCodeLine{\ \ \ \ type:\ "{}token"{},}
+\DoxyCodeLine{\ \ \ \ token:\ token}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mb3a964256fb8d85fd2dbc67d6b07e2bd_autotoc_md2398}{}\doxysubsection{\texorpdfstring{Creating tokens for your application}{Creating tokens for your application}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mb3a964256fb8d85fd2dbc67d6b07e2bd_autotoc_md2398}
+\href{http://developer.github.com/v3/oauth/\#create-a-new-authorization}{\texttt{ Create a new authorization}} for your application giving it access to the wanted scopes you need instead of relying on username / password and is the way to go if you have \href{https://github.com/blog/1614-two-factor-authentication}{\texttt{ two-\/factor authentication}} on.
+
+For example\+:
+
+
+\begin{DoxyEnumerate}
+\item Use github.\+authenticate() to auth with Git\+Hub using your username / password
+\item Create an application token programmatically with the scopes you need and, if you use two-\/factor authentication send the {\ttfamily X-\/\+Git\+Hub-\/\+OTP} header with the one-\/time-\/password you get on your token device.
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{github.authorization.create(\{}
+\DoxyCodeLine{\ \ \ \ scopes:\ ["{}user"{},\ "{}public\_repo"{},\ "{}repo"{},\ "{}repo:status"{},\ "{}gist"{}],}
+\DoxyCodeLine{\ \ \ \ note:\ "{}what\ this\ auth\ is\ for"{},}
+\DoxyCodeLine{\ \ \ \ note\_url:\ "{}http://url-\/to-\/this-\/auth-\/app"{},}
+\DoxyCodeLine{\ \ \ \ headers:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ "{}X-\/GitHub-\/OTP"{}:\ "{}two-\/factor-\/code"{}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\},\ function(err,\ res)\ \{}
+\DoxyCodeLine{\ \ \ \ if\ (res.token)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //save\ and\ use\ res.token\ as\ in\ the\ Oauth\ process\ above\ from\ now\ on}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mb3a964256fb8d85fd2dbc67d6b07e2bd_autotoc_md2399}{}\doxysection{\texorpdfstring{Implemented Git\+Hub APIs}{Implemented Git\+Hub APIs}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mb3a964256fb8d85fd2dbc67d6b07e2bd_autotoc_md2399}
+
+\begin{DoxyItemize}
+\item Gists\+: 100\%
+\item Git Data\+: 100\%
+\item Issues\+: 100\%
+\item Orgs\+: 100\%
+\item Pull Requests\+: 100\%
+\item Repos\+: 100\%
+\item Users\+: 100\%
+\item Events\+: 100\%
+\item Search\+: 100\%
+\item Markdown\+: 100\%
+\item Rate Limit\+: 100\%
+\item Releases\+: 100\%
+\item Gitignore\+: 100\%
+\item Meta\+: 100\%
+\item Emojis\+: 100\%
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mb3a964256fb8d85fd2dbc67d6b07e2bd_autotoc_md2400}{}\doxysection{\texorpdfstring{Running the Tests}{Running the Tests}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mb3a964256fb8d85fd2dbc67d6b07e2bd_autotoc_md2400}
+The unit tests are based on the \href{http://visionmedia.github.com/mocha/}{\texttt{ mocha}} module, which may be installed via npm. To run the tests make sure that the npm dependencies are installed by running {\ttfamily npm install} from the project directory.
+
+Before running unit tests\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ mocha\ -\/g}
+
+\end{DoxyCode}
+ At the moment, test classes can only be run separately. This will e.\+g. run the Issues Api test\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{mocha\ api/v3.0.0/issuesTest.js}
+
+\end{DoxyCode}
+ Note that a connection to the internet is required to run the tests.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mb3a964256fb8d85fd2dbc67d6b07e2bd_autotoc_md2401}{}\doxysection{\texorpdfstring{LICENSE}{LICENSE}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mb3a964256fb8d85fd2dbc67d6b07e2bd_autotoc_md2401}
+MIT license. See the LICENSE file for details. 

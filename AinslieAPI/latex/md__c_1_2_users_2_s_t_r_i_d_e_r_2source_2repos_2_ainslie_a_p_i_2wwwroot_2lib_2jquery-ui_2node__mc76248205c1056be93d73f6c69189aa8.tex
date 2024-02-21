@@ -1,0 +1,77 @@
+\chapter{expand-\/tilde \texorpdfstring{$<$}{<}a href="{}https\+://www.\+npmjs.\+com/package/expand-\/tilde"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://img.\+shields.\+io/npm/v/expand-\/tilde.\+svg?style=flat"{} alt="{}\+NPM version"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}a href="{}https\+://npmjs.\+org/package/expand-\/tilde"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://img.\+shields.\+io/npm/dm/expand-\/tilde.\+svg?style=flat"{} alt="{}\+NPM downloads"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/jonschlinkert/expand-\/tilde"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://img.\+shields.\+io/travis/jonschlinkert/expand-\/tilde.\+svg?style=flat\&label=\+Travis"{} alt="{}\+Linux Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc76248205c1056be93d73f6c69189aa8}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc76248205c1056be93d73f6c69189aa8}\index{expand-\/tilde $<$a href="{}https://www.npmjs.com/package/expand-\/tilde"{} $>$$<$img src="{}https://img.shields.io/npm/v/expand-\/tilde.svg?style=flat"{} alt="{}NPM version"{}/$>$$<$/a$>$ $<$a href="{}https://npmjs.org/package/expand-\/tilde"{} $>$$<$img src="{}https://img.shields.io/npm/dm/expand-\/tilde.svg?style=flat"{} alt="{}NPM downloads"{}/$>$$<$/a$>$ $<$a href="{}https://travis-\/ci.org/jonschlinkert/expand-\/tilde"{} $>$$<$img src="{}https://img.shields.io/travis/jonschlinkert/expand-\/tilde.svg?style=flat\&label=Travis"{} alt="{}Linux Build Status"{}/$>$$<$/a$>$@{expand-\/tilde $<$a href=""https://www.npmjs.com/package/expand-\/tilde"" $>$$<$img src=""https://img.shields.io/npm/v/expand-\/tilde.svg?style=flat"" alt=""NPM version""/$>$$<$/a$>$ $<$a href=""https://npmjs.org/package/expand-\/tilde"" $>$$<$img src=""https://img.shields.io/npm/dm/expand-\/tilde.svg?style=flat"" alt=""NPM downloads""/$>$$<$/a$>$ $<$a href=""https://travis-\/ci.org/jonschlinkert/expand-\/tilde"" $>$$<$img src=""https://img.shields.io/travis/jonschlinkert/expand-\/tilde.svg?style=flat\&label=Travis"" alt=""Linux Build Status""/$>$$<$/a$>$}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc76248205c1056be93d73f6c69189aa8_autotoc_md8215}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc76248205c1056be93d73f6c69189aa8_autotoc_md8215}%
+ \begin{quote}
+Bash-\/like tilde expansion for node.\+js. Expands a leading tilde in a file path to the user home directory, or {\ttfamily \texorpdfstring{$\sim$}{\string~}+} to the cwd. \end{quote}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc76248205c1056be93d73f6c69189aa8_autotoc_md8216}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc76248205c1056be93d73f6c69189aa8_autotoc_md8216}
+Install with \href{https://www.npmjs.com/}{\texttt{ npm}}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ -\/-\/save\ expand-\/tilde}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc76248205c1056be93d73f6c69189aa8_autotoc_md8217}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc76248205c1056be93d73f6c69189aa8_autotoc_md8217}
+See the \href{https://www.gnu.org/software/bash/manual/html_node/Tilde-Expansion.html}{\texttt{ Bash documentation for Tilde Expansion}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ expandTilde\ =\ require('expand-\/tilde');}
+\DoxyCodeLine{}
+\DoxyCodeLine{expandTilde('\string~')}
+\DoxyCodeLine{//=>\ '/Users/jonschlinkert'}
+\DoxyCodeLine{}
+\DoxyCodeLine{expandTilde('\string~+')}
+\DoxyCodeLine{//=>\ process.cwd()}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc76248205c1056be93d73f6c69189aa8_autotoc_md8218}{}\doxysection{\texorpdfstring{Run tests}{Run tests}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc76248205c1056be93d73f6c69189aa8_autotoc_md8218}
+Install dev dependencies\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ i\ -\/d\ \&\&\ npm\ test}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc76248205c1056be93d73f6c69189aa8_autotoc_md8219}{}\doxysection{\texorpdfstring{About}{About}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc76248205c1056be93d73f6c69189aa8_autotoc_md8219}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc76248205c1056be93d73f6c69189aa8_autotoc_md8220}{}\doxysubsection{\texorpdfstring{Related projects}{Related projects}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc76248205c1056be93d73f6c69189aa8_autotoc_md8220}
+
+\begin{DoxyItemize}
+\item \href{https://www.npmjs.com/package/braces}{\texttt{ braces}}\+: Fast, comprehensive, bash-\/like brace expansion implemented in Java\+Script. Complete support for the Bash 4.\+3 braces… \href{https://github.com/jonschlinkert/braces}{\texttt{ more}} \texorpdfstring{$\vert$}{|} \href{https://github.com/jonschlinkert/braces}{\texttt{ homepage}}
+\item \href{https://www.npmjs.com/package/expand-brackets}{\texttt{ expand-\/brackets}}\+: Expand POSIX bracket expressions (character classes) in glob patterns. \texorpdfstring{$\vert$}{|} \href{https://github.com/jonschlinkert/expand-brackets}{\texttt{ homepage}}
+\item \href{https://www.npmjs.com/package/is-glob}{\texttt{ is-\/glob}}\+: Returns {\ttfamily true} if the given string looks like a glob pattern or an extglob pattern… \href{https://github.com/jonschlinkert/is-glob}{\texttt{ more}} \texorpdfstring{$\vert$}{|} \href{https://github.com/jonschlinkert/is-glob}{\texttt{ homepage}}
+\item \href{https://www.npmjs.com/package/micromatch}{\texttt{ micromatch}}\+: Glob matching for javascript/node.\+js. A drop-\/in replacement and faster alternative to minimatch and multimatch. \texorpdfstring{$\vert$}{|} \href{https://github.com/jonschlinkert/micromatch}{\texttt{ homepage}}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc76248205c1056be93d73f6c69189aa8_autotoc_md8221}{}\doxysubsection{\texorpdfstring{Contributing}{Contributing}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc76248205c1056be93d73f6c69189aa8_autotoc_md8221}
+Pull requests and stars are always welcome. For bugs and feature requests, \href{../../issues/new}{\texttt{ please create an issue}}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc76248205c1056be93d73f6c69189aa8_autotoc_md8222}{}\doxysubsection{\texorpdfstring{Building docs}{Building docs}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc76248205c1056be93d73f6c69189aa8_autotoc_md8222}
+\+\_\+(This document was generated by \href{https://github.com/verbose/verb-generate-readme}{\texttt{ verb-\/generate-\/readme}} (a \href{https://github.com/verbose/verb}{\texttt{ verb}} generator), please don\textquotesingle{}t edit the readme directly. Any changes to the readme must be made in .verb.md.)\+\_\+
+
+To generate the readme and API documentation with \href{https://github.com/verbose/verb}{\texttt{ verb}}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ -\/g\ verb\ verb-\/generate-\/readme\ \&\&\ verb}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc76248205c1056be93d73f6c69189aa8_autotoc_md8223}{}\doxysubsection{\texorpdfstring{Running tests}{Running tests}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc76248205c1056be93d73f6c69189aa8_autotoc_md8223}
+Install dev dependencies\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ -\/d\ \&\&\ npm\ test}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc76248205c1056be93d73f6c69189aa8_autotoc_md8224}{}\doxysubsection{\texorpdfstring{Author}{Author}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc76248205c1056be93d73f6c69189aa8_autotoc_md8224}
+{\bfseries{Jon Schlinkert}}
+
+
+\begin{DoxyItemize}
+\item \href{https://github.com/jonschlinkert}{\texttt{ github/jonschlinkert}}
+\item \href{http://twitter.com/jonschlinkert}{\texttt{ twitter/jonschlinkert}}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc76248205c1056be93d73f6c69189aa8_autotoc_md8225}{}\doxysubsection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__mc76248205c1056be93d73f6c69189aa8_autotoc_md8225}
+Copyright © 2016, \href{https://github.com/jonschlinkert}{\texttt{ Jon Schlinkert}}. Released under the \mbox{[}MIT license\mbox{]}(LICENSE).
+
+\DoxyHorRuler{0}
+
+
+{\itshape This file was generated by \href{https://github.com/verbose/verb-generate-readme}{\texttt{ verb-\/generate-\/readme}}, v0.\+2.\+0, on December 08, 2016.} 

@@ -1,0 +1,114 @@
+\chapter{binary}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5726c2888983552908235a9677ca0b37}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5726c2888983552908235a9677ca0b37}\index{binary@{binary}}
+Unpack multibyte binary values from buffers and streams. You can specify the endianness and signedness of the fields to be unpacked too.
+
+This module is a cleaner and more complete version of \href{https://github.com/substack/node-bufferlist}{\texttt{ bufferlist}}\textquotesingle{}s binary module that runs on pre-\/allocated buffers instead of a linked list.
+
+\href{http://travis-ci.org/substack/node-binary}{\texttt{ }}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5726c2888983552908235a9677ca0b37_autotoc_md882}{}\doxysection{\texorpdfstring{examples}{examples}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5726c2888983552908235a9677ca0b37_autotoc_md882}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5726c2888983552908235a9677ca0b37_autotoc_md883}{}\doxysubsection{\texorpdfstring{stream.\+js}{stream.\+js}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5726c2888983552908235a9677ca0b37_autotoc_md883}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ js}
+\DoxyCodeLine{var\ binary\ =\ require('binary');}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ ws\ =\ binary()}
+\DoxyCodeLine{\ \ \ \ .word32lu('x')}
+\DoxyCodeLine{\ \ \ \ .word16bs('y')}
+\DoxyCodeLine{\ \ \ \ .word16bu('z')}
+\DoxyCodeLine{\ \ \ \ .tap(function\ (vars)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ console.dir(vars);}
+\DoxyCodeLine{\ \ \ \ \})}
+\DoxyCodeLine{;}
+\DoxyCodeLine{process.stdin.pipe(ws);}
+\DoxyCodeLine{process.stdin.resume();}
+
+\end{DoxyCode}
+
+
+output\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ node\ examples/stream.js}
+\DoxyCodeLine{abcdefgh}
+\DoxyCodeLine{\{\ x:\ 1684234849,\ y:\ 25958,\ z:\ 26472\ \}}
+\DoxyCodeLine{\string^D}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5726c2888983552908235a9677ca0b37_autotoc_md884}{}\doxysubsection{\texorpdfstring{parse.\+js}{parse.\+js}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5726c2888983552908235a9677ca0b37_autotoc_md884}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ js}
+\DoxyCodeLine{var\ buf\ =\ new\ Buffer([\ 97,\ 98,\ 99,\ 100,\ 101,\ 102,\ 0\ ]);}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ binary\ =\ require('binary');}
+\DoxyCodeLine{var\ vars\ =\ binary.parse(buf)}
+\DoxyCodeLine{\ \ \ \ .word16ls('ab')}
+\DoxyCodeLine{\ \ \ \ .word32bu('cf')}
+\DoxyCodeLine{\ \ \ \ .word8('x')}
+\DoxyCodeLine{\ \ \ \ .vars}
+\DoxyCodeLine{;}
+\DoxyCodeLine{console.dir(vars);}
+
+\end{DoxyCode}
+
+
+output\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{\ ab:\ 25185,\ cf:\ 1667523942,\ x:\ 0\ \}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5726c2888983552908235a9677ca0b37_autotoc_md885}{}\doxysection{\texorpdfstring{methods}{methods}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5726c2888983552908235a9677ca0b37_autotoc_md885}
+`var binary = require(\textquotesingle{}binary')\`{}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5726c2888983552908235a9677ca0b37_autotoc_md886}{}\doxysubsection{\texorpdfstring{var b = binary()}{var b = binary()}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5726c2888983552908235a9677ca0b37_autotoc_md886}
+Return a new writable stream {\ttfamily b} that has the chainable methods documented below for buffering binary input.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5726c2888983552908235a9677ca0b37_autotoc_md887}{}\doxysubsection{\texorpdfstring{binary.\+parse(buf)}{binary.\+parse(buf)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5726c2888983552908235a9677ca0b37_autotoc_md887}
+Parse a static buffer in one pass. Returns a chainable interface with the methods below plus a {\ttfamily vars} field to get at the variable stash as the last item in a chain.
+
+In parse mode, methods will set their keys to {\ttfamily null} if the buffer isn\textquotesingle{}t big enough except {\ttfamily buffer()} and {\ttfamily scan()} which read up up to the end of the buffer and stop.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5726c2888983552908235a9677ca0b37_autotoc_md888}{}\doxysubsection{\texorpdfstring{b.\+word\{8,16,32,64\}\{l,b\}\{e,u,s\}(key)}{b.\+word\{8,16,32,64\}\{l,b\}\{e,u,s\}(key)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5726c2888983552908235a9677ca0b37_autotoc_md888}
+Parse bytes in the buffer or stream given\+:
+
+
+\begin{DoxyItemize}
+\item number of bits
+\item endianness ( l \+: little, b \+: big ),
+\item signedness ( u and e \+: unsigned, s \+: signed )
+\end{DoxyItemize}
+
+These functions won\textquotesingle{}t start parsing until all previous parser functions have run and the data is available.
+
+The result of the parse goes into the variable stash at {\ttfamily key}. If {\ttfamily key} has dots ({\ttfamily .}s), it refers to a nested address. If parent container values don\textquotesingle{}t exist they will be created automatically, so for instance you can assign into {\ttfamily dst.\+addr} and {\ttfamily dst.\+port} and the {\ttfamily dst} key in the variable stash will be {\ttfamily \{ addr \+: x, port \+: y \}} afterwards.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5726c2888983552908235a9677ca0b37_autotoc_md889}{}\doxysubsection{\texorpdfstring{b.\+buffer(key, size)}{b.\+buffer(key, size)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5726c2888983552908235a9677ca0b37_autotoc_md889}
+Take {\ttfamily size} bytes directly off the buffer stream, putting the resulting buffer slice in the variable stash at {\ttfamily key}. If {\ttfamily size} is a string, use the value at {\ttfamily vars\mbox{[}size\mbox{]}}. The key follows the same dotted address rules as the word functions.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5726c2888983552908235a9677ca0b37_autotoc_md890}{}\doxysubsection{\texorpdfstring{b.\+scan(key, buffer)}{b.\+scan(key, buffer)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5726c2888983552908235a9677ca0b37_autotoc_md890}
+Search for {\ttfamily buffer} in the stream and store all the intervening data in the stash at at {\ttfamily key}, excluding the search buffer. If {\ttfamily buffer} passed as a string, it will be converted into a Buffer internally.
+
+For example, to read in a line you can just do\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ js}
+\DoxyCodeLine{var\ b\ =\ binary()}
+\DoxyCodeLine{\ \ \ \ .scan('line',\ new\ Buffer('\(\backslash\)r\(\backslash\)n'))}
+\DoxyCodeLine{\ \ \ \ .tap(function\ (vars)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ console.log(vars.line)}
+\DoxyCodeLine{\ \ \ \ \})}
+\DoxyCodeLine{;}
+\DoxyCodeLine{stream.pipe(b);}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5726c2888983552908235a9677ca0b37_autotoc_md891}{}\doxysubsection{\texorpdfstring{b.\+tap(cb)}{b.\+tap(cb)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5726c2888983552908235a9677ca0b37_autotoc_md891}
+The callback {\ttfamily cb} is provided with the variable stash from all the previous actions once they\textquotesingle{}ve all finished.
+
+You can nest additional actions onto {\ttfamily this} inside the callback.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5726c2888983552908235a9677ca0b37_autotoc_md892}{}\doxysubsection{\texorpdfstring{b.\+into(key, cb)}{b.\+into(key, cb)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5726c2888983552908235a9677ca0b37_autotoc_md892}
+Like {\ttfamily .tap()}, except all nested actions will assign into a {\ttfamily key} in the {\ttfamily vars} stash.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5726c2888983552908235a9677ca0b37_autotoc_md893}{}\doxysubsection{\texorpdfstring{b.\+loop(cb)}{b.\+loop(cb)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5726c2888983552908235a9677ca0b37_autotoc_md893}
+Loop, each time calling {\ttfamily cb(end, vars)} for function {\ttfamily end} and the variable stash with {\ttfamily this} set to a new chain for nested parsing. The loop terminates once {\ttfamily end} is called.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5726c2888983552908235a9677ca0b37_autotoc_md894}{}\doxysubsection{\texorpdfstring{b.\+flush()}{b.\+flush()}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5726c2888983552908235a9677ca0b37_autotoc_md894}
+Clear the variable stash entirely.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5726c2888983552908235a9677ca0b37_autotoc_md895}{}\doxysection{\texorpdfstring{installation}{installation}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5726c2888983552908235a9677ca0b37_autotoc_md895}
+To install with \href{http://github.com/isaacs/npm}{\texttt{ npm}}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ binary}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5726c2888983552908235a9677ca0b37_autotoc_md896}{}\doxysection{\texorpdfstring{notes}{notes}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5726c2888983552908235a9677ca0b37_autotoc_md896}
+The word64 functions will only return approximations since javascript uses ieee floating point for all number types. Mind the loss of precision.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5726c2888983552908235a9677ca0b37_autotoc_md897}{}\doxysection{\texorpdfstring{license}{license}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m5726c2888983552908235a9677ca0b37_autotoc_md897}
+MIT 

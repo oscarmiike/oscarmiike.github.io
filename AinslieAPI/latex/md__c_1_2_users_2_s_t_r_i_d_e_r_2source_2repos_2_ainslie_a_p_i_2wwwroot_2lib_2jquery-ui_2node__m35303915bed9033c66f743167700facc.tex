@@ -1,0 +1,76 @@
+\chapter{Deep Extend}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m35303915bed9033c66f743167700facc}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m35303915bed9033c66f743167700facc}\index{Deep Extend@{Deep Extend}}
+Recursive object extending.
+
+\href{https://travis-ci.org/unclechu/node-deep-extend}{\texttt{ }}
+
+\href{https://nodei.co/npm/deep-extend/}{\texttt{ }}
+
+\href{https://nodei.co/npm/deep-extend/}{\texttt{ }}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m35303915bed9033c66f743167700facc_autotoc_md2174}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m35303915bed9033c66f743167700facc_autotoc_md2174}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ deep-\/extend}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m35303915bed9033c66f743167700facc_autotoc_md2175}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m35303915bed9033c66f743167700facc_autotoc_md2175}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ deepExtend\ =\ require('deep-\/extend');}
+\DoxyCodeLine{var\ obj1\ =\ \{}
+\DoxyCodeLine{\ \ a:\ 1,}
+\DoxyCodeLine{\ \ b:\ 2,}
+\DoxyCodeLine{\ \ d:\ \{}
+\DoxyCodeLine{\ \ \ \ a:\ 1,}
+\DoxyCodeLine{\ \ \ \ b:\ [],}
+\DoxyCodeLine{\ \ \ \ c:\ \{\ test1:\ 123,\ test2:\ 321\ \}}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ f:\ 5,}
+\DoxyCodeLine{\ \ g:\ 123,}
+\DoxyCodeLine{\ \ i:\ 321,}
+\DoxyCodeLine{\ \ j:\ [1,\ 2]}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{var\ obj2\ =\ \{}
+\DoxyCodeLine{\ \ b:\ 3,}
+\DoxyCodeLine{\ \ c:\ 5,}
+\DoxyCodeLine{\ \ d:\ \{}
+\DoxyCodeLine{\ \ \ \ b:\ \{\ first:\ 'one',\ second:\ 'two'\ \},}
+\DoxyCodeLine{\ \ \ \ c:\ \{\ test2:\ 222\ \}}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ e:\ \{\ one:\ 1,\ two:\ 2\ \},}
+\DoxyCodeLine{\ \ f:\ [],}
+\DoxyCodeLine{\ \ g:\ (void\ 0),}
+\DoxyCodeLine{\ \ h:\ /abc/g,}
+\DoxyCodeLine{\ \ i:\ null,}
+\DoxyCodeLine{\ \ j:\ [3,\ 4]}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{deepExtend(obj1,\ obj2);}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log(obj1);}
+\DoxyCodeLine{/*}
+\DoxyCodeLine{\{\ a:\ 1,}
+\DoxyCodeLine{\ \ b:\ 3,}
+\DoxyCodeLine{\ \ d:}
+\DoxyCodeLine{\ \ \ \{\ a:\ 1,}
+\DoxyCodeLine{\ \ \ \ \ b:\ \{\ first:\ 'one',\ second:\ 'two'\ \},}
+\DoxyCodeLine{\ \ \ \ \ c:\ \{\ test1:\ 123,\ test2:\ 222\ \}\ \},}
+\DoxyCodeLine{\ \ f:\ [],}
+\DoxyCodeLine{\ \ g:\ undefined,}
+\DoxyCodeLine{\ \ c:\ 5,}
+\DoxyCodeLine{\ \ e:\ \{\ one:\ 1,\ two:\ 2\ \},}
+\DoxyCodeLine{\ \ h:\ /abc/g,}
+\DoxyCodeLine{\ \ i:\ null,}
+\DoxyCodeLine{\ \ j:\ [3,\ 4]\ \}}
+\DoxyCodeLine{*/}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m35303915bed9033c66f743167700facc_autotoc_md2176}{}\doxysection{\texorpdfstring{Unit testing}{Unit testing}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m35303915bed9033c66f743167700facc_autotoc_md2176}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ test}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m35303915bed9033c66f743167700facc_autotoc_md2177}{}\doxysection{\texorpdfstring{Changelog}{Changelog}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m35303915bed9033c66f743167700facc_autotoc_md2177}
+\doxysectlink{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m54dbc5d242275d9af7e4683fd60b28e5}{CHANGELOG.md}{0}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m35303915bed9033c66f743167700facc_autotoc_md2178}{}\doxysection{\texorpdfstring{Any issues?}{Any issues?}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m35303915bed9033c66f743167700facc_autotoc_md2178}
+Please, report about issues \href{https://github.com/unclechu/node-deep-extend/issues}{\texttt{ here}}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m35303915bed9033c66f743167700facc_autotoc_md2179}{}\doxysection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m35303915bed9033c66f743167700facc_autotoc_md2179}
+\href{./LICENSE}{\texttt{ MIT}} 

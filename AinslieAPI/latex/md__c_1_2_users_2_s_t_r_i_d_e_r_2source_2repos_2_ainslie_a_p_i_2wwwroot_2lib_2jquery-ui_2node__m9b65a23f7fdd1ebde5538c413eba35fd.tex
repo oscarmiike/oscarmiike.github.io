@@ -1,0 +1,562 @@
+\chapter{README}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd}\index{README@{README}}
+
+
+Utility methods for the hapi ecosystem. This module is not intended to solve every problem for everyone, but rather as a central place to store hapi-\/specific methods. If you\textquotesingle{}re looking for a general purpose utility module, check out \href{https://github.com/lodash/lodash}{\texttt{ lodash}} or \href{https://github.com/jashkenas/underscore}{\texttt{ underscore}}.
+
+\href{http://travis-ci.org/hapijs/hoek}{\texttt{ }}
+
+Lead Maintainer\+: \href{https://github.com/nlf}{\texttt{ Nathan La\+Freniere}}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2702}{}\doxysection{\texorpdfstring{Table of Contents}{Table of Contents}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2702}
+
+\begin{DoxyItemize}
+\item Introduction
+\item Object
+\begin{DoxyItemize}
+\item clone
+\item clone\+With\+Shallow
+\item merge
+\item apply\+To\+Defaults
+\item apply\+To\+Defaults\+With\+Shallow
+\item deep\+Equal
+\item unique
+\item map\+To\+Object
+\item intersect
+\item contain
+\item flatten
+\item reach
+\item reach\+Template
+\item transform
+\item shallow
+\item stringify
+\end{DoxyItemize}
+\item Timer
+\item Bench
+\item Binary Encoding/\+Decoding
+\begin{DoxyItemize}
+\item base64url\+Encode
+\item base64url\+Decode
+\end{DoxyItemize}
+\item Escaping Characters
+\begin{DoxyItemize}
+\item escape\+Html
+\item escape\+Header\+Attribute
+\item escape\+Regex
+\end{DoxyItemize}
+\item Errors
+\begin{DoxyItemize}
+\item assert
+\item abort
+\item display\+Stack
+\item call\+Stack
+\end{DoxyItemize}
+\item Function
+\begin{DoxyItemize}
+\item next\+Tick
+\item once
+\item ignore
+\end{DoxyItemize}
+\item Miscellaneous
+\begin{DoxyItemize}
+\item unique\+Filename
+\item is\+Absolute\+Path
+\item is\+Integer
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2703}{}\doxysection{\texorpdfstring{Introduction}{Introduction}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2703}
+The {\itshape Hoek} library contains some common functions used within the hapi ecosystem. It comes with useful methods for Arrays (clone, merge, apply\+To\+Defaults), Objects (remove\+Keys, copy), Asserting and more.
+
+For example, to use Hoek to set configuration with default options\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ Hoek\ =\ require('hoek');}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ default\ =\ \{url\ :\ "{}www.github.com"{},\ port\ :\ "{}8000"{},\ debug\ :\ true\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ config\ =\ Hoek.applyToDefaults(default,\ \{port\ :\ "{}3000"{},\ admin\ :\ true\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ In\ this\ case,\ config\ would\ be\ \{\ url:\ 'www.github.com',\ port:\ '3000',\ debug:\ true,\ admin:\ true\ \}}
+
+\end{DoxyCode}
+
+
+Under each of the sections (such as Array), there are subsections which correspond to Hoek methods. Each subsection will explain how to use the corresponding method. In each js excerpt below, the `var Hoek = require(\textquotesingle{}hoek');\`{} is omitted for brevity.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2704}{}\doxysubsection{\texorpdfstring{Object}{Object}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2704}
+Hoek provides several helpful methods for objects and arrays.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2705}{}\doxysubsubsection{\texorpdfstring{clone(obj)}{clone(obj)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2705}
+This method is used to clone an object or an array. A {\itshape deep copy} is made (duplicates everything, including values that are objects, as well as non-\/enumerable properties).
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ nestedObj\ =\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ w:\ /\string^something\$/ig,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ x:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ a:\ [1,\ 2,\ 3],}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ b:\ 123456,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ c:\ new\ Date()}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ y:\ 'y',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ z:\ new\ Date()}
+\DoxyCodeLine{\ \ \ \ \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ copy\ =\ Hoek.clone(nestedObj);}
+\DoxyCodeLine{}
+\DoxyCodeLine{copy.x.b\ =\ 100;}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log(copy.y);\ \ \ \ \ \ \ \ //\ results\ in\ 'y'}
+\DoxyCodeLine{console.log(nestedObj.x.b);\ //\ results\ in\ 123456}
+\DoxyCodeLine{console.log(copy.x.b);\ \ \ \ \ \ //\ results\ in\ 100}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2706}{}\doxysubsubsection{\texorpdfstring{clone\+With\+Shallow(obj, keys)}{clone\+With\+Shallow(obj, keys)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2706}
+keys is an array of key names to shallow copy
+
+This method is also used to clone an object or array, however any keys listed in the {\ttfamily keys} array are shallow copied while those not listed are deep copied.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ nestedObj\ =\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ w:\ /\string^something\$/ig,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ x:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ a:\ [1,\ 2,\ 3],}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ b:\ 123456,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ c:\ new\ Date()}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ y:\ 'y',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ z:\ new\ Date()}
+\DoxyCodeLine{\ \ \ \ \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ copy\ =\ Hoek.cloneWithShallow(nestedObj,\ ['x']);}
+\DoxyCodeLine{}
+\DoxyCodeLine{copy.x.b\ =\ 100;}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log(copy.y);\ \ \ \ \ \ \ \ //\ results\ in\ 'y'}
+\DoxyCodeLine{console.log(nestedObj.x.b);\ //\ results\ in\ 100}
+\DoxyCodeLine{console.log(copy.x.b);\ \ \ \ \ \ //\ results\ in\ 100}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2707}{}\doxysubsubsection{\texorpdfstring{merge(target, source, is\+Null\+Override, is\+Merge\+Arrays)}{merge(target, source, is\+Null\+Override, is\+Merge\+Arrays)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2707}
+is\+Null\+Override, is\+Merge\+Arrays default to true
+
+Merge all the properties of source into target, source wins in conflict, and by default null and undefined from source are applied. Merge is destructive where the target is modified. For non destructive merge, use {\ttfamily apply\+To\+Defaults}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ target\ =\ \{a:\ 1,\ b\ :\ 2\};}
+\DoxyCodeLine{var\ source\ =\ \{a:\ 0,\ c:\ 5\};}
+\DoxyCodeLine{var\ source2\ =\ \{a:\ null,\ c:\ 5\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{Hoek.merge(target,\ source);\ \ \ \ \ \ \ \ \ //\ results\ in\ \{a:\ 0,\ b:\ 2,\ c:\ 5\}}
+\DoxyCodeLine{Hoek.merge(target,\ source2);\ \ \ \ \ \ \ \ //\ results\ in\ \{a:\ null,\ b:\ 2,\ c:\ 5\}}
+\DoxyCodeLine{Hoek.merge(target,\ source2,\ false);\ //\ results\ in\ \{a:\ 1,\ b:\ 2,\ c:\ 5\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ targetArray\ =\ [1,\ 2,\ 3];}
+\DoxyCodeLine{var\ sourceArray\ =\ [4,\ 5];}
+\DoxyCodeLine{}
+\DoxyCodeLine{Hoek.merge(targetArray,\ sourceArray);\ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ results\ in\ [1,\ 2,\ 3,\ 4,\ 5]}
+\DoxyCodeLine{Hoek.merge(targetArray,\ sourceArray,\ true,\ false);\ //\ results\ in\ [4,\ 5]}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2708}{}\doxysubsubsection{\texorpdfstring{apply\+To\+Defaults(defaults, options, is\+Null\+Override)}{apply\+To\+Defaults(defaults, options, is\+Null\+Override)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2708}
+is\+Null\+Override defaults to false
+
+Apply options to a copy of the defaults
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ defaults\ =\ \{\ host:\ "{}localhost"{},\ port:\ 8000\ \};}
+\DoxyCodeLine{var\ options\ =\ \{\ port:\ 8080\ \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ config\ =\ Hoek.applyToDefaults(defaults,\ options);\ //\ results\ in\ \{\ host:\ "{}localhost"{},\ port:\ 8080\ \}}
+
+\end{DoxyCode}
+
+
+Apply options with a null value to a copy of the defaults
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ defaults\ =\ \{\ host:\ "{}localhost"{},\ port:\ 8000\ \};}
+\DoxyCodeLine{var\ options\ =\ \{\ host:\ null,\ port:\ 8080\ \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ config\ =\ Hoek.applyToDefaults(defaults,\ options,\ true);\ //\ results\ in\ \{\ host:\ null,\ port:\ 8080\ \}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2709}{}\doxysubsubsection{\texorpdfstring{apply\+To\+Defaults\+With\+Shallow(defaults, options, keys)}{apply\+To\+Defaults\+With\+Shallow(defaults, options, keys)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2709}
+keys is an array of key names to shallow copy
+
+Apply options to a copy of the defaults. Keys specified in the last parameter are shallow copied from options instead of merged.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ defaults\ =\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ server:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ host:\ "{}localhost"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ port:\ 8000}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ name:\ 'example'}
+\DoxyCodeLine{\ \ \ \ \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ options\ =\ \{\ server:\ \{\ port:\ 8080\ \}\ \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ config\ =\ Hoek.applyToDefaultsWithShallow(defaults,\ options,\ ['server']);\ //\ results\ in\ \{\ server:\ \{\ port:\ 8080\ \},\ name:\ 'example'\ \}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2710}{}\doxysubsubsection{\texorpdfstring{deep\+Equal(b, a, \mbox{[}options\mbox{]})}{deep\+Equal(b, a, \mbox{[}options\mbox{]})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2710}
+Performs a deep comparison of the two values including support for circular dependencies, prototype, and properties. To skip prototype comparisons, use {\ttfamily options.\+prototype = false}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Hoek.deepEqual(\{\ a:\ [1,\ 2],\ b:\ 'string',\ c:\ \{\ d:\ true\ \}\ \},\ \{\ a:\ [1,\ 2],\ b:\ 'string',\ c:\ \{\ d:\ true\ \}\ \});\ //results\ in\ true}
+\DoxyCodeLine{Hoek.deepEqual(Object.create(null),\ \{\},\ \{\ prototype:\ false\ \});\ //results\ in\ true}
+\DoxyCodeLine{Hoek.deepEqual(Object.create(null),\ \{\});\ //results\ in\ false}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2711}{}\doxysubsubsection{\texorpdfstring{unique(array, key)}{unique(array, key)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2711}
+Remove duplicate items from Array
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ array\ =\ [1,\ 2,\ 2,\ 3,\ 3,\ 4,\ 5,\ 6];}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ newArray\ =\ Hoek.unique(array);\ \ \ \ //\ results\ in\ [1,2,3,4,5,6]}
+\DoxyCodeLine{}
+\DoxyCodeLine{array\ =\ [\{id:\ 1\},\ \{id:\ 1\},\ \{id:\ 2\}];}
+\DoxyCodeLine{}
+\DoxyCodeLine{newArray\ =\ Hoek.unique(array,\ "{}id"{});\ \ //\ results\ in\ [\{id:\ 1\},\ \{id:\ 2\}]}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2712}{}\doxysubsubsection{\texorpdfstring{map\+To\+Object(array, key)}{map\+To\+Object(array, key)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2712}
+Convert an Array into an Object
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ array\ =\ [1,2,3];}
+\DoxyCodeLine{var\ newObject\ =\ Hoek.mapToObject(array);\ \ \ //\ results\ in\ [\{"{}1"{}:\ true\},\ \{"{}2"{}:\ true\},\ \{"{}3"{}:\ true\}]}
+\DoxyCodeLine{}
+\DoxyCodeLine{array\ =\ [\{id:\ 1\},\ \{id:\ 2\}];}
+\DoxyCodeLine{newObject\ =\ Hoek.mapToObject(array,\ "{}id"{});\ //\ results\ in\ [\{"{}id"{}:\ 1\},\ \{"{}id"{}:\ 2\}]}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2713}{}\doxysubsubsection{\texorpdfstring{intersect(array1, array2)}{intersect(array1, array2)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2713}
+Find the common unique items in two arrays
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ array1\ =\ [1,\ 2,\ 3];}
+\DoxyCodeLine{var\ array2\ =\ [1,\ 4,\ 5];}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ newArray\ =\ Hoek.intersect(array1,\ array2);\ //\ results\ in\ [1]}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2714}{}\doxysubsubsection{\texorpdfstring{contain(ref, values, \mbox{[}options\mbox{]})}{contain(ref, values, \mbox{[}options\mbox{]})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2714}
+Tests if the reference value contains the provided values where\+:
+\begin{DoxyItemize}
+\item {\ttfamily ref} -\/ the reference string, array, or object.
+\item {\ttfamily values} -\/ a single or array of values to find within the {\ttfamily ref} value. If {\ttfamily ref} is an object, {\ttfamily values} can be a key name, an array of key names, or an object with key-\/value pairs to compare.
+\item {\ttfamily options} -\/ an optional object with the following optional settings\+:
+\begin{DoxyItemize}
+\item {\ttfamily deep} -\/ if {\ttfamily true}, performed a deep comparison of the values.
+\item {\ttfamily once} -\/ if {\ttfamily true}, allows only one occurrence of each value.
+\item {\ttfamily only} -\/ if {\ttfamily true}, does not allow values not explicitly listed.
+\item {\ttfamily part} -\/ if {\ttfamily true}, allows partial match of the values (at least one must always match).
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+Note\+: comparing a string to overlapping values will result in failed comparison (e.\+g. `contain(\textquotesingle{}abc', \mbox{[}\textquotesingle{}ab\textquotesingle{}, \textquotesingle{}bc\textquotesingle{}\mbox{]}){\ttfamily ). Also, if an object key\textquotesingle{}s value does not match the provided value,}false{\ttfamily is returned even when}part\`{} is specified.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Hoek.contain('aaa',\ 'a',\ \{\ only:\ true\ \});\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ true}
+\DoxyCodeLine{Hoek.contain([\{\ a:\ 1\ \}],\ [\{\ a:\ 1\ \}],\ \{\ deep:\ true\ \});\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ true}
+\DoxyCodeLine{Hoek.contain([1,\ 2,\ 2],\ [1,\ 2],\ \{\ once:\ true\ \});\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ false}
+\DoxyCodeLine{Hoek.contain(\{\ a:\ 1,\ b:\ 2,\ c:\ 3\ \},\ \{\ a:\ 1,\ d:\ 4\ \},\ \{\ part:\ true\ \});\ //\ true}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2715}{}\doxysubsubsection{\texorpdfstring{flatten(array, \mbox{[}target\mbox{]})}{flatten(array, \mbox{[}target\mbox{]})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2715}
+Flatten an array
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ array\ =\ [1,\ [2,\ 3]];}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ flattenedArray\ =\ Hoek.flatten(array);\ //\ results\ in\ [1,\ 2,\ 3]}
+\DoxyCodeLine{}
+\DoxyCodeLine{array\ =\ [1,\ [2,\ 3]];}
+\DoxyCodeLine{target\ =\ [4,\ [5]];}
+\DoxyCodeLine{}
+\DoxyCodeLine{flattenedArray\ =\ Hoek.flatten(array,\ target);\ //\ results\ in\ [4,\ [5],\ 1,\ 2,\ 3]}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2716}{}\doxysubsubsection{\texorpdfstring{reach(obj, chain, \mbox{[}options\mbox{]})}{reach(obj, chain, \mbox{[}options\mbox{]})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2716}
+Converts an object key chain string to reference
+
+
+\begin{DoxyItemize}
+\item {\ttfamily options} -\/ optional settings
+\begin{DoxyItemize}
+\item {\ttfamily separator} -\/ string to split chain path on, defaults to \textquotesingle{}.\textquotesingle{}
+\item {\ttfamily default} -\/ value to return if the path or value is not present, default is {\ttfamily undefined}
+\item {\ttfamily strict} -\/ if {\ttfamily true}, will throw an error on missing member, default is {\ttfamily false}
+\item {\ttfamily functions} -\/ if {\ttfamily true} allow traversing functions for properties. {\ttfamily false} will throw an error if a function is part of the chain.
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+A chain including negative numbers will work like negative indices on an array.
+
+If chain is {\ttfamily null}, {\ttfamily undefined} or {\ttfamily false}, the object itself will be returned.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ chain\ =\ 'a.b.c';}
+\DoxyCodeLine{var\ obj\ =\ \{a\ :\ \{b\ :\ \{\ c\ :\ 1\}\}\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{Hoek.reach(obj,\ chain);\ //\ returns\ 1}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ chain\ =\ 'a.b.-\/1';}
+\DoxyCodeLine{var\ obj\ =\ \{a\ :\ \{b\ :\ [2,3,6]\}\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{Hoek.reach(obj,\ chain);\ //\ returns\ 6}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2717}{}\doxysubsubsection{\texorpdfstring{reach\+Template(obj, template, \mbox{[}options\mbox{]})}{reach\+Template(obj, template, \mbox{[}options\mbox{]})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2717}
+Replaces string parameters ({\ttfamily \{name\}}) with their corresponding object key values by applying the ({\ttfamily reach()})\mbox{[}\#reachobj-\/chain-\/options\mbox{]} method where\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily obj} -\/ the context object used for key lookup.
+\item {\ttfamily template} -\/ a string containing {\ttfamily \{\}} parameters.
+\item {\ttfamily options} -\/ optional ({\ttfamily reach()})\mbox{[}\#reachobj-\/chain-\/options\mbox{]} options.
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ chain\ =\ 'a.b.c';}
+\DoxyCodeLine{var\ obj\ =\ \{a\ :\ \{b\ :\ \{\ c\ :\ 1\}\}\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{Hoek.reachTemplate(obj,\ '1+\{a.b.c\}=2');\ //\ returns\ '1+1=2'}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2718}{}\doxysubsubsection{\texorpdfstring{transform(obj, transform, \mbox{[}options\mbox{]})}{transform(obj, transform, \mbox{[}options\mbox{]})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2718}
+Transforms an existing object into a new one based on the supplied {\ttfamily obj} and {\ttfamily transform} map. {\ttfamily options} are the same as the {\ttfamily reach} options. The first argument can also be an array of objects. In that case the method will return an array of transformed objects.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ source\ =\ \{}
+\DoxyCodeLine{\ \ \ \ address:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ one:\ '123\ main\ street',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ two:\ 'PO\ Box\ 1234'}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ title:\ 'Warehouse',}
+\DoxyCodeLine{\ \ \ \ state:\ 'CA'}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ result\ =\ Hoek.transform(source,\ \{}
+\DoxyCodeLine{\ \ \ \ 'person.address.lineOne':\ 'address.one',}
+\DoxyCodeLine{\ \ \ \ 'person.address.lineTwo':\ 'address.two',}
+\DoxyCodeLine{\ \ \ \ 'title':\ 'title',}
+\DoxyCodeLine{\ \ \ \ 'person.address.region':\ 'state'}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{//\ Results\ in}
+\DoxyCodeLine{//\ \{}
+\DoxyCodeLine{//\ \ \ \ \ person:\ \{}
+\DoxyCodeLine{//\ \ \ \ \ \ \ \ \ address:\ \{}
+\DoxyCodeLine{//\ \ \ \ \ \ \ \ \ \ \ \ \ lineOne:\ '123\ main\ street',}
+\DoxyCodeLine{//\ \ \ \ \ \ \ \ \ \ \ \ \ lineTwo:\ 'PO\ Box\ 1234',}
+\DoxyCodeLine{//\ \ \ \ \ \ \ \ \ \ \ \ \ region:\ 'CA'}
+\DoxyCodeLine{//\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{//\ \ \ \ \ \},}
+\DoxyCodeLine{//\ \ \ \ \ title:\ 'Warehouse'}
+\DoxyCodeLine{//\ \}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2719}{}\doxysubsubsection{\texorpdfstring{shallow(obj)}{shallow(obj)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2719}
+Performs a shallow copy by copying the references of all the top level children where\+:
+\begin{DoxyItemize}
+\item {\ttfamily obj} -\/ the object to be copied.
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ shallow\ =\ Hoek.shallow(\{\ a:\ \{\ b:\ 1\ \}\ \});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2720}{}\doxysubsubsection{\texorpdfstring{stringify(obj)}{stringify(obj)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2720}
+Converts an object to string using the built-\/in {\ttfamily JSON.\+stringify()} method with the difference that any errors are caught and reported back in the form of the returned string. Used as a shortcut for displaying information to the console (e.\+g. in error message) without the need to worry about invalid conversion.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ a\ =\ \{\};}
+\DoxyCodeLine{a.b\ =\ a;}
+\DoxyCodeLine{Hoek.stringify(a);\ \ \ \ \ \ //\ Returns\ '[Cannot\ display\ object:\ Converting\ circular\ structure\ to\ JSON]'}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2721}{}\doxysection{\texorpdfstring{Timer}{Timer}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2721}
+A Timer object. Initializing a new timer object sets the ts to the number of milliseconds elapsed since 1 January 1970 00\+:00\+:00 UTC.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ timerObj\ =\ new\ Hoek.Timer();}
+\DoxyCodeLine{console.log("{}Time\ is\ now:\ "{}\ +\ timerObj.ts);}
+\DoxyCodeLine{console.log("{}Elapsed\ time\ from\ initialization:\ "{}\ +\ timerObj.elapsed()\ +\ 'milliseconds');}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2722}{}\doxysection{\texorpdfstring{Bench}{Bench}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2722}
+Same as Timer with the exception that {\ttfamily ts} stores the internal node clock which is not related to {\ttfamily Date.\+now()} and cannot be used to display human-\/readable timestamps. More accurate for benchmarking or internal timers.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2723}{}\doxysection{\texorpdfstring{Binary Encoding/\+Decoding}{Binary Encoding/\+Decoding}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2723}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2724}{}\doxysubsubsection{\texorpdfstring{base64url\+Encode(value)}{base64url\+Encode(value)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2724}
+Encodes value in Base64 or URL encoding\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2725}{}\doxysubsubsection{\texorpdfstring{base64url\+Decode(value)}{base64url\+Decode(value)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2725}
+Decodes data in Base64 or URL encoding. \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2726}{}\doxysection{\texorpdfstring{Escaping Characters}{Escaping Characters}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2726}
+Hoek provides convenient methods for escaping html characters. The escaped characters are as followed\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{internals.htmlEscaped\ =\ \{}
+\DoxyCodeLine{\ \ \ \ '\&':\ '\&amp;',}
+\DoxyCodeLine{\ \ \ \ '<':\ '\&lt;',}
+\DoxyCodeLine{\ \ \ \ '>':\ '\&gt;',}
+\DoxyCodeLine{\ \ \ \ '"{}':\ '\&quot;',}
+\DoxyCodeLine{\ \ \ \ "{}'"{}:\ '\&\#x27;',}
+\DoxyCodeLine{\ \ \ \ '`':\ '\&\#x60;'}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2727}{}\doxysubsubsection{\texorpdfstring{escape\+Html(string)}{escape\+Html(string)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2727}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ string\ =\ '<html>\ hey\ </html>';}
+\DoxyCodeLine{var\ escapedString\ =\ Hoek.escapeHtml(string);\ //\ returns\ \&lt;html\&gt;\ hey\ \&lt;/html\&gt;}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2728}{}\doxysubsubsection{\texorpdfstring{escape\+Header\+Attribute(attribute)}{escape\+Header\+Attribute(attribute)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2728}
+Escape attribute value for use in HTTP header
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ a\ =\ Hoek.escapeHeaderAttribute('I\ said\ "{}go\ w\(\backslash\)\(\backslash\)o\ me"{}');\ \ //returns\ I\ said\ \(\backslash\)"{}go\ w\(\backslash\)\(\backslash\)o\ me\(\backslash\)"{}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2729}{}\doxysubsubsection{\texorpdfstring{escape\+Regex(string)}{escape\+Regex(string)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2729}
+Escape string for Regex construction
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ a\ =\ Hoek.escapeRegex('4\string^f\$s.4*5+-\/\_?\%=\#!:@|\string~\(\backslash\)\(\backslash\)/`"{}(>)[<]d\{\}s,');\ \ //\ returns\ 4\(\backslash\)\string^f\(\backslash\)\$s\(\backslash\).4\(\backslash\)*5\(\backslash\)+\(\backslash\)-\/\_\(\backslash\)?\%\(\backslash\)=\#\(\backslash\)!\(\backslash\):@\(\backslash\)|\string~\(\backslash\)\(\backslash\)\(\backslash\)/`"{}\(\backslash\)(>\(\backslash\))\(\backslash\)[<\(\backslash\)]d\(\backslash\)\{\(\backslash\)\}s\(\backslash\),}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2730}{}\doxysection{\texorpdfstring{Errors}{Errors}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2730}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2731}{}\doxysubsubsection{\texorpdfstring{assert(condition, message)}{assert(condition, message)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2731}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ a\ =\ 1,\ b\ =\ 2;}
+\DoxyCodeLine{}
+\DoxyCodeLine{Hoek.assert(a\ ===\ b,\ 'a\ should\ equal\ b');\ \ //\ Throws\ 'a\ should\ equal\ b'}
+
+\end{DoxyCode}
+
+
+Note that you may also pass an already created Error object as the second parameter, and {\ttfamily assert} will throw that object.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ a\ =\ 1,\ b\ =\ 2;}
+\DoxyCodeLine{}
+\DoxyCodeLine{Hoek.assert(a\ ===\ b,\ new\ Error('a\ should\ equal\ b'));\ //\ Throws\ the\ given\ error\ object}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2732}{}\doxysubsubsection{\texorpdfstring{abort(message)}{abort(message)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2732}
+First checks if `process.\+env.\+NODE\+\_\+\+ENV === \textquotesingle{}test'\`{}, and if so, throws error message. Otherwise, displays most recent stack and then exits process.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2733}{}\doxysubsubsection{\texorpdfstring{display\+Stack(slice)}{display\+Stack(slice)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2733}
+Displays the trace stack
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ stack\ =\ Hoek.displayStack();}
+\DoxyCodeLine{console.log(stack);\ //\ returns\ something\ like:}
+\DoxyCodeLine{}
+\DoxyCodeLine{[\ 'null\ (/Users/user/Desktop/hoek/test.js:4:18)',}
+\DoxyCodeLine{\ \ 'Module.\_compile\ (module.js:449:26)',}
+\DoxyCodeLine{\ \ 'Module.\_extensions..js\ (module.js:467:10)',}
+\DoxyCodeLine{\ \ 'Module.load\ (module.js:356:32)',}
+\DoxyCodeLine{\ \ 'Module.\_load\ (module.js:312:12)',}
+\DoxyCodeLine{\ \ 'Module.runMain\ (module.js:492:10)',}
+\DoxyCodeLine{\ \ 'startup.processNextTick.process.\_tickCallback\ (node.js:244:9)'\ ]}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2734}{}\doxysubsubsection{\texorpdfstring{call\+Stack(slice)}{call\+Stack(slice)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2734}
+Returns a trace stack array.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ stack\ =\ Hoek.callStack();}
+\DoxyCodeLine{console.log(stack);\ \ //\ returns\ something\ like:}
+\DoxyCodeLine{}
+\DoxyCodeLine{[\ [\ '/Users/user/Desktop/hoek/test.js',\ 4,\ 18,\ null,\ false\ ],}
+\DoxyCodeLine{\ \ [\ 'module.js',\ 449,\ 26,\ 'Module.\_compile',\ false\ ],}
+\DoxyCodeLine{\ \ [\ 'module.js',\ 467,\ 10,\ 'Module.\_extensions..js',\ false\ ],}
+\DoxyCodeLine{\ \ [\ 'module.js',\ 356,\ 32,\ 'Module.load',\ false\ ],}
+\DoxyCodeLine{\ \ [\ 'module.js',\ 312,\ 12,\ 'Module.\_load',\ false\ ],}
+\DoxyCodeLine{\ \ [\ 'module.js',\ 492,\ 10,\ 'Module.runMain',\ false\ ],}
+\DoxyCodeLine{\ \ [\ 'node.js',}
+\DoxyCodeLine{\ \ \ \ 244,}
+\DoxyCodeLine{\ \ \ \ 9,}
+\DoxyCodeLine{\ \ \ \ 'startup.processNextTick.process.\_tickCallback',}
+\DoxyCodeLine{\ \ \ \ false\ ]\ ]}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2735}{}\doxysubsection{\texorpdfstring{Function}{Function}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2735}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2736}{}\doxysubsubsection{\texorpdfstring{next\+Tick(fn)}{next\+Tick(fn)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2736}
+Returns a new function that wraps {\ttfamily fn} in {\ttfamily process.\+next\+Tick}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ myFn\ =\ function\ ()\ \{}
+\DoxyCodeLine{\ \ \ \ console.log('Do\ this\ later');}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ nextFn\ =\ Hoek.nextTick(myFn);}
+\DoxyCodeLine{}
+\DoxyCodeLine{nextFn();}
+\DoxyCodeLine{console.log('Do\ this\ first');}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Results\ in:}
+\DoxyCodeLine{//}
+\DoxyCodeLine{//\ Do\ this\ first}
+\DoxyCodeLine{//\ Do\ this\ later}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2737}{}\doxysubsubsection{\texorpdfstring{once(fn)}{once(fn)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2737}
+Returns a new function that can be run multiple times, but makes sure {\ttfamily fn} is only run once.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ myFn\ =\ function\ ()\ \{}
+\DoxyCodeLine{\ \ \ \ console.log('Ran\ myFn');}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ onceFn\ =\ Hoek.once(myFn);}
+\DoxyCodeLine{onceFn();\ //\ results\ in\ "{}Ran\ myFn"{}}
+\DoxyCodeLine{onceFn();\ //\ results\ in\ undefined}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2738}{}\doxysubsubsection{\texorpdfstring{ignore}{ignore}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2738}
+A simple no-\/op function. It does nothing at all.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2739}{}\doxysubsection{\texorpdfstring{Miscellaneous}{Miscellaneous}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2739}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2740}{}\doxysubsubsection{\texorpdfstring{unique\+Filename(path, extension)}{unique\+Filename(path, extension)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2740}
+{\ttfamily path} to prepend with the randomly generated file name. {\ttfamily extension} is the optional file extension, defaults to `'\textquotesingle{}\`{}.
+
+Returns a randomly generated file name at the specified {\ttfamily path}. The result is a fully resolved path to a file.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ result\ =\ Hoek.uniqueFilename('./test/modules',\ 'txt');\ //\ results\ in\ "{}full/path/test/modules/\{random\}.txt"{}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2741}{}\doxysubsubsection{\texorpdfstring{is\+Absolute\+Path(path, \mbox{[}platform\mbox{]})}{is\+Absolute\+Path(path, \mbox{[}platform\mbox{]})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2741}
+Determines whether {\ttfamily path} is an absolute path. Returns {\ttfamily true} or {\ttfamily false}.
+
+
+\begin{DoxyItemize}
+\item {\ttfamily path} -\/ A file path to test for whether it is absolute or not.
+\item {\ttfamily platform} -\/ An optional parameter used for specifying the platform. Defaults to {\ttfamily process.\+platform}.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2742}{}\doxysubsubsection{\texorpdfstring{is\+Integer(value)}{is\+Integer(value)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_ainslie_a_p_i_2wwwroot_2lib_2jquery-ui_2node__m9b65a23f7fdd1ebde5538c413eba35fd_autotoc_md2742}
+Check {\ttfamily value} to see if it is an integer. Returns true/false.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ result\ =\ Hoek.isInteger('23')}
+
+\end{DoxyCode}
+ 
