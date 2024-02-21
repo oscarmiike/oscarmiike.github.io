@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['paircode_0',['PairCode',['../class_task_a_p_i_1_1_models_1_1_base_spot.html#a53103d0d5c3876af06947e4d7be0d541',1,'TaskAPI.Models.BaseSpot.PairCode'],['../class_task_a_p_i_1_1_models_1_1_daily_close.html#ae903aaf596d53c9576b83aa0e4902694',1,'TaskAPI.Models.DailyClose.PairCode']]],
-  ['paircode_1',['pairCode',['../class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_priceapp_asset.html#af877064e118df47f9268724f83b6b3da',1,'TaskAPI::Models::DTO::InternalAPI::PriceappAsset']]],
+  ['paircode_0',['pairCode',['../class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_priceapp_asset.html#af877064e118df47f9268724f83b6b3da',1,'TaskAPI::Models::DTO::InternalAPI::PriceappAsset']]],
+  ['paircode_1',['PairCode',['../class_task_a_p_i_1_1_models_1_1_base_spot.html#a53103d0d5c3876af06947e4d7be0d541',1,'TaskAPI.Models.BaseSpot.PairCode'],['../class_task_a_p_i_1_1_models_1_1_daily_close.html#ae903aaf596d53c9576b83aa0e4902694',1,'TaskAPI.Models.DailyClose.PairCode']]],
   ['per_2',['Per',['../class_task_a_p_i_1_1_models_1_1_base_spot.html#ab3600a5fdeeb3b217052fc5a8b7ca6be',1,'TaskAPI.Models.BaseSpot.Per'],['../class_task_a_p_i_1_1_models_1_1_daily_close.html#a64dc48afd5a571f3d31458000e8673f6',1,'TaskAPI.Models.DailyClose.Per']]],
   ['period_5fstart_3',['period_start',['../class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_forex_response_1_1_head.html#a2e73e89a5dcf1ef2a4404df19091fe51',1,'TaskAPI::Models::DTO::ForexResponse::Head']]],
   ['period_5ftimer_4',['period_timer',['../class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_forex_response_1_1_head.html#ac5986829e84d8de024d9ede83dc1ceb8',1,'TaskAPI::Models::DTO::ForexResponse::Head']]],

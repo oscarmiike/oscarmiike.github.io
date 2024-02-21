@@ -17,8 +17,8 @@ var searchData=
   ['builder_14',['builder',['../_program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5',1,'Program.cs']]],
   ['buildmodel_15',['BuildModel',['../class_task_a_p_i_1_1_migrations_1_1_task_a_p_i_context_model_snapshot.html#a529b81488664fae4dd580186578e9733',1,'TaskAPI::Migrations::TaskAPIContextModelSnapshot']]],
   ['buildtargetmodel_16',['BuildTargetModel',['../class_task_a_p_i_1_1_migrations_1_1initial.html#ad87ec958374d5f267467998bea3ada34',1,'TaskAPI.Migrations.initial.BuildTargetModel()'],['../class_task_a_p_i_1_1_migrations_1_1_add_notification_minimum_frequency.html#a6b5b008f08646c818828d08b36c97ba6',1,'TaskAPI.Migrations.AddNotificationMinimumFrequency.BuildTargetModel()'],['../class_task_a_p_i_1_1_migrations_1_1renamealertnotifications.html#a4fc854015d00da92c16ceec40e068b6b',1,'TaskAPI.Migrations.renamealertnotifications.BuildTargetModel()']]],
-  ['buy_17',['buy',['../class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_priceapp_asset.html#afc9e92a6677ff162f83e6bdea5f8b405',1,'TaskAPI::Models::DTO::InternalAPI::PriceappAsset']]],
-  ['buy_18',['Buy',['../class_task_a_p_i_1_1_models_1_1_daily_close.html#a3636786825d8b64a0ec54277d98706a0',1,'TaskAPI::Models::DailyClose']]],
+  ['buy_17',['Buy',['../class_task_a_p_i_1_1_models_1_1_daily_close.html#a3636786825d8b64a0ec54277d98706a0',1,'TaskAPI::Models::DailyClose']]],
+  ['buy_18',['buy',['../class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_priceapp_asset.html#afc9e92a6677ff162f83e6bdea5f8b405',1,'TaskAPI::Models::DTO::InternalAPI::PriceappAsset']]],
   ['buyadjustment_19',['buyAdjustment',['../class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_priceapp_asset_1_1_pricemode.html#a0632d1005eb288c6f8083cbab2e71b5d',1,'TaskAPI::Models::DTO::InternalAPI::PriceappAsset::Pricemode']]],
   ['buyspread_20',['buySpread',['../class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_priceapp_asset.html#a597c892c0a74125590a372106b870f00',1,'TaskAPI::Models::DTO::InternalAPI::PriceappAsset']]]
 ];

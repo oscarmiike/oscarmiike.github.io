@@ -7,11 +7,9 @@ builder.\+Services. \mbox{\hyperlink{_program_8cs_abc3694a0e15618f2499e5a540264f
 \item 
 builder.\+Services. \mbox{\hyperlink{_program_8cs_a0d7859f9cad50e8e9fdf015100780e07}{Add\+Endpoints\+Api\+Explorer}} ()
 \item 
-builder.\+Services. \mbox{\hyperlink{_program_8cs_a699bfc329a18cb762e402fe8ff035c14}{Add\+Swagger\+Gen}} (c=$>$ \{ c.\+Swagger\+Doc("{}v1"{}, new Open\+Api\+Info \{ Title="{}Task\+API"{}, Version="{}v1"{} \});var xml\+File=\$"{}\{Assembly.\+Get\+Executing\+Assembly().Get\+Name().Name\}.xml"{};var xml\+Path=Path.\+Combine(App\+Context.\+Base\+Directory, xml\+File);c.\+Include\+Xml\+Comments(xml\+Path);\})
+builder.\+Services. \mbox{\hyperlink{_program_8cs_ae0ce43c019a5621d731d0c622c793644}{Add\+Swagger\+Gen}} ()
 \item 
-builder.\+Configuration. \mbox{\hyperlink{_program_8cs_a0b0a61302465f84e10a492247e18ac4a}{Add\+Json\+File}} (\$"{}Log\+Notifications\+Settings.\{builder.\+Environment.\+Environment\+Name\}.json"{}, true, true)
-\item 
-builder.\+Services. \mbox{\hyperlink{_program_8cs_a55b38d30b3ba9829e6c746f30eeb9195}{Configure$<$ Log\+Notifications\+Settings $>$}} (builder.\+Configuration)
+builder.\+Services. \mbox{\hyperlink{_program_8cs_a9a5cffd4bc34832746c9024143502719}{Add\+Scoped}} (service\+Provider=$>$ \{ var json=File.\+Read\+All\+Text("{}Log\+Notifications\+Settings.\+json"{});return Json\+Convert.\+Deserialize\+Object$<$ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_log_notifications_settings}{Log\+Notifications\+Settings}} $>$(json) ?? new \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_log_notifications_settings}{Log\+Notifications\+Settings}}();\})
 \item 
 builder.\+Services. \mbox{\hyperlink{_program_8cs_a9c04fe3c7c4ab4768145960864c3be6b}{Configure$<$ Task\+APISettings $>$}} (builder.\+Configuration.\+Get\+Section("{}Task\+APISettings"{}))
 \item 
@@ -77,65 +75,59 @@ var \mbox{\hyperlink{_program_8cs_a7b225fcb720e4d5ed2bbf60e28a25e6d}{app}} = bui
 \doxysubsubsection{\texorpdfstring{AddEndpointsApiExplorer()}{AddEndpointsApiExplorer()}}
 {\footnotesize\ttfamily builder.\+Services. Add\+Endpoints\+Api\+Explorer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-\Hypertarget{_program_8cs_a0b0a61302465f84e10a492247e18ac4a}\label{_program_8cs_a0b0a61302465f84e10a492247e18ac4a} 
-\index{Program.cs@{Program.cs}!AddJsonFile@{AddJsonFile}}
-\index{AddJsonFile@{AddJsonFile}!Program.cs@{Program.cs}}
-\doxysubsubsection{\texorpdfstring{AddJsonFile()}{AddJsonFile()}}
-{\footnotesize\ttfamily builder.\+Configuration. Add\+Json\+File (\begin{DoxyParamCaption}\item[{}]{\$"{}\+Log\+Notifications\+Settings.\{builder.\+Environment.\+Environment\+Name\}.\+json"{},  }\item[{true}]{,  }\item[{true}]{ }\end{DoxyParamCaption})}
+\Hypertarget{_program_8cs_a9a5cffd4bc34832746c9024143502719}\label{_program_8cs_a9a5cffd4bc34832746c9024143502719} 
+\index{Program.cs@{Program.cs}!AddScoped@{AddScoped}}
+\index{AddScoped@{AddScoped}!Program.cs@{Program.cs}}
+\doxysubsubsection{\texorpdfstring{AddScoped()}{AddScoped()}}
+{\footnotesize\ttfamily builder.\+Services. Add\+Scoped (\begin{DoxyParamCaption}\item[{service\+Provider}]{,  }\item[{\{ var json=File.\+Read\+All\+Text("{}Log\+Notifications\+Settings.\+json"{});return Json\+Convert.\+Deserialize\+Object$<$ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_log_notifications_settings}{Log\+Notifications\+Settings}} $>$(json) ?? new \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_log_notifications_settings}{Log\+Notifications\+Settings}}();\}}]{ }\end{DoxyParamCaption})}
 
 \Hypertarget{_program_8cs_abe49dc9753ffee15698743dc694be732}\label{_program_8cs_abe49dc9753ffee15698743dc694be732} 
 \index{Program.cs@{Program.cs}!AddScoped$<$ AlchemyService $>$@{AddScoped$<$ AlchemyService $>$}}
 \index{AddScoped$<$ AlchemyService $>$@{AddScoped$<$ AlchemyService $>$}!Program.cs@{Program.cs}}
 \doxysubsubsection{\texorpdfstring{AddScoped$<$ AlchemyService $>$()}{AddScoped< AlchemyService >()}}
-{\footnotesize\ttfamily builder.\+Services. Add\+Scoped$<$ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_alchemy_service}{Alchemy\+Service}} $>$ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily builder.\+Services. \mbox{\hyperlink{_program_8cs_a9a5cffd4bc34832746c9024143502719}{Add\+Scoped}}$<$ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_alchemy_service}{Alchemy\+Service}} $>$ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 \Hypertarget{_program_8cs_a02045c95bd3bb9ec253724c423699d5c}\label{_program_8cs_a02045c95bd3bb9ec253724c423699d5c} 
 \index{Program.cs@{Program.cs}!AddScoped$<$ BinanceService $>$@{AddScoped$<$ BinanceService $>$}}
 \index{AddScoped$<$ BinanceService $>$@{AddScoped$<$ BinanceService $>$}!Program.cs@{Program.cs}}
 \doxysubsubsection{\texorpdfstring{AddScoped$<$ BinanceService $>$()}{AddScoped< BinanceService >()}}
-{\footnotesize\ttfamily builder.\+Services. Add\+Scoped$<$ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_binance_service}{Binance\+Service}} $>$ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily builder.\+Services. \mbox{\hyperlink{_program_8cs_a9a5cffd4bc34832746c9024143502719}{Add\+Scoped}}$<$ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_binance_service}{Binance\+Service}} $>$ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 \Hypertarget{_program_8cs_a158b9bc265a8d191ea73d8fa7d0e757d}\label{_program_8cs_a158b9bc265a8d191ea73d8fa7d0e757d} 
 \index{Program.cs@{Program.cs}!AddScoped$<$ ForexService $>$@{AddScoped$<$ ForexService $>$}}
 \index{AddScoped$<$ ForexService $>$@{AddScoped$<$ ForexService $>$}!Program.cs@{Program.cs}}
 \doxysubsubsection{\texorpdfstring{AddScoped$<$ ForexService $>$()}{AddScoped< ForexService >()}}
-{\footnotesize\ttfamily builder.\+Services. Add\+Scoped$<$ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_forex_service}{Forex\+Service}} $>$ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily builder.\+Services. \mbox{\hyperlink{_program_8cs_a9a5cffd4bc34832746c9024143502719}{Add\+Scoped}}$<$ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_forex_service}{Forex\+Service}} $>$ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 \Hypertarget{_program_8cs_a9dff6f1988eff956b8c2380b7159d686}\label{_program_8cs_a9dff6f1988eff956b8c2380b7159d686} 
 \index{Program.cs@{Program.cs}!AddScoped$<$ InternalAPIService $>$@{AddScoped$<$ InternalAPIService $>$}}
 \index{AddScoped$<$ InternalAPIService $>$@{AddScoped$<$ InternalAPIService $>$}!Program.cs@{Program.cs}}
 \doxysubsubsection{\texorpdfstring{AddScoped$<$ InternalAPIService $>$()}{AddScoped< InternalAPIService >()}}
-{\footnotesize\ttfamily builder.\+Services. Add\+Scoped$<$ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service}{Internal\+APIService}} $>$ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily builder.\+Services. \mbox{\hyperlink{_program_8cs_a9a5cffd4bc34832746c9024143502719}{Add\+Scoped}}$<$ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service}{Internal\+APIService}} $>$ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 \Hypertarget{_program_8cs_a637e10e5a52497bab492fa8388a6730e}\label{_program_8cs_a637e10e5a52497bab492fa8388a6730e} 
 \index{Program.cs@{Program.cs}!AddScoped$<$ LogService $>$@{AddScoped$<$ LogService $>$}}
 \index{AddScoped$<$ LogService $>$@{AddScoped$<$ LogService $>$}!Program.cs@{Program.cs}}
 \doxysubsubsection{\texorpdfstring{AddScoped$<$ LogService $>$()}{AddScoped< LogService >()}}
-{\footnotesize\ttfamily builder.\+Services. Add\+Scoped$<$ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{Log\+Service}} $>$ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily builder.\+Services. \mbox{\hyperlink{_program_8cs_a9a5cffd4bc34832746c9024143502719}{Add\+Scoped}}$<$ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{Log\+Service}} $>$ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 \Hypertarget{_program_8cs_a154930520906728d58edfd4fefa0df85}\label{_program_8cs_a154930520906728d58edfd4fefa0df85} 
 \index{Program.cs@{Program.cs}!AddScoped$<$ PriceappHelper $>$@{AddScoped$<$ PriceappHelper $>$}}
 \index{AddScoped$<$ PriceappHelper $>$@{AddScoped$<$ PriceappHelper $>$}!Program.cs@{Program.cs}}
 \doxysubsubsection{\texorpdfstring{AddScoped$<$ PriceappHelper $>$()}{AddScoped< PriceappHelper >()}}
-{\footnotesize\ttfamily builder.\+Services. Add\+Scoped$<$ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_priceapp_helper}{Priceapp\+Helper}} $>$ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily builder.\+Services. \mbox{\hyperlink{_program_8cs_a9a5cffd4bc34832746c9024143502719}{Add\+Scoped}}$<$ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_priceapp_helper}{Priceapp\+Helper}} $>$ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 \Hypertarget{_program_8cs_a55ab64ed67ac7b0a2fd7396bde81b055}\label{_program_8cs_a55ab64ed67ac7b0a2fd7396bde81b055} 
 \index{Program.cs@{Program.cs}!AddScoped$<$ SpotHelper $>$@{AddScoped$<$ SpotHelper $>$}}
 \index{AddScoped$<$ SpotHelper $>$@{AddScoped$<$ SpotHelper $>$}!Program.cs@{Program.cs}}
 \doxysubsubsection{\texorpdfstring{AddScoped$<$ SpotHelper $>$()}{AddScoped< SpotHelper >()}}
-{\footnotesize\ttfamily builder.\+Services. Add\+Scoped$<$ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper}{Spot\+Helper}} $>$ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily builder.\+Services. \mbox{\hyperlink{_program_8cs_a9a5cffd4bc34832746c9024143502719}{Add\+Scoped}}$<$ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper}{Spot\+Helper}} $>$ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-\Hypertarget{_program_8cs_a699bfc329a18cb762e402fe8ff035c14}\label{_program_8cs_a699bfc329a18cb762e402fe8ff035c14} 
+\Hypertarget{_program_8cs_ae0ce43c019a5621d731d0c622c793644}\label{_program_8cs_ae0ce43c019a5621d731d0c622c793644} 
 \index{Program.cs@{Program.cs}!AddSwaggerGen@{AddSwaggerGen}}
 \index{AddSwaggerGen@{AddSwaggerGen}!Program.cs@{Program.cs}}
 \doxysubsubsection{\texorpdfstring{AddSwaggerGen()}{AddSwaggerGen()}}
-{\footnotesize\ttfamily builder.\+Services. Add\+Swagger\+Gen (\begin{DoxyParamCaption}\item[{c}]{,  }\item[{\{ c.\+Swagger\+Doc("{}v1"{}, new Open\+Api\+Info \{ Title="{}Task\+API"{}, Version="{}v1"{} \});var xml\+File=\$"{}\{Assembly.\+Get\+Executing\+Assembly().Get\+Name().Name\}.xml"{};var xml\+Path=Path.\+Combine(App\+Context.\+Base\+Directory, xml\+File);c.\+Include\+Xml\+Comments(xml\+Path);\}}]{ }\end{DoxyParamCaption})}
-
-\Hypertarget{_program_8cs_a55b38d30b3ba9829e6c746f30eeb9195}\label{_program_8cs_a55b38d30b3ba9829e6c746f30eeb9195} 
-\index{Program.cs@{Program.cs}!Configure$<$ LogNotificationsSettings $>$@{Configure$<$ LogNotificationsSettings $>$}}
-\index{Configure$<$ LogNotificationsSettings $>$@{Configure$<$ LogNotificationsSettings $>$}!Program.cs@{Program.cs}}
-\doxysubsubsection{\texorpdfstring{Configure$<$ LogNotificationsSettings $>$()}{Configure< LogNotificationsSettings >()}}
-{\footnotesize\ttfamily builder.\+Services. Configure$<$ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_log_notifications_settings}{Log\+Notifications\+Settings}} $>$ (\begin{DoxyParamCaption}\item[{builder.}]{Configuration }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily builder.\+Services. Add\+Swagger\+Gen (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 \Hypertarget{_program_8cs_a9c04fe3c7c4ab4768145960864c3be6b}\label{_program_8cs_a9c04fe3c7c4ab4768145960864c3be6b} 
 \index{Program.cs@{Program.cs}!Configure$<$ TaskAPISettings $>$@{Configure$<$ TaskAPISettings $>$}}
@@ -150,9 +142,13 @@ var \mbox{\hyperlink{_program_8cs_a7b225fcb720e4d5ed2bbf60e28a25e6d}{app}} = bui
 {\footnotesize\ttfamily if (\begin{DoxyParamCaption}\item[{app\+::\+Environment\+::\+Is\+Development()}]{ }\end{DoxyParamCaption})}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00051\ \{}
+\DoxyCodeLine{00052\ \ \ \ \ \mbox{\hyperlink{_program_8cs_a7b225fcb720e4d5ed2bbf60e28a25e6d}{app}}.UseSwagger();}
+\DoxyCodeLine{00053\ \ \ \ \ \mbox{\hyperlink{_program_8cs_a7b225fcb720e4d5ed2bbf60e28a25e6d}{app}}.UseSwaggerUI();}
+\DoxyCodeLine{00054\ \}}
 
-Definition at line \mbox{\hyperlink{_program_8cs_source_l00058}{58}} of file \mbox{\hyperlink{_program_8cs_source}{Program.\+cs}}.
-
+\end{DoxyCode}
 \Hypertarget{_program_8cs_a9e2ee3170aa6279b68eefd1651f7d96c}\label{_program_8cs_a9e2ee3170aa6279b68eefd1651f7d96c} 
 \index{Program.cs@{Program.cs}!MapControllers@{MapControllers}}
 \index{MapControllers@{MapControllers}!Program.cs@{Program.cs}}
@@ -186,17 +182,9 @@ Definition at line \mbox{\hyperlink{_program_8cs_source_l00058}{58}} of file \mb
 \doxysubsubsection{\texorpdfstring{app}{app}}
 {\footnotesize\ttfamily var app = builder.\+Build()}
 
-
-
-Definition at line \mbox{\hyperlink{_program_8cs_source_l00055}{55}} of file \mbox{\hyperlink{_program_8cs_source}{Program.\+cs}}.
-
 \Hypertarget{_program_8cs_a2f78352277081c620fd4cf92a5ce15e5}\label{_program_8cs_a2f78352277081c620fd4cf92a5ce15e5} 
 \index{Program.cs@{Program.cs}!builder@{builder}}
 \index{builder@{builder}!Program.cs@{Program.cs}}
 \doxysubsubsection{\texorpdfstring{builder}{builder}}
 {\footnotesize\ttfamily var builder = Web\+Application.\+Create\+Builder(args)}
-
-
-
-Definition at line \mbox{\hyperlink{_program_8cs_source_l00013}{13}} of file \mbox{\hyperlink{_program_8cs_source}{Program.\+cs}}.
 

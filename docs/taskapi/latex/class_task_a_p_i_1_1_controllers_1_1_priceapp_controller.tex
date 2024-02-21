@@ -31,13 +31,6 @@ Action\+Result$<$ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{Detailed Description}
-
-
-Definition at line \mbox{\hyperlink{_priceapp_controller_8cs_source_l00018}{18}} of file \mbox{\hyperlink{_priceapp_controller_8cs_source}{Priceapp\+Controller.\+cs}}.
-
-
-
 \doxysubsection{Constructor \& Destructor Documentation}
 \Hypertarget{class_task_a_p_i_1_1_controllers_1_1_priceapp_controller_aa1b6143ea6c43b0c70161ec0af8b528c}\label{class_task_a_p_i_1_1_controllers_1_1_priceapp_controller_aa1b6143ea6c43b0c70161ec0af8b528c} 
 \index{TaskAPI.Controllers.PriceappController@{TaskAPI.Controllers.PriceappController}!PriceappController@{PriceappController}}
@@ -46,9 +39,15 @@ Definition at line \mbox{\hyperlink{_priceapp_controller_8cs_source_l00018}{18}}
 {\footnotesize\ttfamily Task\+API.\+Controllers.\+Priceapp\+Controller.\+Priceapp\+Controller (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{Log\+Service}}}]{log\+Service,  }\item[{\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_priceapp_helper}{Priceapp\+Helper}}}]{priceapp\+Helper,  }\item[{\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service}{Internal\+APIService}}}]{iapi\+Service,  }\item[{IOptions$<$ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings}{Task\+APISettings}} $>$}]{settings }\end{DoxyParamCaption})}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00026\ \ \ \ \ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \_logService\ =\ logService;}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \_priceappHelper\ =\ priceappHelper;}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \_iapiService\ =\ iapiService;}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \_settings\ =\ settings.Value;}
+\DoxyCodeLine{00031\ \ \ \ \ \}}
 
-Definition at line \mbox{\hyperlink{_priceapp_controller_8cs_source_l00025}{25}} of file \mbox{\hyperlink{_priceapp_controller_8cs_source}{Priceapp\+Controller.\+cs}}.
-
+\end{DoxyCode}
 
 
 \doxysubsection{Member Function Documentation}
@@ -59,9 +58,26 @@ Definition at line \mbox{\hyperlink{_priceapp_controller_8cs_source_l00025}{25}}
 {\footnotesize\ttfamily IAction\+Result Task\+API.\+Controllers.\+Priceapp\+Controller.\+Save\+Pricesheet (\begin{DoxyParamCaption}\item[{\mbox{[}\+From\+Query\mbox{]} bool?}]{ignore\+Time }\end{DoxyParamCaption})}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00035\ \ \ \ \ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a5c2a67dbd8beb6f821c46b8d052d59ea}{LogInformation}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.PriceappController,\ \textcolor{stringliteral}{"{}price\ sheet\ save\ initiated"{}});}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ var\ result\ =\ \_priceappHelper.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_priceapp_helper_a11fefec93e8edfcd4f1d4c4d91180689}{CreateLivePricesheetPDF}}(ignoreTime);}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (result.Error)}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \_iapiService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_aeffeb1d3d59aeeab65dfe72691d21600}{SendEmail}}(\textcolor{keyword}{new}\ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_email_post}{EmailPost}}()}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ EmailFrom\ =\ \_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_af39dc0933cd608b26e7bc4f82951d356}{GeneralSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings_ac0a0b89d2e7cf7f820e5663a1a4cffbf}{NotificationEmailFrom}},}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ EmailTo\ =\ \_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_af39dc0933cd608b26e7bc4f82951d356}{GeneralSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings_a25434a5471214771ae507f7152073898}{NotificationEmailTo}},}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ NameFrom\ =\ \_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_af39dc0933cd608b26e7bc4f82951d356}{GeneralSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings_a082a8e92b97a7d83196f1d0056241042}{NotificationEmailName}},}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Subject\ =\ \textcolor{stringliteral}{"{}Error\ saving\ pricesheet\ PDF"{}},}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ HTMLBody\ =\ \$\textcolor{stringliteral}{"{}Task\ API\ was\ unable\ to\ save\ the\ Pricesheet\ PDF<br><br>\{JsonConvert.SerializeObject(result)\}"{}}}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a5c2a67dbd8beb6f821c46b8d052d59ea}{LogInformation}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.PriceappController,\ \textcolor{stringliteral}{"{}price\ sheet\ save\ completed"{}},\ result);}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Ok(result.Result);}
+\DoxyCodeLine{00051\ \ \ \ \ \}}
 
-Definition at line \mbox{\hyperlink{_priceapp_controller_8cs_source_l00034}{34}} of file \mbox{\hyperlink{_priceapp_controller_8cs_source}{Priceapp\+Controller.\+cs}}.
-
+\end{DoxyCode}
 Here is the call graph for this function\+:
 \nopagebreak
 \begin{figure}[H]
@@ -77,9 +93,27 @@ Here is the call graph for this function\+:
 {\footnotesize\ttfamily Action\+Result$<$ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result}{Log\+Trim\+Result}} $>$ Task\+API.\+Controllers.\+Priceapp\+Controller.\+Trim\+Logs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00055\ \ \ \ \ \{}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a5c2a67dbd8beb6f821c46b8d052d59ea}{LogInformation}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.PriceappController,\ \textcolor{stringliteral}{"{}priceapp\ log\ trim\ initiated"{}});}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result}{LogTrimResult}}\ result\ =\ \_iapiService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_a8806289389207c5a3ed1e203f1bcbc5c}{PriceappTrimLogs}}();}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (result.\mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result_ac0dcb80f3d1f49fc0fdc79aca9faf210}{error}})}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \_iapiService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_aeffeb1d3d59aeeab65dfe72691d21600}{SendEmail}}(\textcolor{keyword}{new}\ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_email_post}{EmailPost}}()}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ EmailFrom\ =\ \_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_af39dc0933cd608b26e7bc4f82951d356}{GeneralSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings_ac0a0b89d2e7cf7f820e5663a1a4cffbf}{NotificationEmailFrom}},}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ EmailTo\ =\ \_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_af39dc0933cd608b26e7bc4f82951d356}{GeneralSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings_a25434a5471214771ae507f7152073898}{NotificationEmailTo}},}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ NameFrom\ =\ \_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_af39dc0933cd608b26e7bc4f82951d356}{GeneralSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings_a082a8e92b97a7d83196f1d0056241042}{NotificationEmailName}},}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Subject\ =\ \textcolor{stringliteral}{"{}Error\ trimming\ priceapp\ logs"{}},}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ HTMLBody\ =\ \$\textcolor{stringliteral}{"{}Task\ API\ was\ unable\ to\ trim\ priceapp\ logs<br><br>\{JsonConvert.SerializeObject(result)\}"{}}}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a5c2a67dbd8beb6f821c46b8d052d59ea}{LogInformation}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.PriceappController,\ \$\textcolor{stringliteral}{"{}priceapp\ log\ trim\ completed"{}},\ result);}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Ok(result);}
+\DoxyCodeLine{00072\ \ \ \ \ \}}
 
-Definition at line \mbox{\hyperlink{_priceapp_controller_8cs_source_l00054}{54}} of file \mbox{\hyperlink{_priceapp_controller_8cs_source}{Priceapp\+Controller.\+cs}}.
-
+\end{DoxyCode}
 Here is the call graph for this function\+:
 \nopagebreak
 \begin{figure}[H]

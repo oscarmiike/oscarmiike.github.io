@@ -90,10 +90,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a5863f72c89f66991b6ea2172de8e4687" id="r_a5863f72c89f66991b6ea2172de8e4687"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_binance_response.html">BinanceResponse</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5863f72c89f66991b6ea2172de8e4687">PullFeed</a> ()</td></tr>
 <tr class="separator:a5863f72c89f66991b6ea2172de8e4687"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_binance_service_8cs_source.html#l00009">9</a> of file <a class="el" href="_binance_service_8cs_source.html">BinanceService.cs</a>.</p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ac893592a5915de3b9cc0792e04de097d" name="ac893592a5915de3b9cc0792e04de097d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac893592a5915de3b9cc0792e04de097d">&#9670;&#160;</a></span>BinanceService()</h2>
 
@@ -112,9 +109,11 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_binance_service_8cs_source.html#l00014">14</a> of file <a class="el" href="_binance_service_8cs_source.html">BinanceService.cs</a>.</p>
-
+<div class="fragment"><div class="line"><span class="lineno">   15</span>    {</div>
+<div class="line"><span class="lineno">   16</span>        _logService = logService;</div>
+<div class="line"><span class="lineno">   17</span>        _settings = taskAPISettings.Value;</div>
+<div class="line"><span class="lineno">   18</span>    }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -132,9 +131,35 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_binance_service_8cs_source.html#l00020">20</a> of file <a class="el" href="_binance_service_8cs_source.html">BinanceService.cs</a>.</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">   21</span>    {</div>
+<div class="line"><span class="lineno">   22</span>        <a class="code hl_class" href="class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_binance_response.html">BinanceResponse</a> binanceResponse = <span class="keyword">new</span> <a class="code hl_class" href="class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_binance_response.html">BinanceResponse</a>();</div>
+<div class="line"><span class="lineno">   23</span>        <span class="keywordflow">try</span></div>
+<div class="line"><span class="lineno">   24</span>        {</div>
+<div class="line"><span class="lineno">   25</span>            var client = <span class="keyword">new</span> RestClient(_settings.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#a127cce7c28a6e430b091679ca27ef9a7">BinanceSettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_binancesettings.html#ae835a22e33518d6c80c86f7fe2dda7b5">FeedURL</a>);</div>
+<div class="line"><span class="lineno">   26</span>            var request = <span class="keyword">new</span> RestRequest(<span class="stringliteral">&quot;&quot;</span>, Method.Get);</div>
+<div class="line"><span class="lineno">   27</span>            var response = client.Execute(request);</div>
+<div class="line"><span class="lineno">   28</span>            <span class="keywordflow">if</span> (response.IsSuccessful &amp;&amp; response.IsSuccessStatusCode)</div>
+<div class="line"><span class="lineno">   29</span>            {</div>
+<div class="line"><span class="lineno">   30</span>                binanceResponse.Assets = JsonConvert.DeserializeObject&lt;<a class="code hl_class" href="class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_binance_response.html">BinanceResponse</a>.<a class="code hl_class" href="class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_binance_response_1_1_asset.html">Asset</a>[]&gt;(response.Content);</div>
+<div class="line"><span class="lineno">   31</span>            }</div>
+<div class="line"><span class="lineno">   32</span>            <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">   33</span>            {</div>
+<div class="line"><span class="lineno">   34</span>                _logService.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a46dc9bf58bc9605c7e17dfee38b94354">LogError</a>(LogService.LogSources.BinanceService, <span class="stringliteral">&quot;error getting binance data feed, response was not successful&quot;</span>, $<span class="stringliteral">&quot;response status: {response.ResponseStatus}&quot;</span>, $<span class="stringliteral">&quot;response status description: {response.StatusDescription}&quot;</span>);</div>
+<div class="line"><span class="lineno">   35</span>            }</div>
+<div class="line"><span class="lineno">   36</span>        }</div>
+<div class="line"><span class="lineno">   37</span>        <span class="keywordflow">catch</span> (Exception ex)</div>
+<div class="line"><span class="lineno">   38</span>        {</div>
+<div class="line"><span class="lineno">   39</span>            _logService.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a78c9df658858fa3099eed69421423898">LogException</a>(LogService.LogSources.ForexService, <span class="stringliteral">&quot;exception getting binance feed data&quot;</span>, ex);</div>
+<div class="line"><span class="lineno">   40</span>        }</div>
+<div class="line"><span class="lineno">   41</span>        <span class="keywordflow">return</span> binanceResponse;</div>
+<div class="line"><span class="lineno">   42</span>    }</div>
+<div class="ttc" id="aclass_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_binancesettings_html_ae835a22e33518d6c80c86f7fe2dda7b5"><div class="ttname"><a href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_binancesettings.html#ae835a22e33518d6c80c86f7fe2dda7b5">TaskAPI.Helpers.Settings.TaskAPISettings.Binancesettings.FeedURL</a></div><div class="ttdeci">string FeedURL</div><div class="ttdef"><b>Definition</b> TaskAPISettings.cs:122</div></div>
+<div class="ttc" id="aclass_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_html_a127cce7c28a6e430b091679ca27ef9a7"><div class="ttname"><a href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#a127cce7c28a6e430b091679ca27ef9a7">TaskAPI.Helpers.Settings.TaskAPISettings.BinanceSettings</a></div><div class="ttdeci">Binancesettings BinanceSettings</div><div class="ttdef"><b>Definition</b> TaskAPISettings.cs:14</div></div>
+<div class="ttc" id="aclass_task_a_p_i_1_1_models_1_1_d_t_o_1_1_binance_response_1_1_asset_html"><div class="ttname"><a href="class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_binance_response_1_1_asset.html">TaskAPI.Models.DTO.BinanceResponse.Asset</a></div><div class="ttdef"><b>Definition</b> BinanceResponse.cs:8</div></div>
+<div class="ttc" id="aclass_task_a_p_i_1_1_models_1_1_d_t_o_1_1_binance_response_html"><div class="ttname"><a href="class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_binance_response.html">TaskAPI.Models.DTO.BinanceResponse</a></div><div class="ttdef"><b>Definition</b> BinanceResponse.cs:4</div></div>
+<div class="ttc" id="aclass_task_a_p_i_1_1_services_1_1_log_service_html_a46dc9bf58bc9605c7e17dfee38b94354"><div class="ttname"><a href="class_task_a_p_i_1_1_services_1_1_log_service.html#a46dc9bf58bc9605c7e17dfee38b94354">TaskAPI.Services.LogService.LogError</a></div><div class="ttdeci">LogEntry LogError(LogSources logSource, params object[] dataList)</div><div class="ttdef"><b>Definition</b> LogService.cs:74</div></div>
+<div class="ttc" id="aclass_task_a_p_i_1_1_services_1_1_log_service_html_a78c9df658858fa3099eed69421423898"><div class="ttname"><a href="class_task_a_p_i_1_1_services_1_1_log_service.html#a78c9df658858fa3099eed69421423898">TaskAPI.Services.LogService.LogException</a></div><div class="ttdeci">LogEntry LogException(LogSources logSource, params object[] dataList)</div><div class="ttdef"><b>Definition</b> LogService.cs:80</div></div>
+</div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_task_a_p_i_1_1_services_1_1_binance_service_a5863f72c89f66991b6ea2172de8e4687_cgraph.png" border="0" usemap="#aclass_task_a_p_i_1_1_services_1_1_binance_service_a5863f72c89f66991b6ea2172de8e4687_cgraph" alt=""/></div>
@@ -153,7 +178,7 @@ Here is the call graph for this function:</div>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>C:/Users/STRIDER/source/repos/TaskAPI/Services/<a class="el" href="_binance_service_8cs_source.html">BinanceService.cs</a></li>
+<li>C:/Users/STRIDER/source/repos/TaskAPI/Services/<a class="el" href="_binance_service_8cs.html">BinanceService.cs</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

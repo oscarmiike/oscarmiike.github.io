@@ -1,8 +1,8 @@
 var searchData=
 [
   ['dailycloses_0',['DailyCloses',['../class_task_a_p_i_1_1_contexts_1_1_priceapp_context.html#a0a63b303899246b496a42f08da57bd43',1,'TaskAPI::Contexts::PriceappContext']]],
-  ['data_1',['data',['../class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_forex_response.html#a945a66fb427a67f5d20d34c39b869d74',1,'TaskAPI::Models::DTO::ForexResponse']]],
-  ['data_2',['Data',['../class_task_a_p_i_1_1_models_1_1_log_entry.html#a3aa8306673dba4a85245e0e61fbaf8e9',1,'TaskAPI::Models::LogEntry']]],
+  ['data_1',['Data',['../class_task_a_p_i_1_1_models_1_1_log_entry.html#a3aa8306673dba4a85245e0e61fbaf8e9',1,'TaskAPI::Models::LogEntry']]],
+  ['data_2',['data',['../class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_forex_response.html#a945a66fb427a67f5d20d34c39b869d74',1,'TaskAPI::Models::DTO::ForexResponse']]],
   ['data_5finterval_3',['data_interval',['../class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_forex_response_1_1_head.html#afc8340c7bcfd17a5eefff7ef7519351b',1,'TaskAPI::Models::DTO::ForexResponse::Head']]],
   ['daterangeendutc_4',['dateRangeEndUTC',['../class_task_a_p_i_1_1_controllers_1_1_logs_controller_1_1_log_request.html#a39e2c1d23cc207fe01c4f6502e8abfea',1,'TaskAPI::Controllers::LogsController::LogRequest']]],
   ['daterangestartutc_5',['dateRangeStartUTC',['../class_task_a_p_i_1_1_controllers_1_1_logs_controller_1_1_log_request.html#a43a9919f7bdf2c60a61d5d37cd94773e',1,'TaskAPI::Controllers::LogsController::LogRequest']]],

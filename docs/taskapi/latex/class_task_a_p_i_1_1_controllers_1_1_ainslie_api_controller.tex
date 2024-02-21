@@ -29,13 +29,6 @@ Action\+Result$<$ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{Detailed Description}
-
-
-Definition at line \mbox{\hyperlink{_ainslie_api_controller_8cs_source_l00018}{18}} of file \mbox{\hyperlink{_ainslie_api_controller_8cs_source}{Ainslie\+Api\+Controller.\+cs}}.
-
-
-
 \doxysubsection{Constructor \& Destructor Documentation}
 \Hypertarget{class_task_a_p_i_1_1_controllers_1_1_ainslie_api_controller_a5659b2ee9b31de60fd642ab0e61a0f75}\label{class_task_a_p_i_1_1_controllers_1_1_ainslie_api_controller_a5659b2ee9b31de60fd642ab0e61a0f75} 
 \index{TaskAPI.Controllers.AinslieApiController@{TaskAPI.Controllers.AinslieApiController}!AinslieApiController@{AinslieApiController}}
@@ -44,9 +37,14 @@ Definition at line \mbox{\hyperlink{_ainslie_api_controller_8cs_source_l00018}{1
 {\footnotesize\ttfamily Task\+API.\+Controllers.\+Ainslie\+Api\+Controller.\+Ainslie\+Api\+Controller (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{Log\+Service}}}]{log\+Service,  }\item[{\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service}{Internal\+APIService}}}]{internal\+APIService,  }\item[{IOptions$<$ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings}{Task\+APISettings}} $>$}]{settings }\end{DoxyParamCaption})}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00025\ \ \ \ \ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \_logService\ =\ logService;}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \_iapiService\ =\ internalAPIService;}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \_settings\ =\ settings.Value;}
+\DoxyCodeLine{00029\ \ \ \ \ \}}
 
-Definition at line \mbox{\hyperlink{_ainslie_api_controller_8cs_source_l00024}{24}} of file \mbox{\hyperlink{_ainslie_api_controller_8cs_source}{Ainslie\+Api\+Controller.\+cs}}.
-
+\end{DoxyCode}
 
 
 \doxysubsection{Member Function Documentation}
@@ -57,9 +55,27 @@ Definition at line \mbox{\hyperlink{_ainslie_api_controller_8cs_source_l00024}{2
 {\footnotesize\ttfamily Action\+Result$<$ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result}{Log\+Trim\+Result}} $>$ Task\+API.\+Controllers.\+Ainslie\+Api\+Controller.\+Trim\+Logs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00033\ \ \ \ \ \{}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a5c2a67dbd8beb6f821c46b8d052d59ea}{LogInformation}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.AinslieApiController,\ \textcolor{stringliteral}{"{}ainslie\ api\ log\ trim\ initiated"{}});}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result}{LogTrimResult}}\ result\ =\ \_iapiService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_a8a31c4c8d5371ef13d5ab0da08186829}{AinslieApiTrimLogs}}();}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (result.\mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result_ac0dcb80f3d1f49fc0fdc79aca9faf210}{error}})}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \_iapiService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_aeffeb1d3d59aeeab65dfe72691d21600}{SendEmail}}(\textcolor{keyword}{new}\ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_email_post}{EmailPost}}()}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ EmailFrom\ =\ \_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_af39dc0933cd608b26e7bc4f82951d356}{GeneralSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings_ac0a0b89d2e7cf7f820e5663a1a4cffbf}{NotificationEmailFrom}},}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ EmailTo\ =\ \_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_af39dc0933cd608b26e7bc4f82951d356}{GeneralSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings_a25434a5471214771ae507f7152073898}{NotificationEmailTo}},}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ NameFrom\ =\ \_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_af39dc0933cd608b26e7bc4f82951d356}{GeneralSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings_a082a8e92b97a7d83196f1d0056241042}{NotificationEmailName}},}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Subject\ =\ \textcolor{stringliteral}{"{}Error\ trimming\ ainslie\ api\ logs"{}},}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ HTMLBody\ =\ \$\textcolor{stringliteral}{"{}Task\ API\ was\ unable\ to\ trim\ ainslie\ api\ logs<br><br>\{JsonConvert.SerializeObject(result)\}"{}}}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a5c2a67dbd8beb6f821c46b8d052d59ea}{LogInformation}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.AinslieApiController,\ \$\textcolor{stringliteral}{"{}ainslie\ api\ log\ trim\ completed"{}},\ result);}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Ok(result);}
+\DoxyCodeLine{00050\ \ \ \ \ \}}
 
-Definition at line \mbox{\hyperlink{_ainslie_api_controller_8cs_source_l00032}{32}} of file \mbox{\hyperlink{_ainslie_api_controller_8cs_source}{Ainslie\+Api\+Controller.\+cs}}.
-
+\end{DoxyCode}
 Here is the call graph for this function\+:
 \nopagebreak
 \begin{figure}[H]

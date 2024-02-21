@@ -31,13 +31,6 @@ IAction\+Result \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_spot_contr
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{Detailed Description}
-
-
-Definition at line \mbox{\hyperlink{_spot_controller_8cs_source_l00015}{15}} of file \mbox{\hyperlink{_spot_controller_8cs_source}{Spot\+Controller.\+cs}}.
-
-
-
 \doxysubsection{Constructor \& Destructor Documentation}
 \Hypertarget{class_task_a_p_i_1_1_controllers_1_1_spot_controller_a619cb6a4f328cb89727d19e7cf83dc28}\label{class_task_a_p_i_1_1_controllers_1_1_spot_controller_a619cb6a4f328cb89727d19e7cf83dc28} 
 \index{TaskAPI.Controllers.SpotController@{TaskAPI.Controllers.SpotController}!SpotController@{SpotController}}
@@ -46,9 +39,15 @@ Definition at line \mbox{\hyperlink{_spot_controller_8cs_source_l00015}{15}} of 
 {\footnotesize\ttfamily Task\+API.\+Controllers.\+Spot\+Controller.\+Spot\+Controller (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{Log\+Service}}}]{log\+Service,  }\item[{\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper}{Spot\+Helper}}}]{spot\+Helper,  }\item[{\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service}{Internal\+APIService}}}]{internal\+APIService,  }\item[{IOptions$<$ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings}{Task\+APISettings}} $>$}]{task\+APISettings }\end{DoxyParamCaption})}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00023\ \ \ \ \ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \_logService\ =\ logService;\ \ \ }
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \_spotHelper\ =\ spotHelper;}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \_iapiService\ =\ internalAPIService;}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \_settings\ =\ taskAPISettings.Value;}
+\DoxyCodeLine{00028\ \ \ \ \ \}}
 
-Definition at line \mbox{\hyperlink{_spot_controller_8cs_source_l00022}{22}} of file \mbox{\hyperlink{_spot_controller_8cs_source}{Spot\+Controller.\+cs}}.
-
+\end{DoxyCode}
 
 
 \doxysubsection{Member Function Documentation}
@@ -59,9 +58,27 @@ Definition at line \mbox{\hyperlink{_spot_controller_8cs_source_l00022}{22}} of 
 {\footnotesize\ttfamily IAction\+Result Task\+API.\+Controllers.\+Spot\+Controller.\+Save\+Daily (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00042\ \ \ \ \ \{}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a5c2a67dbd8beb6f821c46b8d052d59ea}{LogInformation}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.SpotController,\ \textcolor{stringliteral}{"{}Save\ daily\ spot\ initiated"{}});}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ var\ result\ =\ \_spotHelper.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a6b975ced6fddc4826a8950c8a250b926}{SaveDailySpot}}();}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (result.Error)}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a46dc9bf58bc9605c7e17dfee38b94354}{LogError}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.SpotController,\ \textcolor{stringliteral}{"{}error\ saving\ daily\ spot"{}},\ result.Result);}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \_iapiService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_aeffeb1d3d59aeeab65dfe72691d21600}{SendEmail}}(\textcolor{keyword}{new}\ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_email_post}{EmailPost}}()}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ EmailFrom\ =\ \_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_af39dc0933cd608b26e7bc4f82951d356}{GeneralSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings_ac0a0b89d2e7cf7f820e5663a1a4cffbf}{NotificationEmailFrom}},}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ EmailTo\ =\ \_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_af39dc0933cd608b26e7bc4f82951d356}{GeneralSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings_a25434a5471214771ae507f7152073898}{NotificationEmailTo}},}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ NameFrom\ =\ \_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_af39dc0933cd608b26e7bc4f82951d356}{GeneralSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings_a082a8e92b97a7d83196f1d0056241042}{NotificationEmailName}},}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Subject\ =\ \textcolor{stringliteral}{"{}error\ saving\ daily\ spot"{}},}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ HTMLBody\ =\ \$\textcolor{stringliteral}{"{}task\ API\ was\ unable\ to\ save\ the\ daily\ spot\(\backslash\)n\{result.Result\}"{}}}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ BadRequest(result.Result);}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Ok(result.Result);}
+\DoxyCodeLine{00059\ \ \ \ \ \}}
 
-Definition at line \mbox{\hyperlink{_spot_controller_8cs_source_l00041}{41}} of file \mbox{\hyperlink{_spot_controller_8cs_source}{Spot\+Controller.\+cs}}.
-
+\end{DoxyCode}
 Here is the call graph for this function\+:
 \nopagebreak
 \begin{figure}[H]
@@ -77,9 +94,16 @@ Here is the call graph for this function\+:
 {\footnotesize\ttfamily IAction\+Result Task\+API.\+Controllers.\+Spot\+Controller.\+Sync (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00032\ \ \ \ \ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a5c2a67dbd8beb6f821c46b8d052d59ea}{LogInformation}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.SpotController,\ \textcolor{stringliteral}{"{}spot\ sync\ initiated"{}});}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\_spotHelper.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a89a665897ed47f9b7065ce771100b83c}{CanSync}}())\ }
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a5c2a67dbd8beb6f821c46b8d052d59ea}{LogInformation}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.SpotController,\ \textcolor{stringliteral}{"{}metal\ market\ closed"{}});}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ List<BaseSpot>\ result\ =\ \_spotHelper.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a7b75f44b3310036d4de7f0f2956bbac1}{PullSaveTrim}}();}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Ok(result);}
+\DoxyCodeLine{00038\ \ \ \ \ \}}
 
-Definition at line \mbox{\hyperlink{_spot_controller_8cs_source_l00031}{31}} of file \mbox{\hyperlink{_spot_controller_8cs_source}{Spot\+Controller.\+cs}}.
-
+\end{DoxyCode}
 Here is the call graph for this function\+:
 \nopagebreak
 \begin{figure}[H]

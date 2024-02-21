@@ -29,13 +29,6 @@ override void \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_extensions_1_1_b
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{Detailed Description}
-
-
-Definition at line \mbox{\hyperlink{_big_integer_converter_8cs_source_l00009}{9}} of file \mbox{\hyperlink{_big_integer_converter_8cs_source}{Big\+Integer\+Converter.\+cs}}.
-
-
-
 \doxysubsection{Member Function Documentation}
 \Hypertarget{class_task_a_p_i_1_1_helpers_1_1_extensions_1_1_big_integer_converter_a43d97a9f4710e5a1d844778fab4e636f}\label{class_task_a_p_i_1_1_helpers_1_1_extensions_1_1_big_integer_converter_a43d97a9f4710e5a1d844778fab4e636f} 
 \index{TaskAPI.Helpers.Extensions.BigIntegerConverter@{TaskAPI.Helpers.Extensions.BigIntegerConverter}!Read@{Read}}
@@ -44,9 +37,15 @@ Definition at line \mbox{\hyperlink{_big_integer_converter_8cs_source_l00009}{9}
 {\footnotesize\ttfamily override Big\+Integer Task\+API.\+Helpers.\+Extensions.\+Big\+Integer\+Converter.\+Read (\begin{DoxyParamCaption}\item[{ref Utf8\+Json\+Reader}]{reader,  }\item[{Type}]{type\+To\+Convert,  }\item[{Json\+Serializer\+Options}]{options }\end{DoxyParamCaption})}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (reader.TokenType\ !=\ JsonTokenType.Number)}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \textcolor{keyword}{new}\ JsonException(\textcolor{keywordtype}{string}.Format(\textcolor{stringliteral}{"{}Found\ token\ \{0\}\ but\ expected\ token\ \{1\}"{}},\ reader.TokenType,\ JsonTokenType.Number));}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }var\ doc\ =\ JsonDocument.ParseValue(ref\ reader);}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ BigInteger.Parse(doc.RootElement.GetRawText(),\ NumberFormatInfo.InvariantInfo);}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \}}
 
-Definition at line \mbox{\hyperlink{_big_integer_converter_8cs_source_l00011}{11}} of file \mbox{\hyperlink{_big_integer_converter_8cs_source}{Big\+Integer\+Converter.\+cs}}.
-
+\end{DoxyCode}
 \Hypertarget{class_task_a_p_i_1_1_helpers_1_1_extensions_1_1_big_integer_converter_af042077b80fd4e5d86ecea0d01168d48}\label{class_task_a_p_i_1_1_helpers_1_1_extensions_1_1_big_integer_converter_af042077b80fd4e5d86ecea0d01168d48} 
 \index{TaskAPI.Helpers.Extensions.BigIntegerConverter@{TaskAPI.Helpers.Extensions.BigIntegerConverter}!Write@{Write}}
 \index{Write@{Write}!TaskAPI.Helpers.Extensions.BigIntegerConverter@{TaskAPI.Helpers.Extensions.BigIntegerConverter}}

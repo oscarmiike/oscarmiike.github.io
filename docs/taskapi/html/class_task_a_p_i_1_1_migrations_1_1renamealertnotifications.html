@@ -116,9 +116,7 @@ Protected Member Functions</h2></td></tr>
 <tr class="separator:a4fc854015d00da92c16ceec40e068b6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="20240212062728__rename-alertnotifications_8cs_source.html#l00009">9</a> of file <a class="el" href="20240212062728__rename-alertnotifications_8cs_source.html">20240212062728_rename-alertnotifications.cs</a>.</p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+<div class="textblock"></div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a4fc854015d00da92c16ceec40e068b6b" name="a4fc854015d00da92c16ceec40e068b6b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4fc854015d00da92c16ceec40e068b6b">&#9670;&#160;</a></span>BuildTargetModel()</h2>
 
@@ -143,9 +141,75 @@ Protected Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p></p>
-
-<p class="definition">Definition at line <a class="el" href="20240212062728__rename-alertnotifications_8_designer_8cs_source.html#l00019">19</a> of file <a class="el" href="20240212062728__rename-alertnotifications_8_designer_8cs_source.html">20240212062728_rename-alertnotifications.Designer.cs</a>.</p>
-
+<div class="fragment"><div class="line"><span class="lineno">   20</span>        {</div>
+<div class="line"><span class="lineno">   21</span><span class="preprocessor">#pragma warning disable 612, 618</span></div>
+<div class="line"><span class="lineno">   22</span>            modelBuilder</div>
+<div class="line"><span class="lineno">   23</span>                .HasAnnotation(<span class="stringliteral">&quot;ProductVersion&quot;</span>, <span class="stringliteral">&quot;7.0.3&quot;</span>)</div>
+<div class="line"><span class="lineno">   24</span>                .HasAnnotation(<span class="stringliteral">&quot;Relational:MaxIdentifierLength&quot;</span>, 128);</div>
+<div class="line"><span class="lineno">   25</span> </div>
+<div class="line"><span class="lineno">   26</span>            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);</div>
+<div class="line"><span class="lineno">   27</span> </div>
+<div class="line"><span class="lineno">   28</span>            modelBuilder.Entity(<span class="stringliteral">&quot;TaskAPI.Models.AlertNotifications&quot;</span>, b =&gt;</div>
+<div class="line"><span class="lineno">   29</span>                {</div>
+<div class="line"><span class="lineno">   30</span>                    b.Property&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;ID&quot;</span>)</div>
+<div class="line"><span class="lineno">   31</span>                        .ValueGeneratedOnAdd()</div>
+<div class="line"><span class="lineno">   32</span>                        .HasColumnType(<span class="stringliteral">&quot;int&quot;</span>);</div>
+<div class="line"><span class="lineno">   33</span> </div>
+<div class="line"><span class="lineno">   34</span>                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;ID&quot;</span>));</div>
+<div class="line"><span class="lineno">   35</span> </div>
+<div class="line"><span class="lineno">   36</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;ApiSource&quot;</span>)</div>
+<div class="line"><span class="lineno">   37</span>                        .IsRequired()</div>
+<div class="line"><span class="lineno">   38</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(max)&quot;</span>);</div>
+<div class="line"><span class="lineno">   39</span> </div>
+<div class="line"><span class="lineno">   40</span>                    b.Property&lt;DateTime&gt;(<span class="stringliteral">&quot;LastNotification&quot;</span>)</div>
+<div class="line"><span class="lineno">   41</span>                        .HasColumnType(<span class="stringliteral">&quot;DateTime2(3)&quot;</span>);</div>
+<div class="line"><span class="lineno">   42</span> </div>
+<div class="line"><span class="lineno">   43</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;LogSource&quot;</span>)</div>
+<div class="line"><span class="lineno">   44</span>                        .IsRequired()</div>
+<div class="line"><span class="lineno">   45</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(max)&quot;</span>);</div>
+<div class="line"><span class="lineno">   46</span> </div>
+<div class="line"><span class="lineno">   47</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;LogType&quot;</span>)</div>
+<div class="line"><span class="lineno">   48</span>                        .IsRequired()</div>
+<div class="line"><span class="lineno">   49</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(max)&quot;</span>);</div>
+<div class="line"><span class="lineno">   50</span> </div>
+<div class="line"><span class="lineno">   51</span>                    b.HasKey(<span class="stringliteral">&quot;ID&quot;</span>);</div>
+<div class="line"><span class="lineno">   52</span> </div>
+<div class="line"><span class="lineno">   53</span>                    b.ToTable(<span class="stringliteral">&quot;AlertNotifications&quot;</span>);</div>
+<div class="line"><span class="lineno">   54</span>                });</div>
+<div class="line"><span class="lineno">   55</span> </div>
+<div class="line"><span class="lineno">   56</span>            modelBuilder.Entity(<span class="stringliteral">&quot;TaskAPI.Models.LogEntry&quot;</span>, b =&gt;</div>
+<div class="line"><span class="lineno">   57</span>                {</div>
+<div class="line"><span class="lineno">   58</span>                    b.Property&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;ID&quot;</span>)</div>
+<div class="line"><span class="lineno">   59</span>                        .ValueGeneratedOnAdd()</div>
+<div class="line"><span class="lineno">   60</span>                        .HasColumnType(<span class="stringliteral">&quot;int&quot;</span>);</div>
+<div class="line"><span class="lineno">   61</span> </div>
+<div class="line"><span class="lineno">   62</span>                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;ID&quot;</span>));</div>
+<div class="line"><span class="lineno">   63</span> </div>
+<div class="line"><span class="lineno">   64</span>                    b.Property&lt;DateTime&gt;(<span class="stringliteral">&quot;Created&quot;</span>)</div>
+<div class="line"><span class="lineno">   65</span>                        .HasColumnType(<span class="stringliteral">&quot;DateTime2(3)&quot;</span>);</div>
+<div class="line"><span class="lineno">   66</span> </div>
+<div class="line"><span class="lineno">   67</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;Data&quot;</span>)</div>
+<div class="line"><span class="lineno">   68</span>                        .IsRequired()</div>
+<div class="line"><span class="lineno">   69</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(max)&quot;</span>);</div>
+<div class="line"><span class="lineno">   70</span> </div>
+<div class="line"><span class="lineno">   71</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;Source&quot;</span>)</div>
+<div class="line"><span class="lineno">   72</span>                        .IsRequired()</div>
+<div class="line"><span class="lineno">   73</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(max)&quot;</span>);</div>
+<div class="line"><span class="lineno">   74</span> </div>
+<div class="line"><span class="lineno">   75</span>                    b.Property&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;ThreadID&quot;</span>)</div>
+<div class="line"><span class="lineno">   76</span>                        .HasColumnType(<span class="stringliteral">&quot;int&quot;</span>);</div>
+<div class="line"><span class="lineno">   77</span> </div>
+<div class="line"><span class="lineno">   78</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;Type&quot;</span>)</div>
+<div class="line"><span class="lineno">   79</span>                        .IsRequired()</div>
+<div class="line"><span class="lineno">   80</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(max)&quot;</span>);</div>
+<div class="line"><span class="lineno">   81</span> </div>
+<div class="line"><span class="lineno">   82</span>                    b.HasKey(<span class="stringliteral">&quot;ID&quot;</span>);</div>
+<div class="line"><span class="lineno">   83</span> </div>
+<div class="line"><span class="lineno">   84</span>                    b.ToTable(<span class="stringliteral">&quot;LogEntries&quot;</span>);</div>
+<div class="line"><span class="lineno">   85</span>                });</div>
+<div class="line"><span class="lineno">   86</span><span class="preprocessor">#pragma warning restore 612, 618</span></div>
+<div class="line"><span class="lineno">   87</span>        }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a1fab0664e89f25c236177f5655299c5e" name="a1fab0664e89f25c236177f5655299c5e"></a>
@@ -172,9 +236,26 @@ Protected Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p></p>
-
-<p class="definition">Definition at line <a class="el" href="20240212062728__rename-alertnotifications_8cs_source.html#l00035">35</a> of file <a class="el" href="20240212062728__rename-alertnotifications_8cs_source.html">20240212062728_rename-alertnotifications.cs</a>.</p>
-
+<div class="fragment"><div class="line"><span class="lineno">   36</span>        {</div>
+<div class="line"><span class="lineno">   37</span>            migrationBuilder.DropTable(</div>
+<div class="line"><span class="lineno">   38</span>                name: <span class="stringliteral">&quot;AlertNotifications&quot;</span>);</div>
+<div class="line"><span class="lineno">   39</span> </div>
+<div class="line"><span class="lineno">   40</span>            migrationBuilder.CreateTable(</div>
+<div class="line"><span class="lineno">   41</span>                name: <span class="stringliteral">&quot;NotificationMinimumFrequency&quot;</span>,</div>
+<div class="line"><span class="lineno">   42</span>                columns: table =&gt; new</div>
+<div class="line"><span class="lineno">   43</span>                {</div>
+<div class="line"><span class="lineno">   44</span>                    ID = table.Column&lt;<span class="keywordtype">int</span>&gt;(type: <span class="stringliteral">&quot;int&quot;</span>, nullable: <span class="keyword">false</span>)</div>
+<div class="line"><span class="lineno">   45</span>                        .Annotation(<span class="stringliteral">&quot;SqlServer:Identity&quot;</span>, <span class="stringliteral">&quot;1, 1&quot;</span>),</div>
+<div class="line"><span class="lineno">   46</span>                    ApiSource = table.Column&lt;<span class="keywordtype">string</span>&gt;(type: <span class="stringliteral">&quot;nvarchar(max)&quot;</span>, nullable: <span class="keyword">false</span>),</div>
+<div class="line"><span class="lineno">   47</span>                    LastNotification = table.Column&lt;DateTime&gt;(type: <span class="stringliteral">&quot;DateTime2(3)&quot;</span>, nullable: false),</div>
+<div class="line"><span class="lineno">   48</span>                    LogSource = table.Column&lt;string&gt;(type: <span class="stringliteral">&quot;nvarchar(max)&quot;</span>, nullable: false)</div>
+<div class="line"><span class="lineno">   49</span>                },</div>
+<div class="line"><span class="lineno">   50</span>                constraints: table =&gt;</div>
+<div class="line"><span class="lineno">   51</span>                {</div>
+<div class="line"><span class="lineno">   52</span>                    table.PrimaryKey(<span class="stringliteral">&quot;PK_NotificationMinimumFrequency&quot;</span>, x =&gt; x.ID);</div>
+<div class="line"><span class="lineno">   53</span>                });</div>
+<div class="line"><span class="lineno">   54</span>        }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="ae8ceacff40e5aa8d4df130c1c1e9f4f4" name="ae8ceacff40e5aa8d4df130c1c1e9f4f4"></a>
@@ -201,14 +282,32 @@ Protected Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p></p>
-
-<p class="definition">Definition at line <a class="el" href="20240212062728__rename-alertnotifications_8cs_source.html#l00012">12</a> of file <a class="el" href="20240212062728__rename-alertnotifications_8cs_source.html">20240212062728_rename-alertnotifications.cs</a>.</p>
-
+<div class="fragment"><div class="line"><span class="lineno">   13</span>        {</div>
+<div class="line"><span class="lineno">   14</span>            migrationBuilder.DropTable(</div>
+<div class="line"><span class="lineno">   15</span>                name: <span class="stringliteral">&quot;NotificationMinimumFrequency&quot;</span>);</div>
+<div class="line"><span class="lineno">   16</span> </div>
+<div class="line"><span class="lineno">   17</span>            migrationBuilder.CreateTable(</div>
+<div class="line"><span class="lineno">   18</span>                name: <span class="stringliteral">&quot;AlertNotifications&quot;</span>,</div>
+<div class="line"><span class="lineno">   19</span>                columns: table =&gt; new</div>
+<div class="line"><span class="lineno">   20</span>                {</div>
+<div class="line"><span class="lineno">   21</span>                    ID = table.Column&lt;<span class="keywordtype">int</span>&gt;(type: <span class="stringliteral">&quot;int&quot;</span>, nullable: <span class="keyword">false</span>)</div>
+<div class="line"><span class="lineno">   22</span>                        .Annotation(<span class="stringliteral">&quot;SqlServer:Identity&quot;</span>, <span class="stringliteral">&quot;1, 1&quot;</span>),</div>
+<div class="line"><span class="lineno">   23</span>                    ApiSource = table.Column&lt;<span class="keywordtype">string</span>&gt;(type: <span class="stringliteral">&quot;nvarchar(max)&quot;</span>, nullable: <span class="keyword">false</span>),</div>
+<div class="line"><span class="lineno">   24</span>                    LogSource = table.Column&lt;<span class="keywordtype">string</span>&gt;(type: <span class="stringliteral">&quot;nvarchar(max)&quot;</span>, nullable: false),</div>
+<div class="line"><span class="lineno">   25</span>                    LogType = table.Column&lt;string&gt;(type: <span class="stringliteral">&quot;nvarchar(max)&quot;</span>, nullable: false),</div>
+<div class="line"><span class="lineno">   26</span>                    LastNotification = table.Column&lt;DateTime&gt;(type: <span class="stringliteral">&quot;DateTime2(3)&quot;</span>, nullable: false)</div>
+<div class="line"><span class="lineno">   27</span>                },</div>
+<div class="line"><span class="lineno">   28</span>                constraints: table =&gt;</div>
+<div class="line"><span class="lineno">   29</span>                {</div>
+<div class="line"><span class="lineno">   30</span>                    table.PrimaryKey(<span class="stringliteral">&quot;PK_AlertNotifications&quot;</span>, x =&gt; x.ID);</div>
+<div class="line"><span class="lineno">   31</span>                });</div>
+<div class="line"><span class="lineno">   32</span>        }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>C:/Users/STRIDER/source/repos/TaskAPI/Migrations/<a class="el" href="20240212062728__rename-alertnotifications_8cs_source.html">20240212062728_rename-alertnotifications.cs</a></li>
-<li>C:/Users/STRIDER/source/repos/TaskAPI/Migrations/<a class="el" href="20240212062728__rename-alertnotifications_8_designer_8cs_source.html">20240212062728_rename-alertnotifications.Designer.cs</a></li>
+<li>C:/Users/STRIDER/source/repos/TaskAPI/Migrations/<a class="el" href="20240212062728__rename-alertnotifications_8cs.html">20240212062728_rename-alertnotifications.cs</a></li>
+<li>C:/Users/STRIDER/source/repos/TaskAPI/Migrations/<a class="el" href="20240212062728__rename-alertnotifications_8_designer_8cs.html">20240212062728_rename-alertnotifications.Designer.cs</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

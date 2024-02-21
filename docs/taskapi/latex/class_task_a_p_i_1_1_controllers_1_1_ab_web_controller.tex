@@ -2,6 +2,11 @@
 \hypertarget{class_task_a_p_i_1_1_controllers_1_1_ab_web_controller}{}\label{class_task_a_p_i_1_1_controllers_1_1_ab_web_controller}\index{TaskAPI.Controllers.AbWebController@{TaskAPI.Controllers.AbWebController}}
 
 
+Controller responsible for managing ABWeb application logs.  
+
+
+
+
 Inheritance diagram for Task\+API.\+Controllers.\+Ab\+Web\+Controller\+:
 \nopagebreak
 \begin{figure}[H]
@@ -24,17 +29,13 @@ Collaboration diagram for Task\+API.\+Controllers.\+Ab\+Web\+Controller\+:
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_ab_web_controller_a23ca7c3f872de87be7d4f9a95104b5db}{Ab\+Web\+Controller}} (\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{Log\+Service}} log\+Service, \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service}{Internal\+APIService}} internal\+APIService, IOptions$<$ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings}{Task\+APISettings}} $>$ settings)
-\item 
+\begin{DoxyCompactList}\small\item\em Initialises a new instance of the Ab\+Web\+Controller class. \end{DoxyCompactList}\item 
 Action\+Result$<$ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result}{Log\+Trim\+Result}} $>$ \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_ab_web_controller_a788bdc1e575ec2e04d9d2a767c68e287}{Trim\+Logs}} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Trims logs for the ABWeb application and sends an email notification if an error occurs. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-
-
-Definition at line \mbox{\hyperlink{_ab_web_controller_8cs_source_l00018}{18}} of file \mbox{\hyperlink{_ab_web_controller_8cs_source}{Ab\+Web\+Controller.\+cs}}.
-
-
+Controller responsible for managing ABWeb application logs. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \Hypertarget{class_task_a_p_i_1_1_controllers_1_1_ab_web_controller_a23ca7c3f872de87be7d4f9a95104b5db}\label{class_task_a_p_i_1_1_controllers_1_1_ab_web_controller_a23ca7c3f872de87be7d4f9a95104b5db} 
@@ -45,8 +46,26 @@ Definition at line \mbox{\hyperlink{_ab_web_controller_8cs_source_l00018}{18}} o
 
 
 
-Definition at line \mbox{\hyperlink{_ab_web_controller_8cs_source_l00024}{24}} of file \mbox{\hyperlink{_ab_web_controller_8cs_source}{Ab\+Web\+Controller.\+cs}}.
+Initialises a new instance of the Ab\+Web\+Controller class. 
 
+
+\begin{DoxyParams}{Parameters}
+{\em log\+Service} & The log service for logging information and errors.\\
+\hline
+{\em internal\+APIService} & The internal API service for operations like trimming logs and sending emails.\\
+\hline
+{\em settings} & The application settings containing email configuration.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00034\ \ \ \ \ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \_logService\ =\ logService;}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \_iapiService\ =\ internalAPIService;}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \_settings\ =\ settings.Value;}
+\DoxyCodeLine{00038\ \ \ \ \ \}}
+
+\end{DoxyCode}
 
 
 \doxysubsection{Member Function Documentation}
@@ -58,8 +77,33 @@ Definition at line \mbox{\hyperlink{_ab_web_controller_8cs_source_l00024}{24}} o
 
 
 
-Definition at line \mbox{\hyperlink{_ab_web_controller_8cs_source_l00032}{32}} of file \mbox{\hyperlink{_ab_web_controller_8cs_source}{Ab\+Web\+Controller.\+cs}}.
+Trims logs for the ABWeb application and sends an email notification if an error occurs. 
 
+\begin{DoxyReturn}{Returns}
+The result of the log trimming operation, including any errors encountered.
+\end{DoxyReturn}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00045\ \ \ \ \ \{}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a5c2a67dbd8beb6f821c46b8d052d59ea}{LogInformation}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.ABWebController,\ \textcolor{stringliteral}{"{}abweb\ log\ trim\ initiated"{}});}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result}{LogTrimResult}}\ result\ =\ \_iapiService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_aafa740a340a6a25e1f8ac8a766d186f9}{AbWebTrimLogs}}();}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (result\ !=\ \textcolor{keyword}{null}\ \&\&\ result.\mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result_ac0dcb80f3d1f49fc0fdc79aca9faf210}{error}})}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \_iapiService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_aeffeb1d3d59aeeab65dfe72691d21600}{SendEmail}}(\textcolor{keyword}{new}\ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_email_post}{EmailPost}}()}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ EmailFrom\ =\ \_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_af39dc0933cd608b26e7bc4f82951d356}{GeneralSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings_ac0a0b89d2e7cf7f820e5663a1a4cffbf}{NotificationEmailFrom}},}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ EmailTo\ =\ \_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_af39dc0933cd608b26e7bc4f82951d356}{GeneralSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings_a25434a5471214771ae507f7152073898}{NotificationEmailTo}},}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ NameFrom\ =\ \_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_af39dc0933cd608b26e7bc4f82951d356}{GeneralSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings_a082a8e92b97a7d83196f1d0056241042}{NotificationEmailName}},}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Subject\ =\ \textcolor{stringliteral}{"{}Error\ trimming\ abweb\ logs"{}},}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ HTMLBody\ =\ \$\textcolor{stringliteral}{"{}Task\ API\ was\ unable\ to\ trim\ abweb\ logs<br><br>\{JsonConvert.SerializeObject(result)\}"{}}}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a5c2a67dbd8beb6f821c46b8d052d59ea}{LogInformation}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.ABWebController,\ \$\textcolor{stringliteral}{"{}abweb\ log\ trim\ completed"{}},\ result);}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Ok(result);}
+\DoxyCodeLine{00062\ \ \ \ \ \}}
+
+\end{DoxyCode}
 Here is the call graph for this function\+:
 \nopagebreak
 \begin{figure}[H]

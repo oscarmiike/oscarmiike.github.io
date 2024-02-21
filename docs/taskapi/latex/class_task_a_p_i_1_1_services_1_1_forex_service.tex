@@ -9,13 +9,6 @@
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{Detailed Description}
-
-
-Definition at line \mbox{\hyperlink{_forex_service_8cs_source_l00009}{9}} of file \mbox{\hyperlink{_forex_service_8cs_source}{Forex\+Service.\+cs}}.
-
-
-
 \doxysubsection{Constructor \& Destructor Documentation}
 \Hypertarget{class_task_a_p_i_1_1_services_1_1_forex_service_a01dc8f1f84152b5bf6a7f35e4838f31f}\label{class_task_a_p_i_1_1_services_1_1_forex_service_a01dc8f1f84152b5bf6a7f35e4838f31f} 
 \index{TaskAPI.Services.ForexService@{TaskAPI.Services.ForexService}!ForexService@{ForexService}}
@@ -24,9 +17,13 @@ Definition at line \mbox{\hyperlink{_forex_service_8cs_source_l00009}{9}} of fil
 {\footnotesize\ttfamily Task\+API.\+Services.\+Forex\+Service.\+Forex\+Service (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{Log\+Service}}}]{log\+Service,  }\item[{IOptions$<$ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings}{Task\+APISettings}} $>$}]{task\+APISettings }\end{DoxyParamCaption})}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00015\ \ \ \ \ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \_logService\ =\ logService;}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \_settings\ =\ taskAPISettings.Value;}
+\DoxyCodeLine{00018\ \ \ \ \ \}}
 
-Definition at line \mbox{\hyperlink{_forex_service_8cs_source_l00014}{14}} of file \mbox{\hyperlink{_forex_service_8cs_source}{Forex\+Service.\+cs}}.
-
+\end{DoxyCode}
 
 
 \doxysubsection{Member Function Documentation}
@@ -37,9 +34,31 @@ Definition at line \mbox{\hyperlink{_forex_service_8cs_source_l00014}{14}} of fi
 {\footnotesize\ttfamily \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_forex_response}{Forex\+Response}} Task\+API.\+Services.\+Forex\+Service.\+Pull\+Feed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00021\ \ \ \ \ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_forex_response}{ForexResponse}}\ forexResponse\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient(\_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_a0eb4318ad18306881384e7097caaa9f0}{ForexSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_forexsettings_ad4123f4462401f82896a80d9f2028814}{FeedURL}});}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ var\ request\ =\ \textcolor{keyword}{new}\ RestRequest(\textcolor{stringliteral}{"{}"{}},\ Method.Get);}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ var\ response\ =\ client.Execute(request);}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response.IsSuccessful\ \&\&\ response.IsSuccessStatusCode)}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ forexResponse\ =\ JsonConvert.DeserializeObject<\mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_forex_response}{ForexResponse}}>(response.Content);}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a46dc9bf58bc9605c7e17dfee38b94354}{LogError}}(LogService.LogSources.ForexService,\ \textcolor{stringliteral}{"{}error\ getting\ forex\ data\ feed,\ response\ was\ not\ successful"{}},\ \$\textcolor{stringliteral}{"{}response\ status:\ \{response.ResponseStatus\}"{}},\ \$\textcolor{stringliteral}{"{}response\ status\ description:\ \{response.StatusDescription\}"{}});}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a78c9df658858fa3099eed69421423898}{LogException}}(LogService.LogSources.ForexService,\ \textcolor{stringliteral}{"{}exception\ getting\ forex\ feed\ data"{}},\ ex);}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ forexResponse;}
+\DoxyCodeLine{00042\ \ \ \ \ \}}
 
-Definition at line \mbox{\hyperlink{_forex_service_8cs_source_l00020}{20}} of file \mbox{\hyperlink{_forex_service_8cs_source}{Forex\+Service.\+cs}}.
-
+\end{DoxyCode}
 Here is the call graph for this function\+:
 \nopagebreak
 \begin{figure}[H]

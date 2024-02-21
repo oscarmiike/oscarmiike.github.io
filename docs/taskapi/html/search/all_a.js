@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['id_0',['ID',['../class_task_a_p_i_1_1_models_1_1_alert_notification.html#aab38cfb7f941e8c2c761ff0af33b5908',1,'TaskAPI.Models.AlertNotification.ID'],['../class_task_a_p_i_1_1_models_1_1_log_entry.html#ae0d4cf4e95a2ac4479cf9e92e1d0318b',1,'TaskAPI.Models.LogEntry.ID']]],
-  ['id_1',['id',['../class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_priceapp_asset.html#a566aa73c11010debc242ca36955b63fa',1,'TaskAPI::Models::DTO::InternalAPI::PriceappAsset']]],
+  ['id_0',['id',['../class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_priceapp_asset.html#a566aa73c11010debc242ca36955b63fa',1,'TaskAPI::Models::DTO::InternalAPI::PriceappAsset']]],
+  ['id_1',['ID',['../class_task_a_p_i_1_1_models_1_1_alert_notification.html#aab38cfb7f941e8c2c761ff0af33b5908',1,'TaskAPI.Models.AlertNotification.ID'],['../class_task_a_p_i_1_1_models_1_1_log_entry.html#ae0d4cf4e95a2ac4479cf9e92e1d0318b',1,'TaskAPI.Models.LogEntry.ID']]],
   ['if_2',['if',['../_program_8cs.html#a79a944c7f0e25196ca3c5a8638b919b9',1,'Program.cs']]],
   ['indexed_3',['indexed',['../class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_polygonoraclesettings_1_1_a_b_i_1_1_input.html#a657d992bdf2c41ccd3cef0077a8b069f',1,'TaskAPI::Helpers::Settings::TaskAPISettings::Polygonoraclesettings::ABI::Input']]],
   ['information_4',['Information',['../class_task_a_p_i_1_1_services_1_1_log_service.html#a27f1ae7140528c73a0591095ff9f5bd6aa82be0f551b8708bc08eb33cd9ded0cf',1,'TaskAPI::Services::LogService']]],

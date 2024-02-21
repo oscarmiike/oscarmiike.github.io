@@ -1,8 +1,8 @@
 var searchData=
 [
   ['searchstring_0',['searchString',['../class_task_a_p_i_1_1_controllers_1_1_logs_controller_1_1_log_request.html#a63c2e150db7006d9efee4f08d29193e8',1,'TaskAPI::Controllers::LogsController::LogRequest']]],
-  ['sell_1',['Sell',['../class_task_a_p_i_1_1_models_1_1_daily_close.html#a7e580eb70aec647280c5a63b15a9f591',1,'TaskAPI::Models::DailyClose']]],
-  ['sell_2',['sell',['../class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_priceapp_asset.html#a23abbba08bad60b3f61f5e53089eaa30',1,'TaskAPI::Models::DTO::InternalAPI::PriceappAsset']]],
+  ['sell_1',['sell',['../class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_priceapp_asset.html#a23abbba08bad60b3f61f5e53089eaa30',1,'TaskAPI::Models::DTO::InternalAPI::PriceappAsset']]],
+  ['sell_2',['Sell',['../class_task_a_p_i_1_1_models_1_1_daily_close.html#a7e580eb70aec647280c5a63b15a9f591',1,'TaskAPI::Models::DailyClose']]],
   ['selladjustment_3',['sellAdjustment',['../class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_priceapp_asset_1_1_pricemode.html#af823860a23b388169635b92aa0c61432',1,'TaskAPI::Models::DTO::InternalAPI::PriceappAsset::Pricemode']]],
   ['sellspread_4',['sellSpread',['../class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_priceapp_asset.html#a8a9efd2422983b6636b5ad3ccd2852d4',1,'TaskAPI::Models::DTO::InternalAPI::PriceappAsset']]],
   ['source_5',['source',['../class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_priceapp_asset.html#a07501a694c42b41319fb7d9f78e463fa',1,'TaskAPI::Models::DTO::InternalAPI::PriceappAsset']]],

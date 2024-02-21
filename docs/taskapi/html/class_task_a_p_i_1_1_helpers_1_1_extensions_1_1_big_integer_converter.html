@@ -110,10 +110,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:af042077b80fd4e5d86ecea0d01168d48" id="r_af042077b80fd4e5d86ecea0d01168d48"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af042077b80fd4e5d86ecea0d01168d48">Write</a> (Utf8JsonWriter writer, BigInteger value, JsonSerializerOptions options)</td></tr>
 <tr class="separator:af042077b80fd4e5d86ecea0d01168d48"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_big_integer_converter_8cs_source.html#l00009">9</a> of file <a class="el" href="_big_integer_converter_8cs_source.html">BigIntegerConverter.cs</a>.</p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a id="a43d97a9f4710e5a1d844778fab4e636f" name="a43d97a9f4710e5a1d844778fab4e636f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a43d97a9f4710e5a1d844778fab4e636f">&#9670;&#160;</a></span>Read()</h2>
 
@@ -137,9 +134,13 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_big_integer_converter_8cs_source.html#l00011">11</a> of file <a class="el" href="_big_integer_converter_8cs_source.html">BigIntegerConverter.cs</a>.</p>
-
+<div class="fragment"><div class="line"><span class="lineno">   12</span>        {</div>
+<div class="line"><span class="lineno">   13</span>            <span class="keywordflow">if</span> (reader.TokenType != JsonTokenType.Number)</div>
+<div class="line"><span class="lineno">   14</span>                <span class="keywordflow">throw</span> <span class="keyword">new</span> JsonException(<span class="keywordtype">string</span>.Format(<span class="stringliteral">&quot;Found token {0} but expected token {1}&quot;</span>, reader.TokenType, JsonTokenType.Number));</div>
+<div class="line"><span class="lineno">   15</span>            <span class="keyword">using </span>var doc = JsonDocument.ParseValue(ref reader);</div>
+<div class="line"><span class="lineno">   16</span>            <span class="keywordflow">return</span> BigInteger.Parse(doc.RootElement.GetRawText(), NumberFormatInfo.InvariantInfo);</div>
+<div class="line"><span class="lineno">   17</span>        }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="af042077b80fd4e5d86ecea0d01168d48" name="af042077b80fd4e5d86ecea0d01168d48"></a>
@@ -169,7 +170,7 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>C:/Users/STRIDER/source/repos/TaskAPI/Helpers/Extensions/<a class="el" href="_big_integer_converter_8cs_source.html">BigIntegerConverter.cs</a></li>
+<li>C:/Users/STRIDER/source/repos/TaskAPI/Helpers/Extensions/<a class="el" href="_big_integer_converter_8cs.html">BigIntegerConverter.cs</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

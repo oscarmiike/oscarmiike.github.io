@@ -17,7 +17,7 @@ var searchData=
   ['environmentsell_14',['environmentSell',['../class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_priceapp_asset.html#a60315c2ae3cba1a26630b6daaa553cc1',1,'TaskAPI::Models::DTO::InternalAPI::PriceappAsset']]],
   ['environmentspot_15',['environmentSpot',['../class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_priceapp_asset.html#a6843f4b4444d004a9e86462e1615a481',1,'TaskAPI::Models::DTO::InternalAPI::PriceappAsset']]],
   ['err_16',['Err',['../class_task_a_p_i_1_1_services_1_1_log_service.html#a27f1ae7140528c73a0591095ff9f5bd6ab47f6a6092c5d7e4bffec12dff309c3b',1,'TaskAPI::Services::LogService']]],
-  ['error_17',['error',['../class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result.html#ac0dcb80f3d1f49fc0fdc79aca9faf210',1,'TaskAPI::Models::DTO::LogTrimResult']]],
-  ['error_18',['Error',['../class_task_a_p_i_1_1_helpers_1_1_priceapp_helper.html#a92393016a8925956a44271f4c9c0d9cc',1,'TaskAPI.Helpers.PriceappHelper.Error'],['../class_task_a_p_i_1_1_helpers_1_1_spot_helper.html#a1d8458171af3cac5a7fc1fc1f35de115',1,'TaskAPI.Helpers.SpotHelper.Error']]],
+  ['error_17',['Error',['../class_task_a_p_i_1_1_helpers_1_1_priceapp_helper.html#a92393016a8925956a44271f4c9c0d9cc',1,'TaskAPI.Helpers.PriceappHelper.Error'],['../class_task_a_p_i_1_1_helpers_1_1_spot_helper.html#a1d8458171af3cac5a7fc1fc1f35de115',1,'TaskAPI.Helpers.SpotHelper.Error']]],
+  ['error_18',['error',['../class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result.html#ac0dcb80f3d1f49fc0fdc79aca9faf210',1,'TaskAPI::Models::DTO::LogTrimResult']]],
   ['exception_19',['Exception',['../class_task_a_p_i_1_1_services_1_1_log_service.html#a27f1ae7140528c73a0591095ff9f5bd6ab0d4998a26f5b5742ad38c4af8817e32',1,'TaskAPI::Services::LogService']]]
 ];
