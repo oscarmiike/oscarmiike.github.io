@@ -1,0 +1,54 @@
+\chapter{buffers}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28ae7b9affa581ffd428ff31e391d273d}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28ae7b9affa581ffd428ff31e391d273d}\index{buffers@{buffers}}
+Treat a collection of Buffers as a single contiguous partially mutable Buffer.
+
+Where possible, operations execute without creating a new Buffer and copying everything over.
+
+This is a cleaner more Buffery rehash of \href{http://github.com/substack/node-bufferlist}{\texttt{ bufferlist}}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28ae7b9affa581ffd428ff31e391d273d_autotoc_md1852}{}\doxysection{\texorpdfstring{example}{example}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28ae7b9affa581ffd428ff31e391d273d_autotoc_md1852}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28ae7b9affa581ffd428ff31e391d273d_autotoc_md1853}{}\doxysubsection{\texorpdfstring{slice}{slice}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28ae7b9affa581ffd428ff31e391d273d_autotoc_md1853}
+\begin{DoxyVerb}var Buffers = require('buffers');
+var bufs = Buffers();
+bufs.push(new Buffer([1,2,3]));
+bufs.push(new Buffer([4,5,6,7]));
+bufs.push(new Buffer([8,9,10]));
+
+console.dir(bufs.slice(2,8))
+\end{DoxyVerb}
+ output\+: \begin{DoxyVerb}$ node examples/slice.js 
+<Buffer 03 04 05 06 07 08>
+\end{DoxyVerb}
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28ae7b9affa581ffd428ff31e391d273d_autotoc_md1854}{}\doxysubsection{\texorpdfstring{splice}{splice}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28ae7b9affa581ffd428ff31e391d273d_autotoc_md1854}
+\begin{DoxyVerb}var Buffers = require('buffers');
+var bufs = Buffers([
+    new Buffer([1,2,3]),
+    new Buffer([4,5,6,7]),
+    new Buffer([8,9,10]),
+]);
+
+var removed = bufs.splice(2, 4);
+console.dir({
+    removed : removed.slice(),
+    bufs : bufs.slice(),
+});
+\end{DoxyVerb}
+ output\+: \begin{DoxyVerb}$ node examples/splice.js
+{ removed: <Buffer 03 04 05 06>,
+  bufs: <Buffer 01 02 07 08 09 0a> }
+\end{DoxyVerb}
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28ae7b9affa581ffd428ff31e391d273d_autotoc_md1855}{}\doxysection{\texorpdfstring{methods}{methods}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28ae7b9affa581ffd428ff31e391d273d_autotoc_md1855}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28ae7b9affa581ffd428ff31e391d273d_autotoc_md1856}{}\doxysubsection{\texorpdfstring{Buffers(buffers)}{Buffers(buffers)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28ae7b9affa581ffd428ff31e391d273d_autotoc_md1856}
+Create a Buffers with an array of {\ttfamily Buffer}s if specified, else {\ttfamily \mbox{[}\mbox{]}}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28ae7b9affa581ffd428ff31e391d273d_autotoc_md1857}{}\doxysubsection{\texorpdfstring{.push(buf1, buf2...)}{.push(buf1, buf2...)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28ae7b9affa581ffd428ff31e391d273d_autotoc_md1857}
+Push buffers onto the end. Just like {\ttfamily Array.\+prototype.\+push}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28ae7b9affa581ffd428ff31e391d273d_autotoc_md1858}{}\doxysubsection{\texorpdfstring{.unshift(buf1, buf2...)}{.unshift(buf1, buf2...)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28ae7b9affa581ffd428ff31e391d273d_autotoc_md1858}
+Unshift buffers onto the head. Just like {\ttfamily Array.\+prototype.\+unshift}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28ae7b9affa581ffd428ff31e391d273d_autotoc_md1859}{}\doxysubsection{\texorpdfstring{.slice(i, j)}{.slice(i, j)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28ae7b9affa581ffd428ff31e391d273d_autotoc_md1859}
+Slice a range out of the buffer collection as if it were contiguous. Works just like the {\ttfamily Array.\+prototype.\+slice} version.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28ae7b9affa581ffd428ff31e391d273d_autotoc_md1860}{}\doxysubsection{\texorpdfstring{.splice(i, how\+Many, replacements)}{.splice(i, how\+Many, replacements)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28ae7b9affa581ffd428ff31e391d273d_autotoc_md1860}
+Splice the buffer collection as if it were contiguous. Works just like {\ttfamily Array.\+prototype.\+splice}, even the replacement part!\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28ae7b9affa581ffd428ff31e391d273d_autotoc_md1861}{}\doxysubsection{\texorpdfstring{.copy(dst, dst\+Start, start, end)}{.copy(dst, dst\+Start, start, end)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28ae7b9affa581ffd428ff31e391d273d_autotoc_md1861}
+Copy the buffer collection as if it were contiguous to the {\ttfamily dst} Buffer with the specified bounds. Works just like {\ttfamily Buffer.\+prototype.\+copy}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28ae7b9affa581ffd428ff31e391d273d_autotoc_md1862}{}\doxysubsection{\texorpdfstring{.get(i)}{.get(i)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28ae7b9affa581ffd428ff31e391d273d_autotoc_md1862}
+Get a single element at index {\ttfamily i}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28ae7b9affa581ffd428ff31e391d273d_autotoc_md1863}{}\doxysubsection{\texorpdfstring{.set(i, x)}{.set(i, x)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28ae7b9affa581ffd428ff31e391d273d_autotoc_md1863}
+Set a single element\textquotesingle{}s value at index {\ttfamily i}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28ae7b9affa581ffd428ff31e391d273d_autotoc_md1864}{}\doxysubsection{\texorpdfstring{.index\+Of(needle, offset)}{.index\+Of(needle, offset)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28ae7b9affa581ffd428ff31e391d273d_autotoc_md1864}
+Find a string or buffer {\ttfamily needle} inside the buffer collection. Returns the position of the search string or -\/1 if the search string was not found.
+
+Provide an {\ttfamily offset} to skip that number of characters at the beginning of the search. This can be used to find additional matches.
+
+This function will return the correct result even if the search string is spread out over multiple internal buffers.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28ae7b9affa581ffd428ff31e391d273d_autotoc_md1865}{}\doxysubsection{\texorpdfstring{.to\+Buffer()}{.to\+Buffer()}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28ae7b9affa581ffd428ff31e391d273d_autotoc_md1865}
+Convert the buffer collection to a single buffer, equivalent with {\ttfamily .slice(0, buffers.\+length)};\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28ae7b9affa581ffd428ff31e391d273d_autotoc_md1866}{}\doxysubsection{\texorpdfstring{.to\+String(encoding, start, end)}{.to\+String(encoding, start, end)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28ae7b9affa581ffd428ff31e391d273d_autotoc_md1866}
+Decodes and returns a string from the buffer collection. Works just like {\ttfamily Buffer.\+prototype.\+to\+String} 

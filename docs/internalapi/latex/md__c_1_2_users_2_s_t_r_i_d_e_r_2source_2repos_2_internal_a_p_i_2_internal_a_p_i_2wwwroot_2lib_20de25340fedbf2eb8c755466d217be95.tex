@@ -1,0 +1,37 @@
+\chapter{Destroy}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20de25340fedbf2eb8c755466d217be95}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20de25340fedbf2eb8c755466d217be95}\index{Destroy@{Destroy}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20de25340fedbf2eb8c755466d217be95_autotoc_md2202}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20de25340fedbf2eb8c755466d217be95_autotoc_md2202}%
+ \href{https://npmjs.org/package/destroy}{\texttt{ }} \href{https://travis-ci.org/stream-utils/destroy}{\texttt{ }} \href{https://coveralls.io/r/stream-utils/destroy?branch=master}{\texttt{ }} \doxylink{wwwroot_2lib_2jquery-validation_2_l_i_c_e_n_s_e_8md}{} \href{https://npmjs.org/package/destroy}{\texttt{ }} \href{https://www.gittip.com/jonathanong/}{\texttt{ }}
+
+Destroy a stream.
+
+This module is meant to ensure a stream gets destroyed, handling different APIs and Node.\+js bugs.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20de25340fedbf2eb8c755466d217be95_autotoc_md2203}{}\doxysection{\texorpdfstring{API}{API}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20de25340fedbf2eb8c755466d217be95_autotoc_md2203}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ destroy\ =\ require('destroy')}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20de25340fedbf2eb8c755466d217be95_autotoc_md2204}{}\doxysubsection{\texorpdfstring{destroy(stream)}{destroy(stream)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20de25340fedbf2eb8c755466d217be95_autotoc_md2204}
+Destroy the given stream. In most cases, this is identical to a simple {\ttfamily stream.\+destroy()} call. The rules are as follows for a given stream\+:
+
+
+\begin{DoxyEnumerate}
+\item If the {\ttfamily stream} is an instance of {\ttfamily Read\+Stream}, then call {\ttfamily stream.\+destroy()} and add a listener to the {\ttfamily open} event to call {\ttfamily stream.\+close()} if it is fired. This is for a Node.\+js bug that will leak a file descriptor if {\ttfamily .destroy()} is called before {\ttfamily open}.
+\item If the {\ttfamily stream} is not an instance of {\ttfamily Stream}, then nothing happens.
+\item If the {\ttfamily stream} has a {\ttfamily .destroy()} method, then call it.
+\end{DoxyEnumerate}
+
+The function returns the {\ttfamily stream} passed in as the argument.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20de25340fedbf2eb8c755466d217be95_autotoc_md2205}{}\doxysection{\texorpdfstring{Example}{Example}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20de25340fedbf2eb8c755466d217be95_autotoc_md2205}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ destroy\ =\ require('destroy')}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ fs\ =\ require('fs')}
+\DoxyCodeLine{var\ stream\ =\ fs.createReadStream('package.json')}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ ...\ and\ later}
+\DoxyCodeLine{destroy(stream)}
+
+\end{DoxyCode}
+ 

@@ -1,0 +1,55 @@
+\chapter{mkdirp}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2573a09244676902d03963421172dea8a}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2573a09244676902d03963421172dea8a}\index{mkdirp@{mkdirp}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2573a09244676902d03963421172dea8a_autotoc_md1586}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2573a09244676902d03963421172dea8a_autotoc_md1586}%
+ Like {\ttfamily mkdir -\/p}, but in node.\+js!
+
+\href{http://travis-ci.org/substack/node-mkdirp}{\texttt{ }}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2573a09244676902d03963421172dea8a_autotoc_md1587}{}\doxysection{\texorpdfstring{example}{example}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2573a09244676902d03963421172dea8a_autotoc_md1587}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2573a09244676902d03963421172dea8a_autotoc_md1588}{}\doxysubsection{\texorpdfstring{pow.\+js}{pow.\+js}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2573a09244676902d03963421172dea8a_autotoc_md1588}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ mkdirp\ =\ require('mkdirp');}
+\DoxyCodeLine{\ \ \ \ }
+\DoxyCodeLine{mkdirp('/tmp/foo/bar/baz',\ function\ (err)\ \{}
+\DoxyCodeLine{\ \ \ \ if\ (err)\ console.error(err)}
+\DoxyCodeLine{\ \ \ \ else\ console.log('pow!')}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+Output
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{pow!}
+
+\end{DoxyCode}
+
+
+And now /tmp/foo/bar/baz exists, huzzah!\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2573a09244676902d03963421172dea8a_autotoc_md1589}{}\doxysection{\texorpdfstring{methods}{methods}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2573a09244676902d03963421172dea8a_autotoc_md1589}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ mkdirp\ =\ require('mkdirp');}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2573a09244676902d03963421172dea8a_autotoc_md1590}{}\doxysubsection{\texorpdfstring{mkdirp(dir, mode, cb)}{mkdirp(dir, mode, cb)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2573a09244676902d03963421172dea8a_autotoc_md1590}
+Create a new directory and any necessary subdirectories at {\ttfamily dir} with octal permission string {\ttfamily mode}.
+
+If {\ttfamily mode} isn\textquotesingle{}t specified, it defaults to {\ttfamily 0777 \& (\texorpdfstring{$\sim$}{\string~}process.umask())}.
+
+{\ttfamily cb(err, made)} fires with the error or the first directory {\ttfamily made} that had to be created, if any.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2573a09244676902d03963421172dea8a_autotoc_md1591}{}\doxysubsection{\texorpdfstring{mkdirp.\+sync(dir, mode)}{mkdirp.\+sync(dir, mode)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2573a09244676902d03963421172dea8a_autotoc_md1591}
+Synchronously create a new directory and any necessary subdirectories at {\ttfamily dir} with octal permission string {\ttfamily mode}.
+
+If {\ttfamily mode} isn\textquotesingle{}t specified, it defaults to {\ttfamily 0777 \& (\texorpdfstring{$\sim$}{\string~}process.umask())}.
+
+Returns the first directory that had to be created, if any.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2573a09244676902d03963421172dea8a_autotoc_md1592}{}\doxysection{\texorpdfstring{install}{install}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2573a09244676902d03963421172dea8a_autotoc_md1592}
+With \href{http://npmjs.org}{\texttt{ npm}} do\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ mkdirp}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2573a09244676902d03963421172dea8a_autotoc_md1593}{}\doxysection{\texorpdfstring{license}{license}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2573a09244676902d03963421172dea8a_autotoc_md1593}
+MIT 

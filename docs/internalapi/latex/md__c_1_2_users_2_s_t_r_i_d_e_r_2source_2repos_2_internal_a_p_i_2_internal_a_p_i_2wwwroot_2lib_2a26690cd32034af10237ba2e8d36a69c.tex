@@ -1,0 +1,146 @@
+\chapter{bower-\/registry-\/client}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a26690cd32034af10237ba2e8d36a69c}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a26690cd32034af10237ba2e8d36a69c}\index{bower-\/registry-\/client@{bower-\/registry-\/client}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a26690cd32034af10237ba2e8d36a69c_autotoc_md1822}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a26690cd32034af10237ba2e8d36a69c_autotoc_md1822}%
+ \begin{quote}
+Provides easy interaction with the Bower registry \end{quote}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a26690cd32034af10237ba2e8d36a69c_autotoc_md1823}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a26690cd32034af10237ba2e8d36a69c_autotoc_md1823}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ -\/-\/save\ bower-\/registry-\/client}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a26690cd32034af10237ba2e8d36a69c_autotoc_md1824}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a26690cd32034af10237ba2e8d36a69c_autotoc_md1824}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ RegistryClient\ =\ require('bower-\/registry-\/client');}
+\DoxyCodeLine{var\ Config\ =\ require('bower-\/config');}
+\DoxyCodeLine{var\ config\ =\ Config.read(process.cwd(),\ options);}
+\DoxyCodeLine{var\ registry\ =\ new\ RegistryClient(config,\ logger);}
+
+\end{DoxyCode}
+
+
+The {\ttfamily logger} is optional and is expected to be an instance of the bower \href{https://github.com/bower/logger}{\texttt{ logger}}. ~\newline
+ Available constructor options\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily cache}\+: the cache folder to use for some operations; using null will disable persistent cache (defaults to bower registry cache folder)
+\item {\ttfamily registry.\+search}\+: an array of registry search endpoints (defaults to the Bower server)
+\item {\ttfamily registry.\+register}\+: the endpoint to use when registering packages (defaults to the Bower server)
+\item {\ttfamily registry.\+publish}\+: the endpoint to use when publishing packages (defaults to the Bower server)
+\item {\ttfamily ca.\+search}\+: an array of CA certificates for each registry.\+search (defaults to null).
+\item {\ttfamily ca.\+register}\+: the CA certificate for registry.\+register
+\item {\ttfamily ca.\+publish}\+: the CA certificate for registry.\+publish
+\item {\ttfamily proxy}\+: the proxy to use for http requests (defaults to null)
+\item {\ttfamily https\+Proxy}\+: the proxy to use for https requests (defaults to null)
+\item {\ttfamily strict\+Ssl}\+: whether or not to do SSL key validation when making requests via https (defaults to true).
+\item {\ttfamily user\+Agent}\+: the user agent to use for the requests (defaults to null)
+\item {\ttfamily timeout}\+: the timeout for the requests to finish (defaults to 60000)
+\item {\ttfamily force}\+: If set to true, cache will be bypassed and remotes will always be hit (defaults to false).
+\item {\ttfamily offline}\+: If set to true, only the cache will be used (defaults to false).
+\end{DoxyItemize}
+
+Note that {\ttfamily force} and {\ttfamily offline} are mutually exclusive. The cache will speedup operations such as {\ttfamily list}, {\ttfamily lookup} and {\ttfamily search}. Different operations may have different cache expiration times.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a26690cd32034af10237ba2e8d36a69c_autotoc_md1825}{}\doxysubsubsection{\texorpdfstring{.lookup(name, callback)}{.lookup(name, callback)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a26690cd32034af10237ba2e8d36a69c_autotoc_md1825}
+Looks the registry for the package {\ttfamily name},
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{registry.lookup('jquery',\ function\ (err,\ entry)\ \{}
+\DoxyCodeLine{\ \ \ \ if\ (err)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ console.error(err.message);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ return;}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ //\ For\ now\ resp.type\ is\ always\ 'alias'}
+\DoxyCodeLine{\ \ \ \ console.log('type',\ entry.type);}
+\DoxyCodeLine{\ \ \ \ console.log('url',\ entry.url);}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a26690cd32034af10237ba2e8d36a69c_autotoc_md1826}{}\doxysubsubsection{\texorpdfstring{.register(name, url, callback)}{.register(name, url, callback)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a26690cd32034af10237ba2e8d36a69c_autotoc_md1826}
+Registers a package in the registry.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{registry.register('my-\/package',\ 'git://github.com/my-\/org/my-\/package.git',\ function\ (err,\ pkg)\ \{}
+\DoxyCodeLine{\ \ \ \ if\ (err)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ console.error(err.message);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ return;}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ console.log('name',\ pkg.name);}
+\DoxyCodeLine{\ \ \ \ console.log('url:\ ',\ pkg.url);}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a26690cd32034af10237ba2e8d36a69c_autotoc_md1827}{}\doxysubsubsection{\texorpdfstring{.search(str, callback)}{.search(str, callback)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a26690cd32034af10237ba2e8d36a69c_autotoc_md1827}
+Searches the registry.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{registry.search('jquery',\ function\ (err,\ results)\ \{}
+\DoxyCodeLine{\ \ \ \ if\ (err)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ console.error(err.message);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ return;}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ results.forEach(function\ (pkg)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ console.log('name',\ pkg.name);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ console.log('url',\ pkg.url);}
+\DoxyCodeLine{\ \ \ \ \});}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a26690cd32034af10237ba2e8d36a69c_autotoc_md1828}{}\doxysubsubsection{\texorpdfstring{.clear\+Cache(name, callback)}{.clear\+Cache(name, callback)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a26690cd32034af10237ba2e8d36a69c_autotoc_md1828}
+Clears the persistent and runtime cache associated with the {\ttfamily name} package. ~\newline
+ If {\ttfamily name} is null, clears the cache for every package.
+
+Note that in most cases, you don\textquotesingle{}t need to clear the cache since it has self expiration times.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Clear\ jquery\ cache}
+\DoxyCodeLine{registry.clearCache('jquery',\ function\ (err)\ \{}
+\DoxyCodeLine{\ \ \ \ if\ (err)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ console.error(err.message);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ return;}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ console.log('Done');}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Clear\ all\ cache}
+\DoxyCodeLine{registry.clearCache(function\ (err)\ \{}
+\DoxyCodeLine{\ \ \ \ if\ (err)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ console.error(err.message);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ return;}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ console.log('Done');}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a26690cd32034af10237ba2e8d36a69c_autotoc_md1829}{}\doxysubsubsection{\texorpdfstring{.reset\+Cache()}{.reset\+Cache()}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a26690cd32034af10237ba2e8d36a69c_autotoc_md1829}
+Clears the in-\/memory cache used to speed up the instance.
+
+Note that in most cases, you don\textquotesingle{}t need to clear the runtime cache since it has self expiration times. Might be useful if you use this module in long-\/living programs.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{registry.resetCache();}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a26690cd32034af10237ba2e8d36a69c_autotoc_md1830}{}\doxysubsubsection{\texorpdfstring{\#clear\+Runtime\+Cache()}{\#clear\+Runtime\+Cache()}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a26690cd32034af10237ba2e8d36a69c_autotoc_md1830}
+Clears the in-\/memory cache used to speed up the whole module. This clears the static in-\/memory cache as well as in-\/memory cache used by instances.
+
+Note that in edge cases, some instance\textquotesingle{}s in-\/memory cache might be skipped. If that\textquotesingle{}s a problem, you should create fresh instances instead.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{RegistryClient.clearRuntimeCache();}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a26690cd32034af10237ba2e8d36a69c_autotoc_md1831}{}\doxysection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a26690cd32034af10237ba2e8d36a69c_autotoc_md1831}
+Released under the \href{http://www.opensource.org/licenses/mit-license.php}{\texttt{ MIT License}}. 

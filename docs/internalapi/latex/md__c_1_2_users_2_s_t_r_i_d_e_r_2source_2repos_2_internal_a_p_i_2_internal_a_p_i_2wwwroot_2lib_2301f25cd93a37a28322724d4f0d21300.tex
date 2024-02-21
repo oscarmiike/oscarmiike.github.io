@@ -1,0 +1,75 @@
+\chapter{README}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2301f25cd93a37a28322724d4f0d21300}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2301f25cd93a37a28322724d4f0d21300}\index{README@{README}}
+\href{https://travis-ci.org/jzaefferer/node-testswarm}{\texttt{ }} \href{http://badge.fury.io/js/testswarm}{\texttt{ }}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2301f25cd93a37a28322724d4f0d21300_autotoc_md11676}{}\doxysection{\texorpdfstring{node-\/testswarm}{node-\/testswarm}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2301f25cd93a37a28322724d4f0d21300_autotoc_md11676}
+Nodejs module for interacting with Test\+Swarm\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2301f25cd93a37a28322724d4f0d21300_autotoc_md11677}{}\doxysubsection{\texorpdfstring{Getting Started}{Getting Started}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2301f25cd93a37a28322724d4f0d21300_autotoc_md11677}
+Install the module with\+: \begin{DoxyVerb}npm install --save-dev testswarm
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ testswarm\ =\ require(\ "{}./lib/testswarm"{}\ ),}
+\DoxyCodeLine{\ \ \ \ testUrl\ =\ "{}http://localhost/jquery-\/core/test/"{},}
+\DoxyCodeLine{\ \ \ \ runs\ =\ \{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{["{}attributes"{},\ "{}callbacks"{}].forEach(function\ (suite)\ \{}
+\DoxyCodeLine{\ \ \ \ runs[suite]\ =\ testUrl\ +\ "{}?module="{}\ +\ suite;}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{testswarm.createClient(\{}
+\DoxyCodeLine{\ \ \ \ url:\ "{}http://localhost/testswarm/"{}}
+\DoxyCodeLine{\})}
+\DoxyCodeLine{.addReporter(\ testswarm.reporters.cli\ )}
+\DoxyCodeLine{.auth(\{}
+\DoxyCodeLine{\ \ \ \ id:\ "{}example"{},}
+\DoxyCodeLine{\ \ \ \ token:\ "{}yourauthtoken"{}}
+\DoxyCodeLine{\})}
+\DoxyCodeLine{.addjob(}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ name:\ "{}node-\/testswarm\ test\ job"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ runs:\ runs,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ browserSets:\ [\ "{}example"{}\ ],}
+\DoxyCodeLine{\ \ \ \ \},\ function(\ err,\ passed\ )\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ if\ (\ err\ )\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ throw\ err;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ process.exit(\ passed\ ?\ 0\ :\ 1\ );}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{);}
+
+\end{DoxyCode}
+
+
+For local testing, copy {\ttfamily sample-\/test.\+js} to {\ttfamily test.\+js} and modify to match your local Test\+Swarm setup.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2301f25cd93a37a28322724d4f0d21300_autotoc_md11678}{}\doxysubsection{\texorpdfstring{API}{API}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2301f25cd93a37a28322724d4f0d21300_autotoc_md11678}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2301f25cd93a37a28322724d4f0d21300_autotoc_md11679}{}\doxysubsubsection{\texorpdfstring{create\+Client(\{ url \})}{create\+Client(\{ url \})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2301f25cd93a37a28322724d4f0d21300_autotoc_md11679}
+
+\begin{DoxyItemize}
+\item {\ttfamily Object config}
+\begin{DoxyItemize}
+\item {\ttfamily String url} -\/ Url to root of Test\+Swarm install.
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2301f25cd93a37a28322724d4f0d21300_autotoc_md11680}{}\doxysubsubsection{\texorpdfstring{Client\+::add\+Reporter( reporter )}{Client\+::add\+Reporter( reporter )}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2301f25cd93a37a28322724d4f0d21300_autotoc_md11680}
+
+\begin{DoxyItemize}
+\item {\ttfamily Object reporter} -\/ usually {\ttfamily testswarm.\+reporters.\+cli}, unless you want to use a custom reporter
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2301f25cd93a37a28322724d4f0d21300_autotoc_md11681}{}\doxysubsubsection{\texorpdfstring{Client\+::auth(\{ id, token \})}{Client\+::auth(\{ id, token \})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2301f25cd93a37a28322724d4f0d21300_autotoc_md11681}
+
+\begin{DoxyItemize}
+\item {\ttfamily Object auth}
+\begin{DoxyItemize}
+\item {\ttfamily String id} -\/ Username of Test\+Swarm account.
+\item {\ttfamily String token} -\/ Authentication token of account.
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2301f25cd93a37a28322724d4f0d21300_autotoc_md11682}{}\doxysubsubsection{\texorpdfstring{Client\+::addjob( options, callback )}{Client\+::addjob( options, callback )}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2301f25cd93a37a28322724d4f0d21300_autotoc_md11682}
+
+\begin{DoxyItemize}
+\item {\ttfamily Object options}
+\begin{DoxyItemize}
+\item {\ttfamily String name} -\/ name of this job
+\item {\ttfamily Number run\+Max} -\/ \mbox{[}optional\mbox{]} how often failed tests should rerun
+\item {\ttfamily Object runs} -\/ Run urls by run name.
+\item {\ttfamily Array\texorpdfstring{$\vert$}{|}\+String browser\+Sets} -\/ which sets to test against
+\item {\ttfamily Number poll\+Interval} -\/ \mbox{[}optional\mbox{]} In milliseconds, default 5 seconds.
+\item {\ttfamily Number timeout} -\/ \mbox{[}optional\mbox{]} In milliseconds, default 15 minutes.
+\end{DoxyItemize}
+\item {\ttfamily Function( Object err, Boolean passed, Object results ) callback}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2301f25cd93a37a28322724d4f0d21300_autotoc_md11683}{}\doxysubsection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2301f25cd93a37a28322724d4f0d21300_autotoc_md11683}
+Copyright (c) 2014 Jörn Zaefferer Licensed under the MIT license. 

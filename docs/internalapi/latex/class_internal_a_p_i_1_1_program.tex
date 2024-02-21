@@ -1,0 +1,74 @@
+\doxysection{Internal\+API.\+Program Class Reference}
+\hypertarget{class_internal_a_p_i_1_1_program}{}\label{class_internal_a_p_i_1_1_program}\index{InternalAPI.Program@{InternalAPI.Program}}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{class_internal_a_p_i_1_1_program_a535cd66ddd4125c56d0287c007c07494}{Main}} (string\mbox{[}$\,$\mbox{]} args)
+\item 
+static IHost\+Builder \mbox{\hyperlink{class_internal_a_p_i_1_1_program_a4b14f342ca5580428019f0c5cb1f713f}{Create\+Host\+Builder}} (string\mbox{[}$\,$\mbox{]} args)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_program_a4b14f342ca5580428019f0c5cb1f713f}\label{class_internal_a_p_i_1_1_program_a4b14f342ca5580428019f0c5cb1f713f} 
+\index{InternalAPI.Program@{InternalAPI.Program}!CreateHostBuilder@{CreateHostBuilder}}
+\index{CreateHostBuilder@{CreateHostBuilder}!InternalAPI.Program@{InternalAPI.Program}}
+\doxysubsubsection{\texorpdfstring{CreateHostBuilder()}{CreateHostBuilder()}}
+{\footnotesize\ttfamily static IHost\+Builder Internal\+API.\+Program.\+Create\+Host\+Builder (\begin{DoxyParamCaption}\item[{string\mbox{[}$\,$\mbox{]}}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_internal_a_p_i_1_1_program_a4b14f342ca5580428019f0c5cb1f713f_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_internal_a_p_i_1_1_program_a535cd66ddd4125c56d0287c007c07494}\label{class_internal_a_p_i_1_1_program_a535cd66ddd4125c56d0287c007c07494} 
+\index{InternalAPI.Program@{InternalAPI.Program}!Main@{Main}}
+\index{Main@{Main}!InternalAPI.Program@{InternalAPI.Program}}
+\doxysubsubsection{\texorpdfstring{Main()}{Main()}}
+{\footnotesize\ttfamily static void Internal\+API.\+Program.\+Main (\begin{DoxyParamCaption}\item[{string\mbox{[}$\,$\mbox{]}}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ var\ environmentName\ =\ Environment.GetEnvironmentVariable(\textcolor{stringliteral}{"{}ASPNETCORE\_ENVIRONMENT"{}});}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ var\ configuration\ =\ \textcolor{keyword}{new}\ ConfigurationBuilder()}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .AddJsonFile(\textcolor{stringliteral}{"{}appsettings.json"{}})}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .AddJsonFile(\$\textcolor{stringliteral}{"{}appsettings.\{environmentName\}.json"{}})}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .Build();}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ Log.Logger\ =\ \textcolor{keyword}{new}\ LoggerConfiguration()}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .ReadFrom.Configuration(configuration)}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .Enrich.With(\textcolor{keyword}{new}\ LogThreadIDEnricher())}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .CreateLogger();}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Log.Information(\textcolor{stringliteral}{"{}Starting\ up"{}});}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_program_a4b14f342ca5580428019f0c5cb1f713f}{CreateHostBuilder}}(args).Build().Run();}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Log.Fatal(ex,\ \textcolor{stringliteral}{"{}Application\ start-\/up\ failed"{}});}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{finally}}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Log.CloseAndFlush();}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_internal_a_p_i_1_1_program_a535cd66ddd4125c56d0287c007c07494_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+STRIDER/source/repos/\+Internal\+API/\+Internal\+API/\mbox{\hyperlink{_program_8cs}{Program.\+cs}}\end{DoxyCompactItemize}

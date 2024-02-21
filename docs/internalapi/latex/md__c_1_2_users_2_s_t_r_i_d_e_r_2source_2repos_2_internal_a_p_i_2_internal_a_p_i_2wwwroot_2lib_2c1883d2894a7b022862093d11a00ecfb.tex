@@ -1,0 +1,202 @@
+\chapter{regexpp}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c1883d2894a7b022862093d11a00ecfb}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c1883d2894a7b022862093d11a00ecfb}\index{regexpp@{regexpp}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c1883d2894a7b022862093d11a00ecfb_autotoc_md11045}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c1883d2894a7b022862093d11a00ecfb_autotoc_md11045}%
+ \href{https://www.npmjs.com/package/regexpp}{\texttt{ }} \href{http://www.npmtrends.com/regexpp}{\texttt{ }} \href{https://github.com/mysticatea/regexpp/actions}{\texttt{ }} \href{https://codecov.io/gh/mysticatea/regexpp}{\texttt{ }} \href{https://david-dm.org/mysticatea/regexpp}{\texttt{ }}
+
+A regular expression parser for ECMAScript.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c1883d2894a7b022862093d11a00ecfb_autotoc_md11046}{}\doxysection{\texorpdfstring{💿 Installation}{💿 Installation}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c1883d2894a7b022862093d11a00ecfb_autotoc_md11046}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ regexpp}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item require Node.\+js 8 or newer.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c1883d2894a7b022862093d11a00ecfb_autotoc_md11047}{}\doxysection{\texorpdfstring{📖 Usage}{📖 Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c1883d2894a7b022862093d11a00ecfb_autotoc_md11047}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{import\ \{}
+\DoxyCodeLine{\ \ \ \ AST,}
+\DoxyCodeLine{\ \ \ \ RegExpParser,}
+\DoxyCodeLine{\ \ \ \ RegExpValidator,}
+\DoxyCodeLine{\ \ \ \ RegExpVisitor,}
+\DoxyCodeLine{\ \ \ \ parseRegExpLiteral,}
+\DoxyCodeLine{\ \ \ \ validateRegExpLiteral,}
+\DoxyCodeLine{\ \ \ \ visitRegExpAST}
+\DoxyCodeLine{\}\ from\ "{}regexpp"{}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c1883d2894a7b022862093d11a00ecfb_autotoc_md11048}{}\doxysubsection{\texorpdfstring{parse\+Reg\+Exp\+Literal(source, options?)}{parse\+Reg\+Exp\+Literal(source, options?)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c1883d2894a7b022862093d11a00ecfb_autotoc_md11048}
+Parse a given regular expression literal then make AST object.
+
+This is equivalent to {\ttfamily new Reg\+Exp\+Parser(options).parse\+Literal(source)}.
+
+
+\begin{DoxyItemize}
+\item {\bfseries{Parameters\+:}}
+\begin{DoxyItemize}
+\item {\ttfamily source} ({\ttfamily string \texorpdfstring{$\vert$}{|} Reg\+Exp}) The source code to parse.
+\item {\ttfamily options?} (\href{src/parser.ts\#L539}{\texttt{ {\ttfamily Reg\+Exp\+Parser.\+Options}}}) The options to parse.
+\end{DoxyItemize}
+\item {\bfseries{Return\+:}}
+\begin{DoxyItemize}
+\item The AST of the regular expression.
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c1883d2894a7b022862093d11a00ecfb_autotoc_md11049}{}\doxysubsection{\texorpdfstring{validate\+Reg\+Exp\+Literal(source, options?)}{validate\+Reg\+Exp\+Literal(source, options?)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c1883d2894a7b022862093d11a00ecfb_autotoc_md11049}
+Validate a given regular expression literal.
+
+This is equivalent to {\ttfamily new Reg\+Exp\+Validator(options).validate\+Literal(source)}.
+
+
+\begin{DoxyItemize}
+\item {\bfseries{Parameters\+:}}
+\begin{DoxyItemize}
+\item {\ttfamily source} ({\ttfamily string}) The source code to validate.
+\item {\ttfamily options?} (\href{src/validator.ts\#L127}{\texttt{ {\ttfamily Reg\+Exp\+Validator.\+Options}}}) The options to validate.
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c1883d2894a7b022862093d11a00ecfb_autotoc_md11050}{}\doxysubsection{\texorpdfstring{visit\+Reg\+Exp\+AST(ast, handlers)}{visit\+Reg\+Exp\+AST(ast, handlers)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c1883d2894a7b022862093d11a00ecfb_autotoc_md11050}
+Visit each node of a given AST.
+
+This is equivalent to {\ttfamily new Reg\+Exp\+Visitor(handlers).visit(ast)}.
+
+
+\begin{DoxyItemize}
+\item {\bfseries{Parameters\+:}}
+\begin{DoxyItemize}
+\item {\ttfamily ast} (\href{src/ast.ts\#L4}{\texttt{ {\ttfamily AST.\+Node}}}) The AST to visit.
+\item {\ttfamily handlers} (\href{src/visitor.ts\#L204}{\texttt{ {\ttfamily Reg\+Exp\+Visitor.\+Handlers}}}) The callbacks.
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c1883d2894a7b022862093d11a00ecfb_autotoc_md11051}{}\doxysubsection{\texorpdfstring{Reg\+Exp\+Parser}{Reg\+Exp\+Parser}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c1883d2894a7b022862093d11a00ecfb_autotoc_md11051}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c1883d2894a7b022862093d11a00ecfb_autotoc_md11052}{}\doxysubsubsection{\texorpdfstring{new Reg\+Exp\+Parser(options?)}{new Reg\+Exp\+Parser(options?)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c1883d2894a7b022862093d11a00ecfb_autotoc_md11052}
+
+\begin{DoxyItemize}
+\item {\bfseries{Parameters\+:}}
+\begin{DoxyItemize}
+\item {\ttfamily options?} (\href{src/parser.ts\#L539}{\texttt{ {\ttfamily Reg\+Exp\+Parser.\+Options}}}) The options to parse.
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c1883d2894a7b022862093d11a00ecfb_autotoc_md11053}{}\doxysubsubsection{\texorpdfstring{parser.\+parse\+Literal(source, start?, end?)}{parser.\+parse\+Literal(source, start?, end?)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c1883d2894a7b022862093d11a00ecfb_autotoc_md11053}
+Parse a regular expression literal.
+
+
+\begin{DoxyItemize}
+\item {\bfseries{Parameters\+:}}
+\begin{DoxyItemize}
+\item {\ttfamily source} ({\ttfamily string}) The source code to parse. E.\+g. {\ttfamily "{}/abc/g"{}}.
+\item {\ttfamily start?} ({\ttfamily number}) The start index in the source code. Default is {\ttfamily 0}.
+\item {\ttfamily end?} ({\ttfamily number}) The end index in the source code. Default is {\ttfamily source.\+length}.
+\end{DoxyItemize}
+\item {\bfseries{Return\+:}}
+\begin{DoxyItemize}
+\item The AST of the regular expression.
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c1883d2894a7b022862093d11a00ecfb_autotoc_md11054}{}\doxysubsubsection{\texorpdfstring{parser.\+parse\+Pattern(source, start?, end?, u\+Flag?)}{parser.\+parse\+Pattern(source, start?, end?, u\+Flag?)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c1883d2894a7b022862093d11a00ecfb_autotoc_md11054}
+Parse a regular expression pattern.
+
+
+\begin{DoxyItemize}
+\item {\bfseries{Parameters\+:}}
+\begin{DoxyItemize}
+\item {\ttfamily source} ({\ttfamily string}) The source code to parse. E.\+g. {\ttfamily "{}abc"{}}.
+\item {\ttfamily start?} ({\ttfamily number}) The start index in the source code. Default is {\ttfamily 0}.
+\item {\ttfamily end?} ({\ttfamily number}) The end index in the source code. Default is {\ttfamily source.\+length}.
+\item {\ttfamily u\+Flag?} ({\ttfamily boolean}) The flag to enable Unicode mode.
+\end{DoxyItemize}
+\item {\bfseries{Return\+:}}
+\begin{DoxyItemize}
+\item The AST of the regular expression pattern.
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c1883d2894a7b022862093d11a00ecfb_autotoc_md11055}{}\doxysubsubsection{\texorpdfstring{parser.\+parse\+Flags(source, start?, end?)}{parser.\+parse\+Flags(source, start?, end?)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c1883d2894a7b022862093d11a00ecfb_autotoc_md11055}
+Parse a regular expression flags.
+
+
+\begin{DoxyItemize}
+\item {\bfseries{Parameters\+:}}
+\begin{DoxyItemize}
+\item {\ttfamily source} ({\ttfamily string}) The source code to parse. E.\+g. {\ttfamily "{}gim"{}}.
+\item {\ttfamily start?} ({\ttfamily number}) The start index in the source code. Default is {\ttfamily 0}.
+\item {\ttfamily end?} ({\ttfamily number}) The end index in the source code. Default is {\ttfamily source.\+length}.
+\end{DoxyItemize}
+\item {\bfseries{Return\+:}}
+\begin{DoxyItemize}
+\item The AST of the regular expression flags.
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c1883d2894a7b022862093d11a00ecfb_autotoc_md11056}{}\doxysubsection{\texorpdfstring{Reg\+Exp\+Validator}{Reg\+Exp\+Validator}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c1883d2894a7b022862093d11a00ecfb_autotoc_md11056}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c1883d2894a7b022862093d11a00ecfb_autotoc_md11057}{}\doxysubsubsection{\texorpdfstring{new Reg\+Exp\+Validator(options)}{new Reg\+Exp\+Validator(options)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c1883d2894a7b022862093d11a00ecfb_autotoc_md11057}
+
+\begin{DoxyItemize}
+\item {\bfseries{Parameters\+:}}
+\begin{DoxyItemize}
+\item {\ttfamily options} (\href{src/validator.ts\#L127}{\texttt{ {\ttfamily Reg\+Exp\+Validator.\+Options}}}) The options to validate.
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c1883d2894a7b022862093d11a00ecfb_autotoc_md11058}{}\doxysubsubsection{\texorpdfstring{validator.\+validate\+Literal(source, start, end)}{validator.\+validate\+Literal(source, start, end)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c1883d2894a7b022862093d11a00ecfb_autotoc_md11058}
+Validate a regular expression literal.
+
+
+\begin{DoxyItemize}
+\item {\bfseries{Parameters\+:}}
+\begin{DoxyItemize}
+\item {\ttfamily source} ({\ttfamily string}) The source code to validate.
+\item {\ttfamily start?} ({\ttfamily number}) The start index in the source code. Default is {\ttfamily 0}.
+\item {\ttfamily end?} ({\ttfamily number}) The end index in the source code. Default is {\ttfamily source.\+length}.
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c1883d2894a7b022862093d11a00ecfb_autotoc_md11059}{}\doxysubsubsection{\texorpdfstring{validator.\+validate\+Pattern(source, start, end, u\+Flag)}{validator.\+validate\+Pattern(source, start, end, u\+Flag)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c1883d2894a7b022862093d11a00ecfb_autotoc_md11059}
+Validate a regular expression pattern.
+
+
+\begin{DoxyItemize}
+\item {\bfseries{Parameters\+:}}
+\begin{DoxyItemize}
+\item {\ttfamily source} ({\ttfamily string}) The source code to validate.
+\item {\ttfamily start?} ({\ttfamily number}) The start index in the source code. Default is {\ttfamily 0}.
+\item {\ttfamily end?} ({\ttfamily number}) The end index in the source code. Default is {\ttfamily source.\+length}.
+\item {\ttfamily u\+Flag?} ({\ttfamily boolean}) The flag to enable Unicode mode.
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c1883d2894a7b022862093d11a00ecfb_autotoc_md11060}{}\doxysubsubsection{\texorpdfstring{validator.\+validate\+Flags(source, start, end)}{validator.\+validate\+Flags(source, start, end)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c1883d2894a7b022862093d11a00ecfb_autotoc_md11060}
+Validate a regular expression flags.
+
+
+\begin{DoxyItemize}
+\item {\bfseries{Parameters\+:}}
+\begin{DoxyItemize}
+\item {\ttfamily source} ({\ttfamily string}) The source code to validate.
+\item {\ttfamily start?} ({\ttfamily number}) The start index in the source code. Default is {\ttfamily 0}.
+\item {\ttfamily end?} ({\ttfamily number}) The end index in the source code. Default is {\ttfamily source.\+length}.
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c1883d2894a7b022862093d11a00ecfb_autotoc_md11061}{}\doxysubsection{\texorpdfstring{Reg\+Exp\+Visitor}{Reg\+Exp\+Visitor}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c1883d2894a7b022862093d11a00ecfb_autotoc_md11061}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c1883d2894a7b022862093d11a00ecfb_autotoc_md11062}{}\doxysubsubsection{\texorpdfstring{new Reg\+Exp\+Visitor(handlers)}{new Reg\+Exp\+Visitor(handlers)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c1883d2894a7b022862093d11a00ecfb_autotoc_md11062}
+
+\begin{DoxyItemize}
+\item {\bfseries{Parameters\+:}}
+\begin{DoxyItemize}
+\item {\ttfamily handlers} (\href{src/visitor.ts\#L204}{\texttt{ {\ttfamily Reg\+Exp\+Visitor.\+Handlers}}}) The callbacks.
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c1883d2894a7b022862093d11a00ecfb_autotoc_md11063}{}\doxysubsubsection{\texorpdfstring{visitor.\+visit(ast)}{visitor.\+visit(ast)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c1883d2894a7b022862093d11a00ecfb_autotoc_md11063}
+Validate a regular expression literal.
+
+
+\begin{DoxyItemize}
+\item {\bfseries{Parameters\+:}}
+\begin{DoxyItemize}
+\item {\ttfamily ast} (\href{src/ast.ts\#L4}{\texttt{ {\ttfamily AST.\+Node}}}) The AST to visit.
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c1883d2894a7b022862093d11a00ecfb_autotoc_md11064}{}\doxysection{\texorpdfstring{📰 Changelog}{📰 Changelog}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c1883d2894a7b022862093d11a00ecfb_autotoc_md11064}
+
+\begin{DoxyItemize}
+\item \href{https://github.com/mysticatea/regexpp/releases}{\texttt{ Git\+Hub Releases}}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c1883d2894a7b022862093d11a00ecfb_autotoc_md11065}{}\doxysection{\texorpdfstring{🍻 Contributing}{🍻 Contributing}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c1883d2894a7b022862093d11a00ecfb_autotoc_md11065}
+Welcome contributing!
+
+Please use Git\+Hub\textquotesingle{}s Issues/\+PRs.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c1883d2894a7b022862093d11a00ecfb_autotoc_md11066}{}\doxysubsection{\texorpdfstring{Development Tools}{Development Tools}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c1883d2894a7b022862093d11a00ecfb_autotoc_md11066}
+
+\begin{DoxyItemize}
+\item {\ttfamily npm test} runs tests and measures coverage.
+\item {\ttfamily npm run build} compiles Type\+Script source code to {\ttfamily index.\+js}, {\ttfamily index.\+js.\+map}, and {\ttfamily index.\+d.\+ts}.
+\item {\ttfamily npm run clean} removes the temporary files which are created by {\ttfamily npm test} and {\ttfamily npm run build}.
+\item {\ttfamily npm run lint} runs ESLint.
+\item {\ttfamily npm run update\+:test} updates test fixtures.
+\item {\ttfamily npm run update\+:ids} updates {\ttfamily src/unicode/ids.\+ts}.
+\item {\ttfamily npm run watch} runs tests with {\ttfamily -\/-\/watch} option. 
+\end{DoxyItemize}

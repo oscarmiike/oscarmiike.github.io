@@ -1,0 +1,52 @@
+\chapter{strip-\/json-\/comments \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/sindresorhus/strip-\/json-\/comments"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+org/sindresorhus/strip-\/json-\/comments.\+svg?branch=master"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20acb77be63e76a504d3c0387d8656ebe}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20acb77be63e76a504d3c0387d8656ebe}\index{strip-\/json-\/comments $<$a href="{}https://travis-\/ci.org/sindresorhus/strip-\/json-\/comments"{} $>$$<$img src="{}https://travis-\/ci.org/sindresorhus/strip-\/json-\/comments.svg?branch=master"{} alt="{}Build Status"{}/$>$$<$/a$>$@{strip-\/json-\/comments $<$a href=""https://travis-\/ci.org/sindresorhus/strip-\/json-\/comments"" $>$$<$img src=""https://travis-\/ci.org/sindresorhus/strip-\/json-\/comments.svg?branch=master"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20acb77be63e76a504d3c0387d8656ebe_autotoc_md4797}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20acb77be63e76a504d3c0387d8656ebe_autotoc_md4797}%
+ \begin{quote}
+Strip comments from JSON. Lets you use comments in your JSON files! \end{quote}
+This is now possible\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ //\ rainbows}
+\DoxyCodeLine{\ \ \ \ "{}unicorn"{}:\ /*\ ❤\ */\ "{}cake"{}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+It will replace single-\/line comments {\ttfamily //} and multi-\/line comments {\ttfamily /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}/} with whitespace. This allows JSON error positions to remain as close as possible to the original source.
+
+Also available as a \href{https://github.com/sindresorhus/gulp-strip-json-comments}{\texttt{ gulp}}/\href{https://github.com/sindresorhus/grunt-strip-json-comments}{\texttt{ grunt}}/\href{https://github.com/sindresorhus/broccoli-strip-json-comments}{\texttt{ broccoli}} plugin.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20acb77be63e76a504d3c0387d8656ebe_autotoc_md4798}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20acb77be63e76a504d3c0387d8656ebe_autotoc_md4798}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ -\/-\/save\ strip-\/json-\/comments}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20acb77be63e76a504d3c0387d8656ebe_autotoc_md4799}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20acb77be63e76a504d3c0387d8656ebe_autotoc_md4799}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ json\ =\ '\{/*rainbows*/"{}unicorn"{}:"{}cake"{}\}';}
+\DoxyCodeLine{}
+\DoxyCodeLine{JSON.parse(stripJsonComments(json));}
+\DoxyCodeLine{//=>\ \{unicorn:\ 'cake'\}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20acb77be63e76a504d3c0387d8656ebe_autotoc_md4800}{}\doxysection{\texorpdfstring{API}{API}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20acb77be63e76a504d3c0387d8656ebe_autotoc_md4800}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20acb77be63e76a504d3c0387d8656ebe_autotoc_md4801}{}\doxysubsection{\texorpdfstring{strip\+Json\+Comments(input, \mbox{[}options\mbox{]})}{strip\+Json\+Comments(input, \mbox{[}options\mbox{]})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20acb77be63e76a504d3c0387d8656ebe_autotoc_md4801}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20acb77be63e76a504d3c0387d8656ebe_autotoc_md4802}{}\doxysubsubsection{\texorpdfstring{input}{input}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20acb77be63e76a504d3c0387d8656ebe_autotoc_md4802}
+Type\+: {\ttfamily string}
+
+Accepts a string with JSON and returns a string without comments.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20acb77be63e76a504d3c0387d8656ebe_autotoc_md4803}{}\doxysubsubsection{\texorpdfstring{options}{options}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20acb77be63e76a504d3c0387d8656ebe_autotoc_md4803}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20acb77be63e76a504d3c0387d8656ebe_autotoc_md4804}{}\doxyparagraph{\texorpdfstring{whitespace}{whitespace}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20acb77be63e76a504d3c0387d8656ebe_autotoc_md4804}
+Type\+: {\ttfamily boolean} ~\newline
+ Default\+: {\ttfamily true}
+
+Replace comments with whitespace instead of stripping them entirely.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20acb77be63e76a504d3c0387d8656ebe_autotoc_md4805}{}\doxysection{\texorpdfstring{Related}{Related}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20acb77be63e76a504d3c0387d8656ebe_autotoc_md4805}
+
+\begin{DoxyItemize}
+\item \href{https://github.com/sindresorhus/strip-json-comments-cli}{\texttt{ strip-\/json-\/comments-\/cli}} -\/ CLI for this module
+\item \href{https://github.com/sindresorhus/strip-css-comments}{\texttt{ strip-\/css-\/comments}} -\/ Strip comments from CSS
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20acb77be63e76a504d3c0387d8656ebe_autotoc_md4806}{}\doxysection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20acb77be63e76a504d3c0387d8656ebe_autotoc_md4806}
+MIT © \href{http://sindresorhus.com}{\texttt{ Sindre Sorhus}} 

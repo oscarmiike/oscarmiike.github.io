@@ -1,0 +1,240 @@
+\doxysection{Internal\+API.\+Controllers.\+Price\+App\+Controller Class Reference}
+\hypertarget{class_internal_a_p_i_1_1_controllers_1_1_price_app_controller}{}\label{class_internal_a_p_i_1_1_controllers_1_1_price_app_controller}\index{InternalAPI.Controllers.PriceAppController@{InternalAPI.Controllers.PriceAppController}}
+
+
+Inheritance diagram for Internal\+API.\+Controllers.\+Price\+App\+Controller\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{class_internal_a_p_i_1_1_controllers_1_1_price_app_controller__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Internal\+API.\+Controllers.\+Price\+App\+Controller\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{class_internal_a_p_i_1_1_controllers_1_1_price_app_controller__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_price_app_controller_aebbf306e91965dafc9fb46a3585fbf34}{Price\+App\+Controller}} (ILogger$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_price_app_controller}{Price\+App\+Controller}} $>$ logger, IConfiguration configuration)
+\item 
+Action\+Result$<$ List$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_price_app_1_1_asset}{Asset}} $>$ $>$ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_price_app_controller_a7908e8d6c37dec159152ce12737ea3e1}{Asset\+List}} (string mode)
+\item 
+Action\+Result$<$ List$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_price_app_1_1_product}{Product}} $>$ $>$ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_price_app_controller_a1a3bc27593f896643e34a8fc4f4d426c}{Product\+List}} (string mode)
+\item 
+Action\+Result$<$ List$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_price_app_1_1_price_mode}{Price\+Mode}} $>$ $>$ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_price_app_controller_a0f7d94e11c5f984108963dffe6ffdc91}{Price\+Mode\+List}} ()
+\item 
+Action\+Result$<$ List$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_price_app_1_1_spot_history}{Spot\+History}} $>$ $>$ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_price_app_controller_a07d1dfb0b7c38c390f3e94fe427d0dc0}{Spot\+History\+List}} (string history, string spot\+Interval)
+\item 
+Action\+Result$<$ List$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_price_app_1_1_daily_close_asset}{Daily\+Close\+Asset}} $>$ $>$ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_price_app_controller_a8c0a686d2bc36110153f6027bef0c0d9}{Daily\+Close\+Prices}} (string unixclosedate)
+\item 
+Action\+Result$<$ object $>$ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_price_app_controller_a622397f8a95d3d27998e8fa32ed380ef}{Daily\+Close\+Prices}} ()
+\item 
+Action\+Result$<$ object $>$ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_price_app_controller_aa7fed7d63d7d12d571ba27a8f5973ba8}{Market\+Status\+Override}} ()
+\item 
+Action\+Result$<$ object $>$ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_price_app_controller_a601eba44a4e2b8c95e90215e452b298a}{Trim\+Logs}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_price_app_controller_aebbf306e91965dafc9fb46a3585fbf34}\label{class_internal_a_p_i_1_1_controllers_1_1_price_app_controller_aebbf306e91965dafc9fb46a3585fbf34} 
+\index{InternalAPI.Controllers.PriceAppController@{InternalAPI.Controllers.PriceAppController}!PriceAppController@{PriceAppController}}
+\index{PriceAppController@{PriceAppController}!InternalAPI.Controllers.PriceAppController@{InternalAPI.Controllers.PriceAppController}}
+\doxysubsubsection{\texorpdfstring{PriceAppController()}{PriceAppController()}}
+{\footnotesize\ttfamily Internal\+API.\+Controllers.\+Price\+App\+Controller.\+Price\+App\+Controller (\begin{DoxyParamCaption}\item[{ILogger$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_price_app_controller}{Price\+App\+Controller}} $>$}]{logger,  }\item[{IConfiguration}]{configuration }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger\ =\ logger;}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ pah\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_helpers_1_1_price_app_helper}{PriceAppHelper}}() }
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ APIUser\ =\ configuration[\textcolor{stringliteral}{"{}PriceAppSettings:APIUser"{}}],}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ APIPass\ =\ configuration[\textcolor{stringliteral}{"{}PriceAppSettings:APIPass"{}}],}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BaseURL\ =\ configuration[\textcolor{stringliteral}{"{}PriceAppSettings:BaseURL"{}}],}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ AssetListEndpoint\ =\ configuration[\textcolor{stringliteral}{"{}PriceAppSettings:AssetListEndpoint"{}}],}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ProductListEndpoint\ =\ configuration[\textcolor{stringliteral}{"{}PriceAppSettings:ProductListEndpoint"{}}],}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PriceModeListEndpoint\ =\ configuration[\textcolor{stringliteral}{"{}PriceAppSettings:PriceModeListEndpoint"{}}],}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SpotHistoryListEndpoint\ =\ configuration[\textcolor{stringliteral}{"{}PriceAppSettings:SpotHistoryListEndpoint"{}}],}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ DailyCloseAssetListEndpoint\ =\ configuration[\textcolor{stringliteral}{"{}PriceAppSettings:DailyCloseAssetListEndpoint"{}}],}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ DailyCloseAssetListChartDataEndpoint\ =\ configuration[\textcolor{stringliteral}{"{}PriceAppSettings:DailyCloseAssetListChartDataEndpoint"{}}],}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ MarketStatusOverrideEndpoint\ =\ configuration[\textcolor{stringliteral}{"{}PriceAppSettings:MarketStatusOverrideEndpoint"{}}],}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TrimLogsEndpoint\ =\ configuration[\textcolor{stringliteral}{"{}PriceAppSettings:TrimLogsEndpoint"{}}],}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ DefaultMode\ =\ configuration[\textcolor{stringliteral}{"{}PriceAppSettings:DefaultMode"{}}]}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_price_app_controller_a7908e8d6c37dec159152ce12737ea3e1}\label{class_internal_a_p_i_1_1_controllers_1_1_price_app_controller_a7908e8d6c37dec159152ce12737ea3e1} 
+\index{InternalAPI.Controllers.PriceAppController@{InternalAPI.Controllers.PriceAppController}!AssetList@{AssetList}}
+\index{AssetList@{AssetList}!InternalAPI.Controllers.PriceAppController@{InternalAPI.Controllers.PriceAppController}}
+\doxysubsubsection{\texorpdfstring{AssetList()}{AssetList()}}
+{\footnotesize\ttfamily Action\+Result$<$ List$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_price_app_1_1_asset}{Asset}} $>$ $>$ Internal\+API.\+Controllers.\+Price\+App\+Controller.\+Asset\+List (\begin{DoxyParamCaption}\item[{string}]{mode }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ pah.\mbox{\hyperlink{class_internal_a_p_i_1_1_helpers_1_1_price_app_helper_a9f6b0ec94ed86d6b04eb63049d4f4545}{GetAssetList}}(mode).\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_price_app_1_1_price_app_asset_list_a5ac7e17c93e464f1b897163466997d46}{AssetList}};}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_internal_a_p_i_1_1_controllers_1_1_price_app_controller_a7908e8d6c37dec159152ce12737ea3e1_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_price_app_controller_a622397f8a95d3d27998e8fa32ed380ef}\label{class_internal_a_p_i_1_1_controllers_1_1_price_app_controller_a622397f8a95d3d27998e8fa32ed380ef} 
+\index{InternalAPI.Controllers.PriceAppController@{InternalAPI.Controllers.PriceAppController}!DailyClosePrices@{DailyClosePrices}}
+\index{DailyClosePrices@{DailyClosePrices}!InternalAPI.Controllers.PriceAppController@{InternalAPI.Controllers.PriceAppController}}
+\doxysubsubsection{\texorpdfstring{DailyClosePrices()}{DailyClosePrices()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Action\+Result$<$ object $>$ Internal\+API.\+Controllers.\+Price\+App\+Controller.\+Daily\+Close\+Prices (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ pah.\mbox{\hyperlink{class_internal_a_p_i_1_1_helpers_1_1_price_app_helper_ad3e41ad3f0e965d3cc8171ed11cb312b}{GetDailyCloseAssetListChartData}}();}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_internal_a_p_i_1_1_controllers_1_1_price_app_controller_a622397f8a95d3d27998e8fa32ed380ef_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_price_app_controller_a8c0a686d2bc36110153f6027bef0c0d9}\label{class_internal_a_p_i_1_1_controllers_1_1_price_app_controller_a8c0a686d2bc36110153f6027bef0c0d9} 
+\index{InternalAPI.Controllers.PriceAppController@{InternalAPI.Controllers.PriceAppController}!DailyClosePrices@{DailyClosePrices}}
+\index{DailyClosePrices@{DailyClosePrices}!InternalAPI.Controllers.PriceAppController@{InternalAPI.Controllers.PriceAppController}}
+\doxysubsubsection{\texorpdfstring{DailyClosePrices()}{DailyClosePrices()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Action\+Result$<$ List$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_price_app_1_1_daily_close_asset}{Daily\+Close\+Asset}} $>$ $>$ Internal\+API.\+Controllers.\+Price\+App\+Controller.\+Daily\+Close\+Prices (\begin{DoxyParamCaption}\item[{string}]{unixclosedate }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ pah.\mbox{\hyperlink{class_internal_a_p_i_1_1_helpers_1_1_price_app_helper_a96599de0ffa67ffa5881b0affb38926c}{GetDailyCloseAssetList}}(unixclosedate).\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_price_app_1_1_price_app_daily_close_asset_list_a640b72f320923ac8ace73caf2ee37f1a}{DailyCloseAssetList}};}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_internal_a_p_i_1_1_controllers_1_1_price_app_controller_a8c0a686d2bc36110153f6027bef0c0d9_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_price_app_controller_aa7fed7d63d7d12d571ba27a8f5973ba8}\label{class_internal_a_p_i_1_1_controllers_1_1_price_app_controller_aa7fed7d63d7d12d571ba27a8f5973ba8} 
+\index{InternalAPI.Controllers.PriceAppController@{InternalAPI.Controllers.PriceAppController}!MarketStatusOverride@{MarketStatusOverride}}
+\index{MarketStatusOverride@{MarketStatusOverride}!InternalAPI.Controllers.PriceAppController@{InternalAPI.Controllers.PriceAppController}}
+\doxysubsubsection{\texorpdfstring{MarketStatusOverride()}{MarketStatusOverride()}}
+{\footnotesize\ttfamily Action\+Result$<$ object $>$ Internal\+API.\+Controllers.\+Price\+App\+Controller.\+Market\+Status\+Override (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ pah.\mbox{\hyperlink{class_internal_a_p_i_1_1_helpers_1_1_price_app_helper_a44eafaf0c74a8a12781bc91cc9e95a28}{GetMarketStatusOverride}}();}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_internal_a_p_i_1_1_controllers_1_1_price_app_controller_aa7fed7d63d7d12d571ba27a8f5973ba8_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_price_app_controller_a0f7d94e11c5f984108963dffe6ffdc91}\label{class_internal_a_p_i_1_1_controllers_1_1_price_app_controller_a0f7d94e11c5f984108963dffe6ffdc91} 
+\index{InternalAPI.Controllers.PriceAppController@{InternalAPI.Controllers.PriceAppController}!PriceModeList@{PriceModeList}}
+\index{PriceModeList@{PriceModeList}!InternalAPI.Controllers.PriceAppController@{InternalAPI.Controllers.PriceAppController}}
+\doxysubsubsection{\texorpdfstring{PriceModeList()}{PriceModeList()}}
+{\footnotesize\ttfamily Action\+Result$<$ List$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_price_app_1_1_price_mode}{Price\+Mode}} $>$ $>$ Internal\+API.\+Controllers.\+Price\+App\+Controller.\+Price\+Mode\+List (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ pah.\mbox{\hyperlink{class_internal_a_p_i_1_1_helpers_1_1_price_app_helper_afd6a40f3f65653596a2c562f81f432c7}{GetPriceModeList}}().\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_price_app_1_1_price_app_price_mode_list_a7e3ec0b742dd4ca4a7f61c88d5ff5563}{PriceModeList}};}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_internal_a_p_i_1_1_controllers_1_1_price_app_controller_a0f7d94e11c5f984108963dffe6ffdc91_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_price_app_controller_a1a3bc27593f896643e34a8fc4f4d426c}\label{class_internal_a_p_i_1_1_controllers_1_1_price_app_controller_a1a3bc27593f896643e34a8fc4f4d426c} 
+\index{InternalAPI.Controllers.PriceAppController@{InternalAPI.Controllers.PriceAppController}!ProductList@{ProductList}}
+\index{ProductList@{ProductList}!InternalAPI.Controllers.PriceAppController@{InternalAPI.Controllers.PriceAppController}}
+\doxysubsubsection{\texorpdfstring{ProductList()}{ProductList()}}
+{\footnotesize\ttfamily Action\+Result$<$ List$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_price_app_1_1_product}{Product}} $>$ $>$ Internal\+API.\+Controllers.\+Price\+App\+Controller.\+Product\+List (\begin{DoxyParamCaption}\item[{string}]{mode }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ pah.\mbox{\hyperlink{class_internal_a_p_i_1_1_helpers_1_1_price_app_helper_ad890ae3c5a3884455812fbed8c2ed8b4}{GetProductList}}(mode).\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_price_app_1_1_price_app_product_list_a09d31d5dfe7dff11b3efdf377325c8e4}{ProductList}};}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_internal_a_p_i_1_1_controllers_1_1_price_app_controller_a1a3bc27593f896643e34a8fc4f4d426c_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_price_app_controller_a07d1dfb0b7c38c390f3e94fe427d0dc0}\label{class_internal_a_p_i_1_1_controllers_1_1_price_app_controller_a07d1dfb0b7c38c390f3e94fe427d0dc0} 
+\index{InternalAPI.Controllers.PriceAppController@{InternalAPI.Controllers.PriceAppController}!SpotHistoryList@{SpotHistoryList}}
+\index{SpotHistoryList@{SpotHistoryList}!InternalAPI.Controllers.PriceAppController@{InternalAPI.Controllers.PriceAppController}}
+\doxysubsubsection{\texorpdfstring{SpotHistoryList()}{SpotHistoryList()}}
+{\footnotesize\ttfamily Action\+Result$<$ List$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_price_app_1_1_spot_history}{Spot\+History}} $>$ $>$ Internal\+API.\+Controllers.\+Price\+App\+Controller.\+Spot\+History\+List (\begin{DoxyParamCaption}\item[{string}]{history,  }\item[{string}]{spot\+Interval }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ pah.\mbox{\hyperlink{class_internal_a_p_i_1_1_helpers_1_1_price_app_helper_a28ca05eddddf3f394d3d4ceb24a92cb8}{GetSpotHistoryList}}(history,\ spotInterval).\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_price_app_1_1_price_app_spot_history_list_a9ceadc787b7dd7906eb46206cbf5b76d}{SpotHistoryList}};}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_internal_a_p_i_1_1_controllers_1_1_price_app_controller_a07d1dfb0b7c38c390f3e94fe427d0dc0_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_price_app_controller_a601eba44a4e2b8c95e90215e452b298a}\label{class_internal_a_p_i_1_1_controllers_1_1_price_app_controller_a601eba44a4e2b8c95e90215e452b298a} 
+\index{InternalAPI.Controllers.PriceAppController@{InternalAPI.Controllers.PriceAppController}!TrimLogs@{TrimLogs}}
+\index{TrimLogs@{TrimLogs}!InternalAPI.Controllers.PriceAppController@{InternalAPI.Controllers.PriceAppController}}
+\doxysubsubsection{\texorpdfstring{TrimLogs()}{TrimLogs()}}
+{\footnotesize\ttfamily Action\+Result$<$ object $>$ Internal\+API.\+Controllers.\+Price\+App\+Controller.\+Trim\+Logs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ pah.\mbox{\hyperlink{class_internal_a_p_i_1_1_helpers_1_1_price_app_helper_aef915e373920b20b324c405b6ea7d305}{TrimLogs}}();}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_internal_a_p_i_1_1_controllers_1_1_price_app_controller_a601eba44a4e2b8c95e90215e452b298a_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+STRIDER/source/repos/\+Internal\+API/\+Internal\+API/\+Controllers/\mbox{\hyperlink{_price_app_controller_8cs}{Price\+App\+Controller.\+cs}}\end{DoxyCompactItemize}

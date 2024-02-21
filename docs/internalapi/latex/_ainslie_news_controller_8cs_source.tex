@@ -1,0 +1,43 @@
+\doxysection{Ainslie\+News\+Controller.\+cs}
+\hypertarget{_ainslie_news_controller_8cs_source}{}\label{_ainslie_news_controller_8cs_source}\index{C:/Users/STRIDER/source/repos/InternalAPI/InternalAPI/Controllers/AinslieNewsController.cs@{C:/Users/STRIDER/source/repos/InternalAPI/InternalAPI/Controllers/AinslieNewsController.cs}}
+\mbox{\hyperlink{_ainslie_news_controller_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_ainslie_news_controller_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_contexts_1_1_internal_a_p_i}{InternalAPI.Contexts.InternalAPI}};}
+\DoxyCodeLine{\Hypertarget{_ainslie_news_controller_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_models_1_1_internal_a_p_i}{InternalAPI.Models.InternalAPI}};}
+\DoxyCodeLine{\Hypertarget{_ainslie_news_controller_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }Microsoft.AspNetCore.Mvc;}
+\DoxyCodeLine{\Hypertarget{_ainslie_news_controller_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }Microsoft.AspNetCore.Mvc.Rendering;}
+\DoxyCodeLine{\Hypertarget{_ainslie_news_controller_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_ainslie_news_controller_8cs_source_l00006}00006\ \textcolor{keyword}{using\ }System.Linq;}
+\DoxyCodeLine{\Hypertarget{_ainslie_news_controller_8cs_source_l00007}00007\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_ainslie_news_controller_8cs_source_l00008}00008\ \textcolor{keyword}{using\ }Microsoft.Extensions.DependencyInjection;}
+\DoxyCodeLine{\Hypertarget{_ainslie_news_controller_8cs_source_l00009}00009\ \textcolor{keyword}{using\ }Microsoft.EntityFrameworkCore;}
+\DoxyCodeLine{\Hypertarget{_ainslie_news_controller_8cs_source_l00010}00010\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_services}{InternalAPI.Services}};}
+\DoxyCodeLine{\Hypertarget{_ainslie_news_controller_8cs_source_l00011}00011\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_dto_1_1_ainslie_news}{InternalAPI.Dto.AinslieNews}};}
+\DoxyCodeLine{\Hypertarget{_ainslie_news_controller_8cs_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_ainslie_news_controller_8cs_source_l00013}00013\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_controllers}{InternalAPI.Controllers}}}
+\DoxyCodeLine{\Hypertarget{_ainslie_news_controller_8cs_source_l00014}00014\ \{}
+\DoxyCodeLine{\Hypertarget{_ainslie_news_controller_8cs_source_l00015}00015\ \ \ \ \ [Route(\textcolor{stringliteral}{"{}v1/[controller]"{}})]}
+\DoxyCodeLine{\Hypertarget{_ainslie_news_controller_8cs_source_l00016}00016\ \ \ \ \ [ApiController]}
+\DoxyCodeLine{\Hypertarget{_ainslie_news_controller_8cs_source_l00017}\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_ainslie_news_controller}{00017}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_ainslie_news_controller}{AinslieNewsController}}\ :\ ControllerBase\ \textcolor{comment}{//controller\ has\ more\ members\ designed\ to\ support\ views,\ controllerbase\ is\ simpler\ for\ api}}
+\DoxyCodeLine{\Hypertarget{_ainslie_news_controller_8cs_source_l00018}00018\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ainslie_news_controller_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ readonly\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}\ \_logger;}
+\DoxyCodeLine{\Hypertarget{_ainslie_news_controller_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ readonly\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_ainslie_news_service}{AinslieNewsService}}\ \_newsService;}
+\DoxyCodeLine{\Hypertarget{_ainslie_news_controller_8cs_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{_ainslie_news_controller_8cs_source_l00022}\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_ainslie_news_controller_a2c04e87afaf17f7d393dfa6d3b835f9e}{00022}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_ainslie_news_controller_a2c04e87afaf17f7d393dfa6d3b835f9e}{AinslieNewsController}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}\ logService,\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_ainslie_news_service}{AinslieNewsService}}\ newsService)}
+\DoxyCodeLine{\Hypertarget{_ainslie_news_controller_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ainslie_news_controller_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger\ =\ logService;}
+\DoxyCodeLine{\Hypertarget{_ainslie_news_controller_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \ \ \ \ \_newsService\ =\ newsService;}
+\DoxyCodeLine{\Hypertarget{_ainslie_news_controller_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ainslie_news_controller_8cs_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_ainslie_news_controller_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ [Route(\textcolor{stringliteral}{"{}subscribe"{}})]}
+\DoxyCodeLine{\Hypertarget{_ainslie_news_controller_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ [HttpPost]}
+\DoxyCodeLine{\Hypertarget{_ainslie_news_controller_8cs_source_l00030}\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_ainslie_news_controller_a50fba1ee95004b934fdd0210d071404c}{00030}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ IActionResult\ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_ainslie_news_controller_a50fba1ee95004b934fdd0210d071404c}{SubscribeUser}}([FromBody]\ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_ainslie_news_1_1_ainslie_news_subscriber}{AinslieNewsSubscriber}}\ subscribeUser)}
+\DoxyCodeLine{\Hypertarget{_ainslie_news_controller_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ainslie_news_controller_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogInformation(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.AinslieNewsController,\ \$\textcolor{stringliteral}{"{}request\ received\ for\ subscribe\ endpoint\ on\ AinslieNews\ controller"{}},\ subscribeUser);}
+\DoxyCodeLine{\Hypertarget{_ainslie_news_controller_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{object}\ subscribeResponse\ =\ \_newsService.SubscribeNewContact(subscribeUser);}
+\DoxyCodeLine{\Hypertarget{_ainslie_news_controller_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Ok(subscribeResponse);}
+\DoxyCodeLine{\Hypertarget{_ainslie_news_controller_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ainslie_news_controller_8cs_source_l00036}00036\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ainslie_news_controller_8cs_source_l00037}00037\ \}}
+
+\end{DoxyCode}

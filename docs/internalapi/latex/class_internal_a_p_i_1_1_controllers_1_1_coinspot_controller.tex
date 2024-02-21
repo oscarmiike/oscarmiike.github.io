@@ -1,0 +1,137 @@
+\doxysection{Internal\+API.\+Controllers.\+Coinspot\+Controller Class Reference}
+\hypertarget{class_internal_a_p_i_1_1_controllers_1_1_coinspot_controller}{}\label{class_internal_a_p_i_1_1_controllers_1_1_coinspot_controller}\index{InternalAPI.Controllers.CoinspotController@{InternalAPI.Controllers.CoinspotController}}
+
+
+Inheritance diagram for Internal\+API.\+Controllers.\+Coinspot\+Controller\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{class_internal_a_p_i_1_1_controllers_1_1_coinspot_controller__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Internal\+API.\+Controllers.\+Coinspot\+Controller\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{class_internal_a_p_i_1_1_controllers_1_1_coinspot_controller__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_coinspot_controller_a9c7a382baa19cd311338b3781ae8d5ea}{Coinspot\+Controller}} (ILogger$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_coinspot_controller}{Coinspot\+Controller}} $>$ logger, IOptions$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_coinspot_settings}{Coinspot\+Settings}} $>$ coinspot\+Settings)
+\item 
+Action\+Result$<$ object $>$ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_coinspot_controller_a182616698557285ca8b91b33d0b6b494}{Pass\+Through}} (\mbox{[}From\+Route\mbox{]} string account, \mbox{[}From\+Route\mbox{]} string endpoint, \mbox{[}From\+Body\mbox{]} object body)
+\begin{DoxyCompactList}\small\item\em Finds Coinspot credentials, decorates proxy request and sends to Coinspot and responds with raw result. \end{DoxyCompactList}\item 
+Action\+Result$<$ object $>$ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_coinspot_controller_a4454a0da92db314a4b21a2b5b00303ca}{Pass\+Through}} (\mbox{[}From\+Route\mbox{]} string account, \mbox{[}From\+Route\mbox{]} string endpoint)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_coinspot_controller_a9c7a382baa19cd311338b3781ae8d5ea}\label{class_internal_a_p_i_1_1_controllers_1_1_coinspot_controller_a9c7a382baa19cd311338b3781ae8d5ea} 
+\index{InternalAPI.Controllers.CoinspotController@{InternalAPI.Controllers.CoinspotController}!CoinspotController@{CoinspotController}}
+\index{CoinspotController@{CoinspotController}!InternalAPI.Controllers.CoinspotController@{InternalAPI.Controllers.CoinspotController}}
+\doxysubsubsection{\texorpdfstring{CoinspotController()}{CoinspotController()}}
+{\footnotesize\ttfamily Internal\+API.\+Controllers.\+Coinspot\+Controller.\+Coinspot\+Controller (\begin{DoxyParamCaption}\item[{ILogger$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_coinspot_controller}{Coinspot\+Controller}} $>$}]{logger,  }\item[{IOptions$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_coinspot_settings}{Coinspot\+Settings}} $>$}]{coinspot\+Settings }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger\ =\ logger;}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \_coinspotSettings\ =\ coinspotSettings.Value;}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_coinspot_controller_a4454a0da92db314a4b21a2b5b00303ca}\label{class_internal_a_p_i_1_1_controllers_1_1_coinspot_controller_a4454a0da92db314a4b21a2b5b00303ca} 
+\index{InternalAPI.Controllers.CoinspotController@{InternalAPI.Controllers.CoinspotController}!PassThrough@{PassThrough}}
+\index{PassThrough@{PassThrough}!InternalAPI.Controllers.CoinspotController@{InternalAPI.Controllers.CoinspotController}}
+\doxysubsubsection{\texorpdfstring{PassThrough()}{PassThrough()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Action\+Result$<$ object $>$ Internal\+API.\+Controllers.\+Coinspot\+Controller.\+Pass\+Through (\begin{DoxyParamCaption}\item[{\mbox{[}\+From\+Route\mbox{]} string}]{account,  }\item[{\mbox{[}\+From\+Route\mbox{]} string}]{endpoint }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogInformation(\$\textcolor{stringliteral}{"{}Received\ Coinspot\ GET\ pass\ through\ for\ account\ \{account\},\ endpoint\ '\{endpoint\}'."{}});}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ StatusCode(500,\ \$\textcolor{stringliteral}{"{}not\ implemented"{}});}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_coinspot_controller_a182616698557285ca8b91b33d0b6b494}\label{class_internal_a_p_i_1_1_controllers_1_1_coinspot_controller_a182616698557285ca8b91b33d0b6b494} 
+\index{InternalAPI.Controllers.CoinspotController@{InternalAPI.Controllers.CoinspotController}!PassThrough@{PassThrough}}
+\index{PassThrough@{PassThrough}!InternalAPI.Controllers.CoinspotController@{InternalAPI.Controllers.CoinspotController}}
+\doxysubsubsection{\texorpdfstring{PassThrough()}{PassThrough()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Action\+Result$<$ object $>$ Internal\+API.\+Controllers.\+Coinspot\+Controller.\+Pass\+Through (\begin{DoxyParamCaption}\item[{\mbox{[}\+From\+Route\mbox{]} string}]{account,  }\item[{\mbox{[}\+From\+Route\mbox{]} string}]{endpoint,  }\item[{\mbox{[}\+From\+Body\mbox{]} object}]{body }\end{DoxyParamCaption})}
+
+
+
+Finds Coinspot credentials, decorates proxy request and sends to Coinspot and responds with raw result. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em account} & coinspot account to use ("{}otc"{}, "{}gss"{})\\
+\hline
+{\em endpoint} & coinspot endpoint to post to including vertion IE "{}v2/quote/buy/now"{}\\
+\hline
+{\em body} & a json body from teh request representing post data\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogInformation(\$\textcolor{stringliteral}{"{}Received\ Coinspot\ POST\ pass\ through\ for\ account\ \{account\},\ endpoint\ '\{endpoint\}'."{}});}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Find\ Coinspot\ account\ settings}}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ var\ coinspotAccount\ =\ \_coinspotSettings?.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_coinspot_settings_aebbb44f0e1943f6ea952be73e682f54f}{Accounts}}?.FirstOrDefault(a\ =>\ String.Equals(a.AccountName,\ account,\ StringComparison.CurrentCultureIgnoreCase));}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (coinspotAccount\ ==\ \textcolor{keyword}{null}\ ||\ \textcolor{keywordtype}{string}.IsNullOrEmpty(coinspotAccount.APIKey)\ ||\ \textcolor{keywordtype}{string}.IsNullOrEmpty(coinspotAccount.APISecret))}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ errorMessage\ =\ \$\textcolor{stringliteral}{"{}Coinspot\ endpoint\ not\ configured\ for\ account\ '\{account\}'"{}};}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogError(errorMessage);}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ NotFound(\$\textcolor{stringliteral}{"{}Internal\ API:\ \{errorMessage\}"{}});}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ JObject\ joBody\ =\ JObject.Parse(\textcolor{stringliteral}{@"{}\{'nonce':\ '"{}}\ +\ DateTimeOffset.UtcNow.ToUnixTimeMilliseconds().ToString()\ +\ \textcolor{stringliteral}{"{}'\}"{}});}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ joBody.Merge(body);}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient(\_coinspotSettings.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_coinspot_settings_a60b883d8f7665921f1b1e8a68d2b52f8}{BaseURL}});}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ RestRequest\ request\ =\ \textcolor{keyword}{new}\ RestRequest(endpoint,\ Method.POST);}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddJsonBody(JsonConvert.SerializeObject(joBody));}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddHeader(\textcolor{stringliteral}{"{}key"{}},\ coinspotAccount.APIKey);}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddHeader(\textcolor{stringliteral}{"{}sign"{}},\ SignData(coinspotAccount,\ Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(joBody))).ToLower());}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddHeader(\textcolor{stringliteral}{"{}Content-\/Type"{}},\ \textcolor{stringliteral}{"{}application/json"{}});}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ responseContent\ =\ \textcolor{keywordtype}{string}.Empty;}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ IRestResponse\ response;}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ response\ =\ client.Execute(request);}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response.StatusCode\ ==\ HttpStatusCode.OK)}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ responseContent\ =\ response.Content;}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ StatusCode(((\textcolor{keywordtype}{int})response.StatusCode),\ \$\textcolor{stringliteral}{"{}\{response.Content\}"{}});}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ StatusCode(500,\ \$\textcolor{stringliteral}{"{}\{ex\}"{}});}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Ok(responseContent);}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+STRIDER/source/repos/\+Internal\+API/\+Internal\+API/\+Controllers/\mbox{\hyperlink{_coinspot_controller_8cs}{Coinspot\+Controller.\+cs}}\end{DoxyCompactItemize}

@@ -1,0 +1,41 @@
+\chapter{Is my IP valid}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20ca39e6d3c922f065a0abebce531f40a}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20ca39e6d3c922f065a0abebce531f40a}\index{Is my IP valid@{Is my IP valid}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20ca39e6d3c922f065a0abebce531f40a_autotoc_md2962}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20ca39e6d3c922f065a0abebce531f40a_autotoc_md2962}%
+ A small lib to validate IP addresses.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20ca39e6d3c922f065a0abebce531f40a_autotoc_md2963}{}\doxysection{\texorpdfstring{Installation}{Installation}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20ca39e6d3c922f065a0abebce531f40a_autotoc_md2963}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ -\/-\/save\ is-\/my-\/ip-\/valid}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20ca39e6d3c922f065a0abebce531f40a_autotoc_md2964}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20ca39e6d3c922f065a0abebce531f40a_autotoc_md2964}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ validator\ =\ require('is-\/my-\/ip-\/valid')}
+\DoxyCodeLine{const\ validate\ =\ validator()}
+\DoxyCodeLine{const\ validate4\ =\ validator(\{\ version:\ 4\ \})}
+\DoxyCodeLine{const\ validate6\ =\ validator(\{\ version:\ 6\ \})}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log(validate('127.0.0.1'))}
+\DoxyCodeLine{//=>\ true}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log(validate4('127.0.0.1'))}
+\DoxyCodeLine{//=>\ true}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log(validate6('127.0.0.1'))}
+\DoxyCodeLine{//=>\ false}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log(validate('2001:0db8:85a3:0000:0000:8a2e:0370:7334'))}
+\DoxyCodeLine{//=>\ true}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log(validate4('2001:0db8:85a3:0000:0000:8a2e:0370:7334'))}
+\DoxyCodeLine{//=>\ false}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log(validate6('2001:0db8:85a3:0000:0000:8a2e:0370:7334'))}
+\DoxyCodeLine{//=>\ true}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20ca39e6d3c922f065a0abebce531f40a_autotoc_md2965}{}\doxysection{\texorpdfstring{Acknowledgements}{Acknowledgements}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20ca39e6d3c922f065a0abebce531f40a_autotoc_md2965}
+The code is mostly based on this wonderful library\+: \href{https://github.com/beaugunderson/ip-address}{\texttt{ beaugunderson/ip-\/address}}
+
+All regexes used are audited for catastrophic backtracking by this module\+: \href{https://github.com/substack/safe-regex}{\texttt{ substack/safe-\/regex}} 

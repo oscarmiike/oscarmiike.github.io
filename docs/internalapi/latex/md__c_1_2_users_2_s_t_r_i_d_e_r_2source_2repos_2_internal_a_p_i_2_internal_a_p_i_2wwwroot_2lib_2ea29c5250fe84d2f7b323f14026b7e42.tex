@@ -1,0 +1,293 @@
+\chapter{HAR Validator \texorpdfstring{$<$}{<}a href="{}https\+://www.\+npmjs.\+com/package/har-\/validator"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://img.\+shields.\+io/npm/v/har-\/validator.\+svg?style=flat-\/square"{} alt="{}version"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}a href="{}https\+://github.\+com/ahmadnassri/har-\/validator/blob/master/\+LICENSE"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://img.\+shields.\+io/npm/l/har-\/validator.\+svg?style=flat-\/square"{} alt="{}\+License"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ea29c5250fe84d2f7b323f14026b7e42}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ea29c5250fe84d2f7b323f14026b7e42}\index{HAR Validator $<$a href="{}https://www.npmjs.com/package/har-\/validator"{} $>$$<$img src="{}https://img.shields.io/npm/v/har-\/validator.svg?style=flat-\/square"{} alt="{}version"{}/$>$$<$/a$>$ $<$a href="{}https://github.com/ahmadnassri/har-\/validator/blob/master/LICENSE"{} $>$$<$img src="{}https://img.shields.io/npm/l/har-\/validator.svg?style=flat-\/square"{} alt="{}License"{}/$>$$<$/a$>$@{HAR Validator $<$a href=""https://www.npmjs.com/package/har-\/validator"" $>$$<$img src=""https://img.shields.io/npm/v/har-\/validator.svg?style=flat-\/square"" alt=""version""/$>$$<$/a$>$ $<$a href=""https://github.com/ahmadnassri/har-\/validator/blob/master/LICENSE"" $>$$<$img src=""https://img.shields.io/npm/l/har-\/validator.svg?style=flat-\/square"" alt=""License""/$>$$<$/a$>$}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ea29c5250fe84d2f7b323f14026b7e42_autotoc_md2640}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ea29c5250fe84d2f7b323f14026b7e42_autotoc_md2640}%
+ Extremely fast HTTP Archive (\href{http://www.softwareishard.com/blog/har-12-spec/}{\texttt{ HAR}}) validator using JSON Schema.
+
+\href{https://travis-ci.org/ahmadnassri/har-validator}{\texttt{ }} \href{https://www.npmjs.com/package/har-validator}{\texttt{ }} \href{https://codeclimate.com/github/ahmadnassri/har-validator}{\texttt{ }} \href{https://codeclimate.com/github/ahmadnassri/har-validator}{\texttt{ }} \href{https://david-dm.org/ahmadnassri/har-validator}{\texttt{ }}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ea29c5250fe84d2f7b323f14026b7e42_autotoc_md2641}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ea29c5250fe84d2f7b323f14026b7e42_autotoc_md2641}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\ to\ use\ in\ cli}
+\DoxyCodeLine{npm\ install\ -\/-\/global\ har-\/validator}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\ to\ use\ as\ a\ module}
+\DoxyCodeLine{npm\ install\ -\/-\/save\ har-\/validator}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ea29c5250fe84d2f7b323f14026b7e42_autotoc_md2642}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ea29c5250fe84d2f7b323f14026b7e42_autotoc_md2642}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Usage:\ har-\/validator\ [options]\ <files\ ...>}
+\DoxyCodeLine{}
+\DoxyCodeLine{Options:}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ -\/h,\ -\/-\/help\ \ \ \ \ \ \ \ \ \ \ output\ usage\ information}
+\DoxyCodeLine{\ \ -\/V,\ -\/-\/version\ \ \ \ \ \ \ \ output\ the\ version\ number}
+\DoxyCodeLine{\ \ -\/s,\ -\/-\/schema\ [name]\ \ validate\ schema\ name\ (log,\ request,\ response,\ etc\ ...)}
+
+\end{DoxyCode}
+
+
+\doxysubparagraph*{Example}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{har-\/validator\ har.json}
+\DoxyCodeLine{}
+\DoxyCodeLine{har-\/validator\ -\/-\/schema\ request\ request.json}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ea29c5250fe84d2f7b323f14026b7e42_autotoc_md2643}{}\doxysection{\texorpdfstring{API}{API}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ea29c5250fe84d2f7b323f14026b7e42_autotoc_md2643}
+{\bfseries{Note}}\+: as of \href{https://github.com/ahmadnassri/har-validator/releases/tag/v2.0.0}{\texttt{ {\ttfamily v2.\+0.\+0}}} this module defaults to Promise based API. {\itshape For backward comptability with {\ttfamily v1.\+x} an async/callback API is provided}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ea29c5250fe84d2f7b323f14026b7e42_autotoc_md2644}{}\doxysubsection{\texorpdfstring{Validate(data)}{Validate(data)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ea29c5250fe84d2f7b323f14026b7e42_autotoc_md2644}
+\begin{quote}
+Returns a promise that resolves to the valid object. \end{quote}
+
+\begin{DoxyItemize}
+\item {\bfseries{data}}\+: {\ttfamily Object} \texorpdfstring{$\ast$}{*}(Required)\texorpdfstring{$\ast$}{*} a full \href{http://www.softwareishard.com/blog/har-12-spec/}{\texttt{ HAR}} object
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{validate(data)}
+\DoxyCodeLine{\ \ .then(data\ =>\ console.log('horray!'))}
+\DoxyCodeLine{\ \ .catch(console.error)}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ea29c5250fe84d2f7b323f14026b7e42_autotoc_md2645}{}\doxysubsection{\texorpdfstring{Validate.\+log(data)}{Validate.\+log(data)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ea29c5250fe84d2f7b323f14026b7e42_autotoc_md2645}
+\begin{quote}
+Returns a promise that resolves to the valid object. \end{quote}
+
+\begin{DoxyItemize}
+\item {\bfseries{data}}\+: {\ttfamily Object} \texorpdfstring{$\ast$}{*}(Required)\texorpdfstring{$\ast$}{*} a \href{http://www.softwareishard.com/blog/har-12-spec/\#log}{\texttt{ log}} object
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{validate.log(data)}
+\DoxyCodeLine{\ \ .then(data\ =>\ console.log('horray!'))}
+\DoxyCodeLine{\ \ .catch(console.error)}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ea29c5250fe84d2f7b323f14026b7e42_autotoc_md2646}{}\doxysubsection{\texorpdfstring{Validate.\+cache(data)}{Validate.\+cache(data)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ea29c5250fe84d2f7b323f14026b7e42_autotoc_md2646}
+\begin{quote}
+Returns a promise that resolves to the valid object. \end{quote}
+
+\begin{DoxyItemize}
+\item {\bfseries{data}}\+: {\ttfamily Object} \texorpdfstring{$\ast$}{*}(Required)\texorpdfstring{$\ast$}{*} a \href{http://www.softwareishard.com/blog/har-12-spec/\#cache}{\texttt{ cache}} object
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{validate.cache(data)}
+\DoxyCodeLine{\ \ .then(data\ =>\ console.log('horray!'))}
+\DoxyCodeLine{\ \ .catch(console.error)}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ea29c5250fe84d2f7b323f14026b7e42_autotoc_md2647}{}\doxysubsection{\texorpdfstring{Validate.\+cache\+Entry(data)}{Validate.\+cache\+Entry(data)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ea29c5250fe84d2f7b323f14026b7e42_autotoc_md2647}
+\begin{quote}
+Returns a promise that resolves to the valid object. \end{quote}
+
+\begin{DoxyItemize}
+\item {\bfseries{data}}\+: {\ttfamily Object} \texorpdfstring{$\ast$}{*}(Required)\texorpdfstring{$\ast$}{*} a \href{http://www.softwareishard.com/blog/har-12-spec/\#cache}{\texttt{ "{}before\+Request"{} or "{}after\+Request"{}}} objects
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{validate.cacheEntry(data)}
+\DoxyCodeLine{\ \ .then(data\ =>\ console.log('horray!'))}
+\DoxyCodeLine{\ \ .catch(console.error)}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ea29c5250fe84d2f7b323f14026b7e42_autotoc_md2648}{}\doxysubsection{\texorpdfstring{Validate.\+content(data)}{Validate.\+content(data)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ea29c5250fe84d2f7b323f14026b7e42_autotoc_md2648}
+\begin{quote}
+Returns a promise that resolves to the valid object. \end{quote}
+
+\begin{DoxyItemize}
+\item {\bfseries{data}}\+: {\ttfamily Object} \texorpdfstring{$\ast$}{*}(Required)\texorpdfstring{$\ast$}{*} a \href{http://www.softwareishard.com/blog/har-12-spec/\#content}{\texttt{ content}} object
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{validate.content(data)}
+\DoxyCodeLine{\ \ .then(data\ =>\ console.log('horray!'))}
+\DoxyCodeLine{\ \ .catch(console.error)}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ea29c5250fe84d2f7b323f14026b7e42_autotoc_md2649}{}\doxysubsection{\texorpdfstring{Validate.\+cookie(data)}{Validate.\+cookie(data)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ea29c5250fe84d2f7b323f14026b7e42_autotoc_md2649}
+\begin{quote}
+Returns a promise that resolves to the valid object. \end{quote}
+
+\begin{DoxyItemize}
+\item {\bfseries{data}}\+: {\ttfamily Object} \texorpdfstring{$\ast$}{*}(Required)\texorpdfstring{$\ast$}{*} a \href{http://www.softwareishard.com/blog/har-12-spec/\#cookies}{\texttt{ cookie}} object
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{validate.cookie(data)}
+\DoxyCodeLine{\ \ .then(data\ =>\ console.log('horray!'))}
+\DoxyCodeLine{\ \ .catch(console.error)}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ea29c5250fe84d2f7b323f14026b7e42_autotoc_md2650}{}\doxysubsection{\texorpdfstring{Validate.\+creator(data)}{Validate.\+creator(data)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ea29c5250fe84d2f7b323f14026b7e42_autotoc_md2650}
+\begin{quote}
+Returns a promise that resolves to the valid object. \end{quote}
+
+\begin{DoxyItemize}
+\item {\bfseries{data}}\+: {\ttfamily Object} \texorpdfstring{$\ast$}{*}(Required)\texorpdfstring{$\ast$}{*} a \href{http://www.softwareishard.com/blog/har-12-spec/\#creator}{\texttt{ creator}} object
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{validate.creator(data)}
+\DoxyCodeLine{\ \ .then(data\ =>\ console.log('horray!'))}
+\DoxyCodeLine{\ \ .catch(console.error)}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ea29c5250fe84d2f7b323f14026b7e42_autotoc_md2651}{}\doxysubsection{\texorpdfstring{Validate.\+entry(data)}{Validate.\+entry(data)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ea29c5250fe84d2f7b323f14026b7e42_autotoc_md2651}
+\begin{quote}
+Returns a promise that resolves to the valid object. \end{quote}
+
+\begin{DoxyItemize}
+\item {\bfseries{data}}\+: {\ttfamily Object} \texorpdfstring{$\ast$}{*}(Required)\texorpdfstring{$\ast$}{*} an \href{http://www.softwareishard.com/blog/har-12-spec/\#entries}{\texttt{ entry}} object
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{validate.entry(data)}
+\DoxyCodeLine{\ \ .then(data\ =>\ console.log('horray!'))}
+\DoxyCodeLine{\ \ .catch(console.error)}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ea29c5250fe84d2f7b323f14026b7e42_autotoc_md2652}{}\doxysubsection{\texorpdfstring{Validate.\+log(data)}{Validate.\+log(data)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ea29c5250fe84d2f7b323f14026b7e42_autotoc_md2652}
+alias of \`{}\+Validate(data)\`{}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ea29c5250fe84d2f7b323f14026b7e42_autotoc_md2653}{}\doxysubsection{\texorpdfstring{Validate.\+page(data)}{Validate.\+page(data)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ea29c5250fe84d2f7b323f14026b7e42_autotoc_md2653}
+\begin{quote}
+Returns a promise that resolves to the valid object. \end{quote}
+
+\begin{DoxyItemize}
+\item {\bfseries{data}}\+: {\ttfamily Object} \texorpdfstring{$\ast$}{*}(Required)\texorpdfstring{$\ast$}{*} a \href{http://www.softwareishard.com/blog/har-12-spec/\#pages}{\texttt{ page}} object
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{validate.page(data)}
+\DoxyCodeLine{\ \ .then(data\ =>\ console.log('horray!'))}
+\DoxyCodeLine{\ \ .catch(console.error)}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ea29c5250fe84d2f7b323f14026b7e42_autotoc_md2654}{}\doxysubsection{\texorpdfstring{Validate.\+page\+Timings(data)}{Validate.\+page\+Timings(data)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ea29c5250fe84d2f7b323f14026b7e42_autotoc_md2654}
+\begin{quote}
+Returns a promise that resolves to the valid object. \end{quote}
+
+\begin{DoxyItemize}
+\item {\bfseries{data}}\+: {\ttfamily Object} \texorpdfstring{$\ast$}{*}(Required)\texorpdfstring{$\ast$}{*} a \href{http://www.softwareishard.com/blog/har-12-spec/\#pageTimings}{\texttt{ page\+Timings}} object
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{validate.pageTimings(data)}
+\DoxyCodeLine{\ \ .then(data\ =>\ console.log('horray!'))}
+\DoxyCodeLine{\ \ .catch(console.error)}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ea29c5250fe84d2f7b323f14026b7e42_autotoc_md2655}{}\doxysubsection{\texorpdfstring{Validate.\+post\+Data(data)}{Validate.\+post\+Data(data)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ea29c5250fe84d2f7b323f14026b7e42_autotoc_md2655}
+\begin{quote}
+Returns a promise that resolves to the valid object. \end{quote}
+
+\begin{DoxyItemize}
+\item {\bfseries{data}}\+: {\ttfamily Object} \texorpdfstring{$\ast$}{*}(Required)\texorpdfstring{$\ast$}{*} a \href{http://www.softwareishard.com/blog/har-12-spec/\#postData}{\texttt{ post\+Data}} object
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{validate.postData(data)}
+\DoxyCodeLine{\ \ .then(data\ =>\ console.log('horray!'))}
+\DoxyCodeLine{\ \ .catch(console.error)}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ea29c5250fe84d2f7b323f14026b7e42_autotoc_md2656}{}\doxysubsection{\texorpdfstring{Validate.\+record(data)}{Validate.\+record(data)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ea29c5250fe84d2f7b323f14026b7e42_autotoc_md2656}
+\begin{quote}
+Returns a promise that resolves to the valid object. \end{quote}
+
+\begin{DoxyItemize}
+\item {\bfseries{data}}\+: {\ttfamily Object} \texorpdfstring{$\ast$}{*}(Required)\texorpdfstring{$\ast$}{*} a \href{http://www.softwareishard.com/blog/har-12-spec/\#headers}{\texttt{ record}} object
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{validate.record(data)}
+\DoxyCodeLine{\ \ .then(data\ =>\ console.log('horray!'))}
+\DoxyCodeLine{\ \ .catch(console.error)}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ea29c5250fe84d2f7b323f14026b7e42_autotoc_md2657}{}\doxysubsection{\texorpdfstring{Validate.\+request(data)}{Validate.\+request(data)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ea29c5250fe84d2f7b323f14026b7e42_autotoc_md2657}
+\begin{quote}
+Returns a promise that resolves to the valid object. \end{quote}
+
+\begin{DoxyItemize}
+\item {\bfseries{data}}\+: {\ttfamily Object} \texorpdfstring{$\ast$}{*}(Required)\texorpdfstring{$\ast$}{*} a \href{http://www.softwareishard.com/blog/har-12-spec/\#request}{\texttt{ request}} object
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{validate.request(data)}
+\DoxyCodeLine{\ \ .then(data\ =>\ console.log('horray!'))}
+\DoxyCodeLine{\ \ .catch(console.error)}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ea29c5250fe84d2f7b323f14026b7e42_autotoc_md2658}{}\doxysubsection{\texorpdfstring{Validate.\+response(data)}{Validate.\+response(data)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ea29c5250fe84d2f7b323f14026b7e42_autotoc_md2658}
+\begin{quote}
+Returns a promise that resolves to the valid object. \end{quote}
+
+\begin{DoxyItemize}
+\item {\bfseries{data}}\+: {\ttfamily Object} \texorpdfstring{$\ast$}{*}(Required)\texorpdfstring{$\ast$}{*} a \href{http://www.softwareishard.com/blog/har-12-spec/\#response}{\texttt{ response}} object
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{validate.cacheEntry(data)}
+\DoxyCodeLine{\ \ .then(data\ =>\ console.log('horray!'))}
+\DoxyCodeLine{\ \ .catch(console.error)}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ea29c5250fe84d2f7b323f14026b7e42_autotoc_md2659}{}\doxysubsection{\texorpdfstring{Validate.\+timings(data)}{Validate.\+timings(data)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ea29c5250fe84d2f7b323f14026b7e42_autotoc_md2659}
+\begin{quote}
+Returns a promise that resolves to the valid object. \end{quote}
+
+\begin{DoxyItemize}
+\item {\bfseries{data}}\+: {\ttfamily Object} \texorpdfstring{$\ast$}{*}(Required)\texorpdfstring{$\ast$}{*} a \href{http://www.softwareishard.com/blog/har-12-spec/\#timings}{\texttt{ timings}} object
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{validate.timings(data)}
+\DoxyCodeLine{\ \ .then(data\ =>\ console.log('horray!'))}
+\DoxyCodeLine{\ \ .catch(console.error)}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ea29c5250fe84d2f7b323f14026b7e42_autotoc_md2661}{}\doxysection{\texorpdfstring{Callback API}{Callback API}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ea29c5250fe84d2f7b323f14026b7e42_autotoc_md2661}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ea29c5250fe84d2f7b323f14026b7e42_autotoc_md2662}{}\doxysubsection{\texorpdfstring{Validate(data \mbox{[}, callback\mbox{]})}{Validate(data \mbox{[}, callback\mbox{]})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ea29c5250fe84d2f7b323f14026b7e42_autotoc_md2662}
+\begin{quote}
+Returns {\ttfamily true} or {\ttfamily false}. \end{quote}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ HAR\ =\ require('./har.json');}
+\DoxyCodeLine{var\ validate\ =\ require('har-\/validator/lib/async');}
+\DoxyCodeLine{}
+\DoxyCodeLine{validate(HAR,\ function\ (e,\ valid)\ \{}
+\DoxyCodeLine{\ \ if\ (e)\ console.log(e.errors)}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ if\ (valid)\ console.log('horray!');}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+ The async API provides exactly the same methods as the Promise API
+
+\DoxyHorRuler{0}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ea29c5250fe84d2f7b323f14026b7e42_autotoc_md2664}{}\doxysection{\texorpdfstring{Support}{Support}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ea29c5250fe84d2f7b323f14026b7e42_autotoc_md2664}
+Donations are welcome to help support the continuous development of this project.
+
+\href{https://www.gratipay.com/ahmadnassri/}{\texttt{ }} \href{https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=UJ2B2BTK9VLRS&on0=project&os0=har-validator}{\texttt{ }} \href{https://flattr.com/submit/auto?user_id=ahmadnassri&url=https://github.com/ahmadnassri/har-validator&title=har-validator&language=&tags=github&category=software}{\texttt{ }} \href{https://www.coinbase.com/checkouts/ae383ae6bb931a2fa5ad11cec115191e?name=har-validator}{\texttt{ }}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ea29c5250fe84d2f7b323f14026b7e42_autotoc_md2665}{}\doxysection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ea29c5250fe84d2f7b323f14026b7e42_autotoc_md2665}
+\mbox{[}ISC License\mbox{]}(LICENSE) \copyright{} \href{https://www.ahmadnassri.com/}{\texttt{ Ahmad Nassri}} 

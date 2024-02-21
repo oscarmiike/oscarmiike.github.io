@@ -1,0 +1,48 @@
+\chapter{jquery.\+json-\/editor}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2obj_2_debug_2nc1441ea20d89b0d0818c379fd1621b6f}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2obj_2_debug_2nc1441ea20d89b0d0818c379fd1621b6f}\index{jquery.json-\/editor@{jquery.json-\/editor}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2obj_2_debug_2nc1441ea20d89b0d0818c379fd1621b6f_autotoc_md0}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2obj_2_debug_2nc1441ea20d89b0d0818c379fd1621b6f_autotoc_md0}%
+A json viewer and editor based on \href{https://github.com/abodelot/jquery.json-viewer}{\texttt{ jquery.\+json-\/viewer}}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2obj_2_debug_2nc1441ea20d89b0d0818c379fd1621b6f_autotoc_md1}{}\doxysection{\texorpdfstring{特性\+:}{特性\+:}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2obj_2_debug_2nc1441ea20d89b0d0818c379fd1621b6f_autotoc_md1}
+
+\begin{DoxyItemize}
+\item 语法高亮
+\item 支持数据块展开与收起
+\item 简单
+\item 可编辑
+\end{DoxyItemize}
+
+\href{https://dblate.github.io/jquery.json-editor/}{\texttt{ 在线示例}}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2obj_2_debug_2nc1441ea20d89b0d0818c379fd1621b6f_autotoc_md2}{}\doxysection{\texorpdfstring{使用}{使用}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2obj_2_debug_2nc1441ea20d89b0d0818c379fd1621b6f_autotoc_md2}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<script\ src="{}path/to/jquery.js"{}\ type="{}text/javascript"{}></script>}
+\DoxyCodeLine{<script\ src="{}path/to/jquery.json-\/editor.js"{}\ type="{}text/javascript"{}></script>}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{/**}
+\DoxyCodeLine{\ *\ 初始化一个\ JsonEditor}
+\DoxyCodeLine{\ *}
+\DoxyCodeLine{\ *\ @param\ \{DOM|string\}\ container\ DOM\ 元素或\ jQuery\ 选择器字符串}
+\DoxyCodeLine{\ *\ @param\ \{Object\}\ json\ JSON\ 对象}
+\DoxyCodeLine{\ *\ @param\ \{Object=\}\ options\ 其他配置项，可选}
+\DoxyCodeLine{\ *\ @param\ \{boolean\}\ options.defaultCollapsed\ 是否默认是收起状态，默认\ false}
+\DoxyCodeLine{\ *\ @param\ \{boolean\}\ options.editable\ 是否可编辑，默认\ true}
+\DoxyCodeLine{\ */}
+\DoxyCodeLine{var\ editor\ =\ new\ JsonEditor(container,\ json,\ options);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ 更新\ json}
+\DoxyCodeLine{editor.load(json);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ 获取\ json}
+\DoxyCodeLine{try\ \{}
+\DoxyCodeLine{\ \ \ \ editor.get();}
+\DoxyCodeLine{\}\ catch\ (ex)\ \{}
+\DoxyCodeLine{\ \ \ \ //\ Trigger\ an\ Error\ when\ JSON\ invalid}
+\DoxyCodeLine{\ \ \ \ alert(ex);}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+ 

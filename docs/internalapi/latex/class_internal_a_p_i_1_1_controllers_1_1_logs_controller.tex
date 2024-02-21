@@ -1,0 +1,176 @@
+\doxysection{Internal\+API.\+Controllers.\+Logs\+Controller Class Reference}
+\hypertarget{class_internal_a_p_i_1_1_controllers_1_1_logs_controller}{}\label{class_internal_a_p_i_1_1_controllers_1_1_logs_controller}\index{InternalAPI.Controllers.LogsController@{InternalAPI.Controllers.LogsController}}
+
+
+Inheritance diagram for Internal\+API.\+Controllers.\+Logs\+Controller\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{class_internal_a_p_i_1_1_controllers_1_1_logs_controller__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Internal\+API.\+Controllers.\+Logs\+Controller\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{class_internal_a_p_i_1_1_controllers_1_1_logs_controller__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_logs_controller_a6b50b19f3b787a1faba09e7a9c562950}{Logs\+Controller}} (IService\+Provider services, \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{Log\+Service}} log\+Service)
+\item 
+IAction\+Result \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_logs_controller_acc2e178800aaa4ec0841199e6c4a769b}{Trim\+Logs}} (\mbox{[}From\+Query\mbox{]} int keep\+Days=30)
+\item 
+IAction\+Result \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_logs_controller_ab2fb7177e32de50c7897f400bdb49173}{Get\+Unified\+Logs}} (\mbox{[}From\+Body\mbox{]} \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_log_viewer_1_1_log_request}{Log\+Request}} log\+Request, \mbox{[}From\+Route\mbox{]} string api\+Source)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+List$<$ string $>$ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_logs_controller_a3990e123b329a63993480d74686422b1}{log\+Sources}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+List$<$ string $>$ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_logs_controller_a6673fa7b1b1acd30f62bb4552b4a186c}{log\+Types}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_logs_controller_a6b50b19f3b787a1faba09e7a9c562950}\label{class_internal_a_p_i_1_1_controllers_1_1_logs_controller_a6b50b19f3b787a1faba09e7a9c562950} 
+\index{InternalAPI.Controllers.LogsController@{InternalAPI.Controllers.LogsController}!LogsController@{LogsController}}
+\index{LogsController@{LogsController}!InternalAPI.Controllers.LogsController@{InternalAPI.Controllers.LogsController}}
+\doxysubsubsection{\texorpdfstring{LogsController()}{LogsController()}}
+{\footnotesize\ttfamily Internal\+API.\+Controllers.\+Logs\+Controller.\+Logs\+Controller (\begin{DoxyParamCaption}\item[{IService\+Provider}]{services,  }\item[{\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{Log\+Service}}}]{log\+Service }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \_services\ =\ services;}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger\ =\ logService;}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_logs_controller_ab2fb7177e32de50c7897f400bdb49173}\label{class_internal_a_p_i_1_1_controllers_1_1_logs_controller_ab2fb7177e32de50c7897f400bdb49173} 
+\index{InternalAPI.Controllers.LogsController@{InternalAPI.Controllers.LogsController}!GetUnifiedLogs@{GetUnifiedLogs}}
+\index{GetUnifiedLogs@{GetUnifiedLogs}!InternalAPI.Controllers.LogsController@{InternalAPI.Controllers.LogsController}}
+\doxysubsubsection{\texorpdfstring{GetUnifiedLogs()}{GetUnifiedLogs()}}
+{\footnotesize\ttfamily IAction\+Result Internal\+API.\+Controllers.\+Logs\+Controller.\+Get\+Unified\+Logs (\begin{DoxyParamCaption}\item[{\mbox{[}\+From\+Body\mbox{]} \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_log_viewer_1_1_log_request}{Log\+Request}}}]{log\+Request,  }\item[{\mbox{[}\+From\+Route\mbox{]} string}]{api\+Source }\end{DoxyParamCaption})}
+
+Retrieves unified logs based on the provided log request and API source. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_ad25f9b254876bb11d042df6148dab40a}{LogException}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.LogsController,\ \$\textcolor{stringliteral}{"{}Unified\ Logs\ (InternalAPI)\ called"{}});}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ apiSourceLower\ =\ apiSource?.ToLower();}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ List<LogEntry>\ logs;}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (apiSourceLower)}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{stringliteral}{"{}taskapi"{}}:}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ taskApiService\ =\ \_services.GetService<\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_task_a_p_i_service}{TaskAPIService}}>();}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ logs\ =\ taskApiService.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_task_a_p_i_service_a4276c1c35b609014762469a2d0465692}{GetLogs}}(logRequest);}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{stringliteral}{"{}ainslieapi"{}}:}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ ainslieApiService\ =\ \_services.GetService<\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_ainslie_a_p_i_service}{AinslieAPIService}}>();}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ logs\ =\ ainslieApiService.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_task_a_p_i_service_a4276c1c35b609014762469a2d0465692}{GetLogs}}(logRequest);}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{stringliteral}{"{}abweb"{}}:}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ abWebService\ =\ \_services.GetService<\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_a_b_web_service}{ABWebService}}>();}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ logs\ =\ abWebService.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_ainslie_a_p_i_service_a987fab0349b730badb2e0abdb174d8d8}{GetLogs}}(logRequest);}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{stringliteral}{"{}internalapi"{}}:}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ internalApiService\ =\ \_services.GetService<\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_internal_a_p_i_1_1_internal_a_p_i_service}{InternalAPIService}}>();}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ logs\ =\ internalApiService.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_a_b_web_service_aae8b289eb39bd83667a5c569b58bc02f}{GetLogs}}(logRequest);}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \textcolor{keyword}{new}\ ArgumentException(\textcolor{stringliteral}{"{}Invalid\ API\ source"{}});}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Ok(logs);}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_ad25f9b254876bb11d042df6148dab40a}{LogException}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.LogsController,\ \$\textcolor{stringliteral}{"{}exception\ getting\ unified\ logs"{}},\ ex.ToString());}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ BadRequest(\textcolor{keyword}{new}\ \{\ error\ =\ \textcolor{keyword}{true},\ message\ =\ \$\textcolor{stringliteral}{"{}exception\ getting\ unified\ logs\ \{ex\}"{}}\ \});}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_internal_a_p_i_1_1_controllers_1_1_logs_controller_ab2fb7177e32de50c7897f400bdb49173_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_logs_controller_acc2e178800aaa4ec0841199e6c4a769b}\label{class_internal_a_p_i_1_1_controllers_1_1_logs_controller_acc2e178800aaa4ec0841199e6c4a769b} 
+\index{InternalAPI.Controllers.LogsController@{InternalAPI.Controllers.LogsController}!TrimLogs@{TrimLogs}}
+\index{TrimLogs@{TrimLogs}!InternalAPI.Controllers.LogsController@{InternalAPI.Controllers.LogsController}}
+\doxysubsubsection{\texorpdfstring{TrimLogs()}{TrimLogs()}}
+{\footnotesize\ttfamily IAction\+Result Internal\+API.\+Controllers.\+Logs\+Controller.\+Trim\+Logs (\begin{DoxyParamCaption}\item[{\mbox{[}\+From\+Query\mbox{]} int}]{keep\+Days = {\ttfamily 30} }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_ae7208181482f25f801a9d637367cc5e7}{LogInformation}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.LogsController,\ \$\textcolor{stringliteral}{"{}request\ received\ for\ v1/logs/trimlogs\ endpoint\ to\ trim\ older\ than\ \{keepDays\}\ days"{}});}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ dynamic\ result\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (keepDays\ <\ 7)\ keepDays\ =\ 30;}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ deletedLogs\ =\ 0;}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using}\ (var\ context\ =\ \_services.GetService<\mbox{\hyperlink{class_internal_a_p_i_1_1_contexts_1_1_internal_a_p_i_1_1_internal_a_p_i_context}{InternalAPIContext}}>())}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ trimDate\ =\ DateTime.Now.AddDays(-\/keepDays);}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ deletedLogs\ =\ context.Database.ExecuteSqlRaw(\$\textcolor{stringliteral}{"{}delete\ from\ logentries\ where\ created\ <\ '\{trimDate.Year\}-\/\{trimDate.Month\}-\/\{trimDate.Day\}'"{}});}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ result\ =\ \textcolor{keyword}{new}\ \{\ error\ =\ \textcolor{keyword}{false},\ message\ =\ \$\textcolor{stringliteral}{"{}deleted\ \{deletedLogs\}\ logs"{}}\ \};}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_ad25f9b254876bb11d042df6148dab40a}{LogException}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.LogsController,\ \$\textcolor{stringliteral}{"{}exception\ trimming\ logs"{}},\ ex.ToString());}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ result\ =\ \textcolor{keyword}{new}\ \{\ error\ =\ \textcolor{keyword}{true},\ message\ =\ \$\textcolor{stringliteral}{"{}exception\ trimming\ logs\ on\ internal\ api\ \{ex\}"{}}\ \};}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (result.error)}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ BadRequest(result);}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Ok(result);}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Property Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_logs_controller_a3990e123b329a63993480d74686422b1}\label{class_internal_a_p_i_1_1_controllers_1_1_logs_controller_a3990e123b329a63993480d74686422b1} 
+\index{InternalAPI.Controllers.LogsController@{InternalAPI.Controllers.LogsController}!logSources@{logSources}}
+\index{logSources@{logSources}!InternalAPI.Controllers.LogsController@{InternalAPI.Controllers.LogsController}}
+\doxysubsubsection{\texorpdfstring{logSources}{logSources}}
+{\footnotesize\ttfamily List$<$string$>$ Internal\+API.\+Controllers.\+Logs\+Controller.\+log\+Sources\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00023\ \{\ \textcolor{keyword}{get};\ \textcolor{keyword}{set};\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_logs_controller_a6673fa7b1b1acd30f62bb4552b4a186c}\label{class_internal_a_p_i_1_1_controllers_1_1_logs_controller_a6673fa7b1b1acd30f62bb4552b4a186c} 
+\index{InternalAPI.Controllers.LogsController@{InternalAPI.Controllers.LogsController}!logTypes@{logTypes}}
+\index{logTypes@{logTypes}!InternalAPI.Controllers.LogsController@{InternalAPI.Controllers.LogsController}}
+\doxysubsubsection{\texorpdfstring{logTypes}{logTypes}}
+{\footnotesize\ttfamily List$<$string$>$ Internal\+API.\+Controllers.\+Logs\+Controller.\+log\+Types\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00024\ \{\ \textcolor{keyword}{get};\ \textcolor{keyword}{set};\ \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+STRIDER/source/repos/\+Internal\+API/\+Internal\+API/\+Controllers/\mbox{\hyperlink{_logs_controller_8cs}{Logs\+Controller.\+cs}}\end{DoxyCompactItemize}

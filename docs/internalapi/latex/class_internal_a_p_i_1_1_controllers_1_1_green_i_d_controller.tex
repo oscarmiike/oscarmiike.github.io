@@ -1,0 +1,85 @@
+\doxysection{Internal\+API.\+Controllers.\+Green\+IDController Class Reference}
+\hypertarget{class_internal_a_p_i_1_1_controllers_1_1_green_i_d_controller}{}\label{class_internal_a_p_i_1_1_controllers_1_1_green_i_d_controller}\index{InternalAPI.Controllers.GreenIDController@{InternalAPI.Controllers.GreenIDController}}
+
+
+Inheritance diagram for Internal\+API.\+Controllers.\+Green\+IDController\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{class_internal_a_p_i_1_1_controllers_1_1_green_i_d_controller__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Internal\+API.\+Controllers.\+Green\+IDController\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{class_internal_a_p_i_1_1_controllers_1_1_green_i_d_controller__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_green_i_d_controller_af1aaf05b08ecf64c1a58dee4aff8b178}{Green\+IDController}} (\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{Log\+Service}} log\+Service, IOptions$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_green_i_d_settings}{Green\+IDSettings}} $>$ green\+IDSettings, \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_green_i_d_service}{Green\+IDService}} gid\+Service, \mbox{\hyperlink{class_internal_a_p_i_1_1_helpers_1_1_green_i_d_d_b_helper}{Green\+IDDBHelper}} gid\+DBHelper)
+\item 
+Action\+Result$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_1_1_green_i_d_customer}{Green\+IDCustomer}} $>$ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_green_i_d_controller_a40270915cb098f7b630e6a23f428f81b}{Customer}} (string branch="{}"{}, string userid="{}"{})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_green_i_d_controller_af1aaf05b08ecf64c1a58dee4aff8b178}\label{class_internal_a_p_i_1_1_controllers_1_1_green_i_d_controller_af1aaf05b08ecf64c1a58dee4aff8b178} 
+\index{InternalAPI.Controllers.GreenIDController@{InternalAPI.Controllers.GreenIDController}!GreenIDController@{GreenIDController}}
+\index{GreenIDController@{GreenIDController}!InternalAPI.Controllers.GreenIDController@{InternalAPI.Controllers.GreenIDController}}
+\doxysubsubsection{\texorpdfstring{GreenIDController()}{GreenIDController()}}
+{\footnotesize\ttfamily Internal\+API.\+Controllers.\+Green\+IDController.\+Green\+IDController (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{Log\+Service}}}]{log\+Service,  }\item[{IOptions$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_green_i_d_settings}{Green\+IDSettings}} $>$}]{green\+IDSettings,  }\item[{\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_green_i_d_service}{Green\+IDService}}}]{gid\+Service,  }\item[{\mbox{\hyperlink{class_internal_a_p_i_1_1_helpers_1_1_green_i_d_d_b_helper}{Green\+IDDBHelper}}}]{gid\+DBHelper }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ logger\ =\ logService;}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ settings\ =\ greenIDSettings.Value;}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ greenIDService\ =\ gidService;}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ greenIDDBHelper\ =\ gidDBHelper;}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_green_i_d_controller_a40270915cb098f7b630e6a23f428f81b}\label{class_internal_a_p_i_1_1_controllers_1_1_green_i_d_controller_a40270915cb098f7b630e6a23f428f81b} 
+\index{InternalAPI.Controllers.GreenIDController@{InternalAPI.Controllers.GreenIDController}!Customer@{Customer}}
+\index{Customer@{Customer}!InternalAPI.Controllers.GreenIDController@{InternalAPI.Controllers.GreenIDController}}
+\doxysubsubsection{\texorpdfstring{Customer()}{Customer()}}
+{\footnotesize\ttfamily Action\+Result$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_1_1_green_i_d_customer}{Green\+IDCustomer}} $>$ Internal\+API.\+Controllers.\+Green\+IDController.\+Customer (\begin{DoxyParamCaption}\item[{string}]{branch = {\ttfamily "{}"{}},  }\item[{string}]{userid = {\ttfamily "{}"{}} }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keywordtype}{string}.IsNullOrEmpty(branch)\ ||\ \textcolor{keywordtype}{string}.IsNullOrEmpty(userid))}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ BadRequest(\textcolor{stringliteral}{"{}branch\ or\ userid\ parameters\ are\ empty"{}});}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_ae7208181482f25f801a9d637367cc5e7}{LogInformation}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.GreenIDController,\ \$\textcolor{stringliteral}{"{}request\ received\ for\ \{branch.ToUpper()\}\ greenid\ verification\ id:\ \{userid\}"{}});}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_1_1_green_i_d_customer}{GreenIDCustomer}}\ greenIDCustomer\ =\ greenIDService.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_green_i_d_service_add8c85cb430cc575e5ab3c6960216c77}{GetGreenIdCustomer}}(branch,\ userid);}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (greenIDCustomer\ ==\ \textcolor{keyword}{null}\ ||\ \textcolor{keywordtype}{string}.IsNullOrEmpty(greenIDCustomer.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_1_1_green_i_d_customer_aa78bdbb0f2294eccbcab0ca31844b883}{verificationId}}))}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a778dd1666ec20e3197598d7aa41e0cba}{LogError}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.GreenIDController,\ \$\textcolor{stringliteral}{"{}customer\ with\ verification\ id:\ \{userid\}\ not\ found\ at\ greenid"{}});}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ BadRequest(\textcolor{stringliteral}{"{}greenid\ customer\ not\ found"{}});}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//add\ to\ greeniddb}}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ greenIDDBHelper.\mbox{\hyperlink{class_internal_a_p_i_1_1_helpers_1_1_green_i_d_d_b_helper_a2f7f683406577b4a957f7e09a0557abb}{AddCustomer}}(branch,\ greenIDCustomer);}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Ok(greenIDCustomer);}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_internal_a_p_i_1_1_controllers_1_1_green_i_d_controller_a40270915cb098f7b630e6a23f428f81b_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+STRIDER/source/repos/\+Internal\+API/\+Internal\+API/\+Controllers/\mbox{\hyperlink{_green_i_d_controller_8cs}{Green\+IDController.\+cs}}\end{DoxyCompactItemize}

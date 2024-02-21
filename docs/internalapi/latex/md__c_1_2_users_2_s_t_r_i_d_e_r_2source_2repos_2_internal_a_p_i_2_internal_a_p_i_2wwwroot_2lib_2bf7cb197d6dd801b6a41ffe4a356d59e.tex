@@ -1,0 +1,139 @@
+\chapter{interpret}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2bf7cb197d6dd801b6a41ffe4a356d59e}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2bf7cb197d6dd801b6a41ffe4a356d59e}\index{interpret@{interpret}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2bf7cb197d6dd801b6a41ffe4a356d59e_autotoc_md9445}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2bf7cb197d6dd801b6a41ffe4a356d59e_autotoc_md9445}%
+\begin{quote}
+A dictionary of file extensions and associated module loaders. \end{quote}
+\href{https://nodei.co/npm/interpret/}{\texttt{ }}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2bf7cb197d6dd801b6a41ffe4a356d59e_autotoc_md9446}{}\doxysection{\texorpdfstring{What is it}{What is it}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2bf7cb197d6dd801b6a41ffe4a356d59e_autotoc_md9446}
+This is used by \href{http://github.com/tkellen/node-liftoff}{\texttt{ Liftoff}} to automatically require dependencies for configuration files, and by \href{http://github.com/tkellen/node-rechoir}{\texttt{ rechoir}} for registering module loaders.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2bf7cb197d6dd801b6a41ffe4a356d59e_autotoc_md9447}{}\doxysection{\texorpdfstring{API}{API}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2bf7cb197d6dd801b6a41ffe4a356d59e_autotoc_md9447}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2bf7cb197d6dd801b6a41ffe4a356d59e_autotoc_md9448}{}\doxysubsection{\texorpdfstring{extensions}{extensions}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2bf7cb197d6dd801b6a41ffe4a356d59e_autotoc_md9448}
+Map file types to modules which provide a \href{http://nodejs.org/api/globals.html\#globals_require_extensions}{\texttt{ require.\+extensions}} loader.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ '.babel.js':\ [}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ module:\ '@babel/register',}
+\DoxyCodeLine{\ \ \ \ \ \ register:\ function\ (module)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ module(\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ //\ register\ on\ .js\ extension\ due\ to\ https://github.com/joyent/node/blob/v0.12.0/lib/module.js\#L353}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ //\ which\ only\ captures\ the\ final\ extension\ (.babel.js\ -\/>\ .js)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ extensions:\ '.js'}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ module:\ 'babel-\/register',}
+\DoxyCodeLine{\ \ \ \ \ \ register:\ function\ (module)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ module(\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ //\ register\ on\ .js\ extension\ due\ to\ https://github.com/joyent/node/blob/v0.12.0/lib/module.js\#L353}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ //\ which\ only\ captures\ the\ final\ extension\ (.babel.js\ -\/>\ .js)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ extensions:\ '.js'}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ module:\ 'babel-\/core/register',}
+\DoxyCodeLine{\ \ \ \ \ \ register:\ function\ (module)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ module(\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ extensions:\ '.js'}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ module:\ 'babel/register',}
+\DoxyCodeLine{\ \ \ \ \ \ register:\ function\ (module)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ module(\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ extensions:\ '.js'}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ ],}
+\DoxyCodeLine{\ \ '.buble.js':\ 'buble/register',}
+\DoxyCodeLine{\ \ '.cirru':\ 'cirru-\/script/lib/register',}
+\DoxyCodeLine{\ \ '.cjsx':\ 'node-\/cjsx/register',}
+\DoxyCodeLine{\ \ '.co':\ 'coco',}
+\DoxyCodeLine{\ \ '.coffee':\ ['coffeescript/register',\ 'coffee-\/script/register',\ 'coffeescript',\ 'coffee-\/script'],}
+\DoxyCodeLine{\ \ '.coffee.md':\ ['coffeescript/register',\ 'coffee-\/script/register',\ 'coffeescript',\ 'coffee-\/script'],}
+\DoxyCodeLine{\ \ '.csv':\ 'require-\/csv',}
+\DoxyCodeLine{\ \ '.eg':\ 'earlgrey/register',}
+\DoxyCodeLine{\ \ '.iced':\ ['iced-\/coffee-\/script/register',\ 'iced-\/coffee-\/script'],}
+\DoxyCodeLine{\ \ '.iced.md':\ 'iced-\/coffee-\/script/register',}
+\DoxyCodeLine{\ \ '.ini':\ 'require-\/ini',}
+\DoxyCodeLine{\ \ '.js':\ null,}
+\DoxyCodeLine{\ \ '.json':\ null,}
+\DoxyCodeLine{\ \ '.json5':\ 'json5/lib/require',}
+\DoxyCodeLine{\ \ '.jsx':\ [}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ module:\ '@babel/register',}
+\DoxyCodeLine{\ \ \ \ \ \ register:\ function\ (module)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ module(\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ extensions:\ '.jsx'}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ module:\ 'babel-\/register',}
+\DoxyCodeLine{\ \ \ \ \ \ register:\ function\ (module)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ module(\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ extensions:\ '.jsx'}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ module:\ 'babel-\/core/register',}
+\DoxyCodeLine{\ \ \ \ \ \ register:\ function\ (module)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ module(\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ extensions:\ '.jsx'}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ module:\ 'babel/register',}
+\DoxyCodeLine{\ \ \ \ \ \ register:\ function\ (module)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ module(\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ extensions:\ '.jsx'}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ module:\ 'node-\/jsx',}
+\DoxyCodeLine{\ \ \ \ \ \ register:\ function\ (module)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ module.install(\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ extension:\ '.jsx',}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ harmony:\ true}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ ],}
+\DoxyCodeLine{\ \ '.litcoffee':\ ['coffeescript/register',\ 'coffee-\/script/register',\ 'coffeescript',\ 'coffee-\/script'],}
+\DoxyCodeLine{\ \ '.liticed':\ 'iced-\/coffee-\/script/register',}
+\DoxyCodeLine{\ \ '.ls':\ ['livescript',\ 'LiveScript'],}
+\DoxyCodeLine{\ \ '.node':\ null,}
+\DoxyCodeLine{\ \ '.toml':\ \{}
+\DoxyCodeLine{\ \ \ \ module:\ 'toml-\/require',}
+\DoxyCodeLine{\ \ \ \ register:\ function\ (module)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ module.install();}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ '.ts':\ ['ts-\/node/register',\ 'typescript-\/node/register',\ 'typescript-\/register',\ 'typescript-\/require'],}
+\DoxyCodeLine{\ \ '.tsx':\ ['ts-\/node/register',\ 'typescript-\/node/register'],}
+\DoxyCodeLine{\ \ '.wisp':\ 'wisp/engine/node',}
+\DoxyCodeLine{\ \ '.xml':\ 'require-\/xml',}
+\DoxyCodeLine{\ \ '.yaml':\ 'require-\/yaml',}
+\DoxyCodeLine{\ \ '.yml':\ 'require-\/yaml'}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2bf7cb197d6dd801b6a41ffe4a356d59e_autotoc_md9449}{}\doxysubsection{\texorpdfstring{js\+Variants}{js\+Variants}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2bf7cb197d6dd801b6a41ffe4a356d59e_autotoc_md9449}
+Same as above, but only include the extensions which are javascript variants.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2bf7cb197d6dd801b6a41ffe4a356d59e_autotoc_md9450}{}\doxysection{\texorpdfstring{How to use it}{How to use it}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2bf7cb197d6dd801b6a41ffe4a356d59e_autotoc_md9450}
+Consumers should use the exported {\ttfamily extensions} or {\ttfamily js\+Variants} object to determine which module should be loaded for a given extension. If a matching extension is found, consumers should do the following\+:
+
+
+\begin{DoxyEnumerate}
+\item If the value is null, do nothing.
+\item If the value is a string, try to require it.
+\item If the value is an object, try to require the {\ttfamily module} property. If successful, the {\ttfamily register} property (a function) should be called with the module passed as the first argument.
+\item If the value is an array, iterate over it, attempting step \#2 or \#3 until one of the attempts does not throw. 
+\end{DoxyEnumerate}

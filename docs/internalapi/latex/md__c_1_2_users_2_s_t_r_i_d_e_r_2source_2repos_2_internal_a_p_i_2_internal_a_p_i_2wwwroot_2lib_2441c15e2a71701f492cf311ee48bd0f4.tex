@@ -1,0 +1,400 @@
+\chapter{DEPRECATION NOTICE}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2441c15e2a71701f492cf311ee48bd0f4}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2441c15e2a71701f492cf311ee48bd0f4}\index{DEPRECATION NOTICE@{DEPRECATION NOTICE}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2441c15e2a71701f492cf311ee48bd0f4_autotoc_md3868}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2441c15e2a71701f492cf311ee48bd0f4_autotoc_md3868}%
+ I don\textquotesingle{}t want to maintain this module anymore since I just use \href{https://npmjs.org/package/minimist}{\texttt{ minimist}}, the argument parsing engine, directly instead nowadays.
+
+See \href{https://github.com/chevex/yargs}{\texttt{ yargs}} for the modern, pirate-\/themed successor to optimist.
+
+\href{https://github.com/chevex/yargs}{\texttt{ }}
+
+You should also consider \href{https://github.com/harthur/nomnom}{\texttt{ nomnom}}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2441c15e2a71701f492cf311ee48bd0f4_autotoc_md3869}{}\doxysection{\texorpdfstring{optimist}{optimist}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2441c15e2a71701f492cf311ee48bd0f4_autotoc_md3869}
+Optimist is a node.\+js library for option parsing for people who hate option parsing. More specifically, this module is for people who like all the --bells and -\/whistlz of program usage but think optstrings are a waste of time.
+
+With optimist, option parsing doesn\textquotesingle{}t have to suck (as much).
+
+\href{http://travis-ci.org/substack/node-optimist}{\texttt{ }}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2441c15e2a71701f492cf311ee48bd0f4_autotoc_md3870}{}\doxysection{\texorpdfstring{examples}{examples}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2441c15e2a71701f492cf311ee48bd0f4_autotoc_md3870}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2441c15e2a71701f492cf311ee48bd0f4_autotoc_md3871}{}\doxysubsection{\texorpdfstring{With Optimist, the options are just a hash! No optstrings attached.}{With Optimist, the options are just a hash! No optstrings attached.}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2441c15e2a71701f492cf311ee48bd0f4_autotoc_md3871}
+xup.\+js\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#!/usr/bin/env\ node}
+\DoxyCodeLine{var\ argv\ =\ require('optimist').argv;}
+\DoxyCodeLine{}
+\DoxyCodeLine{if\ (argv.rif\ -\/\ 5\ *\ argv.xup\ >\ 7.138)\ \{}
+\DoxyCodeLine{\ \ \ \ console.log('Buy\ more\ riffiwobbles');}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{else\ \{}
+\DoxyCodeLine{\ \ \ \ console.log('Sell\ the\ xupptumblers');}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+ \begin{DoxyVerb}$ ./xup.js --rif=55 --xup=9.52
+Buy more riffiwobbles
+
+$ ./xup.js --rif 12 --xup 8.1
+Sell the xupptumblers
+\end{DoxyVerb}
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2441c15e2a71701f492cf311ee48bd0f4_autotoc_md3872}{}\doxysubsection{\texorpdfstring{But wait! There\textquotesingle{}s more! You can do short options\+:}{But wait! There\textquotesingle{}s more! You can do short options\+:}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2441c15e2a71701f492cf311ee48bd0f4_autotoc_md3872}
+short.\+js\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#!/usr/bin/env\ node}
+\DoxyCodeLine{var\ argv\ =\ require('optimist').argv;}
+\DoxyCodeLine{console.log('(\%d,\%d)',\ argv.x,\ argv.y);}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+ \begin{DoxyVerb}$ ./short.js -x 10 -y 21
+(10,21)
+\end{DoxyVerb}
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2441c15e2a71701f492cf311ee48bd0f4_autotoc_md3873}{}\doxysubsection{\texorpdfstring{And booleans, both long and short (and grouped)\+:}{And booleans, both long and short (and grouped)\+:}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2441c15e2a71701f492cf311ee48bd0f4_autotoc_md3873}
+bool.\+js\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#!/usr/bin/env\ node}
+\DoxyCodeLine{var\ util\ =\ require('util');}
+\DoxyCodeLine{var\ argv\ =\ require('optimist').argv;}
+\DoxyCodeLine{}
+\DoxyCodeLine{if\ (argv.s)\ \{}
+\DoxyCodeLine{\ \ \ \ util.print(argv.fr\ ?\ 'Le\ chat\ dit:\ '\ :\ 'The\ cat\ says:\ ');}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{console.log(}
+\DoxyCodeLine{\ \ \ \ (argv.fr\ ?\ 'miaou'\ :\ 'meow')\ +\ (argv.p\ ?\ '.'\ :\ '')}
+\DoxyCodeLine{);}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+ \begin{DoxyVerb}$ ./bool.js -s
+The cat says: meow
+
+$ ./bool.js -sp
+The cat says: meow.
+
+$ ./bool.js -sp --fr
+Le chat dit: miaou.
+\end{DoxyVerb}
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2441c15e2a71701f492cf311ee48bd0f4_autotoc_md3874}{}\doxysubsection{\texorpdfstring{And non-\/hypenated options too! Just use {\ttfamily argv.\+\_\+}!}{And non-\/hypenated options too! Just use {\ttfamily argv.\+\_\+}!}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2441c15e2a71701f492cf311ee48bd0f4_autotoc_md3874}
+nonopt.\+js\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#!/usr/bin/env\ node}
+\DoxyCodeLine{var\ argv\ =\ require('optimist').argv;}
+\DoxyCodeLine{console.log('(\%d,\%d)',\ argv.x,\ argv.y);}
+\DoxyCodeLine{console.log(argv.\_);}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+ \begin{DoxyVerb}$ ./nonopt.js -x 6.82 -y 3.35 moo
+(6.82,3.35)
+[ 'moo' ]
+
+$ ./nonopt.js foo -x 0.54 bar -y 1.12 baz
+(0.54,1.12)
+[ 'foo', 'bar', 'baz' ]
+\end{DoxyVerb}
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2441c15e2a71701f492cf311ee48bd0f4_autotoc_md3875}{}\doxysubsection{\texorpdfstring{Plus, Optimist comes with .usage() and .demand()!}{Plus, Optimist comes with .usage() and .demand()!}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2441c15e2a71701f492cf311ee48bd0f4_autotoc_md3875}
+divide.\+js\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#!/usr/bin/env\ node}
+\DoxyCodeLine{var\ argv\ =\ require('optimist')}
+\DoxyCodeLine{\ \ \ \ .usage('Usage:\ \$0\ -\/x\ [num]\ -\/y\ [num]')}
+\DoxyCodeLine{\ \ \ \ .demand(['x','y'])}
+\DoxyCodeLine{\ \ \ \ .argv;}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log(argv.x\ /\ argv.y);}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+ \begin{DoxyVerb}$ ./divide.js -x 55 -y 11
+5
+
+$ node ./divide.js -x 4.91 -z 2.51
+Usage: node ./divide.js -x [num] -y [num]
+
+Options:
+  -x  [required]
+  -y  [required]
+
+Missing required arguments: y
+\end{DoxyVerb}
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2441c15e2a71701f492cf311ee48bd0f4_autotoc_md3876}{}\doxysubsection{\texorpdfstring{EVEN MORE HOLY COW}{EVEN MORE HOLY COW}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2441c15e2a71701f492cf311ee48bd0f4_autotoc_md3876}
+default\+\_\+singles.\+js\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#!/usr/bin/env\ node}
+\DoxyCodeLine{var\ argv\ =\ require('optimist')}
+\DoxyCodeLine{\ \ \ \ .default('x',\ 10)}
+\DoxyCodeLine{\ \ \ \ .default('y',\ 10)}
+\DoxyCodeLine{\ \ \ \ .argv}
+\DoxyCodeLine{;}
+\DoxyCodeLine{console.log(argv.x\ +\ argv.y);}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+ \begin{DoxyVerb}$ ./default_singles.js -x 5
+15
+\end{DoxyVerb}
+ default\+\_\+hash.\+js\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#!/usr/bin/env\ node}
+\DoxyCodeLine{var\ argv\ =\ require('optimist')}
+\DoxyCodeLine{\ \ \ \ .default(\{\ x\ :\ 10,\ y\ :\ 10\ \})}
+\DoxyCodeLine{\ \ \ \ .argv}
+\DoxyCodeLine{;}
+\DoxyCodeLine{console.log(argv.x\ +\ argv.y);}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+ \begin{DoxyVerb}$ ./default_hash.js -y 7
+17
+\end{DoxyVerb}
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2441c15e2a71701f492cf311ee48bd0f4_autotoc_md3877}{}\doxysubsection{\texorpdfstring{And if you really want to get all descriptive about it...}{And if you really want to get all descriptive about it...}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2441c15e2a71701f492cf311ee48bd0f4_autotoc_md3877}
+boolean\+\_\+single.\+js
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#!/usr/bin/env\ node}
+\DoxyCodeLine{var\ argv\ =\ require('optimist')}
+\DoxyCodeLine{\ \ \ \ .boolean('v')}
+\DoxyCodeLine{\ \ \ \ .argv}
+\DoxyCodeLine{;}
+\DoxyCodeLine{console.dir(argv);}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+ \begin{DoxyVerb}$ ./boolean_single.js -v foo bar baz
+true
+[ 'bar', 'baz', 'foo' ]
+\end{DoxyVerb}
+ boolean\+\_\+double.\+js
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#!/usr/bin/env\ node}
+\DoxyCodeLine{var\ argv\ =\ require('optimist')}
+\DoxyCodeLine{\ \ \ \ .boolean(['x','y','z'])}
+\DoxyCodeLine{\ \ \ \ .argv}
+\DoxyCodeLine{;}
+\DoxyCodeLine{console.dir([\ argv.x,\ argv.y,\ argv.z\ ]);}
+\DoxyCodeLine{console.dir(argv.\_);}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+ \begin{DoxyVerb}$ ./boolean_double.js -x -z one two three
+[ true, false, true ]
+[ 'one', 'two', 'three' ]
+\end{DoxyVerb}
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2441c15e2a71701f492cf311ee48bd0f4_autotoc_md3878}{}\doxysubsection{\texorpdfstring{Optimist is here to help...}{Optimist is here to help...}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2441c15e2a71701f492cf311ee48bd0f4_autotoc_md3878}
+You can describe parameters for help messages and set aliases. Optimist figures out how to format a handy help string automatically.
+
+line\+\_\+count.\+js
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#!/usr/bin/env\ node}
+\DoxyCodeLine{var\ argv\ =\ require('optimist')}
+\DoxyCodeLine{\ \ \ \ .usage('Count\ the\ lines\ in\ a\ file.\(\backslash\)nUsage:\ \$0')}
+\DoxyCodeLine{\ \ \ \ .demand('f')}
+\DoxyCodeLine{\ \ \ \ .alias('f',\ 'file')}
+\DoxyCodeLine{\ \ \ \ .describe('f',\ 'Load\ a\ file')}
+\DoxyCodeLine{\ \ \ \ .argv}
+\DoxyCodeLine{;}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ fs\ =\ require('fs');}
+\DoxyCodeLine{var\ s\ =\ fs.createReadStream(argv.file);}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ lines\ =\ 0;}
+\DoxyCodeLine{s.on('data',\ function\ (buf)\ \{}
+\DoxyCodeLine{\ \ \ \ lines\ +=\ buf.toString().match(/\(\backslash\)n/g).length;}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{s.on('end',\ function\ ()\ \{}
+\DoxyCodeLine{\ \ \ \ console.log(lines);}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+ \begin{DoxyVerb}$ node line_count.js
+Count the lines in a file.
+Usage: node ./line_count.js
+
+Options:
+  -f, --file  Load a file  [required]
+
+Missing required arguments: f
+
+$ node line_count.js --file line_count.js 
+20
+
+$ node line_count.js -f line_count.js 
+20
+\end{DoxyVerb}
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2441c15e2a71701f492cf311ee48bd0f4_autotoc_md3879}{}\doxysection{\texorpdfstring{methods}{methods}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2441c15e2a71701f492cf311ee48bd0f4_autotoc_md3879}
+By itself,
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{require('optimist').argv}
+\DoxyCodeLine{\`{}\`{}\`{}\`{}\`{}}
+\DoxyCodeLine{}
+\DoxyCodeLine{will\ use\ \`{}process.argv`\ array\ to\ construct\ the\ \`{}argv`\ object.}
+\DoxyCodeLine{}
+\DoxyCodeLine{You\ can\ pass\ in\ the\ \`{}process.argv`\ yourself:}
+
+\end{DoxyCode}
+ javascript require(\textquotesingle{}optimist\textquotesingle{})(\mbox{[} \textquotesingle{}-\/x\textquotesingle{}, \textquotesingle{}1\textquotesingle{}, \textquotesingle{}-\/y\textquotesingle{}, \textquotesingle{}2\textquotesingle{} \mbox{]}).argv 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{or\ use\ .parse()\ to\ do\ the\ same\ thing:}
+
+\end{DoxyCode}
+ javascript require(\textquotesingle{}optimist\textquotesingle{}).parse(\mbox{[} \textquotesingle{}-\/x\textquotesingle{}, \textquotesingle{}1\textquotesingle{}, \textquotesingle{}-\/y\textquotesingle{}, \textquotesingle{}2\textquotesingle{} \mbox{]}) 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{The\ rest\ of\ these\ methods\ below\ come\ in\ just\ before\ the\ terminating\ \`{}.argv`.}
+\DoxyCodeLine{}
+\DoxyCodeLine{.alias(key,\ alias)}
+\DoxyCodeLine{-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}
+\DoxyCodeLine{}
+\DoxyCodeLine{Set\ key\ names\ as\ equivalent\ such\ that\ updates\ to\ a\ key\ will\ propagate\ to\ aliases}
+\DoxyCodeLine{and\ vice-\/versa.}
+\DoxyCodeLine{}
+\DoxyCodeLine{Optionally\ \`{}.alias()`\ can\ take\ an\ object\ that\ maps\ keys\ to\ aliases.}
+\DoxyCodeLine{}
+\DoxyCodeLine{.default(key,\ value)}
+\DoxyCodeLine{-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}
+\DoxyCodeLine{}
+\DoxyCodeLine{Set\ \`{}argv[key]`\ to\ \`{}value`\ if\ no\ option\ was\ specified\ on\ \`{}process.argv`.}
+\DoxyCodeLine{}
+\DoxyCodeLine{Optionally\ \`{}.default()`\ can\ take\ an\ object\ that\ maps\ keys\ to\ default\ values.}
+\DoxyCodeLine{}
+\DoxyCodeLine{.demand(key)}
+\DoxyCodeLine{-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}
+\DoxyCodeLine{}
+\DoxyCodeLine{If\ \`{}key`\ is\ a\ string,\ show\ the\ usage\ information\ and\ exit\ if\ \`{}key`\ wasn't}
+\DoxyCodeLine{specified\ in\ \`{}process.argv`.}
+\DoxyCodeLine{}
+\DoxyCodeLine{If\ \`{}key`\ is\ a\ number,\ demand\ at\ least\ as\ many\ non-\/option\ arguments,\ which\ show}
+\DoxyCodeLine{up\ in\ \`{}argv.\_`.}
+\DoxyCodeLine{}
+\DoxyCodeLine{If\ \`{}key`\ is\ an\ Array,\ demand\ each\ element.}
+\DoxyCodeLine{}
+\DoxyCodeLine{.describe(key,\ desc)}
+\DoxyCodeLine{-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}
+\DoxyCodeLine{}
+\DoxyCodeLine{Describe\ a\ \`{}key`\ for\ the\ generated\ usage\ information.}
+\DoxyCodeLine{}
+\DoxyCodeLine{Optionally\ \`{}.describe()`\ can\ take\ an\ object\ that\ maps\ keys\ to\ descriptions.}
+\DoxyCodeLine{}
+\DoxyCodeLine{.options(key,\ opt)}
+\DoxyCodeLine{-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}
+\DoxyCodeLine{}
+\DoxyCodeLine{Instead\ of\ chaining\ together\ \`{}.alias().demand().default()`,\ you\ can\ specify}
+\DoxyCodeLine{keys\ in\ \`{}opt`\ for\ each\ of\ the\ chainable\ methods.}
+\DoxyCodeLine{}
+\DoxyCodeLine{For\ example:}
+
+\end{DoxyCode}
+ javascript var argv = require(\textquotesingle{}optimist\textquotesingle{}) .options(\textquotesingle{}f\textquotesingle{}, \{ alias \+: \textquotesingle{}file\textquotesingle{}, default \+: \textquotesingle{}/etc/passwd\textquotesingle{}, \}) .argv ; 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{is\ the\ same\ as}
+
+\end{DoxyCode}
+ javascript var argv = require(\textquotesingle{}optimist\textquotesingle{}) .alias(\textquotesingle{}f\textquotesingle{}, \textquotesingle{}file\textquotesingle{}) .default(\textquotesingle{}f\textquotesingle{}, \textquotesingle{}/etc/passwd\textquotesingle{}) .argv ; \`{}\`{}\`{}\`{}
+
+Optionally {\ttfamily .options()} can take an object that maps keys to {\ttfamily opt} parameters.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2441c15e2a71701f492cf311ee48bd0f4_autotoc_md3880}{}\doxysubsection{\texorpdfstring{.usage(message)}{.usage(message)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2441c15e2a71701f492cf311ee48bd0f4_autotoc_md3880}
+Set a usage message to show which commands to use. Inside {\ttfamily message}, the string {\ttfamily \$0} will get interpolated to the current script name or node command for the present script similar to how {\ttfamily \$0} works in bash or perl.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2441c15e2a71701f492cf311ee48bd0f4_autotoc_md3881}{}\doxysubsection{\texorpdfstring{.check(fn)}{.check(fn)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2441c15e2a71701f492cf311ee48bd0f4_autotoc_md3881}
+Check that certain conditions are met in the provided arguments.
+
+If {\ttfamily fn} throws or returns {\ttfamily false}, show the thrown error, usage information, and exit.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2441c15e2a71701f492cf311ee48bd0f4_autotoc_md3882}{}\doxysubsection{\texorpdfstring{.boolean(key)}{.boolean(key)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2441c15e2a71701f492cf311ee48bd0f4_autotoc_md3882}
+Interpret {\ttfamily key} as a boolean. If a non-\/flag option follows {\ttfamily key} in {\ttfamily process.\+argv}, that string won\textquotesingle{}t get set as the value of {\ttfamily key}.
+
+If {\ttfamily key} never shows up as a flag in {\ttfamily process.\+arguments}, {\ttfamily argv\mbox{[}key\mbox{]}} will be {\ttfamily false}.
+
+If {\ttfamily key} is an Array, interpret all the elements as booleans.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2441c15e2a71701f492cf311ee48bd0f4_autotoc_md3883}{}\doxysubsection{\texorpdfstring{.string(key)}{.string(key)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2441c15e2a71701f492cf311ee48bd0f4_autotoc_md3883}
+Tell the parser logic not to interpret {\ttfamily key} as a number or boolean. This can be useful if you need to preserve leading zeros in an input.
+
+If {\ttfamily key} is an Array, interpret all the elements as strings.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2441c15e2a71701f492cf311ee48bd0f4_autotoc_md3884}{}\doxysubsection{\texorpdfstring{.wrap(columns)}{.wrap(columns)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2441c15e2a71701f492cf311ee48bd0f4_autotoc_md3884}
+Format usage output to wrap at {\ttfamily columns} many columns.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2441c15e2a71701f492cf311ee48bd0f4_autotoc_md3885}{}\doxysubsection{\texorpdfstring{.help()}{.help()}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2441c15e2a71701f492cf311ee48bd0f4_autotoc_md3885}
+Return the generated usage string.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2441c15e2a71701f492cf311ee48bd0f4_autotoc_md3886}{}\doxysubsection{\texorpdfstring{.show\+Help(fn=console.\+error)}{.show\+Help(fn=console.\+error)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2441c15e2a71701f492cf311ee48bd0f4_autotoc_md3886}
+Print the usage data using {\ttfamily fn} for printing.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2441c15e2a71701f492cf311ee48bd0f4_autotoc_md3887}{}\doxysubsection{\texorpdfstring{.parse(args)}{.parse(args)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2441c15e2a71701f492cf311ee48bd0f4_autotoc_md3887}
+Parse {\ttfamily args} instead of {\ttfamily process.\+argv}. Returns the {\ttfamily argv} object.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2441c15e2a71701f492cf311ee48bd0f4_autotoc_md3888}{}\doxysubsection{\texorpdfstring{.argv}{.argv}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2441c15e2a71701f492cf311ee48bd0f4_autotoc_md3888}
+Get the arguments as a plain old object.
+
+Arguments without a corresponding flag show up in the {\ttfamily argv.\+\_\+} array.
+
+The script name or node command is available at {\ttfamily argv.\$0} similarly to how {\ttfamily \$0} works in bash or perl.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2441c15e2a71701f492cf311ee48bd0f4_autotoc_md3889}{}\doxysection{\texorpdfstring{parsing tricks}{parsing tricks}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2441c15e2a71701f492cf311ee48bd0f4_autotoc_md3889}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2441c15e2a71701f492cf311ee48bd0f4_autotoc_md3890}{}\doxysubsection{\texorpdfstring{stop parsing}{stop parsing}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2441c15e2a71701f492cf311ee48bd0f4_autotoc_md3890}
+Use {\ttfamily -\/-\/} to stop parsing flags and stuff the remainder into {\ttfamily argv.\+\_\+}. \begin{DoxyVerb}$ node examples/reflect.js -a 1 -b 2 -- -c 3 -d 4
+{ _: [ '-c', '3', '-d', '4' ],
+  '$0': 'node ./examples/reflect.js',
+  a: 1,
+  b: 2 }
+\end{DoxyVerb}
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2441c15e2a71701f492cf311ee48bd0f4_autotoc_md3891}{}\doxysubsection{\texorpdfstring{negate fields}{negate fields}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2441c15e2a71701f492cf311ee48bd0f4_autotoc_md3891}
+If you want to explicity set a field to false instead of just leaving it undefined or to override a default you can do {\ttfamily -\/-\/no-\/key}. \begin{DoxyVerb}$ node examples/reflect.js -a --no-b
+{ _: [],
+  '$0': 'node ./examples/reflect.js',
+  a: true,
+  b: false }
+\end{DoxyVerb}
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2441c15e2a71701f492cf311ee48bd0f4_autotoc_md3892}{}\doxysubsection{\texorpdfstring{numbers}{numbers}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2441c15e2a71701f492cf311ee48bd0f4_autotoc_md3892}
+Every argument that looks like a number ({\ttfamily !is\+NaN(Number(arg))}) is converted to one. This way you can just {\ttfamily net.\+create\+Connection(argv.\+port)} and you can add numbers out of {\ttfamily argv} with {\ttfamily +} without having that mean concatenation, which is super frustrating.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2441c15e2a71701f492cf311ee48bd0f4_autotoc_md3893}{}\doxysubsection{\texorpdfstring{duplicates}{duplicates}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2441c15e2a71701f492cf311ee48bd0f4_autotoc_md3893}
+If you specify a flag multiple times it will get turned into an array containing all the values in order. \begin{DoxyVerb}$ node examples/reflect.js -x 5 -x 8 -x 0
+{ _: [],
+  '$0': 'node ./examples/reflect.js',
+    x: [ 5, 8, 0 ] }
+\end{DoxyVerb}
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2441c15e2a71701f492cf311ee48bd0f4_autotoc_md3894}{}\doxysubsection{\texorpdfstring{dot notation}{dot notation}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2441c15e2a71701f492cf311ee48bd0f4_autotoc_md3894}
+When you use dots ({\ttfamily .}s) in argument names, an implicit object path is assumed. This lets you organize arguments into nested objects. \begin{DoxyVerb} $ node examples/reflect.js --foo.bar.baz=33 --foo.quux=5
+ { _: [],
+   '$0': 'node ./examples/reflect.js',
+     foo: { bar: { baz: 33 }, quux: 5 } }
+\end{DoxyVerb}
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2441c15e2a71701f492cf311ee48bd0f4_autotoc_md3895}{}\doxysubsection{\texorpdfstring{short numbers}{short numbers}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2441c15e2a71701f492cf311ee48bd0f4_autotoc_md3895}
+Short numeric {\ttfamily head -\/n5} style argument work too\+: \begin{DoxyVerb}$ node reflect.js -n123 -m456
+{ '3': true,
+  '6': true,
+  _: [],
+  '$0': 'node ./reflect.js',
+  n: 123,
+  m: 456 }
+\end{DoxyVerb}
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2441c15e2a71701f492cf311ee48bd0f4_autotoc_md3896}{}\doxysection{\texorpdfstring{installation}{installation}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2441c15e2a71701f492cf311ee48bd0f4_autotoc_md3896}
+With \href{http://github.com/isaacs/npm}{\texttt{ npm}}, just do\+: npm install optimist
+
+or clone this project on github\+: \begin{DoxyVerb}git clone http://github.com/substack/node-optimist.git
+\end{DoxyVerb}
+ To run the tests with \href{http://github.com/visionmedia/expresso}{\texttt{ expresso}}, just do\+: \begin{DoxyVerb}expresso
+\end{DoxyVerb}
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2441c15e2a71701f492cf311ee48bd0f4_autotoc_md3897}{}\doxysection{\texorpdfstring{inspired By}{inspired By}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2441c15e2a71701f492cf311ee48bd0f4_autotoc_md3897}
+This module is loosely inspired by Perl\textquotesingle{}s \href{http://search.cpan.org/~photo/Getopt-Casual-0.13.1/Casual.pm}{\texttt{ Getopt\+::\+Casual}}. 

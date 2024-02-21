@@ -1,0 +1,79 @@
+\doxysection{Oanda\+Controller.\+cs}
+\hypertarget{_oanda_controller_8cs_source}{}\label{_oanda_controller_8cs_source}\index{C:/Users/STRIDER/source/repos/InternalAPI/InternalAPI/Controllers/OandaController.cs@{C:/Users/STRIDER/source/repos/InternalAPI/InternalAPI/Controllers/OandaController.cs}}
+\mbox{\hyperlink{_oanda_controller_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.IO;}
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }System.Linq;}
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }System.Net;}
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }System.Net.Http;}
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00006}00006\ \textcolor{keyword}{using\ }System.Net.Http.Headers;}
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00007}00007\ \textcolor{keyword}{using\ }System.Text;}
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00008}00008\ \textcolor{keyword}{using\ }System.Text.Json;}
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00009}00009\ \textcolor{keyword}{using\ }System.Threading.Tasks;}
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00010}00010\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_helpers}{InternalAPI.Helpers}};}
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00011}00011\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_settings}{InternalAPI.Settings}};}
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00012}00012\ \textcolor{keyword}{using\ }Microsoft.AspNetCore.Http;}
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00013}00013\ \textcolor{keyword}{using\ }Microsoft.AspNetCore.Mvc;}
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00014}00014\ \textcolor{keyword}{using\ }Microsoft.Extensions.Logging;}
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00015}00015\ \textcolor{keyword}{using\ }Microsoft.Extensions.Options;}
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00017}00017\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_controllers}{InternalAPI.Controllers}}}
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00018}00018\ \{}
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00019}00019\ \ \ \ \ [ApiController]}
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00020}\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_oanda_controller}{00020}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_oanda_controller}{OandaController}}\ :\ ControllerBase}
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00021}00021\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ readonly\ ILogger<OandaController>\ \_logger;}
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ readonly\ \mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_oanda_settings}{OandaSettings}}\ \_oandaSettings;}
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00025}\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_oanda_controller_a59b1f994d8f181ce5381062d86768e3e}{00025}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_oanda_controller_a59b1f994d8f181ce5381062d86768e3e}{OandaController}}(}
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ ILogger<OandaController>\ logger,}
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ IOptions<OandaSettings>\ oandaSettings)}
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger\ =\ logger;}
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \_oandaSettings\ =\ oandaSettings.Value;}
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ [Route(\textcolor{stringliteral}{"{}v1/oanda/\{ainslieCompany\}/\{**url\}"{}})]}
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ [HttpGet]}
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ [HttpPut]}
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ [HttpPost]}
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ [HttpDelete]}
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00044}\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_oanda_controller_ac9bac0d0544130b4986e0d11e5393780}{00044}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ async\ Task<object>\ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_oanda_controller_ac9bac0d0544130b4986e0d11e5393780}{PassThrough}}([FromRoute]\ \textcolor{keywordtype}{string}\ ainslieCompany,\ [FromRoute]\ \textcolor{keywordtype}{string}\ url)}
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogInformation(\$\textcolor{stringliteral}{"{}Received\ Oanda\ pass\ through\ for\ company\ '\{ainslieCompany\}',\ url\ '\{url\}'."{}});}
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Find\ Oanda\ account\ settings}}
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ var\ oandaAccountSettings\ =\ \_oandaSettings?.Accounts?.FirstOrDefault(a\ =>\ String.Equals(a.CompanyCode,\ ainslieCompany,\ StringComparison.CurrentCultureIgnoreCase));}
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (oandaAccountSettings\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ errorMessage\ =\ \$\textcolor{stringliteral}{"{}Oanda\ endpoint\ not\ configured\ for\ company\ code\ '\{ainslieCompany\}'"{}};}
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogError(errorMessage);}
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ NotFound(\$\textcolor{stringliteral}{"{}Internal\ API:\ \{errorMessage\}"{}});}
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ client\ and\ add\ Oanda\ required\ headers}}
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ var\ httpClient\ =\ \textcolor{keyword}{new}\ HttpClient(\textcolor{keyword}{new}\ HttpClientHandler()}
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ AllowAutoRedirect\ =\ \textcolor{keyword}{false}}
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ httpClient.DefaultRequestHeaders.Authorization\ =}
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ AuthenticationHeaderValue(\textcolor{stringliteral}{"{}Bearer"{}},\ oandaAccountSettings.Token);}
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ httpClient.DefaultRequestHeaders.Add(\textcolor{stringliteral}{"{}Accept-\/Datetime-\/Format"{}},\ \textcolor{stringliteral}{"{}RFC3339"{}});}
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ var\ requestUrl\ =\ \$\textcolor{stringliteral}{"{}accounts/\{oandaAccountSettings.AccountId\}/\{url\}\{(Request.QueryString.HasValue\ ?\ Request.QueryString.Value\ :\ string.Empty)\}"{}};}
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Proxy\ request\ /\ response}}
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ var\ request\ =\ HttpContext.CreateProxyHttpRequest(\textcolor{keyword}{new}\ Uri(\$\textcolor{stringliteral}{"{}\{\_oandaSettings.Endpoint\}/\{requestUrl\}"{}}));}
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ var\ response\ =\ await\ httpClient.SendAsync(request,\ HttpCompletionOption.ResponseHeadersRead,\ HttpContext.RequestAborted);}
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ await\ HttpContext.CopyProxyHttpResponse(response);}
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00078}00078\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_oanda_controller_8cs_source_l00079}00079\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,66 @@
+\chapter{opn}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_271a01e5361a3705745a94cc80bd363f5}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_271a01e5361a3705745a94cc80bd363f5}\index{opn@{opn}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_271a01e5361a3705745a94cc80bd363f5_autotoc_md3856}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_271a01e5361a3705745a94cc80bd363f5_autotoc_md3856}%
+ \begin{quote}
+A better \href{https://github.com/pwnall/node-open}{\texttt{ node-\/open}}. Opens stuff like websites, files, executables. Cross-\/platform. \end{quote}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_271a01e5361a3705745a94cc80bd363f5_autotoc_md3857}{}\doxysubsubsection{\texorpdfstring{Why?}{Why?}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_271a01e5361a3705745a94cc80bd363f5_autotoc_md3857}
+
+\begin{DoxyItemize}
+\item Actively maintained
+\item Supports app arguments
+\item Safer as it uses {\ttfamily spawn} instead of {\ttfamily exec}
+\item Fixes most of the open {\ttfamily node-\/open} issues
+\item Includes the latest \href{http://cgit.freedesktop.org/xdg/xdg-utils/commit/?id=c55122295c2a480fa721a9614f0e2d42b2949c18}{\texttt{ {\ttfamily xdg-\/open} script}} for Linux
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_271a01e5361a3705745a94cc80bd363f5_autotoc_md3858}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_271a01e5361a3705745a94cc80bd363f5_autotoc_md3858}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ -\/-\/save\ opn}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_271a01e5361a3705745a94cc80bd363f5_autotoc_md3859}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_271a01e5361a3705745a94cc80bd363f5_autotoc_md3859}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ opn\ =\ require('opn');}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ opens\ the\ image\ in\ the\ default\ image\ viewer}
+\DoxyCodeLine{opn('unicorn.png').then(()\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ //\ image\ viewer\ closed}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ opens\ the\ url\ in\ the\ default\ browser}
+\DoxyCodeLine{opn('http://sindresorhus.com');}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ specify\ the\ app\ to\ open\ in}
+\DoxyCodeLine{opn('http://sindresorhus.com',\ \{app:\ 'firefox'\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ specify\ app\ arguments}
+\DoxyCodeLine{opn('http://sindresorhus.com',\ \{app:\ ['google\ chrome',\ '-\/-\/incognito']\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_271a01e5361a3705745a94cc80bd363f5_autotoc_md3860}{}\doxysection{\texorpdfstring{API}{API}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_271a01e5361a3705745a94cc80bd363f5_autotoc_md3860}
+Uses the command {\ttfamily open} on OS X, {\ttfamily start} on Windows and {\ttfamily xdg-\/open} on other platforms.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_271a01e5361a3705745a94cc80bd363f5_autotoc_md3861}{}\doxysubsection{\texorpdfstring{opn(target, \mbox{[}options\mbox{]})}{opn(target, \mbox{[}options\mbox{]})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_271a01e5361a3705745a94cc80bd363f5_autotoc_md3861}
+Returns a promise for the \href{https://nodejs.org/api/child_process.html\#child_process_class_childprocess}{\texttt{ spawned child process}}. You\textquotesingle{}d normally not need to use this for anything, but it can be useful if you\textquotesingle{}d like to attach custom event listeners or perform other operations directly on the spawned process.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_271a01e5361a3705745a94cc80bd363f5_autotoc_md3862}{}\doxysubsubsection{\texorpdfstring{target}{target}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_271a01e5361a3705745a94cc80bd363f5_autotoc_md3862}
+{\itshape Required} ~\newline
+ Type\+: {\ttfamily string}
+
+The thing you want to open. Can be a URL, file, or executable.
+
+Opens in the default app for the file type. Eg. URLs opens in your default browser.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_271a01e5361a3705745a94cc80bd363f5_autotoc_md3863}{}\doxysubsubsection{\texorpdfstring{options}{options}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_271a01e5361a3705745a94cc80bd363f5_autotoc_md3863}
+Type\+: {\ttfamily object}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_271a01e5361a3705745a94cc80bd363f5_autotoc_md3864}{}\doxyparagraph{\texorpdfstring{wait}{wait}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_271a01e5361a3705745a94cc80bd363f5_autotoc_md3864}
+Type\+: {\ttfamily boolean} ~\newline
+ Default\+: {\ttfamily true}
+
+Wait for the opened app to exit before calling the {\ttfamily callback}. If {\ttfamily false} it\textquotesingle{}s called immediately when opening the app.
+
+On Windows you have to explicitly specify an app for it to be able to wait.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_271a01e5361a3705745a94cc80bd363f5_autotoc_md3865}{}\doxyparagraph{\texorpdfstring{app}{app}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_271a01e5361a3705745a94cc80bd363f5_autotoc_md3865}
+Type\+: {\ttfamily string}, {\ttfamily array}
+
+Specify the app to open the {\ttfamily target} with, or an array with the app and app arguments.
+
+The app name is platform dependent. Don\textquotesingle{}t hard code it in reusable modules. Eg. Chrome is {\ttfamily google chrome} on OS X, {\ttfamily google-\/chrome} on Linux and {\ttfamily chrome} on Windows.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_271a01e5361a3705745a94cc80bd363f5_autotoc_md3866}{}\doxysection{\texorpdfstring{Related}{Related}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_271a01e5361a3705745a94cc80bd363f5_autotoc_md3866}
+
+\begin{DoxyItemize}
+\item \href{https://github.com/sindresorhus/opn-cli}{\texttt{ opn-\/cli}} -\/ CLI for this module
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_271a01e5361a3705745a94cc80bd363f5_autotoc_md3867}{}\doxysection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_271a01e5361a3705745a94cc80bd363f5_autotoc_md3867}
+MIT © \href{http://sindresorhus.com}{\texttt{ Sindre Sorhus}} 

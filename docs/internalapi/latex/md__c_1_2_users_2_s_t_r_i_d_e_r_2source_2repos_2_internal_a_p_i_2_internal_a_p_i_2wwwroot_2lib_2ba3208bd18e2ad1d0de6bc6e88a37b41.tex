@@ -1,0 +1,64 @@
+\chapter{is\+Stream}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba3208bd18e2ad1d0de6bc6e88a37b41}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba3208bd18e2ad1d0de6bc6e88a37b41}\index{isStream@{isStream}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba3208bd18e2ad1d0de6bc6e88a37b41_autotoc_md9614}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba3208bd18e2ad1d0de6bc6e88a37b41_autotoc_md9614}%
+ \href{http://travis-ci.org/rvagg/isstream}{\texttt{ }}
+
+{\bfseries{Test if an object is a {\ttfamily Stream}}}
+
+\href{https://nodei.co/npm/isstream/}{\texttt{ }}
+
+The missing {\ttfamily Stream.\+is\+Stream(obj)}\+: determine if an object is standard Node.\+js {\ttfamily Stream}. Works for Node-\/core {\ttfamily Stream} objects (for 0.\+8, 0.\+10, 0.\+11, and in theory, older and newer versions) and all versions of {\bfseries{\href{https://github.com/isaacs/readable-stream}{\texttt{ readable-\/stream}}}}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba3208bd18e2ad1d0de6bc6e88a37b41_autotoc_md9615}{}\doxysection{\texorpdfstring{Usage\+:}{Usage\+:}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba3208bd18e2ad1d0de6bc6e88a37b41_autotoc_md9615}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ isStream\ =\ require('isstream')}
+\DoxyCodeLine{var\ Stream\ =\ require('stream')}
+\DoxyCodeLine{}
+\DoxyCodeLine{isStream(new\ Stream())\ //\ true}
+\DoxyCodeLine{}
+\DoxyCodeLine{isStream(\{\})\ //\ false}
+\DoxyCodeLine{}
+\DoxyCodeLine{isStream(new\ Stream.Readable())\ \ \ \ //\ true}
+\DoxyCodeLine{isStream(new\ Stream.Writable())\ \ \ \ //\ true}
+\DoxyCodeLine{isStream(new\ Stream.Duplex())\ \ \ \ \ \ //\ true}
+\DoxyCodeLine{isStream(new\ Stream.Transform())\ \ \ //\ true}
+\DoxyCodeLine{isStream(new\ Stream.PassThrough())\ //\ true}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba3208bd18e2ad1d0de6bc6e88a37b41_autotoc_md9616}{}\doxysection{\texorpdfstring{But wait! There\textquotesingle{}s more!}{But wait! There\textquotesingle{}s more!}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba3208bd18e2ad1d0de6bc6e88a37b41_autotoc_md9616}
+You can also test for {\ttfamily is\+Readable(obj)}, {\ttfamily is\+Writable(obj)} and {\ttfamily is\+Duplex(obj)} to test for implementations of Streams2 (and Streams3) base classes.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ isReadable\ =\ require('isstream').isReadable}
+\DoxyCodeLine{var\ isWritable\ =\ require('isstream').isWritable}
+\DoxyCodeLine{var\ isDuplex\ =\ require('isstream').isDuplex}
+\DoxyCodeLine{var\ Stream\ =\ require('stream')}
+\DoxyCodeLine{}
+\DoxyCodeLine{isReadable(new\ Stream())\ //\ false}
+\DoxyCodeLine{isWritable(new\ Stream())\ //\ false}
+\DoxyCodeLine{isDuplex(new\ Stream())\ \ \ //\ false}
+\DoxyCodeLine{}
+\DoxyCodeLine{isReadable(new\ Stream.Readable())\ \ \ \ //\ true}
+\DoxyCodeLine{isReadable(new\ Stream.Writable())\ \ \ \ //\ false}
+\DoxyCodeLine{isReadable(new\ Stream.Duplex())\ \ \ \ \ \ //\ true}
+\DoxyCodeLine{isReadable(new\ Stream.Transform())\ \ \ //\ true}
+\DoxyCodeLine{isReadable(new\ Stream.PassThrough())\ //\ true}
+\DoxyCodeLine{}
+\DoxyCodeLine{isWritable(new\ Stream.Readable())\ \ \ \ //\ false}
+\DoxyCodeLine{isWritable(new\ Stream.Writable())\ \ \ \ //\ true}
+\DoxyCodeLine{isWritable(new\ Stream.Duplex())\ \ \ \ \ \ //\ true}
+\DoxyCodeLine{isWritable(new\ Stream.Transform())\ \ \ //\ true}
+\DoxyCodeLine{isWritable(new\ Stream.PassThrough())\ //\ true}
+\DoxyCodeLine{}
+\DoxyCodeLine{isDuplex(new\ Stream.Readable())\ \ \ \ //\ false}
+\DoxyCodeLine{isDuplex(new\ Stream.Writable())\ \ \ \ //\ false}
+\DoxyCodeLine{isDuplex(new\ Stream.Duplex())\ \ \ \ \ \ //\ true}
+\DoxyCodeLine{isDuplex(new\ Stream.Transform())\ \ \ //\ true}
+\DoxyCodeLine{isDuplex(new\ Stream.PassThrough())\ //\ true}
+
+\end{DoxyCode}
+
+
+{\itshape Reminder\+: when implementing your own streams, please \href{http://r.va.gg/2014/06/why-i-dont-use-nodes-core-stream-module.html}{\texttt{ use {\bfseries{readable-\/stream}} rather than core streams}}.}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba3208bd18e2ad1d0de6bc6e88a37b41_autotoc_md9617}{}\doxysection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba3208bd18e2ad1d0de6bc6e88a37b41_autotoc_md9617}
+{\bfseries{is\+Stream}} is Copyright (c) 2015 Rod Vagg \href{https://twitter.com/rvagg}{\texttt{ @rvagg}} and licenced under the MIT licence. All rights not explicitly granted in the MIT license are reserved. See the included LICENSE.\+md file for more details. 

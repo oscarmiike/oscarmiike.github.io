@@ -1,0 +1,39 @@
+\chapter{fs-\/write-\/stream-\/atomic}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_206a55094a792cde1f4b43db63e86aeb1}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_206a55094a792cde1f4b43db63e86aeb1}\index{fs-\/write-\/stream-\/atomic@{fs-\/write-\/stream-\/atomic}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_206a55094a792cde1f4b43db63e86aeb1_autotoc_md2367}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_206a55094a792cde1f4b43db63e86aeb1_autotoc_md2367}%
+ Like {\ttfamily fs.\+create\+Write\+Stream(...)}, but atomic.
+
+Writes to a tmp file and does an atomic {\ttfamily fs.\+rename} to move it into place when it\textquotesingle{}s done.
+
+First rule of debugging\+: {\bfseries{It\textquotesingle{}s always a race condition.}}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_206a55094a792cde1f4b43db63e86aeb1_autotoc_md2368}{}\doxysection{\texorpdfstring{USAGE}{USAGE}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_206a55094a792cde1f4b43db63e86aeb1_autotoc_md2368}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ fsWriteStreamAtomic\ =\ require('fs-\/write-\/stream-\/atomic')}
+\DoxyCodeLine{//\ options\ are\ optional.}
+\DoxyCodeLine{var\ write\ =\ fsWriteStreamAtomic('output.txt',\ options)}
+\DoxyCodeLine{var\ read\ =\ fs.createReadStream('input.txt')}
+\DoxyCodeLine{read.pipe(write)}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ When\ the\ write\ stream\ emits\ a\ 'finish'\ or\ 'close'\ event,}
+\DoxyCodeLine{//\ you\ can\ be\ sure\ that\ it\ is\ moved\ into\ place,\ and\ contains}
+\DoxyCodeLine{//\ all\ the\ bytes\ that\ were\ written\ to\ it,\ even\ if\ something\ else}
+\DoxyCodeLine{//\ was\ writing\ to\ \`{}output.txt`\ at\ the\ same\ time.}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_206a55094a792cde1f4b43db63e86aeb1_autotoc_md2369}{}\doxysubsection{\texorpdfstring{{\ttfamily fs\+Write\+Stream\+Atomic(filename, \mbox{[}options\mbox{]})}}{{\ttfamily fs\+Write\+Stream\+Atomic(filename, \mbox{[}options\mbox{]})}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_206a55094a792cde1f4b43db63e86aeb1_autotoc_md2369}
+
+\begin{DoxyItemize}
+\item {\ttfamily filename} \{String\} The file we want to write to
+\item {\ttfamily options} \{Object\}
+\begin{DoxyItemize}
+\item {\ttfamily chown} \{Object\} User and group to set ownership after write
+\begin{DoxyItemize}
+\item {\ttfamily uid} \{Number\}
+\item {\ttfamily gid} \{Number\}
+\end{DoxyItemize}
+\item {\ttfamily encoding} \{String\} default = \textquotesingle{}utf8\textquotesingle{}
+\item {\ttfamily mode} \{Number\} default = {\ttfamily 0666}
+\item {\ttfamily flags} \{String\} default = `\textquotesingle{}w'\`{} 
+\end{DoxyItemize}
+\end{DoxyItemize}

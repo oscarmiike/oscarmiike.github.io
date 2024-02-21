@@ -1,0 +1,93 @@
+\chapter{array-\/slice \texorpdfstring{$<$}{<}a href="{}https\+://www.\+npmjs.\+com/package/array-\/slice"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://img.\+shields.\+io/npm/v/array-\/slice.\+svg?style=flat"{} alt="{}\+NPM version"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}a href="{}https\+://npmjs.\+org/package/array-\/slice"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://img.\+shields.\+io/npm/dm/array-\/slice.\+svg?style=flat"{} alt="{}\+NPM monthly downloads"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}a href="{}https\+://npmjs.\+org/package/array-\/slice"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://img.\+shields.\+io/npm/dt/array-\/slice.\+svg?style=flat"{} alt="{}\+NPM total downloads"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/jonschlinkert/array-\/slice"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://img.\+shields.\+io/travis/jonschlinkert/array-\/slice.\+svg?style=flat\&label=\+Travis"{} alt="{}\+Linux Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27e828319631a8b11db3a9b6671bc62c0}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27e828319631a8b11db3a9b6671bc62c0}\index{array-\/slice $<$a href="{}https://www.npmjs.com/package/array-\/slice"{} $>$$<$img src="{}https://img.shields.io/npm/v/array-\/slice.svg?style=flat"{} alt="{}NPM version"{}/$>$$<$/a$>$ $<$a href="{}https://npmjs.org/package/array-\/slice"{} $>$$<$img src="{}https://img.shields.io/npm/dm/array-\/slice.svg?style=flat"{} alt="{}NPM monthly downloads"{}/$>$$<$/a$>$ $<$a href="{}https://npmjs.org/package/array-\/slice"{} $>$$<$img src="{}https://img.shields.io/npm/dt/array-\/slice.svg?style=flat"{} alt="{}NPM total downloads"{}/$>$$<$/a$>$ $<$a href="{}https://travis-\/ci.org/jonschlinkert/array-\/slice"{} $>$$<$img src="{}https://img.shields.io/travis/jonschlinkert/array-\/slice.svg?style=flat\&label=Travis"{} alt="{}Linux Build Status"{}/$>$$<$/a$>$@{array-\/slice $<$a href=""https://www.npmjs.com/package/array-\/slice"" $>$$<$img src=""https://img.shields.io/npm/v/array-\/slice.svg?style=flat"" alt=""NPM version""/$>$$<$/a$>$ $<$a href=""https://npmjs.org/package/array-\/slice"" $>$$<$img src=""https://img.shields.io/npm/dm/array-\/slice.svg?style=flat"" alt=""NPM monthly downloads""/$>$$<$/a$>$ $<$a href=""https://npmjs.org/package/array-\/slice"" $>$$<$img src=""https://img.shields.io/npm/dt/array-\/slice.svg?style=flat"" alt=""NPM total downloads""/$>$$<$/a$>$ $<$a href=""https://travis-\/ci.org/jonschlinkert/array-\/slice"" $>$$<$img src=""https://img.shields.io/travis/jonschlinkert/array-\/slice.svg?style=flat\&label=Travis"" alt=""Linux Build Status""/$>$$<$/a$>$}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27e828319631a8b11db3a9b6671bc62c0_autotoc_md446}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27e828319631a8b11db3a9b6671bc62c0_autotoc_md446}%
+ \begin{quote}
+Array-\/slice method. Slices {\ttfamily array} from the {\ttfamily start} index up to, but not including, the {\ttfamily end} index. \end{quote}
+Please consider following this project\textquotesingle{}s author, \href{https://github.com/jonschlinkert}{\texttt{ Jon Schlinkert}}, and consider starring the project to show your \+:heart\+: and support.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27e828319631a8b11db3a9b6671bc62c0_autotoc_md447}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27e828319631a8b11db3a9b6671bc62c0_autotoc_md447}
+Install with \href{https://www.npmjs.com/}{\texttt{ npm}}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ -\/-\/save\ array-\/slice}
+
+\end{DoxyCode}
+
+
+This function is used instead of {\ttfamily Array\#slice} to support node lists in IE \texorpdfstring{$<$}{<} 9 and to ensure dense arrays are returned. This is also faster than native slice in some cases.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27e828319631a8b11db3a9b6671bc62c0_autotoc_md448}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27e828319631a8b11db3a9b6671bc62c0_autotoc_md448}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ slice\ =\ require('array-\/slice');}
+\DoxyCodeLine{var\ arr\ =\ ['a',\ 'b',\ 'd',\ 'e',\ 'f',\ 'g',\ 'h',\ 'i',\ 'j'];}
+\DoxyCodeLine{}
+\DoxyCodeLine{slice(arr,\ 3,\ 6);}
+\DoxyCodeLine{//=>\ ['e',\ 'f',\ 'g']}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27e828319631a8b11db3a9b6671bc62c0_autotoc_md449}{}\doxysection{\texorpdfstring{About}{About}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27e828319631a8b11db3a9b6671bc62c0_autotoc_md449}
+
+
+{\bfseries{{\bfseries{Contributing}}}}\begin{adjustwidth}{1em}{0em}
+
+
+Pull requests and stars are always welcome. For bugs and feature requests, \href{../../issues/new}{\texttt{ please create an issue}}.
+
+\end{adjustwidth}
+
+
+
+
+{\bfseries{{\bfseries{Running Tests}}}}\begin{adjustwidth}{1em}{0em}
+
+
+Running and reviewing unit tests is a great way to get familiarized with a library and its API. You can install dependencies and run tests with the following command\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ \&\&\ npm\ test}
+
+\end{DoxyCode}
+
+
+\end{adjustwidth}
+
+
+
+
+{\bfseries{{\bfseries{Building docs}}}}\begin{adjustwidth}{1em}{0em}
+
+
+\+\_\+(This project\textquotesingle{}s readme.\+md is generated by \href{https://github.com/verbose/verb-generate-readme}{\texttt{ verb}}, please don\textquotesingle{}t edit the readme directly. Any changes to the readme must be made in the .verb.md readme template.)\+\_\+
+
+To generate the readme, run the following command\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ -\/g\ verbose/verb\#dev\ verb-\/generate-\/readme\ \&\&\ verb}
+
+\end{DoxyCode}
+
+
+\end{adjustwidth}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27e828319631a8b11db3a9b6671bc62c0_autotoc_md450}{}\doxysubsection{\texorpdfstring{Related projects}{Related projects}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27e828319631a8b11db3a9b6671bc62c0_autotoc_md450}
+You might also be interested in these projects\+:
+
+
+\begin{DoxyItemize}
+\item \href{https://www.npmjs.com/package/arr-flatten}{\texttt{ arr-\/flatten}}\+: Recursively flatten an array or arrays. \texorpdfstring{$\vert$}{|} \href{https://github.com/jonschlinkert/arr-flatten}{\texttt{ homepage}}
+\item \href{https://www.npmjs.com/package/array-unique}{\texttt{ array-\/unique}}\+: Remove duplicate values from an array. Fastest ES5 implementation. \texorpdfstring{$\vert$}{|} \href{https://github.com/jonschlinkert/array-unique}{\texttt{ homepage}}
+\item \href{https://www.npmjs.com/package/array-xor}{\texttt{ array-\/xor}}\+: Returns the symmetric difference (exclusive-\/or) of an array of elements (elements that are present in… \href{https://github.com/jonschlinkert/array-xor}{\texttt{ more}} \texorpdfstring{$\vert$}{|} \href{https://github.com/jonschlinkert/array-xor}{\texttt{ homepage}}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27e828319631a8b11db3a9b6671bc62c0_autotoc_md451}{}\doxysubsection{\texorpdfstring{Author}{Author}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27e828319631a8b11db3a9b6671bc62c0_autotoc_md451}
+{\bfseries{Jon Schlinkert}}
+
+
+\begin{DoxyItemize}
+\item \href{https://github.com/jonschlinkert}{\texttt{ github/jonschlinkert}}
+\item \href{https://twitter.com/jonschlinkert}{\texttt{ twitter/jonschlinkert}}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27e828319631a8b11db3a9b6671bc62c0_autotoc_md452}{}\doxysubsection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27e828319631a8b11db3a9b6671bc62c0_autotoc_md452}
+Copyright © 2017, \href{https://github.com/jonschlinkert}{\texttt{ Jon Schlinkert}}. Released under the \mbox{[}MIT License\mbox{]}(LICENSE).
+
+\DoxyHorRuler{0}
+
+
+{\itshape This file was generated by \href{https://github.com/verbose/verb-generate-readme}{\texttt{ verb-\/generate-\/readme}}, v0.\+6.\+0, on November 30, 2017.} 

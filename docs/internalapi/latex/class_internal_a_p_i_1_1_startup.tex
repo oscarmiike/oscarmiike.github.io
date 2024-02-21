@@ -1,0 +1,173 @@
+\doxysection{Internal\+API.\+Startup Class Reference}
+\hypertarget{class_internal_a_p_i_1_1_startup}{}\label{class_internal_a_p_i_1_1_startup}\index{InternalAPI.Startup@{InternalAPI.Startup}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_internal_a_p_i_1_1_startup_af0f4d140ec1c5c0889501f66e2c87d96}{Startup}} (IConfiguration configuration)
+\item 
+void \mbox{\hyperlink{class_internal_a_p_i_1_1_startup_a8240ff53e24d295cc8e823db0920760d}{Configure\+Services}} (IService\+Collection services)
+\item 
+void \mbox{\hyperlink{class_internal_a_p_i_1_1_startup_a02683edae629dc3b1ed90eb3cf701865}{Configure}} (IApplication\+Builder app, IWeb\+Host\+Environment env)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+IConfiguration \mbox{\hyperlink{class_internal_a_p_i_1_1_startup_ac9a9c0873c3e5aca28d4c47418dbf519}{Configuration}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_startup_af0f4d140ec1c5c0889501f66e2c87d96}\label{class_internal_a_p_i_1_1_startup_af0f4d140ec1c5c0889501f66e2c87d96} 
+\index{InternalAPI.Startup@{InternalAPI.Startup}!Startup@{Startup}}
+\index{Startup@{Startup}!InternalAPI.Startup@{InternalAPI.Startup}}
+\doxysubsubsection{\texorpdfstring{Startup()}{Startup()}}
+{\footnotesize\ttfamily Internal\+API.\+Startup.\+Startup (\begin{DoxyParamCaption}\item[{IConfiguration}]{configuration }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ Configuration\ =\ configuration;}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_startup_a02683edae629dc3b1ed90eb3cf701865}\label{class_internal_a_p_i_1_1_startup_a02683edae629dc3b1ed90eb3cf701865} 
+\index{InternalAPI.Startup@{InternalAPI.Startup}!Configure@{Configure}}
+\index{Configure@{Configure}!InternalAPI.Startup@{InternalAPI.Startup}}
+\doxysubsubsection{\texorpdfstring{Configure()}{Configure()}}
+{\footnotesize\ttfamily void Internal\+API.\+Startup.\+Configure (\begin{DoxyParamCaption}\item[{IApplication\+Builder}]{app,  }\item[{IWeb\+Host\+Environment}]{env }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//if\ (env.IsDevelopment())}}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\{}}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ app.UseDeveloperExceptionPage();}}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\}}}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ app.UseDeveloperExceptionPage();}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ app.UseHttpsRedirection();}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ app.UseRouting();}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ app.UseAuthorization();}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ app.UseStaticFiles();}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ app.UseEndpoints(endpoints\ =>}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//endpoints.MapControllers();}}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ endpoints.MapControllerRoute(}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ name:\ \textcolor{stringliteral}{"{}default"{}},}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pattern:\ \textcolor{stringliteral}{"{}\{controller=Home\}/\{action=Index\}/\{id?\}"{}});}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_internal_a_p_i_1_1_startup_a8240ff53e24d295cc8e823db0920760d}\label{class_internal_a_p_i_1_1_startup_a8240ff53e24d295cc8e823db0920760d} 
+\index{InternalAPI.Startup@{InternalAPI.Startup}!ConfigureServices@{ConfigureServices}}
+\index{ConfigureServices@{ConfigureServices}!InternalAPI.Startup@{InternalAPI.Startup}}
+\doxysubsubsection{\texorpdfstring{ConfigureServices()}{ConfigureServices()}}
+{\footnotesize\ttfamily void Internal\+API.\+Startup.\+Configure\+Services (\begin{DoxyParamCaption}\item[{IService\+Collection}]{services }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ services.AddAutoMapper(typeof(\mbox{\hyperlink{class_internal_a_p_i_1_1_startup_af0f4d140ec1c5c0889501f66e2c87d96}{Startup}}));}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//services.AddControllers();}}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ services.AddControllersWithViews().AddRazorRuntimeCompilation();\ }
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ services.AddMvc().AddNewtonsoftJson(options\ =>\ options.SerializerSettings.ReferenceLoopHandling\ =\ Newtonsoft.Json.ReferenceLoopHandling.Ignore);}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Configuration}}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ services.Configure<\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_b_pay_settings}{BPaySettings}}>(}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Configuration.GetSection(\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_b_pay_settings}{BPaySettings}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_b_pay_settings_a0fbc93d2bea3e010b8bf9fe56028e55f}{Section}}));}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ services.Configure<\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_internal_api_settings}{InternalApiSettings}}>(}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Configuration.GetSection(\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_internal_api_settings}{InternalApiSettings}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_internal_api_settings_af4a29c71f727a3a09e9a0c7a10d55660}{Section}}));}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ services.Configure<\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_s_m_t_p_settings}{SMTPSettings}}>(}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Configuration.GetSection(\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_s_m_t_p_settings}{SMTPSettings}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_s_m_t_p_settings_af652e4220730e8b4749f4c3babb8cbae}{Section}}));}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ services.Configure<\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_cin7_settings}{Cin7Settings}}>(}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Configuration.GetSection(\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_cin7_settings}{Cin7Settings}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_cin7_settings_a4c77c766f150ec76e5f2832d53cf838f}{Section}}));}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ services.Configure<\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_webshop_sales_order_settings}{WebshopSalesOrderSettings}}>(}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Configuration.GetSection(\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_webshop_sales_order_settings}{WebshopSalesOrderSettings}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_webshop_sales_order_settings_aedfc858402766979d15f2d8f380efeaa}{Section}}));}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ services.Configure<\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_oanda_settings}{OandaSettings}}>(}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Configuration.GetSection(\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_oanda_settings}{OandaSettings}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_oanda_settings_a6b56583cf0b4c3be23c1416457896114}{Section}}));}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ services.Configure<\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_coinspot_settings}{CoinspotSettings}}>(}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Configuration.GetSection(\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_coinspot_settings}{CoinspotSettings}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_coinspot_settings_a92ed3090af2dea9eec167f177e6086f2}{Section}}));}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ services.Configure<\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_netsuite_settings}{NetsuiteSettings}}>(}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Configuration.GetSection(\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_netsuite_settings}{NetsuiteSettings}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_netsuite_settings_a8307f009b26de4755270bdda6012f53a}{Section}}));}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ services.Configure<\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_s_q_l_logger_settings}{SQLLoggerSettings}}>(}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Configuration.GetSection(\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_s_q_l_logger_settings}{SQLLoggerSettings}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_s_q_l_logger_settings_aa7c823777f6671436d8777da37cf9050}{Section}}));}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ services.Configure<\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_task_a_p_i_settings}{TaskAPISettings}}>(}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Configuration.GetSection(\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_task_a_p_i_settings}{TaskAPISettings}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_task_a_p_i_settings_ac0cfe94cac2877198e0afd4794fe9218}{Section}}));}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ services.Configure<\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_ainslie_a_p_i_settings}{AinslieAPISettings}}>(}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Configuration.GetSection(\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_ainslie_a_p_i_settings}{AinslieAPISettings}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_ainslie_a_p_i_settings_a3c425ef1e090f29a48b4640ac3271706}{Section}}));}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ services.Configure<\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_auth0_settings}{Auth0Settings}}>(}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Configuration.GetSection(\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_auth0_settings}{Auth0Settings}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_auth0_settings_ac4f9231834df49e21c169edff3db0d35}{Section}}));}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ services.Configure<\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_s_m_s_global_settings}{SMSGlobalSettings}}>(}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Configuration.GetSection(\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_s_m_s_global_settings}{SMSGlobalSettings}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_s_m_s_global_settings_a2d272f2b5fb614a6a9c54f97da1788cf}{Section}}));}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ services.Configure<\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_ainslie_news_settings}{AinslieNewsSettings}}>(}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Configuration.GetSection(\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_ainslie_news_settings}{AinslieNewsSettings}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_ainslie_news_settings_a9a9cdd9394df936d0aa0d19d37b80436}{Section}}));}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ services.Configure<\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_green_i_d_settings}{GreenIDSettings}}>(}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Configuration.GetSection(\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_green_i_d_settings}{GreenIDSettings}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_green_i_d_settings_a1ca8670b95f5627310b4f60d6f5a984d}{Section}}));}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ services.Configure<\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_a_b_web_settings}{ABWebSettings}}>(}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Configuration.GetSection(\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_a_b_web_settings}{ABWebSettings}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_a_b_web_settings_a02fda335c19658cb837458cf30cceb54}{Section}}));}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ services.AddDbContext<\mbox{\hyperlink{namespace_internal_a_p_i}{InternalAPI}}.\mbox{\hyperlink{namespace_internal_a_p_i_1_1_contexts}{Contexts}}.\mbox{\hyperlink{namespace_internal_a_p_i_1_1_contexts_1_1_green_i_d}{GreenID}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_contexts_1_1_green_i_d_1_1_a_b_clients_context}{ABClientsContext}}>(options\ =>}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ options.UseSqlServer(Configuration.GetConnectionString(\textcolor{stringliteral}{"{}GreenIDDBConnectionstring"{}})));}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ services.AddDbContext<\mbox{\hyperlink{namespace_internal_a_p_i}{InternalAPI}}.\mbox{\hyperlink{namespace_internal_a_p_i_1_1_contexts}{Contexts}}.\mbox{\hyperlink{namespace_internal_a_p_i_1_1_contexts_1_1_web_shop}{WebShop}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_contexts_1_1_web_shop_1_1_a_b_web_shop_context}{ABWebShopContext}}>(options\ =>}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ options.UseSqlServer(Configuration.GetConnectionString(\textcolor{stringliteral}{"{}ABWebShop"{}})));}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ services.AddDbContext<\mbox{\hyperlink{namespace_internal_a_p_i}{InternalAPI}}.\mbox{\hyperlink{namespace_internal_a_p_i_1_1_contexts}{Contexts}}.\mbox{\hyperlink{namespace_internal_a_p_i_1_1_contexts_1_1_a_b_web}{ABWeb}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_contexts_1_1_a_b_web_1_1_a_b_web_context}{ABWebContext}}>(options\ =>}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ options.UseSqlServer(Configuration.GetConnectionString(\textcolor{stringliteral}{"{}ABWeb"{}})));}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ services.AddDbContext<\mbox{\hyperlink{namespace_internal_a_p_i}{InternalAPI}}.\mbox{\hyperlink{namespace_internal_a_p_i_1_1_contexts}{Contexts}}.\mbox{\hyperlink{namespace_internal_a_p_i_1_1_contexts_1_1_internal_a_p_i}{InternalAPI}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_contexts_1_1_internal_a_p_i_1_1_internal_a_p_i_context}{InternalAPIContext}}>(options\ =>}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ options.UseSqlServer(Configuration.GetConnectionString(\textcolor{stringliteral}{"{}InternalAPI"{}})));}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Background\ task\ queue}}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ services.AddSingleton<\mbox{\hyperlink{interface_internal_a_p_i_1_1_services_1_1_background_tasks_1_1_i_background_task_queue}{IBackgroundTaskQueue}},\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_background_tasks_1_1_background_task_queue}{BackgroundTaskQueue}}>();}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ services.AddHostedService<\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_background_tasks_1_1_background_task_service}{BackgroundTaskService}}>();}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Services}}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ services.AddTransient<\mbox{\hyperlink{interface_internal_a_p_i_1_1_services_1_1_cin7_1_1_i_cin7_sales_order_service}{ICin7SalesOrderService}},\ Cin7SalesOrderService>();}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ services.AddTransient<\mbox{\hyperlink{interface_internal_a_p_i_1_1_services_1_1_cin7_1_1_i_cin7_customer_service}{ICin7CustomerService}},\ Cin7CustomerService>();}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ services.AddTransient<\mbox{\hyperlink{interface_internal_a_p_i_1_1_services_1_1_b_pay_1_1_i_b_pay_service}{IBPayService}},\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_b_pay_1_1_b_pay_service}{BPayService}}>();}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ services.AddScoped<\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_email_1_1_email_service}{EmailService}}>();}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ services.AddScoped<\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}>();}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ services.AddScoped<\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_netsuite_service}{NetsuiteService}}>();}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ services.AddScoped<\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_netsuite_settings}{NetsuiteSettings}}>();}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ services.AddScoped<NetsuiteHelper>();}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ services.AddScoped<\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_task_a_p_i_service}{TaskAPIService}}>();}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ services.AddScoped<\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_ainslie_a_p_i_service}{AinslieAPIService}}>();}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ services.AddScoped<\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_auth0_service}{Auth0Service}}>();}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ services.AddScoped<\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_s_m_s_global_service}{SMSGlobalService}}>();}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ services.AddScoped<\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_aus_post_1_1_aus_post_service}{AusPostService}}>();}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ services.AddScoped<\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_ainslie_news_service}{AinslieNewsService}}>();}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ services.AddScoped<\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_green_i_d_service}{GreenIDService}}>();}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ services.AddScoped<\mbox{\hyperlink{class_internal_a_p_i_1_1_helpers_1_1_green_i_d_d_b_helper}{GreenIDDBHelper}}>();}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ services.AddScoped<\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_a_b_web_service}{ABWebService}}>();}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ services.AddScoped<\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_internal_a_p_i_1_1_internal_a_p_i_service}{InternalAPIService}}>();}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Property Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_startup_ac9a9c0873c3e5aca28d4c47418dbf519}\label{class_internal_a_p_i_1_1_startup_ac9a9c0873c3e5aca28d4c47418dbf519} 
+\index{InternalAPI.Startup@{InternalAPI.Startup}!Configuration@{Configuration}}
+\index{Configuration@{Configuration}!InternalAPI.Startup@{InternalAPI.Startup}}
+\doxysubsubsection{\texorpdfstring{Configuration}{Configuration}}
+{\footnotesize\ttfamily IConfiguration Internal\+API.\+Startup.\+Configuration\hspace{0.3cm}{\ttfamily [get]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00031\ \{\ \textcolor{keyword}{get};\ \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+STRIDER/source/repos/\+Internal\+API/\+Internal\+API/\mbox{\hyperlink{_startup_8cs}{Startup.\+cs}}\end{DoxyCompactItemize}

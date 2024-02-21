@@ -1,0 +1,200 @@
+\doxysection{Cin7\+Controller.\+cs}
+\hypertarget{_cin7_controller_8cs_source}{}\label{_cin7_controller_8cs_source}\index{C:/Users/STRIDER/source/repos/InternalAPI/InternalAPI/Controllers/Cin7Controller.cs@{C:/Users/STRIDER/source/repos/InternalAPI/InternalAPI/Controllers/Cin7Controller.cs}}
+\mbox{\hyperlink{_cin7_controller_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_services_1_1_background_tasks}{InternalAPI.Services.BackgroundTasks}};}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_services_1_1_cin7}{InternalAPI.Services.Cin7}};}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }Microsoft.AspNetCore.Mvc;}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }Microsoft.Extensions.Logging;}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00006}00006\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00007}00007\ \textcolor{keyword}{using\ }System.IO;}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00008}00008\ \textcolor{keyword}{using\ }System.Net;}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00009}00009\ \textcolor{keyword}{using\ }System.Net.Http;}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00010}00010\ \textcolor{keyword}{using\ }System.Net.Http.Headers;}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00011}00011\ \textcolor{keyword}{using\ }System.Text;}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00012}00012\ \textcolor{keyword}{using\ }System.Threading.Tasks;}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00013}00013\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_requests}{InternalAPI.Requests}};}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00014}00014\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_settings}{InternalAPI.Settings}};}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00015}00015\ \textcolor{keyword}{using\ }Microsoft.Extensions.Options;}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00017}00017\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_controllers}{InternalAPI.Controllers}}}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00018}00018\ \{}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00019}00019\ \ \ \ \ [ApiController]}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00020}\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_cin7_controller}{00020}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_cin7_controller}{Cin7Controller}}\ :\ ControllerBase}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00021}00021\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ readonly\ ILogger<Cin7Controller>\ logger;}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ readonly\ \mbox{\hyperlink{interface_internal_a_p_i_1_1_services_1_1_cin7_1_1_i_cin7_sales_order_service}{ICin7SalesOrderService}}\ \_cin7SalesOrderService;}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ readonly\ \mbox{\hyperlink{interface_internal_a_p_i_1_1_services_1_1_cin7_1_1_i_cin7_customer_service}{ICin7CustomerService}}\ \_cin7CustomerService;}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ readonly\ \mbox{\hyperlink{interface_internal_a_p_i_1_1_services_1_1_background_tasks_1_1_i_background_task_queue}{IBackgroundTaskQueue}}\ backgroundTaskQueue;}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ readonly\ \mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_cin7_settings}{Cin7Settings}}\ \_cin7Settings;}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00028}\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_cin7_controller_ae5f543ad80060b759285193bc919ef16}{00028}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_cin7_controller_ae5f543ad80060b759285193bc919ef16}{Cin7Controller}}(}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ ILogger<Cin7Controller>\ logger,}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{interface_internal_a_p_i_1_1_services_1_1_cin7_1_1_i_cin7_sales_order_service}{ICin7SalesOrderService}}\ cin7SalesCin7SalesOrderService,}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{interface_internal_a_p_i_1_1_services_1_1_cin7_1_1_i_cin7_customer_service}{ICin7CustomerService}}\ cin7CustomerService,}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{interface_internal_a_p_i_1_1_services_1_1_background_tasks_1_1_i_background_task_queue}{IBackgroundTaskQueue}}\ backgroundTaskQueue,}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ IOptions<Cin7Settings>\ cin7Settings)}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ this.logger\ =\ logger;}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ this.\_cin7SalesOrderService\ =\ cin7SalesCin7SalesOrderService;}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \_cin7CustomerService\ =\ cin7CustomerService;}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ this.backgroundTaskQueue\ =\ backgroundTaskQueue;}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \_cin7Settings\ =\ cin7Settings.Value;}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ [Route(\textcolor{stringliteral}{"{}v1/cin7/\{ainslieCompany\}/\{**url\}"{}})]}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ [HttpGet]}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ [HttpPut]}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ [HttpPost]}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ [HttpDelete]}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00053}\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_cin7_controller_acba77cc142a445b1905384e2888ce148}{00053}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ async\ Task<IActionResult>\ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_cin7_controller_acba77cc142a445b1905384e2888ce148}{PassThrough}}([FromRoute]\ \textcolor{keywordtype}{string}\ ainslieCompany,\ [FromRoute]\ \textcolor{keywordtype}{string}\ url)}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ logger.LogInformation(\$\textcolor{stringliteral}{"{}Received\ pass\ through\ for\ company\ '\{ainslieCompany\}',\ url\ '\{url\}'."{}});}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ TODO:\ is\ this\ still\ necessary?}}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ ServicePointManager.SecurityProtocol\ =\ SecurityProtocolType.Tls12;}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ authenticationString;}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (ainslieCompany.ToLower())}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{stringliteral}{"{}ab"{}}:}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ authenticationString\ =\ \$\textcolor{stringliteral}{"{}\{\_cin7Settings.APIUserBullion\}:\{\_cin7Settings.APIPassBullion\}"{}};}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{stringliteral}{"{}aw"{}}:}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ authenticationString\ =\ \$\textcolor{stringliteral}{"{}\{\_cin7Settings.APIUserWealth\}:\{\_cin7Settings.APIPassWealth\}"{}};}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ logger.LogError(\$\textcolor{stringliteral}{"{}Request\ made\ for\ unknown\ Cin7\ company\ code.\ \ Code\ received:\ '\{ainslieCompany\}'."{}});}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ NotFound();}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ new\ stream\ from\ request}}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ var\ requestUrl\ =\ \$\textcolor{stringliteral}{"{}\{\_cin7Settings.APIBase\}/v1/\{url\}\{(Request.QueryString.HasValue\ ?\ Request.QueryString.Value\ :\ string.Empty)\}"{}};}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ var\ requestMessage\ =}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ HttpRequestMessage(\textcolor{keyword}{new}\ HttpMethod(Request.Method),\ requestUrl);}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Copy\ content}}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Request.Body\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ requestContent;}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Request.Body.Seek(0,\ SeekOrigin.Begin);}}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using}\ (StreamReader\ reader}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ \textcolor{keyword}{new}\ StreamReader(Request.Body))}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ requestContent\ =\ await\ reader.ReadToEndAsync().ConfigureAwait(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Request.Body.Seek(0,\ SeekOrigin.Begin);}}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ requestMessage.Content\ =\ \textcolor{keyword}{new}\ StringContent(requestContent,\ Encoding.UTF8,\ Request.ContentType);}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ //\ Headers\ not\ copied\ -\/\ implement\ if\ required}}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//foreach\ (var\ header\ in\ Request.Headers)}}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\{}}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ //\ Content-\/Type\ is\ added\ to\ requestMessage.Content\ above}}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ if\ (!new[]\ \{\ "{}Content-\/Type"{},\ "{}Content-\/Length"{}\ \}.Contains(header.Key))}}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ requestMessage.Headers.Add(header.Key,\ header.Value.ToArray());}}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\}}}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00104}00104\ }
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Set\ /\ Add\ Authentication}}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ var\ base64EncodedAuthenticationString\ =\ Convert.ToBase64String(Encoding.ASCII.GetBytes(authenticationString));}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ requestMessage.Headers.Authorization\ =\ \textcolor{keyword}{new}\ AuthenticationHeaderValue(\textcolor{stringliteral}{"{}Basic"{}},\ base64EncodedAuthenticationString);}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00108}00108\ }
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ \ \ var\ httpClient\ =\ \textcolor{keyword}{new}\ HttpClient();}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00110}00110\ }
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ var\ responseMessage\ =\ await\ httpClient.SendAsync(requestMessage).ConfigureAwait(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \ \ var\ responseBody\ =\ await\ responseMessage.Content.ReadAsStringAsync().ConfigureAwait(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00113}00113\ }
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ StatusCode((\textcolor{keywordtype}{int})\ responseMessage.StatusCode,\ responseBody);}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00115}00115\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00116}00116\ }
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00117}00117\ }
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00118}00118\ \ \ \ \ \ \ \ \ [Route(\textcolor{stringliteral}{"{}v1/webshop/\{ainslieCompany\}/salesorder"{}})]}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00119}00119\ \ \ \ \ \ \ \ \ [HttpPost]}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00120}\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_cin7_controller_a796b6b64f73de3d09d6fe481432a9658}{00120}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ IActionResult\ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_cin7_controller_a796b6b64f73de3d09d6fe481432a9658}{CreateSalesOrder}}([FromRoute]\ \textcolor{keywordtype}{string}\ ainslieCompany,\ [FromBody]\ \mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_sales_order_request}{CreateCin7SalesOrderRequest}}\ createOrderRequest)}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00121}00121\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00122}00122\ \ \ \ \ \ \ \ \ \ \ \ \ logger.LogInformation(\$\textcolor{stringliteral}{"{}Received\ create\ sales\ order\ request\ for\ \{createOrderRequest.CustomerDetails?.FirstName\}\ \{createOrderRequest.CustomerDetails?.Surname\}"{}});}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00123}00123\ }
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00124}00124\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (ainslieCompany.ToLower())}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00125}00125\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00126}00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{stringliteral}{"{}ab"{}}:}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00127}00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ createOrderRequest.AinslieCompanyOption\ =\ \mbox{\hyperlink{namespace_internal_a_p_i_1_1_requests_adf51189d6a8e38adf5f9e6aced670be6}{AinslieCompanyOption}}.AB;}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00128}00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00129}00129\ }
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00130}00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{stringliteral}{"{}aw"{}}:}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00131}00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ createOrderRequest.AinslieCompanyOption\ =\ \mbox{\hyperlink{namespace_internal_a_p_i_1_1_requests_adf51189d6a8e38adf5f9e6aced670be6}{AinslieCompanyOption}}.AW;}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00132}00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00133}00133\ }
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00134}00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{stringliteral}{"{}abm"{}}:}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00135}00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ createOrderRequest.AinslieCompanyOption\ =\ \mbox{\hyperlink{namespace_internal_a_p_i_1_1_requests_adf51189d6a8e38adf5f9e6aced670be6}{AinslieCompanyOption}}.ABM;}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00136}00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00137}00137\ }
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00138}00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00139}00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ logger.LogError(\$\textcolor{stringliteral}{"{}Request\ made\ for\ unknown\ Cin7\ company\ code.\ \ Code\ received:\ '\{ainslieCompany\}'."{}});}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00140}00140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ NotFound();}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00141}00141\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00142}00142\ }
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00143}00143\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Queue}}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00144}00144\ \ \ \ \ \ \ \ \ \ \ \ \ backgroundTaskQueue.Enqueue(\textcolor{keyword}{new}\ Task(()\ =>\ \_cin7SalesOrderService.CreateSalesOrder(createOrderRequest)));}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00145}00145\ }
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00146}00146\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Accepted();}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00147}00147\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00148}00148\ }
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00149}00149\ \ \ \ \ \ \ \ \ [Route(\textcolor{stringliteral}{"{}v1/webshop/\{ainslieCompany\}/addpayment"{}})]}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00150}00150\ \ \ \ \ \ \ \ \ [HttpPost]}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00151}\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_cin7_controller_afd89ec18d9db0b053b22a5341b878fa8}{00151}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ IActionResult\ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_cin7_controller_afd89ec18d9db0b053b22a5341b878fa8}{AddPayment}}([FromRoute]\ \textcolor{keywordtype}{string}\ ainslieCompany,\ [FromBody]\ \mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_payment_web_hook_request}{CreateCin7PaymentWebHookRequest}}\ createPaymentRequest)}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00152}00152\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00153}00153\ \ \ \ \ \ \ \ \ \ \ \ \ logger.LogInformation(\$\textcolor{stringliteral}{"{}Received\ create\ payment\ request\ for\ Cin7\ Order\ Id\ \{createPaymentRequest.Cin7OrderId\}"{}});}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00154}00154\ }
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00155}00155\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (ainslieCompany.ToLower())}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00156}00156\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00157}00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{stringliteral}{"{}ab"{}}:}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00158}00158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ createPaymentRequest.Company\ =\ \mbox{\hyperlink{namespace_internal_a_p_i_1_1_requests_adf51189d6a8e38adf5f9e6aced670be6}{AinslieCompanyOption}}.AB;}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00159}00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00160}00160\ }
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00161}00161\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{stringliteral}{"{}aw"{}}:}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00162}00162\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ createPaymentRequest.Company\ =\ \mbox{\hyperlink{namespace_internal_a_p_i_1_1_requests_adf51189d6a8e38adf5f9e6aced670be6}{AinslieCompanyOption}}.AW;}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00163}00163\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00164}00164\ }
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00165}00165\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{stringliteral}{"{}abm"{}}:}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00166}00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ createPaymentRequest.Company\ =\ \mbox{\hyperlink{namespace_internal_a_p_i_1_1_requests_adf51189d6a8e38adf5f9e6aced670be6}{AinslieCompanyOption}}.ABM;}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00167}00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00168}00168\ }
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00169}00169\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00170}00170\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ logger.LogError(\$\textcolor{stringliteral}{"{}Request\ made\ for\ unknown\ Cin7\ company\ code.\ \ Code\ received:\ '\{ainslieCompany\}'."{}});}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00171}00171\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ NotFound();}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00172}00172\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00173}00173\ }
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00174}00174\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\textcolor{keywordtype}{double}.TryParse(createPaymentRequest.Amount.Replace(\textcolor{stringliteral}{"{}\$"{}},\ \textcolor{stringliteral}{"{}"{}}),\ out\ var\ dblAmount))}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00175}00175\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ BadRequest(\$\textcolor{stringliteral}{"{}Unable\ to\ parse\ amount\ to\ double:\ \{createPaymentRequest.Amount\}"{}});}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00176}00176\ }
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00177}00177\ \ \ \ \ \ \ \ \ \ \ \ \ \_cin7SalesOrderService.CreatePayment(\textcolor{keyword}{new}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_payment_request}{CreateCin7PaymentRequest}}()}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00178}00178\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00179}00179\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Cin7OrderId\ =\ createPaymentRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_payment_request_aafddfb78bfe265fdde426ce49c2f5d62}{Cin7OrderId}},}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00180}00180\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Company\ =\ createPaymentRequest.Company,}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00181}00181\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Payments\ =\ \textcolor{keyword}{new}\ List<CreatePaymentDetails>()}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00182}00182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00183}00183\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_payment_details}{CreatePaymentDetails}}()}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00184}00184\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00185}00185\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Amount\ =\ \ dblAmount,}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00186}00186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ IsAuthorized\ =\ \textcolor{keyword}{false},}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00187}00187\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CreatedDate\ =\ DateTime.Now,}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00188}00188\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ModifiedDate\ =\ DateTime.Now,}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00189}00189\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Method\ =\ createPaymentRequest.PaymentMethod,}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00190}00190\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ OrderId\ =\ createPaymentRequest.Cin7OrderId,}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00191}00191\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PaymentDate\ =\ DateTime.Now}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00192}00192\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00193}00193\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00194}00194\ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00195}00195\ }
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00196}00196\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Ok();}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00197}00197\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00198}00198\ }
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00199}00199\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cin7_controller_8cs_source_l00200}00200\ \}}
+
+\end{DoxyCode}

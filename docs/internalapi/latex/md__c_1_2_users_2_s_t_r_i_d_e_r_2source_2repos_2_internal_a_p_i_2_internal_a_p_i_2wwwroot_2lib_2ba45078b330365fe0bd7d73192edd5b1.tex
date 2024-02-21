@@ -1,0 +1,1394 @@
+\chapter{Async.\+js}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1}\index{Async.js@{Async.js}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md760}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md760}%
+ Async is a utility module which provides straight-\/forward, powerful functions for working with asynchronous Java\+Script. Although originally designed for use with \href{http://nodejs.org}{\texttt{ node.\+js}}, it can also be used directly in the browser. Also supports \href{https://github.com/component/component}{\texttt{ component}}.
+
+Async provides around 20 functions that include the usual \textquotesingle{}functional\textquotesingle{} suspects (map, reduce, filter, each…) as well as some common patterns for asynchronous control flow (parallel, series, waterfall…). All these functions assume you follow the node.\+js convention of providing a single callback as the last argument of your async function.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md761}{}\doxysection{\texorpdfstring{Quick Examples}{Quick Examples}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md761}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{async.map(['file1','file2','file3'],\ fs.stat,\ function(err,\ results)\{}
+\DoxyCodeLine{\ \ \ \ //\ results\ is\ now\ an\ array\ of\ stats\ for\ each\ file}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{async.filter(['file1','file2','file3'],\ fs.exists,\ function(results)\{}
+\DoxyCodeLine{\ \ \ \ //\ results\ now\ equals\ an\ array\ of\ the\ existing\ files}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{async.parallel([}
+\DoxyCodeLine{\ \ \ \ function()\{\ ...\ \},}
+\DoxyCodeLine{\ \ \ \ function()\{\ ...\ \}}
+\DoxyCodeLine{],\ callback);}
+\DoxyCodeLine{}
+\DoxyCodeLine{async.series([}
+\DoxyCodeLine{\ \ \ \ function()\{\ ...\ \},}
+\DoxyCodeLine{\ \ \ \ function()\{\ ...\ \}}
+\DoxyCodeLine{]);}
+
+\end{DoxyCode}
+
+
+There are many more functions available so take a look at the docs below for a full list. This module aims to be comprehensive, so if you feel anything is missing please create a Git\+Hub issue for it.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md762}{}\doxysection{\texorpdfstring{Common Pitfalls}{Common Pitfalls}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md762}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md763}{}\doxysubsection{\texorpdfstring{Binding a context to an iterator}{Binding a context to an iterator}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md763}
+This section is really about bind, not about async. If you are wondering how to make async execute your iterators in a given context, or are confused as to why a method of another library isn\textquotesingle{}t working as an iterator, study this example\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Here\ is\ a\ simple\ object\ with\ an\ (unnecessarily\ roundabout)\ squaring\ method}
+\DoxyCodeLine{var\ AsyncSquaringLibrary\ =\ \{}
+\DoxyCodeLine{\ \ squareExponent:\ 2,}
+\DoxyCodeLine{\ \ square:\ function(number,\ callback)\{\ }
+\DoxyCodeLine{\ \ \ \ var\ result\ =\ Math.pow(number,\ this.squareExponent);}
+\DoxyCodeLine{\ \ \ \ setTimeout(function()\{}
+\DoxyCodeLine{\ \ \ \ \ \ callback(null,\ result);}
+\DoxyCodeLine{\ \ \ \ \},\ 200);}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{async.map([1,\ 2,\ 3],\ AsyncSquaringLibrary.square,\ function(err,\ result)\{}
+\DoxyCodeLine{\ \ //\ result\ is\ [NaN,\ NaN,\ NaN]}
+\DoxyCodeLine{\ \ //\ This\ fails\ because\ the\ \`{}this.squareExponent`\ expression\ in\ the\ square}
+\DoxyCodeLine{\ \ //\ function\ is\ not\ evaluated\ in\ the\ context\ of\ AsyncSquaringLibrary,\ and\ is}
+\DoxyCodeLine{\ \ //\ therefore\ undefined.}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{async.map([1,\ 2,\ 3],\ AsyncSquaringLibrary.square.bind(AsyncSquaringLibrary),\ function(err,\ result)\{}
+\DoxyCodeLine{\ \ //\ result\ is\ [1,\ 4,\ 9]}
+\DoxyCodeLine{\ \ //\ With\ the\ help\ of\ bind\ we\ can\ attach\ a\ context\ to\ the\ iterator\ before}
+\DoxyCodeLine{\ \ //\ passing\ it\ to\ async.\ Now\ the\ square\ function\ will\ be\ executed\ in\ its\ }
+\DoxyCodeLine{\ \ //\ 'home'\ AsyncSquaringLibrary\ context\ and\ the\ value\ of\ \`{}this.squareExponent`}
+\DoxyCodeLine{\ \ //\ will\ be\ as\ expected.}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md764}{}\doxysection{\texorpdfstring{Download}{Download}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md764}
+The source is available for download from \href{http://github.com/caolan/async}{\texttt{ Git\+Hub}}. Alternatively, you can install using Node Package Manager (npm)\+: \begin{DoxyVerb}npm install async
+\end{DoxyVerb}
+ {\bfseries{Development\+:}} \href{https://github.com/caolan/async/raw/master/lib/async.js}{\texttt{ async.\+js}} -\/ 29.\+6kb Uncompressed\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md765}{}\doxysection{\texorpdfstring{In the Browser}{In the Browser}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md765}
+So far it\textquotesingle{}s been tested in IE6, IE7, IE8, FF3.\+6 and Chrome 5. Usage\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<script\ type="{}text/javascript"{}\ src="{}async.js"{}></script>}
+\DoxyCodeLine{<script\ type="{}text/javascript"{}>}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ async.map(data,\ asyncProcess,\ function(err,\ results)\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ alert(results);}
+\DoxyCodeLine{\ \ \ \ \});}
+\DoxyCodeLine{}
+\DoxyCodeLine{</script>}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md766}{}\doxysection{\texorpdfstring{Documentation}{Documentation}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md766}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md767}{}\doxysubsection{\texorpdfstring{Collections}{Collections}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md767}
+
+\begin{DoxyItemize}
+\item \doxylink{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_each}{each}
+\item \doxylink{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_eachSeries}{each\+Series}
+\item \doxylink{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_eachLimit}{each\+Limit}
+\item \doxylink{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_map}{map}
+\item \doxylink{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_mapSeries}{map\+Series}
+\item \doxylink{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_mapLimit}{map\+Limit}
+\item \doxylink{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_filter}{filter}
+\item \doxylink{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_filterSeries}{filter\+Series}
+\item \doxylink{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_reject}{reject}
+\item \doxylink{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_rejectSeries}{reject\+Series}
+\item \doxylink{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_reduce}{reduce}
+\item \doxylink{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_reduceRight}{reduce\+Right}
+\item \doxylink{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_detect}{detect}
+\item \doxylink{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_detectSeries}{detect\+Series}
+\item \doxylink{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_sortBy}{sort\+By}
+\item \doxylink{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_some}{some}
+\item \doxylink{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_every}{every}
+\item \doxylink{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_concat}{concat}
+\item \doxylink{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_concatSeries}{concat\+Series}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md768}{}\doxysubsection{\texorpdfstring{Control Flow}{Control Flow}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md768}
+
+\begin{DoxyItemize}
+\item \doxylink{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_series}{series}
+\item \doxylink{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_parallel}{parallel}
+\item parallel\+Limit
+\item \doxylink{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_whilst}{whilst}
+\item \doxylink{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_doWhilst}{do\+Whilst}
+\item \doxylink{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_until}{until}
+\item \doxylink{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_doUntil}{do\+Until}
+\item \doxylink{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_forever}{forever}
+\item \doxylink{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_waterfall}{waterfall}
+\item \doxylink{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_compose}{compose}
+\item \doxylink{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_applyEach}{apply\+Each}
+\item \doxylink{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_applyEachSeries}{apply\+Each\+Series}
+\item \doxylink{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_queue}{queue}
+\item \doxylink{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_cargo}{cargo}
+\item \doxylink{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_auto}{auto}
+\item \doxylink{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_iterator}{iterator}
+\item \doxylink{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_apply}{apply}
+\item \doxylink{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_nextTick}{next\+Tick}
+\item \doxylink{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_times}{times}
+\item \doxylink{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_timesSeries}{times\+Series}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md769}{}\doxysubsection{\texorpdfstring{Utils}{Utils}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md769}
+
+\begin{DoxyItemize}
+\item \doxylink{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_memoize}{memoize}
+\item \doxylink{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_unmemoize}{unmemoize}
+\item \doxylink{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_log}{log}
+\item \doxylink{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_dir}{dir}
+\item \doxylink{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_noConflict}{no\+Conflict}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md770}{}\doxysection{\texorpdfstring{Collections}{Collections}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md770}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_forEach}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_forEach}%
+ \label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_each}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_each}%
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md771}{}\doxysubsection{\texorpdfstring{each(arr, iterator, callback)}{each(arr, iterator, callback)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md771}
+Applies an iterator function to each item in an array, in parallel. The iterator is called with an item from the list and a callback for when it has finished. If the iterator passes an error to this callback, the main callback for the each function is immediately called with the error.
+
+Note, that since this function applies the iterator to each item in parallel there is no guarantee that the iterator functions will complete in order.
+
+{\bfseries{Arguments}}
+
+
+\begin{DoxyItemize}
+\item arr -\/ An array to iterate over.
+\item iterator(item, callback) -\/ A function to apply to each item in the array. The iterator is passed a callback(err) which must be called once it has completed. If no error has occured, the callback should be run without arguments or with an explicit null argument.
+\item callback(err) -\/ A callback which is called after all the iterator functions have finished, or an error has occurred.
+\end{DoxyItemize}
+
+{\bfseries{Example}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ assuming\ openFiles\ is\ an\ array\ of\ file\ names\ and\ saveFile\ is\ a\ function}
+\DoxyCodeLine{//\ to\ save\ the\ modified\ contents\ of\ that\ file:}
+\DoxyCodeLine{}
+\DoxyCodeLine{async.each(openFiles,\ saveFile,\ function(err)\{}
+\DoxyCodeLine{\ \ \ \ //\ if\ any\ of\ the\ saves\ produced\ an\ error,\ err\ would\ equal\ that\ error}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+
+
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_forEachSeries}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_forEachSeries}%
+ \label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_eachSeries}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_eachSeries}%
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md773}{}\doxysubsection{\texorpdfstring{each\+Series(arr, iterator, callback)}{each\+Series(arr, iterator, callback)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md773}
+The same as each only the iterator is applied to each item in the array in series. The next iterator is only called once the current one has completed processing. This means the iterator functions will complete in order.
+
+\DoxyHorRuler{0}
+
+
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_forEachLimit}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_forEachLimit}%
+ \label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_eachLimit}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_eachLimit}%
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md775}{}\doxysubsection{\texorpdfstring{each\+Limit(arr, limit, iterator, callback)}{each\+Limit(arr, limit, iterator, callback)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md775}
+The same as each only no more than "{}limit"{} iterators will be simultaneously running at any time.
+
+Note that the items are not processed in batches, so there is no guarantee that the first "{}limit"{} iterator functions will complete before any others are started.
+
+{\bfseries{Arguments}}
+
+
+\begin{DoxyItemize}
+\item arr -\/ An array to iterate over.
+\item limit -\/ The maximum number of iterators to run at any time.
+\item iterator(item, callback) -\/ A function to apply to each item in the array. The iterator is passed a callback(err) which must be called once it has completed. If no error has occured, the callback should be run without arguments or with an explicit null argument.
+\item callback(err) -\/ A callback which is called after all the iterator functions have finished, or an error has occurred.
+\end{DoxyItemize}
+
+{\bfseries{Example}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Assume\ documents\ is\ an\ array\ of\ JSON\ objects\ and\ requestApi\ is\ a}
+\DoxyCodeLine{//\ function\ that\ interacts\ with\ a\ rate-\/limited\ REST\ api.}
+\DoxyCodeLine{}
+\DoxyCodeLine{async.eachLimit(documents,\ 20,\ requestApi,\ function(err)\{}
+\DoxyCodeLine{\ \ \ \ //\ if\ any\ of\ the\ saves\ produced\ an\ error,\ err\ would\ equal\ that\ error}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+
+
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_map}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_map}%
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md777}{}\doxysubsection{\texorpdfstring{map(arr, iterator, callback)}{map(arr, iterator, callback)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md777}
+Produces a new array of values by mapping each value in the given array through the iterator function. The iterator is called with an item from the array and a callback for when it has finished processing. The callback takes 2 arguments, an error and the transformed item from the array. If the iterator passes an error to this callback, the main callback for the map function is immediately called with the error.
+
+Note, that since this function applies the iterator to each item in parallel there is no guarantee that the iterator functions will complete in order, however the results array will be in the same order as the original array.
+
+{\bfseries{Arguments}}
+
+
+\begin{DoxyItemize}
+\item arr -\/ An array to iterate over.
+\item iterator(item, callback) -\/ A function to apply to each item in the array. The iterator is passed a callback(err, transformed) which must be called once it has completed with an error (which can be null) and a transformed item.
+\item callback(err, results) -\/ A callback which is called after all the iterator functions have finished, or an error has occurred. Results is an array of the transformed items from the original array.
+\end{DoxyItemize}
+
+{\bfseries{Example}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{async.map(['file1','file2','file3'],\ fs.stat,\ function(err,\ results)\{}
+\DoxyCodeLine{\ \ \ \ //\ results\ is\ now\ an\ array\ of\ stats\ for\ each\ file}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+
+
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_mapSeries}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_mapSeries}%
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md779}{}\doxysubsection{\texorpdfstring{map\+Series(arr, iterator, callback)}{map\+Series(arr, iterator, callback)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md779}
+The same as map only the iterator is applied to each item in the array in series. The next iterator is only called once the current one has completed processing. The results array will be in the same order as the original.
+
+\DoxyHorRuler{0}
+
+
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_mapLimit}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_mapLimit}%
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md781}{}\doxysubsection{\texorpdfstring{map\+Limit(arr, limit, iterator, callback)}{map\+Limit(arr, limit, iterator, callback)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md781}
+The same as map only no more than "{}limit"{} iterators will be simultaneously running at any time.
+
+Note that the items are not processed in batches, so there is no guarantee that the first "{}limit"{} iterator functions will complete before any others are started.
+
+{\bfseries{Arguments}}
+
+
+\begin{DoxyItemize}
+\item arr -\/ An array to iterate over.
+\item limit -\/ The maximum number of iterators to run at any time.
+\item iterator(item, callback) -\/ A function to apply to each item in the array. The iterator is passed a callback(err, transformed) which must be called once it has completed with an error (which can be null) and a transformed item.
+\item callback(err, results) -\/ A callback which is called after all the iterator functions have finished, or an error has occurred. Results is an array of the transformed items from the original array.
+\end{DoxyItemize}
+
+{\bfseries{Example}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{async.mapLimit(['file1','file2','file3'],\ 1,\ fs.stat,\ function(err,\ results)\{}
+\DoxyCodeLine{\ \ \ \ //\ results\ is\ now\ an\ array\ of\ stats\ for\ each\ file}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+
+
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_filter}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_filter}%
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md783}{}\doxysubsection{\texorpdfstring{filter(arr, iterator, callback)}{filter(arr, iterator, callback)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md783}
+{\bfseries{Alias\+:}} select
+
+Returns a new array of all the values which pass an async truth test. {\itshape The callback for each iterator call only accepts a single argument of true or false, it does not accept an error argument first!} This is in-\/line with the way node libraries work with truth tests like fs.\+exists. This operation is performed in parallel, but the results array will be in the same order as the original.
+
+{\bfseries{Arguments}}
+
+
+\begin{DoxyItemize}
+\item arr -\/ An array to iterate over.
+\item iterator(item, callback) -\/ A truth test to apply to each item in the array. The iterator is passed a callback(truth\+Value) which must be called with a boolean argument once it has completed.
+\item callback(results) -\/ A callback which is called after all the iterator functions have finished.
+\end{DoxyItemize}
+
+{\bfseries{Example}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{async.filter(['file1','file2','file3'],\ fs.exists,\ function(results)\{}
+\DoxyCodeLine{\ \ \ \ //\ results\ now\ equals\ an\ array\ of\ the\ existing\ files}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+
+
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_filterSeries}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_filterSeries}%
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md785}{}\doxysubsection{\texorpdfstring{filter\+Series(arr, iterator, callback)}{filter\+Series(arr, iterator, callback)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md785}
+{\bfseries{alias\+:}} select\+Series
+
+The same as filter only the iterator is applied to each item in the array in series. The next iterator is only called once the current one has completed processing. The results array will be in the same order as the original.
+
+\DoxyHorRuler{0}
+
+
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_reject}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_reject}%
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md787}{}\doxysubsection{\texorpdfstring{reject(arr, iterator, callback)}{reject(arr, iterator, callback)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md787}
+The opposite of filter. Removes values that pass an async truth test.
+
+\DoxyHorRuler{0}
+
+
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_rejectSeries}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_rejectSeries}%
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md789}{}\doxysubsection{\texorpdfstring{reject\+Series(arr, iterator, callback)}{reject\+Series(arr, iterator, callback)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md789}
+The same as reject, only the iterator is applied to each item in the array in series.
+
+\DoxyHorRuler{0}
+
+
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_reduce}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_reduce}%
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md791}{}\doxysubsection{\texorpdfstring{reduce(arr, memo, iterator, callback)}{reduce(arr, memo, iterator, callback)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md791}
+{\bfseries{aliases\+:}} inject, foldl
+
+Reduces a list of values into a single value using an async iterator to return each successive step. Memo is the initial state of the reduction. This function only operates in series. For performance reasons, it may make sense to split a call to this function into a parallel map, then use the normal Array.\+prototype.\+reduce on the results. This function is for situations where each step in the reduction needs to be async, if you can get the data before reducing it then it\textquotesingle{}s probably a good idea to do so.
+
+{\bfseries{Arguments}}
+
+
+\begin{DoxyItemize}
+\item arr -\/ An array to iterate over.
+\item memo -\/ The initial state of the reduction.
+\item iterator(memo, item, callback) -\/ A function applied to each item in the array to produce the next step in the reduction. The iterator is passed a callback(err, reduction) which accepts an optional error as its first argument, and the state of the reduction as the second. If an error is passed to the callback, the reduction is stopped and the main callback is immediately called with the error.
+\item callback(err, result) -\/ A callback which is called after all the iterator functions have finished. Result is the reduced value.
+\end{DoxyItemize}
+
+{\bfseries{Example}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{async.reduce([1,2,3],\ 0,\ function(memo,\ item,\ callback)\{}
+\DoxyCodeLine{\ \ \ \ //\ pointless\ async:}
+\DoxyCodeLine{\ \ \ \ process.nextTick(function()\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ callback(null,\ memo\ +\ item)}
+\DoxyCodeLine{\ \ \ \ \});}
+\DoxyCodeLine{\},\ function(err,\ result)\{}
+\DoxyCodeLine{\ \ \ \ //\ result\ is\ now\ equal\ to\ the\ last\ value\ of\ memo,\ which\ is\ 6}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+
+
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_reduceRight}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_reduceRight}%
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md793}{}\doxysubsection{\texorpdfstring{reduce\+Right(arr, memo, iterator, callback)}{reduce\+Right(arr, memo, iterator, callback)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md793}
+{\bfseries{Alias\+:}} foldr
+
+Same as reduce, only operates on the items in the array in reverse order.
+
+\DoxyHorRuler{0}
+
+
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_detect}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_detect}%
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md795}{}\doxysubsection{\texorpdfstring{detect(arr, iterator, callback)}{detect(arr, iterator, callback)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md795}
+Returns the first value in a list that passes an async truth test. The iterator is applied in parallel, meaning the first iterator to return true will fire the detect callback with that result. That means the result might not be the first item in the original array (in terms of order) that passes the test.
+
+If order within the original array is important then look at detect\+Series.
+
+{\bfseries{Arguments}}
+
+
+\begin{DoxyItemize}
+\item arr -\/ An array to iterate over.
+\item iterator(item, callback) -\/ A truth test to apply to each item in the array. The iterator is passed a callback(truth\+Value) which must be called with a boolean argument once it has completed.
+\item callback(result) -\/ A callback which is called as soon as any iterator returns true, or after all the iterator functions have finished. Result will be the first item in the array that passes the truth test (iterator) or the value undefined if none passed.
+\end{DoxyItemize}
+
+{\bfseries{Example}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{async.detect(['file1','file2','file3'],\ fs.exists,\ function(result)\{}
+\DoxyCodeLine{\ \ \ \ //\ result\ now\ equals\ the\ first\ file\ in\ the\ list\ that\ exists}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+
+
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_detectSeries}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_detectSeries}%
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md797}{}\doxysubsection{\texorpdfstring{detect\+Series(arr, iterator, callback)}{detect\+Series(arr, iterator, callback)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md797}
+The same as detect, only the iterator is applied to each item in the array in series. This means the result is always the first in the original array (in terms of array order) that passes the truth test.
+
+\DoxyHorRuler{0}
+
+
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_sortBy}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_sortBy}%
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md799}{}\doxysubsection{\texorpdfstring{sort\+By(arr, iterator, callback)}{sort\+By(arr, iterator, callback)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md799}
+Sorts a list by the results of running each value through an async iterator.
+
+{\bfseries{Arguments}}
+
+
+\begin{DoxyItemize}
+\item arr -\/ An array to iterate over.
+\item iterator(item, callback) -\/ A function to apply to each item in the array. The iterator is passed a callback(err, sort\+Value) which must be called once it has completed with an error (which can be null) and a value to use as the sort criteria.
+\item callback(err, results) -\/ A callback which is called after all the iterator functions have finished, or an error has occurred. Results is the items from the original array sorted by the values returned by the iterator calls.
+\end{DoxyItemize}
+
+{\bfseries{Example}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{async.sortBy(['file1','file2','file3'],\ function(file,\ callback)\{}
+\DoxyCodeLine{\ \ \ \ fs.stat(file,\ function(err,\ stats)\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ callback(err,\ stats.mtime);}
+\DoxyCodeLine{\ \ \ \ \});}
+\DoxyCodeLine{\},\ function(err,\ results)\{}
+\DoxyCodeLine{\ \ \ \ //\ results\ is\ now\ the\ original\ array\ of\ files\ sorted\ by}
+\DoxyCodeLine{\ \ \ \ //\ modified\ date}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+
+
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_some}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_some}%
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md801}{}\doxysubsection{\texorpdfstring{some(arr, iterator, callback)}{some(arr, iterator, callback)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md801}
+{\bfseries{Alias\+:}} any
+
+Returns true if at least one element in the array satisfies an async test. {\itshape The callback for each iterator call only accepts a single argument of true or false, it does not accept an error argument first!} This is in-\/line with the way node libraries work with truth tests like fs.\+exists. Once any iterator call returns true, the main callback is immediately called.
+
+{\bfseries{Arguments}}
+
+
+\begin{DoxyItemize}
+\item arr -\/ An array to iterate over.
+\item iterator(item, callback) -\/ A truth test to apply to each item in the array. The iterator is passed a callback(truth\+Value) which must be called with a boolean argument once it has completed.
+\item callback(result) -\/ A callback which is called as soon as any iterator returns true, or after all the iterator functions have finished. Result will be either true or false depending on the values of the async tests.
+\end{DoxyItemize}
+
+{\bfseries{Example}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{async.some(['file1','file2','file3'],\ fs.exists,\ function(result)\{}
+\DoxyCodeLine{\ \ \ \ //\ if\ result\ is\ true\ then\ at\ least\ one\ of\ the\ files\ exists}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+
+
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_every}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_every}%
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md803}{}\doxysubsection{\texorpdfstring{every(arr, iterator, callback)}{every(arr, iterator, callback)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md803}
+{\bfseries{Alias\+:}} all
+
+Returns true if every element in the array satisfies an async test. {\itshape The callback for each iterator call only accepts a single argument of true or false, it does not accept an error argument first!} This is in-\/line with the way node libraries work with truth tests like fs.\+exists.
+
+{\bfseries{Arguments}}
+
+
+\begin{DoxyItemize}
+\item arr -\/ An array to iterate over.
+\item iterator(item, callback) -\/ A truth test to apply to each item in the array. The iterator is passed a callback(truth\+Value) which must be called with a boolean argument once it has completed.
+\item callback(result) -\/ A callback which is called after all the iterator functions have finished. Result will be either true or false depending on the values of the async tests.
+\end{DoxyItemize}
+
+{\bfseries{Example}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{async.every(['file1','file2','file3'],\ fs.exists,\ function(result)\{}
+\DoxyCodeLine{\ \ \ \ //\ if\ result\ is\ true\ then\ every\ file\ exists}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+
+
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_concat}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_concat}%
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md805}{}\doxysubsection{\texorpdfstring{concat(arr, iterator, callback)}{concat(arr, iterator, callback)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md805}
+Applies an iterator to each item in a list, concatenating the results. Returns the concatenated list. The iterators are called in parallel, and the results are concatenated as they return. There is no guarantee that the results array will be returned in the original order of the arguments passed to the iterator function.
+
+{\bfseries{Arguments}}
+
+
+\begin{DoxyItemize}
+\item arr -\/ An array to iterate over
+\item iterator(item, callback) -\/ A function to apply to each item in the array. The iterator is passed a callback(err, results) which must be called once it has completed with an error (which can be null) and an array of results.
+\item callback(err, results) -\/ A callback which is called after all the iterator functions have finished, or an error has occurred. Results is an array containing the concatenated results of the iterator function.
+\end{DoxyItemize}
+
+{\bfseries{Example}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{async.concat(['dir1','dir2','dir3'],\ fs.readdir,\ function(err,\ files)\{}
+\DoxyCodeLine{\ \ \ \ //\ files\ is\ now\ a\ list\ of\ filenames\ that\ exist\ in\ the\ 3\ directories}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+
+
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_concatSeries}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_concatSeries}%
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md807}{}\doxysubsection{\texorpdfstring{concat\+Series(arr, iterator, callback)}{concat\+Series(arr, iterator, callback)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md807}
+Same as async.\+concat, but executes in series instead of parallel.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md808}{}\doxysection{\texorpdfstring{Control Flow}{Control Flow}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md808}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_series}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_series}%
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md809}{}\doxysubsection{\texorpdfstring{series(tasks, \mbox{[}callback\mbox{]})}{series(tasks, \mbox{[}callback\mbox{]})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md809}
+Run an array of functions in series, each one running once the previous function has completed. If any functions in the series pass an error to its callback, no more functions are run and the callback for the series is immediately called with the value of the error. Once the tasks have completed, the results are passed to the final callback as an array.
+
+It is also possible to use an object instead of an array. Each property will be run as a function and the results will be passed to the final callback as an object instead of an array. This can be a more readable way of handling results from async.\+series.
+
+{\bfseries{Arguments}}
+
+
+\begin{DoxyItemize}
+\item tasks -\/ An array or object containing functions to run, each function is passed a callback(err, result) it must call on completion with an error (which can be null) and an optional result value.
+\item callback(err, results) -\/ An optional callback to run once all the functions have completed. This function gets a results array (or object) containing all the result arguments passed to the task callbacks.
+\end{DoxyItemize}
+
+{\bfseries{Example}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{async.series([}
+\DoxyCodeLine{\ \ \ \ function(callback)\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ do\ some\ stuff\ ...}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ callback(null,\ 'one');}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ function(callback)\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ do\ some\ more\ stuff\ ...}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ callback(null,\ 'two');}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{],}
+\DoxyCodeLine{//\ optional\ callback}
+\DoxyCodeLine{function(err,\ results)\{}
+\DoxyCodeLine{\ \ \ \ //\ results\ is\ now\ equal\ to\ ['one',\ 'two']}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ an\ example\ using\ an\ object\ instead\ of\ an\ array}
+\DoxyCodeLine{async.series(\{}
+\DoxyCodeLine{\ \ \ \ one:\ function(callback)\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ setTimeout(function()\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ callback(null,\ 1);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},\ 200);}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ two:\ function(callback)\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ setTimeout(function()\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ callback(null,\ 2);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},\ 100);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\},}
+\DoxyCodeLine{function(err,\ results)\ \{}
+\DoxyCodeLine{\ \ \ \ //\ results\ is\ now\ equal\ to:\ \{one:\ 1,\ two:\ 2\}}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+
+
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_parallel}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_parallel}%
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md811}{}\doxysubsection{\texorpdfstring{parallel(tasks, \mbox{[}callback\mbox{]})}{parallel(tasks, \mbox{[}callback\mbox{]})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md811}
+Run an array of functions in parallel, without waiting until the previous function has completed. If any of the functions pass an error to its callback, the main callback is immediately called with the value of the error. Once the tasks have completed, the results are passed to the final callback as an array.
+
+It is also possible to use an object instead of an array. Each property will be run as a function and the results will be passed to the final callback as an object instead of an array. This can be a more readable way of handling results from async.\+parallel.
+
+{\bfseries{Arguments}}
+
+
+\begin{DoxyItemize}
+\item tasks -\/ An array or object containing functions to run, each function is passed a callback(err, result) it must call on completion with an error (which can be null) and an optional result value.
+\item callback(err, results) -\/ An optional callback to run once all the functions have completed. This function gets a results array (or object) containing all the result arguments passed to the task callbacks.
+\end{DoxyItemize}
+
+{\bfseries{Example}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{async.parallel([}
+\DoxyCodeLine{\ \ \ \ function(callback)\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ setTimeout(function()\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ callback(null,\ 'one');}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},\ 200);}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ function(callback)\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ setTimeout(function()\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ callback(null,\ 'two');}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},\ 100);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{],}
+\DoxyCodeLine{//\ optional\ callback}
+\DoxyCodeLine{function(err,\ results)\{}
+\DoxyCodeLine{\ \ \ \ //\ the\ results\ array\ will\ equal\ ['one','two']\ even\ though}
+\DoxyCodeLine{\ \ \ \ //\ the\ second\ function\ had\ a\ shorter\ timeout.}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ an\ example\ using\ an\ object\ instead\ of\ an\ array}
+\DoxyCodeLine{async.parallel(\{}
+\DoxyCodeLine{\ \ \ \ one:\ function(callback)\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ setTimeout(function()\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ callback(null,\ 1);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},\ 200);}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ two:\ function(callback)\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ setTimeout(function()\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ callback(null,\ 2);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},\ 100);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\},}
+\DoxyCodeLine{function(err,\ results)\ \{}
+\DoxyCodeLine{\ \ \ \ //\ results\ is\ now\ equals\ to:\ \{one:\ 1,\ two:\ 2\}}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+
+
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_parallel}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_parallel}%
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md813}{}\doxysubsection{\texorpdfstring{parallel\+Limit(tasks, limit, \mbox{[}callback\mbox{]})}{parallel\+Limit(tasks, limit, \mbox{[}callback\mbox{]})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md813}
+The same as parallel only the tasks are executed in parallel with a maximum of "{}limit"{} tasks executing at any time.
+
+Note that the tasks are not executed in batches, so there is no guarantee that the first "{}limit"{} tasks will complete before any others are started.
+
+{\bfseries{Arguments}}
+
+
+\begin{DoxyItemize}
+\item tasks -\/ An array or object containing functions to run, each function is passed a callback(err, result) it must call on completion with an error (which can be null) and an optional result value.
+\item limit -\/ The maximum number of tasks to run at any time.
+\item callback(err, results) -\/ An optional callback to run once all the functions have completed. This function gets a results array (or object) containing all the result arguments passed to the task callbacks.
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+
+
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_whilst}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_whilst}%
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md815}{}\doxysubsection{\texorpdfstring{whilst(test, fn, callback)}{whilst(test, fn, callback)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md815}
+Repeatedly call fn, while test returns true. Calls the callback when stopped, or an error occurs.
+
+{\bfseries{Arguments}}
+
+
+\begin{DoxyItemize}
+\item test() -\/ synchronous truth test to perform before each execution of fn.
+\item fn(callback) -\/ A function to call each time the test passes. The function is passed a callback(err) which must be called once it has completed with an optional error argument.
+\item callback(err) -\/ A callback which is called after the test fails and repeated execution of fn has stopped.
+\end{DoxyItemize}
+
+{\bfseries{Example}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ count\ =\ 0;}
+\DoxyCodeLine{}
+\DoxyCodeLine{async.whilst(}
+\DoxyCodeLine{\ \ \ \ function\ ()\ \{\ return\ count\ <\ 5;\ \},}
+\DoxyCodeLine{\ \ \ \ function\ (callback)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ count++;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ setTimeout(callback,\ 1000);}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ function\ (err)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ 5\ seconds\ have\ passed}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{);}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+
+
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_doWhilst}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_doWhilst}%
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md817}{}\doxysubsection{\texorpdfstring{do\+Whilst(fn, test, callback)}{do\+Whilst(fn, test, callback)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md817}
+The post check version of whilst. To reflect the difference in the order of operations {\ttfamily test} and {\ttfamily fn} arguments are switched. {\ttfamily do\+Whilst} is to {\ttfamily whilst} as {\ttfamily do while} is to {\ttfamily while} in plain Java\+Script.
+
+\DoxyHorRuler{0}
+
+
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_until}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_until}%
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md819}{}\doxysubsection{\texorpdfstring{until(test, fn, callback)}{until(test, fn, callback)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md819}
+Repeatedly call fn, until test returns true. Calls the callback when stopped, or an error occurs.
+
+The inverse of async.\+whilst.
+
+\DoxyHorRuler{0}
+
+
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_doUntil}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_doUntil}%
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md821}{}\doxysubsection{\texorpdfstring{do\+Until(fn, test, callback)}{do\+Until(fn, test, callback)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md821}
+Like do\+Whilst except the test is inverted. Note the argument ordering differs from {\ttfamily until}.
+
+\DoxyHorRuler{0}
+
+
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_forever}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_forever}%
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md823}{}\doxysubsection{\texorpdfstring{forever(fn, callback)}{forever(fn, callback)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md823}
+Calls the asynchronous function \textquotesingle{}fn\textquotesingle{} repeatedly, in series, indefinitely. If an error is passed to fn\textquotesingle{}s callback then \textquotesingle{}callback\textquotesingle{} is called with the error, otherwise it will never be called.
+
+\DoxyHorRuler{0}
+
+
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_waterfall}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_waterfall}%
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md825}{}\doxysubsection{\texorpdfstring{waterfall(tasks, \mbox{[}callback\mbox{]})}{waterfall(tasks, \mbox{[}callback\mbox{]})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md825}
+Runs an array of functions in series, each passing their results to the next in the array. However, if any of the functions pass an error to the callback, the next function is not executed and the main callback is immediately called with the error.
+
+{\bfseries{Arguments}}
+
+
+\begin{DoxyItemize}
+\item tasks -\/ An array of functions to run, each function is passed a callback(err, result1, result2, ...) it must call on completion. The first argument is an error (which can be null) and any further arguments will be passed as arguments in order to the next task.
+\item callback(err, \mbox{[}results\mbox{]}) -\/ An optional callback to run once all the functions have completed. This will be passed the results of the last task\textquotesingle{}s callback.
+\end{DoxyItemize}
+
+{\bfseries{Example}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{async.waterfall([}
+\DoxyCodeLine{\ \ \ \ function(callback)\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ callback(null,\ 'one',\ 'two');}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ function(arg1,\ arg2,\ callback)\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ callback(null,\ 'three');}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ function(arg1,\ callback)\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ arg1\ now\ equals\ 'three'}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ callback(null,\ 'done');}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{],\ function\ (err,\ result)\ \{}
+\DoxyCodeLine{\ \ \ //\ result\ now\ equals\ 'done'\ \ \ \ }
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+ \label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_compose}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_compose}%
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md827}{}\doxysubsection{\texorpdfstring{compose(fn1, fn2...)}{compose(fn1, fn2...)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md827}
+Creates a function which is a composition of the passed asynchronous functions. Each function consumes the return value of the function that follows. Composing functions f(), g() and h() would produce the result of f(g(h())), only this version uses callbacks to obtain the return values.
+
+Each function is executed with the {\ttfamily this} binding of the composed function.
+
+{\bfseries{Arguments}}
+
+
+\begin{DoxyItemize}
+\item functions... -\/ the asynchronous functions to compose
+\end{DoxyItemize}
+
+{\bfseries{Example}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{function\ add1(n,\ callback)\ \{}
+\DoxyCodeLine{\ \ \ \ setTimeout(function\ ()\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ callback(null,\ n\ +\ 1);}
+\DoxyCodeLine{\ \ \ \ \},\ 10);}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{function\ mul3(n,\ callback)\ \{}
+\DoxyCodeLine{\ \ \ \ setTimeout(function\ ()\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ callback(null,\ n\ *\ 3);}
+\DoxyCodeLine{\ \ \ \ \},\ 10);}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ add1mul3\ =\ async.compose(mul3,\ add1);}
+\DoxyCodeLine{}
+\DoxyCodeLine{add1mul3(4,\ function\ (err,\ result)\ \{}
+\DoxyCodeLine{\ \ \ //\ result\ now\ equals\ 15}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+ \label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_applyEach}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_applyEach}%
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md829}{}\doxysubsection{\texorpdfstring{apply\+Each(fns, args..., callback)}{apply\+Each(fns, args..., callback)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md829}
+Applies the provided arguments to each function in the array, calling the callback after all functions have completed. If you only provide the first argument then it will return a function which lets you pass in the arguments as if it were a single function call.
+
+{\bfseries{Arguments}}
+
+
+\begin{DoxyItemize}
+\item fns -\/ the asynchronous functions to all call with the same arguments
+\item args... -\/ any number of separate arguments to pass to the function
+\item callback -\/ the final argument should be the callback, called when all functions have completed processing
+\end{DoxyItemize}
+
+{\bfseries{Example}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{async.applyEach([enableSearch,\ updateSchema],\ 'bucket',\ callback);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ partial\ application\ example:}
+\DoxyCodeLine{async.each(}
+\DoxyCodeLine{\ \ \ \ buckets,}
+\DoxyCodeLine{\ \ \ \ async.applyEach([enableSearch,\ updateSchema]),}
+\DoxyCodeLine{\ \ \ \ callback}
+\DoxyCodeLine{);}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+
+
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_applyEachSeries}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_applyEachSeries}%
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md831}{}\doxysubsection{\texorpdfstring{apply\+Each\+Series(arr, iterator, callback)}{apply\+Each\+Series(arr, iterator, callback)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md831}
+The same as apply\+Each only the functions are applied in series.
+
+\DoxyHorRuler{0}
+
+
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_queue}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_queue}%
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md833}{}\doxysubsection{\texorpdfstring{queue(worker, concurrency)}{queue(worker, concurrency)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md833}
+Creates a queue object with the specified concurrency. Tasks added to the queue will be processed in parallel (up to the concurrency limit). If all workers are in progress, the task is queued until one is available. Once a worker has completed a task, the task\textquotesingle{}s callback is called.
+
+{\bfseries{Arguments}}
+
+
+\begin{DoxyItemize}
+\item worker(task, callback) -\/ An asynchronous function for processing a queued task, which must call its callback(err) argument when finished, with an optional error as an argument.
+\item concurrency -\/ An integer for determining how many worker functions should be run in parallel.
+\end{DoxyItemize}
+
+{\bfseries{Queue objects}}
+
+The queue object returned by this function has the following properties and methods\+:
+
+
+\begin{DoxyItemize}
+\item length() -\/ a function returning the number of items waiting to be processed.
+\item concurrency -\/ an integer for determining how many worker functions should be run in parallel. This property can be changed after a queue is created to alter the concurrency on-\/the-\/fly.
+\item push(task, \mbox{[}callback\mbox{]}) -\/ add a new task to the queue, the callback is called once the worker has finished processing the task. instead of a single task, an array of tasks can be submitted. the respective callback is used for every task in the list.
+\item unshift(task, \mbox{[}callback\mbox{]}) -\/ add a new task to the front of the queue.
+\item saturated -\/ a callback that is called when the queue length hits the concurrency and further tasks will be queued
+\item empty -\/ a callback that is called when the last item from the queue is given to a worker
+\item drain -\/ a callback that is called when the last item from the queue has returned from the worker
+\end{DoxyItemize}
+
+{\bfseries{Example}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ create\ a\ queue\ object\ with\ concurrency\ 2}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ q\ =\ async.queue(function\ (task,\ callback)\ \{}
+\DoxyCodeLine{\ \ \ \ console.log('hello\ '\ +\ task.name);}
+\DoxyCodeLine{\ \ \ \ callback();}
+\DoxyCodeLine{\},\ 2);}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ assign\ a\ callback}
+\DoxyCodeLine{q.drain\ =\ function()\ \{}
+\DoxyCodeLine{\ \ \ \ console.log('all\ items\ have\ been\ processed');}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ add\ some\ items\ to\ the\ queue}
+\DoxyCodeLine{}
+\DoxyCodeLine{q.push(\{name:\ 'foo'\},\ function\ (err)\ \{}
+\DoxyCodeLine{\ \ \ \ console.log('finished\ processing\ foo');}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{q.push(\{name:\ 'bar'\},\ function\ (err)\ \{}
+\DoxyCodeLine{\ \ \ \ console.log('finished\ processing\ bar');}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ add\ some\ items\ to\ the\ queue\ (batch-\/wise)}
+\DoxyCodeLine{}
+\DoxyCodeLine{q.push([\{name:\ 'baz'\},\{name:\ 'bay'\},\{name:\ 'bax'\}],\ function\ (err)\ \{}
+\DoxyCodeLine{\ \ \ \ console.log('finished\ processing\ bar');}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ add\ some\ items\ to\ the\ front\ of\ the\ queue}
+\DoxyCodeLine{}
+\DoxyCodeLine{q.unshift(\{name:\ 'bar'\},\ function\ (err)\ \{}
+\DoxyCodeLine{\ \ \ \ console.log('finished\ processing\ bar');}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+
+
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_cargo}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_cargo}%
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md835}{}\doxysubsection{\texorpdfstring{cargo(worker, \mbox{[}payload\mbox{]})}{cargo(worker, \mbox{[}payload\mbox{]})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md835}
+Creates a cargo object with the specified payload. Tasks added to the cargo will be processed altogether (up to the payload limit). If the worker is in progress, the task is queued until it is available. Once the worker has completed some tasks, each callback of those tasks is called.
+
+{\bfseries{Arguments}}
+
+
+\begin{DoxyItemize}
+\item worker(tasks, callback) -\/ An asynchronous function for processing an array of queued tasks, which must call its callback(err) argument when finished, with an optional error as an argument.
+\item payload -\/ An optional integer for determining how many tasks should be processed per round; if omitted, the default is unlimited.
+\end{DoxyItemize}
+
+{\bfseries{Cargo objects}}
+
+The cargo object returned by this function has the following properties and methods\+:
+
+
+\begin{DoxyItemize}
+\item length() -\/ a function returning the number of items waiting to be processed.
+\item payload -\/ an integer for determining how many tasks should be process per round. This property can be changed after a cargo is created to alter the payload on-\/the-\/fly.
+\item push(task, \mbox{[}callback\mbox{]}) -\/ add a new task to the queue, the callback is called once the worker has finished processing the task. instead of a single task, an array of tasks can be submitted. the respective callback is used for every task in the list.
+\item saturated -\/ a callback that is called when the queue length hits the concurrency and further tasks will be queued
+\item empty -\/ a callback that is called when the last item from the queue is given to a worker
+\item drain -\/ a callback that is called when the last item from the queue has returned from the worker
+\end{DoxyItemize}
+
+{\bfseries{Example}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ create\ a\ cargo\ object\ with\ payload\ 2}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ cargo\ =\ async.cargo(function\ (tasks,\ callback)\ \{}
+\DoxyCodeLine{\ \ \ \ for(var\ i=0;\ i<tasks.length;\ i++)\{}
+\DoxyCodeLine{\ \ \ \ \ \ console.log('hello\ '\ +\ tasks[i].name);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ callback();}
+\DoxyCodeLine{\},\ 2);}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ add\ some\ items}
+\DoxyCodeLine{}
+\DoxyCodeLine{cargo.push(\{name:\ 'foo'\},\ function\ (err)\ \{}
+\DoxyCodeLine{\ \ \ \ console.log('finished\ processing\ foo');}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{cargo.push(\{name:\ 'bar'\},\ function\ (err)\ \{}
+\DoxyCodeLine{\ \ \ \ console.log('finished\ processing\ bar');}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{cargo.push(\{name:\ 'baz'\},\ function\ (err)\ \{}
+\DoxyCodeLine{\ \ \ \ console.log('finished\ processing\ baz');}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+
+
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_auto}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_auto}%
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md837}{}\doxysubsection{\texorpdfstring{auto(tasks, \mbox{[}callback\mbox{]})}{auto(tasks, \mbox{[}callback\mbox{]})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md837}
+Determines the best order for running functions based on their requirements. Each function can optionally depend on other functions being completed first, and each function is run as soon as its requirements are satisfied. If any of the functions pass an error to their callback, that function will not complete (so any other functions depending on it will not run) and the main callback will be called immediately with the error. Functions also receive an object containing the results of functions which have completed so far.
+
+Note, all functions are called with a results object as a second argument, so it is unsafe to pass functions in the tasks object which cannot handle the extra argument. For example, this snippet of code\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{async.auto(\{}
+\DoxyCodeLine{\ \ readData:\ async.apply(fs.readFile,\ 'data.txt',\ 'utf-\/8')}
+\DoxyCodeLine{\},\ callback);}
+
+\end{DoxyCode}
+
+
+will have the effect of calling read\+File with the results object as the last argument, which will fail\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{fs.readFile('data.txt',\ 'utf-\/8',\ cb,\ \{\});}
+
+\end{DoxyCode}
+
+
+Instead, wrap the call to read\+File in a function which does not forward the results object\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{async.auto(\{}
+\DoxyCodeLine{\ \ readData:\ function(cb,\ results)\{}
+\DoxyCodeLine{\ \ \ \ fs.readFile('data.txt',\ 'utf-\/8',\ cb);}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\},\ callback);}
+
+\end{DoxyCode}
+
+
+{\bfseries{Arguments}}
+
+
+\begin{DoxyItemize}
+\item tasks -\/ An object literal containing named functions or an array of requirements, with the function itself the last item in the array. The key used for each function or array is used when specifying requirements. The function receives two arguments\+: (1) a callback(err, result) which must be called when finished, passing an error (which can be null) and the result of the function\textquotesingle{}s execution, and (2) a results object, containing the results of the previously executed functions.
+\item callback(err, results) -\/ An optional callback which is called when all the tasks have been completed. The callback will receive an error as an argument if any tasks pass an error to their callback. Results will always be passed but if an error occurred, no other tasks will be performed, and the results object will only contain partial results.
+\end{DoxyItemize}
+
+{\bfseries{Example}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{async.auto(\{}
+\DoxyCodeLine{\ \ \ \ get\_data:\ function(callback)\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ async\ code\ to\ get\ some\ data}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ make\_folder:\ function(callback)\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ async\ code\ to\ create\ a\ directory\ to\ store\ a\ file\ in}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ this\ is\ run\ at\ the\ same\ time\ as\ getting\ the\ data}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ write\_file:\ ['get\_data',\ 'make\_folder',\ function(callback)\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ once\ there\ is\ some\ data\ and\ the\ directory\ exists,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ write\ the\ data\ to\ a\ file\ in\ the\ directory}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ callback(null,\ filename);}
+\DoxyCodeLine{\ \ \ \ \}],}
+\DoxyCodeLine{\ \ \ \ email\_link:\ ['write\_file',\ function(callback,\ results)\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ once\ the\ file\ is\ written\ let's\ email\ a\ link\ to\ it...}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ results.write\_file\ contains\ the\ filename\ returned\ by\ write\_file.}
+\DoxyCodeLine{\ \ \ \ \}]}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+This is a fairly trivial example, but to do this using the basic parallel and series functions would look like this\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{async.parallel([}
+\DoxyCodeLine{\ \ \ \ function(callback)\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ async\ code\ to\ get\ some\ data}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ function(callback)\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ async\ code\ to\ create\ a\ directory\ to\ store\ a\ file\ in}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ this\ is\ run\ at\ the\ same\ time\ as\ getting\ the\ data}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{],}
+\DoxyCodeLine{function(err,\ results)\{}
+\DoxyCodeLine{\ \ \ \ async.series([}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ function(callback)\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ //\ once\ there\ is\ some\ data\ and\ the\ directory\ exists,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ //\ write\ the\ data\ to\ a\ file\ in\ the\ directory}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ function(callback)\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ //\ once\ the\ file\ is\ written\ let's\ email\ a\ link\ to\ it...}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ ]);}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+For a complicated series of async tasks using the auto function makes adding new tasks much easier and makes the code more readable.
+
+\DoxyHorRuler{0}
+
+
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_iterator}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_iterator}%
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md839}{}\doxysubsection{\texorpdfstring{iterator(tasks)}{iterator(tasks)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md839}
+Creates an iterator function which calls the next function in the array, returning a continuation to call the next one after that. It\textquotesingle{}s also possible to \textquotesingle{}peek\textquotesingle{} the next iterator by doing iterator.\+next().
+
+This function is used internally by the async module but can be useful when you want to manually control the flow of functions in series.
+
+{\bfseries{Arguments}}
+
+
+\begin{DoxyItemize}
+\item tasks -\/ An array of functions to run.
+\end{DoxyItemize}
+
+{\bfseries{Example}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ iterator\ =\ async.iterator([}
+\DoxyCodeLine{\ \ \ \ function()\{\ sys.p('one');\ \},}
+\DoxyCodeLine{\ \ \ \ function()\{\ sys.p('two');\ \},}
+\DoxyCodeLine{\ \ \ \ function()\{\ sys.p('three');\ \}}
+\DoxyCodeLine{]);}
+\DoxyCodeLine{}
+\DoxyCodeLine{node>\ var\ iterator2\ =\ iterator();}
+\DoxyCodeLine{'one'}
+\DoxyCodeLine{node>\ var\ iterator3\ =\ iterator2();}
+\DoxyCodeLine{'two'}
+\DoxyCodeLine{node>\ iterator3();}
+\DoxyCodeLine{'three'}
+\DoxyCodeLine{node>\ var\ nextfn\ =\ iterator2.next();}
+\DoxyCodeLine{node>\ nextfn();}
+\DoxyCodeLine{'three'}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+
+
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_apply}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_apply}%
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md841}{}\doxysubsection{\texorpdfstring{apply(function, arguments..)}{apply(function, arguments..)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md841}
+Creates a continuation function with some arguments already applied, a useful shorthand when combined with other control flow functions. Any arguments passed to the returned function are added to the arguments originally passed to apply.
+
+{\bfseries{Arguments}}
+
+
+\begin{DoxyItemize}
+\item function -\/ The function you want to eventually apply all arguments to.
+\item arguments... -\/ Any number of arguments to automatically apply when the continuation is called.
+\end{DoxyItemize}
+
+{\bfseries{Example}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ using\ apply}
+\DoxyCodeLine{}
+\DoxyCodeLine{async.parallel([}
+\DoxyCodeLine{\ \ \ \ async.apply(fs.writeFile,\ 'testfile1',\ 'test1'),}
+\DoxyCodeLine{\ \ \ \ async.apply(fs.writeFile,\ 'testfile2',\ 'test2'),}
+\DoxyCodeLine{]);}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ the\ same\ process\ without\ using\ apply}
+\DoxyCodeLine{}
+\DoxyCodeLine{async.parallel([}
+\DoxyCodeLine{\ \ \ \ function(callback)\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ fs.writeFile('testfile1',\ 'test1',\ callback);}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ function(callback)\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ fs.writeFile('testfile2',\ 'test2',\ callback);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{]);}
+
+\end{DoxyCode}
+
+
+It\textquotesingle{}s possible to pass any number of additional arguments when calling the continuation\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{node>\ var\ fn\ =\ async.apply(sys.puts,\ 'one');}
+\DoxyCodeLine{node>\ fn('two',\ 'three');}
+\DoxyCodeLine{one}
+\DoxyCodeLine{two}
+\DoxyCodeLine{three}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+
+
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_nextTick}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_nextTick}%
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md843}{}\doxysubsection{\texorpdfstring{next\+Tick(callback)}{next\+Tick(callback)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md843}
+Calls the callback on a later loop around the event loop. In node.\+js this just calls process.\+next\+Tick, in the browser it falls back to set\+Immediate(callback) if available, otherwise set\+Timeout(callback, 0), which means other higher priority events may precede the execution of the callback.
+
+This is used internally for browser-\/compatibility purposes.
+
+{\bfseries{Arguments}}
+
+
+\begin{DoxyItemize}
+\item callback -\/ The function to call on a later loop around the event loop.
+\end{DoxyItemize}
+
+{\bfseries{Example}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ call\_order\ =\ [];}
+\DoxyCodeLine{async.nextTick(function()\{}
+\DoxyCodeLine{\ \ \ \ call\_order.push('two');}
+\DoxyCodeLine{\ \ \ \ //\ call\_order\ now\ equals\ ['one','two']}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{call\_order.push('one')}
+
+\end{DoxyCode}
+
+
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_times}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_times}%
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md844}{}\doxysubsection{\texorpdfstring{times(n, callback)}{times(n, callback)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md844}
+Calls the callback n times and accumulates results in the same manner you would use with async.\+map.
+
+{\bfseries{Arguments}}
+
+
+\begin{DoxyItemize}
+\item n -\/ The number of times to run the function.
+\item callback -\/ The function to call n times.
+\end{DoxyItemize}
+
+{\bfseries{Example}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Pretend\ this\ is\ some\ complicated\ async\ factory}
+\DoxyCodeLine{var\ createUser\ =\ function(id,\ callback)\ \{}
+\DoxyCodeLine{\ \ callback(null,\ \{}
+\DoxyCodeLine{\ \ \ \ id:\ 'user'\ +\ id}
+\DoxyCodeLine{\ \ \})}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{//\ generate\ 5\ users}
+\DoxyCodeLine{async.times(5,\ function(n,\ next)\{}
+\DoxyCodeLine{\ \ \ \ createUser(n,\ function(err,\ user)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ next(err,\ user)}
+\DoxyCodeLine{\ \ \ \ \})}
+\DoxyCodeLine{\},\ function(err,\ users)\ \{}
+\DoxyCodeLine{\ \ //\ we\ should\ now\ have\ 5\ users}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_timesSeries}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_timesSeries}%
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md845}{}\doxysubsection{\texorpdfstring{times\+Series(n, callback)}{times\+Series(n, callback)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md845}
+The same as times only the iterator is applied to each item in the array in series. The next iterator is only called once the current one has completed processing. The results array will be in the same order as the original.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md846}{}\doxysection{\texorpdfstring{Utils}{Utils}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md846}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_memoize}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_memoize}%
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md847}{}\doxysubsection{\texorpdfstring{memoize(fn, \mbox{[}hasher\mbox{]})}{memoize(fn, \mbox{[}hasher\mbox{]})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md847}
+Caches the results of an async function. When creating a hash to store function results against, the callback is omitted from the hash and an optional hash function can be used.
+
+The cache of results is exposed as the {\ttfamily memo} property of the function returned by {\ttfamily memoize}.
+
+{\bfseries{Arguments}}
+
+
+\begin{DoxyItemize}
+\item fn -\/ the function you to proxy and cache results from.
+\item hasher -\/ an optional function for generating a custom hash for storing results, it has all the arguments applied to it apart from the callback, and must be synchronous.
+\end{DoxyItemize}
+
+{\bfseries{Example}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ slow\_fn\ =\ function\ (name,\ callback)\ \{}
+\DoxyCodeLine{\ \ \ \ //\ do\ something}
+\DoxyCodeLine{\ \ \ \ callback(null,\ result);}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{var\ fn\ =\ async.memoize(slow\_fn);}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ fn\ can\ now\ be\ used\ as\ if\ it\ were\ slow\_fn}
+\DoxyCodeLine{fn('some\ name',\ function\ ()\ \{}
+\DoxyCodeLine{\ \ \ \ //\ callback}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_unmemoize}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_unmemoize}%
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md848}{}\doxysubsection{\texorpdfstring{unmemoize(fn)}{unmemoize(fn)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md848}
+Undoes a memoized function, reverting it to the original, unmemoized form. Comes handy in tests.
+
+{\bfseries{Arguments}}
+
+
+\begin{DoxyItemize}
+\item fn -\/ the memoized function
+\end{DoxyItemize}
+
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_log}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_log}%
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md849}{}\doxysubsection{\texorpdfstring{log(function, arguments)}{log(function, arguments)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md849}
+Logs the result of an async function to the console. Only works in node.\+js or in browsers that support console.\+log and console.\+error (such as FF and Chrome). If multiple arguments are returned from the async function, console.\+log is called on each argument in order.
+
+{\bfseries{Arguments}}
+
+
+\begin{DoxyItemize}
+\item function -\/ The function you want to eventually apply all arguments to.
+\item arguments... -\/ Any number of arguments to apply to the function.
+\end{DoxyItemize}
+
+{\bfseries{Example}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ hello\ =\ function(name,\ callback)\{}
+\DoxyCodeLine{\ \ \ \ setTimeout(function()\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ callback(null,\ 'hello\ '\ +\ name);}
+\DoxyCodeLine{\ \ \ \ \},\ 1000);}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{node>\ async.log(hello,\ 'world');}
+\DoxyCodeLine{'hello\ world'}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+
+
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_dir}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_dir}%
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md851}{}\doxysubsection{\texorpdfstring{dir(function, arguments)}{dir(function, arguments)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md851}
+Logs the result of an async function to the console using console.\+dir to display the properties of the resulting object. Only works in node.\+js or in browsers that support console.\+dir and console.\+error (such as FF and Chrome). If multiple arguments are returned from the async function, console.\+dir is called on each argument in order.
+
+{\bfseries{Arguments}}
+
+
+\begin{DoxyItemize}
+\item function -\/ The function you want to eventually apply all arguments to.
+\item arguments... -\/ Any number of arguments to apply to the function.
+\end{DoxyItemize}
+
+{\bfseries{Example}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ hello\ =\ function(name,\ callback)\{}
+\DoxyCodeLine{\ \ \ \ setTimeout(function()\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ callback(null,\ \{hello:\ name\});}
+\DoxyCodeLine{\ \ \ \ \},\ 1000);}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{node>\ async.dir(hello,\ 'world');}
+\DoxyCodeLine{\{hello:\ 'world'\}}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+
+
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_noConflict}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_noConflict}%
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md853}{}\doxysubsection{\texorpdfstring{no\+Conflict()}{no\+Conflict()}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_autotoc_md853}
+Changes the value of async back to its original value, returning a reference to the async object. 

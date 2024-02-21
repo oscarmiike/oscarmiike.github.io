@@ -1,0 +1,125 @@
+\chapter{retry}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_21b621719f64720c66d441b89d28132cd}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_21b621719f64720c66d441b89d28132cd}\index{retry@{retry}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_21b621719f64720c66d441b89d28132cd_autotoc_md4431}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_21b621719f64720c66d441b89d28132cd_autotoc_md4431}%
+ Abstraction for exponential and custom retry strategies for failed operations.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_21b621719f64720c66d441b89d28132cd_autotoc_md4432}{}\doxysection{\texorpdfstring{Installation}{Installation}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_21b621719f64720c66d441b89d28132cd_autotoc_md4432}
+\begin{DoxyVerb}npm install retry
+\end{DoxyVerb}
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_21b621719f64720c66d441b89d28132cd_autotoc_md4433}{}\doxysection{\texorpdfstring{Current Status}{Current Status}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_21b621719f64720c66d441b89d28132cd_autotoc_md4433}
+This module has been tested and is ready to be used.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_21b621719f64720c66d441b89d28132cd_autotoc_md4434}{}\doxysection{\texorpdfstring{Tutorial}{Tutorial}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_21b621719f64720c66d441b89d28132cd_autotoc_md4434}
+The example below will retry a potentially failing {\ttfamily dns.\+resolve} operation {\ttfamily 10} times using an exponential backoff strategy. With the default settings, this means the last attempt is made after {\ttfamily 17 minutes and 3 seconds}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ javascript}
+\DoxyCodeLine{var\ dns\ =\ require('dns');}
+\DoxyCodeLine{var\ retry\ =\ require('retry');}
+\DoxyCodeLine{}
+\DoxyCodeLine{function\ faultTolerantResolve(address,\ cb)\ \{}
+\DoxyCodeLine{\ \ var\ operation\ =\ retry.operation();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ operation.attempt(function(currentAttempt)\ \{}
+\DoxyCodeLine{\ \ \ \ dns.resolve(address,\ function(err,\ addresses)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ if\ (operation.retry(err))\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ return;}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ cb(err\ ?\ operation.mainError()\ :\ null,\ addresses);}
+\DoxyCodeLine{\ \ \ \ \});}
+\DoxyCodeLine{\ \ \});}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{faultTolerantResolve('nodejs.org',\ function(err,\ addresses)\ \{}
+\DoxyCodeLine{\ \ console.log(err,\ addresses);}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+Of course you can also configure the factors that go into the exponential backoff. See the API documentation below for all available settings. current\+Attempt is an int representing the number of attempts so far.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ javascript}
+\DoxyCodeLine{var\ operation\ =\ retry.operation(\{}
+\DoxyCodeLine{\ \ retries:\ 5,}
+\DoxyCodeLine{\ \ factor:\ 3,}
+\DoxyCodeLine{\ \ minTimeout:\ 1\ *\ 1000,}
+\DoxyCodeLine{\ \ maxTimeout:\ 60\ *\ 1000,}
+\DoxyCodeLine{\ \ randomize:\ true,}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_21b621719f64720c66d441b89d28132cd_autotoc_md4435}{}\doxysection{\texorpdfstring{API}{API}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_21b621719f64720c66d441b89d28132cd_autotoc_md4435}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_21b621719f64720c66d441b89d28132cd_autotoc_md4436}{}\doxysubsection{\texorpdfstring{retry.\+operation(\mbox{[}options\mbox{]})}{retry.\+operation(\mbox{[}options\mbox{]})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_21b621719f64720c66d441b89d28132cd_autotoc_md4436}
+Creates a new {\ttfamily Retry\+Operation} object. See the {\ttfamily retry.\+timeouts()} function below for available {\ttfamily options}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_21b621719f64720c66d441b89d28132cd_autotoc_md4437}{}\doxysubsection{\texorpdfstring{retry.\+timeouts(\mbox{[}options\mbox{]})}{retry.\+timeouts(\mbox{[}options\mbox{]})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_21b621719f64720c66d441b89d28132cd_autotoc_md4437}
+Returns an array of timeouts. All time {\ttfamily options} and return values are in milliseconds. If {\ttfamily options} is an array, a copy of that array is returned.
+
+{\ttfamily options} is a JS object that can contain any of the following keys\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily retries}\+: The maximum amount of times to retry the operation. Default is {\ttfamily 10}.
+\item {\ttfamily factor}\+: The exponential factor to use. Default is {\ttfamily 2}.
+\item {\ttfamily min\+Timeout}\+: The number of milliseconds before starting the first retry. Default is {\ttfamily 1000}.
+\item {\ttfamily max\+Timeout}\+: The maximum number of milliseconds between two retries. Default is {\ttfamily Infinity}.
+\item {\ttfamily randomize}\+: Randomizes the timeouts by multiplying with a factor between {\ttfamily 1} to {\ttfamily 2}. Default is {\ttfamily false}.
+\end{DoxyItemize}
+
+The formula used to calculate the individual timeouts is\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ Math.min(random\ *\ minTimeout\ *\ Math.pow(factor,\ attempt),\ maxTimeout);}
+
+\end{DoxyCode}
+
+
+Have a look at \href{http://dthain.blogspot.com/2009/02/exponential-backoff-in-distributed.html}{\texttt{ this article}} for a better explanation of approach.
+
+If you want to tune your {\ttfamily factor} / {\ttfamily times} settings to attempt the last retry after a certain amount of time, you can use wolfram alpha. For example in order to tune for {\ttfamily 10} attempts in {\ttfamily 5 minutes}, you can use this equation\+:
+
+
+
+Explaining the various values from left to right\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily k = 0 ... 9}\+: The {\ttfamily retries} value (10)
+\item {\ttfamily 1000}\+: The {\ttfamily min\+Timeout} value in ms (1000)
+\item {\ttfamily x\texorpdfstring{$^\wedge$}{\string^}k}\+: No need to change this, {\ttfamily x} will be your resulting factor
+\item {\ttfamily 5 \texorpdfstring{$\ast$}{*} 60 \texorpdfstring{$\ast$}{*} 1000}\+: The desired total amount of time for retrying in ms (5 minutes)
+\end{DoxyItemize}
+
+To make this a little easier for you, use wolfram alpha to do the calculations\+:
+
+\mbox{[}\href{http://www.wolframalpha.com/input/?i=Sum\%5B1000}{\texttt{ http\+://www.\+wolframalpha.\+com/input/?i=\+Sum\%5\+B1000}}\texorpdfstring{$\ast$}{*}x\texorpdfstring{$^\wedge$}{\string^}k\%2C+\{k\%2C+0\%2C+9\}\%5D+\%3D+5+\texorpdfstring{$\ast$}{*}+60+\texorpdfstring{$\ast$}{*}+1000\mbox{]}()\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_21b621719f64720c66d441b89d28132cd_autotoc_md4438}{}\doxysubsection{\texorpdfstring{new Retry\+Operation(timeouts)}{new Retry\+Operation(timeouts)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_21b621719f64720c66d441b89d28132cd_autotoc_md4438}
+Creates a new {\ttfamily Retry\+Operation} where {\ttfamily timeouts} is an array where each value is a timeout given in milliseconds.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_21b621719f64720c66d441b89d28132cd_autotoc_md4439}{}\doxysubsubsection{\texorpdfstring{retry\+Operation.\+errors()}{retry\+Operation.\+errors()}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_21b621719f64720c66d441b89d28132cd_autotoc_md4439}
+Returns an array of all errors that have been passed to {\ttfamily retry\+Operation.\+retry()} so far.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_21b621719f64720c66d441b89d28132cd_autotoc_md4440}{}\doxysubsubsection{\texorpdfstring{retry\+Operation.\+main\+Error()}{retry\+Operation.\+main\+Error()}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_21b621719f64720c66d441b89d28132cd_autotoc_md4440}
+A reference to the error object that occured most frequently. Errors are compared using the {\ttfamily error.\+message} property.
+
+If multiple error messages occured the same amount of time, the last error object with that message is returned.
+
+If no errors occured so far, the value is {\ttfamily null}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_21b621719f64720c66d441b89d28132cd_autotoc_md4441}{}\doxysubsubsection{\texorpdfstring{retry\+Operation.\+attempt(fn, timeout\+Ops)}{retry\+Operation.\+attempt(fn, timeout\+Ops)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_21b621719f64720c66d441b89d28132cd_autotoc_md4441}
+Defines the function {\ttfamily fn} that is to be retried and executes it for the first time right away. The {\ttfamily fn} function can receive an optional {\ttfamily current\+Attempt} callback that represents the number of attempts to execute {\ttfamily fn} so far.
+
+Optionally defines {\ttfamily timeout\+Ops} which is an object having a property {\ttfamily timeout} in miliseconds and a property {\ttfamily cb} callback function. Whenever your retry operation takes longer than {\ttfamily timeout} to execute, the timeout callback function {\ttfamily cb} is called.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_21b621719f64720c66d441b89d28132cd_autotoc_md4442}{}\doxysubsubsection{\texorpdfstring{retry\+Operation.\+try(fn)}{retry\+Operation.\+try(fn)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_21b621719f64720c66d441b89d28132cd_autotoc_md4442}
+This is an alias for {\ttfamily retry\+Operation.\+attempt(fn)}. This is deprecated.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_21b621719f64720c66d441b89d28132cd_autotoc_md4443}{}\doxysubsubsection{\texorpdfstring{retry\+Operation.\+start(fn)}{retry\+Operation.\+start(fn)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_21b621719f64720c66d441b89d28132cd_autotoc_md4443}
+This is an alias for {\ttfamily retry\+Operation.\+attempt(fn)}. This is deprecated.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_21b621719f64720c66d441b89d28132cd_autotoc_md4444}{}\doxysubsubsection{\texorpdfstring{retry\+Operation.\+retry(error)}{retry\+Operation.\+retry(error)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_21b621719f64720c66d441b89d28132cd_autotoc_md4444}
+Returns {\ttfamily false} when no {\ttfamily error} value is given, or the maximum amount of retries has been reached.
+
+Otherwise it returns {\ttfamily true}, and retries the operation after the timeout for the current attempt number.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_21b621719f64720c66d441b89d28132cd_autotoc_md4445}{}\doxysubsubsection{\texorpdfstring{retry\+Operation.\+attempts()}{retry\+Operation.\+attempts()}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_21b621719f64720c66d441b89d28132cd_autotoc_md4445}
+Returns an int representing the number of attempts it took to call {\ttfamily fn} before it was successful.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_21b621719f64720c66d441b89d28132cd_autotoc_md4446}{}\doxysection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_21b621719f64720c66d441b89d28132cd_autotoc_md4446}
+retry is licensed under the MIT license.
+
+\#\+Changelog
+
+0.\+6.\+0 Introduced optional time\+Ops parameter for the attempt() function which is an object having a property timeout in miliseconds and a property cb callback function. Whenever your retry operation takes longer than timeout to execute, the timeout callback function cb is called.
+
+0.\+5.\+0 Some minor refactorings.
+
+0.\+4.\+0 Changed retry\+Operation.\+try() to retry\+Operation.\+attempt(). Deprecated the aliases start() and try() for it.
+
+0.\+3.\+0 Added retry\+Operation.\+start() which is an alias for retry\+Operation.\+try().
+
+0.\+2.\+0 Added attempts() function and parameter to retry\+Operation.\+try() representing the number of attempts it took to call fn(). 

@@ -1,0 +1,108 @@
+\chapter{update-\/notifier \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/yeoman/update-\/notifier"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+org/yeoman/update-\/notifier.\+svg?branch=master"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23b3b6c2b23541660e7c880b635d2c656}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23b3b6c2b23541660e7c880b635d2c656}\index{update-\/notifier $<$a href="{}https://travis-\/ci.org/yeoman/update-\/notifier"{} $>$$<$img src="{}https://travis-\/ci.org/yeoman/update-\/notifier.svg?branch=master"{} alt="{}Build Status"{}/$>$$<$/a$>$@{update-\/notifier $<$a href=""https://travis-\/ci.org/yeoman/update-\/notifier"" $>$$<$img src=""https://travis-\/ci.org/yeoman/update-\/notifier.svg?branch=master"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23b3b6c2b23541660e7c880b635d2c656_autotoc_md5124}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23b3b6c2b23541660e7c880b635d2c656_autotoc_md5124}%
+ \begin{quote}
+Update notifications for your CLI app \end{quote}
+
+
+Inform users of your package of updates in a non-\/intrusive way.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23b3b6c2b23541660e7c880b635d2c656_autotoc_md5125}{}\doxysubsubsection{\texorpdfstring{Table of Contents}{Table of Contents}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23b3b6c2b23541660e7c880b635d2c656_autotoc_md5125}
+
+\begin{DoxyItemize}
+\item Examples
+\item How
+\item API
+\item About
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23b3b6c2b23541660e7c880b635d2c656_autotoc_md5126}{}\doxysection{\texorpdfstring{Examples}{Examples}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23b3b6c2b23541660e7c880b635d2c656_autotoc_md5126}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23b3b6c2b23541660e7c880b635d2c656_autotoc_md5127}{}\doxysubsection{\texorpdfstring{Simple example}{Simple example}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23b3b6c2b23541660e7c880b635d2c656_autotoc_md5127}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ updateNotifier\ =\ require('update-\/notifier');}
+\DoxyCodeLine{const\ pkg\ =\ require('./package.json');}
+\DoxyCodeLine{}
+\DoxyCodeLine{updateNotifier(\{pkg\}).notify();}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23b3b6c2b23541660e7c880b635d2c656_autotoc_md5128}{}\doxysubsection{\texorpdfstring{Comprehensive example}{Comprehensive example}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23b3b6c2b23541660e7c880b635d2c656_autotoc_md5128}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ updateNotifier\ =\ require('update-\/notifier');}
+\DoxyCodeLine{const\ pkg\ =\ require('./package.json');}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Checks\ for\ available\ update\ and\ returns\ an\ instance}
+\DoxyCodeLine{const\ notifier\ =\ updateNotifier(\{pkg\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Notify\ using\ the\ built-\/in\ convenience\ method}
+\DoxyCodeLine{notifier.notify();}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ \`{}notifier.update`\ contains\ some\ useful\ info\ about\ the\ update}
+\DoxyCodeLine{console.log(notifier.update);}
+\DoxyCodeLine{/*}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ latest:\ '1.0.1',}
+\DoxyCodeLine{\ \ \ \ current:\ '1.0.0',}
+\DoxyCodeLine{\ \ \ \ type:\ 'patch',\ //\ possible\ values:\ latest,\ major,\ minor,\ patch,\ prerelease,\ build}
+\DoxyCodeLine{\ \ \ \ name:\ 'pageres'}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{*/}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23b3b6c2b23541660e7c880b635d2c656_autotoc_md5129}{}\doxysubsection{\texorpdfstring{Example with settings and custom message}{Example with settings and custom message}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23b3b6c2b23541660e7c880b635d2c656_autotoc_md5129}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ notifier\ =\ updateNotifier(\{}
+\DoxyCodeLine{\ \ \ \ pkg,}
+\DoxyCodeLine{\ \ \ \ updateCheckInterval:\ 1000\ *\ 60\ *\ 60\ *\ 24\ *\ 7\ //\ 1\ week}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log(`Update\ available:\ \$\{notifier.update.latest\}`);}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23b3b6c2b23541660e7c880b635d2c656_autotoc_md5130}{}\doxysection{\texorpdfstring{How}{How}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23b3b6c2b23541660e7c880b635d2c656_autotoc_md5130}
+Whenever you initiate the update notifier and it\textquotesingle{}s not within the interval threshold, it will asynchronously check with npm in the background for available updates, then persist the result. The next time the notifier is initiated the result will be loaded into the {\ttfamily .update} property. This prevents any impact on your package startup performance. The check process is done in a unref\textquotesingle{}ed \href{http://nodejs.org/api/child_process.html\#child_process_child_process_spawn_command_args_options}{\texttt{ child process}}. This means that if you call {\ttfamily process.\+exit}, the check will still be performed in its own process.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23b3b6c2b23541660e7c880b635d2c656_autotoc_md5131}{}\doxysection{\texorpdfstring{API}{API}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23b3b6c2b23541660e7c880b635d2c656_autotoc_md5131}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23b3b6c2b23541660e7c880b635d2c656_autotoc_md5132}{}\doxysubsection{\texorpdfstring{update\+Notifier(options)}{update\+Notifier(options)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23b3b6c2b23541660e7c880b635d2c656_autotoc_md5132}
+Checks if there is an available update. Accepts settings defined below. Returns an object with update info if there is an available update, otherwise {\ttfamily undefined}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23b3b6c2b23541660e7c880b635d2c656_autotoc_md5133}{}\doxysubsection{\texorpdfstring{options}{options}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23b3b6c2b23541660e7c880b635d2c656_autotoc_md5133}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23b3b6c2b23541660e7c880b635d2c656_autotoc_md5134}{}\doxysubsubsection{\texorpdfstring{pkg}{pkg}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23b3b6c2b23541660e7c880b635d2c656_autotoc_md5134}
+Type\+: {\ttfamily object}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23b3b6c2b23541660e7c880b635d2c656_autotoc_md5135}{}\doxyparagraph{\texorpdfstring{name}{name}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23b3b6c2b23541660e7c880b635d2c656_autotoc_md5135}
+{\itshape Required} ~\newline
+ Type\+: {\ttfamily string}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23b3b6c2b23541660e7c880b635d2c656_autotoc_md5136}{}\doxyparagraph{\texorpdfstring{version}{version}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23b3b6c2b23541660e7c880b635d2c656_autotoc_md5136}
+{\itshape Required} ~\newline
+ Type\+: {\ttfamily string}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23b3b6c2b23541660e7c880b635d2c656_autotoc_md5137}{}\doxysubsubsection{\texorpdfstring{update\+Check\+Interval}{update\+Check\+Interval}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23b3b6c2b23541660e7c880b635d2c656_autotoc_md5137}
+Type\+: {\ttfamily number} ~\newline
+ Default\+: 1000 \texorpdfstring{$\ast$}{*} 60 \texorpdfstring{$\ast$}{*} 60 \texorpdfstring{$\ast$}{*} 24 (1 day)
+
+How often to check for updates.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23b3b6c2b23541660e7c880b635d2c656_autotoc_md5138}{}\doxysubsubsection{\texorpdfstring{callback(error, update)}{callback(error, update)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23b3b6c2b23541660e7c880b635d2c656_autotoc_md5138}
+Type\+: {\ttfamily function} ~\newline
+
+
+Passing a callback here will make it check for an update directly and report right away. Not recommended as you won\textquotesingle{}t get the benefits explained in \`{}\+How\`{}.
+
+{\ttfamily update} is equal to {\ttfamily notifier.\+update}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23b3b6c2b23541660e7c880b635d2c656_autotoc_md5139}{}\doxysubsection{\texorpdfstring{update\+Notifier.\+notify(\mbox{[}options\mbox{]})}{update\+Notifier.\+notify(\mbox{[}options\mbox{]})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23b3b6c2b23541660e7c880b635d2c656_autotoc_md5139}
+Convenience method to display a notification message \texorpdfstring{$\ast$}{*}(see screenshot)\texorpdfstring{$\ast$}{*}.
+
+Only notifies if there is an update and the process is \href{http://nodejs.org/api/tty.html}{\texttt{ TTY}}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23b3b6c2b23541660e7c880b635d2c656_autotoc_md5140}{}\doxysubsubsection{\texorpdfstring{options.\+defer}{options.\+defer}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23b3b6c2b23541660e7c880b635d2c656_autotoc_md5140}
+Type\+: {\ttfamily boolean} ~\newline
+ Default\+: {\ttfamily true}
+
+Defer showing the notification to after the process has exited.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23b3b6c2b23541660e7c880b635d2c656_autotoc_md5141}{}\doxysubsection{\texorpdfstring{User settings}{User settings}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23b3b6c2b23541660e7c880b635d2c656_autotoc_md5141}
+Users of your module have the ability to opt-\/out of the update notifier by changing the {\ttfamily opt\+Out} property to {\ttfamily true} in {\ttfamily \texorpdfstring{$\sim$}{\string~}/.config/configstore/update-\/notifier-\/\mbox{[}your-\/module-\/name\mbox{]}.yml}. The path is available in {\ttfamily notifier.\+config.\+path}.
+
+Users can also opt-\/out by \href{https://github.com/sindresorhus/guides/blob/master/set-environment-variables.md}{\texttt{ setting the environment variable}} {\ttfamily NO\+\_\+\+UPDATE\+\_\+\+NOTIFIER} with any value or by using the {\ttfamily -\/-\/no-\/update-\/notifier} flag on a per run basis.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23b3b6c2b23541660e7c880b635d2c656_autotoc_md5142}{}\doxysection{\texorpdfstring{About}{About}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23b3b6c2b23541660e7c880b635d2c656_autotoc_md5142}
+The idea for this module came from the desire to apply the browser update strategy to CLI tools, where everyone is always on the latest version. We first tried automatic updating, which we discovered wasn\textquotesingle{}t popular. This is the second iteration of that idea, but limited to just update notifications.
+
+There are a bunch projects using it\+:
+
+
+\begin{DoxyItemize}
+\item \href{http://yeoman.io}{\texttt{ Yeoman}} -\/ Modern workflows for modern webapps
+\item \href{https://github.com/sindresorhus/ava}{\texttt{ AVA}} -\/ Simple concurrent test runner
+\item \href{https://github.com/sindresorhus/xo}{\texttt{ XO}} -\/ Java\+Script happiness style linter
+\item \href{https://github.com/sindresorhus/pageres}{\texttt{ Pageres}} -\/ Capture website screenshots
+\item \href{http://nodegh.io}{\texttt{ Node GH}} -\/ Git\+Hub command line tool
+\item \href{http://bower.io}{\texttt{ Bower}} -\/ A package manager for the web
+\item \href{http://hood.ie}{\texttt{ Hoodie CLI}} -\/ Hoodie command line tool
+\item \href{http://roots.cx}{\texttt{ Roots}} -\/ A toolkit for advanced front-\/end development
+\end{DoxyItemize}
+
+\href{https://www.npmjs.org/browse/depended/update-notifier}{\texttt{ And 600+ more...}}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23b3b6c2b23541660e7c880b635d2c656_autotoc_md5143}{}\doxysection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23b3b6c2b23541660e7c880b635d2c656_autotoc_md5143}
+\href{http://opensource.org/licenses/bsd-license.php}{\texttt{ BSD license}} and copyright Google 

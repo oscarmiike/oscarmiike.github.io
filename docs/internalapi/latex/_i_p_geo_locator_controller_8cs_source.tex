@@ -1,0 +1,70 @@
+\doxysection{IPGeo\+Locator\+Controller.\+cs}
+\hypertarget{_i_p_geo_locator_controller_8cs_source}{}\label{_i_p_geo_locator_controller_8cs_source}\index{C:/Users/STRIDER/source/repos/InternalAPI/InternalAPI/Controllers/IPGeoLocatorController.cs@{C:/Users/STRIDER/source/repos/InternalAPI/InternalAPI/Controllers/IPGeoLocatorController.cs}}
+\mbox{\hyperlink{_i_p_geo_locator_controller_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_i_p_geo_locator_controller_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }Microsoft.AspNetCore.Mvc;}
+\DoxyCodeLine{\Hypertarget{_i_p_geo_locator_controller_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_i_p_geo_locator_controller_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_i_p_geo_locator_controller_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }System.Linq;}
+\DoxyCodeLine{\Hypertarget{_i_p_geo_locator_controller_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }System.Threading.Tasks;}
+\DoxyCodeLine{\Hypertarget{_i_p_geo_locator_controller_8cs_source_l00006}00006\ \textcolor{keyword}{using\ }Microsoft.Extensions.Logging;}
+\DoxyCodeLine{\Hypertarget{_i_p_geo_locator_controller_8cs_source_l00007}00007\ \textcolor{keyword}{using\ }Microsoft.Extensions.Configuration;}
+\DoxyCodeLine{\Hypertarget{_i_p_geo_locator_controller_8cs_source_l00008}00008\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_dto_1_1_i_p_geo_locator}{InternalAPI.Dto.IPGeoLocator}};}
+\DoxyCodeLine{\Hypertarget{_i_p_geo_locator_controller_8cs_source_l00009}00009\ \textcolor{keyword}{using\ }Newtonsoft.Json;}
+\DoxyCodeLine{\Hypertarget{_i_p_geo_locator_controller_8cs_source_l00010}00010\ \textcolor{keyword}{using\ }RestSharp;}
+\DoxyCodeLine{\Hypertarget{_i_p_geo_locator_controller_8cs_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{_i_p_geo_locator_controller_8cs_source_l00012}00012\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_controllers}{InternalAPI.Controllers}}}
+\DoxyCodeLine{\Hypertarget{_i_p_geo_locator_controller_8cs_source_l00013}00013\ \{}
+\DoxyCodeLine{\Hypertarget{_i_p_geo_locator_controller_8cs_source_l00014}00014\ \ \ \ \ [Route(\textcolor{stringliteral}{"{}v1/[controller]"{}})]}
+\DoxyCodeLine{\Hypertarget{_i_p_geo_locator_controller_8cs_source_l00015}00015\ \ \ \ \ [ApiController]}
+\DoxyCodeLine{\Hypertarget{_i_p_geo_locator_controller_8cs_source_l00016}\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_i_p_geo_locator_controller}{00016}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_i_p_geo_locator_controller}{IPGeoLocatorController}}\ :\ Controller}
+\DoxyCodeLine{\Hypertarget{_i_p_geo_locator_controller_8cs_source_l00017}00017\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_i_p_geo_locator_controller_8cs_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{_i_p_geo_locator_controller_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ readonly\ ILogger<PublicHolidayController>\ \_logger;}
+\DoxyCodeLine{\Hypertarget{_i_p_geo_locator_controller_8cs_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_i_p_geo_locator_controller_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{string}\ baseURL\ \{\ \textcolor{keyword}{get};\ \textcolor{keyword}{set};\ \}}
+\DoxyCodeLine{\Hypertarget{_i_p_geo_locator_controller_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{string}\ apiKey\ \{\ \textcolor{keyword}{get};\ \textcolor{keyword}{set};\ \}}
+\DoxyCodeLine{\Hypertarget{_i_p_geo_locator_controller_8cs_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{_i_p_geo_locator_controller_8cs_source_l00024}\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_i_p_geo_locator_controller_a69f6e64280bebf3878708cd6d7103a9a}{00024}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_i_p_geo_locator_controller_a69f6e64280bebf3878708cd6d7103a9a}{IPGeoLocatorController}}(ILogger<PublicHolidayController>\ logger,\ IConfiguration\ configuration)}
+\DoxyCodeLine{\Hypertarget{_i_p_geo_locator_controller_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_i_p_geo_locator_controller_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger\ =\ logger;}
+\DoxyCodeLine{\Hypertarget{_i_p_geo_locator_controller_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ baseURL\ =\ configuration[\textcolor{stringliteral}{"{}IPGeoLocatorSettings:BaseURL"{}}];}
+\DoxyCodeLine{\Hypertarget{_i_p_geo_locator_controller_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ apiKey\ =\ configuration[\textcolor{stringliteral}{"{}IPGeoLocatorSettings:APIKey"{}}];}
+\DoxyCodeLine{\Hypertarget{_i_p_geo_locator_controller_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_i_p_geo_locator_controller_8cs_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_i_p_geo_locator_controller_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ [HttpGet]}
+\DoxyCodeLine{\Hypertarget{_i_p_geo_locator_controller_8cs_source_l00032}\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_i_p_geo_locator_controller_ab56692eadcf1089b0a334814999bce73}{00032}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ ActionResult\ <IPGeoLocationResponse>\ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_i_p_geo_locator_controller_ab56692eadcf1089b0a334814999bce73}{GetIPLocation}}(\textcolor{keywordtype}{string}\ ip)}
+\DoxyCodeLine{\Hypertarget{_i_p_geo_locator_controller_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_i_p_geo_locator_controller_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogDebug(\$\textcolor{stringliteral}{"{}IP\ geo\ locator\ request\ received.\ \ IP:\ \{ip\}"{}});}
+\DoxyCodeLine{\Hypertarget{_i_p_geo_locator_controller_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient(\textcolor{keyword}{new}\ Uri(baseURL));\ }
+\DoxyCodeLine{\Hypertarget{_i_p_geo_locator_controller_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ RestRequest\ request\ =\ \textcolor{keyword}{new}\ RestRequest(\textcolor{stringliteral}{"{}"{}},\ Method.GET);}
+\DoxyCodeLine{\Hypertarget{_i_p_geo_locator_controller_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddHeader(\textcolor{stringliteral}{"{}Content-\/Type"{}},\ \textcolor{stringliteral}{"{}application/json"{}});}
+\DoxyCodeLine{\Hypertarget{_i_p_geo_locator_controller_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddHeader(\textcolor{stringliteral}{"{}Accept"{}},\ \textcolor{stringliteral}{"{}application/json"{}});}
+\DoxyCodeLine{\Hypertarget{_i_p_geo_locator_controller_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddParameter(\textcolor{stringliteral}{"{}api\_key"{}},\ apiKey,\ ParameterType.QueryString);}
+\DoxyCodeLine{\Hypertarget{_i_p_geo_locator_controller_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddParameter(\textcolor{stringliteral}{"{}ip\_address"{}},\ ip,\ ParameterType.QueryString);}
+\DoxyCodeLine{\Hypertarget{_i_p_geo_locator_controller_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ var\ response\ =\ client.Execute(request);}
+\DoxyCodeLine{\Hypertarget{_i_p_geo_locator_controller_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_i_p_geo_locator_1_1_i_p_geo_location_response}{IPGeoLocationResponse}}\ GR\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_i_p_geo_locator_1_1_i_p_geo_location_response}{IPGeoLocationResponse}}();}
+\DoxyCodeLine{\Hypertarget{_i_p_geo_locator_controller_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response.Content.Contains(\textcolor{stringliteral}{"{}error"{}}))}
+\DoxyCodeLine{\Hypertarget{_i_p_geo_locator_controller_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_i_p_geo_locator_controller_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogError(\$\textcolor{stringliteral}{"{}Error\ returned\ from\ IP\ geo\ location\ API:\ \{response.Content\}"{}});}
+\DoxyCodeLine{\Hypertarget{_i_p_geo_locator_controller_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ GR;}
+\DoxyCodeLine{\Hypertarget{_i_p_geo_locator_controller_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_i_p_geo_locator_controller_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!response.IsSuccessful\ ||\ \textcolor{keywordtype}{string}.IsNullOrEmpty(response.Content))}
+\DoxyCodeLine{\Hypertarget{_i_p_geo_locator_controller_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_i_p_geo_locator_controller_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogError(\$\textcolor{stringliteral}{"{}IP\ geo\ logaion\ API\ call\ not\ successful.\ \ StatusCode:\ \{response.StatusCode\}\ -\/\ \{response.StatusDescription\},\ Message:\ \{response.ErrorMessage\}"{}});}
+\DoxyCodeLine{\Hypertarget{_i_p_geo_locator_controller_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_i_p_geo_locator_controller_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_i_p_geo_locator_controller_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_i_p_geo_locator_controller_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{_i_p_geo_locator_controller_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_i_p_geo_locator_controller_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GR\ =\ JsonConvert.DeserializeObject<\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_i_p_geo_locator_1_1_i_p_geo_location_response}{IPGeoLocationResponse}}>(response.Content);}
+\DoxyCodeLine{\Hypertarget{_i_p_geo_locator_controller_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_i_p_geo_locator_controller_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception)}
+\DoxyCodeLine{\Hypertarget{_i_p_geo_locator_controller_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \_logger.LogError(\$\textcolor{stringliteral}{"{}Exception\ deserialising\ response\ from\ public\ holiday\ day\ API:\ \{response.Content\}"{}});\ \}}
+\DoxyCodeLine{\Hypertarget{_i_p_geo_locator_controller_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_i_p_geo_locator_controller_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ GR;}
+\DoxyCodeLine{\Hypertarget{_i_p_geo_locator_controller_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_i_p_geo_locator_controller_8cs_source_l00063}00063\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_i_p_geo_locator_controller_8cs_source_l00064}00064\ \}}
+
+\end{DoxyCode}

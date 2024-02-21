@@ -1,0 +1,78 @@
+\doxysection{Internal\+API.\+Controllers.\+Ainslie\+Api\+Controller Class Reference}
+\hypertarget{class_internal_a_p_i_1_1_controllers_1_1_ainslie_api_controller}{}\label{class_internal_a_p_i_1_1_controllers_1_1_ainslie_api_controller}\index{InternalAPI.Controllers.AinslieApiController@{InternalAPI.Controllers.AinslieApiController}}
+
+
+Inheritance diagram for Internal\+API.\+Controllers.\+Ainslie\+Api\+Controller\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{class_internal_a_p_i_1_1_controllers_1_1_ainslie_api_controller__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Internal\+API.\+Controllers.\+Ainslie\+Api\+Controller\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{class_internal_a_p_i_1_1_controllers_1_1_ainslie_api_controller__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_ainslie_api_controller_afa1fa0c5708b5b500746ab35667d7d51}{Ainslie\+Api\+Controller}} (\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{Log\+Service}} logger, \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_ainslie_a_p_i_service}{Ainslie\+APIService}} ainslie\+APIService)
+\item 
+Action\+Result$<$ object $>$ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_ainslie_api_controller_aa034d7632dc8faf2cb500517d129854d}{Trim\+Logs}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_ainslie_api_controller_afa1fa0c5708b5b500746ab35667d7d51}\label{class_internal_a_p_i_1_1_controllers_1_1_ainslie_api_controller_afa1fa0c5708b5b500746ab35667d7d51} 
+\index{InternalAPI.Controllers.AinslieApiController@{InternalAPI.Controllers.AinslieApiController}!AinslieApiController@{AinslieApiController}}
+\index{AinslieApiController@{AinslieApiController}!InternalAPI.Controllers.AinslieApiController@{InternalAPI.Controllers.AinslieApiController}}
+\doxysubsubsection{\texorpdfstring{AinslieApiController()}{AinslieApiController()}}
+{\footnotesize\ttfamily Internal\+API.\+Controllers.\+Ainslie\+Api\+Controller.\+Ainslie\+Api\+Controller (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{Log\+Service}}}]{logger,  }\item[{\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_ainslie_a_p_i_service}{Ainslie\+APIService}}}]{ainslie\+APIService }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger\ =\ logger;}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \_ainslieAPIService\ =\ ainslieAPIService;}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_ainslie_api_controller_aa034d7632dc8faf2cb500517d129854d}\label{class_internal_a_p_i_1_1_controllers_1_1_ainslie_api_controller_aa034d7632dc8faf2cb500517d129854d} 
+\index{InternalAPI.Controllers.AinslieApiController@{InternalAPI.Controllers.AinslieApiController}!TrimLogs@{TrimLogs}}
+\index{TrimLogs@{TrimLogs}!InternalAPI.Controllers.AinslieApiController@{InternalAPI.Controllers.AinslieApiController}}
+\doxysubsubsection{\texorpdfstring{TrimLogs()}{TrimLogs()}}
+{\footnotesize\ttfamily Action\+Result$<$ object $>$ Internal\+API.\+Controllers.\+Ainslie\+Api\+Controller.\+Trim\+Logs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_ae7208181482f25f801a9d637367cc5e7}{LogInformation}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.AinslieAPIController,\ \$\textcolor{stringliteral}{"{}request\ received\ for\ v1/ainslieapi/trimlogs"{}});}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ dynamic\ result\ =\ \_ainslieAPIService.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_ainslie_a_p_i_service_a23b5101881c3af4d6ee56dc879d09a17}{TrimLogs}}();}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((\textcolor{keywordtype}{bool})result.error)}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ BadRequest(result);}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Ok(result);}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_internal_a_p_i_1_1_controllers_1_1_ainslie_api_controller_aa034d7632dc8faf2cb500517d129854d_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+STRIDER/source/repos/\+Internal\+API/\+Internal\+API/\+Controllers/\mbox{\hyperlink{_ainslie_api_controller_8cs}{Ainslie\+Api\+Controller.\+cs}}\end{DoxyCompactItemize}

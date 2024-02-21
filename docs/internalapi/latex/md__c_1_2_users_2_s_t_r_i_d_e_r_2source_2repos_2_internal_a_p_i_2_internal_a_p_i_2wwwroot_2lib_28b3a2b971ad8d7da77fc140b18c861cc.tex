@@ -1,0 +1,697 @@
+\chapter{README}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28b3a2b971ad8d7da77fc140b18c861cc}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28b3a2b971ad8d7da77fc140b18c861cc}\index{README@{README}}
+\href{https://travis-ci.org/EventEmitter2/EventEmitter2}{\texttt{ }} \href{https://coveralls.io/github/EventEmitter2/EventEmitter2?branch=v6.4.3}{\texttt{ }} \href{http://badge.fury.io/js/eventemitter2}{\texttt{ }} \href{https://david-dm.org/asyncly/eventemitter2}{\texttt{ }} \mbox{[}\mbox{]}()\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28b3a2b971ad8d7da77fc140b18c861cc_autotoc_md8784}{}\doxysection{\texorpdfstring{SYNOPSIS}{SYNOPSIS}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28b3a2b971ad8d7da77fc140b18c861cc_autotoc_md8784}
+Event\+Emitter2 is an implementation of the Event\+Emitter module found in Node.\+js. In addition to having a better benchmark performance than Event\+Emitter and being browser-\/compatible, it also extends the interface of Event\+Emitter with many additional non-\/breaking features.
+
+If you like this project please show your support with a \href{https://github.com/EventEmitter2/EventEmitter2/stargazers}{\texttt{ Git\+Hub \+:star\+:}}!\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28b3a2b971ad8d7da77fc140b18c861cc_autotoc_md8785}{}\doxysection{\texorpdfstring{DESCRIPTION}{DESCRIPTION}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28b3a2b971ad8d7da77fc140b18c861cc_autotoc_md8785}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28b3a2b971ad8d7da77fc140b18c861cc_autotoc_md8786}{}\doxysubsubsection{\texorpdfstring{FEATURES}{FEATURES}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28b3a2b971ad8d7da77fc140b18c861cc_autotoc_md8786}
+
+\begin{DoxyItemize}
+\item ES5 compatible UMD module, that supports node.\+js, browser and workers of any kind
+\item Namespaces/\+Wildcards
+\item Any listeners
+\item Times To Listen (TTL), extends the {\ttfamily once} concept with \`{}many\`{}
+\item Async listeners (using set\+Immediate\texorpdfstring{$\vert$}{|}set\+Timeout\texorpdfstring{$\vert$}{|}next\+Tick) with promise\texorpdfstring{$\vert$}{|}async function support
+\item The emit\+Async method to return the results of the listeners via Promise.\+all
+\item Subscription methods (on, once, many, ...) can return a listener object that makes it easy to remove the subscription when needed -\/ just call the listener.\+off() method.
+\item Feature-\/rich wait\+For method to wait for events using promises
+\item listen\+To \& stop\+Listening\+To methods for listening to an external event emitter of any kind and propagate its events through itself using optional reducers/filters
+\item Extended version of the events.once method from the \href{https://nodejs.org/api/events.html\#events_events_once_emitter_name}{\texttt{ node events API}}
+\item Browser \& Workers environment compatibility
+\item Demonstrates good performance in benchmarks
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Platform:\ win32,\ x64,\ 15267MB}
+\DoxyCodeLine{Node\ version:\ v13.11.0}
+\DoxyCodeLine{CPU:\ 4\ x\ AMD\ Ryzen\ 3\ 2200U\ with\ Radeon\ Vega\ Mobile\ Gfx\ @\ 2495MHz}
+\DoxyCodeLine{-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}
+\DoxyCodeLine{EventEmitterHeatUp\ x\ 2,897,056\ ops/sec\ ±3.86\%\ (67\ runs\ sampled)}
+\DoxyCodeLine{EventEmitter\ x\ 3,232,934\ ops/sec\ ±3.50\%\ (65\ runs\ sampled)}
+\DoxyCodeLine{EventEmitter2\ x\ 12,261,042\ ops/sec\ ±4.72\%\ (59\ runs\ sampled)}
+\DoxyCodeLine{EventEmitter2\ (wild)\ x\ 242,751\ ops/sec\ ±5.15\%\ (68\ runs\ sampled)}
+\DoxyCodeLine{EventEmitter2\ (wild)\ using\ plain\ events\ x\ 358,916\ ops/sec\ ±2.58\%\ (78\ runs\ sampled)}
+\DoxyCodeLine{EventEmitter2\ (wild)\ emitting\ ns\ x\ 1,837,323\ ops/sec\ ±3.50\%\ (72\ runs\ sampled)}
+\DoxyCodeLine{EventEmitter2\ (wild)\ emitting\ a\ plain\ event\ x\ 2,743,707\ ops/sec\ ±4.08\%\ (65\ runs\ sampled)}
+\DoxyCodeLine{EventEmitter3\ x\ 10,380,258\ ops/sec\ ±3.93\%\ (67\ runs\ sampled)}
+\DoxyCodeLine{}
+\DoxyCodeLine{Fastest\ is\ EventEmitter2}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28b3a2b971ad8d7da77fc140b18c861cc_autotoc_md8787}{}\doxysubsubsection{\texorpdfstring{What\textquotesingle{}s new}{What\textquotesingle{}s new}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28b3a2b971ad8d7da77fc140b18c861cc_autotoc_md8787}
+To find out what\textquotesingle{}s new see the project \href{https://github.com/EventEmitter2/EventEmitter2/blob/master/CHANGELOG.md}{\texttt{ CHANGELOG}}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28b3a2b971ad8d7da77fc140b18c861cc_autotoc_md8788}{}\doxysubsubsection{\texorpdfstring{Differences (Non-\/breaking, compatible with existing Event\+Emitter)}{Differences (Non-\/breaking, compatible with existing Event\+Emitter)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28b3a2b971ad8d7da77fc140b18c861cc_autotoc_md8788}
+
+\begin{DoxyItemize}
+\item The Event\+Emitter2 constructor takes an optional configuration object with the following default values\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ EventEmitter2\ =\ require('eventemitter2');}
+\DoxyCodeLine{var\ emitter\ =\ new\ EventEmitter2(\{}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ //\ set\ this\ to\ \`{}true`\ to\ use\ wildcards}
+\DoxyCodeLine{\ \ wildcard:\ false,}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ //\ the\ delimiter\ used\ to\ segment\ namespaces}
+\DoxyCodeLine{\ \ delimiter:\ '.',\ }
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ //\ set\ this\ to\ \`{}true`\ if\ you\ want\ to\ emit\ the\ newListener\ event}
+\DoxyCodeLine{\ \ newListener:\ false,\ }
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ //\ set\ this\ to\ \`{}true`\ if\ you\ want\ to\ emit\ the\ removeListener\ event}
+\DoxyCodeLine{\ \ removeListener:\ false,\ }
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ //\ the\ maximum\ amount\ of\ listeners\ that\ can\ be\ assigned\ to\ an\ event}
+\DoxyCodeLine{\ \ maxListeners:\ 10,}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ //\ show\ event\ name\ in\ memory\ leak\ message\ when\ more\ than\ maximum\ amount\ of\ listeners\ is\ assigned}
+\DoxyCodeLine{\ \ verboseMemoryLeak:\ false,}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ //\ disable\ throwing\ uncaughtException\ if\ an\ error\ event\ is\ emitted\ and\ it\ has\ no\ listeners}
+\DoxyCodeLine{\ \ ignoreErrors:\ false}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+\item Getting the actual event that fired.
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{emitter.on('foo.*',\ function(value1,\ value2)\ \{}
+\DoxyCodeLine{\ \ console.log(this.event,\ value1,\ value2);}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{emitter.emit('foo.bar',\ 1,\ 2);\ //\ 'foo.bar'\ 1\ 2}
+\DoxyCodeLine{emitter.emit(['foo',\ 'bar'],\ 3,\ 4);\ //\ 'foo.bar'\ 3\ 4}
+\DoxyCodeLine{}
+\DoxyCodeLine{emitter.emit(Symbol(),\ 5,\ 6);\ //\ Symbol()\ 5\ 6}
+\DoxyCodeLine{emitter.emit(['foo',\ Symbol()],\ 7,\ 8);\ //\ ['foo',\ Symbol()]\ 7\ 8}
+
+\end{DoxyCode}
+ {\bfseries{Note}}\+: Generally this.\+event is normalized to a string (\textquotesingle{}event\textquotesingle{}, \textquotesingle{}event.\+test\textquotesingle{}), except the cases when event is a symbol or namespace contains a symbol. In these cases this.\+event remains as is (symbol and array).
+
+
+\begin{DoxyItemize}
+\item Fire an event N times and then remove it, an extension of the {\ttfamily once} concept.
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{emitter.many('foo',\ 4,\ function()\ \{}
+\DoxyCodeLine{\ \ console.log('hello');}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item Pass in a namespaced event as an array rather than a delimited string.
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{emitter.many(['foo',\ 'bar',\ 'bazz'],\ 4,\ function()\ \{}
+\DoxyCodeLine{\ \ console.log('hello');}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28b3a2b971ad8d7da77fc140b18c861cc_autotoc_md8789}{}\doxysection{\texorpdfstring{Installing}{Installing}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28b3a2b971ad8d7da77fc140b18c861cc_autotoc_md8789}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ eventemitter2}
+
+\end{DoxyCode}
+
+
+Or you can use unpkg.\+com CDN to import this \href{https://unpkg.com/eventemitter2}{\texttt{ module}} as a script directly from the browser\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28b3a2b971ad8d7da77fc140b18c861cc_autotoc_md8790}{}\doxysection{\texorpdfstring{API}{API}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28b3a2b971ad8d7da77fc140b18c861cc_autotoc_md8790}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28b3a2b971ad8d7da77fc140b18c861cc_autotoc_md8791}{}\doxysubsubsection{\texorpdfstring{Types definition}{Types definition}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28b3a2b971ad8d7da77fc140b18c861cc_autotoc_md8791}
+
+\begin{DoxyItemize}
+\item {\ttfamily Event}\+: string \texorpdfstring{$\vert$}{|} symbol
+\item {\ttfamily Event\+NS}\+: string \texorpdfstring{$\vert$}{|} Event \mbox{[}\mbox{]}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28b3a2b971ad8d7da77fc140b18c861cc_autotoc_md8792}{}\doxysubsection{\texorpdfstring{Class Event\+Emitter2}{Class Event\+Emitter2}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28b3a2b971ad8d7da77fc140b18c861cc_autotoc_md8792}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28b3a2b971ad8d7da77fc140b18c861cc_autotoc_md8793}{}\doxysubsubsection{\texorpdfstring{instance\+:}{instance\+:}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28b3a2b971ad8d7da77fc140b18c861cc_autotoc_md8793}
+
+\begin{DoxyItemize}
+\item emit(event\+: event \texorpdfstring{$\vert$}{|} event\+NS, ...values\+: any\mbox{[}\mbox{]})\+: boolean;
+\item emit\+Async(event\+: event \texorpdfstring{$\vert$}{|} event\+NS, ...values\+: any\mbox{[}\mbox{]})\+: Promise\texorpdfstring{$<$}{<}any\mbox{[}\mbox{]}\texorpdfstring{$>$}{>}
+\item add\+Listener(event\+: event \texorpdfstring{$\vert$}{|} event\+NS, listener\+: Listener\+Fn, boolean\texorpdfstring{$\vert$}{|}options?\+: object)\+: this\texorpdfstring{$\vert$}{|}\+Listener
+\item on(event\+: event \texorpdfstring{$\vert$}{|} event\+NS, listener\+: Listener\+Fn, boolean\texorpdfstring{$\vert$}{|}options?\+: object)\+: this\texorpdfstring{$\vert$}{|}\+Listener
+\item once(event\+: event \texorpdfstring{$\vert$}{|} event\+NS, listener\+: Listener\+Fn, boolean\texorpdfstring{$\vert$}{|}options?\+: object)\+: this\texorpdfstring{$\vert$}{|}\+Listener
+\item many(event\+: event \texorpdfstring{$\vert$}{|} event\+NS, times\+To\+Listen\+: number, listener\+: Listener\+Fn, boolean\texorpdfstring{$\vert$}{|}options?\+: object)\+: this\texorpdfstring{$\vert$}{|}\+Listener
+\item prepend\+Many(event\+: event \texorpdfstring{$\vert$}{|} event\+NS, times\+To\+Listen\+: number, listener\+: Listener\+Fn, boolean\texorpdfstring{$\vert$}{|}options?\+: object)\+: this\texorpdfstring{$\vert$}{|}\+Listener
+\item prepend\+Once\+Listener(event\+: event \texorpdfstring{$\vert$}{|} event\+NS, listener\+: Listener\+Fn, boolean\texorpdfstring{$\vert$}{|}options?\+: object)\+: this\texorpdfstring{$\vert$}{|}\+Listener
+\item prepend\+Listener(event\+: event \texorpdfstring{$\vert$}{|} event\+NS, listener\+: Listener\+Fn, boolean\texorpdfstring{$\vert$}{|}options?\+: object)\+: this\texorpdfstring{$\vert$}{|}\+Listener
+\item prepend\+Any(listener\+: Event\+And\+Listener)\+: this
+\item on\+Any(listener\+: Event\+And\+Listener)\+: this
+\item off\+Any(listener\+: Listener\+Fn)\+: this
+\item remove\+Listener(event\+: event \texorpdfstring{$\vert$}{|} event\+NS, listener\+: Listener\+Fn)\+: this
+\item off(event\+: event \texorpdfstring{$\vert$}{|} event\+NS, listener\+: Listener\+Fn)\+: this
+\item remove\+All\+Listeners(event?\+: event \texorpdfstring{$\vert$}{|} event\+NS)\+: this
+\item set\+Max\+Listeners(n\+: number)\+: void
+\item get\+Max\+Listeners()\+: number
+\item event\+Names(ns\+As\+Array?\+: boolean)\+: string\mbox{[}\mbox{]}
+\item listeners(event\+: event \texorpdfstring{$\vert$}{|} event\+NS)\+: Listener\+Fn\mbox{[}\mbox{]}
+\item listeners\+Any()\+: Listener\+Fn\mbox{[}\mbox{]}
+\item has\+Listeners(event?\+: event \texorpdfstring{$\vert$}{|} event\+NS)\+: Boolean
+\item wait\+For(event\+: event \texorpdfstring{$\vert$}{|} event\+NS, timeout?\+: number)\+: Cancelable\+Promise\texorpdfstring{$<$}{<}any\mbox{[}\mbox{]}\texorpdfstring{$>$}{>}
+\item wait\+For(event\+: event \texorpdfstring{$\vert$}{|} event\+NS, filter?\+: Wait\+For\+Filter)\+: Cancelable\+Promise\texorpdfstring{$<$}{<}any\mbox{[}\mbox{]}\texorpdfstring{$>$}{>}
+\item wait\+For(event\+: event \texorpdfstring{$\vert$}{|} event\+NS, options?\+: Wait\+For\+Options)\+: Cancelable\+Promise\texorpdfstring{$<$}{<}any\mbox{[}\mbox{]}\texorpdfstring{$>$}{>}
+\item listen\+To(target\+: General\+Event\+Emitter, event\+: event \texorpdfstring{$\vert$}{|} event\+NS, options?\+: Listen\+To\+Options)\+: this
+\item listen\+To(target\+: General\+Event\+Emitter, events\+: (event \texorpdfstring{$\vert$}{|} event\+NS)\mbox{[}\mbox{]}, options?\+: Listen\+To\+Options)\+: this
+\item listen\+To(target\+: General\+Event\+Emitter, events\+: Object\texorpdfstring{$<$}{<}event \texorpdfstring{$\vert$}{|} event\+NS, Function\texorpdfstring{$>$}{>}, options?\+: Listen\+To\+Options)\+: this
+\item stop\+Listening\+To(target?\+: General\+Event\+Emitter, event?\+: event \texorpdfstring{$\vert$}{|} event\+NS)\+: Boolean
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28b3a2b971ad8d7da77fc140b18c861cc_autotoc_md8794}{}\doxysubsubsection{\texorpdfstring{static\+:}{static\+:}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28b3a2b971ad8d7da77fc140b18c861cc_autotoc_md8794}
+
+\begin{DoxyItemize}
+\item static once(emitter\+: Event\+Emitter2, event\+: string \texorpdfstring{$\vert$}{|} symbol, options?\+: Once\+Options)\+: Cancelable\+Promise\texorpdfstring{$<$}{<}any\mbox{[}\mbox{]}\texorpdfstring{$>$}{>}
+\item static default\+Max\+Listeners\+: number
+\end{DoxyItemize}
+
+The {\ttfamily event} argument specified in the API declaration can be a string or symbol for a simple event emitter and a string\texorpdfstring{$\vert$}{|}symbol\texorpdfstring{$\vert$}{|}\+Array(string\texorpdfstring{$\vert$}{|}symbol) in a case of a wildcard emitter;
+
+When an {\ttfamily Event\+Emitter} instance experiences an error, the typical action is to emit an {\ttfamily error} event. Error events are treated as a special case. If there is no listener for it, then the default action is to print a stack trace and exit the program.
+
+All Event\+Emitters emit the event {\ttfamily new\+Listener} when new listeners are added. Event\+Emitters also emit the event {\ttfamily remove\+Listener} when listeners are removed, and {\ttfamily remove\+Listener\+Any} when listeners added through {\ttfamily on\+Any} are removed.
+
+{\bfseries{Namespaces}} with {\bfseries{Wildcards}} To use namespaces/wildcards, pass the {\ttfamily wildcard} option into the Event\+Emitter constructor. When namespaces/wildcards are enabled, events can either be strings ({\ttfamily foo.\+bar}) separated by a delimiter or arrays (`\mbox{[}\textquotesingle{}foo', \textquotesingle{}bar\textquotesingle{}\mbox{]}\`{}). The delimiter is also configurable as a constructor option.
+
+An event name passed to any event emitter method can contain a wild card (the {\ttfamily \texorpdfstring{$\ast$}{*}} character). If the event name is a string, a wildcard may appear as {\ttfamily foo.\texorpdfstring{$\ast$}{*}}. If the event name is an array, the wildcard may appear as `\mbox{[}\textquotesingle{}foo', \textquotesingle{}\texorpdfstring{$\ast$}{*}\textquotesingle{}\mbox{]}\`{}.
+
+If either of the above described events were passed to the {\ttfamily on} method, subsequent emits such as the following would be observed...
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{emitter.emit(Symbol());}
+\DoxyCodeLine{emitter.emit('foo');}
+\DoxyCodeLine{emitter.emit('foo.bazz');}
+\DoxyCodeLine{emitter.emit(['foo',\ 'bar']);}
+\DoxyCodeLine{emitter.emit(['foo',\ Symbol()]);}
+
+\end{DoxyCode}
+
+
+{\bfseries{NOTE\+:}} An event name may use more than one wildcard. For example, {\ttfamily foo.\texorpdfstring{$\ast$}{*}.bar.\texorpdfstring{$\ast$}{*}} is a valid event name, and would match events such as {\ttfamily foo.\+x.\+bar.\+y}, or `\mbox{[}\textquotesingle{}foo', \textquotesingle{}bazz\textquotesingle{}, \textquotesingle{}bar\textquotesingle{}, \textquotesingle{}test\textquotesingle{}\mbox{]}\`{}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28b3a2b971ad8d7da77fc140b18c861cc_autotoc_md8795}{}\doxysection{\texorpdfstring{Multi-\/level Wildcards}{Multi-\/level Wildcards}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28b3a2b971ad8d7da77fc140b18c861cc_autotoc_md8795}
+A double wildcard (the string {\ttfamily \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}) matches any number of levels (zero or more) of events. So if for example `\textquotesingle{}foo.\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}'{\ttfamily is passed to the}on\`{} method, the following events would be observed\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{emitter.emit('foo');}
+\DoxyCodeLine{emitter.emit('foo.bar');}
+\DoxyCodeLine{emitter.emit('foo.bar.baz');}
+\DoxyCodeLine{emitter.emit(['foo',\ Symbol(),\ 'baz']);}
+
+\end{DoxyCode}
+
+
+On the other hand, if the single-\/wildcard event name was passed to the on method, the callback would only observe the second of these events.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28b3a2b971ad8d7da77fc140b18c861cc_autotoc_md8796}{}\doxysubsubsection{\texorpdfstring{emitter.\+add\+Listener(event, listener, options?\+: object\texorpdfstring{$\vert$}{|}boolean)}{emitter.\+add\+Listener(event, listener, options?\+: object\texorpdfstring{$\vert$}{|}boolean)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28b3a2b971ad8d7da77fc140b18c861cc_autotoc_md8796}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28b3a2b971ad8d7da77fc140b18c861cc_autotoc_md8797}{}\doxysubsubsection{\texorpdfstring{emitter.\+on(event, listener, options?\+: object\texorpdfstring{$\vert$}{|}boolean)}{emitter.\+on(event, listener, options?\+: object\texorpdfstring{$\vert$}{|}boolean)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28b3a2b971ad8d7da77fc140b18c861cc_autotoc_md8797}
+Adds a listener to the end of the listeners array for the specified event.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{emitter.on('data',\ function(value1,\ value2,\ value3,\ ...)\ \{}
+\DoxyCodeLine{\ \ console.log('The\ event\ was\ raised!');}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{emitter.on('data',\ function(value)\ \{}
+\DoxyCodeLine{\ \ console.log('The\ event\ was\ raised!');}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+{\bfseries{Options\+:}}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily async\+:boolean= false}-\/ invoke the listener in async mode using set\+Immediate (fallback to set\+Timeout if not available) or process.\+next\+Tick depending on the {\ttfamily next\+Tick} option.
+\item {\ttfamily next\+Tick\+:boolean= false}-\/ use process.\+next\+Tick instead of set\+Immediate to invoke the listener asynchronously.
+\item {\ttfamily promisify\+:boolean= false}-\/ additionally wraps the listener to a Promise for later invocation using {\ttfamily emit\+Async} method. This option will be activated by default if its value is {\ttfamily undefined} and the listener function is an {\ttfamily asynchronous function} (whose constructor name is {\ttfamily Async\+Function}).
+\item {\ttfamily objectify\+:boolean= false}-\/ activates returning a listener object instead of \textquotesingle{}this\textquotesingle{} by the subscription method.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28b3a2b971ad8d7da77fc140b18c861cc_autotoc_md8798}{}\doxyparagraph{\texorpdfstring{listener}{listener}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28b3a2b971ad8d7da77fc140b18c861cc_autotoc_md8798}
+The listener object has the following properties\+:
+\begin{DoxyItemize}
+\item {\ttfamily emitter\+: Event\+Emitter2} -\/ reference to the event emitter instance
+\item {\ttfamily event\+: event\texorpdfstring{$\vert$}{|}event\+NS} -\/ subscription event
+\item {\ttfamily listener\+: Function} -\/ reference to the listener
+\item {\ttfamily off()\+: Function}-\/ removes the listener (voids the subscription)
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ listener=\ emitter.on('event',\ function()\{}
+\DoxyCodeLine{\ \ console.log('hello!');}
+\DoxyCodeLine{\},\ \{objectify:\ true\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{emitter.emit('event');}
+\DoxyCodeLine{}
+\DoxyCodeLine{listener.off();}
+
+\end{DoxyCode}
+
+
+{\bfseries{Note\+:}} If the options argument is {\ttfamily true} it will be considered as {\ttfamily \{promisify\+: true\}}
+
+{\bfseries{Note\+:}} If the options argument is {\ttfamily false} it will be considered as {\ttfamily \{async\+: true\}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ EventEmitter2=\ require('eventemitter2');}
+\DoxyCodeLine{var\ emitter=\ new\ EventEmitter2();}
+\DoxyCodeLine{}
+\DoxyCodeLine{emitter.on('event',\ function()\{}
+\DoxyCodeLine{\ \ \ \ console.log('The\ event\ was\ raised!');}
+\DoxyCodeLine{\},\ \{async:\ true\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{emitter.emit('event');}
+\DoxyCodeLine{console.log('emitted');}
+
+\end{DoxyCode}
+ Since the {\ttfamily async} option was set the output from the code above is as follows\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{emitted}
+\DoxyCodeLine{The\ event\ was\ raised!}
+
+\end{DoxyCode}
+
+
+If the listener is an async function or function which returns a promise, use the {\ttfamily promisify} option as follows\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ EventEmitter2=\ require('eventemitter2');}
+\DoxyCodeLine{var\ emitter=\ new\ EventEmitter2();}
+\DoxyCodeLine{}
+\DoxyCodeLine{emitter.on('event',\ function()\{}
+\DoxyCodeLine{\ \ \ \ console.log('The\ event\ was\ raised!');}
+\DoxyCodeLine{\ \ \ \ return\ new\ Promise(function(resolve)\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ console.log('listener\ resolved');}
+\DoxyCodeLine{\ \ \ \ \ \ \ setTimeout(resolve,\ 1000);}
+\DoxyCodeLine{\ \ \ \ \});}
+\DoxyCodeLine{\},\ \{promisify:\ true\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{emitter.emitAsync('event').then(function()\{}
+\DoxyCodeLine{\ \ \ \ console.log('all\ listeners\ were\ resolved!');}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log('emitted');}
+\DoxyCodeLine{\`{}\`{}\`{}\`{}}
+\DoxyCodeLine{Output:}
+\DoxyCodeLine{\`{}\`{}\`{}\`{}}
+\DoxyCodeLine{emitted}
+\DoxyCodeLine{The\ event\ was\ raised!}
+\DoxyCodeLine{listener\ resolved}
+\DoxyCodeLine{all\ listeners\ were\ resolved!}
+\DoxyCodeLine{\`{}\`{}\`{}\`{}}
+\DoxyCodeLine{If\ the\ \`{}promisify`\ option\ is\ false\ (default\ value)\ the\ output\ of\ the\ same\ code\ is\ as\ follows:}
+\DoxyCodeLine{\`{}\`{}\`{}\`{}}
+\DoxyCodeLine{The\ event\ was\ raised!}
+\DoxyCodeLine{listener\ resolved}
+\DoxyCodeLine{emitted}
+\DoxyCodeLine{all\ listeners\ were\ resolved!}
+\DoxyCodeLine{\`{}\`{}\`{}\`{}}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\#\#\ emitter.prependListener(event,\ listener,\ options?)}
+\DoxyCodeLine{}
+\DoxyCodeLine{Adds\ a\ listener\ to\ the\ beginning\ of\ the\ listeners\ array\ for\ the\ specified\ event.}
+
+\end{DoxyCode}
+ javascript emitter.\+prepend\+Listener(\textquotesingle{}data\textquotesingle{}, function(value1, value2, value3, ...) \{ console.\+log(\textquotesingle{}The event was raised!\textquotesingle{}); \}); 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{**options:**}
+\DoxyCodeLine{}
+\DoxyCodeLine{\`{}options?`:\ See\ the\ [addListener\ options](\#emitteronevent-\/listener-\/options-\/objectboolean)}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\#\#\ emitter.onAny(listener)}
+\DoxyCodeLine{}
+\DoxyCodeLine{Adds\ a\ listener\ that\ will\ be\ fired\ when\ any\ event\ is\ emitted.\ The\ event\ name\ is\ passed\ as\ the\ first\ argument\ to\ the\ callback.}
+
+\end{DoxyCode}
+ javascript emitter.\+on\+Any(function(event, value) \{ console.\+log(\textquotesingle{}All events trigger this.\textquotesingle{}); \}); 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\#\#\ emitter.prependAny(listener)}
+\DoxyCodeLine{}
+\DoxyCodeLine{Adds\ a\ listener\ that\ will\ be\ fired\ when\ any\ event\ is\ emitted.\ The\ event\ name\ is\ passed\ as\ the\ first\ argument\ to\ the\ callback.\ The\ listener\ is\ added\ to\ the\ beginning\ of\ the\ listeners\ array}
+
+\end{DoxyCode}
+ javascript emitter.\+prepend\+Any(function(event, value) \{ console.\+log(\textquotesingle{}All events trigger this.\textquotesingle{}); \}); 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\#\#\ emitter.offAny(listener)}
+\DoxyCodeLine{}
+\DoxyCodeLine{Removes\ the\ listener\ that\ will\ be\ fired\ when\ any\ event\ is\ emitted.}
+
+\end{DoxyCode}
+ javascript emitter.\+off\+Any(function(value) \{ console.\+log(\textquotesingle{}The event was raised!\textquotesingle{}); \}); 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\#\#\#\ emitter.once(event\ |\ eventNS,\ listener,\ options?)}
+\DoxyCodeLine{}
+\DoxyCodeLine{Adds\ a\ **one\ time**\ listener\ for\ the\ event.\ The\ listener\ is\ invoked\ }
+\DoxyCodeLine{only\ the\ first\ time\ the\ event\ is\ fired,\ after\ which\ it\ is\ removed.}
+
+\end{DoxyCode}
+ javascript emitter.\+once(\textquotesingle{}get\textquotesingle{}, function (value) \{ console.\+log(\textquotesingle{}Ah, we have our first value!\textquotesingle{}); \}); 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{**options:**}
+\DoxyCodeLine{}
+\DoxyCodeLine{\`{}options?`:\ See\ the\ [addListener\ options](\#emitteronevent-\/listener-\/options-\/objectboolean)}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\#\#\#\ emitter.prependOnceListener(event\ |\ eventNS,\ listener,\ options?)}
+\DoxyCodeLine{}
+\DoxyCodeLine{Adds\ a\ **one\ time**\ listener\ for\ the\ event.\ The\ listener\ is\ invoked\ }
+\DoxyCodeLine{only\ the\ first\ time\ the\ event\ is\ fired,\ after\ which\ it\ is\ removed.}
+\DoxyCodeLine{The\ listener\ is\ added\ to\ the\ beginning\ of\ the\ listeners\ array}
+
+\end{DoxyCode}
+ javascript emitter.\+prepend\+Once\+Listener(\textquotesingle{}get\textquotesingle{}, function (value) \{ console.\+log(\textquotesingle{}Ah, we have our first value!\textquotesingle{}); \}); 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{**options:**}
+\DoxyCodeLine{}
+\DoxyCodeLine{\`{}options?`:\ See\ the\ [addListener\ options](\#emitteronevent-\/listener-\/options-\/objectboolean)}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\#\#\ emitter.many(event\ |\ eventNS,\ timesToListen,\ listener,\ options?)}
+\DoxyCodeLine{}
+\DoxyCodeLine{Adds\ a\ listener\ that\ will\ execute\ **n\ times**\ for\ the\ event\ before\ being}
+\DoxyCodeLine{removed.\ The\ listener\ is\ invoked\ only\ the\ first\ **n\ times**\ the\ event\ is\ }
+\DoxyCodeLine{fired,\ after\ which\ it\ is\ removed.}
+
+\end{DoxyCode}
+ javascript emitter.\+many(\textquotesingle{}get\textquotesingle{}, 4, function (value) \{ console.\+log(\textquotesingle{}This event will be listened to exactly four times.\textquotesingle{}); \}); 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{**options:**}
+\DoxyCodeLine{}
+\DoxyCodeLine{\`{}options?`:\ See\ the\ [addListener\ options](\#emitteronevent-\/listener-\/options-\/objectboolean)}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\#\#\ emitter.prependMany(event\ |\ eventNS,\ timesToListen,\ listener,\ options?)}
+\DoxyCodeLine{}
+\DoxyCodeLine{Adds\ a\ listener\ that\ will\ execute\ **n\ times**\ for\ the\ event\ before\ being}
+\DoxyCodeLine{removed.\ The\ listener\ is\ invoked\ only\ the\ first\ **n\ times**\ the\ event\ is\ }
+\DoxyCodeLine{fired,\ after\ which\ it\ is\ removed.}
+\DoxyCodeLine{The\ listener\ is\ added\ to\ the\ beginning\ of\ the\ listeners\ array.}
+
+\end{DoxyCode}
+ javascript emitter.\+many(\textquotesingle{}get\textquotesingle{}, 4, function (value) \{ console.\+log(\textquotesingle{}This event will be listened to exactly four times.\textquotesingle{}); \}); 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{**options:**}
+\DoxyCodeLine{}
+\DoxyCodeLine{\`{}options?`:\ See\ the\ [addListener\ options](\#emitteronevent-\/listener-\/options-\/objectboolean)}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\#\#\ emitter.removeListener(event\ |\ eventNS,\ listener)}
+\DoxyCodeLine{\#\#\#\ emitter.off(event\ |\ eventNS,\ listener)}
+\DoxyCodeLine{}
+\DoxyCodeLine{Remove\ a\ listener\ from\ the\ listener\ array\ for\ the\ specified\ event.\ }
+\DoxyCodeLine{**Caution**:\ Calling\ this\ method\ changes\ the\ array\ indices\ in\ the\ listener\ array\ behind\ the\ listener.}
+
+\end{DoxyCode}
+ javascript var callback = function(value) \{ console.\+log(\textquotesingle{}someone connected!\textquotesingle{}); \}; emitter.\+on(\textquotesingle{}get\textquotesingle{}, callback); // ... emitter.\+remove\+Listener(\textquotesingle{}get\textquotesingle{}, callback); 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\#\#\ emitter.removeAllListeners([event\ |\ eventNS])}
+\DoxyCodeLine{}
+\DoxyCodeLine{Removes\ all\ listeners,\ or\ those\ of\ the\ specified\ event.}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\#\#\ emitter.setMaxListeners(n)}
+\DoxyCodeLine{}
+\DoxyCodeLine{By\ default\ EventEmitters\ will\ print\ a\ warning\ if\ more\ than\ 10\ listeners\ }
+\DoxyCodeLine{are\ added\ to\ it.\ This\ is\ a\ useful\ default\ which\ helps\ finding\ memory\ leaks.\ }
+\DoxyCodeLine{Obviously\ not\ all\ Emitters\ should\ be\ limited\ to\ 10.\ This\ function\ allows\ }
+\DoxyCodeLine{that\ to\ be\ increased.\ Set\ to\ zero\ for\ unlimited.}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\#\#\ emitter.getMaxListeners()}
+\DoxyCodeLine{}
+\DoxyCodeLine{Returns\ the\ current\ max\ listener\ value\ for\ the\ EventEmitter\ which\ is\ either\ set\ by\ emitter.setMaxListeners(n)\ or\ defaults\ to\ EventEmitter2.defaultMaxListeners}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\#\#\ emitter.listeners(event\ |\ eventNS)}
+\DoxyCodeLine{}
+\DoxyCodeLine{Returns\ an\ array\ of\ listeners\ for\ the\ specified\ event.\ This\ array\ can\ be\ }
+\DoxyCodeLine{manipulated,\ e.g.\ to\ remove\ listeners.}
+
+\end{DoxyCode}
+ javascript emitter.\+on(\textquotesingle{}get\textquotesingle{}, function(value) \{ console.\+log(\textquotesingle{}someone connected!\textquotesingle{}); \}); console.\+log(emitter.\+listeners(\textquotesingle{}get\textquotesingle{})); // \mbox{[} \mbox{[}Function\mbox{]} \mbox{]} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\#\#\ emitter.listenersAny()}
+\DoxyCodeLine{}
+\DoxyCodeLine{Returns\ an\ array\ of\ listeners\ that\ are\ listening\ for\ any\ event\ that\ is\ }
+\DoxyCodeLine{specified.\ This\ array\ can\ be\ manipulated,\ e.g.\ to\ remove\ listeners.}
+
+\end{DoxyCode}
+ javascript emitter.\+on\+Any(function(value) \{ console.\+log(\textquotesingle{}someone connected!\textquotesingle{}); \}); console.\+log(emitter.\+listeners\+Any()\mbox{[}0\mbox{]}); // \mbox{[} \mbox{[}Function\mbox{]} \mbox{]} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\#\#\ emitter.emit(event\ |\ eventNS,\ [arg1],\ [arg2],\ [...])}
+\DoxyCodeLine{Execute\ each\ of\ the\ listeners\ that\ may\ be\ listening\ for\ the\ specified\ event\ }
+\DoxyCodeLine{name\ in\ order\ with\ the\ list\ of\ arguments.}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\#\#\ emitter.emitAsync(event\ |\ eventNS,\ [arg1],\ [arg2],\ [...])}
+\DoxyCodeLine{}
+\DoxyCodeLine{Return\ the\ results\ of\ the\ listeners\ via\ [Promise.all](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global\_Objects/Promise/all).}
+\DoxyCodeLine{Only\ this\ method\ doesn't\ work\ [IE](http://caniuse.com/\#search=promise).}
+
+\end{DoxyCode}
+ javascript emitter.\+on(\textquotesingle{}get\textquotesingle{},function(i) \{ return new Promise(function(resolve)\{ set\+Timeout(function()\{ resolve(i+3); \},50); \}); \}); emitter.\+on(\textquotesingle{}get\textquotesingle{},function(i) \{ return new Promise(function(resolve)\{ resolve(i+2) \}); \}); emitter.\+on(\textquotesingle{}get\textquotesingle{},function(i) \{ return Promise.\+resolve(i+1); \}); emitter.\+on(\textquotesingle{}get\textquotesingle{},function(i) \{ return i+0; \}); emitter.\+on(\textquotesingle{}get\textquotesingle{},function(i) \{ // noop \});
+
+emitter.\+emit\+Async(\textquotesingle{}get\textquotesingle{},0) .then(function(results)\{ console.\+log(results); // \mbox{[}3,2,1,0,undefined\mbox{]} \}); 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\#\#\ emitter.waitFor(event\ |\ eventNS,\ [options])}
+\DoxyCodeLine{\#\#\#\ emitter.waitFor(event\ |\ eventNS,\ [timeout])}
+\DoxyCodeLine{\#\#\#\ emitter.waitFor(event\ |\ eventNS,\ [filter])}
+\DoxyCodeLine{}
+\DoxyCodeLine{Returns\ a\ thenable\ object\ (promise\ interface)\ that\ resolves\ when\ a\ specific\ event\ occurs}
+\DoxyCodeLine{}
+\DoxyCodeLine{\`{}\`{}\`{}\`{}javascript}
+\DoxyCodeLine{emitter.waitFor('event').then(function\ (data)\ \{\ }
+\DoxyCodeLine{\ \ \ \ console.log(data);\ //\ ['bar']}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{emitter.emit('event',\ 'bar');}
+\DoxyCodeLine{\`{}\`{}\`{}\`{}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\`{}\`{}\`{}\`{}javascript}
+\DoxyCodeLine{emitter.waitFor('event',\ \{\ }
+\DoxyCodeLine{\ \ \ \ //\ handle\ first\ event\ data\ argument\ as\ an\ error\ (err,\ ...data)}
+\DoxyCodeLine{\ \ \ \ handleError:\ false,}
+\DoxyCodeLine{\ \ \ \ //\ the\ timeout\ for\ resolving\ the\ promise\ before\ it\ is\ rejected\ with\ an\ error\ (Error:\ timeout).}
+\DoxyCodeLine{\ \ \ \ timeout:\ 0,\ }
+\DoxyCodeLine{\ \ \ \ //filter\ function\ to\ determine\ acceptable\ values\ for\ resolving\ the\ promise.}
+\DoxyCodeLine{\ \ \ \ filter:\ function(arg0,\ arg1)\{\ }
+\DoxyCodeLine{\ \ \ \ \ \ \ \ return\ arg0==='foo'\ \&\&\ arg1==='bar'}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ Promise:\ Promise,\ //\ Promise\ constructor\ to\ use,}
+\DoxyCodeLine{\ \ \ \ overload:\ false\ //\ overload\ cancellation\ api\ in\ a\ case\ of\ external\ Promise\ class}
+\DoxyCodeLine{\}).then(function(data)\{}
+\DoxyCodeLine{\ \ \ \ console.log(data);\ //\ ['foo',\ 'bar']}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{emitter.emit('event',\ 'foo',\ 'bar')}
+\DoxyCodeLine{\`{}\`{}\`{}\`{}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\`{}\`{}\`{}\`{}javascript}
+\DoxyCodeLine{var\ promise=\ emitter.waitFor('event');}
+\DoxyCodeLine{}
+\DoxyCodeLine{promise.then(null,\ function(error)\{}
+\DoxyCodeLine{\ \ \ \ console.log(error);\ //Error:\ canceled}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{promise.cancel();\ //stop\ listening\ the\ event\ and\ reject\ the\ promise}
+\DoxyCodeLine{\`{}\`{}\`{}\`{}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\`{}\`{}\`{}\`{}javascript}
+\DoxyCodeLine{emitter.waitFor('event',\ \{}
+\DoxyCodeLine{\ \ \ \ handleError:\ true}
+\DoxyCodeLine{\}).then(null,\ function(error)\{}
+\DoxyCodeLine{\ \ \ \ console.log(error);\ //Error:\ custom\ error}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{emitter.emit('event',\ new\ Error('custom\ error'));\ //\ reject\ the\ promise}
+\DoxyCodeLine{\`{}\`{}\`{}\`{}}
+\DoxyCodeLine{\#\#\#\ emitter.eventNames(nsAsArray)}
+\DoxyCodeLine{}
+\DoxyCodeLine{Returns\ an\ array\ listing\ the\ events\ for\ which\ the\ emitter\ has\ registered\ listeners.}
+
+\end{DoxyCode}
+ javascript var emitter= new Event\+Emitter2(); emitter.\+on(\textquotesingle{}foo\textquotesingle{}, () =\texorpdfstring{$>$}{>} \{\}); emitter.\+on(\textquotesingle{}bar\textquotesingle{}, () =\texorpdfstring{$>$}{>} \{\}); emitter.\+on(Symbol(\textquotesingle{}test\textquotesingle{}), () =\texorpdfstring{$>$}{>} \{\}); emitter.\+on(\mbox{[}\textquotesingle{}foo\textquotesingle{}, Symbol(\textquotesingle{}test2\textquotesingle{})\mbox{]}, () =\texorpdfstring{$>$}{>} \{\});
+
+console.\+log(emitter.\+event\+Names()); // Prints\+: \mbox{[} \textquotesingle{}bar\textquotesingle{}, \textquotesingle{}foo\textquotesingle{}, \mbox{[} \textquotesingle{}foo\textquotesingle{}, Symbol(test2) \mbox{]}, \mbox{[} \textquotesingle{}foo\textquotesingle{}, Symbol(test2) \mbox{]} \mbox{]} \`{}\`{}\`{} {\bfseries{Note}}\+: Listeners order not guaranteed \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28b3a2b971ad8d7da77fc140b18c861cc_autotoc_md8799}{}\doxysubsubsection{\texorpdfstring{listen\+To(target\+Emitter, events\+: event \texorpdfstring{$\vert$}{|} event\+NS, options?)}{listen\+To(target\+Emitter, events\+: event \texorpdfstring{$\vert$}{|} event\+NS, options?)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28b3a2b971ad8d7da77fc140b18c861cc_autotoc_md8799}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28b3a2b971ad8d7da77fc140b18c861cc_autotoc_md8800}{}\doxysubsubsection{\texorpdfstring{listen\+To(target\+Emitter, events\+: (event \texorpdfstring{$\vert$}{|} event\+NS)\mbox{[}\mbox{]}, options?)}{listen\+To(target\+Emitter, events\+: (event \texorpdfstring{$\vert$}{|} event\+NS)\mbox{[}\mbox{]}, options?)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28b3a2b971ad8d7da77fc140b18c861cc_autotoc_md8800}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28b3a2b971ad8d7da77fc140b18c861cc_autotoc_md8801}{}\doxysubsubsection{\texorpdfstring{listen\+To(target\+Emitter, events\+: Object\texorpdfstring{$<$}{<}event \texorpdfstring{$\vert$}{|} event\+NS, Function\texorpdfstring{$>$}{>}, options?)}{listen\+To(target\+Emitter, events\+: Object\texorpdfstring{$<$}{<}event \texorpdfstring{$\vert$}{|} event\+NS, Function\texorpdfstring{$>$}{>}, options?)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28b3a2b971ad8d7da77fc140b18c861cc_autotoc_md8801}
+Listens to the events emitted by an external emitter and propagate them through itself. The target object could be of any type that implements methods for subscribing and unsubscribing to its events. By default this method attempts to use {\ttfamily add\+Listener}/{\ttfamily remove\+Listener}, {\ttfamily on}/{\ttfamily off} and {\ttfamily add\+Event\+Listener}/{\ttfamily remove\+Event\+Listener} pairs, but you able to define own hooks {\ttfamily on(event, handler)} and {\ttfamily off(event, handler)} in the options object to use custom subscription API. In these hooks {\ttfamily this} refers to the target object.
+
+The options object has the following interface\+:
+\begin{DoxyItemize}
+\item {\ttfamily on(event, handler)\+: void}
+\item {\ttfamily off(event, handler)\+: void}
+\item {\ttfamily reducer\+: (Function) \texorpdfstring{$\vert$}{|} (Object\texorpdfstring{$<$}{<}Function\texorpdfstring{$>$}{>})\+: Boolean}
+\end{DoxyItemize}
+
+In case you selected the {\ttfamily new\+Listener} and {\ttfamily remove\+Listener} options when creating the emitter, the subscription to the events of the target object will be conditional, depending on whether there are listeners in the emitter that could listen them.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ EventEmitter2\ =\ require('EventEmitter2');}
+\DoxyCodeLine{var\ http\ =\ require('http');}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ server\ =\ http.createServer(function(request,\ response)\{}
+\DoxyCodeLine{\ \ \ \ console.log(request.url);}
+\DoxyCodeLine{\ \ \ \ response.end('Hello\ Node.js\ Server!')}
+\DoxyCodeLine{\}).listen(3000);}
+\DoxyCodeLine{}
+\DoxyCodeLine{server.on('connection',\ function(req,\ socket,\ head)\{}
+\DoxyCodeLine{\ \ \ console.log('connect');}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ activate\ the\ ability\ to\ attach\ listeners\ on\ demand\ }
+\DoxyCodeLine{var\ emitter=\ new\ EventEmitter2(\{}
+\DoxyCodeLine{\ \ \ \ newListener:\ true,}
+\DoxyCodeLine{\ \ \ \ removeListener:\ true}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{emitter.listenTo(server,\ \{}
+\DoxyCodeLine{\ \ \ \ 'connection':\ 'localConnection',}
+\DoxyCodeLine{\ \ \ \ 'close':\ 'close'}
+\DoxyCodeLine{\},\ \{}
+\DoxyCodeLine{\ \ \ \ reducers:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ connection:\ function(event)\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ console.log('event\ name:'\ +\ event.name);\ //'localConnection'}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ console.log('original\ event\ name:'\ +\ event.original);\ //'connection'}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ return\ event.data[0].remoteAddress==='::1';}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{emitter.on('localConnection',\ function(socket)\{}
+\DoxyCodeLine{\ \ \ console.log('local\ connection',\ socket.remoteAddress);}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{setTimeout(function()\{}
+\DoxyCodeLine{\ \ \ \ emitter.stopListeningTo(server);}
+\DoxyCodeLine{\},\ 30000);}
+
+\end{DoxyCode}
+ An example of using a wildcard emitter in a browser\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ ee=\ new\ EventEmitter2(\{}
+\DoxyCodeLine{\ \ \ wildcard:\ true}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{ee.listenTo(document.querySelector('\#test'),\ \{}
+\DoxyCodeLine{\ \ \ 'click':\ 'div.click',}
+\DoxyCodeLine{\ \ \ 'mouseup':\ 'div.mouseup',}
+\DoxyCodeLine{\ \ \ 'mousedown':\ 'div.mousedown'}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{ee.on('div.*',\ function(evt)\{}
+\DoxyCodeLine{\ \ \ \ console.log('listenTo:\ '+\ evt.type);}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{setTimeout(function()\{}
+\DoxyCodeLine{\ \ \ \ ee.stopListeningTo(document.querySelector('\#test'));}
+\DoxyCodeLine{\},\ 30000);}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28b3a2b971ad8d7da77fc140b18c861cc_autotoc_md8802}{}\doxysubsubsection{\texorpdfstring{stop\+Listening\+To(target?\+: Object, event\+: event \texorpdfstring{$\vert$}{|} event\+NS)\+: Boolean}{stop\+Listening\+To(target?\+: Object, event\+: event \texorpdfstring{$\vert$}{|} event\+NS)\+: Boolean}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28b3a2b971ad8d7da77fc140b18c861cc_autotoc_md8802}
+Stops listening the targets. Returns true if some listener was removed.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28b3a2b971ad8d7da77fc140b18c861cc_autotoc_md8803}{}\doxysubsubsection{\texorpdfstring{has\+Listeners(event \texorpdfstring{$\vert$}{|} event\+NS?\+:String)\+:Boolean}{has\+Listeners(event \texorpdfstring{$\vert$}{|} event\+NS?\+:String)\+:Boolean}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28b3a2b971ad8d7da77fc140b18c861cc_autotoc_md8803}
+Checks whether emitter has any listeners.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28b3a2b971ad8d7da77fc140b18c861cc_autotoc_md8804}{}\doxysubsubsection{\texorpdfstring{emitter.\+listeners(event \texorpdfstring{$\vert$}{|} event\+NS)}{emitter.\+listeners(event \texorpdfstring{$\vert$}{|} event\+NS)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28b3a2b971ad8d7da77fc140b18c861cc_autotoc_md8804}
+Returns the array of listeners for the event named event\+Name. In wildcard mode this method returns namespaces as strings\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ emitter=\ new\ EventEmitter2(\{}
+\DoxyCodeLine{\ \ \ \ wildcard:\ true}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{emitter.on('a.b.c',\ function()\{\});}
+\DoxyCodeLine{emitter.on(['z',\ 'x',\ 'c'],\ function()\{\});}
+\DoxyCodeLine{console.log(emitter.eventNames())\ //\ [\ 'z.x.c',\ 'a.b.c'\ ]}
+
+\end{DoxyCode}
+ If some namespace contains a Symbol member or the {\ttfamily ns\+As\+Array} option is set the method will return namespace as an array of its members; 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ emitter=\ new\ EventEmitter2(\{}
+\DoxyCodeLine{\ \ \ \ wildcard:\ true}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{emitter.on('a.b.c',\ function()\{\});}
+\DoxyCodeLine{emitter.on(['z',\ 'x',\ Symbol()],\ function()\{\});}
+\DoxyCodeLine{console.log(emitter.eventNames())\ //\ [\ [\ 'z',\ 'x',\ Symbol()\ ],\ 'a.b.c'\ ]}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28b3a2b971ad8d7da77fc140b18c861cc_autotoc_md8805}{}\doxysubsubsection{\texorpdfstring{Event\+Emitter2.\+once(emitter, event \texorpdfstring{$\vert$}{|} event\+NS, \mbox{[}options\mbox{]})}{Event\+Emitter2.\+once(emitter, event \texorpdfstring{$\vert$}{|} event\+NS, \mbox{[}options\mbox{]})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28b3a2b971ad8d7da77fc140b18c861cc_autotoc_md8805}
+Creates a cancellable Promise that is fulfilled when the Event\+Emitter emits the given event or that is rejected when the Event\+Emitter emits \textquotesingle{}error\textquotesingle{}. The Promise will resolve with an array of all the arguments emitted to the given event. This method is intentionally generic and works with the web platform Event\+Target interface, which has no special \textquotesingle{}error\textquotesingle{} event semantics and does not listen to the \textquotesingle{}error\textquotesingle{} event.
+
+Basic example\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ emitter=\ new\ EventEmitter2();}
+\DoxyCodeLine{}
+\DoxyCodeLine{EventEmitter2.once(emitter,\ 'event',\ \{}
+\DoxyCodeLine{\ \ \ \ timeout:\ 0,}
+\DoxyCodeLine{\ \ \ \ Promise:\ Promise,\ //\ a\ custom\ Promise\ constructor}
+\DoxyCodeLine{\ \ \ \ overload:\ false\ //\ overload\ promise\ cancellation\ api\ if\ exists\ with\ library\ implementation}
+\DoxyCodeLine{\}).then(function(data)\{}
+\DoxyCodeLine{\ \ \ \ console.log(data);\ //\ [1,\ 2,\ 3]}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{emitter.emit('event',\ 1,\ 2,\ 3);}
+
+\end{DoxyCode}
+ With timeout option\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{EventEmitter2.once(emitter,\ 'event',\ \{}
+\DoxyCodeLine{\ \ \ \ timeout:\ 1000}
+\DoxyCodeLine{\}).then(null,\ function(err)\{}
+\DoxyCodeLine{\ \ \ \ console.log(err);\ //\ Error:\ timeout}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+ The library promise cancellation API\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{promise=\ EventEmitter2.once(emitter,\ 'event');}
+\DoxyCodeLine{//\ notice:\ the\ cancel\ method\ exists\ only\ in\ the\ first\ promise\ chain}
+\DoxyCodeLine{promise.then(null,\ function(err)\{}
+\DoxyCodeLine{\ \ \ \ console.log(err);\ //\ Error:\ canceled}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{promise.cancel();}
+
+\end{DoxyCode}
+ Using the custom Promise class ({\bfseries{\href{https://www.npmjs.com/package/bluebird}{\texttt{ bluebird.\+js}}}})\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ BBPromise\ =\ require("{}bluebird"{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{EventEmitter2.once(emitter,\ 'event',\ \{}
+\DoxyCodeLine{\ \ \ \ Promise:\ BBPromise}
+\DoxyCodeLine{\}).then(function(data)\{}
+\DoxyCodeLine{\ \ \ \ console.log(data);\ //\ [4,\ 5,\ 6]}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{emitter.emit('event',\ 4,\ 5,\ 6);}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ BBPromise\ =\ require("{}bluebird"{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{BBPromise.config(\{}
+\DoxyCodeLine{\ \ \ \ //\ if\ false\ or\ options.overload\ enabled,\ the\ library\ cancellation\ API\ will\ be\ used}
+\DoxyCodeLine{\ \ \ \ cancellation:\ true\ }
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ promise=\ EventEmitter2.once(emitter,\ 'event',\ \{}
+\DoxyCodeLine{\ \ \ \ Promise:\ BBPromise,}
+\DoxyCodeLine{\ \ \ \ overload:\ false\ //\ use\ bluebird\ cancellation\ API}
+\DoxyCodeLine{\}).then(function(data)\{}
+\DoxyCodeLine{\ \ \ \ //\ notice:\ never\ executed\ due\ to\ BlueBird\ cancellation\ logic}
+\DoxyCodeLine{\},\ function(err)\{}
+\DoxyCodeLine{\ \ \ \ //\ notice:\ never\ executed\ due\ to\ BlueBird\ cancellation\ logic}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{promise.cancel();}
+\DoxyCodeLine{}
+\DoxyCodeLine{emitter.emit('event',\ 'never\ handled');}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28b3a2b971ad8d7da77fc140b18c861cc_autotoc_md8806}{}\doxysubsubsection{\texorpdfstring{Event\+Emitter2.\+default\+Max\+Listeners}{Event\+Emitter2.\+default\+Max\+Listeners}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28b3a2b971ad8d7da77fc140b18c861cc_autotoc_md8806}
+Sets default max listeners count globally for all instances, including those created before the change is made. 

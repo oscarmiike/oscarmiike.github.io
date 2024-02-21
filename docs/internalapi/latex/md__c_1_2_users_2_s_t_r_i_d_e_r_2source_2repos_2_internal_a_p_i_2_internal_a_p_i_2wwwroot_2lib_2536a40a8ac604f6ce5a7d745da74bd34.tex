@@ -1,0 +1,77 @@
+\chapter{ansi-\/styles \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/chalk/ansi-\/styles"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+org/chalk/ansi-\/styles.\+svg?branch=master"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2536a40a8ac604f6ce5a7d745da74bd34}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2536a40a8ac604f6ce5a7d745da74bd34}\index{ansi-\/styles $<$a href="{}https://travis-\/ci.org/chalk/ansi-\/styles"{} $>$$<$img src="{}https://travis-\/ci.org/chalk/ansi-\/styles.svg?branch=master"{} alt="{}Build Status"{}/$>$$<$/a$>$@{ansi-\/styles $<$a href=""https://travis-\/ci.org/chalk/ansi-\/styles"" $>$$<$img src=""https://travis-\/ci.org/chalk/ansi-\/styles.svg?branch=master"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2536a40a8ac604f6ce5a7d745da74bd34_autotoc_md709}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2536a40a8ac604f6ce5a7d745da74bd34_autotoc_md709}%
+ \begin{quote}
+\href{http://en.wikipedia.org/wiki/ANSI_escape_code\#Colors_and_Styles}{\texttt{ ANSI escape codes}} for styling strings in the terminal \end{quote}
+You probably want the higher-\/level \href{https://github.com/chalk/chalk}{\texttt{ chalk}} module for styling your strings.
+
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2536a40a8ac604f6ce5a7d745da74bd34_autotoc_md710}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2536a40a8ac604f6ce5a7d745da74bd34_autotoc_md710}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ -\/-\/save\ ansi-\/styles}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2536a40a8ac604f6ce5a7d745da74bd34_autotoc_md711}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2536a40a8ac604f6ce5a7d745da74bd34_autotoc_md711}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ ansi\ =\ require('ansi-\/styles');}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log(ansi.green.open\ +\ 'Hello\ world!'\ +\ ansi.green.close);}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2536a40a8ac604f6ce5a7d745da74bd34_autotoc_md712}{}\doxysection{\texorpdfstring{API}{API}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2536a40a8ac604f6ce5a7d745da74bd34_autotoc_md712}
+Each style has an {\ttfamily open} and {\ttfamily close} property.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2536a40a8ac604f6ce5a7d745da74bd34_autotoc_md713}{}\doxysection{\texorpdfstring{Styles}{Styles}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2536a40a8ac604f6ce5a7d745da74bd34_autotoc_md713}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2536a40a8ac604f6ce5a7d745da74bd34_autotoc_md714}{}\doxysubsection{\texorpdfstring{Modifiers}{Modifiers}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2536a40a8ac604f6ce5a7d745da74bd34_autotoc_md714}
+
+\begin{DoxyItemize}
+\item {\ttfamily reset}
+\item {\ttfamily bold}
+\item {\ttfamily dim}
+\item {\ttfamily italic} \texorpdfstring{$\ast$}{*}(not widely supported)\texorpdfstring{$\ast$}{*}
+\item {\ttfamily underline}
+\item {\ttfamily inverse}
+\item {\ttfamily hidden}
+\item {\ttfamily strikethrough} \texorpdfstring{$\ast$}{*}(not widely supported)\texorpdfstring{$\ast$}{*}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2536a40a8ac604f6ce5a7d745da74bd34_autotoc_md715}{}\doxysubsection{\texorpdfstring{Colors}{Colors}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2536a40a8ac604f6ce5a7d745da74bd34_autotoc_md715}
+
+\begin{DoxyItemize}
+\item {\ttfamily black}
+\item {\ttfamily red}
+\item {\ttfamily green}
+\item {\ttfamily yellow}
+\item {\ttfamily blue}
+\item {\ttfamily magenta}
+\item {\ttfamily cyan}
+\item {\ttfamily white}
+\item {\ttfamily gray}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2536a40a8ac604f6ce5a7d745da74bd34_autotoc_md716}{}\doxysubsection{\texorpdfstring{Background colors}{Background colors}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2536a40a8ac604f6ce5a7d745da74bd34_autotoc_md716}
+
+\begin{DoxyItemize}
+\item {\ttfamily bg\+Black}
+\item {\ttfamily bg\+Red}
+\item {\ttfamily bg\+Green}
+\item {\ttfamily bg\+Yellow}
+\item {\ttfamily bg\+Blue}
+\item {\ttfamily bg\+Magenta}
+\item {\ttfamily bg\+Cyan}
+\item {\ttfamily bg\+White}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2536a40a8ac604f6ce5a7d745da74bd34_autotoc_md717}{}\doxysection{\texorpdfstring{Advanced usage}{Advanced usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2536a40a8ac604f6ce5a7d745da74bd34_autotoc_md717}
+By default you get a map of styles, but the styles are also available as groups. They are non-\/enumerable so they don\textquotesingle{}t show up unless you access them explicitly. This makes it easier to expose only a subset in a higher-\/level module.
+
+
+\begin{DoxyItemize}
+\item {\ttfamily ansi.\+modifiers}
+\item {\ttfamily ansi.\+colors}
+\item {\ttfamily ansi.\+bg\+Colors}
+\end{DoxyItemize}
+
+\doxysubparagraph*{Example}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{console.log(ansi.colors.green.open);}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2536a40a8ac604f6ce5a7d745da74bd34_autotoc_md718}{}\doxysection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2536a40a8ac604f6ce5a7d745da74bd34_autotoc_md718}
+MIT © \href{http://sindresorhus.com}{\texttt{ Sindre Sorhus}} 

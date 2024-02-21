@@ -1,0 +1,149 @@
+\doxysection{Internal\+API.\+Services.\+Ainslie\+News\+Service Class Reference}
+\hypertarget{class_internal_a_p_i_1_1_services_1_1_ainslie_news_service}{}\label{class_internal_a_p_i_1_1_services_1_1_ainslie_news_service}\index{InternalAPI.Services.AinslieNewsService@{InternalAPI.Services.AinslieNewsService}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_ainslie_news_service_a51c91f637d62e05204d982d7489ac52c}{Ainslie\+News\+Service}} (\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{Log\+Service}} logger, IOptions$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_ainslie_news_settings}{Ainslie\+News\+Settings}} $>$ settings)
+\item 
+\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_ainslie_news_1_1_ainslie_news_auth_response}{Ainslie\+News\+Auth\+Response}} \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_ainslie_news_service_a2d4c6c85a411ab9c5b3a9c1149f62d3b}{Authenticate}} ()
+\item 
+object \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_ainslie_news_service_a16fc9a9d1abf263bd24d381f281e9be0}{Subscribe\+New\+Contact}} (\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_ainslie_news_1_1_ainslie_news_subscriber}{Ainslie\+News\+Subscriber}} subscriber)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_services_1_1_ainslie_news_service_a51c91f637d62e05204d982d7489ac52c}\label{class_internal_a_p_i_1_1_services_1_1_ainslie_news_service_a51c91f637d62e05204d982d7489ac52c} 
+\index{InternalAPI.Services.AinslieNewsService@{InternalAPI.Services.AinslieNewsService}!AinslieNewsService@{AinslieNewsService}}
+\index{AinslieNewsService@{AinslieNewsService}!InternalAPI.Services.AinslieNewsService@{InternalAPI.Services.AinslieNewsService}}
+\doxysubsubsection{\texorpdfstring{AinslieNewsService()}{AinslieNewsService()}}
+{\footnotesize\ttfamily Internal\+API.\+Services.\+Ainslie\+News\+Service.\+Ainslie\+News\+Service (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{Log\+Service}}}]{logger,  }\item[{IOptions$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_ainslie_news_settings}{Ainslie\+News\+Settings}} $>$}]{settings }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger\ =\ logger;}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \_settings\ =\ settings.Value;}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_services_1_1_ainslie_news_service_a2d4c6c85a411ab9c5b3a9c1149f62d3b}\label{class_internal_a_p_i_1_1_services_1_1_ainslie_news_service_a2d4c6c85a411ab9c5b3a9c1149f62d3b} 
+\index{InternalAPI.Services.AinslieNewsService@{InternalAPI.Services.AinslieNewsService}!Authenticate@{Authenticate}}
+\index{Authenticate@{Authenticate}!InternalAPI.Services.AinslieNewsService@{InternalAPI.Services.AinslieNewsService}}
+\doxysubsubsection{\texorpdfstring{Authenticate()}{Authenticate()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_ainslie_news_1_1_ainslie_news_auth_response}{Ainslie\+News\+Auth\+Response}} Internal\+API.\+Services.\+Ainslie\+News\+Service.\+Authenticate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ var\ APIBase\ =\ \_settings.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_ainslie_news_settings_af359f572fce04c1229887f9c1e23282f}{BaseURL}};}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ var\ APIAuthenticateEndpoint\ =\ \_settings.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_ainslie_news_settings_a8513f99abf46baf25246711d866b3fc4}{AuthenticateEndpoint}};}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ var\ APIUser\ =\ \_settings.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_ainslie_news_settings_aa783ab61a42038a7dc3475e350ce055e}{Username}};}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ var\ APIPass\ =\ \_settings.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_ainslie_news_settings_a121a7a2c609077aaf052ab8d8098128c}{Password}};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ RestClient\ client\ =\ \textcolor{keyword}{new}\ RestClient(APIBase);}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ var\ request\ =\ \textcolor{keyword}{new}\ RestRequest(APIAuthenticateEndpoint,\ Method.POST);}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ request.AlwaysMultipartFormData\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddParameter(\textcolor{stringliteral}{"{}email"{}},\ APIUser);}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddParameter(\textcolor{stringliteral}{"{}password"{}},\ APIPass);}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ response\ =\ client.Execute(request);}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ JSONResponse\ =\ response.Content;}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response.StatusCode\ !=\ HttpStatusCode.OK)}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a778dd1666ec20e3197598d7aa41e0cba}{LogError}}(LogService.LogSources.AinslieNewsService,\ \$\textcolor{stringliteral}{"{}Error\ response\ not\ 200\ OK\ trying\ to\ authenticate\ at\ mail\ subscribe\ endpoint.\ \ Data:\ \{JSONResponse\}"{}});}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_ainslie_news_1_1_ainslie_news_auth_response}{AinslieNewsAuthResponse}}()\ \{\ success\ =\ \textcolor{keyword}{false}\ \};}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_ainslie_news_1_1_ainslie_news_auth_response}{AinslieNewsAuthResponse}}\ result\ =\ JsonConvert.DeserializeObject<\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_ainslie_news_1_1_ainslie_news_auth_response}{AinslieNewsAuthResponse}}>(JSONResponse);}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (result.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_ainslie_news_1_1_ainslie_news_auth_response_a69c6cc64e33197ad39c112fd7f69d9af}{success}})}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_acf860ff3326ea65346a173f3479c6e57}{LogDebug}}(LogService.LogSources.AinslieNewsService,\ \$\textcolor{stringliteral}{"{}Authenticated\ at\ ainslie\ news\ endpoint"{}},\ result);}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a778dd1666ec20e3197598d7aa41e0cba}{LogError}}(LogService.LogSources.AinslieNewsService,\ \$\textcolor{stringliteral}{"{}Unable\ to\ at\ ainslie\ news\ endpoint"{}},\ result);}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_ad25f9b254876bb11d042df6148dab40a}{LogException}}(LogService.LogSources.AinslieNewsService,\ \$\textcolor{stringliteral}{"{}Exception\ trying\ to\ authenticate\ at\ mail\ subscribe\ endpoint."{}},\ ex);}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_ainslie_news_1_1_ainslie_news_auth_response}{AinslieNewsAuthResponse}}()\ \{\ success\ =\ \textcolor{keyword}{false}\ \};}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_internal_a_p_i_1_1_services_1_1_ainslie_news_service_a2d4c6c85a411ab9c5b3a9c1149f62d3b_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_internal_a_p_i_1_1_services_1_1_ainslie_news_service_a16fc9a9d1abf263bd24d381f281e9be0}\label{class_internal_a_p_i_1_1_services_1_1_ainslie_news_service_a16fc9a9d1abf263bd24d381f281e9be0} 
+\index{InternalAPI.Services.AinslieNewsService@{InternalAPI.Services.AinslieNewsService}!SubscribeNewContact@{SubscribeNewContact}}
+\index{SubscribeNewContact@{SubscribeNewContact}!InternalAPI.Services.AinslieNewsService@{InternalAPI.Services.AinslieNewsService}}
+\doxysubsubsection{\texorpdfstring{SubscribeNewContact()}{SubscribeNewContact()}}
+{\footnotesize\ttfamily object Internal\+API.\+Services.\+Ainslie\+News\+Service.\+Subscribe\+New\+Contact (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_ainslie_news_1_1_ainslie_news_subscriber}{Ainslie\+News\+Subscriber}}}]{subscriber }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (authObject\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ authObject\ =\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_ainslie_news_service_a2d4c6c85a411ab9c5b3a9c1149f62d3b}{Authenticate}}();}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(authObject\ ==\ \textcolor{keyword}{null}\ ||\ !authObject.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_ainslie_news_1_1_ainslie_news_auth_response_a69c6cc64e33197ad39c112fd7f69d9af}{success}})}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a778dd1666ec20e3197598d7aa41e0cba}{LogError}}(LogService.LogSources.AinslieNewsService,\ \$\textcolor{stringliteral}{"{}Authentication\ error\ at\ subscribe\ endpoint."{}},\ authObject);}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_ainslie_news_1_1_ainslie_news_subscribe_response}{AinslieNewsSubscribeResponse}}()\ \{\ success\ =\ \textcolor{keyword}{false}\ \};}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ var\ APIBase\ =\ \_settings.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_ainslie_news_settings_af359f572fce04c1229887f9c1e23282f}{BaseURL}};}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ var\ APISubscribeEndpoint\ =\ \_settings.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_ainslie_news_settings_ac199a1e8c2271b4bdc70abc322c47b6a}{SubscribeEndpoint}};}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ RestClient\ client\ =\ \textcolor{keyword}{new}\ RestClient(APIBase);}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ client.Authenticator\ =\ \textcolor{keyword}{new}\ OAuth2AuthorizationRequestHeaderAuthenticator(authObject.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_ainslie_news_1_1_ainslie_news_auth_response_a73c49cca80b67e006c95abce4da42cf5}{data}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_ainslie_news_1_1_ainslie_news_auth_response_data_add94051654dd6b9a2d2f9ea8f399bb59}{token}},\ \textcolor{stringliteral}{"{}Bearer"{}});}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ var\ request\ =\ \textcolor{keyword}{new}\ RestRequest(APISubscribeEndpoint,\ Method.POST);}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddHeader(\textcolor{stringliteral}{"{}Content-\/Type"{}},\ \textcolor{stringliteral}{"{}application/x-\/www-\/form-\/urlencoded"{}});}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddParameter(\textcolor{stringliteral}{"{}first\_name"{}},\ subscriber.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_ainslie_news_1_1_ainslie_news_subscriber_ab90f33da76cd7c7401e59cae1d7ce457}{first\_name}});}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddParameter(\textcolor{stringliteral}{"{}last\_name"{}},\ subscriber.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_ainslie_news_1_1_ainslie_news_subscriber_a8273c2c3f5f314fa389ff2b89b315921}{last\_name}});}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddParameter(\textcolor{stringliteral}{"{}email"{}},\ subscriber.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_ainslie_news_1_1_ainslie_news_subscriber_aa1c5b2f40656eee60a4c7c33136a8a84}{email}});}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddParameter(\textcolor{stringliteral}{"{}list"{}},\ subscriber.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_ainslie_news_1_1_ainslie_news_subscriber_aa7cee440c15f3550eb70b6157d63cbed}{list}});}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddParameter(\textcolor{stringliteral}{"{}tag"{}},\ subscriber.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_ainslie_news_1_1_ainslie_news_subscriber_ada6364cbdcbf8a0e042cfd6f7f015f7a}{tag}});}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ response\ =\ client.Execute(request);}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response.StatusCode\ !=\ HttpStatusCode.OK)}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//routine\ response,\ no\ need\ to\ log\ as\ it\ happens\ a\ lot\ with\ duplicate\ subscriptions}}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\_logger.LogError(LogService.LogSources.AinslieNewsService,\ \$"{}Error\ response\ not\ 200\ OK\ from\ mail\ subscribe\ endpoint\ trying\ to\ subscribe\ new\ user."{},\ JSONResponse);}}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_acf860ff3326ea65346a173f3479c6e57}{LogDebug}}(LogService.LogSources.AinslieNewsService,\ \$\textcolor{stringliteral}{"{}Error\ response\ not\ 200\ OK\ from\ mail\ subscribe\ endpoint\ trying\ to\ subscribe\ new\ user."{}},\ response.Content);}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \{\ success\ =\ \textcolor{keyword}{false},\ statuscode\ =\ response.StatusCode.ToString(),\ statusdescription\ =\ response.StatusDescription,\ responsecontent\ =\ response.Content\ \};}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ result\ =\ JsonConvert.DeserializeObject<\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_ainslie_news_1_1_ainslie_news_subscribe_response}{AinslieNewsSubscribeResponse}}>(response.Content);}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (result.success)}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_ae7208181482f25f801a9d637367cc5e7}{LogInformation}}(LogService.LogSources.AinslieNewsService,\ \$\textcolor{stringliteral}{"{}Subscribed\ new\ user\ to\ mail\ subscribe\ endpoint."{}},\ subscriber);}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_ad25f9b254876bb11d042df6148dab40a}{LogException}}(LogService.LogSources.AinslieNewsService,\ \$\textcolor{stringliteral}{"{}Exception\ trying\ to\ subscribe\ user\ to\ mail\ subscribe\ endpoint."{}},\ ex);}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_ainslie_news_1_1_ainslie_news_subscribe_response}{AinslieNewsSubscribeResponse}}()\ \{\ success\ =\ \textcolor{keyword}{false}\ \};}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_internal_a_p_i_1_1_services_1_1_ainslie_news_service_a16fc9a9d1abf263bd24d381f281e9be0_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+STRIDER/source/repos/\+Internal\+API/\+Internal\+API/\+Services/\+Ainslie\+News/\mbox{\hyperlink{_ainslie_news_service_8cs}{Ainslie\+News\+Service.\+cs}}\end{DoxyCompactItemize}

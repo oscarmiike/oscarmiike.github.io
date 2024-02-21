@@ -1,0 +1,69 @@
+\doxysection{Internal\+API.\+Controllers.\+SMSController Class Reference}
+\hypertarget{class_internal_a_p_i_1_1_controllers_1_1_s_m_s_controller}{}\label{class_internal_a_p_i_1_1_controllers_1_1_s_m_s_controller}\index{InternalAPI.Controllers.SMSController@{InternalAPI.Controllers.SMSController}}
+
+
+Inheritance diagram for Internal\+API.\+Controllers.\+SMSController\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{class_internal_a_p_i_1_1_controllers_1_1_s_m_s_controller__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Internal\+API.\+Controllers.\+SMSController\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{class_internal_a_p_i_1_1_controllers_1_1_s_m_s_controller__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_s_m_s_controller_ac165dbb6f2a64c56eb2c8a5ac0cd2e6a}{SMSController}} (\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{Log\+Service}} logger, \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_s_m_s_global_service}{SMSGlobal\+Service}} sms\+Global\+Service)
+\item 
+Action\+Result \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_s_m_s_controller_a9f9bda926d6eaae406901eea61d151a1}{Send\+SMS}} (\mbox{[}From\+Body\mbox{]} \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_s_m_s_global_1_1_s_m_s_send_request}{SMSSend\+Request}} sms\+Send\+Request)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_s_m_s_controller_ac165dbb6f2a64c56eb2c8a5ac0cd2e6a}\label{class_internal_a_p_i_1_1_controllers_1_1_s_m_s_controller_ac165dbb6f2a64c56eb2c8a5ac0cd2e6a} 
+\index{InternalAPI.Controllers.SMSController@{InternalAPI.Controllers.SMSController}!SMSController@{SMSController}}
+\index{SMSController@{SMSController}!InternalAPI.Controllers.SMSController@{InternalAPI.Controllers.SMSController}}
+\doxysubsubsection{\texorpdfstring{SMSController()}{SMSController()}}
+{\footnotesize\ttfamily Internal\+API.\+Controllers.\+SMSController.\+SMSController (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{Log\+Service}}}]{logger,  }\item[{\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_s_m_s_global_service}{SMSGlobal\+Service}}}]{sms\+Global\+Service }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger\ =\ logger;}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \_smsGlobalService\ =\ smsGlobalService;}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_s_m_s_controller_a9f9bda926d6eaae406901eea61d151a1}\label{class_internal_a_p_i_1_1_controllers_1_1_s_m_s_controller_a9f9bda926d6eaae406901eea61d151a1} 
+\index{InternalAPI.Controllers.SMSController@{InternalAPI.Controllers.SMSController}!SendSMS@{SendSMS}}
+\index{SendSMS@{SendSMS}!InternalAPI.Controllers.SMSController@{InternalAPI.Controllers.SMSController}}
+\doxysubsubsection{\texorpdfstring{SendSMS()}{SendSMS()}}
+{\footnotesize\ttfamily Action\+Result Internal\+API.\+Controllers.\+SMSController.\+Send\+SMS (\begin{DoxyParamCaption}\item[{\mbox{[}\+From\+Body\mbox{]} \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_s_m_s_global_1_1_s_m_s_send_request}{SMSSend\+Request}}}]{sms\+Send\+Request }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_acf860ff3326ea65346a173f3479c6e57}{LogDebug}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.SMSController,\ \$\textcolor{stringliteral}{"{}\{HttpContext.Request.Method\}\ Request\ received\ on\ SMS\ controller\ for\ endpoint\ 'send'"{}},\ smsSendRequest);}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_s_m_s_global_1_1_s_m_s_send_response}{SMSSendResponse}}\ sendResponse\ =\ \_smsGlobalService.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_s_m_s_global_service_a16ba8a16243128d190d13f52d86e6966}{SendMessage}}(smsSendRequest);}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sendResponse\ ==\ \textcolor{keyword}{null})\ \ }
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ BadRequest(\textcolor{stringliteral}{"{}Error\ sending\ SMS\ via\ SMSGlobal"{}});\ }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Ok(sendResponse);}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+STRIDER/source/repos/\+Internal\+API/\+Internal\+API/\+Controllers/\mbox{\hyperlink{_s_m_s_controller_8cs}{SMSController.\+cs}}\end{DoxyCompactItemize}

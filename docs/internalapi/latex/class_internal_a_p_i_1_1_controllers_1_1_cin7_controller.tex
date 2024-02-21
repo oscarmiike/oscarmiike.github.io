@@ -1,0 +1,238 @@
+\doxysection{Internal\+API.\+Controllers.\+Cin7\+Controller Class Reference}
+\hypertarget{class_internal_a_p_i_1_1_controllers_1_1_cin7_controller}{}\label{class_internal_a_p_i_1_1_controllers_1_1_cin7_controller}\index{InternalAPI.Controllers.Cin7Controller@{InternalAPI.Controllers.Cin7Controller}}
+
+
+Inheritance diagram for Internal\+API.\+Controllers.\+Cin7\+Controller\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{class_internal_a_p_i_1_1_controllers_1_1_cin7_controller__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Internal\+API.\+Controllers.\+Cin7\+Controller\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{class_internal_a_p_i_1_1_controllers_1_1_cin7_controller__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_cin7_controller_ae5f543ad80060b759285193bc919ef16}{Cin7\+Controller}} (ILogger$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_cin7_controller}{Cin7\+Controller}} $>$ logger, \mbox{\hyperlink{interface_internal_a_p_i_1_1_services_1_1_cin7_1_1_i_cin7_sales_order_service}{ICin7\+Sales\+Order\+Service}} cin7\+Sales\+Cin7\+Sales\+Order\+Service, \mbox{\hyperlink{interface_internal_a_p_i_1_1_services_1_1_cin7_1_1_i_cin7_customer_service}{ICin7\+Customer\+Service}} cin7\+Customer\+Service, \mbox{\hyperlink{interface_internal_a_p_i_1_1_services_1_1_background_tasks_1_1_i_background_task_queue}{IBackground\+Task\+Queue}} background\+Task\+Queue, IOptions$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_cin7_settings}{Cin7\+Settings}} $>$ cin7\+Settings)
+\item 
+async Task$<$ IAction\+Result $>$ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_cin7_controller_acba77cc142a445b1905384e2888ce148}{Pass\+Through}} (\mbox{[}From\+Route\mbox{]} string ainslie\+Company, \mbox{[}From\+Route\mbox{]} string url)
+\begin{DoxyCompactList}\small\item\em Refer\+: \href{https://docs.microsoft.com/en-us/aspnet/core/fundamentals/routing?view=aspnetcore-2.2\#route-template-reference}{\texttt{ https\+://docs.\+microsoft.\+com/en-\/us/aspnet/core/fundamentals/routing?view=aspnetcore-\/2.\+2\#route-\/template-\/reference}}. \end{DoxyCompactList}\item 
+IAction\+Result \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_cin7_controller_a796b6b64f73de3d09d6fe481432a9658}{Create\+Sales\+Order}} (\mbox{[}From\+Route\mbox{]} string ainslie\+Company, \mbox{[}From\+Body\mbox{]} \mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_sales_order_request}{Create\+Cin7\+Sales\+Order\+Request}} create\+Order\+Request)
+\item 
+IAction\+Result \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_cin7_controller_afd89ec18d9db0b053b22a5341b878fa8}{Add\+Payment}} (\mbox{[}From\+Route\mbox{]} string ainslie\+Company, \mbox{[}From\+Body\mbox{]} \mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_payment_web_hook_request}{Create\+Cin7\+Payment\+Web\+Hook\+Request}} create\+Payment\+Request)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_cin7_controller_ae5f543ad80060b759285193bc919ef16}\label{class_internal_a_p_i_1_1_controllers_1_1_cin7_controller_ae5f543ad80060b759285193bc919ef16} 
+\index{InternalAPI.Controllers.Cin7Controller@{InternalAPI.Controllers.Cin7Controller}!Cin7Controller@{Cin7Controller}}
+\index{Cin7Controller@{Cin7Controller}!InternalAPI.Controllers.Cin7Controller@{InternalAPI.Controllers.Cin7Controller}}
+\doxysubsubsection{\texorpdfstring{Cin7Controller()}{Cin7Controller()}}
+{\footnotesize\ttfamily Internal\+API.\+Controllers.\+Cin7\+Controller.\+Cin7\+Controller (\begin{DoxyParamCaption}\item[{ILogger$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_cin7_controller}{Cin7\+Controller}} $>$}]{logger,  }\item[{\mbox{\hyperlink{interface_internal_a_p_i_1_1_services_1_1_cin7_1_1_i_cin7_sales_order_service}{ICin7\+Sales\+Order\+Service}}}]{cin7\+Sales\+Cin7\+Sales\+Order\+Service,  }\item[{\mbox{\hyperlink{interface_internal_a_p_i_1_1_services_1_1_cin7_1_1_i_cin7_customer_service}{ICin7\+Customer\+Service}}}]{cin7\+Customer\+Service,  }\item[{\mbox{\hyperlink{interface_internal_a_p_i_1_1_services_1_1_background_tasks_1_1_i_background_task_queue}{IBackground\+Task\+Queue}}}]{background\+Task\+Queue,  }\item[{IOptions$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_cin7_settings}{Cin7\+Settings}} $>$}]{cin7\+Settings }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ this.logger\ =\ logger;}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ this.\_cin7SalesOrderService\ =\ cin7SalesCin7SalesOrderService;}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \_cin7CustomerService\ =\ cin7CustomerService;}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ this.backgroundTaskQueue\ =\ backgroundTaskQueue;}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \_cin7Settings\ =\ cin7Settings.Value;}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_cin7_controller_afd89ec18d9db0b053b22a5341b878fa8}\label{class_internal_a_p_i_1_1_controllers_1_1_cin7_controller_afd89ec18d9db0b053b22a5341b878fa8} 
+\index{InternalAPI.Controllers.Cin7Controller@{InternalAPI.Controllers.Cin7Controller}!AddPayment@{AddPayment}}
+\index{AddPayment@{AddPayment}!InternalAPI.Controllers.Cin7Controller@{InternalAPI.Controllers.Cin7Controller}}
+\doxysubsubsection{\texorpdfstring{AddPayment()}{AddPayment()}}
+{\footnotesize\ttfamily IAction\+Result Internal\+API.\+Controllers.\+Cin7\+Controller.\+Add\+Payment (\begin{DoxyParamCaption}\item[{\mbox{[}\+From\+Route\mbox{]} string}]{ainslie\+Company,  }\item[{\mbox{[}\+From\+Body\mbox{]} \mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_payment_web_hook_request}{Create\+Cin7\+Payment\+Web\+Hook\+Request}}}]{create\+Payment\+Request }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ logger.LogInformation(\$\textcolor{stringliteral}{"{}Received\ create\ payment\ request\ for\ Cin7\ Order\ Id\ \{createPaymentRequest.Cin7OrderId\}"{}});}
+\DoxyCodeLine{00154\ }
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (ainslieCompany.ToLower())}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{stringliteral}{"{}ab"{}}:}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ createPaymentRequest.Company\ =\ \mbox{\hyperlink{namespace_internal_a_p_i_1_1_requests_adf51189d6a8e38adf5f9e6aced670be6}{AinslieCompanyOption}}.AB;}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00160\ }
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{stringliteral}{"{}aw"{}}:}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ createPaymentRequest.Company\ =\ \mbox{\hyperlink{namespace_internal_a_p_i_1_1_requests_adf51189d6a8e38adf5f9e6aced670be6}{AinslieCompanyOption}}.AW;}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00164\ }
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{stringliteral}{"{}abm"{}}:}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ createPaymentRequest.Company\ =\ \mbox{\hyperlink{namespace_internal_a_p_i_1_1_requests_adf51189d6a8e38adf5f9e6aced670be6}{AinslieCompanyOption}}.ABM;}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00168\ }
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ logger.LogError(\$\textcolor{stringliteral}{"{}Request\ made\ for\ unknown\ Cin7\ company\ code.\ \ Code\ received:\ '\{ainslieCompany\}'."{}});}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ NotFound();}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00173\ }
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\textcolor{keywordtype}{double}.TryParse(createPaymentRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_payment_web_hook_request_a79f19ec88c519c55ef3f43a25afb2551}{Amount}}.Replace(\textcolor{stringliteral}{"{}\$"{}},\ \textcolor{stringliteral}{"{}"{}}),\ out\ var\ dblAmount))}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ BadRequest(\$\textcolor{stringliteral}{"{}Unable\ to\ parse\ amount\ to\ double:\ \{createPaymentRequest.Amount\}"{}});}
+\DoxyCodeLine{00176\ }
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ \ \_cin7SalesOrderService.\mbox{\hyperlink{interface_internal_a_p_i_1_1_services_1_1_cin7_1_1_i_cin7_sales_order_service_aae3b4a1f18a9ab08a59295bfa9a7b3f6}{CreatePayment}}(\textcolor{keyword}{new}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_payment_request}{CreateCin7PaymentRequest}}()}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Cin7OrderId\ =\ createPaymentRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_payment_web_hook_request_a19a66380eb04773ec00dd5f0d5963926}{Cin7OrderId}},}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Company\ =\ createPaymentRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_payment_web_hook_request_ae089d27480205fdaff1facd5f7dce9c7}{Company}},}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Payments\ =\ \textcolor{keyword}{new}\ List<CreatePaymentDetails>() }
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_payment_details}{CreatePaymentDetails}}() }
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Amount\ =\ \ dblAmount,}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ IsAuthorized\ =\ \textcolor{keyword}{false},}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CreatedDate\ =\ DateTime.Now,}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ModifiedDate\ =\ DateTime.Now,}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Method\ =\ createPaymentRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_payment_web_hook_request_ad2b900cf13fb2a91e05c0941da193f3d}{PaymentMethod}},}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ OrderId\ =\ createPaymentRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_payment_web_hook_request_a19a66380eb04773ec00dd5f0d5963926}{Cin7OrderId}},}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PaymentDate\ =\ DateTime.Now}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{00195\ }
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Ok();}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_cin7_controller_a796b6b64f73de3d09d6fe481432a9658}\label{class_internal_a_p_i_1_1_controllers_1_1_cin7_controller_a796b6b64f73de3d09d6fe481432a9658} 
+\index{InternalAPI.Controllers.Cin7Controller@{InternalAPI.Controllers.Cin7Controller}!CreateSalesOrder@{CreateSalesOrder}}
+\index{CreateSalesOrder@{CreateSalesOrder}!InternalAPI.Controllers.Cin7Controller@{InternalAPI.Controllers.Cin7Controller}}
+\doxysubsubsection{\texorpdfstring{CreateSalesOrder()}{CreateSalesOrder()}}
+{\footnotesize\ttfamily IAction\+Result Internal\+API.\+Controllers.\+Cin7\+Controller.\+Create\+Sales\+Order (\begin{DoxyParamCaption}\item[{\mbox{[}\+From\+Route\mbox{]} string}]{ainslie\+Company,  }\item[{\mbox{[}\+From\+Body\mbox{]} \mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_sales_order_request}{Create\+Cin7\+Sales\+Order\+Request}}}]{create\+Order\+Request }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ logger.LogInformation(\$\textcolor{stringliteral}{"{}Received\ create\ sales\ order\ request\ for\ \{createOrderRequest.CustomerDetails?.FirstName\}\ \{createOrderRequest.CustomerDetails?.Surname\}"{}});}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (ainslieCompany.ToLower())}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{stringliteral}{"{}ab"{}}:}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ createOrderRequest.AinslieCompanyOption\ =\ \mbox{\hyperlink{namespace_internal_a_p_i_1_1_requests_adf51189d6a8e38adf5f9e6aced670be6}{AinslieCompanyOption}}.AB;}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{stringliteral}{"{}aw"{}}:}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ createOrderRequest.AinslieCompanyOption\ =\ \mbox{\hyperlink{namespace_internal_a_p_i_1_1_requests_adf51189d6a8e38adf5f9e6aced670be6}{AinslieCompanyOption}}.AW;}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{stringliteral}{"{}abm"{}}:}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ createOrderRequest.AinslieCompanyOption\ =\ \mbox{\hyperlink{namespace_internal_a_p_i_1_1_requests_adf51189d6a8e38adf5f9e6aced670be6}{AinslieCompanyOption}}.ABM;}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00137\ }
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ logger.LogError(\$\textcolor{stringliteral}{"{}Request\ made\ for\ unknown\ Cin7\ company\ code.\ \ Code\ received:\ '\{ainslieCompany\}'."{}});}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ NotFound();}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Queue}}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ backgroundTaskQueue.\mbox{\hyperlink{interface_internal_a_p_i_1_1_services_1_1_background_tasks_1_1_i_background_task_queue_ad586764ac78fc56b87b534d21a58c8da}{Enqueue}}(\textcolor{keyword}{new}\ Task(()\ =>\ \_cin7SalesOrderService.\mbox{\hyperlink{interface_internal_a_p_i_1_1_services_1_1_cin7_1_1_i_cin7_sales_order_service_a59577766e5e3ef5c3fc74a32ca356d31}{CreateSalesOrder}}(createOrderRequest)));}
+\DoxyCodeLine{00145\ }
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Accepted();}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_cin7_controller_acba77cc142a445b1905384e2888ce148}\label{class_internal_a_p_i_1_1_controllers_1_1_cin7_controller_acba77cc142a445b1905384e2888ce148} 
+\index{InternalAPI.Controllers.Cin7Controller@{InternalAPI.Controllers.Cin7Controller}!PassThrough@{PassThrough}}
+\index{PassThrough@{PassThrough}!InternalAPI.Controllers.Cin7Controller@{InternalAPI.Controllers.Cin7Controller}}
+\doxysubsubsection{\texorpdfstring{PassThrough()}{PassThrough()}}
+{\footnotesize\ttfamily async Task$<$ IAction\+Result $>$ Internal\+API.\+Controllers.\+Cin7\+Controller.\+Pass\+Through (\begin{DoxyParamCaption}\item[{\mbox{[}\+From\+Route\mbox{]} string}]{ainslie\+Company,  }\item[{\mbox{[}\+From\+Route\mbox{]} string}]{url }\end{DoxyParamCaption})}
+
+
+
+Refer\+: \href{https://docs.microsoft.com/en-us/aspnet/core/fundamentals/routing?view=aspnetcore-2.2\#route-template-reference}{\texttt{ https\+://docs.\+microsoft.\+com/en-\/us/aspnet/core/fundamentals/routing?view=aspnetcore-\/2.\+2\#route-\/template-\/reference}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ainslie\+Company} & \\
+\hline
+{\em url} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ logger.LogInformation(\$\textcolor{stringliteral}{"{}Received\ pass\ through\ for\ company\ '\{ainslieCompany\}',\ url\ '\{url\}'."{}});}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ TODO:\ is\ this\ still\ necessary?}}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ ServicePointManager.SecurityProtocol\ =\ SecurityProtocolType.Tls12;}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ authenticationString;}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (ainslieCompany.ToLower())}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{stringliteral}{"{}ab"{}}:}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ authenticationString\ =\ \$\textcolor{stringliteral}{"{}\{\_cin7Settings.APIUserBullion\}:\{\_cin7Settings.APIPassBullion\}"{}};}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{stringliteral}{"{}aw"{}}:}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ authenticationString\ =\ \$\textcolor{stringliteral}{"{}\{\_cin7Settings.APIUserWealth\}:\{\_cin7Settings.APIPassWealth\}"{}};}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ logger.LogError(\$\textcolor{stringliteral}{"{}Request\ made\ for\ unknown\ Cin7\ company\ code.\ \ Code\ received:\ '\{ainslieCompany\}'."{}});}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ NotFound();}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ new\ stream\ from\ request}}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ var\ requestUrl\ =\ \$\textcolor{stringliteral}{"{}\{\_cin7Settings.APIBase\}/v1/\{url\}\{(Request.QueryString.HasValue\ ?\ Request.QueryString.Value\ :\ string.Empty)\}"{}};}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ var\ requestMessage\ =}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ HttpRequestMessage(\textcolor{keyword}{new}\ HttpMethod(Request.Method),\ requestUrl);}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Copy\ content}}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Request.Body\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ requestContent;}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Request.Body.Seek(0,\ SeekOrigin.Begin);}}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using}\ (StreamReader\ reader}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ \textcolor{keyword}{new}\ StreamReader(Request.Body))}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ requestContent\ =\ await\ reader.ReadToEndAsync().ConfigureAwait(\textcolor{keyword}{false});}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Request.Body.Seek(0,\ SeekOrigin.Begin);}}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ requestMessage.Content\ =\ \textcolor{keyword}{new}\ StringContent(requestContent,\ Encoding.UTF8,\ Request.ContentType);}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ //\ Headers\ not\ copied\ -\/\ implement\ if\ required}}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//foreach\ (var\ header\ in\ Request.Headers)}}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\{}}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ //\ Content-\/Type\ is\ added\ to\ requestMessage.Content\ above}}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ if\ (!new[]\ \{\ "{}Content-\/Type"{},\ "{}Content-\/Length"{}\ \}.Contains(header.Key))}}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ requestMessage.Headers.Add(header.Key,\ header.Value.ToArray());}}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\}}}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Set\ /\ Add\ Authentication}}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ var\ base64EncodedAuthenticationString\ =\ Convert.ToBase64String(Encoding.ASCII.GetBytes(authenticationString));}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ requestMessage.Headers.Authorization\ =\ \textcolor{keyword}{new}\ AuthenticationHeaderValue(\textcolor{stringliteral}{"{}Basic"{}},\ base64EncodedAuthenticationString);}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ var\ httpClient\ =\ \textcolor{keyword}{new}\ HttpClient();}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ var\ responseMessage\ =\ await\ httpClient.SendAsync(requestMessage).ConfigureAwait(\textcolor{keyword}{false});}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ var\ responseBody\ =\ await\ responseMessage.Content.ReadAsStringAsync().ConfigureAwait(\textcolor{keyword}{false});}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ StatusCode((\textcolor{keywordtype}{int})\ responseMessage.StatusCode,\ responseBody);}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+STRIDER/source/repos/\+Internal\+API/\+Internal\+API/\+Controllers/\mbox{\hyperlink{_cin7_controller_8cs}{Cin7\+Controller.\+cs}}\end{DoxyCompactItemize}

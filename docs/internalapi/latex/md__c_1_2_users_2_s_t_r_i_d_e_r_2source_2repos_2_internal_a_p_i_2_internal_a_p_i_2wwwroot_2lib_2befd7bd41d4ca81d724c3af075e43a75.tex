@@ -1,0 +1,18 @@
+\chapter{mkpath}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2befd7bd41d4ca81d724c3af075e43a75}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2befd7bd41d4ca81d724c3af075e43a75}\index{mkpath@{mkpath}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2befd7bd41d4ca81d724c3af075e43a75_autotoc_md3391}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2befd7bd41d4ca81d724c3af075e43a75_autotoc_md3391}%
+ Make all directories in a path, like {\ttfamily mkdir -\/p}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2befd7bd41d4ca81d724c3af075e43a75_autotoc_md3392}{}\doxysection{\texorpdfstring{How to use}{How to use}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2befd7bd41d4ca81d724c3af075e43a75_autotoc_md3392}
+\begin{DoxyVerb}var mkpath = require('mkpath');
+
+mkpath('red/green/violet', function (err) {
+    if (err) throw err;
+    console.log('Directory structure red/green/violet created');
+});
+
+mkpath.sync('/tmp/blue/orange', 0700);
+\end{DoxyVerb}
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2befd7bd41d4ca81d724c3af075e43a75_autotoc_md3393}{}\doxysubsection{\texorpdfstring{mkpath(path, \mbox{[}mode = 0777 \& (\texorpdfstring{$\sim$}{\string~}process.umask()),\mbox{]} \mbox{[}callback\mbox{]})}{mkpath(path, \mbox{[}mode = 0777 \& (\texorpdfstring{$\sim$}{\string~}process.umask()),\mbox{]} \mbox{[}callback\mbox{]})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2befd7bd41d4ca81d724c3af075e43a75_autotoc_md3393}
+Create all directories that don\textquotesingle{}t exist in {\ttfamily path} with permissions {\ttfamily mode}. When finished, {\ttfamily callback(err)} fires with the error, if any.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2befd7bd41d4ca81d724c3af075e43a75_autotoc_md3394}{}\doxysubsection{\texorpdfstring{mkpath.\+sync(path, \mbox{[}mode = 0777 \& (\texorpdfstring{$\sim$}{\string~}process.umask())\mbox{]});}{mkpath.\+sync(path, \mbox{[}mode = 0777 \& (\texorpdfstring{$\sim$}{\string~}process.umask())\mbox{]});}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2befd7bd41d4ca81d724c3af075e43a75_autotoc_md3394}
+Synchronous version of the same. Throws error, if any.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2befd7bd41d4ca81d724c3af075e43a75_autotoc_md3395}{}\doxysection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2befd7bd41d4ca81d724c3af075e43a75_autotoc_md3395}
+This software is released under the \href{http://www.opensource.org/licenses/MIT}{\texttt{ MIT license}}. 

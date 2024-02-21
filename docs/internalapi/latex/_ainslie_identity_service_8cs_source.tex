@@ -1,0 +1,58 @@
+\doxysection{Ainslie\+Identity\+Service.\+cs}
+\hypertarget{_ainslie_identity_service_8cs_source}{}\label{_ainslie_identity_service_8cs_source}\index{C:/Users/STRIDER/source/repos/InternalAPI/InternalAPI/Services/AinslieIdentity/AinslieIdentityService.cs@{C:/Users/STRIDER/source/repos/InternalAPI/InternalAPI/Services/AinslieIdentity/AinslieIdentityService.cs}}
+\mbox{\hyperlink{_ainslie_identity_service_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_ainslie_identity_service_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_ainslie_identity_service_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_ainslie_identity_service_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }System.Linq;}
+\DoxyCodeLine{\Hypertarget{_ainslie_identity_service_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }System.Threading.Tasks;}
+\DoxyCodeLine{\Hypertarget{_ainslie_identity_service_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }Microsoft.Extensions.Configuration;}
+\DoxyCodeLine{\Hypertarget{_ainslie_identity_service_8cs_source_l00006}00006\ \textcolor{keyword}{using\ }System.Web;}
+\DoxyCodeLine{\Hypertarget{_ainslie_identity_service_8cs_source_l00007}00007\ \textcolor{keyword}{using\ }RestSharp;}
+\DoxyCodeLine{\Hypertarget{_ainslie_identity_service_8cs_source_l00008}00008\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_dto_1_1_ainslie_identity}{InternalAPI.Dto.AinslieIdentity}};}
+\DoxyCodeLine{\Hypertarget{_ainslie_identity_service_8cs_source_l00009}00009\ \textcolor{keyword}{using\ }Newtonsoft.Json;}
+\DoxyCodeLine{\Hypertarget{_ainslie_identity_service_8cs_source_l00010}00010\ \textcolor{keyword}{using\ }System.Text;}
+\DoxyCodeLine{\Hypertarget{_ainslie_identity_service_8cs_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{_ainslie_identity_service_8cs_source_l00012}\mbox{\hyperlink{namespace_internal_a_p_i_1_1_services_1_1_ainslie_identity}{00012}}\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_services_1_1_ainslie_identity}{InternalAPI.Services.AinslieIdentity}}}
+\DoxyCodeLine{\Hypertarget{_ainslie_identity_service_8cs_source_l00013}00013\ \{}
+\DoxyCodeLine{\Hypertarget{_ainslie_identity_service_8cs_source_l00014}\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_ainslie_identity_1_1_auth_cookie_service}{00014}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_ainslie_identity_1_1_auth_cookie_service}{AuthCookieService}}}
+\DoxyCodeLine{\Hypertarget{_ainslie_identity_service_8cs_source_l00015}00015\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ainslie_identity_service_8cs_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_ainslie_identity_service_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ IConfiguration\ \_configuration\ \{\ \textcolor{keyword}{get};\ \textcolor{keyword}{set};\ \}}
+\DoxyCodeLine{\Hypertarget{_ainslie_identity_service_8cs_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{_ainslie_identity_service_8cs_source_l00019}\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_ainslie_identity_1_1_auth_cookie_service_a1c35eba0fa55e5701d43d7b970a2f9b3}{00019}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_ainslie_identity_1_1_auth_cookie_service_a1c35eba0fa55e5701d43d7b970a2f9b3}{AuthCookieService}}(IConfiguration\ configuration)}
+\DoxyCodeLine{\Hypertarget{_ainslie_identity_service_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ainslie_identity_service_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \ \ \ \ \_configuration\ =\ configuration;}
+\DoxyCodeLine{\Hypertarget{_ainslie_identity_service_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ainslie_identity_service_8cs_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{_ainslie_identity_service_8cs_source_l00024}\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_ainslie_identity_1_1_auth_cookie_service_af537910bbb6d29c4be84aa4670f5ab3c}{00024}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_ainslie_identity_1_1_ainslie_identity_response}{AinslieIdentityResponse}}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_ainslie_identity_1_1_auth_cookie_service_af537910bbb6d29c4be84aa4670f5ab3c}{PopulateAuthCookie}}(RestClient\ client)}
+\DoxyCodeLine{\Hypertarget{_ainslie_identity_service_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ainslie_identity_service_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ var\ username\ =\ \_configuration[\textcolor{stringliteral}{"{}AinslieIdentitySettings:APIUser"{}}];}
+\DoxyCodeLine{\Hypertarget{_ainslie_identity_service_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ var\ password\ =\ \_configuration[\textcolor{stringliteral}{"{}AinslieIdentitySettings:APIPass"{}}];}
+\DoxyCodeLine{\Hypertarget{_ainslie_identity_service_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ var\ baseUrl\ =\ \ \_configuration[\textcolor{stringliteral}{"{}AinslieIdentitySettings:BaseURL"{}}];}
+\DoxyCodeLine{\Hypertarget{_ainslie_identity_service_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ var\ authCookieEndpoint\ =\ \_configuration[\textcolor{stringliteral}{"{}AinslieIdentitySettings:AuthCookieEndpoint"{}}];}
+\DoxyCodeLine{\Hypertarget{_ainslie_identity_service_8cs_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_ainslie_identity_service_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ client.BaseUrl\ =\ \textcolor{keyword}{new}\ Uri(baseUrl);\ }
+\DoxyCodeLine{\Hypertarget{_ainslie_identity_service_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ RestRequest\ request\ =\ \textcolor{keyword}{new}\ RestRequest(authCookieEndpoint,\ Method.GET);}
+\DoxyCodeLine{\Hypertarget{_ainslie_identity_service_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddHeader(\textcolor{stringliteral}{"{}Content-\/Type"{}},\ \textcolor{stringliteral}{"{}application/json"{}});}
+\DoxyCodeLine{\Hypertarget{_ainslie_identity_service_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddHeader(\textcolor{stringliteral}{"{}Accept"{}},\ \textcolor{stringliteral}{"{}application/json"{}});}
+\DoxyCodeLine{\Hypertarget{_ainslie_identity_service_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddHeader(\textcolor{stringliteral}{"{}Authorization"{}},\ Base64EncodeCredentials(username,\ password));}
+\DoxyCodeLine{\Hypertarget{_ainslie_identity_service_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ var\ response\ =\ client.Execute(request);}
+\DoxyCodeLine{\Hypertarget{_ainslie_identity_service_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_ainslie_identity_1_1_ainslie_identity_response}{AinslieIdentityResponse}}\ ainslieIdentityResponse\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_ainslie_identity_1_1_ainslie_identity_response}{AinslieIdentityResponse}}();}
+\DoxyCodeLine{\Hypertarget{_ainslie_identity_service_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response.IsSuccessful)}
+\DoxyCodeLine{\Hypertarget{_ainslie_identity_service_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ainslie_identity_service_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ainslieIdentityResponse\ =\ JsonConvert.DeserializeObject<\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_ainslie_identity_1_1_ainslie_identity_response}{AinslieIdentityResponse}}>(response.Content);}
+\DoxyCodeLine{\Hypertarget{_ainslie_identity_service_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ainslie_identity_service_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ainslieIdentityResponse;}
+\DoxyCodeLine{\Hypertarget{_ainslie_identity_service_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ainslie_identity_service_8cs_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{_ainslie_identity_service_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{string}\ Base64EncodeCredentials(\textcolor{keywordtype}{string}\ username,\ \textcolor{keywordtype}{string}\ password)}
+\DoxyCodeLine{\Hypertarget{_ainslie_identity_service_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ainslie_identity_service_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ var\ byteArray\ =\ Encoding.ASCII.GetBytes(\$\textcolor{stringliteral}{"{}\{username\}:\{password\}"{}});}
+\DoxyCodeLine{\Hypertarget{_ainslie_identity_service_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$\textcolor{stringliteral}{"{}Basic\ \{Convert.ToBase64String(byteArray)\}"{}};}
+\DoxyCodeLine{\Hypertarget{_ainslie_identity_service_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ainslie_identity_service_8cs_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{_ainslie_identity_service_8cs_source_l00051}00051\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ainslie_identity_service_8cs_source_l00052}00052\ \}}
+
+\end{DoxyCode}

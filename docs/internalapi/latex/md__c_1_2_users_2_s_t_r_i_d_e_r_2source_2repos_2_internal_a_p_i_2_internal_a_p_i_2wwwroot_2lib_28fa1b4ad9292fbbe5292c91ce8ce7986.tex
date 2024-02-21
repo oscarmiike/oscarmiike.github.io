@@ -1,0 +1,47 @@
+\chapter{HAR Validator \texorpdfstring{$<$}{<}a href="{}https\+://www.\+npmjs.\+com/package/har-\/validator"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://img.\+shields.\+io/npm/v/har-\/validator.\+svg?style=flat-\/square"{} alt="{}version"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}a href="{}http\+://choosealicense.\+com/licenses/isc/"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://img.\+shields.\+io/npm/l/har-\/validator.\+svg?style=flat-\/square"{} alt="{}\+License"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28fa1b4ad9292fbbe5292c91ce8ce7986}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28fa1b4ad9292fbbe5292c91ce8ce7986}\index{HAR Validator $<$a href="{}https://www.npmjs.com/package/har-\/validator"{} $>$$<$img src="{}https://img.shields.io/npm/v/har-\/validator.svg?style=flat-\/square"{} alt="{}version"{}/$>$$<$/a$>$ $<$a href="{}http://choosealicense.com/licenses/isc/"{} $>$$<$img src="{}https://img.shields.io/npm/l/har-\/validator.svg?style=flat-\/square"{} alt="{}License"{}/$>$$<$/a$>$@{HAR Validator $<$a href=""https://www.npmjs.com/package/har-\/validator"" $>$$<$img src=""https://img.shields.io/npm/v/har-\/validator.svg?style=flat-\/square"" alt=""version""/$>$$<$/a$>$ $<$a href=""http://choosealicense.com/licenses/isc/"" $>$$<$img src=""https://img.shields.io/npm/l/har-\/validator.svg?style=flat-\/square"" alt=""License""/$>$$<$/a$>$}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28fa1b4ad9292fbbe5292c91ce8ce7986_autotoc_md1580}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28fa1b4ad9292fbbe5292c91ce8ce7986_autotoc_md1580}%
+ \begin{quote}
+Extremely fast HTTP Archive (\href{https://github.com/ahmadnassri/har-spec/blob/master/versions/1.2.md}{\texttt{ HAR}}) validator using JSON Schema. \end{quote}
+\href{https://travis-ci.org/ahmadnassri/har-validator}{\texttt{ }} \href{https://www.npmjs.com/package/har-validator}{\texttt{ }} \href{https://codeclimate.com/github/ahmadnassri/har-validator}{\texttt{ }} \href{https://codeclimate.com/github/ahmadnassri/har-validator}{\texttt{ }} \href{https://dependencyci.com/github/ahmadnassri/har-validator}{\texttt{ }} \href{https://david-dm.org/ahmadnassri/har-validator}{\texttt{ }}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28fa1b4ad9292fbbe5292c91ce8ce7986_autotoc_md1581}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28fa1b4ad9292fbbe5292c91ce8ce7986_autotoc_md1581}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ -\/-\/only=production\ -\/-\/save\ har-\/validator}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28fa1b4ad9292fbbe5292c91ce8ce7986_autotoc_md1582}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28fa1b4ad9292fbbe5292c91ce8ce7986_autotoc_md1582}
+I recommend using an optimized build matching your Node.\+js environment version, otherwise, the standard {\ttfamily require} would work just fine with any version of Node {\ttfamily \texorpdfstring{$>$}{>}= v4.\+0} .
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{/*}
+\DoxyCodeLine{\ *\ Node\ 7}
+\DoxyCodeLine{\ */}
+\DoxyCodeLine{const\ validate\ =\ require('har-\/validator/lib/node7')}
+\DoxyCodeLine{}
+\DoxyCodeLine{/*}
+\DoxyCodeLine{\ *\ Node\ 6}
+\DoxyCodeLine{\ */}
+\DoxyCodeLine{const\ validate\ =\ require('har-\/validator/lib/node6')}
+\DoxyCodeLine{}
+\DoxyCodeLine{/*}
+\DoxyCodeLine{\ *\ Node\ 4\ (Default)}
+\DoxyCodeLine{\ */}
+\DoxyCodeLine{var\ validate\ =\ require('har-\/validator')}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28fa1b4ad9292fbbe5292c91ce8ce7986_autotoc_md1583}{}\doxysection{\texorpdfstring{CLI Usage}{CLI Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28fa1b4ad9292fbbe5292c91ce8ce7986_autotoc_md1583}
+Please refer to \href{https://github.com/ahmadnassri/har-cli}{\texttt{ {\ttfamily har-\/cli}}} for more info.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28fa1b4ad9292fbbe5292c91ce8ce7986_autotoc_md1584}{}\doxysection{\texorpdfstring{API}{API}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28fa1b4ad9292fbbe5292c91ce8ce7986_autotoc_md1584}
+{\bfseries{Note}}\+: as of \href{https://github.com/ahmadnassri/har-validator/releases/tag/v2.0.0}{\texttt{ {\ttfamily v2.\+0.\+0}}} this module defaults to Promise based API. {\itshape For backward comptability with {\ttfamily v1.\+x} an async/callback API is also provided}
+
+
+\begin{DoxyItemize}
+\item async API
+\item callback API
+\item Promise API \texorpdfstring{$\ast$}{*}(default)\texorpdfstring{$\ast$}{*}
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+ \begin{quote}
+\+:copyright\+: \href{https://www.ahmadnassri.com/}{\texttt{ ahmadnassri.\+com}} ~\textperiodcentered{}~ License\+: \href{http://choosealicense.com/licenses/isc/}{\texttt{ ISC}} ~\textperiodcentered{}~ Github\+: \href{https://github.com/ahmadnassri}{\texttt{ @ahmadnassri}} ~\textperiodcentered{}~ Twitter\+: \href{https://twitter.com/ahmadnassri}{\texttt{ @ahmadnassri}} \end{quote}

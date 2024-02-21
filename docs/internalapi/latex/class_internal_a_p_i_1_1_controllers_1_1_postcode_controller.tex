@@ -1,0 +1,107 @@
+\doxysection{Internal\+API.\+Controllers.\+Postcode\+Controller Class Reference}
+\hypertarget{class_internal_a_p_i_1_1_controllers_1_1_postcode_controller}{}\label{class_internal_a_p_i_1_1_controllers_1_1_postcode_controller}\index{InternalAPI.Controllers.PostcodeController@{InternalAPI.Controllers.PostcodeController}}
+
+
+Inheritance diagram for Internal\+API.\+Controllers.\+Postcode\+Controller\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{class_internal_a_p_i_1_1_controllers_1_1_postcode_controller__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Internal\+API.\+Controllers.\+Postcode\+Controller\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{class_internal_a_p_i_1_1_controllers_1_1_postcode_controller__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_postcode_controller_a1e3fc088b5a240fd45c58b2d3f1b4947}{Postcode\+Controller}} (ILogger$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_postcode_controller}{Postcode\+Controller}} $>$ logger, IConfiguration configuration, IWeb\+Host\+Environment web\+Host\+Environment)
+\item 
+Action\+Result$<$ List$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_postcode_1_1_postalcode}{Postalcode}} $>$ $>$ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_postcode_controller_ad2770543c535089522160ece237338ca}{Get\+Postcode}} (string postcode)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_postcode_controller_a1e3fc088b5a240fd45c58b2d3f1b4947}\label{class_internal_a_p_i_1_1_controllers_1_1_postcode_controller_a1e3fc088b5a240fd45c58b2d3f1b4947} 
+\index{InternalAPI.Controllers.PostcodeController@{InternalAPI.Controllers.PostcodeController}!PostcodeController@{PostcodeController}}
+\index{PostcodeController@{PostcodeController}!InternalAPI.Controllers.PostcodeController@{InternalAPI.Controllers.PostcodeController}}
+\doxysubsubsection{\texorpdfstring{PostcodeController()}{PostcodeController()}}
+{\footnotesize\ttfamily Internal\+API.\+Controllers.\+Postcode\+Controller.\+Postcode\+Controller (\begin{DoxyParamCaption}\item[{ILogger$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_postcode_controller}{Postcode\+Controller}} $>$}]{logger,  }\item[{IConfiguration}]{configuration,  }\item[{IWeb\+Host\+Environment}]{web\+Host\+Environment }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger\ =\ logger;}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \_webHostEnvironment\ =\ webHostEnvironment;}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ baseURL\ =\ configuration[\textcolor{stringliteral}{"{}PostcodeSettings:BaseURL"{}}];}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ baseURLV2\ =\ configuration[\textcolor{stringliteral}{"{}PostcodeSettings:baseURLV2"{}}];}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ v2UserName\ =\ configuration[\textcolor{stringliteral}{"{}PostcodeSettings:v2UserName"{}}];}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_postcode_controller_ad2770543c535089522160ece237338ca}\label{class_internal_a_p_i_1_1_controllers_1_1_postcode_controller_ad2770543c535089522160ece237338ca} 
+\index{InternalAPI.Controllers.PostcodeController@{InternalAPI.Controllers.PostcodeController}!GetPostcode@{GetPostcode}}
+\index{GetPostcode@{GetPostcode}!InternalAPI.Controllers.PostcodeController@{InternalAPI.Controllers.PostcodeController}}
+\doxysubsubsection{\texorpdfstring{GetPostcode()}{GetPostcode()}}
+{\footnotesize\ttfamily Action\+Result$<$ List$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_postcode_1_1_postalcode}{Postalcode}} $>$ $>$ Internal\+API.\+Controllers.\+Postcode\+Controller.\+Get\+Postcode (\begin{DoxyParamCaption}\item[{string}]{postcode }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogDebug(\$\textcolor{stringliteral}{"{}Postcode\ request\ V2\ received.\ \ Postcode:\ \{postcode\}"{}});}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//check\ local\ postcode\ text\ file\ first}}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ var\ localPostcodes\ =\ GetPostalcodeLocal(postcode);}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (localPostcodes\ !=\ \textcolor{keyword}{null}\ \&\&\ localPostcodes.Any())}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ localPostcodes;}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//check\ aus\ post\ postcode\ endpoint}}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//NOT\ YET\ IMPLEMENTED\ COMPLETELY}}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//NEED\ TO\ CONSIDER\ AB,\ AW/AC,\ and\ SA\ all\ use\ postcode\ endpoint\ with\ this\ model/dto}}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ var\ ausPostResult\ =\ \_ausPostService.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_aus_post_1_1_aus_post_service_aad3af37d197316700a16f5a2aaf0f006}{SearchPostcode}}(postcode);}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//check\ geonames\ api\ third}}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient(\textcolor{keyword}{new}\ Uri(baseURLV2));}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ client.AddDefaultQueryParameter(\textcolor{stringliteral}{"{}postalcode"{}},\ postcode);}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ client.AddDefaultQueryParameter(\textcolor{stringliteral}{"{}country"{}},\ \textcolor{stringliteral}{"{}AU"{}});}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ client.AddDefaultQueryParameter(\textcolor{stringliteral}{"{}username"{}},\ v2UserName);}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ RestRequest\ request\ =\ \textcolor{keyword}{new}\ RestRequest(\textcolor{stringliteral}{"{}"{}},\ Method.GET);}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddHeader(\textcolor{stringliteral}{"{}Content-\/Type"{}},\ \textcolor{stringliteral}{"{}application/json"{}});}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddHeader(\textcolor{stringliteral}{"{}Accept"{}},\ \textcolor{stringliteral}{"{}application/json"{}});}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ var\ response\ =\ client.Execute(request);}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_postcode_1_1_postal_code_list}{PostalCodeList}}\ PL\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_postcode_1_1_postal_code_list}{PostalCodeList}}();}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response.Content.Contains(\textcolor{stringliteral}{"{}error"{}}))}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogError(\$\textcolor{stringliteral}{"{}Error\ returned\ from\ Postcode\ API:\ \{response.Content\}"{}});}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ PL.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_postcode_1_1_postal_code_list_a0d0bf9071e95f08269a334acf7dd1cf6}{PostalCodes}};}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!response.IsSuccessful\ ||\ \textcolor{keywordtype}{string}.IsNullOrEmpty(response.Content))}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogError(\$\textcolor{stringliteral}{"{}Postcode\ API\ call\ not\ successful.\ \ StatusCode:\ \{response.StatusCode\}\ -\/\ \{response.StatusDescription\},\ Message:\ \{response.ErrorMessage\}"{}});}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PL\ =\ JsonConvert.DeserializeObject<\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_postcode_1_1_postal_code_list}{PostalCodeList}}>(response.Content);}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception)}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \_logger.LogError(\$\textcolor{stringliteral}{"{}Exception\ deserialising\ response\ from\ Postcode\ API:\ \{response.Content\}"{}});\ \}}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ PL.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_postcode_1_1_postal_code_list_a0d0bf9071e95f08269a334acf7dd1cf6}{PostalCodes}};}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+STRIDER/source/repos/\+Internal\+API/\+Internal\+API/\+Controllers/\mbox{\hyperlink{_postcode_controller_8cs}{Postcode\+Controller.\+cs}}\end{DoxyCompactItemize}

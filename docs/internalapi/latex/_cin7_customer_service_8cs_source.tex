@@ -1,0 +1,279 @@
+\doxysection{Cin7\+Customer\+Service.\+cs}
+\hypertarget{_cin7_customer_service_8cs_source}{}\label{_cin7_customer_service_8cs_source}\index{C:/Users/STRIDER/source/repos/InternalAPI/InternalAPI/Services/Cin7/Cin7CustomerService.cs@{C:/Users/STRIDER/source/repos/InternalAPI/InternalAPI/Services/Cin7/Cin7CustomerService.cs}}
+\mbox{\hyperlink{_cin7_customer_service_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }System.Linq;}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }System.Threading.Tasks;}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }RestSharp;}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00006}00006\ \textcolor{keyword}{using\ }RestSharp.Authenticators;}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00007}00007\ \textcolor{keyword}{using\ }System.Net;}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00008}00008\ \textcolor{keyword}{using\ }System.Runtime.InteropServices;}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00009}00009\ \textcolor{keyword}{using\ }AutoMapper;}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00010}00010\ \textcolor{keyword}{using\ }Newtonsoft.Json;}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00011}00011\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_dto_1_1_cin7}{InternalAPI.Dto.Cin7}};}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00012}00012\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_helpers}{InternalAPI.Helpers}};}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00013}00013\ \textcolor{keyword}{using\ }Microsoft.Extensions.Logging;}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00014}00014\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_settings}{InternalAPI.Settings}};}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00015}00015\ \textcolor{keyword}{using\ }Microsoft.Extensions.Options;}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00016}00016\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_dto_1_1_b_pay}{InternalAPI.Dto.BPay}};}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00017}00017\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_requests}{InternalAPI.Requests}};}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00018}00018\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_responses}{InternalAPI.Responses}};}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00019}00019\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_services_1_1_b_pay}{InternalAPI.Services.BPay}};}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00021}00021\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_services_1_1_cin7}{InternalAPI.Services.Cin7}}}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00022}00022\ \{}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00023}00023\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }Cin7CustomerService\ :\ Cin7ServiceBase,\ ICin7CustomerService}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00024}00024\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ readonly\ ILogger<Cin7CustomerService>\ \_logger;}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ readonly\ \mbox{\hyperlink{interface_internal_a_p_i_1_1_services_1_1_b_pay_1_1_i_b_pay_service}{IBPayService}}\ \_bPayService;}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ readonly\ IMapper\ \_mapper;}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ readonly\ \mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_internal_api_settings}{InternalApiSettings}}\ \_applicationOptions;}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ readonly\ \mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_cin7_settings}{Cin7Settings}}\ \_cin7Options;}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ Cin7CustomerService(}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ ILogger<Cin7CustomerService>\ logger,}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ IOptions<Cin7Settings>\ cin7Options,}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ IOptions<InternalApiSettings>\ applicationOptions,}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{interface_internal_a_p_i_1_1_services_1_1_b_pay_1_1_i_b_pay_service}{IBPayService}}\ bPayService,}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ IMapper\ mapper)\ :\ base(cin7Options)}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ this.\_logger\ =\ logger;}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ this.\_bPayService\ =\ bPayService;}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \_mapper\ =\ mapper;}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ this.\_applicationOptions\ =\ applicationOptions.Value;}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_responses_1_1_get_cin7_customer_response}{GetCin7CustomerResponse}}\ GetOrCreateCustomer(\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_customer_request}{CreateCin7CustomerRequest}}\ createCustomerRequest,\ CustomerFoundBehaviour\ customerFoundBehaviour\ =\ CustomerFoundBehaviour.DoNotUpdate)}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ var\ surnameSearchResult\ =\ SearchName(createCustomerRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_customer_request_a83d194eb33c34f248f663c3153277ad4}{AinslieCompanyOption}},\ createCustomerRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_customer_request_a2d1ed6539136e0e81fc5a56b7e48b69b}{Surname}},\ createCustomerRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_customer_request_afeef4c8b6a34ad4629e1deb63d753c29}{FirstName}})?.Where(c\ =>\ CustomerMatchesSearchResult(c,\ createCustomerRequest)).ToList();}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogDebug(\$\textcolor{stringliteral}{"{}Found\ \{surnameSearchResult.Count\}\ possible\ customers\ from\ \{createCustomerRequest.AinslieCompanyOption\}\ -\/\ \{string.Join("{}},\ \textcolor{stringliteral}{"{},\ surnameSearchResult.Select(r\ =>\ \$"{}}Id\ \{r.Cin7Id\}\ :\ \{r.FirstName\}\ \{r.Surname\}\textcolor{stringliteral}{"{}))\}"{}});}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (surnameSearchResult?.Any()\ ==\ \textcolor{keyword}{true})}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Prioritise\ green\ id\ (1\ point)\ and\ bpay\ reference\ details\ (2\ points):}}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Record\ with\ GreenId\ only:\ 1\ point}}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Record\ with\ BPay\ only:\ 2\ points}}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Record\ with\ both\ fields:\ 3\ points}}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Record\ with\ none:\ 0\ points}}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Order\ descending}}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Take\ first}}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ matchingRecord\ =\ surnameSearchResult.OrderByDescending(c\ =>\ }
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (\textcolor{keywordtype}{string}.IsNullOrEmpty(c.GreenIdReference)\ ?\ 0\ :\ 1)\ +\ (string.IsNullOrEmpty(c.BPayReference)\ ?\ 0\ :\ 2))}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .First();}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogDebug(\$\textcolor{stringliteral}{"{}Matched\ to\ customer\ from\ \{createCustomerRequest.AinslieCompanyOption\}:\ \{JsonConvert.SerializeObject(matchingRecord)\}"{}});}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (customerFoundBehaviour\ ==\ CustomerFoundBehaviour.Update)}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Perform\ update\ in\ Cin7:}}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \textcolor{keyword}{new}\ NotImplementedException(\$\textcolor{stringliteral}{"{}Update\ currently\ not\ implemented."{}});}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Return\ existing\ customer}}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_mapper.Map<\mbox{\hyperlink{class_internal_a_p_i_1_1_responses_1_1_get_cin7_customer_response}{GetCin7CustomerResponse}}>(matchingRecord);}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ return\ Cin7CustomerToCustomerResponse(matchingRecord);}}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ new\ customer}}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ CreateCin7Customer(createCustomerRequest);}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_responses_1_1_get_cin7_customer_response}{GetCin7CustomerResponse}}\ SearchId(\mbox{\hyperlink{namespace_internal_a_p_i_1_1_requests_adf51189d6a8e38adf5f9e6aced670be6}{AinslieCompanyOption}}\ ainslieCompanyOption,\ \textcolor{keywordtype}{int}\ contactId)}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ GetOrCreateRestClient(ainslieCompanyOption);}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ var\ request\ =\ \textcolor{keyword}{new}\ RestRequest(\$\textcolor{stringliteral}{"{}/v1/contacts/\{contactId\}"{}},\ Method.GET);}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ var\ response\ =\ client.ExecuteWithRetry(request,\ 3,\ 5000)}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .Parse<\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_cin7_1_1_get_contact}{GetContact}}>();}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!response.IsSuccessful\ ||\ response.Data\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_mapper.Map<\mbox{\hyperlink{class_internal_a_p_i_1_1_responses_1_1_get_cin7_customer_response}{GetCin7CustomerResponse}}>(response.Data);}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00093}00093\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00094}00094\ }
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00095}00095\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ List<GetCin7CustomerResponse>\ SearchName(\mbox{\hyperlink{namespace_internal_a_p_i_1_1_requests_adf51189d6a8e38adf5f9e6aced670be6}{AinslieCompanyOption}}\ ainslieCompanyOption,\ \textcolor{keywordtype}{string}\ Surname,\ \textcolor{keywordtype}{string}\ FirstName)}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00096}00096\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ GetOrCreateRestClient(ainslieCompanyOption);}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ var\ request\ =\ \textcolor{keyword}{new}\ RestRequest(\$\textcolor{stringliteral}{"{}/v1/contacts?where=\{WebUtility.UrlEncode(\$"{}}lastname\ =\ \textcolor{stringliteral}{'\{Surname.Trim().Replace("{}'}\textcolor{stringliteral}{"{},\ @"{}}\(\backslash\)\textcolor{stringliteral}{'"{})\}'}\ and\ firstname\ =\ \textcolor{stringliteral}{'\{FirstName.Trim().Replace("{}'}\textcolor{stringliteral}{"{},\ @"{}}\(\backslash\)\textcolor{stringliteral}{'"{})\}'}\textcolor{stringliteral}{"{})\}"{}},\ Method.GET);}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ var\ response\ =\ client.ExecuteWithRetry(request,\ 3,\ 5000)}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .Parse<List<GetContact>>();}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ To\ remain\ under\ 1\ request\ per\ second\ Cin7\ limit:}}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \ \ Task.Delay(5000).GetAwaiter().GetResult();}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00106}00106\ }
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!response.IsSuccessful\ ||\ response.Data\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00108}00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00109}00109\ }
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00110}00110\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_mapper.Map<List<GetCin7CustomerResponse>>(response.Data);}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00111}00111\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00113}00113\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ List<GetCin7CustomerResponse>\ SearchEmail(\mbox{\hyperlink{namespace_internal_a_p_i_1_1_requests_adf51189d6a8e38adf5f9e6aced670be6}{AinslieCompanyOption}}\ ainslieCompanyOption,\ \textcolor{keywordtype}{string}\ Email)}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00114}00114\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00115}00115\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ GetOrCreateRestClient(ainslieCompanyOption);}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00116}00116\ }
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00117}00117\ \ \ \ \ \ \ \ \ \ \ \ \ var\ request\ =\ \textcolor{keyword}{new}\ RestRequest(\$\textcolor{stringliteral}{"{}/v1/contacts?where=\{WebUtility.UrlEncode(\$"{}}email\ =\ \textcolor{stringliteral}{'\{Email.Trim()\}'}\textcolor{stringliteral}{"{})\}"{}},\ Method.GET);}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00118}00118\ }
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ var\ response\ =\ client.ExecuteWithRetry(request,\ 3,\ 5000)}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00120}00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .Parse<List<GetContact>>();}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00121}00121\ }
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00122}00122\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ To\ remain\ under\ 1\ request\ per\ second\ Cin7\ limit:}}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00123}00123\ \ \ \ \ \ \ \ \ \ \ \ \ Task.Delay(5000).GetAwaiter().GetResult();}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00124}00124\ }
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00125}00125\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!response.IsSuccessful\ ||\ response.Data\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00126}00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00127}00127\ }
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00128}00128\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_mapper.Map<List<GetCin7CustomerResponse>>(response.Data);}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00129}00129\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00130}00130\ }
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00131}00131\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ compare\ by\ upper,\ trimming,\ and\ removing\ white\ space:}}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00132}00132\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ surname,\ firstname\ and\ one\ of\ either\ email\ or\ phone\ (phone\ or\ mobile)}}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00133}00133\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{bool}\ CustomerMatchesSearchResult(\mbox{\hyperlink{class_internal_a_p_i_1_1_responses_1_1_get_cin7_customer_response}{GetCin7CustomerResponse}}\ searchCommand,\ \mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_customer_request}{CreateCin7CustomerRequest}}\ createSalesOrderCommand)}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00134}00134\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00135}00135\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keywordtype}{string}.IsNullOrWhiteSpace(searchCommand.\mbox{\hyperlink{class_internal_a_p_i_1_1_responses_1_1_get_cin7_customer_response_ae1563094494fe99c7a667d56aa40c2e7}{FirstName}})\ ||\ searchCommand.\mbox{\hyperlink{class_internal_a_p_i_1_1_responses_1_1_get_cin7_customer_response_ae1563094494fe99c7a667d56aa40c2e7}{FirstName}}?.ToUpper()?.Replace(\textcolor{stringliteral}{"{}\ "{}},\ \textcolor{stringliteral}{"{}"{}})\ !=\ createSalesOrderCommand.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_customer_request_afeef4c8b6a34ad4629e1deb63d753c29}{FirstName}}.ToUpper().Replace(\textcolor{stringliteral}{"{}\ "{}},\ \textcolor{stringliteral}{"{}"{}}))}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00136}00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00137}00137\ }
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00138}00138\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keywordtype}{string}.IsNullOrWhiteSpace(searchCommand.\mbox{\hyperlink{class_internal_a_p_i_1_1_responses_1_1_get_cin7_customer_response_a80c898bdcdb970033dc9c49fec7dbbbd}{Surname}})\ ||\ searchCommand.\mbox{\hyperlink{class_internal_a_p_i_1_1_responses_1_1_get_cin7_customer_response_a80c898bdcdb970033dc9c49fec7dbbbd}{Surname}}.ToUpper().Replace(\textcolor{stringliteral}{"{}\ "{}},\ \textcolor{stringliteral}{"{}"{}})\ !=\ createSalesOrderCommand.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_customer_request_a2d1ed6539136e0e81fc5a56b7e48b69b}{Surname}}.ToUpper().Replace(\textcolor{stringliteral}{"{}\ "{}},\ \textcolor{stringliteral}{"{}"{}}))}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00139}00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00140}00140\ }
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00141}00141\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\textcolor{keywordtype}{string}.IsNullOrWhiteSpace(searchCommand.\mbox{\hyperlink{class_internal_a_p_i_1_1_responses_1_1_get_cin7_customer_response_a351715ce1f4bdb9a384cfd9793b29c03}{Email}})\ \&\&\ searchCommand.\mbox{\hyperlink{class_internal_a_p_i_1_1_responses_1_1_get_cin7_customer_response_a351715ce1f4bdb9a384cfd9793b29c03}{Email}}?.ToUpper()?.Replace(\textcolor{stringliteral}{"{}\ "{}},\ \textcolor{stringliteral}{"{}"{}})\ ==\ createSalesOrderCommand.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_customer_request_a0e54c2e26348d24cec57f95ae39ab9cd}{Email}}?.ToUpper()?.Replace(\textcolor{stringliteral}{"{}\ "{}},\ \textcolor{stringliteral}{"{}"{}}))}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00143}00143\ }
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00144}00144\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\textcolor{keywordtype}{string}.IsNullOrWhiteSpace(searchCommand.\mbox{\hyperlink{class_internal_a_p_i_1_1_responses_1_1_get_cin7_customer_response_a5d684f9b153d1e0ba3d22a928a80ee74}{Mobile}})\ \&\&\ searchCommand.\mbox{\hyperlink{class_internal_a_p_i_1_1_responses_1_1_get_cin7_customer_response_a5d684f9b153d1e0ba3d22a928a80ee74}{Mobile}}?.ToUpper()?.Replace(\textcolor{stringliteral}{"{}\ "{}},\ \textcolor{stringliteral}{"{}"{}})\ ==\ createSalesOrderCommand.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_customer_request_a6e612869a85cbd370f8b299b751425f2}{Phone}}?.ToUpper()?.Replace(\textcolor{stringliteral}{"{}\ "{}},\ \textcolor{stringliteral}{"{}"{}}))}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00145}00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00146}00146\ }
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00147}00147\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\textcolor{keywordtype}{string}.IsNullOrWhiteSpace(searchCommand.\mbox{\hyperlink{class_internal_a_p_i_1_1_responses_1_1_get_cin7_customer_response_a4a2d0348aebc87fa1da38cf39aef0121}{Phone}})\ \&\&\ searchCommand.\mbox{\hyperlink{class_internal_a_p_i_1_1_responses_1_1_get_cin7_customer_response_a4a2d0348aebc87fa1da38cf39aef0121}{Phone}}?.ToUpper()?.Replace(\textcolor{stringliteral}{"{}\ "{}},\ \textcolor{stringliteral}{"{}"{}})\ ==\ createSalesOrderCommand.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_customer_request_a6e612869a85cbd370f8b299b751425f2}{Phone}}?.ToUpper()?.Replace(\textcolor{stringliteral}{"{}\ "{}},\ \textcolor{stringliteral}{"{}"{}}))}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00148}00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00149}00149\ }
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00150}00150\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00151}00151\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00152}00152\ }
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00153}00153\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_responses_1_1_get_cin7_customer_response}{GetCin7CustomerResponse}}\ CreateCin7Customer(\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_customer_request}{CreateCin7CustomerRequest}}\ createCustomerCommand)}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00154}00154\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00155}00155\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ GetOrCreateRestClient(createCustomerCommand.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_customer_request_a83d194eb33c34f248f663c3153277ad4}{AinslieCompanyOption}});}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00156}00156\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00157}00157\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ new\ Cin7\ contact}}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00158}00158\ }
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00159}00159\ \ \ \ \ \ \ \ \ \ \ \ \ var\ emailResults\ =\ SearchEmail(createCustomerCommand.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_customer_request_a83d194eb33c34f248f663c3153277ad4}{AinslieCompanyOption}},\ createCustomerCommand.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_customer_request_a0e54c2e26348d24cec57f95ae39ab9cd}{Email}});}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00160}00160\ }
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00161}00161\ \ \ \ \ \ \ \ \ \ \ \ \ var\ addEmail\ =\ emailResults\ !=\ \textcolor{keyword}{null}\ \&\&\ !emailResults.Any();}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00162}00162\ }
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00163}00163\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_cin7_1_1_create_contact}{CreateContact}}\ contactToCreate\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_cin7_1_1_create_contact}{CreateContact}}()}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00164}00164\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00165}00165\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ firstName\ =\ createCustomerCommand.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_customer_request_afeef4c8b6a34ad4629e1deb63d753c29}{FirstName}}.Trim(),}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00166}00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ lastName\ =\ createCustomerCommand.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_customer_request_a2d1ed6539136e0e81fc5a56b7e48b69b}{Surname}}.Trim(),}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00167}00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ type\ =\ \textcolor{stringliteral}{"{}customer"{}},}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00168}00168\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ company\ =\ !\textcolor{keywordtype}{string}.IsNullOrEmpty(createCustomerCommand.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_customer_request_a108028d3ac6cd8273a3294fc4d3be80f}{Company}}.Trim())\ ?\ createCustomerCommand.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_customer_request_a108028d3ac6cd8273a3294fc4d3be80f}{Company}}.Trim()\ :\ createCustomerCommand.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_customer_request_afeef4c8b6a34ad4629e1deb63d753c29}{FirstName}}.Trim()\ +\ \textcolor{stringliteral}{"{}\ "{}}\ +\ createCustomerCommand.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_customer_request_a2d1ed6539136e0e81fc5a56b7e48b69b}{Surname}}.Trim(),}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00169}00169\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ email\ =\ addEmail\ ?\ createCustomerCommand.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_customer_request_a0e54c2e26348d24cec57f95ae39ab9cd}{Email}}.Trim()\ :\ \textcolor{keyword}{null},}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00170}00170\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ phone\ =\ createCustomerCommand.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_customer_request_a6e612869a85cbd370f8b299b751425f2}{Phone}}.Trim(),}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00171}00171\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ address1\ =\ createCustomerCommand.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_customer_request_a5713ac8318a435aba74a35f2debdc17e}{StreetAddress}}.Trim(),}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00172}00172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ city\ =\ createCustomerCommand.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_customer_request_a9d4306cb0fd0d2c5d1837b3accabcf0d}{Suburb}}.Trim(),}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00173}00173\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ state\ =\ createCustomerCommand.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_customer_request_a164769f4f21138029910a2012e6177c0}{State}}.Trim(),}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00174}00174\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ postCode\ =\ createCustomerCommand.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_customer_request_adcdb82971bd252127df2208a9d9fb18e}{PostCode}}.Trim(),}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00175}00175\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ postalAddress1\ =\ createCustomerCommand.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_customer_request_a5713ac8318a435aba74a35f2debdc17e}{StreetAddress}}.Trim(),}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00176}00176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ postalCity\ =\ createCustomerCommand.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_customer_request_a9d4306cb0fd0d2c5d1837b3accabcf0d}{Suburb}}.Trim(),}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00177}00177\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ postalState\ =\ createCustomerCommand.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_customer_request_a164769f4f21138029910a2012e6177c0}{State}}.Trim(),}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00178}00178\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ postalPostCode\ =\ createCustomerCommand.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_customer_request_adcdb82971bd252127df2208a9d9fb18e}{PostCode}}.Trim()}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00179}00179\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00180}00180\ }
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00181}00181\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogDebug(\$\textcolor{stringliteral}{"{}Creating\ a\ new\ customer\ in\ \{createCustomerCommand.AinslieCompanyOption\}:\ \{JsonConvert.SerializeObject(contactToCreate)\}"{}});}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00182}00182\ }
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00183}00183\ \ \ \ \ \ \ \ \ \ \ \ \ List<CreateContact>\ contactList\ =\ \textcolor{keyword}{new}\ List<CreateContact>\ \{\ contactToCreate\ \};}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00184}00184\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00185}00185\ \ \ \ \ \ \ \ \ \ \ \ \ var\ request\ =\ \textcolor{keyword}{new}\ RestRequest(\textcolor{stringliteral}{"{}/v1/contacts"{}},\ Method.POST);}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00186}00186\ \ \ \ \ \ \ \ \ \ \ \ \ var\ requestJson\ =\ JsonConvert.SerializeObject(contactList);}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00187}00187\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddParameter(\textcolor{stringliteral}{"{}application/json"{}},\ requestJson,\ ParameterType.RequestBody);}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00188}00188\ }
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00189}00189\ \ \ \ \ \ \ \ \ \ \ \ \ var\ responseMessage\ =\ client.ExecuteWithRetry(request,\ 3,\ 5000)}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00190}00190\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .Parse<IEnumerable<Cin7ResponseItem>>();}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00191}00191\ }
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00192}00192\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ To\ remain\ under\ 1\ request\ per\ second\ Cin7\ limit:}}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00193}00193\ \ \ \ \ \ \ \ \ \ \ \ \ Task.Delay(5000).GetAwaiter().GetResult();}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00194}00194\ }
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00195}00195\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!responseMessage.IsSuccessful\ ||\ responseMessage.Data\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00196}00196\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \textcolor{keyword}{new}\ InvalidOperationException(\$\textcolor{stringliteral}{"{}Error\ creating\ a\ contact\ in\ Cin7:\ Status\ \{responseMessage.StatusDescription\}\ :\ \{responseMessage.Content\}"{}});}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00197}00197\ }
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00198}00198\ \ \ \ \ \ \ \ \ \ \ \ \ var\ responseList\ =\ responseMessage.Data;}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00199}00199\ }
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00200}00200\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (responseList\ ==\ \textcolor{keyword}{null}\ ||\ responseList.Count()\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00201}00201\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \textcolor{keyword}{new}\ InvalidOperationException(\$\textcolor{stringliteral}{"{}No\ contact\ responses\ returned\ from\ Cin7.\ \ Creation\ failed."{}});}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00202}00202\ }
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00203}00203\ \ \ \ \ \ \ \ \ \ \ \ \ var\ response\ =\ responseList.FirstOrDefault();}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00204}00204\ }
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00205}00205\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response.success\ !=\ \textcolor{keyword}{true})}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00206}00206\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \textcolor{keyword}{new}\ InvalidOperationException(\$\textcolor{stringliteral}{"{}Failed\ to\ create\ contact\ in\ Cin7:\ \{string.Join("{}}\ \textcolor{stringliteral}{"{},\ response.errors)\}"{}});}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00207}00207\ }
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00208}00208\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ As\ we've\ just\ created\ the\ customer,\ return\ these\ values.\ \ We\ can\ trust\ that\ these\ values\ are\ now\ correct}}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00209}00209\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ (we\ are\ saving\ a\ call\ to\ Cin7)}}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00210}00210\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_responses_1_1_get_cin7_customer_response}{GetCin7CustomerResponse}}()}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00211}00211\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00212}00212\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Cin7Id\ =\ response.id,}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00213}00213\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Surname\ =\ createCustomerCommand.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_customer_request_a2d1ed6539136e0e81fc5a56b7e48b69b}{Surname}}.Trim(),}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00214}00214\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ FirstName\ =\ createCustomerCommand.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_customer_request_afeef4c8b6a34ad4629e1deb63d753c29}{FirstName}}.Trim(),}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00215}00215\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Phone\ =\ createCustomerCommand.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_customer_request_a6e612869a85cbd370f8b299b751425f2}{Phone}}.Trim(),}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00216}00216\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Email\ =\ createCustomerCommand.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_customer_request_a0e54c2e26348d24cec57f95ae39ab9cd}{Email}}.Trim(),}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00217}00217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Company\ =\ createCustomerCommand.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_customer_request_a108028d3ac6cd8273a3294fc4d3be80f}{Company}},}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00218}00218\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Address1\ =\ createCustomerCommand.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_customer_request_a5713ac8318a435aba74a35f2debdc17e}{StreetAddress}},}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00219}00219\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Suburb\ =\ createCustomerCommand.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_customer_request_a9d4306cb0fd0d2c5d1837b3accabcf0d}{Suburb}},}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00220}00220\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PostCode\ =\ createCustomerCommand.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_customer_request_adcdb82971bd252127df2208a9d9fb18e}{PostCode}},}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00221}00221\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ State\ =\ createCustomerCommand.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_customer_request_a164769f4f21138029910a2012e6177c0}{State}},}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00222}00222\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PostalAddress1\ =\ createCustomerCommand.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_customer_request_a5713ac8318a435aba74a35f2debdc17e}{StreetAddress}},}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00223}00223\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PostalSuburb\ =\ createCustomerCommand.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_customer_request_a9d4306cb0fd0d2c5d1837b3accabcf0d}{Suburb}},}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00224}00224\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PostalPostCode\ =\ createCustomerCommand.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_customer_request_adcdb82971bd252127df2208a9d9fb18e}{PostCode}},}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00225}00225\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PostalState\ =\ createCustomerCommand.State}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00226}00226\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00227}00227\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00228}00228\ }
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00229}00229\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ UpdateCin7CustomerBPay(\mbox{\hyperlink{namespace_internal_a_p_i_1_1_requests_adf51189d6a8e38adf5f9e6aced670be6}{AinslieCompanyOption}}\ ainslieCompanyOption,\ \textcolor{keywordtype}{int}\ cin7Id,\ \textcolor{keywordtype}{string}\ bPayReference)}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00230}00230\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00231}00231\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ GetOrCreateRestClient(ainslieCompanyOption);}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00232}00232\ }
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00233}00233\ \ \ \ \ \ \ \ \ \ \ \ \ BPayContact\ cc\ =\ \textcolor{keyword}{new}\ BPayContact()}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00234}00234\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00235}00235\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{id}\ =\ cin7Id,}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00236}00236\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ type\ =\ \textcolor{stringliteral}{"{}customer"{}},}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00237}00237\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_cin7_1_1_customfields}{Customfields}}\ =\ \textcolor{keyword}{new}\ BPayCustomfields()\ \{\ members\_1001\ =\ bPayReference\ \}}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00238}00238\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00239}00239\ }
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00240}00240\ \ \ \ \ \ \ \ \ \ \ \ \ List<BPayContact>\ contactList\ =\ \textcolor{keyword}{new}\ List<BPayContact>()\ \{\ cc\ \};}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00241}00241\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00242}00242\ \ \ \ \ \ \ \ \ \ \ \ \ var\ request\ =\ \textcolor{keyword}{new}\ RestRequest(\textcolor{stringliteral}{"{}/v1/contacts"{}},\ Method.PUT);}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00243}00243\ \ \ \ \ \ \ \ \ \ \ \ \ var\ requestJson\ =\ JsonConvert.SerializeObject(contactList);}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00244}00244\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddParameter(\textcolor{stringliteral}{"{}application/json"{}},\ requestJson,\ ParameterType.RequestBody);}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00245}00245\ }
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00246}00246\ \ \ \ \ \ \ \ \ \ \ \ \ var\ responseMessage\ =\ client.ExecuteWithRetry(request,\ 3,\ 5000)}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00247}00247\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .Parse<IEnumerable<Cin7ResponseItem>>();}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00248}00248\ }
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00249}00249\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ To\ remain\ under\ 1\ request\ per\ second\ Cin7\ limit:}}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00250}00250\ \ \ \ \ \ \ \ \ \ \ \ \ Task.Delay(5000).GetAwaiter().GetResult();}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00251}00251\ }
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00252}00252\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!responseMessage.IsSuccessful\ ||\ responseMessage.Data\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00253}00253\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \textcolor{keyword}{new}\ InvalidOperationException(\$\textcolor{stringliteral}{"{}Error\ updating\ a\ contact\ in\ Cin7:\ Status\ \{responseMessage.StatusDescription\}\ :\ \{responseMessage.Content\}"{}});}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00254}00254\ }
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00255}00255\ \ \ \ \ \ \ \ \ \ \ \ \ var\ responseList\ =\ responseMessage.Data;}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00256}00256\ }
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00257}00257\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (responseList\ ==\ \textcolor{keyword}{null}\ ||\ !responseList.Any())}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00258}00258\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \textcolor{keyword}{new}\ InvalidOperationException(\$\textcolor{stringliteral}{"{}No\ update\ contact\ responses\ returned\ from\ Cin7.\ \ Update\ failed."{}});}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00259}00259\ }
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00260}00260\ \ \ \ \ \ \ \ \ \ \ \ \ var\ response\ =\ responseList.FirstOrDefault();}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00261}00261\ }
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00262}00262\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response.success\ !=\ \textcolor{keyword}{true})}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00263}00263\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \textcolor{keyword}{new}\ InvalidOperationException(\$\textcolor{stringliteral}{"{}Failed\ to\ update\ contact\ in\ Cin7:\ \{string.Join("{}}\ \textcolor{stringliteral}{"{},\ response.errors)\}"{}});}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00264}00264\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00265}00265\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00266}00266\ }
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00267}00267\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{enum}\ CustomerFoundBehaviour}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00268}00268\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00269}00269\ \ \ \ \ \ \ \ \ DoNotUpdate\ =\ 0,}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00270}00270\ \ \ \ \ \ \ \ \ Update\ =\ 1}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00271}00271\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00272}00272\ \}}
+\DoxyCodeLine{\Hypertarget{_cin7_customer_service_8cs_source_l00273}00273\ }
+
+\end{DoxyCode}

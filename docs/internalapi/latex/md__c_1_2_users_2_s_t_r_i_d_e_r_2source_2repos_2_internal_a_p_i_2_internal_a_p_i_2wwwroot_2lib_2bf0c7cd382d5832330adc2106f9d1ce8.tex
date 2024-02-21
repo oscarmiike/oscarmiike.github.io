@@ -1,0 +1,119 @@
+\chapter{parse-\/filepath \texorpdfstring{$<$}{<}a href="{}https\+://www.\+npmjs.\+com/package/parse-\/filepath"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://img.\+shields.\+io/npm/v/parse-\/filepath.\+svg?style=flat"{} alt="{}\+NPM version"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}a href="{}https\+://npmjs.\+org/package/parse-\/filepath"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://img.\+shields.\+io/npm/dm/parse-\/filepath.\+svg?style=flat"{} alt="{}\+NPM downloads"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/jonschlinkert/parse-\/filepath"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://img.\+shields.\+io/travis/jonschlinkert/parse-\/filepath.\+svg?style=flat"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2bf0c7cd382d5832330adc2106f9d1ce8}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2bf0c7cd382d5832330adc2106f9d1ce8}\index{parse-\/filepath $<$a href="{}https://www.npmjs.com/package/parse-\/filepath"{} $>$$<$img src="{}https://img.shields.io/npm/v/parse-\/filepath.svg?style=flat"{} alt="{}NPM version"{}/$>$$<$/a$>$ $<$a href="{}https://npmjs.org/package/parse-\/filepath"{} $>$$<$img src="{}https://img.shields.io/npm/dm/parse-\/filepath.svg?style=flat"{} alt="{}NPM downloads"{}/$>$$<$/a$>$ $<$a href="{}https://travis-\/ci.org/jonschlinkert/parse-\/filepath"{} $>$$<$img src="{}https://img.shields.io/travis/jonschlinkert/parse-\/filepath.svg?style=flat"{} alt="{}Build Status"{}/$>$$<$/a$>$@{parse-\/filepath $<$a href=""https://www.npmjs.com/package/parse-\/filepath"" $>$$<$img src=""https://img.shields.io/npm/v/parse-\/filepath.svg?style=flat"" alt=""NPM version""/$>$$<$/a$>$ $<$a href=""https://npmjs.org/package/parse-\/filepath"" $>$$<$img src=""https://img.shields.io/npm/dm/parse-\/filepath.svg?style=flat"" alt=""NPM downloads""/$>$$<$/a$>$ $<$a href=""https://travis-\/ci.org/jonschlinkert/parse-\/filepath"" $>$$<$img src=""https://img.shields.io/travis/jonschlinkert/parse-\/filepath.svg?style=flat"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2bf0c7cd382d5832330adc2106f9d1ce8_autotoc_md10615}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2bf0c7cd382d5832330adc2106f9d1ce8_autotoc_md10615}%
+ \begin{quote}
+Pollyfill for node.\+js {\ttfamily path.\+parse}, parses a filepath into an object. \end{quote}
+You might also be interested in \href{https://github.com/jonschlinkert/global-prefix}{\texttt{ global-\/prefix}}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2bf0c7cd382d5832330adc2106f9d1ce8_autotoc_md10616}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2bf0c7cd382d5832330adc2106f9d1ce8_autotoc_md10616}
+Install with \href{https://www.npmjs.com/}{\texttt{ npm}}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ parse-\/filepath\ -\/-\/save}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2bf0c7cd382d5832330adc2106f9d1ce8_autotoc_md10617}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2bf0c7cd382d5832330adc2106f9d1ce8_autotoc_md10617}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ parsePath\ =\ require('parse-\/filepath');}
+\DoxyCodeLine{parsePath(filepath);}
+
+\end{DoxyCode}
+
+
+This can be used as a polyfill for the native node.\+js {\ttfamily path.\+parse()} method, and it also adds a few properties\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily path}\+: the original filepath
+\item {\ttfamily is\+Absolute}\+: (getter) true if the given path is absolute
+\item {\ttfamily absolute}\+: (getter) fully resolved, absolute filepath
+\item {\ttfamily dirname}\+: alias for {\ttfamily dir}
+\item {\ttfamily basename}\+: alias for {\ttfamily base}
+\item {\ttfamily extname}\+: alias for {\ttfamily ext}
+\item {\ttfamily stem}\+: alias for {\ttfamily name}
+\end{DoxyItemize}
+
+{\bfseries{Example}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ parsePath\ =\ require('parse-\/filepath');}
+\DoxyCodeLine{console.log(parsePath('foo/bar/baz/index.js'));}
+
+\end{DoxyCode}
+
+
+Returns\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{\ root:\ '',}
+\DoxyCodeLine{\ \ dir:\ 'foo/bar/baz',}
+\DoxyCodeLine{\ \ base:\ 'index.js',}
+\DoxyCodeLine{\ \ ext:\ '.js',}
+\DoxyCodeLine{\ \ name:\ 'index',}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ //\ aliases}
+\DoxyCodeLine{\ \ extname:\ '.js',}
+\DoxyCodeLine{\ \ basename:\ 'index.js',}
+\DoxyCodeLine{\ \ dirname:\ 'foo/bar/baz',}
+\DoxyCodeLine{\ \ stem:\ 'index',}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ //\ original\ path}
+\DoxyCodeLine{\ \ path:\ 'foo/bar/baz/index.js',}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ //\ getters}
+\DoxyCodeLine{\ \ absolute:\ [Getter/Setter],}
+\DoxyCodeLine{\ \ isAbsolute:\ [Getter/Setter]\ \}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2bf0c7cd382d5832330adc2106f9d1ce8_autotoc_md10618}{}\doxysection{\texorpdfstring{Related projects}{Related projects}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2bf0c7cd382d5832330adc2106f9d1ce8_autotoc_md10618}
+You might also be interested in these projects\+:
+
+
+\begin{DoxyItemize}
+\item \href{https://www.npmjs.com/package/global-prefix}{\texttt{ global-\/prefix}}\+: Get the npm global path prefix. \texorpdfstring{$\vert$}{|} \href{https://github.com/jonschlinkert/global-prefix}{\texttt{ homepage}}
+\item \href{https://www.npmjs.com/package/is-absolute}{\texttt{ is-\/absolute}}\+: Polyfill for node.\+js {\ttfamily path.\+is\+Abolute}. Returns true if a file path is absolute. \texorpdfstring{$\vert$}{|} \href{https://github.com/jonschlinkert/is-absolute}{\texttt{ homepage}}
+\item \href{https://www.npmjs.com/package/is-relative}{\texttt{ is-\/relative}}\+: Returns {\ttfamily true} if the path appears to be relative. \texorpdfstring{$\vert$}{|} \href{https://github.com/jonschlinkert/is-relative}{\texttt{ homepage}}
+\item \href{https://www.npmjs.com/package/relative}{\texttt{ relative}}\+: Get the relative filepath from path A to path B. Calculates from file-\/to-\/directory, file-\/to-\/file, directory-\/to-\/file,… \href{https://www.npmjs.com/package/relative}{\texttt{ more}} \texorpdfstring{$\vert$}{|} \href{https://github.com/jonschlinkert/relative}{\texttt{ homepage}}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2bf0c7cd382d5832330adc2106f9d1ce8_autotoc_md10619}{}\doxysection{\texorpdfstring{Contributing}{Contributing}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2bf0c7cd382d5832330adc2106f9d1ce8_autotoc_md10619}
+Pull requests and stars are always welcome. For bugs and feature requests, \href{https://github.com/jonschlinkert/parse-filepath/issues/new}{\texttt{ please create an issue}}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2bf0c7cd382d5832330adc2106f9d1ce8_autotoc_md10620}{}\doxysection{\texorpdfstring{Building docs}{Building docs}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2bf0c7cd382d5832330adc2106f9d1ce8_autotoc_md10620}
+Generate readme and API documentation with \href{https://github.com/verbose/verb}{\texttt{ verb}}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ verb\ \&\&\ npm\ run\ docs}
+
+\end{DoxyCode}
+
+
+Or, if \href{https://github.com/verbose/verb}{\texttt{ verb}} is installed globally\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ verb}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2bf0c7cd382d5832330adc2106f9d1ce8_autotoc_md10621}{}\doxysection{\texorpdfstring{Running tests}{Running tests}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2bf0c7cd382d5832330adc2106f9d1ce8_autotoc_md10621}
+Install dev dependencies\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ -\/d\ \&\&\ npm\ test}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2bf0c7cd382d5832330adc2106f9d1ce8_autotoc_md10622}{}\doxysection{\texorpdfstring{Author}{Author}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2bf0c7cd382d5832330adc2106f9d1ce8_autotoc_md10622}
+{\bfseries{Jon Schlinkert}}
+
+
+\begin{DoxyItemize}
+\item \href{https://github.com/jonschlinkert}{\texttt{ github/jonschlinkert}}
+\item \href{http://twitter.com/jonschlinkert}{\texttt{ twitter/jonschlinkert}}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2bf0c7cd382d5832330adc2106f9d1ce8_autotoc_md10623}{}\doxysection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2bf0c7cd382d5832330adc2106f9d1ce8_autotoc_md10623}
+Copyright © 2016, \href{https://github.com/jonschlinkert}{\texttt{ Jon Schlinkert}}. Released under the \href{https://github.com/jonschlinkert/parse-filepath/blob/master/LICENSE}{\texttt{ MIT license}}.
+
+\DoxyHorRuler{0}
+
+
+{\itshape This file was generated by \href{https://github.com/verbose/verb}{\texttt{ verb}}, v, on March 29, 2016.} 

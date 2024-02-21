@@ -1,0 +1,196 @@
+\chapter{grunt-\/html}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2db4c0807c3254c7705333cf51b7d6d0e}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2db4c0807c3254c7705333cf51b7d6d0e}\index{grunt-\/html@{grunt-\/html}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2db4c0807c3254c7705333cf51b7d6d0e_autotoc_md9083}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2db4c0807c3254c7705333cf51b7d6d0e_autotoc_md9083}%
+ \href{https://www.npmjs.com/package/grunt-html}{\texttt{ }} \href{https://lgtm.com/projects/g/validator/grunt-html/alerts/}{\texttt{ }} \href{https://github.com/validator/grunt-html/actions?query=workflow\%3ATests+branch\%3Amain}{\texttt{ }} \href{https://coveralls.io/github/validator/grunt-html?branch=main}{\texttt{ }} \href{https://david-dm.org/validator/grunt-html}{\texttt{ }} \href{https://david-dm.org/validator/grunt-html?type=dev}{\texttt{ }}
+
+\href{https://gruntjs.com/}{\texttt{ Grunt}} plugin for HTML validation, using the \href{https://validator.github.io/validator/}{\texttt{ Nu Html Checker (v.\+Nu)}}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2db4c0807c3254c7705333cf51b7d6d0e_autotoc_md9084}{}\doxysection{\texorpdfstring{Getting Started}{Getting Started}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2db4c0807c3254c7705333cf51b7d6d0e_autotoc_md9084}
+Install this grunt plugin next to your project\textquotesingle{}s \href{https://gruntjs.com/getting-started}{\texttt{ Gruntfile.\+js}} with\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ grunt-\/html\ -\/-\/save-\/dev}
+
+\end{DoxyCode}
+
+
+Then add this line to your project\textquotesingle{}s {\ttfamily Gruntfile.\+js}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{grunt.loadNpmTasks('grunt-\/html');}
+
+\end{DoxyCode}
+
+
+Then specify what files to validate in your config\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{grunt.initConfig(\{}
+\DoxyCodeLine{\ \ htmllint:\ \{}
+\DoxyCodeLine{\ \ \ \ all:\ ['demos/**/*.html',\ 'tests/**/*.html']}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+For fast validation, keep that in a single group, as the validator initialization takes a few seconds.
+
+When combined with a watching task (such as \href{https://github.com/gruntjs/grunt-contrib-watch}{\texttt{ grunt-\/contrib-\/watch}}), even faster validation can be achieved by starting the validator in client mode and connecting to an already-\/running instance of the validator in server mode. This removes the time required by repeated initializations. See the {\ttfamily server} option below.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2db4c0807c3254c7705333cf51b7d6d0e_autotoc_md9085}{}\doxysection{\texorpdfstring{Options}{Options}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2db4c0807c3254c7705333cf51b7d6d0e_autotoc_md9085}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2db4c0807c3254c7705333cf51b7d6d0e_autotoc_md9086}{}\doxysubsection{\texorpdfstring{{\ttfamily ignore}}{{\ttfamily ignore}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2db4c0807c3254c7705333cf51b7d6d0e_autotoc_md9086}
+
+\begin{DoxyItemize}
+\item Type\+: {\ttfamily Array}, {\ttfamily String}, or {\ttfamily Reg\+Exp}
+\item Default\+: {\ttfamily null}
+\end{DoxyItemize}
+
+Use this to specify the error message(s) to ignore. For example\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{all:\ \{}
+\DoxyCodeLine{\ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ ignore:\ 'The\ “clear”\ attribute\ on\ the\ “br”\ element\ is\ obsolete.\ Use\ CSS\ instead.'}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ src:\ 'html4.html'}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+The {\ttfamily ignore} option also supports regular expressions. For example, to ignore Angular\+JS directive attributes\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{all:\ \{}
+\DoxyCodeLine{\ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ ignore:\ /attribute\ “ng-\/[a-\/z-\/]+”\ not\ allowed/}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ src:\ 'app.html'}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2db4c0807c3254c7705333cf51b7d6d0e_autotoc_md9087}{}\doxysubsection{\texorpdfstring{{\ttfamily server}}{{\ttfamily server}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2db4c0807c3254c7705333cf51b7d6d0e_autotoc_md9087}
+
+\begin{DoxyItemize}
+\item Type\+: {\ttfamily Object}, or a falsy value
+\item Default\+: {\ttfamily false}
+\end{DoxyItemize}
+
+When {\ttfamily server} is set to a falsy value, the validator is invoked using {\ttfamily java -\/jar}, which can be considered normal operation.
+
+Set {\ttfamily server} to an object to start the validator in client mode and connect to an already-\/running instance of the validator in server mode. To start the validator in server mode, use {\ttfamily java -\/cp "{}path/to/vnu.\+jar"{} nu.\+validator.\+servlet.\+Main \texorpdfstring{$<$}{<}port\texorpdfstring{$>$}{>}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{all:\ \{}
+\DoxyCodeLine{\ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ //\ connect\ to\ a\ validator\ instance\ running\ in\ server\ mode\ on\ localhost:8888}
+\DoxyCodeLine{\ \ \ \ server:\ \{\}}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ src:\ 'app.html'}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+The {\ttfamily server} object also accepts the {\ttfamily host} and {\ttfamily port} keys, specifying the location of the server.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{all:\ \{}
+\DoxyCodeLine{\ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ server:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ //\ your\ team's\ local\ dev\ tool\ machine,\ for\ example}
+\DoxyCodeLine{\ \ \ \ \ \ host:\ '192.168.0.5',}
+\DoxyCodeLine{\ \ \ \ \ \ port:\ 8877}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ src:\ 'app.html'}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+The following configuration in Gruntfile.\+js uses \href{https://www.npmjs.com/package/grunt-vnuserver}{\texttt{ grunt-\/vnuserver}} to start the validator in server mode and sets up a watch task to run {\ttfamily htmllint} every time the source file changes. By starting the validator in server mode once using the {\ttfamily vnuserver} task, validations by {\ttfamily htmllint} can be performed much faster by simply connecting to this already-\/running server.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{module.exports\ =\ function\ (grunt)\ \{}
+\DoxyCodeLine{\ \ grunt.initConfig(\{}
+\DoxyCodeLine{\ \ \ \ vnuserver:\ \{}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ htmllint:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ all:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ options:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ server:\ \{\}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ src:\ 'app.html'}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ watch:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ all:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ tasks:\ ['htmllint'],}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ files:\ 'app.html'}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ grunt.loadNpmTasks('grunt-\/vnuserver');}
+\DoxyCodeLine{\ \ grunt.loadNpmTasks('grunt-\/html');}
+\DoxyCodeLine{\ \ grunt.loadNpmTasks('grunt-\/contrib-\/watch');}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ grunt.registerTask('default',\ ['vnuserver',\ 'watch']);}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2db4c0807c3254c7705333cf51b7d6d0e_autotoc_md9088}{}\doxysubsection{\texorpdfstring{{\ttfamily errorlevels}}{{\ttfamily errorlevels}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2db4c0807c3254c7705333cf51b7d6d0e_autotoc_md9088}
+
+\begin{DoxyItemize}
+\item Type\+: {\ttfamily Array}
+\item Default\+: `\textquotesingle{}info',\textquotesingle{}warning\textquotesingle{},\textquotesingle{}error\textquotesingle{}\`{}
+\end{DoxyItemize}
+
+Set {\ttfamily errorlevels} to control which error types are returned from the validator. Ignores all other returned types.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2db4c0807c3254c7705333cf51b7d6d0e_autotoc_md9089}{}\doxysubsection{\texorpdfstring{{\ttfamily force}}{{\ttfamily force}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2db4c0807c3254c7705333cf51b7d6d0e_autotoc_md9089}
+
+\begin{DoxyItemize}
+\item Type\+: {\ttfamily Boolean}
+\item Default\+: {\ttfamily false}
+\end{DoxyItemize}
+
+Set {\ttfamily force} to {\ttfamily true} to report errors but not fail the {\ttfamily grunt} task.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2db4c0807c3254c7705333cf51b7d6d0e_autotoc_md9090}{}\doxysubsection{\texorpdfstring{{\ttfamily reporter}}{{\ttfamily reporter}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2db4c0807c3254c7705333cf51b7d6d0e_autotoc_md9090}
+
+\begin{DoxyItemize}
+\item Type\+: {\ttfamily String}
+\item Default\+: {\ttfamily null}
+\end{DoxyItemize}
+
+Allows you to modify the output format. By default, this plugin will use a built-\/in Grunt reporter. Set the path to your own custom reporter or to one of the provided reporters\+: {\ttfamily checkstyle}, {\ttfamily junit} or {\ttfamily json}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2db4c0807c3254c7705333cf51b7d6d0e_autotoc_md9091}{}\doxysubsection{\texorpdfstring{{\ttfamily reporter\+Output}}{{\ttfamily reporter\+Output}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2db4c0807c3254c7705333cf51b7d6d0e_autotoc_md9091}
+
+\begin{DoxyItemize}
+\item Type\+: {\ttfamily String}
+\item Default\+: {\ttfamily null}
+\end{DoxyItemize}
+
+Specify a filepath to output the results of a reporter. If {\ttfamily reporter\+Output} is specified then all output will be written to the given filepath rather than printed to {\ttfamily stdout}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2db4c0807c3254c7705333cf51b7d6d0e_autotoc_md9092}{}\doxysubsection{\texorpdfstring{{\ttfamily absolute\+File\+Paths\+For\+Reporter}}{{\ttfamily absolute\+File\+Paths\+For\+Reporter}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2db4c0807c3254c7705333cf51b7d6d0e_autotoc_md9092}
+
+\begin{DoxyItemize}
+\item Type\+: {\ttfamily Boolean}
+\item Default\+: {\ttfamily false}
+\end{DoxyItemize}
+
+Set {\ttfamily absolute\+File\+Paths\+For\+Reporter} to {\ttfamily true} to use absolute file paths in generated reports.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2db4c0807c3254c7705333cf51b7d6d0e_autotoc_md9093}{}\doxysubsection{\texorpdfstring{{\ttfamily no\+Lang\+Detect}}{{\ttfamily no\+Lang\+Detect}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2db4c0807c3254c7705333cf51b7d6d0e_autotoc_md9093}
+
+\begin{DoxyItemize}
+\item Type\+: {\ttfamily Boolean}
+\item Default\+: {\ttfamily false}
+\end{DoxyItemize}
+
+Set {\ttfamily no\+Lang\+Detect} to {\ttfamily true} to \href{https://github.com/validator/validator\#--no-langdetect}{\texttt{ skip the checking of the language of the page}}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2db4c0807c3254c7705333cf51b7d6d0e_autotoc_md9094}{}\doxysection{\texorpdfstring{Potential pitfalls}{Potential pitfalls}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2db4c0807c3254c7705333cf51b7d6d0e_autotoc_md9094}
+
+\begin{DoxyItemize}
+\item vnu.\+jar requires Java 8 environment or up.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2db4c0807c3254c7705333cf51b7d6d0e_autotoc_md9095}{}\doxysection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2db4c0807c3254c7705333cf51b7d6d0e_autotoc_md9095}
+Copyright Jörn Zaefferer. Licensed under the \href{https://github.com/validator/grunt-html/blob/main/LICENSE}{\texttt{ MIT license}}. 

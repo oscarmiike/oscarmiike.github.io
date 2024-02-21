@@ -1,0 +1,234 @@
+\doxysection{Internal\+API.\+Services.\+Co\+Pay\+Service Class Reference}
+\hypertarget{class_internal_a_p_i_1_1_services_1_1_co_pay_service}{}\label{class_internal_a_p_i_1_1_services_1_1_co_pay_service}\index{InternalAPI.Services.CoPayService@{InternalAPI.Services.CoPayService}}
+
+
+Collaboration diagram for Internal\+API.\+Services.\+Co\+Pay\+Service\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=239pt]{class_internal_a_p_i_1_1_services_1_1_co_pay_service__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_co_pay_service_a4f16044d7fee1b1c3483935d1327ca59}{Co\+Pay\+Service}} (Network network, \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{String}} base\+Url=\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_co_pay_service_afa71c12236336d4bf6778102ae7d9ab4}{BWS\+\_\+\+INSTANCE\+\_\+\+URL}})
+\item 
+\mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{void}} \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_co_pay_service_a3ce52593c7e5fd8c0898d547e9856ad3}{Set\+Credentials}} (\mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{string}} x\+Priv\+Key, \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{Key}} wallet\+Priv\+Key, \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{string}} copayer\+Name)
+\item 
+\mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{async}} \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{Task}}$<$ \mbox{\hyperlink{class_crypto_payment_gateway_1_1_models_1_1_create_wallet_1_1_response}{Crypto\+Payment\+Gateway.\+Models.\+Create\+Wallet.\+Response}} $>$ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_co_pay_service_a2659e7f11326716ca8b91eeb5cf4064e}{Create\+Wallet}} (\mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{String}} \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{wallet\+Name}}, \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{String}} copayer\+Name, \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{Int16}} m, \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{Int16}} n)
+\item 
+\mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{async}} \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{Task}}$<$ \mbox{\hyperlink{class_crypto_payment_gateway_1_1_models_1_1_join_wallet_1_1_response}{Crypto\+Payment\+Gateway.\+Models.\+Join\+Wallet.\+Response}} $>$ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_co_pay_service_ac2329b907975cd13323ce6f4e3d13b0b}{Do\+Join\+Wallet}} (\mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{Guid}} wallet\+Id)
+\item 
+\mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{async}} \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{Task}}$<$ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{dynamic}} $>$ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_co_pay_service_abc839fdce5339375b53327ca7f0c3a5d}{Request\+New\+Address}} ()
+\item 
+\mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{async}} \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{Task}}$<$ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{List}}$<$ \mbox{\hyperlink{class_crypto_payment_gateway_1_1_models_1_1_get_wallet_addresses_1_1_address_details}{Crypto\+Payment\+Gateway.\+Models.\+Get\+Wallet\+Addresses.\+Address\+Details}} $>$ $>$ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_co_pay_service_ac30ff50ab78dd96332c5a0469e4a150e}{Get\+Wallet\+Addresses}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_crypto_payment_gateway_1_1_models_1_1_credentials}{Credentials}} \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_co_pay_service_a7df4b3a7a9fcbbdcb151e39ec2371a5d}{credentials}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{const}} \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{string}} \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_co_pay_service_afa71c12236336d4bf6778102ae7d9ab4}{BWS\+\_\+\+INSTANCE\+\_\+\+URL}} = "{}https\+://bws.\+bitpay.\+com/\mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{bws}}/\mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{api"{}}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_services_1_1_co_pay_service_a4f16044d7fee1b1c3483935d1327ca59}\label{class_internal_a_p_i_1_1_services_1_1_co_pay_service_a4f16044d7fee1b1c3483935d1327ca59} 
+\index{InternalAPI.Services.CoPayService@{InternalAPI.Services.CoPayService}!CoPayService@{CoPayService}}
+\index{CoPayService@{CoPayService}!InternalAPI.Services.CoPayService@{InternalAPI.Services.CoPayService}}
+\doxysubsubsection{\texorpdfstring{CoPayService()}{CoPayService()}}
+{\footnotesize\ttfamily Internal\+API.\+Services.\+Co\+Pay\+Service.\+Co\+Pay\+Service (\begin{DoxyParamCaption}\item[{Network}]{network,  }\item[{\mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{String}}}]{base\+Url = {\ttfamily \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_co_pay_service_afa71c12236336d4bf6778102ae7d9ab4}{BWS\+\_\+\+INSTANCE\+\_\+\+URL}}} }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ this.baseUrl\ =\ baseUrl;}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ this.network\ =\ network;}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_services_1_1_co_pay_service_a2659e7f11326716ca8b91eeb5cf4064e}\label{class_internal_a_p_i_1_1_services_1_1_co_pay_service_a2659e7f11326716ca8b91eeb5cf4064e} 
+\index{InternalAPI.Services.CoPayService@{InternalAPI.Services.CoPayService}!CreateWallet@{CreateWallet}}
+\index{CreateWallet@{CreateWallet}!InternalAPI.Services.CoPayService@{InternalAPI.Services.CoPayService}}
+\doxysubsubsection{\texorpdfstring{CreateWallet()}{CreateWallet()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{async}} \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{Task}}$<$ \mbox{\hyperlink{class_crypto_payment_gateway_1_1_models_1_1_create_wallet_1_1_response}{Crypto\+Payment\+Gateway.\+Models.\+Create\+Wallet.\+Response}} $>$ Internal\+API.\+Services.\+Co\+Pay\+Service.\+Create\+Wallet (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{String}}}]{wallet\+Name,  }\item[{\mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{String}}}]{copayer\+Name,  }\item[{\mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{Int16}}}]{m,  }\item[{\mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{Int16}}}]{n }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_crypto_payment_gateway_1_1_models_1_1_create_wallet_1_1_request}{CryptoPaymentGateway.Models.CreateWallet.Request}}\ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{request}}\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{namespace_crypto_payment_gateway}{CryptoPaymentGateway}}.\mbox{\hyperlink{namespace_crypto_payment_gateway_1_1_models}{Models}}.\mbox{\hyperlink{namespace_crypto_payment_gateway_1_1_models_1_1_create_wallet}{CreateWallet}}.\mbox{\hyperlink{class_crypto_payment_gateway_1_1_models_1_1_create_wallet_1_1_request}{Request}}()}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\ =\ m,}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ n\ =\ n,}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ name\ =\ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{walletName}},}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pubKey\ =\ this.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_co_pay_service_a7df4b3a7a9fcbbdcb151e39ec2371a5d}{credentials}}.\mbox{\hyperlink{class_crypto_payment_gateway_1_1_models_1_1_credentials_a6bc472008c8b45035ce0c60fadfa8101}{walletPubKey}},}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ network\ =\ this.network\ ==\ Network.Main\ ?\ \textcolor{stringliteral}{"{}livenet"{}}\ :\ \textcolor{stringliteral}{"{}testnet"{}}}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{String}}\ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{url}}\ =\ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{String}}.Format(\textcolor{stringliteral}{"{}\{0\}/v2/wallets/"{}},\ this.baseUrl);}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{HttpClient}}\ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{client}}\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{HttpClient}}();}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{String}}\ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{json}}\ =\ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{JsonConvert}}.SerializeObject(\mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{request}});}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{StringContent}}\ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{requestContent}}\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{StringContent}}(\mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{json}},\ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{Encoding}}.UTF8,\ \textcolor{stringliteral}{"{}application/json"{}});}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using}\ (\mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{HttpResponseMessage}}\ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{responseMessage}}\ =\ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{await}}\ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{client}}.PostAsync(\mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{url}},\ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{requestContent}}))}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{responseMessage}}.IsSuccessStatusCode)}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{String}}\ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{responseContent}}\ =\ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{await}}\ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{responseMessage}}.Content.ReadAsStringAsync();}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{JsonConvert}}.DeserializeObject<\mbox{\hyperlink{namespace_crypto_payment_gateway}{CryptoPaymentGateway}}.\mbox{\hyperlink{namespace_crypto_payment_gateway_1_1_models}{Models}}.\mbox{\hyperlink{namespace_crypto_payment_gateway_1_1_models_1_1_create_wallet}{CreateWallet}}.\mbox{\hyperlink{class_crypto_payment_gateway_1_1_models_1_1_create_wallet_1_1_response}{Response}}>(\mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{responseContent}});}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{InvalidOperationException}}();}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_internal_a_p_i_1_1_services_1_1_co_pay_service_ac2329b907975cd13323ce6f4e3d13b0b}\label{class_internal_a_p_i_1_1_services_1_1_co_pay_service_ac2329b907975cd13323ce6f4e3d13b0b} 
+\index{InternalAPI.Services.CoPayService@{InternalAPI.Services.CoPayService}!DoJoinWallet@{DoJoinWallet}}
+\index{DoJoinWallet@{DoJoinWallet}!InternalAPI.Services.CoPayService@{InternalAPI.Services.CoPayService}}
+\doxysubsubsection{\texorpdfstring{DoJoinWallet()}{DoJoinWallet()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{async}} \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{Task}}$<$ \mbox{\hyperlink{class_crypto_payment_gateway_1_1_models_1_1_join_wallet_1_1_response}{Crypto\+Payment\+Gateway.\+Models.\+Join\+Wallet.\+Response}} $>$ Internal\+API.\+Services.\+Co\+Pay\+Service.\+Do\+Join\+Wallet (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{Guid}}}]{wallet\+Id }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{var}}\ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{encCopayerName}}\ =\ \mbox{\hyperlink{namespace_crypto_payment_gateway}{CryptoPaymentGateway}}.\mbox{\hyperlink{class_crypto_payment_gateway_1_1_utils}{Utils}}.\mbox{\hyperlink{class_crypto_payment_gateway_1_1_utils_aebbd24938c0564165aa2f4fa0e8fadcc}{encryptMessage}}(this.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_co_pay_service_a7df4b3a7a9fcbbdcb151e39ec2371a5d}{credentials}}.\mbox{\hyperlink{class_crypto_payment_gateway_1_1_models_1_1_credentials_aaabb626f989ccafb28135100f7401b53}{copayerName}},\ \textcolor{keyword}{this}.credentials.sharedEncryptingKey);}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{var}}\ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{hash}}\ =\ \mbox{\hyperlink{namespace_crypto_payment_gateway}{CryptoPaymentGateway}}.\mbox{\hyperlink{class_crypto_payment_gateway_1_1_utils}{Utils}}.\mbox{\hyperlink{class_crypto_payment_gateway_1_1_utils_a5bdfea8668c182b0e3185c8293f0c7a6}{getCopayerHash}}(\mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{encCopayerName}},\ this.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_co_pay_service_a7df4b3a7a9fcbbdcb151e39ec2371a5d}{credentials}}.\mbox{\hyperlink{class_crypto_payment_gateway_1_1_models_1_1_credentials_ada5e17aa86f28cf6e5d933a02df8540d}{xPubKey}},\ \textcolor{keyword}{this}.credentials.requestPubKey);}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{var}}\ copayerSignature\ =\ \mbox{\hyperlink{namespace_crypto_payment_gateway}{CryptoPaymentGateway}}.\mbox{\hyperlink{class_crypto_payment_gateway_1_1_utils}{Utils}}.\mbox{\hyperlink{class_crypto_payment_gateway_1_1_utils_abcb7f011d54755b3ba80ca6edfbc46d3}{signMessage}}(\mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{hash}},\ this.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_co_pay_service_a7df4b3a7a9fcbbdcb151e39ec2371a5d}{credentials}}.\mbox{\hyperlink{class_crypto_payment_gateway_1_1_models_1_1_credentials_a6a9ba13dc3df8ca992b2f7a5f30a3b1d}{walletPrivKey}});}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{var}}\ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{request}}\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_crypto_payment_gateway_1_1_models_1_1_join_wallet_1_1_request}{CryptoPaymentGateway.Models.JoinWallet.Request}}}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ walletId\ =\ walletId.ToString(),}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ name\ =\ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{encCopayerName}},}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ xPubKey\ =\ this.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_co_pay_service_a7df4b3a7a9fcbbdcb151e39ec2371a5d}{credentials}}.\mbox{\hyperlink{class_crypto_payment_gateway_1_1_models_1_1_credentials_ada5e17aa86f28cf6e5d933a02df8540d}{xPubKey}},}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ requestPubKey\ =\ this.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_co_pay_service_a7df4b3a7a9fcbbdcb151e39ec2371a5d}{credentials}}.\mbox{\hyperlink{class_crypto_payment_gateway_1_1_models_1_1_credentials_a886f13470b53cd6883342df959787fb4}{requestPubKey}},}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ copayerSignature\ =\ copayerSignature}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{var}}\ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{url}}\ =\ \textcolor{keywordtype}{string}.Format(\textcolor{stringliteral}{"{}/v2/wallets/\{0\}/copayers"{}},\ walletId);}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{await}}\ this.\mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{DoPostRequest}}<\mbox{\hyperlink{namespace_crypto_payment_gateway}{CryptoPaymentGateway}}.\mbox{\hyperlink{namespace_crypto_payment_gateway_1_1_models}{Models}}.\mbox{\hyperlink{namespace_crypto_payment_gateway_1_1_models_1_1_join_wallet}{JoinWallet}}.\mbox{\hyperlink{class_crypto_payment_gateway_1_1_models_1_1_join_wallet_1_1_request}{Request}},\ \mbox{\hyperlink{namespace_crypto_payment_gateway}{CryptoPaymentGateway}}.\mbox{\hyperlink{namespace_crypto_payment_gateway_1_1_models}{Models}}.\mbox{\hyperlink{namespace_crypto_payment_gateway_1_1_models_1_1_join_wallet}{JoinWallet}}.\mbox{\hyperlink{class_crypto_payment_gateway_1_1_models_1_1_join_wallet_1_1_response}{Response}}>(\mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{url}},\ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{request}});}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_internal_a_p_i_1_1_services_1_1_co_pay_service_ac2329b907975cd13323ce6f4e3d13b0b_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_internal_a_p_i_1_1_services_1_1_co_pay_service_ac30ff50ab78dd96332c5a0469e4a150e}\label{class_internal_a_p_i_1_1_services_1_1_co_pay_service_ac30ff50ab78dd96332c5a0469e4a150e} 
+\index{InternalAPI.Services.CoPayService@{InternalAPI.Services.CoPayService}!GetWalletAddresses@{GetWalletAddresses}}
+\index{GetWalletAddresses@{GetWalletAddresses}!InternalAPI.Services.CoPayService@{InternalAPI.Services.CoPayService}}
+\doxysubsubsection{\texorpdfstring{GetWalletAddresses()}{GetWalletAddresses()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{async}} \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{Task}}$<$ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{List}}$<$ \mbox{\hyperlink{class_crypto_payment_gateway_1_1_models_1_1_get_wallet_addresses_1_1_address_details}{Crypto\+Payment\+Gateway.\+Models.\+Get\+Wallet\+Addresses.\+Address\+Details}} $>$ $>$ Internal\+API.\+Services.\+Co\+Pay\+Service.\+Get\+Wallet\+Addresses (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{var}}\ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{url}}\ =\ \textcolor{stringliteral}{"{}/v1/addresses"{}};}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{var}}\ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{client}}\ =\ BuildClient(\textcolor{stringliteral}{"{}get"{}},\ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{url}});}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using}\ (\mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{var}}\ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{responseMessage}}\ =\ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{await}}\ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{client}}.GetAsync(this.baseUrl\ +\ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{url}}))}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{responseMessage}}.IsSuccessStatusCode)}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{String}}\ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{responseContent}}\ =\ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{await}}\ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{responseMessage}}.Content.ReadAsStringAsync();}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{Console}}.Out.WriteLine(\textcolor{stringliteral}{"{}wallet\ addresses"{}});}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{Console}}.Out.WriteLine(\mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{responseContent}});}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//return\ JsonConvert.DeserializeObject<dynamic>(responseContent);}}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{JsonConvert}}.DeserializeObject<\mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{List}}<\mbox{\hyperlink{namespace_crypto_payment_gateway}{CryptoPaymentGateway}}.\mbox{\hyperlink{namespace_crypto_payment_gateway_1_1_models}{Models}}.\mbox{\hyperlink{namespace_crypto_payment_gateway_1_1_models_1_1_get_wallet_addresses}{GetWalletAddresses}}.\mbox{\hyperlink{class_crypto_payment_gateway_1_1_models_1_1_get_wallet_addresses_1_1_address_details}{AddressDetails}}>>(\mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{responseContent}});}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{Console}}.Out.WriteLine(\textcolor{stringliteral}{"{}Error"{}});}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{Console}}.Out.WriteLine(\mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{responseMessage}}.StatusCode);}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{Console}}.Out.WriteLine(\mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{await}}\ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{responseMessage}}.Content.ReadAsStringAsync());}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{InvalidOperationException}}();}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_internal_a_p_i_1_1_services_1_1_co_pay_service_ac30ff50ab78dd96332c5a0469e4a150e_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_internal_a_p_i_1_1_services_1_1_co_pay_service_abc839fdce5339375b53327ca7f0c3a5d}\label{class_internal_a_p_i_1_1_services_1_1_co_pay_service_abc839fdce5339375b53327ca7f0c3a5d} 
+\index{InternalAPI.Services.CoPayService@{InternalAPI.Services.CoPayService}!RequestNewAddress@{RequestNewAddress}}
+\index{RequestNewAddress@{RequestNewAddress}!InternalAPI.Services.CoPayService@{InternalAPI.Services.CoPayService}}
+\doxysubsubsection{\texorpdfstring{RequestNewAddress()}{RequestNewAddress()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{async}} \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{Task}}$<$ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{dynamic}} $>$ Internal\+API.\+Services.\+Co\+Pay\+Service.\+Request\+New\+Address (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{var}}\ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{url}}\ =\ \textcolor{stringliteral}{"{}/v1/addresses"{}};}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{await}}\ this.\mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{DoPostRequest<dynamic,\ dynamic>}}(\mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{url}});}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_internal_a_p_i_1_1_services_1_1_co_pay_service_abc839fdce5339375b53327ca7f0c3a5d_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_internal_a_p_i_1_1_services_1_1_co_pay_service_a3ce52593c7e5fd8c0898d547e9856ad3}\label{class_internal_a_p_i_1_1_services_1_1_co_pay_service_a3ce52593c7e5fd8c0898d547e9856ad3} 
+\index{InternalAPI.Services.CoPayService@{InternalAPI.Services.CoPayService}!SetCredentials@{SetCredentials}}
+\index{SetCredentials@{SetCredentials}!InternalAPI.Services.CoPayService@{InternalAPI.Services.CoPayService}}
+\doxysubsubsection{\texorpdfstring{SetCredentials()}{SetCredentials()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{void}} Internal\+API.\+Services.\+Co\+Pay\+Service.\+Set\+Credentials (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{string}}}]{x\+Priv\+Key,  }\item[{\mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{Key}}}]{wallet\+Priv\+Key,  }\item[{\mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{string}}}]{copayer\+Name }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ this.credentials\ =\ \mbox{\hyperlink{class_crypto_payment_gateway_1_1_models_1_1_credentials}{Credentials}}.\mbox{\hyperlink{class_crypto_payment_gateway_1_1_models_1_1_credentials_aa39181b8bb6124248f50d8e0e36c6a08}{FromExtendedPrivateKey}}(xPrivKey,\ walletPrivKey,\ copayerName,\ this.network);}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_internal_a_p_i_1_1_services_1_1_co_pay_service_a3ce52593c7e5fd8c0898d547e9856ad3_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_services_1_1_co_pay_service_afa71c12236336d4bf6778102ae7d9ab4}\label{class_internal_a_p_i_1_1_services_1_1_co_pay_service_afa71c12236336d4bf6778102ae7d9ab4} 
+\index{InternalAPI.Services.CoPayService@{InternalAPI.Services.CoPayService}!BWS\_INSTANCE\_URL@{BWS\_INSTANCE\_URL}}
+\index{BWS\_INSTANCE\_URL@{BWS\_INSTANCE\_URL}!InternalAPI.Services.CoPayService@{InternalAPI.Services.CoPayService}}
+\doxysubsubsection{\texorpdfstring{BWS\_INSTANCE\_URL}{BWS\_INSTANCE\_URL}}
+{\footnotesize\ttfamily \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{const}} \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{string}} Internal\+API.\+Services.\+Co\+Pay\+Service.\+BWS\+\_\+\+INSTANCE\+\_\+\+URL = "{}https\+://bws.\+bitpay.\+com/\mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{bws}}/\mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{api"{}}}\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{class_internal_a_p_i_1_1_services_1_1_co_pay_service_a7df4b3a7a9fcbbdcb151e39ec2371a5d}\label{class_internal_a_p_i_1_1_services_1_1_co_pay_service_a7df4b3a7a9fcbbdcb151e39ec2371a5d} 
+\index{InternalAPI.Services.CoPayService@{InternalAPI.Services.CoPayService}!credentials@{credentials}}
+\index{credentials@{credentials}!InternalAPI.Services.CoPayService@{InternalAPI.Services.CoPayService}}
+\doxysubsubsection{\texorpdfstring{credentials}{credentials}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_crypto_payment_gateway_1_1_models_1_1_credentials}{Credentials}} Internal\+API.\+Services.\+Co\+Pay\+Service.\+credentials}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+STRIDER/source/repos/\+Internal\+API/\+Internal\+API/\+Services/\+Co\+Pay/\mbox{\hyperlink{_co_pay_service_8cs}{Co\+Pay\+Service.\+cs}}\end{DoxyCompactItemize}

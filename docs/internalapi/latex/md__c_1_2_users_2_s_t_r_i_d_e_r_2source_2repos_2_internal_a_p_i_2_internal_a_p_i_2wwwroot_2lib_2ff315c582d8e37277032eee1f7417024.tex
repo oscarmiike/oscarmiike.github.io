@@ -1,0 +1,191 @@
+\chapter{redeyed \texorpdfstring{$<$}{<}a href="{}http\+://travis-\/ci.\+org/thlorenz/redeyed"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://secure.\+travis-\/ci.\+org/thlorenz/redeyed.\+png?branch=master"{} alt="{}build status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ff315c582d8e37277032eee1f7417024}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ff315c582d8e37277032eee1f7417024}\index{redeyed $<$a href="{}http://travis-\/ci.org/thlorenz/redeyed"{} $>$$<$img src="{}https://secure.travis-\/ci.org/thlorenz/redeyed.png?branch=master"{} alt="{}build status"{}/$>$$<$/a$>$@{redeyed $<$a href=""http://travis-\/ci.org/thlorenz/redeyed"" $>$$<$img src=""https://secure.travis-\/ci.org/thlorenz/redeyed.png?branch=master"" alt=""build status""/$>$$<$/a$>$}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ff315c582d8e37277032eee1f7417024_autotoc_md4188}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ff315c582d8e37277032eee1f7417024_autotoc_md4188}%
+ {\itshape Add color to your Java\+Script!}
+
+
+
+\href{http://allaboutfrogs.org/info/species/redeye.html}{\texttt{ Red Eyed Tree Frog}} \texorpdfstring{$\ast$}{*}(Agalychnis callidryas)\texorpdfstring{$\ast$}{*}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ff315c582d8e37277032eee1f7417024_autotoc_md4189}{}\doxysection{\texorpdfstring{What?}{What?}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ff315c582d8e37277032eee1f7417024_autotoc_md4189}
+Takes Java\+Script code, along with a config and returns the original code with tokens wrapped and/or replaced as configured.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ff315c582d8e37277032eee1f7417024_autotoc_md4190}{}\doxysection{\texorpdfstring{Where?}{Where?}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ff315c582d8e37277032eee1f7417024_autotoc_md4190}
+
+\begin{DoxyItemize}
+\item server side using nodejs
+\item in the browser
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ff315c582d8e37277032eee1f7417024_autotoc_md4191}{}\doxysection{\texorpdfstring{What for?}{What for?}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ff315c582d8e37277032eee1f7417024_autotoc_md4191}
+One usecase is adding metadata to your code that can then be used to apply syntax highlighting.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ff315c582d8e37277032eee1f7417024_autotoc_md4192}{}\doxysection{\texorpdfstring{How?}{How?}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ff315c582d8e37277032eee1f7417024_autotoc_md4192}
+
+\begin{DoxyItemize}
+\item copy the \href{https://github.com/thlorenz/redeyed/blob/master/config.js}{\texttt{ config.\+js}} and edit it in order to specify how certain tokens are to be surrounded/replaced
+\item replace the {\ttfamily undefined} of each token you want to configure with one of the following
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ff315c582d8e37277032eee1f7417024_autotoc_md4193}{}\doxysubsection{\texorpdfstring{\{String\} config}{\{String\} config}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ff315c582d8e37277032eee1f7417024_autotoc_md4193}
+`\textquotesingle{}before\+:after'\`{}
+
+wraps the token inside before/after\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ff315c582d8e37277032eee1f7417024_autotoc_md4194}{}\doxysubsection{\texorpdfstring{\{Object\} config}{\{Object\} config}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ff315c582d8e37277032eee1f7417024_autotoc_md4194}
+`\{ \+\_\+before\+: \textquotesingle{}before', \+\_\+after\+: \textquotesingle{}after\textquotesingle{} \}\`{}
+
+wraps token inside before/after\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ff315c582d8e37277032eee1f7417024_autotoc_md4195}{}\doxysubsubsection{\texorpdfstring{Missing before and after resolution for \{String\} and \{Object\} config}{Missing before and after resolution for \{String\} and \{Object\} config}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ff315c582d8e37277032eee1f7417024_autotoc_md4195}
+For the {\ttfamily \{String\}} and {\ttfamily \{Object\}} configurations, \textquotesingle{}before\textquotesingle{} or \textquotesingle{}after\textquotesingle{} may be omitted\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \{String\}}\+:
+\begin{DoxyItemize}
+\item `\textquotesingle{}before\+:'` (omitting \textquotesingle{}after')
+\item `'\+:after\textquotesingle{}` (omitting \textquotesingle{}before')
+\end{DoxyItemize}
+\item {\ttfamily \{Object\}}\+:
+\begin{DoxyItemize}
+\item `\{ \+\_\+before\+: \textquotesingle{}before' \}` (omitting '\+\_\+after\textquotesingle{})
+\item `\{ \+\_\+after\+: \textquotesingle{}after' \}` (omitting '\+\_\+before\textquotesingle{})
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+In these cases the missing half is resolved as follows\+:
+
+
+\begin{DoxyItemize}
+\item from the {\ttfamily parent.\+\_\+default} (i.\+e., {\ttfamily Keyword.\+\_\+default}) if found
+\item otherwise from the {\ttfamily config.\+\_\+default} if found
+\item otherwise `'\textquotesingle{}\`{} (empty string)
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ff315c582d8e37277032eee1f7417024_autotoc_md4196}{}\doxysubsection{\texorpdfstring{\{Function\} config}{\{Function\} config}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ff315c582d8e37277032eee1f7417024_autotoc_md4196}
+{\ttfamily function (token\+String, info) \{ return \{String\}\texorpdfstring{$\vert$}{|}\{Object\}; \}}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ff315c582d8e37277032eee1f7417024_autotoc_md4197}{}\doxysubsubsection{\texorpdfstring{Inputs}{Inputs}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ff315c582d8e37277032eee1f7417024_autotoc_md4197}
+
+\begin{DoxyItemize}
+\item token\+String\+: the content of the token that is currently being processed
+\item info\+: an object with the following structure
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ //\ \{Int\}}
+\DoxyCodeLine{\ \ \ \ //\ the\ index\ of\ the\ token\ being\ processed\ inside\ tokens}
+\DoxyCodeLine{\ \ \ \ tokenIndex}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ //\ \{Array\}}
+\DoxyCodeLine{\ \ \ \ //\ all\ tokens\ that\ are\ being\ processed\ including\ comments\ }
+\DoxyCodeLine{\ \ \ \ //\ (i.e.\ the\ result\ of\ merging\ esprima\ tokens\ and\ comments)}
+\DoxyCodeLine{\ \ ,\ tokens\ \ }
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ //\ \{Object\}\ }
+\DoxyCodeLine{\ \ \ \ //\ the\ abstract\ syntax\ tree\ of\ the\ parsed\ code}
+\DoxyCodeLine{\ \ ,\ ast\ \ }
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ //\ \{String\}}
+\DoxyCodeLine{\ \ \ \ //\ the\ code\ that\ was\ parsed\ (same\ string\ as\ the\ one\ passed\ to\ redeyed(code\ ..)}
+\DoxyCodeLine{\ \ ,\ code}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+In most cases the {\ttfamily token\+String} is all you need. The extra info object is passed in case you need to gather more information about the {\ttfamily token}\textquotesingle{}s surroundings in order to decide how to transform it. See\+: \href{https://github.com/thlorenz/redeyed/blob/master/examples/replace-log.js}{\texttt{ replace-\/log-\/example}}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ff315c582d8e37277032eee1f7417024_autotoc_md4198}{}\doxysubsubsection{\texorpdfstring{Output}{Output}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ff315c582d8e37277032eee1f7417024_autotoc_md4198}
+You can return a \{String\} or an \{Object\} from a \{Function\} config.
+
+
+\begin{DoxyItemize}
+\item when returning a \{String\}, the token value will be replaced with it
+\item when returning an \{Object\}, it should be of the following form\+:
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ //\ \{String\}}
+\DoxyCodeLine{\ \ \ \ //\ the\ string\ that\ should\ be\ substituted\ for\ the\ value\ of\ the\ current\ and\ all\ skipped\ tokens}
+\DoxyCodeLine{\ \ \ \ replacement}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ //\ \{Object\}\ (Token)}
+\DoxyCodeLine{\ \ \ \ //\ the\ token\ after\ which\ processing\ should\ continue}
+\DoxyCodeLine{\ \ \ \ //\ all\ tokens\ in\ between\ the\ current\ one\ and\ this\ one\ inclusive\ will\ be\ ignored}
+\DoxyCodeLine{\ \ ,\ skipPastToken}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ff315c582d8e37277032eee1f7417024_autotoc_md4199}{}\doxysubsection{\texorpdfstring{Transforming Java\+Script code}{Transforming Java\+Script code}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ff315c582d8e37277032eee1f7417024_autotoc_md4199}
+{\itshape {\bfseries{redeyed(code, config\mbox{[}, opts\mbox{]})}}}
+
+Invoke redeyed with your {\bfseries{config\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}uration, a \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}code}} snippet and maybe {\bfseries{opts}} as in the below example\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ redeyed\ =\ require('redeyed')}
+\DoxyCodeLine{\ \ ,\ config\ =\ require('./path/to/config')}
+\DoxyCodeLine{\ \ ,\ code\ =\ 'var\ a\ =\ 3;'}
+\DoxyCodeLine{\ \ ,\ result;}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ redeyed\ will\ throw\ an\ error\ (caused\ by\ the\ esprima\ parser)\ if\ the\ code\ has\ invalid\ javascript}
+\DoxyCodeLine{try\ \{}
+\DoxyCodeLine{\ \ result\ =\ redeyed(code,\ config);}
+\DoxyCodeLine{\ \ console.log(result.code);}
+\DoxyCodeLine{\}\ catch(err)\ \{}
+\DoxyCodeLine{\ \ console.error(err);}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+{\itshape {\bfseries{opts}}}\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{\ //\ \{Boolean\}}
+\DoxyCodeLine{\ \ //\ if\ true\ \`{}result.code`\ is\ not\ assigned\ and\ therefore\ \`{}undefined`}
+\DoxyCodeLine{\ \ //\ if\ false\ (default)\ \`{}result.code`\ property\ contains\ the\ result\ of\ \`{}split.join`}
+\DoxyCodeLine{\ \ nojoin:\ true|false}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+{\itshape {\bfseries{return value}}}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{\ \ \ ast\ \ \ \ \ \ }
+\DoxyCodeLine{\ \ ,\ tokens\ \ \ }
+\DoxyCodeLine{\ \ ,\ comments\ }
+\DoxyCodeLine{\ \ ,\ splits\ \ \ }
+\DoxyCodeLine{\ \ ,\ code\ \ \ \ \ }
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item ast {\ttfamily \{Array\}}\+: \href{http://en.wikipedia.org/wiki/Abstract_syntax_tree}{\texttt{ abstract syntax tree}} as returned by \href{http://en.wikipedia.org/wiki/Abstract_syntax_tree}{\texttt{ esprima parse}}
+\item tokens {\ttfamily \{Array\}}\+: \href{http://en.wikipedia.org/wiki/Token_(parser)}{\texttt{ tokens}} provided by esprima (excluding comments)
+\item comments {\ttfamily \{Array\}}\+: block and line comments as provided by esprima
+\item splits {\ttfamily \{Array\}}\+: code pieces split up, some of which where transformed as configured
+\item code {\ttfamily \{String\}}\+: transformed code, same as `splits.\+join('\textquotesingle{})\`{} unless this step has been skipped (see opts)
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ff315c582d8e37277032eee1f7417024_autotoc_md4200}{}\doxysection{\texorpdfstring{Browser Support}{Browser Support}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ff315c582d8e37277032eee1f7417024_autotoc_md4200}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ff315c582d8e37277032eee1f7417024_autotoc_md4201}{}\doxysubsection{\texorpdfstring{AMD}{AMD}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ff315c582d8e37277032eee1f7417024_autotoc_md4201}
+Ensure to include \href{https://github.com/ariya/esprima}{\texttt{ esprima}} as one of your dependencies
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{define(['redeyed'],\ function\ (redeyed)\ \{}
+\DoxyCodeLine{\ [\ ..\ ]}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ff315c582d8e37277032eee1f7417024_autotoc_md4202}{}\doxysubsection{\texorpdfstring{Attached to global window object}{Attached to global window object}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ff315c582d8e37277032eee1f7417024_autotoc_md4202}
+The {\ttfamily redeyed \{Function\}} will be exposed globally as {\ttfamily window.\+redeyed} -\/ big surprise!
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<script\ type="{}text/javascript"{}\ src="{}https://raw.github.com/ariya/esprima/master/esprima.js"{}></script>}
+\DoxyCodeLine{<script\ type="{}text/javascript"{}\ src="{}path/to/redeyed.js"{}></script>}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ff315c582d8e37277032eee1f7417024_autotoc_md4203}{}\doxysection{\texorpdfstring{redeyed in the wild}{redeyed in the wild}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ff315c582d8e37277032eee1f7417024_autotoc_md4203}
+
+\begin{DoxyItemize}
+\item \href{https://github.com/thlorenz/cardinal}{\texttt{ cardinal}}\+: Syntax highlights Java\+Script code with ANSI colors to be printed to the terminal
+\item \href{http://thlorenz.github.com/peacock/}{\texttt{ peacock}}\+: Java\+Script syntax highlighter that generates html that is compatible with pygments styles.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ff315c582d8e37277032eee1f7417024_autotoc_md4204}{}\doxysection{\texorpdfstring{Examples}{Examples}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ff315c582d8e37277032eee1f7417024_autotoc_md4204}
+
+\begin{DoxyItemize}
+\item {\ttfamily npm explore redeyed; npm demo} will let you try the \href{https://github.com/thlorenz/redeyed/tree/master/examples/browser}{\texttt{ browser example}}
+\item {\ttfamily npm explore redeyed; npm demo-\/log} will let you try the \href{https://github.com/thlorenz/redeyed/blob/master/examples/replace-log.js}{\texttt{ replace log example}} 
+\end{DoxyItemize}

@@ -1,0 +1,33 @@
+\chapter{junk \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/sindresorhus/junk"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+org/sindresorhus/junk.\+svg?branch=master"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a8304443d5d48b1e1e749741904f407b}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a8304443d5d48b1e1e749741904f407b}\index{junk $<$a href="{}https://travis-\/ci.org/sindresorhus/junk"{} $>$$<$img src="{}https://travis-\/ci.org/sindresorhus/junk.svg?branch=master"{} alt="{}Build Status"{}/$>$$<$/a$>$@{junk $<$a href=""https://travis-\/ci.org/sindresorhus/junk"" $>$$<$img src=""https://travis-\/ci.org/sindresorhus/junk.svg?branch=master"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a8304443d5d48b1e1e749741904f407b_autotoc_md3139}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a8304443d5d48b1e1e749741904f407b_autotoc_md3139}%
+ \begin{quote}
+Filter out \href{test.js}{\texttt{ OS junk files}} like {\ttfamily .DS\+\_\+\+Store} and {\ttfamily Thumbs.\+db} \end{quote}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a8304443d5d48b1e1e749741904f407b_autotoc_md3140}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a8304443d5d48b1e1e749741904f407b_autotoc_md3140}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ -\/-\/save\ junk}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a8304443d5d48b1e1e749741904f407b_autotoc_md3141}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a8304443d5d48b1e1e749741904f407b_autotoc_md3141}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ fs\ =\ require('fs');}
+\DoxyCodeLine{var\ junk\ =\ require('junk');}
+\DoxyCodeLine{}
+\DoxyCodeLine{fs.readdir('path',\ function\ (err,\ files)\ \{}
+\DoxyCodeLine{\ \ \ \ console.log(files);}
+\DoxyCodeLine{\ \ \ \ //=>\ ['.DS\_Store',\ 'test.jpg']}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ console.log(files.filter(junk.not));}
+\DoxyCodeLine{\ \ \ \ //=>\ ['test.jpg']}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a8304443d5d48b1e1e749741904f407b_autotoc_md3142}{}\doxysection{\texorpdfstring{API}{API}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a8304443d5d48b1e1e749741904f407b_autotoc_md3142}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a8304443d5d48b1e1e749741904f407b_autotoc_md3143}{}\doxysubsection{\texorpdfstring{junk.\+is(filename)}{junk.\+is(filename)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a8304443d5d48b1e1e749741904f407b_autotoc_md3143}
+Returns true if {\ttfamily filename} matches a junk file.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a8304443d5d48b1e1e749741904f407b_autotoc_md3144}{}\doxysubsection{\texorpdfstring{junk.\+not(filename)}{junk.\+not(filename)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a8304443d5d48b1e1e749741904f407b_autotoc_md3144}
+Returns true if {\ttfamily filename} doesn\textquotesingle{}t match a junk file.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a8304443d5d48b1e1e749741904f407b_autotoc_md3145}{}\doxysubsection{\texorpdfstring{junk.\+re}{junk.\+re}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a8304443d5d48b1e1e749741904f407b_autotoc_md3145}
+The regex used for matching.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a8304443d5d48b1e1e749741904f407b_autotoc_md3146}{}\doxysection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a8304443d5d48b1e1e749741904f407b_autotoc_md3146}
+MIT © \href{http://sindresorhus.com}{\texttt{ Sindre Sorhus}} 

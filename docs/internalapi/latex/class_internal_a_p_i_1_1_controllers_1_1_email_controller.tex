@@ -1,0 +1,74 @@
+\doxysection{Internal\+API.\+Controllers.\+Email\+Controller Class Reference}
+\hypertarget{class_internal_a_p_i_1_1_controllers_1_1_email_controller}{}\label{class_internal_a_p_i_1_1_controllers_1_1_email_controller}\index{InternalAPI.Controllers.EmailController@{InternalAPI.Controllers.EmailController}}
+
+
+Inheritance diagram for Internal\+API.\+Controllers.\+Email\+Controller\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{class_internal_a_p_i_1_1_controllers_1_1_email_controller__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Internal\+API.\+Controllers.\+Email\+Controller\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{class_internal_a_p_i_1_1_controllers_1_1_email_controller__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_email_controller_afdcf2ad305093c4cd8085297125dab05}{Email\+Controller}} (\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{Log\+Service}} logger, \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_email_1_1_email_service}{Email\+Service}} email\+Service)
+\item 
+Action\+Result$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_email_1_1_email_response}{Email\+Response}} $>$ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_email_controller_a7eb07d1baf148d8b9a9a1a72a02b5c43}{Post}} (\mbox{[}From\+Body\mbox{]} \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_email_1_1_email_post}{Email\+Post}} email\+Post)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_email_controller_afdcf2ad305093c4cd8085297125dab05}\label{class_internal_a_p_i_1_1_controllers_1_1_email_controller_afdcf2ad305093c4cd8085297125dab05} 
+\index{InternalAPI.Controllers.EmailController@{InternalAPI.Controllers.EmailController}!EmailController@{EmailController}}
+\index{EmailController@{EmailController}!InternalAPI.Controllers.EmailController@{InternalAPI.Controllers.EmailController}}
+\doxysubsubsection{\texorpdfstring{EmailController()}{EmailController()}}
+{\footnotesize\ttfamily Internal\+API.\+Controllers.\+Email\+Controller.\+Email\+Controller (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{Log\+Service}}}]{logger,  }\item[{\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_email_1_1_email_service}{Email\+Service}}}]{email\+Service }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger\ =\ logger;}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \_emailService\ =\ emailService;}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_email_controller_a7eb07d1baf148d8b9a9a1a72a02b5c43}\label{class_internal_a_p_i_1_1_controllers_1_1_email_controller_a7eb07d1baf148d8b9a9a1a72a02b5c43} 
+\index{InternalAPI.Controllers.EmailController@{InternalAPI.Controllers.EmailController}!Post@{Post}}
+\index{Post@{Post}!InternalAPI.Controllers.EmailController@{InternalAPI.Controllers.EmailController}}
+\doxysubsubsection{\texorpdfstring{Post()}{Post()}}
+{\footnotesize\ttfamily Action\+Result$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_email_1_1_email_response}{Email\+Response}} $>$ Internal\+API.\+Controllers.\+Email\+Controller.\+Post (\begin{DoxyParamCaption}\item[{\mbox{[}\+From\+Body\mbox{]} \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_email_1_1_email_post}{Email\+Post}}}]{email\+Post }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_acf860ff3326ea65346a173f3479c6e57}{LogDebug}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.EmailController,\ \$\textcolor{stringliteral}{"{}Request\ received\ on\ email\ controller"{}},\ emailPost);}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ var\ errors\ =\ VerifyPost(emailPost);}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (errors.Length\ >\ 0)\ }
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_email_1_1_email_response}{EmailResponse}}\ emailResponse\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_email_1_1_email_response}{EmailResponse}}\ \{\ Success\ =\ \textcolor{keyword}{false},\ Errors\ =\ errors.ToString()\ \};\ }
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a778dd1666ec20e3197598d7aa41e0cba}{LogError}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.EmailController,\ \$\textcolor{stringliteral}{"{}Error\ with\ data\ received\ on\ email\ controller"{}},\ emailResponse);}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ emailResponse;}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\_emailService.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_email_1_1_email_service_a413aa0652a2b100b8ffc40b5f0580612}{SendEmail}}(emailPost))\ \{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_email_1_1_email_response}{EmailResponse}}\ \{\ Success\ =\ \textcolor{keyword}{false},\ Errors\ =\ \textcolor{stringliteral}{"{}Error\ sending\ email"{}}\ \};\ \}}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_email_1_1_email_response}{EmailResponse}}\ \{\ Success\ =\ \textcolor{keyword}{true},\ Errors\ =\ \textcolor{keyword}{null}\ \};}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+STRIDER/source/repos/\+Internal\+API/\+Internal\+API/\+Controllers/\mbox{\hyperlink{_email_controller_8cs}{Email\+Controller.\+cs}}\end{DoxyCompactItemize}

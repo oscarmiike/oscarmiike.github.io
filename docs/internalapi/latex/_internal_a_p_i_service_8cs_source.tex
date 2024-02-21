@@ -1,0 +1,83 @@
+\doxysection{Internal\+APIService.\+cs}
+\hypertarget{_internal_a_p_i_service_8cs_source}{}\label{_internal_a_p_i_service_8cs_source}\index{C:/Users/STRIDER/source/repos/InternalAPI/InternalAPI/Services/InternalAPI/InternalAPIService.cs@{C:/Users/STRIDER/source/repos/InternalAPI/InternalAPI/Services/InternalAPI/InternalAPIService.cs}}
+\mbox{\hyperlink{_internal_a_p_i_service_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_contexts_1_1_a_b_web}{InternalAPI.Contexts.ABWeb}};}
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_contexts_1_1_internal_a_p_i}{InternalAPI.Contexts.InternalAPI}};}
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_dto_1_1_log_viewer}{InternalAPI.Dto.LogViewer}};}
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_models_1_1_internal_a_p_i}{InternalAPI.Models.InternalAPI}};}
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }Microsoft.EntityFrameworkCore;}
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00006}00006\ \textcolor{keyword}{using\ }Newtonsoft.Json;}
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00007}00007\ \textcolor{keyword}{using\ }RestSharp;}
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00008}00008\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00009}00009\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00010}00010\ \textcolor{keyword}{using\ }System.Linq;}
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00018}\mbox{\hyperlink{namespace_internal_a_p_i_1_1_services_1_1_internal_a_p_i}{00018}}\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_services_1_1_internal_a_p_i}{InternalAPI.Services.InternalAPI}}}
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00019}00019\ \{}
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00020}\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_internal_a_p_i_1_1_internal_a_p_i_service}{00020}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_internal_a_p_i_1_1_internal_a_p_i_service}{InternalAPIService}}}
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00021}00021\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ readonly\ \mbox{\hyperlink{class_internal_a_p_i_1_1_contexts_1_1_internal_a_p_i_1_1_internal_a_p_i_context}{InternalAPIContext}}\ \_context;}
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ readonly\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}\ \_logService;\ }
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00025}\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_internal_a_p_i_1_1_internal_a_p_i_service_ab167eb8e4d73992c26c66743c510b49a}{00025}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_internal_a_p_i_1_1_internal_a_p_i_service_ab167eb8e4d73992c26c66743c510b49a}{InternalAPIService}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_contexts_1_1_internal_a_p_i_1_1_internal_a_p_i_context}{InternalAPIContext}}\ context,\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}\ logService)}
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ \_context\ =\ context;}
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ \_logService\ =\ logService;\ }
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00031}\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_internal_a_p_i_1_1_internal_a_p_i_service_ad59a27b4edc3a518a3c51db3d03d90bc}{00031}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ List<LogEntry>\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_internal_a_p_i_1_1_internal_a_p_i_service_ad59a27b4edc3a518a3c51db3d03d90bc}{GetLogs}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_log_viewer_1_1_log_request}{LogRequest}}\ logRequest)}
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//string\ logRequestJson\ =\ JsonConvert.SerializeObject(logRequest);}}
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\_logService.LogError(LogService.LogSources.TaskAPIService,\ "{}Json\ Body\ Request\ -\/\ InternalAPI"{},\ logRequestJson);}}
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Convert\ dates\ from\ UTC\ to\ local\ and\ handle\ the\ start\ hour}}
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ DateTime\ fromDateTimeUTC\ =\ logRequest.fromUnixUTCMilli\ >\ 0}
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ?\ DateTimeOffset.FromUnixTimeMilliseconds(logRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_log_viewer_1_1_log_request_ae49fa22d472b680ab0c81d5cc8d9cc1e}{fromUnixUTCMilli}}).DateTime}
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ DateTime.MinValue;}
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ DateTime\ fromDateTimeLocal\ =\ fromDateTimeUTC.ToLocalTime();}
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ DateTime\ dateRangeStart\ =\ logRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_log_viewer_1_1_log_request_ad997d7534dfd011aa1debfc5793f00e5}{dateRangeStartUTC}}.ToLocalTime();}
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (logRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_log_viewer_1_1_log_request_a54222025f0494e6bf557606ff13f58a3}{startHour}}\ >\ -\/1)}
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ dateRangeStart\ =\ dateRangeStart.AddHours(logRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_log_viewer_1_1_log_request_a54222025f0494e6bf557606ff13f58a3}{startHour}});}
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ DateTime\ dateRangeEnd\ =\ logRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_log_viewer_1_1_log_request_adae3d611fe24f076bfea5ef7aa8c3348}{dateRangeEndUTC}}.ToLocalTime();}
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ var\ logsQuery\ =\ \_context.LogEntries.AsNoTracking()}
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .Where(le\ =>\ le.Created\ >=\ dateRangeStart\ \&\&\ le.Created\ <=\ dateRangeEnd)}
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .AsEnumerable();\ \ }
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (logRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_log_viewer_1_1_log_request_a3344f1427b23c67d9df0263f5a8c66b8}{initial}})}
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ logsQuery\ =\ logsQuery}
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .Where(le\ =>\ logRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_log_viewer_1_1_log_request_a2713f2af6470e79bd42b688f497e971f}{logType}}\ ==\ \textcolor{keyword}{null}\ ||\ logRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_log_viewer_1_1_log_request_a2713f2af6470e79bd42b688f497e971f}{logType}}.All(\textcolor{keywordtype}{string}.IsNullOrEmpty)\ ||\ logRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_log_viewer_1_1_log_request_a2713f2af6470e79bd42b688f497e971f}{logType}}.Any(lt\ =>\ le.Type.ToLower()\ ==\ lt.ToLower()))}
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .Where(le\ =>\ logRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_log_viewer_1_1_log_request_a38b36bc2c5ad65ff7d3baf0ac91a9daa}{logSource}}\ ==\ \textcolor{keyword}{null}\ ||\ logRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_log_viewer_1_1_log_request_a38b36bc2c5ad65ff7d3baf0ac91a9daa}{logSource}}.All(\textcolor{keywordtype}{string}.IsNullOrEmpty)\ ||\ logRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_log_viewer_1_1_log_request_a38b36bc2c5ad65ff7d3baf0ac91a9daa}{logSource}}.Any(ls\ =>\ le.Source.ToLower()\ ==\ ls.ToLower()))}
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .Where(le\ =>\ \textcolor{keywordtype}{string}.IsNullOrEmpty(logRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_log_viewer_1_1_log_request_a3e04f70a8bbc9a806f5ff99221959de4}{searchString}})\ ||\ le.Data.ToLower().Contains(logRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_log_viewer_1_1_log_request_a3e04f70a8bbc9a806f5ff99221959de4}{searchString}}.ToLower()));}
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (logRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_log_viewer_1_1_log_request_a54222025f0494e6bf557606ff13f58a3}{startHour}}\ >\ -\/1)}
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ logsQuery\ =\ logsQuery.Where(le\ =>\ le.Created\ >\ fromDateTimeLocal).Take(logRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_log_viewer_1_1_log_request_aff79f3802f871ca10c9a023cf22065d6}{maxLogs}});}
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ logsQuery\ =\ logsQuery.OrderByDescending(le\ =>\ le.Created).Take(logRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_log_viewer_1_1_log_request_aff79f3802f871ca10c9a023cf22065d6}{maxLogs}});}
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ logsQuery\ =\ logsQuery}
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .Where(le\ =>\ le.Created\ >\ fromDateTimeLocal)}
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .Where(le\ =>\ logRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_log_viewer_1_1_log_request_a2713f2af6470e79bd42b688f497e971f}{logType}}\ ==\ \textcolor{keyword}{null}\ ||\ logRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_log_viewer_1_1_log_request_a2713f2af6470e79bd42b688f497e971f}{logType}}.All(\textcolor{keywordtype}{string}.IsNullOrEmpty)\ ||\ logRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_log_viewer_1_1_log_request_a2713f2af6470e79bd42b688f497e971f}{logType}}.Any(lt\ =>\ le.Type.ToLower()\ ==\ lt.ToLower()))}
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .Where(le\ =>\ logRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_log_viewer_1_1_log_request_a38b36bc2c5ad65ff7d3baf0ac91a9daa}{logSource}}\ ==\ \textcolor{keyword}{null}\ ||\ logRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_log_viewer_1_1_log_request_a38b36bc2c5ad65ff7d3baf0ac91a9daa}{logSource}}.All(\textcolor{keywordtype}{string}.IsNullOrEmpty)\ ||\ logRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_log_viewer_1_1_log_request_a38b36bc2c5ad65ff7d3baf0ac91a9daa}{logSource}}.Any(ls\ =>\ le.Source.ToLower()\ ==\ ls.ToLower()))}
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .Where(le\ =>\ \textcolor{keywordtype}{string}.IsNullOrEmpty(logRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_log_viewer_1_1_log_request_a3e04f70a8bbc9a806f5ff99221959de4}{searchString}})\ ||\ le.Data.ToLower().Contains(logRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_log_viewer_1_1_log_request_a3e04f70a8bbc9a806f5ff99221959de4}{searchString}}.ToLower()))}
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .OrderByDescending(le\ =>\ le.Created);}
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ logsQuery.ToList();}
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00087}00087\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_internal_a_p_i_service_8cs_source_l00088}00088\ \}}
+
+\end{DoxyCode}

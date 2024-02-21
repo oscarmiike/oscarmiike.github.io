@@ -1,0 +1,66 @@
+\doxysection{Internal\+API.\+Controllers.\+BPay\+Controller Class Reference}
+\hypertarget{class_internal_a_p_i_1_1_controllers_1_1_b_pay_controller}{}\label{class_internal_a_p_i_1_1_controllers_1_1_b_pay_controller}\index{InternalAPI.Controllers.BPayController@{InternalAPI.Controllers.BPayController}}
+
+
+Inheritance diagram for Internal\+API.\+Controllers.\+BPay\+Controller\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{class_internal_a_p_i_1_1_controllers_1_1_b_pay_controller__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Internal\+API.\+Controllers.\+BPay\+Controller\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{class_internal_a_p_i_1_1_controllers_1_1_b_pay_controller__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_b_pay_controller_a247f7993ca86d728deae50059d6e67db}{BPay\+Controller}} (\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{Log\+Service}} logger, \mbox{\hyperlink{interface_internal_a_p_i_1_1_services_1_1_b_pay_1_1_i_b_pay_service}{IBPay\+Service}} b\+Pay\+Service)
+\item 
+\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_b_pay_1_1_b_pay_customer}{BPay\+Customer}} \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_b_pay_controller_ad35300307832d5557e0482f2d4420573}{Post}} (\mbox{[}From\+Body\mbox{]} \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_b_pay_1_1_b_pay_customer}{BPay\+Customer}} Customer)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_b_pay_controller_a247f7993ca86d728deae50059d6e67db}\label{class_internal_a_p_i_1_1_controllers_1_1_b_pay_controller_a247f7993ca86d728deae50059d6e67db} 
+\index{InternalAPI.Controllers.BPayController@{InternalAPI.Controllers.BPayController}!BPayController@{BPayController}}
+\index{BPayController@{BPayController}!InternalAPI.Controllers.BPayController@{InternalAPI.Controllers.BPayController}}
+\doxysubsubsection{\texorpdfstring{BPayController()}{BPayController()}}
+{\footnotesize\ttfamily Internal\+API.\+Controllers.\+BPay\+Controller.\+BPay\+Controller (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{Log\+Service}}}]{logger,  }\item[{\mbox{\hyperlink{interface_internal_a_p_i_1_1_services_1_1_b_pay_1_1_i_b_pay_service}{IBPay\+Service}}}]{b\+Pay\+Service }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger\ =\ logger;}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ this.bPayService\ =\ bPayService;}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_b_pay_controller_ad35300307832d5557e0482f2d4420573}\label{class_internal_a_p_i_1_1_controllers_1_1_b_pay_controller_ad35300307832d5557e0482f2d4420573} 
+\index{InternalAPI.Controllers.BPayController@{InternalAPI.Controllers.BPayController}!Post@{Post}}
+\index{Post@{Post}!InternalAPI.Controllers.BPayController@{InternalAPI.Controllers.BPayController}}
+\doxysubsubsection{\texorpdfstring{Post()}{Post()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_b_pay_1_1_b_pay_customer}{BPay\+Customer}} Internal\+API.\+Controllers.\+BPay\+Controller.\+Post (\begin{DoxyParamCaption}\item[{\mbox{[}\+From\+Body\mbox{]} \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_b_pay_1_1_b_pay_customer}{BPay\+Customer}}}]{Customer }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_acf860ff3326ea65346a173f3479c6e57}{LogDebug}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.bPayController,\ \textcolor{stringliteral}{"{}POST\ request\ received\ for\ bPay\ controller\ /crn\ endpoint"{}},\ Customer);}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ bPayService.\mbox{\hyperlink{interface_internal_a_p_i_1_1_services_1_1_b_pay_1_1_i_b_pay_service_a2826d13d1e5ff70d90120f439f8e334e}{GenerateBPayRef}}(Customer);}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+STRIDER/source/repos/\+Internal\+API/\+Internal\+API/\+Controllers/\mbox{\hyperlink{_b_pay_ref_controller_8cs}{BPay\+Ref\+Controller.\+cs}}\end{DoxyCompactItemize}

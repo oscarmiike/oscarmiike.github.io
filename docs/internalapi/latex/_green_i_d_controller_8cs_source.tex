@@ -1,0 +1,56 @@
+\doxysection{Green\+IDController.\+cs}
+\hypertarget{_green_i_d_controller_8cs_source}{}\label{_green_i_d_controller_8cs_source}\index{C:/Users/STRIDER/source/repos/InternalAPI/InternalAPI/Controllers/GreenIDController.cs@{C:/Users/STRIDER/source/repos/InternalAPI/InternalAPI/Controllers/GreenIDController.cs}}
+\mbox{\hyperlink{_green_i_d_controller_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_green_i_d_controller_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }Microsoft.AspNetCore.Mvc;}
+\DoxyCodeLine{\Hypertarget{_green_i_d_controller_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }Microsoft.Extensions.Logging;}
+\DoxyCodeLine{\Hypertarget{_green_i_d_controller_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }Microsoft.Extensions.Configuration;}
+\DoxyCodeLine{\Hypertarget{_green_i_d_controller_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_contexts_1_1_green_i_d}{InternalAPI.Contexts.GreenID}};}
+\DoxyCodeLine{\Hypertarget{_green_i_d_controller_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }System.Linq;}
+\DoxyCodeLine{\Hypertarget{_green_i_d_controller_8cs_source_l00006}00006\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_green_i_d_controller_8cs_source_l00007}00007\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_dto_1_1_green_i_d}{InternalAPI.Dto.GreenID}};}
+\DoxyCodeLine{\Hypertarget{_green_i_d_controller_8cs_source_l00008}00008\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_services}{InternalAPI.Services}};}
+\DoxyCodeLine{\Hypertarget{_green_i_d_controller_8cs_source_l00009}00009\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_settings}{InternalAPI.Settings}};}
+\DoxyCodeLine{\Hypertarget{_green_i_d_controller_8cs_source_l00010}00010\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_helpers}{InternalAPI.Helpers}};}
+\DoxyCodeLine{\Hypertarget{_green_i_d_controller_8cs_source_l00011}00011\ \textcolor{keyword}{using\ }Microsoft.Extensions.Options;}
+\DoxyCodeLine{\Hypertarget{_green_i_d_controller_8cs_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_green_i_d_controller_8cs_source_l00013}00013\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_controllers}{InternalAPI.Controllers}}}
+\DoxyCodeLine{\Hypertarget{_green_i_d_controller_8cs_source_l00014}00014\ \{}
+\DoxyCodeLine{\Hypertarget{_green_i_d_controller_8cs_source_l00015}00015\ \ \ \ \ [Route(\textcolor{stringliteral}{"{}v1/[controller]"{}})]}
+\DoxyCodeLine{\Hypertarget{_green_i_d_controller_8cs_source_l00016}00016\ \ \ \ \ [ApiController]}
+\DoxyCodeLine{\Hypertarget{_green_i_d_controller_8cs_source_l00017}\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_green_i_d_controller}{00017}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_green_i_d_controller}{GreenIDController}}\ :\ ControllerBase}
+\DoxyCodeLine{\Hypertarget{_green_i_d_controller_8cs_source_l00018}00018\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_green_i_d_controller_8cs_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_green_i_d_controller_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}\ logger\ \{\ \textcolor{keyword}{get};\ \textcolor{keyword}{set};\ \}}
+\DoxyCodeLine{\Hypertarget{_green_i_d_controller_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_green_i_d_settings}{GreenIDSettings}}\ settings\ \{\ \textcolor{keyword}{get};\ \textcolor{keyword}{set};\ \}}
+\DoxyCodeLine{\Hypertarget{_green_i_d_controller_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_green_i_d_service}{GreenIDService}}\ greenIDService\ \{\ \textcolor{keyword}{get};\ \textcolor{keyword}{set};\ \}}
+\DoxyCodeLine{\Hypertarget{_green_i_d_controller_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_helpers_1_1_green_i_d_d_b_helper}{GreenIDDBHelper}}\ greenIDDBHelper\ \{\ \textcolor{keyword}{get};\ \textcolor{keyword}{set};\ \}}
+\DoxyCodeLine{\Hypertarget{_green_i_d_controller_8cs_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_green_i_d_controller_8cs_source_l00025}\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_green_i_d_controller_af1aaf05b08ecf64c1a58dee4aff8b178}{00025}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_green_i_d_controller_af1aaf05b08ecf64c1a58dee4aff8b178}{GreenIDController}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}\ logService,\ IOptions<GreenIDSettings>\ greenIDSettings,\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_green_i_d_service}{GreenIDService}}\ gidService,\ \mbox{\hyperlink{class_internal_a_p_i_1_1_helpers_1_1_green_i_d_d_b_helper}{GreenIDDBHelper}}\ gidDBHelper)}
+\DoxyCodeLine{\Hypertarget{_green_i_d_controller_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_green_i_d_controller_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ logger\ =\ logService;}
+\DoxyCodeLine{\Hypertarget{_green_i_d_controller_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ settings\ =\ greenIDSettings.Value;}
+\DoxyCodeLine{\Hypertarget{_green_i_d_controller_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ greenIDService\ =\ gidService;}
+\DoxyCodeLine{\Hypertarget{_green_i_d_controller_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ greenIDDBHelper\ =\ gidDBHelper;}
+\DoxyCodeLine{\Hypertarget{_green_i_d_controller_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_green_i_d_controller_8cs_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_green_i_d_controller_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ [HttpGet(\textcolor{stringliteral}{"{}customer/\{branch\}/\{userid\}"{}})]}
+\DoxyCodeLine{\Hypertarget{_green_i_d_controller_8cs_source_l00034}\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_green_i_d_controller_a40270915cb098f7b630e6a23f428f81b}{00034}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ ActionResult<GreenIDCustomer>\ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_green_i_d_controller_a40270915cb098f7b630e6a23f428f81b}{Customer}}(\textcolor{keywordtype}{string}\ branch\ =\ \textcolor{stringliteral}{"{}"{}},\ \textcolor{keywordtype}{string}\ userid\ =\ \textcolor{stringliteral}{"{}"{}})}
+\DoxyCodeLine{\Hypertarget{_green_i_d_controller_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_green_i_d_controller_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keywordtype}{string}.IsNullOrEmpty(branch)\ ||\ \textcolor{keywordtype}{string}.IsNullOrEmpty(userid))}
+\DoxyCodeLine{\Hypertarget{_green_i_d_controller_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ BadRequest(\textcolor{stringliteral}{"{}branch\ or\ userid\ parameters\ are\ empty"{}});}
+\DoxyCodeLine{\Hypertarget{_green_i_d_controller_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_ae7208181482f25f801a9d637367cc5e7}{LogInformation}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.GreenIDController,\ \$\textcolor{stringliteral}{"{}request\ received\ for\ \{branch.ToUpper()\}\ greenid\ verification\ id:\ \{userid\}"{}});}
+\DoxyCodeLine{\Hypertarget{_green_i_d_controller_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_1_1_green_i_d_customer}{GreenIDCustomer}}\ greenIDCustomer\ =\ greenIDService.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_green_i_d_service_add8c85cb430cc575e5ab3c6960216c77}{GetGreenIdCustomer}}(branch,\ userid);}
+\DoxyCodeLine{\Hypertarget{_green_i_d_controller_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (greenIDCustomer\ ==\ \textcolor{keyword}{null}\ ||\ \textcolor{keywordtype}{string}.IsNullOrEmpty(greenIDCustomer.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_1_1_green_i_d_customer_aa78bdbb0f2294eccbcab0ca31844b883}{verificationId}}))}
+\DoxyCodeLine{\Hypertarget{_green_i_d_controller_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_green_i_d_controller_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a778dd1666ec20e3197598d7aa41e0cba}{LogError}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.GreenIDController,\ \$\textcolor{stringliteral}{"{}customer\ with\ verification\ id:\ \{userid\}\ not\ found\ at\ greenid"{}});}
+\DoxyCodeLine{\Hypertarget{_green_i_d_controller_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ BadRequest(\textcolor{stringliteral}{"{}greenid\ customer\ not\ found"{}});}
+\DoxyCodeLine{\Hypertarget{_green_i_d_controller_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_green_i_d_controller_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//add\ to\ greeniddb}}
+\DoxyCodeLine{\Hypertarget{_green_i_d_controller_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ greenIDDBHelper.\mbox{\hyperlink{class_internal_a_p_i_1_1_helpers_1_1_green_i_d_d_b_helper_a2f7f683406577b4a957f7e09a0557abb}{AddCustomer}}(branch,\ greenIDCustomer);}
+\DoxyCodeLine{\Hypertarget{_green_i_d_controller_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Ok(greenIDCustomer);}
+\DoxyCodeLine{\Hypertarget{_green_i_d_controller_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_green_i_d_controller_8cs_source_l00049}00049\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_green_i_d_controller_8cs_source_l00050}00050\ \}}
+
+\end{DoxyCode}

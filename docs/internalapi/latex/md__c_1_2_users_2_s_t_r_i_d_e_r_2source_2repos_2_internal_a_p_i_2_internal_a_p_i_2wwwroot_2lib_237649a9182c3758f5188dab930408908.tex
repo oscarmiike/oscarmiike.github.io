@@ -1,0 +1,32 @@
+\chapter{README}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_237649a9182c3758f5188dab930408908}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_237649a9182c3758f5188dab930408908}\index{README@{README}}
+node-\/asn1 is a library for encoding and decoding ASN.\+1 datatypes in pure JS. Currently BER encoding is supported; at some point I\textquotesingle{}ll likely have to do DER.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_237649a9182c3758f5188dab930408908_autotoc_md461}{}\doxysubsection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_237649a9182c3758f5188dab930408908_autotoc_md461}
+Mostly, if you\textquotesingle{}re {\itshape actually} needing to read and write ASN.\+1, you probably don\textquotesingle{}t need this readme to explain what and why. If you have no idea what ASN.\+1 is, see this\+: \href{ftp://ftp.rsa.com/pub/pkcs/ascii/layman.asc}{\texttt{ ftp\+://ftp.\+rsa.\+com/pub/pkcs/ascii/layman.\+asc}}
+
+The source is pretty much self-\/explanatory, and has read/write methods for the common types out there.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_237649a9182c3758f5188dab930408908_autotoc_md462}{}\doxysubsubsection{\texorpdfstring{Decoding}{Decoding}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_237649a9182c3758f5188dab930408908_autotoc_md462}
+The following reads an ASN.\+1 sequence with a boolean. \begin{DoxyVerb}var Ber = require('asn1').Ber;
+
+var reader = new Ber.Reader(Buffer.from([0x30, 0x03, 0x01, 0x01, 0xff]));
+
+reader.readSequence();
+console.log('Sequence len: ' + reader.length);
+if (reader.peek() === Ber.Boolean)
+  console.log(reader.readBoolean());
+\end{DoxyVerb}
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_237649a9182c3758f5188dab930408908_autotoc_md463}{}\doxysubsubsection{\texorpdfstring{Encoding}{Encoding}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_237649a9182c3758f5188dab930408908_autotoc_md463}
+The following generates the same payload as above. \begin{DoxyVerb}var Ber = require('asn1').Ber;
+
+var writer = new Ber.Writer();
+
+writer.startSequence();
+writer.writeBoolean(true);
+writer.endSequence();
+
+console.log(writer.buffer);
+\end{DoxyVerb}
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_237649a9182c3758f5188dab930408908_autotoc_md464}{}\doxysubsection{\texorpdfstring{Installation}{Installation}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_237649a9182c3758f5188dab930408908_autotoc_md464}
+\begin{DoxyVerb}npm install asn1
+\end{DoxyVerb}
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_237649a9182c3758f5188dab930408908_autotoc_md465}{}\doxysubsection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_237649a9182c3758f5188dab930408908_autotoc_md465}
+MIT.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_237649a9182c3758f5188dab930408908_autotoc_md466}{}\doxysubsection{\texorpdfstring{Bugs}{Bugs}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_237649a9182c3758f5188dab930408908_autotoc_md466}
+See \href{https://github.com/joyent/node-asn1/issues}{\texttt{ https\+://github.\+com/joyent/node-\/asn1/issues}}. 

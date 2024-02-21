@@ -1,0 +1,69 @@
+\chapter{configstore \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/yeoman/configstore"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+org/yeoman/configstore.\+svg?branch=master"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ad4e4b55e771ebfa1e2a10c1acfab70e}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ad4e4b55e771ebfa1e2a10c1acfab70e}\index{configstore $<$a href="{}https://travis-\/ci.org/yeoman/configstore"{} $>$$<$img src="{}https://travis-\/ci.org/yeoman/configstore.svg?branch=master"{} alt="{}Build Status"{}/$>$$<$/a$>$@{configstore $<$a href=""https://travis-\/ci.org/yeoman/configstore"" $>$$<$img src=""https://travis-\/ci.org/yeoman/configstore.svg?branch=master"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ad4e4b55e771ebfa1e2a10c1acfab70e_autotoc_md2089}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ad4e4b55e771ebfa1e2a10c1acfab70e_autotoc_md2089}%
+ \begin{quote}
+Easily load and persist config without having to think about where and how \end{quote}
+Config is stored in a JSON file located in {\ttfamily \$XDG\+\_\+\+CONFIG\+\_\+\+HOME} or {\ttfamily \texorpdfstring{$\sim$}{\string~}/.config}.~\newline
+ Example\+: {\ttfamily \texorpdfstring{$\sim$}{\string~}/.config/configstore/some-\/id.\+json}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ad4e4b55e771ebfa1e2a10c1acfab70e_autotoc_md2090}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ad4e4b55e771ebfa1e2a10c1acfab70e_autotoc_md2090}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ Configstore\ =\ require('configstore');}
+\DoxyCodeLine{const\ pkg\ =\ require('./package.json');}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ create\ a\ Configstore\ instance\ with\ an\ unique\ ID\ e.g.}
+\DoxyCodeLine{//\ package\ name\ and\ optionally\ some\ default\ values}
+\DoxyCodeLine{const\ conf\ =\ new\ Configstore(pkg.name,\ \{foo:\ 'bar'\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log(conf.get('foo'));}
+\DoxyCodeLine{//=>\ 'bar'}
+\DoxyCodeLine{}
+\DoxyCodeLine{conf.set('awesome',\ true);}
+\DoxyCodeLine{console.log(conf.get('awesome'));}
+\DoxyCodeLine{//=>\ true}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ use\ dot-\/notation\ to\ access\ nested\ properties}
+\DoxyCodeLine{conf.set('bar.baz',\ true);}
+\DoxyCodeLine{console.log(conf.get('bar'));}
+\DoxyCodeLine{//=>\ \{baz:\ true\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{conf.delete('awesome');}
+\DoxyCodeLine{console.log(conf.get('awesome'));}
+\DoxyCodeLine{//=>\ undefined}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ad4e4b55e771ebfa1e2a10c1acfab70e_autotoc_md2091}{}\doxysection{\texorpdfstring{API}{API}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ad4e4b55e771ebfa1e2a10c1acfab70e_autotoc_md2091}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ad4e4b55e771ebfa1e2a10c1acfab70e_autotoc_md2092}{}\doxysubsection{\texorpdfstring{Configstore(package\+Name, \mbox{[}defaults\mbox{]}, \mbox{[}options\mbox{]})}{Configstore(package\+Name, \mbox{[}defaults\mbox{]}, \mbox{[}options\mbox{]})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ad4e4b55e771ebfa1e2a10c1acfab70e_autotoc_md2092}
+Returns a new instance.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ad4e4b55e771ebfa1e2a10c1acfab70e_autotoc_md2093}{}\doxysubsubsection{\texorpdfstring{package\+Name}{package\+Name}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ad4e4b55e771ebfa1e2a10c1acfab70e_autotoc_md2093}
+Type\+: {\ttfamily string}
+
+Name of your package.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ad4e4b55e771ebfa1e2a10c1acfab70e_autotoc_md2094}{}\doxysubsubsection{\texorpdfstring{defaults}{defaults}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ad4e4b55e771ebfa1e2a10c1acfab70e_autotoc_md2094}
+Type\+: {\ttfamily Object}
+
+Default config.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ad4e4b55e771ebfa1e2a10c1acfab70e_autotoc_md2095}{}\doxysubsubsection{\texorpdfstring{options}{options}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ad4e4b55e771ebfa1e2a10c1acfab70e_autotoc_md2095}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ad4e4b55e771ebfa1e2a10c1acfab70e_autotoc_md2096}{}\doxyparagraph{\texorpdfstring{global\+Config\+Path}{global\+Config\+Path}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ad4e4b55e771ebfa1e2a10c1acfab70e_autotoc_md2096}
+Type\+: {\ttfamily boolean}~\newline
+ Default\+: {\ttfamily false}
+
+Store the config at {\ttfamily \$CONFIG/package-\/name/config.\+json} instead of the default {\ttfamily \$CONFIG/configstore/package-\/name.\+json}. This is not recommended as you might end up conflicting with other tools, rendering the "{}without having to think"{} idea moot.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ad4e4b55e771ebfa1e2a10c1acfab70e_autotoc_md2097}{}\doxysubsection{\texorpdfstring{Instance}{Instance}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ad4e4b55e771ebfa1e2a10c1acfab70e_autotoc_md2097}
+You can use \href{https://github.com/sindresorhus/dot-prop}{\texttt{ dot-\/notation}} in a {\ttfamily key} to access nested properties.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ad4e4b55e771ebfa1e2a10c1acfab70e_autotoc_md2098}{}\doxysubsection{\texorpdfstring{.set(key, value)}{.set(key, value)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ad4e4b55e771ebfa1e2a10c1acfab70e_autotoc_md2098}
+Set an item.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ad4e4b55e771ebfa1e2a10c1acfab70e_autotoc_md2099}{}\doxysubsection{\texorpdfstring{.set(object)}{.set(object)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ad4e4b55e771ebfa1e2a10c1acfab70e_autotoc_md2099}
+Set multiple items at once.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ad4e4b55e771ebfa1e2a10c1acfab70e_autotoc_md2100}{}\doxysubsection{\texorpdfstring{.get(key)}{.get(key)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ad4e4b55e771ebfa1e2a10c1acfab70e_autotoc_md2100}
+Get an item.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ad4e4b55e771ebfa1e2a10c1acfab70e_autotoc_md2101}{}\doxysubsection{\texorpdfstring{.has(key)}{.has(key)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ad4e4b55e771ebfa1e2a10c1acfab70e_autotoc_md2101}
+Check if an item exists.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ad4e4b55e771ebfa1e2a10c1acfab70e_autotoc_md2102}{}\doxysubsection{\texorpdfstring{.delete(key)}{.delete(key)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ad4e4b55e771ebfa1e2a10c1acfab70e_autotoc_md2102}
+Delete an item.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ad4e4b55e771ebfa1e2a10c1acfab70e_autotoc_md2103}{}\doxysubsection{\texorpdfstring{.clear()}{.clear()}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ad4e4b55e771ebfa1e2a10c1acfab70e_autotoc_md2103}
+Delete all items.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ad4e4b55e771ebfa1e2a10c1acfab70e_autotoc_md2104}{}\doxysubsection{\texorpdfstring{.size}{.size}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ad4e4b55e771ebfa1e2a10c1acfab70e_autotoc_md2104}
+Get the item count.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ad4e4b55e771ebfa1e2a10c1acfab70e_autotoc_md2105}{}\doxysubsection{\texorpdfstring{.path}{.path}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ad4e4b55e771ebfa1e2a10c1acfab70e_autotoc_md2105}
+Get the path to the config file. Can be used to show the user where the config file is located or even better open it for them.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ad4e4b55e771ebfa1e2a10c1acfab70e_autotoc_md2106}{}\doxysubsection{\texorpdfstring{.all}{.all}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ad4e4b55e771ebfa1e2a10c1acfab70e_autotoc_md2106}
+Get all the config as an object or replace the current config with an object\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{conf.all\ =\ \{}
+\DoxyCodeLine{\ \ \ \ hello:\ 'world'}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ad4e4b55e771ebfa1e2a10c1acfab70e_autotoc_md2107}{}\doxysection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ad4e4b55e771ebfa1e2a10c1acfab70e_autotoc_md2107}
+\href{http://opensource.org/licenses/bsd-license.php}{\texttt{ BSD license}}~\newline
+ Copyright Google 

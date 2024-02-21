@@ -1,0 +1,272 @@
+\doxysection{Crypto\+Payment\+Gateway.\+Utils Class Reference}
+\hypertarget{class_crypto_payment_gateway_1_1_utils}{}\label{class_crypto_payment_gateway_1_1_utils}\index{CryptoPaymentGateway.Utils@{CryptoPaymentGateway.Utils}}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static String \mbox{\hyperlink{class_crypto_payment_gateway_1_1_utils_aebbd24938c0564165aa2f4fa0e8fadcc}{encrypt\+Message}} (String message, String password)
+\item 
+static String \mbox{\hyperlink{class_crypto_payment_gateway_1_1_utils_a5bdfea8668c182b0e3185c8293f0c7a6}{get\+Copayer\+Hash}} (String name, String x\+Pub\+Key, String request\+Pub\+Key)
+\item 
+static String \mbox{\hyperlink{class_crypto_payment_gateway_1_1_utils_abcb7f011d54755b3ba80ca6edfbc46d3}{sign\+Message}} (String text, String priv\+Key)
+\item 
+static String \mbox{\hyperlink{class_crypto_payment_gateway_1_1_utils_a54fc0df4f92950da63524fac3a4b69ca}{sign\+Message}} (String text, Key key)
+\item 
+static string \mbox{\hyperlink{class_crypto_payment_gateway_1_1_utils_a4432375d0c640f172e4811e9a0d9d000}{Sign\+Request}} (String method, String url, object args, Key key)
+\item 
+static string \mbox{\hyperlink{class_crypto_payment_gateway_1_1_utils_a427f0a2df6ce07943ca145f62e2de874}{Encrypt}} (string clear\+Text, string key)
+\item 
+static string \mbox{\hyperlink{class_crypto_payment_gateway_1_1_utils_a8fb4a89c82e93f167452c3a97b78080d}{Decrypt}} (string cipher\+Text)
+\item 
+static string \mbox{\hyperlink{class_crypto_payment_gateway_1_1_utils_afdb8d51c24fd0f3996b2bae0ad24d966}{XPub\+Key\+To\+Copayer\+Id}} (string x\+Pub\+Key)
+\item 
+static string \mbox{\hyperlink{class_crypto_payment_gateway_1_1_utils_a9124e16d5422a91f9ebf194ac8b4816f}{Private\+Key\+To\+AESKey}} (string priv\+Key)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_crypto_payment_gateway_1_1_utils_a8fb4a89c82e93f167452c3a97b78080d}\label{class_crypto_payment_gateway_1_1_utils_a8fb4a89c82e93f167452c3a97b78080d} 
+\index{CryptoPaymentGateway.Utils@{CryptoPaymentGateway.Utils}!Decrypt@{Decrypt}}
+\index{Decrypt@{Decrypt}!CryptoPaymentGateway.Utils@{CryptoPaymentGateway.Utils}}
+\doxysubsubsection{\texorpdfstring{Decrypt()}{Decrypt()}}
+{\footnotesize\ttfamily static string Crypto\+Payment\+Gateway.\+Utils.\+Decrypt (\begin{DoxyParamCaption}\item[{string}]{cipher\+Text }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ EncryptionKey\ =\ \textcolor{stringliteral}{"{}MAKV2SPBNI99212"{}};}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{byte}[]\ cipherBytes\ =\ Convert.FromBase64String(cipherText);}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using}\ (Aes\ encryptor\ =\ Aes.Create())}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Rfc2898DeriveBytes\ pdb\ =\ \textcolor{keyword}{new}\ Rfc2898DeriveBytes(EncryptionKey,\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{byte}[]}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ 0x49,\ 0x76,\ 0x61,\ 0x6e,\ 0x20,\ 0x4d,\ 0x65,\ 0x64,\ 0x76,\ 0x65,\ 0x64,\ 0x65,\ 0x76\ \});}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ encryptor.Key\ =\ pdb.GetBytes(32);}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ encryptor.IV\ =\ pdb.GetBytes(16);}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using}\ (MemoryStream\ ms\ =\ \textcolor{keyword}{new}\ MemoryStream())}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using}\ (CryptoStream\ cs\ =\ \textcolor{keyword}{new}\ CryptoStream(ms,\ encryptor.CreateDecryptor(),\ CryptoStreamMode.Write))}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cs.Write(cipherBytes,\ 0,\ cipherBytes.Length);}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ cs.Close();}}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cipherText\ =\ Encoding.Unicode.GetString(ms.ToArray());}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ cipherText;}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_crypto_payment_gateway_1_1_utils_a427f0a2df6ce07943ca145f62e2de874}\label{class_crypto_payment_gateway_1_1_utils_a427f0a2df6ce07943ca145f62e2de874} 
+\index{CryptoPaymentGateway.Utils@{CryptoPaymentGateway.Utils}!Encrypt@{Encrypt}}
+\index{Encrypt@{Encrypt}!CryptoPaymentGateway.Utils@{CryptoPaymentGateway.Utils}}
+\doxysubsubsection{\texorpdfstring{Encrypt()}{Encrypt()}}
+{\footnotesize\ttfamily static string Crypto\+Payment\+Gateway.\+Utils.\+Encrypt (\begin{DoxyParamCaption}\item[{string}]{clear\+Text,  }\item[{string}]{key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{byte}[]\ clearBytes\ =\ Encoding.Unicode.GetBytes(clearText);}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using}\ (Aes\ encryptor\ =\ Aes.Create())}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Rfc2898DeriveBytes\ pdb\ =\ \textcolor{keyword}{new}\ Rfc2898DeriveBytes(key,\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{byte}[]\ \{\ 0x49,\ 0x76,\ 0x61,\ 0x6e,\ 0x20,\ 0x4d,\ 0x65,\ 0x64,\ 0x76,\ 0x65,\ 0x64,\ 0x65,\ 0x76\ \});}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ encryptor.Key\ =\ pdb.GetBytes(32);}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ encryptor.IV\ =\ pdb.GetBytes(16);}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using}\ (MemoryStream\ ms\ =\ \textcolor{keyword}{new}\ MemoryStream())}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using}\ (CryptoStream\ cs\ =\ \textcolor{keyword}{new}\ CryptoStream(ms,\ encryptor.CreateEncryptor(),\ CryptoStreamMode.Write))}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cs.Write(clearBytes,\ 0,\ clearBytes.Length);}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ cs.Close();}}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ clearText\ =\ Convert.ToBase64String(ms.ToArray());}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ clearText;}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_crypto_payment_gateway_1_1_utils_a427f0a2df6ce07943ca145f62e2de874_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_crypto_payment_gateway_1_1_utils_aebbd24938c0564165aa2f4fa0e8fadcc}\label{class_crypto_payment_gateway_1_1_utils_aebbd24938c0564165aa2f4fa0e8fadcc} 
+\index{CryptoPaymentGateway.Utils@{CryptoPaymentGateway.Utils}!encryptMessage@{encryptMessage}}
+\index{encryptMessage@{encryptMessage}!CryptoPaymentGateway.Utils@{CryptoPaymentGateway.Utils}}
+\doxysubsubsection{\texorpdfstring{encryptMessage()}{encryptMessage()}}
+{\footnotesize\ttfamily static String Crypto\+Payment\+Gateway.\+Utils.\+encrypt\+Message (\begin{DoxyParamCaption}\item[{String}]{message,  }\item[{String}]{password }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//default\ AES\ 128}}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_crypto_payment_gateway_1_1_utils_a427f0a2df6ce07943ca145f62e2de874}{Encrypt}}(message,\ password);}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_crypto_payment_gateway_1_1_utils_aebbd24938c0564165aa2f4fa0e8fadcc_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_crypto_payment_gateway_1_1_utils_aebbd24938c0564165aa2f4fa0e8fadcc_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_crypto_payment_gateway_1_1_utils_a5bdfea8668c182b0e3185c8293f0c7a6}\label{class_crypto_payment_gateway_1_1_utils_a5bdfea8668c182b0e3185c8293f0c7a6} 
+\index{CryptoPaymentGateway.Utils@{CryptoPaymentGateway.Utils}!getCopayerHash@{getCopayerHash}}
+\index{getCopayerHash@{getCopayerHash}!CryptoPaymentGateway.Utils@{CryptoPaymentGateway.Utils}}
+\doxysubsubsection{\texorpdfstring{getCopayerHash()}{getCopayerHash()}}
+{\footnotesize\ttfamily static String Crypto\+Payment\+Gateway.\+Utils.\+get\+Copayer\+Hash (\begin{DoxyParamCaption}\item[{String}]{name,  }\item[{String}]{x\+Pub\+Key,  }\item[{String}]{request\+Pub\+Key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//return\ [name,\ xPubKey,\ requestPubKey].join('|');}}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ String.Format(\textcolor{stringliteral}{"{}\{0\}|\{1\}|\{2\}"{}},\ name,\ xPubKey,\ requestPubKey);}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_crypto_payment_gateway_1_1_utils_a5bdfea8668c182b0e3185c8293f0c7a6_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_crypto_payment_gateway_1_1_utils_a9124e16d5422a91f9ebf194ac8b4816f}\label{class_crypto_payment_gateway_1_1_utils_a9124e16d5422a91f9ebf194ac8b4816f} 
+\index{CryptoPaymentGateway.Utils@{CryptoPaymentGateway.Utils}!PrivateKeyToAESKey@{PrivateKeyToAESKey}}
+\index{PrivateKeyToAESKey@{PrivateKeyToAESKey}!CryptoPaymentGateway.Utils@{CryptoPaymentGateway.Utils}}
+\doxysubsubsection{\texorpdfstring{PrivateKeyToAESKey()}{PrivateKeyToAESKey()}}
+{\footnotesize\ttfamily static string Crypto\+Payment\+Gateway.\+Utils.\+Private\+Key\+To\+AESKey (\begin{DoxyParamCaption}\item[{string}]{priv\+Key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ var\ pk\ =\ NBitcoin.Key.Parse(privKey);}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ var\ hash\ =\ NBitcoin.Crypto.Hashes.SHA256(pk.ToBytes()).Take(16).ToArray();}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ NBitcoin.DataEncoders.Encoders.Base64.EncodeData(hash);}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_crypto_payment_gateway_1_1_utils_a9124e16d5422a91f9ebf194ac8b4816f_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_crypto_payment_gateway_1_1_utils_a54fc0df4f92950da63524fac3a4b69ca}\label{class_crypto_payment_gateway_1_1_utils_a54fc0df4f92950da63524fac3a4b69ca} 
+\index{CryptoPaymentGateway.Utils@{CryptoPaymentGateway.Utils}!signMessage@{signMessage}}
+\index{signMessage@{signMessage}!CryptoPaymentGateway.Utils@{CryptoPaymentGateway.Utils}}
+\doxysubsubsection{\texorpdfstring{signMessage()}{signMessage()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily static String Crypto\+Payment\+Gateway.\+Utils.\+sign\+Message (\begin{DoxyParamCaption}\item[{String}]{text,  }\item[{Key}]{key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ var\ hashString\ =\ Utils.hashMessage(text);}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ var\ hash\ =\ \textcolor{keyword}{new}\ uint256(hashString);}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ NBitcoin.DataEncoders.Encoders.Hex.EncodeData(key.Sign(hash).ToDER());}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_crypto_payment_gateway_1_1_utils_abcb7f011d54755b3ba80ca6edfbc46d3}\label{class_crypto_payment_gateway_1_1_utils_abcb7f011d54755b3ba80ca6edfbc46d3} 
+\index{CryptoPaymentGateway.Utils@{CryptoPaymentGateway.Utils}!signMessage@{signMessage}}
+\index{signMessage@{signMessage}!CryptoPaymentGateway.Utils@{CryptoPaymentGateway.Utils}}
+\doxysubsubsection{\texorpdfstring{signMessage()}{signMessage()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily static String Crypto\+Payment\+Gateway.\+Utils.\+sign\+Message (\begin{DoxyParamCaption}\item[{String}]{text,  }\item[{String}]{priv\+Key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em text} & \\
+\hline
+{\em priv\+Key} & Assume hex\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Assume\ private\ key\ is\ in\ hex}}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ Byte[]\ keyAsBytes\ =\ NBitcoin.DataEncoders.Encoders.Hex.DecodeData(privKey);}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ Key\ key\ =\ \textcolor{keyword}{new}\ Key(keyAsBytes);}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Utils.signMessage(text,\ key);}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=245pt]{class_crypto_payment_gateway_1_1_utils_abcb7f011d54755b3ba80ca6edfbc46d3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_crypto_payment_gateway_1_1_utils_abcb7f011d54755b3ba80ca6edfbc46d3_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_crypto_payment_gateway_1_1_utils_a4432375d0c640f172e4811e9a0d9d000}\label{class_crypto_payment_gateway_1_1_utils_a4432375d0c640f172e4811e9a0d9d000} 
+\index{CryptoPaymentGateway.Utils@{CryptoPaymentGateway.Utils}!SignRequest@{SignRequest}}
+\index{SignRequest@{SignRequest}!CryptoPaymentGateway.Utils@{CryptoPaymentGateway.Utils}}
+\doxysubsubsection{\texorpdfstring{SignRequest()}{SignRequest()}}
+{\footnotesize\ttfamily static string Crypto\+Payment\+Gateway.\+Utils.\+Sign\+Request (\begin{DoxyParamCaption}\item[{String}]{method,  }\item[{String}]{url,  }\item[{object}]{args,  }\item[{Key}]{key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ String\ json\ =\ args\ !=\ \textcolor{keyword}{null}\ ?\ JsonConvert.SerializeObject(args)\ :\ \textcolor{stringliteral}{"{}\{\}"{}};}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ String\ message\ =\ String.Format(\textcolor{stringliteral}{"{}\{0\}|\{1\}|\{2\}"{}},\ method.ToLower(),\ url,\ json);}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Utils.signMessage(message,\ key);}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_crypto_payment_gateway_1_1_utils_a4432375d0c640f172e4811e9a0d9d000_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_crypto_payment_gateway_1_1_utils_afdb8d51c24fd0f3996b2bae0ad24d966}\label{class_crypto_payment_gateway_1_1_utils_afdb8d51c24fd0f3996b2bae0ad24d966} 
+\index{CryptoPaymentGateway.Utils@{CryptoPaymentGateway.Utils}!XPubKeyToCopayerId@{XPubKeyToCopayerId}}
+\index{XPubKeyToCopayerId@{XPubKeyToCopayerId}!CryptoPaymentGateway.Utils@{CryptoPaymentGateway.Utils}}
+\doxysubsubsection{\texorpdfstring{XPubKeyToCopayerId()}{XPubKeyToCopayerId()}}
+{\footnotesize\ttfamily static string Crypto\+Payment\+Gateway.\+Utils.\+XPub\+Key\+To\+Copayer\+Id (\begin{DoxyParamCaption}\item[{string}]{x\+Pub\+Key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ var\ s\ =\ SHA256.Create();}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ var\ hash\ =\ s.ComputeHash(Encoding.ASCII.GetBytes(xPubKey));}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ BitConverter.ToString(hash);}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_crypto_payment_gateway_1_1_utils_afdb8d51c24fd0f3996b2bae0ad24d966_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+STRIDER/source/repos/\+Internal\+API/\+Internal\+API/\+Models/\+Bitcoin/\mbox{\hyperlink{_utils_8cs}{Utils.\+cs}}\end{DoxyCompactItemize}

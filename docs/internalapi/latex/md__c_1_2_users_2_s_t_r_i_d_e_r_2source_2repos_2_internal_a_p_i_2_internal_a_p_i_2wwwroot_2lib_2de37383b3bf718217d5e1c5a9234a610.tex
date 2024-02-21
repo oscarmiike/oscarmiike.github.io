@@ -1,0 +1,36 @@
+\chapter{exit-\/hook \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/sindresorhus/exit-\/hook"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+org/sindresorhus/exit-\/hook.\+svg?branch=master"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2de37383b3bf718217d5e1c5a9234a610}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2de37383b3bf718217d5e1c5a9234a610}\index{exit-\/hook $<$a href="{}https://travis-\/ci.org/sindresorhus/exit-\/hook"{} $>$$<$img src="{}https://travis-\/ci.org/sindresorhus/exit-\/hook.svg?branch=master"{} alt="{}Build Status"{}/$>$$<$/a$>$@{exit-\/hook $<$a href=""https://travis-\/ci.org/sindresorhus/exit-\/hook"" $>$$<$img src=""https://travis-\/ci.org/sindresorhus/exit-\/hook.svg?branch=master"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2de37383b3bf718217d5e1c5a9234a610_autotoc_md2255}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2de37383b3bf718217d5e1c5a9234a610_autotoc_md2255}%
+ \begin{quote}
+Run some code when the process exits \end{quote}
+The `process.\+on(\textquotesingle{}exit')\`{} event doesn\textquotesingle{}t catch all the ways a process can exit.
+
+Useful for cleaning up.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2de37383b3bf718217d5e1c5a9234a610_autotoc_md2256}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2de37383b3bf718217d5e1c5a9234a610_autotoc_md2256}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ -\/-\/save\ exit-\/hook}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2de37383b3bf718217d5e1c5a9234a610_autotoc_md2257}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2de37383b3bf718217d5e1c5a9234a610_autotoc_md2257}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ exitHook\ =\ require('exit-\/hook');}
+\DoxyCodeLine{}
+\DoxyCodeLine{exitHook(function\ ()\ \{}
+\DoxyCodeLine{\ \ \ \ console.log('exiting');}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ you\ can\ add\ multiple\ hooks,\ even\ across\ files}
+\DoxyCodeLine{exitHook(function\ ()\ \{}
+\DoxyCodeLine{\ \ \ \ console.log('exiting\ 2');}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{throw\ new\ Error('unicorns');}
+\DoxyCodeLine{}
+\DoxyCodeLine{//=>\ exiting}
+\DoxyCodeLine{//=>\ exiting\ 2}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2de37383b3bf718217d5e1c5a9234a610_autotoc_md2258}{}\doxysection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2de37383b3bf718217d5e1c5a9234a610_autotoc_md2258}
+MIT © \href{http://sindresorhus.com}{\texttt{ Sindre Sorhus}} 

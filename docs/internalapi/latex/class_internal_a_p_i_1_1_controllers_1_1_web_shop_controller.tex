@@ -1,0 +1,231 @@
+\doxysection{Internal\+API.\+Controllers.\+Web\+Shop\+Controller Class Reference}
+\hypertarget{class_internal_a_p_i_1_1_controllers_1_1_web_shop_controller}{}\label{class_internal_a_p_i_1_1_controllers_1_1_web_shop_controller}\index{InternalAPI.Controllers.WebShopController@{InternalAPI.Controllers.WebShopController}}
+
+
+Inheritance diagram for Internal\+API.\+Controllers.\+Web\+Shop\+Controller\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{class_internal_a_p_i_1_1_controllers_1_1_web_shop_controller__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Internal\+API.\+Controllers.\+Web\+Shop\+Controller\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{class_internal_a_p_i_1_1_controllers_1_1_web_shop_controller__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_web_shop_controller_aa14670fa84df8ed89ba377d5087ac7b7}{Web\+Shop\+Controller}} (\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{Log\+Service}} logger, IConfiguration configuration, \mbox{\hyperlink{class_internal_a_p_i_1_1_contexts_1_1_web_shop_1_1_a_b_web_shop_context}{ABWeb\+Shop\+Context}} context)
+\item 
+Action\+Result$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_web_shop_1_1_web_shop_response}{Web\+Shop\+Response}} $>$ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_web_shop_controller_aaa839efb1efc2b094dd1508a9ef2fb3d}{Sales}} (string branch, string start, string finish)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static double \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_web_shop_controller_a0946d3bca0c7fc3a9e6aff1ce63016f7}{Convert\+Weight}} (double Val, \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_price_app_1_1_spotunit}{Spotunit}} Input\+Unit, \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_price_app_1_1_spotunit}{Spotunit}} Return\+Unit)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_web_shop_controller_aa14670fa84df8ed89ba377d5087ac7b7}\label{class_internal_a_p_i_1_1_controllers_1_1_web_shop_controller_aa14670fa84df8ed89ba377d5087ac7b7} 
+\index{InternalAPI.Controllers.WebShopController@{InternalAPI.Controllers.WebShopController}!WebShopController@{WebShopController}}
+\index{WebShopController@{WebShopController}!InternalAPI.Controllers.WebShopController@{InternalAPI.Controllers.WebShopController}}
+\doxysubsubsection{\texorpdfstring{WebShopController()}{WebShopController()}}
+{\footnotesize\ttfamily Internal\+API.\+Controllers.\+Web\+Shop\+Controller.\+Web\+Shop\+Controller (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{Log\+Service}}}]{logger,  }\item[{IConfiguration}]{configuration,  }\item[{\mbox{\hyperlink{class_internal_a_p_i_1_1_contexts_1_1_web_shop_1_1_a_b_web_shop_context}{ABWeb\+Shop\+Context}}}]{context }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger\ =\ logger;}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \_context\ =\ context;}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ productList\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_helpers_1_1_price_app_helper}{PriceAppHelper}}() }
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ APIUser\ =\ configuration[\textcolor{stringliteral}{"{}PriceAppSettings:APIUser"{}}],}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ APIPass\ =\ configuration[\textcolor{stringliteral}{"{}PriceAppSettings:APIPass"{}}],}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BaseURL\ =\ configuration[\textcolor{stringliteral}{"{}PriceAppSettings:BaseURL"{}}],}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ AssetListEndpoint\ =\ configuration[\textcolor{stringliteral}{"{}PriceAppSettings:AssetListEndpoint"{}}],}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ProductListEndpoint\ =\ configuration[\textcolor{stringliteral}{"{}PriceAppSettings:ProductListEndpoint"{}}],}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PriceModeListEndpoint\ =\ configuration[\textcolor{stringliteral}{"{}PriceAppSettings:PriceModeListEndpoint"{}}],}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SpotHistoryListEndpoint\ =\ configuration[\textcolor{stringliteral}{"{}PriceAppSettings:SpotHistoryListEndpoint"{}}],}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ DailyCloseAssetListEndpoint\ =\ configuration[\textcolor{stringliteral}{"{}PriceAppSettings:DailyCloseAssetListEndpoint"{}}],}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ DefaultMode\ =\ configuration[\textcolor{stringliteral}{"{}PriceAppSettings:DefaultMode"{}}]}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \}.\mbox{\hyperlink{class_internal_a_p_i_1_1_helpers_1_1_price_app_helper_ad890ae3c5a3884455812fbed8c2ed8b4}{GetProductList}}().\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_price_app_1_1_price_app_product_list_a09d31d5dfe7dff11b3efdf377325c8e4}{ProductList}};}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ webShopResponse\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_web_shop_1_1_web_shop_response}{WebShopResponse}}();}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_internal_a_p_i_1_1_controllers_1_1_web_shop_controller_aa14670fa84df8ed89ba377d5087ac7b7_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_web_shop_controller_a0946d3bca0c7fc3a9e6aff1ce63016f7}\label{class_internal_a_p_i_1_1_controllers_1_1_web_shop_controller_a0946d3bca0c7fc3a9e6aff1ce63016f7} 
+\index{InternalAPI.Controllers.WebShopController@{InternalAPI.Controllers.WebShopController}!ConvertWeight@{ConvertWeight}}
+\index{ConvertWeight@{ConvertWeight}!InternalAPI.Controllers.WebShopController@{InternalAPI.Controllers.WebShopController}}
+\doxysubsubsection{\texorpdfstring{ConvertWeight()}{ConvertWeight()}}
+{\footnotesize\ttfamily static double Internal\+API.\+Controllers.\+Web\+Shop\+Controller.\+Convert\+Weight (\begin{DoxyParamCaption}\item[{double}]{Val,  }\item[{\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_price_app_1_1_spotunit}{Spotunit}}}]{Input\+Unit,  }\item[{\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_price_app_1_1_spotunit}{Spotunit}}}]{Return\+Unit }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (InputUnit\ ==\ \textcolor{keyword}{null}\ |\ ReturnUnit\ ==\ \textcolor{keyword}{null}\ ||\ (!InputUnit.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_price_app_1_1_spotunit_a743a1e797b487fef094e6840b39e3f62}{HasWeight}}\ |\ !ReturnUnit.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_price_app_1_1_spotunit_a743a1e797b487fef094e6840b39e3f62}{HasWeight}}))}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Val;}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \ \ \ \ Val\ =\ Val\ *\ (InputUnit.Grams\ /\ (double)ReturnUnit.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_price_app_1_1_spotunit_a7b15767820e86c2b38b767cef223f2a9}{Grams}});}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Val;}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_web_shop_controller_aaa839efb1efc2b094dd1508a9ef2fb3d}\label{class_internal_a_p_i_1_1_controllers_1_1_web_shop_controller_aaa839efb1efc2b094dd1508a9ef2fb3d} 
+\index{InternalAPI.Controllers.WebShopController@{InternalAPI.Controllers.WebShopController}!Sales@{Sales}}
+\index{Sales@{Sales}!InternalAPI.Controllers.WebShopController@{InternalAPI.Controllers.WebShopController}}
+\doxysubsubsection{\texorpdfstring{Sales()}{Sales()}}
+{\footnotesize\ttfamily Action\+Result$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_web_shop_1_1_web_shop_response}{Web\+Shop\+Response}} $>$ Internal\+API.\+Controllers.\+Web\+Shop\+Controller.\+Sales (\begin{DoxyParamCaption}\item[{string}]{branch,  }\item[{string}]{start,  }\item[{string}]{finish }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_acf860ff3326ea65346a173f3479c6e57}{LogDebug}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.WebShopController,\ \$\textcolor{stringliteral}{"{}WebShop/Sales\ request\ received.\ \ TimeBoundsUTC:\ \{start\}\ -\/\ \{finish\}"{}});}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ List<WebShopSale>\ WebShopSales\ =\ \textcolor{keyword}{new}\ List<WebShopSale>();}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ DateTime\ startTime;}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ DateTime\ finishTime;}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keywordtype}{string}.IsNullOrEmpty(start)\ ||\ \textcolor{keywordtype}{string}.IsNullOrEmpty(finish)\ ||\ !DateTime.TryParse(start,\ out\ startTime)\ ||\ !DateTime.TryParse(finish,\ out\ finishTime))}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a778dd1666ec20e3197598d7aa41e0cba}{LogError}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.WebShopController,\ \$\textcolor{stringliteral}{"{}Webshop\ sales\ request\ startdate\ or\ finishdate\ not\ supplied\ correctly.\ \ Start:\{start\}\ \ Finish:\{finish\}"{}});}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ webShopResponse.success\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ webShopResponse.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_web_shop_1_1_web_shop_response_ae2cf8f18894bed8981a6feb39df50164}{errors}}.Add(\$\textcolor{stringliteral}{"{}Webshop\ sales\ request\ startdate\ or\ finishdate\ not\ supplied\ correctly.\ \ Start:\{start\}\ \ Finish:\{finish\}"{}});}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ webShopResponse;}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (startTime\ >\ finishTime)}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a778dd1666ec20e3197598d7aa41e0cba}{LogError}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.WebShopController,\ \$\textcolor{stringliteral}{"{}Webshop\ sales\ request\ startdate\ is\ greater\ than\ finishdate.\ \ Start:\{start\}\ \ Finish:\{finish\}"{}});}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ webShopResponse.success\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ webShopResponse.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_web_shop_1_1_web_shop_response_ae2cf8f18894bed8981a6feb39df50164}{errors}}.Add(\$\textcolor{stringliteral}{"{}Webshop\ sales\ request\ startdate\ is\ greater\ than\ finishdate.\ \ Start:\{start\}\ \ Finish:\{finish\}"{}});}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ webShopResponse;}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ var\ startTimeLocal\ =\ startTime.ToLocalTime();}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ var\ finishTimeLocal\ =\ finishTime.ToLocalTime();}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//get\ orders}}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//take\ orders\ before\ the\ starttime\ to\ see\ if\ there\ were\ any\ duplicates\ prior\ to\ start\ time\ -\/we\ remove\ this\ extra\ time\ later}}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ var\ orderHeaders\ =\ \_context.\mbox{\hyperlink{class_internal_a_p_i_1_1_contexts_1_1_web_shop_1_1_a_b_web_shop_context_aa0e787771aa52ed7671bb80a6dfe346c}{OrderHeaders}}.Where(oh\ =>\ oh.BranchOffice.ToLower()\ ==\ branch.ToLower()\ \&\&\ oh.OrderTime\ >=\ startTimeLocal.AddMinutes(-\/duplicateThresholdMin)\ \&\&\ oh.OrderTime\ <\ finishTimeLocal\ \&\&\ oh.OrderPaymentResult\ !=\ \textcolor{keyword}{null}).OrderBy(oh\ =>\ oh.OrderTime).ToList();}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (orderHeaders\ ==\ \textcolor{keyword}{null}\ ||\ orderHeaders.Count()\ <\ 1)}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ webShopResponse.success\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ webShopResponse;}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ var\ orderItems\ =\ \_context.\mbox{\hyperlink{class_internal_a_p_i_1_1_contexts_1_1_web_shop_1_1_a_b_web_shop_context_ad3a20fb6593bf00fc9a905a3ec9f3a6d}{OrderItems}}.Where(oi\ =>\ orderHeaders.Select(oh\ =>\ oh.OrderId).Contains(oi.OrderId)).ToList();}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (orderItems\ ==\ \textcolor{keyword}{null}\ ||\ orderItems.Count()\ <\ 1)}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a778dd1666ec20e3197598d7aa41e0cba}{LogError}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.WebShopController,\ \$\textcolor{stringliteral}{"{}Webshop\ sales\ request\ returned\ orders\ but\ no\ items"{}});}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ webShopResponse.success\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ webShopResponse.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_web_shop_1_1_web_shop_response_ae2cf8f18894bed8981a6feb39df50164}{errors}}.Add(\$\textcolor{stringliteral}{"{}Webshop\ sales\ request\ returned\ orders\ but\ no\ items"{}});}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ webShopResponse;}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//check\ duplicate\ customers\ in\ this\ timeframe,\ get\ list\ of\ emails\ that\ have\ duplicate\ orders\ for\ validation}}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ var\ duplicateCustomerEmails\ =\ orderHeaders.GroupBy(oh\ =>\ oh.CustomerEmail.ToLower()).Where(grp\ =>\ grp.Count()\ >\ 1).Select(group\ =>\ \textcolor{keyword}{new}\ \{\ email\ =\ group.Key,\ count\ =\ group.Count()\ \});}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(duplicateCustomerEmails.Count()\ >\ 0)\ }
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//group\ orders\ for\ duplicate\ customers}}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ duplicateCustomerOrders\ =\ orderHeaders.GroupBy(oh\ =>\ oh.CustomerEmail.ToLower()).Where(grp\ =>\ grp.Count()\ >\ 1);}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ grp\ \textcolor{keywordflow}{in}\ duplicateCustomerOrders)}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ misMatchedItemFound\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//group\ order\ items\ for\ this\ group\ of\ duplicate\ customer\ orders.\ \ one\ group\ of\ order\ items\ for\ each\ order\ ID}}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ duplicateCustomerOrderItems\ =\ orderItems.Where(oi\ =>\ grp.Any(grpoh\ =>\ grpoh.OrderId\ ==\ oi.OrderId)).GroupBy(oi\ =>\ oi.OrderId);\ }
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//compare\ each\ iteration\ to\ first()}}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ oiGrp\ \textcolor{keywordflow}{in}\ duplicateCustomerOrderItems)}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (misMatchedItemFound)\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ firstOrderItemSet\ =\ duplicateCustomerOrderItems.First();}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ oi\ \textcolor{keywordflow}{in}\ oiGrp)}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!firstOrderItemSet.Any(oiGrpItem\ =>\ oiGrpItem.ItemSku\ ==\ oi.ItemSku\ \&\&\ oiGrpItem.ItemQty\ ==\ oi.ItemQty))}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ misMatchedItemFound\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//if\ itemskus\ and\ itemqtys\ from\ all\ orders\ matched\ each\ other}}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!misMatchedItemFound)}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//check\ if\ the\ first\ order\ was\ outside\ of\ the\ current\ time\ scope}}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (grp.OrderBy(oh\ =>\ oh.OrderTime).First().OrderTime\ <\ startTimeLocal)}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//remove\ all\ orders\ with\ this\ email\ address\ because\ we\ only\ take\ first\ order\ in\ a\ group\ of\ duplicates\ and\ it\ was\ outside\ this\ time\ scope}}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ orderHeaders.RemoveAll(oh\ =>\ oh.CustomerEmail.ToLower()\ ==\ grp.First().CustomerEmail.ToLower());}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//remove\ everything\ other\ than\ the\ first\ order\ because\ we\ take\ first\ order\ in\ a\ group\ of\ duplicates}}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ orderHeaders.RemoveAll(oh\ =>\ oh.CustomerEmail.ToLower()\ ==\ grp.First().CustomerEmail.ToLower()\ \&\&\ oh.OrderTime\ >\ grp.OrderBy(ohGrp\ =>\ ohGrp.OrderTime).First().OrderTime);}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//mismatched\ items\ found,\ assume\ all\ orders\ are\ ok}}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00136\ }
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (productList\ ==\ \textcolor{keyword}{null}\ ||\ productList.Count\ <\ 1)}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ webShopResponse.success\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ webShopResponse.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_web_shop_1_1_web_shop_response_ae2cf8f18894bed8981a6feb39df50164}{errors}}.Add(\textcolor{stringliteral}{"{}Priceapp\ product\ list\ unavailable"{}});}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ webShopResponse;}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//strip\ orderheaders\ duplicate\ order\ threshold\ orders,\ trim\ down\ to\ request\ time\ bounds}}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_internal_a_p_i_1_1_models_1_1_web_shop_1_1_order_header}{OrderHeader}}\ oh\ \textcolor{keywordflow}{in}\ orderHeaders.Where(oh\ =>\ oh.\mbox{\hyperlink{class_internal_a_p_i_1_1_models_1_1_web_shop_1_1_order_header_a4e48d78c03a5cad6718e353607060ea8}{OrderTime}}\ >=\ startTimeLocal))}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ the\ order\ header\ DTO\ (data\ transfer\ object)}}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ This\ differs\ from\ the\ database\ model,\ as\ the\ database\ datetimes\ are\ local\ time\ }}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ and\ the\ DTO\ is\ in\ UTC}}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ ohDto\ =\ (\mbox{\hyperlink{class_internal_a_p_i_1_1_models_1_1_web_shop_1_1_order_header}{OrderHeader}})oh.\mbox{\hyperlink{class_internal_a_p_i_1_1_models_1_1_web_shop_1_1_order_header_a95b7b4ca9f72c2b8c31d8a35b7d0c45b}{Clone}}();}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ohDto.OrderTime\ =\ oh.\mbox{\hyperlink{class_internal_a_p_i_1_1_models_1_1_web_shop_1_1_order_header_a4e48d78c03a5cad6718e353607060ea8}{OrderTime}}.ToUniversalTime();}
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ orderHeaderItems\ =\ orderItems.Where(oi\ =>\ oi.OrderId\ ==\ oh.\mbox{\hyperlink{class_internal_a_p_i_1_1_models_1_1_web_shop_1_1_order_header_a4658c429e75fee42d53899b8229a0545}{OrderId}}).ToList();}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ WebShopSales.Add(\textcolor{keyword}{new}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_web_shop_1_1_web_shop_sale}{WebShopSale}}()}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ orderHeader\ =\ ohDto,}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ orderItems\ =\ orderHeaderItems,}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ orderWeights\ =\ CalculateOrderWeight(orderHeaderItems)}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \});\ ;}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ webShopResponse.responseObject\ =\ WebShopSales;}
+\DoxyCodeLine{00161\ }
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (webShopResponse.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_web_shop_1_1_web_shop_response_ae2cf8f18894bed8981a6feb39df50164}{errors}}.Count\ >\ 0)}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ webShopResponse.success\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ webShopResponse.success\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ webShopResponse;}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_internal_a_p_i_1_1_controllers_1_1_web_shop_controller_aaa839efb1efc2b094dd1508a9ef2fb3d_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+STRIDER/source/repos/\+Internal\+API/\+Internal\+API/\+Controllers/\mbox{\hyperlink{_web_shop_controller_8cs}{Web\+Shop\+Controller.\+cs}}\end{DoxyCompactItemize}

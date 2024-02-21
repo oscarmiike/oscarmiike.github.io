@@ -1,0 +1,161 @@
+\chapter{Java\+Script Hooker}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23ea1351c2c5cd923e0f864177a607a0a}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23ea1351c2c5cd923e0f864177a607a0a}\index{JavaScript Hooker@{JavaScript Hooker}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23ea1351c2c5cd923e0f864177a607a0a_autotoc_md9274}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23ea1351c2c5cd923e0f864177a607a0a_autotoc_md9274}%
+ Monkey-\/patch (hook) functions for debugging and stuff.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23ea1351c2c5cd923e0f864177a607a0a_autotoc_md9275}{}\doxysection{\texorpdfstring{Getting Started}{Getting Started}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23ea1351c2c5cd923e0f864177a607a0a_autotoc_md9275}
+This code should work just fine in Node.\+js\+:
+
+First, install the module with\+: {\ttfamily npm install hooker}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ hooker\ =\ require('hooker');}
+\DoxyCodeLine{hooker.hook(Math,\ "{}max"{},\ function()\ \{}
+\DoxyCodeLine{\ \ console.log(arguments.length\ +\ "{}\ arguments\ passed"{});}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{Math.max(5,\ 6,\ 7)\ //\ logs:\ "{}3\ arguments\ passed"{},\ returns\ 7}
+
+\end{DoxyCode}
+
+
+Or in the browser\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<script\ src="{}dist/ba-\/hooker.min.js"{}></script>}
+\DoxyCodeLine{<script>}
+\DoxyCodeLine{hook(Math,\ "{}max"{},\ function()\ \{}
+\DoxyCodeLine{\ \ console.log(arguments.length\ +\ "{}\ arguments\ passed"{});}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{Math.max(5,\ 6,\ 7)\ //\ logs:\ "{}3\ arguments\ passed"{},\ returns\ 7}
+\DoxyCodeLine{</script>}
+
+\end{DoxyCode}
+
+
+In the browser, you can attach Hooker\textquotesingle{}s methods to any object.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<script>}
+\DoxyCodeLine{this.exports\ =\ Bocoup.utils;}
+\DoxyCodeLine{</script>}
+\DoxyCodeLine{<script\ src="{}dist/ba-\/hooker.min.js"{}></script>}
+\DoxyCodeLine{<script>}
+\DoxyCodeLine{Bocoup.utils.hook(Math,\ "{}max"{},\ function()\ \{}
+\DoxyCodeLine{\ \ console.log(arguments.length\ +\ "{}\ arguments\ passed"{});}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{Math.max(5,\ 6,\ 7)\ //\ logs:\ "{}3\ arguments\ passed"{},\ returns\ 7}
+\DoxyCodeLine{</script>}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23ea1351c2c5cd923e0f864177a607a0a_autotoc_md9276}{}\doxysection{\texorpdfstring{Documentation}{Documentation}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23ea1351c2c5cd923e0f864177a607a0a_autotoc_md9276}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23ea1351c2c5cd923e0f864177a607a0a_autotoc_md9277}{}\doxysubsection{\texorpdfstring{hooker.\+hook}{hooker.\+hook}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23ea1351c2c5cd923e0f864177a607a0a_autotoc_md9277}
+Monkey-\/patch (hook) one or more methods of an object. \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23ea1351c2c5cd923e0f864177a607a0a_autotoc_md9278}{}\doxysubsubsection{\texorpdfstring{Signature\+:}{Signature\+:}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23ea1351c2c5cd923e0f864177a607a0a_autotoc_md9278}
+{\ttfamily hooker.\+hook(object, \mbox{[} props, \mbox{]} \mbox{[}options \texorpdfstring{$\vert$}{|} prehook\+Function\mbox{]})} \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23ea1351c2c5cd923e0f864177a607a0a_autotoc_md9279}{}\doxysubsubsection{\texorpdfstring{{\ttfamily props}}{{\ttfamily props}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23ea1351c2c5cd923e0f864177a607a0a_autotoc_md9279}
+The optional {\ttfamily props} argument can be a method name, array of method names or null. If null (or omitted), all enumerable methods of {\ttfamily object} will be hooked. \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23ea1351c2c5cd923e0f864177a607a0a_autotoc_md9280}{}\doxysubsubsection{\texorpdfstring{{\ttfamily options}}{{\ttfamily options}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23ea1351c2c5cd923e0f864177a607a0a_autotoc_md9280}
+
+\begin{DoxyItemize}
+\item {\ttfamily pre} -\/ (Function) a pre-\/hook function to be executed before the original function. Arguments passed into the method will be passed into the pre-\/hook function as well.
+\item {\ttfamily post} -\/ (Function) a post-\/hook function to be executed after the original function. The original function\textquotesingle{}s result is passed into the post-\/hook function as its first argument, followed by the method arguments.
+\item {\ttfamily once} -\/ (Boolean) if true, auto-\/unhook the function after the first execution.
+\item {\ttfamily pass\+Name} -\/ (Boolean) if true, pass the name of the method into the pre-\/hook function as its first arg (preceding all other arguments), and into the post-\/hook function as the second arg (after result but preceding all other arguments).
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23ea1351c2c5cd923e0f864177a607a0a_autotoc_md9281}{}\doxysubsubsection{\texorpdfstring{Returns\+:}{Returns\+:}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23ea1351c2c5cd923e0f864177a607a0a_autotoc_md9281}
+An array of hooked method names.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23ea1351c2c5cd923e0f864177a607a0a_autotoc_md9282}{}\doxysubsection{\texorpdfstring{hooker.\+unhook}{hooker.\+unhook}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23ea1351c2c5cd923e0f864177a607a0a_autotoc_md9282}
+Un-\/monkey-\/patch (unhook) one or more methods of an object. \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23ea1351c2c5cd923e0f864177a607a0a_autotoc_md9283}{}\doxysubsubsection{\texorpdfstring{Signature\+:}{Signature\+:}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23ea1351c2c5cd923e0f864177a607a0a_autotoc_md9283}
+{\ttfamily hooker.\+unhook(object \mbox{[}, props \mbox{]})} \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23ea1351c2c5cd923e0f864177a607a0a_autotoc_md9284}{}\doxysubsubsection{\texorpdfstring{{\ttfamily props}}{{\ttfamily props}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23ea1351c2c5cd923e0f864177a607a0a_autotoc_md9284}
+The optional {\ttfamily props} argument can be a method name, array of method names or null. If null (or omitted), all methods of {\ttfamily object} will be unhooked. \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23ea1351c2c5cd923e0f864177a607a0a_autotoc_md9285}{}\doxysubsubsection{\texorpdfstring{Returns\+:}{Returns\+:}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23ea1351c2c5cd923e0f864177a607a0a_autotoc_md9285}
+An array of unhooked method names.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23ea1351c2c5cd923e0f864177a607a0a_autotoc_md9286}{}\doxysubsection{\texorpdfstring{hooker.\+orig}{hooker.\+orig}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23ea1351c2c5cd923e0f864177a607a0a_autotoc_md9286}
+Get a reference to the original method from a hooked function. \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23ea1351c2c5cd923e0f864177a607a0a_autotoc_md9287}{}\doxysubsubsection{\texorpdfstring{Signature\+:}{Signature\+:}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23ea1351c2c5cd923e0f864177a607a0a_autotoc_md9287}
+{\ttfamily hooker.\+orig(object, props)}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23ea1351c2c5cd923e0f864177a607a0a_autotoc_md9288}{}\doxysubsection{\texorpdfstring{hooker.\+override}{hooker.\+override}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23ea1351c2c5cd923e0f864177a607a0a_autotoc_md9288}
+When a pre-\/ or post-\/hook returns the result of this function, the value passed will be used in place of the original function\textquotesingle{}s return value. Any post-\/hook override value will take precedence over a pre-\/hook override value. \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23ea1351c2c5cd923e0f864177a607a0a_autotoc_md9289}{}\doxysubsubsection{\texorpdfstring{Signature\+:}{Signature\+:}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23ea1351c2c5cd923e0f864177a607a0a_autotoc_md9289}
+{\ttfamily hooker.\+override(value)}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23ea1351c2c5cd923e0f864177a607a0a_autotoc_md9290}{}\doxysubsection{\texorpdfstring{hooker.\+preempt}{hooker.\+preempt}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23ea1351c2c5cd923e0f864177a607a0a_autotoc_md9290}
+When a pre-\/hook returns the result of this function, the value passed will be used in place of the original function\textquotesingle{}s return value, and the original function will NOT be executed. \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23ea1351c2c5cd923e0f864177a607a0a_autotoc_md9291}{}\doxysubsubsection{\texorpdfstring{Signature\+:}{Signature\+:}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23ea1351c2c5cd923e0f864177a607a0a_autotoc_md9291}
+{\ttfamily hooker.\+preempt(value)}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23ea1351c2c5cd923e0f864177a607a0a_autotoc_md9292}{}\doxysubsection{\texorpdfstring{hooker.\+filter}{hooker.\+filter}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23ea1351c2c5cd923e0f864177a607a0a_autotoc_md9292}
+When a pre-\/hook returns the result of this function, the context and arguments passed will be applied into the original function. \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23ea1351c2c5cd923e0f864177a607a0a_autotoc_md9293}{}\doxysubsubsection{\texorpdfstring{Signature\+:}{Signature\+:}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23ea1351c2c5cd923e0f864177a607a0a_autotoc_md9293}
+{\ttfamily hooker.\+filter(context, arguments)}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23ea1351c2c5cd923e0f864177a607a0a_autotoc_md9294}{}\doxysection{\texorpdfstring{Examples}{Examples}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23ea1351c2c5cd923e0f864177a607a0a_autotoc_md9294}
+See the unit tests for more examples.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ hooker\ =\ require('hooker');}
+\DoxyCodeLine{//\ Simple\ logging.}
+\DoxyCodeLine{hooker.hook(Math,\ "{}max"{},\ function()\ \{}
+\DoxyCodeLine{\ \ console.log(arguments.length\ +\ "{}\ arguments\ passed"{});}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{Math.max(5,\ 6,\ 7)\ //\ logs:\ "{}3\ arguments\ passed"{},\ returns\ 7}
+\DoxyCodeLine{}
+\DoxyCodeLine{hooker.unhook(Math,\ "{}max"{});\ //\ (This\ is\ assumed\ between\ all\ further\ examples)}
+\DoxyCodeLine{Math.max(5,\ 6,\ 7)\ //\ 7}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Returning\ hooker.override(value)\ overrides\ the\ original\ value.}
+\DoxyCodeLine{hooker.hook(Math,\ "{}max"{},\ function()\ \{}
+\DoxyCodeLine{\ \ if\ (arguments.length\ ===\ 0)\ \{}
+\DoxyCodeLine{\ \ \ \ return\ hooker.override(9000);}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{Math.max(5,\ 6,\ 7)\ //\ 7}
+\DoxyCodeLine{Math.max()\ //\ 9000}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Auto-\/unhook\ after\ one\ execution.}
+\DoxyCodeLine{hooker.hook(Math,\ "{}max"{},\ \{}
+\DoxyCodeLine{\ \ once:\ true,}
+\DoxyCodeLine{\ \ pre:\ function()\ \{}
+\DoxyCodeLine{\ \ \ \ console.log("{}Init\ something\ here"{});}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{Math.max(5,\ 6,\ 7)\ //\ logs:\ "{}Init\ something\ here"{},\ returns\ 7}
+\DoxyCodeLine{Math.max(5,\ 6,\ 7)\ //\ 7}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Filter\ \`{}this`\ and\ arguments\ through\ a\ pre-\/hook\ function.}
+\DoxyCodeLine{hooker.hook(Math,\ "{}max"{},\ \{}
+\DoxyCodeLine{\ \ pre:\ function()\ \{}
+\DoxyCodeLine{\ \ \ \ var\ args\ =\ [].map.call(arguments,\ function(num)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ return\ num\ *\ 2;}
+\DoxyCodeLine{\ \ \ \ \});}
+\DoxyCodeLine{\ \ \ \ return\ hooker.filter(this,\ args);\ //\ thisValue,\ arguments}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{Math.max(5,\ 6,\ 7)\ //\ 14}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Modify\ the\ original\ function's\ result\ with\ a\ post-\/hook\ function.}
+\DoxyCodeLine{hooker.hook(Math,\ "{}max"{},\ \{}
+\DoxyCodeLine{\ \ post:\ function(result)\ \{}
+\DoxyCodeLine{\ \ \ \ return\ hooker.override(result\ *\ 100);}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{Math.max(5,\ 6,\ 7)\ //\ 700}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Hook\ every\ Math\ method.\ Note:\ if\ Math's\ methods\ were\ enumerable,\ the\ second}
+\DoxyCodeLine{//\ argument\ could\ be\ omitted.\ Since\ they\ aren't,\ an\ array\ of\ properties\ to\ hook}
+\DoxyCodeLine{//\ must\ be\ explicitly\ passed.\ Non-\/method\ properties\ will\ be\ skipped.}
+\DoxyCodeLine{//\ See\ a\ more\ generic\ example\ here:\ http://bit.ly/vvJlrS}
+\DoxyCodeLine{hooker.hook(Math,\ Object.getOwnPropertyNames(Math),\ \{}
+\DoxyCodeLine{\ \ passName:\ true,}
+\DoxyCodeLine{\ \ pre:\ function(name)\ \{}
+\DoxyCodeLine{\ \ \ \ console.log("{}=>\ Math."{}\ +\ name,\ [].slice.call(arguments,\ 1));}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ post:\ function(result,\ name)\ \{}
+\DoxyCodeLine{\ \ \ \ console.log("{}<=\ Math."{}\ +\ name,\ result);}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ result\ =\ Math.max(5,\ 6,\ 7);}
+\DoxyCodeLine{//\ =>\ Math.max\ [\ 5,\ 6,\ 7\ ]}
+\DoxyCodeLine{//\ <=\ Math.max\ 7}
+\DoxyCodeLine{result\ //\ 7}
+\DoxyCodeLine{}
+\DoxyCodeLine{result\ =\ Math.ceil(3.456);}
+\DoxyCodeLine{//\ =>\ Math.ceil\ [\ 3.456\ ]}
+\DoxyCodeLine{//\ <=\ Math.ceil\ 4}
+\DoxyCodeLine{result\ //\ 4}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23ea1351c2c5cd923e0f864177a607a0a_autotoc_md9295}{}\doxysection{\texorpdfstring{Contributing}{Contributing}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23ea1351c2c5cd923e0f864177a607a0a_autotoc_md9295}
+In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using \href{https://github.com/cowboy/grunt}{\texttt{ grunt}}.
+
+{\itshape Also, please don\textquotesingle{}t edit files in the "{}dist"{} subdirectory as they are generated via grunt. You\textquotesingle{}ll find source code in the "{}lib"{} subdirectory!}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23ea1351c2c5cd923e0f864177a607a0a_autotoc_md9296}{}\doxysection{\texorpdfstring{Release History}{Release History}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23ea1351c2c5cd923e0f864177a607a0a_autotoc_md9296}
+2012/01/09 -\/ v0.\+2.\+3 -\/ First official release.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23ea1351c2c5cd923e0f864177a607a0a_autotoc_md9297}{}\doxysection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23ea1351c2c5cd923e0f864177a607a0a_autotoc_md9297}
+Copyright (c) 2012 "{}\+Cowboy"{} Ben Alman ~\newline
+ Licensed under the MIT license. ~\newline
+ \href{http://benalman.com/about/license/}{\texttt{ http\+://benalman.\+com/about/license/}} 

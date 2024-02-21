@@ -1,0 +1,69 @@
+\chapter{parse-\/json \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/sindresorhus/parse-\/json"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+org/sindresorhus/parse-\/json.\+svg?branch=master"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2aa73cf1f4ecddc85652486ecfcba124a}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2aa73cf1f4ecddc85652486ecfcba124a}\index{parse-\/json $<$a href="{}https://travis-\/ci.org/sindresorhus/parse-\/json"{} $>$$<$img src="{}https://travis-\/ci.org/sindresorhus/parse-\/json.svg?branch=master"{} alt="{}Build Status"{}/$>$$<$/a$>$@{parse-\/json $<$a href=""https://travis-\/ci.org/sindresorhus/parse-\/json"" $>$$<$img src=""https://travis-\/ci.org/sindresorhus/parse-\/json.svg?branch=master"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2aa73cf1f4ecddc85652486ecfcba124a_autotoc_md2450}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2aa73cf1f4ecddc85652486ecfcba124a_autotoc_md2450}%
+ \begin{quote}
+Parse JSON with more helpful errors \end{quote}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2aa73cf1f4ecddc85652486ecfcba124a_autotoc_md2451}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2aa73cf1f4ecddc85652486ecfcba124a_autotoc_md2451}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ -\/-\/save\ parse-\/json}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2aa73cf1f4ecddc85652486ecfcba124a_autotoc_md2452}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2aa73cf1f4ecddc85652486ecfcba124a_autotoc_md2452}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ parseJson\ =\ require('parse-\/json');}
+\DoxyCodeLine{var\ json\ =\ '\{\(\backslash\)n\(\backslash\)t"{}foo"{}:\ true,\(\backslash\)n\}';}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{JSON.parse(json);}
+\DoxyCodeLine{/*}
+\DoxyCodeLine{undefined:3}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{\string^}
+\DoxyCodeLine{SyntaxError:\ Unexpected\ token\ \}}
+\DoxyCodeLine{*/}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{parseJson(json);}
+\DoxyCodeLine{/*}
+\DoxyCodeLine{JSONError:\ Trailing\ comma\ in\ object\ at\ 3:1}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{\string^}
+\DoxyCodeLine{*/}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{parseJson(json,\ 'foo.json');}
+\DoxyCodeLine{/*}
+\DoxyCodeLine{JSONError:\ Trailing\ comma\ in\ object\ at\ 3:1\ in\ foo.json}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{\string^}
+\DoxyCodeLine{*/}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ you\ can\ also\ add\ the\ filename\ at\ a\ later\ point}
+\DoxyCodeLine{try\ \{}
+\DoxyCodeLine{\ \ \ \ parseJson(json);}
+\DoxyCodeLine{\}\ catch\ (err)\ \{}
+\DoxyCodeLine{\ \ \ \ err.fileName\ =\ 'foo.json';}
+\DoxyCodeLine{\ \ \ \ throw\ err;}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{/*}
+\DoxyCodeLine{JSONError:\ Trailing\ comma\ in\ object\ at\ 3:1\ in\ foo.json}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{\string^}
+\DoxyCodeLine{*/}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2aa73cf1f4ecddc85652486ecfcba124a_autotoc_md2453}{}\doxysection{\texorpdfstring{API}{API}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2aa73cf1f4ecddc85652486ecfcba124a_autotoc_md2453}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2aa73cf1f4ecddc85652486ecfcba124a_autotoc_md2454}{}\doxysubsection{\texorpdfstring{parse\+Json(input, \mbox{[}reviver\mbox{]}, \mbox{[}filename\mbox{]})}{parse\+Json(input, \mbox{[}reviver\mbox{]}, \mbox{[}filename\mbox{]})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2aa73cf1f4ecddc85652486ecfcba124a_autotoc_md2454}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2aa73cf1f4ecddc85652486ecfcba124a_autotoc_md2455}{}\doxysubsubsection{\texorpdfstring{input}{input}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2aa73cf1f4ecddc85652486ecfcba124a_autotoc_md2455}
+Type\+: {\ttfamily string}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2aa73cf1f4ecddc85652486ecfcba124a_autotoc_md2456}{}\doxysubsubsection{\texorpdfstring{reviver}{reviver}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2aa73cf1f4ecddc85652486ecfcba124a_autotoc_md2456}
+Type\+: {\ttfamily function}
+
+Prescribes how the value originally produced by parsing is transformed, before being returned. See \href{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse\#Using_the_reviver_parameter}{\texttt{ {\ttfamily JSON.\+parse} docs}} for more.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2aa73cf1f4ecddc85652486ecfcba124a_autotoc_md2457}{}\doxysubsubsection{\texorpdfstring{filename}{filename}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2aa73cf1f4ecddc85652486ecfcba124a_autotoc_md2457}
+Type\+: {\ttfamily string}
+
+Filename displayed in the error message.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2aa73cf1f4ecddc85652486ecfcba124a_autotoc_md2458}{}\doxysection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2aa73cf1f4ecddc85652486ecfcba124a_autotoc_md2458}
+MIT © \href{http://sindresorhus.com}{\texttt{ Sindre Sorhus}} 

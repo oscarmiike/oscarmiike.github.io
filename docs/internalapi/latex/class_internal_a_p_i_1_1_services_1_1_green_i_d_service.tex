@@ -1,0 +1,99 @@
+\doxysection{Internal\+API.\+Services.\+Green\+IDService Class Reference}
+\hypertarget{class_internal_a_p_i_1_1_services_1_1_green_i_d_service}{}\label{class_internal_a_p_i_1_1_services_1_1_green_i_d_service}\index{InternalAPI.Services.GreenIDService@{InternalAPI.Services.GreenIDService}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_green_i_d_service_a43f02206e4ea8df14b7ab9a5b8a2efed}{Green\+IDService}} (\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{Log\+Service}} logger, IOptions$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_green_i_d_settings}{Green\+IDSettings}} $>$ green\+IDSettings)
+\item 
+\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_1_1_green_i_d_customer}{Green\+IDCustomer}} \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_green_i_d_service_add8c85cb430cc575e5ab3c6960216c77}{Get\+Green\+Id\+Customer}} (string branch, string userid)
+\begin{DoxyCompactList}\small\item\em connect to greenid and request a customer using their verification id \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_services_1_1_green_i_d_service_a43f02206e4ea8df14b7ab9a5b8a2efed}\label{class_internal_a_p_i_1_1_services_1_1_green_i_d_service_a43f02206e4ea8df14b7ab9a5b8a2efed} 
+\index{InternalAPI.Services.GreenIDService@{InternalAPI.Services.GreenIDService}!GreenIDService@{GreenIDService}}
+\index{GreenIDService@{GreenIDService}!InternalAPI.Services.GreenIDService@{InternalAPI.Services.GreenIDService}}
+\doxysubsubsection{\texorpdfstring{GreenIDService()}{GreenIDService()}}
+{\footnotesize\ttfamily Internal\+API.\+Services.\+Green\+IDService.\+Green\+IDService (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{Log\+Service}}}]{logger,  }\item[{IOptions$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_green_i_d_settings}{Green\+IDSettings}} $>$}]{green\+IDSettings }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger\ =\ logger;}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \_greenIDSettings\ =\ greenIDSettings.Value;}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_services_1_1_green_i_d_service_add8c85cb430cc575e5ab3c6960216c77}\label{class_internal_a_p_i_1_1_services_1_1_green_i_d_service_add8c85cb430cc575e5ab3c6960216c77} 
+\index{InternalAPI.Services.GreenIDService@{InternalAPI.Services.GreenIDService}!GetGreenIdCustomer@{GetGreenIdCustomer}}
+\index{GetGreenIdCustomer@{GetGreenIdCustomer}!InternalAPI.Services.GreenIDService@{InternalAPI.Services.GreenIDService}}
+\doxysubsubsection{\texorpdfstring{GetGreenIdCustomer()}{GetGreenIdCustomer()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_1_1_green_i_d_customer}{Green\+IDCustomer}} Internal\+API.\+Services.\+Green\+IDService.\+Get\+Green\+Id\+Customer (\begin{DoxyParamCaption}\item[{string}]{branch,  }\item[{string}]{userid }\end{DoxyParamCaption})}
+
+
+
+connect to greenid and request a customer using their verification id 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_1_1_green_i_d_customer}{GreenIDCustomer}}\ greenIDCustomer\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ var\ greenIDBranchSettings\ =\ \_greenIDSettings.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_green_i_d_settings_aa3c168ea23d7f5549c2047e836ca9c4f}{Branches}}.FirstOrDefault(br\ =>\ br.BranchCode.ToLower()\ ==\ branch.ToLower());}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (greenIDBranchSettings\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a778dd1666ec20e3197598d7aa41e0cba}{LogError}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.GreenIDService,\ \$\textcolor{stringliteral}{"{}error\ getting\ greenid\ customer,\ branch\ settings\ are\ null.\ branch:\ \{branch\}\ userid:\ \{userid\}"{}});}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ greenIDCustomer;}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient(\_greenIDSettings.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_green_i_d_settings_a4fbcf9dac1856a66efc91eb77aff0767}{GreenIDBaseURL}});}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ var\ request\ =\ \textcolor{keyword}{new}\ RestRequest(\textcolor{stringliteral}{"{}"{}},\ Method.GET);}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddQueryParameter(\textcolor{stringliteral}{"{}accountId"{}},\ greenIDBranchSettings.GreenIDAccountName);}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddQueryParameter(\textcolor{stringliteral}{"{}webServicePassword"{}},\ greenIDBranchSettings.APIPassword);}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddQueryParameter(\textcolor{stringliteral}{"{}verificationId"{}},\ userid);}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ IRestResponse\ response\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ response\ =\ client.Execute(request);}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response.IsSuccessful)}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ greenIDCustomer\ =\ JsonConvert.DeserializeObject<\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_1_1_green_i_d_customer}{GreenIDCustomer}}>(response.Content);}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a778dd1666ec20e3197598d7aa41e0cba}{LogError}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.GreenIDService,}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}error\ getting\ greenid\ customer"{}},}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}StatusCode:\ \{(int)response.StatusCode\}"{}},}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}StatusDescription:\ \{response.StatusDescription\}"{}},}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}Content:\ \{response.Content\}"{}});}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a778dd1666ec20e3197598d7aa41e0cba}{LogError}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.GreenIDService,}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}error\ getting\ greenid\ customer,\ response\ object\ is\ null"{}});}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_ad25f9b254876bb11d042df6148dab40a}{LogException}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.GreenIDService,\ \$\textcolor{stringliteral}{"{}Exception\ getting\ customer\ from\ greenid\ branch:\ \{branch\}\ userid:\ \{userid\}"{}},\ ex.ToString());}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ greenIDCustomer\ !=\ \textcolor{keyword}{null}\ \&\&\ greenIDCustomer.error\ ?\ null\ :\ greenIDCustomer;}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_internal_a_p_i_1_1_services_1_1_green_i_d_service_add8c85cb430cc575e5ab3c6960216c77_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+STRIDER/source/repos/\+Internal\+API/\+Internal\+API/\+Services/\+Green\+ID/\mbox{\hyperlink{_green_i_d_service_8cs}{Green\+IDService.\+cs}}\end{DoxyCompactItemize}

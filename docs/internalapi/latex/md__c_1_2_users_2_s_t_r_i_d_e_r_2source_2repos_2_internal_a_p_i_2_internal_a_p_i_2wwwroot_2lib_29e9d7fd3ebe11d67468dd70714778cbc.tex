@@ -1,0 +1,37 @@
+\chapter{spawnback}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_29e9d7fd3ebe11d67468dd70714778cbc}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_29e9d7fd3ebe11d67468dd70714778cbc}\index{spawnback@{spawnback}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_29e9d7fd3ebe11d67468dd70714778cbc_autotoc_md11441}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_29e9d7fd3ebe11d67468dd70714778cbc_autotoc_md11441}%
+ Simplified process spawning with buffered output in a callback.
+
+Support this project by \href{https://gratipay.com/scottgonzalez/}{\texttt{ donating on Gratipay}}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_29e9d7fd3ebe11d67468dd70714778cbc_autotoc_md11442}{}\doxysection{\texorpdfstring{Installation}{Installation}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_29e9d7fd3ebe11d67468dd70714778cbc_autotoc_md11442}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ spawnback}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_29e9d7fd3ebe11d67468dd70714778cbc_autotoc_md11443}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_29e9d7fd3ebe11d67468dd70714778cbc_autotoc_md11443}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ spawn\ =\ require(\ "{}spawnback"{}\ );}
+\DoxyCodeLine{spawn(\ "{}git"{},\ [\ "{}status"{}\ ],\ function(\ error,\ stdout\ )\ \{}
+\DoxyCodeLine{\ \ \ \ console.log(\ stdout\ );}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_29e9d7fd3ebe11d67468dd70714778cbc_autotoc_md11444}{}\doxysection{\texorpdfstring{API}{API}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_29e9d7fd3ebe11d67468dd70714778cbc_autotoc_md11444}
+spawnback follows the same API as node\textquotesingle{}s built-\/in {\ttfamily child\+\_\+process.\+spawn()}, but accepts a callback as the final parameter. The callback receives three paramaters\+: an error object, stdout as a string, and stderr as a string.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_29e9d7fd3ebe11d67468dd70714778cbc_autotoc_md11445}{}\doxysubsection{\texorpdfstring{spawnback( command, \mbox{[}args\mbox{]}, \mbox{[}options\mbox{]}, callback )}{spawnback( command, \mbox{[}args\mbox{]}, \mbox{[}options\mbox{]}, callback )}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_29e9d7fd3ebe11d67468dd70714778cbc_autotoc_md11445}
+
+\begin{DoxyItemize}
+\item {\ttfamily command} String\+: The command to run.
+\item {\ttfamily args} Array\+: List of string arguments.
+\item {\ttfamily options} Object\+: See the \href{http://nodejs.org/api/child_process.html\#child_process_child_process_spawn_command_args_options}{\texttt{ node API docs}} for full details on which options are supported.
+\item {\ttfamily callback} function( error, stdout, stderr )\+: A callback to invoke when the child process has ended and all stdio streams have terminated.
+\item return\+: \href{http://nodejs.org/api/child_process.html\#child_process_child_process}{\texttt{ {\ttfamily Child\+Process}}} instance.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_29e9d7fd3ebe11d67468dd70714778cbc_autotoc_md11446}{}\doxysection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_29e9d7fd3ebe11d67468dd70714778cbc_autotoc_md11446}
+Copyright 2014 Scott González. Released under the terms of the MIT license.
+
+\DoxyHorRuler{0}
+
+
+Support this project by \href{https://gratipay.com/scottgonzalez/}{\texttt{ donating on Gratipay}}. 

@@ -1,0 +1,90 @@
+\chapter{lru cache}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c73411775942e50db949342fa8802da0}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c73411775942e50db949342fa8802da0}\index{lru cache@{lru cache}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c73411775942e50db949342fa8802da0_autotoc_md3192}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c73411775942e50db949342fa8802da0_autotoc_md3192}%
+ A cache object that deletes the least-\/recently-\/used items.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c73411775942e50db949342fa8802da0_autotoc_md3193}{}\doxysection{\texorpdfstring{Usage\+:}{Usage\+:}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c73411775942e50db949342fa8802da0_autotoc_md3193}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ LRU\ =\ require("{}lru-\/cache"{})}
+\DoxyCodeLine{\ \ ,\ options\ =\ \{\ max:\ 500}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\ length:\ function\ (n)\ \{\ return\ n\ *\ 2\ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\ dispose:\ function\ (key,\ n)\ \{\ n.close()\ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ ,\ maxAge:\ 1000\ *\ 60\ *\ 60\ \}}
+\DoxyCodeLine{\ \ ,\ cache\ =\ LRU(options)}
+\DoxyCodeLine{\ \ ,\ otherCache\ =\ LRU(50)\ //\ sets\ just\ the\ max\ size}
+\DoxyCodeLine{}
+\DoxyCodeLine{cache.set("{}key"{},\ "{}value"{})}
+\DoxyCodeLine{cache.get("{}key"{})\ //\ "{}value"{}}
+\DoxyCodeLine{}
+\DoxyCodeLine{cache.reset()\ \ \ \ //\ empty\ the\ cache}
+
+\end{DoxyCode}
+
+
+If you put more stuff in it, then items will fall out.
+
+If you try to put an oversized thing in it, then it\textquotesingle{}ll fall out right away.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c73411775942e50db949342fa8802da0_autotoc_md3194}{}\doxysection{\texorpdfstring{Keys should always be Strings or Numbers}{Keys should always be Strings or Numbers}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c73411775942e50db949342fa8802da0_autotoc_md3194}
+Note\+: this module will print warnings to {\ttfamily console.\+error} if you use a key that is not a String or Number. Because items are stored in an object, which coerces keys to a string, it won\textquotesingle{}t go well for you if you try to use a key that is not a unique string, it\textquotesingle{}ll cause surprise collisions. For example\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Bad\ Example!\ \ Dont'\ do\ this!}
+\DoxyCodeLine{var\ cache\ =\ LRU()}
+\DoxyCodeLine{var\ a\ =\ \{\}}
+\DoxyCodeLine{var\ b\ =\ \{\}}
+\DoxyCodeLine{cache.set(a,\ 'this\ is\ a')}
+\DoxyCodeLine{cache.set(b,\ 'this\ is\ b')}
+\DoxyCodeLine{console.log(cache.get(a))\ //\ prints:\ 'this\ is\ b'}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c73411775942e50db949342fa8802da0_autotoc_md3195}{}\doxysection{\texorpdfstring{Options}{Options}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c73411775942e50db949342fa8802da0_autotoc_md3195}
+
+\begin{DoxyItemize}
+\item {\ttfamily max} The maximum size of the cache, checked by applying the length function to all values in the cache. Not setting this is kind of silly, since that\textquotesingle{}s the whole purpose of this lib, but it defaults to {\ttfamily Infinity}.
+\item {\ttfamily max\+Age} Maximum age in ms. Items are not pro-\/actively pruned out as they age, but if you try to get an item that is too old, it\textquotesingle{}ll drop it and return undefined instead of giving it to you.
+\item {\ttfamily length} Function that is used to calculate the length of stored items. If you\textquotesingle{}re storing strings or buffers, then you probably want to do something like {\ttfamily function(n)\{return n.\+length\}}. The default is {\ttfamily function(n)\{return 1\}}, which is fine if you want to store {\ttfamily max} like-\/sized things.
+\item {\ttfamily dispose} Function that is called on items when they are dropped from the cache. This can be handy if you want to close file descriptors or do other cleanup tasks when items are no longer accessible. Called with {\ttfamily key, value}. It\textquotesingle{}s called {\itshape before} actually removing the item from the internal cache, so if you want to immediately put it back in, you\textquotesingle{}ll have to do that in a {\ttfamily next\+Tick} or {\ttfamily set\+Timeout} callback or it won\textquotesingle{}t do anything.
+\item {\ttfamily stale} By default, if you set a {\ttfamily max\+Age}, it\textquotesingle{}ll only actually pull stale items out of the cache when you {\ttfamily get(key)}. (That is, it\textquotesingle{}s not pre-\/emptively doing a {\ttfamily set\+Timeout} or anything.) If you set {\ttfamily stale\+:true}, it\textquotesingle{}ll return the stale value before deleting it. If you don\textquotesingle{}t set this, then it\textquotesingle{}ll return {\ttfamily undefined} when you try to get a stale entry, as if it had already been deleted.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c73411775942e50db949342fa8802da0_autotoc_md3196}{}\doxysection{\texorpdfstring{API}{API}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c73411775942e50db949342fa8802da0_autotoc_md3196}
+
+\begin{DoxyItemize}
+\item {\ttfamily set(key, value, max\+Age)}
+\item {\ttfamily get(key) =\texorpdfstring{$>$}{>} value}
+
+Both of these will update the "{}recently used"{}-\/ness of the key. They do what you think. {\ttfamily max} is optional and overrides the cache {\ttfamily max} option if provided.
+\item {\ttfamily peek(key)}
+
+Returns the key value (or {\ttfamily undefined} if not found) without updating the "{}recently used"{}-\/ness of the key.
+
+(If you find yourself using this a lot, you {\itshape might} be using the wrong sort of data structure, but there are some use cases where it\textquotesingle{}s handy.)
+\item {\ttfamily del(key)}
+
+Deletes a key out of the cache.
+\item {\ttfamily reset()}
+
+Clear the cache entirely, throwing away all values.
+\item {\ttfamily has(key)}
+
+Check if a key is in the cache, without updating the recent-\/ness or deleting it for being stale.
+\item {\ttfamily for\+Each(function(value,key,cache), \mbox{[}thisp\mbox{]})}
+
+Just like {\ttfamily Array.\+prototype.\+for\+Each}. Iterates over all the keys in the cache, in order of recent-\/ness. (Ie, more recently used items are iterated over first.)
+\item {\ttfamily keys()}
+
+Return an array of the keys in the cache.
+\item {\ttfamily values()}
+
+Return an array of the values in the cache.
+\item {\ttfamily length()}
+
+Return total length of objects in cache taking into account {\ttfamily length} options function.
+\item {\ttfamily item\+Count}
+
+Return total quantity of objects currently in cache. Note, that {\ttfamily stale} (see options) items are returned as part of this item count.
+\item {\ttfamily dump()}
+
+Return an array of the cache entries ready for serialization and usage with \textquotesingle{}destination\+Cache.\+load(arr)\`{}.
+\item {\ttfamily load(cache\+Entries\+Array)}
+
+Loads another cache entries array, obtained with {\ttfamily source\+Cache.\+dump()}, into the cache. The destination cache is reset before loading new entries 
+\end{DoxyItemize}

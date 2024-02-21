@@ -1,0 +1,121 @@
+\doxysection{Utils.\+cs}
+\hypertarget{_utils_8cs_source}{}\label{_utils_8cs_source}\index{C:/Users/STRIDER/source/repos/InternalAPI/InternalAPI/Models/Bitcoin/Utils.cs@{C:/Users/STRIDER/source/repos/InternalAPI/InternalAPI/Models/Bitcoin/Utils.cs}}
+\mbox{\hyperlink{_utils_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }NBitcoin;}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }Newtonsoft.Json;}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }System.IO;}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00006}00006\ \textcolor{keyword}{using\ }System.Linq;}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00007}00007\ \textcolor{keyword}{using\ }System.Security.Cryptography;}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00008}00008\ \textcolor{keyword}{using\ }System.Text;}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00009}00009\ \textcolor{keyword}{using\ }System.Threading.Tasks;}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00011}00011\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_crypto_payment_gateway}{CryptoPaymentGateway}}}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00012}00012\ \{}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00013}\mbox{\hyperlink{class_crypto_payment_gateway_1_1_utils}{00013}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_crypto_payment_gateway_1_1_utils}{Utils}}}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00014}00014\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00015}\mbox{\hyperlink{class_crypto_payment_gateway_1_1_utils_aebbd24938c0564165aa2f4fa0e8fadcc}{00015}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ String\ \mbox{\hyperlink{class_crypto_payment_gateway_1_1_utils_aebbd24938c0564165aa2f4fa0e8fadcc}{encryptMessage}}(String\ message,\ String\ password)}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//default\ AES\ 128}}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_crypto_payment_gateway_1_1_utils_a427f0a2df6ce07943ca145f62e2de874}{Encrypt}}(message,\ password);}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \textcolor{comment}{//args.name,\ args.xPubKey,\ args.requestPubKey}}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00022}\mbox{\hyperlink{class_crypto_payment_gateway_1_1_utils_a5bdfea8668c182b0e3185c8293f0c7a6}{00022}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ String\ \mbox{\hyperlink{class_crypto_payment_gateway_1_1_utils_a5bdfea8668c182b0e3185c8293f0c7a6}{getCopayerHash}}(String\ name,\ String\ xPubKey,\ String\ requestPubKey)}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//return\ [name,\ xPubKey,\ requestPubKey].join('|');}}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ String.Format(\textcolor{stringliteral}{"{}\{0\}|\{1\}|\{2\}"{}},\ name,\ xPubKey,\ requestPubKey);}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00034}\mbox{\hyperlink{class_crypto_payment_gateway_1_1_utils_abcb7f011d54755b3ba80ca6edfbc46d3}{00034}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ String\ \mbox{\hyperlink{class_crypto_payment_gateway_1_1_utils_abcb7f011d54755b3ba80ca6edfbc46d3}{signMessage}}(String\ text,\ String\ privKey)}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Assume\ private\ key\ is\ in\ hex}}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ Byte[]\ keyAsBytes\ =\ NBitcoin.DataEncoders.Encoders.Hex.DecodeData(privKey);}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ Key\ key\ =\ \textcolor{keyword}{new}\ Key(keyAsBytes);}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_crypto_payment_gateway_1_1_utils}{Utils}}.\mbox{\hyperlink{class_crypto_payment_gateway_1_1_utils_abcb7f011d54755b3ba80ca6edfbc46d3}{signMessage}}(text,\ key);}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00043}\mbox{\hyperlink{class_crypto_payment_gateway_1_1_utils_a54fc0df4f92950da63524fac3a4b69ca}{00043}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ String\ \mbox{\hyperlink{class_crypto_payment_gateway_1_1_utils_a54fc0df4f92950da63524fac3a4b69ca}{signMessage}}(String\ text,\ Key\ key)\ \{}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ var\ hashString\ =\ \mbox{\hyperlink{class_crypto_payment_gateway_1_1_utils}{Utils}}.hashMessage(text);}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ var\ hash\ =\ \textcolor{keyword}{new}\ uint256(hashString);}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ NBitcoin.DataEncoders.Encoders.Hex.EncodeData(key.Sign(hash).ToDER());}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00049}\mbox{\hyperlink{class_crypto_payment_gateway_1_1_utils_a4432375d0c640f172e4811e9a0d9d000}{00049}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_crypto_payment_gateway_1_1_utils_a4432375d0c640f172e4811e9a0d9d000}{SignRequest}}(String\ method,\ String\ url,\ \textcolor{keywordtype}{object}\ args,\ Key\ key)}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ String\ json\ =\ args\ !=\ \textcolor{keyword}{null}\ ?\ JsonConvert.SerializeObject(args)\ :\ \textcolor{stringliteral}{"{}\{\}"{}};}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ String\ message\ =\ String.Format(\textcolor{stringliteral}{"{}\{0\}|\{1\}|\{2\}"{}},\ method.ToLower(),\ url,\ json);}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_crypto_payment_gateway_1_1_utils}{Utils}}.\mbox{\hyperlink{class_crypto_payment_gateway_1_1_utils_abcb7f011d54755b3ba80ca6edfbc46d3}{signMessage}}(message,\ key);}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{byte}[]\ hashMessage(String\ test)}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ Byte[]\ data\ =\ NBitcoin.DataEncoders.Encoders.ASCII.DecodeData(test);}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ NBitcoin.Crypto.Hashes.SHA256(NBitcoin.Crypto.Hashes.SHA256(data));}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00063}\mbox{\hyperlink{class_crypto_payment_gateway_1_1_utils_a427f0a2df6ce07943ca145f62e2de874}{00063}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_crypto_payment_gateway_1_1_utils_a427f0a2df6ce07943ca145f62e2de874}{Encrypt}}(\textcolor{keywordtype}{string}\ clearText,\ \textcolor{keywordtype}{string}\ key)}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{byte}[]\ clearBytes\ =\ Encoding.Unicode.GetBytes(clearText);}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using}\ (Aes\ encryptor\ =\ Aes.Create())}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Rfc2898DeriveBytes\ pdb\ =\ \textcolor{keyword}{new}\ Rfc2898DeriveBytes(key,\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{byte}[]\ \{\ 0x49,\ 0x76,\ 0x61,\ 0x6e,\ 0x20,\ 0x4d,\ 0x65,\ 0x64,\ 0x76,\ 0x65,\ 0x64,\ 0x65,\ 0x76\ \});}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ encryptor.Key\ =\ pdb.GetBytes(32);}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ encryptor.IV\ =\ pdb.GetBytes(16);}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using}\ (MemoryStream\ ms\ =\ \textcolor{keyword}{new}\ MemoryStream())}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using}\ (CryptoStream\ cs\ =\ \textcolor{keyword}{new}\ CryptoStream(ms,\ encryptor.CreateEncryptor(),\ CryptoStreamMode.Write))}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cs.Write(clearBytes,\ 0,\ clearBytes.Length);}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ cs.Close();}}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ clearText\ =\ Convert.ToBase64String(ms.ToArray());}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ clearText;}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00086}\mbox{\hyperlink{class_crypto_payment_gateway_1_1_utils_a8fb4a89c82e93f167452c3a97b78080d}{00086}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_crypto_payment_gateway_1_1_utils_a8fb4a89c82e93f167452c3a97b78080d}{Decrypt}}(\textcolor{keywordtype}{string}\ cipherText)}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ EncryptionKey\ =\ \textcolor{stringliteral}{"{}MAKV2SPBNI99212"{}};}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{byte}[]\ cipherBytes\ =\ Convert.FromBase64String(cipherText);}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using}\ (Aes\ encryptor\ =\ Aes.Create())}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Rfc2898DeriveBytes\ pdb\ =\ \textcolor{keyword}{new}\ Rfc2898DeriveBytes(EncryptionKey,\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{byte}[]}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ 0x49,\ 0x76,\ 0x61,\ 0x6e,\ 0x20,\ 0x4d,\ 0x65,\ 0x64,\ 0x76,\ 0x65,\ 0x64,\ 0x65,\ 0x76\ \});}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ encryptor.Key\ =\ pdb.GetBytes(32);}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ encryptor.IV\ =\ pdb.GetBytes(16);}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using}\ (MemoryStream\ ms\ =\ \textcolor{keyword}{new}\ MemoryStream())}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using}\ (CryptoStream\ cs\ =\ \textcolor{keyword}{new}\ CryptoStream(ms,\ encryptor.CreateDecryptor(),\ CryptoStreamMode.Write))}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cs.Write(cipherBytes,\ 0,\ cipherBytes.Length);}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ cs.Close();}}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cipherText\ =\ Encoding.Unicode.GetString(ms.ToArray());}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ cipherText;}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00107}00107\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00108}00108\ }
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00109}\mbox{\hyperlink{class_crypto_payment_gateway_1_1_utils_afdb8d51c24fd0f3996b2bae0ad24d966}{00109}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_crypto_payment_gateway_1_1_utils_afdb8d51c24fd0f3996b2bae0ad24d966}{XPubKeyToCopayerId}}(\textcolor{keywordtype}{string}\ xPubKey)\ \{}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00110}00110\ \ \ \ \ \ \ \ \ \ \ \ \ var\ s\ =\ SHA256.Create();}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ var\ hash\ =\ s.ComputeHash(Encoding.ASCII.GetBytes(xPubKey));}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ BitConverter.ToString(hash);}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00113}00113\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00114}00114\ }
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00115}\mbox{\hyperlink{class_crypto_payment_gateway_1_1_utils_a9124e16d5422a91f9ebf194ac8b4816f}{00115}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_crypto_payment_gateway_1_1_utils_a9124e16d5422a91f9ebf194ac8b4816f}{PrivateKeyToAESKey}}(\textcolor{keywordtype}{string}\ privKey)\ \{}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00116}00116\ \ \ \ \ \ \ \ \ \ \ \ \ var\ pk\ =\ NBitcoin.Key.Parse(privKey);}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00117}00117\ \ \ \ \ \ \ \ \ \ \ \ \ var\ hash\ =\ NBitcoin.Crypto.Hashes.SHA256(pk.ToBytes()).Take(16).ToArray();}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00118}00118\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ NBitcoin.DataEncoders.Encoders.Base64.EncodeData(hash);}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00119}00119\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00120}00120\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_utils_8cs_source_l00121}00121\ \}}
+
+\end{DoxyCode}

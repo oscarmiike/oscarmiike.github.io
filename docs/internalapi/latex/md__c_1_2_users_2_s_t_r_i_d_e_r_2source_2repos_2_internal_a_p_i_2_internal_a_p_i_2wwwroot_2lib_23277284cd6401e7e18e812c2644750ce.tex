@@ -1,0 +1,101 @@
+\chapter{url-\/parse-\/lax \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/sindresorhus/url-\/parse-\/lax"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+org/sindresorhus/url-\/parse-\/lax.\+svg?branch=master"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23277284cd6401e7e18e812c2644750ce}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23277284cd6401e7e18e812c2644750ce}\index{url-\/parse-\/lax $<$a href="{}https://travis-\/ci.org/sindresorhus/url-\/parse-\/lax"{} $>$$<$img src="{}https://travis-\/ci.org/sindresorhus/url-\/parse-\/lax.svg?branch=master"{} alt="{}Build Status"{}/$>$$<$/a$>$@{url-\/parse-\/lax $<$a href=""https://travis-\/ci.org/sindresorhus/url-\/parse-\/lax"" $>$$<$img src=""https://travis-\/ci.org/sindresorhus/url-\/parse-\/lax.svg?branch=master"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23277284cd6401e7e18e812c2644750ce_autotoc_md5144}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23277284cd6401e7e18e812c2644750ce_autotoc_md5144}%
+ \begin{quote}
+\href{https://nodejs.org/docs/latest/api/url.html\#url_url_parse_urlstr_parsequerystring_slashesdenotehost}{\texttt{ {\ttfamily url.\+parse()}}} with support for protocol-\/less URLs \& IPs \end{quote}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23277284cd6401e7e18e812c2644750ce_autotoc_md5145}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23277284cd6401e7e18e812c2644750ce_autotoc_md5145}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ -\/-\/save\ url-\/parse-\/lax}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23277284cd6401e7e18e812c2644750ce_autotoc_md5146}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23277284cd6401e7e18e812c2644750ce_autotoc_md5146}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ urlParseLax\ =\ require('url-\/parse-\/lax');}
+\DoxyCodeLine{}
+\DoxyCodeLine{urlParseLax('sindresorhus.com');}
+\DoxyCodeLine{/*}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ protocol:\ null,}
+\DoxyCodeLine{\ \ \ \ slashes:\ true,}
+\DoxyCodeLine{\ \ \ \ auth:\ null,}
+\DoxyCodeLine{\ \ \ \ host:\ 'sindresorhus.com',}
+\DoxyCodeLine{\ \ \ \ port:\ null,}
+\DoxyCodeLine{\ \ \ \ hostname:\ 'sindresorhus.com',}
+\DoxyCodeLine{\ \ \ \ hash:\ null,}
+\DoxyCodeLine{\ \ \ \ search:\ null,}
+\DoxyCodeLine{\ \ \ \ query:\ null,}
+\DoxyCodeLine{\ \ \ \ pathname:\ '/',}
+\DoxyCodeLine{\ \ \ \ path:\ '/',}
+\DoxyCodeLine{\ \ \ \ href:\ 'http://sindresorhus.com/'}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{*/}
+\DoxyCodeLine{}
+\DoxyCodeLine{urlParseLax('[2001:db8::]:8000');}
+\DoxyCodeLine{/*}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ protocol:\ null,}
+\DoxyCodeLine{\ \ \ \ slashes:\ true,}
+\DoxyCodeLine{\ \ \ \ auth:\ null,}
+\DoxyCodeLine{\ \ \ \ host:\ '[2001:db8::]:8000',}
+\DoxyCodeLine{\ \ \ \ port:\ '8000',}
+\DoxyCodeLine{\ \ \ \ hostname:\ '2001:db8::',}
+\DoxyCodeLine{\ \ \ \ hash:\ null,}
+\DoxyCodeLine{\ \ \ \ search:\ null,}
+\DoxyCodeLine{\ \ \ \ query:\ null,}
+\DoxyCodeLine{\ \ \ \ pathname:\ '/',}
+\DoxyCodeLine{\ \ \ \ path:\ '/',}
+\DoxyCodeLine{\ \ \ \ href:\ 'http://[2001:db8::]:8000/'}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{*/}
+
+\end{DoxyCode}
+
+
+And with the built-\/in {\ttfamily url.\+parse()}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ url\ =\ require('url');}
+\DoxyCodeLine{}
+\DoxyCodeLine{url.parse('sindresorhus.com');}
+\DoxyCodeLine{/*}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ protocol:\ null,}
+\DoxyCodeLine{\ \ \ \ slashes:\ null,}
+\DoxyCodeLine{\ \ \ \ auth:\ null,}
+\DoxyCodeLine{\ \ \ \ host:\ null,}
+\DoxyCodeLine{\ \ \ \ port:\ null,}
+\DoxyCodeLine{\ \ \ \ hostname:\ null,}
+\DoxyCodeLine{\ \ \ \ hash:\ null,}
+\DoxyCodeLine{\ \ \ \ search:\ null,}
+\DoxyCodeLine{\ \ \ \ query:\ null,}
+\DoxyCodeLine{\ \ \ \ pathname:\ 'sindresorhus',}
+\DoxyCodeLine{\ \ \ \ path:\ 'sindresorhus',}
+\DoxyCodeLine{\ \ \ \ href:\ 'sindresorhus'}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{*/}
+\DoxyCodeLine{}
+\DoxyCodeLine{url.parse('[2001:db8::]:8000');}
+\DoxyCodeLine{/*}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ protocol:\ null,}
+\DoxyCodeLine{\ \ \ \ slashes:\ null,}
+\DoxyCodeLine{\ \ \ \ auth:\ null,}
+\DoxyCodeLine{\ \ \ \ host:\ null,}
+\DoxyCodeLine{\ \ \ \ port:\ null,}
+\DoxyCodeLine{\ \ \ \ hostname:\ null,}
+\DoxyCodeLine{\ \ \ \ hash:\ null,}
+\DoxyCodeLine{\ \ \ \ search:\ null,}
+\DoxyCodeLine{\ \ \ \ query:\ null,}
+\DoxyCodeLine{\ \ \ \ pathname:\ '[2001:db8::]:8000',}
+\DoxyCodeLine{\ \ \ \ path:\ '[2001:db8::]:8000',}
+\DoxyCodeLine{\ \ \ \ href:\ '[2001:db8::]:8000'}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{*/}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23277284cd6401e7e18e812c2644750ce_autotoc_md5147}{}\doxysection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23277284cd6401e7e18e812c2644750ce_autotoc_md5147}
+MIT © \href{http://sindresorhus.com}{\texttt{ Sindre Sorhus}} 

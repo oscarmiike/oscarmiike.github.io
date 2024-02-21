@@ -1,0 +1,173 @@
+\doxysection{Auth0\+Service.\+cs}
+\hypertarget{_auth0_service_8cs_source}{}\label{_auth0_service_8cs_source}\index{C:/Users/STRIDER/source/repos/InternalAPI/InternalAPI/Services/Auth0/Auth0Service.cs@{C:/Users/STRIDER/source/repos/InternalAPI/InternalAPI/Services/Auth0/Auth0Service.cs}}
+\mbox{\hyperlink{_auth0_service_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_dto_1_1_email}{InternalAPI.Dto.Email}};}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }System.Net.Mail;}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }System.Net;}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_settings}{InternalAPI.Settings}};}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00006}00006\ \textcolor{keyword}{using\ }Microsoft.Extensions.Options;}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00007}00007\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_dto_1_1_auth0}{InternalAPI.Dto.Auth0}};}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00008}00008\ \textcolor{keyword}{using\ }RestSharp;}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00009}00009\ \textcolor{keyword}{using\ }Microsoft.AspNetCore.Http;}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00010}00010\ \textcolor{keyword}{using\ }Newtonsoft.Json;}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00012}00012\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_services}{InternalAPI.Services}}}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00013}00013\ \{}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00014}\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_auth0_service}{00014}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_auth0_service}{Auth0Service}}}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00015}00015\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ readonly\ \mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_auth0_settings}{Auth0Settings}}\ \_auth0Settings;}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ readonly\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}\ \_logger;}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00019}\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_auth0_service_a2e4c5cd6221645964663a5765bbb7e16}{00019}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_auth0_service_a2e4c5cd6221645964663a5765bbb7e16}{Auth0Service}}(IOptions<Auth0Settings>\ auth0Settings,\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}\ logger)}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \ \ \ \ \_auth0Settings\ =\ auth0Settings.Value;}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger\ =\ logger;}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{bool}\ GetToken()}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient(\_auth0Settings.TokenURL);}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ var\ request\ =\ \textcolor{keyword}{new}\ RestRequest(Method.POST);}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ var\ auth0TokenRequest\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_auth0_1_1_auth0_token_request}{Auth0TokenRequest}}()}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ audience\ =\ \_auth0Settings.BaseURL,}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ client\_id\ =\ \_auth0Settings.ClientID,}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ client\_secret\ =\ \_auth0Settings.ClientSecret}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddJsonBody(JsonConvert.SerializeObject(auth0TokenRequest));}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ response\ =\ client.Execute(request);}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response.IsSuccessful\ \&\&\ !\textcolor{keywordtype}{string}.IsNullOrEmpty(response.Content))}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_auth0_1_1_auth0_token_response}{Auth0TokenResponse}}\ auth0TokenResponse\ =\ JsonConvert.DeserializeObject<\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_auth0_1_1_auth0_token_response}{Auth0TokenResponse}}>(response.Content);}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_auth0Settings.ActiveToken\ =\ auth0TokenResponse.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_auth0_1_1_auth0_token_response_a8da32367e1d4d0002bd343231f520776}{access\_token}};}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_auth0Settings.ActiveTokenExpiry\ =\ DateTime.Now.AddSeconds(auth0TokenResponse.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_auth0_1_1_auth0_token_response_a1ed602e1291a454f7502510c5dc8974f}{expires\_in}}\ -\/\ 60);\ \textcolor{comment}{//remove\ 60\ seconds\ as\ a\ buffer\ for\ token\ refresh}}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogError(LogService.LogSources.Auth0Service,\ \textcolor{stringliteral}{"{}Error\ getting\ Auth0\ token"{}},\ response.StatusCode,\ response.Content);}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogException(LogService.LogSources.Auth0Service,\ \$\textcolor{stringliteral}{"{}Exception\ getting\ response\ from\ Auth0\ token\ endpoint\ "{}},\ ex.ToString());}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00061}\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_auth0_service_acf1c0cecc9ce89ebdc5d198d0726d9e0}{00061}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_auth0_1_1_auth0_user}{Auth0User}}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_auth0_service_acf1c0cecc9ce89ebdc5d198d0726d9e0}{GetUserById}}(\textcolor{keywordtype}{string}\ auth0UserId)}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_auth0_1_1_auth0_user}{Auth0User}}\ auth0User\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keywordtype}{string}.IsNullOrEmpty(auth0UserId))}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ auth0User;}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//check\ if\ token\ is\ available\ and\ refresh}}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keywordtype}{string}.IsNullOrWhiteSpace(\_auth0Settings.ActiveToken)\ ||\ \_auth0Settings.ActiveTokenExpiry\ <=\ DateTime.Now)\ }
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogInformation(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.Auth0Service,\ \$\textcolor{stringliteral}{"{}Auth0\ token\ empty,\ refreshing"{}});}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!GetToken())}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ auth0User;}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient(\_auth0Settings.BaseURL);}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ var\ request\ =\ \textcolor{keyword}{new}\ RestRequest(\$\textcolor{stringliteral}{"{}\{\_auth0Settings.UsersEndpoint\}/\{auth0UserId\}"{}},\ Method.GET);}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddHeader(\textcolor{stringliteral}{"{}Authorization"{}},\ \$\textcolor{stringliteral}{"{}Bearer\ \{\_auth0Settings.ActiveToken\}"{}});}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ response\ =\ client.Execute(request);}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response.IsSuccessful\ \&\&\ !\textcolor{keywordtype}{string}.IsNullOrEmpty(response.Content))}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ auth0User\ =\ JsonConvert.DeserializeObject<\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_auth0_1_1_auth0_user}{Auth0User}}>(response.Content);}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogError(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.Auth0Service,\ \textcolor{stringliteral}{"{}Error\ getting\ Auth0\ user"{}},\ response.StatusCode,\ response.Content);}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogException(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.Auth0Service,\ \$\textcolor{stringliteral}{"{}Exception\ getting\ response\ from\ Auth0\ Users\ endpoint\ for\ userId\ '\{auth0UserId\}'"{}},\ ex.ToString());}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ auth0User;}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00093}00093\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00094}00094\ }
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00098}\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_auth0_service_a3e96608c19af2797c5436237e749dd95}{00098}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_auth0_1_1_auth0_user}{Auth0User}}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_auth0_service_a3e96608c19af2797c5436237e749dd95}{UpdateUserEmail}}(\textcolor{keywordtype}{string}\ auth0UserId,\ \textcolor{keywordtype}{string}\ newEmail)}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_auth0_1_1_auth0_user}{Auth0User}}\ auth0User\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keywordtype}{string}.IsNullOrEmpty(auth0UserId)\ ||\ \textcolor{keywordtype}{string}.IsNullOrEmpty(newEmail))}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ auth0User;}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//check\ if\ token\ is\ available\ and\ refresh}}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keywordtype}{string}.IsNullOrWhiteSpace(\_auth0Settings.ActiveToken)\ ||\ \_auth0Settings.ActiveTokenExpiry\ <=\ DateTime.Now)}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogInformation(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.Auth0Service,\ \$\textcolor{stringliteral}{"{}Auth0\ token\ empty,\ refreshing"{}});}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!GetToken())}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00108}00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ auth0User;}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00110}00110\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_auth0_1_1_auth0_update_email_request}{Auth0UpdateEmailRequest}}\ updateEmailRequest\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_auth0_1_1_auth0_update_email_request}{Auth0UpdateEmailRequest}}()}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ email\ =\ newEmail,}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00113}00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ verify\_email\ =\ \textcolor{keyword}{true}}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00115}00115\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient(\_auth0Settings.BaseURL);}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00116}00116\ \ \ \ \ \ \ \ \ \ \ \ \ var\ request\ =\ \textcolor{keyword}{new}\ RestRequest(\$\textcolor{stringliteral}{"{}\{\_auth0Settings.UsersEndpoint\}/\{auth0UserId\}"{}},\ Method.PATCH);}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00117}00117\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddJsonBody(JsonConvert.SerializeObject(updateEmailRequest));}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00118}00118\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddHeader(\textcolor{stringliteral}{"{}Authorization"{}},\ \$\textcolor{stringliteral}{"{}Bearer\ \{\_auth0Settings.ActiveToken\}"{}});}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00120}00120\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00121}00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ response\ =\ client.Execute(request);}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00122}00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response.IsSuccessful\ \&\&\ !\textcolor{keywordtype}{string}.IsNullOrEmpty(response.Content))}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00123}00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00124}00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ auth0User\ =\ JsonConvert.DeserializeObject<\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_auth0_1_1_auth0_user}{Auth0User}}>(response.Content);}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00125}00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00126}00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00127}00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00128}00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogError(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.Auth0Service,\ \textcolor{stringliteral}{"{}Error\ updating\ Auth0\ user\ email"{}},\ response.StatusCode,\ response.Content);}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00129}00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00130}00130\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00131}00131\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00132}00132\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00133}00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogException(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.Auth0Service,\ \$\textcolor{stringliteral}{"{}Exception\ updating\ Auth0\ user\ email\ for\ userId\ '\{auth0UserId\}'\ with\ new\ email\ \{newEmail\}"{}},\ ex.ToString());}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00134}00134\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00135}00135\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ auth0User;}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00136}00136\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00137}00137\ }
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00141}\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_auth0_service_afa38367425807667a9471f9db4989165}{00141}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_auth0_1_1_auth0_verification_email_response}{Auth0VerificationEmailResponse}}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_auth0_service_afa38367425807667a9471f9db4989165}{SendVerificationEmail}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_auth0_1_1_auth0_verification_email_request}{Auth0VerificationEmailRequest}}\ verificationEmailRequest)}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00142}00142\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00143}00143\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_auth0_1_1_auth0_verification_email_response}{Auth0VerificationEmailResponse}}\ verificationEmailResponse\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00144}00144\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (verificationEmailRequest\ ==\ \textcolor{keyword}{null}\ ||\ \textcolor{keywordtype}{string}.IsNullOrEmpty(verificationEmailRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_auth0_1_1_auth0_verification_email_request_a3297ac440ddfc2e300df3514351e2222}{user\_id}}))}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00145}00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ verificationEmailResponse;}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00146}00146\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//check\ if\ token\ is\ available\ and\ refresh}}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00147}00147\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keywordtype}{string}.IsNullOrWhiteSpace(\_auth0Settings.ActiveToken)\ ||\ \_auth0Settings.ActiveTokenExpiry\ <=\ DateTime.Now)}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00148}00148\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00149}00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogInformation(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.Auth0Service,\ \$\textcolor{stringliteral}{"{}Auth0\ token\ empty,\ refreshing"{}});}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00150}00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!GetToken())}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00151}00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ verificationEmailResponse;}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00152}00152\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00153}00153\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient(\_auth0Settings.BaseURL);}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00154}00154\ \ \ \ \ \ \ \ \ \ \ \ \ var\ request\ =\ \textcolor{keyword}{new}\ RestRequest(\$\textcolor{stringliteral}{"{}\{\_auth0Settings.VerificationEmailEndpoint\}"{}},\ Method.POST);}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00155}00155\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddJsonBody(JsonConvert.SerializeObject(verificationEmailRequest));}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00156}00156\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddHeader(\textcolor{stringliteral}{"{}Authorization"{}},\ \$\textcolor{stringliteral}{"{}Bearer\ \{\_auth0Settings.ActiveToken\}"{}});}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00157}00157\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00158}00158\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00159}00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ response\ =\ client.Execute(request);}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00160}00160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response.IsSuccessful\ \&\&\ !\textcolor{keywordtype}{string}.IsNullOrEmpty(response.Content))}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00161}00161\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00162}00162\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ verificationEmailResponse\ =\ JsonConvert.DeserializeObject<\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_auth0_1_1_auth0_verification_email_response}{Auth0VerificationEmailResponse}}>(response.Content);}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00163}00163\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00164}00164\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00165}00165\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00166}00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogError(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.Auth0Service,\ \textcolor{stringliteral}{"{}Error\ sending\ Auth0\ verification\ email"{}},\ response.StatusCode,\ response.Content);}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00167}00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00168}00168\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00169}00169\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00170}00170\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00171}00171\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogException(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.Auth0Service,\ \$\textcolor{stringliteral}{"{}Exception\ getting\ response\ from\ Auth0\ verification\ email\ endpoint\ for\ user\ '\{verificationEmailRequest.user\_id\}'"{}},\ ex.ToString());}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00172}00172\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00173}00173\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ verificationEmailResponse;}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00174}00174\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00175}00175\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_auth0_service_8cs_source_l00176}00176\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,78 @@
+\doxysection{Internal\+API.\+Auto\+Mapper\+Profiles.\+Cin7\+Profiles Class Reference}
+\hypertarget{class_internal_a_p_i_1_1_auto_mapper_profiles_1_1_cin7_profiles}{}\label{class_internal_a_p_i_1_1_auto_mapper_profiles_1_1_cin7_profiles}\index{InternalAPI.AutoMapperProfiles.Cin7Profiles@{InternalAPI.AutoMapperProfiles.Cin7Profiles}}
+
+
+Map from inbound DTOs and commands (structured with Ainslie specific properties) to Cin7 DTOs needed to interop with Cin7.  
+
+
+
+
+Inheritance diagram for Internal\+API.\+Auto\+Mapper\+Profiles.\+Cin7\+Profiles\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=234pt]{class_internal_a_p_i_1_1_auto_mapper_profiles_1_1_cin7_profiles__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Internal\+API.\+Auto\+Mapper\+Profiles.\+Cin7\+Profiles\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=234pt]{class_internal_a_p_i_1_1_auto_mapper_profiles_1_1_cin7_profiles__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_internal_a_p_i_1_1_auto_mapper_profiles_1_1_cin7_profiles_ab2fdc3e787dfabcec5966670e6a2ac50}{Cin7\+Profiles}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Map from inbound DTOs and commands (structured with Ainslie specific properties) to Cin7 DTOs needed to interop with Cin7. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_auto_mapper_profiles_1_1_cin7_profiles_ab2fdc3e787dfabcec5966670e6a2ac50}\label{class_internal_a_p_i_1_1_auto_mapper_profiles_1_1_cin7_profiles_ab2fdc3e787dfabcec5966670e6a2ac50} 
+\index{InternalAPI.AutoMapperProfiles.Cin7Profiles@{InternalAPI.AutoMapperProfiles.Cin7Profiles}!Cin7Profiles@{Cin7Profiles}}
+\index{Cin7Profiles@{Cin7Profiles}!InternalAPI.AutoMapperProfiles.Cin7Profiles@{InternalAPI.AutoMapperProfiles.Cin7Profiles}}
+\doxysubsubsection{\texorpdfstring{Cin7Profiles()}{Cin7Profiles()}}
+{\footnotesize\ttfamily Internal\+API.\+Auto\+Mapper\+Profiles.\+Cin7\+Profiles.\+Cin7\+Profiles (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Internal\ mappings}}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ CreateMap<CreateSalesOrderCustomerDetails,\ CreateCin7CustomerRequest>()}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .ReverseMap();}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ To\ Cin7\ API}}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ CreateMap<CreatePaymentDetails,\ CreatePayment>()}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .ReverseMap();}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ TODO:\ test\ this\ :=}}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ CreateMap<GetContact,\ GetCin7CustomerResponse>()}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .ForMember(dest\ =>\ dest.Cin7Id,}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ expression\ =>\ expression.MapFrom(source\ =>\ source.id))}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .ForMember(dest\ =>\ dest.Suburb,}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ expression\ =>\ expression.MapFrom(source\ =>\ source.city))}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .ForMember(dest\ =>\ dest.PostalSuburb,}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ expression\ =>\ expression.MapFrom(source\ =>\ source.postalCity))}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .ForMember(dest\ =>\ dest.GreenIdReference,}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ expression\ =>\ expression.MapFrom(source\ =>\ source.customFields.members\_1000))}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .ForMember(dest\ =>\ dest.BPayReference,}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ expression\ =>\ expression.MapFrom(source\ =>\ source.customFields.members\_1001))}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .ForMember(dest\ =>\ dest.Surname,}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ expression\ =>\ expression.MapFrom(source\ =>\ source.lastName))}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .ForMember(dest\ =>\ dest.AccountsSurname,}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ expression\ =>\ expression.MapFrom(source\ =>\ source.accountsLastName));}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+STRIDER/source/repos/\+Internal\+API/\+Internal\+API/\+Auto\+Mapper\+Profiles/\mbox{\hyperlink{_cin7_profiles_8cs}{Cin7\+Profiles.\+cs}}\end{DoxyCompactItemize}

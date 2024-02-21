@@ -1,0 +1,46 @@
+\chapter{object-\/assign \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/sindresorhus/object-\/assign"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+org/sindresorhus/object-\/assign.\+svg?branch=master"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2e6d77b739b7e24905c59b0daa41563f4}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2e6d77b739b7e24905c59b0daa41563f4}\index{object-\/assign $<$a href="{}https://travis-\/ci.org/sindresorhus/object-\/assign"{} $>$$<$img src="{}https://travis-\/ci.org/sindresorhus/object-\/assign.svg?branch=master"{} alt="{}Build Status"{}/$>$$<$/a$>$@{object-\/assign $<$a href=""https://travis-\/ci.org/sindresorhus/object-\/assign"" $>$$<$img src=""https://travis-\/ci.org/sindresorhus/object-\/assign.svg?branch=master"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2e6d77b739b7e24905c59b0daa41563f4_autotoc_md3844}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2e6d77b739b7e24905c59b0daa41563f4_autotoc_md3844}%
+ \begin{quote}
+ES2015 \href{http://www.2ality.com/2014/01/object-assign.html}{\texttt{ {\ttfamily Object.\+assign()}}} \href{https://ponyfill.com}{\texttt{ ponyfill}} \end{quote}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2e6d77b739b7e24905c59b0daa41563f4_autotoc_md3845}{}\doxysection{\texorpdfstring{Use the built-\/in}{Use the built-\/in}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2e6d77b739b7e24905c59b0daa41563f4_autotoc_md3845}
+Node.\+js 4 and up, as well as every evergreen browser (Chrome, Edge, Firefox, Opera, Safari), support {\ttfamily Object.\+assign()} \+:tada\+:. If you target only those environments, then by all means, use {\ttfamily Object.\+assign()} instead of this package.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2e6d77b739b7e24905c59b0daa41563f4_autotoc_md3846}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2e6d77b739b7e24905c59b0daa41563f4_autotoc_md3846}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ -\/-\/save\ object-\/assign}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2e6d77b739b7e24905c59b0daa41563f4_autotoc_md3847}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2e6d77b739b7e24905c59b0daa41563f4_autotoc_md3847}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ objectAssign\ =\ require('object-\/assign');}
+\DoxyCodeLine{}
+\DoxyCodeLine{objectAssign(\{foo:\ 0\},\ \{bar:\ 1\});}
+\DoxyCodeLine{//=>\ \{foo:\ 0,\ bar:\ 1\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ multiple\ sources}
+\DoxyCodeLine{objectAssign(\{foo:\ 0\},\ \{bar:\ 1\},\ \{baz:\ 2\});}
+\DoxyCodeLine{//=>\ \{foo:\ 0,\ bar:\ 1,\ baz:\ 2\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ overwrites\ equal\ keys}
+\DoxyCodeLine{objectAssign(\{foo:\ 0\},\ \{foo:\ 1\},\ \{foo:\ 2\});}
+\DoxyCodeLine{//=>\ \{foo:\ 2\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ ignores\ null\ and\ undefined\ sources}
+\DoxyCodeLine{objectAssign(\{foo:\ 0\},\ null,\ \{bar:\ 1\},\ undefined);}
+\DoxyCodeLine{//=>\ \{foo:\ 0,\ bar:\ 1\}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2e6d77b739b7e24905c59b0daa41563f4_autotoc_md3848}{}\doxysection{\texorpdfstring{API}{API}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2e6d77b739b7e24905c59b0daa41563f4_autotoc_md3848}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2e6d77b739b7e24905c59b0daa41563f4_autotoc_md3849}{}\doxysubsection{\texorpdfstring{object\+Assign(target, \mbox{[}source, ...\mbox{]})}{object\+Assign(target, \mbox{[}source, ...\mbox{]})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2e6d77b739b7e24905c59b0daa41563f4_autotoc_md3849}
+Assigns enumerable own properties of {\ttfamily source} objects to the {\ttfamily target} object and returns the {\ttfamily target} object. Additional {\ttfamily source} objects will overwrite previous ones.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2e6d77b739b7e24905c59b0daa41563f4_autotoc_md3850}{}\doxysection{\texorpdfstring{Resources}{Resources}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2e6d77b739b7e24905c59b0daa41563f4_autotoc_md3850}
+
+\begin{DoxyItemize}
+\item \href{https://people.mozilla.org/~jorendorff/es6-draft.html\#sec-object.assign}{\texttt{ ES2015 spec -\/ Object.\+assign}}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2e6d77b739b7e24905c59b0daa41563f4_autotoc_md3851}{}\doxysection{\texorpdfstring{Related}{Related}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2e6d77b739b7e24905c59b0daa41563f4_autotoc_md3851}
+
+\begin{DoxyItemize}
+\item \href{https://github.com/sindresorhus/deep-assign}{\texttt{ deep-\/assign}} -\/ Recursive {\ttfamily Object.\+assign()}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2e6d77b739b7e24905c59b0daa41563f4_autotoc_md3852}{}\doxysection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2e6d77b739b7e24905c59b0daa41563f4_autotoc_md3852}
+MIT © \href{https://sindresorhus.com}{\texttt{ Sindre Sorhus}} 

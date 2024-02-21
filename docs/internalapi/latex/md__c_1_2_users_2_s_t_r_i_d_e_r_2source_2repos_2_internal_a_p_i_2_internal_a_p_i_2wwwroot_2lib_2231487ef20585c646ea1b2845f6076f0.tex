@@ -1,0 +1,140 @@
+\chapter{text-\/table}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2231487ef20585c646ea1b2845f6076f0}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2231487ef20585c646ea1b2845f6076f0}\index{text-\/table@{text-\/table}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2231487ef20585c646ea1b2845f6076f0_autotoc_md11684}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2231487ef20585c646ea1b2845f6076f0_autotoc_md11684}%
+ generate borderless text table strings suitable for printing to stdout
+
+\href{http://travis-ci.org/substack/text-table}{\texttt{ }}
+
+\href{http://ci.testling.com/substack/text-table}{\texttt{ }}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2231487ef20585c646ea1b2845f6076f0_autotoc_md11685}{}\doxysection{\texorpdfstring{example}{example}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2231487ef20585c646ea1b2845f6076f0_autotoc_md11685}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2231487ef20585c646ea1b2845f6076f0_autotoc_md11686}{}\doxysubsection{\texorpdfstring{default align}{default align}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2231487ef20585c646ea1b2845f6076f0_autotoc_md11686}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ js}
+\DoxyCodeLine{var\ table\ =\ require('text-\/table');}
+\DoxyCodeLine{var\ t\ =\ table([}
+\DoxyCodeLine{\ \ \ \ [\ 'master',\ '0123456789abcdef'\ ],}
+\DoxyCodeLine{\ \ \ \ [\ 'staging',\ 'fedcba9876543210'\ ]}
+\DoxyCodeLine{]);}
+\DoxyCodeLine{console.log(t);}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{master\ \ \ 0123456789abcdef}
+\DoxyCodeLine{staging\ \ fedcba9876543210}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2231487ef20585c646ea1b2845f6076f0_autotoc_md11687}{}\doxysubsection{\texorpdfstring{left-\/right align}{left-\/right align}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2231487ef20585c646ea1b2845f6076f0_autotoc_md11687}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ js}
+\DoxyCodeLine{var\ table\ =\ require('text-\/table');}
+\DoxyCodeLine{var\ t\ =\ table([}
+\DoxyCodeLine{\ \ \ \ [\ 'beep',\ '1024'\ ],}
+\DoxyCodeLine{\ \ \ \ [\ 'boop',\ '33450'\ ],}
+\DoxyCodeLine{\ \ \ \ [\ 'foo',\ '1006'\ ],}
+\DoxyCodeLine{\ \ \ \ [\ 'bar',\ '45'\ ]}
+\DoxyCodeLine{],\ \{\ align:\ [\ 'l',\ 'r'\ ]\ \});}
+\DoxyCodeLine{console.log(t);}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{beep\ \ \ 1024}
+\DoxyCodeLine{boop\ \ 33450}
+\DoxyCodeLine{foo\ \ \ \ 1006}
+\DoxyCodeLine{bar\ \ \ \ \ \ 45}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2231487ef20585c646ea1b2845f6076f0_autotoc_md11688}{}\doxysubsection{\texorpdfstring{dotted align}{dotted align}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2231487ef20585c646ea1b2845f6076f0_autotoc_md11688}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ js}
+\DoxyCodeLine{var\ table\ =\ require('text-\/table');}
+\DoxyCodeLine{var\ t\ =\ table([}
+\DoxyCodeLine{\ \ \ \ [\ 'beep',\ '1024'\ ],}
+\DoxyCodeLine{\ \ \ \ [\ 'boop',\ '334.212'\ ],}
+\DoxyCodeLine{\ \ \ \ [\ 'foo',\ '1006'\ ],}
+\DoxyCodeLine{\ \ \ \ [\ 'bar',\ '45.6'\ ],}
+\DoxyCodeLine{\ \ \ \ [\ 'baz',\ '123.'\ ]}
+\DoxyCodeLine{],\ \{\ align:\ [\ 'l',\ '.'\ ]\ \});}
+\DoxyCodeLine{console.log(t);}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{beep\ \ 1024}
+\DoxyCodeLine{boop\ \ \ 334.212}
+\DoxyCodeLine{foo\ \ \ 1006}
+\DoxyCodeLine{bar\ \ \ \ \ 45.6}
+\DoxyCodeLine{baz\ \ \ \ 123.}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2231487ef20585c646ea1b2845f6076f0_autotoc_md11689}{}\doxysubsection{\texorpdfstring{centered}{centered}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2231487ef20585c646ea1b2845f6076f0_autotoc_md11689}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ js}
+\DoxyCodeLine{var\ table\ =\ require('text-\/table');}
+\DoxyCodeLine{var\ t\ =\ table([}
+\DoxyCodeLine{\ \ \ \ [\ 'beep',\ '1024',\ 'xyz'\ ],}
+\DoxyCodeLine{\ \ \ \ [\ 'boop',\ '3388450',\ 'tuv'\ ],}
+\DoxyCodeLine{\ \ \ \ [\ 'foo',\ '10106',\ 'qrstuv'\ ],}
+\DoxyCodeLine{\ \ \ \ [\ 'bar',\ '45',\ 'lmno'\ ]}
+\DoxyCodeLine{],\ \{\ align:\ [\ 'l',\ 'c',\ 'l'\ ]\ \});}
+\DoxyCodeLine{console.log(t);}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{beep\ \ \ \ 1024\ \ \ xyz}
+\DoxyCodeLine{boop\ \ 3388450\ \ tuv}
+\DoxyCodeLine{foo\ \ \ \ 10106\ \ \ qrstuv}
+\DoxyCodeLine{bar\ \ \ \ \ \ 45\ \ \ \ lmno}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2231487ef20585c646ea1b2845f6076f0_autotoc_md11690}{}\doxysection{\texorpdfstring{methods}{methods}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2231487ef20585c646ea1b2845f6076f0_autotoc_md11690}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ js}
+\DoxyCodeLine{var\ table\ =\ require('text-\/table')}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2231487ef20585c646ea1b2845f6076f0_autotoc_md11691}{}\doxysubsection{\texorpdfstring{var s = table(rows, opts=\{\})}{var s = table(rows, opts=\{\})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2231487ef20585c646ea1b2845f6076f0_autotoc_md11691}
+Return a formatted table string {\ttfamily s} from an array of {\ttfamily rows} and some options {\ttfamily opts}.
+
+{\ttfamily rows} should be an array of arrays containing strings, numbers, or other printable values.
+
+options can be\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily opts.\+hsep} -\/ separator to use between columns, default `' \textquotesingle{}{\ttfamily  \texorpdfstring{$\ast$}{*}}opts.\+align{\ttfamily -\/ array of alignment types for each column, default}\mbox{[}\textquotesingle{}l\textquotesingle{},\textquotesingle{}l\textquotesingle{},...\mbox{]}{\ttfamily  \texorpdfstring{$\ast$}{*}}opts.\+string\+Length\`{} -\/ callback function to use when calculating the string length
+\end{DoxyItemize}
+
+alignment types are\+:
+
+
+\begin{DoxyItemize}
+\item `\textquotesingle{}l'{\ttfamily -\/ left \texorpdfstring{$\ast$}{*}}\textquotesingle{}r\textquotesingle{}{\ttfamily -\/ right \texorpdfstring{$\ast$}{*}}\textquotesingle{}c\textquotesingle{}{\ttfamily -\/ center \texorpdfstring{$\ast$}{*}}\textquotesingle{}.\textquotesingle{}\`{} -\/ decimal
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2231487ef20585c646ea1b2845f6076f0_autotoc_md11692}{}\doxysection{\texorpdfstring{install}{install}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2231487ef20585c646ea1b2845f6076f0_autotoc_md11692}
+With \href{https://npmjs.org}{\texttt{ npm}} do\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ text-\/table}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2231487ef20585c646ea1b2845f6076f0_autotoc_md11693}{}\doxysection{\texorpdfstring{Use with ANSI-\/colors}{Use with ANSI-\/colors}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2231487ef20585c646ea1b2845f6076f0_autotoc_md11693}
+Since the string length of ANSI color schemes does not equal the length Java\+Script sees internally it is necessary to pass the a custom string length calculator during the main function call.
+
+See the {\ttfamily test/ansi-\/colors.\+js} file for an example.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2231487ef20585c646ea1b2845f6076f0_autotoc_md11694}{}\doxysection{\texorpdfstring{license}{license}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2231487ef20585c646ea1b2845f6076f0_autotoc_md11694}
+MIT 

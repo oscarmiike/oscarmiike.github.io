@@ -1,0 +1,150 @@
+\chapter{clone}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2332798d0f1e312874c32853033f1f05b}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2332798d0f1e312874c32853033f1f05b}\index{clone@{clone}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2332798d0f1e312874c32853033f1f05b_autotoc_md5502}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2332798d0f1e312874c32853033f1f05b_autotoc_md5502}%
+ \href{http://travis-ci.org/pvorb/clone}{\texttt{ }} \href{http://npm-stat.com/charts.html?package=clone}{\texttt{ }}
+
+offers foolproof {\itshape deep cloning} of objects, arrays, numbers, strings, maps, sets, promises, etc. in Java\+Script.
+
+{\bfseries{XSS vulnerability detected}}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2332798d0f1e312874c32853033f1f05b_autotoc_md5503}{}\doxysection{\texorpdfstring{Installation}{Installation}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2332798d0f1e312874c32853033f1f05b_autotoc_md5503}
+\begin{DoxyVerb}npm install clone
+\end{DoxyVerb}
+ (It also works with browserify, ender or standalone. You may want to use the option {\ttfamily no\+Parse} in browserify to reduce the resulting file size, since usually {\ttfamily Buffer}s are not needed in browsers.)\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2332798d0f1e312874c32853033f1f05b_autotoc_md5504}{}\doxysection{\texorpdfstring{Example}{Example}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2332798d0f1e312874c32853033f1f05b_autotoc_md5504}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ javascript}
+\DoxyCodeLine{var\ clone\ =\ require('clone');}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ a,\ b;}
+\DoxyCodeLine{}
+\DoxyCodeLine{a\ =\ \{\ foo:\ \{\ bar:\ 'baz'\ \}\ \};\ \ //\ initial\ value\ of\ a}
+\DoxyCodeLine{}
+\DoxyCodeLine{b\ =\ clone(a);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ clone\ a\ -\/>\ b}
+\DoxyCodeLine{a.foo.bar\ =\ 'foo';\ \ \ \ \ \ \ \ \ \ \ \ //\ change\ a}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log(a);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ show\ a}
+\DoxyCodeLine{console.log(b);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ //\ show\ b}
+
+\end{DoxyCode}
+
+
+This will print\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ javascript}
+\DoxyCodeLine{\{\ foo:\ \{\ bar:\ 'foo'\ \}\ \}}
+\DoxyCodeLine{\{\ foo:\ \{\ bar:\ 'baz'\ \}\ \}}
+
+\end{DoxyCode}
+
+
+{\bfseries{clone}} masters cloning simple objects (even with custom prototype), arrays, Date objects, and Reg\+Exp objects. Everything is cloned recursively, so that you can clone dates in arrays in objects, for example.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2332798d0f1e312874c32853033f1f05b_autotoc_md5505}{}\doxysection{\texorpdfstring{API}{API}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2332798d0f1e312874c32853033f1f05b_autotoc_md5505}
+{\ttfamily clone(val, circular, depth)}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily val} -- the value that you want to clone, any type allowed
+\item {\ttfamily circular} -- boolean
+
+Call {\ttfamily clone} with {\ttfamily circular} set to {\ttfamily false} if you are certain that {\ttfamily obj} contains no circular references. This will give better performance if needed. There is no error if {\ttfamily undefined} or {\ttfamily null} is passed as {\ttfamily obj}.
+\item {\ttfamily depth} -- depth to which the object is to be cloned (optional, defaults to infinity)
+\item {\ttfamily prototype} -- sets the prototype to be used when cloning an object. (optional, defaults to parent prototype).
+\item {\ttfamily include\+Non\+Enumerable} -- set to {\ttfamily true} if the non-\/enumerable properties should be cloned as well. Non-\/enumerable properties on the prototype chain will be ignored. (optional, defaults to {\ttfamily false})
+\end{DoxyItemize}
+
+{\ttfamily clone.\+clone\+Prototype(obj)}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily obj} -- the object that you want to clone
+\end{DoxyItemize}
+
+Does a prototype clone as \href{http://oranlooney.com/functional-javascript/}{\texttt{ described by Oran Looney}}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2332798d0f1e312874c32853033f1f05b_autotoc_md5506}{}\doxysection{\texorpdfstring{Circular References}{Circular References}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2332798d0f1e312874c32853033f1f05b_autotoc_md5506}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ javascript}
+\DoxyCodeLine{var\ a,\ b;}
+\DoxyCodeLine{}
+\DoxyCodeLine{a\ =\ \{\ hello:\ 'world'\ \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{a.myself\ =\ a;}
+\DoxyCodeLine{b\ =\ clone(a);}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log(b);}
+
+\end{DoxyCode}
+
+
+This will print\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ javascript}
+\DoxyCodeLine{\{\ hello:\ "{}world"{},\ myself:\ [Circular]\ \}}
+
+\end{DoxyCode}
+
+
+So, {\ttfamily b.\+myself} points to {\ttfamily b}, not {\ttfamily a}. Neat!\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2332798d0f1e312874c32853033f1f05b_autotoc_md5507}{}\doxysection{\texorpdfstring{Test}{Test}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2332798d0f1e312874c32853033f1f05b_autotoc_md5507}
+\begin{DoxyVerb}npm test
+\end{DoxyVerb}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2332798d0f1e312874c32853033f1f05b_autotoc_md5508}{}\doxysection{\texorpdfstring{Changelog}{Changelog}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2332798d0f1e312874c32853033f1f05b_autotoc_md5508}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2332798d0f1e312874c32853033f1f05b_autotoc_md5509}{}\doxysubsection{\texorpdfstring{v2.\+1.\+2}{v2.\+1.\+2}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2332798d0f1e312874c32853033f1f05b_autotoc_md5509}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2332798d0f1e312874c32853033f1f05b_autotoc_md5510}{}\doxysubsubsection{\texorpdfstring{2018-\/03-\/21}{2018-\/03-\/21}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2332798d0f1e312874c32853033f1f05b_autotoc_md5510}
+
+\begin{DoxyItemize}
+\item Use {\ttfamily Buffer.\+alloc\+Unsafe()} on Node \texorpdfstring{$>$}{>}= 4.\+5.\+0 (contributed by @\+Ch\+ALkeR)
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2332798d0f1e312874c32853033f1f05b_autotoc_md5511}{}\doxysubsection{\texorpdfstring{v2.\+1.\+1}{v2.\+1.\+1}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2332798d0f1e312874c32853033f1f05b_autotoc_md5511}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2332798d0f1e312874c32853033f1f05b_autotoc_md5512}{}\doxysubsubsection{\texorpdfstring{2017-\/03-\/09}{2017-\/03-\/09}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2332798d0f1e312874c32853033f1f05b_autotoc_md5512}
+
+\begin{DoxyItemize}
+\item Fix build badge in README
+\item Add support for cloning Maps and Sets on Internet Explorer
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2332798d0f1e312874c32853033f1f05b_autotoc_md5513}{}\doxysubsection{\texorpdfstring{v2.\+1.\+0}{v2.\+1.\+0}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2332798d0f1e312874c32853033f1f05b_autotoc_md5513}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2332798d0f1e312874c32853033f1f05b_autotoc_md5514}{}\doxysubsubsection{\texorpdfstring{2016-\/11-\/22}{2016-\/11-\/22}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2332798d0f1e312874c32853033f1f05b_autotoc_md5514}
+
+\begin{DoxyItemize}
+\item Add support for cloning Errors
+\item Exclude non-\/enumerable symbol-\/named object properties from cloning
+\item Add option to include non-\/enumerable own properties of objects
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2332798d0f1e312874c32853033f1f05b_autotoc_md5515}{}\doxysubsection{\texorpdfstring{v2.\+0.\+0}{v2.\+0.\+0}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2332798d0f1e312874c32853033f1f05b_autotoc_md5515}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2332798d0f1e312874c32853033f1f05b_autotoc_md5516}{}\doxysubsubsection{\texorpdfstring{2016-\/09-\/28}{2016-\/09-\/28}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2332798d0f1e312874c32853033f1f05b_autotoc_md5516}
+
+\begin{DoxyItemize}
+\item Add support for cloning ES6 Maps, Sets, Promises, and Symbols
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2332798d0f1e312874c32853033f1f05b_autotoc_md5517}{}\doxysubsection{\texorpdfstring{v1.\+0.\+3}{v1.\+0.\+3}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2332798d0f1e312874c32853033f1f05b_autotoc_md5517}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2332798d0f1e312874c32853033f1f05b_autotoc_md5518}{}\doxysubsubsection{\texorpdfstring{2017-\/11-\/08}{2017-\/11-\/08}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2332798d0f1e312874c32853033f1f05b_autotoc_md5518}
+
+\begin{DoxyItemize}
+\item Close XSS vulnerability in the NPM package, which included the file {\ttfamily test-\/apart-\/ctx.\+html}. This vulnerability was disclosed by Juho Nurminen of 2NS -\/ Second Nature Security.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2332798d0f1e312874c32853033f1f05b_autotoc_md5519}{}\doxysubsection{\texorpdfstring{v1.\+0.\+2 (deprecated)}{v1.\+0.\+2 (deprecated)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2332798d0f1e312874c32853033f1f05b_autotoc_md5519}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2332798d0f1e312874c32853033f1f05b_autotoc_md5520}{}\doxysubsubsection{\texorpdfstring{2015-\/03-\/25}{2015-\/03-\/25}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2332798d0f1e312874c32853033f1f05b_autotoc_md5520}
+
+\begin{DoxyItemize}
+\item Fix call on get\+Reg\+Exp\+Flags
+\item Refactor utilities
+\item Refactor test suite
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2332798d0f1e312874c32853033f1f05b_autotoc_md5521}{}\doxysubsection{\texorpdfstring{v1.\+0.\+1 (deprecated)}{v1.\+0.\+1 (deprecated)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2332798d0f1e312874c32853033f1f05b_autotoc_md5521}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2332798d0f1e312874c32853033f1f05b_autotoc_md5522}{}\doxysubsubsection{\texorpdfstring{2015-\/03-\/04}{2015-\/03-\/04}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2332798d0f1e312874c32853033f1f05b_autotoc_md5522}
+
+\begin{DoxyItemize}
+\item Fix nodeunit version
+\item Directly call get\+Reg\+Exp\+Flags
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2332798d0f1e312874c32853033f1f05b_autotoc_md5523}{}\doxysubsection{\texorpdfstring{v1.\+0.\+0 (deprecated)}{v1.\+0.\+0 (deprecated)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2332798d0f1e312874c32853033f1f05b_autotoc_md5523}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2332798d0f1e312874c32853033f1f05b_autotoc_md5524}{}\doxysubsubsection{\texorpdfstring{2015-\/02-\/10}{2015-\/02-\/10}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2332798d0f1e312874c32853033f1f05b_autotoc_md5524}
+
+\begin{DoxyItemize}
+\item Improve browser support
+\item Improve browser testability
+\item Move helper methods to private namespace
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2332798d0f1e312874c32853033f1f05b_autotoc_md5525}{}\doxysection{\texorpdfstring{Caveat}{Caveat}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2332798d0f1e312874c32853033f1f05b_autotoc_md5525}
+Some special objects like a socket or {\ttfamily process.\+stdout}/{\ttfamily stderr} are known to not be cloneable. If you find other objects that cannot be cloned, please \href{https://github.com/pvorb/clone/issues/new}{\texttt{ open an issue}}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2332798d0f1e312874c32853033f1f05b_autotoc_md5526}{}\doxysection{\texorpdfstring{Bugs and Issues}{Bugs and Issues}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2332798d0f1e312874c32853033f1f05b_autotoc_md5526}
+If you encounter any bugs or issues, feel free to \href{https://github.com/pvorb/clone/issues}{\texttt{ open an issue at github}} or send me an email to \href{mailto:paul@vorba.ch}{\texttt{ paul@vorba.\+ch}}. I also always like to hear from you, if you’re using my code.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2332798d0f1e312874c32853033f1f05b_autotoc_md5527}{}\doxysection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2332798d0f1e312874c32853033f1f05b_autotoc_md5527}
+Copyright © 2011-\/2016 \href{https://paul.vorba.ch/}{\texttt{ Paul Vorbach}} and \href{https://github.com/pvorb/clone/graphs/contributors}{\texttt{ contributors}}.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “\+Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions\+:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED “\+AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. 

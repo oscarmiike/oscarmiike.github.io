@@ -1,0 +1,24 @@
+\chapter{fstream-\/ignore}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2aafe909be08d4b1c0cb06e928b52b4da}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2aafe909be08d4b1c0cb06e928b52b4da}\index{fstream-\/ignore@{fstream-\/ignore}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2aafe909be08d4b1c0cb06e928b52b4da_autotoc_md2372}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2aafe909be08d4b1c0cb06e928b52b4da_autotoc_md2372}%
+ A fstream Dir\+Reader that filters out files that match globs in {\ttfamily .ignore} files throughout the tree, like how git ignores files based on a {\ttfamily .gitignore} file.
+
+Here\textquotesingle{}s an example\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ Ignore\ =\ require("{}fstream-\/ignore"{})}
+\DoxyCodeLine{Ignore(\{\ path:\ \_\_dirname}
+\DoxyCodeLine{\ \ \ \ \ \ \ ,\ ignoreFiles:\ ["{}.ignore"{},\ "{}.gitignore"{}]}
+\DoxyCodeLine{\ \ \ \ \ \ \ \})}
+\DoxyCodeLine{\ \ .on("{}child"{},\ function\ (c)\ \{}
+\DoxyCodeLine{\ \ \ \ console.error(c.path.substr(c.root.path.length\ +\ 1))}
+\DoxyCodeLine{\ \ \})}
+\DoxyCodeLine{\ \ .pipe(tar.Pack())}
+\DoxyCodeLine{\ \ .pipe(fs.createWriteStream("{}foo.tar"{}))}
+
+\end{DoxyCode}
+
+
+This will tar up the files in \+\_\+\+\_\+dirname into {\ttfamily foo.\+tar}, ignoring anything matched by the globs in any .iginore or .gitignore file. 

@@ -1,0 +1,302 @@
+\doxysection{Netsuite\+Controller.\+cs}
+\hypertarget{_netsuite_controller_8cs_source}{}\label{_netsuite_controller_8cs_source}\index{C:/Users/STRIDER/source/repos/InternalAPI/InternalAPI/Controllers/NetsuiteController.cs@{C:/Users/STRIDER/source/repos/InternalAPI/InternalAPI/Controllers/NetsuiteController.cs}}
+\mbox{\hyperlink{_netsuite_controller_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Net;}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }System.Text;}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_settings}{InternalAPI.Settings}};}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }Microsoft.AspNetCore.Mvc;}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00006}00006\ \textcolor{keyword}{using\ }Microsoft.Extensions.Logging;}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00007}00007\ \textcolor{keyword}{using\ }Microsoft.Extensions.Options;}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00008}00008\ \textcolor{keyword}{using\ }System.Security.Cryptography;}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00009}00009\ \textcolor{keyword}{using\ }RestSharp;}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00010}00010\ \textcolor{keyword}{using\ }RestSharp.Authenticators;}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00011}00011\ \textcolor{keyword}{using\ }Newtonsoft.Json;}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00012}00012\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_services}{InternalAPI.Services}};}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00013}00013\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_dto_1_1_netsuite}{InternalAPI.Dto.Netsuite}};}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00014}00014\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_helpers}{InternalAPI.Helpers}};}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00015}00015\ \textcolor{keyword}{using\ }System.Dynamic;}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00016}00016\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00017}00017\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00018}00018\ \textcolor{keyword}{using\ }Microsoft.AspNetCore.Http;}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00020}00020\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_controllers}{InternalAPI.Controllers}}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00021}00021\ \{}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00022}00022\ \ \ \ \ [ApiController]}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00023}\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_netsuite_controller}{00023}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_netsuite_controller}{NetsuiteController}}\ :\ ControllerBase}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00024}00024\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ readonly\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}\ \_logger;}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ readonly\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_netsuite_service}{NetsuiteService}}\ \_netsuiteService;}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ readonly\ NetsuiteHelper\ \_netsuiteHelper;}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00029}\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_netsuite_controller_a33c34f33c570904c3ed659b24c91f717}{00029}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_netsuite_controller_a33c34f33c570904c3ed659b24c91f717}{NetsuiteController}}(}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}\ logger,}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_netsuite_service}{NetsuiteService}}\ netsuiteService,}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ NetsuiteHelper\ netsuiteHelper)}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger\ =\ logger;}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \_netsuiteService\ =\ netsuiteService;}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \_netsuiteHelper\ =\ netsuiteHelper;}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ [Route(\textcolor{stringliteral}{"{}v1/netsuite/recordpassthrough/\{**endpoint\}"{}})]}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ [HttpGet]}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00047}\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_netsuite_controller_a51dd661da86922aaf366b943e5a99dea}{00047}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ IActionResult\ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_netsuite_controller_a51dd661da86922aaf366b943e5a99dea}{RecordPassThrough}}([FromRoute]\ \textcolor{keywordtype}{string}\ endpoint)}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ var\ queryCollection\ =\ HttpContext.Request.Query;}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogInformation(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.NetsuiteController,\ \$\textcolor{stringliteral}{"{}Received\ Netsuite\ \{HttpContext.Request.Method\}\ passthrough\ for\ endpoint\ '\{endpoint\}'."{}},\ queryCollection);}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ IRestResponse\ response\ =\ \_netsuiteService.APIRecordRequest(endpoint,\ Method.GET,\ \textcolor{keyword}{null},\ queryCollection);}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!(response\ ==\ \textcolor{keyword}{null})\ \&\&\ !response.IsSuccessful\ ||\ !(response.StatusCode==HttpStatusCode.OK\ ||\ response.StatusCode\ ==\ HttpStatusCode.NoContent))}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogError(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.NetsuiteController,\ \$\textcolor{stringliteral}{"{}Netsuite\ response\ from\ record\ endpoint\ '\{endpoint\}'\ not\ successful"{}},\ \$\textcolor{stringliteral}{"{}StatusCode:\ \{(int)response.StatusCode\}"{}},\ \$\textcolor{stringliteral}{"{}StatusDescription:\ \{response.StatusDescription\}"{}},\ response.Content);}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ BadRequest(\textcolor{stringliteral}{"{}Response\ object\ was\ null"{}});}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{object}\ responseObject\ =\ JsonConvert.DeserializeObject<\textcolor{keywordtype}{object}>(response.Content);}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ StatusCode((\textcolor{keywordtype}{int})response.StatusCode,\ responseObject);}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ [Route(\textcolor{stringliteral}{"{}v1/netsuite/recordpassthrough/\{**endpoint\}"{}})]}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ [HttpPost]}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ [HttpPatch]}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00074}\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_netsuite_controller_ad4b909ca8b1dc65f1aa584c66c3363ec}{00074}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ IActionResult\ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_netsuite_controller_ad4b909ca8b1dc65f1aa584c66c3363ec}{RecordPassThrough}}([FromRoute]\ \textcolor{keywordtype}{string}\ endpoint,\ [FromBody]\ \textcolor{keywordtype}{object}\ body)}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ var\ queryCollection\ =\ HttpContext.Request.Query;}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogInformation(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.NetsuiteController,\ \$\textcolor{stringliteral}{"{}Received\ Netsuite\ \{HttpContext.Request.Method\}\ passthrough\ for\ endpoint\ '\{endpoint\}'."{}},\ queryCollection,\ body);}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ IRestResponse\ response\ =\ \_netsuiteService.APIRecordRequest(endpoint,\ HttpContext.Request.Method\ ==\ HttpMethods.Post\ ?\ Method.POST\ :\ Method.PATCH,\ JsonConvert.SerializeObject(body),\ queryCollection);\ }
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!(response\ ==\ \textcolor{keyword}{null})\ \&\&\ !response.IsSuccessful\ ||\ !(response.StatusCode\ ==\ HttpStatusCode.OK\ ||\ response.StatusCode\ ==\ HttpStatusCode.NoContent))}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogError(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.NetsuiteController,\ \$\textcolor{stringliteral}{"{}Netsuite\ response\ from\ record\ endpoint\ '\{endpoint\}'\ not\ successful"{}},\ \$\textcolor{stringliteral}{"{}StatusCode:\ \{(int)response.StatusCode\}"{}},\ \$\textcolor{stringliteral}{"{}StatusDescription:\ \{response.StatusDescription\}"{}},\ response.Content);}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ BadRequest(\textcolor{stringliteral}{"{}Response\ object\ was\ null"{}});}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{object}\ responseObject\ =\ JsonConvert.DeserializeObject<\textcolor{keywordtype}{object}>(response.Content);}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ StatusCode((\textcolor{keywordtype}{int})response.StatusCode,\ responseObject);}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00090}00090\ }
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00091}00091\ \ \ \ \ \ \ \ \ [Route(\textcolor{stringliteral}{"{}v1/netsuite/querypassthrough/\{**endpoint\}"{}})]}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00092}00092\ \ \ \ \ \ \ \ \ [HttpGet]}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00093}\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_netsuite_controller_a0a6ec8be5db82ea7fe437338e15a85cc}{00093}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ IActionResult\ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_netsuite_controller_a0a6ec8be5db82ea7fe437338e15a85cc}{QueryPassThrough}}([FromRoute]\ \textcolor{keywordtype}{string}\ endpoint)}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00094}00094\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ var\ queryCollection\ =\ HttpContext.Request.Query;}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogInformation(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.NetsuiteController,\ \$\textcolor{stringliteral}{"{}Received\ Netsuite\ GET\ pass\ through\ for\ query\ endpoint\ '\{endpoint\}'."{}},\ queryCollection);}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ IRestResponse\ response\ =\ \_netsuiteService.APIQueryRequest(endpoint,\ Method.GET,\ \textcolor{keyword}{null},\ queryCollection);}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!(response\ ==\ \textcolor{keyword}{null})\ \&\&\ !response.IsSuccessful\ ||\ !(response.StatusCode\ ==\ HttpStatusCode.OK\ ||\ response.StatusCode\ ==\ HttpStatusCode.NoContent))}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogError(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.NetsuiteController,\ \$\textcolor{stringliteral}{"{}Netsuite\ response\ from\ record\ endpoint\ '\{endpoint\}'\ not\ successful"{}},\ \$\textcolor{stringliteral}{"{}StatusCode:\ \{(int)response.StatusCode\}"{}},\ \$\textcolor{stringliteral}{"{}StatusDescription:\ \{response.StatusDescription\}"{}},\ response.Content);}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ BadRequest(\textcolor{stringliteral}{"{}Response\ object\ was\ null"{}});}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{object}\ responseObject\ =\ JsonConvert.DeserializeObject<\textcolor{keywordtype}{object}>(response.Content);}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ StatusCode((\textcolor{keywordtype}{int})response.StatusCode,\ responseObject);}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00108}00108\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00109}00109\ }
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00110}00110\ \ \ \ \ \ \ \ \ [Route(\textcolor{stringliteral}{"{}v1/netsuite/querypassthrough/\{**endpoint\}"{}})]}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00111}00111\ \ \ \ \ \ \ \ \ [HttpPost]}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00112}\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_netsuite_controller_aae7c03451357b8b7ba09edc03295f807}{00112}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ IActionResult\ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_netsuite_controller_aae7c03451357b8b7ba09edc03295f807}{QueryPassThrough}}([FromRoute]\ \textcolor{keywordtype}{string}\ endpoint,\ [FromBody]\ \textcolor{keywordtype}{object}\ body)}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00113}00113\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ \ \ var\ queryCollection\ =\ HttpContext.Request.Query;}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00115}00115\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogInformation(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.NetsuiteController,\ \$\textcolor{stringliteral}{"{}Received\ Netsuite\ GET\ pass\ through\ for\ query\ endpoint\ '\{endpoint\}'."{}},\ queryCollection,\ body);}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00116}00116\ \ \ \ \ \ \ \ \ \ \ \ \ IRestResponse\ response\ =\ \_netsuiteService.APIQueryRequest(endpoint,\ Method.POST,\ JsonConvert.SerializeObject(body),\ queryCollection);}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00117}00117\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!(response\ ==\ \textcolor{keyword}{null})\ \&\&\ !response.IsSuccessful\ ||\ !(response.StatusCode\ ==\ HttpStatusCode.OK\ ||\ response.StatusCode\ ==\ HttpStatusCode.NoContent))}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00118}00118\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogError(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.NetsuiteController,\ \$\textcolor{stringliteral}{"{}Netsuite\ response\ from\ record\ endpoint\ '\{endpoint\}'\ not\ successful"{}},\ \$\textcolor{stringliteral}{"{}StatusCode:\ \{(int)response.StatusCode\}"{}},\ \$\textcolor{stringliteral}{"{}StatusDescription:\ \{response.StatusDescription\}"{}},\ response.Content);}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00120}00120\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00121}00121\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00122}00122\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00123}00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ BadRequest(\textcolor{stringliteral}{"{}Response\ object\ was\ null"{}});}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00124}00124\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00125}00125\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{object}\ responseObject\ =\ JsonConvert.DeserializeObject<\textcolor{keywordtype}{object}>(response.Content);}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00126}00126\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ StatusCode((\textcolor{keywordtype}{int})response.StatusCode,\ responseObject);}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00127}00127\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00128}00128\ }
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00129}00129\ \ \ \ \ \ \ \ \ [Route(\textcolor{stringliteral}{"{}v1/netsuite/restletpassthrough"{}})]}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00130}00130\ \ \ \ \ \ \ \ \ [HttpPost]}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00131}\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_netsuite_controller_aafb03bd60aa61433b5ca7d6bf38609ee}{00131}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ IActionResult\ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_netsuite_controller_aafb03bd60aa61433b5ca7d6bf38609ee}{RestletPassThrough}}([FromBody]\ \textcolor{keywordtype}{object}\ body)}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00132}00132\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00133}00133\ \ \ \ \ \ \ \ \ \ \ \ \ var\ queryCollection\ =\ HttpContext.Request.Query;}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00134}00134\ \ \ \ \ \ \ \ \ \ \ \ \ var\ restletConfig\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_restlet_config}{RestletConfig}}()}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00135}00135\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00136}00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Script\ =\ queryCollection[\textcolor{stringliteral}{"{}script"{}}].ToString(),}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00137}00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Deploy\ =\ queryCollection[\textcolor{stringliteral}{"{}deploy"{}}].ToString()}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00138}00138\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00139}00139\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogInformation(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.NetsuiteController,\ \$\textcolor{stringliteral}{"{}Received\ Netsuite\ POST\ pass\ through\ for\ restlet\ endpoint."{}},\ queryCollection,\ body);}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00140}00140\ \ \ \ \ \ \ \ \ \ \ \ \ IRestResponse\ response\ =\ \_netsuiteService.APIRestletRequest(Method.POST,\ restletConfig,\ JsonConvert.SerializeObject(body));}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00141}00141\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!(response\ ==\ \textcolor{keyword}{null})\ \&\&\ !response.IsSuccessful\ ||\ !(response.StatusCode\ ==\ HttpStatusCode.OK\ ||\ response.StatusCode\ ==\ HttpStatusCode.NoContent))}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00143}00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogError(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.NetsuiteController,\ \$\textcolor{stringliteral}{"{}Netsuite\ response\ from\ restlet\ endpoint\ not\ successful"{}},\ \$\textcolor{stringliteral}{"{}StatusCode:\ \{(int)response.StatusCode\}"{}},\ \$\textcolor{stringliteral}{"{}StatusDescription:\ \{response.StatusDescription\}"{}},\ response.Content);}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00144}00144\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00145}00145\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00146}00146\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00147}00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ BadRequest(\textcolor{stringliteral}{"{}Response\ object\ was\ null"{}});}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00148}00148\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00149}00149\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{object}\ responseObject\ =\ JsonConvert.DeserializeObject<\textcolor{keywordtype}{object}>(response.Content);}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00150}00150\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ StatusCode((\textcolor{keywordtype}{int})response.StatusCode,\ responseObject);}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00151}00151\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00152}00152\ }
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00157}00157\ \ \ \ \ \ \ \ \ [Route(\textcolor{stringliteral}{"{}v1/netsuite/salesorder"{}})]}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00158}00158\ \ \ \ \ \ \ \ \ [HttpPost]}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00159}\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_netsuite_controller_a76e094d0f38ad78499424ddf055cdfc9}{00159}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ IActionResult\ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_netsuite_controller_a76e094d0f38ad78499424ddf055cdfc9}{PostSalesOrder}}([FromBody]\ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_incoming_sales_order_request}{IncomingSalesOrderRequest}}\ soRequest)}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00160}00160\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00161}00161\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00162}00162\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00163}00163\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogInformation(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.NetsuiteController,\ \$\textcolor{stringliteral}{"{}Received\ Netsuite\ POST\ for\ salesorder\ endpoint."{}},\ soRequest);}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00164}00164\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//get\ or\ create\ customer}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00165}00165\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_netsuite_customer_request}{NetsuiteCustomerRequest}}\ netsuiteCustomerRequest\ \ =\ \_netsuiteHelper.BuildNetsuiteCustomerRequest(soRequest);}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00166}00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_customer_item_response}{CustomerItemResponse}}\ customer\ =\ \_netsuiteHelper.FindCustomerID(netsuiteCustomerRequest);}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00167}00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (customer\ ==\ \textcolor{keyword}{null}\ ||\ customer.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_customer_item_response_ab0a343564682d541f168c89a2f75b411}{id}}\ ==\ 0)\ }
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00168}00168\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00169}00169\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_netsuiteHelper.SendSalesOrderEmail(soRequest,\ 0,\ 0,\ 0);}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00170}00170\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ BadRequest(\textcolor{stringliteral}{"{}Customer\ not\ found\ or\ created"{}});\ }
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00171}00171\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00172}00172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//build\ sales\ order}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00173}00173\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_netsuite_sales_order_request}{NetsuiteSalesOrderRequest}}\ netsuiteSoRequest\ =\ \_netsuiteHelper.BuildNetsuiteSalesOrderRequest(soRequest);}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00174}00174\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ netsuiteSoRequest.entity\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_i_d_ref}{IDRef}}()\ \{\ \textcolor{keywordtype}{id}\ =\ customer.id\ \};}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00175}00175\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ netsuiteSoRequest.custbody\_ab\_internal\_comments\ +=\ \$\textcolor{stringliteral}{"{}\(\backslash\)n\{customer.custentity\_ab\_internal\_comment\}"{}};}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00176}00176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//post\ sales\ order}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00177}00177\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ salesOrderId\ =\ \_netsuiteHelper.PostSalesOrderRequest(netsuiteSoRequest);}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00178}00178\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (salesOrderId\ ==\ 0)\ }
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00179}00179\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00180}00180\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_netsuiteHelper.SendSalesOrderEmail(soRequest,\ customer.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_customer_item_response_ab0a343564682d541f168c89a2f75b411}{id}},\ 0,\ 0);}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00181}00181\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ BadRequest(\$\textcolor{stringliteral}{"{}Sales\ order\ not\ created\ for\ customer\ \{customer.id\}"{}});\ }
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00182}00182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00183}00183\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//add\ payment\ if\ payment\ made}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00184}00184\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ depositId\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00185}00185\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (soRequest.OrderDetails.DepositTotal\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00186}00186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00187}00187\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ depositId\ =\ \_netsuiteHelper.PostDeposit(salesOrderId,\ soRequest.OrderDetails.DepositTotal);}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00188}00188\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (depositId\ ==\ 0)\ }
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00189}00189\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00190}00190\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_netsuiteHelper.SendSalesOrderEmail(soRequest,\ customer.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_customer_item_response_ab0a343564682d541f168c89a2f75b411}{id}},\ salesOrderId,\ 0);}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00191}00191\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ BadRequest(\$\textcolor{stringliteral}{"{}Deposit\ not\ created\ for\ sales\ order\ \{salesOrderId\}"{}});\ }
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00192}00192\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00193}00193\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00194}00194\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//send\ final\ admin\ email}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00195}00195\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_netsuiteHelper.SendSalesOrderEmail(soRequest,\ customer.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_customer_item_response_ab0a343564682d541f168c89a2f75b411}{id}},\ salesOrderId,\ depositId);}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00196}00196\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Ok(salesOrderId);}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00197}00197\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00198}00198\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00199}00199\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00200}00200\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogException(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.NetsuiteHelper,}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00201}00201\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}Exception\ creating\ Netsuite\ sales\ order\ from\ controller"{}},}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00202}00202\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ex.ToString());}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00203}00203\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ BadRequest(\$\textcolor{stringliteral}{"{}Exception:\ \{ex.ToString()\}"{}});}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00204}00204\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00205}00205\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00206}00206\ }
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00210}00210\ \ \ \ \ \ \ \ \ [Route(\textcolor{stringliteral}{"{}v1/netsuite/order"{}})]}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00211}00211\ \ \ \ \ \ \ \ \ [HttpPost]}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00212}\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_netsuite_controller_a32493424113935099eb8d75187fd972e}{00212}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ IActionResult\ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_netsuite_controller_a32493424113935099eb8d75187fd972e}{PostOrder}}([FromBody]\ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_incoming_netsuite_order_request}{IncomingNetsuiteOrderRequest}}\ oRequest)}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00213}00213\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00214}00214\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00215}00215\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00216}00216\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogInformation(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.NetsuiteController,\ \$\textcolor{stringliteral}{"{}Received\ Netsuite\ POST\ for\ new\ salesorder\ endpoint."{}},\ oRequest);}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00217}00217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (oRequest.NetsuiteCustomer\ ==\ \textcolor{keyword}{null}\ ||\ (oRequest.NetsuiteSalesOrder\ ==\ \textcolor{keyword}{null}\ \&\&\ oRequest.NetsuitePurchaseOrder\ ==\ \textcolor{keyword}{null}))}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00218}00218\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ BadRequest(\textcolor{stringliteral}{"{}Data\ submitted\ is\ bad"{}});}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00219}00219\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//get\ or\ create\ customer}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00220}00220\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_customer_item_response}{CustomerItemResponse}}\ customer\ =\ \_netsuiteHelper.FindCustomerID(oRequest.NetsuiteCustomer);}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00221}00221\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (customer\ ==\ \textcolor{keyword}{null}\ ||\ customer.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_customer_item_response_ab0a343564682d541f168c89a2f75b411}{id}}\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00222}00222\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ BadRequest(\textcolor{stringliteral}{"{}Customer\ not\ found\ or\ created"{}});}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00223}00223\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ StringBuilder\ orderError\ =\ \textcolor{keyword}{new}\ StringBuilder();}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00224}00224\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//if\ sales\ order\ exist}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00225}00225\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ salesOrderId\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00226}00226\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (oRequest.NetsuiteSalesOrder\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00227}00227\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00228}00228\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//build\ sales\ order}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00229}00229\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oRequest.NetsuiteSalesOrder.entity\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_i_d_ref}{IDRef}}()\ \{\ \textcolor{keywordtype}{id}\ =\ customer.id\ \};}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00230}00230\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oRequest.NetsuiteSalesOrder.custbody\_ab\_internal\_comments\ +=\ \$\textcolor{stringliteral}{"{}\(\backslash\)n\{customer.custentity\_ab\_internal\_comment\}"{}};}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00231}00231\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//post\ sales\ order}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00232}00232\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ salesOrderId\ =\ \_netsuiteHelper.PostSalesOrderRequest(oRequest.NetsuiteSalesOrder);}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00233}00233\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (salesOrderId\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00234}00234\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ orderError.AppendLine(\$\textcolor{stringliteral}{"{}Sales\ order\ not\ created\ for\ customer\ \{customer.id\}"{}});}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00235}00235\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00236}00236\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//if\ purchase\ order\ exist}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00237}00237\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ purchaseOrderId\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00238}00238\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (oRequest.NetsuitePurchaseOrder\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00239}00239\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00240}00240\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//build\ purchase\ order}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00241}00241\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oRequest.NetsuitePurchaseOrder.entity\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_i_d_ref}{IDRef}}()\ \{\ \textcolor{keywordtype}{id}\ =\ customer.id\ \};}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00242}00242\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oRequest.NetsuitePurchaseOrder.custbody\_ab\_internal\_comments\ +=\ \$\textcolor{stringliteral}{"{}\(\backslash\)n\{customer.custentity\_ab\_internal\_comment\}"{}};}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00243}00243\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//post\ purchase\ order}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00244}00244\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ purchaseOrderId\ =\ \_netsuiteHelper.PostPurchaseOrderRequest(oRequest.NetsuitePurchaseOrder);}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00245}00245\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (purchaseOrderId\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00246}00246\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ orderError.AppendLine(\$\textcolor{stringliteral}{"{}Sales\ order\ not\ created\ for\ customer\ \{customer.id\}"{}});}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00247}00247\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00248}00248\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (orderError.Length\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00249}00249\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ BadRequest(orderError.ToString());}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00250}00250\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Ok(\textcolor{keyword}{new}\ \{\ CustomerID\ =\ customer.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_customer_item_response_ab0a343564682d541f168c89a2f75b411}{id}},\ SalesOrderID\ =\ salesOrderId,\ PurchaseOrderID\ =\ purchaseOrderId\ \});}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00251}00251\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00252}00252\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00253}00253\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00254}00254\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogException(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.NetsuiteHelper,}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00255}00255\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}Exception\ creating\ Netsuite\ sales\ order\ from\ controller"{}},}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00256}00256\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ex.ToString());}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00257}00257\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ BadRequest(\$\textcolor{stringliteral}{"{}Exception:\ \{ex.ToString()\}"{}});}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00258}00258\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00259}00259\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00260}00260\ }
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00261}00261\ \ \ \ \ \ \ \ \ \textcolor{comment}{//[Route("{}v1/netsuite/purchaseorder"{})]}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00262}00262\ \ \ \ \ \ \ \ \ \textcolor{comment}{//[HttpPost]}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00263}00263\ \ \ \ \ \ \ \ \ \textcolor{comment}{//public\ IActionResult\ PostPurchaseOrder([FromBody]\ IncomingNetsuitePurchaseOrderRequest\ poRequest)}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00264}00264\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\{}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00265}00265\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ try}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00266}00266\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \{}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00267}00267\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \_logger.LogInformation(LogService.LogSources.NetsuiteController,\ \$"{}Received\ Netsuite\ POST\ for\ new\ purchaseorder\ endpoint."{},\ poRequest);}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00268}00268\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ if\ (poRequest.NetsuiteCustomer\ ==\ null\ ||\ poRequest.NetsuiteOrder\ ==\ null)}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00269}00269\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ return\ BadRequest("{}Data\ submitted\ is\ bad"{});}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00270}00270\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ //get\ or\ create\ customer}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00271}00271\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ CustomerItemResponse\ customer\ =\ \_netsuiteHelper.FindCustomerID(poRequest.NetsuiteCustomer);}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00272}00272\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ if\ (customer\ ==\ null\ ||\ customer.id\ ==\ 0)}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00273}00273\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ return\ BadRequest("{}Customer\ not\ found\ or\ created"{});}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00274}00274\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ //build\ sales\ order}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00275}00275\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ poRequest.NetsuiteOrder.entity\ =\ new\ IDRef()\ \{\ id\ =\ customer.id\ \};}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00276}00276\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ poRequest.NetsuiteOrder.custbody\_ab\_internal\_comments\ +=\ \$"{}\(\backslash\)n\{customer.custentity\_ab\_internal\_comment\}"{};}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00277}00277\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ //post\ sales\ order}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00278}00278\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ var\ salesOrderId\ =\ \_netsuiteHelper.PostSalesOrderRequest(poRequest.NetsuiteOrder);}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00279}00279\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ if\ (salesOrderId\ ==\ 0)}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00280}00280\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ return\ BadRequest(\$"{}Sales\ order\ not\ created\ for\ customer\ \{customer.id\}"{});}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00281}00281\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ return\ Ok(new\ \{\ CustomerID\ =\ customer.id,\ OrderID\ =\ salesOrderId\ \});}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00282}00282\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \}}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00283}00283\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ catch\ (Exception\ ex)}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00284}00284\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \{}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00285}00285\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \_logger.LogException(LogService.LogSources.NetsuiteHelper,}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00286}00286\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \$"{}Exception\ creating\ Netsuite\ sales\ order\ from\ controller"{},}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00287}00287\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ ex.ToString());}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00288}00288\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ return\ BadRequest(\$"{}Exception:\ \{ex.ToString()\}"{});}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00289}00289\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \}}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00290}00290\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\}}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00291}00291\ }
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00297}00297\ \ \ \ \ \ \ \ \ [Route(\textcolor{stringliteral}{"{}v1/netsuite/customer"{}})]}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00298}00298\ \ \ \ \ \ \ \ \ [HttpPost]}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00299}\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_netsuite_controller_a8fcc280788e0390f37be2b750c592f79}{00299}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ IActionResult\ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_netsuite_controller_a8fcc280788e0390f37be2b750c592f79}{PostCustomer}}([FromBody]\ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_netsuite_customer_request}{NetsuiteCustomerRequest}}\ netsuiteCustomerRequest)}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00300}00300\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00301}00301\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogInformation(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.NetsuiteController,\ \$\textcolor{stringliteral}{"{}Received\ Netsuite\ POST\ for\ customer\ endpoint."{}},\ netsuiteCustomerRequest);}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00302}00302\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//get\ or\ create\ customer}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00303}00303\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_customer_item_response}{CustomerItemResponse}}\ customer\ =\ \_netsuiteHelper.FindCustomerID(netsuiteCustomerRequest);}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00304}00304\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (customer\ ==\ \textcolor{keyword}{null}\ ||\ customer.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_customer_item_response_ab0a343564682d541f168c89a2f75b411}{id}}\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00305}00305\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00306}00306\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogError(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.NetsuiteController,\ \$\textcolor{stringliteral}{"{}Customer\ not\ found\ or\ created."{}},\ netsuiteCustomerRequest);}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00307}00307\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ BadRequest(\textcolor{stringliteral}{"{}Customer\ not\ found\ or\ created"{}});}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00308}00308\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00309}00309\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Ok(customer.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_customer_item_response_ab0a343564682d541f168c89a2f75b411}{id}});}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00310}00310\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00311}00311\ }
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00317}00317\ \ \ \ \ \ \ \ \ [Route(\textcolor{stringliteral}{"{}v1/netsuite/searchcustomers"{}})]}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00318}00318\ \ \ \ \ \ \ \ \ [HttpPost]}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00319}\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_netsuite_controller_a3fdc5b21f278be94bd38be7a7e735cdc}{00319}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ IActionResult\ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_netsuite_controller_a3fdc5b21f278be94bd38be7a7e735cdc}{SearchCustomers}}([FromBody]\ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_netsuite_customer_request}{NetsuiteCustomerRequest}}\ netsuiteCustomerRequest)}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00320}00320\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00321}00321\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogInformation(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.NetsuiteController,\ \$\textcolor{stringliteral}{"{}Received\ Netsuite\ POST\ for\ search\ customers\ endpoint."{}},\ netsuiteCustomerRequest);}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00322}00322\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_netsuite_suite_q_l_customer_response}{NetsuiteSuiteQLCustomerResponse}}\ searchResults\ =\ \_netsuiteHelper.SearchNetsuiteCustomers(netsuiteCustomerRequest);}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00323}00323\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Ok(searchResults);}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00324}00324\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00325}00325\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_netsuite_controller_8cs_source_l00326}00326\ \}}
+
+\end{DoxyCode}

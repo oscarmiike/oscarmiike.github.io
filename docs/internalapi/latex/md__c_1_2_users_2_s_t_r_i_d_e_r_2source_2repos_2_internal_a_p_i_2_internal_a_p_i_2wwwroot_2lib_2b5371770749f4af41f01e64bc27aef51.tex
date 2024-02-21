@@ -1,0 +1,37 @@
+\chapter{osenv}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2b5371770749f4af41f01e64bc27aef51}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2b5371770749f4af41f01e64bc27aef51}\index{osenv@{osenv}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2b5371770749f4af41f01e64bc27aef51_autotoc_md10551}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2b5371770749f4af41f01e64bc27aef51_autotoc_md10551}%
+ Look up environment settings specific to different operating systems.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2b5371770749f4af41f01e64bc27aef51_autotoc_md10552}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2b5371770749f4af41f01e64bc27aef51_autotoc_md10552}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ osenv\ =\ require('osenv')}
+\DoxyCodeLine{var\ path\ =\ osenv.path()}
+\DoxyCodeLine{var\ user\ =\ osenv.user()}
+\DoxyCodeLine{//\ etc.}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Some\ things\ are\ not\ reliably\ in\ the\ env,\ and\ have\ a\ fallback\ command:}
+\DoxyCodeLine{var\ h\ =\ osenv.hostname(function\ (er,\ hostname)\ \{}
+\DoxyCodeLine{\ \ h\ =\ hostname}
+\DoxyCodeLine{\})}
+\DoxyCodeLine{//\ This\ will\ still\ cause\ it\ to\ be\ memoized,\ so\ calling\ osenv.hostname()}
+\DoxyCodeLine{//\ is\ now\ an\ immediate\ operation.}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ You\ can\ always\ send\ a\ cb,\ which\ will\ get\ called\ in\ the\ nextTick}
+\DoxyCodeLine{//\ if\ it's\ been\ memoized,\ or\ wait\ for\ the\ fallback\ data\ if\ it\ wasn't}
+\DoxyCodeLine{//\ found\ in\ the\ environment.}
+\DoxyCodeLine{osenv.hostname(function\ (er,\ hostname)\ \{}
+\DoxyCodeLine{\ \ if\ (er)\ console.error('error\ looking\ up\ hostname')}
+\DoxyCodeLine{\ \ else\ console.log('this\ machine\ calls\ itself\ \%s',\ hostname)}
+\DoxyCodeLine{\})}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2b5371770749f4af41f01e64bc27aef51_autotoc_md10553}{}\doxysection{\texorpdfstring{osenv.\+hostname()}{osenv.\+hostname()}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2b5371770749f4af41f01e64bc27aef51_autotoc_md10553}
+The machine name. Calls {\ttfamily hostname} if not found.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2b5371770749f4af41f01e64bc27aef51_autotoc_md10554}{}\doxysection{\texorpdfstring{osenv.\+user()}{osenv.\+user()}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2b5371770749f4af41f01e64bc27aef51_autotoc_md10554}
+The currently logged-\/in user. Calls {\ttfamily whoami} if not found.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2b5371770749f4af41f01e64bc27aef51_autotoc_md10555}{}\doxysection{\texorpdfstring{osenv.\+prompt()}{osenv.\+prompt()}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2b5371770749f4af41f01e64bc27aef51_autotoc_md10555}
+Either PS1 on unix, or PROMPT on Windows.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2b5371770749f4af41f01e64bc27aef51_autotoc_md10556}{}\doxysection{\texorpdfstring{osenv.\+tmpdir()}{osenv.\+tmpdir()}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2b5371770749f4af41f01e64bc27aef51_autotoc_md10556}
+The place where temporary files should be created.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2b5371770749f4af41f01e64bc27aef51_autotoc_md10557}{}\doxysection{\texorpdfstring{osenv.\+home()}{osenv.\+home()}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2b5371770749f4af41f01e64bc27aef51_autotoc_md10557}
+No place like it.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2b5371770749f4af41f01e64bc27aef51_autotoc_md10558}{}\doxysection{\texorpdfstring{osenv.\+path()}{osenv.\+path()}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2b5371770749f4af41f01e64bc27aef51_autotoc_md10558}
+An array of the places that the operating system will search for executables.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2b5371770749f4af41f01e64bc27aef51_autotoc_md10559}{}\doxysection{\texorpdfstring{osenv.\+editor()}{osenv.\+editor()}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2b5371770749f4af41f01e64bc27aef51_autotoc_md10559}
+Return the executable name of the editor program. This uses the EDITOR and VISUAL environment variables, and falls back to {\ttfamily vi} on Unix, or {\ttfamily notepad.\+exe} on Windows.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2b5371770749f4af41f01e64bc27aef51_autotoc_md10560}{}\doxysection{\texorpdfstring{osenv.\+shell()}{osenv.\+shell()}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2b5371770749f4af41f01e64bc27aef51_autotoc_md10560}
+The SHELL on Unix, which Windows calls the Com\+Spec. Defaults to \textquotesingle{}bash\textquotesingle{} or \textquotesingle{}cmd\textquotesingle{}. 

@@ -1,0 +1,48 @@
+\chapter{resolve-\/pkg \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/sindresorhus/resolve-\/pkg"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+org/sindresorhus/resolve-\/pkg.\+svg?branch=master"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_26a0b3c6a9aa7d6d7ff8adc4a98f519b4}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_26a0b3c6a9aa7d6d7ff8adc4a98f519b4}\index{resolve-\/pkg $<$a href="{}https://travis-\/ci.org/sindresorhus/resolve-\/pkg"{} $>$$<$img src="{}https://travis-\/ci.org/sindresorhus/resolve-\/pkg.svg?branch=master"{} alt="{}Build Status"{}/$>$$<$/a$>$@{resolve-\/pkg $<$a href=""https://travis-\/ci.org/sindresorhus/resolve-\/pkg"" $>$$<$img src=""https://travis-\/ci.org/sindresorhus/resolve-\/pkg.svg?branch=master"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_26a0b3c6a9aa7d6d7ff8adc4a98f519b4_autotoc_md11218}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_26a0b3c6a9aa7d6d7ff8adc4a98f519b4_autotoc_md11218}%
+ \begin{quote}
+Resolve the path of a package regardless of it having an entry point \end{quote}
+Some packages like CLI tools and grunt tasks don\textquotesingle{}t have a entry point, like {\ttfamily "{}main"{}\+: "{}foo.\+js"{}} in package.\+json, resulting in them not being resolvable by {\ttfamily require.\+resolve()}. Unlike {\ttfamily require.\+resolve()}, this module also resolves packages without an entry point, returns {\ttfamily undefined} instead of throwing when the module can\textquotesingle{}t be found, and resolves from {\ttfamily process.\+cwd()} instead {\ttfamily \+\_\+\+\_\+dirname} by default.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_26a0b3c6a9aa7d6d7ff8adc4a98f519b4_autotoc_md11219}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_26a0b3c6a9aa7d6d7ff8adc4a98f519b4_autotoc_md11219}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ resolve-\/pkg}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_26a0b3c6a9aa7d6d7ff8adc4a98f519b4_autotoc_md11220}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_26a0b3c6a9aa7d6d7ff8adc4a98f519b4_autotoc_md11220}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ resolvePkg\ =\ require('resolve-\/pkg');}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ \$\ npm\ install\ -\/-\/save-\/dev\ grunt-\/svgmin}
+\DoxyCodeLine{}
+\DoxyCodeLine{resolvePkg('grunt-\/svgmin/tasks',\ \{cwd:\ \_\_dirname\});}
+\DoxyCodeLine{//=>\ '/Users/sindresorhus/unicorn/node\_modules/grunt-\/svgmin/tasks'}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Fails\ here\ as\ Grunt\ tasks\ usually\ don't\ have\ a\ defined\ main\ entry\ point}
+\DoxyCodeLine{require.resolve('grunt-\/svgmin/tasks');}
+\DoxyCodeLine{//=>\ Error:\ Cannot\ find\ module\ 'grunt-\/svgmin'}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_26a0b3c6a9aa7d6d7ff8adc4a98f519b4_autotoc_md11221}{}\doxysection{\texorpdfstring{API}{API}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_26a0b3c6a9aa7d6d7ff8adc4a98f519b4_autotoc_md11221}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_26a0b3c6a9aa7d6d7ff8adc4a98f519b4_autotoc_md11222}{}\doxysubsection{\texorpdfstring{resolve\+Pkg(module\+Id, \mbox{[}options\mbox{]})}{resolve\+Pkg(module\+Id, \mbox{[}options\mbox{]})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_26a0b3c6a9aa7d6d7ff8adc4a98f519b4_autotoc_md11222}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_26a0b3c6a9aa7d6d7ff8adc4a98f519b4_autotoc_md11223}{}\doxysubsubsection{\texorpdfstring{module\+Id}{module\+Id}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_26a0b3c6a9aa7d6d7ff8adc4a98f519b4_autotoc_md11223}
+Type\+: {\ttfamily string}
+
+What you would use in {\ttfamily require()}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_26a0b3c6a9aa7d6d7ff8adc4a98f519b4_autotoc_md11224}{}\doxysubsubsection{\texorpdfstring{options}{options}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_26a0b3c6a9aa7d6d7ff8adc4a98f519b4_autotoc_md11224}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_26a0b3c6a9aa7d6d7ff8adc4a98f519b4_autotoc_md11225}{}\doxyparagraph{\texorpdfstring{cwd}{cwd}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_26a0b3c6a9aa7d6d7ff8adc4a98f519b4_autotoc_md11225}
+Type\+: {\ttfamily string}~\newline
+ Default\+: {\ttfamily process.\+cwd()}
+
+Directory to resolve from.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_26a0b3c6a9aa7d6d7ff8adc4a98f519b4_autotoc_md11226}{}\doxysection{\texorpdfstring{Related}{Related}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_26a0b3c6a9aa7d6d7ff8adc4a98f519b4_autotoc_md11226}
+
+\begin{DoxyItemize}
+\item \href{https://github.com/sindresorhus/resolve-cwd}{\texttt{ resolve-\/cwd}} -\/ Resolve the path of a module from the current working directory
+\item \href{https://github.com/sindresorhus/resolve-from}{\texttt{ resolve-\/from}} -\/ Resolve the path of a module from a given path
+\item \href{https://github.com/sindresorhus/resolve-global}{\texttt{ resolve-\/global}} -\/ Resolve the path of a globally installed module
+\item \href{https://github.com/sindresorhus/import-from}{\texttt{ import-\/from}} -\/ Import a module from a given path
+\item \href{https://github.com/sindresorhus/import-cwd}{\texttt{ import-\/cwd}} -\/ Import a module from the current working directory
+\item \href{https://github.com/sindresorhus/import-lazy}{\texttt{ import-\/lazy}} -\/ Import a module lazily
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_26a0b3c6a9aa7d6d7ff8adc4a98f519b4_autotoc_md11227}{}\doxysection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_26a0b3c6a9aa7d6d7ff8adc4a98f519b4_autotoc_md11227}
+MIT © \href{https://sindresorhus.com}{\texttt{ Sindre Sorhus}} 

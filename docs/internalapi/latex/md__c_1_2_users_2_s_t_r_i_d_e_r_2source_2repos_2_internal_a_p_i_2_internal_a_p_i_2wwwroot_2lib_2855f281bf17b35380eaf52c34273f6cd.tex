@@ -1,0 +1,37 @@
+\chapter{string-\/width \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/sindresorhus/string-\/width"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+org/sindresorhus/string-\/width.\+svg?branch=master"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2855f281bf17b35380eaf52c34273f6cd}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2855f281bf17b35380eaf52c34273f6cd}\index{string-\/width $<$a href="{}https://travis-\/ci.org/sindresorhus/string-\/width"{} $>$$<$img src="{}https://travis-\/ci.org/sindresorhus/string-\/width.svg?branch=master"{} alt="{}Build Status"{}/$>$$<$/a$>$@{string-\/width $<$a href=""https://travis-\/ci.org/sindresorhus/string-\/width"" $>$$<$img src=""https://travis-\/ci.org/sindresorhus/string-\/width.svg?branch=master"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2855f281bf17b35380eaf52c34273f6cd_autotoc_md4777}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2855f281bf17b35380eaf52c34273f6cd_autotoc_md4777}%
+ \begin{quote}
+Get the visual width of a string -\/ the number of columns required to display it \end{quote}
+Some Unicode characters are \href{https://en.wikipedia.org/wiki/Halfwidth_and_fullwidth_forms}{\texttt{ fullwidth}} and use double the normal width. \href{http://en.wikipedia.org/wiki/ANSI_escape_code}{\texttt{ ANSI escape codes}} are stripped and doesn\textquotesingle{}t affect the width.
+
+Useful to be able to measure the actual width of command-\/line output.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2855f281bf17b35380eaf52c34273f6cd_autotoc_md4778}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2855f281bf17b35380eaf52c34273f6cd_autotoc_md4778}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ -\/-\/save\ string-\/width}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2855f281bf17b35380eaf52c34273f6cd_autotoc_md4779}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2855f281bf17b35380eaf52c34273f6cd_autotoc_md4779}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ stringWidth\ =\ require('string-\/width');}
+\DoxyCodeLine{}
+\DoxyCodeLine{stringWidth('古');}
+\DoxyCodeLine{//=>\ 2}
+\DoxyCodeLine{}
+\DoxyCodeLine{stringWidth('\(\backslash\)u001b[1m古\(\backslash\)u001b[22m');}
+\DoxyCodeLine{//=>\ 2}
+\DoxyCodeLine{}
+\DoxyCodeLine{stringWidth('a');}
+\DoxyCodeLine{//=>\ 1}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2855f281bf17b35380eaf52c34273f6cd_autotoc_md4780}{}\doxysection{\texorpdfstring{Related}{Related}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2855f281bf17b35380eaf52c34273f6cd_autotoc_md4780}
+
+\begin{DoxyItemize}
+\item \href{https://github.com/sindresorhus/string-width-cli}{\texttt{ string-\/width-\/cli}} -\/ CLI for this module
+\item \href{https://github.com/sindresorhus/string-length}{\texttt{ string-\/length}} -\/ Get the real length of a string
+\item \href{https://github.com/sindresorhus/widest-line}{\texttt{ widest-\/line}} -\/ Get the visual width of the widest line in a string
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2855f281bf17b35380eaf52c34273f6cd_autotoc_md4781}{}\doxysection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2855f281bf17b35380eaf52c34273f6cd_autotoc_md4781}
+MIT © \href{https://sindresorhus.com}{\texttt{ Sindre Sorhus}} 

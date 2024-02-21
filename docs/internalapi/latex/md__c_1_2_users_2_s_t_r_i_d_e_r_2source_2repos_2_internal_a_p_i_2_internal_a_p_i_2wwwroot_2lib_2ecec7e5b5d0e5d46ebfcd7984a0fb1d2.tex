@@ -1,0 +1,25 @@
+\chapter{unzip-\/response \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/sindresorhus/unzip-\/response"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+org/sindresorhus/unzip-\/response.\+svg?branch=master"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ecec7e5b5d0e5d46ebfcd7984a0fb1d2}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ecec7e5b5d0e5d46ebfcd7984a0fb1d2}\index{unzip-\/response $<$a href="{}https://travis-\/ci.org/sindresorhus/unzip-\/response"{} $>$$<$img src="{}https://travis-\/ci.org/sindresorhus/unzip-\/response.svg?branch=master"{} alt="{}Build Status"{}/$>$$<$/a$>$@{unzip-\/response $<$a href=""https://travis-\/ci.org/sindresorhus/unzip-\/response"" $>$$<$img src=""https://travis-\/ci.org/sindresorhus/unzip-\/response.svg?branch=master"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ecec7e5b5d0e5d46ebfcd7984a0fb1d2_autotoc_md5120}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ecec7e5b5d0e5d46ebfcd7984a0fb1d2_autotoc_md5120}%
+ \begin{quote}
+Unzip a HTTP response if needed \end{quote}
+Unzips the response from \href{https://nodejs.org/api/http.html\#http_http_request_options_callback}{\texttt{ {\ttfamily http.\+request}}} if it\textquotesingle{}s gzipped/deflated, otherwise just passes it through.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ecec7e5b5d0e5d46ebfcd7984a0fb1d2_autotoc_md5121}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ecec7e5b5d0e5d46ebfcd7984a0fb1d2_autotoc_md5121}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ -\/-\/save\ unzip-\/response}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ecec7e5b5d0e5d46ebfcd7984a0fb1d2_autotoc_md5122}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ecec7e5b5d0e5d46ebfcd7984a0fb1d2_autotoc_md5122}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ http\ =\ require('http');}
+\DoxyCodeLine{const\ unzipResponse\ =\ require('unzip-\/response');}
+\DoxyCodeLine{}
+\DoxyCodeLine{http.get('http://sindresorhus.com',\ res\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ res\ =\ unzipResponse(res);}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ecec7e5b5d0e5d46ebfcd7984a0fb1d2_autotoc_md5123}{}\doxysection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ecec7e5b5d0e5d46ebfcd7984a0fb1d2_autotoc_md5123}
+MIT © \href{https://sindresorhus.com}{\texttt{ Sindre Sorhus}} 

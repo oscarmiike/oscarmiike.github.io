@@ -1,0 +1,35 @@
+\chapter{latest-\/version \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/sindresorhus/latest-\/version"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+org/sindresorhus/latest-\/version.\+svg?branch=master"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2413fd4d01c47df21715ec626865b5d45}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2413fd4d01c47df21715ec626865b5d45}\index{latest-\/version $<$a href="{}https://travis-\/ci.org/sindresorhus/latest-\/version"{} $>$$<$img src="{}https://travis-\/ci.org/sindresorhus/latest-\/version.svg?branch=master"{} alt="{}Build Status"{}/$>$$<$/a$>$@{latest-\/version $<$a href=""https://travis-\/ci.org/sindresorhus/latest-\/version"" $>$$<$img src=""https://travis-\/ci.org/sindresorhus/latest-\/version.svg?branch=master"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2413fd4d01c47df21715ec626865b5d45_autotoc_md3147}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2413fd4d01c47df21715ec626865b5d45_autotoc_md3147}%
+ \begin{quote}
+Get the latest version of a npm package \end{quote}
+Fetches the version directly from the registry instead of depending on the massive \href{https://github.com/npm/npm/blob/8b5e7b6ae5b4cd2d7d62eaf93b1428638b387072/package.json\#L37-L85}{\texttt{ npm}} module like the \href{https://github.com/bahamas10/node-latest}{\texttt{ latest}} module does.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2413fd4d01c47df21715ec626865b5d45_autotoc_md3148}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2413fd4d01c47df21715ec626865b5d45_autotoc_md3148}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ -\/-\/save\ latest-\/version}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2413fd4d01c47df21715ec626865b5d45_autotoc_md3149}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2413fd4d01c47df21715ec626865b5d45_autotoc_md3149}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ latestVersion\ =\ require('latest-\/version');}
+\DoxyCodeLine{}
+\DoxyCodeLine{latestVersion('ava').then(version\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ console.log(version);}
+\DoxyCodeLine{\ \ \ \ //=>\ '0.2.0'}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{latestVersion('@sindresorhus/df').then(version\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ console.log(version);}
+\DoxyCodeLine{\ \ \ \ //=>\ '1.0.1'}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2413fd4d01c47df21715ec626865b5d45_autotoc_md3150}{}\doxysection{\texorpdfstring{Related}{Related}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2413fd4d01c47df21715ec626865b5d45_autotoc_md3150}
+
+\begin{DoxyItemize}
+\item \href{https://github.com/sindresorhus/latest-version-cli}{\texttt{ latest-\/version-\/cli}} -\/ CLI for this module
+\item \href{https://github.com/sindresorhus/package-json}{\texttt{ package-\/json}} -\/ Get the package.\+json of a package from the npm registry
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2413fd4d01c47df21715ec626865b5d45_autotoc_md3151}{}\doxysection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2413fd4d01c47df21715ec626865b5d45_autotoc_md3151}
+MIT © \href{http://sindresorhus.com}{\texttt{ Sindre Sorhus}} 

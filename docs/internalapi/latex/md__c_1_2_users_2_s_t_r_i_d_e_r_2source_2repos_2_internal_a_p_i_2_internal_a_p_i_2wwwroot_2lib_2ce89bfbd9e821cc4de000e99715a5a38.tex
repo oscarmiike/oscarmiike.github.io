@@ -1,0 +1,45 @@
+\chapter{semver-\/diff \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/sindresorhus/semver-\/diff"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+org/sindresorhus/semver-\/diff.\+svg?branch=master"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ce89bfbd9e821cc4de000e99715a5a38}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ce89bfbd9e821cc4de000e99715a5a38}\index{semver-\/diff $<$a href="{}https://travis-\/ci.org/sindresorhus/semver-\/diff"{} $>$$<$img src="{}https://travis-\/ci.org/sindresorhus/semver-\/diff.svg?branch=master"{} alt="{}Build Status"{}/$>$$<$/a$>$@{semver-\/diff $<$a href=""https://travis-\/ci.org/sindresorhus/semver-\/diff"" $>$$<$img src=""https://travis-\/ci.org/sindresorhus/semver-\/diff.svg?branch=master"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ce89bfbd9e821cc4de000e99715a5a38_autotoc_md4545}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ce89bfbd9e821cc4de000e99715a5a38_autotoc_md4545}%
+ \begin{quote}
+Get the diff type of two \href{https://github.com/isaacs/node-semver}{\texttt{ semver}} versions\+: {\ttfamily 0.\+0.\+1 0.\+0.\+2} → {\ttfamily patch} \end{quote}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ce89bfbd9e821cc4de000e99715a5a38_autotoc_md4546}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ce89bfbd9e821cc4de000e99715a5a38_autotoc_md4546}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ -\/-\/save\ semver-\/diff}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ce89bfbd9e821cc4de000e99715a5a38_autotoc_md4547}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ce89bfbd9e821cc4de000e99715a5a38_autotoc_md4547}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ semverDiff\ =\ require('semver-\/diff');}
+\DoxyCodeLine{}
+\DoxyCodeLine{semverDiff('1.1.1',\ '1.1.2');}
+\DoxyCodeLine{//=>\ 'patch'}
+\DoxyCodeLine{}
+\DoxyCodeLine{semverDiff('0.0.1',\ '1.0.0');}
+\DoxyCodeLine{//=>\ 'major'}
+\DoxyCodeLine{}
+\DoxyCodeLine{semverDiff('0.0.1',\ '0.1.0');}
+\DoxyCodeLine{//=>\ 'minor'}
+\DoxyCodeLine{}
+\DoxyCodeLine{semverDiff('0.0.1-\/foo',\ '0.0.1-\/foo.bar');}
+\DoxyCodeLine{//=>\ 'prerelease'}
+\DoxyCodeLine{}
+\DoxyCodeLine{semverDiff('0.1.0',\ '0.1.0+foo');}
+\DoxyCodeLine{//=>\ 'build'}
+\DoxyCodeLine{}
+\DoxyCodeLine{semverDiff('0.0.1',\ '0.0.1');}
+\DoxyCodeLine{//=>\ null}
+\DoxyCodeLine{}
+\DoxyCodeLine{semverDiff('0.0.2',\ '0.0.1');}
+\DoxyCodeLine{//=>\ null}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ce89bfbd9e821cc4de000e99715a5a38_autotoc_md4548}{}\doxysection{\texorpdfstring{API}{API}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ce89bfbd9e821cc4de000e99715a5a38_autotoc_md4548}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ce89bfbd9e821cc4de000e99715a5a38_autotoc_md4549}{}\doxysubsection{\texorpdfstring{semver\+Diff(version\+A, version\+B)}{semver\+Diff(version\+A, version\+B)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ce89bfbd9e821cc4de000e99715a5a38_autotoc_md4549}
+Returns the difference type between two semver versions, or {\ttfamily null} if they\textquotesingle{}re identical or the second one is lower than the first.
+
+Possible values\+: `\textquotesingle{}major'{\ttfamily ,}\textquotesingle{}minor\textquotesingle{}{\ttfamily ,}\textquotesingle{}patch\textquotesingle{}{\ttfamily ,}\textquotesingle{}prerelease\textquotesingle{}{\ttfamily ,}\textquotesingle{}build\textquotesingle{}{\ttfamily ,}null\`{}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ce89bfbd9e821cc4de000e99715a5a38_autotoc_md4550}{}\doxysection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ce89bfbd9e821cc4de000e99715a5a38_autotoc_md4550}
+MIT © \href{http://sindresorhus.com}{\texttt{ Sindre Sorhus}} 

@@ -1,0 +1,352 @@
+\doxysection{Internal\+API.\+Helpers.\+Green\+IDDBHelper Class Reference}
+\hypertarget{class_internal_a_p_i_1_1_helpers_1_1_green_i_d_d_b_helper}{}\label{class_internal_a_p_i_1_1_helpers_1_1_green_i_d_d_b_helper}\index{InternalAPI.Helpers.GreenIDDBHelper@{InternalAPI.Helpers.GreenIDDBHelper}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_internal_a_p_i_1_1_helpers_1_1_green_i_d_d_b_helper_a381cf6db883fccd8687e3045ef06e225}{Green\+IDDBHelper}} (\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{Log\+Service}} log\+Service, \mbox{\hyperlink{class_internal_a_p_i_1_1_contexts_1_1_green_i_d_1_1_a_b_clients_context}{ABClients\+Context}} ab\+Clients\+Context, \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_green_i_d_service}{Green\+IDService}} gid\+Service)
+\item 
+bool \mbox{\hyperlink{class_internal_a_p_i_1_1_helpers_1_1_green_i_d_d_b_helper_a2f7f683406577b4a957f7e09a0557abb}{Add\+Customer}} (string branch, \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_1_1_green_i_d_customer}{Green\+IDCustomer}} green\+IDCustomer)
+\item 
+\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_d_b_1_1_post_customer}{Post\+Customer}} \mbox{\hyperlink{class_internal_a_p_i_1_1_helpers_1_1_green_i_d_d_b_helper_a6b4501300dd91cec08636000001b9209}{Find\+Customer}} (\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_d_b_1_1_post_customer}{Post\+Customer}} customer)
+\begin{DoxyCompactList}\small\item\em finds the latest customer based on the customer data submitted \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_internal_a_p_i_1_1_helpers_1_1_green_i_d_d_b_helper_adf83f81969e4157fa84a0eda747abd1d}{Update\+Netsuite\+ID}} (string green\+IDRef, int netsuite\+ID)
+\item 
+bool \mbox{\hyperlink{class_internal_a_p_i_1_1_helpers_1_1_green_i_d_d_b_helper_a64e02d8fedad1cab20055bc91f00a01b}{Green\+IDRef\+Exists}} (string green\+IDRef)
+\item 
+\mbox{\hyperlink{class_internal_a_p_i_1_1_contexts_1_1_green_i_d_1_1_verified_client}{Verified\+Client}} \mbox{\hyperlink{class_internal_a_p_i_1_1_helpers_1_1_green_i_d_d_b_helper_a3259b6d15b28ff0a925b2db3d40e469c}{Green\+IDCustomer\+To\+Verified\+Client}} (\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_1_1_green_i_d_customer}{Green\+IDCustomer}} green\+IDCustomer)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{Log\+Service}} \mbox{\hyperlink{class_internal_a_p_i_1_1_helpers_1_1_green_i_d_d_b_helper_a06926b33bf7d893d6059504974c18dfa}{logger}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\mbox{\hyperlink{class_internal_a_p_i_1_1_contexts_1_1_green_i_d_1_1_a_b_clients_context}{ABClients\+Context}} \mbox{\hyperlink{class_internal_a_p_i_1_1_helpers_1_1_green_i_d_d_b_helper_a27016f3b12d0d6639ddb242f792ac277}{context}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_helpers_1_1_green_i_d_d_b_helper_a381cf6db883fccd8687e3045ef06e225}\label{class_internal_a_p_i_1_1_helpers_1_1_green_i_d_d_b_helper_a381cf6db883fccd8687e3045ef06e225} 
+\index{InternalAPI.Helpers.GreenIDDBHelper@{InternalAPI.Helpers.GreenIDDBHelper}!GreenIDDBHelper@{GreenIDDBHelper}}
+\index{GreenIDDBHelper@{GreenIDDBHelper}!InternalAPI.Helpers.GreenIDDBHelper@{InternalAPI.Helpers.GreenIDDBHelper}}
+\doxysubsubsection{\texorpdfstring{GreenIDDBHelper()}{GreenIDDBHelper()}}
+{\footnotesize\ttfamily Internal\+API.\+Helpers.\+Green\+IDDBHelper.\+Green\+IDDBHelper (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{Log\+Service}}}]{log\+Service,  }\item[{\mbox{\hyperlink{class_internal_a_p_i_1_1_contexts_1_1_green_i_d_1_1_a_b_clients_context}{ABClients\+Context}}}]{ab\+Clients\+Context,  }\item[{\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_green_i_d_service}{Green\+IDService}}}]{gid\+Service }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_helpers_1_1_green_i_d_d_b_helper_a06926b33bf7d893d6059504974c18dfa}{logger}}\ =\ logService;}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_helpers_1_1_green_i_d_d_b_helper_a27016f3b12d0d6639ddb242f792ac277}{context}}\ =\ abClientsContext;}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ greenIDService\ =\ gidService;}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_helpers_1_1_green_i_d_d_b_helper_a2f7f683406577b4a957f7e09a0557abb}\label{class_internal_a_p_i_1_1_helpers_1_1_green_i_d_d_b_helper_a2f7f683406577b4a957f7e09a0557abb} 
+\index{InternalAPI.Helpers.GreenIDDBHelper@{InternalAPI.Helpers.GreenIDDBHelper}!AddCustomer@{AddCustomer}}
+\index{AddCustomer@{AddCustomer}!InternalAPI.Helpers.GreenIDDBHelper@{InternalAPI.Helpers.GreenIDDBHelper}}
+\doxysubsubsection{\texorpdfstring{AddCustomer()}{AddCustomer()}}
+{\footnotesize\ttfamily bool Internal\+API.\+Helpers.\+Green\+IDDBHelper.\+Add\+Customer (\begin{DoxyParamCaption}\item[{string}]{branch,  }\item[{\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_1_1_green_i_d_customer}{Green\+IDCustomer}}}]{green\+IDCustomer }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_internal_a_p_i_1_1_helpers_1_1_green_i_d_d_b_helper_a64e02d8fedad1cab20055bc91f00a01b}{GreenIDRefExists}}(greenIDCustomer.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_1_1_green_i_d_customer_aa78bdbb0f2294eccbcab0ca31844b883}{verificationId}}))}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ convert\ to\ VerifiedClient\ and\ add\ to\ context}}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ var\ vc\ =\ \mbox{\hyperlink{class_internal_a_p_i_1_1_helpers_1_1_green_i_d_d_b_helper_a3259b6d15b28ff0a925b2db3d40e469c}{GreenIDCustomerToVerifiedClient}}(greenIDCustomer);}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ vc.BranchCode\ =\ branch.ToUpper();}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_helpers_1_1_green_i_d_d_b_helper_a27016f3b12d0d6639ddb242f792ac277}{context}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_contexts_1_1_green_i_d_1_1_a_b_clients_context_ab40694bdf4e79666043aa92ae7f5432f}{VerifiedClients}}.Attach(vc);}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_helpers_1_1_green_i_d_d_b_helper_a27016f3b12d0d6639ddb242f792ac277}{context}}.Entry(vc).State\ =\ Microsoft.EntityFrameworkCore.EntityState.Added;}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_helpers_1_1_green_i_d_d_b_helper_a27016f3b12d0d6639ddb242f792ac277}{context}}.SaveChanges();}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_helpers_1_1_green_i_d_d_b_helper_a06926b33bf7d893d6059504974c18dfa}{logger}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_ae7208181482f25f801a9d637367cc5e7}{LogInformation}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.GreenIDDBHelper,\ \$\textcolor{stringliteral}{"{}added\ customer\ to\ local\ green\ id\ customer\ db"{}},\ vc);}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_helpers_1_1_green_i_d_d_b_helper_a06926b33bf7d893d6059504974c18dfa}{logger}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_ad25f9b254876bb11d042df6148dab40a}{LogException}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.GreenIDDBHelper,\ \$\textcolor{stringliteral}{"{}exception\ adding\ new\ green\ id\ customer\ to\ local\ customers\ db"{}},\ ex);}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_internal_a_p_i_1_1_helpers_1_1_green_i_d_d_b_helper_a2f7f683406577b4a957f7e09a0557abb_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_internal_a_p_i_1_1_helpers_1_1_green_i_d_d_b_helper_a2f7f683406577b4a957f7e09a0557abb_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_internal_a_p_i_1_1_helpers_1_1_green_i_d_d_b_helper_a6b4501300dd91cec08636000001b9209}\label{class_internal_a_p_i_1_1_helpers_1_1_green_i_d_d_b_helper_a6b4501300dd91cec08636000001b9209} 
+\index{InternalAPI.Helpers.GreenIDDBHelper@{InternalAPI.Helpers.GreenIDDBHelper}!FindCustomer@{FindCustomer}}
+\index{FindCustomer@{FindCustomer}!InternalAPI.Helpers.GreenIDDBHelper@{InternalAPI.Helpers.GreenIDDBHelper}}
+\doxysubsubsection{\texorpdfstring{FindCustomer()}{FindCustomer()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_d_b_1_1_post_customer}{Post\+Customer}} Internal\+API.\+Helpers.\+Green\+IDDBHelper.\+Find\+Customer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_d_b_1_1_post_customer}{Post\+Customer}}}]{customer }\end{DoxyParamCaption})}
+
+
+
+finds the latest customer based on the customer data submitted 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_helpers_1_1_green_i_d_d_b_helper_a06926b33bf7d893d6059504974c18dfa}{logger}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_acf860ff3326ea65346a173f3479c6e57}{LogDebug}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.GreenIDDBHelper,\ \$\textcolor{stringliteral}{"{}searching\ for\ customer\ in\ local\ customers\ db"{}},\ customer);}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_contexts_1_1_green_i_d_1_1_verified_client}{VerifiedClient}}\ customerMatch\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//fix\ apostrophes}}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ customer.firstName\ =\ FixApostrophe(customer.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_d_b_1_1_post_customer_add914dafb7f48b6f2a49766539084fb3}{firstName}});}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ customer.lastName\ =\ FixApostrophe(customer.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_d_b_1_1_post_customer_ad4c728732c66514560c6d78d8511d92d}{lastName}});}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\textcolor{keywordtype}{string}.IsNullOrWhiteSpace(customer.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_d_b_1_1_post_customer_ab79808cacb4d1d598bbe49b6d67f5f20}{greenIdRef}}))}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//fisrt\ search\ on\ greenidref\ if\ supplied}}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ customerMatch\ =\ context.VerifiedClients}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .Where(c\ =>\ c.GreenIdref.Trim()\ ==\ customer.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_d_b_1_1_post_customer_ab79808cacb4d1d598bbe49b6d67f5f20}{greenIdRef}}.Trim())}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .OrderByDescending(c\ =>\ c.DateAdded)}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .FirstOrDefault();}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//we\ have\ greenidref\ but\ if\ we\ cant\ find\ in\ database}}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (customerMatch\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//look\ up\ green\ id\ for\ ab\ online}}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_1_1_green_i_d_customer}{GreenIDCustomer}}\ greenIdCustomer\ =\ greenIDService.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_green_i_d_service_add8c85cb430cc575e5ab3c6960216c77}{GetGreenIdCustomer}}(\textcolor{stringliteral}{"{}ab"{}},\ customer.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_d_b_1_1_post_customer_ab79808cacb4d1d598bbe49b6d67f5f20}{greenIdRef}});}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (greenIdCustomer\ !=\ \textcolor{keyword}{null}\ \&\&\ greenIdCustomer.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_1_1_green_i_d_customer_aa6ac78f97dd53411bf1987512cfebcf9}{verificationResult}}.ToLower().Contains(\textcolor{stringliteral}{"{}verified"{}}))}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_helpers_1_1_green_i_d_d_b_helper_a2f7f683406577b4a957f7e09a0557abb}{AddCustomer}}(\textcolor{stringliteral}{"{}ab"{}},\ greenIdCustomer);}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ customerMatch\ =\ \mbox{\hyperlink{class_internal_a_p_i_1_1_helpers_1_1_green_i_d_d_b_helper_a3259b6d15b28ff0a925b2db3d40e469c}{GreenIDCustomerToVerifiedClient}}(greenIdCustomer);}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//we\ have\ greenidref\ but\ if\ we\ cant\ find\ in\ database\ or\ in\ ab\ online}}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (customerMatch\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//look\ up\ green\ id\ for\ am\ online}}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_1_1_green_i_d_customer}{GreenIDCustomer}}\ greenIdCustomer\ =\ greenIDService.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_green_i_d_service_add8c85cb430cc575e5ab3c6960216c77}{GetGreenIdCustomer}}(\textcolor{stringliteral}{"{}am"{}},\ customer.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_d_b_1_1_post_customer_ab79808cacb4d1d598bbe49b6d67f5f20}{greenIdRef}});}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (greenIdCustomer\ !=\ \textcolor{keyword}{null}\ \&\&\ greenIdCustomer.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_1_1_green_i_d_customer_aa6ac78f97dd53411bf1987512cfebcf9}{verificationResult}}.ToLower().Contains(\textcolor{stringliteral}{"{}verified"{}}))}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_helpers_1_1_green_i_d_d_b_helper_a2f7f683406577b4a957f7e09a0557abb}{AddCustomer}}(\textcolor{stringliteral}{"{}am"{}},\ greenIdCustomer);}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ customerMatch\ =\ \mbox{\hyperlink{class_internal_a_p_i_1_1_helpers_1_1_green_i_d_d_b_helper_a3259b6d15b28ff0a925b2db3d40e469c}{GreenIDCustomerToVerifiedClient}}(greenIdCustomer);}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (customerMatch\ ==\ \textcolor{keyword}{null}\ \&\&\ }
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ !\textcolor{keywordtype}{string}.IsNullOrEmpty(customer.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_d_b_1_1_post_customer_add914dafb7f48b6f2a49766539084fb3}{firstName}})\ \&\&}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ !\textcolor{keywordtype}{string}.IsNullOrEmpty(customer.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_d_b_1_1_post_customer_ad4c728732c66514560c6d78d8511d92d}{lastName}})\ \&\&\ }
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ !\textcolor{keywordtype}{string}.IsNullOrEmpty(customer.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_d_b_1_1_post_customer_ae08aa24d42263b386094631bd6bfb85d}{email}}))}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//next\ search\ on\ email\ as\ most\ reliable}}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ customerMatch\ =\ context.VerifiedClients}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .Where(c\ =>\ c.GivenName.Trim().ToLower()\ ==\ customer.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_d_b_1_1_post_customer_add914dafb7f48b6f2a49766539084fb3}{firstName}}.Trim().ToLower()\ \&\&}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ c.Surname.Trim().ToLower()\ ==\ customer.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_d_b_1_1_post_customer_ad4c728732c66514560c6d78d8511d92d}{lastName}}.Trim().ToLower()\ \&\&}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ c.Email.Trim().ToLower()\ ==\ customer.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_d_b_1_1_post_customer_ae08aa24d42263b386094631bd6bfb85d}{email}}.Trim().ToLower())}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .OrderByDescending(c\ =>\ c.DateAdded)}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .FirstOrDefault();}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (customerMatch\ ==\ \textcolor{keyword}{null}\ \&\&\ }
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ !\textcolor{keywordtype}{string}.IsNullOrEmpty(customer.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_d_b_1_1_post_customer_add914dafb7f48b6f2a49766539084fb3}{firstName}})\ \&\&}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ !\textcolor{keywordtype}{string}.IsNullOrEmpty(customer.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_d_b_1_1_post_customer_ad4c728732c66514560c6d78d8511d92d}{lastName}})\ \&\&}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ !\textcolor{keywordtype}{string}.IsNullOrEmpty(customer.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_d_b_1_1_post_customer_af9099c223e35b9f440262e1a0a6d8628}{suburb}}))}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//next\ search\ on\ names\ matching,\ and\ suburb\ }}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ customerMatches\ =\ context.VerifiedClients}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .Where(c\ =>\ c.GivenName.Trim().ToLower()\ ==\ customer.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_d_b_1_1_post_customer_add914dafb7f48b6f2a49766539084fb3}{firstName}}.Trim().ToLower()}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&\&\ c.Surname.Trim().ToLower()\ ==\ customer.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_d_b_1_1_post_customer_ad4c728732c66514560c6d78d8511d92d}{lastName}}.Trim().ToLower()}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&\&\ c.StreetName.Trim().ToLower()\ ==\ customer.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_d_b_1_1_post_customer_af9099c223e35b9f440262e1a0a6d8628}{suburb}}.Trim().ToLower())}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .OrderByDescending(c\ =>\ c.DateAdded);}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//matched\ customers,\ so\ update\ with\ email\ address\ from\ query\ if\ exists}}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (customerMatches\ !=\ \textcolor{keyword}{null}\ \&\&\ customerMatches.Count()\ >\ 0\ \&\&\ !\textcolor{keywordtype}{string}.IsNullOrEmpty(customer.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_d_b_1_1_post_customer_ae08aa24d42263b386094631bd6bfb85d}{email}}))\ }
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_internal_a_p_i_1_1_contexts_1_1_green_i_d_1_1_verified_client}{VerifiedClient}}\ vc\ \textcolor{keywordflow}{in}\ customerMatches)}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vc.Email\ =\ customer.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_d_b_1_1_post_customer_ae08aa24d42263b386094631bd6bfb85d}{email}};}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_helpers_1_1_green_i_d_d_b_helper_a27016f3b12d0d6639ddb242f792ac277}{context}}.Entry(vc).State\ =\ Microsoft.EntityFrameworkCore.EntityState.Modified;}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_helpers_1_1_green_i_d_d_b_helper_a27016f3b12d0d6639ddb242f792ac277}{context}}.SaveChanges();}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ customerMatch\ =\ customerMatches.First();}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (customerMatch\ ==\ \textcolor{keyword}{null}\ \&\&}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ !\textcolor{keywordtype}{string}.IsNullOrEmpty(customer.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_d_b_1_1_post_customer_add914dafb7f48b6f2a49766539084fb3}{firstName}})\ \&\&}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ !\textcolor{keywordtype}{string}.IsNullOrEmpty(customer.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_d_b_1_1_post_customer_ad4c728732c66514560c6d78d8511d92d}{lastName}})\ \&\&}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ !\textcolor{keywordtype}{string}.IsNullOrEmpty(customer.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_d_b_1_1_post_customer_abfb442230973f55dd934274bdc9f02c6}{postcode}}))}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//next\ search\ on\ names\ matching,\ and\ suburb\ }}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ customerMatches\ =\ context.VerifiedClients}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .Where(c\ =>\ c.GivenName.Trim().ToLower()\ ==\ customer.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_d_b_1_1_post_customer_add914dafb7f48b6f2a49766539084fb3}{firstName}}.Trim().ToLower()}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&\&\ c.Surname.Trim().ToLower()\ ==\ customer.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_d_b_1_1_post_customer_ad4c728732c66514560c6d78d8511d92d}{lastName}}.Trim().ToLower()}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&\&\ c.Postcode.Trim()\ ==\ customer.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_d_b_1_1_post_customer_abfb442230973f55dd934274bdc9f02c6}{postcode}}.Trim())}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .OrderByDescending(c\ =>\ c.DateAdded);}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//matched\ customers,\ so\ update\ with\ email\ address\ from\ query\ if\ exists}}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (customerMatches\ !=\ \textcolor{keyword}{null}\ \&\&\ customerMatches.Count()\ >\ 0\ \&\&\ !\textcolor{keywordtype}{string}.IsNullOrEmpty(customer.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_d_b_1_1_post_customer_ae08aa24d42263b386094631bd6bfb85d}{email}}))}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_internal_a_p_i_1_1_contexts_1_1_green_i_d_1_1_verified_client}{VerifiedClient}}\ vc\ \textcolor{keywordflow}{in}\ customerMatches)}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vc.Email\ =\ customer.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_d_b_1_1_post_customer_ae08aa24d42263b386094631bd6bfb85d}{email}};}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_helpers_1_1_green_i_d_d_b_helper_a27016f3b12d0d6639ddb242f792ac277}{context}}.Entry(vc).State\ =\ Microsoft.EntityFrameworkCore.EntityState.Modified;}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_helpers_1_1_green_i_d_d_b_helper_a27016f3b12d0d6639ddb242f792ac277}{context}}.SaveChanges();}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ customerMatch\ =\ customerMatches.First();}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ customer.verifiedCustomer\ =\ customerMatch;}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_helpers_1_1_green_i_d_d_b_helper_a06926b33bf7d893d6059504974c18dfa}{logger}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_ad25f9b254876bb11d042df6148dab40a}{LogException}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.GreenIDDBHelper,\ \$\textcolor{stringliteral}{"{}exception\ looking\ for\ customer\ in\ local\ customers\ db"{}},\ ex,\ customer);}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ customer;}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_internal_a_p_i_1_1_helpers_1_1_green_i_d_d_b_helper_a6b4501300dd91cec08636000001b9209_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_internal_a_p_i_1_1_helpers_1_1_green_i_d_d_b_helper_a6b4501300dd91cec08636000001b9209_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_internal_a_p_i_1_1_helpers_1_1_green_i_d_d_b_helper_a3259b6d15b28ff0a925b2db3d40e469c}\label{class_internal_a_p_i_1_1_helpers_1_1_green_i_d_d_b_helper_a3259b6d15b28ff0a925b2db3d40e469c} 
+\index{InternalAPI.Helpers.GreenIDDBHelper@{InternalAPI.Helpers.GreenIDDBHelper}!GreenIDCustomerToVerifiedClient@{GreenIDCustomerToVerifiedClient}}
+\index{GreenIDCustomerToVerifiedClient@{GreenIDCustomerToVerifiedClient}!InternalAPI.Helpers.GreenIDDBHelper@{InternalAPI.Helpers.GreenIDDBHelper}}
+\doxysubsubsection{\texorpdfstring{GreenIDCustomerToVerifiedClient()}{GreenIDCustomerToVerifiedClient()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_internal_a_p_i_1_1_contexts_1_1_green_i_d_1_1_verified_client}{Verified\+Client}} Internal\+API.\+Helpers.\+Green\+IDDBHelper.\+Green\+IDCustomer\+To\+Verified\+Client (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_1_1_green_i_d_customer}{Green\+IDCustomer}}}]{green\+IDCustomer }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_contexts_1_1_green_i_d_1_1_verified_client}{VerifiedClient}}() }
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GreenIdref\ =\ greenIDCustomer.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_1_1_green_i_d_customer_aa78bdbb0f2294eccbcab0ca31844b883}{verificationId}},}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ DateAdded\ =\ DateTime.Now,}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GivenName\ =\ FixApostrophe(greenIDCustomer.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_1_1_green_i_d_customer_aefc7c079a1221d366e67d934f7b9377e}{givenName}}),}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ MiddleNames\ =\ FixApostrophe(greenIDCustomer.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_1_1_green_i_d_customer_a22056fd2f813897170584adac225cdd1}{middleNames}}),}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Surname\ =\ FixApostrophe(greenIDCustomer.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_1_1_green_i_d_customer_a5b047d536b9ee8aff56982dda236787a}{surname}}),}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Email\ =\ greenIDCustomer.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_1_1_green_i_d_customer_a4a842901a781c7274cd4cb7cba39d8ed}{email}},}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ FlatNumber\ =\ greenIDCustomer.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_1_1_green_i_d_customer_a8a72292f596da9d31c6acb93863bd20a}{flatNumber}},}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ StreetNumber\ =\ greenIDCustomer.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_1_1_green_i_d_customer_aed8eba3fd8e6cca8a3deecb5ec5d47d3}{streetNumber}},}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ StreetName\ =\ greenIDCustomer.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_1_1_green_i_d_customer_a8620cc268500554c64d6c4f2e83ec2e8}{streetName}},}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ StreetType\ =\ greenIDCustomer.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_1_1_green_i_d_customer_a3cc609b0927bb969aa14b1480382bcf3}{streetType}},}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Suburb\ =\ greenIDCustomer.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_1_1_green_i_d_customer_a74828b45f3d659b496b668a224c4cd6e}{suburb}},}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ State\ =\ greenIDCustomer.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_1_1_green_i_d_customer_aceafc1810bc757df9cab55f704f7f198}{state}},}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Postcode\ =\ greenIDCustomer.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_1_1_green_i_d_customer_a66b52a4cdfa7c13b07049c75ca93acb3}{postcode}},}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Country\ =\ greenIDCustomer.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_1_1_green_i_d_customer_a0bc86e61420970b18b082902256f3611}{country}},}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Enabled\ =\ \textcolor{keyword}{true}}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_internal_a_p_i_1_1_helpers_1_1_green_i_d_d_b_helper_a3259b6d15b28ff0a925b2db3d40e469c_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_internal_a_p_i_1_1_helpers_1_1_green_i_d_d_b_helper_a64e02d8fedad1cab20055bc91f00a01b}\label{class_internal_a_p_i_1_1_helpers_1_1_green_i_d_d_b_helper_a64e02d8fedad1cab20055bc91f00a01b} 
+\index{InternalAPI.Helpers.GreenIDDBHelper@{InternalAPI.Helpers.GreenIDDBHelper}!GreenIDRefExists@{GreenIDRefExists}}
+\index{GreenIDRefExists@{GreenIDRefExists}!InternalAPI.Helpers.GreenIDDBHelper@{InternalAPI.Helpers.GreenIDDBHelper}}
+\doxysubsubsection{\texorpdfstring{GreenIDRefExists()}{GreenIDRefExists()}}
+{\footnotesize\ttfamily bool Internal\+API.\+Helpers.\+Green\+IDDBHelper.\+Green\+IDRef\+Exists (\begin{DoxyParamCaption}\item[{string}]{green\+IDRef }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keywordtype}{string}.IsNullOrEmpty(greenIDRef))}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_internal_a_p_i_1_1_helpers_1_1_green_i_d_d_b_helper_a27016f3b12d0d6639ddb242f792ac277}{context}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_contexts_1_1_green_i_d_1_1_a_b_clients_context_ab40694bdf4e79666043aa92ae7f5432f}{VerifiedClients}}.Where(cl\ =>\ cl.GreenIdref\ ==\ greenIDRef).Count()\ >\ 0)}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_internal_a_p_i_1_1_helpers_1_1_green_i_d_d_b_helper_a64e02d8fedad1cab20055bc91f00a01b_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_internal_a_p_i_1_1_helpers_1_1_green_i_d_d_b_helper_adf83f81969e4157fa84a0eda747abd1d}\label{class_internal_a_p_i_1_1_helpers_1_1_green_i_d_d_b_helper_adf83f81969e4157fa84a0eda747abd1d} 
+\index{InternalAPI.Helpers.GreenIDDBHelper@{InternalAPI.Helpers.GreenIDDBHelper}!UpdateNetsuiteID@{UpdateNetsuiteID}}
+\index{UpdateNetsuiteID@{UpdateNetsuiteID}!InternalAPI.Helpers.GreenIDDBHelper@{InternalAPI.Helpers.GreenIDDBHelper}}
+\doxysubsubsection{\texorpdfstring{UpdateNetsuiteID()}{UpdateNetsuiteID()}}
+{\footnotesize\ttfamily bool Internal\+API.\+Helpers.\+Green\+IDDBHelper.\+Update\+Netsuite\+ID (\begin{DoxyParamCaption}\item[{string}]{green\+IDRef,  }\item[{int}]{netsuite\+ID }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ verifiedClient\ =\ \mbox{\hyperlink{class_internal_a_p_i_1_1_helpers_1_1_green_i_d_d_b_helper_a27016f3b12d0d6639ddb242f792ac277}{context}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_contexts_1_1_green_i_d_1_1_a_b_clients_context_ab40694bdf4e79666043aa92ae7f5432f}{VerifiedClients}}.First(vc\ =>\ vc.GreenIdref\ ==\ greenIDRef);}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ verifiedClient.NetsuiteRef\ =\ netsuiteID;}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_helpers_1_1_green_i_d_d_b_helper_a27016f3b12d0d6639ddb242f792ac277}{context}}.Entry(verifiedClient).State\ =\ Microsoft.EntityFrameworkCore.EntityState.Modified;}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_helpers_1_1_green_i_d_d_b_helper_a27016f3b12d0d6639ddb242f792ac277}{context}}.SaveChanges();}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_helpers_1_1_green_i_d_d_b_helper_a06926b33bf7d893d6059504974c18dfa}{logger}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_ad25f9b254876bb11d042df6148dab40a}{LogException}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.GreenIDDBHelper,\ \$\textcolor{stringliteral}{"{}exceeption\ updating\ netsuite\ ref\ for\ greenidref\ \{greenIDRef\}"{}},\ ex);}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_internal_a_p_i_1_1_helpers_1_1_green_i_d_d_b_helper_adf83f81969e4157fa84a0eda747abd1d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_internal_a_p_i_1_1_helpers_1_1_green_i_d_d_b_helper_adf83f81969e4157fa84a0eda747abd1d_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Property Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_helpers_1_1_green_i_d_d_b_helper_a27016f3b12d0d6639ddb242f792ac277}\label{class_internal_a_p_i_1_1_helpers_1_1_green_i_d_d_b_helper_a27016f3b12d0d6639ddb242f792ac277} 
+\index{InternalAPI.Helpers.GreenIDDBHelper@{InternalAPI.Helpers.GreenIDDBHelper}!context@{context}}
+\index{context@{context}!InternalAPI.Helpers.GreenIDDBHelper@{InternalAPI.Helpers.GreenIDDBHelper}}
+\doxysubsubsection{\texorpdfstring{context}{context}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_internal_a_p_i_1_1_contexts_1_1_green_i_d_1_1_a_b_clients_context}{ABClients\+Context}} Internal\+API.\+Helpers.\+Green\+IDDBHelper.\+context\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00015\ \{\ \textcolor{keyword}{get};\ \textcolor{keyword}{set};\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_internal_a_p_i_1_1_helpers_1_1_green_i_d_d_b_helper_a06926b33bf7d893d6059504974c18dfa}\label{class_internal_a_p_i_1_1_helpers_1_1_green_i_d_d_b_helper_a06926b33bf7d893d6059504974c18dfa} 
+\index{InternalAPI.Helpers.GreenIDDBHelper@{InternalAPI.Helpers.GreenIDDBHelper}!logger@{logger}}
+\index{logger@{logger}!InternalAPI.Helpers.GreenIDDBHelper@{InternalAPI.Helpers.GreenIDDBHelper}}
+\doxysubsubsection{\texorpdfstring{logger}{logger}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{Log\+Service}} Internal\+API.\+Helpers.\+Green\+IDDBHelper.\+logger\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00014\ \{\ \textcolor{keyword}{get};\ \textcolor{keyword}{set};\ \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+STRIDER/source/repos/\+Internal\+API/\+Internal\+API/\+Helpers/\mbox{\hyperlink{_green_i_d_d_b_helper_8cs}{Green\+IDDBHelper.\+cs}}\end{DoxyCompactItemize}

@@ -1,0 +1,57 @@
+\chapter{README}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ef7d567184650ae643004ddaac2c5bbe}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ef7d567184650ae643004ddaac2c5bbe}\index{README@{README}}
+
+
+\href{http://gulpjs.com}{\texttt{  }} \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ef7d567184650ae643004ddaac2c5bbe_autotoc_md8400}{}\doxysection{\texorpdfstring{fined}{fined}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ef7d567184650ae643004ddaac2c5bbe_autotoc_md8400}
+\href{https://www.npmjs.com/package/fined}{\texttt{ }} \href{https://www.npmjs.com/package/fined}{\texttt{ }} \href{https://travis-ci.org/gulpjs/fined}{\texttt{ }} \href{https://ci.appveyor.com/project/gulpjs/fined}{\texttt{ }} \href{https://coveralls.io/r/gulpjs/fined}{\texttt{ }} \href{https://gitter.im/gulpjs/gulp}{\texttt{ }}
+
+Find a file given a declaration of locations.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ef7d567184650ae643004ddaac2c5bbe_autotoc_md8401}{}\doxysubsection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ef7d567184650ae643004ddaac2c5bbe_autotoc_md8401}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ fined\ =\ require('fined');}
+\DoxyCodeLine{}
+\DoxyCodeLine{fined(\{\ path:\ 'path/to/file',\ extensions:\ ['.js',\ '.json']\ \});}
+\DoxyCodeLine{//\ =>\ \{\ path:\ '/absolute/path/to/file.js',\ extension:\ '.js'\ \}\ \ (if\ file\ exists)}
+\DoxyCodeLine{//\ =>\ null\ \ (if\ file\ does\ not\ exist)}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ opts\ =\ \{}
+\DoxyCodeLine{\ \ name:\ '.app',}
+\DoxyCodeLine{\ \ cwd:\ '.',}
+\DoxyCodeLine{\ \ extensions:\ \{}
+\DoxyCodeLine{\ \ \ \ 'rc':\ 'default-\/rc-\/loader',}
+\DoxyCodeLine{\ \ \ \ '.yml':\ 'default-\/yml-\/loader',}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{fined(\{\ path:\ '.'\ \},\ opts);}
+\DoxyCodeLine{//\ =>\ \{\ path:\ '/absolute/of/cwd/.app.yml',\ extension:\ \{\ '.yml':\ 'default-\/yml-\/loader'\ \}\ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{fined(\{\ path:\ '\string~',\ extensions:\ \{\ 'rc':\ 'some-\/special-\/rc-\/loader'\ \}\ \},\ opts);}
+\DoxyCodeLine{//\ =>\ \{\ path:\ '/User/home/.apprc',\ extension:\ \{\ 'rc':\ 'some-\/special-\/rc-\/loader'\ \}\ \}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ef7d567184650ae643004ddaac2c5bbe_autotoc_md8402}{}\doxysubsection{\texorpdfstring{API}{API}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ef7d567184650ae643004ddaac2c5bbe_autotoc_md8402}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ef7d567184650ae643004ddaac2c5bbe_autotoc_md8403}{}\doxysubsubsection{\texorpdfstring{fined(path\+Obj, opts) =\texorpdfstring{$>$}{>} object \texorpdfstring{$\vert$}{|} null}{fined(path\+Obj, opts) =\texorpdfstring{$>$}{>} object \texorpdfstring{$\vert$}{|} null}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ef7d567184650ae643004ddaac2c5bbe_autotoc_md8403}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ef7d567184650ae643004ddaac2c5bbe_autotoc_md8404}{}\doxyparagraph{\texorpdfstring{Arguments\+:}{Arguments\+:}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ef7d567184650ae643004ddaac2c5bbe_autotoc_md8404}
+
+\begin{DoxyItemize}
+\item {\bfseries{path\+Obj}} \mbox{[}string \texorpdfstring{$\vert$}{|} object\mbox{]} \+: a path setting for finding a file.
+\item {\bfseries{opts}} \mbox{[}object\mbox{]} \+: a plain object supplements {\ttfamily path\+Obj}.
+
+{\ttfamily path\+Obj} and {\ttfamily opts} can have same properties\+:
+\begin{DoxyItemize}
+\item {\bfseries{path}} \mbox{[}string\mbox{]} \+: a path string.
+\item {\bfseries{name}} \mbox{[}string\mbox{]} \+: a basename.
+\item {\bfseries{extensions}}\+: \mbox{[}string \texorpdfstring{$\vert$}{|} array \texorpdfstring{$\vert$}{|} object\mbox{]} \+: extensions.
+\item {\bfseries{cwd}}\+: a base directory of {\ttfamily path} and for finding up.
+\item {\bfseries{find\+Up}}\+: \mbox{[}boolean\mbox{]} \+: a flag to find up.
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ef7d567184650ae643004ddaac2c5bbe_autotoc_md8405}{}\doxyparagraph{\texorpdfstring{Return\+:}{Return\+:}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ef7d567184650ae643004ddaac2c5bbe_autotoc_md8405}
+This function returns a plain object which consists of following properties if a file exists otherwise null.
+
+
+\begin{DoxyItemize}
+\item {\bfseries{path}} \+: an absolute path
+\item {\bfseries{extension}} \+: a string or a plain object of extension.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ef7d567184650ae643004ddaac2c5bbe_autotoc_md8406}{}\doxysubsection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ef7d567184650ae643004ddaac2c5bbe_autotoc_md8406}
+MIT 

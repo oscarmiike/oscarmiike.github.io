@@ -1,0 +1,473 @@
+\doxysection{Cin7\+Sales\+Order\+Service.\+cs}
+\hypertarget{_cin7_sales_order_service_8cs_source}{}\label{_cin7_sales_order_service_8cs_source}\index{C:/Users/STRIDER/source/repos/InternalAPI/InternalAPI/Services/Cin7/Cin7SalesOrderService.cs@{C:/Users/STRIDER/source/repos/InternalAPI/InternalAPI/Services/Cin7/Cin7SalesOrderService.cs}}
+\mbox{\hyperlink{_cin7_sales_order_service_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }System.Linq;}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }System.Threading.Tasks;}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }RestSharp;}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00006}00006\ \textcolor{keyword}{using\ }RestSharp.Authenticators;}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00007}00007\ \textcolor{keyword}{using\ }System.Net;}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00008}00008\ \textcolor{keyword}{using\ }System.Net.Http;}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00009}00009\ \textcolor{keyword}{using\ }System.Runtime.InteropServices;}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00010}00010\ \textcolor{keyword}{using\ }System.Text;}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00011}00011\ \textcolor{keyword}{using\ }AutoMapper;}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00012}00012\ \textcolor{keyword}{using\ }Newtonsoft.Json;}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00013}00013\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_dto_1_1_cin7}{InternalAPI.Dto.Cin7}};}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00014}00014\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_helpers}{InternalAPI.Helpers}};}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00015}00015\ \textcolor{keyword}{using\ }Microsoft.Extensions.Logging;}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00016}00016\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_settings}{InternalAPI.Settings}};}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00017}00017\ \textcolor{keyword}{using\ }Microsoft.Extensions.Options;}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00018}00018\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_dto_1_1_b_pay}{InternalAPI.Dto.BPay}};}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00019}00019\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_requests}{InternalAPI.Requests}};}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00020}00020\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_responses}{InternalAPI.Responses}};}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00021}00021\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_services_1_1_b_pay}{InternalAPI.Services.BPay}};}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00023}00023\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_services_1_1_cin7}{InternalAPI.Services.Cin7}}}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00024}00024\ \{}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00025}00025\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }Cin7SalesOrderService\ :\ Cin7ServiceBase,\ ICin7SalesOrderService}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00026}00026\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ readonly\ ILogger<Cin7SalesOrderService>\ \_logger;}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ readonly\ \mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_webshop_sales_order_settings}{WebshopSalesOrderSettings}}\ \_webshopSalesOrderSettings;}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ readonly\ \mbox{\hyperlink{interface_internal_a_p_i_1_1_services_1_1_b_pay_1_1_i_b_pay_service}{IBPayService}}\ \_bPayService;}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ readonly\ IMapper\ \_mapper;}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ readonly\ ICin7CustomerService\ \_cin7CustomerService;}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ readonly\ \mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_internal_api_settings}{InternalApiSettings}}\ \_internalAPISettings;}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ readonly\ \mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_s_m_t_p_settings}{SMTPSettings}}\ \_smtpSettings;}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ Cin7SalesOrderService(}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ ILogger<Cin7SalesOrderService>\ logger,}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ IOptions<Cin7Settings>\ cin7Options,}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ IOptions<InternalApiSettings>\ applicationOptions,}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ IOptions<SMTPSettings>\ smtpSettings,}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ IOptions<WebshopSalesOrderSettings>\ webshopSettings,}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{interface_internal_a_p_i_1_1_services_1_1_b_pay_1_1_i_b_pay_service}{IBPayService}}\ bPayService,}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ IMapper\ mapper,}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ ICin7CustomerService\ cin7CustomerService)\ :\ base(cin7Options)}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ this.\_logger\ =\ logger;}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \_webshopSalesOrderSettings\ =\ webshopSettings.Value;}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ this.\_bPayService\ =\ bPayService;}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \_mapper\ =\ mapper;}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \_cin7CustomerService\ =\ cin7CustomerService;}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ this.\_internalAPISettings\ =\ applicationOptions.Value;}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \_smtpSettings\ =\ smtpSettings.Value;}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_cin7_1_1_create_sales_order}{CreateSalesOrder}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_sales_order_request}{CreateCin7SalesOrderRequest}}\ createCin7SalesOrderRequest)}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ var\ commandJson\ =\ JsonConvert.SerializeObject(createCin7SalesOrderRequest);}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogDebug(\$\textcolor{stringliteral}{"{}Creating\ a\ sales\ order\ in\ \{createCin7SalesOrderRequest.AinslieCompanyOption\}:\ Processing\ -\/\ \{commandJson\}"{}});}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ GetOrCreateRestClient(createCin7SalesOrderRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_sales_order_request_aef463a81f9710248c0c311dc19dd0487}{AinslieCompanyOption}});}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_responses_1_1_get_cin7_customer_response}{GetCin7CustomerResponse}}\ getCin7Customer;}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ getCin7Customer\ =\ GetOrCreateCustomerForSalesOrder(createCin7SalesOrderRequest);}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keywordtype}{string}.IsNullOrEmpty(getCin7Customer.\mbox{\hyperlink{class_internal_a_p_i_1_1_responses_1_1_get_cin7_customer_response_a3739fbf1d937a2f80075cbac8d0502b1}{BPayReference}})\ \&\&\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (createCin7SalesOrderRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_sales_order_request_aef463a81f9710248c0c311dc19dd0487}{AinslieCompanyOption}}\ ==\ \mbox{\hyperlink{namespace_internal_a_p_i_1_1_requests_adf51189d6a8e38adf5f9e6aced670be6}{AinslieCompanyOption}}.AB)\ \&\&\ \textcolor{comment}{//\ To\ add\ ABM\ bpay:\ \ ||\ createCin7SalesOrderRequest.AinslieCompanyOption\ ==\ AinslieCompanyOption.ABM}}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ getCin7Customer.\mbox{\hyperlink{class_internal_a_p_i_1_1_responses_1_1_get_cin7_customer_response_a0133f5abf200249f3225fe4417db4e40}{Cin7Id}}.HasValue)}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ leading\ zeros\ required\ to\ make\ 7\ digits\ input,\ which\ =\ 8\ digit\ outpot}}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ leadingZeros\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (var\ i\ =\ 1;\ i\ <=\ 6\ -\/\ getCin7Customer.\mbox{\hyperlink{class_internal_a_p_i_1_1_responses_1_1_get_cin7_customer_response_a0133f5abf200249f3225fe4417db4e40}{Cin7Id}}.ToString().Length;\ i\ +=\ 1)}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ leadingZeros\ +=\ \textcolor{stringliteral}{"{}0"{}};}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogDebug(\$\textcolor{stringliteral}{"{}BPay\ is\ empty\ for\ customer\ in\ \{createCin7SalesOrderRequest.AinslieCompanyOption\}:\ \{getCin7Customer.Cin7Id\}.\ \ Creating\ new\ bpay\ for\ \{leadingZeros\}\{Convert.ToInt32(createCin7SalesOrderRequest.AinslieCompanyOption)\}\{getCin7Customer.Cin7Id\}."{}});}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ translate\ company\ to\ getCin7Customer\ source\ for\ BPay\ validation:}}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ customerSource\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (createCin7SalesOrderRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_sales_order_request_aef463a81f9710248c0c311dc19dd0487}{AinslieCompanyOption}})}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespace_internal_a_p_i_1_1_requests_adf51189d6a8e38adf5f9e6aced670be6}{AinslieCompanyOption}}.AB:}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ customerSource\ =\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_b_pay_1_1_b_pay_service}{BPayService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_b_pay_1_1_b_pay_service_a4addf713af26f105ac7204cb728a30b6}{CustomerSource}}.Cin7Bullion.ToString();}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//case\ AinslieCompanyOption.AW:}}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ customerSource\ =\ BPayService.CustomerSource.Cin7Wealth.ToString();}}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ break;}}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ To\ add\ ABM\ bpay:\ }}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//case\ AinslieCompanyOption.ABM:}}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ customerSource\ =\ BPayService.CustomerSource.Cin7BullionMelbourne.ToString();}}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ break;}}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ bPayResponse\ =\ \_bPayService.GenerateBPayRef(\textcolor{keyword}{new}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_b_pay_1_1_b_pay_customer}{BPayCustomer}}()}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CustomerID\ =\ \$\textcolor{stringliteral}{"{}\{getCin7Customer.Cin7Id\}"{}},}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CustomerSource\ =\ customerSource}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00099}00099\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ getCin7Customer.BPayReference\ =\ bPayResponse.BPayRef;}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogDebug(\$\textcolor{stringliteral}{"{}BPay\ received:\ \{getCin7Customer.BPayReference\}."{}});}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\textcolor{keywordtype}{string}.IsNullOrEmpty(getCin7Customer.\mbox{\hyperlink{class_internal_a_p_i_1_1_responses_1_1_get_cin7_customer_response_a3739fbf1d937a2f80075cbac8d0502b1}{BPayReference}}))}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_cin7CustomerService.UpdateCin7CustomerBPay(}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ createCin7SalesOrderRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_sales_order_request_aef463a81f9710248c0c311dc19dd0487}{AinslieCompanyOption}},\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ getCin7Customer.\mbox{\hyperlink{class_internal_a_p_i_1_1_responses_1_1_get_cin7_customer_response_a0133f5abf200249f3225fe4417db4e40}{Cin7Id}}.Value,}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ getCin7Customer.\mbox{\hyperlink{class_internal_a_p_i_1_1_responses_1_1_get_cin7_customer_response_a3739fbf1d937a2f80075cbac8d0502b1}{BPayReference}});}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00108}00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00110}00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogError(\$\textcolor{stringliteral}{"{}Error\ updating\ bpay\ in\ \{createCin7SalesOrderRequest.AinslieCompanyOption\}.\ \ Exception:\ \{ex\}"{}});}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00113}00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00115}00115\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00116}00116\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00117}00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogError(\$\textcolor{stringliteral}{"{}Error\ getting\ or\ creating\ customer\ in\ Cin7\{createCin7SalesOrderRequest.AinslieCompanyOption\}.\ \ Processing\ with\ generic\ webshop\ getCin7Customer.\ \ Exception:\ \{ex\}"{}});}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00118}00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ getCin7Customer\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_responses_1_1_get_cin7_customer_response}{GetCin7CustomerResponse}}()\ \{\ Cin7Id\ =\ \_webshopSalesOrderSettings.GenericCin7ClientId\ \};}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00120}00120\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00121}00121\ \ \ \ \ \ \ \ \ \ \ \ \ var\ customerDetails\ =\ createCin7SalesOrderRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_sales_order_request_acd45de40e46fc469617339d2489a1bd2}{CustomerDetails}};}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00122}00122\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00123}00123\ \ \ \ \ \ \ \ \ \ \ \ \ var\ salesOrder\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_cin7_1_1_create_sales_order}{CreateSalesOrder}}();}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00124}00124\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00125}00125\ \ \ \ \ \ \ \ \ \ \ \ \ var\ salesOrderDateTime\ =\ DateTime.Now;}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00126}00126\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00127}00127\ \ \ \ \ \ \ \ \ \ \ \ \ salesOrder.createdDate\ =\ salesOrderDateTime;}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00128}00128\ \ \ \ \ \ \ \ \ \ \ \ \ salesOrder.modifiedDate\ =\ salesOrderDateTime;}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00129}00129\ \ \ \ \ \ \ \ \ \ \ \ \ salesOrder.isApproved\ =\ \_webshopSalesOrderSettings.CreateAsApproved;}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00130}00130\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00131}00131\ \ \ \ \ \ \ \ \ \ \ \ \ salesOrder.reference\ =\ createCin7SalesOrderRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_sales_order_request_a4f01443c472459f1ef7552709cb18179}{SalesOrderReference}};}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00132}00132\ \ \ \ \ \ \ \ \ \ \ \ \ salesOrder.company\ =\ customerDetails.Company?.Trim();}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00133}00133\ \ \ \ \ \ \ \ \ \ \ \ \ salesOrder.firstName\ =\ customerDetails.FirstName?.Trim();}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00134}00134\ \ \ \ \ \ \ \ \ \ \ \ \ salesOrder.lastName\ =\ customerDetails.Surname?.Trim();}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00135}00135\ \ \ \ \ \ \ \ \ \ \ \ \ salesOrder.phone\ =\ customerDetails.Phone?.Trim();}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00136}00136\ \ \ \ \ \ \ \ \ \ \ \ \ salesOrder.email\ =\ customerDetails.Email?.Trim();}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00137}00137\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00138}00138\ \ \ \ \ \ \ \ \ \ \ \ \ salesOrder.deliveryFirstName\ =\ createCin7SalesOrderRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_sales_order_request_a349b2192e7858260d0bd16aded811511}{DeliveryFirstName}}?.Trim();}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00139}00139\ \ \ \ \ \ \ \ \ \ \ \ \ salesOrder.deliveryLastName\ =\ createCin7SalesOrderRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_sales_order_request_a1137fde78ed32c92dd44964eb2f5e823}{DeliverySurname}}?.Trim();}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00140}00140\ \ \ \ \ \ \ \ \ \ \ \ \ salesOrder.deliveryCompany\ =\ createCin7SalesOrderRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_sales_order_request_a121bebec40348181d56085c47d88e9ae}{DeliveryCompany}}?.Trim();}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00141}00141\ \ \ \ \ \ \ \ \ \ \ \ \ salesOrder.deliveryAddress1\ =\ createCin7SalesOrderRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_sales_order_request_a3daa2016eb4042e27111503298a22341}{DeliveryAddress1}}?.Trim();}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ salesOrder.deliveryAddress2\ =\ createCin7SalesOrderRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_sales_order_request_abefda6d6a1ad6ccda0e12c8fdd993c94}{DeliveryAddress2}}?.Trim();}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00143}00143\ \ \ \ \ \ \ \ \ \ \ \ \ salesOrder.deliveryCity\ =\ createCin7SalesOrderRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_sales_order_request_a2d9401c3dd8fd72af409e379a8fe9fbd}{DeliverySuburb}}?.Trim();}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00144}00144\ \ \ \ \ \ \ \ \ \ \ \ \ salesOrder.deliveryState\ =\ createCin7SalesOrderRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_sales_order_request_a957346e8b11df4357dfc3f92d4a61763}{DeliveryState}}?.Trim();}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00145}00145\ \ \ \ \ \ \ \ \ \ \ \ \ salesOrder.deliveryPostalCode\ =\ createCin7SalesOrderRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_sales_order_request_a73c0940790cae39258b6309850b56518}{DeliveryPostCode}}?.Trim();}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00146}00146\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00147}00147\ \ \ \ \ \ \ \ \ \ \ \ \ salesOrder.billingFirstName\ =\ createCin7SalesOrderRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_sales_order_request_afce4f99ac838f86643d508d4e82e6da3}{BillingFirstName}}?.Trim();}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00148}00148\ \ \ \ \ \ \ \ \ \ \ \ \ salesOrder.billingLastName\ =\ createCin7SalesOrderRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_sales_order_request_a56b43eb1a17dde6e49d135d50c9709c9}{BillingSurname}}?.Trim();}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00149}00149\ \ \ \ \ \ \ \ \ \ \ \ \ salesOrder.billingCompany\ =\ createCin7SalesOrderRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_sales_order_request_ac5d684d50abac37a27fe99afe71dcc34}{BillingCompany}}?.Trim();}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00150}00150\ \ \ \ \ \ \ \ \ \ \ \ \ salesOrder.billingAddress1\ =\ createCin7SalesOrderRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_sales_order_request_adee54c6bbc8712fde76c8ed6204ab691}{BillingAddress1}}?.Trim();}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00151}00151\ \ \ \ \ \ \ \ \ \ \ \ \ salesOrder.billingAddress2\ =\ createCin7SalesOrderRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_sales_order_request_ae46cd45912da71a1ea0f16c6c89864fe}{BillingAddress2}}?.Trim();}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00152}00152\ \ \ \ \ \ \ \ \ \ \ \ \ salesOrder.billingCity\ =\ createCin7SalesOrderRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_sales_order_request_a21a1e14be8af03a4ce81fe7052c1a4c5}{BillingSuburb}}?.Trim();}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00153}00153\ \ \ \ \ \ \ \ \ \ \ \ \ salesOrder.billingState\ =\ createCin7SalesOrderRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_sales_order_request_a78d632855f14623a06b92d41b993319b}{BillingState}}?.Trim();}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00154}00154\ \ \ \ \ \ \ \ \ \ \ \ \ salesOrder.billingPostalCode\ =\ createCin7SalesOrderRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_sales_order_request_a84be07059b59bf5d91ee6d23debb3dad}{BillingPostCode}}?.Trim();}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00155}00155\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00156}00156\ \ \ \ \ \ \ \ \ \ \ \ \ salesOrder.productTotal\ =\ createCin7SalesOrderRequest.OrderDetails.OrderTotal\ -\/\ createCin7SalesOrderRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_sales_order_request_a48d1614435404412451e2b71f4f6a16f}{OrderDetails}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_order_details_a68d24f5d7da286dcaf98d48e3748c2e7}{ShippingTotal}};}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00157}00157\ \ \ \ \ \ \ \ \ \ \ \ \ salesOrder.freightTotal\ =\ createCin7SalesOrderRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_sales_order_request_a48d1614435404412451e2b71f4f6a16f}{OrderDetails}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_order_details_a68d24f5d7da286dcaf98d48e3748c2e7}{ShippingTotal}};}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00158}00158\ \ \ \ \ \ \ \ \ \ \ \ \ salesOrder.total\ =\ createCin7SalesOrderRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_sales_order_request_a48d1614435404412451e2b71f4f6a16f}{OrderDetails}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_order_details_a43ead5248f4d9db130fceedc7167ddda}{OrderTotal}};}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00159}00159\ \ \ \ \ \ \ \ \ \ \ \ \ salesOrder.currencyCode\ =\ \textcolor{stringliteral}{"{}AUD"{}};}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00160}00160\ \ \ \ \ \ \ \ \ \ \ \ \ salesOrder.currencyRate\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00161}00161\ \ \ \ \ \ \ \ \ \ \ \ \ salesOrder.currencySymbol\ =\ \textcolor{stringliteral}{"{}\$"{}};}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00162}00162\ \ \ \ \ \ \ \ \ \ \ \ \ salesOrder.status\ =\ createCin7SalesOrderRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_sales_order_request_a7101f70392dcae5cf34810fcc14f7762}{Status}};}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00163}00163\ \ \ \ \ \ \ \ \ \ \ \ \ salesOrder.projectName\ =\ createCin7SalesOrderRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_sales_order_request_a3ce808ac977bae35a15218874a35ab21}{ProjectName}};}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00164}00164\ \ \ \ \ \ \ \ \ \ \ \ \ salesOrder.memberId\ =\ getCin7Customer.Cin7Id\ ??\ 0;}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00165}00165\ \ \ \ \ \ \ \ \ \ \ \ \ salesOrder.branchId\ =\ createCin7SalesOrderRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_sales_order_request_af8fc25feabe787140c049318f227e896}{BranchId}};}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00166}00166\ \ \ \ \ \ \ \ \ \ \ \ \ salesOrder.stage\ =\ createCin7SalesOrderRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_sales_order_request_a0fc9b038b90d214dc94dff835ff3efeb}{Stage}};}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00167}00167\ \ \ \ \ \ \ \ \ \ \ \ \ salesOrder.customerOrderNo\ =\ createCin7SalesOrderRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_sales_order_request_aaa387348fea44eaa4449a76211635f9b}{CustomerOrderNo}};}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00168}00168\ \ \ \ \ \ \ \ \ \ \ \ \ salesOrder.internalComments\ =\ createCin7SalesOrderRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_sales_order_request_a337af9d248a3c8a2f8a7c55a6441b585}{InternalComments}}?.Trim();}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00169}00169\ \ \ \ \ \ \ \ \ \ \ \ \ salesOrder.deliveryInstructions\ =\ createCin7SalesOrderRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_sales_order_request_ae94dc532685f2a15d64c5fc7b66f22a5}{DeliveryInstructions}}?.Trim();}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00170}00170\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00171}00171\ \ \ \ \ \ \ \ \ \ \ \ \ var\ lineItems\ =\ \textcolor{keyword}{new}\ List<Lineitem>();}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00172}00172\ \ \ \ \ \ \ \ \ \ \ \ \ salesOrder.lineItems\ =\ lineItems;}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00173}00173\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_order_line_item}{CreateCin7OrderLineItem}}\ cartItem\ \textcolor{keywordflow}{in}\ createCin7SalesOrderRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_sales_order_request_a48d1614435404412451e2b71f4f6a16f}{OrderDetails}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_order_details_aa727a266e054fe3e9f962de448afd789}{OrderLines}})}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00174}00174\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00175}00175\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Retrieve\ product\ details\ by\ SKU\ from\ Cin7}}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00176}00176\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00177}00177\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ '\ Product\ Option\ by\ SKU}}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00178}00178\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ getProductOptionsRequest\ =\ \textcolor{keyword}{new}\ RestRequest(\$\textcolor{stringliteral}{"{}/v1/ProductOptions?where=\{WebUtility.UrlEncode(\$"{}}code\ =\ \textcolor{stringliteral}{'\{cartItem.ProductSKU\}'}\textcolor{stringliteral}{"{})\}"{}},\ Method.GET);}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00179}00179\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00180}00180\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ getProductOptionsResponse\ =\ client.ExecuteWithRetry(getProductOptionsRequest,\ 3,\ 5000)}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00181}00181\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .Parse<IEnumerable<Productoption>>();}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00182}00182\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00183}00183\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ To\ remain\ under\ 1\ request\ per\ second\ Cin7\ limit:}}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00184}00184\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Task.Delay(5000).GetAwaiter().GetResult();}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00185}00185\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00186}00186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!getProductOptionsResponse.IsSuccessful\ ||\ getProductOptionsResponse.Data\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00187}00187\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \textcolor{keyword}{new}\ InvalidOperationException(\$\textcolor{stringliteral}{"{}Error\ retreiving\ product\ options\ from\ Cin7:\ Status\ \{getProductOptionsResponse.StatusCode\}\ :\ \{getProductOptionsResponse.Content\}"{}});}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00188}00188\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00189}00189\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!getProductOptionsResponse.Data.Any())}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00190}00190\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \textcolor{keyword}{new}\ InvalidOperationException(\$\textcolor{stringliteral}{"{}No\ products\ returned\ from\ Cin7.\ for\ SKU\ \{cartItem.ProductSKU\}."{}});}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00191}00191\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00192}00192\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ productOption\ =\ getProductOptionsResponse.Data.First();}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00193}00193\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00194}00194\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ '\ Product\ Details}}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00195}00195\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ getProductDetailsRequest\ =\ \textcolor{keyword}{new}\ RestRequest(\$\textcolor{stringliteral}{"{}/v1/Products/\{productOption.productId\}"{}},\ Method.GET);}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00196}00196\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00197}00197\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ getProductDetailsResponse\ =\ client.ExecuteWithRetry(getProductDetailsRequest,\ 3,\ 5000)}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00198}00198\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .Parse<\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_cin7_1_1_get_product}{GetProduct}}>();}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00199}00199\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00200}00200\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ To\ remain\ under\ 1\ request\ per\ second\ Cin7\ limit:}}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00201}00201\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Task.Delay(5000).GetAwaiter().GetResult();}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00202}00202\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00203}00203\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!getProductDetailsResponse.IsSuccessful\ ||\ getProductDetailsResponse.Data\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00204}00204\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \textcolor{keyword}{new}\ InvalidOperationException(\$\textcolor{stringliteral}{"{}Error\ retrieving\ product\ details\ from\ Cin7:\ Status\ \{getProductDetailsResponse.StatusCode\}\ :\ \{getProductDetailsResponse.Content\}"{}});}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00205}00205\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00206}00206\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (getProductDetailsResponse.Data.id\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00207}00207\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \textcolor{keyword}{new}\ InvalidOperationException(\$\textcolor{stringliteral}{"{}No\ products\ returned\ from\ Cin7\ for\ id\ \{productOption.productId\}."{}});}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00208}00208\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00209}00209\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ product\ =\ getProductDetailsResponse.Data;}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00210}00210\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00211}00211\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ '\ Create\ line\ item}}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00212}00212\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ salesLineItem\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_cin7_1_1_lineitem}{Lineitem}}()}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00213}00213\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00214}00214\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ createdDate\ =\ salesOrderDateTime,}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00215}00215\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ styleCode\ =\ cartItem.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_order_line_item_a5b396f7085c5abf23279e8fa80e2fca4}{ProductSKU}},}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00216}00216\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ code\ =\ cartItem.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_order_line_item_a5b396f7085c5abf23279e8fa80e2fca4}{ProductSKU}},}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00217}00217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ qty\ =\ cartItem.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_order_line_item_adb0c20537a42bc2ed780f52a18b52348}{Qty}},}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00218}00218\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ unitPrice\ =\ cartItem.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_order_line_item_a503fc3c31d4514874a52cb212d642ba5}{QtyPrice}},}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00219}00219\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ productId\ =\ product.id,}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00220}00220\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ productOptionId\ =\ productOption.id,}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00221}00221\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ name\ =\ product.name,}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00222}00222\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ lineComments\ =\ cartItem.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_order_line_item_a9785edb2ff72765835cb2f9ed16a814f}{ProductWarning}},}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00223}00223\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00224}00224\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00225}00225\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ lineItems.Add(salesLineItem);}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00226}00226\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00227}00227\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00228}00228\ \ \ \ \ \ \ \ \ \ \ \ \ var\ createOrderRequest\ =\ \textcolor{keyword}{new}\ List<CreateSalesOrder>();}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00229}00229\ \ \ \ \ \ \ \ \ \ \ \ \ createOrderRequest.Add(salesOrder);}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00230}00230\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00231}00231\ \ \ \ \ \ \ \ \ \ \ \ \ var\ request\ =\ \textcolor{keyword}{new}\ RestRequest(\textcolor{stringliteral}{"{}/v1/SalesOrders"{}},\ Method.POST);}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00232}00232\ \ \ \ \ \ \ \ \ \ \ \ \ var\ jsonBody\ =\ JsonConvert.SerializeObject(createOrderRequest);}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00233}00233\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddParameter(\textcolor{stringliteral}{"{}application/json"{}},\ jsonBody,\ ParameterType.RequestBody);}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00234}00234\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00235}00235\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00236}00236\ \ \ \ \ \ \ \ \ \ \ \ \ var\ response\ =\ client.ExecuteWithRetry(request,\ 3,\ 5000)}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00237}00237\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .Parse<IEnumerable<Cin7ResponseItem>>();}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00238}00238\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00239}00239\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!response.IsSuccessful\ ||\ response.Data\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00240}00240\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \textcolor{keyword}{new}\ InvalidOperationException(\$\textcolor{stringliteral}{"{}Error\ creating\ a\ Sales\ Order\ in\ Cin7,\ Status:\ \{response.StatusCode\},\ Content:\ \{response.Content\}"{}});}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00241}00241\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00242}00242\ \ \ \ \ \ \ \ \ \ \ \ \ var\ orderResponses\ =\ response.Data;}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00243}00243\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00244}00244\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (orderResponses\ ==\ \textcolor{keyword}{null}\ ||\ !orderResponses.Any())}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00245}00245\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \textcolor{keyword}{new}\ InvalidOperationException(\$\textcolor{stringliteral}{"{}No\ sales\ order\ responses\ returned\ from\ Cin7.\ \ Creation\ failed."{}});}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00246}00246\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00247}00247\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ To\ remain\ under\ 1\ request\ per\ second\ Cin7\ limit:}}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00248}00248\ \ \ \ \ \ \ \ \ \ \ \ \ Task.Delay(5000).GetAwaiter().GetResult();}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00249}00249\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00250}00250\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00251}00251\ \ \ \ \ \ \ \ \ \ \ \ \ var\ orderResponse\ =\ orderResponses.FirstOrDefault();}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00252}00252\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00253}00253\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!orderResponse.success)}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00254}00254\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \textcolor{keyword}{new}\ InvalidOperationException(\$\textcolor{stringliteral}{"{}Failed\ to\ create\ order\ in\ Cin7:\ \{string.Join("{}}\ \textcolor{stringliteral}{"{},\ orderResponse.errors)\}"{}});}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00255}00255\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00256}00256\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ This\ order\ has\ been\ successfully\ created\ in\ Cin7.\ \ Try\ catch\ around\ the\ remaining\ logic}}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00257}00257\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ This\ way\ the\ final\ admin\ email\ will\ still\ be\ sent,\ and\ will\ detail\ that\ the\ payment\ failed}}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00258}00258\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ orderId\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00259}00259\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00260}00260\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00261}00261\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ orderId\ =\ orderResponses.FirstOrDefault().id\ ??\ \textcolor{keywordflow}{throw}\ \textcolor{keyword}{new}\ InvalidOperationException(\textcolor{stringliteral}{"{}Did\ not\ find\ order\ id\ on\ create\ sales\ order\ response"{}});}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00262}00262\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (createCin7SalesOrderRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_sales_order_request_a48d1614435404412451e2b71f4f6a16f}{OrderDetails}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_order_details_aa0a6d9f1c2beb0b9d9e38208775c7c1d}{DepositTotal}}\ >\ 0\ )}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00263}00263\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00264}00264\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ payment\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_payment_details}{CreatePaymentDetails}}()}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00265}00265\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00266}00266\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CreatedDate\ =\ salesOrderDateTime,}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00267}00267\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ModifiedDate\ =\ salesOrderDateTime,}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00268}00268\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ IsAuthorized\ =\ \textcolor{keyword}{false},}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00269}00269\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Method\ =\ createCin7SalesOrderRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_sales_order_request_adda28fa2dc63767b541ad4ffcd4a7ede}{PaymentMethod}},}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00270}00270\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ OrderId\ =\ orderId,}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00271}00271\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ OrderRef\ =\ salesOrder.reference,}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00272}00272\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PaymentDate\ =\ salesOrderDateTime,}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00273}00273\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Amount\ =\ \ createCin7SalesOrderRequest.OrderDetails.DepositTotal}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00274}00274\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00275}00275\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00276}00276\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ payment\ request\ and\ enqueue}}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00277}00277\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ paymentList\ =\ \textcolor{keyword}{new}\ List<CreatePaymentDetails>();}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00278}00278\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ paymentList.Add(payment);}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00279}00279\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ createPaymentCommand\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_payment_request}{CreateCin7PaymentRequest}}()}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00280}00280\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00281}00281\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Company\ =\ createCin7SalesOrderRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_sales_order_request_aef463a81f9710248c0c311dc19dd0487}{AinslieCompanyOption}},}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00282}00282\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Payments\ =\ paymentList,}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00283}00283\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Cin7OrderId\ =\ orderId}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00284}00284\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00285}00285\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00286}00286\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_cin7_1_1_create_payment}{CreatePayment}}(createPaymentCommand);}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00287}00287\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00288}00288\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\textcolor{keywordtype}{string}.IsNullOrEmpty(createCin7SalesOrderRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_sales_order_request_a60528145f84b64df25c188db673df653}{WebHookUrl}}))}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00289}00289\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SendResponseToWebHook(createCin7SalesOrderRequest,\ orderId);}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00290}00290\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00291}00291\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (createCin7SalesOrderRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_sales_order_request_a289351532c6bb4fb369e6235779ec31d}{AdminEmail}}\ !=\ \textcolor{keyword}{null}\ \&\&\ createCin7SalesOrderRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_sales_order_request_a289351532c6bb4fb369e6235779ec31d}{AdminEmail}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_cin7_request_email_content_a0ff3e90f4962b285f6f112189f88de59}{To}}\ !=\ \textcolor{keyword}{null}\ \&\&\ createCin7SalesOrderRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_sales_order_request_a289351532c6bb4fb369e6235779ec31d}{AdminEmail}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_cin7_request_email_content_a04d4782fd1afc90ddf5fc9bafe66bda2}{From}}\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00292}00292\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SendFinalAdminEmail(}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00293}00293\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ createCin7SalesOrderRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_sales_order_request_aef463a81f9710248c0c311dc19dd0487}{AinslieCompanyOption}},}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00294}00294\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ createCin7SalesOrderRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_sales_order_request_a289351532c6bb4fb369e6235779ec31d}{AdminEmail}},\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00295}00295\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true},\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00296}00296\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{false},}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00297}00297\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ orderId,}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00298}00298\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ salesOrder.reference);}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00299}00299\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00300}00300\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00301}00301\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00302}00302\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\textcolor{keywordtype}{string}.IsNullOrEmpty(createCin7SalesOrderRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_sales_order_request_a60528145f84b64df25c188db673df653}{WebHookUrl}}))}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00303}00303\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SendResponseToWebHook(createCin7SalesOrderRequest,\ orderId);}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00304}00304\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00305}00305\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (createCin7SalesOrderRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_sales_order_request_a289351532c6bb4fb369e6235779ec31d}{AdminEmail}}\ !=\ \textcolor{keyword}{null}\ \&\&\ createCin7SalesOrderRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_sales_order_request_a289351532c6bb4fb369e6235779ec31d}{AdminEmail}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_cin7_request_email_content_a0ff3e90f4962b285f6f112189f88de59}{To}}\ !=\ \textcolor{keyword}{null}\ \&\&\ createCin7SalesOrderRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_sales_order_request_a289351532c6bb4fb369e6235779ec31d}{AdminEmail}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_cin7_request_email_content_a04d4782fd1afc90ddf5fc9bafe66bda2}{From}}\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00306}00306\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SendFinalAdminEmail(}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00307}00307\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ createCin7SalesOrderRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_sales_order_request_aef463a81f9710248c0c311dc19dd0487}{AinslieCompanyOption}},}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00308}00308\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ createCin7SalesOrderRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_sales_order_request_a289351532c6bb4fb369e6235779ec31d}{AdminEmail}},}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00309}00309\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true},}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00310}00310\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{false},}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00311}00311\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ orderId,}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00312}00312\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ salesOrder.reference);}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00313}00313\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00314}00314\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00315}00315\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogInformation(\$\textcolor{stringliteral}{"{}Created\ a\ sales\ order\ for\ \{getCin7Customer.FirstName\}\ \{getCin7Customer.Surname\}\ in\ \{createCin7SalesOrderRequest.AinslieCompanyOption\}."{}});}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00316}00316\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00317}00317\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00318}00318\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00319}00319\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogError(ex,\ \$\textcolor{stringliteral}{"{}Error\ processing\ payment\ in\ \{createCin7SalesOrderRequest.AinslieCompanyOption\}"{}});}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00320}00320\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00321}00321\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\textcolor{keywordtype}{string}.IsNullOrEmpty(createCin7SalesOrderRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_sales_order_request_a60528145f84b64df25c188db673df653}{WebHookUrl}}))}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00322}00322\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SendResponseToWebHook(createCin7SalesOrderRequest,\ 0);}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00323}00323\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00324}00324\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (createCin7SalesOrderRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_sales_order_request_a289351532c6bb4fb369e6235779ec31d}{AdminEmail}}\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00325}00325\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SendFinalAdminEmail(}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00326}00326\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ createCin7SalesOrderRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_sales_order_request_aef463a81f9710248c0c311dc19dd0487}{AinslieCompanyOption}},}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00327}00327\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ createCin7SalesOrderRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_sales_order_request_a289351532c6bb4fb369e6235779ec31d}{AdminEmail}},}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00328}00328\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true},}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00329}00329\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{true},}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00330}00330\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ orderId,}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00331}00331\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ salesOrder.reference);}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00332}00332\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00333}00333\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw};}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00334}00334\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00335}00335\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00336}00336\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00337}00337\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ SendResponseToWebHook(\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_sales_order_request}{CreateCin7SalesOrderRequest}}\ request,\ \textcolor{keywordtype}{int}\ cin7OrderId)}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00338}00338\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00339}00339\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keywordtype}{string}.IsNullOrEmpty(request.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_sales_order_request_a60528145f84b64df25c188db673df653}{WebHookUrl}}))\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00340}00340\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00341}00341\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00342}00342\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00343}00343\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ response\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_cin7_1_1_create_sales_order_web_hook_response}{CreateSalesOrderWebHookResponse}}()}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00344}00344\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00345}00345\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Cin7OrderID\ =\ cin7OrderId,}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00346}00346\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ WebHookRef\ =\ request.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_sales_order_request_acfb142235ea4b5268ac009f104edac94}{WebHookRef}},}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00347}00347\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Cin7Store\ =\ request.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_sales_order_request_aef463a81f9710248c0c311dc19dd0487}{AinslieCompanyOption}},}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00348}00348\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Success\ =\ cin7OrderId\ !=\ 0}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00349}00349\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00350}00350\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogInformation(\$\textcolor{stringliteral}{"{}Posting\ to\ webhook,\ Object:\ \{JsonConvert.SerializeObject(response)\}"{}});}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00351}00351\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00352}00352\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ httpClient\ =\ \textcolor{keyword}{new}\ HttpClient();}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00353}00353\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ content\ =\ \textcolor{keyword}{new}\ StringContent(JsonConvert.SerializeObject(response),\ Encoding.UTF8,\ \textcolor{stringliteral}{"{}application/json"{}});}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00354}00354\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00355}00355\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Post\ and\ wait\ for\ result}}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00356}00356\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ httpClient.PostAsync(request.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_sales_order_request_a60528145f84b64df25c188db673df653}{WebHookUrl}},\ content).GetAwaiter().GetResult();}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00357}00357\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogInformation(\$\textcolor{stringliteral}{"{}Posted\ to\ webhook"{}});}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00358}00358\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00359}00359\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ e)}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00360}00360\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00361}00361\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogWarning(e,\ \$\textcolor{stringliteral}{"{}Posting\ to\ webhook\ failed"{}});}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00362}00362\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00363}00363\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00364}00364\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00365}00365\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_cin7_1_1_create_payment}{CreatePayment}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_payment_request}{CreateCin7PaymentRequest}}\ request)}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00366}00366\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00367}00367\ \ \ \ \ \ \ \ \ \ \ \ \ ServicePointManager.SecurityProtocol\ =\ SecurityProtocolType.Tls12;}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00368}00368\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ GetOrCreateRestClient(request.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_payment_request_af52bdbccb9b84df4aacfaa515ce58888}{Company}});}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00369}00369\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00370}00370\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Body\ to\ Cin7:}}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00371}00371\ \ \ \ \ \ \ \ \ \ \ \ \ var\ payments\ =\ \_mapper.Map<List<CreatePayment>>(request.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_payment_request_a23befb539ee9d50acac76d9457da0db8}{Payments}});}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00372}00372\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00373}00373\ \ \ \ \ \ \ \ \ \ \ \ \ var\ paymentRequest\ =\ \textcolor{keyword}{new}\ RestRequest(\textcolor{stringliteral}{"{}/v1/Payments"{}},\ Method.POST);}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00374}00374\ \ \ \ \ \ \ \ \ \ \ \ \ var\ createPaymentJson\ =\ JsonConvert.SerializeObject(payments);}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00375}00375\ \ \ \ \ \ \ \ \ \ \ \ \ paymentRequest.AddParameter(\textcolor{stringliteral}{"{}application/json"{}},\ createPaymentJson,\ ParameterType.RequestBody);}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00376}00376\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00377}00377\ \ \ \ \ \ \ \ \ \ \ \ \ var\ paymentResponseMessage\ =\ client.ExecuteWithRetry(paymentRequest,\ 3,\ 5000)}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00378}00378\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .Parse<IEnumerable<Cin7ResponseItem>>();}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00379}00379\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00380}00380\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!paymentResponseMessage.IsSuccessful\ ||\ paymentResponseMessage.Data\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00381}00381\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \textcolor{keyword}{new}\ InvalidOperationException(\$\textcolor{stringliteral}{"{}Error\ creating\ a\ payment\ in\ Cin7:\ Status\ \{paymentResponseMessage.StatusCode\}\ :\ \{paymentResponseMessage.Content\}"{}});}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00382}00382\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00383}00383\ \ \ \ \ \ \ \ \ \ \ \ \ var\ paymentResponses\ =\ paymentResponseMessage.Data;}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00384}00384\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00385}00385\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (paymentResponses\ ==\ \textcolor{keyword}{null}\ ||\ !paymentResponses.Any())}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00386}00386\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \textcolor{keyword}{new}\ InvalidOperationException(\$\textcolor{stringliteral}{"{}No\ payment\ responses\ returned\ from\ Cin7.\ \ Creation\ failed."{}});}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00387}00387\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00388}00388\ \ \ \ \ \ \ \ \ \ \ \ \ var\ paymentResponse\ =\ paymentResponses.FirstOrDefault();}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00389}00389\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00390}00390\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!paymentResponse.success)}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00391}00391\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \textcolor{keyword}{new}\ InvalidOperationException(\$\textcolor{stringliteral}{"{}Failed\ to\ create\ order\ in\ Cin7:\ \{string.Join("{}}\ \textcolor{stringliteral}{"{},\ paymentResponse.errors)\}"{}});}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00392}00392\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00393}00393\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00394}00394\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ SendFinalAdminEmail(\mbox{\hyperlink{namespace_internal_a_p_i_1_1_requests_adf51189d6a8e38adf5f9e6aced670be6}{AinslieCompanyOption}}\ company,\ \mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_cin7_request_email_content}{Cin7RequestEmailContent}}\ emailContent,\ \textcolor{keywordtype}{bool}\ orderCreated,\ \textcolor{keywordtype}{bool}\ paymentFailed,\ \textcolor{keywordtype}{int}?\ cin7OrderNumber,\ \textcolor{keywordtype}{string}\ reference)}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00395}00395\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00396}00396\ \ \ \ \ \ \ \ \ \ \ \ \ var\ companyShortString\ =\ company\ \textcolor{keywordflow}{switch}}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00397}00397\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00398}00398\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ AinslieCompanyOption.AB\ =>\ \textcolor{stringliteral}{"{}Cin7\ AB"{}},}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00399}00399\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ AinslieCompanyOption.AW\ =>\ \textcolor{stringliteral}{"{}Cin7\ AW"{}},}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00400}00400\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ AinslieCompanyOption.ABM\ =>\ \textcolor{stringliteral}{"{}Cin7\ ABM"{}},}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00401}00401\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_\ =>\ \textcolor{stringliteral}{"{}unknown\ company"{}}}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00402}00402\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00403}00403\ \ \ \ \ \ \ \ \ \ \ \ \ var\ subject\ =\ \$\textcolor{stringliteral}{"{}\{reference\}\ Pushed\ to\ \{companyShortString\}\ \{(orderCreated\ ?\ \$"{}}\ \#\{cin7OrderNumber\}\textcolor{stringliteral}{"{}\ :\ "{}}-\/\ Failed!\textcolor{stringliteral}{"{})\}"{}};}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00404}00404\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00405}00405\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (paymentFailed)}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00406}00406\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ subject\ =\ \$\textcolor{stringliteral}{"{}\{subject\}\ -\/\ Payment\ not\ created!"{}};}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00407}00407\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00408}00408\ \ \ \ \ \ \ \ \ \ \ \ \ var\ toAddress\ =\ \_internalAPISettings.isDev\ ?\ \_internalAPISettings.devAdminEmail\ :\ emailContent.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_cin7_request_email_content_a0ff3e90f4962b285f6f112189f88de59}{To}};}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00409}00409\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00410}00410\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }System.Net.Mail.MailMessage\ mailMessage\ =}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00411}00411\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ System.Net.Mail.MailMessage(emailContent.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_cin7_request_email_content_a04d4782fd1afc90ddf5fc9bafe66bda2}{From}},\ toAddress,\ subject,\ emailContent.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_cin7_request_email_content_a17d30e19db6dd91c7922831fe0a4470f}{Body}})}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00412}00412\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00413}00413\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ IsBodyHtml\ =\ \textcolor{keyword}{true}}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00414}00414\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00415}00415\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00416}00416\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//if\ (!orderCreated\ ||\ !paymentFailed)}}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00417}00417\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ mailMessage.Priority\ =\ System.Net.Mail.MailPriority.High;}}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00418}00418\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00419}00419\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ smtpServer\ =\ \_smtpSettings.SMTPServer;}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00420}00420\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ smtpUsername\ =\ \_smtpSettings.SMTPUsername;}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00421}00421\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ smtpPassword\ =\ \_smtpSettings.SMTPPassword;}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00422}00422\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00423}00423\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keywordtype}{string}.IsNullOrWhiteSpace(smtpServer))}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00424}00424\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \textcolor{keyword}{new}\ InvalidOperationException(\textcolor{stringliteral}{"{}SMTPServer\ not\ available\ in\ config"{}});}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00425}00425\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keywordtype}{string}.IsNullOrWhiteSpace(smtpUsername))}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00426}00426\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \textcolor{keyword}{new}\ InvalidOperationException(\textcolor{stringliteral}{"{}SMTPUsername\ not\ available\ in\ config"{}});}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00427}00427\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keywordtype}{string}.IsNullOrWhiteSpace(smtpPassword))}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00428}00428\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \textcolor{keyword}{new}\ InvalidOperationException(\textcolor{stringliteral}{"{}SMTPPassword\ not\ available\ in\ config"{}});}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00429}00429\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00430}00430\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }System.Net.Mail.SmtpClient\ smtpClient\ =\ \textcolor{keyword}{new}\ System.Net.Mail.SmtpClient();}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00431}00431\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (smtpServer?.Contains(\textcolor{stringliteral}{"{}:"{}})\ ==\ \textcolor{keyword}{true})}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00432}00432\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00433}00433\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ smtpClient.Host\ =\ smtpServer.Split(\textcolor{stringliteral}{"{}:"{}})[0];}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00434}00434\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ smtpClient.Port\ =\ \textcolor{keywordtype}{int}.Parse(smtpServer.Split(\textcolor{stringliteral}{"{}:"{}})[1]);}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00435}00435\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00436}00436\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00437}00437\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ smtpClient.Host\ =\ smtpServer;}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00438}00438\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00439}00439\ \ \ \ \ \ \ \ \ \ \ \ \ smtpClient.Credentials\ =\ \textcolor{keyword}{new}\ NetworkCredential(smtpUsername,\ smtpPassword);}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00440}00440\ \ \ \ \ \ \ \ \ \ \ \ \ smtpClient.Send(mailMessage);}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00441}00441\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00442}00442\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00443}00443\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_responses_1_1_get_cin7_customer_response}{GetCin7CustomerResponse}}\ GetOrCreateCustomerForSalesOrder(\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_sales_order_request}{CreateCin7SalesOrderRequest}}\ createSalesOrderRequest)}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00444}00444\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00445}00445\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ ID\ on\ the\ sales\ order\ request,\ search\ for\ customer}}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00446}00446\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ If\ the\ customer\ exists\ against\ that\ ID,\ return\ it}}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00447}00447\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (createSalesOrderRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_sales_order_request_a65a0e5a227deb123b0b733e7644bd565}{CustomerId}}\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00448}00448\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00449}00449\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ matchingRecord\ =\ \_cin7CustomerService.SearchId(createSalesOrderRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_sales_order_request_aef463a81f9710248c0c311dc19dd0487}{AinslieCompanyOption}},\ createSalesOrderRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_sales_order_request_a65a0e5a227deb123b0b733e7644bd565}{CustomerId}}.Value);}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00450}00450\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ To\ remain\ under\ 1\ request\ per\ second\ Cin7\ limit:}}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00451}00451\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Task.Delay(5000).GetAwaiter().GetResult();}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00452}00452\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (matchingRecord\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00453}00453\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_mapper.Map<\mbox{\hyperlink{class_internal_a_p_i_1_1_responses_1_1_get_cin7_customer_response}{GetCin7CustomerResponse}}>(matchingRecord);}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00454}00454\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00455}00455\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00456}00456\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (createSalesOrderRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_sales_order_request_acd45de40e46fc469617339d2489a1bd2}{CustomerDetails}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00457}00457\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \textcolor{keyword}{new}\ InvalidOperationException(\textcolor{stringliteral}{"{}Neither\ Customer\ Id\ or\ Customer\ Details\ provided"{}});}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00458}00458\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00459}00459\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Get\ or\ create\ from\ CustomerDetails\ object}}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00460}00460\ \ \ \ \ \ \ \ \ \ \ \ \ var\ customerToCreate\ =\ \_mapper.Map<\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_customer_request}{CreateCin7CustomerRequest}}>(createSalesOrderRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_sales_order_request_acd45de40e46fc469617339d2489a1bd2}{CustomerDetails}});}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00461}00461\ \ \ \ \ \ \ \ \ \ \ \ \ customerToCreate.AinslieCompanyOption\ =\ createSalesOrderRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_requests_1_1_create_cin7_sales_order_request_aef463a81f9710248c0c311dc19dd0487}{AinslieCompanyOption}};}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00462}00462\ }
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00463}00463\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_cin7CustomerService.GetOrCreateCustomer(customerToCreate,\ CustomerFoundBehaviour.DoNotUpdate);}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00464}00464\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00465}00465\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00466}00466\ \}}
+\DoxyCodeLine{\Hypertarget{_cin7_sales_order_service_8cs_source_l00467}00467\ }
+
+\end{DoxyCode}

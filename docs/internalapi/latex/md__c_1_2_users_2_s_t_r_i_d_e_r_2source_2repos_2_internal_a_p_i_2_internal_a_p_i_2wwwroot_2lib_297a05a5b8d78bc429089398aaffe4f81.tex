@@ -1,0 +1,40 @@
+\chapter{request-\/progress \texorpdfstring{$<$}{<}a href="{}http\+://travis-\/ci.\+org/\+Indigo\+United/node-\/request-\/progress.\+png"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://secure.\+travis-\/ci.\+org/\+Indigo\+United/node-\/request-\/progress.\+png"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_297a05a5b8d78bc429089398aaffe4f81}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_297a05a5b8d78bc429089398aaffe4f81}\index{request-\/progress $<$a href="{}http://travis-\/ci.org/IndigoUnited/node-\/request-\/progress.png"{} $>$$<$img src="{}https://secure.travis-\/ci.org/IndigoUnited/node-\/request-\/progress.png"{} alt="{}Build Status"{}/$>$$<$/a$>$@{request-\/progress $<$a href=""http://travis-\/ci.org/IndigoUnited/node-\/request-\/progress.png"" $>$$<$img src=""https://secure.travis-\/ci.org/IndigoUnited/node-\/request-\/progress.png"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_297a05a5b8d78bc429089398aaffe4f81_autotoc_md4244}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_297a05a5b8d78bc429089398aaffe4f81_autotoc_md4244}%
+ Tracks the download progress of a request made with \href{https://github.com/mikeal/request}{\texttt{ request}}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_297a05a5b8d78bc429089398aaffe4f81_autotoc_md4245}{}\doxysection{\texorpdfstring{Installation}{Installation}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_297a05a5b8d78bc429089398aaffe4f81_autotoc_md4245}
+{\ttfamily \$ npm install request-\/progress}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_297a05a5b8d78bc429089398aaffe4f81_autotoc_md4246}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_297a05a5b8d78bc429089398aaffe4f81_autotoc_md4246}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ fs\ =\ require('fs');}
+\DoxyCodeLine{var\ request\ =\ require('request');}
+\DoxyCodeLine{var\ progress\ =\ require('request-\/progress');}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Note\ that\ the\ options\ argument\ is\ optional}
+\DoxyCodeLine{progress(request('http://google.com/doodle.png'),\ \{}
+\DoxyCodeLine{\ \ \ \ throttle:\ 2000,\ \ //\ Throttle\ the\ progress\ event\ to\ 2000ms,\ defaults\ to\ 1000ms}
+\DoxyCodeLine{\ \ \ \ delay:\ 1000\ \ \ \ \ \ //\ Only\ start\ to\ emit\ after\ 1000ms\ delay,\ defaults\ to\ 0ms}
+\DoxyCodeLine{\})}
+\DoxyCodeLine{.on('progress',\ function\ (state)\ \{}
+\DoxyCodeLine{\ \ \ \ console.log('received\ size\ in\ bytes',\ state.received);}
+\DoxyCodeLine{\ \ \ \ //\ The\ properties\ bellow\ can\ be\ null\ if\ response\ does\ not\ contain}
+\DoxyCodeLine{\ \ \ \ //\ the\ content-\/length\ header}
+\DoxyCodeLine{\ \ \ \ console.log('total\ size\ in\ bytes',\ state.total);}
+\DoxyCodeLine{\ \ \ \ console.log('percent',\ state.percent);}
+\DoxyCodeLine{\})}
+\DoxyCodeLine{.on('error',\ function\ (err)\ \{}
+\DoxyCodeLine{\ \ \ \ //\ Do\ something\ with\ err}
+\DoxyCodeLine{\})}
+\DoxyCodeLine{.pipe(fs.createWriteStream('doodle.png'))}
+\DoxyCodeLine{.on('error',\ function\ (err)\ \{}
+\DoxyCodeLine{\ \ \ \ //\ Do\ something\ with\ err}
+\DoxyCodeLine{\})}
+\DoxyCodeLine{.on('close',\ function\ (err)\ \{}
+\DoxyCodeLine{\ \ \ \ //\ Saved\ to\ doogle.png!}
+\DoxyCodeLine{\})}
+
+\end{DoxyCode}
+
+
+Note that the {\ttfamily state} object emitted in the {\ttfamily progress} event is reused to avoid creating a new object for each event.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_297a05a5b8d78bc429089398aaffe4f81_autotoc_md4247}{}\doxysection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_297a05a5b8d78bc429089398aaffe4f81_autotoc_md4247}
+Released under the \href{http://www.opensource.org/licenses/mit-license.php}{\texttt{ MIT License}}. 

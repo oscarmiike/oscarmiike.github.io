@@ -1,0 +1,39 @@
+\chapter{onetime \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/sindresorhus/onetime"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+org/sindresorhus/onetime.\+svg?branch=master"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a0546cc6bfe061e17b6c669492709de1}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a0546cc6bfe061e17b6c669492709de1}\index{onetime $<$a href="{}https://travis-\/ci.org/sindresorhus/onetime"{} $>$$<$img src="{}https://travis-\/ci.org/sindresorhus/onetime.svg?branch=master"{} alt="{}Build Status"{}/$>$$<$/a$>$@{onetime $<$a href=""https://travis-\/ci.org/sindresorhus/onetime"" $>$$<$img src=""https://travis-\/ci.org/sindresorhus/onetime.svg?branch=master"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a0546cc6bfe061e17b6c669492709de1_autotoc_md2882}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a0546cc6bfe061e17b6c669492709de1_autotoc_md2882}%
+ \begin{quote}
+Only call a function once \end{quote}
+When called multiple times it will return the return value from the first call.
+
+{\itshape Unlike the module \href{https://github.com/isaacs/once}{\texttt{ once}}, this one isn\textquotesingle{}t naughty extending {\ttfamily Function.\+prototype}.}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a0546cc6bfe061e17b6c669492709de1_autotoc_md2883}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a0546cc6bfe061e17b6c669492709de1_autotoc_md2883}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ -\/-\/save\ onetime}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a0546cc6bfe061e17b6c669492709de1_autotoc_md2884}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a0546cc6bfe061e17b6c669492709de1_autotoc_md2884}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{let\ i\ =\ 0;}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ foo\ =\ onetime(()\ =>\ i++);}
+\DoxyCodeLine{}
+\DoxyCodeLine{foo();\ //=>\ 0}
+\DoxyCodeLine{foo();\ //=>\ 0}
+\DoxyCodeLine{foo();\ //=>\ 0}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a0546cc6bfe061e17b6c669492709de1_autotoc_md2885}{}\doxysection{\texorpdfstring{API}{API}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a0546cc6bfe061e17b6c669492709de1_autotoc_md2885}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a0546cc6bfe061e17b6c669492709de1_autotoc_md2886}{}\doxysubsection{\texorpdfstring{onetime(function, \mbox{[}should\+Throw\mbox{]})}{onetime(function, \mbox{[}should\+Throw\mbox{]})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a0546cc6bfe061e17b6c669492709de1_autotoc_md2886}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a0546cc6bfe061e17b6c669492709de1_autotoc_md2887}{}\doxysubsubsection{\texorpdfstring{function}{function}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a0546cc6bfe061e17b6c669492709de1_autotoc_md2887}
+Type\+: {\ttfamily function}
+
+Function that should only be called once.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a0546cc6bfe061e17b6c669492709de1_autotoc_md2888}{}\doxysubsubsection{\texorpdfstring{should\+Throw}{should\+Throw}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a0546cc6bfe061e17b6c669492709de1_autotoc_md2888}
+Type\+: {\ttfamily boolean} ~\newline
+ Default\+: {\ttfamily false}
+
+
+
+Set to {\ttfamily true} if you want it to fail with a nice and descriptive error when called more than once.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a0546cc6bfe061e17b6c669492709de1_autotoc_md2889}{}\doxysection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a0546cc6bfe061e17b6c669492709de1_autotoc_md2889}
+MIT © \href{http://sindresorhus.com}{\texttt{ Sindre Sorhus}} 

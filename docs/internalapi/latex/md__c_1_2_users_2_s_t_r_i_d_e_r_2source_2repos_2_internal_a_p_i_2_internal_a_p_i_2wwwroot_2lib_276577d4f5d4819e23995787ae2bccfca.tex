@@ -1,0 +1,263 @@
+\chapter{function}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_276577d4f5d4819e23995787ae2bccfca}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_276577d4f5d4819e23995787ae2bccfca}\index{function@{function}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_276577d4f5d4819e23995787ae2bccfca_autotoc_md1182}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_276577d4f5d4819e23995787ae2bccfca_autotoc_md1182}%
+ Function\texorpdfstring{$\ast$}{*}(al)\texorpdfstring{$\ast$}{*} utilities.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_276577d4f5d4819e23995787ae2bccfca_autotoc_md1183}{}\doxysection{\texorpdfstring{after(fn, n)\+:Function}{after(fn, n)\+:Function}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_276577d4f5d4819e23995787ae2bccfca_autotoc_md1183}
+This creates a function that will only call {\ttfamily fn} if it was called {\ttfamily n} or more times.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{function\ onLoaded()\ \{}
+\DoxyCodeLine{\ \ \ \ console.log('all\ images\ loaded');}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ imagePaths\ =\ ['1.jpg',\ '2.jpg',\ '3.jpg'];}
+\DoxyCodeLine{var\ callback\ =\ after(onLoaded,\ imagePaths.length);}
+\DoxyCodeLine{}
+\DoxyCodeLine{forEach(imagePaths,\ function(path)\ \{}
+\DoxyCodeLine{\ \ \ \ asyncLoad(path,\ callback);}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_276577d4f5d4819e23995787ae2bccfca_autotoc_md1184}{}\doxysection{\texorpdfstring{await\+Delay(fn, delay)\+:Function}{await\+Delay(fn, delay)\+:Function}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_276577d4f5d4819e23995787ae2bccfca_autotoc_md1184}
+Returns a function that ensures that {\ttfamily fn} is only called {\itshape after} {\ttfamily delay} milliseconds have elapsed. When the returned function is called before the delay has elapsed, it will wait until the delay has elapsed and then call {\ttfamily fn}. When the returned function is called after the delay has elapsed, it will call {\ttfamily fn} after the next "{}tick"{} (it will always be called asynchronously). The context and arguments that the returned function is called in are applied to {\ttfamily fn}.
+
+In the below example {\ttfamily on\+Loaded} will not be executed before a 1000 millisecond delay. Even if {\ttfamily load\+Images} loads and calls {\ttfamily callback} earlier. However, say the images take 1500 milliseconds to load, it will trigger {\ttfamily on\+Loaded} immediately.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ callback\ =\ awaitDelay(onLoaded,\ 1000);}
+\DoxyCodeLine{loadImages(callback);}
+\DoxyCodeLine{function\ onLoaded()\{}
+\DoxyCodeLine{\ \ \ \ console.log('loaded');}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+You can also cancel de delayed call by simply using the native {\ttfamily clear\+Timeout} method (like a regular {\ttfamily set\+Timeout} call).
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ timeoutId\ =\ callback();}
+\DoxyCodeLine{//\ onLoaded\ won't\ be\ called\ since\ it\ was\ canceled\ before\ the\ 1000ms\ delay}
+\DoxyCodeLine{clearTimeout(timeoutId);}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_276577d4f5d4819e23995787ae2bccfca_autotoc_md1185}{}\doxysubsection{\texorpdfstring{Arguments\+:}{Arguments\+:}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_276577d4f5d4819e23995787ae2bccfca_autotoc_md1185}
+
+\begin{DoxyEnumerate}
+\item {\ttfamily fn} (Function) \+: Target Function
+\item {\ttfamily delay} (Number) \+: Delay of execution in milliseconds
+\end{DoxyEnumerate}
+
+See\+: \`{}debounce()\`{}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_276577d4f5d4819e23995787ae2bccfca_autotoc_md1186}{}\doxysection{\texorpdfstring{bind(fn, context, \mbox{[}...\+args\mbox{]})\+:Function}{bind(fn, context, \mbox{[}...\+args\mbox{]})\+:Function}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_276577d4f5d4819e23995787ae2bccfca_autotoc_md1186}
+Return a function that will execute in the given context, optionally adding any additional supplied parameters to the beginning of the arguments collection.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_276577d4f5d4819e23995787ae2bccfca_autotoc_md1187}{}\doxysubsection{\texorpdfstring{Arguments}{Arguments}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_276577d4f5d4819e23995787ae2bccfca_autotoc_md1187}
+
+\begin{DoxyEnumerate}
+\item {\ttfamily fn} (Function) \+: Target Function
+\item {\ttfamily context} (Object) \+: Execution context (object used as {\ttfamily this})
+\item {\ttfamily \mbox{[}...args\mbox{]}} (\texorpdfstring{$\ast$}{*}) \+: Arguments (0...n arguments)
+\end{DoxyEnumerate}
+
+See\+: \`{}partial()\`{}, \href{./object.html\#bindAll}{\texttt{ object/bind\+All}}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_276577d4f5d4819e23995787ae2bccfca_autotoc_md1188}{}\doxysection{\texorpdfstring{compose(...\+fn)\+:Function}{compose(...\+fn)\+:Function}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_276577d4f5d4819e23995787ae2bccfca_autotoc_md1188}
+Returns the composition of a list of functions, where each function consumes the return value of the function that follows. In math terms, composing the functions {\ttfamily f()}, {\ttfamily g()}, and {\ttfamily h()} produces {\ttfamily f(g(h()))}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{function\ add2(x)\ \{\ return\ x\ +\ 2\ \}}
+\DoxyCodeLine{function\ multi2(x)\ \{\ return\ x\ *\ 2\ \}}
+\DoxyCodeLine{map([1,\ 2,\ 3],\ compose(add2,\ multi2));\ //\ [4,\ 6,\ 8]}
+\DoxyCodeLine{}
+\DoxyCodeLine{//same\ as}
+\DoxyCodeLine{map([1,\ 2,\ 3],\ function(x)\{}
+\DoxyCodeLine{\ \ \ \ return\ add2(\ multi2(x)\ );}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_276577d4f5d4819e23995787ae2bccfca_autotoc_md1189}{}\doxysection{\texorpdfstring{constant(value)\+:Function}{constant(value)\+:Function}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_276577d4f5d4819e23995787ae2bccfca_autotoc_md1189}
+Returns a new function that will always return {\ttfamily value} when called.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ f\ =\ constant('foo');}
+\DoxyCodeLine{f();\ //\ 'foo'}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ Provided\ arguments\ are\ ignored;\ value\ is\ always\ returned}
+\DoxyCodeLine{f(1);\ //\ 'foo'}
+\DoxyCodeLine{}
+\DoxyCodeLine{f\ =\ constant(\{\ foo:\ 'bar'\ \});}
+\DoxyCodeLine{f();\ //\ \{\ foo:\ 'bar'\ \}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_276577d4f5d4819e23995787ae2bccfca_autotoc_md1190}{}\doxysection{\texorpdfstring{debounce(fn, delay\mbox{[}, is\+Asap\mbox{]})\+:Function}{debounce(fn, delay\mbox{[}, is\+Asap\mbox{]})\+:Function}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_276577d4f5d4819e23995787ae2bccfca_autotoc_md1190}
+Creates a function that will delay the execution of {\ttfamily fn} until after {\ttfamily delay} milliseconds have elapsed since the last time it was invoked.
+
+Subsequent calls to the debounced function will return the result of the last {\ttfamily fn} call.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ sometimes\ less\ is\ more}
+\DoxyCodeLine{var\ lazyRedraw\ =\ debounce(redraw,\ 300);}
+\DoxyCodeLine{foo.on.resize.add(lazyRedraw);}
+
+\end{DoxyCode}
+
+
+In this visualization, {\ttfamily \texorpdfstring{$\vert$}{|}} is a debounced-\/function call and {\ttfamily X} is the actual callback execution\+: \begin{DoxyVerb}Default
+||||||||||||||||||||||||| (pause) |||||||||||||||||||||||||
+                         X                                 X
+
+Debounced with `isAsap == true`:
+||||||||||||||||||||||||| (pause) |||||||||||||||||||||||||
+X                                 X
+\end{DoxyVerb}
+ You also have the option to cancel the debounced call if it didn\textquotesingle{}t happen yet\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{lazyRedraw();}
+\DoxyCodeLine{//\ lazyRedraw\ won't\ be\ called\ since\ \`{}cancel`\ was\ called\ before\ the\ \`{}delay`}
+\DoxyCodeLine{lazyRedraw.cancel();}
+
+\end{DoxyCode}
+
+
+See\+: \`{}throttle()\`{}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_276577d4f5d4819e23995787ae2bccfca_autotoc_md1191}{}\doxysection{\texorpdfstring{func(name)\+:Function}{func(name)\+:Function}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_276577d4f5d4819e23995787ae2bccfca_autotoc_md1191}
+Returns a function that calls a method with given {\ttfamily name} on supplied object. Useful for iteration methods like {\ttfamily array/map} and {\ttfamily array/for\+Each}.
+
+See\+: \`{}prop()\`{}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ will\ call\ the\ method\ \`{}getName()`\ for\ each\ \`{}user`}
+\DoxyCodeLine{var\ names\ =\ map(users,\ func('getName'));}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_276577d4f5d4819e23995787ae2bccfca_autotoc_md1192}{}\doxysection{\texorpdfstring{identity(val)\+:\texorpdfstring{$\ast$}{*}}{identity(val)\+:\texorpdfstring{$\ast$}{*}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_276577d4f5d4819e23995787ae2bccfca_autotoc_md1192}
+Returns the first argument provided to it.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{identity(3);\ \ \ \ \ //\ 3}
+\DoxyCodeLine{identity(1,2,3);\ //\ 1}
+\DoxyCodeLine{identity('foo');\ //\ "{}foo"{}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_276577d4f5d4819e23995787ae2bccfca_autotoc_md1193}{}\doxysection{\texorpdfstring{partial(fn, \mbox{[}...\+args\mbox{]})\+:Function}{partial(fn, \mbox{[}...\+args\mbox{]})\+:Function}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_276577d4f5d4819e23995787ae2bccfca_autotoc_md1193}
+Return a partially applied function supplying default arguments.
+
+This method is similar to \`{}bind\`{}, except it does not alter the this binding.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_276577d4f5d4819e23995787ae2bccfca_autotoc_md1194}{}\doxysubsection{\texorpdfstring{Arguments}{Arguments}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_276577d4f5d4819e23995787ae2bccfca_autotoc_md1194}
+
+\begin{DoxyEnumerate}
+\item {\ttfamily fn} (Function) \+: Target Function
+\item {\ttfamily \mbox{[}...args\mbox{]}} (\texorpdfstring{$\ast$}{*}) \+: Arguments (0...n arguments)
+\end{DoxyEnumerate}
+
+See\+: \`{}bind()\`{}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{function\ add(a,\ b)\{\ return\ a\ +\ b\ \}}
+\DoxyCodeLine{var\ add10\ =\ partial(add,\ 10);}
+\DoxyCodeLine{console.log(\ add10(2)\ );\ //\ 12}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_276577d4f5d4819e23995787ae2bccfca_autotoc_md1195}{}\doxysection{\texorpdfstring{prop(name)\+:Function}{prop(name)\+:Function}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_276577d4f5d4819e23995787ae2bccfca_autotoc_md1195}
+Returns a function that gets a property with given {\ttfamily name} from supplied object. Useful for using in conjunction with {\ttfamily array/map} and/or for creating getters.
+
+See\+: \href{array.html\#pluck}{\texttt{ {\ttfamily array/pluck()}}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ users\ =\ [\{name:"{}John"{},\ age:21\},\ \{name:"{}Jane"{},\ age:25\}];}
+\DoxyCodeLine{//\ ["{}John"{},\ "{}Jane"{}]}
+\DoxyCodeLine{var\ names\ =\ map(users,\ prop('name'));}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_276577d4f5d4819e23995787ae2bccfca_autotoc_md1196}{}\doxysection{\texorpdfstring{series(...\+fn)\+:Function}{series(...\+fn)\+:Function}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_276577d4f5d4819e23995787ae2bccfca_autotoc_md1196}
+Returns a function that will execute all the supplied functions in order and passing the same parameters to all of them. Useful for combining multiple {\ttfamily array/for\+Each} into a single one and/or for debugging.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ call\ \`{}console.log()`\ and\ \`{}doStuff()`\ for\ each\ item\ item\ in\ the\ array}
+\DoxyCodeLine{forEach(arr,\ series(console.log,\ doStuff));}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_276577d4f5d4819e23995787ae2bccfca_autotoc_md1197}{}\doxysection{\texorpdfstring{throttle(fn, interval)\+:Function}{throttle(fn, interval)\+:Function}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_276577d4f5d4819e23995787ae2bccfca_autotoc_md1197}
+Creates a function that, when executed, will only call the {\ttfamily fn} function at most once per every {\ttfamily interval} milliseconds.
+
+If the throttled function is invoked more than once during the wait timeout, {\ttfamily fn} will also be called on the trailing edge of the timeout.
+
+Subsequent calls to the throttled function will return the result of the last {\ttfamily fn} call.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ sometimes\ less\ is\ more}
+\DoxyCodeLine{var\ lazyRedraw\ =\ throttle(redraw,\ 300);}
+\DoxyCodeLine{foo.on.resize.add(lazyRedraw);}
+
+\end{DoxyCode}
+
+
+In this visualization, {\ttfamily \texorpdfstring{$\vert$}{|}} is a throttled-\/function call and {\ttfamily X} is the actual {\ttfamily fn} execution\+: \begin{DoxyVerb}||||||||||||||||||||||||| (pause) |||||||||||||||||||||||||
+X    X    X    X    X    X        X    X    X    X    X    X
+\end{DoxyVerb}
+ You also have the option to cancel the throttled call if it didn\textquotesingle{}t happen yet\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{lazyRedraw();}
+\DoxyCodeLine{setTimeout(function()\{}
+\DoxyCodeLine{\ \ \ \ lazyRedraw();}
+\DoxyCodeLine{\ \ \ \ //\ lazyRedraw\ will\ be\ called\ only\ once\ since\ \`{}cancel`\ was\ called\ before}
+\DoxyCodeLine{\ \ \ \ //\ the\ \`{}interval`\ for\ 2nd\ call\ completed}
+\DoxyCodeLine{\ \ \ \ lazyRedraw.cancel();}
+\DoxyCodeLine{\},\ 250);}
+
+\end{DoxyCode}
+
+
+See\+: \`{}debounce()\`{}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_276577d4f5d4819e23995787ae2bccfca_autotoc_md1198}{}\doxysection{\texorpdfstring{timeout(fn, millis, context, \mbox{[}...\+args\mbox{]})\+:Number}{timeout(fn, millis, context, \mbox{[}...\+args\mbox{]})\+:Number}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_276577d4f5d4819e23995787ae2bccfca_autotoc_md1198}
+Functions as a wrapper for {\ttfamily set\+Timeout}. Calls a the function {\ttfamily fn} after a given delay {\ttfamily millis} in milliseconds. The function is called within the specified context. The return value can be used to clear the timeout using {\ttfamily clear\+Timeout}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ id\ =\ timeout(doStuff,\ 300,\ this);}
+\DoxyCodeLine{}
+\DoxyCodeLine{clearTimeout(id);}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_276577d4f5d4819e23995787ae2bccfca_autotoc_md1199}{}\doxysection{\texorpdfstring{times(n, callback, \mbox{[}context\mbox{]})\+:void}{times(n, callback, \mbox{[}context\mbox{]})\+:void}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_276577d4f5d4819e23995787ae2bccfca_autotoc_md1199}
+Iterates over a callback {\ttfamily n} times.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_276577d4f5d4819e23995787ae2bccfca_autotoc_md1200}{}\doxysubsection{\texorpdfstring{Arguments}{Arguments}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_276577d4f5d4819e23995787ae2bccfca_autotoc_md1200}
+
+\begin{DoxyEnumerate}
+\item {\ttfamily n} (Number) \+: Number of iterations
+\item {\ttfamily callback} (Function) \+: Closure executed for every iteration
+\item {\ttfamily context} (Object) \+: Execution context (object used as {\ttfamily this})
+\end{DoxyEnumerate}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ output\ =\ '';}
+\DoxyCodeLine{times(5,\ function(i)\ \{}
+\DoxyCodeLine{\ \ \ \ output\ +=\ i.toString();}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{//\ output:\ 01234}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_276577d4f5d4819e23995787ae2bccfca_autotoc_md1201}{}\doxysection{\texorpdfstring{wrap(fn, wrapper)\+:Function}{wrap(fn, wrapper)\+:Function}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_276577d4f5d4819e23995787ae2bccfca_autotoc_md1201}
+Wraps the first {\ttfamily fn} inside of the {\ttfamily wrapper} function, passing it as the first argument. This allows the {\ttfamily wrapper} to execute code before and after the {\ttfamily fn} runs, adjust the arguments, and execute it conditionally.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ hello\ =\ function(name)\ \{\ return\ "{}hello:\ "{}\ +\ name;\ \};}
+\DoxyCodeLine{hello\ =\ wrap(hello,\ function(func)\ \{}
+\DoxyCodeLine{\ \ return\ "{}before,\ "{}\ +\ func("{}moe"{})\ +\ "{},\ after"{};}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{hello();}
+\DoxyCodeLine{//\ output:\ 'before,\ hello:\ moe,\ after'}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_276577d4f5d4819e23995787ae2bccfca_autotoc_md1202}{}\doxysection{\texorpdfstring{See\+: \`{}partial()\`{}}{See\+: \`{}partial()\`{}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_276577d4f5d4819e23995787ae2bccfca_autotoc_md1202}
+For more usage examples check specs inside {\ttfamily /tests} folder. Unit tests are the best documentation you can get... 

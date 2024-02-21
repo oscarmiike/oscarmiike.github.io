@@ -1,0 +1,60 @@
+\chapter{multimatch \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/sindresorhus/multimatch"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+org/sindresorhus/multimatch.\+svg?branch=master"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_285c773df56b46d7d69baa5eb8ca46794}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_285c773df56b46d7d69baa5eb8ca46794}\index{multimatch $<$a href="{}https://travis-\/ci.org/sindresorhus/multimatch"{} $>$$<$img src="{}https://travis-\/ci.org/sindresorhus/multimatch.svg?branch=master"{} alt="{}Build Status"{}/$>$$<$/a$>$@{multimatch $<$a href=""https://travis-\/ci.org/sindresorhus/multimatch"" $>$$<$img src=""https://travis-\/ci.org/sindresorhus/multimatch.svg?branch=master"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_285c773df56b46d7d69baa5eb8ca46794_autotoc_md10377}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_285c773df56b46d7d69baa5eb8ca46794_autotoc_md10377}%
+ \begin{quote}
+Extends \href{https://github.com/isaacs/minimatch\#minimatchmatchlist-pattern-options}{\texttt{ {\ttfamily minimatch.\+match()}}} with support for multiple patterns \end{quote}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_285c773df56b46d7d69baa5eb8ca46794_autotoc_md10378}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_285c773df56b46d7d69baa5eb8ca46794_autotoc_md10378}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ multimatch}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_285c773df56b46d7d69baa5eb8ca46794_autotoc_md10379}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_285c773df56b46d7d69baa5eb8ca46794_autotoc_md10379}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ multimatch\ =\ require('multimatch');}
+\DoxyCodeLine{}
+\DoxyCodeLine{multimatch(['unicorn',\ 'cake',\ 'rainbows'],\ ['*',\ '!cake']);}
+\DoxyCodeLine{//=>\ ['unicorn',\ 'rainbows']}
+
+\end{DoxyCode}
+
+
+See the \href{https://github.com/sindresorhus/multimatch/tree/master/test}{\texttt{ tests}} for more usage examples and expected matches.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_285c773df56b46d7d69baa5eb8ca46794_autotoc_md10380}{}\doxysection{\texorpdfstring{API}{API}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_285c773df56b46d7d69baa5eb8ca46794_autotoc_md10380}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_285c773df56b46d7d69baa5eb8ca46794_autotoc_md10381}{}\doxysubsection{\texorpdfstring{multimatch(paths, patterns, \mbox{[}options\mbox{]}}{multimatch(paths, patterns, \mbox{[}options\mbox{]}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_285c773df56b46d7d69baa5eb8ca46794_autotoc_md10381}
+Returns an array of matching paths.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_285c773df56b46d7d69baa5eb8ca46794_autotoc_md10382}{}\doxysubsubsection{\texorpdfstring{paths}{paths}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_285c773df56b46d7d69baa5eb8ca46794_autotoc_md10382}
+Type\+: {\ttfamily string \texorpdfstring{$\vert$}{|} string\mbox{[}\mbox{]}}
+
+Paths to match against.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_285c773df56b46d7d69baa5eb8ca46794_autotoc_md10383}{}\doxysubsubsection{\texorpdfstring{patterns}{patterns}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_285c773df56b46d7d69baa5eb8ca46794_autotoc_md10383}
+Type\+: {\ttfamily string \texorpdfstring{$\vert$}{|} string\mbox{[}\mbox{]}}
+
+Globbing patterns to use. For example\+: `\mbox{[}'\texorpdfstring{$\ast$}{*}\textquotesingle{}, \textquotesingle{}!cake\textquotesingle{}\mbox{]}{\ttfamily . See supported \mbox{[}}minimatch\`{} patterns\mbox{]}(\href{https://github.com/isaacs/minimatch\#usage}{\texttt{ https\+://github.\+com/isaacs/minimatch\#usage}}).
+
+
+\begin{DoxyItemize}
+\item \href{https://github.com/sindresorhus/multimatch/blob/master/test/test.js}{\texttt{ Pattern examples with expected matches}}
+\item \href{https://github.com/sindresorhus/multimatch\#globbing-patterns}{\texttt{ Quick globbing pattern overview}}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_285c773df56b46d7d69baa5eb8ca46794_autotoc_md10384}{}\doxysubsubsection{\texorpdfstring{options}{options}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_285c773df56b46d7d69baa5eb8ca46794_autotoc_md10384}
+Type\+: {\ttfamily object}
+
+See the \href{https://github.com/isaacs/minimatch\#options}{\texttt{ {\ttfamily minimatch} options}}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_285c773df56b46d7d69baa5eb8ca46794_autotoc_md10385}{}\doxysection{\texorpdfstring{How multiple patterns work}{How multiple patterns work}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_285c773df56b46d7d69baa5eb8ca46794_autotoc_md10385}
+Positive patterns (e.\+g. {\ttfamily foo} or {\ttfamily \texorpdfstring{$\ast$}{*}}) add to the results, while negative patterns (e.\+g. {\ttfamily !foo}) subtract from the results.
+
+Therefore a lone negation (e.\+g. `\mbox{[}'!foo\textquotesingle{}\mbox{]}{\ttfamily ) will never match anything – use}\mbox{[}\textquotesingle{}\texorpdfstring{$\ast$}{*}\textquotesingle{}, \textquotesingle{}!foo\textquotesingle{}\mbox{]}\`{} instead.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_285c773df56b46d7d69baa5eb8ca46794_autotoc_md10386}{}\doxysection{\texorpdfstring{Globbing patterns}{Globbing patterns}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_285c773df56b46d7d69baa5eb8ca46794_autotoc_md10386}
+Just a quick overview.
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \texorpdfstring{$\ast$}{*}} matches any number of characters, but not {\ttfamily /}
+\item {\ttfamily ?} matches a single character, but not {\ttfamily /}
+\item {\ttfamily \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}} matches any number of characters, including {\ttfamily /}, as long as it\textquotesingle{}s the only thing in a path part
+\item {\ttfamily \{\}} allows for a comma-\/separated list of "{}or"{} expressions
+\item {\ttfamily !} at the beginning of a pattern will negate the match
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_285c773df56b46d7d69baa5eb8ca46794_autotoc_md10387}{}\doxysection{\texorpdfstring{Related}{Related}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_285c773df56b46d7d69baa5eb8ca46794_autotoc_md10387}
+
+\begin{DoxyItemize}
+\item \href{https://github.com/sindresorhus/globby}{\texttt{ globby}} -\/ Match against the filesystem instead of a list
+\item \href{https://github.com/sindresorhus/matcher}{\texttt{ matcher}} -\/ Simple wildcard matching
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_285c773df56b46d7d69baa5eb8ca46794_autotoc_md10388}{}\doxysection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_285c773df56b46d7d69baa5eb8ca46794_autotoc_md10388}
+MIT © \href{https://sindresorhus.com}{\texttt{ Sindre Sorhus}} 

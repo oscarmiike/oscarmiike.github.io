@@ -1,0 +1,90 @@
+\chapter{unc-\/path-\/regex \texorpdfstring{$<$}{<}a href="{}http\+://badge.\+fury.\+io/js/unc-\/path-\/regex"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://badge.\+fury.\+io/js/unc-\/path-\/regex.\+svg"{} alt="{}\+NPM version"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/jonschlinkert/unc-\/path-\/regex"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+org/jonschlinkert/unc-\/path-\/regex.\+svg"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_242bfce93b579b9eae25e96d8c523222f}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_242bfce93b579b9eae25e96d8c523222f}\index{unc-\/path-\/regex $<$a href="{}http://badge.fury.io/js/unc-\/path-\/regex"{} $>$$<$img src="{}https://badge.fury.io/js/unc-\/path-\/regex.svg"{} alt="{}NPM version"{}/$>$$<$/a$>$  $<$a href="{}https://travis-\/ci.org/jonschlinkert/unc-\/path-\/regex"{} $>$$<$img src="{}https://travis-\/ci.org/jonschlinkert/unc-\/path-\/regex.svg"{} alt="{}Build Status"{}/$>$$<$/a$>$@{unc-\/path-\/regex $<$a href=""http://badge.fury.io/js/unc-\/path-\/regex"" $>$$<$img src=""https://badge.fury.io/js/unc-\/path-\/regex.svg"" alt=""NPM version""/$>$$<$/a$>$  $<$a href=""https://travis-\/ci.org/jonschlinkert/unc-\/path-\/regex"" $>$$<$img src=""https://travis-\/ci.org/jonschlinkert/unc-\/path-\/regex.svg"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_242bfce93b579b9eae25e96d8c523222f_autotoc_md11939}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_242bfce93b579b9eae25e96d8c523222f_autotoc_md11939}%
+ \begin{quote}
+Regular expression for testing if a file path is a windows UNC file path. Can also be used as a component of another regexp via the {\ttfamily .source} property. \end{quote}
+Visit the MSDN reference for \href{https://msdn.microsoft.com/en-us/library/gg465305.aspx}{\texttt{ Common Data Types 2.\+2.\+57 UNC}} for more information about UNC paths.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_242bfce93b579b9eae25e96d8c523222f_autotoc_md11940}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_242bfce93b579b9eae25e96d8c523222f_autotoc_md11940}
+Install with \href{https://www.npmjs.com/}{\texttt{ npm}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ i\ unc-\/path-\/regex\ -\/-\/save}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_242bfce93b579b9eae25e96d8c523222f_autotoc_md11941}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_242bfce93b579b9eae25e96d8c523222f_autotoc_md11941}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ unc-\/path-\/regex\ returns\ a\ function}
+\DoxyCodeLine{var\ regex\ =\ require('unc-\/path-\/regex')();}
+
+\end{DoxyCode}
+
+
+{\bfseries{true}}
+
+Returns true for windows UNC paths\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{regex.test('\(\backslash\)\(\backslash\)/foo/bar');}
+\DoxyCodeLine{regex.test('\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)foo/bar');}
+\DoxyCodeLine{regex.test('\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)foo\(\backslash\)\(\backslash\)admin\$');}
+\DoxyCodeLine{regex.test('\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)foo\(\backslash\)\(\backslash\)admin\$\(\backslash\)\(\backslash\)system32');}
+\DoxyCodeLine{regex.test('\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)foo\(\backslash\)\(\backslash\)temp');}
+\DoxyCodeLine{regex.test('\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)/foo/bar');}
+\DoxyCodeLine{regex.test('\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)/foo/bar');}
+
+\end{DoxyCode}
+
+
+{\bfseries{false}}
+
+Returns false for non-\/\+UNC paths\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{regex.test('/foo/bar');}
+\DoxyCodeLine{regex.test('/');}
+\DoxyCodeLine{regex.test('/foo');}
+\DoxyCodeLine{regex.test('/foo/');}
+\DoxyCodeLine{regex.test('c:');}
+\DoxyCodeLine{regex.test('c:.');}
+\DoxyCodeLine{regex.test('c:./');}
+\DoxyCodeLine{regex.test('c:./file');}
+\DoxyCodeLine{regex.test('c:/');}
+\DoxyCodeLine{regex.test('c:/file');}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_242bfce93b579b9eae25e96d8c523222f_autotoc_md11942}{}\doxysection{\texorpdfstring{Related projects}{Related projects}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_242bfce93b579b9eae25e96d8c523222f_autotoc_md11942}
+
+\begin{DoxyItemize}
+\item \href{https://github.com/regexps/dotfile-regex}{\texttt{ dotfile-\/regex}}\+: Regular expresson for matching dotfiles.
+\item \href{https://github.com/regexps/dotdir-regex}{\texttt{ dotdir-\/regex}}\+: Regex for matching dot-\/directories, like {\ttfamily .git/}
+\item \href{https://github.com/regexps/dirname-regex}{\texttt{ dirname-\/regex}}\+: Regular expression for matching the directory part of a file path.
+\item \href{https://github.com/jonschlinkert/is-unc-path}{\texttt{ is-\/unc-\/path}}\+: Returns true if a filepath is a windows UNC file path.
+\item \href{https://github.com/jonschlinkert/is-glob}{\texttt{ is-\/glob}}\+: Returns {\ttfamily true} if the given string looks like a glob pattern.
+\item \href{https://github.com/regexps/path-regex}{\texttt{ path-\/regex}}\+: Regular expression for matching the parts of a file path.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_242bfce93b579b9eae25e96d8c523222f_autotoc_md11943}{}\doxysection{\texorpdfstring{Running tests}{Running tests}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_242bfce93b579b9eae25e96d8c523222f_autotoc_md11943}
+Install dev dependencies\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ i\ -\/d\ \&\&\ npm\ test}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_242bfce93b579b9eae25e96d8c523222f_autotoc_md11944}{}\doxysection{\texorpdfstring{Contributing}{Contributing}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_242bfce93b579b9eae25e96d8c523222f_autotoc_md11944}
+Pull requests and stars are always welcome. For bugs and feature requests, \href{https://github.com/jonschlinkert/unc-path-regex/issues/new}{\texttt{ please create an issue}}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_242bfce93b579b9eae25e96d8c523222f_autotoc_md11945}{}\doxysection{\texorpdfstring{Author}{Author}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_242bfce93b579b9eae25e96d8c523222f_autotoc_md11945}
+{\bfseries{Jon Schlinkert}}
+
+
+\begin{DoxyItemize}
+\item \href{https://github.com/jonschlinkert}{\texttt{ github/jonschlinkert}}
+\item \href{http://twitter.com/jonschlinkert}{\texttt{ twitter/jonschlinkert}}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_242bfce93b579b9eae25e96d8c523222f_autotoc_md11946}{}\doxysection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_242bfce93b579b9eae25e96d8c523222f_autotoc_md11946}
+Copyright © 2015 Jon Schlinkert Released under the MIT license.
+
+\DoxyHorRuler{0}
+
+
+{\itshape This file was generated by \href{https://github.com/assemble/verb-cli}{\texttt{ verb-\/cli}} on July 07, 2015.} 

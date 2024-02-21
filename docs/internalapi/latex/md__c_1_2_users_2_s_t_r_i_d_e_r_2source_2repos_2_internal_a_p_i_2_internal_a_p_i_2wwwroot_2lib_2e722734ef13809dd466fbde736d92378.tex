@@ -1,0 +1,43 @@
+\chapter{Run Async}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2e722734ef13809dd466fbde736d92378}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2e722734ef13809dd466fbde736d92378}\index{Run Async@{Run Async}}
+\href{http://badge.fury.io/js/run-async}{\texttt{ }} \href{http://travis-ci.org/SBoudrias/run-async}{\texttt{ }} \href{https://david-dm.org/SBoudrias/run-async}{\texttt{ }}
+
+Utility method to run function either synchronously or asynchronously using the common {\ttfamily this.\+async()} style.
+
+This is useful for library author accepting sync or async functions as parameter. {\ttfamily run\+Async} will always run them as async method, and normalize the function handling.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2e722734ef13809dd466fbde736d92378_autotoc_md4485}{}\doxysection{\texorpdfstring{Installation}{Installation}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2e722734ef13809dd466fbde736d92378_autotoc_md4485}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ -\/-\/save\ run-\/async}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2e722734ef13809dd466fbde736d92378_autotoc_md4486}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2e722734ef13809dd466fbde736d92378_autotoc_md4486}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ runAsync\ =\ require('run-\/async');}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ In\ Async\ mode:}
+\DoxyCodeLine{var\ asyncFn\ =\ function\ (a)\ \{}
+\DoxyCodeLine{\ \ var\ done\ =\ this.async();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ setTimeout(function\ ()\ \{}
+\DoxyCodeLine{\ \ \ \ done('running:\ '\ +\ a);}
+\DoxyCodeLine{\ \ \},\ 10);}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{runAsync(asyncFn,\ function\ (answer)\ \{}
+\DoxyCodeLine{\ \ console.log(answer);\ //\ 'running:\ async'}
+\DoxyCodeLine{\},\ 'async');}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ In\ Sync\ mode:}
+\DoxyCodeLine{var\ syncFn\ =\ function\ (a)\ \{}
+\DoxyCodeLine{\ \ return\ 'running:\ '\ +\ a;}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{runAsync(asyncFn,\ function\ (answer)\ \{}
+\DoxyCodeLine{\ \ console.log(answer);\ //\ 'running:\ sync'}
+\DoxyCodeLine{\},\ 'sync');}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2e722734ef13809dd466fbde736d92378_autotoc_md4487}{}\doxysection{\texorpdfstring{Licence}{Licence}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2e722734ef13809dd466fbde736d92378_autotoc_md4487}
+Copyright (c) 2014 Simon Boudrias (twitter\+: @vaxilart) ~\newline
+ Licensed under the MIT license. 

@@ -1,0 +1,205 @@
+\doxysection{BPay\+Service.\+cs}
+\hypertarget{_b_pay_service_8cs_source}{}\label{_b_pay_service_8cs_source}\index{C:/Users/STRIDER/source/repos/InternalAPI/InternalAPI/Services/BPay/BPayService.cs@{C:/Users/STRIDER/source/repos/InternalAPI/InternalAPI/Services/BPay/BPayService.cs}}
+\mbox{\hyperlink{_b_pay_service_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }Newtonsoft.Json;}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }RestSharp;}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }RestSharp.Authenticators;}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00006}00006\ \textcolor{keyword}{using\ }Serilog;}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00007}00007\ \textcolor{keyword}{using\ }System.Net;}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00008}00008\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_settings}{InternalAPI.Settings}};}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00009}00009\ \textcolor{keyword}{using\ }Microsoft.Extensions.Options;}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00010}00010\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_dto_1_1_b_pay}{InternalAPI.Dto.BPay}};}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00011}00011\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_dto_1_1_email}{InternalAPI.Dto.Email}};}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00012}00012\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_services_1_1_email}{InternalAPI.Services.Email}};}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00014}\mbox{\hyperlink{namespace_internal_a_p_i_1_1_services_1_1_b_pay}{00014}}\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_services_1_1_b_pay}{InternalAPI.Services.BPay}}}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00015}00015\ \{}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00016}\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_b_pay_1_1_b_pay_service}{00016}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_b_pay_1_1_b_pay_service}{BPayService}}\ :\ \mbox{\hyperlink{interface_internal_a_p_i_1_1_services_1_1_b_pay_1_1_i_b_pay_service}{IBPayService}}}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00017}00017\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{string}\ AuthToken\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ readonly\ \mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_b_pay_settings}{BPaySettings}}\ bPaySettings;}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ readonly\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}\ \_logger;}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ readonly\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_email_1_1_email_service}{EmailService}}\ \_emailService;}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ readonly\ \mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_internal_api_settings}{InternalApiSettings}}\ \_internalAPISettings;}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00024}\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_b_pay_1_1_b_pay_service_a1cfd4ec4d1d211fac314c3c9326b6fb3}{00024}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_b_pay_1_1_b_pay_service_a1cfd4ec4d1d211fac314c3c9326b6fb3}{BPayService}}(IOptions<BPaySettings>\ bPaySettings,\ }
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}\ logger,\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_email_1_1_email_service}{EmailService}}\ emailService,}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ IOptions<InternalApiSettings>\ internalAPISettings)}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ this.bPaySettings\ =\ bPaySettings.Value;}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger\ =\ logger;}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \_emailService\ =\ emailService;}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \_internalAPISettings\ =\ internalAPISettings.Value;}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00034}\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_b_pay_1_1_b_pay_service_a4addf713af26f105ac7204cb728a30b6}{00034}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_b_pay_1_1_b_pay_service_a4addf713af26f105ac7204cb728a30b6}{CustomerSource}}}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_b_pay_1_1_b_pay_service_a4addf713af26f105ac7204cb728a30b6a08741b931cb86f4e3375bf5a198456f3}{Cin7Bullion}}\ =\ 1,\ \textcolor{comment}{//used\ from\ internal\ api\ cin7\ sales\ order\ endpoint}}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_b_pay_1_1_b_pay_service_a4addf713af26f105ac7204cb728a30b6a8dc9b3eb62cdc74ea8e473555f51dd98}{Cin7Wealth}}\ =\ 2,\ \textcolor{comment}{//not\ used}}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ StorageApp\ =\ 3,\ \textcolor{comment}{//used\ directly\ from\ storage\ app\ but\ not\ required}}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_b_pay_1_1_b_pay_service_a4addf713af26f105ac7204cb728a30b6acd3bb9952d209dc5279fb972e17e870c}{Cin7BullionMelbourne}}\ =\ 4,\ \textcolor{comment}{//not\ used}}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_b_pay_1_1_b_pay_service_a4addf713af26f105ac7204cb728a30b6ab38e428c4d07dbbb6d56e96666aae5c7}{NetsuiteBullionBNE}}\ =\ 5\ \textcolor{comment}{//used\ from\ internalapi\ netsuite\ sales\ order\ endpoint}}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00044}\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_b_pay_1_1_b_pay_service_ac6610cfebd40f81cfa63602cc510a7b3}{00044}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_b_pay_1_1_b_pay_customer}{BPayCustomer}}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_b_pay_1_1_b_pay_service_ac6610cfebd40f81cfa63602cc510a7b3}{GenerateBPayRef}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_b_pay_1_1_b_pay_customer}{BPayCustomer}}\ Customer)}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keywordtype}{string}.IsNullOrEmpty(Customer.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_b_pay_1_1_b_pay_customer_a95c201e60438194ef7b0d84a14b6a5c6}{CustomerID}})\ ||\ !ValidateCustomerID(Customer)\ ||\ !Auth())\ \{\ \textcolor{keywordflow}{return}\ Customer;\ \}}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ var\ PostBody\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_b_pay_1_1_post_object}{PostObject}}();}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ PostBody.baseCRNParams\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_b_pay_1_1_basecrnparams}{Basecrnparams}}();}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ PostBody.baseCRNParams.validationRule\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ PostBody.baseCRNParams.customerNumberList.Add(\textcolor{keyword}{new}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_b_pay_1_1_customernumberlist}{Customernumberlist}}()\ \{\ customerNumber\ =\ Customer.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_b_pay_1_1_b_pay_customer_a95c201e60438194ef7b0d84a14b6a5c6}{CustomerID}},\ tid\ =\ \textcolor{stringliteral}{"{}1"{}}\ \});}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient(\textcolor{keyword}{new}\ Uri(bPaySettings.BaseURL\ +\ bPaySettings.CRNEndpoint));}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ client.Authenticator\ =\ \textcolor{keyword}{new}\ OAuth2AuthorizationRequestHeaderAuthenticator(AuthToken,\ \textcolor{stringliteral}{"{}Bearer"{}});}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ RestRequest\ request\ =\ \textcolor{keyword}{new}\ RestRequest(\textcolor{stringliteral}{"{}"{}},\ Method.POST);}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddHeader(\textcolor{stringliteral}{"{}Content-\/Type"{}},\ \textcolor{stringliteral}{"{}application/json"{}});}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddHeader(\textcolor{stringliteral}{"{}Accept"{}},\ \textcolor{stringliteral}{"{}application/json"{}});}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddJsonBody(PostBody);}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ var\ response\ =\ client.Execute(request);}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_b_pay_1_1_b_pay_c_r_n_response}{BPayCRNResponse}}\ CRNResponse\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!(response\ ==\ \textcolor{keyword}{null})\ \&\&\ response.IsSuccessful\ \&\&\ !\textcolor{keywordtype}{string}.IsNullOrEmpty(response.Content))\ }
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CRNResponse\ =\ JsonConvert.DeserializeObject<\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_b_pay_1_1_b_pay_c_r_n_response}{BPayCRNResponse}}>(response.Content);}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogException(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.bPayService,}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}Exception\ deserialising\ bPay\ response"{}},}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}StatusCode:\ \{(int)response.StatusCode\}"{}},}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}StatusDescription:\ \{response.StatusDescription\}"{}},}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}Content:\ \{response.Content\}"{}},}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ex.ToString());}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CRNResponse\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogError(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.bPayService,}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}Exception\ getting\ bPay\ crn\ response"{}},}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}StatusCode:\ \{(int)response.StatusCode\}"{}},}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}StatusDescription:\ \{response.StatusDescription\}"{}},}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}Content:\ \{response.Content\}"{}});}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!(CRNResponse\ ==\ \textcolor{keyword}{null}))}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Customer.BPayRef\ =\ CRNResponse.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_b_pay_1_1_b_pay_c_r_n_response_a893ac8c53e36c9aebf62985fbcaf0389}{crnResults}}[0].\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_b_pay_1_1_crnresult_ae53cd759a0cf31f71896726114c6566d}{crn}};}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Customer;}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00090}00090\ }
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00091}00091\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{bool}\ Auth()}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00092}00092\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient(\textcolor{keyword}{new}\ Uri(bPaySettings.BaseURL\ +\ bPaySettings.AuthEndpoint));}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ client.Authenticator\ =\ \textcolor{keyword}{new}\ HttpBasicAuthenticator(bPaySettings.APIKey,\ bPaySettings.APISecret);}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ RestRequest\ request\ =\ \textcolor{keyword}{new}\ RestRequest(\textcolor{stringliteral}{"{}"{}},\ Method.POST);}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddHeader(\textcolor{stringliteral}{"{}Content-\/Type"{}},\ \textcolor{stringliteral}{"{}application/x-\/www-\/form-\/urlencoded"{}});}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddHeader(\textcolor{stringliteral}{"{}Accept"{}},\ \textcolor{stringliteral}{"{}application/json"{}});}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddParameter(\textcolor{stringliteral}{"{}grant\_type"{}},\ \textcolor{stringliteral}{"{}client\_credentials"{}});}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddParameter(\textcolor{stringliteral}{"{}CLIENT\_ID"{}},\ bPaySettings.APIKey);}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ var\ response\ =\ client.Execute(request);}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_b_pay_1_1_b_pay_auth_response}{BPayAuthResponse}}\ AuthResponse\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!(response\ ==\ \textcolor{keyword}{null})\ \&\&\ response.IsSuccessful\ \&\&\ !\textcolor{keywordtype}{string}.IsNullOrEmpty(response.Content))}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ AuthResponse\ =\ JsonConvert.DeserializeObject<\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_b_pay_1_1_b_pay_auth_response}{BPayAuthResponse}}>(response.Content);}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00108}00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00110}00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogException(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.bPayService,}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}Exception\ authenticating\ with\ bPay"{}},}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}StatusCode:\ \{(int)response.StatusCode\}"{}},}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00113}00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}StatusDescription:\ \{response.StatusDescription\}"{}},}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}Content:\ \{response.Content\}"{}},}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00115}00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ex.ToString());}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00116}00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ AuthResponse\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00117}00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00118}00118\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!(AuthResponse\ ==\ \textcolor{keyword}{null}))}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00120}00120\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00121}00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ AuthToken\ =\ AuthResponse.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_b_pay_1_1_b_pay_auth_response_aef1f5f544460a20014ac615ce8fab6d6}{access\_token}};}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00122}00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (AuthToken.Length\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00123}00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00124}00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00125}00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00126}00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00127}00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00128}00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogError(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.bPayService,}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00129}00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}Error\ authenticating\ with\ bPay"{}},}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00130}00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}StatusCode:\ \{(int)response.StatusCode\}"{}},}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00131}00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}StatusDescription:\ \{response.StatusDescription\}"{}},}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00132}00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}Content:\ \{response.Content\}"{}});}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00133}00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00134}00134\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00135}00135\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00136}00136\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00137}00137\ }
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00138}00138\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{bool}\ ValidateCustomerID(\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_b_pay_1_1_b_pay_customer}{BPayCustomer}}\ Customer)}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00139}00139\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00140}00140\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Customer.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_b_pay_1_1_b_pay_customer_ae205b83d668a92691def4a0131ae5898}{CustomerSource}}\ ==\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_b_pay_1_1_b_pay_service_a4addf713af26f105ac7204cb728a30b6}{CustomerSource}}.NetsuiteBullionBNE.ToString())}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00141}00141\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Customer.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_b_pay_1_1_b_pay_customer_a95c201e60438194ef7b0d84a14b6a5c6}{CustomerID}}.Length\ <=\ 6)}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00143}00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00144}00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ LeadingNums\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00145}00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (var\ i\ =\ 1;\ i\ <=\ 6\ -\/\ Customer.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_b_pay_1_1_b_pay_customer_a95c201e60438194ef7b0d84a14b6a5c6}{CustomerID}}.Length;\ i\ +=\ 1)}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00146}00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ LeadingNums\ +=\ (\textcolor{keywordtype}{int})(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_b_pay_1_1_b_pay_service_a4addf713af26f105ac7204cb728a30b6}{CustomerSource}})Enum.Parse(typeof(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_b_pay_1_1_b_pay_service_a4addf713af26f105ac7204cb728a30b6}{CustomerSource}}),\ Customer.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_b_pay_1_1_b_pay_customer_ae205b83d668a92691def4a0131ae5898}{CustomerSource}});}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00147}00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Customer.CustomerID\ =\ \$\textcolor{stringliteral}{"{}\{(int)(CustomerSource)Enum.Parse(typeof(CustomerSource),\ Customer.CustomerSource)\}\{LeadingNums\}\{Customer.CustomerID\}"{}};}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00148}00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00149}00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00150}00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00151}00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogError(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.bPayService,}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00152}00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}Customer\ ID\ over\ 6\ digits\ in\ length,\ BPay\ not\ being\ generated"{}},}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00153}00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Customer\ object:"{}},}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00154}00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Customer);}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00155}00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_b_pay_1_1_b_pay_service_a7fffc5568b97fecba4deb024531f7d9c}{SendCustomerIDLengthTooLongEmail}}(Customer);}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00156}00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00157}00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00158}00158\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00159}00159\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00160}00160\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00161}00161\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00162}00162\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00163}00163\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00164}00164\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00165}00165\ }
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00166}\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_b_pay_1_1_b_pay_service_a7fffc5568b97fecba4deb024531f7d9c}{00166}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_b_pay_1_1_b_pay_service_a7fffc5568b97fecba4deb024531f7d9c}{SendCustomerIDLengthTooLongEmail}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_b_pay_1_1_b_pay_customer}{BPayCustomer}}\ Customer)}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00167}00167\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00168}00168\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ subject\ =\ \$\textcolor{stringliteral}{"{}BPay\ Customer\ ID\ Error"{}};}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00169}00169\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_email_1_1_email_post}{EmailPost}}\ emailPost\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_email_1_1_email_post}{EmailPost}}()}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00170}00170\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00171}00171\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ EmailTo\ =\ \_internalAPISettings.devAdminEmail,}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00172}00172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ EmailFrom\ =\ \_internalAPISettings.devAdminEmail,}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00173}00173\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Subject\ =\ \textcolor{stringliteral}{"{}BPay\ Customer\ ID\ Error"{}},}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00174}00174\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ HTMLBody\ =\ \$\textcolor{stringliteral}{"{}Customer\ ID\ over\ 6\ digits\ in\ length,\ BPay\ not\ being\ generated"{}}\ +}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00175}00175\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}<br><br>"{}}\ +\ }
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00176}00176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}\{JsonConvert.SerializeObject(Customer)\}"{}}}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00177}00177\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00178}00178\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_emailService.SendEmail(emailPost);}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00179}00179\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00180}00180\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00181}00181\ }
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00182}\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_b_pay_1_1_post_object}{00182}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_b_pay_1_1_post_object}{PostObject}}}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00183}00183\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00184}\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_b_pay_1_1_post_object_aa3a770bc41fb1a1ca7840f728818253d}{00184}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_b_pay_1_1_basecrnparams}{Basecrnparams}}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_b_pay_1_1_post_object_aa3a770bc41fb1a1ca7840f728818253d}{baseCRNParams}}\ \{\ \textcolor{keyword}{get};\ \textcolor{keyword}{set};\ \}}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00185}00185\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00186}00186\ }
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00187}\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_b_pay_1_1_basecrnparams}{00187}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_b_pay_1_1_basecrnparams}{Basecrnparams}}}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00188}00188\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00189}\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_b_pay_1_1_basecrnparams_a8449f927da75a954b1514c6a71da5520}{00189}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ List<Customernumberlist>\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_b_pay_1_1_basecrnparams_a8449f927da75a954b1514c6a71da5520}{customerNumberList}}\ \{\ \textcolor{keyword}{get};\ \textcolor{keyword}{set};\ \}\ =\ \textcolor{keyword}{new}\ List<Customernumberlist>();}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00190}\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_b_pay_1_1_basecrnparams_affc494d9e4fd10c1b5b95bde1df06c56}{00190}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_b_pay_1_1_basecrnparams_affc494d9e4fd10c1b5b95bde1df06c56}{validationRule}}\ \{\ \textcolor{keyword}{get};\ \textcolor{keyword}{set};\ \}}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00191}00191\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00192}00192\ }
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00193}\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_b_pay_1_1_customernumberlist}{00193}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_b_pay_1_1_customernumberlist}{Customernumberlist}}}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00194}00194\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00195}\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_b_pay_1_1_customernumberlist_ab8ff18df1ff8c75fa5d878c20a417b5c}{00195}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_b_pay_1_1_customernumberlist_ab8ff18df1ff8c75fa5d878c20a417b5c}{tid}}\ \{\ \textcolor{keyword}{get};\ \textcolor{keyword}{set};\ \}}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00196}\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_b_pay_1_1_customernumberlist_ace18ff4e37256db845d2502060d4db38}{00196}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_b_pay_1_1_customernumberlist_ace18ff4e37256db845d2502060d4db38}{customerNumber}}\ \{\ \textcolor{keyword}{get};\ \textcolor{keyword}{set};\ \}}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00197}00197\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00198}00198\ }
+\DoxyCodeLine{\Hypertarget{_b_pay_service_8cs_source_l00199}00199\ \}}
+
+\end{DoxyCode}

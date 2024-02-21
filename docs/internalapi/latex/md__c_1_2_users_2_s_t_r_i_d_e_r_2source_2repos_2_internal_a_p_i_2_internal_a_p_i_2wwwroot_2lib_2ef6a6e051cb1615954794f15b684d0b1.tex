@@ -1,0 +1,100 @@
+\chapter{bower-\/endpoint-\/parser}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ef6a6e051cb1615954794f15b684d0b1}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ef6a6e051cb1615954794f15b684d0b1}\index{bower-\/endpoint-\/parser@{bower-\/endpoint-\/parser}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ef6a6e051cb1615954794f15b684d0b1_autotoc_md5309}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ef6a6e051cb1615954794f15b684d0b1_autotoc_md5309}%
+ Little module that helps with endpoints parsing.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ef6a6e051cb1615954794f15b684d0b1_autotoc_md5310}{}\doxysection{\texorpdfstring{API}{API}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ef6a6e051cb1615954794f15b684d0b1_autotoc_md5310}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ef6a6e051cb1615954794f15b684d0b1_autotoc_md5311}{}\doxysubsection{\texorpdfstring{.decompose(endpoint)}{.decompose(endpoint)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ef6a6e051cb1615954794f15b684d0b1_autotoc_md5311}
+Decomposes a endpoint into {\ttfamily name}, {\ttfamily source} and {\ttfamily target}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ endpointParser\ =\ require('bower-\/endpoint-\/parser');}
+\DoxyCodeLine{}
+\DoxyCodeLine{endpointParser.decompose('jquery\#\string~2.0.0');}
+\DoxyCodeLine{//\ \{\ name:\ '',\ source:\ 'jquery',\ target:\ '\string~2.0.0'\ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{endpointParser.decompose('backbone=backbone-\/amd\#\string~1.0.0');}
+\DoxyCodeLine{//\ \{\ name:\ 'backbone',\ source:\ 'backbone-\/amd',\ target:\ '\string~1.0.0'\ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{endpointParser.decompose('http://twitter.github.io/bootstrap/assets/bootstrap.zip');}
+\DoxyCodeLine{//\ \{\ name:\ '',\ source:\ 'http://twitter.github.io/bootstrap/assets/bootstrap',\ target:\ '*'\ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{endpointParser.decompose('bootstrap=http://twitter.github.io/bootstrap/assets/bootstrap.zip');}
+\DoxyCodeLine{//\ \{\ name:\ 'bootstrap',\ source:\ 'http://twitter.github.io/bootstrap/assets/bootstrap',\ target:\ '*'\ \}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ef6a6e051cb1615954794f15b684d0b1_autotoc_md5312}{}\doxysubsection{\texorpdfstring{.compose(dec\+Endpoint)}{.compose(dec\+Endpoint)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ef6a6e051cb1615954794f15b684d0b1_autotoc_md5312}
+Inverse of {\ttfamily decompose()}. ~\newline
+ Takes a decomposed endpoint and composes it back into a string.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ endpointParser\ =\ require('bower-\/endpoint-\/parser');}
+\DoxyCodeLine{}
+\DoxyCodeLine{endpointParser.compose(\{\ name:\ '',\ source:\ 'jquery',\ target:\ '\string~2.0.0'\ \});}
+\DoxyCodeLine{//\ jquery\#\string~2.0.0}
+\DoxyCodeLine{}
+\DoxyCodeLine{endpointParser.compose(\{\ name:\ 'backbone',\ source:\ 'backbone-\/amd',\ target:\ '\string~1.0.0'\ \});}
+\DoxyCodeLine{//\ backbone=backbone-\/amd\#\string~1.0.0}
+\DoxyCodeLine{}
+\DoxyCodeLine{endpointParser.compose(\{\ name:\ '',\ source:\ 'http://twitter.github.io/bootstrap/assets/bootstrap',\ target:\ '*'\ \});}
+\DoxyCodeLine{//\ http://twitter.github.io/bootstrap/assets/bootstrap.zip}
+\DoxyCodeLine{}
+\DoxyCodeLine{endpointParser.compose(\{\ name:\ 'bootstrap',\ source:\ 'http://twitter.github.io/bootstrap/assets/bootstrap',\ target:\ '*'\ \});}
+\DoxyCodeLine{//\ bootstrap=http://twitter.github.io/bootstrap/assets/bootstrap.zip}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ef6a6e051cb1615954794f15b684d0b1_autotoc_md5313}{}\doxysubsection{\texorpdfstring{.json2decomposed(key, value)}{.json2decomposed(key, value)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ef6a6e051cb1615954794f15b684d0b1_autotoc_md5313}
+Similar to {\ttfamily decompose()} but specially designed to be used when parsing {\ttfamily bower.\+json} dependencies. For instance, in a {\ttfamily bower.\+json} like this\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ "{}name"{}:\ "{}foo"{},}
+\DoxyCodeLine{\ \ \ \ "{}version"{}:\ "{}0.1.0"{},}
+\DoxyCodeLine{\ \ \ \ "{}dependencies"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ "{}jquery"{}:\ "{}\string~1.9.1"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ "{}backbone"{}:\ "{}backbone-\/amd\#\string~1.0.0"{},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ "{}bootstrap"{}:\ "{}http://twitter.github.io/bootstrap/assets/bootstrap"{}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+You would call {\ttfamily json2decomposed} like so\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{endpointParser.json2decomposed('jquery',\ '\string~1.9.1');}
+\DoxyCodeLine{//\ \{\ name:\ 'jquery',\ source:\ 'jquery',\ target:\ '\string~1.9.1'\ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{endpointParser.json2decomposed('backbone',\ 'backbone-\/amd\#\string~1.0.0');}
+\DoxyCodeLine{//\ \{\ name:\ 'backbone',\ source:\ 'backbone-\/amd',\ target:\ '\string~1.0.0'\ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{endpointParser.json2decomposed('bootstrap',\ 'http://twitter.github.io/bootstrap/assets/bootstrap');}
+\DoxyCodeLine{//\ \{\ name:\ 'bootstrap',\ source:\ 'http://twitter.github.io/bootstrap/assets/bootstrap',\ target:\ '*'\ \}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ef6a6e051cb1615954794f15b684d0b1_autotoc_md5314}{}\doxysubsection{\texorpdfstring{.decomposed2json(dec\+Endpoint)}{.decomposed2json(dec\+Endpoint)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ef6a6e051cb1615954794f15b684d0b1_autotoc_md5314}
+Inverse of {\ttfamily json2decomposed()}. ~\newline
+ Takes a decomposed endpoint and composes it to be saved to {\ttfamily bower.\+json}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ endpointParser\ =\ require('bower-\/endpoint-\/parser');}
+\DoxyCodeLine{}
+\DoxyCodeLine{endpointParser.decomposed2json(\{\ name:\ 'jquery',\ source:\ 'jquery',\ target:\ '\string~2.0.0'\ \});}
+\DoxyCodeLine{//\ \{\ jquery:\ '\string~2.0.0'\ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{endpointParser.decomposed2json(\{\ name:\ 'backbone',\ source:\ 'backbone-\/amd',\ target:\ '\string~1.0.0'\ \});}
+\DoxyCodeLine{//\ \{\ backbone:\ 'backbone-\/amd\#\string~2.0.0'\ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{endpointParser.decomposed2json(\{\ name:\ 'bootstrap',\ source:\ 'http://twitter.github.io/bootstrap/assets/bootstrap',\ target:\ '*'\ \});}
+\DoxyCodeLine{//\ \{\ bootstrap:\ 'http://twitter.github.io/bootstrap/assets/bootstrap'\ \}}
+
+\end{DoxyCode}
+
+
+This function throws an exception if the {\ttfamily name} from the decomposed endpoint is empty.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ef6a6e051cb1615954794f15b684d0b1_autotoc_md5315}{}\doxysection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ef6a6e051cb1615954794f15b684d0b1_autotoc_md5315}
+Released under the \href{http://www.opensource.org/licenses/mit-license.php}{\texttt{ MIT License}}. 

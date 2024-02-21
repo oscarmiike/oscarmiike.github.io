@@ -1,0 +1,673 @@
+\chapter{Changelog}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1}\index{Changelog@{Changelog}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md607}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md607}%
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md608}{}\doxysection{\texorpdfstring{Newer releases}{Newer releases}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md608}
+Please see\+: \href{https://github.com/bower/bower/releases}{\texttt{ https\+://github.\+com/bower/bower/releases}}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md609}{}\doxysection{\texorpdfstring{1.\+8.\+0 -\/ 2016-\/11-\/07}{1.\+8.\+0 -\/ 2016-\/11-\/07}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md609}
+
+\begin{DoxyItemize}
+\item Download tar archives from Git\+Hub when possible (\#2263)
+\begin{DoxyItemize}
+\item Change default shorthand resolver for github from {\ttfamily git\+://} to {\ttfamily \href{https://}{\texttt{ https\+://}}}
+\end{DoxyItemize}
+\item Fix ssl handling by not setting GIT\+\_\+\+SSL\+\_\+\+NO\+\_\+\+VERIFY=false (\#2361)
+\item Allow for removing components with url instead of name (\#2368)
+\item Show in warning message location of malformed bower.\+json (\#2357)
+\item Improve handling of non-\/semver versions in git resolver (\#2316)
+\item Fix handling of cached releases plugin\+Resolver\+Factory (\#2356)
+\item Allow to type the entire version when conflict occured (\#2243)
+\item Allow {\ttfamily owner/reponame} shorthand for registering components (\#2248)
+\item Allow single-\/char repo names and package names (\#2249)
+\item Make {\ttfamily bower version} no longer honor {\ttfamily version} in bower.\+json (\#2232)
+\item Add {\ttfamily postinstall} hook (\#2252)
+\item Allow for {\ttfamily @} instead of {\ttfamily \#} for {\ttfamily install} and {\ttfamily info} commands (\#2322)
+\item Upgrade all bundled modules
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md610}{}\doxysection{\texorpdfstring{1.\+7.\+9 -\/ 2016-\/04-\/05}{1.\+7.\+9 -\/ 2016-\/04-\/05}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md610}
+
+\begin{DoxyItemize}
+\item Show warnings for invalid bower.\+json fields
+\item Update bower-\/json
+\begin{DoxyItemize}
+\item Less strict validation on package name (allow spaces, slashes, and "{}@"{})
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md611}{}\doxysection{\texorpdfstring{1.\+7.\+8 -\/ 2016-\/04-\/04}{1.\+7.\+8 -\/ 2016-\/04-\/04}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md611}
+
+\begin{DoxyItemize}
+\item Don\textquotesingle{}t ask for git credentials in non-\/interactive session, fixes \#956 \#1009
+\item Prevent swallowing exceptions with programmatic api, fixes \#2187
+\item Update graceful-\/fs to 4.\+x in all dependences, fixes nodejs/node\#5213
+\item Resolve pluggable resolvers using cwd and fallback to global modules, fixes \#1919
+\item Upgrade handlebars to 4.\+0.\+5, closes \#2195
+\item Replace all \% chatacters in defined scripts, instead of only first one, fixes \#2174
+\item Update opn package to fix issues with "{}bower open"{} command on Windows
+\item Update bower-\/config
+\begin{DoxyItemize}
+\item Do not interpolate environment variables in script hooks, fixes bower/config\#47
+\end{DoxyItemize}
+\item Update bower-\/json
+\begin{DoxyItemize}
+\item Validate package name more strictly and allow only latin letters, dots, dashes and underscores
+\end{DoxyItemize}
+\item Add support for "{}save"{} and "{}save-\/exact"{} in .bowerrc, \#2161
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md612}{}\doxysection{\texorpdfstring{1.\+7.\+7 -\/ 2016-\/01-\/27}{1.\+7.\+7 -\/ 2016-\/01-\/27}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md612}
+Revert locations of all files while still packaging {\ttfamily node\+\_\+modules}.
+
+It\textquotesingle{}s because people are depending on internals of bower, like {\ttfamily bower/lib/renderers/\+Standard\+Renderer}. We want to preserve this implicit contract, but we discourage it. The only official way to use bower programmatically is through `require(\textquotesingle{}bower')\`{}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md613}{}\doxysection{\texorpdfstring{1.\+7.\+6 -\/ 2016-\/01-\/27}{1.\+7.\+6 -\/ 2016-\/01-\/27}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md613}
+
+\begin{DoxyItemize}
+\item Revert location of "{}bin/bower"{} as developers are using it directly (\href{https://github.com/bower/bower/issues/2157}{\texttt{ \#2157}}) Note\+: Correctly, you should use an alias created in {\ttfamily npm bin -\/-\/global}.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md614}{}\doxysection{\texorpdfstring{1.\+7.\+5 -\/ 2016-\/01-\/26}{1.\+7.\+5 -\/ 2016-\/01-\/26}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md614}
+
+\begin{DoxyItemize}
+\item Remove analytics from Bower, fixes (\href{https://github.com/bower/bower/pull/2150}{\texttt{ \#2150}})
+\item Default to \texorpdfstring{$^\wedge$}{\string^} operator on {\ttfamily bower install -\/-\/save} (\href{https://github.com/bower/bower/pull/2145}{\texttt{ \#2145}})
+\item Support absolute path in .bowerrc directory option (\href{https://github.com/bower/bower/pull/2130}{\texttt{ \#2130}})
+\item Display user\textquotesingle{}s name upon {\ttfamily bower login} command (\href{https://github.com/bower/bower/pull/2133}{\texttt{ \#2133}})
+\item Decompress gzip files (\href{https://github.com/bower/bower/pull/2092}{\texttt{ \#2092}})
+\item Prevent name clashes in package extraction (\href{https://github.com/bower/bower/pull/2102}{\texttt{ \#2102}})
+\item When strict\+Ssl is false, set GIT\+\_\+\+SSL\+\_\+\+NO\+\_\+\+VERIFY=true (\href{https://github.com/bower/bower/issues/2129}{\texttt{ \#2129}})
+\item Distribute bower with npm@3 for better Windows support (\href{https://github.com/bower/bower/issues/2146}{\texttt{ \#2146}})
+\item Update request to 2.\+67.\+0 and fs-\/write-\/stream-\/atomic to 1.\+0.\+8
+\item Documentation improvements
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md615}{}\doxysection{\texorpdfstring{1.\+7.\+4 -\/ 2016-\/01-\/21}{1.\+7.\+4 -\/ 2016-\/01-\/21}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md615}
+Unpublished because of issue with npm distribution\+: \href{https://github.com/npm/npm/issues/11227}{\texttt{ https\+://github.\+com/npm/npm/issues/11227}}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md616}{}\doxysection{\texorpdfstring{1.\+7.\+3 -\/ 2016-\/01-\/20}{1.\+7.\+3 -\/ 2016-\/01-\/20}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md616}
+Unpublished because of issue with npm distribution\+: \href{https://github.com/npm/npm/issues/11227}{\texttt{ https\+://github.\+com/npm/npm/issues/11227}}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md617}{}\doxysection{\texorpdfstring{1.\+7.\+2 -\/ 2015-\/12-\/31}{1.\+7.\+2 -\/ 2015-\/12-\/31}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md617}
+
+\begin{DoxyItemize}
+\item Lock "{}fs-\/write-\/stream-\/atomic"{} to 1.\+0.\+5
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md618}{}\doxysection{\texorpdfstring{1.\+7.\+1 -\/ 2015-\/12-\/11}{1.\+7.\+1 -\/ 2015-\/12-\/11}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md618}
+
+\begin{DoxyItemize}
+\item Rollback "{}\+Add \`{}bower update -\/-\/save\`{} functionality"{}, it causes issues and needs more testing
+\item Fix backward-\/compatibility of {\ttfamily bower search -\/-\/json} (\href{https://github.com/bower/bower/issues/2066}{\texttt{ \#2066}})
+\item Ignore prerelease versions from {\ttfamily bower info} output
+\item Update update-\/notifier to 0.\+6.\+0
+\item Better formatting of help messages (\href{https://github.com/bower/bower/commit/de3e1089da80f47ea3667c5ab80d301cddfd8c3e}{\texttt{ https\+://github.\+com/bower/bower/commit/de3e1089da80f47ea3667c5ab80d301cddfd8c3e}})
+\item Add help menu for update {\ttfamily -\/-\/save} and {\ttfamily update -\/-\/save-\/dev} (\href{https://github.com/bower/bower/commit/612aaa88eb4d4b268b2d8665c338ac086af3a5b0}{\texttt{ https\+://github.\+com/bower/bower/commit/612aaa88eb4d4b268b2d8665c338ac086af3a5b0}})
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md619}{}\doxysection{\texorpdfstring{1.\+7.\+0 -\/ 2015-\/12-\/07}{1.\+7.\+0 -\/ 2015-\/12-\/07}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md619}
+
+\begin{DoxyItemize}
+\item Add {\ttfamily bower update -\/-\/save} functionality (\href{https://github.com/bower/bower/issues/2035}{\texttt{ \#2035}})
+\item {\ttfamily bower search} shows help message when no package name is specified (\href{https://github.com/bower/bower/issues/2066}{\texttt{ \#2066}})
+\item Update only those packages that are explicitly requested by the user. Related Issues
+\begin{DoxyItemize}
+\item \href{https://github.com/bower/bower/issues/256}{\texttt{ \#256}}
+\item \href{https://github.com/bower/bower/issues/924}{\texttt{ \#924}}
+\item \href{https://github.com/bower/bower/issues/1770}{\texttt{ \#1770}}
+\end{DoxyItemize}
+\item Allow for @ in username for SVN on windows (\href{https://github.com/bower/bower/issues/1650}{\texttt{ \#1650}})
+\item Update bower config
+\begin{DoxyItemize}
+\item Loads the .bowerrc file from the cwd specified on the command line
+\item Allow the use of environment variables in .bowerrc (\href{https://github.com/bower/config/issues/41}{\texttt{ \#41}})
+\item Allow for array notation in ENV variables (\href{https://github.com/bower/config/issues/44}{\texttt{ \#44}})
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md620}{}\doxysection{\texorpdfstring{1.\+6.\+9 -\/ 2015-\/12-\/04}{1.\+6.\+9 -\/ 2015-\/12-\/04}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md620}
+
+\begin{DoxyItemize}
+\item Change git version of fs-\/write-\/stream-\/atomic back to npm version (\href{https://github.com/bower/bower/issues/2079}{\texttt{ \#2079}})
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md621}{}\doxysection{\texorpdfstring{1.\+6.\+8 -\/ 2015-\/11-\/27}{1.\+6.\+8 -\/ 2015-\/11-\/27}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md621}
+
+\begin{DoxyItemize}
+\item Use fs-\/write-\/stream-\/atomic for downloads
+\item Improved downloader that properly cleans after itself
+\item Fix shallow host detection (\href{https://github.com/bower/bower/pull/2040}{\texttt{ \#2040}})
+\item Upgrade to (\href{https://github.com/bower/config/releases/tag/1.2.3}{\texttt{ bower-\/config\#1.\+2.\+3}})
+\begin{DoxyItemize}
+\item Properly restore env variables if they are undefined at the beginning
+\item Properly handle {\ttfamily default} setting for config.\+ca
+\item Display proper error if .bowerrc is a directory instead of file
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md622}{}\doxysection{\texorpdfstring{1.\+6.\+7 -\/ 2015-\/11-\/26}{1.\+6.\+7 -\/ 2015-\/11-\/26}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md622}
+
+\begin{DoxyItemize}
+\item Bundless all the dependencies again
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md623}{}\doxysection{\texorpdfstring{1.\+6.\+6 -\/ 2015-\/11-\/25}{1.\+6.\+6 -\/ 2015-\/11-\/25}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md623}
+
+\begin{DoxyItemize}
+\item Fixes regression with the published npm version
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md624}{}\doxysection{\texorpdfstring{1.\+6.\+5 -\/ 2015-\/10-\/24}{1.\+6.\+5 -\/ 2015-\/10-\/24}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md624}
+
+\begin{DoxyItemize}
+\item Updates to tests and documentation
+\item Fixes passing options when requesting downloads
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md625}{}\doxysection{\texorpdfstring{1.\+6.\+4 -\/ 2015-\/10-\/24}{1.\+6.\+4 -\/ 2015-\/10-\/24}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md625}
+
+\begin{DoxyItemize}
+\item Fix ignoring dependencies on multiple install run (\href{https://github.com/bower/bower/pull/1970}{\texttt{ \#1970}})
+\item Use --non-\/interactive when running svn client (\href{https://github.com/bower/bower/pull/1969}{\texttt{ \#1969}})
+\item Fix downloading of URLs ending with slash (\href{https://github.com/bower/bower/pull/1956}{\texttt{ \#1956}})
+\item Add user-\/agent field for downloads by Bower (\href{https://github.com/bower/bower/pull/1960}{\texttt{ \#1960}})
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md626}{}\doxysection{\texorpdfstring{1.\+6.\+3 -\/ 2015-\/10-\/16}{1.\+6.\+3 -\/ 2015-\/10-\/16}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md626}
+Fixes regression issues introduced with 1.\+6.\+2, specifically\+:
+
+
+\begin{DoxyItemize}
+\item Allow for bower\+\_\+components to be a symlink
+\item Allow setting custom registry in .bowerrc
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md627}{}\doxysection{\texorpdfstring{1.\+6.\+2 -\/ 2015-\/10-\/15}{1.\+6.\+2 -\/ 2015-\/10-\/15}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md627}
+Fix dependency issues of 1.\+6.\+1. First published release of 1.\+6.\+x.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md628}{}\doxysection{\texorpdfstring{1.\+6.\+1 -\/ 2015-\/10-\/15}{1.\+6.\+1 -\/ 2015-\/10-\/15}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md628}
+Fix dependency issues of 1.\+6.\+0. Reverted release.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md629}{}\doxysection{\texorpdfstring{1.\+6.\+0 -\/ 2015-\/10-\/15}{1.\+6.\+0 -\/ 2015-\/10-\/15}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md629}
+
+\begin{DoxyItemize}
+\item Shrinkwrap all dependencies and add them to bundled\+Dependencies (\href{https://github.com/bower/bower/pull/1948}{\texttt{ \#1948}})
+\item Allow for ignoring of child dependencies (\href{https://github.com/bower/bower/pull/1394}{\texttt{ \#1394}})
+\item Allow passing {\ttfamily -\/-\/config.\+resolvers} through CLI (\href{https://github.com/bower/bower/pull/1922}{\texttt{ \#1922}})
+\item Use defaults values from package.\+json if it exists (bower init) (\href{https://github.com/bower/bower/issues/1731}{\texttt{ \#1731}})
+\item Properly use cerificates set in .bowerrc (\href{https://github.com/bower/bower/pull/1869}{\texttt{ \#1869}})
+\item Include package name when version conflict occurs (\href{https://github.com/bower/bower/pull/1917}{\texttt{ \#1917}})
+\item Add timeout for permission check (\href{https://github.com/yeoman/insight/pull/35}{\texttt{ yeoman/insight\#35}})
+\item Close file-\/handles when possible. Prevents all sorts of permission issues on Windows (\href{https://github.com/bower/bower/commit/0bb1536c9972e13f3be06bea9a8619632966c664}{\texttt{ 0bb1536}})
+\item Prevent ENOENT error on Windows when in VM environment (\href{https://github.com/isaacs/chmodr/pull/8}{\texttt{ isaacs/chmodr\#8}})
+\end{DoxyItemize}
+
+Reverted release.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md630}{}\doxysection{\texorpdfstring{1.\+5.\+4 -\/ 2015-\/11-\/24}{1.\+5.\+4 -\/ 2015-\/11-\/24}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md630}
+
+\begin{DoxyItemize}
+\item \mbox{[}fix\mbox{]} Lock lru-\/cache dependency to 2.\+7.\+0
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md631}{}\doxysection{\texorpdfstring{1.\+5.\+3 -\/ 2015-\/09-\/24}{1.\+5.\+3 -\/ 2015-\/09-\/24}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md631}
+
+\begin{DoxyItemize}
+\item Revert auto sorting of bower dependencies, fixes (\href{https://github.com/bower/bower/issues/1897}{\texttt{ \#1897}})
+\item Fix --save-\/exact feature for github endpoints, fixes (\href{https://github.com/bower/bower/issues/1925}{\texttt{ \#1925}})
+\item Fix {\ttfamily bower init} to support private flag again (\href{https://github.com/bower/bower/pull/1819}{\texttt{ \#1819}})
+\item Bump insight dependency to support prompt timeout (\href{https://github.com/bower/bower/issues/1102}{\texttt{ \#1102}})
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md632}{}\doxysection{\texorpdfstring{1.\+5.\+2 -\/ 2015-\/08-\/25}{1.\+5.\+2 -\/ 2015-\/08-\/25}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md632}
+
+\begin{DoxyItemize}
+\item Revert update semver version from 2.\+x to 5.\+x, fixes (\href{https://github.com/bower/bower/issues/1896}{\texttt{ \#1896}})
+\item Make bower commands work from subdirectories, fixes (\href{https://github.com/bower/bower/issues/1893}{\texttt{ \#1893}})
+\item Put auto shallow cloning for git behind a flag, fixes (\href{https://github.com/bower/bower/issues/1764}{\texttt{ \#1764}})
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md633}{}\doxysection{\texorpdfstring{1.\+5.\+1 -\/ 2015-\/08-\/24}{1.\+5.\+1 -\/ 2015-\/08-\/24}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md633}
+
+\begin{DoxyItemize}
+\item If cwd provided explicitly, force using it, fixes \#1866
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md634}{}\doxysection{\texorpdfstring{1.\+5.\+0 -\/ 2015-\/08-\/24}{1.\+5.\+0 -\/ 2015-\/08-\/24}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md634}
+
+\begin{DoxyItemize}
+\item Pluggable Resolvers! \href{http://bower.io/docs/pluggable-resolvers/}{\texttt{ http\+://bower.\+io/docs/pluggable-\/resolvers/}}
+\item Update semver version from 2.\+x to 5.\+x (\href{https://github.com/bower/bower/issues/1852}{\texttt{ \#1852}})
+\item Auto-\/sort dependencies alphabetically (\href{https://github.com/bower/bower/issues/1381}{\texttt{ \#1381}})
+\item Make bower commands work from subdirectories (\href{https://github.com/bower/bower/issues/1866}{\texttt{ \#1866}})
+\item No longer prefer installing bower as global module (\href{https://github.com/bower/bower/issues/1865}{\texttt{ \#1865}})
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md635}{}\doxysection{\texorpdfstring{1.\+4.\+2 -\/ 2015-\/11-\/24}{1.\+4.\+2 -\/ 2015-\/11-\/24}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md635}
+
+\begin{DoxyItemize}
+\item \mbox{[}fix\mbox{]} Lock lru-\/cache dependency to 2.\+7.\+0
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md636}{}\doxysection{\texorpdfstring{1.\+4.\+1 -\/ 2015-\/04-\/01}{1.\+4.\+1 -\/ 2015-\/04-\/01}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md636}
+
+\begin{DoxyItemize}
+\item \mbox{[}fix\mbox{]} Reading .bowerrc upwards directory tree (\href{https://github.com/bower/bower/issues/1763}{\texttt{ \#1763}})
+\item \mbox{[}fix\mbox{]} Update bower-\/registry-\/client so it uses the same bower-\/config as bower
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md637}{}\doxysection{\texorpdfstring{1.\+4.\+0 -\/ 2015-\/03-\/30}{1.\+4.\+0 -\/ 2015-\/03-\/30}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md637}
+
+\begin{DoxyItemize}
+\item Add login and unregister commands (\href{https://github.com/bower/bower/issues/1719}{\texttt{ \#1719}})
+\item Automatically detecting smart Git hosts (\href{https://github.com/bower/bower/issues/1628}{\texttt{ \#1628}})
+\item \mbox{[}bower/config\#23\mbox{]} Allow npm config variables (\href{https://github.com/bower/bower/issues/1711}{\texttt{ \#1711}})
+\item \mbox{[}bower/config\#24\mbox{]} Merge .bowerrc files upwards directory tree (\href{https://github.com/bower/bower/issues/1689}{\texttt{ \#1689}})
+\item Better homedir detection (514eb8f)
+\item Add --save-\/exact flag (\href{https://github.com/bower/bower/issues/1654}{\texttt{ \#1654}})
+\item Ensure extracted files are readable (tar-\/fs) (\href{https://github.com/bower/bower/issues/1548}{\texttt{ \#1548}})
+\item The version command in the programmatic API now returns the new version (\href{https://github.com/bower/bower/issues/1755}{\texttt{ \#1755}})
+\item Some minor fixes\+: \#1639, \#1620, \#1576, \#1557, 962a565, a464f5a
+\item Improved Windows support (App\+Veyor CI, tests actually passing on Windows)
+\item OSX testing enabled on Travis\+CI
+\end{DoxyItemize}
+
+It also includes improved test coverage (\texorpdfstring{$\sim$}{\string~}60\% -\/\texorpdfstring{$>$}{>} \texorpdfstring{$\sim$}{\string~}85\%) and many refactors.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md638}{}\doxysection{\texorpdfstring{1.\+3.\+12 -\/ 2014-\/09-\/28}{1.\+3.\+12 -\/ 2014-\/09-\/28}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md638}
+
+\begin{DoxyItemize}
+\item \mbox{[}stability\mbox{]} Fix versions for unstable dependencies (\href{https://github.com/bower/bower/pull/1532}{\texttt{ \#1532}})
+\item \mbox{[}fix\mbox{]} Update tar-\/fs to support old tar format (\href{https://github.com/bower/bower/issues/1537}{\texttt{ \#1537}})
+\item \mbox{[}fix\mbox{]} Make analytics work again (\href{https://github.com/bower/bower/pull/1529}{\texttt{ \#1529}})
+\item \mbox{[}fix\mbox{]} Always disable analytics for non-\/interactive mode (\href{https://github.com/bower/bower/pull/1529}{\texttt{ \#1529}})
+\item \mbox{[}fix\mbox{]} Bower init can create private packages again (\href{https://github.com/bower/bower/issues/1522}{\texttt{ \#1522}})
+\item \mbox{[}fix\mbox{]} Show again missing newline for bower search output (\href{https://github.com/bower/bower/issues/1538}{\texttt{ \#1538}})
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md639}{}\doxysection{\texorpdfstring{1.\+3.\+11 -\/ 2014-\/09-\/17}{1.\+3.\+11 -\/ 2014-\/09-\/17}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md639}
+
+\begin{DoxyItemize}
+\item \mbox{[}fix\mbox{]} Restore install missing dependencies on update (\href{https://github.com/bower/bower/pull/1519}{\texttt{ 1519}})
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md640}{}\doxysection{\texorpdfstring{1.\+3.\+10 -\/ 2014-\/09-\/13}{1.\+3.\+10 -\/ 2014-\/09-\/13}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md640}
+
+\begin{DoxyItemize}
+\item \mbox{[}fix\mbox{]} Back down concurrency from 50 to 5 (\href{https://github.com/bower/bower/pull/1483}{\texttt{ \#1483}})
+\item \mbox{[}fix\mbox{]} Read .bowerrc from specified cwd (\href{https://github.com/bower/bower/pull/1301}{\texttt{ \#1301}})
+\item \mbox{[}fix\mbox{]} Disable shallow clones except those from Git\+Hub (\href{https://github.com/bower/bower/pull/1393}{\texttt{ \#1393}})
+\item \mbox{[}fix\mbox{]} Expose bower version (\href{https://github.com/bower/bower/pull/1478}{\texttt{ \#1478}})
+\item \mbox{[}fix\mbox{]} Bump dependencies, including "{}request"{} (\href{https://github.com/bower/bower/pull/1467}{\texttt{ \#1467}})
+\item \mbox{[}fix\mbox{]} Prevent an error when piping bower output to head (\href{https://github.com/bower/bower/pull/1508}{\texttt{ \#1508}})
+\item \mbox{[}fix\mbox{]} Disable removing unnecessary resolutions (\href{https://github.com/bower/bower/pull/1061}{\texttt{ \#1061}})
+\item \mbox{[}fix\mbox{]} Display the output of hooks again (\href{https://github.com/bower/bower/issues/1484}{\texttt{ \#1484}})
+\item \mbox{[}fix\mbox{]} analytics\+: true in .bowerrc prevents user prompt (\href{https://github.com/bower/bower/pull/1470}{\texttt{ \#1470}})
+\item \mbox{[}perf\mbox{]} Use {\ttfamily tar-\/fs} instead of {\ttfamily tar} for faster TAR extraction (\href{https://github.com/bower/bower/pull/1490}{\texttt{ \#1490}})
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md641}{}\doxysection{\texorpdfstring{1.\+3.\+9 -\/ 2014-\/08-\/06}{1.\+3.\+9 -\/ 2014-\/08-\/06}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md641}
+
+\begin{DoxyItemize}
+\item \mbox{[}fix\mbox{]} Handle {\ttfamily tmp} sometimes returning an array (\href{https://github.com/bower/bower/pull/1434}{\texttt{ \#1434}})
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md642}{}\doxysection{\texorpdfstring{1.\+3.\+8 -\/ 2014-\/7-\/11}{1.\+3.\+8 -\/ 2014-\/7-\/11}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md642}
+
+\begin{DoxyItemize}
+\item \mbox{[}fix\mbox{]} Lock down {\ttfamily tmp} package dep (\href{https://github.com/bower/bower/pull/1403}{\texttt{ \#1403}}, \href{https://github.com/bower/bower/pull/1407}{\texttt{ \#1407}})
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md643}{}\doxysection{\texorpdfstring{1.\+3.\+7 -\/ 2014-\/07-\/04}{1.\+3.\+7 -\/ 2014-\/07-\/04}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md643}
+
+\begin{DoxyItemize}
+\item \mbox{[}fix\mbox{]} callstack error when processing installed packages with circular dependencies (\href{https://github.com/bower/bower/issues/1349}{\texttt{ \#1349}})
+\item \mbox{[}fix\mbox{]} Prevent bower list --paths\`{} failing with Type\+Error (\href{https://github.com/bower/bower/issues/1383}{\texttt{ \#1383}})
+\item "{}bower install"{} fails if there\textquotesingle{}s no bower.\+json in current directory (\href{https://github.com/bower/bower/issues/922}{\texttt{ \#922}})
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md644}{}\doxysection{\texorpdfstring{1.\+3.\+6 -\/ 2014-\/07-\/02}{1.\+3.\+6 -\/ 2014-\/07-\/02}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md644}
+
+\begin{DoxyItemize}
+\item \mbox{[}fix\mbox{]} Make --force always re-\/run installation (\href{https://github.com/bower/bower/issues/931}{\texttt{ \#931}})
+\item \mbox{[}fix\mbox{]} Disable caching for local resources (\href{https://github.com/bower/bower/issues/1356}{\texttt{ \#1356}})
+\item \mbox{[}fix\mbox{]} Emit errors instead throwing them when using bower.\+commands API (\href{https://github.com/bower/bower/issues/1297}{\texttt{ \#1297}})
+\item \mbox{[}fix\mbox{]} Main files and bower.\+json are never ignored (\href{https://github.com/bower/bower/issues/547}{\texttt{ \#547}})
+\item \mbox{[}fix\mbox{]} Check if pkg\+Meta is undefined during uninstall command (\href{https://github.com/bower/bower/issues/1329}{\texttt{ \#1329}})
+\item \mbox{[}fix\mbox{]} Make custom tmp dir and ignores play well with each other (\href{https://github.com/bower/bower/issues/1299}{\texttt{ \#1299}})
+\item Warn users when installing package with missing properties (\href{https://github.com/bower/bower/issues/694}{\texttt{ \#694}})
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md645}{}\doxysection{\texorpdfstring{1.\+3.\+5 -\/ 2014-\/06-\/06}{1.\+3.\+5 -\/ 2014-\/06-\/06}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md645}
+
+\begin{DoxyItemize}
+\item Search compatible versions in fetching packages (\href{https://github.com/bower/bower/issues/1147}{\texttt{ \#1147}})
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md646}{}\doxysection{\texorpdfstring{1.\+3.\+4 -\/ 2014-\/06-\/02}{1.\+3.\+4 -\/ 2014-\/06-\/02}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md646}
+
+\begin{DoxyItemize}
+\item Resolve a situation in which the install process gets into an infinite loop (\href{https://github.com/bower/bower/issues/1169}{\texttt{ \#1169}})
+\item Improved CLI output for conflicts (\href{https://github.com/bower/bower/issues/1284}{\texttt{ \#1284}})
+\item Changed {\ttfamily bower version} to mirror the tag format of {\ttfamily npm version} (\href{https://github.com/bower/bower/issues/1278}{\texttt{ \#1278}})
+\item Allow short commit SHAs to be used (\href{https://github.com/bower/bower/issues/990}{\texttt{ \#990}})
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md647}{}\doxysection{\texorpdfstring{1.\+3.\+3 -\/ 2014-\/04-\/24}{1.\+3.\+3 -\/ 2014-\/04-\/24}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md647}
+
+\begin{DoxyItemize}
+\item Do not cache moving targets like branches (\href{https://github.com/bower/bower/issues/1242}{\texttt{ \#1242}})
+\item Suppress output if --quiet option is specified (\href{https://github.com/bower/bower/pull/1124}{\texttt{ \#1124}})
+\item Use "{}svn export"{} for efficiency (\href{https://github.com/bower/bower/pull/1224}{\texttt{ \#1224}})
+\item Prevent loading insights and analytics on CI (\href{https://github.com/bower/bower/issues/1221}{\texttt{ \#1221}})
+\item Make "{}bower list"{} respect custom components directory (\href{https://github.com/bower/bower/issues/1237}{\texttt{ \#1237}})
+\item Improve non-\/interactive loading performance 2x (\href{https://github.com/bower/bower/issues/1238}{\texttt{ \#1238}})
+\item Load commands only on demand, improving performance (\href{https://github.com/bower/bower/pull/1232}{\texttt{ \#1232}})
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md648}{}\doxysection{\texorpdfstring{1.\+3.\+2 -\/ 2014-\/04-\/05}{1.\+3.\+2 -\/ 2014-\/04-\/05}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md648}
+
+\begin{DoxyItemize}
+\item Added yui module\+Type \href{https://github.com/bower/bower/pull/1129}{\texttt{ PR \#1129}}
+\item Fixes for concurrency issues \href{https://github.com/bower/bower/pull/1211}{\texttt{ PR \#1211}}
+\item {\ttfamily link} now installs package dependencies \href{https://github.com/bower/bower/pull/891}{\texttt{ PR \#891}}
+\item Improved conflict installation message \href{https://github.com/bower/bower/commit/bea533acf87903d4b411bfbaa7df93f852ef46a3}{\texttt{ Commit}}
+\item Add --production switch to "{}prune"{} command \href{https://github.com/bower/bower/pull/1168}{\texttt{ PR \#1168}}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md649}{}\doxysection{\texorpdfstring{1.\+3.\+1 -\/ 2014-\/03-\/10}{1.\+3.\+1 -\/ 2014-\/03-\/10}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md649}
+
+\begin{DoxyItemize}
+\item No longer ask for permission to gather analytics when running on in a CI environment.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md650}{}\doxysection{\texorpdfstring{1.\+3.\+0 -\/ 2014-\/03-\/10}{1.\+3.\+0 -\/ 2014-\/03-\/10}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md650}
+
+\begin{DoxyItemize}
+\item {\bfseries{Removed support for node 0.\+8.}} It may still work but we will no longer fix bugs for older versions of node.
+\item Add {\bfseries{Bower Insight}} for opt-\/in analytics integration to help improve tool and gain insight on community trends
+\begin{DoxyItemize}
+\item Old overview of \href{https://github.com/yeoman/yeoman/wiki/Insight}{\texttt{ Insight}}, \href{https://github.com/bower/bower/issues/260}{\texttt{ Issue \#260}}
+\item Reporting to GA. Public Dashboard is in progress.
+\item \href{https://github.com/bower/bower/issues/1162}{\texttt{ Turn off interactive mode}} if you run Bower in a CI environment
+\end{DoxyItemize}
+\item Add {\ttfamily module\+Type} property to bower init (\href{https://github.com/bower/bower/pull/934}{\texttt{ \#934}})
+\item Fix prune command to log only after cleanup is completed (\href{https://github.com/bower/bower/issues/1023}{\texttt{ \#1023}})
+\item Fix git resolver to ignore pre-\/release versions (\href{https://github.com/bower/bower/issues/1017}{\texttt{ \#1017}})
+\item Fix shorthand flag for {\ttfamily save} option on {\ttfamily uninstall} command (\href{https://github.com/bower/bower/pull/1031}{\texttt{ \#1031}})
+\item Add {\ttfamily bower version} command (\href{https://github.com/bower/bower/pull/961}{\texttt{ \#961}})
+\item Add .bowerrc option to use {\ttfamily -\/-\/save} by default when using {\ttfamily bower install} command (\href{https://github.com/bower/bower/pull/1074}{\texttt{ \#1074}})
+\item Fix git resolver caching (\href{https://github.com/bower/bower/issues/1083}{\texttt{ \#1083}})
+\item Fix reading versions from cache directory (\href{https://github.com/bower/bower/pull/1076}{\texttt{ \#1076}})
+\item Add svn support (\href{https://github.com/bower/bower/pull/1055}{\texttt{ \#1055}})
+\item Allow circular dependencies to be installed (\href{https://github.com/bower/bower/pull/1104}{\texttt{ \#1104}})
+\item Add scripts/hooks support (\href{https://github.com/bower/bower/pull/718}{\texttt{ \#718}})
+\end{DoxyItemize}
+
+{\itshape NOTE}\+: It\textquotesingle{}s advisable that users use {\ttfamily -\/-\/config.\+interactive=false} on automated scripts.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md651}{}\doxysection{\texorpdfstring{1.\+2.\+8 -\/ 2013-\/12-\/02}{1.\+2.\+8 -\/ 2013-\/12-\/02}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md651}
+
+\begin{DoxyItemize}
+\item Fix absolute paths ending with / not going through the Fs\+Resolver, (\href{https://github.com/bower/bower/issues/898}{\texttt{ \#898}})
+\item Allow query string parameters in package URLs
+\item Swapped \textquotesingle{}unzip\textquotesingle{} module for \textquotesingle{}decompress-\/zip\textquotesingle{}, and some other small unzipping fixes(\href{https://github.com/bower/bower/issues/873}{\texttt{ \#873}}, \href{https://github.com/bower/bower/issues/896}{\texttt{ \#896}})
+\item Allow the root-\/check to be overridden when calling bower programmatically.
+\item Fixed some bugs relating to packages with a very large dependency tree
+\item Fix a bug caused by a recent change to semver
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md652}{}\doxysection{\texorpdfstring{1.\+2.\+7 -\/ 2013-\/09-\/29}{1.\+2.\+7 -\/ 2013-\/09-\/29}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md652}
+
+\begin{DoxyItemize}
+\item Do not swallow sync errors when using the programmatic API (\href{https://github.com/bower/bower/issues/849}{\texttt{ \#849}})
+\item Fix resolutions not being saved if {\ttfamily -\/-\/force-\/latest} is specified (\href{https://github.com/bower/bower/issues/861}{\texttt{ \#861}})
+\item Fix {\ttfamily bower register} warning about URL conversion, even if no conversion occurred
+\item Fix {\ttfamily bower update} not correctly catching up branch commits
+\item Add configured directory in {\ttfamily .bowerrc} to the ignores in {\ttfamily bower init} (\href{https://github.com/bower/bower/issues/854}{\texttt{ \#854}})
+\item Fix some case sensitive issues with data stored in registry cache (e.\+g.\+: jquery/j\+Query, \href{https://github.com/bower/bower/issues/859}{\texttt{ \#859}})
+\item Fix bower not checking out a tag if it looks like a semver (e.\+g.\+: 1.\+0, \href{https://github.com/bower/bower/issues/872}{\texttt{ \#872}})
+\item Fix install \& update commands printing the wrong versions in some cases (\href{https://github.com/bower/bower/issues/879}{\texttt{ \#879}})
+\item Give priority to mime type headers when deciding if a package need to be extracted, except if it is {\ttfamily octet-\/stream}
+\end{DoxyItemize}
+
+{\itshape NOTE}\+: It\textquotesingle{}s advisable that users run {\ttfamily bower cache clean}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md653}{}\doxysection{\texorpdfstring{1.\+2.\+6 -\/ 2013-\/09-\/04}{1.\+2.\+6 -\/ 2013-\/09-\/04}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md653}
+
+\begin{DoxyItemize}
+\item Bower now reports download progress even for servers that do not respond with {\ttfamily content-\/length} header.
+\item Do not translate endpoints when registering a package to a private registry server (\href{https://github.com/bower/bower/issues/832}{\texttt{ \#832}})
+\item Detect corrupted downloads by comparing downloaded bytes with {\ttfamily content-\/length} header if possible; this fixes Bower silently failing on unstable networks (\href{https://github.com/bower/bower/issues/824}{\texttt{ \#824}} and \href{https://github.com/bower/bower/issues/792}{\texttt{ \#792}})
+\item Fix quotes in fields causing Bower to crash in the {\ttfamily init} command (\href{https://github.com/bower/bower/issues/841}{\texttt{ \#841}})
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md654}{}\doxysection{\texorpdfstring{1.\+2.\+5 -\/ 2013-\/08-\/28}{1.\+2.\+5 -\/ 2013-\/08-\/28}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md654}
+
+\begin{DoxyItemize}
+\item Fix persistent conflict resolutions not working correctly for branches (\href{https://github.com/bower/bower/issues/818}{\texttt{ \#818}})
+\item Fix Bower failing to run if HOME is not set (\href{https://github.com/bower/bower/issues/826}{\texttt{ \#826}})
+\item Bower now prints a warning if HOME is not set (\href{https://github.com/bower/bower/issues/827}{\texttt{ \#827}})
+\item Fix progress message being fired after completion of long running {\ttfamily git clone} commands
+\item Other minor improvements
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md655}{}\doxysection{\texorpdfstring{1.\+2.\+4 -\/ 2013-\/08-\/23}{1.\+2.\+4 -\/ 2013-\/08-\/23}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md655}
+
+\begin{DoxyItemize}
+\item Fix ignored nested folders not being correctly handled in some cases (\href{https://github.com/bower/bower/issues/814}{\texttt{ \#814}})
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md656}{}\doxysection{\texorpdfstring{1.\+2.\+3 -\/ 2013-\/08-\/22}{1.\+2.\+3 -\/ 2013-\/08-\/22}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md656}
+
+\begin{DoxyItemize}
+\item Fix read of environment variables that map to config properties with dashes and also support nested ones (\href{https://github.com/bower/config/issues/8}{\texttt{ \#8@bower-\/config}})
+\item Fix {\ttfamily bower info \texorpdfstring{$<$}{<}package\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}property\texorpdfstring{$>$}{>}} printing the available versions (it shouldn\textquotesingle{}t!)
+\item Fix interactive shell not being correctly detected in node {\ttfamily 0.\+8.\+x} (\href{https://github.com/bower/bower/issues/802}{\texttt{ \#802}})
+\item Fix {\ttfamily extraneous} flag in the {\ttfamily list} command being incorrectly set for saved dev dependencies in some cases
+\item Fix linked dependencies not being read in {\ttfamily bower list} on Windows (\href{https://github.com/bower/bower/issues/813}{\texttt{ \#813}})
+\item Fix update notice not working with {\ttfamily -\/-\/json}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md657}{}\doxysection{\texorpdfstring{1.\+2.\+2 -\/ 2013-\/08-\/20}{1.\+2.\+2 -\/ 2013-\/08-\/20}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md657}
+
+\begin{DoxyItemize}
+\item Standardize prompt behaviour with and without {\ttfamily -\/-\/json}
+\item Improve detection of {\ttfamily git} servers that do not support shallow clones (\href{https://github.com/bower/bower/issues/805}{\texttt{ \#805}})
+\item Ignore remote tags (tags ending with \texorpdfstring{$^\wedge$}{\string^}\{\})
+\item Fix bower not saving the correct endpoint in some edge cases (\href{https://github.com/bower/bower/issues/806}{\texttt{ \#806}})
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md658}{}\doxysection{\texorpdfstring{1.\+2.\+1 -\/ 2013-\/08-\/19}{1.\+2.\+1 -\/ 2013-\/08-\/19}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md658}
+
+\begin{DoxyItemize}
+\item Fix bower throwing on non-\/semver targets (\href{https://github.com/bower/bower/issues/800}{\texttt{ \#800}})
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md659}{}\doxysection{\texorpdfstring{1.\+2.\+0 -\/ 2013-\/08-\/19}{1.\+2.\+0 -\/ 2013-\/08-\/19}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md659}
+
+\begin{DoxyItemize}
+\item {\bfseries{Bower no longer installs a pre-\/release version by default, that is, if no version/range is specified}} (\href{https://github.com/bower/bower/issues/782}{\texttt{ \#782}})
+\item \+\_\+\+\_\+{\ttfamily bower info \texorpdfstring{$<$}{<}package\texorpdfstring{$>$}{>}} will now show the latest {\ttfamily \texorpdfstring{$<$}{<}package\texorpdfstring{$>$}{>}} information along with the available versions\+\_\+\+\_\+ (\href{https://github.com/bower/bower/issues/759}{\texttt{ \#759}})
+\item \+\_\+\+\_\+{\ttfamily bower link} no longer requires an elevated user on Windows in most cases\+\_\+\+\_\+ (\href{https://github.com/bower/bower/issues/472}{\texttt{ \#472}})
+\item {\bfseries{Init command now prompts for the whole {\ttfamily bower.\+json} spec properties, filling in default values for {\ttfamily author} and {\ttfamily homepage} based on {\ttfamily git} settings}} (\href{https://github.com/bower/bower/issues/693}{\texttt{ \#693}})
+\item Changes to endpoint sources in {\ttfamily bower.\+json} are now catched up by {\ttfamily bower install} and {\ttfamily bower update} (\href{https://github.com/bower/bower/issues/788}{\texttt{ \#788}})
+\item Allow semver ranges in {\ttfamily bower cache clean}, e.\+g. {\ttfamily bower cache clean jquery\#\texorpdfstring{$<$}{<}2.\+0.\+0} (\href{https://github.com/bower/bower/issues/688}{\texttt{ \#688}})
+\item Normalize {\ttfamily bower list -\/-\/paths} on Windows (\href{https://github.com/bower/bower/issues/279}{\texttt{ \#279}})
+\item Multiple mains are now correctly outputted as an array in {\ttfamily bower list -\/-\/paths} (\href{https://github.com/bower/bower/issues/784}{\texttt{ \#784}})
+\item Add {\ttfamily -\/-\/relative} option to {\ttfamily bower list -\/-\/json} so that Bower outputs relative paths instead of absolute (\href{https://github.com/bower/bower/issues/714}{\texttt{ \#714}})
+\item {\ttfamily bower list -\/-\/paths} now outputs relative paths by default; can be turned off with {\ttfamily -\/-\/no-\/relative} (\href{https://github.com/bower/bower/issues/785}{\texttt{ \#785}})
+\item Bower no longer fails if {\ttfamily symlinks} to files are present in the {\ttfamily bower\+\_\+components} folder (\href{https://github.com/bower/bower/issues/783}{\texttt{ \#783}} and \href{https://github.com/bower/bower/issues/791}{\texttt{ \#791}})
+\item Disable git templates/hooks when running {\ttfamily git} (\href{https://github.com/bower/bower/issues/761}{\texttt{ \#761}})
+\item Add instructions to setup git workaround for proxies when execution of {\ttfamily git} fails (\href{https://github.com/bower/bower/issues/250}{\texttt{ \#250}})
+\item Ignore {\ttfamily component.\+json} if it looks like a component(1) file (\href{https://github.com/bower/bower/issues/556}{\texttt{ \#556}})
+\item Fix multi-\/user usage on bower when it creates temporary directories to hold some files
+\item Fix prompting causing an invalid JSON output when running commands with {\ttfamily -\/-\/json}
+\item When running Bower commands programmatically, prompting is now disabled by default (see the updated programmatic \href{https://github.com/bower/bower\#programmatic-api}{\texttt{ usage}} for more info)
+\item Other minor improvements and fixes
+\end{DoxyItemize}
+
+Fix for {\ttfamily \#788} requires installed components to be re-\/installed.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md660}{}\doxysection{\texorpdfstring{1.\+1.\+2 -\/ 2013-\/08-\/10}{1.\+1.\+2 -\/ 2013-\/08-\/10}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md660}
+
+\begin{DoxyItemize}
+\item Detect and fallback if the git server does not support {\ttfamily -\/-\/depth=1} when cloning (\href{https://github.com/bower/bower/issues/747}{\texttt{ \#747}})
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md661}{}\doxysection{\texorpdfstring{1.\+1.\+1 -\/ 2013-\/08-\/08}{1.\+1.\+1 -\/ 2013-\/08-\/08}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md661}
+
+\begin{DoxyItemize}
+\item Fix silent fail when spawning child processes in some edge cases (\href{https://github.com/bower/bower/issues/722}{\texttt{ \#722}})
+\item Fix {\ttfamily home} command not guessing the correct URL for {\ttfamily Git\+Hub} ssh endpoints (requires {\ttfamily bower cache-\/clean})
+\item Fix bower not correctly filtering packages with symlinks in some cases (\href{https://github.com/bower/bower/issues/730}{\texttt{ \#730}})
+\item Fix multi-\/user usage on bower when it falls back to create a {\ttfamily /tmp/bower} folder (\href{https://github.com/bower/bower/issues/743}{\texttt{ \#743}})
+\item Bower now sends a fake user agent when behind a proxy by default, so that corporate proxies do not block requests (\href{https://github.com/bower/bower/issues/698}{\texttt{ \#698}})
+\item Bower now translates Git\+Hub public {\ttfamily git\+://} URLs to {\ttfamily git@} when behind a proxy (\href{https://github.com/bower/bower/issues/731}{\texttt{ \#731}})
+\item Minor improvements to the CLI output on small terminals
+\item Minor programmatic usage improvements
+\item Minor help usage fixes
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md662}{}\doxysection{\texorpdfstring{1.\+1.\+0 -\/ 2013-\/08-\/03}{1.\+1.\+0 -\/ 2013-\/08-\/03}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md662}
+
+\begin{DoxyItemize}
+\item {\bfseries{Fix {\ttfamily -\/-\/save} and {\ttfamily -\/-\/save-\/dev} not working correctly for the uninstall command in some situations}}
+\item {\bfseries{Attempting to register a package that declares {\ttfamily "{}private"{}\+: true} in {\ttfamily bower.\+json} will result in an error (\href{https://github.com/bower/bower/issues/162}{\texttt{ \#162}})}}
+\item {\bfseries{Fix retry strategy on download error that was causing some strange I/O errors}} (\href{https://github.com/bower/bower/issues/699}{\texttt{ \#699}} and \href{https://github.com/bower/bower/issues/704}{\texttt{ \#704}})
+\item \+\_\+\+\_\+{\ttfamily bower prune} now clears pruned packages dependencies if they are also extraneous\+\_\+\+\_\+ (\href{https://github.com/bower/bower/issues/708}{\texttt{ \#708}})
+\item \+\_\+\+\_\+{\ttfamily bower uninstall} now uninstalls uninstalled packages dependencies if they are not shared (\href{https://github.com/bower/bower/issues/609}{\texttt{ \#609}})\+\_\+\+\_\+
+\item Fix {\ttfamily bower list} display the {\ttfamily incompatible} label even if they are compatible (\href{https://github.com/bower/bower/issues/710}{\texttt{ \#710}})
+\item Fix {\ttfamily bower cache clean} not working correctly when {\ttfamily package\#non-\/semver} is specified
+\item Implement no operation {\ttfamily completion} command to prevent weird output when hitting tab (\href{https://github.com/bower/bower/issues/691}{\texttt{ \#691}})
+\item Fix {\ttfamily bower info -\/-\/help} (\href{https://github.com/bower/bower/issues/703}{\texttt{ \#703}})
+\item Add colorized output for {\ttfamily bower info \texorpdfstring{$<$}{<}package\texorpdfstring{$>$}{>}\#\texorpdfstring{$<$}{<}version\texorpdfstring{$>$}{>}} (\href{https://github.com/bower/bower/issues/571}{\texttt{ \#571}})
+\item Added {\ttfamily bower ls} as an alias to {\ttfamily bower list}
+\item Fix regression\+: do not create a json file when saving is required, warn instead
+\item Ignore linked packages when reading dependencies in {\ttfamily bower init} (\href{https://github.com/bower/bower/issues/709}{\texttt{ \#709}})
+\item {\ttfamily bower list} is now able to (partially) reconstruct the dependency tree, even for dependencies not declared in {\ttfamily bower.\+json} (\href{https://github.com/bower/bower/issues/622}{\texttt{ \#622}})
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md663}{}\doxysection{\texorpdfstring{1.\+0.\+3 -\/ 2013-\/07-\/30}{1.\+0.\+3 -\/ 2013-\/07-\/30}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md663}
+
+\begin{DoxyItemize}
+\item Fix some changes not being saved to bower.\+json (\href{https://github.com/bower/bower/issues/685}{\texttt{ \#685}})
+\item Fix {\ttfamily bower info \texorpdfstring{$<$}{<}package\texorpdfstring{$>$}{>} \texorpdfstring{$<$}{<}property\texorpdfstring{$>$}{>}} not showing information related to property of the latest version of that package (\href{https://github.com/bower/bower/issues/684}{\texttt{ \#684}})
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md664}{}\doxysection{\texorpdfstring{1.\+0.\+2 -\/ 2013-\/07-\/30}{1.\+0.\+2 -\/ 2013-\/07-\/30}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md664}
+
+\begin{DoxyItemize}
+\item Fix severe bug originated from a wrong merge that caused conflict messages to not show up correctly
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md665}{}\doxysection{\texorpdfstring{1.\+0.\+1 -\/ 2013-\/07-\/29}{1.\+0.\+1 -\/ 2013-\/07-\/29}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md665}
+
+\begin{DoxyItemize}
+\item Fix {\ttfamily bower register} going ahead even if the answer was {\ttfamily no} (\href{https://github.com/bower/bower/issues/644}{\texttt{ \#644}})
+\item Fix local endpoints with backslashes on Windows (\href{https://github.com/bower/endpoint-parser/pull/2}{\texttt{ \#2@endpoint-\/parser}})
+\item Fix usage of multiple registries in the registry-\/client (\href{https://github.com/bower/registry-client/pull/3}{\texttt{ \#3@registry-\/client}} and \href{https://github.com/bower/registry-client/pull/2}{\texttt{ \#2@registry-\/client}})
+\item File extensions now have more priority than mime types when deciding if extraction is necessary (\href{https://github.com/bower/bower/pull/657}{\texttt{ \#657}})
+\item Fix {\ttfamily Bower} not working when calling {\ttfamily .bat}/{\ttfamily .cmd} commands on Windows; it affected people using {\ttfamily Git portable} (\href{https://github.com/bower/bower/issues/626}{\texttt{ \#626}})
+\item Fix {\ttfamily bower list -\/-\/paths} not resolving all files to absolute paths when the {\ttfamily main} property contained multiple files (\href{https://github.com/bower/bower/issues/660}{\texttt{ 660}})
+\item Fix {\ttfamily Bower} renaming {\ttfamily bower.\+json} and {\ttfamily component.\+json} files to {\ttfamily index.\+json} when it was the only file in the folder (\href{https://github.com/bower/bower/issues/674}{\texttt{ \#674}})
+\item Ignore symlinks when copying/extracting since they are not portable, specially across different hard-\/drives (\href{https://github.com/bower/bower/issues/665}{\texttt{ \#665}})
+\item Local file/dir endpoints are now exclusively referenced by an absolute path or relative path starting with {\ttfamily .} (\href{https://github.com/bower/bower/issues/666}{\texttt{ \#666}})
+\item Linked packages {\ttfamily bower.\+json} files are now parsed, making {\ttfamily bower list} account linked packages dependencies (\href{https://github.com/bower/bower/issues/659}{\texttt{ \#659}})
+\item Bower now fails to run with sudo unless {\ttfamily -\/-\/allow-\/root} is passed (\href{https://github.com/bower/bower/issues/498}{\texttt{ \#498}})
+\item Add additional system information such as node version, bower version, OS version when an error occurs (\href{https://github.com/bower/bower/issues/670}{\texttt{ \#670}})
+\item {\ttfamily bower install} no longer overwrites {\ttfamily linked} packages unless it needs to (\href{https://github.com/bower/bower/issues/593}{\texttt{ \#593}}).
+\item All endpoint parts are now trimmed so that the Manager can better detect similar endpoints (\href{https://github.com/bower/endpoint-parser/pull/3}{\texttt{ \#3@endpoint-\/parser}})
+\item {\ttfamily bower register} now shows the server that will be used (\href{https://github.com/bower/endpoint-parser/pull/647}{\texttt{ \#647}})
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md666}{}\doxysection{\texorpdfstring{1.\+0.\+0 -\/ 2013-\/07-\/23}{1.\+0.\+0 -\/ 2013-\/07-\/23}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md666}
+Total rewrite of bower. The list bellow highlights the most important stuff. For a complete list of changes that this rewrite and release brings please read\+: \href{https://github.com/bower/bower/wiki/Rewrite-state}{\texttt{ https\+://github.\+com/bower/bower/wiki/\+Rewrite-\/state}}
+
+
+\begin{DoxyItemize}
+\item Clear architecture and separation of concerns
+\item Much much faster
+\item {\ttfamily -\/-\/json} output for all commands
+\item {\ttfamily -\/-\/offline} usage for all commands, except {\ttfamily register}
+\item Proper {\ttfamily install} and {\ttfamily update} commands, similar to {\ttfamily npm} in behaviour
+\item Named endpoints when installing, e.\+g. {\ttfamily bower install backbone-\/amd=backbone\#\texorpdfstring{$\sim$}{\string~}1.0.\+0}
+\item New interactive conflict resolution strategy
+\item Prevent human errors when using {\ttfamily register}
+\item New {\ttfamily home} command, similar to {\ttfamily npm}
+\item New {\ttfamily cache list} command
+\item New {\ttfamily prune} command
+\item Many many general bug fixes
+\end{DoxyItemize}
+
+Non-\/backwards compatible changes\+:
+
+
+\begin{DoxyItemize}
+\item The value of the {\ttfamily json} property from .bowerrc is no longer used
+\item {\ttfamily -\/-\/map} and {\ttfamily -\/-\/sources} from the list command were removed, use {\ttfamily -\/-\/json} instead
+\item Programmatic usage changed, specially the commands interface
+\end{DoxyItemize}
+
+Users upgrading from {\ttfamily bower-\/canary} and {\ttfamily bower@\texorpdfstring{$\sim$}{\string~}0.x.\+x} should do a {\ttfamily bower cache clean}. Additionally you may remove the {\ttfamily \texorpdfstring{$\sim$}{\string~}/.bower} folder manually since it\textquotesingle{}s no longer used. On Windows the folder is located in {\ttfamily App\+Data/bower}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md667}{}\doxysection{\texorpdfstring{0.\+10.\+0 -\/ 2013-\/07-\/02}{0.\+10.\+0 -\/ 2013-\/07-\/02}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md667}
+
+\begin{DoxyItemize}
+\item {\bfseries{Allow specific commits to be targeted}} (\href{https://github.com/bower/bower/issues/275}{\texttt{ \#275}})
+\item {\bfseries{Change bower default folder from {\ttfamily components} to {\ttfamily bower\+\_\+components}}} (\href{https://github.com/bower/bower/issues/434}{\texttt{ \#434}})
+\item {\bfseries{Support semver pre-\/releases and builds}} (\href{https://github.com/bower/bower/issues/188}{\texttt{ \#188}})
+\item Use {\ttfamily Content-\/\+Type} and {\ttfamily Content-\/\+Disposition} to guess file types, such as zip files (\href{https://github.com/bower/bower/pull/454}{\texttt{ \#454}})
+\item Fix bower failing silently when using an invalid version value in the bower.\+json file (\href{https://github.com/bower/bower/issues/439}{\texttt{ \#439}})
+\item Fix bower slowness when downloading after redirects (\href{https://github.com/bower/bower/issues/437}{\texttt{ \#437}})
+\item Detect and error out with a friendly message when {\ttfamily git} is not installed (\href{https://github.com/bower/bower/issues/362}{\texttt{ \#362}})
+\item Add {\ttfamily -\/-\/quiet} and {\ttfamily -\/-\/silent} CLI options (\href{https://github.com/bower/bower/issues/343}{\texttt{ \#343}})
+\item Minor programmatic usage improvements
+\end{DoxyItemize}
+
+{\itshape NOTE}\+: The {\ttfamily components} folder will still be used if already created, making it easier for users to upgrade.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md668}{}\doxysection{\texorpdfstring{0.\+9.\+2 -\/ 2013-\/04-\/28}{0.\+9.\+2 -\/ 2013-\/04-\/28}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md668}
+
+\begin{DoxyItemize}
+\item Better fix for \href{https://github.com/bower/bower/issues/429}{\texttt{ \#429}}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md669}{}\doxysection{\texorpdfstring{0.\+9.\+1 -\/ 2013-\/04-\/27}{0.\+9.\+1 -\/ 2013-\/04-\/27}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md669}
+
+\begin{DoxyItemize}
+\item Update {\ttfamily package.\+json}, docs and other stuff to point to the new {\ttfamily Bower} organisation on Git\+Hub
+\item Fix root label of {\ttfamily bower list} being an absolute path; now uses the package name
+\item Fix {\ttfamily bower update \texorpdfstring{$<$}{<}pkg\texorpdfstring{$>$}{>}} updating all packages; now throws when updating an unknown package
+\item Fix {\ttfamily list} command when package use different names than the {\ttfamily guessed} one (\href{https://github.com/bower/bower/issues/429}{\texttt{ \#429}})
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md670}{}\doxysection{\texorpdfstring{0.\+9.\+0 -\/ 2013-\/04-\/25}{0.\+9.\+0 -\/ 2013-\/04-\/25}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md670}
+
+\begin{DoxyItemize}
+\item {\bfseries{Change from {\ttfamily component.\+json} to {\ttfamily bower.\+json}}} (\href{https://github.com/bower/bower/issues/39}{\texttt{ \#39}})
+\item {\bfseries{Compatibility with {\ttfamily node 0.\+10.\+x}, including fix hangs/errors when extracting {\ttfamily zip} files}}
+\item Fix {\ttfamily -\/-\/save} and {\ttfamily -\/-\/save-\/dev} not working with URLs that get redirected (\href{https://github.com/bower/bower/issues/417}{\texttt{ \#417}})
+\item Fix {\ttfamily init} command targeting {\ttfamily \texorpdfstring{$\sim$}{\string~}commit} instead of {\ttfamily \texorpdfstring{$\ast$}{*}}. (\href{https://github.com/bower/bower/issues/385}{\texttt{ \#385}})
+\item Remove temporary directories before exiting (\href{https://github.com/bower/bower/issues/345}{\texttt{ \#345}})
+\item Integrate {\ttfamily update-\/notifier} (\href{https://github.com/bower/bower/issues/202}{\texttt{ \#202}})
+\item Use {\ttfamily json} name when a package name was inferred (\href{https://github.com/bower/bower/issues/192}{\texttt{ \#192}})
+\item Fix {\ttfamily bin/bower} not exiting with an exit code greater than zero when an error occurs (\href{https://github.com/bower/bower/issues/187}{\texttt{ \#187}})
+\item Fix {\ttfamily -\/-\/save} and {\ttfamily -\/-\/save-\/dev} saving resolved shorthands instead of the actual shorthands
+\item Fix bower using user defined git templates (\href{https://github.com/bower/bower/issues/324}{\texttt{ \#324}})
+\item Add command abbreviations (\href{https://github.com/bower/bower/issues/262}{\texttt{ \#262}})
+\item Improve help messages and fix abuse of colors in output
+\item Wait for every package to resolve before printing error messages (\href{https://github.com/bower/bower/issues/290}{\texttt{ \#290}})
+\item Add {\ttfamily shorthand\+\_\+resolver} to allow shorthands to be resolved to repositories other than Git\+Hub (\href{https://github.com/bower/bower/issues/278}{\texttt{ \#278}})
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md671}{}\doxysection{\texorpdfstring{0.\+8.\+6 -\/ 2013-\/04-\/03}{0.\+8.\+6 -\/ 2013-\/04-\/03}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md671}
+
+\begin{DoxyItemize}
+\item Emergency fix for {\ttfamily node 0.\+8.\+x} users to make {\ttfamily zip} extraction work again
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md672}{}\doxysection{\texorpdfstring{0.\+8.\+5 -\/ 2013-\/03-\/04}{0.\+8.\+5 -\/ 2013-\/03-\/04}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md672}
+
+\begin{DoxyItemize}
+\item Fix {\ttfamily cache-\/clean} command clearing the completion cache when the command was called with specific packages
+\item Add error message when an error is caught parsing an invalid {\ttfamily component.\+json}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md673}{}\doxysection{\texorpdfstring{0.\+8.\+4 -\/ 2013-\/03-\/01}{0.\+8.\+4 -\/ 2013-\/03-\/01}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md673}
+
+\begin{DoxyItemize}
+\item Fix some more duplicate async callbacks being called twice
+\item Preserve new lines when saving {\ttfamily component.\+json} (\href{https://github.com/bower/bower/issues/285}{\texttt{ \#285}})
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md674}{}\doxysection{\texorpdfstring{0.\+8.\+3 -\/ 2013-\/02-\/27}{0.\+8.\+3 -\/ 2013-\/02-\/27}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md674}
+
+\begin{DoxyItemize}
+\item Fix error when using the {\ttfamily update} command (\href{https://github.com/bower/bower/issues/282}{\texttt{ \#282}})
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md675}{}\doxysection{\texorpdfstring{0.\+8.\+2 -\/ 2013-\/02-\/26}{0.\+8.\+2 -\/ 2013-\/02-\/26}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md675}
+
+\begin{DoxyItemize}
+\item Fix some errors in windows while removing directories, had to downgrade {\ttfamily rimraf} (\href{https://github.com/bower/bower/issues/274}{\texttt{ \#274}})
+\item Prevent duplicate package names in error summaries (\href{https://github.com/bower/bower/issues/277}{\texttt{ \#277}})
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md676}{}\doxysection{\texorpdfstring{0.\+8.\+1 -\/ 2013-\/02-\/25}{0.\+8.\+1 -\/ 2013-\/02-\/25}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md676}
+
+\begin{DoxyItemize}
+\item Fix some async callbacks being fired twice (\href{https://github.com/bower/bower/issues/274}{\texttt{ \#274}})
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md677}{}\doxysection{\texorpdfstring{0.\+8.\+0 -\/ 2013-\/02-\/24}{0.\+8.\+0 -\/ 2013-\/02-\/24}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md677}
+
+\begin{DoxyItemize}
+\item {\bfseries{Add init command similar to {\ttfamily npm init}}} (\href{https://github.com/bower/bower/issues/219}{\texttt{ \#219}})
+\item {\bfseries{Add dev\+Dependencies}} support (\href{https://github.com/bower/bower/issues/251}{\texttt{ \#251}})
+\item {\bfseries{Add {\ttfamily -\/-\/save-\/dev} flag to install/uninstall commands}} (\href{https://github.com/bower/bower/issues/258}{\texttt{ \#258}})
+\item {\ttfamily cache-\/clean} command now clears links pointing to nonexistent folders (\href{https://github.com/bower/bower/issues/182}{\texttt{ \#182}})
+\item Fix issue when downloading assets behind a proxy using {\ttfamily https} (\href{https://github.com/bower/bower/issues/230}{\texttt{ \#230}})
+\item Fix --save saving unresolved components (\href{https://github.com/bower/bower/issues/240}{\texttt{ \#240}})
+\item Fix issue when extracting some zip files (\href{https://github.com/bower/bower/issues/225}{\texttt{ \#225}})
+\item Fix automatic conflict resolver not selecting the correct version
+\item Add {\ttfamily -\/-\/sources} option to the {\ttfamily list} command (\href{https://github.com/bower/bower/issues/235}{\texttt{ \#235}})
+\item Automatically clear cache when git commands fail with code 128 (\href{https://github.com/bower/bower/issues/216}{\texttt{ \#216}})
+\item Fix {\ttfamily bower} not working correctly behind a proxy in some commands (\href{https://github.com/bower/bower/issues/208}{\texttt{ \#208}})
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md678}{}\doxysection{\texorpdfstring{0.\+7.\+1 -\/ 2013-\/02-\/20}{0.\+7.\+1 -\/ 2013-\/02-\/20}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md678}
+
+\begin{DoxyItemize}
+\item Remove postinstall script from {\ttfamily bower} installation
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md679}{}\doxysection{\texorpdfstring{0.\+7.\+0 -\/ 2013-\/02-\/01}{0.\+7.\+0 -\/ 2013-\/02-\/01}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md679}
+
+\begin{DoxyItemize}
+\item {\bfseries{Ability to resolve conflicts}} (\href{https://github.com/bower/bower/issues/214}{\texttt{ \#214}})
+\item {\bfseries{Ability to search and publish to different endpoints by specifying them in the {\ttfamily .bowerrc} file}}
+\item {\bfseries{Experimental autocompletion}}
+\item {\bfseries{Ability to exclude (ignore) files}}
+\item Fix minor issues in the cache clean command
+\item Better error message for invalid semver tags (\href{https://github.com/bower/bower/issues/185}{\texttt{ \#185}})
+\item Only show discover message in the list command only if there are packages
+\item Fix mismatch issue due to reading cached component.\+json files (\href{https://github.com/bower/bower/issues/214}{\texttt{ \#214}})
+\item Better error messages when reading invalid .bowerrc files (\href{https://github.com/bower/bower/issues/220}{\texttt{ \#220}})
+\item Fix update command when used in packages pointing to assets (\href{https://github.com/bower/bower/issues/197}{\texttt{ \#197}})
+\item Bower now obeys packages\textquotesingle{}s {\ttfamily .bowerrc} if they define a different {\ttfamily json} (\href{https://github.com/bower/bower/issues/205}{\texttt{ \#205}})
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md680}{}\doxysection{\texorpdfstring{0.\+6.\+8 -\/ 2012-\/12-\/14}{0.\+6.\+8 -\/ 2012-\/12-\/14}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md680}
+
+\begin{DoxyItemize}
+\item Improve list command
+\begin{DoxyItemize}
+\item Does not fetch versions if not necessary (for --map and --paths options)
+\item Add --offline option to prevent versions from being fetched
+\end{DoxyItemize}
+\item Fix uninstall command not firing the {\ttfamily end} event
+\item Fix error when executing an unknown command (\href{https://github.com/bower/bower/issues/179}{\texttt{ \#179}})
+\item Fix help for the ls command (alias of list)
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md681}{}\doxysection{\texorpdfstring{0.\+6.\+7 -\/ 2012-\/12-\/10}{0.\+6.\+7 -\/ 2012-\/12-\/10}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md681}
+
+\begin{DoxyItemize}
+\item Fix uninstall removing all unsaved dependencies (\href{https://github.com/bower/bower/issues/178}{\texttt{ \#178}})
+\item Fix uninstall --force flag in some cases
+\item Add --silent option to the register option, to avoid questioning
+\item Fix possible issues with options in some commands
+\item Fix error reporting when reading invalid project component.\+json
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md682}{}\doxysection{\texorpdfstring{0.\+6.\+6 -\/ 2012-\/12-\/03}{0.\+6.\+6 -\/ 2012-\/12-\/03}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md682}
+
+\begin{DoxyItemize}
+\item Improve error handling while reading component.\+json
+\item Fix package name not being correctly collected in the error summary
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md683}{}\doxysection{\texorpdfstring{0.\+6.\+5 -\/ 2012-\/12-\/01}{0.\+6.\+5 -\/ 2012-\/12-\/01}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md683}
+
+\begin{DoxyItemize}
+\item Fix error summary not being displayed in some edge cases
+\item Fix bower not fetching latest commits correctly in some cases
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md684}{}\doxysection{\texorpdfstring{0.\+6.\+4 -\/ 2012-\/11-\/29}{0.\+6.\+4 -\/ 2012-\/11-\/29}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md684}
+
+\begin{DoxyItemize}
+\item Fix permission on downloaded files (\href{https://github.com/bower/bower/issues/160}{\texttt{ \#160}})
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md685}{}\doxysection{\texorpdfstring{0.\+6.\+3 -\/ 2012-\/11-\/24}{0.\+6.\+3 -\/ 2012-\/11-\/24}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md685}
+
+\begin{DoxyItemize}
+\item Fix version not being correctly set for local packages (\href{https://github.com/bower/bower/issues/155}{\texttt{ \#155}})
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md686}{}\doxysection{\texorpdfstring{0.\+6.\+2 -\/ 2012-\/11-\/23}{0.\+6.\+2 -\/ 2012-\/11-\/23}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md686}
+
+\begin{DoxyItemize}
+\item Fix uninstall --save when there is no component.\+json
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md687}{}\doxysection{\texorpdfstring{0.\+6.\+1 -\/ 2012-\/11-\/22}{0.\+6.\+1 -\/ 2012-\/11-\/22}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md687}
+
+\begin{DoxyItemize}
+\item Fix uninstall when the project component.\+json has no deps saved (\href{https://github.com/bower/bower/issues/153}{\texttt{ \#153}})
+\item Fix uncaught errors when using file writer (they are now caught and reported)
+\item Fix temporary directories not being deleted when an exception occurs (\href{https://github.com/bower/bower/issues/140}{\texttt{ \#153}})
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md688}{}\doxysection{\texorpdfstring{0.\+6.\+0 -\/ 2012-\/11-\/21}{0.\+6.\+0 -\/ 2012-\/11-\/21}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md688}
+
+\begin{DoxyItemize}
+\item {\bfseries{Add link command}} (similar to npm)
+\item Fix error reporting for nested deps
+\item Abort if a repository is detected when installing. This is useful to prevent people from loosing their work
+\item Minor fixes and improvements
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md689}{}\doxysection{\texorpdfstring{0.\+5.\+1 -\/ 2012-\/11-\/20}{0.\+5.\+1 -\/ 2012-\/11-\/20}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md689}
+
+\begin{DoxyItemize}
+\item Add errors summary to the end of install/update commands
+\item Add windows instructions to the README
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md690}{}\doxysection{\texorpdfstring{0.\+5.\+0 -\/ 2012-\/11-\/19}{0.\+5.\+0 -\/ 2012-\/11-\/19}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d3aba46beac028f510f25586fd0b02f1_autotoc_md690}
+
+\begin{DoxyItemize}
+\item {\bfseries{Remove package.\+json support}}
+\item {\bfseries{Support for local path repositories}} (\href{https://github.com/bower/bower/issues/132}{\texttt{ \#132}})
+\item {\ttfamily install -\/-\/save} now saves the correct tag (e.\+g\+: \texorpdfstring{$\sim$}{\string~}0.0.\+1) instead of \textquotesingle{}latest\textquotesingle{}
+\item {\ttfamily install -\/-\/save} now saves packages pointing directly to assets correctly
+\item Bower automatically creates a component.\+json when install with {\ttfamily -\/-\/save} is used
+\item Fix issues with list command (\href{https://github.com/bower/bower/issues/142}{\texttt{ \#142}})
+\item Fix local paths not being saved when installing with --save (\href{https://github.com/bower/bower/issues/114}{\texttt{ \#114}})
+\item {\ttfamily uninstall} now uninstalls nested dependencies if they are not shared (\href{https://github.com/bower/bower/issues/83}{\texttt{ \#83}})
+\item {\ttfamily uninstall} now warns when a dependency conflict occurs and aborts. It will only proceed if the {\ttfamily -\/-\/force} flag is passed
+\item Bower now detects mismatches between the version specified in the component.\+json and the tag, informing the user
+\item {\ttfamily bower ls} now informs when a package has a new commit (for non-\/tagged repos)
+\item Add jshintrc and fix a lot of issues related with JSHint warnings
+\item {\ttfamily bower register} now prompts if the user really wants to proceed 
+\end{DoxyItemize}

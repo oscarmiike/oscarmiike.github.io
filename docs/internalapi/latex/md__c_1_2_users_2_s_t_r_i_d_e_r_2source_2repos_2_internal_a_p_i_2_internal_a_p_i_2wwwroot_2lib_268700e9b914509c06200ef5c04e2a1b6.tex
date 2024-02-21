@@ -1,0 +1,1304 @@
+\chapter{README}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6}\index{README@{README}}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1513}{}\doxysection{\texorpdfstring{Ajv\+: Another JSON Schema Validator}{Ajv\+: Another JSON Schema Validator}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1513}
+The fastest JSON Schema validator for node.\+js and browser. Supports \href{https://github.com/json-schema/json-schema/wiki/v5-Proposals}{\texttt{ v5 proposals}}.
+
+\href{https://travis-ci.org/epoberezkin/ajv}{\texttt{ }} \href{https://www.npmjs.com/package/ajv}{\texttt{ }} \href{https://www.npmjs.com/package/ajv}{\texttt{ }} \href{https://codeclimate.com/github/epoberezkin/ajv}{\texttt{ }} \href{https://coveralls.io/github/epoberezkin/ajv?branch=master}{\texttt{ }} \href{https://gitter.im/ajv-validator/ajv}{\texttt{ }}
+
+{\bfseries{Please note}}\+: You can start using NEW beta version \href{https://github.com/epoberezkin/ajv/releases/tag/5.0.4-beta.3}{\texttt{ 5.\+0.\+4}} (see \href{https://github.com/epoberezkin/ajv/releases/tag/5.0.1-beta.0}{\texttt{ migration guide from 4.\+x.\+x}}) with the support of JSON-\/\+Schema draft-\/06 (not officially published yet)\+: {\ttfamily npm install ajv@\texorpdfstring{$^\wedge$}{\string^}5.0.\+4-\/beta}.
+
+Also see \href{https://github.com/epoberezkin/ajv/tree/5.0.4-beta.3}{\texttt{ docs}} for 5.\+0.\+4.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1514}{}\doxysubsection{\texorpdfstring{Contents}{Contents}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1514}
+
+\begin{DoxyItemize}
+\item Performance
+\item \doxylink{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2f649a80c2bb62ca06354bea1a086dc0e_features}{Features}
+\item Getting started
+\item \href{https://github.com/epoberezkin/ajv/blob/master/FAQ.md}{\texttt{ Frequently Asked Questions}}
+\item Using in browser
+\item Command line interface
+\item Validation
+\begin{DoxyItemize}
+\item Keywords
+\item Formats
+\item \$data reference
+\item NEW\+: \$merge and \$patch keywords
+\item Defining custom keywords
+\item Asynchronous schema compilation
+\item Asynchronous validation
+\end{DoxyItemize}
+\item Modifying data during validation
+\begin{DoxyItemize}
+\item Filtering data
+\item Assigning defaults
+\item Coercing data types
+\end{DoxyItemize}
+\item API
+\begin{DoxyItemize}
+\item Methods
+\item Options
+\item Validation errors
+\end{DoxyItemize}
+\item Related packages
+\item Packages using Ajv
+\item Tests, Contributing, History, License
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1515}{}\doxysubsection{\texorpdfstring{Performance}{Performance}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1515}
+Ajv generates code using \href{https://github.com/olado/doT}{\texttt{ doT templates}} to turn JSON schemas into super-\/fast validation functions that are efficient for v8 optimization.
+
+Currently Ajv is the fastest and the most standard compliant validator according to these benchmarks\+:
+
+
+\begin{DoxyItemize}
+\item \href{https://github.com/ebdrup/json-schema-benchmark}{\texttt{ json-\/schema-\/benchmark}} -\/ 50\% faster than the second place
+\item \href{https://github.com/pandastrike/jsck\#benchmarks}{\texttt{ jsck benchmark}} -\/ 20-\/190\% faster
+\item \href{https://rawgit.com/zaggino/z-schema/master/benchmark/results.html}{\texttt{ z-\/schema benchmark}}
+\item \href{https://cdn.rawgit.com/playlyfe/themis/master/benchmark/results.html}{\texttt{ themis benchmark}}
+\end{DoxyItemize}
+
+Performace of different validators by \href{https://github.com/ebdrup/json-schema-benchmark}{\texttt{ json-\/schema-\/benchmark}}\+:
+
+\href{https://github.com/ebdrup/json-schema-benchmark/blob/master/README.md\#performance}{\texttt{ }}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1516}{}\doxysubsection{\texorpdfstring{Features}{Features}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1516}
+
+\begin{DoxyItemize}
+\item Ajv implements full \href{http://json-schema.org/}{\texttt{ JSON Schema draft 4}} standard\+:
+\begin{DoxyItemize}
+\item all validation keywords (see \href{https://github.com/epoberezkin/ajv/blob/master/KEYWORDS.md}{\texttt{ JSON-\/\+Schema validation keywords}})
+\item full support of remote refs (remote schemas have to be added with {\ttfamily add\+Schema} or compiled to be available)
+\item support of circular references between schemas
+\item correct string lengths for strings with unicode pairs (can be turned off)
+\item formats defined by JSON Schema draft 4 standard and custom formats (can be turned off)
+\item \doxylink{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_api-validateschema}{validates schemas against meta-\/schema}
+\end{DoxyItemize}
+\item supports browsers and nodejs 0.\+10-\/6.\+x
+\item asynchronous loading of referenced schemas during compilation
+\item "{}\+All errors"{} validation mode with option all\+Errors
+\item error messages with parameters describing error reasons to allow creating custom error messages
+\item i18n error messages support with \href{https://github.com/epoberezkin/ajv-i18n}{\texttt{ ajv-\/i18n}} package
+\item filtering data from additional properties
+\item assigning defaults to missing properties and items
+\item coercing data to the types specified in {\ttfamily type} keywords
+\item custom keywords
+\item keywords {\ttfamily switch}, {\ttfamily constant}, {\ttfamily contains}, {\ttfamily pattern\+Groups}, {\ttfamily pattern\+Required}, {\ttfamily format\+Maximum} / {\ttfamily format\+Minimum} and {\ttfamily format\+Exclusive\+Maximum} / {\ttfamily format\+Exclusive\+Minimum} from \href{https://github.com/json-schema/json-schema/wiki/v5-Proposals}{\texttt{ JSON-\/schema v5 proposals}} with option v5
+\item \href{https://raw.githubusercontent.com/epoberezkin/ajv/master/lib/refs/json-schema-v5.json\#}{\texttt{ v5 meta-\/schema}} for schemas using v5 keywords
+\item v5 \$data reference to use values from the validated data as values for the schema keywords
+\item asynchronous validation of custom formats and keywords
+\end{DoxyItemize}
+
+Currently Ajv is the only validator that passes all the tests from \href{https://github.com/json-schema/JSON-Schema-Test-Suite}{\texttt{ JSON Schema Test Suite}} (according to \href{https://github.com/ebdrup/json-schema-benchmark}{\texttt{ json-\/schema-\/benchmark}}, apart from the test that requires that {\ttfamily 1.\+0} is not an integer that is impossible to satisfy in Java\+Script).\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1517}{}\doxysubsection{\texorpdfstring{Install}{Install}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1517}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ ajv}
+
+\end{DoxyCode}
+
+
+To install a stable beta version \href{https://github.com/epoberezkin/ajv/releases/tag/5.0.4-beta.3}{\texttt{ 5.\+0.\+4}} (see \href{https://github.com/epoberezkin/ajv/releases/tag/5.0.1-beta.0}{\texttt{ migration guide from 4.\+x.\+x}})\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ ajv@\string^5.0.4-\/beta}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1518}{}\doxysubsection{\texorpdfstring{\label{_usage}%
+Getting started}{\label{_usage}%
+Getting started}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1518}
+Try it in the node REPL\+: \href{https://tonicdev.com/npm/ajv}{\texttt{ https\+://tonicdev.\+com/npm/ajv}}
+
+The fastest validation call\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ Ajv\ =\ require('ajv');}
+\DoxyCodeLine{var\ ajv\ =\ new\ Ajv();\ //\ options\ can\ be\ passed,\ e.g.\ \{allErrors:\ true\}}
+\DoxyCodeLine{var\ validate\ =\ ajv.compile(schema);}
+\DoxyCodeLine{var\ valid\ =\ validate(data);}
+\DoxyCodeLine{if\ (!valid)\ console.log(validate.errors);}
+
+\end{DoxyCode}
+
+
+or with less code
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ ...}
+\DoxyCodeLine{var\ valid\ =\ ajv.validate(schema,\ data);}
+\DoxyCodeLine{if\ (!valid)\ console.log(ajv.errors);}
+\DoxyCodeLine{//\ ...}
+
+\end{DoxyCode}
+
+
+or
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ ...}
+\DoxyCodeLine{ajv.addSchema(schema,\ 'mySchema');}
+\DoxyCodeLine{var\ valid\ =\ ajv.validate('mySchema',\ data);}
+\DoxyCodeLine{if\ (!valid)\ console.log(ajv.errorsText());}
+\DoxyCodeLine{//\ ...}
+
+\end{DoxyCode}
+
+
+See API and Options for more details.
+
+Ajv compiles schemas to functions and caches them in all cases (using schema stringified with \href{https://github.com/substack/json-stable-stringify}{\texttt{ json-\/stable-\/stringify}} as a key), so that the next time the same schema is used (not necessarily the same object instance) it won\textquotesingle{}t be compiled again.
+
+The best performance is achieved when using compiled functions returned by {\ttfamily compile} or {\ttfamily get\+Schema} methods (there is no additional function call).
+
+{\bfseries{Please note}}\+: every time validation function or {\ttfamily ajv.\+validate} are called {\ttfamily errors} property is overwritten. You need to copy {\ttfamily errors} array reference to another variable if you want to use it later (e.\+g., in the callback). See Validation errors\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1519}{}\doxysubsection{\texorpdfstring{Using in browser}{Using in browser}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1519}
+You can require Ajv directly from the code you browserify -\/ in this case Ajv will be a part of your bundle.
+
+If you need to use Ajv in several bundles you can create a separate UMD bundle using {\ttfamily npm run bundle} script (thanks to \href{https://github.com/siddo420}{\texttt{ siddo420}}).
+
+Then you need to load Ajv in the browser\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<script\ src="{}ajv.min.js"{}></script>}
+
+\end{DoxyCode}
+
+
+This bundle can be used with different module systems or creates global {\ttfamily Ajv} if no module system is found.
+
+The browser bundle is available on \href{https://cdnjs.com/libraries/ajv}{\texttt{ cdnjs}}.
+
+Ajv is tested with these browsers\+:
+
+\href{https://saucelabs.com/u/epoberezkin}{\texttt{ }}
+
+{\bfseries{Please note}}\+: some frameworks, e.\+g. Dojo, may redefine global require in such way that is not compatible with Common\+JS module format. In such case Ajv bundle has to be loaded before the framework and then you can use global Ajv (see issue \href{https://github.com/epoberezkin/ajv/issues/234}{\texttt{ \#234}}).\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1520}{}\doxysubsection{\texorpdfstring{Command line interface}{Command line interface}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1520}
+CLI is available as a separate npm package \href{https://github.com/jessedc/ajv-cli}{\texttt{ ajv-\/cli}}. It supports\+:
+
+
+\begin{DoxyItemize}
+\item compiling JSON-\/schemas to test their validity
+\item BETA\+: generating standalone module exporting a validation function to be used without Ajv (using \href{https://github.com/epoberezkin/ajv-pack}{\texttt{ ajv-\/pack}})
+\item validating data file(s) against JSON-\/schema
+\item testing expected validity of data against JSON-\/schema
+\item referenced schemas
+\item custom meta-\/schemas
+\item files in JSON and Java\+Script format
+\item all Ajv options
+\item reporting changes in data after validation in \href{https://tools.ietf.org/html/rfc6902}{\texttt{ JSON-\/patch}} format
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1521}{}\doxysubsection{\texorpdfstring{Validation keywords}{Validation keywords}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1521}
+Ajv supports all validation keywords from draft 4 of JSON-\/schema standard\+:
+
+
+\begin{DoxyItemize}
+\item \href{https://github.com/epoberezkin/ajv/blob/master/KEYWORDS.md\#type}{\texttt{ type}}
+\item \href{https://github.com/epoberezkin/ajv/blob/master/KEYWORDS.md\#keywords-for-numbers}{\texttt{ for numbers}} -\/ maximum, minimum, exclusive\+Maximum, exclusive\+Minimum, multiple\+Of
+\item \href{https://github.com/epoberezkin/ajv/blob/master/KEYWORDS.md\#keywords-for-strings}{\texttt{ for strings}} -\/ max\+Length, min\+Length, pattern, format
+\item \href{https://github.com/epoberezkin/ajv/blob/master/KEYWORDS.md\#keywords-for-arrays}{\texttt{ for arrays}} -\/ max\+Items, min\+Items, unique\+Items, items, additional\+Items
+\item \href{https://github.com/epoberezkin/ajv/blob/master/KEYWORDS.md\#keywords-for-objects}{\texttt{ for objects}} -\/ max\+Properties, minproperties, required, properties, pattern\+Properties, additional\+Properties, dependencies
+\item \href{https://github.com/epoberezkin/ajv/blob/master/KEYWORDS.md\#keywords-for-all-types}{\texttt{ compound keywords}} -\/ enum, not, one\+Of, any\+Of, all\+Of
+\end{DoxyItemize}
+
+With option {\ttfamily v5\+: true} Ajv also supports all validation keywords and \$data reference from \href{https://github.com/json-schema/json-schema/wiki/v5-Proposals}{\texttt{ v5 proposals}} for JSON-\/schema standard\+:
+
+
+\begin{DoxyItemize}
+\item \href{https://github.com/epoberezkin/ajv/blob/master/KEYWORDS.md\#switch-v5-proposal}{\texttt{ switch}} -\/ conditional validation with a sequence of if/then clauses
+\item \href{https://github.com/epoberezkin/ajv/blob/master/KEYWORDS.md\#contains-v5-proposal}{\texttt{ contains}} -\/ check that array contains a valid item
+\item \href{https://github.com/epoberezkin/ajv/blob/master/KEYWORDS.md\#constant-v5-proposal}{\texttt{ constant}} -\/ check that data is equal to some value
+\item \href{https://github.com/epoberezkin/ajv/blob/master/KEYWORDS.md\#patterngroups-v5-proposal}{\texttt{ pattern\+Groups}} -\/ a more powerful alternative to pattern\+Properties
+\item \href{https://github.com/epoberezkin/ajv/blob/master/KEYWORDS.md\#patternrequired-v5-proposal}{\texttt{ pattern\+Required}} -\/ like {\ttfamily required} but with patterns that some property should match.
+\item \href{https://github.com/epoberezkin/ajv/blob/master/KEYWORDS.md\#formatmaximum--formatminimum-and-exclusiveformatmaximum--exclusiveformatminimum-v5-proposal}{\texttt{ format\+Maximum, format\+Minimum, format\+Exclusive\+Maximum, format\+Exclusive\+Minimum}} -\/ setting limits for date, time, etc.
+\end{DoxyItemize}
+
+See \href{https://github.com/epoberezkin/ajv/blob/master/KEYWORDS.md}{\texttt{ JSON-\/\+Schema validation keywords}} for more details.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1522}{}\doxysubsection{\texorpdfstring{Formats}{Formats}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1522}
+The following formats are supported for string validation with "{}format"{} keyword\+:
+
+
+\begin{DoxyItemize}
+\item {\itshape date}\+: full-\/date according to \href{http://tools.ietf.org/html/rfc3339\#section-5.6}{\texttt{ RFC3339}}.
+\item {\itshape time}\+: time with optional time-\/zone.
+\item {\itshape date-\/time}\+: date-\/time from the same source (time-\/zone is mandatory). {\ttfamily date}, {\ttfamily time} and {\ttfamily date-\/time} validate ranges in {\ttfamily full} mode and only regexp in {\ttfamily fast} mode (see options).
+\item {\itshape uri}\+: full uri with optional protocol.
+\item {\itshape email}\+: email address.
+\item {\itshape hostname}\+: host name acording to \href{http://tools.ietf.org/html/rfc1034\#section-3.5}{\texttt{ RFC1034}}.
+\item {\itshape ipv4}\+: IP address v4.
+\item {\itshape ipv6}\+: IP address v6.
+\item {\itshape regex}\+: tests whether a string is a valid regular expression by passing it to Reg\+Exp constructor.
+\item {\itshape uuid}\+: Universally Unique IDentifier according to \href{http://tools.ietf.org/html/rfc4122}{\texttt{ RFC4122}}.
+\item {\itshape json-\/pointer}\+: JSON-\/pointer according to \href{https://tools.ietf.org/html/rfc6901}{\texttt{ RFC6901}}.
+\item {\itshape relative-\/json-\/pointer}\+: relative JSON-\/pointer according to \href{http://tools.ietf.org/html/draft-luff-relative-json-pointer-00}{\texttt{ this draft}}.
+\end{DoxyItemize}
+
+There are two modes of format validation\+: {\ttfamily fast} and {\ttfamily full}. This mode affects formats {\ttfamily date}, {\ttfamily time}, {\ttfamily date-\/time}, {\ttfamily uri}, {\ttfamily email}, and {\ttfamily hostname}. See Options for details.
+
+You can add additional formats and replace any of the formats above using \doxylink{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_api-addformat}{add\+Format} method.
+
+The option {\ttfamily unknown\+Formats} allows to change the behaviour in case an unknown format is encountered -\/ Ajv can either ignore them (default now) or fail schema compilation (will be the default in 5.\+0.\+0).
+
+You can find patterns used for format validation and the sources that were used in \href{https://github.com/epoberezkin/ajv/blob/master/lib/compile/formats.js}{\texttt{ formats.\+js}}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1523}{}\doxysubsection{\texorpdfstring{\$data reference}{\$data reference}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1523}
+With {\ttfamily v5} option you can use values from the validated data as the values for the schema keywords. See \href{https://github.com/json-schema/json-schema/wiki/$data-(v5-proposal)}{\texttt{ v5 proposal}} for more information about how it works.
+
+{\ttfamily \$data} reference is supported in the keywords\+: constant, enum, format, maximum/minimum, exclusive\+Maximum / exclusive\+Minimum, max\+Length / min\+Length, max\+Items / min\+Items, max\+Properties / min\+Properties, format\+Maximum / format\+Minimum, format\+Exclusive\+Maximum / format\+Exclusive\+Minimum, multiple\+Of, pattern, required, unique\+Items.
+
+The value of "{}\$data"{} should be a \href{https://tools.ietf.org/html/rfc6901}{\texttt{ JSON-\/pointer}} to the data (the root is always the top level data object, even if the \$data reference is inside a referenced subschema) or a \href{http://tools.ietf.org/html/draft-luff-relative-json-pointer-00}{\texttt{ relative JSON-\/pointer}} (it is relative to the current point in data; if the \$data reference is inside a referenced subschema it cannot point to the data outside of the root level for this subschema).
+
+Examples.
+
+This schema requires that the value in property {\ttfamily smaller} is less or equal than the value in the property larger\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ schema\ =\ \{}
+\DoxyCodeLine{\ \ "{}properties"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ "{}smaller"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ "{}type"{}:\ "{}number"{},}
+\DoxyCodeLine{\ \ \ \ \ \ "{}maximum"{}:\ \{\ "{}\$data"{}:\ "{}1/larger"{}\ \}}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ "{}larger"{}:\ \{\ "{}type"{}:\ "{}number"{}\ \}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ validData\ =\ \{}
+\DoxyCodeLine{\ \ smaller:\ 5,}
+\DoxyCodeLine{\ \ larger:\ 7}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+This schema requires that the properties have the same format as their field names\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ schema\ =\ \{}
+\DoxyCodeLine{\ \ "{}additionalProperties"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ "{}type"{}:\ "{}string"{},}
+\DoxyCodeLine{\ \ \ \ "{}format"{}:\ \{\ "{}\$data"{}:\ "{}0\#"{}\ \}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ validData\ =\ \{}
+\DoxyCodeLine{\ \ 'date-\/time':\ '1963-\/06-\/19T08:30:06.283185Z',}
+\DoxyCodeLine{\ \ email:\ 'joe.bloggs@example.com'}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+{\ttfamily \$data} reference is resolved safely -\/ it won\textquotesingle{}t throw even if some property is undefined. If {\ttfamily \$data} resolves to {\ttfamily undefined} the validation succeeds (with the exclusion of {\ttfamily constant} keyword). If {\ttfamily \$data} resolves to incorrect type (e.\+g. not "{}number"{} for maximum keyword) the validation fails.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1524}{}\doxysubsection{\texorpdfstring{\$merge and \$patch keywords}{\$merge and \$patch keywords}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1524}
+With v5 option and the package \href{https://github.com/epoberezkin/ajv-merge-patch}{\texttt{ ajv-\/merge-\/patch}} you can use the keywords {\ttfamily \$merge} and {\ttfamily \$patch} that allow extending JSON-\/schemas with patches using formats \href{https://tools.ietf.org/html/rfc7396}{\texttt{ JSON Merge Patch (RFC 7396)}} and \href{https://tools.ietf.org/html/rfc6902}{\texttt{ JSON Patch (RFC 6902)}}.
+
+To add keywords {\ttfamily \$merge} and {\ttfamily \$patch} to Ajv instance use this code\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{require('ajv-\/merge-\/patch')(ajv);}
+
+\end{DoxyCode}
+
+
+Examples.
+
+Using {\ttfamily \$merge}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ "{}\$merge"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ "{}source"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ "{}type"{}:\ "{}object"{},}
+\DoxyCodeLine{\ \ \ \ \ \ "{}properties"{}:\ \{\ "{}p"{}:\ \{\ "{}type"{}:\ "{}string"{}\ \}\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ "{}additionalProperties"{}:\ false}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ "{}with"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ "{}properties"{}:\ \{\ "{}q"{}:\ \{\ "{}type"{}:\ "{}number"{}\ \}\ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Using {\ttfamily \$patch}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ "{}\$patch"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ "{}source"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ "{}type"{}:\ "{}object"{},}
+\DoxyCodeLine{\ \ \ \ \ \ "{}properties"{}:\ \{\ "{}p"{}:\ \{\ "{}type"{}:\ "{}string"{}\ \}\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ "{}additionalProperties"{}:\ false}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ "{}with"{}:\ [}
+\DoxyCodeLine{\ \ \ \ \ \ \{\ "{}op"{}:\ "{}add"{},\ "{}path"{}:\ "{}/properties/q"{},\ "{}value"{}:\ \{\ "{}type"{}:\ "{}number"{}\ \}\ \}}
+\DoxyCodeLine{\ \ \ \ ]}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+The schemas above are equivalent to this schema\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ "{}type"{}:\ "{}object"{},}
+\DoxyCodeLine{\ \ "{}properties"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ "{}p"{}:\ \{\ "{}type"{}:\ "{}string"{}\ \},}
+\DoxyCodeLine{\ \ \ \ "{}q"{}:\ \{\ "{}type"{}:\ "{}number"{}\ \}}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ "{}additionalProperties"{}:\ false}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+The properties {\ttfamily source} and {\ttfamily with} in the keywords {\ttfamily \$merge} and {\ttfamily \$patch} can use absolute or relative {\ttfamily \$ref} to point to other schemas previously added to the Ajv instance or to the fragments of the current schema.
+
+See the package \href{https://github.com/epoberezkin/ajv-merge-patch}{\texttt{ ajv-\/merge-\/patch}} for more information.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1525}{}\doxysubsection{\texorpdfstring{Defining custom keywords}{Defining custom keywords}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1525}
+The advantages of using custom keywords are\+:
+
+
+\begin{DoxyItemize}
+\item allow creating validation scenarios that cannot be expressed using JSON-\/\+Schema
+\item simplify your schemas
+\item help bringing a bigger part of the validation logic to your schemas
+\item make your schemas more expressive, less verbose and closer to your application domain
+\item implement custom data processors that modify your data ({\ttfamily modifying} option MUST be used in keyword definition) and/or create side effects while the data is being validated
+\end{DoxyItemize}
+
+If a keyword is used only for side-\/effects and its validation result is pre-\/defined, use option {\ttfamily valid\+: true/false} in keyword definition to simplify both generated code (no error handling in case of {\ttfamily valid\+: true}) and your keyword functions (no need to return any validation result).
+
+The concerns you have to be aware of when extending JSON-\/schema standard with custom keywords are the portability and understanding of your schemas. You will have to support these custom keywords on other platforms and to properly document these keywords so that everybody can understand them in your schemas.
+
+You can define custom keywords with \doxylink{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_api-addkeyword}{add\+Keyword} method. Keywords are defined on the {\ttfamily ajv} instance level -\/ new instances will not have previously defined keywords.
+
+Ajv allows defining keywords with\+:
+\begin{DoxyItemize}
+\item validation function
+\item compilation function
+\item macro function
+\item inline compilation function that should return code (as string) that will be inlined in the currently compiled schema.
+\end{DoxyItemize}
+
+Example. {\ttfamily range} and {\ttfamily exclusive\+Range} keywords using compiled schema\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ajv.addKeyword('range',\ \{\ type:\ 'number',\ compile:\ function\ (sch,\ parentSchema)\ \{}
+\DoxyCodeLine{\ \ var\ min\ =\ sch[0];}
+\DoxyCodeLine{\ \ var\ max\ =\ sch[1];}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ return\ parentSchema.exclusiveRange\ ===\ true}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ ?\ function\ (data)\ \{\ return\ data\ >\ min\ \&\&\ data\ <\ max;\ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ :\ function\ (data)\ \{\ return\ data\ >=\ min\ \&\&\ data\ <=\ max;\ \}}
+\DoxyCodeLine{\}\ \});}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ schema\ =\ \{\ "{}range"{}:\ [2,\ 4],\ "{}exclusiveRange"{}:\ true\ \};}
+\DoxyCodeLine{var\ validate\ =\ ajv.compile(schema);}
+\DoxyCodeLine{console.log(validate(2.01));\ //\ true}
+\DoxyCodeLine{console.log(validate(3.99));\ //\ true}
+\DoxyCodeLine{console.log(validate(2));\ //\ false}
+\DoxyCodeLine{console.log(validate(4));\ //\ false}
+
+\end{DoxyCode}
+
+
+Several custom keywords (typeof, instanceof, range and property\+Names) are defined in \href{https://github.com/epoberezkin/ajv-keywords}{\texttt{ ajv-\/keywords}} package -\/ they can be used for your schemas and as a starting point for your own custom keywords.
+
+See \href{https://github.com/epoberezkin/ajv/blob/master/CUSTOM.md}{\texttt{ Defining custom keywords}} for more details.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1526}{}\doxysubsection{\texorpdfstring{Asynchronous compilation}{Asynchronous compilation}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1526}
+During asynchronous compilation remote references are loaded using supplied function. See {\ttfamily compile\+Async} method and {\ttfamily load\+Schema} option.
+
+Example\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ ajv\ =\ new\ Ajv(\{\ loadSchema:\ loadSchema\ \});}
+\DoxyCodeLine{}
+\DoxyCodeLine{ajv.compileAsync(schema,\ function\ (err,\ validate)\ \{}
+\DoxyCodeLine{\ \ \ \ if\ (err)\ return;}
+\DoxyCodeLine{\ \ \ \ var\ valid\ =\ validate(data);}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{function\ loadSchema(uri,\ callback)\ \{}
+\DoxyCodeLine{\ \ \ \ request.json(uri,\ function(err,\ res,\ body)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ if\ (err\ ||\ res.statusCode\ >=\ 400)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ callback(err\ ||\ new\ Error('Loading\ error:\ '\ +\ res.statusCode));}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ else}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ callback(null,\ body);}
+\DoxyCodeLine{\ \ \ \ \});}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+{\bfseries{Please note}}\+: Option {\ttfamily missing\+Refs} should NOT be set to {\ttfamily "{}ignore"{}} or {\ttfamily "{}fail"{}} for asynchronous compilation to work.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1527}{}\doxysubsection{\texorpdfstring{Asynchronous validation}{Asynchronous validation}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1527}
+Example in node REPL\+: \href{https://tonicdev.com/esp/ajv-asynchronous-validation}{\texttt{ https\+://tonicdev.\+com/esp/ajv-\/asynchronous-\/validation}}
+
+You can define custom formats and keywords that perform validation asyncronously by accessing database or some service. You should add {\ttfamily async\+: true} in the keyword or format defnition (see \doxylink{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_api-addformat}{add\+Format}, \doxylink{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_api-addkeyword}{add\+Keyword} and Defining custom keywords).
+
+If your schema uses asynchronous formats/keywords or refers to some schema that contains them it should have {\ttfamily "{}\$async"{}\+: true} keyword so that Ajv can compile it correctly. If asynchronous format/keyword or reference to asynchronous schema is used in the schema without {\ttfamily \$async} keyword Ajv will throw an exception during schema compilation.
+
+{\bfseries{Please note}}\+: all asynchronous subschemas that are referenced from the current or other schemas should have {\ttfamily "{}\$async"{}\+: true} keyword as well, otherwise the schema compilation will fail.
+
+Validation function for an asynchronous custom format/keyword should return a promise that resolves to {\ttfamily true} or {\ttfamily false} (or rejects with {\ttfamily new Ajv.\+Validation\+Error(errors)} if you want to return custom errors from the keyword function). Ajv compiles asynchronous schemas to either \href{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function*}{\texttt{ generator function}} (default) that can be optionally transpiled with \href{https://github.com/facebook/regenerator}{\texttt{ regenerator}} or to \href{http://tc39.github.io/ecmascript-asyncawait/}{\texttt{ es7 async function}} that can be transpiled with \href{https://github.com/MatAtBread/nodent}{\texttt{ nodent}} or with regenerator as well. You can also supply any other transpiler as a function. See Options.
+
+The compiled validation function has {\ttfamily \$async\+: true} property (if the schema is asynchronous), so you can differentiate these functions if you are using both syncronous and asynchronous schemas.
+
+If you are using generators, the compiled validation function can be either wrapped with \href{https://github.com/tj/co}{\texttt{ co}} (default) or returned as generator function, that can be used directly, e.\+g. in \href{http://koajs.com/}{\texttt{ koa}} 1.\+0. {\ttfamily co} is a small library, it is included in Ajv (both as npm dependency and in the browser bundle).
+
+Generator functions are currently supported in Chrome, Firefox and node.\+js (0.\+11+); if you are using Ajv in other browsers or in older versions of node.\+js you should use one of available transpiling options. All provided async modes use global Promise class. If your platform does not have Promise you should use a polyfill that defines it.
+
+Validation result will be a promise that resolves to {\ttfamily true} or rejects with an exception {\ttfamily Ajv.\+Validation\+Error} that has the array of validation errors in {\ttfamily errors} property.
+
+Example\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{/**}
+\DoxyCodeLine{\ *\ without\ "{}async"{}\ and\ "{}transpile"{}\ options\ (or\ with\ option\ \{async:\ true\})}
+\DoxyCodeLine{\ *\ Ajv\ will\ choose\ the\ first\ supported/installed\ option\ in\ this\ order:}
+\DoxyCodeLine{\ *\ 1.\ native\ generator\ function\ wrapped\ with\ co}
+\DoxyCodeLine{\ *\ 2.\ es7\ async\ functions\ transpiled\ with\ nodent}
+\DoxyCodeLine{\ *\ 3.\ es7\ async\ functions\ transpiled\ with\ regenerator}
+\DoxyCodeLine{\ */}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ ajv\ =\ new\ Ajv;}
+\DoxyCodeLine{}
+\DoxyCodeLine{ajv.addKeyword('idExists',\ \{}
+\DoxyCodeLine{\ \ async:\ true,}
+\DoxyCodeLine{\ \ type:\ 'number',}
+\DoxyCodeLine{\ \ validate:\ checkIdExists}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{function\ checkIdExists(schema,\ data)\ \{}
+\DoxyCodeLine{\ \ return\ knex(schema.table)}
+\DoxyCodeLine{\ \ .select('id')}
+\DoxyCodeLine{\ \ .where('id',\ data)}
+\DoxyCodeLine{\ \ .then(function\ (rows)\ \{}
+\DoxyCodeLine{\ \ \ \ return\ !!rows.length;\ //\ true\ if\ record\ is\ found}
+\DoxyCodeLine{\ \ \});}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ schema\ =\ \{}
+\DoxyCodeLine{\ \ "{}\$async"{}:\ true,}
+\DoxyCodeLine{\ \ "{}properties"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ "{}userId"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ "{}type"{}:\ "{}integer"{},}
+\DoxyCodeLine{\ \ \ \ \ \ "{}idExists"{}:\ \{\ "{}table"{}:\ "{}users"{}\ \}}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ "{}postId"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ "{}type"{}:\ "{}integer"{},}
+\DoxyCodeLine{\ \ \ \ \ \ "{}idExists"{}:\ \{\ "{}table"{}:\ "{}posts"{}\ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ validate\ =\ ajv.compile(schema);}
+\DoxyCodeLine{}
+\DoxyCodeLine{validate(\{\ userId:\ 1,\ postId:\ 19\ \}))}
+\DoxyCodeLine{.then(function\ (valid)\ \{}
+\DoxyCodeLine{\ \ //\ "{}valid"{}\ is\ always\ true\ here}
+\DoxyCodeLine{\ \ console.log('Data\ is\ valid');}
+\DoxyCodeLine{\})}
+\DoxyCodeLine{.catch(function\ (err)\ \{}
+\DoxyCodeLine{\ \ if\ (!(err\ instanceof\ Ajv.ValidationError))\ throw\ err;}
+\DoxyCodeLine{\ \ //\ data\ is\ invalid}
+\DoxyCodeLine{\ \ console.log('Validation\ errors:',\ err.errors);}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1528}{}\doxysubsubsection{\texorpdfstring{Using transpilers with asyncronous validation functions.}{Using transpilers with asyncronous validation functions.}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1528}
+To use a transpiler you should separately install it (or load its bundle in the browser).
+
+Ajv npm package includes minified browser bundles of regenerator and nodent in dist folder.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1529}{}\doxyparagraph{\texorpdfstring{Using nodent}{Using nodent}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1529}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ ajv\ =\ new\ Ajv(\{\ /*\ async:\ 'es7',\ */\ transpile:\ 'nodent'\ \});}
+\DoxyCodeLine{var\ validate\ =\ ajv.compile(schema);\ //\ transpiled\ es7\ async\ function}
+\DoxyCodeLine{validate(data).then(successFunc).catch(errorFunc);}
+
+\end{DoxyCode}
+
+
+{\ttfamily npm install nodent} or use {\ttfamily nodent.\+min.\+js} from dist folder of npm package.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1530}{}\doxyparagraph{\texorpdfstring{Using regenerator}{Using regenerator}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1530}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ ajv\ =\ new\ Ajv(\{\ /*\ async:\ 'es7',\ */\ transpile:\ 'regenerator'\ \});}
+\DoxyCodeLine{var\ validate\ =\ ajv.compile(schema);\ //\ transpiled\ es7\ async\ function}
+\DoxyCodeLine{validate(data).then(successFunc).catch(errorFunc);}
+
+\end{DoxyCode}
+
+
+{\ttfamily npm install regenerator} or use {\ttfamily regenerator.\+min.\+js} from dist folder of npm package.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1531}{}\doxyparagraph{\texorpdfstring{Using other transpilers}{Using other transpilers}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1531}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ ajv\ =\ new\ Ajv(\{\ async:\ 'es7',\ transpile:\ transpileFunc\ \});}
+\DoxyCodeLine{var\ validate\ =\ ajv.compile(schema);\ //\ transpiled\ es7\ async\ function}
+\DoxyCodeLine{validate(data).then(successFunc).catch(errorFunc);}
+
+\end{DoxyCode}
+
+
+See Options.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1532}{}\doxyparagraph{\texorpdfstring{Comparison of async modes}{Comparison of async modes}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1532}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ mode   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ transpile~\newline
+speed\texorpdfstring{$\ast$}{*}   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ run-\/time~\newline
+speed\texorpdfstring{$\ast$}{*}   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ bundle~\newline
+size    }\\\cline{1-4}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ mode   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ transpile~\newline
+speed\texorpdfstring{$\ast$}{*}   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ run-\/time~\newline
+speed\texorpdfstring{$\ast$}{*}   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ bundle~\newline
+size    }\\\cline{1-4}
+\endhead
+generators$<$br$>$(native)   &\PBS\centering -\/   &\PBS\centering 1.\+0   &\PBS\centering -\/    \\\cline{1-4}
+es7.\+nodent   &\PBS\centering 1.\+35   &\PBS\centering 1.\+1   &\PBS\centering 183Kb    \\\cline{1-4}
+es7.\+regenerator   &\PBS\centering 1.\+0   &\PBS\centering 2.\+7   &\PBS\centering 322Kb    \\\cline{1-4}
+regenerator   &\PBS\centering 1.\+0   &\PBS\centering 3.\+2   &\PBS\centering 322Kb   \\\cline{1-4}
+\end{longtabu}
+
+
+
+\begin{DoxyItemize}
+\item Relative performance in node v.\+4, smaller is better.
+\end{DoxyItemize}
+
+\href{https://github.com/MatAtBread/nodent}{\texttt{ nodent}} has several advantages\+:
+
+
+\begin{DoxyItemize}
+\item much smaller browser bundle than regenerator
+\item almost the same performance of generated code as native generators in nodejs and the latest Chrome
+\item much better performace than native generators in other browsers
+\item works in IE 9 (regenerator does not)
+\end{DoxyItemize}
+
+\href{https://github.com/facebook/regenerator}{\texttt{ regenerator}} is a more widely adopted alternative.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1533}{}\doxysubsection{\texorpdfstring{Filtering data}{Filtering data}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1533}
+With option \`{}remove\+Additional\`{} (added by \href{https://github.com/andyscott}{\texttt{ andyscott}}) you can filter data during the validation.
+
+This option modifies original data.
+
+Example\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ ajv\ =\ new\ Ajv(\{\ removeAdditional:\ true\ \});}
+\DoxyCodeLine{var\ schema\ =\ \{}
+\DoxyCodeLine{\ \ "{}additionalProperties"{}:\ false,}
+\DoxyCodeLine{\ \ "{}properties"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ "{}foo"{}:\ \{\ "{}type"{}:\ "{}number"{}\ \},}
+\DoxyCodeLine{\ \ \ \ "{}bar"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ "{}additionalProperties"{}:\ \{\ "{}type"{}:\ "{}number"{}\ \},}
+\DoxyCodeLine{\ \ \ \ \ \ "{}properties"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ "{}baz"{}:\ \{\ "{}type"{}:\ "{}string"{}\ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ data\ =\ \{}
+\DoxyCodeLine{\ \ "{}foo"{}:\ 0,}
+\DoxyCodeLine{\ \ "{}additional1"{}:\ 1,\ //\ will\ be\ removed;\ \`{}additionalProperties`\ ==\ false}
+\DoxyCodeLine{\ \ "{}bar"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ "{}baz"{}:\ "{}abc"{},}
+\DoxyCodeLine{\ \ \ \ "{}additional2"{}:\ 2\ //\ will\ NOT\ be\ removed;\ \`{}additionalProperties`\ !=\ false}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ validate\ =\ ajv.compile(schema);}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log(validate(data));\ //\ true}
+\DoxyCodeLine{console.log(data);\ //\ \{\ "{}foo"{}:\ 0,\ "{}bar"{}:\ \{\ "{}baz"{}:\ "{}abc"{},\ "{}additional2"{}:\ 2\ \}}
+
+\end{DoxyCode}
+
+
+If {\ttfamily remove\+Additional} option in the example above were {\ttfamily "{}all"{}} then both {\ttfamily additional1} and {\ttfamily additional2} properties would have been removed.
+
+If the option were {\ttfamily "{}failing"{}} then property {\ttfamily additional1} would have been removed regardless of its value and property {\ttfamily additional2} would have been removed only if its value were failing the schema in the inner {\ttfamily additional\+Properties} (so in the example above it would have stayed because it passes the schema, but any non-\/number would have been removed).
+
+{\bfseries{Please note}}\+: If you use {\ttfamily remove\+Additional} option with {\ttfamily additional\+Properties} keyword inside {\ttfamily any\+Of}/{\ttfamily one\+Of} keywords your validation can fail with this schema, for example\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ "{}type"{}:\ "{}object"{},}
+\DoxyCodeLine{\ \ "{}oneOf"{}:\ [}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ "{}properties"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ "{}foo"{}:\ \{\ "{}type"{}:\ "{}string"{}\ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ "{}required"{}:\ [\ "{}foo"{}\ ],}
+\DoxyCodeLine{\ \ \ \ \ \ "{}additionalProperties"{}:\ false}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ "{}properties"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ "{}bar"{}:\ \{\ "{}type"{}:\ "{}integer"{}\ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \ \ "{}required"{}:\ [\ "{}bar"{}\ ],}
+\DoxyCodeLine{\ \ \ \ \ \ "{}additionalProperties"{}:\ false}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ ]}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+The intention of the schema above is to allow objects with either the string property "{}foo"{} or the integer property "{}bar"{}, but not with both and not with any other properties.
+
+With the option {\ttfamily remove\+Additional\+: true} the validation will pass for the object {\ttfamily \{ "{}foo"{}\+: "{}abc"{}\}} but will fail for the object {\ttfamily \{"{}bar"{}\+: 1\}}. It happens because while the first subschema in {\ttfamily one\+Of} is validated, the property {\ttfamily bar} is removed because it is an additional property according to the standard (because it is not included in {\ttfamily properties} keyword in the same schema).
+
+While this behaviour is unexpected (issues \href{https://github.com/epoberezkin/ajv/issues/129}{\texttt{ \#129}}, \href{https://github.com/epoberezkin/ajv/issues/134}{\texttt{ \#134}}), it is correct. To have the expected behaviour (both objects are allowed and additional properties are removed) the schema has to be refactored in this way\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ "{}type"{}:\ "{}object"{},}
+\DoxyCodeLine{\ \ "{}properties"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ "{}foo"{}:\ \{\ "{}type"{}:\ "{}string"{}\ \},}
+\DoxyCodeLine{\ \ \ \ "{}bar"{}:\ \{\ "{}type"{}:\ "{}integer"{}\ \}}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ "{}additionalProperties"{}:\ false,}
+\DoxyCodeLine{\ \ "{}oneOf"{}:\ [}
+\DoxyCodeLine{\ \ \ \ \{\ "{}required"{}:\ [\ "{}foo"{}\ ]\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ "{}required"{}:\ [\ "{}bar"{}\ ]\ \}}
+\DoxyCodeLine{\ \ ]}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+The schema above is also more efficient -\/ it will compile into a faster function.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1534}{}\doxysubsection{\texorpdfstring{Assigning defaults}{Assigning defaults}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1534}
+With option \`{}use\+Defaults\`{} Ajv will assign values from {\ttfamily default} keyword in the schemas of {\ttfamily properties} and {\ttfamily items} (when it is the array of schemas) to the missing properties and items.
+
+This option modifies original data.
+
+{\bfseries{Please note}}\+: by default the default value is inserted in the generated validation code as a literal (starting from v4.\+0), so the value inserted in the data will be the deep clone of the default in the schema.
+
+If you need to insert the default value in the data by reference pass the option {\ttfamily use\+Defaults\+: "{}shared"{}}.
+
+Inserting defaults by reference can be faster (in case you have an object in {\ttfamily default}) and it allows to have dynamic values in defaults, e.\+g. timestamp, without recompiling the schema. The side effect is that modifying the default value in any validated data instance will change the default in the schema and in other validated data instances. See example 3 below.
+
+Example 1 ({\ttfamily default} in {\ttfamily properties})\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ ajv\ =\ new\ Ajv(\{\ useDefaults:\ true\ \});}
+\DoxyCodeLine{var\ schema\ =\ \{}
+\DoxyCodeLine{\ \ "{}type"{}:\ "{}object"{},}
+\DoxyCodeLine{\ \ "{}properties"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ "{}foo"{}:\ \{\ "{}type"{}:\ "{}number"{}\ \},}
+\DoxyCodeLine{\ \ \ \ "{}bar"{}:\ \{\ "{}type"{}:\ "{}string"{},\ "{}default"{}:\ "{}baz"{}\ \}}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ "{}required"{}:\ [\ "{}foo"{},\ "{}bar"{}\ ]}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ data\ =\ \{\ "{}foo"{}:\ 1\ \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ validate\ =\ ajv.compile(schema);}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log(validate(data));\ //\ true}
+\DoxyCodeLine{console.log(data);\ //\ \{\ "{}foo"{}:\ 1,\ "{}bar"{}:\ "{}baz"{}\ \}}
+
+\end{DoxyCode}
+
+
+Example 2 ({\ttfamily default} in {\ttfamily items})\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ schema\ =\ \{}
+\DoxyCodeLine{\ \ "{}type"{}:\ "{}array"{},}
+\DoxyCodeLine{\ \ "{}items"{}:\ [}
+\DoxyCodeLine{\ \ \ \ \{\ "{}type"{}:\ "{}number"{}\ \},}
+\DoxyCodeLine{\ \ \ \ \{\ "{}type"{}:\ "{}string"{},\ "{}default"{}:\ "{}foo"{}\ \}}
+\DoxyCodeLine{\ \ ]}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ data\ =\ [\ 1\ ];}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ validate\ =\ ajv.compile(schema);}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log(validate(data));\ //\ true}
+\DoxyCodeLine{console.log(data);\ //\ [\ 1,\ "{}foo"{}\ ]}
+
+\end{DoxyCode}
+
+
+Example 3 (inserting "{}defaults"{} by reference)\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ ajv\ =\ new\ Ajv(\{\ useDefaults:\ 'shared'\ \});}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ schema\ =\ \{}
+\DoxyCodeLine{\ \ properties:\ \{}
+\DoxyCodeLine{\ \ \ \ foo:\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ default:\ \{\ bar:\ 1\ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ validate\ =\ ajv.compile(schema);}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ data\ =\ \{\};}
+\DoxyCodeLine{console.log(validate(data));\ //\ true}
+\DoxyCodeLine{console.log(data);\ //\ \{\ foo:\ \{\ bar:\ 1\ \}\ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{data.foo.bar\ =\ 2;}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ data2\ =\ \{\};}
+\DoxyCodeLine{console.log(validate(data2));\ //\ true}
+\DoxyCodeLine{console.log(data2);\ //\ \{\ foo:\ \{\ bar:\ 2\ \}\ \}}
+
+\end{DoxyCode}
+
+
+{\ttfamily default} keywords in other cases are ignored\+:
+
+
+\begin{DoxyItemize}
+\item not in {\ttfamily properties} or {\ttfamily items} subschemas
+\item in schemas inside {\ttfamily any\+Of}, {\ttfamily one\+Of} and {\ttfamily not} (see \href{https://github.com/epoberezkin/ajv/issues/42}{\texttt{ \#42}})
+\item in {\ttfamily if} subschema of v5 {\ttfamily switch} keyword
+\item in schemas generated by custom macro keywords
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1535}{}\doxysubsection{\texorpdfstring{Coercing data types}{Coercing data types}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1535}
+When you are validating user inputs all your data properties are usually strings. The option {\ttfamily coerce\+Types} allows you to have your data types coerced to the types specified in your schema {\ttfamily type} keywords, both to pass the validation and to use the correctly typed data afterwards.
+
+This option modifies original data.
+
+{\bfseries{Please note}}\+: if you pass a scalar value to the validating function its type will be coerced and it will pass the validation, but the value of the variable you pass won\textquotesingle{}t be updated because scalars are passed by value.
+
+Example 1\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ ajv\ =\ new\ Ajv(\{\ coerceTypes:\ true\ \});}
+\DoxyCodeLine{var\ schema\ =\ \{}
+\DoxyCodeLine{\ \ "{}type"{}:\ "{}object"{},}
+\DoxyCodeLine{\ \ "{}properties"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ "{}foo"{}:\ \{\ "{}type"{}:\ "{}number"{}\ \},}
+\DoxyCodeLine{\ \ \ \ "{}bar"{}:\ \{\ "{}type"{}:\ "{}boolean"{}\ \}}
+\DoxyCodeLine{\ \ \},}
+\DoxyCodeLine{\ \ "{}required"{}:\ [\ "{}foo"{},\ "{}bar"{}\ ]}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ data\ =\ \{\ "{}foo"{}:\ "{}1"{},\ "{}bar"{}:\ "{}false"{}\ \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ validate\ =\ ajv.compile(schema);}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log(validate(data));\ //\ true}
+\DoxyCodeLine{console.log(data);\ //\ \{\ "{}foo"{}:\ 1,\ "{}bar"{}:\ false\ \}}
+
+\end{DoxyCode}
+
+
+Example 2 (array coercions)\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ ajv\ =\ new\ Ajv(\{\ coerceTypes:\ 'array'\ \});}
+\DoxyCodeLine{var\ schema\ =\ \{}
+\DoxyCodeLine{\ \ "{}properties"{}:\ \{}
+\DoxyCodeLine{\ \ \ \ "{}foo"{}:\ \{\ "{}type"{}:\ "{}array"{},\ "{}items"{}:\ \{\ "{}type"{}:\ "{}number"{}\ \}\ \},}
+\DoxyCodeLine{\ \ \ \ "{}bar"{}:\ \{\ "{}type"{}:\ "{}boolean"{}\ \}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ data\ =\ \{\ "{}foo"{}:\ "{}1"{},\ "{}bar"{}:\ ["{}false"{}]\ \};}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ validate\ =\ ajv.compile(schema);}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log(validate(data));\ //\ true}
+\DoxyCodeLine{console.log(data);\ //\ \{\ "{}foo"{}:\ [1],\ "{}bar"{}:\ false\ \}}
+
+\end{DoxyCode}
+
+
+The coercion rules, as you can see from the example, are different from Java\+Script both to validate user input as expected and to have the coercion reversible (to correctly validate cases where different types are defined in subschemas of "{}any\+Of"{} and other compound keywords).
+
+See \href{https://github.com/epoberezkin/ajv/blob/master/COERCION.md}{\texttt{ Coercion rules}} for details.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1536}{}\doxysubsection{\texorpdfstring{API}{API}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1536}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1537}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1537}%
+ \doxysubparagraph*{new Ajv(\+Object options) -\/\texorpdfstring{$>$}{>} Object}
+
+Create Ajv instance.
+
+All the instance methods below are bound to the instance, so they can be used without the instance.
+
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1538}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1538}%
+ \doxysubparagraph*{.compile(\+Object schema) -\/\texorpdfstring{$>$}{>} Function\texorpdfstring{$<$}{<}Object data\texorpdfstring{$>$}{>}}
+
+Generate validating function and cache the compiled schema for future use.
+
+Validating function returns boolean and has properties {\ttfamily errors} with the errors from the last validation ({\ttfamily null} if there were no errors) and {\ttfamily schema} with the reference to the original schema.
+
+Unless the option {\ttfamily validate\+Schema} is false, the schema will be validated against meta-\/schema and if schema is invalid the error will be thrown. See options.
+
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1539}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1539}%
+ \doxysubparagraph*{.compile\+Async(\+Object schema, Function callback)}
+
+Asyncronous version of {\ttfamily compile} method that loads missing remote schemas using asynchronous function in {\ttfamily options.\+load\+Schema}. Callback will always be called with 2 parameters\+: error (or null) and validating function. Error will be not null in the following cases\+:
+
+
+\begin{DoxyItemize}
+\item missing schema can\textquotesingle{}t be loaded ({\ttfamily load\+Schema} calls callback with error).
+\item the schema containing missing reference is loaded, but the reference cannot be resolved.
+\item schema (or some referenced schema) is invalid.
+\end{DoxyItemize}
+
+The function compiles schema and loads the first missing schema multiple times, until all missing schemas are loaded.
+
+See example in Asynchronous compilation.
+
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1540}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1540}%
+ \doxysubparagraph*{.validate(Object schema\texorpdfstring{$\vert$}{|}\+String key\texorpdfstring{$\vert$}{|}\+String ref, data) -\/\texorpdfstring{$>$}{>} Boolean}
+
+Validate data using passed schema (it will be compiled and cached).
+
+Instead of the schema you can use the key that was previously passed to {\ttfamily add\+Schema}, the schema id if it was present in the schema or any previously resolved reference.
+
+Validation errors will be available in the {\ttfamily errors} property of Ajv instance ({\ttfamily null} if there were no errors).
+
+{\bfseries{Please note}}\+: every time this method is called the errors are overwritten so you need to copy them to another variable if you want to use them later.
+
+If the schema is asynchronous (has {\ttfamily \$async} keyword on the top level) this method returns a Promise. See Asynchronous validation.
+
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1541}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1541}%
+ \doxysubparagraph*{.add\+Schema(Array\texorpdfstring{$<$}{<}Object\texorpdfstring{$>$}{>}\texorpdfstring{$\vert$}{|}\+Object schema \mbox{[}, String key\mbox{]})}
+
+Add schema(s) to validator instance. This method does not compile schemas (but it still validates them). Because of that dependencies can be added in any order and circular dependencies are supported. It also prevents unnecessary compilation of schemas that are containers for other schemas but not used as a whole.
+
+Array of schemas can be passed (schemas should have ids), the second parameter will be ignored.
+
+Key can be passed that can be used to reference the schema and will be used as the schema id if there is no id inside the schema. If the key is not passed, the schema id will be used as the key.
+
+Once the schema is added, it (and all the references inside it) can be referenced in other schemas and used to validate data.
+
+Although {\ttfamily add\+Schema} does not compile schemas, explicit compilation is not required -\/ the schema will be compiled when it is used first time.
+
+By default the schema is validated against meta-\/schema before it is added, and if the schema does not pass validation the exception is thrown. This behaviour is controlled by {\ttfamily validate\+Schema} option.
+
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1542}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1542}%
+ \doxysubparagraph*{.add\+Meta\+Schema(Array\texorpdfstring{$<$}{<}Object\texorpdfstring{$>$}{>}\texorpdfstring{$\vert$}{|}\+Object schema \mbox{[}, String key\mbox{]})}
+
+Adds meta schema(s) that can be used to validate other schemas. That function should be used instead of {\ttfamily add\+Schema} because there may be instance options that would compile a meta schema incorrectly (at the moment it is {\ttfamily remove\+Additional} option).
+
+There is no need to explicitly add draft 4 meta schema (\href{http://json-schema.org/draft-04/schema}{\texttt{ http\+://json-\/schema.\+org/draft-\/04/schema}} and \href{http://json-schema.org/schema}{\texttt{ http\+://json-\/schema.\+org/schema}}) -\/ it is added by default, unless option {\ttfamily meta} is set to {\ttfamily false}. You only need to use it if you have a changed meta-\/schema that you want to use to validate your schemas. See {\ttfamily validate\+Schema}.
+
+With option {\ttfamily v5\+: true} \href{https://raw.githubusercontent.com/epoberezkin/ajv/master/lib/refs/json-schema-v5.json}{\texttt{ meta-\/schema that includes v5 keywords}} also added.
+
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1543}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1543}%
+ \doxysubparagraph*{\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_api-validateschema}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_api-validateschema}%
+.validate\+Schema(\+Object schema) -\/\texorpdfstring{$>$}{>} Boolean}
+
+Validates schema. This method should be used to validate schemas rather than {\ttfamily validate} due to the inconsistency of {\ttfamily uri} format in JSON-\/\+Schema standard.
+
+By default this method is called automatically when the schema is added, so you rarely need to use it directly.
+
+If schema doesn\textquotesingle{}t have {\ttfamily \$schema} property it is validated against draft 4 meta-\/schema (option {\ttfamily meta} should not be false) or against \href{https://raw.githubusercontent.com/epoberezkin/ajv/master/lib/refs/json-schema-v5.json\#}{\texttt{ v5 meta-\/schema}} if option {\ttfamily v5} is true.
+
+If schema has {\ttfamily \$schema} property then the schema with this id (that should be previously added) is used to validate passed schema.
+
+Errors will be available at {\ttfamily ajv.\+errors}.
+
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1544}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1544}%
+ \doxysubparagraph*{.get\+Schema(\+String key) -\/\texorpdfstring{$>$}{>} Function\texorpdfstring{$<$}{<}Object data\texorpdfstring{$>$}{>}}
+
+Retrieve compiled schema previously added with {\ttfamily add\+Schema} by the key passed to {\ttfamily add\+Schema} or by its full reference (id). Returned validating function has {\ttfamily schema} property with the reference to the original schema.
+
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1545}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1545}%
+ \doxysubparagraph*{.remove\+Schema(\mbox{[}Object schema\texorpdfstring{$\vert$}{|}\+String key\texorpdfstring{$\vert$}{|}\+String ref\texorpdfstring{$\vert$}{|}\+Reg\+Exp pattern\mbox{]})}
+
+Remove added/cached schema. Even if schema is referenced by other schemas it can be safely removed as dependent schemas have local references.
+
+Schema can be removed using\+:
+\begin{DoxyItemize}
+\item key passed to {\ttfamily add\+Schema}
+\item it\textquotesingle{}s full reference (id)
+\item Reg\+Exp that should match schema id or key (meta-\/schemas won\textquotesingle{}t be removed)
+\item actual schema object that will be stable-\/stringified to remove schema from cache
+\end{DoxyItemize}
+
+If no parameter is passed all schemas but meta-\/schemas will be removed and the cache will be cleared.
+
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1546}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1546}%
+ \doxysubparagraph*{\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_api-addformat}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_api-addformat}%
+.add\+Format(String name, String\texorpdfstring{$\vert$}{|}\+Reg\+Exp\texorpdfstring{$\vert$}{|}\+Function\texorpdfstring{$\vert$}{|}\+Object format)}
+
+Add custom format to validate strings. It can also be used to replace pre-\/defined formats for Ajv instance.
+
+Strings are converted to Reg\+Exp.
+
+Function should return validation result as {\ttfamily true} or {\ttfamily false}.
+
+If object is passed it should have properties {\ttfamily validate}, {\ttfamily compare} and {\ttfamily async}\+:
+
+
+\begin{DoxyItemize}
+\item {\itshape validate}\+: a string, Reg\+Exp or a function as described above.
+\item {\itshape compare}\+: an optional comparison function that accepts two strings and compares them according to the format meaning. This function is used with keywords {\ttfamily format\+Maximum}/{\ttfamily format\+Minimum} (from \href{https://github.com/json-schema/json-schema/wiki/v5-Proposals}{\texttt{ v5 proposals}} -\/ {\ttfamily v5} option should be used). It should return {\ttfamily 1} if the first value is bigger than the second value, {\ttfamily -\/1} if it is smaller and {\ttfamily 0} if it is equal.
+\item {\itshape async}\+: an optional {\ttfamily true} value if {\ttfamily validate} is an asynchronous function; in this case it should return a promise that resolves with a value {\ttfamily true} or {\ttfamily false}.
+\end{DoxyItemize}
+
+Custom formats can be also added via {\ttfamily formats} option.
+
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1547}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1547}%
+ \doxysubparagraph*{\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_api-addkeyword}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_api-addkeyword}%
+.add\+Keyword(\+String keyword, Object definition)}
+
+Add custom validation keyword to Ajv instance.
+
+Keyword should be different from all standard JSON schema keywords and different from previously defined keywords. There is no way to redefine keywords or to remove keyword definition from the instance.
+
+Keyword must start with a letter, {\ttfamily \+\_\+} or {\ttfamily \$}, and may continue with letters, numbers, {\ttfamily \+\_\+}, {\ttfamily \$}, or {\ttfamily -\/}. It is recommended to use an application-\/specific prefix for keywords to avoid current and future name collisions.
+
+Example Keywords\+:
+\begin{DoxyItemize}
+\item {\ttfamily "{}xyz-\/example"{}}\+: valid, and uses prefix for the xyz project to avoid name collisions.
+\item {\ttfamily "{}example"{}}\+: valid, but not recommended as it could collide with future versions of JSON schema etc.
+\item {\ttfamily "{}3-\/example"{}}\+: invalid as numbers are not allowed to be the first character in a keyword
+\end{DoxyItemize}
+
+Keyword definition is an object with the following properties\+:
+
+
+\begin{DoxyItemize}
+\item {\itshape type}\+: optional string or array of strings with data type(s) that the keyword applies to. If not present, the keyword will apply to all types.
+\item {\itshape validate}\+: validating function
+\item {\itshape compile}\+: compiling function
+\item {\itshape macro}\+: macro function
+\item {\itshape inline}\+: compiling function that returns code (as string)
+\item {\itshape schema}\+: an optional {\ttfamily false} value used with "{}validate"{} keyword to not pass schema
+\item {\itshape meta\+Schema}\+: an optional meta-\/schema for keyword schema
+\item {\itshape modifying}\+: {\ttfamily true} MUST be passed if keyword modifies data
+\item {\itshape valid}\+: pass {\ttfamily true}/{\ttfamily false} to pre-\/define validation result, the result returned from validation function will be ignored. This option cannot be used with macro keywords.
+\item {\itshape \$data}\+: an optional {\ttfamily true} value to support \$data reference as the value of custom keyword. The reference will be resolved at validation time. If the keyword has meta-\/schema it would be extended to allow \$data and it will be used to validate the resolved value. Supporting \$data reference requires that keyword has validating function (as the only option or in addition to compile, macro or inline function).
+\item {\itshape async}\+: an optional {\ttfamily true} value if the validation function is asynchronous (whether it is compiled or passed in {\itshape validate} property); in this case it should return a promise that resolves with a value {\ttfamily true} or {\ttfamily false}. This option is ignored in case of "{}macro"{} and "{}inline"{} keywords.
+\item {\itshape errors}\+: an optional boolean indicating whether keyword returns errors. If this property is not set Ajv will determine if the errors were set in case of failed validation.
+\end{DoxyItemize}
+
+{\itshape compile}, {\itshape macro} and {\itshape inline} are mutually exclusive, only one should be used at a time. {\itshape validate} can be used separately or in addition to them to support \$data reference.
+
+{\bfseries{Please note}}\+: If the keyword is validating data type that is different from the type(s) in its definition, the validation function will not be called (and expanded macro will not be used), so there is no need to check for data type inside validation function or inside schema returned by macro function (unless you want to enforce a specific type and for some reason do not want to use a separate {\ttfamily type} keyword for that). In the same way as standard keywords work, if the keyword does not apply to the data type being validated, the validation of this keyword will succeed.
+
+See Defining custom keywords for more details.
+
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1548}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1548}%
+ \doxysubparagraph*{.get\+Keyword(\+String keyword) -\/\texorpdfstring{$>$}{>} Object\texorpdfstring{$\vert$}{|}\+Boolean}
+
+Returns custom keyword definition, {\ttfamily true} for pre-\/defined keywords and {\ttfamily false} if the keyword is unknown.
+
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1549}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1549}%
+ \doxysubparagraph*{.remove\+Keyword(\+String keyword)}
+
+Removes custom or pre-\/defined keyword so you can redefine them.
+
+While this method can be used to extend pre-\/defined keywords, it can also be used to completely change their meaning -\/ it may lead to unexpected results.
+
+{\bfseries{Please note}}\+: schemas compiled before the keyword is removed will continue to work without changes. To recompile schemas use {\ttfamily remove\+Schema} method and compile them again.
+
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1550}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1550}%
+ \doxysubparagraph*{.errors\+Text(\mbox{[}Array\texorpdfstring{$<$}{<}Object\texorpdfstring{$>$}{>} errors \mbox{[}, Object options\mbox{]}\mbox{]}) -\/\texorpdfstring{$>$}{>} String}
+
+Returns the text with all errors in a String.
+
+Options can have properties {\ttfamily separator} (string used to separate errors, "{}, "{} by default) and {\ttfamily data\+Var} (the variable name that data\+Paths are prefixed with, "{}data"{} by default).\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1551}{}\doxysubsection{\texorpdfstring{Options}{Options}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1551}
+Defaults\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ //\ validation\ and\ reporting\ options:}
+\DoxyCodeLine{\ \ v5:\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ false,}
+\DoxyCodeLine{\ \ allErrors:\ \ \ \ \ \ \ \ false,}
+\DoxyCodeLine{\ \ verbose:\ \ \ \ \ \ \ \ \ \ false,}
+\DoxyCodeLine{\ \ jsonPointers:\ \ \ \ \ false,}
+\DoxyCodeLine{\ \ uniqueItems:\ \ \ \ \ \ true,}
+\DoxyCodeLine{\ \ unicode:\ \ \ \ \ \ \ \ \ \ true,}
+\DoxyCodeLine{\ \ format:\ \ \ \ \ \ \ \ \ \ \ 'fast',}
+\DoxyCodeLine{\ \ formats:\ \ \ \ \ \ \ \ \ \ \{\},}
+\DoxyCodeLine{\ \ unknownFormats:\ \ \ 'ignore',}
+\DoxyCodeLine{\ \ schemas:\ \ \ \ \ \ \ \ \ \ \{\},}
+\DoxyCodeLine{\ \ //\ referenced\ schema\ options:}
+\DoxyCodeLine{\ \ missingRefs:\ \ \ \ \ \ true,}
+\DoxyCodeLine{\ \ extendRefs:\ \ \ \ \ \ \ true,}
+\DoxyCodeLine{\ \ loadSchema:\ \ \ \ \ \ \ undefined,\ //\ function(uri,\ cb)\ \{\ /*\ ...\ */\ cb(err,\ schema);\ \},}
+\DoxyCodeLine{\ \ //\ options\ to\ modify\ validated\ data:}
+\DoxyCodeLine{\ \ removeAdditional:\ false,}
+\DoxyCodeLine{\ \ useDefaults:\ \ \ \ \ \ false,}
+\DoxyCodeLine{\ \ coerceTypes:\ \ \ \ \ \ false,}
+\DoxyCodeLine{\ \ //\ asynchronous\ validation\ options:}
+\DoxyCodeLine{\ \ async:\ \ \ \ \ \ \ \ \ \ \ \ undefined,}
+\DoxyCodeLine{\ \ transpile:\ \ \ \ \ \ \ \ undefined,}
+\DoxyCodeLine{\ \ //\ advanced\ options:}
+\DoxyCodeLine{\ \ meta:\ \ \ \ \ \ \ \ \ \ \ \ \ true,}
+\DoxyCodeLine{\ \ validateSchema:\ \ \ true,}
+\DoxyCodeLine{\ \ addUsedSchema:\ \ \ \ true,}
+\DoxyCodeLine{\ \ inlineRefs:\ \ \ \ \ \ \ true,}
+\DoxyCodeLine{\ \ passContext:\ \ \ \ \ \ false,}
+\DoxyCodeLine{\ \ loopRequired:\ \ \ \ \ Infinity,}
+\DoxyCodeLine{\ \ ownProperties:\ \ \ \ false,}
+\DoxyCodeLine{\ \ multipleOfPrecision:\ false,}
+\DoxyCodeLine{\ \ errorDataPath:\ \ \ \ 'object',}
+\DoxyCodeLine{\ \ sourceCode:\ \ \ \ \ \ \ true,}
+\DoxyCodeLine{\ \ messages:\ \ \ \ \ \ \ \ \ true,}
+\DoxyCodeLine{\ \ beautify:\ \ \ \ \ \ \ \ \ false,}
+\DoxyCodeLine{\ \ cache:\ \ \ \ \ \ \ \ \ \ \ \ new\ Cache}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1552}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1552}%
+ \doxysubparagraph*{Validation and reporting options}
+
+
+\begin{DoxyItemize}
+\item {\itshape v5}\+: add keywords {\ttfamily switch}, {\ttfamily constant}, {\ttfamily contains}, {\ttfamily pattern\+Groups}, {\ttfamily pattern\+Required}, {\ttfamily format\+Maximum} / {\ttfamily format\+Minimum} and {\ttfamily format\+Exclusive\+Maximum} / {\ttfamily format\+Exclusive\+Minimum} from \href{https://github.com/json-schema/json-schema/wiki/v5-Proposals}{\texttt{ JSON-\/schema v5 proposals}}. With this option added schemas without {\ttfamily \$schema} property are validated against \href{https://raw.githubusercontent.com/epoberezkin/ajv/master/lib/refs/json-schema-v5.json\#}{\texttt{ v5 meta-\/schema}}. {\ttfamily false} by default.
+\item {\itshape all\+Errors}\+: check all rules collecting all errors. Default is to return after the first error.
+\item {\itshape verbose}\+: include the reference to the part of the schema ({\ttfamily schema} and {\ttfamily parent\+Schema}) and validated data in errors (false by default).
+\item {\itshape json\+Pointers}\+: set {\ttfamily data\+Path} propery of errors using \href{https://tools.ietf.org/html/rfc6901}{\texttt{ JSON Pointers}} instead of Java\+Script property access notation.
+\item {\itshape unique\+Items}\+: validate {\ttfamily unique\+Items} keyword (true by default).
+\item {\itshape unicode}\+: calculate correct length of strings with unicode pairs (true by default). Pass {\ttfamily false} to use {\ttfamily .length} of strings that is faster, but gives "{}incorrect"{} lengths of strings with unicode pairs -\/ each unicode pair is counted as two characters.
+\item {\itshape format}\+: formats validation mode (\textquotesingle{}fast\textquotesingle{} by default). Pass \textquotesingle{}full\textquotesingle{} for more correct and slow validation or {\ttfamily false} not to validate formats at all. E.\+g., 25\+:00\+:00 and 2015/14/33 will be invalid time and date in \textquotesingle{}full\textquotesingle{} mode but it will be valid in \textquotesingle{}fast\textquotesingle{} mode.
+\item {\itshape formats}\+: an object with custom formats. Keys and values will be passed to {\ttfamily add\+Format} method.
+\item {\itshape unknown\+Formats}\+: handling of unknown formats. Option values\+:
+\begin{DoxyItemize}
+\item {\ttfamily true} (will be default in 5.\+0.\+0) -\/ if the unknown format is encountered the exception is thrown during schema compilation. If {\ttfamily format} keyword value is v5 \$data reference and it is unknown the validation will fail.
+\item {\ttfamily \mbox{[}String\mbox{]}} -\/ an array of unknown format names that will be ignored. This option can be used to allow usage of third party schemas with format(s) for which you don\textquotesingle{}t have definitions, but still fail if some other unknown format is used. If {\ttfamily format} keyword value is v5 \$data reference and it is not in this array the validation will fail.
+\item {\ttfamily "{}ignore"{}} (default now) -\/ to log warning during schema compilation and always pass validation. This option is not recommended, as it allows to mistype format name. This behaviour is required by JSON-\/schema specification.
+\end{DoxyItemize}
+\item {\itshape schemas}\+: an array or object of schemas that will be added to the instance. If the order is important, pass array. In this case schemas must have IDs in them. Otherwise the object can be passed -\/ {\ttfamily add\+Schema(value, key)} will be called for each schema in this object.
+\end{DoxyItemize}
+
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1553}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1553}%
+ \doxysubparagraph*{Referenced schema options}
+
+
+\begin{DoxyItemize}
+\item {\itshape missing\+Refs}\+: handling of missing referenced schemas. Option values\+:
+\begin{DoxyItemize}
+\item {\ttfamily true} (default) -\/ if the reference cannot be resolved during compilation the exception is thrown. The thrown error has properties {\ttfamily missing\+Ref} (with hash fragment) and {\ttfamily missing\+Schema} (without it). Both properties are resolved relative to the current base id (usually schema id, unless it was substituted).
+\item {\ttfamily "{}ignore"{}} -\/ to log error during compilation and always pass validation.
+\item {\ttfamily "{}fail"{}} -\/ to log error and successfully compile schema but fail validation if this rule is checked.
+\end{DoxyItemize}
+\item {\itshape extend\+Refs}\+: validation of other keywords when {\ttfamily \$ref} is present in the schema. Option values\+:
+\begin{DoxyItemize}
+\item {\ttfamily true} (default) -\/ validate all keywords in the schemas with {\ttfamily \$ref}.
+\item {\ttfamily "{}ignore"{}} -\/ when {\ttfamily \$ref} is used other keywords are ignored (as per \href{https://tools.ietf.org/html/draft-pbryan-zyp-json-ref-03\#section-3}{\texttt{ JSON Reference}} standard). A warning will be logged during the schema compilation.
+\item {\ttfamily "{}fail"{}} -\/ if other validation keywords are used together with {\ttfamily \$ref} the exception will be throw when the schema is compiled.
+\end{DoxyItemize}
+\item {\itshape load\+Schema}\+: asynchronous function that will be used to load remote schemas when the method {\ttfamily compile\+Async} is used and some reference is missing (option {\ttfamily missing\+Refs} should NOT be \textquotesingle{}fail\textquotesingle{} or \textquotesingle{}ignore\textquotesingle{}). This function should accept 2 parameters\+: remote schema uri and node-\/style callback. See example in Asynchronous compilation.
+\end{DoxyItemize}
+
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1554}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1554}%
+ \doxysubparagraph*{Options to modify validated data}
+
+
+\begin{DoxyItemize}
+\item {\itshape remove\+Additional}\+: remove additional properties -\/ see example in Filtering data. This option is not used if schema is added with {\ttfamily add\+Meta\+Schema} method. Option values\+:
+\begin{DoxyItemize}
+\item {\ttfamily false} (default) -\/ not to remove additional properties
+\item {\ttfamily "{}all"{}} -\/ all additional properties are removed, regardless of {\ttfamily additional\+Properties} keyword in schema (and no validation is made for them).
+\item {\ttfamily true} -\/ only additional properties with {\ttfamily additional\+Properties} keyword equal to {\ttfamily false} are removed.
+\item {\ttfamily "{}failing"{}} -\/ additional properties that fail schema validation will be removed (where {\ttfamily additional\+Properties} keyword is {\ttfamily false} or schema).
+\end{DoxyItemize}
+\item {\itshape use\+Defaults}\+: replace missing properties and items with the values from corresponding {\ttfamily default} keywords. Default behaviour is to ignore {\ttfamily default} keywords. This option is not used if schema is added with {\ttfamily add\+Meta\+Schema} method. See examples in Assigning defaults. Option values\+:
+\begin{DoxyItemize}
+\item {\ttfamily false} (default) -\/ do not use defaults
+\item {\ttfamily true} -\/ insert defaults by value (safer and slower, object literal is used).
+\item {\ttfamily "{}shared"{}} -\/ insert defaults by reference (faster). If the default is an object, it will be shared by all instances of validated data. If you modify the inserted default in the validated data, it will be modified in the schema as well.
+\end{DoxyItemize}
+\item {\itshape coerce\+Types}\+: change data type of data to match {\ttfamily type} keyword. See the example in Coercing data types and \href{https://github.com/epoberezkin/ajv/blob/master/COERCION.md}{\texttt{ coercion rules}}. Option values\+:
+\begin{DoxyItemize}
+\item {\ttfamily false} (default) -\/ no type coercion.
+\item {\ttfamily true} -\/ coerce scalar data types.
+\item {\ttfamily "{}array"{}} -\/ in addition to coercions between scalar types, coerce scalar data to an array with one element and vice versa (as required by the schema).
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1555}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1555}%
+ \doxysubparagraph*{Asynchronous validation options}
+
+
+\begin{DoxyItemize}
+\item {\itshape async}\+: determines how Ajv compiles asynchronous schemas (see Asynchronous validation) to functions. Option values\+:
+\begin{DoxyItemize}
+\item {\ttfamily "{}\texorpdfstring{$\ast$}{*}"{}} / {\ttfamily "{}co\texorpdfstring{$\ast$}{*}"{}} -\/ compile to generator function ("{}co\texorpdfstring{$\ast$}{*}"{} -\/ wrapped with {\ttfamily co.\+wrap}). If generators are not supported and you don\textquotesingle{}t provide {\ttfamily transpile} option, the exception will be thrown when Ajv instance is created.
+\item {\ttfamily "{}es7"{}} -\/ compile to es7 async function. Unless your platform supports them you need to provide {\ttfamily transpile} option. Currently only MS Edge 13 with flag supports es7 async functions according to \href{http://kangax.github.io/compat-table/es7/}{\texttt{ compatibility table}}).
+\item {\ttfamily true} -\/ if transpile option is not passed Ajv will choose the first supported/installed async/transpile modes in this order\+: "{}co\texorpdfstring{$\ast$}{*}"{} (native generator with co.\+wrap), "{}es7"{}/"{}nodent"{}, "{}co\texorpdfstring{$\ast$}{*}"{}/"{}regenerator"{} during the creation of the Ajv instance. If none of the options is available the exception will be thrown.
+\item {\ttfamily undefined}-\/ Ajv will choose the first available async mode in the same way as with {\ttfamily true} option but when the first asynchronous schema is compiled.
+\end{DoxyItemize}
+\item {\itshape transpile}\+: determines whether Ajv transpiles compiled asynchronous validation function. Option values\+:
+\begin{DoxyItemize}
+\item {\ttfamily "{}nodent"{}} -\/ transpile with \href{https://github.com/MatAtBread/nodent}{\texttt{ nodent}}. If nodent is not installed, the exception will be thrown. nodent can only transpile es7 async functions; it will enforce this mode.
+\item {\ttfamily "{}regenerator"{}} -\/ transpile with \href{https://github.com/facebook/regenerator}{\texttt{ regenerator}}. If regenerator is not installed, the exception will be thrown.
+\item a function -\/ this function should accept the code of validation function as a string and return transpiled code. This option allows you to use any other transpiler you prefer.
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1556}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1556}%
+ \doxysubparagraph*{Advanced options}
+
+
+\begin{DoxyItemize}
+\item {\itshape meta}\+: add \href{http://json-schema.org/documentation.html}{\texttt{ meta-\/schema}} so it can be used by other schemas (true by default). With option {\ttfamily v5\+: true} \href{https://raw.githubusercontent.com/epoberezkin/ajv/master/lib/refs/json-schema-v5.json\#}{\texttt{ v5 meta-\/schema}} will be added as well. If an object is passed, it will be used as the default meta-\/schema for schemas that have no {\ttfamily \$schema} keyword. This default meta-\/schema MUST have {\ttfamily \$schema} keyword.
+\item {\itshape validate\+Schema}\+: validate added/compiled schemas against meta-\/schema (true by default). {\ttfamily \$schema} property in the schema can either be \href{http://json-schema.org/schema}{\texttt{ http\+://json-\/schema.\+org/schema}} or \href{http://json-schema.org/draft-04/schema}{\texttt{ http\+://json-\/schema.\+org/draft-\/04/schema}} or absent (draft-\/4 meta-\/schema will be used) or can be a reference to the schema previously added with {\ttfamily add\+Meta\+Schema} method. Option values\+:
+\begin{DoxyItemize}
+\item {\ttfamily true} (default) -\/ if the validation fails, throw the exception.
+\item {\ttfamily "{}log"{}} -\/ if the validation fails, log error.
+\item {\ttfamily false} -\/ skip schema validation.
+\end{DoxyItemize}
+\item {\itshape add\+Used\+Schema}\+: by default methods {\ttfamily compile} and {\ttfamily validate} add schemas to the instance if they have {\ttfamily id} property that doesn\textquotesingle{}t start with "{}\#"{}. If {\ttfamily id} is present and it is not unique the exception will be thrown. Set this option to {\ttfamily false} to skip adding schemas to the instance and the {\ttfamily id} uniqueness check when these methods are used. This option does not affect {\ttfamily add\+Schema} method.
+\item {\itshape inline\+Refs}\+: Affects compilation of referenced schemas. Option values\+:
+\begin{DoxyItemize}
+\item {\ttfamily true} (default) -\/ the referenced schemas that don\textquotesingle{}t have refs in them are inlined, regardless of their size -\/ that substantially improves performance at the cost of the bigger size of compiled schema functions.
+\item {\ttfamily false} -\/ to not inline referenced schemas (they will be compiled as separate functions).
+\item integer number -\/ to limit the maximum number of keywords of the schema that will be inlined.
+\end{DoxyItemize}
+\item {\itshape pass\+Context}\+: pass validation context to custom keyword functions. If this option is {\ttfamily true} and you pass some context to the compiled validation function with {\ttfamily validate.\+call(context, data)}, the {\ttfamily context} will be available as {\ttfamily this} in your custom keywords. By default {\ttfamily this} is Ajv instance.
+\item {\itshape loop\+Required}\+: by default {\ttfamily required} keyword is compiled into a single expression (or a sequence of statements in {\ttfamily all\+Errors} mode). In case of a very large number of properties in this keyword it may result in a very big validation function. Pass integer to set the number of properties above which {\ttfamily required} keyword will be validated in a loop -\/ smaller validation function size but also worse performance.
+\item {\itshape own\+Properties}\+: by default ajv iterates over all enumerable object properties; when this option is {\ttfamily true} only own enumerable object properties (i.\+e. found directly on the object rather than on its prototype) are iterated. Contributed by @mbroadst.
+\item {\itshape multiple\+Of\+Precision}\+: by default {\ttfamily multiple\+Of} keyword is validated by comparing the result of division with parse\+Int() of that result. It works for dividers that are bigger than 1. For small dividers such as 0.\+01 the result of the division is usually not integer (even when it should be integer, see issue \href{https://github.com/epoberezkin/ajv/issues/84}{\texttt{ \#84}}). If you need to use fractional dividers set this option to some positive integer N to have {\ttfamily multiple\+Of} validated using this formula\+: {\ttfamily Math.\+abs(Math.\+round(division) -\/ division) \texorpdfstring{$<$}{<} 1e-\/N} (it is slower but allows for float arithmetics deviations).
+\item {\itshape error\+Data\+Path}\+: set {\ttfamily data\+Path} to point to \textquotesingle{}object\textquotesingle{} (default) or to \textquotesingle{}property\textquotesingle{} when validating keywords {\ttfamily required}, {\ttfamily additional\+Properties} and {\ttfamily dependencies}.
+\item {\itshape source\+Code}\+: add {\ttfamily source\+Code} property to validating function (for debugging; this code can be different from the result of to\+String call).
+\item {\itshape messages}\+: Include human-\/readable messages in errors. {\ttfamily true} by default. {\ttfamily false} can be passed when custom messages are used (e.\+g. with \href{https://github.com/epoberezkin/ajv-i18n}{\texttt{ ajv-\/i18n}}).
+\item {\itshape beautify}\+: format the generated function with \href{https://github.com/beautify-web/js-beautify}{\texttt{ js-\/beautify}} (the validating function is generated without line-\/breaks). {\ttfamily npm install js-\/beautify} to use this option. {\ttfamily true} or js-\/beautify options can be passed.
+\item {\itshape cache}\+: an optional instance of cache to store compiled schemas using stable-\/stringified schema as a key. For example, set-\/associative cache \href{https://github.com/epoberezkin/sacjs}{\texttt{ sacjs}} can be used. If not passed then a simple hash is used which is good enough for the common use case (a limited number of statically defined schemas). Cache should have methods {\ttfamily put(key, value)}, {\ttfamily get(key)}, {\ttfamily del(key)} and {\ttfamily clear()}.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1557}{}\doxysubsection{\texorpdfstring{Validation errors}{Validation errors}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1557}
+In case of validation failure Ajv assigns the array of errors to {\ttfamily .errors} property of validation function (or to {\ttfamily .errors} property of Ajv instance in case {\ttfamily validate} or {\ttfamily validate\+Schema} methods were called). In case of asynchronous validation the returned promise is rejected with the exception of the class {\ttfamily Ajv.\+Validation\+Error} that has {\ttfamily .errors} poperty.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1558}{}\doxysubsubsection{\texorpdfstring{Error objects}{Error objects}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1558}
+Each error is an object with the following properties\+:
+
+
+\begin{DoxyItemize}
+\item {\itshape keyword}\+: validation keyword.
+\item {\itshape data\+Path}\+: the path to the part of the data that was validated. By default {\ttfamily data\+Path} uses Java\+Script property access notation (e.\+g., {\ttfamily "{}.\+prop\mbox{[}1\mbox{]}.\+sub\+Prop"{}}). When the option {\ttfamily json\+Pointers} is true (see Options) {\ttfamily data\+Path} will be set using JSON pointer standard (e.\+g., {\ttfamily "{}/prop/1/sub\+Prop"{}}).
+\item {\itshape schema\+Path}\+: the path (JSON-\/pointer as a URI fragment) to the schema of the keyword that failed validation.
+\item {\itshape params}\+: the object with the additional information about error that can be used to create custom error messages (e.\+g., using \href{https://github.com/epoberezkin/ajv-i18n}{\texttt{ ajv-\/i18n}} package). See below for parameters set by all keywords.
+\item {\itshape message}\+: the standard error message (can be excluded with option {\ttfamily messages} set to false).
+\item {\itshape schema}\+: the schema of the keyword (added with {\ttfamily verbose} option).
+\item {\itshape parent\+Schema}\+: the schema containing the keyword (added with {\ttfamily verbose} option)
+\item {\itshape data}\+: the data validated by the keyword (added with {\ttfamily verbose} option).
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1559}{}\doxysubsubsection{\texorpdfstring{Error parameters}{Error parameters}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1559}
+Properties of {\ttfamily params} object in errors depend on the keyword that failed validation.
+
+
+\begin{DoxyItemize}
+\item {\ttfamily max\+Items}, {\ttfamily min\+Items}, {\ttfamily max\+Length}, {\ttfamily min\+Length}, {\ttfamily max\+Properties}, {\ttfamily min\+Properties} -\/ property {\ttfamily limit} (number, the schema of the keyword).
+\item {\ttfamily additional\+Items} -\/ property {\ttfamily limit} (the maximum number of allowed items in case when {\ttfamily items} keyword is an array of schemas and {\ttfamily additional\+Items} is false).
+\item {\ttfamily additional\+Properties} -\/ property {\ttfamily additional\+Property} (the property not used in {\ttfamily properties} and {\ttfamily pattern\+Properties} keywords).
+\item {\ttfamily pattern\+Groups} (with v5 option) -\/ properties\+:
+\begin{DoxyItemize}
+\item {\ttfamily pattern}
+\item {\ttfamily reason} ("{}minimum"{}/"{}maximum"{}),
+\item {\ttfamily limit} (max/min allowed number of properties matching number)
+\end{DoxyItemize}
+\item {\ttfamily dependencies} -\/ properties\+:
+\begin{DoxyItemize}
+\item {\ttfamily property} (dependent property),
+\item {\ttfamily missing\+Property} (required missing dependency -\/ only the first one is reported currently)
+\item {\ttfamily deps} (required dependencies, comma separated list as a string),
+\item {\ttfamily deps\+Count} (the number of required dependedncies).
+\end{DoxyItemize}
+\item {\ttfamily format} -\/ property {\ttfamily format} (the schema of the keyword).
+\item {\ttfamily maximum}, {\ttfamily minimum} -\/ properties\+:
+\begin{DoxyItemize}
+\item {\ttfamily limit} (number, the schema of the keyword),
+\item {\ttfamily exclusive} (boolean, the schema of {\ttfamily exclusive\+Maximum} or {\ttfamily exclusive\+Minimum}),
+\item {\ttfamily comparison} (string, comparison operation to compare the data to the limit, with the data on the left and the limit on the right; can be "{}$<$"{}, "{}$<$="{}, "{}$>$"{}, "{}$>$="{})
+\end{DoxyItemize}
+\item {\ttfamily multiple\+Of} -\/ property {\ttfamily multiple\+Of} (the schema of the keyword)
+\item {\ttfamily pattern} -\/ property {\ttfamily pattern} (the schema of the keyword)
+\item {\ttfamily required} -\/ property {\ttfamily missing\+Property} (required property that is missing).
+\item {\ttfamily pattern\+Required} (with v5 option) -\/ property {\ttfamily missing\+Pattern} (required pattern that did not match any property).
+\item {\ttfamily type} -\/ property {\ttfamily type} (required type(s), a string, can be a comma-\/separated list)
+\item {\ttfamily unique\+Items} -\/ properties {\ttfamily i} and {\ttfamily j} (indices of duplicate items).
+\item {\ttfamily enum} -\/ property {\ttfamily allowed\+Values} pointing to the array of values (the schema of the keyword).
+\item {\ttfamily \$ref} -\/ property {\ttfamily ref} with the referenced schema URI.
+\item custom keywords (in case keyword definition doesn\textquotesingle{}t create errors) -\/ property {\ttfamily keyword} (the keyword name).
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1560}{}\doxysubsection{\texorpdfstring{Related packages}{Related packages}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1560}
+
+\begin{DoxyItemize}
+\item \href{https://github.com/epoberezkin/ajv-cli}{\texttt{ ajv-\/cli}} -\/ command line interface for Ajv
+\item \href{https://github.com/epoberezkin/ajv-i18n}{\texttt{ ajv-\/i18n}} -\/ internationalised error messages
+\item \href{https://github.com/epoberezkin/ajv-merge-patch}{\texttt{ ajv-\/merge-\/patch}} -\/ keywords \$merge and \$patch from v5 proposals.
+\item \href{https://github.com/epoberezkin/ajv-keywords}{\texttt{ ajv-\/keywords}} -\/ several custom keywords that can be used with Ajv (typeof, instanceof, range, property\+Names)
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1561}{}\doxysubsection{\texorpdfstring{Some packages using Ajv}{Some packages using Ajv}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1561}
+
+\begin{DoxyItemize}
+\item \href{https://github.com/webpack/webpack}{\texttt{ webpack}} -\/ a module bundler. Its main purpose is to bundle Java\+Script files for usage in a browser
+\item \href{https://github.com/JSONScript/jsonscript-js}{\texttt{ jsonscript-\/js}} -\/ the interpreter for \href{http://www.jsonscript.org}{\texttt{ JSONScript}} -\/ scripted processing of existing endpoints and services
+\item \href{https://github.com/mulesoft-labs/osprey-method-handler}{\texttt{ osprey-\/method-\/handler}} -\/ Express middleware for validating requests and responses based on a RAML method object, used in \href{https://github.com/mulesoft/osprey}{\texttt{ osprey}} -\/ validating API proxy generated from a RAML definition
+\item \href{https://github.com/ahmadnassri/har-validator}{\texttt{ har-\/validator}} -\/ HTTP Archive (HAR) validator
+\item \href{https://github.com/josdejong/jsoneditor}{\texttt{ jsoneditor}} -\/ a web-\/based tool to view, edit, format, and validate JSON \href{http://jsoneditoronline.org}{\texttt{ http\+://jsoneditoronline.\+org}}
+\item \href{https://github.com/nickcmaynard/jsonschemalint}{\texttt{ JSON Schema Lint}} -\/ a web tool to validate JSON/\+YAML document against a single JSON-\/schema \href{http://jsonschemalint.com}{\texttt{ http\+://jsonschemalint.\+com}}
+\item \href{https://github.com/vincit/objection.js}{\texttt{ objection}} -\/ SQL-\/friendly ORM for node.\+js
+\item \href{https://github.com/gajus/table}{\texttt{ table}} -\/ formats data into a string table
+\item \href{https://github.com/ripple/ripple-lib}{\texttt{ ripple-\/lib}} -\/ a Java\+Script API for interacting with \href{https://ripple.com}{\texttt{ Ripple}} in Node.\+js and the browser
+\item \href{https://github.com/wikimedia/restbase}{\texttt{ restbase}} -\/ distributed storage with REST API \& dispatcher for backend services built to provide a low-\/latency \& high-\/throughput API for Wikipedia / Wikimedia content
+\item \href{https://github.com/CacheControl/hippie-swagger}{\texttt{ hippie-\/swagger}} -\/ \href{https://github.com/vesln/hippie}{\texttt{ Hippie}} wrapper that provides end to end API testing with swagger validation
+\item \href{https://github.com/seeden/react-form-controlled}{\texttt{ react-\/form-\/controlled}} -\/ React controlled form components with validation
+\item \href{https://github.com/tjmehta/rabbitmq-schema}{\texttt{ rabbitmq-\/schema}} -\/ a schema definition module for Rabbit\+MQ graphs and messages
+\item \href{https://www.npmjs.com/package/@query/schema}{\texttt{ @query/schema}} -\/ stream filtering with a URI-\/safe query syntax parsing to JSON Schema
+\item \href{https://github.com/peon374/chai-ajv-json-schema}{\texttt{ chai-\/ajv-\/json-\/schema}} -\/ chai plugin to us JSON-\/schema with expect in mocha tests
+\item \href{https://github.com/SignpostMarv/grunt-jsonschema-ajv}{\texttt{ grunt-\/jsonschema-\/ajv}} -\/ Grunt plugin for validating files against JSON-\/\+Schema
+\item \href{https://github.com/webpack-contrib/extract-text-webpack-plugin}{\texttt{ extract-\/text-\/webpack-\/plugin}} -\/ extract text from bundle into a file
+\item \href{https://github.com/electron-userland/electron-builder}{\texttt{ electron-\/builder}} -\/ a solution to package and build a ready for distribution Electron app
+\item \href{https://github.com/mozilla/addons-linter}{\texttt{ addons-\/linter}} -\/ Mozilla Add-\/ons Linter
+\item \href{https://github.com/epoberezkin/gh-pages-generator}{\texttt{ gh-\/pages-\/generator}} -\/ multi-\/page site generator converting markdown files to Git\+Hub pages
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1562}{}\doxysubsection{\texorpdfstring{Tests}{Tests}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1562}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install}
+\DoxyCodeLine{git\ submodule\ update\ -\/-\/init}
+\DoxyCodeLine{npm\ test}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1563}{}\doxysubsection{\texorpdfstring{Contributing}{Contributing}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1563}
+All validation functions are generated using doT templates in \href{https://github.com/epoberezkin/ajv/tree/master/lib/dot}{\texttt{ dot}} folder. Templates are precompiled so doT is not a run-\/time dependency.
+
+{\ttfamily npm run build} -\/ compiles templates to \href{https://github.com/epoberezkin/ajv/tree/master/lib/dotjs}{\texttt{ dotjs}} folder.
+
+{\ttfamily npm run watch} -\/ automatically compiles templates when files in dot folder change
+
+Please see \href{https://github.com/epoberezkin/ajv/blob/master/CONTRIBUTING.md}{\texttt{ Contributing guidelines}}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1564}{}\doxysubsection{\texorpdfstring{Changes history}{Changes history}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1564}
+See \href{https://github.com/epoberezkin/ajv/releases}{\texttt{ https\+://github.\+com/epoberezkin/ajv/releases}}
+
+{\bfseries{Please note}}\+: \href{https://github.com/epoberezkin/ajv/releases/tag/5.0.1-beta.0}{\texttt{ Changes in version 5.\+0.\+1-\/beta}}.
+
+\href{https://github.com/epoberezkin/ajv/releases/tag/4.6.0}{\texttt{ Changes in version 4.\+6.\+0}}.
+
+\href{https://github.com/epoberezkin/ajv/releases/tag/4.0.0}{\texttt{ Changes in version 4.\+0.\+0}}.
+
+\href{https://github.com/epoberezkin/ajv/releases/tag/3.0.0}{\texttt{ Changes in version 3.\+0.\+0}}.
+
+\href{https://github.com/epoberezkin/ajv/releases/tag/2.0.0}{\texttt{ Changes in version 2.\+0.\+0}}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1565}{}\doxysubsection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_268700e9b914509c06200ef5c04e2a1b6_autotoc_md1565}
+\href{https://github.com/epoberezkin/ajv/blob/master/LICENSE}{\texttt{ MIT}} 

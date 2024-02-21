@@ -1,0 +1,39 @@
+\doxysection{20220927034607\+\_\+initial.\+cs}
+\hypertarget{20220927034607__initial_8cs_source}{}\label{20220927034607__initial_8cs_source}\index{C:/Users/STRIDER/source/repos/InternalAPI/InternalAPI/Migrations/20220927034607\_initial.cs@{C:/Users/STRIDER/source/repos/InternalAPI/InternalAPI/Migrations/20220927034607\_initial.cs}}
+\mbox{\hyperlink{20220927034607__initial_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{20220927034607__initial_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{20220927034607__initial_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }Microsoft.EntityFrameworkCore.Migrations;}
+\DoxyCodeLine{\Hypertarget{20220927034607__initial_8cs_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{20220927034607__initial_8cs_source_l00004}\mbox{\hyperlink{namespace_internal_a_p_i_1_1_migrations}{00004}}\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_migrations}{InternalAPI.Migrations}}}
+\DoxyCodeLine{\Hypertarget{20220927034607__initial_8cs_source_l00005}00005\ \{}
+\DoxyCodeLine{\Hypertarget{20220927034607__initial_8cs_source_l00006}\mbox{\hyperlink{class_internal_a_p_i_1_1_migrations_1_1initial}{00006}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{partial\ class\ }\mbox{\hyperlink{class_internal_a_p_i_1_1_migrations_1_1initial}{initial}}\ :\ Migration}
+\DoxyCodeLine{\Hypertarget{20220927034607__initial_8cs_source_l00007}00007\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{20220927034607__initial_8cs_source_l00008}\mbox{\hyperlink{class_internal_a_p_i_1_1_migrations_1_1initial_aba1d888be20f3c97b7a40ab7c99cb988}{00008}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_migrations_1_1initial_aba1d888be20f3c97b7a40ab7c99cb988}{Up}}(MigrationBuilder\ migrationBuilder)}
+\DoxyCodeLine{\Hypertarget{20220927034607__initial_8cs_source_l00009}00009\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{20220927034607__initial_8cs_source_l00010}00010\ \ \ \ \ \ \ \ \ \ \ \ \ migrationBuilder.CreateTable(}
+\DoxyCodeLine{\Hypertarget{20220927034607__initial_8cs_source_l00011}00011\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ name:\ \textcolor{stringliteral}{"{}LogEntries"{}},}
+\DoxyCodeLine{\Hypertarget{20220927034607__initial_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ columns:\ table\ =>\ \textcolor{keyword}{new}}
+\DoxyCodeLine{\Hypertarget{20220927034607__initial_8cs_source_l00013}00013\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{20220927034607__initial_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ID\ =\ table.Column<\textcolor{keywordtype}{int}>(type:\ \textcolor{stringliteral}{"{}int"{}},\ nullable:\ \textcolor{keyword}{false})}
+\DoxyCodeLine{\Hypertarget{20220927034607__initial_8cs_source_l00015}00015\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .Annotation(\textcolor{stringliteral}{"{}SqlServer:Identity"{}},\ \textcolor{stringliteral}{"{}1,\ 1"{}}),}
+\DoxyCodeLine{\Hypertarget{20220927034607__initial_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Created\ =\ table.Column<DateTime>(type:\ \textcolor{stringliteral}{"{}datetime2"{}},\ nullable:\ \textcolor{keyword}{false}),}
+\DoxyCodeLine{\Hypertarget{20220927034607__initial_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Type\ =\ table.Column<\textcolor{keywordtype}{string}>(type:\ \textcolor{stringliteral}{"{}nvarchar(max)"{}},\ nullable:\ \textcolor{keyword}{false}),}
+\DoxyCodeLine{\Hypertarget{20220927034607__initial_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Source\ =\ table.Column<\textcolor{keywordtype}{string}>(type:\ \textcolor{stringliteral}{"{}nvarchar(max)"{}},\ nullable:\ \textcolor{keyword}{false}),}
+\DoxyCodeLine{\Hypertarget{20220927034607__initial_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Data\ =\ table.Column<\textcolor{keywordtype}{string}>(type:\ \textcolor{stringliteral}{"{}nvarchar(max)"{}},\ nullable:\ \textcolor{keyword}{false})}
+\DoxyCodeLine{\Hypertarget{20220927034607__initial_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{\Hypertarget{20220927034607__initial_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ constraints:\ table\ =>}
+\DoxyCodeLine{\Hypertarget{20220927034607__initial_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{20220927034607__initial_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ table.PrimaryKey(\textcolor{stringliteral}{"{}PK\_LogEntries"{}},\ x\ =>\ x.ID);}
+\DoxyCodeLine{\Hypertarget{20220927034607__initial_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{20220927034607__initial_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{20220927034607__initial_8cs_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{20220927034607__initial_8cs_source_l00027}\mbox{\hyperlink{class_internal_a_p_i_1_1_migrations_1_1initial_a52e657fce8ae7a6512dbb74e3232a2c3}{00027}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_migrations_1_1initial_a52e657fce8ae7a6512dbb74e3232a2c3}{Down}}(MigrationBuilder\ migrationBuilder)}
+\DoxyCodeLine{\Hypertarget{20220927034607__initial_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{20220927034607__initial_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ migrationBuilder.DropTable(}
+\DoxyCodeLine{\Hypertarget{20220927034607__initial_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ name:\ \textcolor{stringliteral}{"{}LogEntries"{}});}
+\DoxyCodeLine{\Hypertarget{20220927034607__initial_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{20220927034607__initial_8cs_source_l00032}00032\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{20220927034607__initial_8cs_source_l00033}00033\ \}}
+
+\end{DoxyCode}

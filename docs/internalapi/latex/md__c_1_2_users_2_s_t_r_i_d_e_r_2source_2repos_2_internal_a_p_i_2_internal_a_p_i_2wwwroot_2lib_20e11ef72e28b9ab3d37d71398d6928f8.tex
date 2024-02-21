@@ -1,0 +1,196 @@
+\chapter{functional-\/red-\/black-\/tree}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8}\index{functional-\/red-\/black-\/tree@{functional-\/red-\/black-\/tree}}
+A \href{http://en.wikipedia.org/wiki/Persistent_data_structure}{\texttt{ fully persistent}} \href{http://en.wikipedia.org/wiki/Red\%E2\%80\%93black_tree}{\texttt{ red-\/black tree}} written 100\% in Java\+Script. Works both in node.\+js and in the browser via \href{http://browserify.org/}{\texttt{ browserify}}.
+
+Functional (or fully presistent) data structures allow for non-\/destructive updates. So if you insert an element into the tree, it returns a new tree with the inserted element rather than destructively updating the existing tree in place. Doing this requires using extra memory, and if one were naive it could cost as much as reallocating the entire tree. Instead, this data structure saves some memory by recycling references to previously allocated subtrees. This requires using only O(log(n)) additional memory per update instead of a full O(n) copy.
+
+Some advantages of this is that it is possible to apply insertions and removals to the tree while still iterating over previous versions of the tree. Functional and persistent data structures can also be useful in many geometric algorithms like point location within triangulations or ray queries, and can be used to analyze the history of executing various algorithms. This added power though comes at a cost, since it is generally a bit slower to use a functional data structure than an imperative version. However, if your application needs this behavior then you may consider using this module.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8497}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8497}
+\begin{DoxyVerb}npm install functional-red-black-tree
+\end{DoxyVerb}
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8498}{}\doxysection{\texorpdfstring{Example}{Example}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8498}
+Here is an example of some basic usage\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//Load\ the\ library}
+\DoxyCodeLine{var\ createTree\ =\ require("{}functional-\/red-\/black-\/tree"{})}
+\DoxyCodeLine{}
+\DoxyCodeLine{//Create\ a\ tree}
+\DoxyCodeLine{var\ t1\ =\ createTree()}
+\DoxyCodeLine{}
+\DoxyCodeLine{//Insert\ some\ items\ into\ the\ tree}
+\DoxyCodeLine{var\ t2\ =\ t1.insert(1,\ "{}foo"{})}
+\DoxyCodeLine{var\ t3\ =\ t2.insert(2,\ "{}bar"{})}
+\DoxyCodeLine{}
+\DoxyCodeLine{//Remove\ something}
+\DoxyCodeLine{var\ t4\ =\ t3.remove(1)}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8499}{}\doxysection{\texorpdfstring{API}{API}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8499}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ createTree\ =\ require("{}functional-\/red-\/black-\/tree"{})}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8500}{}\doxysubsection{\texorpdfstring{Overview}{Overview}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8500}
+
+\begin{DoxyItemize}
+\item Tree methods
+\begin{DoxyItemize}
+\item \`{}var tree = create\+Tree(\mbox{[}compare\mbox{]})\`{}
+\item \`{}tree.keys\`{}
+\item \`{}tree.values\`{}
+\item \`{}tree.length\`{}
+\item \`{}tree.get(key)\`{}
+\item \`{}tree.insert(key, value)\`{}
+\item \`{}tree.remove(key)\`{}
+\item \`{}tree.find(key)\`{}
+\item \`{}tree.ge(key)\`{}
+\item \`{}tree.gt(key)\`{}
+\item \`{}tree.lt(key)\`{}
+\item \`{}tree.le(key)\`{}
+\item \`{}tree.at(position)\`{}
+\item \`{}tree.begin\`{}
+\item \`{}tree.end\`{}
+\item \`{}tree.for\+Each(visitor(key,value)\mbox{[}, lo\mbox{[}, hi\mbox{]}\mbox{]})\`{}
+\item \`{}tree.root\`{}
+\end{DoxyItemize}
+\item Node properties
+\begin{DoxyItemize}
+\item \`{}node.key\`{}
+\item \`{}node.value\`{}
+\item \`{}node.left\`{}
+\item \`{}node.right\`{}
+\end{DoxyItemize}
+\item Iterator methods
+\begin{DoxyItemize}
+\item \`{}iter.key\`{}
+\item \`{}iter.value\`{}
+\item \`{}iter.node\`{}
+\item \`{}iter.tree\`{}
+\item \`{}iter.index\`{}
+\item \`{}iter.valid\`{}
+\item \`{}iter.clone()\`{}
+\item \`{}iter.remove()\`{}
+\item \`{}iter.update(value)\`{}
+\item \`{}iter.next()\`{}
+\item \`{}iter.prev()\`{}
+\item \`{}iter.has\+Next\`{}
+\item \`{}iter.has\+Prev\`{}
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8501}{}\doxysubsection{\texorpdfstring{Tree methods}{Tree methods}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8501}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8502}{}\doxysubsubsection{\texorpdfstring{{\ttfamily var tree = create\+Tree(\mbox{[}compare\mbox{]})}}{{\ttfamily var tree = create\+Tree(\mbox{[}compare\mbox{]})}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8502}
+Creates an empty functional tree
+
+
+\begin{DoxyItemize}
+\item {\ttfamily compare} is an optional comparison function, same semantics as array.\+sort()
+\end{DoxyItemize}
+
+{\bfseries{Returns}} An empty tree ordered by {\ttfamily compare}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8503}{}\doxysubsubsection{\texorpdfstring{{\ttfamily tree.\+keys}}{{\ttfamily tree.\+keys}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8503}
+A sorted array of all the keys in the tree\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8504}{}\doxysubsubsection{\texorpdfstring{{\ttfamily tree.\+values}}{{\ttfamily tree.\+values}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8504}
+An array array of all the values in the tree\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8505}{}\doxysubsubsection{\texorpdfstring{{\ttfamily tree.\+length}}{{\ttfamily tree.\+length}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8505}
+The number of items in the tree\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8506}{}\doxysubsubsection{\texorpdfstring{{\ttfamily tree.\+get(key)}}{{\ttfamily tree.\+get(key)}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8506}
+Retrieves the value associated to the given key
+
+
+\begin{DoxyItemize}
+\item {\ttfamily key} is the key of the item to look up
+\end{DoxyItemize}
+
+{\bfseries{Returns}} The value of the first node associated to {\ttfamily key}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8507}{}\doxysubsubsection{\texorpdfstring{{\ttfamily tree.\+insert(key, value)}}{{\ttfamily tree.\+insert(key, value)}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8507}
+Creates a new tree with the new pair inserted.
+
+
+\begin{DoxyItemize}
+\item {\ttfamily key} is the key of the item to insert
+\item {\ttfamily value} is the value of the item to insert
+\end{DoxyItemize}
+
+{\bfseries{Returns}} A new tree with {\ttfamily key} and {\ttfamily value} inserted\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8508}{}\doxysubsubsection{\texorpdfstring{{\ttfamily tree.\+remove(key)}}{{\ttfamily tree.\+remove(key)}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8508}
+Removes the first item with {\ttfamily key} in the tree
+
+
+\begin{DoxyItemize}
+\item {\ttfamily key} is the key of the item to remove
+\end{DoxyItemize}
+
+{\bfseries{Returns}} A new tree with the given item removed if it exists\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8509}{}\doxysubsubsection{\texorpdfstring{{\ttfamily tree.\+find(key)}}{{\ttfamily tree.\+find(key)}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8509}
+Returns an iterator pointing to the first item in the tree with {\ttfamily key}, otherwise {\ttfamily null}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8510}{}\doxysubsubsection{\texorpdfstring{{\ttfamily tree.\+ge(key)}}{{\ttfamily tree.\+ge(key)}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8510}
+Find the first item in the tree whose key is {\ttfamily \texorpdfstring{$>$}{>}= key}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily key} is the key to search for
+\end{DoxyItemize}
+
+{\bfseries{Returns}} An iterator at the given element.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8511}{}\doxysubsubsection{\texorpdfstring{{\ttfamily tree.\+gt(key)}}{{\ttfamily tree.\+gt(key)}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8511}
+Finds the first item in the tree whose key is {\ttfamily \texorpdfstring{$>$}{>} key}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily key} is the key to search for
+\end{DoxyItemize}
+
+{\bfseries{Returns}} An iterator at the given element\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8512}{}\doxysubsubsection{\texorpdfstring{{\ttfamily tree.\+lt(key)}}{{\ttfamily tree.\+lt(key)}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8512}
+Finds the last item in the tree whose key is {\ttfamily \texorpdfstring{$<$}{<} key}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily key} is the key to search for
+\end{DoxyItemize}
+
+{\bfseries{Returns}} An iterator at the given element\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8513}{}\doxysubsubsection{\texorpdfstring{{\ttfamily tree.\+le(key)}}{{\ttfamily tree.\+le(key)}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8513}
+Finds the last item in the tree whose key is {\ttfamily \texorpdfstring{$<$}{<}= key}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily key} is the key to search for
+\end{DoxyItemize}
+
+{\bfseries{Returns}} An iterator at the given element\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8514}{}\doxysubsubsection{\texorpdfstring{{\ttfamily tree.\+at(position)}}{{\ttfamily tree.\+at(position)}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8514}
+Finds an iterator starting at the given element
+
+
+\begin{DoxyItemize}
+\item {\ttfamily position} is the index at which the iterator gets created
+\end{DoxyItemize}
+
+{\bfseries{Returns}} An iterator starting at position\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8515}{}\doxysubsubsection{\texorpdfstring{{\ttfamily tree.\+begin}}{{\ttfamily tree.\+begin}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8515}
+An iterator pointing to the first element in the tree\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8516}{}\doxysubsubsection{\texorpdfstring{{\ttfamily tree.\+end}}{{\ttfamily tree.\+end}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8516}
+An iterator pointing to the last element in the tree\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8517}{}\doxysubsubsection{\texorpdfstring{{\ttfamily tree.\+for\+Each(visitor(key,value)\mbox{[}, lo\mbox{[}, hi\mbox{]}\mbox{]})}}{{\ttfamily tree.\+for\+Each(visitor(key,value)\mbox{[}, lo\mbox{[}, hi\mbox{]}\mbox{]})}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8517}
+Walks a visitor function over the nodes of the tree in order.
+
+
+\begin{DoxyItemize}
+\item {\ttfamily visitor(key,value)} is a callback that gets executed on each node. If a truthy value is returned from the visitor, then iteration is stopped.
+\item {\ttfamily lo} is an optional start of the range to visit (inclusive)
+\item {\ttfamily hi} is an optional end of the range to visit (non-\/inclusive)
+\end{DoxyItemize}
+
+{\bfseries{Returns}} The last value returned by the callback\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8518}{}\doxysubsubsection{\texorpdfstring{{\ttfamily tree.\+root}}{{\ttfamily tree.\+root}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8518}
+Returns the root node of the tree\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8519}{}\doxysubsection{\texorpdfstring{Node properties}{Node properties}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8519}
+Each node of the tree has the following properties\+:\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8520}{}\doxysubsubsection{\texorpdfstring{{\ttfamily node.\+key}}{{\ttfamily node.\+key}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8520}
+The key associated to the node\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8521}{}\doxysubsubsection{\texorpdfstring{{\ttfamily node.\+value}}{{\ttfamily node.\+value}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8521}
+The value associated to the node\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8522}{}\doxysubsubsection{\texorpdfstring{{\ttfamily node.\+left}}{{\ttfamily node.\+left}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8522}
+The left subtree of the node\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8523}{}\doxysubsubsection{\texorpdfstring{{\ttfamily node.\+right}}{{\ttfamily node.\+right}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8523}
+The right subtree of the node\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8524}{}\doxysubsection{\texorpdfstring{Iterator methods}{Iterator methods}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8524}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8525}{}\doxysubsubsection{\texorpdfstring{{\ttfamily iter.\+key}}{{\ttfamily iter.\+key}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8525}
+The key of the item referenced by the iterator\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8526}{}\doxysubsubsection{\texorpdfstring{{\ttfamily iter.\+value}}{{\ttfamily iter.\+value}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8526}
+The value of the item referenced by the iterator\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8527}{}\doxysubsubsection{\texorpdfstring{{\ttfamily iter.\+node}}{{\ttfamily iter.\+node}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8527}
+The value of the node at the iterator\textquotesingle{}s current position. {\ttfamily null} is iterator is node valid.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8528}{}\doxysubsubsection{\texorpdfstring{{\ttfamily iter.\+tree}}{{\ttfamily iter.\+tree}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8528}
+The tree associated to the iterator\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8529}{}\doxysubsubsection{\texorpdfstring{{\ttfamily iter.\+index}}{{\ttfamily iter.\+index}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8529}
+Returns the position of this iterator in the sequence.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8530}{}\doxysubsubsection{\texorpdfstring{{\ttfamily iter.\+valid}}{{\ttfamily iter.\+valid}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8530}
+Checks if the iterator is valid\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8531}{}\doxysubsubsection{\texorpdfstring{{\ttfamily iter.\+clone()}}{{\ttfamily iter.\+clone()}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8531}
+Makes a copy of the iterator\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8532}{}\doxysubsubsection{\texorpdfstring{{\ttfamily iter.\+remove()}}{{\ttfamily iter.\+remove()}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8532}
+Removes the item at the position of the iterator
+
+{\bfseries{Returns}} A new binary search tree with {\ttfamily iter}\textquotesingle{}s item removed\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8533}{}\doxysubsubsection{\texorpdfstring{{\ttfamily iter.\+update(value)}}{{\ttfamily iter.\+update(value)}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8533}
+Updates the value of the node in the tree at this iterator
+
+{\bfseries{Returns}} A new binary search tree with the corresponding node updated\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8534}{}\doxysubsubsection{\texorpdfstring{{\ttfamily iter.\+next()}}{{\ttfamily iter.\+next()}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8534}
+Advances the iterator to the next position\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8535}{}\doxysubsubsection{\texorpdfstring{{\ttfamily iter.\+prev()}}{{\ttfamily iter.\+prev()}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8535}
+Moves the iterator backward one element\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8536}{}\doxysubsubsection{\texorpdfstring{{\ttfamily iter.\+has\+Next}}{{\ttfamily iter.\+has\+Next}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8536}
+If true, then the iterator is not at the end of the sequence\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8537}{}\doxysubsubsection{\texorpdfstring{{\ttfamily iter.\+has\+Prev}}{{\ttfamily iter.\+has\+Prev}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8537}
+If true, then the iterator is not at the beginning of the sequence\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8538}{}\doxysection{\texorpdfstring{Credits}{Credits}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_20e11ef72e28b9ab3d37d71398d6928f8_autotoc_md8538}
+(c) 2013 Mikola Lysenko. MIT License 

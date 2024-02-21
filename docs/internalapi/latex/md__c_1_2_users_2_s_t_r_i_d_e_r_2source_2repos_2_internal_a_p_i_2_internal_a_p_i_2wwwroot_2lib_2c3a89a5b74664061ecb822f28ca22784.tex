@@ -1,0 +1,400 @@
+\chapter{CSS Parser}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c3a89a5b74664061ecb822f28ca22784}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c3a89a5b74664061ecb822f28ca22784}\index{CSS Parser@{CSS Parser}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c3a89a5b74664061ecb822f28ca22784_autotoc_md10634}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c3a89a5b74664061ecb822f28ca22784_autotoc_md10634}%
+ \href{https://travis-ci.org/CSSLint/parser-lib}{\texttt{ }}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c3a89a5b74664061ecb822f28ca22784_autotoc_md10635}{}\doxysection{\texorpdfstring{Introduction}{Introduction}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c3a89a5b74664061ecb822f28ca22784_autotoc_md10635}
+The Parser\+Lib CSS parser is a CSS3 SAX-\/inspired parser written in Java\+Script. It handles standard CSS syntax as well as validation (checking of property names and values) although it is not guaranteed to thoroughly validate all possible CSS properties.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c3a89a5b74664061ecb822f28ca22784_autotoc_md10636}{}\doxysection{\texorpdfstring{Adding to your project}{Adding to your project}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c3a89a5b74664061ecb822f28ca22784_autotoc_md10636}
+The CSS parser is built for a number of different Java\+Script environments. The most recently released version of the parser can be found in the {\ttfamily dist} directory when you check out the repository; run {\ttfamily npm run build} to regenerate them from the latest sources.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c3a89a5b74664061ecb822f28ca22784_autotoc_md10637}{}\doxysubsection{\texorpdfstring{Node.\+js}{Node.\+js}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c3a89a5b74664061ecb822f28ca22784_autotoc_md10637}
+You can use the CSS parser in a {\ttfamily Node.\+js} script via the standard {\ttfamily npm} package manager as the {\ttfamily parserlib} package ({\ttfamily npm install parserlib})\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ parserlib\ =\ require("{}parserlib"{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ parser\ =\ new\ parserlib.css.Parser();}
+
+\end{DoxyCode}
+
+
+Alternatively, you can copy a single file version of the parser from {\ttfamily dist/node-\/parserlib.\+js} to your own project, and use it as follows\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ parserlib\ =\ require("{}./node-\/parserlib"{});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c3a89a5b74664061ecb822f28ca22784_autotoc_md10638}{}\doxysubsection{\texorpdfstring{Rhino}{Rhino}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c3a89a5b74664061ecb822f28ca22784_autotoc_md10638}
+To use the CSS parser in a Rhino script, copy the file {\ttfamily dist/parserlib.\+js} to your project and then include it at the beginning\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{load("{}parserlib.js"{});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c3a89a5b74664061ecb822f28ca22784_autotoc_md10639}{}\doxysubsection{\texorpdfstring{HTML page}{HTML page}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c3a89a5b74664061ecb822f28ca22784_autotoc_md10639}
+To use the CSS parser on an HTML page, you can either include the entire library on your page\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<script\ src="{}parserlib.js"{}></script>}
+
+\end{DoxyCode}
+
+
+Or include it as its component parts, the Parser\+Lib core and the CSS parser\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{<script\ src="{}parserlib-\/core.js"{}></script>}
+\DoxyCodeLine{<script\ src="{}parserlib-\/css.js"{}></script>}
+
+\end{DoxyCode}
+
+
+Note that parsing large Java\+Script files may cause the browser to become unresponsive. All three of these files are located in the {\ttfamily dist} directory.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c3a89a5b74664061ecb822f28ca22784_autotoc_md10640}{}\doxysection{\texorpdfstring{Basic usage}{Basic usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c3a89a5b74664061ecb822f28ca22784_autotoc_md10640}
+You can create a new instance of the parser by using the following code\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ parser\ =\ new\ parserlib.css.Parser();}
+
+\end{DoxyCode}
+
+
+The constructor accepts an options object that specifies additional features the parser should use. The available options are\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily star\+Hack} -\/ set to true to treat properties with a leading asterisk as if the asterisk wasn\textquotesingle{}t there. Default is {\ttfamily false}.
+\item {\ttfamily underscore\+Hack} -\/ set to true to treat properties with a leading underscore as if the underscore wasn\textquotesingle{}t there. Default is {\ttfamily false}.
+\item {\ttfamily ie\+Filters} -\/ set to true to accept IE \texorpdfstring{$<$}{<} 8 style {\ttfamily filter} properties. Default is {\ttfamily false}.
+\item {\ttfamily strict} -\/ set to true to disable error recovery and stop on the first syntax error. Default is {\ttfamily false}.
+\end{DoxyItemize}
+
+Here\textquotesingle{}s an example with some options set\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ parser\ =\ new\ parserlib.css.Parser(\{\ starHack:\ true,\ underscoreHack:\ true\ \});}
+
+\end{DoxyCode}
+
+
+You can then parse a string of CSS code by passing into the {\ttfamily parse()} method\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{parser.parse(someCSSText);}
+
+\end{DoxyCode}
+
+
+The {\ttfamily parse()} method throws an error if a non-\/recoverable syntax error occurs, otherwise it finishes silently. This method does not return a value nor does it build up an abstract syntax tree (AST) for you, it simply parses the CSS text and fires events at important moments along the parse.
+
+Note\+: The {\ttfamily parse\+Style\+Sheet()} method is provided for compatibility with SAC-\/based APIs but does the exact same thing as {\ttfamily parse()}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c3a89a5b74664061ecb822f28ca22784_autotoc_md10641}{}\doxysection{\texorpdfstring{Understanding syntax units}{Understanding syntax units}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c3a89a5b74664061ecb822f28ca22784_autotoc_md10641}
+The CSS parser defines several types that inherit from {\ttfamily parserlib.\+util.\+Syntax\+Unit}. These types are designed to give you easy access to all relevant parts of the CSS syntax.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c3a89a5b74664061ecb822f28ca22784_autotoc_md10642}{}\doxysubsection{\texorpdfstring{Media Queries}{Media Queries}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c3a89a5b74664061ecb822f28ca22784_autotoc_md10642}
+The {\ttfamily parserlib.\+css.\+Media\+Feature} type represents a specific media feature in a media query, such as {\ttfamily (orientation\+: portrait)} or {\ttfamily (color)}. Essentially, this type of object represents anything enclosed in parentheses in a media query. Object of this type have the following properties\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily name} -\/ the name of the media feature such as "{}orientation"{}
+\item {\ttfamily value} -\/ the value of the media feature (may be {\ttfamily null})
+\end{DoxyItemize}
+
+The {\ttfamily parserlib.\+css.\+Media\+Query} type represents all parts of a media query. Each instance has the following properties\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily modifier} -\/ either "{}not"{} or "{}only"{}
+\item {\ttfamily media\+Type} -\/ the actual media type such as "{}print"{}
+\item {\ttfamily features} -\/ an array of {\ttfamily parserlib.\+css.\+Media\+Feature} objects
+\end{DoxyItemize}
+
+For example, consider the following media query\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{only\ screen\ and\ (max-\/device-\/width:\ 768px)\ and\ (orientation:\ portrait)}
+
+\end{DoxyCode}
+
+
+A corresponding object would have the following values\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily modifier} = "{}only"{}
+\item {\ttfamily media\+Type} = "{}screen"{}
+\item {\ttfamily features} = array of ({\ttfamily name}="{}max-\/device-\/width"{}, {\ttfamily value}="{}768px"{}) and ({\ttfamily name}="{}orientation"{}, {\ttfamily value}="{}portrait"{})
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c3a89a5b74664061ecb822f28ca22784_autotoc_md10643}{}\doxysubsection{\texorpdfstring{Properties}{Properties}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c3a89a5b74664061ecb822f28ca22784_autotoc_md10643}
+The {\ttfamily parserlib.\+css.\+Property\+Name} type represents a property name. Each instance has the following properties\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily hack} -\/ if star or underscore hacks are allowed, either {\ttfamily \texorpdfstring{$\ast$}{*}} or {\ttfamily \+\_\+} if present ({\ttfamily null} if not present or hacks are not allowed)
+\end{DoxyItemize}
+
+When star hacks are allowed, the {\ttfamily text} property becomes the actual property name, so {\ttfamily \texorpdfstring{$\ast$}{*}width} has {\ttfamily hack} equal to {\ttfamily \texorpdfstring{$\ast$}{*}} and {\ttfamily text} equal to "{}width"{}. If no hacks are allowed, then {\ttfamily \texorpdfstring{$\ast$}{*}width} causes a syntax error while {\ttfamily \+\_\+width} has {\ttfamily hack} equal to {\ttfamily null} and {\ttfamily text} equal to {\ttfamily \+\_\+width}.
+
+The {\ttfamily parserlib.\+css.\+Property\+Value} type represents a property value. Since property values in CSS are complex, this type of object wraps the various parts into a single interface. Each instance has the following properties\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily parts} -\/ array of {\ttfamily Property\+Value\+Part} objects
+\end{DoxyItemize}
+
+The {\ttfamily parts} array always has at least one item.
+
+The {\ttfamily parserlib.\+css.\+Property\+Value\+Part} type represents an individual part of a property value. Each instance has the following properties\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily type} -\/ the type of value part ("{}unknown"{}, "{}dimension"{}, "{}percentage"{}, "{}integer"{}, "{}number"{}, "{}color"{}, "{}uri"{}, "{}string"{}, "{}identifier"{} or "{}operator"{})
+\end{DoxyItemize}
+
+A part is considered any atomic piece of a property value not including white space. Consider the following\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{font:\ 1em/1.5em\ "{}Times\ New\ Roman"{},\ Times,\ serif;}
+
+\end{DoxyCode}
+
+
+The {\ttfamily Property\+Name} is "{}font"{} and the {\ttfamily Property\+Value} represents everything after the colon. The parts are "{}1em"{} (dimension), "{}/"{} (operator), "{}1.\+5em"{} (dimension), "{}\+Times New Roman"{} (string), "{},"{} (operator), "{}\+Times"{} (identifier), "{},"{} (operator), and "{}serif"{} (identifier).\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c3a89a5b74664061ecb822f28ca22784_autotoc_md10644}{}\doxysubsection{\texorpdfstring{Selectors}{Selectors}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c3a89a5b74664061ecb822f28ca22784_autotoc_md10644}
+The {\ttfamily parserlib.\+css.\+Selector} type represents a single selector. Each instance has a {\ttfamily parts} property, which is an array of {\ttfamily parserlib.\+css.\+Selector\+Part} objects, which represent atomic parts of the selector, and {\ttfamily parserlib.\+css.\+Combinator} objects, which represent combinators in the selector. Consider the following selector\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{li.selected\ >\ a:hover}
+
+\end{DoxyCode}
+
+
+This selector has three parts\+: {\ttfamily li.\+selected}, {\ttfamily \texorpdfstring{$>$}{>}}, and {\ttfamily a\+:hover}. The first part is a {\ttfamily Selector\+Part}, the second is a {\ttfamily Combinator}, and the third is a {\ttfamily Selector\+Part}. Each {\ttfamily Selector\+Part} is made up of an optional element name followed by an ID, class, attribute condition, pseudo class, and/or pseudo element.
+
+Each instance of {\ttfamily parserlib.\+css.\+Selector\+Part} has an {\ttfamily element\+Name} property, which represents the element name as a {\ttfamily parserlib.\+css.\+Selector\+Sub\+Part} object or {\ttfamily null} if there isn\textquotesingle{}t one, and a {\ttfamily modifiers} property, which is an array of {\ttfamily parserlib.\+css.\+Selector\+Sub\+Part} objects. Each {\ttfamily Selector\+Sub\+Part} object represents the smallest individual piece of a selector and has a {\ttfamily type} property indicating the type of subpart, "{}element\+Name"{}, "{}class"{}, "{}attribute"{}, "{}pseudo"{}, "{}id"{}, "{}not"{}. If the {\ttfamily type} is "{}not"{}, then the {\ttfamily args} property contains an array of {\ttfamily Selector\+Part} arguments that were passed to {\ttfamily not()}.
+
+Each instance of {\ttfamily parserlib.\+css.\+Combinator} has an additional {\ttfamily type} property that indicates the type of combinator\+: "{}descendant"{}, "{}child"{}, "{}sibling"{}, or "{}adjacent-\/sibling"{}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c3a89a5b74664061ecb822f28ca22784_autotoc_md10645}{}\doxysection{\texorpdfstring{Using events}{Using events}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c3a89a5b74664061ecb822f28ca22784_autotoc_md10645}
+The CSS parser fires events as it parses text. The events correspond to important parts of the parsing algorithm and are designed to provide developers with all of the information necessary to create lint checkers, ASTs, and other data structures.
+
+For many events, the {\ttfamily event} object contains additional information. This additional information is most frequently in the form of a {\ttfamily parserlib.\+util.\+Syntax\+Unit} object, which has three properties\+:
+
+
+\begin{DoxyEnumerate}
+\item {\ttfamily text} -\/ the string value
+\item {\ttfamily line} -\/ the line on which this token appeared
+\item {\ttfamily col} -\/ the column within the line at which this token appeared
+\end{DoxyEnumerate}
+
+The {\ttfamily to\+String()} method for these objects is overridden to be the same value as {\ttfamily text}, so that you can treat the object as a string for comparison and concatenation purposes.
+
+You should assign your event handlers before calling the {\ttfamily parse()} method.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c3a89a5b74664061ecb822f28ca22784_autotoc_md10646}{}\doxysubsection{\texorpdfstring{{\ttfamily startstylesheet} and {\ttfamily endstylesheet} events}{{\ttfamily startstylesheet} and {\ttfamily endstylesheet} events}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c3a89a5b74664061ecb822f28ca22784_autotoc_md10646}
+The {\ttfamily startstylesheet} event fires just before parsing of the CSS text begins and the {\ttfamily endstylesheet} event fires just after all of the CSS text has been parsed. There is no additional information provided for these events. Example\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{parser.addListener("{}startstylesheet"{},\ function()\ \{}
+\DoxyCodeLine{\ \ \ \ console.log("{}Starting\ to\ parse\ stylesheet"{});}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{parser.addListener("{}endstylesheet"{},\ function()\ \{}
+\DoxyCodeLine{\ \ \ \ console.log("{}Finished\ parsing\ stylesheet"{});}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c3a89a5b74664061ecb822f28ca22784_autotoc_md10647}{}\doxysubsection{\texorpdfstring{{\ttfamily charset} event}{{\ttfamily charset} event}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c3a89a5b74664061ecb822f28ca22784_autotoc_md10647}
+The {\ttfamily charset} event fires when the {\ttfamily @charset} directive is found in a stylesheet. Since {\ttfamily @charset} is required to appear first in a stylesheet, any other occurances cause a syntax error. The {\ttfamily charset} event provides an {\ttfamily event} object with a property called {\ttfamily charset}, which contains the name of the character set for the stylesheet. Example\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{parser.addListener("{}charset"{},\ function(event)\ \{}
+\DoxyCodeLine{\ \ \ \ console.log("{}Character\ set\ is\ "{}\ +\ event.charset);}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c3a89a5b74664061ecb822f28ca22784_autotoc_md10648}{}\doxysubsection{\texorpdfstring{{\ttfamily namespace} event}{{\ttfamily namespace} event}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c3a89a5b74664061ecb822f28ca22784_autotoc_md10648}
+The {\ttfamily namespace} event fires when the {\ttfamily @namespace} directive is found in a stylesheet. The {\ttfamily namespace} event provides an {\ttfamily event} object with two properties\+: {\ttfamily prefix}, which is the namespace prefix, and {\ttfamily uri}, which is the namespace URI. Example\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{parser.addListener("{}namespace"{},\ function(event)\ \{}
+\DoxyCodeLine{\ \ \ \ console.log("{}Namespace\ with\ prefix="{}\ +\ event.prefix\ +\ "{}\ and\ URI="{}\ +\ event.uri);}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c3a89a5b74664061ecb822f28ca22784_autotoc_md10649}{}\doxysubsection{\texorpdfstring{{\ttfamily import} event}{{\ttfamily import} event}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c3a89a5b74664061ecb822f28ca22784_autotoc_md10649}
+The {\ttfamily import} event fires when the {\ttfamily @import} directive is found in a stylesheet. The {\ttfamily import} event provides an {\ttfamily event} object with two properties\+: {\ttfamily uri}, which is the URI to import, and {\ttfamily media}, which is an array of media queries for which this URI applies. The {\ttfamily media} array contains zero or more {\ttfamily parserlib.\+css.\+Media\+Query} objects. Example\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{parser.addListener("{}import"{},\ function(event)\ \{}
+\DoxyCodeLine{\ \ \ \ console.log("{}Importing\ "{}\ +\ event.uri\ +\ "{}\ for\ media\ types\ ["{}\ +\ event.media\ +\ "{}]"{});}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c3a89a5b74664061ecb822f28ca22784_autotoc_md10650}{}\doxysubsection{\texorpdfstring{{\ttfamily startfontface} and {\ttfamily endfontface} events}{{\ttfamily startfontface} and {\ttfamily endfontface} events}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c3a89a5b74664061ecb822f28ca22784_autotoc_md10650}
+The {\ttfamily startfontface} event fires when {\ttfamily @font-\/face} is encountered and the {\ttfamily endfontface} event fires just after the closing right brace ({\ttfamily \}}) is encountered after {\ttfamily @font-\/face}. There is no additional information available on the {\ttfamily event} object. Example\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{parser.addListener("{}startfontface"{},\ function(event)\ \{}
+\DoxyCodeLine{\ \ \ \ console.log("{}Starting\ font\ face"{});}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{parser.addListener("{}endfontface"{},\ function(event)\ \{}
+\DoxyCodeLine{\ \ \ \ console.log("{}Ending\ font\ face"{});}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c3a89a5b74664061ecb822f28ca22784_autotoc_md10651}{}\doxysubsection{\texorpdfstring{{\ttfamily startpage} and {\ttfamily endpage} events}{{\ttfamily startpage} and {\ttfamily endpage} events}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c3a89a5b74664061ecb822f28ca22784_autotoc_md10651}
+The {\ttfamily startpage} event fires when {\ttfamily @page} is encountered and the {\ttfamily endpage} event fires just after the closing right brace ({\ttfamily \}}) is encountered after {\ttfamily @page}. The {\ttfamily event} object has two properties\+: {\ttfamily id}, which is the page ID, and {\ttfamily pseudo}, which is the page pseudo class. Example\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{parser.addListener("{}startpage"{},\ function(event)\ \{}
+\DoxyCodeLine{\ \ \ \ console.log("{}Starting\ page\ with\ ID="{}\ +\ event.id\ +\ "{}\ and\ pseudo="{}\ +\ event.pseudo);}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{parser.addListener("{}endpage"{},\ function(event)\ \{}
+\DoxyCodeLine{\ \ \ \ console.log("{}Ending\ page\ with\ ID="{}\ +\ event.id\ +\ "{}\ and\ pseudo="{}\ +\ event.pseudo);}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c3a89a5b74664061ecb822f28ca22784_autotoc_md10652}{}\doxysubsection{\texorpdfstring{{\ttfamily startpagemargin} and {\ttfamily endpagemargin} events}{{\ttfamily startpagemargin} and {\ttfamily endpagemargin} events}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c3a89a5b74664061ecb822f28ca22784_autotoc_md10652}
+The {\ttfamily startpagemargin} event fires when a page margin directive (such as {\ttfamily @top-\/left}) is encountered and the {\ttfamily endfontface} event fires just after the closing right brace ({\ttfamily \}}) is encountered after the page margin. The {\ttfamily event} object has a {\ttfamily margin} property, which contains the actual page margin encountered. Example\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{parser.addListener("{}startpagemargin"{},\ function(event)\ \{}
+\DoxyCodeLine{\ \ \ \ console.log("{}Starting\ page\ margin\ "{}\ +\ event.margin);}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{parser.addListener("{}endpagemargin"{},\ function(event)\ \{}
+\DoxyCodeLine{\ \ \ \ console.log("{}Ending\ page\ margin\ "{}\ +\ event.margin);}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c3a89a5b74664061ecb822f28ca22784_autotoc_md10653}{}\doxysubsection{\texorpdfstring{{\ttfamily startmedia} and {\ttfamily endmedia} events}{{\ttfamily startmedia} and {\ttfamily endmedia} events}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c3a89a5b74664061ecb822f28ca22784_autotoc_md10653}
+The {\ttfamily startmedia} event fires when {\ttfamily @media} is encountered and the {\ttfamily endmedia} event fires just after the closing right brace ({\ttfamily \}}) is encountered after {\ttfamily @media}. The {\ttfamily event} object has one property, {\ttfamily media}, which is an array of {\ttfamily parserlib.\+css.\+Media\+Query} objects. Example\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{parser.addListener("{}startpagemargin"{},\ function(event)\ \{}
+\DoxyCodeLine{\ \ \ \ console.log("{}Starting\ page\ margin\ "{}\ +\ event.margin);}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{parser.addListener("{}endpagemargin"{},\ function(event)\ \{}
+\DoxyCodeLine{\ \ \ \ console.log("{}Ending\ page\ margin\ "{}\ +\ event.margin);}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c3a89a5b74664061ecb822f28ca22784_autotoc_md10654}{}\doxysubsection{\texorpdfstring{{\ttfamily startkeyframes} and {\ttfamily endkeyframes} events}{{\ttfamily startkeyframes} and {\ttfamily endkeyframes} events}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c3a89a5b74664061ecb822f28ca22784_autotoc_md10654}
+The {\ttfamily startkeyframes} event fires when {\ttfamily @keyframes} (or any vendor prefixed version) is encountered and the {\ttfamily endkeyframes} event fires just after the closing right brace ({\ttfamily \}}) is encountered after {\ttfamily @keyframes}. The {\ttfamily event} object has one property, {\ttfamily name}, which is the name of the animation. Example\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{parser.addListener("{}startkeyframes"{},\ function(event)\ \{}
+\DoxyCodeLine{\ \ \ \ console.log("{}Starting\ animation\ definition\ "{}\ +\ event.name);}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{parser.addListener("{}endkeyframes"{},\ function(event)\ \{}
+\DoxyCodeLine{\ \ \ \ console.log("{}Ending\ animation\ definition\ "{}\ +\ event.name);}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c3a89a5b74664061ecb822f28ca22784_autotoc_md10655}{}\doxysubsection{\texorpdfstring{{\ttfamily startrule} and {\ttfamily endrule} events}{{\ttfamily startrule} and {\ttfamily endrule} events}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c3a89a5b74664061ecb822f28ca22784_autotoc_md10655}
+The {\ttfamily startrule} event fires just after all selectors on a rule have been parsed and the {\ttfamily endrule} event fires just after the closing right brace ({\ttfamily \}}) is encountered for the rule. The {\ttfamily event} object has one additional property, {\ttfamily selectors}, which is an array of {\ttfamily parserlib.\+css.\+Selector} objects. Example\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{parser.addListener("{}startrule"{},\ function(event)\ \{}
+\DoxyCodeLine{\ \ \ \ console.log("{}Starting\ rule\ with\ "{}\ +\ event.selectors.length\ +\ "{}\ selector(s)"{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ for\ (var\ i\ =\ 0,\ len\ =\ event.selectors.length;\ i\ <\ len;\ i++)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ var\ selector\ =\ event.selectors[i];}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ console.log("{}\ \ Selector\ \#1\ ("{}\ +\ selector.line\ +\ "{},"{}\ +\ selector.col\ +\ "{})"{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ for\ (var\ j\ =\ 0,\ count=selector.parts.length;\ j\ <\ count;\ j++)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ console.log("{}\ \ \ \ Unit\ \#"{}\ +\ (j\ +\ 1));}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ if\ (selector.parts[j]\ instanceof\ parserlib.css.SelectorPart)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ console.log("{}\ \ \ \ \ \ Element\ name:\ "{}\ +\ selector.parts[j].elementName);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ for\ (var\ k\ =\ 0;\ k\ <\ selector.parts[j].modifiers.length;\ k++)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ console.log("{}\ \ \ \ \ \ \ \ Modifier:\ "{}\ +\ selector.parts[j].modifiers[k]);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \}\ else\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ console.log("{}\ \ \ \ \ \ Combinator:\ "{}\ +\ selector.parts[j]);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{parser.addListener("{}endrule"{},\ function(event)\ \{}
+\DoxyCodeLine{\ \ \ \ console.log("{}Ending\ rule\ with\ selectors\ ["{}\ +\ event.selectors\ +\ "{}]"{});}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c3a89a5b74664061ecb822f28ca22784_autotoc_md10656}{}\doxysubsection{\texorpdfstring{{\ttfamily property} event}{{\ttfamily property} event}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c3a89a5b74664061ecb822f28ca22784_autotoc_md10656}
+The {\ttfamily property} event fires whenever a CSS property ({\ttfamily name\+:value}) is encountered, which may be inside of a rule, a media block, a page block, etc. The {\ttfamily event} object has four additional properties\+: {\ttfamily property}, which is the name of the property as a {\ttfamily parserlib.\+css.\+Property\+Name} object, {\ttfamily value}, which is an instance of {\ttfamily parserlib.\+css.\+Property\+Value} (both types inherit from {\ttfamily parserlib.\+util.\+Syntax\+Unit}), {\ttfamily important}, which is a Boolean value indicating if the property is flagged with {\ttfamily !important}, and {\ttfamily invalid} which is a Boolean value indicating whether the property value failed validation. Example\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{parser.addListener("{}property"{},\ function(event)\ \{}
+\DoxyCodeLine{\ \ \ \ console.log("{}Property\ '"{}\ +\ event.property\ +\ "{}'\ has\ a\ value\ of\ '"{}\ +\ event.value\ +\ "{}'\ and\ "{}\ +\ (event.important\ ?\ "{}is"{}\ :\ "{}isn't"{})\ +\ "{}\ important.\ ("{}\ +\ event.property.line\ +\ "{},"{}\ +\ event.property.col\ +\ "{})"{});}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c3a89a5b74664061ecb822f28ca22784_autotoc_md10657}{}\doxysubsection{\texorpdfstring{{\ttfamily error} event}{{\ttfamily error} event}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c3a89a5b74664061ecb822f28ca22784_autotoc_md10657}
+The {\ttfamily error} event fires whenever a recoverable error occurs during parsing. When in strict mode, this event does not fire. The {\ttfamily event} object contains three additional properties\+: {\ttfamily message}, which is the error message, {\ttfamily line}, which is the line on which the error occurred, and {\ttfamily col}, which is the column on that line in which the error occurred. Example\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{parser.addListener("{}error"{},\ function(event)\ \{}
+\DoxyCodeLine{\ \ \ \ console.log("{}Parse\ error:\ "{}\ +\ event.message\ +\ "{}\ ("{}\ +\ event.line\ +\ "{},"{}\ +\ event.col\ +\ "{})"{},\ "{}error"{});}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c3a89a5b74664061ecb822f28ca22784_autotoc_md10658}{}\doxysection{\texorpdfstring{Error recovery}{Error recovery}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c3a89a5b74664061ecb822f28ca22784_autotoc_md10658}
+The CSS parser\textquotesingle{}s goal is to be on-\/par with error recovery of CSS parsers in browsers. To that end, the following error recovery mechanisms are in place\+:
+
+
+\begin{DoxyItemize}
+\item {\bfseries{Properties}} -\/ a syntactically incorrect property definition will be skipped over completely. For instance, the second property below is dropped\+:
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{a:hover\ \{}
+\DoxyCodeLine{\ \ \ \ color:\ red;}
+\DoxyCodeLine{\ \ \ \ font::\ Helvetica;\ \ \ /*\ dropped!\ */}
+\DoxyCodeLine{\ \ \ \ text-\/decoration:\ underline;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\bfseries{Selectors}} -\/ if there\textquotesingle{}s a syntax error in {\itshape any} selector, the entire rule is skipped over. For instance, the following rule is completely skipped\+:
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{a:hover,\ foo\ ...\ bar\ \{}
+\DoxyCodeLine{\ \ \ \ color:\ red;}
+\DoxyCodeLine{\ \ \ \ font:\ Helvetica;}
+\DoxyCodeLine{\ \ \ \ text-\/decoration:\ underline;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\bfseries{@ Rules}} -\/ there are certain @ rules that are only valid in certain contexts. The parser will skip over {\ttfamily @charset}, {\ttfamily @namespace}, and {\ttfamily @import} if they\textquotesingle{}re found anywhere other than the beginning of the input.
+\item {\bfseries{Unknown @ Rules}} -\/ any @ rules that isn\textquotesingle{}t recognized is automatically skipped, meaning the entire block after it is not parsed.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c3a89a5b74664061ecb822f28ca22784_autotoc_md10659}{}\doxysection{\texorpdfstring{Running Tests}{Running Tests}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c3a89a5b74664061ecb822f28ca22784_autotoc_md10659}
+You can run the tests via {\ttfamily npm test} from the repository\textquotesingle{}s root. You may need to run {\ttfamily npm install} first to install the necessary dependencies. 

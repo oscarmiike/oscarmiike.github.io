@@ -1,0 +1,158 @@
+\doxysection{Internal\+API.\+Services.\+Netsuite\+Service Class Reference}
+\hypertarget{class_internal_a_p_i_1_1_services_1_1_netsuite_service}{}\label{class_internal_a_p_i_1_1_services_1_1_netsuite_service}\index{InternalAPI.Services.NetsuiteService@{InternalAPI.Services.NetsuiteService}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_netsuite_service_ab6a6235f9725597e8755cffb24925180}{Netsuite\+Service}} (\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{Log\+Service}} logger, IOptions$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_netsuite_settings}{Netsuite\+Settings}} $>$ netsuite\+Settings)
+\item 
+IRest\+Response \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_netsuite_service_a6f3efa1d05f30d9744c31124aa5a6899}{APIRecord\+Request}} (string api\+Path, Method http\+Method, string body, IQuery\+Collection query\+Parameters)
+\item 
+IRest\+Response \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_netsuite_service_a5bfd10cf3baba5319858ddbc7f975b1f}{APIQuery\+Request}} (string api\+Path, Method http\+Method, string body, IQuery\+Collection query\+Parameters)
+\item 
+IRest\+Response \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_netsuite_service_a81ee2bf96bce09fa6e7a3e39e9e363a4}{APIRestlet\+Request}} (Method http\+Method, \mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_restlet_config}{Restlet\+Config}} restlet\+Config, string body)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_services_1_1_netsuite_service_ab6a6235f9725597e8755cffb24925180}\label{class_internal_a_p_i_1_1_services_1_1_netsuite_service_ab6a6235f9725597e8755cffb24925180} 
+\index{InternalAPI.Services.NetsuiteService@{InternalAPI.Services.NetsuiteService}!NetsuiteService@{NetsuiteService}}
+\index{NetsuiteService@{NetsuiteService}!InternalAPI.Services.NetsuiteService@{InternalAPI.Services.NetsuiteService}}
+\doxysubsubsection{\texorpdfstring{NetsuiteService()}{NetsuiteService()}}
+{\footnotesize\ttfamily Internal\+API.\+Services.\+Netsuite\+Service.\+Netsuite\+Service (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{Log\+Service}}}]{logger,  }\item[{IOptions$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_netsuite_settings}{Netsuite\+Settings}} $>$}]{netsuite\+Settings }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger\ =\ logger;}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \_netsuiteSettings\ =\ netsuiteSettings.Value;}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_services_1_1_netsuite_service_a5bfd10cf3baba5319858ddbc7f975b1f}\label{class_internal_a_p_i_1_1_services_1_1_netsuite_service_a5bfd10cf3baba5319858ddbc7f975b1f} 
+\index{InternalAPI.Services.NetsuiteService@{InternalAPI.Services.NetsuiteService}!APIQueryRequest@{APIQueryRequest}}
+\index{APIQueryRequest@{APIQueryRequest}!InternalAPI.Services.NetsuiteService@{InternalAPI.Services.NetsuiteService}}
+\doxysubsubsection{\texorpdfstring{APIQueryRequest()}{APIQueryRequest()}}
+{\footnotesize\ttfamily IRest\+Response Internal\+API.\+Services.\+Netsuite\+Service.\+APIQuery\+Request (\begin{DoxyParamCaption}\item[{string}]{api\+Path,  }\item[{Method}]{http\+Method,  }\item[{string}]{body,  }\item[{IQuery\+Collection}]{query\+Parameters }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient(\_netsuiteSettings.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_netsuite_settings_aaa044376b207f03f7bb31d4e8d3e0b33}{QueryBaseURL}});}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ var\ authenticator\ =\ OAuth1Authenticator.ForProtectedResource(}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_netsuiteSettings.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_netsuite_settings_a0bc0defe881cfc995676e997510199db}{ConsumerKey}},}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_netsuiteSettings.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_netsuite_settings_a77420e166c7151d7fd6bffec3ae4498c}{ConsumerSecret}},}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_netsuiteSettings.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_netsuite_settings_abc202616bf95c9bb8f1fc22add1b1ba0}{AccessToken}},}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_netsuiteSettings.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_netsuite_settings_a017d7aff2b245e2f008ca135cae3c5e2}{TokenSecret}},}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ RestSharp.Authenticators.OAuth.OAuthSignatureMethod.HmacSha256);}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ authenticator.Realm\ =\ \_netsuiteSettings.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_netsuite_settings_a77c926db21a463dce2d8f363ba8f8b6a}{OauthRealm}};}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ client.Authenticator\ =\ authenticator;}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ var\ request\ =\ \textcolor{keyword}{new}\ RestRequest(apiPath,\ httpMethod);}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddHeader(\textcolor{stringliteral}{"{}Prefer"{}},\ \textcolor{stringliteral}{"{}transient"{}});}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddHeader(\textcolor{stringliteral}{"{}Content-\/Type"{}},\ \textcolor{stringliteral}{"{}application/json"{}});}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddHeader(\textcolor{stringliteral}{"{}Cookie"{}},\ \textcolor{stringliteral}{"{}NS\_ROUTING\_VERSION=LAGGING"{}});}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (httpMethod\ ==\ Method.POST\ \&\&\ !(body\ ==\ \textcolor{keyword}{null}))}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ request.AddJsonBody(body);}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!(queryParameters\ ==\ \textcolor{keyword}{null}))}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ item\ \textcolor{keywordflow}{in}\ queryParameters)}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ request.AddQueryParameter(item.Key.ToString(),\ item.Value.ToString());}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ IRestResponse\ response\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ response\ =\ client.Execute(request);}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_ad25f9b254876bb11d042df6148dab40a}{LogException}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.NetsuiteService,\ \$\textcolor{stringliteral}{"{}Exception\ getting\ response\ from\ Netsuite\ query\ endpoint\ '\{apiPath\}'"{}},\ ex.ToString());}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ response;}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_internal_a_p_i_1_1_services_1_1_netsuite_service_a6f3efa1d05f30d9744c31124aa5a6899}\label{class_internal_a_p_i_1_1_services_1_1_netsuite_service_a6f3efa1d05f30d9744c31124aa5a6899} 
+\index{InternalAPI.Services.NetsuiteService@{InternalAPI.Services.NetsuiteService}!APIRecordRequest@{APIRecordRequest}}
+\index{APIRecordRequest@{APIRecordRequest}!InternalAPI.Services.NetsuiteService@{InternalAPI.Services.NetsuiteService}}
+\doxysubsubsection{\texorpdfstring{APIRecordRequest()}{APIRecordRequest()}}
+{\footnotesize\ttfamily IRest\+Response Internal\+API.\+Services.\+Netsuite\+Service.\+APIRecord\+Request (\begin{DoxyParamCaption}\item[{string}]{api\+Path,  }\item[{Method}]{http\+Method,  }\item[{string}]{body,  }\item[{IQuery\+Collection}]{query\+Parameters }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient(\_netsuiteSettings.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_netsuite_settings_a5e2276df66c4d1494de780b456ed7b6a}{RecordBaseURL}});}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ var\ authenticator\ =\ OAuth1Authenticator.ForProtectedResource(}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_netsuiteSettings.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_netsuite_settings_a0bc0defe881cfc995676e997510199db}{ConsumerKey}},}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_netsuiteSettings.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_netsuite_settings_a77420e166c7151d7fd6bffec3ae4498c}{ConsumerSecret}},}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_netsuiteSettings.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_netsuite_settings_abc202616bf95c9bb8f1fc22add1b1ba0}{AccessToken}},}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_netsuiteSettings.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_netsuite_settings_a017d7aff2b245e2f008ca135cae3c5e2}{TokenSecret}},}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ RestSharp.Authenticators.OAuth.OAuthSignatureMethod.HmacSha256);}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ authenticator.Realm\ =\ \_netsuiteSettings.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_netsuite_settings_a77c926db21a463dce2d8f363ba8f8b6a}{OauthRealm}};}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ client.Authenticator\ =\ authenticator;}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ var\ request\ =\ \textcolor{keyword}{new}\ RestRequest(apiPath,\ httpMethod);}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddHeader(\textcolor{stringliteral}{"{}Cookie"{}},\ \textcolor{stringliteral}{"{}NS\_ROUTING\_VERSION=LAGGING"{}});}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (httpMethod\ ==\ Method.POST\ ||\ httpMethod\ ==\ Method.PATCH\ \&\&\ !(body\ ==\ \textcolor{keyword}{null}))}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ request.AddJsonBody(body);}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!(queryParameters\ ==\ \textcolor{keyword}{null}))}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ item\ \textcolor{keywordflow}{in}\ queryParameters)}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ request.AddQueryParameter(item.Key.ToString(),\ item.Value.ToString());}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ IRestResponse\ response\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ response\ =\ client.Execute(request);}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_ad25f9b254876bb11d042df6148dab40a}{LogException}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.NetsuiteService,\ \$\textcolor{stringliteral}{"{}Exception\ getting\ response\ from\ Netsuite\ record\ endpoint\ '\{apiPath\}'"{}},\ ex.ToString());}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ response;}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_internal_a_p_i_1_1_services_1_1_netsuite_service_a81ee2bf96bce09fa6e7a3e39e9e363a4}\label{class_internal_a_p_i_1_1_services_1_1_netsuite_service_a81ee2bf96bce09fa6e7a3e39e9e363a4} 
+\index{InternalAPI.Services.NetsuiteService@{InternalAPI.Services.NetsuiteService}!APIRestletRequest@{APIRestletRequest}}
+\index{APIRestletRequest@{APIRestletRequest}!InternalAPI.Services.NetsuiteService@{InternalAPI.Services.NetsuiteService}}
+\doxysubsubsection{\texorpdfstring{APIRestletRequest()}{APIRestletRequest()}}
+{\footnotesize\ttfamily IRest\+Response Internal\+API.\+Services.\+Netsuite\+Service.\+APIRestlet\+Request (\begin{DoxyParamCaption}\item[{Method}]{http\+Method,  }\item[{\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_restlet_config}{Restlet\+Config}}}]{restlet\+Config,  }\item[{string}]{body }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient(\_netsuiteSettings.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_netsuite_settings_aff89e4dd3536cc1bad8f09350e0af3bb}{RestletBaseURL}});}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ var\ authenticator\ =\ OAuth1Authenticator.ForProtectedResource(}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_netsuiteSettings.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_netsuite_settings_a0bc0defe881cfc995676e997510199db}{ConsumerKey}},}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_netsuiteSettings.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_netsuite_settings_a77420e166c7151d7fd6bffec3ae4498c}{ConsumerSecret}},}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_netsuiteSettings.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_netsuite_settings_abc202616bf95c9bb8f1fc22add1b1ba0}{AccessToken}},}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_netsuiteSettings.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_netsuite_settings_a017d7aff2b245e2f008ca135cae3c5e2}{TokenSecret}},}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ RestSharp.Authenticators.OAuth.OAuthSignatureMethod.HmacSha256);}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ authenticator.Realm\ =\ \_netsuiteSettings.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_netsuite_settings_a77c926db21a463dce2d8f363ba8f8b6a}{OauthRealm}};}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ client.Authenticator\ =\ authenticator;}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ var\ request\ =\ \textcolor{keyword}{new}\ RestRequest(httpMethod);}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddHeader(\textcolor{stringliteral}{"{}Cookie"{}},\ \textcolor{stringliteral}{"{}NS\_ROUTING\_VERSION=LAGGING"{}});}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (httpMethod\ ==\ Method.POST\ \&\&\ !(body\ ==\ \textcolor{keyword}{null}))}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ request.AddJsonBody(body);}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddQueryParameter(\textcolor{stringliteral}{"{}script"{}},\ restletConfig.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_restlet_config_acaea10119ee16d60d35794892e5e5f0d}{Script}});}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddQueryParameter(\textcolor{stringliteral}{"{}deploy"{}},\ restletConfig.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_restlet_config_a14f20cfe2f65b2169df3a921a778f8f1}{Deploy}});}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ IRestResponse\ response\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ response\ =\ client.Execute(request);}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_ad25f9b254876bb11d042df6148dab40a}{LogException}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.NetsuiteService,\ \$\textcolor{stringliteral}{"{}Exception\ getting\ response\ from\ Netsuite\ restlet\ Script:\ \{restletConfig.Script\}\ Deploy:\ \{restletConfig.Deploy\}"{}},\ ex.ToString());}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ response;}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+STRIDER/source/repos/\+Internal\+API/\+Internal\+API/\+Services/\+Netsuite/\mbox{\hyperlink{_netsuite_service_8cs}{Netsuite\+Service.\+cs}}\end{DoxyCompactItemize}

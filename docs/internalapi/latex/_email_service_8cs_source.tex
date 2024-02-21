@@ -1,0 +1,61 @@
+\doxysection{Email\+Service.\+cs}
+\hypertarget{_email_service_8cs_source}{}\label{_email_service_8cs_source}\index{C:/Users/STRIDER/source/repos/InternalAPI/InternalAPI/Services/Email/EmailService.cs@{C:/Users/STRIDER/source/repos/InternalAPI/InternalAPI/Services/Email/EmailService.cs}}
+\mbox{\hyperlink{_email_service_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_email_service_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_email_service_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_dto_1_1_email}{InternalAPI.Dto.Email}};}
+\DoxyCodeLine{\Hypertarget{_email_service_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }System.Net.Mail;}
+\DoxyCodeLine{\Hypertarget{_email_service_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }System.Net;}
+\DoxyCodeLine{\Hypertarget{_email_service_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_settings}{InternalAPI.Settings}};}
+\DoxyCodeLine{\Hypertarget{_email_service_8cs_source_l00006}00006\ \textcolor{keyword}{using\ }Microsoft.Extensions.Options;}
+\DoxyCodeLine{\Hypertarget{_email_service_8cs_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{_email_service_8cs_source_l00008}\mbox{\hyperlink{namespace_internal_a_p_i_1_1_services_1_1_email}{00008}}\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_services_1_1_email}{InternalAPI.Services.Email}}}
+\DoxyCodeLine{\Hypertarget{_email_service_8cs_source_l00009}00009\ \{}
+\DoxyCodeLine{\Hypertarget{_email_service_8cs_source_l00010}\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_email_1_1_email_service}{00010}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_email_1_1_email_service}{EmailService}}}
+\DoxyCodeLine{\Hypertarget{_email_service_8cs_source_l00011}00011\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_email_service_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ readonly\ \mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_s_m_t_p_settings}{SMTPSettings}}\ \_smtpSettings;}
+\DoxyCodeLine{\Hypertarget{_email_service_8cs_source_l00013}00013\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ readonly\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}\ \_logger;}
+\DoxyCodeLine{\Hypertarget{_email_service_8cs_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{_email_service_8cs_source_l00015}\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_email_1_1_email_service_a04b8c3d26a16a12ff6d4a11ecafc7ad1}{00015}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_email_1_1_email_service_a04b8c3d26a16a12ff6d4a11ecafc7ad1}{EmailService}}(IOptions<SMTPSettings>\ smtpSettings,\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}\ logger)}
+\DoxyCodeLine{\Hypertarget{_email_service_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_email_service_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \ \ \ \ \_smtpSettings\ =\ smtpSettings.Value;}
+\DoxyCodeLine{\Hypertarget{_email_service_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger\ =\ logger;\ \ \ }
+\DoxyCodeLine{\Hypertarget{_email_service_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_email_service_8cs_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_email_service_8cs_source_l00025}\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_email_1_1_email_service_a413aa0652a2b100b8ffc40b5f0580612}{00025}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_email_1_1_email_service_a413aa0652a2b100b8ffc40b5f0580612}{SendEmail}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_email_1_1_email_post}{EmailPost}}\ emailPost)}
+\DoxyCodeLine{\Hypertarget{_email_service_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_email_service_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogDebug(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.EmailService,\ \$\textcolor{stringliteral}{"{}Sending\ email\ To:\ \{emailPost.EmailTo\},\ From:\ \{emailPost.EmailFrom\},\ Subject:\ \{emailPost.Subject\}"{}});}
+\DoxyCodeLine{\Hypertarget{_email_service_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keywordtype}{string}.IsNullOrWhiteSpace(\_smtpSettings.SMTPServer)\ ||\ \textcolor{keywordtype}{string}.IsNullOrWhiteSpace(\_smtpSettings.SMTPUsername)\ ||\ \textcolor{keywordtype}{string}.IsNullOrWhiteSpace(\_smtpSettings.SMTPPassword))\ }
+\DoxyCodeLine{\Hypertarget{_email_service_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_email_service_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogError(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.EmailService,\ \$\textcolor{stringliteral}{"{}SMTPSettings\ not\ configured\ correctly"{}});}
+\DoxyCodeLine{\Hypertarget{_email_service_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ }
+\DoxyCodeLine{\Hypertarget{_email_service_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_email_service_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{_email_service_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_email_service_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }MailMessage\ mailMessage\ =}
+\DoxyCodeLine{\Hypertarget{_email_service_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ MailMessage(\textcolor{keyword}{new}\ MailAddress(emailPost.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_email_1_1_email_post_a1b27d89a02fd2aa9c3e8d0084bfecf50}{EmailFrom}},\ emailPost.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_email_1_1_email_post_a4a5e4063824305b9d45b6bf74e8f7ed1}{NameFrom}}\ ??\ \textcolor{keyword}{null}),\ \textcolor{keyword}{new}\ MailAddress(emailPost.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_email_1_1_email_post_a69d1be61547e10faa70fcfbc55e04b71}{EmailTo}}))}
+\DoxyCodeLine{\Hypertarget{_email_service_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_email_service_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ IsBodyHtml\ =\ \textcolor{keyword}{true},}
+\DoxyCodeLine{\Hypertarget{_email_service_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Body\ =\ emailPost.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_email_1_1_email_post_ab0b4f9429340d4ea23ef21a913c30b94}{HTMLBody}},}
+\DoxyCodeLine{\Hypertarget{_email_service_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Subject\ =\ emailPost.Subject}
+\DoxyCodeLine{\Hypertarget{_email_service_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_email_service_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }SmtpClient\ smtpClient\ =\ \textcolor{keyword}{new}\ SmtpClient();}
+\DoxyCodeLine{\Hypertarget{_email_service_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_smtpSettings.SMTPServer?.Contains(\textcolor{stringliteral}{"{}:"{}})\ ==\ \textcolor{keyword}{true})}
+\DoxyCodeLine{\Hypertarget{_email_service_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_email_service_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ smtpClient.Host\ =\ \_smtpSettings.SMTPServer.Split(\textcolor{stringliteral}{"{}:"{}})[0];}
+\DoxyCodeLine{\Hypertarget{_email_service_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ smtpClient.Port\ =\ \textcolor{keywordtype}{int}.Parse(\_smtpSettings.SMTPServer.Split(\textcolor{stringliteral}{"{}:"{}})[1]);}
+\DoxyCodeLine{\Hypertarget{_email_service_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_email_service_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ smtpClient.Host\ =\ \_smtpSettings.SMTPServer;}
+\DoxyCodeLine{\Hypertarget{_email_service_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ smtpClient.Credentials\ =\ \textcolor{keyword}{new}\ NetworkCredential(\_smtpSettings.SMTPUsername,\ \_smtpSettings.SMTPPassword);}
+\DoxyCodeLine{\Hypertarget{_email_service_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ smtpClient.Send(mailMessage);}
+\DoxyCodeLine{\Hypertarget{_email_service_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{\Hypertarget{_email_service_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_email_service_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogException(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.EmailService,\ \$\textcolor{stringliteral}{"{}Exception\ sending\ email"{}},\ ex.ToString());}
+\DoxyCodeLine{\Hypertarget{_email_service_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_email_service_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_email_service_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_email_service_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_email_service_8cs_source_l00058}00058\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_email_service_8cs_source_l00059}00059\ \}}
+
+\end{DoxyCode}

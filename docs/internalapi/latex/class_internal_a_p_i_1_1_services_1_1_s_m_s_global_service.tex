@@ -1,0 +1,113 @@
+\doxysection{Internal\+API.\+Services.\+SMSGlobal\+Service Class Reference}
+\hypertarget{class_internal_a_p_i_1_1_services_1_1_s_m_s_global_service}{}\label{class_internal_a_p_i_1_1_services_1_1_s_m_s_global_service}\index{InternalAPI.Services.SMSGlobalService@{InternalAPI.Services.SMSGlobalService}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_s_m_s_global_service_aeb7fc2080b85cd8aa3c7f9b122a57958}{SMSGlobal\+Service}} (IOptions$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_s_m_s_global_settings}{SMSGlobal\+Settings}} $>$ sms\+Global\+Settings, \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{Log\+Service}} logger)
+\item 
+\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_s_m_s_global_1_1_s_m_s_send_response}{SMSSend\+Response}} \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_s_m_s_global_service_a16ba8a16243128d190d13f52d86e6966}{Send\+Message}} (\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_s_m_s_global_1_1_s_m_s_send_request}{SMSSend\+Request}} sms\+Send\+Request)
+\item 
+string \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_s_m_s_global_service_aab43d11d7d2f9b46e47e272ebb51686a}{Build\+Auth\+Header}} (Method request\+Method)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_services_1_1_s_m_s_global_service_aeb7fc2080b85cd8aa3c7f9b122a57958}\label{class_internal_a_p_i_1_1_services_1_1_s_m_s_global_service_aeb7fc2080b85cd8aa3c7f9b122a57958} 
+\index{InternalAPI.Services.SMSGlobalService@{InternalAPI.Services.SMSGlobalService}!SMSGlobalService@{SMSGlobalService}}
+\index{SMSGlobalService@{SMSGlobalService}!InternalAPI.Services.SMSGlobalService@{InternalAPI.Services.SMSGlobalService}}
+\doxysubsubsection{\texorpdfstring{SMSGlobalService()}{SMSGlobalService()}}
+{\footnotesize\ttfamily Internal\+API.\+Services.\+SMSGlobal\+Service.\+SMSGlobal\+Service (\begin{DoxyParamCaption}\item[{IOptions$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_s_m_s_global_settings}{SMSGlobal\+Settings}} $>$}]{sms\+Global\+Settings,  }\item[{\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{Log\+Service}}}]{logger }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger\ =\ logger;}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \_smsGlobalSettings\ =\ smsGlobalSettings.Value;}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_services_1_1_s_m_s_global_service_aab43d11d7d2f9b46e47e272ebb51686a}\label{class_internal_a_p_i_1_1_services_1_1_s_m_s_global_service_aab43d11d7d2f9b46e47e272ebb51686a} 
+\index{InternalAPI.Services.SMSGlobalService@{InternalAPI.Services.SMSGlobalService}!BuildAuthHeader@{BuildAuthHeader}}
+\index{BuildAuthHeader@{BuildAuthHeader}!InternalAPI.Services.SMSGlobalService@{InternalAPI.Services.SMSGlobalService}}
+\doxysubsubsection{\texorpdfstring{BuildAuthHeader()}{BuildAuthHeader()}}
+{\footnotesize\ttfamily string Internal\+API.\+Services.\+SMSGlobal\+Service.\+Build\+Auth\+Header (\begin{DoxyParamCaption}\item[{Method}]{request\+Method }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ var\ ts\ =\ DateTimeOffset.Now.ToUnixTimeSeconds();}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ var\ nonce\ =\ Guid.NewGuid().ToString(\textcolor{stringliteral}{"{}N"{}});}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ var\ baseUrl\ =\ \textcolor{keyword}{new}\ Uri(\_smsGlobalSettings.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_s_m_s_global_settings_a77ea9f46337fe4f0393d650b7a9afdd7}{BaseURL}});}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ var\ authHeader\ =\ \$\textcolor{stringliteral}{"{}MAC\ "{}}\ +}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}id=\(\backslash\)"{}\{\_smsGlobalSettings.APIKey\}\(\backslash\)"{},\ "{}}\ +}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}ts=\(\backslash\)"{}\{ts\}\(\backslash\)"{},\ "{}}\ +}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}nonce=\(\backslash\)"{}\{nonce\}\(\backslash\)"{}"{}};}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ var\ mac\ =\ \$\textcolor{stringliteral}{"{}\{ts\}\(\backslash\)n"{}}\ +}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}\{nonce\}\(\backslash\)n"{}}\ +}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}\{requestMethod\}\(\backslash\)n"{}}\ +}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}/\{\_smsGlobalSettings.SMSEndpoint\}\(\backslash\)n"{}}\ +}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}\{baseUrl.Host\}\(\backslash\)n"{}}\ +}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}\{baseUrl.Port\}\(\backslash\)n"{}}\ +}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$\textcolor{stringliteral}{"{}\{authHeader\},\ mac=\(\backslash\)"{}\{Convert.ToBase64String(SignData(mac))\}\(\backslash\)"{}"{}};}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_internal_a_p_i_1_1_services_1_1_s_m_s_global_service_aab43d11d7d2f9b46e47e272ebb51686a_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_internal_a_p_i_1_1_services_1_1_s_m_s_global_service_a16ba8a16243128d190d13f52d86e6966}\label{class_internal_a_p_i_1_1_services_1_1_s_m_s_global_service_a16ba8a16243128d190d13f52d86e6966} 
+\index{InternalAPI.Services.SMSGlobalService@{InternalAPI.Services.SMSGlobalService}!SendMessage@{SendMessage}}
+\index{SendMessage@{SendMessage}!InternalAPI.Services.SMSGlobalService@{InternalAPI.Services.SMSGlobalService}}
+\doxysubsubsection{\texorpdfstring{SendMessage()}{SendMessage()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_s_m_s_global_1_1_s_m_s_send_response}{SMSSend\+Response}} Internal\+API.\+Services.\+SMSGlobal\+Service.\+Send\+Message (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_s_m_s_global_1_1_s_m_s_send_request}{SMSSend\+Request}}}]{sms\+Send\+Request }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_s_m_s_global_1_1_s_m_s_send_response}{SMSSendResponse}}\ smsSendResponse\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (smsSendRequest\ ==\ \textcolor{keyword}{null}\ ||\ \textcolor{keywordtype}{string}.IsNullOrEmpty(smsSendRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_s_m_s_global_1_1_s_m_s_send_request_a4a59236e7a38dfc010d2ab727df127f2}{destination}})\ ||\ \textcolor{keywordtype}{string}.IsNullOrEmpty(smsSendRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_s_m_s_global_1_1_s_m_s_send_request_aa4ab16fa9a361f1bbaf0957d735152d1}{message}}))}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ smsSendResponse;}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient(\_smsGlobalSettings.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_s_m_s_global_settings_a77ea9f46337fe4f0393d650b7a9afdd7}{BaseURL}});}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ var\ request\ =\ \textcolor{keyword}{new}\ RestRequest(\_smsGlobalSettings.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_s_m_s_global_settings_ae0d9767e15c8e843c570a1303eb17f10}{SMSEndpoint}},\ Method.POST);}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddHeader(\textcolor{stringliteral}{"{}Authorization"{}},\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_s_m_s_global_service_aab43d11d7d2f9b46e47e272ebb51686a}{BuildAuthHeader}}(request.Method));}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddJsonBody(JsonConvert.SerializeObject(smsSendRequest));}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ response\ =\ client.Execute(request);}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response.IsSuccessful\ \&\&\ !\textcolor{keywordtype}{string}.IsNullOrEmpty(response.Content))}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ smsSendResponse\ =\ JsonConvert.DeserializeObject<\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_s_m_s_global_1_1_s_m_s_send_response}{SMSSendResponse}}>(response.Content);}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a778dd1666ec20e3197598d7aa41e0cba}{LogError}}(LogService.LogSources.SMSGlobalService,\ \$\textcolor{stringliteral}{"{}Error\ sending\ SMS\ via\ SMSGlobal\ StatusCode:\ \{response.StatusCode\}\ Content:\ \{response.Content\}"{}});}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_ad25f9b254876bb11d042df6148dab40a}{LogException}}(LogService.LogSources.SMSGlobalService,\ \$\textcolor{stringliteral}{"{}Exception\ sending\ SMS\ via\ SMSGlobal"{}},\ ex.ToString());}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ smsSendResponse;}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_internal_a_p_i_1_1_services_1_1_s_m_s_global_service_a16ba8a16243128d190d13f52d86e6966_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+STRIDER/source/repos/\+Internal\+API/\+Internal\+API/\+Services/\+SMSGlobal/\mbox{\hyperlink{_s_m_s_global_service_8cs}{SMSGlobal\+Service.\+cs}}\end{DoxyCompactItemize}

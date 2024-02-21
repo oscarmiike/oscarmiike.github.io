@@ -1,0 +1,159 @@
+\chapter{shell-\/quote}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a3d7bf8a9ec0a37b43cb938a2129e3cb}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a3d7bf8a9ec0a37b43cb938a2129e3cb}\index{shell-\/quote@{shell-\/quote}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a3d7bf8a9ec0a37b43cb938a2129e3cb_autotoc_md4565}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a3d7bf8a9ec0a37b43cb938a2129e3cb_autotoc_md4565}%
+ Parse and quote shell commands.
+
+\href{http://travis-ci.org/substack/node-shell-quote}{\texttt{ }}
+
+\href{https://ci.testling.com/substack/node-shell-quote}{\texttt{ }}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a3d7bf8a9ec0a37b43cb938a2129e3cb_autotoc_md4566}{}\doxysection{\texorpdfstring{example}{example}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a3d7bf8a9ec0a37b43cb938a2129e3cb_autotoc_md4566}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a3d7bf8a9ec0a37b43cb938a2129e3cb_autotoc_md4567}{}\doxysubsection{\texorpdfstring{quote}{quote}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a3d7bf8a9ec0a37b43cb938a2129e3cb_autotoc_md4567}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ js}
+\DoxyCodeLine{var\ quote\ =\ require('shell-\/quote').quote;}
+\DoxyCodeLine{var\ s\ =\ quote([\ 'a',\ 'b\ c\ d',\ '\$f',\ '"{}g"{}'\ ]);}
+\DoxyCodeLine{console.log(s);}
+
+\end{DoxyCode}
+
+
+output
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{a\ 'b\ c\ d'\ \(\backslash\)\$f\ '"{}g"{}'}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a3d7bf8a9ec0a37b43cb938a2129e3cb_autotoc_md4568}{}\doxysubsection{\texorpdfstring{parse}{parse}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a3d7bf8a9ec0a37b43cb938a2129e3cb_autotoc_md4568}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ js}
+\DoxyCodeLine{var\ parse\ =\ require('shell-\/quote').parse;}
+\DoxyCodeLine{var\ xs\ =\ parse('a\ "{}b\ c"{}\ \(\backslash\)\(\backslash\)\$def\ \(\backslash\)'it\(\backslash\)\(\backslash\)\(\backslash\)'s\ great\(\backslash\)'');}
+\DoxyCodeLine{console.dir(xs);}
+
+\end{DoxyCode}
+
+
+output
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{[\ 'a',\ 'b\ c',\ '\(\backslash\)\(\backslash\)\$def',\ 'it\(\backslash\)'s\ great'\ ]}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a3d7bf8a9ec0a37b43cb938a2129e3cb_autotoc_md4569}{}\doxysubsection{\texorpdfstring{parse with an environment variable}{parse with an environment variable}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a3d7bf8a9ec0a37b43cb938a2129e3cb_autotoc_md4569}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ js}
+\DoxyCodeLine{var\ parse\ =\ require('shell-\/quote').parse;}
+\DoxyCodeLine{var\ xs\ =\ parse('beep\ -\/-\/boop="{}\$PWD"{}',\ \{\ PWD:\ '/home/robot'\ \});}
+\DoxyCodeLine{console.dir(xs);}
+
+\end{DoxyCode}
+
+
+output
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{[\ 'beep',\ '-\/-\/boop=/home/robot'\ ]}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a3d7bf8a9ec0a37b43cb938a2129e3cb_autotoc_md4570}{}\doxysubsection{\texorpdfstring{parse with custom escape charcter}{parse with custom escape charcter}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a3d7bf8a9ec0a37b43cb938a2129e3cb_autotoc_md4570}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ js}
+\DoxyCodeLine{var\ parse\ =\ require('shell-\/quote').parse;}
+\DoxyCodeLine{var\ xs\ =\ parse('beep\ -\/-\/boop="{}\$PWD"{}',\ \{\ PWD:\ '/home/robot'\ \},\ \{\ escape:\ '\string^'\ \});}
+\DoxyCodeLine{console.dir(xs);}
+
+\end{DoxyCode}
+
+
+output
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{[\ 'beep',\ '-\/-\/boop=/home/robot'\ ]}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a3d7bf8a9ec0a37b43cb938a2129e3cb_autotoc_md4571}{}\doxysubsection{\texorpdfstring{parsing shell operators}{parsing shell operators}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a3d7bf8a9ec0a37b43cb938a2129e3cb_autotoc_md4571}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ js}
+\DoxyCodeLine{var\ parse\ =\ require('shell-\/quote').parse;}
+\DoxyCodeLine{var\ xs\ =\ parse('beep\ ||\ boop\ >\ /byte');}
+\DoxyCodeLine{console.dir(xs);}
+
+\end{DoxyCode}
+
+
+output\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{[\ 'beep',\ \{\ op:\ '||'\ \},\ 'boop',\ \{\ op:\ '>'\ \},\ '/byte'\ ]}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a3d7bf8a9ec0a37b43cb938a2129e3cb_autotoc_md4572}{}\doxysubsection{\texorpdfstring{parsing shell comment}{parsing shell comment}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a3d7bf8a9ec0a37b43cb938a2129e3cb_autotoc_md4572}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ js}
+\DoxyCodeLine{var\ parse\ =\ require('shell-\/quote').parse;}
+\DoxyCodeLine{var\ xs\ =\ parse('beep\ >\ boop\ \#\ >\ kaboom');}
+\DoxyCodeLine{console.dir(xs);}
+
+\end{DoxyCode}
+
+
+output\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{[\ 'beep',\ \{\ op:\ '>'\ \},\ 'boop',\ \{\ comment:\ '>\ kaboom'\ \}\ ]}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a3d7bf8a9ec0a37b43cb938a2129e3cb_autotoc_md4573}{}\doxysection{\texorpdfstring{methods}{methods}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a3d7bf8a9ec0a37b43cb938a2129e3cb_autotoc_md4573}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ js}
+\DoxyCodeLine{var\ quote\ =\ require('shell-\/quote').quote;}
+\DoxyCodeLine{var\ parse\ =\ require('shell-\/quote').parse;}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a3d7bf8a9ec0a37b43cb938a2129e3cb_autotoc_md4574}{}\doxysubsection{\texorpdfstring{quote(args)}{quote(args)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a3d7bf8a9ec0a37b43cb938a2129e3cb_autotoc_md4574}
+Return a quoted string for the array {\ttfamily args} suitable for using in shell commands.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a3d7bf8a9ec0a37b43cb938a2129e3cb_autotoc_md4575}{}\doxysubsection{\texorpdfstring{parse(cmd, env=\{\})}{parse(cmd, env=\{\})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a3d7bf8a9ec0a37b43cb938a2129e3cb_autotoc_md4575}
+Return an array of arguments from the quoted string {\ttfamily cmd}.
+
+Interpolate embedded bash-\/style {\ttfamily \$VARNAME} and {\ttfamily \$\{VARNAME\}} variables with the {\ttfamily env} object which like bash will replace undefined variables with {\ttfamily "{}"{}}.
+
+{\ttfamily env} is usually an object but it can also be a function to perform lookups. When {\ttfamily env(key)} returns a string, its result will be output just like {\ttfamily env\mbox{[}key\mbox{]}} would. When {\ttfamily env(key)} returns an object, it will be inserted into the result array like the operator objects.
+
+When a bash operator is encountered, the element in the array with be an object with an {\ttfamily "{}op"{}} key set to the operator string. For example\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{'beep\ ||\ boop\ >\ /byte'}
+
+\end{DoxyCode}
+
+
+parses as\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{[\ 'beep',\ \{\ op:\ '||'\ \},\ 'boop',\ \{\ op:\ '>'\ \},\ '/byte'\ ]}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a3d7bf8a9ec0a37b43cb938a2129e3cb_autotoc_md4576}{}\doxysection{\texorpdfstring{install}{install}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a3d7bf8a9ec0a37b43cb938a2129e3cb_autotoc_md4576}
+With \href{http://npmjs.org}{\texttt{ npm}} do\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ shell-\/quote}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a3d7bf8a9ec0a37b43cb938a2129e3cb_autotoc_md4577}{}\doxysection{\texorpdfstring{license}{license}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2a3d7bf8a9ec0a37b43cb938a2129e3cb_autotoc_md4577}
+MIT 

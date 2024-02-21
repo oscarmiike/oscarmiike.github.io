@@ -1,0 +1,83 @@
+\doxysection{Internal\+API.\+Services.\+Email.\+Email\+Service Class Reference}
+\hypertarget{class_internal_a_p_i_1_1_services_1_1_email_1_1_email_service}{}\label{class_internal_a_p_i_1_1_services_1_1_email_1_1_email_service}\index{InternalAPI.Services.Email.EmailService@{InternalAPI.Services.Email.EmailService}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_email_1_1_email_service_a04b8c3d26a16a12ff6d4a11ecafc7ad1}{Email\+Service}} (IOptions$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_s_m_t_p_settings}{SMTPSettings}} $>$ smtp\+Settings, \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{Log\+Service}} logger)
+\item 
+bool \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_email_1_1_email_service_a413aa0652a2b100b8ffc40b5f0580612}{Send\+Email}} (\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_email_1_1_email_post}{Email\+Post}} email\+Post)
+\begin{DoxyCompactList}\small\item\em sends an HTML email with the configured settings \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_services_1_1_email_1_1_email_service_a04b8c3d26a16a12ff6d4a11ecafc7ad1}\label{class_internal_a_p_i_1_1_services_1_1_email_1_1_email_service_a04b8c3d26a16a12ff6d4a11ecafc7ad1} 
+\index{InternalAPI.Services.Email.EmailService@{InternalAPI.Services.Email.EmailService}!EmailService@{EmailService}}
+\index{EmailService@{EmailService}!InternalAPI.Services.Email.EmailService@{InternalAPI.Services.Email.EmailService}}
+\doxysubsubsection{\texorpdfstring{EmailService()}{EmailService()}}
+{\footnotesize\ttfamily Internal\+API.\+Services.\+Email.\+Email\+Service.\+Email\+Service (\begin{DoxyParamCaption}\item[{IOptions$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_s_m_t_p_settings}{SMTPSettings}} $>$}]{smtp\+Settings,  }\item[{\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{Log\+Service}}}]{logger }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \ \ \ \ \_smtpSettings\ =\ smtpSettings.Value;}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger\ =\ logger;\ \ \ }
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_services_1_1_email_1_1_email_service_a413aa0652a2b100b8ffc40b5f0580612}\label{class_internal_a_p_i_1_1_services_1_1_email_1_1_email_service_a413aa0652a2b100b8ffc40b5f0580612} 
+\index{InternalAPI.Services.Email.EmailService@{InternalAPI.Services.Email.EmailService}!SendEmail@{SendEmail}}
+\index{SendEmail@{SendEmail}!InternalAPI.Services.Email.EmailService@{InternalAPI.Services.Email.EmailService}}
+\doxysubsubsection{\texorpdfstring{SendEmail()}{SendEmail()}}
+{\footnotesize\ttfamily bool Internal\+API.\+Services.\+Email.\+Email\+Service.\+Send\+Email (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_email_1_1_email_post}{Email\+Post}}}]{email\+Post }\end{DoxyParamCaption})}
+
+
+
+sends an HTML email with the configured settings 
+
+\begin{DoxyReturn}{Returns}
+bool indicating success or fail
+\end{DoxyReturn}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_acf860ff3326ea65346a173f3479c6e57}{LogDebug}}(LogService.LogSources.EmailService,\ \$\textcolor{stringliteral}{"{}Sending\ email\ To:\ \{emailPost.EmailTo\},\ From:\ \{emailPost.EmailFrom\},\ Subject:\ \{emailPost.Subject\}"{}});}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keywordtype}{string}.IsNullOrWhiteSpace(\_smtpSettings.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_s_m_t_p_settings_a73548faf59c3bfa7cc6b759fbf98be89}{SMTPServer}})\ ||\ \textcolor{keywordtype}{string}.IsNullOrWhiteSpace(\_smtpSettings.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_s_m_t_p_settings_a27a939a7db6e1306e684a162bf260959}{SMTPUsername}})\ ||\ \textcolor{keywordtype}{string}.IsNullOrWhiteSpace(\_smtpSettings.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_s_m_t_p_settings_a6a51d2a5bcbc014d5d555a67173f3c72}{SMTPPassword}}))\ }
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a778dd1666ec20e3197598d7aa41e0cba}{LogError}}(LogService.LogSources.EmailService,\ \$\textcolor{stringliteral}{"{}SMTPSettings\ not\ configured\ correctly"{}});}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ }
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }MailMessage\ mailMessage\ =}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ MailMessage(\textcolor{keyword}{new}\ MailAddress(emailPost.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_email_1_1_email_post_a1b27d89a02fd2aa9c3e8d0084bfecf50}{EmailFrom}},\ emailPost.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_email_1_1_email_post_a4a5e4063824305b9d45b6bf74e8f7ed1}{NameFrom}}\ ??\ \textcolor{keyword}{null}),\ \textcolor{keyword}{new}\ MailAddress(emailPost.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_email_1_1_email_post_a69d1be61547e10faa70fcfbc55e04b71}{EmailTo}})) }
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ IsBodyHtml\ =\ \textcolor{keyword}{true},}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Body\ =\ emailPost.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_email_1_1_email_post_ab0b4f9429340d4ea23ef21a913c30b94}{HTMLBody}},}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Subject\ =\ emailPost.Subject}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }SmtpClient\ smtpClient\ =\ \textcolor{keyword}{new}\ SmtpClient();}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_smtpSettings.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_s_m_t_p_settings_a73548faf59c3bfa7cc6b759fbf98be89}{SMTPServer}}?.Contains(\textcolor{stringliteral}{"{}:"{}})\ ==\ \textcolor{keyword}{true})}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ smtpClient.Host\ =\ \_smtpSettings.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_s_m_t_p_settings_a73548faf59c3bfa7cc6b759fbf98be89}{SMTPServer}}.Split(\textcolor{stringliteral}{"{}:"{}})[0];}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ smtpClient.Port\ =\ \textcolor{keywordtype}{int}.Parse(\_smtpSettings.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_s_m_t_p_settings_a73548faf59c3bfa7cc6b759fbf98be89}{SMTPServer}}.Split(\textcolor{stringliteral}{"{}:"{}})[1]);}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ smtpClient.Host\ =\ \_smtpSettings.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_s_m_t_p_settings_a73548faf59c3bfa7cc6b759fbf98be89}{SMTPServer}};}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ smtpClient.Credentials\ =\ \textcolor{keyword}{new}\ NetworkCredential(\_smtpSettings.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_s_m_t_p_settings_a27a939a7db6e1306e684a162bf260959}{SMTPUsername}},\ \_smtpSettings.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_s_m_t_p_settings_a6a51d2a5bcbc014d5d555a67173f3c72}{SMTPPassword}});}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ smtpClient.Send(mailMessage);}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_ad25f9b254876bb11d042df6148dab40a}{LogException}}(LogService.LogSources.EmailService,\ \$\textcolor{stringliteral}{"{}Exception\ sending\ email"{}},\ ex.ToString());}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+STRIDER/source/repos/\+Internal\+API/\+Internal\+API/\+Services/\+Email/\mbox{\hyperlink{_email_service_8cs}{Email\+Service.\+cs}}\end{DoxyCompactItemize}

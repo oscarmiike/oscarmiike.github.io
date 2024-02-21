@@ -1,0 +1,125 @@
+\chapter{load-\/grunt-\/tasks \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/sindresorhus/load-\/grunt-\/tasks"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+org/sindresorhus/load-\/grunt-\/tasks.\+svg?branch=master"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_29e3855a0bcf29e97859ab3b53f7279bf}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_29e3855a0bcf29e97859ab3b53f7279bf}\index{load-\/grunt-\/tasks $<$a href="{}https://travis-\/ci.org/sindresorhus/load-\/grunt-\/tasks"{} $>$$<$img src="{}https://travis-\/ci.org/sindresorhus/load-\/grunt-\/tasks.svg?branch=master"{} alt="{}Build Status"{}/$>$$<$/a$>$@{load-\/grunt-\/tasks $<$a href=""https://travis-\/ci.org/sindresorhus/load-\/grunt-\/tasks"" $>$$<$img src=""https://travis-\/ci.org/sindresorhus/load-\/grunt-\/tasks.svg?branch=master"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_29e3855a0bcf29e97859ab3b53f7279bf_autotoc_md10048}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_29e3855a0bcf29e97859ab3b53f7279bf_autotoc_md10048}%
+ \begin{quote}
+Load multiple grunt tasks using globbing patterns \end{quote}
+Usually you would have to load each task one by one, which is unnecessarily cumbersome.
+
+This module will read the {\ttfamily dependencies}/{\ttfamily dev\+Dependencies}/{\ttfamily peer\+Dependencies}/{\ttfamily optional\+Dependencies} in your package.\+json and load grunt tasks that match the provided patterns.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_29e3855a0bcf29e97859ab3b53f7279bf_autotoc_md10049}{}\doxysubsubsection{\texorpdfstring{Before}{Before}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_29e3855a0bcf29e97859ab3b53f7279bf_autotoc_md10049}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{grunt.loadNpmTasks('grunt-\/shell');}
+\DoxyCodeLine{grunt.loadNpmTasks('grunt-\/sass');}
+\DoxyCodeLine{grunt.loadNpmTasks('grunt-\/recess');}
+\DoxyCodeLine{grunt.loadNpmTasks('grunt-\/sizediff');}
+\DoxyCodeLine{grunt.loadNpmTasks('grunt-\/svgmin');}
+\DoxyCodeLine{grunt.loadNpmTasks('grunt-\/styl');}
+\DoxyCodeLine{grunt.loadNpmTasks('grunt-\/php');}
+\DoxyCodeLine{grunt.loadNpmTasks('grunt-\/eslint');}
+\DoxyCodeLine{grunt.loadNpmTasks('grunt-\/concurrent');}
+\DoxyCodeLine{grunt.loadNpmTasks('grunt-\/bower-\/requirejs');}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_29e3855a0bcf29e97859ab3b53f7279bf_autotoc_md10050}{}\doxysubsubsection{\texorpdfstring{After}{After}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_29e3855a0bcf29e97859ab3b53f7279bf_autotoc_md10050}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{require('load-\/grunt-\/tasks')(grunt);}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_29e3855a0bcf29e97859ab3b53f7279bf_autotoc_md10051}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_29e3855a0bcf29e97859ab3b53f7279bf_autotoc_md10051}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ -\/-\/save-\/dev\ load-\/grunt-\/tasks}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_29e3855a0bcf29e97859ab3b53f7279bf_autotoc_md10052}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_29e3855a0bcf29e97859ab3b53f7279bf_autotoc_md10052}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Gruntfile.js}
+\DoxyCodeLine{module.exports\ =\ grunt\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ //\ Load\ all\ grunt\ tasks\ matching\ the\ ['grunt-\/*',\ '@*/grunt-\/*']\ patterns}
+\DoxyCodeLine{\ \ \ \ require('load-\/grunt-\/tasks')(grunt);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ grunt.initConfig(\{\});}
+\DoxyCodeLine{\ \ \ \ grunt.registerTask('default',\ []);}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_29e3855a0bcf29e97859ab3b53f7279bf_autotoc_md10053}{}\doxysection{\texorpdfstring{Examples}{Examples}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_29e3855a0bcf29e97859ab3b53f7279bf_autotoc_md10053}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_29e3855a0bcf29e97859ab3b53f7279bf_autotoc_md10054}{}\doxysubsection{\texorpdfstring{Load all grunt tasks}{Load all grunt tasks}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_29e3855a0bcf29e97859ab3b53f7279bf_autotoc_md10054}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{require('load-\/grunt-\/tasks')(grunt);}
+
+\end{DoxyCode}
+
+
+Equivalent to\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{require('load-\/grunt-\/tasks')(grunt,\ \{pattern:\ ['grunt-\/*',\ '@*/grunt-\/*']\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_29e3855a0bcf29e97859ab3b53f7279bf_autotoc_md10055}{}\doxysubsection{\texorpdfstring{Load all grunt-\/contrib tasks}{Load all grunt-\/contrib tasks}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_29e3855a0bcf29e97859ab3b53f7279bf_autotoc_md10055}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{require('load-\/grunt-\/tasks')(grunt,\ \{pattern:\ 'grunt-\/contrib-\/*'\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_29e3855a0bcf29e97859ab3b53f7279bf_autotoc_md10056}{}\doxysubsection{\texorpdfstring{Load all grunt-\/contrib tasks and another non-\/contrib task}{Load all grunt-\/contrib tasks and another non-\/contrib task}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_29e3855a0bcf29e97859ab3b53f7279bf_autotoc_md10056}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{require('load-\/grunt-\/tasks')(grunt,\ \{pattern:\ ['grunt-\/contrib-\/*',\ 'grunt-\/shell']\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_29e3855a0bcf29e97859ab3b53f7279bf_autotoc_md10057}{}\doxysubsection{\texorpdfstring{Load all grunt-\/contrib tasks excluding one}{Load all grunt-\/contrib tasks excluding one}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_29e3855a0bcf29e97859ab3b53f7279bf_autotoc_md10057}
+You can exclude tasks using the negate {\ttfamily !} globbing pattern\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{require('load-\/grunt-\/tasks')(grunt,\ \{pattern:\ ['grunt-\/contrib-\/*',\ '!grunt-\/contrib-\/coffee']\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_29e3855a0bcf29e97859ab3b53f7279bf_autotoc_md10058}{}\doxysubsection{\texorpdfstring{Set custom path to package.\+json}{Set custom path to package.\+json}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_29e3855a0bcf29e97859ab3b53f7279bf_autotoc_md10058}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{require('load-\/grunt-\/tasks')(grunt,\ \{config:\ '../package'\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_29e3855a0bcf29e97859ab3b53f7279bf_autotoc_md10059}{}\doxysubsection{\texorpdfstring{Only load from {\ttfamily dev\+Dependencies}}{Only load from {\ttfamily dev\+Dependencies}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_29e3855a0bcf29e97859ab3b53f7279bf_autotoc_md10059}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{require('load-\/grunt-\/tasks')(grunt,\ \{scope:\ 'devDependencies'\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_29e3855a0bcf29e97859ab3b53f7279bf_autotoc_md10060}{}\doxysubsection{\texorpdfstring{Only load from {\ttfamily dev\+Dependencies} and {\ttfamily dependencies}}{Only load from {\ttfamily dev\+Dependencies} and {\ttfamily dependencies}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_29e3855a0bcf29e97859ab3b53f7279bf_autotoc_md10060}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{require('load-\/grunt-\/tasks')(grunt,\ \{scope:\ ['devDependencies',\ 'dependencies']\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_29e3855a0bcf29e97859ab3b53f7279bf_autotoc_md10061}{}\doxysubsection{\texorpdfstring{All options in use}{All options in use}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_29e3855a0bcf29e97859ab3b53f7279bf_autotoc_md10061}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{require('load-\/grunt-\/tasks')(grunt,\ \{}
+\DoxyCodeLine{\ \ \ \ pattern:\ 'grunt-\/contrib-\/*',}
+\DoxyCodeLine{\ \ \ \ config:\ '../package.json',}
+\DoxyCodeLine{\ \ \ \ scope:\ 'devDependencies',}
+\DoxyCodeLine{\ \ \ \ requireResolution:\ true}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_29e3855a0bcf29e97859ab3b53f7279bf_autotoc_md10062}{}\doxysection{\texorpdfstring{Options}{Options}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_29e3855a0bcf29e97859ab3b53f7279bf_autotoc_md10062}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_29e3855a0bcf29e97859ab3b53f7279bf_autotoc_md10063}{}\doxysubsection{\texorpdfstring{pattern}{pattern}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_29e3855a0bcf29e97859ab3b53f7279bf_autotoc_md10063}
+Type\+: {\ttfamily string \texorpdfstring{$\vert$}{|} string\mbox{[}\mbox{]}}~\newline
+ Default\+: `\mbox{[}\textquotesingle{}grunt-\/\texorpdfstring{$\ast$}{*}', \textquotesingle{}@\texorpdfstring{$\ast$}{*}/grunt-\/\texorpdfstring{$\ast$}{*}\textquotesingle{}\mbox{]}\`{} (\href{https://github.com/isaacs/minimatch}{\texttt{ Glob pattern}})\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_29e3855a0bcf29e97859ab3b53f7279bf_autotoc_md10064}{}\doxysubsection{\texorpdfstring{config}{config}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_29e3855a0bcf29e97859ab3b53f7279bf_autotoc_md10064}
+Type\+: {\ttfamily string \texorpdfstring{$\vert$}{|} object}~\newline
+ Default\+: Path to nearest package.\+json\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_29e3855a0bcf29e97859ab3b53f7279bf_autotoc_md10065}{}\doxysubsection{\texorpdfstring{scope}{scope}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_29e3855a0bcf29e97859ab3b53f7279bf_autotoc_md10065}
+Type\+: {\ttfamily string \texorpdfstring{$\vert$}{|} string\mbox{[}\mbox{]}}~\newline
+ Default\+: `\mbox{[}\textquotesingle{}dependencies', \textquotesingle{}dev\+Dependencies\textquotesingle{}, \textquotesingle{}peer\+Dependencies\textquotesingle{}, \textquotesingle{}optional\+Dependencies\textquotesingle{}\mbox{]}{\ttfamily \texorpdfstring{$<$}{<}br\texorpdfstring{$>$}{>} Values\+:}\textquotesingle{}dependencies\textquotesingle{}{\ttfamily ,}\textquotesingle{}dev\+Dependencies\textquotesingle{}{\ttfamily ,}\textquotesingle{}peer\+Dependencies\textquotesingle{}{\ttfamily ,}\textquotesingle{}optional\+Dependencies\textquotesingle{}{\ttfamily ,}\textquotesingle{}bundled\+Dependencies\textquotesingle{}\`{}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_29e3855a0bcf29e97859ab3b53f7279bf_autotoc_md10066}{}\doxysubsection{\texorpdfstring{require\+Resolution}{require\+Resolution}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_29e3855a0bcf29e97859ab3b53f7279bf_autotoc_md10066}
+Type\+: {\ttfamily boolean}~\newline
+ Default\+: {\ttfamily false}
+
+Traverse up the file hierarchy looking for dependencies like {\ttfamily require()}, rather than the default grunt-\/like behavior of loading tasks only in the immediate {\ttfamily node\+\_\+modules} directory. 

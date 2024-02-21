@@ -1,0 +1,93 @@
+\doxysection{Internal\+API.\+Controllers.\+IPGeo\+Locator\+Controller Class Reference}
+\hypertarget{class_internal_a_p_i_1_1_controllers_1_1_i_p_geo_locator_controller}{}\label{class_internal_a_p_i_1_1_controllers_1_1_i_p_geo_locator_controller}\index{InternalAPI.Controllers.IPGeoLocatorController@{InternalAPI.Controllers.IPGeoLocatorController}}
+
+
+Inheritance diagram for Internal\+API.\+Controllers.\+IPGeo\+Locator\+Controller\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=197pt]{class_internal_a_p_i_1_1_controllers_1_1_i_p_geo_locator_controller__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Internal\+API.\+Controllers.\+IPGeo\+Locator\+Controller\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=197pt]{class_internal_a_p_i_1_1_controllers_1_1_i_p_geo_locator_controller__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_i_p_geo_locator_controller_a69f6e64280bebf3878708cd6d7103a9a}{IPGeo\+Locator\+Controller}} (ILogger$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_public_holiday_controller}{Public\+Holiday\+Controller}} $>$ logger, IConfiguration configuration)
+\item 
+Action\+Result$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_i_p_geo_locator_1_1_i_p_geo_location_response}{IPGeo\+Location\+Response}} $>$ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_i_p_geo_locator_controller_ab56692eadcf1089b0a334814999bce73}{Get\+IPLocation}} (string ip)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_i_p_geo_locator_controller_a69f6e64280bebf3878708cd6d7103a9a}\label{class_internal_a_p_i_1_1_controllers_1_1_i_p_geo_locator_controller_a69f6e64280bebf3878708cd6d7103a9a} 
+\index{InternalAPI.Controllers.IPGeoLocatorController@{InternalAPI.Controllers.IPGeoLocatorController}!IPGeoLocatorController@{IPGeoLocatorController}}
+\index{IPGeoLocatorController@{IPGeoLocatorController}!InternalAPI.Controllers.IPGeoLocatorController@{InternalAPI.Controllers.IPGeoLocatorController}}
+\doxysubsubsection{\texorpdfstring{IPGeoLocatorController()}{IPGeoLocatorController()}}
+{\footnotesize\ttfamily Internal\+API.\+Controllers.\+IPGeo\+Locator\+Controller.\+IPGeo\+Locator\+Controller (\begin{DoxyParamCaption}\item[{ILogger$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_public_holiday_controller}{Public\+Holiday\+Controller}} $>$}]{logger,  }\item[{IConfiguration}]{configuration }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger\ =\ logger;}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ baseURL\ =\ configuration[\textcolor{stringliteral}{"{}IPGeoLocatorSettings:BaseURL"{}}];}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ apiKey\ =\ configuration[\textcolor{stringliteral}{"{}IPGeoLocatorSettings:APIKey"{}}];}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_i_p_geo_locator_controller_ab56692eadcf1089b0a334814999bce73}\label{class_internal_a_p_i_1_1_controllers_1_1_i_p_geo_locator_controller_ab56692eadcf1089b0a334814999bce73} 
+\index{InternalAPI.Controllers.IPGeoLocatorController@{InternalAPI.Controllers.IPGeoLocatorController}!GetIPLocation@{GetIPLocation}}
+\index{GetIPLocation@{GetIPLocation}!InternalAPI.Controllers.IPGeoLocatorController@{InternalAPI.Controllers.IPGeoLocatorController}}
+\doxysubsubsection{\texorpdfstring{GetIPLocation()}{GetIPLocation()}}
+{\footnotesize\ttfamily Action\+Result$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_i_p_geo_locator_1_1_i_p_geo_location_response}{IPGeo\+Location\+Response}} $>$ Internal\+API.\+Controllers.\+IPGeo\+Locator\+Controller.\+Get\+IPLocation (\begin{DoxyParamCaption}\item[{string}]{ip }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogDebug(\$\textcolor{stringliteral}{"{}IP\ geo\ locator\ request\ received.\ \ IP:\ \{ip\}"{}});}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient(\textcolor{keyword}{new}\ Uri(baseURL));\ }
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ RestRequest\ request\ =\ \textcolor{keyword}{new}\ RestRequest(\textcolor{stringliteral}{"{}"{}},\ Method.GET);}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddHeader(\textcolor{stringliteral}{"{}Content-\/Type"{}},\ \textcolor{stringliteral}{"{}application/json"{}});}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddHeader(\textcolor{stringliteral}{"{}Accept"{}},\ \textcolor{stringliteral}{"{}application/json"{}});}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddParameter(\textcolor{stringliteral}{"{}api\_key"{}},\ apiKey,\ ParameterType.QueryString);}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddParameter(\textcolor{stringliteral}{"{}ip\_address"{}},\ ip,\ ParameterType.QueryString);}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ var\ response\ =\ client.Execute(request);}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_i_p_geo_locator_1_1_i_p_geo_location_response}{IPGeoLocationResponse}}\ GR\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_i_p_geo_locator_1_1_i_p_geo_location_response}{IPGeoLocationResponse}}();}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response.Content.Contains(\textcolor{stringliteral}{"{}error"{}}))}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogError(\$\textcolor{stringliteral}{"{}Error\ returned\ from\ IP\ geo\ location\ API:\ \{response.Content\}"{}});}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ GR;}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!response.IsSuccessful\ ||\ \textcolor{keywordtype}{string}.IsNullOrEmpty(response.Content))}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogError(\$\textcolor{stringliteral}{"{}IP\ geo\ logaion\ API\ call\ not\ successful.\ \ StatusCode:\ \{response.StatusCode\}\ -\/\ \{response.StatusDescription\},\ Message:\ \{response.ErrorMessage\}"{}});}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GR\ =\ JsonConvert.DeserializeObject<\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_i_p_geo_locator_1_1_i_p_geo_location_response}{IPGeoLocationResponse}}>(response.Content);}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception)}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \_logger.LogError(\$\textcolor{stringliteral}{"{}Exception\ deserialising\ response\ from\ public\ holiday\ day\ API:\ \{response.Content\}"{}});\ \}}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ GR;}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+STRIDER/source/repos/\+Internal\+API/\+Internal\+API/\+Controllers/\mbox{\hyperlink{_i_p_geo_locator_controller_8cs}{IPGeo\+Locator\+Controller.\+cs}}\end{DoxyCompactItemize}

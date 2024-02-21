@@ -1,0 +1,107 @@
+\doxysection{Internal\+API.\+Controllers.\+Auth0\+Controller Class Reference}
+\hypertarget{class_internal_a_p_i_1_1_controllers_1_1_auth0_controller}{}\label{class_internal_a_p_i_1_1_controllers_1_1_auth0_controller}\index{InternalAPI.Controllers.Auth0Controller@{InternalAPI.Controllers.Auth0Controller}}
+
+
+Inheritance diagram for Internal\+API.\+Controllers.\+Auth0\+Controller\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{class_internal_a_p_i_1_1_controllers_1_1_auth0_controller__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Internal\+API.\+Controllers.\+Auth0\+Controller\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{class_internal_a_p_i_1_1_controllers_1_1_auth0_controller__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_auth0_controller_a9fce2e4346fad16bef8a698df8b9ebbe}{Auth0\+Controller}} (\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{Log\+Service}} logger, \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_auth0_service}{Auth0\+Service}} auth0\+Service)
+\item 
+Action\+Result \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_auth0_controller_a83c5c168a56a8671aa0452bb76e99ed0}{Get\+User}} (\mbox{[}From\+Route\mbox{]} string user\+Id)
+\item 
+Action\+Result \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_auth0_controller_a2f71c4fa56a260cbe56df2974d1ffb35}{Update\+Email}} (\mbox{[}From\+Route\mbox{]} string user\+Id, \mbox{[}From\+Route\mbox{]} string new\+Email)
+\item 
+Action\+Result \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_auth0_controller_a8ceabfcda787ab95d4957052172edf6c}{Send\+Verification}} (\mbox{[}From\+Body\mbox{]} \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_auth0_1_1_auth0_verification_email_request}{Auth0\+Verification\+Email\+Request}} verification\+Email\+Request)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_auth0_controller_a9fce2e4346fad16bef8a698df8b9ebbe}\label{class_internal_a_p_i_1_1_controllers_1_1_auth0_controller_a9fce2e4346fad16bef8a698df8b9ebbe} 
+\index{InternalAPI.Controllers.Auth0Controller@{InternalAPI.Controllers.Auth0Controller}!Auth0Controller@{Auth0Controller}}
+\index{Auth0Controller@{Auth0Controller}!InternalAPI.Controllers.Auth0Controller@{InternalAPI.Controllers.Auth0Controller}}
+\doxysubsubsection{\texorpdfstring{Auth0Controller()}{Auth0Controller()}}
+{\footnotesize\ttfamily Internal\+API.\+Controllers.\+Auth0\+Controller.\+Auth0\+Controller (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{Log\+Service}}}]{logger,  }\item[{\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_auth0_service}{Auth0\+Service}}}]{auth0\+Service }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger\ =\ logger;}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \_auth0Service\ =\ auth0Service;}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_auth0_controller_a83c5c168a56a8671aa0452bb76e99ed0}\label{class_internal_a_p_i_1_1_controllers_1_1_auth0_controller_a83c5c168a56a8671aa0452bb76e99ed0} 
+\index{InternalAPI.Controllers.Auth0Controller@{InternalAPI.Controllers.Auth0Controller}!GetUser@{GetUser}}
+\index{GetUser@{GetUser}!InternalAPI.Controllers.Auth0Controller@{InternalAPI.Controllers.Auth0Controller}}
+\doxysubsubsection{\texorpdfstring{GetUser()}{GetUser()}}
+{\footnotesize\ttfamily Action\+Result Internal\+API.\+Controllers.\+Auth0\+Controller.\+Get\+User (\begin{DoxyParamCaption}\item[{\mbox{[}\+From\+Route\mbox{]} string}]{user\+Id }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_acf860ff3326ea65346a173f3479c6e57}{LogDebug}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.Auth0Controller,\ \$\textcolor{stringliteral}{"{}\{HttpContext.Request.Method\}\ Request\ received\ on\ Auth0\ controller\ to\ get\ user\ with\ ID:\ \{userId\}"{}});}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_auth0_1_1_auth0_user}{Auth0User}}\ auth0User\ =\ \_auth0Service.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_auth0_service_acf1c0cecc9ce89ebdc5d198d0726d9e0}{GetUserById}}(userId);}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (auth0User\ ==\ \textcolor{keyword}{null})\ \ }
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ BadRequest(\textcolor{stringliteral}{"{}Error\ getting\ Auth0\ user"{}});\ }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Ok(auth0User);}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_auth0_controller_a8ceabfcda787ab95d4957052172edf6c}\label{class_internal_a_p_i_1_1_controllers_1_1_auth0_controller_a8ceabfcda787ab95d4957052172edf6c} 
+\index{InternalAPI.Controllers.Auth0Controller@{InternalAPI.Controllers.Auth0Controller}!SendVerification@{SendVerification}}
+\index{SendVerification@{SendVerification}!InternalAPI.Controllers.Auth0Controller@{InternalAPI.Controllers.Auth0Controller}}
+\doxysubsubsection{\texorpdfstring{SendVerification()}{SendVerification()}}
+{\footnotesize\ttfamily Action\+Result Internal\+API.\+Controllers.\+Auth0\+Controller.\+Send\+Verification (\begin{DoxyParamCaption}\item[{\mbox{[}\+From\+Body\mbox{]} \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_auth0_1_1_auth0_verification_email_request}{Auth0\+Verification\+Email\+Request}}}]{verification\+Email\+Request }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_acf860ff3326ea65346a173f3479c6e57}{LogDebug}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.Auth0Controller,\ \$\textcolor{stringliteral}{"{}\{HttpContext.Request.Method\}\ Request\ received\ on\ Auth0\ controller\ to\ send\ verification\ email\ with\ ID:\ \{verificationEmailRequest.user\_id\}"{}});}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_auth0_1_1_auth0_verification_email_response}{Auth0VerificationEmailResponse}}\ verificationEmailResponse\ =\ \_auth0Service.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_auth0_service_afa38367425807667a9471f9db4989165}{SendVerificationEmail}}(verificationEmailRequest);}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (verificationEmailResponse\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ BadRequest(\textcolor{stringliteral}{"{}Error\ sending\ Auth0\ verification\ email"{}});}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Ok(verificationEmailResponse);}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_auth0_controller_a2f71c4fa56a260cbe56df2974d1ffb35}\label{class_internal_a_p_i_1_1_controllers_1_1_auth0_controller_a2f71c4fa56a260cbe56df2974d1ffb35} 
+\index{InternalAPI.Controllers.Auth0Controller@{InternalAPI.Controllers.Auth0Controller}!UpdateEmail@{UpdateEmail}}
+\index{UpdateEmail@{UpdateEmail}!InternalAPI.Controllers.Auth0Controller@{InternalAPI.Controllers.Auth0Controller}}
+\doxysubsubsection{\texorpdfstring{UpdateEmail()}{UpdateEmail()}}
+{\footnotesize\ttfamily Action\+Result Internal\+API.\+Controllers.\+Auth0\+Controller.\+Update\+Email (\begin{DoxyParamCaption}\item[{\mbox{[}\+From\+Route\mbox{]} string}]{user\+Id,  }\item[{\mbox{[}\+From\+Route\mbox{]} string}]{new\+Email }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_acf860ff3326ea65346a173f3479c6e57}{LogDebug}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.Auth0Controller,\ \$\textcolor{stringliteral}{"{}\{HttpContext.Request.Method\}\ Request\ received\ on\ Auth0\ controller\ to\ update\ email\ for\ ID:\ \{userId\}"{}});}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_auth0_1_1_auth0_user}{Auth0User}}\ auth0User\ =\ \_auth0Service.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_auth0_service_a3e96608c19af2797c5436237e749dd95}{UpdateUserEmail}}(userId,\ newEmail);}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (auth0User\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ BadRequest(\textcolor{stringliteral}{"{}Error\ updating\ Auth0\ user"{}});}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Ok(auth0User);}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+STRIDER/source/repos/\+Internal\+API/\+Internal\+API/\+Controllers/\mbox{\hyperlink{_auth0_controller_8cs}{Auth0\+Controller.\+cs}}\end{DoxyCompactItemize}

@@ -1,0 +1,406 @@
+\doxysection{Internal\+API.\+Controllers.\+Netsuite\+Controller Class Reference}
+\hypertarget{class_internal_a_p_i_1_1_controllers_1_1_netsuite_controller}{}\label{class_internal_a_p_i_1_1_controllers_1_1_netsuite_controller}\index{InternalAPI.Controllers.NetsuiteController@{InternalAPI.Controllers.NetsuiteController}}
+
+
+Inheritance diagram for Internal\+API.\+Controllers.\+Netsuite\+Controller\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{class_internal_a_p_i_1_1_controllers_1_1_netsuite_controller__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Internal\+API.\+Controllers.\+Netsuite\+Controller\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{class_internal_a_p_i_1_1_controllers_1_1_netsuite_controller__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_netsuite_controller_a33c34f33c570904c3ed659b24c91f717}{Netsuite\+Controller}} (\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{Log\+Service}} logger, \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_netsuite_service}{Netsuite\+Service}} netsuite\+Service, Netsuite\+Helper netsuite\+Helper)
+\item 
+IAction\+Result \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_netsuite_controller_a51dd661da86922aaf366b943e5a99dea}{Record\+Pass\+Through}} (\mbox{[}From\+Route\mbox{]} string endpoint)
+\begin{DoxyCompactList}\small\item\em Finds Netsuite credentials, decorates proxy request and sends to Netsuite and responds with raw result. \end{DoxyCompactList}\item 
+IAction\+Result \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_netsuite_controller_ad4b909ca8b1dc65f1aa584c66c3363ec}{Record\+Pass\+Through}} (\mbox{[}From\+Route\mbox{]} string endpoint, \mbox{[}From\+Body\mbox{]} object body)
+\begin{DoxyCompactList}\small\item\em Finds Netsuite credentials, decorates proxy request and sends to Netsuite and responds with raw result. \end{DoxyCompactList}\item 
+IAction\+Result \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_netsuite_controller_a0a6ec8be5db82ea7fe437338e15a85cc}{Query\+Pass\+Through}} (\mbox{[}From\+Route\mbox{]} string endpoint)
+\item 
+IAction\+Result \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_netsuite_controller_aae7c03451357b8b7ba09edc03295f807}{Query\+Pass\+Through}} (\mbox{[}From\+Route\mbox{]} string endpoint, \mbox{[}From\+Body\mbox{]} object body)
+\item 
+IAction\+Result \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_netsuite_controller_aafb03bd60aa61433b5ca7d6bf38609ee}{Restlet\+Pass\+Through}} (\mbox{[}From\+Body\mbox{]} object body)
+\item 
+IAction\+Result \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_netsuite_controller_a76e094d0f38ad78499424ddf055cdfc9}{Post\+Sales\+Order}} (\mbox{[}From\+Body\mbox{]} \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_incoming_sales_order_request}{Incoming\+Sales\+Order\+Request}} so\+Request)
+\begin{DoxyCompactList}\small\item\em old version updated from Cin7 dto delete after full migration to POST /netsuite/order \end{DoxyCompactList}\item 
+IAction\+Result \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_netsuite_controller_a32493424113935099eb8d75187fd972e}{Post\+Order}} (\mbox{[}From\+Body\mbox{]} \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_incoming_netsuite_order_request}{Incoming\+Netsuite\+Order\+Request}} o\+Request)
+\begin{DoxyCompactList}\small\item\em new version netsuite specific \end{DoxyCompactList}\item 
+IAction\+Result \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_netsuite_controller_a8fcc280788e0390f37be2b750c592f79}{Post\+Customer}} (\mbox{[}From\+Body\mbox{]} \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_netsuite_customer_request}{Netsuite\+Customer\+Request}} netsuite\+Customer\+Request)
+\begin{DoxyCompactList}\small\item\em Searches Netsuite for a customer based on the supplied details using our algorithm. If it cannot find one, one will be created. \end{DoxyCompactList}\item 
+IAction\+Result \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_netsuite_controller_a3fdc5b21f278be94bd38be7a7e735cdc}{Search\+Customers}} (\mbox{[}From\+Body\mbox{]} \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_netsuite_customer_request}{Netsuite\+Customer\+Request}} netsuite\+Customer\+Request)
+\begin{DoxyCompactList}\small\item\em Searches Netsuite for a customer based on the supplied details no algorithm. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_netsuite_controller_a33c34f33c570904c3ed659b24c91f717}\label{class_internal_a_p_i_1_1_controllers_1_1_netsuite_controller_a33c34f33c570904c3ed659b24c91f717} 
+\index{InternalAPI.Controllers.NetsuiteController@{InternalAPI.Controllers.NetsuiteController}!NetsuiteController@{NetsuiteController}}
+\index{NetsuiteController@{NetsuiteController}!InternalAPI.Controllers.NetsuiteController@{InternalAPI.Controllers.NetsuiteController}}
+\doxysubsubsection{\texorpdfstring{NetsuiteController()}{NetsuiteController()}}
+{\footnotesize\ttfamily Internal\+API.\+Controllers.\+Netsuite\+Controller.\+Netsuite\+Controller (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{Log\+Service}}}]{logger,  }\item[{\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_netsuite_service}{Netsuite\+Service}}}]{netsuite\+Service,  }\item[{Netsuite\+Helper}]{netsuite\+Helper }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger\ =\ logger;}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \_netsuiteService\ =\ netsuiteService;}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \_netsuiteHelper\ =\ netsuiteHelper;}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_netsuite_controller_a8fcc280788e0390f37be2b750c592f79}\label{class_internal_a_p_i_1_1_controllers_1_1_netsuite_controller_a8fcc280788e0390f37be2b750c592f79} 
+\index{InternalAPI.Controllers.NetsuiteController@{InternalAPI.Controllers.NetsuiteController}!PostCustomer@{PostCustomer}}
+\index{PostCustomer@{PostCustomer}!InternalAPI.Controllers.NetsuiteController@{InternalAPI.Controllers.NetsuiteController}}
+\doxysubsubsection{\texorpdfstring{PostCustomer()}{PostCustomer()}}
+{\footnotesize\ttfamily IAction\+Result Internal\+API.\+Controllers.\+Netsuite\+Controller.\+Post\+Customer (\begin{DoxyParamCaption}\item[{\mbox{[}\+From\+Body\mbox{]} \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_netsuite_customer_request}{Netsuite\+Customer\+Request}}}]{netsuite\+Customer\+Request }\end{DoxyParamCaption})}
+
+
+
+Searches Netsuite for a customer based on the supplied details using our algorithm. If it cannot find one, one will be created. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em netsuite\+Customer\+Request} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The Netsuite Internal ID of the customer object
+\end{DoxyReturn}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00300\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00301\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_ae7208181482f25f801a9d637367cc5e7}{LogInformation}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.NetsuiteController,\ \$\textcolor{stringliteral}{"{}Received\ Netsuite\ POST\ for\ customer\ endpoint."{}},\ netsuiteCustomerRequest);}
+\DoxyCodeLine{00302\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//get\ or\ create\ customer}}
+\DoxyCodeLine{00303\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_customer_item_response}{CustomerItemResponse}}\ customer\ =\ \_netsuiteHelper.FindCustomerID(netsuiteCustomerRequest);}
+\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (customer\ ==\ \textcolor{keyword}{null}\ ||\ customer.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_customer_item_response_ab0a343564682d541f168c89a2f75b411}{id}}\ ==\ 0)}
+\DoxyCodeLine{00305\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00306\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a778dd1666ec20e3197598d7aa41e0cba}{LogError}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.NetsuiteController,\ \$\textcolor{stringliteral}{"{}Customer\ not\ found\ or\ created."{}},\ netsuiteCustomerRequest);}
+\DoxyCodeLine{00307\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ BadRequest(\textcolor{stringliteral}{"{}Customer\ not\ found\ or\ created"{}});}
+\DoxyCodeLine{00308\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00309\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Ok(customer.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_customer_item_response_ab0a343564682d541f168c89a2f75b411}{id}});}
+\DoxyCodeLine{00310\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_netsuite_controller_a32493424113935099eb8d75187fd972e}\label{class_internal_a_p_i_1_1_controllers_1_1_netsuite_controller_a32493424113935099eb8d75187fd972e} 
+\index{InternalAPI.Controllers.NetsuiteController@{InternalAPI.Controllers.NetsuiteController}!PostOrder@{PostOrder}}
+\index{PostOrder@{PostOrder}!InternalAPI.Controllers.NetsuiteController@{InternalAPI.Controllers.NetsuiteController}}
+\doxysubsubsection{\texorpdfstring{PostOrder()}{PostOrder()}}
+{\footnotesize\ttfamily IAction\+Result Internal\+API.\+Controllers.\+Netsuite\+Controller.\+Post\+Order (\begin{DoxyParamCaption}\item[{\mbox{[}\+From\+Body\mbox{]} \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_incoming_netsuite_order_request}{Incoming\+Netsuite\+Order\+Request}}}]{o\+Request }\end{DoxyParamCaption})}
+
+
+
+new version netsuite specific 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_ae7208181482f25f801a9d637367cc5e7}{LogInformation}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.NetsuiteController,\ \$\textcolor{stringliteral}{"{}Received\ Netsuite\ POST\ for\ new\ salesorder\ endpoint."{}},\ oRequest);}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (oRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_incoming_netsuite_order_request_a7738ce0fd11c8d06ce205d6ef98d546c}{NetsuiteCustomer}}\ ==\ \textcolor{keyword}{null}\ ||\ (oRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_incoming_netsuite_order_request_aa0b13870bddaf1483fab09111f4f2fc6}{NetsuiteSalesOrder}}\ ==\ \textcolor{keyword}{null}\ \&\&\ oRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_incoming_netsuite_order_request_a92905e26ae1290f2bde66dc717d276e2}{NetsuitePurchaseOrder}}\ ==\ \textcolor{keyword}{null}))}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ BadRequest(\textcolor{stringliteral}{"{}Data\ submitted\ is\ bad"{}});}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//get\ or\ create\ customer}}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_customer_item_response}{CustomerItemResponse}}\ customer\ =\ \_netsuiteHelper.FindCustomerID(oRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_incoming_netsuite_order_request_a7738ce0fd11c8d06ce205d6ef98d546c}{NetsuiteCustomer}});}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (customer\ ==\ \textcolor{keyword}{null}\ ||\ customer.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_customer_item_response_ab0a343564682d541f168c89a2f75b411}{id}}\ ==\ 0)}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ BadRequest(\textcolor{stringliteral}{"{}Customer\ not\ found\ or\ created"{}});}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ StringBuilder\ orderError\ =\ \textcolor{keyword}{new}\ StringBuilder();}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//if\ sales\ order\ exist}}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ salesOrderId\ =\ 0;}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (oRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_incoming_netsuite_order_request_aa0b13870bddaf1483fab09111f4f2fc6}{NetsuiteSalesOrder}}\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//build\ sales\ order}}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oRequest.NetsuiteSalesOrder.entity\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_i_d_ref}{IDRef}}()\ \{\ \textcolor{keywordtype}{id}\ =\ customer.id\ \};}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oRequest.NetsuiteSalesOrder.custbody\_ab\_internal\_comments\ +=\ \$\textcolor{stringliteral}{"{}\(\backslash\)n\{customer.custentity\_ab\_internal\_comment\}"{}};}
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//post\ sales\ order}}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ salesOrderId\ =\ \_netsuiteHelper.PostSalesOrderRequest(oRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_incoming_netsuite_order_request_aa0b13870bddaf1483fab09111f4f2fc6}{NetsuiteSalesOrder}});}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (salesOrderId\ ==\ 0)}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ orderError.AppendLine(\$\textcolor{stringliteral}{"{}Sales\ order\ not\ created\ for\ customer\ \{customer.id\}"{}});}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//if\ purchase\ order\ exist}}
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ purchaseOrderId\ =\ 0;}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (oRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_incoming_netsuite_order_request_a92905e26ae1290f2bde66dc717d276e2}{NetsuitePurchaseOrder}}\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//build\ purchase\ order}}
+\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oRequest.NetsuitePurchaseOrder.entity\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_i_d_ref}{IDRef}}()\ \{\ \textcolor{keywordtype}{id}\ =\ customer.id\ \};}
+\DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oRequest.NetsuitePurchaseOrder.custbody\_ab\_internal\_comments\ +=\ \$\textcolor{stringliteral}{"{}\(\backslash\)n\{customer.custentity\_ab\_internal\_comment\}"{}};}
+\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//post\ purchase\ order}}
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ purchaseOrderId\ =\ \_netsuiteHelper.PostPurchaseOrderRequest(oRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_incoming_netsuite_order_request_a92905e26ae1290f2bde66dc717d276e2}{NetsuitePurchaseOrder}});}
+\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (purchaseOrderId\ ==\ 0)}
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ orderError.AppendLine(\$\textcolor{stringliteral}{"{}Sales\ order\ not\ created\ for\ customer\ \{customer.id\}"{}});}
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (orderError.Length\ >\ 0)}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ BadRequest(orderError.ToString());}
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Ok(\textcolor{keyword}{new}\ \{\ CustomerID\ =\ customer.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_customer_item_response_ab0a343564682d541f168c89a2f75b411}{id}},\ SalesOrderID\ =\ salesOrderId,\ PurchaseOrderID\ =\ purchaseOrderId\ \});}
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_ad25f9b254876bb11d042df6148dab40a}{LogException}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.NetsuiteHelper,}
+\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}Exception\ creating\ Netsuite\ sales\ order\ from\ controller"{}},}
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ex.ToString());}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ BadRequest(\$\textcolor{stringliteral}{"{}Exception:\ \{ex.ToString()\}"{}});}
+\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_netsuite_controller_a76e094d0f38ad78499424ddf055cdfc9}\label{class_internal_a_p_i_1_1_controllers_1_1_netsuite_controller_a76e094d0f38ad78499424ddf055cdfc9} 
+\index{InternalAPI.Controllers.NetsuiteController@{InternalAPI.Controllers.NetsuiteController}!PostSalesOrder@{PostSalesOrder}}
+\index{PostSalesOrder@{PostSalesOrder}!InternalAPI.Controllers.NetsuiteController@{InternalAPI.Controllers.NetsuiteController}}
+\doxysubsubsection{\texorpdfstring{PostSalesOrder()}{PostSalesOrder()}}
+{\footnotesize\ttfamily IAction\+Result Internal\+API.\+Controllers.\+Netsuite\+Controller.\+Post\+Sales\+Order (\begin{DoxyParamCaption}\item[{\mbox{[}\+From\+Body\mbox{]} \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_incoming_sales_order_request}{Incoming\+Sales\+Order\+Request}}}]{so\+Request }\end{DoxyParamCaption})}
+
+
+
+old version updated from Cin7 dto delete after full migration to POST /netsuite/order 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_ae7208181482f25f801a9d637367cc5e7}{LogInformation}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.NetsuiteController,\ \$\textcolor{stringliteral}{"{}Received\ Netsuite\ POST\ for\ salesorder\ endpoint."{}},\ soRequest);}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//get\ or\ create\ customer}}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_netsuite_customer_request}{NetsuiteCustomerRequest}}\ netsuiteCustomerRequest\ \ =\ \_netsuiteHelper.BuildNetsuiteCustomerRequest(soRequest);}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_customer_item_response}{CustomerItemResponse}}\ customer\ =\ \_netsuiteHelper.FindCustomerID(netsuiteCustomerRequest);}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (customer\ ==\ \textcolor{keyword}{null}\ ||\ customer.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_customer_item_response_ab0a343564682d541f168c89a2f75b411}{id}}\ ==\ 0)\ }
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_netsuiteHelper.SendSalesOrderEmail(soRequest,\ 0,\ 0,\ 0);}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ BadRequest(\textcolor{stringliteral}{"{}Customer\ not\ found\ or\ created"{}});\ }
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//build\ sales\ order}}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_netsuite_sales_order_request}{NetsuiteSalesOrderRequest}}\ netsuiteSoRequest\ =\ \_netsuiteHelper.BuildNetsuiteSalesOrderRequest(soRequest);}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ netsuiteSoRequest.entity\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_i_d_ref}{IDRef}}()\ \{\ \textcolor{keywordtype}{id}\ =\ customer.id\ \};}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ netsuiteSoRequest.custbody\_ab\_internal\_comments\ +=\ \$\textcolor{stringliteral}{"{}\(\backslash\)n\{customer.custentity\_ab\_internal\_comment\}"{}};}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//post\ sales\ order}}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ salesOrderId\ =\ \_netsuiteHelper.PostSalesOrderRequest(netsuiteSoRequest);}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (salesOrderId\ ==\ 0)\ }
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_netsuiteHelper.SendSalesOrderEmail(soRequest,\ customer.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_customer_item_response_ab0a343564682d541f168c89a2f75b411}{id}},\ 0,\ 0);}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ BadRequest(\$\textcolor{stringliteral}{"{}Sales\ order\ not\ created\ for\ customer\ \{customer.id\}"{}});\ }
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//add\ payment\ if\ payment\ made}}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ depositId\ =\ 0;}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (soRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_incoming_sales_order_request_a0326ef4f6b2ad5d06be6a4a7a2b83d24}{OrderDetails}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_incoming_sales_order_details_ace9a9ed7be11b47d925145a7023681f9}{DepositTotal}}\ >\ 0)}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ depositId\ =\ \_netsuiteHelper.PostDeposit(salesOrderId,\ soRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_incoming_sales_order_request_a0326ef4f6b2ad5d06be6a4a7a2b83d24}{OrderDetails}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_incoming_sales_order_details_ace9a9ed7be11b47d925145a7023681f9}{DepositTotal}});}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (depositId\ ==\ 0)\ }
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_netsuiteHelper.SendSalesOrderEmail(soRequest,\ customer.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_customer_item_response_ab0a343564682d541f168c89a2f75b411}{id}},\ salesOrderId,\ 0);}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ BadRequest(\$\textcolor{stringliteral}{"{}Deposit\ not\ created\ for\ sales\ order\ \{salesOrderId\}"{}});\ }
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//send\ final\ admin\ email}}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_netsuiteHelper.SendSalesOrderEmail(soRequest,\ customer.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_customer_item_response_ab0a343564682d541f168c89a2f75b411}{id}},\ salesOrderId,\ depositId);}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Ok(salesOrderId);}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_ad25f9b254876bb11d042df6148dab40a}{LogException}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.NetsuiteHelper,}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}Exception\ creating\ Netsuite\ sales\ order\ from\ controller"{}},}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ex.ToString());}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ BadRequest(\$\textcolor{stringliteral}{"{}Exception:\ \{ex.ToString()\}"{}});}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_netsuite_controller_a0a6ec8be5db82ea7fe437338e15a85cc}\label{class_internal_a_p_i_1_1_controllers_1_1_netsuite_controller_a0a6ec8be5db82ea7fe437338e15a85cc} 
+\index{InternalAPI.Controllers.NetsuiteController@{InternalAPI.Controllers.NetsuiteController}!QueryPassThrough@{QueryPassThrough}}
+\index{QueryPassThrough@{QueryPassThrough}!InternalAPI.Controllers.NetsuiteController@{InternalAPI.Controllers.NetsuiteController}}
+\doxysubsubsection{\texorpdfstring{QueryPassThrough()}{QueryPassThrough()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily IAction\+Result Internal\+API.\+Controllers.\+Netsuite\+Controller.\+Query\+Pass\+Through (\begin{DoxyParamCaption}\item[{\mbox{[}\+From\+Route\mbox{]} string}]{endpoint }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ var\ queryCollection\ =\ HttpContext.Request.Query;}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_ae7208181482f25f801a9d637367cc5e7}{LogInformation}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.NetsuiteController,\ \$\textcolor{stringliteral}{"{}Received\ Netsuite\ GET\ pass\ through\ for\ query\ endpoint\ '\{endpoint\}'."{}},\ queryCollection);}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ IRestResponse\ response\ =\ \_netsuiteService.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_netsuite_service_a5bfd10cf3baba5319858ddbc7f975b1f}{APIQueryRequest}}(endpoint,\ Method.GET,\ \textcolor{keyword}{null},\ queryCollection);}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!(response\ ==\ \textcolor{keyword}{null})\ \&\&\ !response.IsSuccessful\ ||\ !(response.StatusCode\ ==\ HttpStatusCode.OK\ ||\ response.StatusCode\ ==\ HttpStatusCode.NoContent))}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a778dd1666ec20e3197598d7aa41e0cba}{LogError}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.NetsuiteController,\ \$\textcolor{stringliteral}{"{}Netsuite\ response\ from\ record\ endpoint\ '\{endpoint\}'\ not\ successful"{}},\ \$\textcolor{stringliteral}{"{}StatusCode:\ \{(int)response.StatusCode\}"{}},\ \$\textcolor{stringliteral}{"{}StatusDescription:\ \{response.StatusDescription\}"{}},\ response.Content);}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ BadRequest(\textcolor{stringliteral}{"{}Response\ object\ was\ null"{}});}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{object}\ responseObject\ =\ JsonConvert.DeserializeObject<\textcolor{keywordtype}{object}>(response.Content);}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ StatusCode((\textcolor{keywordtype}{int})response.StatusCode,\ responseObject);}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_netsuite_controller_aae7c03451357b8b7ba09edc03295f807}\label{class_internal_a_p_i_1_1_controllers_1_1_netsuite_controller_aae7c03451357b8b7ba09edc03295f807} 
+\index{InternalAPI.Controllers.NetsuiteController@{InternalAPI.Controllers.NetsuiteController}!QueryPassThrough@{QueryPassThrough}}
+\index{QueryPassThrough@{QueryPassThrough}!InternalAPI.Controllers.NetsuiteController@{InternalAPI.Controllers.NetsuiteController}}
+\doxysubsubsection{\texorpdfstring{QueryPassThrough()}{QueryPassThrough()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily IAction\+Result Internal\+API.\+Controllers.\+Netsuite\+Controller.\+Query\+Pass\+Through (\begin{DoxyParamCaption}\item[{\mbox{[}\+From\+Route\mbox{]} string}]{endpoint,  }\item[{\mbox{[}\+From\+Body\mbox{]} object}]{body }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ var\ queryCollection\ =\ HttpContext.Request.Query;}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_ae7208181482f25f801a9d637367cc5e7}{LogInformation}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.NetsuiteController,\ \$\textcolor{stringliteral}{"{}Received\ Netsuite\ GET\ pass\ through\ for\ query\ endpoint\ '\{endpoint\}'."{}},\ queryCollection,\ body);}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ IRestResponse\ response\ =\ \_netsuiteService.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_netsuite_service_a5bfd10cf3baba5319858ddbc7f975b1f}{APIQueryRequest}}(endpoint,\ Method.POST,\ JsonConvert.SerializeObject(body),\ queryCollection);}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!(response\ ==\ \textcolor{keyword}{null})\ \&\&\ !response.IsSuccessful\ ||\ !(response.StatusCode\ ==\ HttpStatusCode.OK\ ||\ response.StatusCode\ ==\ HttpStatusCode.NoContent))}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a778dd1666ec20e3197598d7aa41e0cba}{LogError}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.NetsuiteController,\ \$\textcolor{stringliteral}{"{}Netsuite\ response\ from\ record\ endpoint\ '\{endpoint\}'\ not\ successful"{}},\ \$\textcolor{stringliteral}{"{}StatusCode:\ \{(int)response.StatusCode\}"{}},\ \$\textcolor{stringliteral}{"{}StatusDescription:\ \{response.StatusDescription\}"{}},\ response.Content);}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ BadRequest(\textcolor{stringliteral}{"{}Response\ object\ was\ null"{}});}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{object}\ responseObject\ =\ JsonConvert.DeserializeObject<\textcolor{keywordtype}{object}>(response.Content);}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ StatusCode((\textcolor{keywordtype}{int})response.StatusCode,\ responseObject);}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_netsuite_controller_a51dd661da86922aaf366b943e5a99dea}\label{class_internal_a_p_i_1_1_controllers_1_1_netsuite_controller_a51dd661da86922aaf366b943e5a99dea} 
+\index{InternalAPI.Controllers.NetsuiteController@{InternalAPI.Controllers.NetsuiteController}!RecordPassThrough@{RecordPassThrough}}
+\index{RecordPassThrough@{RecordPassThrough}!InternalAPI.Controllers.NetsuiteController@{InternalAPI.Controllers.NetsuiteController}}
+\doxysubsubsection{\texorpdfstring{RecordPassThrough()}{RecordPassThrough()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily IAction\+Result Internal\+API.\+Controllers.\+Netsuite\+Controller.\+Record\+Pass\+Through (\begin{DoxyParamCaption}\item[{\mbox{[}\+From\+Route\mbox{]} string}]{endpoint }\end{DoxyParamCaption})}
+
+
+
+Finds Netsuite credentials, decorates proxy request and sends to Netsuite and responds with raw result. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em endpoint} & Netsuite endpoint to post to per docs \href{https://system.netsuite.com/help/helpcenter/en_US/APIs/REST_API_Browser/record/v1/2022.1/index.html}{\texttt{ https\+://system.\+netsuite.\+com/help/helpcenter/en\+\_\+\+US/\+APIs/\+REST\+\_\+\+API\+\_\+\+Browser/record/v1/2022.\+1/index.\+html}}\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ var\ queryCollection\ =\ HttpContext.Request.Query;}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_ae7208181482f25f801a9d637367cc5e7}{LogInformation}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.NetsuiteController,\ \$\textcolor{stringliteral}{"{}Received\ Netsuite\ \{HttpContext.Request.Method\}\ passthrough\ for\ endpoint\ '\{endpoint\}'."{}},\ queryCollection);}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ IRestResponse\ response\ =\ \_netsuiteService.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_netsuite_service_a6f3efa1d05f30d9744c31124aa5a6899}{APIRecordRequest}}(endpoint,\ Method.GET,\ \textcolor{keyword}{null},\ queryCollection);}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!(response\ ==\ \textcolor{keyword}{null})\ \&\&\ !response.IsSuccessful\ ||\ !(response.StatusCode==HttpStatusCode.OK\ ||\ response.StatusCode\ ==\ HttpStatusCode.NoContent))}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a778dd1666ec20e3197598d7aa41e0cba}{LogError}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.NetsuiteController,\ \$\textcolor{stringliteral}{"{}Netsuite\ response\ from\ record\ endpoint\ '\{endpoint\}'\ not\ successful"{}},\ \$\textcolor{stringliteral}{"{}StatusCode:\ \{(int)response.StatusCode\}"{}},\ \$\textcolor{stringliteral}{"{}StatusDescription:\ \{response.StatusDescription\}"{}},\ response.Content);}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ BadRequest(\textcolor{stringliteral}{"{}Response\ object\ was\ null"{}});}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{object}\ responseObject\ =\ JsonConvert.DeserializeObject<\textcolor{keywordtype}{object}>(response.Content);}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ StatusCode((\textcolor{keywordtype}{int})response.StatusCode,\ responseObject);}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_netsuite_controller_ad4b909ca8b1dc65f1aa584c66c3363ec}\label{class_internal_a_p_i_1_1_controllers_1_1_netsuite_controller_ad4b909ca8b1dc65f1aa584c66c3363ec} 
+\index{InternalAPI.Controllers.NetsuiteController@{InternalAPI.Controllers.NetsuiteController}!RecordPassThrough@{RecordPassThrough}}
+\index{RecordPassThrough@{RecordPassThrough}!InternalAPI.Controllers.NetsuiteController@{InternalAPI.Controllers.NetsuiteController}}
+\doxysubsubsection{\texorpdfstring{RecordPassThrough()}{RecordPassThrough()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily IAction\+Result Internal\+API.\+Controllers.\+Netsuite\+Controller.\+Record\+Pass\+Through (\begin{DoxyParamCaption}\item[{\mbox{[}\+From\+Route\mbox{]} string}]{endpoint,  }\item[{\mbox{[}\+From\+Body\mbox{]} object}]{body }\end{DoxyParamCaption})}
+
+
+
+Finds Netsuite credentials, decorates proxy request and sends to Netsuite and responds with raw result. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em endpoint} & Netsuite endpoint to post to per docs \href{https://system.netsuite.com/help/helpcenter/en_US/APIs/REST_API_Browser/record/v1/2022.1/index.html}{\texttt{ https\+://system.\+netsuite.\+com/help/helpcenter/en\+\_\+\+US/\+APIs/\+REST\+\_\+\+API\+\_\+\+Browser/record/v1/2022.\+1/index.\+html}}\\
+\hline
+{\em body} & a json body from the request representing post data\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ var\ queryCollection\ =\ HttpContext.Request.Query;}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_ae7208181482f25f801a9d637367cc5e7}{LogInformation}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.NetsuiteController,\ \$\textcolor{stringliteral}{"{}Received\ Netsuite\ \{HttpContext.Request.Method\}\ passthrough\ for\ endpoint\ '\{endpoint\}'."{}},\ queryCollection,\ body);}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ IRestResponse\ response\ =\ \_netsuiteService.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_netsuite_service_a6f3efa1d05f30d9744c31124aa5a6899}{APIRecordRequest}}(endpoint,\ HttpContext.Request.Method\ ==\ HttpMethods.Post\ ?\ Method.POST\ :\ Method.PATCH,\ JsonConvert.SerializeObject(body),\ queryCollection);\ }
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!(response\ ==\ \textcolor{keyword}{null})\ \&\&\ !response.IsSuccessful\ ||\ !(response.StatusCode\ ==\ HttpStatusCode.OK\ ||\ response.StatusCode\ ==\ HttpStatusCode.NoContent))}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a778dd1666ec20e3197598d7aa41e0cba}{LogError}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.NetsuiteController,\ \$\textcolor{stringliteral}{"{}Netsuite\ response\ from\ record\ endpoint\ '\{endpoint\}'\ not\ successful"{}},\ \$\textcolor{stringliteral}{"{}StatusCode:\ \{(int)response.StatusCode\}"{}},\ \$\textcolor{stringliteral}{"{}StatusDescription:\ \{response.StatusDescription\}"{}},\ response.Content);}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ BadRequest(\textcolor{stringliteral}{"{}Response\ object\ was\ null"{}});}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{object}\ responseObject\ =\ JsonConvert.DeserializeObject<\textcolor{keywordtype}{object}>(response.Content);}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ StatusCode((\textcolor{keywordtype}{int})response.StatusCode,\ responseObject);}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_netsuite_controller_aafb03bd60aa61433b5ca7d6bf38609ee}\label{class_internal_a_p_i_1_1_controllers_1_1_netsuite_controller_aafb03bd60aa61433b5ca7d6bf38609ee} 
+\index{InternalAPI.Controllers.NetsuiteController@{InternalAPI.Controllers.NetsuiteController}!RestletPassThrough@{RestletPassThrough}}
+\index{RestletPassThrough@{RestletPassThrough}!InternalAPI.Controllers.NetsuiteController@{InternalAPI.Controllers.NetsuiteController}}
+\doxysubsubsection{\texorpdfstring{RestletPassThrough()}{RestletPassThrough()}}
+{\footnotesize\ttfamily IAction\+Result Internal\+API.\+Controllers.\+Netsuite\+Controller.\+Restlet\+Pass\+Through (\begin{DoxyParamCaption}\item[{\mbox{[}\+From\+Body\mbox{]} object}]{body }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ var\ queryCollection\ =\ HttpContext.Request.Query;}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ var\ restletConfig\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_restlet_config}{RestletConfig}}() }
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Script\ =\ queryCollection[\textcolor{stringliteral}{"{}script"{}}].ToString(),}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Deploy\ =\ queryCollection[\textcolor{stringliteral}{"{}deploy"{}}].ToString()}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_ae7208181482f25f801a9d637367cc5e7}{LogInformation}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.NetsuiteController,\ \$\textcolor{stringliteral}{"{}Received\ Netsuite\ POST\ pass\ through\ for\ restlet\ endpoint."{}},\ queryCollection,\ body);}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ IRestResponse\ response\ =\ \_netsuiteService.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_netsuite_service_a81ee2bf96bce09fa6e7a3e39e9e363a4}{APIRestletRequest}}(Method.POST,\ restletConfig,\ JsonConvert.SerializeObject(body));}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!(response\ ==\ \textcolor{keyword}{null})\ \&\&\ !response.IsSuccessful\ ||\ !(response.StatusCode\ ==\ HttpStatusCode.OK\ ||\ response.StatusCode\ ==\ HttpStatusCode.NoContent))}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a778dd1666ec20e3197598d7aa41e0cba}{LogError}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.NetsuiteController,\ \$\textcolor{stringliteral}{"{}Netsuite\ response\ from\ restlet\ endpoint\ not\ successful"{}},\ \$\textcolor{stringliteral}{"{}StatusCode:\ \{(int)response.StatusCode\}"{}},\ \$\textcolor{stringliteral}{"{}StatusDescription:\ \{response.StatusDescription\}"{}},\ response.Content);}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ BadRequest(\textcolor{stringliteral}{"{}Response\ object\ was\ null"{}});}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{object}\ responseObject\ =\ JsonConvert.DeserializeObject<\textcolor{keywordtype}{object}>(response.Content);}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ StatusCode((\textcolor{keywordtype}{int})response.StatusCode,\ responseObject);}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_netsuite_controller_a3fdc5b21f278be94bd38be7a7e735cdc}\label{class_internal_a_p_i_1_1_controllers_1_1_netsuite_controller_a3fdc5b21f278be94bd38be7a7e735cdc} 
+\index{InternalAPI.Controllers.NetsuiteController@{InternalAPI.Controllers.NetsuiteController}!SearchCustomers@{SearchCustomers}}
+\index{SearchCustomers@{SearchCustomers}!InternalAPI.Controllers.NetsuiteController@{InternalAPI.Controllers.NetsuiteController}}
+\doxysubsubsection{\texorpdfstring{SearchCustomers()}{SearchCustomers()}}
+{\footnotesize\ttfamily IAction\+Result Internal\+API.\+Controllers.\+Netsuite\+Controller.\+Search\+Customers (\begin{DoxyParamCaption}\item[{\mbox{[}\+From\+Body\mbox{]} \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_netsuite_customer_request}{Netsuite\+Customer\+Request}}}]{netsuite\+Customer\+Request }\end{DoxyParamCaption})}
+
+
+
+Searches Netsuite for a customer based on the supplied details no algorithm. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em netsuite\+Customer\+Request} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list of potential matching customers
+\end{DoxyReturn}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00320\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00321\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_ae7208181482f25f801a9d637367cc5e7}{LogInformation}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.NetsuiteController,\ \$\textcolor{stringliteral}{"{}Received\ Netsuite\ POST\ for\ search\ customers\ endpoint."{}},\ netsuiteCustomerRequest);}
+\DoxyCodeLine{00322\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_netsuite_suite_q_l_customer_response}{NetsuiteSuiteQLCustomerResponse}}\ searchResults\ =\ \_netsuiteHelper.SearchNetsuiteCustomers(netsuiteCustomerRequest);}
+\DoxyCodeLine{00323\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Ok(searchResults);}
+\DoxyCodeLine{00324\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+STRIDER/source/repos/\+Internal\+API/\+Internal\+API/\+Controllers/\mbox{\hyperlink{_netsuite_controller_8cs}{Netsuite\+Controller.\+cs}}\end{DoxyCompactItemize}

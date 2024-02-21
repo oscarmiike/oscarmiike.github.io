@@ -1,0 +1,47 @@
+\chapter{Decode streams into strings The Right Way(tm)}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d20a91ff393f3671302c8b58ad027874}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d20a91ff393f3671302c8b58ad027874}\index{Decode streams into strings The Right Way(tm)@{Decode streams into strings The Right Way(tm)}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d20a91ff393f3671302c8b58ad027874_autotoc_md4791}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2d20a91ff393f3671302c8b58ad027874_autotoc_md4791}%
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ fs\ \ \ =\ require('fs')}
+\DoxyCodeLine{var\ zlib\ =\ require('zlib')}
+\DoxyCodeLine{var\ strs\ =\ require('stringstream')}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ utf8Stream\ =\ fs.createReadStream('massiveLogFile.gz')}
+\DoxyCodeLine{\ \ .pipe(zlib.createGunzip())}
+\DoxyCodeLine{\ \ .pipe(strs('utf8'))}
+
+\end{DoxyCode}
+
+
+No need to deal with {\ttfamily set\+Encoding()} weirdness, just compose streams like they were supposed to be!
+
+Handles input and output encoding\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ Stream\ from\ utf8\ to\ hex\ to\ base64...\ Why\ not,\ ay.}
+\DoxyCodeLine{var\ hex64Stream\ =\ fs.createReadStream('myFile')}
+\DoxyCodeLine{\ \ .pipe(strs('utf8',\ 'hex'))}
+\DoxyCodeLine{\ \ .pipe(strs('hex',\ 'base64'))}
+
+\end{DoxyCode}
+
+
+Also deals with {\ttfamily base64} output correctly by aligning each emitted data chunk so that there are no dangling {\ttfamily =} characters\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ stream\ =\ fs.createReadStream('myFile').pipe(strs('base64'))}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ base64Str\ =\ ''}
+\DoxyCodeLine{}
+\DoxyCodeLine{stream.on('data',\ function(data)\ \{\ base64Str\ +=\ data\ \})}
+\DoxyCodeLine{stream.on('end',\ function()\ \{}
+\DoxyCodeLine{\ \ console.log('My\ base64\ encoded\ file\ is:\ '\ +\ base64Str)\ //\ Wouldn't\ work\ with\ setEncoding()}
+\DoxyCodeLine{\ \ console.log('Original\ file\ is:\ '\ +\ new\ Buffer(base64Str,\ 'base64'))}
+\DoxyCodeLine{\})}
+
+\end{DoxyCode}
+ 

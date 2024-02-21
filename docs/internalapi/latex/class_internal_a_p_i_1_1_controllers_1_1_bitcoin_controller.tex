@@ -1,0 +1,136 @@
+\doxysection{Internal\+API.\+Controllers.\+Bitcoin\+Controller Class Reference}
+\hypertarget{class_internal_a_p_i_1_1_controllers_1_1_bitcoin_controller}{}\label{class_internal_a_p_i_1_1_controllers_1_1_bitcoin_controller}\index{InternalAPI.Controllers.BitcoinController@{InternalAPI.Controllers.BitcoinController}}
+
+
+Inheritance diagram for Internal\+API.\+Controllers.\+Bitcoin\+Controller\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{class_internal_a_p_i_1_1_controllers_1_1_bitcoin_controller__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Internal\+API.\+Controllers.\+Bitcoin\+Controller\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{class_internal_a_p_i_1_1_controllers_1_1_bitcoin_controller__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_bitcoin_controller_ac21ca9172d4fea7d3655ade67ab7d833}{Bitcoin\+Controller}} (\mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{IConfiguration}} \+\_\+configuration)
+\item 
+\mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{async}} \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{Task}}$<$ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{Int64}} $>$ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_bitcoin_controller_af9d345963c4ea88ed3be4120b1e51365}{Get}} (\mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{string}} address)
+\item 
+\mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{async}} \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{Task}}$<$ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{List}}$<$ \mbox{\hyperlink{class_crypto_payment_gateway_1_1_models_1_1_get_wallet_addresses_1_1_address_details}{Address\+Details}} $>$ $>$ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_bitcoin_controller_af7aff2852e2059b461f623e0f56aa3d0}{Addresses}} ()
+\item 
+\mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{async}} \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{Task}}$<$ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{dynamic}} $>$ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_bitcoin_controller_ad231d1de1c378a14f56d2f133b88704c}{New\+Address}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_bitcoin_controller_ac21ca9172d4fea7d3655ade67ab7d833}\label{class_internal_a_p_i_1_1_controllers_1_1_bitcoin_controller_ac21ca9172d4fea7d3655ade67ab7d833} 
+\index{InternalAPI.Controllers.BitcoinController@{InternalAPI.Controllers.BitcoinController}!BitcoinController@{BitcoinController}}
+\index{BitcoinController@{BitcoinController}!InternalAPI.Controllers.BitcoinController@{InternalAPI.Controllers.BitcoinController}}
+\doxysubsubsection{\texorpdfstring{BitcoinController()}{BitcoinController()}}
+{\footnotesize\ttfamily Internal\+API.\+Controllers.\+Bitcoin\+Controller.\+Bitcoin\+Controller (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{IConfiguration}}}]{\+\_\+configuration }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ configuration\ =\ \_configuration;}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_bitcoin_controller_af7aff2852e2059b461f623e0f56aa3d0}\label{class_internal_a_p_i_1_1_controllers_1_1_bitcoin_controller_af7aff2852e2059b461f623e0f56aa3d0} 
+\index{InternalAPI.Controllers.BitcoinController@{InternalAPI.Controllers.BitcoinController}!Addresses@{Addresses}}
+\index{Addresses@{Addresses}!InternalAPI.Controllers.BitcoinController@{InternalAPI.Controllers.BitcoinController}}
+\doxysubsubsection{\texorpdfstring{Addresses()}{Addresses()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{async}} \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{Task}}$<$ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{List}}$<$ \mbox{\hyperlink{class_crypto_payment_gateway_1_1_models_1_1_get_wallet_addresses_1_1_address_details}{Address\+Details}} $>$ $>$ Internal\+API.\+Controllers.\+Bitcoin\+Controller.\+Addresses (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_co_pay_service}{CoPayService}}\ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{client}}\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_co_pay_service}{CoPayService}}(Network);}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ client.credentials\ =\ GetCredentials();}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//var\ result\ =\ await\ client.RequestNewAddress();}}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{var}}\ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{addresses}}\ =\ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{await}}\ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{client}}.GetWalletAddresses();}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{addresses}};}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{ex}})}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//ex.Message;}}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{ex}};}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_internal_a_p_i_1_1_controllers_1_1_bitcoin_controller_af7aff2852e2059b461f623e0f56aa3d0_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_bitcoin_controller_af9d345963c4ea88ed3be4120b1e51365}\label{class_internal_a_p_i_1_1_controllers_1_1_bitcoin_controller_af9d345963c4ea88ed3be4120b1e51365} 
+\index{InternalAPI.Controllers.BitcoinController@{InternalAPI.Controllers.BitcoinController}!Get@{Get}}
+\index{Get@{Get}!InternalAPI.Controllers.BitcoinController@{InternalAPI.Controllers.BitcoinController}}
+\doxysubsubsection{\texorpdfstring{Get()}{Get()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{async}} \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{Task}}$<$ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{Int64}} $>$ Internal\+API.\+Controllers.\+Bitcoin\+Controller.\+Get (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{string}}}]{address }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ QBitNinja.Client.QBitNinjaClient\ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{client}}\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{QBitNinja}}.Client.QBitNinjaClient(Network);}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{var}}\ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{result}}\ =\ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{await}}\ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{client}}.GetBalanceSummary(\textcolor{keyword}{new}\ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{QBitNinja}}.Client.Models.BalanceSelector(address));}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{result}}.Confirmed.Amount.Satoshi;}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_bitcoin_controller_ad231d1de1c378a14f56d2f133b88704c}\label{class_internal_a_p_i_1_1_controllers_1_1_bitcoin_controller_ad231d1de1c378a14f56d2f133b88704c} 
+\index{InternalAPI.Controllers.BitcoinController@{InternalAPI.Controllers.BitcoinController}!NewAddress@{NewAddress}}
+\index{NewAddress@{NewAddress}!InternalAPI.Controllers.BitcoinController@{InternalAPI.Controllers.BitcoinController}}
+\doxysubsubsection{\texorpdfstring{NewAddress()}{NewAddress()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{async}} \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{Task}}$<$ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{dynamic}} $>$ Internal\+API.\+Controllers.\+Bitcoin\+Controller.\+New\+Address (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_co_pay_service}{CoPayService}}\ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{client}}\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_co_pay_service}{CoPayService}}(Network);}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ client.credentials\ =\ GetCredentials();}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{var}}\ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{result}}\ =\ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{await}}\ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{client}}.RequestNewAddress();}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{result}};}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{ex}})}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//ex.Message;}}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \mbox{\hyperlink{interface_crypto_payment_gateway_1_1_models_1_1_i_logger}{ex}};}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_internal_a_p_i_1_1_controllers_1_1_bitcoin_controller_ad231d1de1c378a14f56d2f133b88704c_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+STRIDER/source/repos/\+Internal\+API/\+Internal\+API/\+Controllers/\mbox{\hyperlink{_bitcoin_controller_8cs}{Bitcoin\+Controller.\+cs}}\end{DoxyCompactItemize}

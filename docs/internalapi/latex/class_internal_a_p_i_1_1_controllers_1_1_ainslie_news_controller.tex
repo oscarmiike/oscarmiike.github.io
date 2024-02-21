@@ -1,0 +1,67 @@
+\doxysection{Internal\+API.\+Controllers.\+Ainslie\+News\+Controller Class Reference}
+\hypertarget{class_internal_a_p_i_1_1_controllers_1_1_ainslie_news_controller}{}\label{class_internal_a_p_i_1_1_controllers_1_1_ainslie_news_controller}\index{InternalAPI.Controllers.AinslieNewsController@{InternalAPI.Controllers.AinslieNewsController}}
+
+
+Inheritance diagram for Internal\+API.\+Controllers.\+Ainslie\+News\+Controller\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{class_internal_a_p_i_1_1_controllers_1_1_ainslie_news_controller__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Internal\+API.\+Controllers.\+Ainslie\+News\+Controller\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{class_internal_a_p_i_1_1_controllers_1_1_ainslie_news_controller__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_ainslie_news_controller_a2c04e87afaf17f7d393dfa6d3b835f9e}{Ainslie\+News\+Controller}} (\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{Log\+Service}} log\+Service, \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_ainslie_news_service}{Ainslie\+News\+Service}} news\+Service)
+\item 
+IAction\+Result \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_ainslie_news_controller_a50fba1ee95004b934fdd0210d071404c}{Subscribe\+User}} (\mbox{[}From\+Body\mbox{]} \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_ainslie_news_1_1_ainslie_news_subscriber}{Ainslie\+News\+Subscriber}} subscribe\+User)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_ainslie_news_controller_a2c04e87afaf17f7d393dfa6d3b835f9e}\label{class_internal_a_p_i_1_1_controllers_1_1_ainslie_news_controller_a2c04e87afaf17f7d393dfa6d3b835f9e} 
+\index{InternalAPI.Controllers.AinslieNewsController@{InternalAPI.Controllers.AinslieNewsController}!AinslieNewsController@{AinslieNewsController}}
+\index{AinslieNewsController@{AinslieNewsController}!InternalAPI.Controllers.AinslieNewsController@{InternalAPI.Controllers.AinslieNewsController}}
+\doxysubsubsection{\texorpdfstring{AinslieNewsController()}{AinslieNewsController()}}
+{\footnotesize\ttfamily Internal\+API.\+Controllers.\+Ainslie\+News\+Controller.\+Ainslie\+News\+Controller (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{Log\+Service}}}]{log\+Service,  }\item[{\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_ainslie_news_service}{Ainslie\+News\+Service}}}]{news\+Service }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger\ =\ logService;}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \_newsService\ =\ newsService;}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_ainslie_news_controller_a50fba1ee95004b934fdd0210d071404c}\label{class_internal_a_p_i_1_1_controllers_1_1_ainslie_news_controller_a50fba1ee95004b934fdd0210d071404c} 
+\index{InternalAPI.Controllers.AinslieNewsController@{InternalAPI.Controllers.AinslieNewsController}!SubscribeUser@{SubscribeUser}}
+\index{SubscribeUser@{SubscribeUser}!InternalAPI.Controllers.AinslieNewsController@{InternalAPI.Controllers.AinslieNewsController}}
+\doxysubsubsection{\texorpdfstring{SubscribeUser()}{SubscribeUser()}}
+{\footnotesize\ttfamily IAction\+Result Internal\+API.\+Controllers.\+Ainslie\+News\+Controller.\+Subscribe\+User (\begin{DoxyParamCaption}\item[{\mbox{[}\+From\+Body\mbox{]} \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_ainslie_news_1_1_ainslie_news_subscriber}{Ainslie\+News\+Subscriber}}}]{subscribe\+User }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_ae7208181482f25f801a9d637367cc5e7}{LogInformation}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.AinslieNewsController,\ \$\textcolor{stringliteral}{"{}request\ received\ for\ subscribe\ endpoint\ on\ AinslieNews\ controller"{}},\ subscribeUser);}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{object}\ subscribeResponse\ =\ \_newsService.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_ainslie_news_service_a16fc9a9d1abf263bd24d381f281e9be0}{SubscribeNewContact}}(subscribeUser);}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Ok(subscribeResponse);}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+STRIDER/source/repos/\+Internal\+API/\+Internal\+API/\+Controllers/\mbox{\hyperlink{_ainslie_news_controller_8cs}{Ainslie\+News\+Controller.\+cs}}\end{DoxyCompactItemize}

@@ -1,0 +1,62 @@
+\chapter{bower-\/config}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2696883a06fabc5eaf8f75b8355f64b07}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2696883a06fabc5eaf8f75b8355f64b07}\index{bower-\/config@{bower-\/config}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2696883a06fabc5eaf8f75b8355f64b07_autotoc_md1468}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2696883a06fabc5eaf8f75b8355f64b07_autotoc_md1468}%
+ \begin{quote}
+The Bower config ({\ttfamily .bowerrc}) reader and writer. \end{quote}
+\href{http://bower.io/}{\texttt{ Bower}} can be configured using JSON in a {\ttfamily .bowerrc} file. For example\+: \begin{DoxyVerb}{
+  "directory": "app/components/",
+  "timeout": 120000,
+  "registry": {
+    "search": [
+      "http://localhost:8000",
+      "https://registry.bower.io"
+    ]
+  }
+}
+\end{DoxyVerb}
+ View the complete \href{http://bower.io/docs/config/\#bowerrc-specification}{\texttt{ .bowerrc specification}} on the website for more details. Both the {\ttfamily bower.\+json} and {\ttfamily .bowerrc} specifications are maintained at \href{https://github.com/bower/spec}{\texttt{ github.\+com/bower/spec}}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2696883a06fabc5eaf8f75b8355f64b07_autotoc_md1469}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2696883a06fabc5eaf8f75b8355f64b07_autotoc_md1469}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ -\/-\/save\ bower-\/config}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2696883a06fabc5eaf8f75b8355f64b07_autotoc_md1470}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2696883a06fabc5eaf8f75b8355f64b07_autotoc_md1470}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2696883a06fabc5eaf8f75b8355f64b07_autotoc_md1471}{}\doxysubsubsection{\texorpdfstring{.load(overwrites)}{.load(overwrites)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2696883a06fabc5eaf8f75b8355f64b07_autotoc_md1471}
+Loads the bower configuration from the configuration files.
+
+Configuration is overwritten (after camelcase normalisation) with {\ttfamily overwrites} argument.
+
+This method overwrites following environment variables\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily HTTP\+\_\+\+PROXY} with {\ttfamily proxy} configuration variable
+\item {\ttfamily HTTPS\+\_\+\+PROXY} with {\ttfamily https-\/proxy} configuration variable
+\item {\ttfamily NO\+\_\+\+PROXY} with {\ttfamily no-\/proxy} configuration variable
+\end{DoxyItemize}
+
+It also clears {\ttfamily http\+\_\+proxy}, {\ttfamily https\+\_\+proxy}, and {\ttfamily no\+\_\+proxy} environment variables.
+
+To restore those variables you can use {\ttfamily restore} method.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2696883a06fabc5eaf8f75b8355f64b07_autotoc_md1472}{}\doxysubsubsection{\texorpdfstring{restore()}{restore()}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2696883a06fabc5eaf8f75b8355f64b07_autotoc_md1472}
+Restores environment variables overwritten by {\ttfamily .load} method.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2696883a06fabc5eaf8f75b8355f64b07_autotoc_md1473}{}\doxysubsubsection{\texorpdfstring{.to\+Object()}{.to\+Object()}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2696883a06fabc5eaf8f75b8355f64b07_autotoc_md1473}
+Returns a deep copy of the underlying configuration object. The returned configuration is normalised. The object keys will be camel\+Case.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2696883a06fabc5eaf8f75b8355f64b07_autotoc_md1474}{}\doxysubsubsection{\texorpdfstring{\#create(cwd)}{\#create(cwd)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2696883a06fabc5eaf8f75b8355f64b07_autotoc_md1474}
+Obtains a instance where {\ttfamily cwd} is the current working directory (defaults to {\ttfamily process.\+cwd});
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ config\ =\ require('bower-\/config').create();}
+\DoxyCodeLine{//\ You\ can\ also\ specify\ a\ working\ directory}
+\DoxyCodeLine{var\ config2\ =\ require('bower-\/config').create('./some/path');}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2696883a06fabc5eaf8f75b8355f64b07_autotoc_md1475}{}\doxysubsubsection{\texorpdfstring{\#read(cwd, overrides)}{\#read(cwd, overrides)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2696883a06fabc5eaf8f75b8355f64b07_autotoc_md1475}
+Alias for\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ configObject\ =\ (new\ Config(cwd)).load(overrides).toJson();}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2696883a06fabc5eaf8f75b8355f64b07_autotoc_md1476}{}\doxysection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2696883a06fabc5eaf8f75b8355f64b07_autotoc_md1476}
+Released under the \href{http://www.opensource.org/licenses/mit-license.php}{\texttt{ MIT License}}. 

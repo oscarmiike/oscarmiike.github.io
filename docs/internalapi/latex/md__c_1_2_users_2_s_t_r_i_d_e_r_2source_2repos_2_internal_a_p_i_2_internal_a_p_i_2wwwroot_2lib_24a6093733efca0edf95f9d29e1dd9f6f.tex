@@ -1,0 +1,100 @@
+\chapter{combined-\/stream}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_24a6093733efca0edf95f9d29e1dd9f6f}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_24a6093733efca0edf95f9d29e1dd9f6f}\index{combined-\/stream@{combined-\/stream}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_24a6093733efca0edf95f9d29e1dd9f6f_autotoc_md1980}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_24a6093733efca0edf95f9d29e1dd9f6f_autotoc_md1980}%
+ A stream that emits multiple other streams one after another.
+
+{\bfseries{NB}} Currently {\ttfamily combined-\/stream} works with streams vesrion 1 only. There is ongoing effort to switch this library to streams version 2. Any help is welcome. \+:) Meanwhile you can explore other libraries that provide streams2 support with more or less compatability with {\ttfamily combined-\/stream}.
+
+
+\begin{DoxyItemize}
+\item \href{https://www.npmjs.com/package/combined-stream2}{\texttt{ combined-\/stream2}}\+: A drop-\/in streams2-\/compatible replacement for the combined-\/stream module.
+\item \href{https://www.npmjs.com/package/multistream}{\texttt{ multistream}}\+: A stream that emits multiple other streams one after another.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_24a6093733efca0edf95f9d29e1dd9f6f_autotoc_md1981}{}\doxysection{\texorpdfstring{Installation}{Installation}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_24a6093733efca0edf95f9d29e1dd9f6f_autotoc_md1981}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ bash}
+\DoxyCodeLine{npm\ install\ combined-\/stream}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_24a6093733efca0edf95f9d29e1dd9f6f_autotoc_md1982}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_24a6093733efca0edf95f9d29e1dd9f6f_autotoc_md1982}
+Here is a simple example that shows how you can use combined-\/stream to combine two files into one\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ javascript}
+\DoxyCodeLine{var\ CombinedStream\ =\ require('combined-\/stream');}
+\DoxyCodeLine{var\ fs\ =\ require('fs');}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ combinedStream\ =\ CombinedStream.create();}
+\DoxyCodeLine{combinedStream.append(fs.createReadStream('file1.txt'));}
+\DoxyCodeLine{combinedStream.append(fs.createReadStream('file2.txt'));}
+\DoxyCodeLine{}
+\DoxyCodeLine{combinedStream.pipe(fs.createWriteStream('combined.txt'));}
+
+\end{DoxyCode}
+
+
+While the example above works great, it will pause all source streams until they are needed. If you don\textquotesingle{}t want that to happen, you can set {\ttfamily pause\+Streams} to {\ttfamily false}\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ javascript}
+\DoxyCodeLine{var\ CombinedStream\ =\ require('combined-\/stream');}
+\DoxyCodeLine{var\ fs\ =\ require('fs');}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ combinedStream\ =\ CombinedStream.create(\{pauseStreams:\ false\});}
+\DoxyCodeLine{combinedStream.append(fs.createReadStream('file1.txt'));}
+\DoxyCodeLine{combinedStream.append(fs.createReadStream('file2.txt'));}
+\DoxyCodeLine{}
+\DoxyCodeLine{combinedStream.pipe(fs.createWriteStream('combined.txt'));}
+
+\end{DoxyCode}
+
+
+However, what if you don\textquotesingle{}t have all the source streams yet, or you don\textquotesingle{}t want to allocate the resources (file descriptors, memory, etc.) for them right away? Well, in that case you can simply provide a callback that supplies the stream by calling a {\ttfamily next()} function\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ javascript}
+\DoxyCodeLine{var\ CombinedStream\ =\ require('combined-\/stream');}
+\DoxyCodeLine{var\ fs\ =\ require('fs');}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ combinedStream\ =\ CombinedStream.create();}
+\DoxyCodeLine{combinedStream.append(function(next)\ \{}
+\DoxyCodeLine{\ \ next(fs.createReadStream('file1.txt'));}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{combinedStream.append(function(next)\ \{}
+\DoxyCodeLine{\ \ next(fs.createReadStream('file2.txt'));}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{combinedStream.pipe(fs.createWriteStream('combined.txt'));}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_24a6093733efca0edf95f9d29e1dd9f6f_autotoc_md1983}{}\doxysection{\texorpdfstring{API}{API}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_24a6093733efca0edf95f9d29e1dd9f6f_autotoc_md1983}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_24a6093733efca0edf95f9d29e1dd9f6f_autotoc_md1984}{}\doxysubsection{\texorpdfstring{Combined\+Stream.\+create(\mbox{[}options\mbox{]})}{Combined\+Stream.\+create(\mbox{[}options\mbox{]})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_24a6093733efca0edf95f9d29e1dd9f6f_autotoc_md1984}
+Returns a new combined stream object. Available options are\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily max\+Data\+Size}
+\item {\ttfamily pause\+Streams}
+\end{DoxyItemize}
+
+The effect of those options is described below.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_24a6093733efca0edf95f9d29e1dd9f6f_autotoc_md1985}{}\doxysubsection{\texorpdfstring{combined\+Stream.\+pause\+Streams = {\ttfamily true}}{combined\+Stream.\+pause\+Streams = {\ttfamily true}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_24a6093733efca0edf95f9d29e1dd9f6f_autotoc_md1985}
+Whether to apply back pressure to the underlaying streams. If set to {\ttfamily false}, the underlaying streams will never be paused. If set to {\ttfamily true}, the underlaying streams will be paused right after being appended, as well as when {\ttfamily delayed\+Stream.\+pipe()} wants to throttle.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_24a6093733efca0edf95f9d29e1dd9f6f_autotoc_md1986}{}\doxysubsection{\texorpdfstring{combined\+Stream.\+max\+Data\+Size = {\ttfamily 2 \texorpdfstring{$\ast$}{*} 1024 \texorpdfstring{$\ast$}{*} 1024}}{combined\+Stream.\+max\+Data\+Size = {\ttfamily 2 \texorpdfstring{$\ast$}{*} 1024 \texorpdfstring{$\ast$}{*} 1024}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_24a6093733efca0edf95f9d29e1dd9f6f_autotoc_md1986}
+The maximum amount of bytes (or characters) to buffer for all source streams. If this value is exceeded, {\ttfamily combined\+Stream} emits an `\textquotesingle{}error'\`{} event.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_24a6093733efca0edf95f9d29e1dd9f6f_autotoc_md1987}{}\doxysubsection{\texorpdfstring{combined\+Stream.\+data\+Size = {\ttfamily 0}}{combined\+Stream.\+data\+Size = {\ttfamily 0}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_24a6093733efca0edf95f9d29e1dd9f6f_autotoc_md1987}
+The amount of bytes (or characters) currently buffered by {\ttfamily combined\+Stream}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_24a6093733efca0edf95f9d29e1dd9f6f_autotoc_md1988}{}\doxysubsection{\texorpdfstring{combined\+Stream.\+append(stream)}{combined\+Stream.\+append(stream)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_24a6093733efca0edf95f9d29e1dd9f6f_autotoc_md1988}
+Appends the given {\ttfamily stream} to the combined\+Stream object. If {\ttfamily pause\+Streams} is set to \`{}true, this stream will also be paused right away.
+
+{\ttfamily streams} can also be a function that takes one parameter called {\ttfamily next}. {\ttfamily next} is a function that must be invoked in order to provide the {\ttfamily next} stream, see example above.
+
+Regardless of how the {\ttfamily stream} is appended, combined-\/stream always attaches an `\textquotesingle{}error'\`{} listener to it, so you don\textquotesingle{}t have to do that manually.
+
+Special case\+: {\ttfamily stream} can also be a String or Buffer.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_24a6093733efca0edf95f9d29e1dd9f6f_autotoc_md1989}{}\doxysubsection{\texorpdfstring{combined\+Stream.\+write(data)}{combined\+Stream.\+write(data)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_24a6093733efca0edf95f9d29e1dd9f6f_autotoc_md1989}
+You should not call this, {\ttfamily combined\+Stream} takes care of piping the appended streams into itself for you.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_24a6093733efca0edf95f9d29e1dd9f6f_autotoc_md1990}{}\doxysubsection{\texorpdfstring{combined\+Stream.\+resume()}{combined\+Stream.\+resume()}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_24a6093733efca0edf95f9d29e1dd9f6f_autotoc_md1990}
+Causes {\ttfamily combined\+Stream} to start drain the streams it manages. The function is idempotent, and also emits a `\textquotesingle{}resume'\`{} event each time which usually goes to the stream that is currently being drained.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_24a6093733efca0edf95f9d29e1dd9f6f_autotoc_md1991}{}\doxysubsection{\texorpdfstring{combined\+Stream.\+pause();}{combined\+Stream.\+pause();}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_24a6093733efca0edf95f9d29e1dd9f6f_autotoc_md1991}
+If {\ttfamily combined\+Stream.\+pause\+Streams} is set to {\ttfamily false}, this does nothing. Otherwise a `\textquotesingle{}pause'\`{} event is emitted, this goes to the stream that is currently being drained, so you can use it to apply back pressure.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_24a6093733efca0edf95f9d29e1dd9f6f_autotoc_md1992}{}\doxysubsection{\texorpdfstring{combined\+Stream.\+end();}{combined\+Stream.\+end();}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_24a6093733efca0edf95f9d29e1dd9f6f_autotoc_md1992}
+Sets {\ttfamily combined\+Stream.\+writable} to false, emits an `\textquotesingle{}end'\`{} event, and removes all streams from the queue.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_24a6093733efca0edf95f9d29e1dd9f6f_autotoc_md1993}{}\doxysubsection{\texorpdfstring{combined\+Stream.\+destroy();}{combined\+Stream.\+destroy();}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_24a6093733efca0edf95f9d29e1dd9f6f_autotoc_md1993}
+Same as {\ttfamily combined\+Stream.\+end()}, except it emits a `\textquotesingle{}close'{\ttfamily event instead of }\textquotesingle{}end\textquotesingle{}\`{}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_24a6093733efca0edf95f9d29e1dd9f6f_autotoc_md1994}{}\doxysection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_24a6093733efca0edf95f9d29e1dd9f6f_autotoc_md1994}
+combined-\/stream is licensed under the MIT license. 

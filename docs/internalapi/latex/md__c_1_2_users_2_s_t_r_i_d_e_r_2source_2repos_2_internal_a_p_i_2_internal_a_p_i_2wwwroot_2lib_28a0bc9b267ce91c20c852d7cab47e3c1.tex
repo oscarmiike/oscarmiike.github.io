@@ -1,0 +1,54 @@
+\chapter{package-\/json \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/sindresorhus/package-\/json"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+org/sindresorhus/package-\/json.\+svg?branch=master"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28a0bc9b267ce91c20c852d7cab47e3c1}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28a0bc9b267ce91c20c852d7cab47e3c1}\index{package-\/json $<$a href="{}https://travis-\/ci.org/sindresorhus/package-\/json"{} $>$$<$img src="{}https://travis-\/ci.org/sindresorhus/package-\/json.svg?branch=master"{} alt="{}Build Status"{}/$>$$<$/a$>$@{package-\/json $<$a href=""https://travis-\/ci.org/sindresorhus/package-\/json"" $>$$<$img src=""https://travis-\/ci.org/sindresorhus/package-\/json.svg?branch=master"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28a0bc9b267ce91c20c852d7cab47e3c1_autotoc_md3949}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28a0bc9b267ce91c20c852d7cab47e3c1_autotoc_md3949}%
+ \begin{quote}
+Get the package.\+json of a package from the npm registry \end{quote}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28a0bc9b267ce91c20c852d7cab47e3c1_autotoc_md3950}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28a0bc9b267ce91c20c852d7cab47e3c1_autotoc_md3950}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ -\/-\/save\ package-\/json}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28a0bc9b267ce91c20c852d7cab47e3c1_autotoc_md3951}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28a0bc9b267ce91c20c852d7cab47e3c1_autotoc_md3951}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ packageJson\ =\ require('package-\/json');}
+\DoxyCodeLine{}
+\DoxyCodeLine{packageJson('pageres',\ 'latest').then(json\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ console.log(json);}
+\DoxyCodeLine{\ \ \ \ //=>\ \{name:\ 'pageres',\ ...\}}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ also\ works\ with\ scoped\ packages}
+\DoxyCodeLine{packageJson('@company/package',\ 'latest').then(json\ =>\ \{}
+\DoxyCodeLine{\ \ \ \ console.log(json);}
+\DoxyCodeLine{\ \ \ \ //=>\ \{name:\ 'package',\ ...\}}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28a0bc9b267ce91c20c852d7cab47e3c1_autotoc_md3952}{}\doxysection{\texorpdfstring{API}{API}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28a0bc9b267ce91c20c852d7cab47e3c1_autotoc_md3952}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28a0bc9b267ce91c20c852d7cab47e3c1_autotoc_md3953}{}\doxysubsection{\texorpdfstring{package\+Json(name, \mbox{[}version\mbox{]})}{package\+Json(name, \mbox{[}version\mbox{]})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28a0bc9b267ce91c20c852d7cab47e3c1_autotoc_md3953}
+You can optionally specify a version (e.\+g. {\ttfamily 1.\+0.\+0}) or {\ttfamily latest}. ~\newline
+ If you don\textquotesingle{}t specify a version you\textquotesingle{}ll get the \href{http://registry.npmjs.org/pageres/}{\texttt{ main entry}} containing all versions.
+
+The version can also be in any format supported by the \href{https://www.npmjs.com/package/semver}{\texttt{ semver}} module. For example\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily 1} -\/ get the latest {\ttfamily 1.\+x.\+x}
+\item {\ttfamily 1.\+2} -\/ get the latest {\ttfamily 1.\+2.\+x}
+\item {\ttfamily \texorpdfstring{$^\wedge$}{\string^}1.2.\+3} -\/ get the latest {\ttfamily 1.\+x.\+x} but at least {\ttfamily 1.\+2.\+3}
+\item {\ttfamily \texorpdfstring{$\sim$}{\string~}1.2.\+3} -\/ get the latest {\ttfamily 1.\+2.\+x} but at least {\ttfamily 1.\+2.\+3}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28a0bc9b267ce91c20c852d7cab47e3c1_autotoc_md3954}{}\doxysection{\texorpdfstring{Authentication}{Authentication}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28a0bc9b267ce91c20c852d7cab47e3c1_autotoc_md3954}
+Both public and private registries are supported, for both scoped and unscoped packages, as long as the registry uses either bearer tokens or basic authentication.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28a0bc9b267ce91c20c852d7cab47e3c1_autotoc_md3955}{}\doxysection{\texorpdfstring{Related}{Related}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28a0bc9b267ce91c20c852d7cab47e3c1_autotoc_md3955}
+
+\begin{DoxyItemize}
+\item \href{https://github.com/sindresorhus/package-json-cli}{\texttt{ package-\/json-\/cli}} -\/ CLI for this module
+\item \href{https://github.com/sindresorhus/latest-version}{\texttt{ latest-\/version}} -\/ Get the latest version of an npm package
+\item \href{https://github.com/sindresorhus/pkg-versions}{\texttt{ pkg-\/versions}} -\/ Get the version numbers of a package from the npm registry
+\item \href{https://github.com/sindresorhus/npm-keyword}{\texttt{ npm-\/keyword}} -\/ Get a list of npm packages with a certain keyword
+\item \href{https://github.com/sindresorhus/npm-user}{\texttt{ npm-\/user}} -\/ Get user info of an npm user
+\item \href{https://github.com/sindresorhus/npm-email}{\texttt{ npm-\/email}} -\/ Get the email of an npm user
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28a0bc9b267ce91c20c852d7cab47e3c1_autotoc_md3956}{}\doxysection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_28a0bc9b267ce91c20c852d7cab47e3c1_autotoc_md3956}
+MIT © \href{http://sindresorhus.com}{\texttt{ Sindre Sorhus}} 

@@ -1,0 +1,655 @@
+\chapter{README}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab}\index{README@{README}}
+
+
+The stable release documentation can be found here \href{https://epeli.github.io/underscore.string/}{\texttt{ https\+://epeli.\+github.\+io/underscore.\+string/}}
+
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12004}{}\doxysection{\texorpdfstring{Underscore.\+string \href{http://travis-ci.org/epeli/underscore.string}{\texttt{ }}}{Underscore.\+string \href{http://travis-ci.org/epeli/underscore.string}{\texttt{ }}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12004}
+Javascript lacks complete string manipulation operations. This is an attempt to fill that gap. List of build-\/in methods can be found for example from \href{http://www.diveintojavascript.com/core-javascript-reference/the-string-object}{\texttt{ Dive Into Java\+Script}}. Originally started as an Underscore.\+js extension but is a full standalone library nowadays.
+
+Upgrading from 2.\+x to 3.\+x? Please read the \href{https://github.com/epeli/underscore.string/blob/master/CHANGELOG.markdown\#300}{\texttt{ changelog}}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12005}{}\doxysubsection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12005}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12006}{}\doxysubsubsection{\texorpdfstring{For Node.\+js, Browserify and Webpack}{For Node.\+js, Browserify and Webpack}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12006}
+Install from npm \begin{DoxyVerb}npm install underscore.string
+\end{DoxyVerb}
+ Require individual functions
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ slugify\ =\ require("{}underscore.string/slugify"{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{slugify("{}Hello\ world!"{});}
+\DoxyCodeLine{//\ =>\ hello-\/world}
+
+\end{DoxyCode}
+
+
+or load the full library to enable chaining
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ s\ =\ require("{}underscore.string"{});}
+\DoxyCodeLine{}
+\DoxyCodeLine{s("{}\ \ \ epeli\ \ "{}).trim().capitalize().value();}
+\DoxyCodeLine{//\ =>\ "{}Epeli"{}}
+
+\end{DoxyCode}
+
+
+but especially when using with \href{http://browserify.org/}{\texttt{ Browserify}} the individual function approach is recommended because using it you only add those functions to your bundle you use.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12007}{}\doxysubsubsection{\texorpdfstring{In Meteor}{In Meteor}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12007}
+From your \href{http://www.meteor.com/}{\texttt{ Meteor}} project folder
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{meteor\ add\ underscorestring:underscore.string}
+
+\end{DoxyCode}
+
+
+and you\textquotesingle{}ll be able to access the library with the {\itshape {\bfseries{s}}} global from both the server and the client.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{s.slugify("{}Hello\ world!"{});}
+\DoxyCodeLine{//\ =>\ hello-\/world}
+\DoxyCodeLine{}
+\DoxyCodeLine{s("{}\ \ \ epeli\ \ "{}).trim().capitalize().value();}
+\DoxyCodeLine{//\ =>\ "{}Epeli"{}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12008}{}\doxysubsubsection{\texorpdfstring{Others}{Others}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12008}
+The {\ttfamily dist/underscore.\+string.\+js} file is an \href{https://github.com/umdjs/umd}{\texttt{ UMD}} build. You can load it using an AMD loader such as \href{http://requirejs.org/}{\texttt{ Require\+JS}} or just stick it to a web page and access the library from the {\itshape {\bfseries{s}}} global.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12009}{}\doxysubsubsection{\texorpdfstring{Underscore.\+js/\+Lo-\/\+Dash integration}{Underscore.\+js/\+Lo-\/\+Dash integration}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12009}
+It is still possible use as Underscore.\+js/\+Lo-\/\+Dash extension
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\_.mixin(s.exports());}
+
+\end{DoxyCode}
+ But it\textquotesingle{}s not recommended since {\ttfamily include}, {\ttfamily contains}, {\ttfamily reverse} and {\ttfamily join} are dropped because they collide with the functions already defined by Underscore.\+js.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12010}{}\doxysubsubsection{\texorpdfstring{Lo-\/\+Dash-\/\+FP/\+Ramda integration}{Lo-\/\+Dash-\/\+FP/\+Ramda integration}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12010}
+If you want to use underscore.\+string with \href{http://ramdajs.com/}{\texttt{ ramdajs}} or \href{https://github.com/lodash/lodash-fp}{\texttt{ Lo-\/\+Dash-\/\+FP}} you can use \href{https://github.com/stoeffel/underscore.string.fp}{\texttt{ underscore.\+string.\+fp}}. \begin{DoxyVerb}npm install underscore.string.fp
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ S\ =\ require('underscore.string.fp');}
+\DoxyCodeLine{var\ filter\ =\ require('lodash-\/fp').filter;}
+\DoxyCodeLine{var\ filter\ =\ require('ramda').filter;}
+\DoxyCodeLine{}
+\DoxyCodeLine{filter(S.startsWith('.'),\ [}
+\DoxyCodeLine{\ \ '.vimrc',}
+\DoxyCodeLine{\ \ 'foo.md',}
+\DoxyCodeLine{\ \ '.zshrc'}
+\DoxyCodeLine{]);}
+\DoxyCodeLine{//\ =>\ ['.vimrc',\ '.zshrc']}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12011}{}\doxysubsection{\texorpdfstring{Download}{Download}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12011}
+
+\begin{DoxyItemize}
+\item \href{https://npmcdn.com/underscore.string/dist/underscore.string.js}{\texttt{ Development version}} {\itshape Uncompressed with Comments}
+\item \href{https://npmcdn.com/underscore.string/dist/underscore.string.min.js}{\texttt{ Production version}} {\itshape Minified}
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12012}{}\doxysubsection{\texorpdfstring{API}{API}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12012}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12013}{}\doxysubsubsection{\texorpdfstring{Individual functions}{Individual functions}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12013}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12014}{}\doxyparagraph{\texorpdfstring{number\+Format(number, \mbox{[} decimals=0, decimal\+Separator=\textquotesingle{}.\textquotesingle{}, order\+Separator=\textquotesingle{},\textquotesingle{}\mbox{]}) =\texorpdfstring{$>$}{>} string}{number\+Format(number, \mbox{[} decimals=0, decimal\+Separator=\textquotesingle{}.\textquotesingle{}, order\+Separator=\textquotesingle{},\textquotesingle{}\mbox{]}) =\texorpdfstring{$>$}{>} string}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12014}
+Formats the numbers.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{numberFormat(1000,\ 2);}
+\DoxyCodeLine{//\ =>\ "{}1,000.00"{}}
+\DoxyCodeLine{}
+\DoxyCodeLine{numberFormat(123456789.123,\ 5,\ "{}."{},\ "{},"{});}
+\DoxyCodeLine{//\ =>\ "{}123,456,789.12300"{}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12015}{}\doxyparagraph{\texorpdfstring{levenshtein(string1, string2) =\texorpdfstring{$>$}{>} number}{levenshtein(string1, string2) =\texorpdfstring{$>$}{>} number}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12015}
+Calculates \href{http://en.wikipedia.org/wiki/Levenshtein_distance}{\texttt{ Levenshtein distance}} between two strings.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{levenshtein("{}kitten"{},\ "{}kittah"{});}
+\DoxyCodeLine{//\ =>\ 2}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12016}{}\doxyparagraph{\texorpdfstring{capitalize(string, \mbox{[}lowercase\+Rest=false\mbox{]}) =\texorpdfstring{$>$}{>} string}{capitalize(string, \mbox{[}lowercase\+Rest=false\mbox{]}) =\texorpdfstring{$>$}{>} string}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12016}
+Converts first letter of the string to uppercase. If {\ttfamily true} is passed as second argument the rest of the string will be converted to lower case.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{capitalize("{}foo\ Bar"{});}
+\DoxyCodeLine{//\ =>\ "{}Foo\ Bar"{}}
+\DoxyCodeLine{}
+\DoxyCodeLine{capitalize("{}FOO\ Bar"{},\ true);}
+\DoxyCodeLine{//\ =>\ "{}Foo\ bar"{}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12017}{}\doxyparagraph{\texorpdfstring{decapitalize(string) =\texorpdfstring{$>$}{>} string}{decapitalize(string) =\texorpdfstring{$>$}{>} string}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12017}
+Converts first letter of the string to lowercase.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{decapitalize("{}Foo\ Bar"{});}
+\DoxyCodeLine{//\ =>\ "{}foo\ Bar"{}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12018}{}\doxyparagraph{\texorpdfstring{chop(string, step) =\texorpdfstring{$>$}{>} array}{chop(string, step) =\texorpdfstring{$>$}{>} array}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12018}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{chop("{}whitespace"{},\ 3);}
+\DoxyCodeLine{//\ =>\ ["{}whi"{},\ "{}tes"{},\ "{}pac"{},\ "{}e"{}]}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12019}{}\doxyparagraph{\texorpdfstring{clean(string) =\texorpdfstring{$>$}{>} string}{clean(string) =\texorpdfstring{$>$}{>} string}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12019}
+Trim and replace multiple spaces with a single space.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{clean("{}\ foo\ \ \ \ bar\ \ \ "{});}
+\DoxyCodeLine{//\ =>\ "{}foo\ bar"{}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12020}{}\doxyparagraph{\texorpdfstring{clean\+Diacritics(string) =\texorpdfstring{$>$}{>} string}{clean\+Diacritics(string) =\texorpdfstring{$>$}{>} string}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12020}
+Replace \href{https://en.wikipedia.org/wiki/Diacritic}{\texttt{ diacritic}} characters with closest ASCII equivalents. Check the \href{https://github.com/epeli/underscore.string/blob/master/cleanDiacritics.js}{\texttt{ source}} for supported characters. \href{https://github.com/epeli/underscore.string/blob/master/CONTRIBUTING.markdown}{\texttt{ Pull requests}} welcome for missing characters!
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cleanDiacritics("{}ääkkönen"{});}
+\DoxyCodeLine{//\ =>\ "{}aakkonen"{}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12021}{}\doxyparagraph{\texorpdfstring{chars(string) =\texorpdfstring{$>$}{>} array}{chars(string) =\texorpdfstring{$>$}{>} array}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12021}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{chars("{}Hello"{});}
+\DoxyCodeLine{//\ =>\ ["{}H"{},\ "{}e"{},\ "{}l"{},\ "{}l"{},\ "{}o"{}]}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12022}{}\doxyparagraph{\texorpdfstring{swap\+Case(string) =\texorpdfstring{$>$}{>} string}{swap\+Case(string) =\texorpdfstring{$>$}{>} string}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12022}
+Returns a copy of the string in which all the case-\/based characters have had their case swapped.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{swapCase("{}hELLO"{});}
+\DoxyCodeLine{//\ =>\ "{}Hello"{}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12023}{}\doxyparagraph{\texorpdfstring{include(string, substring) =\texorpdfstring{$>$}{>} boolean}{include(string, substring) =\texorpdfstring{$>$}{>} boolean}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12023}
+Tests if string contains a substring.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{include("{}foobar"{},\ "{}ob"{});}
+\DoxyCodeLine{//\ =>\ true}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12024}{}\doxyparagraph{\texorpdfstring{count(string, substring) =\texorpdfstring{$>$}{>} number}{count(string, substring) =\texorpdfstring{$>$}{>} number}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12024}
+Returns number of occurrences of substring in string.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{count("{}Hello\ world"{},\ "{}l"{});}
+\DoxyCodeLine{//\ =>\ 3}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12025}{}\doxyparagraph{\texorpdfstring{escape\+HTML(string) =\texorpdfstring{$>$}{>} string}{escape\+HTML(string) =\texorpdfstring{$>$}{>} string}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12025}
+Converts HTML special characters to their entity equivalents. This function supports cent, yen, euro, pound, lt, gt, copy, reg, quote, amp, apos.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{escapeHTML("{}<div>Blah\ blah\ blah</div>"{});}
+\DoxyCodeLine{//\ =>\ "{}\&lt;div\&gt;Blah\ blah\ blah\&lt;/div\&gt;"{}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12026}{}\doxyparagraph{\texorpdfstring{unescape\+HTML(string) =\texorpdfstring{$>$}{>} string}{unescape\+HTML(string) =\texorpdfstring{$>$}{>} string}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12026}
+Converts entity characters to HTML equivalents. This function supports cent, yen, euro, pound, lt, gt, copy, reg, quote, amp, apos, nbsp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{unescapeHTML("{}\&lt;div\&gt;Blah\&nbsp;blah\ blah\&lt;/div\&gt;"{});}
+\DoxyCodeLine{//\ =>\ "{}<div>Blah\ blah\ blah</div>"{}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12027}{}\doxyparagraph{\texorpdfstring{insert(string, index, substring) =\texorpdfstring{$>$}{>} string}{insert(string, index, substring) =\texorpdfstring{$>$}{>} string}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12027}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{insert("{}Hellworld"{},\ 4,\ "{}o\ "{});}
+\DoxyCodeLine{//\ =>\ "{}Hello\ world"{}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12028}{}\doxyparagraph{\texorpdfstring{replace\+All(string, find, replace, \mbox{[}ignorecase=false\mbox{]}) =\texorpdfstring{$>$}{>} string}{replace\+All(string, find, replace, \mbox{[}ignorecase=false\mbox{]}) =\texorpdfstring{$>$}{>} string}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12028}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{replaceAll("{}foo"{},\ "{}o"{},\ "{}a"{});}
+\DoxyCodeLine{//\ =>\ "{}faa"{}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12029}{}\doxyparagraph{\texorpdfstring{is\+Blank(string) =\texorpdfstring{$>$}{>} boolean}{is\+Blank(string) =\texorpdfstring{$>$}{>} boolean}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12029}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{isBlank("{}"{});\ //\ =>\ true}
+\DoxyCodeLine{isBlank("{}\(\backslash\)n"{});\ //\ =>\ true}
+\DoxyCodeLine{isBlank("{}\ "{});\ //\ =>\ true}
+\DoxyCodeLine{isBlank("{}a"{});\ //\ =>\ false}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12030}{}\doxyparagraph{\texorpdfstring{join(separator, ...\+strings) =\texorpdfstring{$>$}{>} string}{join(separator, ...\+strings) =\texorpdfstring{$>$}{>} string}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12030}
+Joins strings together with given separator
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{join("{}\ "{},\ "{}foo"{},\ "{}bar"{});}
+\DoxyCodeLine{//\ =>\ "{}foo\ bar"{}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12031}{}\doxyparagraph{\texorpdfstring{lines(str) =\texorpdfstring{$>$}{>} array}{lines(str) =\texorpdfstring{$>$}{>} array}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12031}
+Split lines to an array
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{lines("{}Hello\(\backslash\)nWorld"{});}
+\DoxyCodeLine{//\ =>\ ["{}Hello"{},\ "{}World"{}]}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12032}{}\doxyparagraph{\texorpdfstring{wrap(str, options) =\texorpdfstring{$>$}{>} string}{wrap(str, options) =\texorpdfstring{$>$}{>} string}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12032}
+Splits a line {\ttfamily str} (default \textquotesingle{}\textquotesingle{}) into several lines of size {\ttfamily options.\+width} (default 75) using a {\ttfamily options.\+seperator} (default \textquotesingle{}~\newline
+\textquotesingle{}). If {\ttfamily options.\+trailing\+Spaces} is true, make each line at least {\ttfamily width} long using trailing spaces. If {\ttfamily options.\+cut} is true, create new lines in the middle of words. If {\ttfamily options.\+preserve\+Spaces} is true, preserve the space that should be there at the end of a line (only works if options.\+cut is false).
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{wrap("{}Hello\ World"{},\ \{\ width:5\ \})}
+\DoxyCodeLine{//\ =>\ "{}Hello\(\backslash\)nWorld"{}}
+\DoxyCodeLine{}
+\DoxyCodeLine{wrap("{}Hello\ World"{},\ \{\ width:6,\ seperator:'.',\ trailingSpaces:\ true\ \})}
+\DoxyCodeLine{//\ =>\ "{}Hello\ .World\ "{}}
+\DoxyCodeLine{}
+\DoxyCodeLine{wrap("{}Hello\ World"{},\ \{\ width:5,\ seperator:'.',\ cut:true,\ trailingSpaces:\ true\ \})}
+\DoxyCodeLine{//\ =>\ "{}Hello.\ Worl.d\ \ \ \ "{}}
+\DoxyCodeLine{}
+\DoxyCodeLine{wrap("{}Hello\ World"{},\ \{\ width:5,\ seperator:'.',\ preserveSpaces:\ true\ \})}
+\DoxyCodeLine{//\ =>\ "{}Hello\ .World"{}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12033}{}\doxyparagraph{\texorpdfstring{dedent(str, \mbox{[}pattern\mbox{]}) =\texorpdfstring{$>$}{>} string}{dedent(str, \mbox{[}pattern\mbox{]}) =\texorpdfstring{$>$}{>} string}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12033}
+Dedent unnecessary indentation or dedent by a pattern.
+
+Credits go to @sindresorhus. This implementation is similar to \href{https://github.com/sindresorhus/strip-indent}{\texttt{ https\+://github.\+com/sindresorhus/strip-\/indent}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{dedent("{}\ \ Hello\(\backslash\)n\ \ \ \ World"{});}
+\DoxyCodeLine{//\ =>\ "{}Hello\(\backslash\)n\ \ World"{}}
+\DoxyCodeLine{}
+\DoxyCodeLine{dedent("{}\(\backslash\)t\(\backslash\)tHello\(\backslash\)n\(\backslash\)t\(\backslash\)t\(\backslash\)t\(\backslash\)tWorld"{});}
+\DoxyCodeLine{//\ =>\ "{}Hello\(\backslash\)n\(\backslash\)t\(\backslash\)tWorld"{}}
+\DoxyCodeLine{}
+\DoxyCodeLine{dedent("{}\ \ \ \ Hello\(\backslash\)n\ \ \ \ World"{},\ "{}\ \ "{});\ //\ Dedent\ by\ 2\ spaces}
+\DoxyCodeLine{//\ =>\ "{}\ \ Hello\(\backslash\)n\ \ World"{}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12034}{}\doxyparagraph{\texorpdfstring{reverse(string) =\texorpdfstring{$>$}{>} string}{reverse(string) =\texorpdfstring{$>$}{>} string}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12034}
+Return reversed string\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{reverse("{}foobar"{});}
+\DoxyCodeLine{//\ =>\ "{}raboof"{}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12035}{}\doxyparagraph{\texorpdfstring{splice(string, index, howmany, substring) =\texorpdfstring{$>$}{>} string}{splice(string, index, howmany, substring) =\texorpdfstring{$>$}{>} string}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12035}
+Like an array splice.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{splice("{}https://edtsech@bitbucket.org/edtsech/underscore.strings"{},\ 30,\ 7,\ "{}epeli"{});}
+\DoxyCodeLine{//\ =>\ "{}https://edtsech@bitbucket.org/epeli/underscore.strings"{}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12036}{}\doxyparagraph{\texorpdfstring{starts\+With(string, starts, \mbox{[}position\mbox{]}) =\texorpdfstring{$>$}{>} boolean}{starts\+With(string, starts, \mbox{[}position\mbox{]}) =\texorpdfstring{$>$}{>} boolean}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12036}
+This method checks whether the string begins with {\ttfamily starts} at {\ttfamily position} (default\+: 0).
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{startsWith("{}image.gif"{},\ "{}image"{});}
+\DoxyCodeLine{//\ =>\ true}
+\DoxyCodeLine{}
+\DoxyCodeLine{startsWith("{}.vimrc"{},\ "{}vim"{},\ 1);}
+\DoxyCodeLine{//\ =>\ true}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12037}{}\doxyparagraph{\texorpdfstring{ends\+With(string, ends, \mbox{[}position\mbox{]}) =\texorpdfstring{$>$}{>} boolean}{ends\+With(string, ends, \mbox{[}position\mbox{]}) =\texorpdfstring{$>$}{>} boolean}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12037}
+This method checks whether the string ends with {\ttfamily ends} at {\ttfamily position} (default\+: string.\+length).
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{endsWith("{}image.gif"{},\ "{}gif"{});}
+\DoxyCodeLine{//\ =>\ true}
+\DoxyCodeLine{}
+\DoxyCodeLine{endsWith("{}image.old.gif"{},\ "{}old"{},\ 9);}
+\DoxyCodeLine{//\ =>\ true}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12038}{}\doxyparagraph{\texorpdfstring{pred(string) =\texorpdfstring{$>$}{>} string}{pred(string) =\texorpdfstring{$>$}{>} string}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12038}
+Returns the predecessor to str.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{pred("{}b"{});}
+\DoxyCodeLine{//\ =>\ "{}a"{}}
+\DoxyCodeLine{}
+\DoxyCodeLine{pred("{}B"{});}
+\DoxyCodeLine{//\ =>\ "{}A"{}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12039}{}\doxyparagraph{\texorpdfstring{succ(string) =\texorpdfstring{$>$}{>} string}{succ(string) =\texorpdfstring{$>$}{>} string}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12039}
+Returns the successor to str.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{succ("{}a"{});}
+\DoxyCodeLine{//\ =>\ "{}b"{}}
+\DoxyCodeLine{}
+\DoxyCodeLine{succ("{}A"{});}
+\DoxyCodeLine{//\ =>\ "{}B"{}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12040}{}\doxyparagraph{\texorpdfstring{titleize(string) =\texorpdfstring{$>$}{>} string}{titleize(string) =\texorpdfstring{$>$}{>} string}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12040}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{titleize("{}my\ name\ is\ epeli"{});}
+\DoxyCodeLine{//\ =>\ "{}My\ Name\ Is\ Epeli"{}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12041}{}\doxyparagraph{\texorpdfstring{camelize(string, \mbox{[}decapitalize=false\mbox{]}) =\texorpdfstring{$>$}{>} string}{camelize(string, \mbox{[}decapitalize=false\mbox{]}) =\texorpdfstring{$>$}{>} string}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12041}
+Converts underscored or dasherized string to a camelized one. Begins with a lower case letter unless it starts with an underscore, dash or an upper case letter.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{camelize("{}moz-\/transform"{});}
+\DoxyCodeLine{//\ =>\ "{}mozTransform"{}}
+\DoxyCodeLine{}
+\DoxyCodeLine{camelize("{}-\/moz-\/transform"{});}
+\DoxyCodeLine{//\ =>\ "{}MozTransform"{}}
+\DoxyCodeLine{}
+\DoxyCodeLine{camelize("{}\_moz\_transform"{});}
+\DoxyCodeLine{//\ =>\ "{}MozTransform"{}}
+\DoxyCodeLine{}
+\DoxyCodeLine{camelize("{}Moz-\/transform"{});}
+\DoxyCodeLine{//\ =>\ "{}MozTransform"{}}
+\DoxyCodeLine{}
+\DoxyCodeLine{camelize("{}-\/moz-\/transform"{},\ true);}
+\DoxyCodeLine{//\ =>\ "{}mozTransform"{}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12042}{}\doxyparagraph{\texorpdfstring{classify(string) =\texorpdfstring{$>$}{>} string}{classify(string) =\texorpdfstring{$>$}{>} string}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12042}
+Converts string to camelized class name. First letter is always upper case
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{classify("{}some\_class\_name"{});}
+\DoxyCodeLine{//\ =>\ "{}SomeClassName"{}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12043}{}\doxyparagraph{\texorpdfstring{underscored(string) =\texorpdfstring{$>$}{>} string}{underscored(string) =\texorpdfstring{$>$}{>} string}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12043}
+Converts a camelized or dasherized string into an underscored one
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{underscored("{}MozTransform"{});}
+\DoxyCodeLine{//\ =>\ "{}moz\_transform"{}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12044}{}\doxyparagraph{\texorpdfstring{dasherize(string) =\texorpdfstring{$>$}{>} string}{dasherize(string) =\texorpdfstring{$>$}{>} string}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12044}
+Converts a underscored or camelized string into an dasherized one
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{dasherize("{}MozTransform"{});}
+\DoxyCodeLine{//\ =>\ "{}-\/moz-\/transform"{}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12045}{}\doxyparagraph{\texorpdfstring{humanize(string) =\texorpdfstring{$>$}{>} string}{humanize(string) =\texorpdfstring{$>$}{>} string}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12045}
+Converts an underscored, camelized, or dasherized string into a humanized one. Also removes beginning and ending whitespace, and removes the postfix \textquotesingle{}\+\_\+id\textquotesingle{}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{humanize("{}\ \ capitalize\ dash-\/CamelCase\_underscore\ trim\ \ "{});}
+\DoxyCodeLine{//\ =>\ "{}Capitalize\ dash\ camel\ case\ underscore\ trim"{}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12046}{}\doxyparagraph{\texorpdfstring{trim(string, \mbox{[}characters\mbox{]}) =\texorpdfstring{$>$}{>} string}{trim(string, \mbox{[}characters\mbox{]}) =\texorpdfstring{$>$}{>} string}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12046}
+Trims defined characters from begining and ending of the string. Defaults to whitespace characters.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{trim("{}\ \ foobar\ \ \ "{});}
+\DoxyCodeLine{//\ =>\ "{}foobar"{}}
+\DoxyCodeLine{}
+\DoxyCodeLine{trim("{}\_-\/foobar-\/\_"{},\ "{}\_-\/"{});}
+\DoxyCodeLine{//\ =>\ "{}foobar"{}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12047}{}\doxyparagraph{\texorpdfstring{ltrim(string, \mbox{[}characters\mbox{]}) =\texorpdfstring{$>$}{>} string}{ltrim(string, \mbox{[}characters\mbox{]}) =\texorpdfstring{$>$}{>} string}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12047}
+Left trim. Similar to trim, but only for left side.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12048}{}\doxyparagraph{\texorpdfstring{rtrim(string, \mbox{[}characters\mbox{]}) =\texorpdfstring{$>$}{>} string}{rtrim(string, \mbox{[}characters\mbox{]}) =\texorpdfstring{$>$}{>} string}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12048}
+Right trim. Similar to trim, but only for right side.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12049}{}\doxyparagraph{\texorpdfstring{truncate(string, length, \mbox{[}truncate\+String = \textquotesingle{}...\textquotesingle{}\mbox{]}) =\texorpdfstring{$>$}{>} string}{truncate(string, length, \mbox{[}truncate\+String = \textquotesingle{}...\textquotesingle{}\mbox{]}) =\texorpdfstring{$>$}{>} string}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12049}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{truncate("{}Hello\ world"{},\ 5);}
+\DoxyCodeLine{//\ =>\ "{}Hello..."{}}
+\DoxyCodeLine{}
+\DoxyCodeLine{truncate("{}Hello"{},\ 10);}
+\DoxyCodeLine{//\ =>\ "{}Hello"{}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12050}{}\doxyparagraph{\texorpdfstring{prune(string, length, prune\+String) =\texorpdfstring{$>$}{>} string}{prune(string, length, prune\+String) =\texorpdfstring{$>$}{>} string}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12050}
+Elegant version of truncate. Makes sure the pruned string does not exceed the original length. Avoid half-\/chopped words when truncating.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{prune("{}Hello,\ world"{},\ 5);}
+\DoxyCodeLine{//\ =>\ "{}Hello..."{}}
+\DoxyCodeLine{}
+\DoxyCodeLine{prune("{}Hello,\ world"{},\ 8);}
+\DoxyCodeLine{//\ =>\ "{}Hello..."{}}
+\DoxyCodeLine{}
+\DoxyCodeLine{prune("{}Hello,\ world"{},\ 5,\ "{}\ (read\ a\ lot\ more)"{});}
+\DoxyCodeLine{//\ =>\ "{}Hello,\ world"{}\ (as\ adding\ "{}(read\ a\ lot\ more)"{}\ would\ be\ longer\ than\ the\ original\ string)}
+\DoxyCodeLine{}
+\DoxyCodeLine{prune("{}Hello,\ cruel\ world"{},\ 15);}
+\DoxyCodeLine{//\ =>\ "{}Hello,\ cruel..."{}}
+\DoxyCodeLine{}
+\DoxyCodeLine{prune("{}Hello"{},\ 10);}
+\DoxyCodeLine{//\ =>\ "{}Hello"{}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12051}{}\doxyparagraph{\texorpdfstring{words(str, delimiter=/\textbackslash{}s+/) =\texorpdfstring{$>$}{>} array}{words(str, delimiter=/\textbackslash{}s+/) =\texorpdfstring{$>$}{>} array}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12051}
+Split string by delimiter (String or Reg\+Exp), /\textbackslash{}s+/ by default.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{words("{}\ \ \ I\ \ \ love\ \ \ you\ \ \ "{});}
+\DoxyCodeLine{//\ =>\ ["{}I"{},\ "{}love"{},\ "{}you"{}]}
+\DoxyCodeLine{}
+\DoxyCodeLine{words("{}I\_love\_you"{},\ "{}\_"{});}
+\DoxyCodeLine{//\ =>\ ["{}I"{},\ "{}love"{},\ "{}you"{}]}
+\DoxyCodeLine{}
+\DoxyCodeLine{words("{}I-\/love-\/you"{},\ /-\//);}
+\DoxyCodeLine{//\ =>\ ["{}I"{},\ "{}love"{},\ "{}you"{}]}
+\DoxyCodeLine{}
+\DoxyCodeLine{words("{}\ \ \ "{})}
+\DoxyCodeLine{//\ =>\ []}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12052}{}\doxyparagraph{\texorpdfstring{sprintf(string format, ...\+arguments) =\texorpdfstring{$>$}{>} string}{sprintf(string format, ...\+arguments) =\texorpdfstring{$>$}{>} string}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12052}
+C like string formatting. Makes use of the \href{https://npmjs.org/package/sprintf-js}{\texttt{ sprintf-\/js}} package.
+
+{\bfseries{This function will be removed in the next major release, use the \href{https://npmjs.org/package/sprintf-js}{\texttt{ sprintf-\/js}} package instead.}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{sprintf("{}\%.1f"{},\ 1.17);}
+\DoxyCodeLine{//\ =>\ "{}1.2"{}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12053}{}\doxyparagraph{\texorpdfstring{pad(str, length, \mbox{[}pad\+Str, type\mbox{]}) =\texorpdfstring{$>$}{>} string}{pad(str, length, \mbox{[}pad\+Str, type\mbox{]}) =\texorpdfstring{$>$}{>} string}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12053}
+pads the {\ttfamily str} with characters until the total string length is equal to the passed {\ttfamily length} parameter. By default, pads on the {\bfseries{left}} with the space char ({\ttfamily "{} "{}}). {\ttfamily pad\+Str} is truncated to a single character if necessary.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{pad("{}1"{},\ 8);}
+\DoxyCodeLine{//\ =>\ "{}\ \ \ \ \ \ \ 1"{}}
+\DoxyCodeLine{}
+\DoxyCodeLine{pad("{}1"{},\ 8,\ "{}0"{});}
+\DoxyCodeLine{//\ =>\ "{}00000001"{}}
+\DoxyCodeLine{}
+\DoxyCodeLine{pad("{}1"{},\ 8,\ "{}0"{},\ "{}right"{});}
+\DoxyCodeLine{//\ =>\ "{}10000000"{}}
+\DoxyCodeLine{}
+\DoxyCodeLine{pad("{}1"{},\ 8,\ "{}0"{},\ "{}both"{});}
+\DoxyCodeLine{//\ =>\ "{}00001000"{}}
+\DoxyCodeLine{}
+\DoxyCodeLine{pad("{}1"{},\ 8,\ "{}bleepblorp"{},\ "{}both"{});}
+\DoxyCodeLine{//\ =>\ "{}bbbb1bbb"{}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12054}{}\doxyparagraph{\texorpdfstring{lpad(str, length, \mbox{[}pad\+Str\mbox{]}) =\texorpdfstring{$>$}{>} string}{lpad(str, length, \mbox{[}pad\+Str\mbox{]}) =\texorpdfstring{$>$}{>} string}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12054}
+left-\/pad a string. Alias for {\ttfamily pad(str, length, pad\+Str, "{}left"{})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{lpad("{}1"{},\ 8,\ "{}0"{});}
+\DoxyCodeLine{//\ =>\ "{}00000001"{}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12055}{}\doxyparagraph{\texorpdfstring{rpad(str, length, \mbox{[}pad\+Str\mbox{]}) =\texorpdfstring{$>$}{>} string}{rpad(str, length, \mbox{[}pad\+Str\mbox{]}) =\texorpdfstring{$>$}{>} string}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12055}
+right-\/pad a string. Alias for {\ttfamily pad(str, length, pad\+Str, "{}right"{})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{rpad("{}1"{},\ 8,\ "{}0"{});}
+\DoxyCodeLine{//\ =>\ "{}10000000"{}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12056}{}\doxyparagraph{\texorpdfstring{lrpad(str, length, \mbox{[}pad\+Str\mbox{]}) =\texorpdfstring{$>$}{>} string}{lrpad(str, length, \mbox{[}pad\+Str\mbox{]}) =\texorpdfstring{$>$}{>} string}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12056}
+left/right-\/pad a string. Alias for {\ttfamily pad(str, length, pad\+Str, "{}both"{})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{lrpad("{}1"{},\ 8,\ '0');}
+\DoxyCodeLine{//\ =>\ "{}00001000"{}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12057}{}\doxyparagraph{\texorpdfstring{to\+Number(string, \mbox{[}decimals\mbox{]}) =\texorpdfstring{$>$}{>} number}{to\+Number(string, \mbox{[}decimals\mbox{]}) =\texorpdfstring{$>$}{>} number}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12057}
+Parse string to number. Returns NaN if string can\textquotesingle{}t be parsed to number.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{toNumber("{}2.556"{});}
+\DoxyCodeLine{//\ =>\ 3}
+\DoxyCodeLine{}
+\DoxyCodeLine{toNumber("{}2.556"{},\ 1);}
+\DoxyCodeLine{//\ =>\ 2.6}
+\DoxyCodeLine{}
+\DoxyCodeLine{toNumber("{}999.999"{},\ -\/1);}
+\DoxyCodeLine{//\ =>\ 990}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12058}{}\doxyparagraph{\texorpdfstring{str\+Right(string, pattern) =\texorpdfstring{$>$}{>} string}{str\+Right(string, pattern) =\texorpdfstring{$>$}{>} string}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12058}
+Searches a string from left to right for a pattern and returns a substring consisting of the characters in the string that are to the right of the pattern or all string if no match found.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{strRight("{}This\_is\_a\_test\_string"{},\ "{}\_"{});}
+\DoxyCodeLine{//\ =>\ "{}is\_a\_test\_string"{}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12059}{}\doxyparagraph{\texorpdfstring{str\+Right\+Back(string, pattern) =\texorpdfstring{$>$}{>} string}{str\+Right\+Back(string, pattern) =\texorpdfstring{$>$}{>} string}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12059}
+Searches a string from right to left for a pattern and returns a substring consisting of the characters in the string that are to the right of the pattern or all string if no match found.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{strRightBack("{}This\_is\_a\_test\_string"{},\ "{}\_"{});}
+\DoxyCodeLine{//\ =>\ "{}string"{}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12060}{}\doxyparagraph{\texorpdfstring{str\+Left(string, pattern) =\texorpdfstring{$>$}{>} string}{str\+Left(string, pattern) =\texorpdfstring{$>$}{>} string}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12060}
+Searches a string from left to right for a pattern and returns a substring consisting of the characters in the string that are to the left of the pattern or all string if no match found.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{strLeft("{}This\_is\_a\_test\_string"{},\ "{}\_"{});}
+\DoxyCodeLine{//\ =>\ "{}This"{};}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12061}{}\doxyparagraph{\texorpdfstring{str\+Left\+Back(string, pattern) =\texorpdfstring{$>$}{>} string}{str\+Left\+Back(string, pattern) =\texorpdfstring{$>$}{>} string}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12061}
+Searches a string from right to left for a pattern and returns a substring consisting of the characters in the string that are to the left of the pattern or all string if no match found.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{strLeftBack("{}This\_is\_a\_test\_string"{},\ "{}\_"{});}
+\DoxyCodeLine{//\ =>\ "{}This\_is\_a\_test"{};}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12062}{}\doxyparagraph{\texorpdfstring{strip\+Tags(string) =\texorpdfstring{$>$}{>} string}{strip\+Tags(string) =\texorpdfstring{$>$}{>} string}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12062}
+Removes all html tags from string.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{stripTags("{}a\ <a\ href=\(\backslash\)"{}\#\(\backslash\)"{}>link</a>"{});}
+\DoxyCodeLine{//\ =>\ "{}a\ link"{}}
+\DoxyCodeLine{}
+\DoxyCodeLine{stripTags("{}a\ <a\ href=\(\backslash\)"{}\#\(\backslash\)"{}>link</a><script>alert(\(\backslash\)"{}hello\ world!\(\backslash\)"{})</script>"{});}
+\DoxyCodeLine{//\ =>\ "{}a\ linkalert("{}hello\ world!"{})"{}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12063}{}\doxyparagraph{\texorpdfstring{to\+Sentence(array, \mbox{[}delimiter, last\+Delimiter\mbox{]}) =\texorpdfstring{$>$}{>} string}{to\+Sentence(array, \mbox{[}delimiter, last\+Delimiter\mbox{]}) =\texorpdfstring{$>$}{>} string}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12063}
+Join an array into a human readable sentence.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{toSentence(["{}jQuery"{},\ "{}Mootools"{},\ "{}Prototype"{}]);}
+\DoxyCodeLine{//\ =>\ "{}jQuery,\ Mootools\ and\ Prototype"{};}
+\DoxyCodeLine{}
+\DoxyCodeLine{toSentence(["{}jQuery"{},\ "{}Mootools"{},\ "{}Prototype"{}],\ "{},\ "{},\ "{}\ unt\ "{});}
+\DoxyCodeLine{//\ =>\ "{}jQuery,\ Mootools\ unt\ Prototype"{};}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12064}{}\doxyparagraph{\texorpdfstring{to\+Sentence\+Serial(array, \mbox{[}delimiter, last\+Delimiter\mbox{]}) =\texorpdfstring{$>$}{>} string}{to\+Sentence\+Serial(array, \mbox{[}delimiter, last\+Delimiter\mbox{]}) =\texorpdfstring{$>$}{>} string}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12064}
+The same as {\ttfamily to\+Sentence}, but adjusts delimeters to use \href{http://en.wikipedia.org/wiki/Serial_comma}{\texttt{ Serial comma}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{toSentenceSerial(["{}jQuery"{},\ "{}Mootools"{}]);}
+\DoxyCodeLine{//\ =>\ "{}jQuery\ and\ Mootools"{}}
+\DoxyCodeLine{}
+\DoxyCodeLine{toSentenceSerial(["{}jQuery"{},\ "{}Mootools"{},\ "{}Prototype"{}]);}
+\DoxyCodeLine{//\ =>\ "{}jQuery,\ Mootools,\ and\ Prototype"{}}
+\DoxyCodeLine{}
+\DoxyCodeLine{toSentenceSerial(["{}jQuery"{},\ "{}Mootools"{},\ "{}Prototype"{}],\ "{},\ "{},\ "{}\ unt\ "{});}
+\DoxyCodeLine{//\ =>\ "{}jQuery,\ Mootools,\ unt\ Prototype"{}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12065}{}\doxyparagraph{\texorpdfstring{repeat(string, count, \mbox{[}separator\mbox{]}) =\texorpdfstring{$>$}{>} string}{repeat(string, count, \mbox{[}separator\mbox{]}) =\texorpdfstring{$>$}{>} string}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12065}
+Repeats a string count times.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{repeat("{}foo"{},\ 3);}
+\DoxyCodeLine{//\ =>\ "{}foofoofoo"{}}
+\DoxyCodeLine{}
+\DoxyCodeLine{repeat("{}foo"{},\ 3,\ "{}bar"{});}
+\DoxyCodeLine{//\ =>\ "{}foobarfoobarfoo"{}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12066}{}\doxyparagraph{\texorpdfstring{surround(string, wrap) =\texorpdfstring{$>$}{>} string}{surround(string, wrap) =\texorpdfstring{$>$}{>} string}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12066}
+Surround a string with another string.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{surround("{}foo"{},\ "{}ab"{});}
+\DoxyCodeLine{//\ =>\ "{}abfooab"{}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12067}{}\doxyparagraph{\texorpdfstring{quote(string, quote\+Char) or q(string, quote\+Char) =\texorpdfstring{$>$}{>} string}{quote(string, quote\+Char) or q(string, quote\+Char) =\texorpdfstring{$>$}{>} string}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12067}
+Quotes a string. {\ttfamily quote\+Char} defaults to {\ttfamily "{}$<$/tt$>$.  @icode\{javascript\}  quote("{}foo"{}, \textquotesingle{}"{}\textquotesingle{}); // =\texorpdfstring{$>$}{>} \textquotesingle{}"{}foo"{}\textquotesingle{};  }\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12068}{}\doxyparagraph{\texorpdfstring{{\ttfamily unquote(string, quote\+Char) =\texorpdfstring{$>$}{>} string}}{{\ttfamily unquote(string, quote\+Char) =\texorpdfstring{$>$}{>} string}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2209e27b3381365b6bc1364940509e0ab_autotoc_md12068}
+{\ttfamily }
+
+{\ttfamily Unquotes a string. {\ttfamily quote\+Char} defaults to {\ttfamily "{}$<$/tt$>$.  @icode\{javascript\}  unquote(\textquotesingle{}"{}foo"{}\textquotesingle{}); // =$>$ "{}foo"{}  unquote("{}\textquotesingle{}foo\textquotesingle{}"{}, "{}\textquotesingle{}"{}); // =$>$ "{}foo"{} @endicode    @paragraph autotoc\+\_\+md12069 slugify(string) =$>$ string  \+Transform text into an ascii slug which can be used in safely in URLs. Replaces whitespaces, accentuated, and special characters with a dash. Limited set of non-\/ascii characters are transformed to similar versions in the ascii character set such as $<$tt$>$ä$<$/tt$>$ to $<$tt$>$a$<$/tt$>$.  @icode\{javascript\}  slugify("{}Un éléphant à l\textbackslash{}\textquotesingle{}orée du bois"{}); // =$>$ "{}un-\/elephant-\/a-\/l-\/oree-\/du-\/bois"{} @endicode   $<$em$>$$<$strong$>$\+Caution\+: this function is charset dependent$<$/strong$>$$<$/em$>$  @paragraph autotoc\+\_\+md12070 natural\+Cmp(string1, string2) =$>$ number  \+Naturally sort strings like humans would do. None numbers are compared by their $<$a href="{}\href{http://www.asciitable.com/}{\texttt{ http\+://www.\+asciitable.\+com/}}"{} $>$\+ASCII values$<$/a$>$. Note\+: this means "{}a"{} $>$ "{}A"{}. Use $<$tt$>$.\+to\+Lower\+Case$<$/tt$>$ if this isn\textquotesingle{}t to be desired.  \+Just past it to $<$tt$>$\+Array\textbackslash{}\#sort$<$/tt$>$.  @icode\{javascript\}  \mbox{[}"{}foo20"{}, "{}foo5"{}\mbox{]}.\+sort(natural\+Cmp); // =$>$ \mbox{[}"{}foo5"{}, "{}foo20"{}\mbox{]} @endicode   @paragraph autotoc\+\_\+md12071 to\+Boolean(string) =$>$ boolean  \+Turn strings that can be commonly considered as booleas to real booleans. Such as "{}true"{}, "{}false"{}, "{}1"{} and "{}0"{}. This function is case insensitive.  @icode\{javascript\}  to\+Boolean("{}true"{}); // =$>$ true  to\+Boolean("{}FALSE"{}); // =$>$ false  to\+Boolean("{}random"{}); // =$>$ undefined @endicode   \+It can be customized by giving arrays of truth and falsy value matcher as parameters. Matchers can be also Reg\+Exp objects.  @icode\{javascript\}  to\+Boolean("{}truthy"{}, \mbox{[}"{}truthy"{}\mbox{]}, \mbox{[}"{}falsy"{}\mbox{]}); // =$>$ true  to\+Boolean("{}true only at start"{}, \mbox{[}/\texorpdfstring{$^\wedge$}{\string^}true/\mbox{]}); // =$>$ true @endicode   @paragraph autotoc\+\_\+md12072 map(string, function) =$>$ string  \+Creates a new string with the results of calling a provided function on every character of the given string.  @icode\{javascript\}  map("{}Hello world"{}, function(x) \{   return x; \}); // =$>$ "{}Hello world"{}  map(12345, function(x) \{   return x; \}); // =$>$ "{}12345"{}  map("{}Hello world"{}, function(x) \{   if (x === \textquotesingle{}o\textquotesingle{}) x = \textquotesingle{}\+O\textquotesingle{};   return x; \}); // =$>$ "{}HellO w\+Orld"{} @endicode   @subsubsection autotoc\+\_\+md12073 Library functions  \+If you require the full library you can use chaining and aliases  @paragraph autotoc\+\_\+md12074 s(string) =$>$ chain  \+Start a chain. Returns an immutable chain object with the string functions as methods which return a new chain object instead of the plain string value.  \+The chain object includes also following native Javascript string methods\+:    -\/ $<$a href="{}\href{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/toUpperCase}{\texttt{ https\+://developer.\+mozilla.\+org/en-\/\+US/docs/\+Web/\+Java\+Script/\+Reference/\+Global\+\_\+\+Objects/\+String/to\+Upper\+Case}}"{} $>$to\+Upper\+Case$<$/a$>$   -\/ $<$a href="{}\href{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/toLowerCase}{\texttt{ https\+://developer.\+mozilla.\+org/en-\/\+US/docs/\+Web/\+Java\+Script/\+Reference/\+Global\+\_\+\+Objects/\+String/to\+Lower\+Case}}"{} $>$to\+Lower\+Case$<$/a$>$   -\/ $<$a href="{}\href{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split}{\texttt{ https\+://developer.\+mozilla.\+org/en-\/\+US/docs/\+Web/\+Java\+Script/\+Reference/\+Global\+\_\+\+Objects/\+String/split}}"{} $>$split$<$/a$>$   -\/ $<$a href="{}\href{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace}{\texttt{ https\+://developer.\+mozilla.\+org/en-\/\+US/docs/\+Web/\+Java\+Script/\+Reference/\+Global\+\_\+\+Objects/\+String/replace}}"{} $>$replace$<$/a$>$   -\/ $<$a href="{}\href{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/slice}{\texttt{ https\+://developer.\+mozilla.\+org/en-\/\+US/docs/\+Web/\+Java\+Script/\+Reference/\+Global\+\_\+\+Objects/\+String/slice}}"{} $>$slice$<$/a$>$   -\/ $<$a href="{}\href{https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/String/substring}{\texttt{ https\+://developer.\+mozilla.\+org/en/docs/\+Web/\+Java\+Script/\+Reference/\+Global\+\_\+\+Objects/\+String/substring}}"{} $>$substring$<$/a$>$   -\/ $<$a href="{}\href{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/substr}{\texttt{ https\+://developer.\+mozilla.\+org/en-\/\+US/docs/\+Web/\+Java\+Script/\+Reference/\+Global\+\_\+\+Objects/\+String/substr}}"{} $>$substr$<$/a$>$   -\/ $<$a href="{}\href{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/concat}{\texttt{ https\+://developer.\+mozilla.\+org/en-\/\+US/docs/\+Web/\+Java\+Script/\+Reference/\+Global\+\_\+\+Objects/\+String/concat}}"{} $>$concat$<$/a$>$  @paragraph autotoc\+\_\+md12075 chain.\+value()  \+Return the string value from the chain  @icode\{javascript\}  s("{} foo "{}).\+trim().\+capitalize().\+value(); // =$>$ "{}Foo"{} @endicode   \+When calling a method which does not return a string the resulting value is immediately returned  @icode\{javascript\}  s("{} foobar "{}).\+trim().\+starts\+With("{}foo"{}); // =$>$ true @endicode   @paragraph autotoc\+\_\+md12076 chain.\+tap(function) =$>$ chain  \+Tap into the chain with a custom function  @icode\{javascript\}  s("{}foo"{}).\+tap(function(value)\{   return value + "{}bar"{}; \}).\+value(); // =$>$ "{}foobar"{} @endicode    @paragraph autotoc\+\_\+md12077 Aliases  @icode\{javascript\}  strip     = trim lstrip    = ltrim rstrip    = rtrim center    = lrpad rjust     = lpad ljust     = rpad contains  = include q         = quote to\+Bool    = to\+Boolean camelcase = camelize @endicode   @subsection autotoc\+\_\+md12078 Maintainers  \+This library is maintained by    -\/ Esa-\/\+Matti Suuronen – $<$em$>$$<$strong$>$$<$a href="{}\href{https://github.com/epeli}{\texttt{ https\+://github.\+com/epeli}}"{} $>$@epeli$<$/a$>$$<$/strong$>$$<$/em$>$   -\/ Christoph Hermann – $<$em$>$$<$strong$>$$<$a href="{}\href{https://github.com/stoeffel}{\texttt{ https\+://github.\+com/stoeffel}}"{} $>$@stoeffel$<$/a$>$$<$/strong$>$$<$/em$>$  @subsection autotoc\+\_\+md12079 Licence  \+The MIT License  \+Copyright (c) 2011 Esa-\/\+Matti Suuronen esa-\/matti@suuronen.\+org  \+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "{}Software"{}), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions\+:  \+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.  \+THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. }}

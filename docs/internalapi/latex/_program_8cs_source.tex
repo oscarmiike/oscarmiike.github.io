@@ -1,0 +1,72 @@
+\doxysection{Program.\+cs}
+\hypertarget{_program_8cs_source}{}\label{_program_8cs_source}\index{C:/Users/STRIDER/source/repos/InternalAPI/InternalAPI/Program.cs@{C:/Users/STRIDER/source/repos/InternalAPI/InternalAPI/Program.cs}}
+\mbox{\hyperlink{_program_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }System.Linq;}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }System.Threading;}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }System.Threading.Tasks;}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00006}00006\ \textcolor{keyword}{using\ }Microsoft.AspNetCore.Hosting;}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00007}00007\ \textcolor{keyword}{using\ }Microsoft.Extensions.Configuration;}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00008}00008\ \textcolor{keyword}{using\ }Microsoft.Extensions.Hosting;}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00009}00009\ \textcolor{keyword}{using\ }Microsoft.Extensions.Logging;}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00010}00010\ \textcolor{keyword}{using\ }Serilog;}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00011}00011\ \textcolor{keyword}{using\ }Serilog.Events;}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00012}00012\ \textcolor{keyword}{using\ }Serilog.Core;}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00013}00013\ \textcolor{keyword}{using\ }Microsoft.EntityFrameworkCore;}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00015}00015\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_internal_a_p_i}{InternalAPI}}}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00016}00016\ \{}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00017}\mbox{\hyperlink{class_internal_a_p_i_1_1_program}{00017}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_internal_a_p_i_1_1_program}{Program}}}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00018}00018\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00019}\mbox{\hyperlink{class_internal_a_p_i_1_1_program_a535cd66ddd4125c56d0287c007c07494}{00019}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_program_a535cd66ddd4125c56d0287c007c07494}{Main}}(\textcolor{keywordtype}{string}[]\ args)}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \ \ \ \ var\ environmentName\ =\ Environment.GetEnvironmentVariable(\textcolor{stringliteral}{"{}ASPNETCORE\_ENVIRONMENT"{}});}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \ \ \ \ var\ configuration\ =\ \textcolor{keyword}{new}\ ConfigurationBuilder()}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .AddJsonFile(\textcolor{stringliteral}{"{}appsettings.json"{}})}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .AddJsonFile(\$\textcolor{stringliteral}{"{}appsettings.\{environmentName\}.json"{}})}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .Build();}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ Log.Logger\ =\ \textcolor{keyword}{new}\ LoggerConfiguration()}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .ReadFrom.Configuration(configuration)}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .Enrich.With(\textcolor{keyword}{new}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_log_thread_i_d_enricher}{LogThreadIDEnricher}}())}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .CreateLogger();}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Log.Information(\textcolor{stringliteral}{"{}Starting\ up"{}});}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_program_a4b14f342ca5580428019f0c5cb1f713f}{CreateHostBuilder}}(args).Build().Run();}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Log.Fatal(ex,\ \textcolor{stringliteral}{"{}Application\ start-\/up\ failed"{}});}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{finally}}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Log.CloseAndFlush();}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00048}\mbox{\hyperlink{class_internal_a_p_i_1_1_program_a4b14f342ca5580428019f0c5cb1f713f}{00048}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ IHostBuilder\ \mbox{\hyperlink{class_internal_a_p_i_1_1_program_a4b14f342ca5580428019f0c5cb1f713f}{CreateHostBuilder}}(\textcolor{keywordtype}{string}[]\ args)\ =>}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ Host.CreateDefaultBuilder(args)}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .UseSerilog()}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .ConfigureWebHostDefaults(webBuilder\ =>}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ webBuilder.UseStartup<\mbox{\hyperlink{class_internal_a_p_i_1_1_startup}{Startup}}>();}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00055}00055\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00057}\mbox{\hyperlink{class_internal_a_p_i_1_1_log_thread_i_d_enricher}{00057}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_internal_a_p_i_1_1_log_thread_i_d_enricher}{LogThreadIDEnricher}}\ :\ ILogEventEnricher}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00058}00058\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00059}\mbox{\hyperlink{class_internal_a_p_i_1_1_log_thread_i_d_enricher_ad44f8c4a91b18a78edf1f300bb3916ac}{00059}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_log_thread_i_d_enricher_ad44f8c4a91b18a78edf1f300bb3916ac}{Enrich}}(LogEvent\ logEvent,\ ILogEventPropertyFactory\ propertyFactory)}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ logEvent.AddPropertyIfAbsent(propertyFactory.CreateProperty(}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}ThreadID"{}},\ Thread.CurrentThread.ManagedThreadId.ToString(\textcolor{stringliteral}{"{}D5"{}})));}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00064}00064\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{_program_8cs_source_l00066}00066\ \}}
+
+\end{DoxyCode}

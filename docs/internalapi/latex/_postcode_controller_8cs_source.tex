@@ -1,0 +1,131 @@
+\doxysection{Postcode\+Controller.\+cs}
+\hypertarget{_postcode_controller_8cs_source}{}\label{_postcode_controller_8cs_source}\index{C:/Users/STRIDER/source/repos/InternalAPI/InternalAPI/Controllers/PostcodeController.cs@{C:/Users/STRIDER/source/repos/InternalAPI/InternalAPI/Controllers/PostcodeController.cs}}
+\mbox{\hyperlink{_postcode_controller_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }Microsoft.AspNetCore.Mvc;}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }System.Linq;}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }System.Threading.Tasks;}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00006}00006\ \textcolor{keyword}{using\ }Microsoft.Extensions.Logging;}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00007}00007\ \textcolor{keyword}{using\ }Microsoft.Extensions.Configuration;}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00008}00008\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_dto_1_1_postcode}{InternalAPI.Dto.Postcode}};}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00009}00009\ \textcolor{keyword}{using\ }Newtonsoft.Json;}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00010}00010\ \textcolor{keyword}{using\ }RestSharp;}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00011}00011\ \textcolor{keyword}{using\ }System.IO;}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00012}00012\ \textcolor{keyword}{using\ }Microsoft.AspNetCore.Hosting;}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00013}00013\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_services_1_1_aus_post}{InternalAPI.Services.AusPost}};}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00015}00015\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_controllers}{InternalAPI.Controllers}}}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00016}00016\ \{}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00017}00017\ \ \ \ \ [Route(\textcolor{stringliteral}{"{}v1/[controller]"{}})]}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00018}00018\ \ \ \ \ [ApiController]}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00019}\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_postcode_controller}{00019}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_postcode_controller}{PostcodeController}}\ :\ Controller}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00020}00020\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ readonly\ ILogger<PostcodeController>\ \_logger;}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ readonly\ IWebHostEnvironment\ \_webHostEnvironment;}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ readonly\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_aus_post_1_1_aus_post_service}{AusPostService}}\ \_ausPostService;}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{string}\ baseURL\ \{\ \textcolor{keyword}{get};\ \textcolor{keyword}{set};\ \}}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{string}\ baseURLV2\ \{\ \textcolor{keyword}{get};\ \textcolor{keyword}{set};\ \}}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{string}\ v2UserName\ \{\ \textcolor{keyword}{get};\ \textcolor{keyword}{set};\ \}}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00030}\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_postcode_controller_a1e3fc088b5a240fd45c58b2d3f1b4947}{00030}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_postcode_controller_a1e3fc088b5a240fd45c58b2d3f1b4947}{PostcodeController}}(ILogger<PostcodeController>\ logger,\ IConfiguration\ configuration,\ IWebHostEnvironment\ webHostEnvironment)}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger\ =\ logger;}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \_webHostEnvironment\ =\ webHostEnvironment;}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ baseURL\ =\ configuration[\textcolor{stringliteral}{"{}PostcodeSettings:BaseURL"{}}];}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ baseURLV2\ =\ configuration[\textcolor{stringliteral}{"{}PostcodeSettings:baseURLV2"{}}];}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ v2UserName\ =\ configuration[\textcolor{stringliteral}{"{}PostcodeSettings:v2UserName"{}}];}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ [HttpGet]}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00040}\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_postcode_controller_ad2770543c535089522160ece237338ca}{00040}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ ActionResult<List<Postalcode>>\ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_postcode_controller_ad2770543c535089522160ece237338ca}{GetPostcode}}(\textcolor{keywordtype}{string}\ postcode)}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogDebug(\$\textcolor{stringliteral}{"{}Postcode\ request\ V2\ received.\ \ Postcode:\ \{postcode\}"{}});}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//check\ local\ postcode\ text\ file\ first}}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ var\ localPostcodes\ =\ GetPostalcodeLocal(postcode);}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (localPostcodes\ !=\ \textcolor{keyword}{null}\ \&\&\ localPostcodes.Any())}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ localPostcodes;}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//check\ aus\ post\ postcode\ endpoint}}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//NOT\ YET\ IMPLEMENTED\ COMPLETELY}}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//NEED\ TO\ CONSIDER\ AB,\ AW/AC,\ and\ SA\ all\ use\ postcode\ endpoint\ with\ this\ model/dto}}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ var\ ausPostResult\ =\ \_ausPostService.SearchPostcode(postcode);}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//check\ geonames\ api\ third}}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient(\textcolor{keyword}{new}\ Uri(baseURLV2));}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ client.AddDefaultQueryParameter(\textcolor{stringliteral}{"{}postalcode"{}},\ postcode);}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ client.AddDefaultQueryParameter(\textcolor{stringliteral}{"{}country"{}},\ \textcolor{stringliteral}{"{}AU"{}});}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ client.AddDefaultQueryParameter(\textcolor{stringliteral}{"{}username"{}},\ v2UserName);}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ RestRequest\ request\ =\ \textcolor{keyword}{new}\ RestRequest(\textcolor{stringliteral}{"{}"{}},\ Method.GET);}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddHeader(\textcolor{stringliteral}{"{}Content-\/Type"{}},\ \textcolor{stringliteral}{"{}application/json"{}});}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddHeader(\textcolor{stringliteral}{"{}Accept"{}},\ \textcolor{stringliteral}{"{}application/json"{}});}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ var\ response\ =\ client.Execute(request);}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_postcode_1_1_postal_code_list}{PostalCodeList}}\ PL\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_postcode_1_1_postal_code_list}{PostalCodeList}}();}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response.Content.Contains(\textcolor{stringliteral}{"{}error"{}}))}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogError(\$\textcolor{stringliteral}{"{}Error\ returned\ from\ Postcode\ API:\ \{response.Content\}"{}});}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ PL.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_postcode_1_1_postal_code_list_a0d0bf9071e95f08269a334acf7dd1cf6}{PostalCodes}};}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!response.IsSuccessful\ ||\ \textcolor{keywordtype}{string}.IsNullOrEmpty(response.Content))}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogError(\$\textcolor{stringliteral}{"{}Postcode\ API\ call\ not\ successful.\ \ StatusCode:\ \{response.StatusCode\}\ -\/\ \{response.StatusDescription\},\ Message:\ \{response.ErrorMessage\}"{}});}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PL\ =\ JsonConvert.DeserializeObject<\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_postcode_1_1_postal_code_list}{PostalCodeList}}>(response.Content);}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception)}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \_logger.LogError(\$\textcolor{stringliteral}{"{}Exception\ deserialising\ response\ from\ Postcode\ API:\ \{response.Content\}"{}});\ \}}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ PL.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_postcode_1_1_postal_code_list_a0d0bf9071e95f08269a334acf7dd1cf6}{PostalCodes}};}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ List<Postalcode>\ GetPostalcodeLocal(\textcolor{keywordtype}{string}\ postcode)}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ postcodes\ =\ \textcolor{keyword}{new}\ List<Postalcode>();}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{using}\ (StreamReader\ file\ =\ \textcolor{keyword}{new}\ StreamReader(\$\textcolor{stringliteral}{"{}\{\_webHostEnvironment.ContentRootPath\}/data/aupostcodes.txt"{}}))}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ line;}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ ((line\ =\ file.ReadLine())\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}[]\ x;}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ x\ =\ line.Split(Convert.ToChar(\textcolor{stringliteral}{"{}\(\backslash\)t"{}}));}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (x\ ==\ \textcolor{keyword}{null}\ ||\ x.Length\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (x\ !=\ \textcolor{keyword}{null}\ \&\&\ x.Length\ >\ 1)}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ postcodes.Add(\textcolor{keyword}{new}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_postcode_1_1_postalcode}{Postalcode}}()}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ countryCode\ =\ x[0],}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ postalCode\ =\ x[1],}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ placeName\ =\ x[2],}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ adminName1\ =\ x[3],}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ adminCode1\ =\ x[4],}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ adminName2\ =\ x[5]}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00108}00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00110}00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ file.Close();}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00113}00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (postcodes\ !=\ \textcolor{keyword}{null}\ \&\&\ postcodes.Count\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00115}00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ postcodes.Where(pc\ =>\ pc.postalCode\ ==\ postcode).ToList();}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00116}00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00117}00117\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00118}00118\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00120}00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogError(\$\textcolor{stringliteral}{"{}Postcode\ local\ search\ not\ successful.\ \ Postcode:\ \{postcode\}"{}});}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00121}00121\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00122}00122\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00123}00123\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00124}00124\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_postcode_controller_8cs_source_l00125}00125\ \}}
+
+\end{DoxyCode}

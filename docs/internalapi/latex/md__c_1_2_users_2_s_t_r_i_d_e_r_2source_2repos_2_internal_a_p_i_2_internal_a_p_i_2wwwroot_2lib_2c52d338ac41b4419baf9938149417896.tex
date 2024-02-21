@@ -1,0 +1,60 @@
+\chapter{extract-\/zip}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c52d338ac41b4419baf9938149417896}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c52d338ac41b4419baf9938149417896}\index{extract-\/zip@{extract-\/zip}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c52d338ac41b4419baf9938149417896_autotoc_md8245}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c52d338ac41b4419baf9938149417896_autotoc_md8245}%
+ Unzip written in pure Java\+Script. Extracts a zip into a directory. Available as a library or a command line program.
+
+Uses the \href{http://npmjs.org/yauzl}{\texttt{ {\ttfamily yauzl}}} ZIP parser.
+
+\href{https://npm.im/extract-zip}{\texttt{ }} \href{https://github.com/standard/standard}{\texttt{ }} \href{https://github.com/maxogden/extract-zip/actions?query=workflow\%3ACI}{\texttt{ }}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c52d338ac41b4419baf9938149417896_autotoc_md8246}{}\doxysection{\texorpdfstring{Installation}{Installation}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c52d338ac41b4419baf9938149417896_autotoc_md8246}
+Make sure you have Node 10 or greater installed.
+
+Get the library\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ extract-\/zip\ -\/-\/save}
+
+\end{DoxyCode}
+
+
+Install the command line program\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ extract-\/zip\ -\/g}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c52d338ac41b4419baf9938149417896_autotoc_md8247}{}\doxysection{\texorpdfstring{JS API}{JS API}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c52d338ac41b4419baf9938149417896_autotoc_md8247}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ extract\ =\ require('extract-\/zip')}
+\DoxyCodeLine{}
+\DoxyCodeLine{async\ function\ main\ ()\ \{}
+\DoxyCodeLine{\ \ try\ \{}
+\DoxyCodeLine{\ \ \ \ await\ extract(source,\ \{\ dir:\ target\ \})}
+\DoxyCodeLine{\ \ \ \ console.log('Extraction\ complete')}
+\DoxyCodeLine{\ \ \}\ catch\ (err)\ \{}
+\DoxyCodeLine{\ \ \ \ //\ handle\ any\ errors}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c52d338ac41b4419baf9938149417896_autotoc_md8248}{}\doxysubsection{\texorpdfstring{Options}{Options}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c52d338ac41b4419baf9938149417896_autotoc_md8248}
+
+\begin{DoxyItemize}
+\item {\ttfamily dir} (required) -\/ the path to the directory where the extracted files are written
+\item {\ttfamily default\+Dir\+Mode} -\/ integer -\/ Directory Mode (permissions), defaults to {\ttfamily 0o755}
+\item {\ttfamily default\+File\+Mode} -\/ integer -\/ File Mode (permissions), defaults to {\ttfamily 0o644}
+\item {\ttfamily on\+Entry} -\/ function -\/ if present, will be called with {\ttfamily (entry, zipfile)}, entry is every entry from the zip file forwarded from the {\ttfamily entry} event from yauzl. {\ttfamily zipfile} is the {\ttfamily yauzl} instance
+\end{DoxyItemize}
+
+Default modes are only used if no permissions are set in the zip file.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c52d338ac41b4419baf9938149417896_autotoc_md8249}{}\doxysection{\texorpdfstring{CLI Usage}{CLI Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2c52d338ac41b4419baf9938149417896_autotoc_md8249}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{extract-\/zip\ foo.zip\ <targetDirectory>}
+
+\end{DoxyCode}
+
+
+If not specified, {\ttfamily target\+Directory} will default to {\ttfamily process.\+cwd()}. 

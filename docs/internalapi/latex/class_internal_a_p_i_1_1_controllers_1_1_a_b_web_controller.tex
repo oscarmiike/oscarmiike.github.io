@@ -1,0 +1,204 @@
+\doxysection{Internal\+API.\+Controllers.\+ABWeb\+Controller Class Reference}
+\hypertarget{class_internal_a_p_i_1_1_controllers_1_1_a_b_web_controller}{}\label{class_internal_a_p_i_1_1_controllers_1_1_a_b_web_controller}\index{InternalAPI.Controllers.ABWebController@{InternalAPI.Controllers.ABWebController}}
+
+
+Inheritance diagram for Internal\+API.\+Controllers.\+ABWeb\+Controller\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{class_internal_a_p_i_1_1_controllers_1_1_a_b_web_controller__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Internal\+API.\+Controllers.\+ABWeb\+Controller\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{class_internal_a_p_i_1_1_controllers_1_1_a_b_web_controller__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_a_b_web_controller_a8f4c5b39c6d018ed280f11a78506cee5}{ABWeb\+Controller}} (\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{Log\+Service}} logger, \mbox{\hyperlink{class_internal_a_p_i_1_1_contexts_1_1_a_b_web_1_1_a_b_web_context}{ABWeb\+Context}} context, IOptions$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_a_b_web_settings}{ABWeb\+Settings}} $>$ settings)
+\item 
+Action\+Result$<$ object $>$ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_a_b_web_controller_a29d4d64b45d7587cc97c6e0a5fc47063}{Trim\+Logs}} (\mbox{[}From\+Query\mbox{]} int keep\+Days=0)
+\item 
+int \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_a_b_web_controller_a0e17b97985fac4957e421e82bafe74c3}{Trim\+Debug\+Logs}} ()
+\item 
+Action\+Result$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_a_b_web_1_1_web_shop_response}{Web\+Shop\+Response}} $>$ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_a_b_web_controller_a234f237116b44ffa8dbcec5c54bd4b62}{Order\+Report}} (\mbox{[}From\+Route\mbox{]} string branch, \mbox{[}From\+Query\mbox{]} string start, \mbox{[}From\+Query\mbox{]} string finish)
+\item 
+Action\+Result \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_a_b_web_controller_a8638e076ee45f86eb922864a478f6509}{Product\+Price\+List}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_a_b_web_controller_a8f4c5b39c6d018ed280f11a78506cee5}\label{class_internal_a_p_i_1_1_controllers_1_1_a_b_web_controller_a8f4c5b39c6d018ed280f11a78506cee5} 
+\index{InternalAPI.Controllers.ABWebController@{InternalAPI.Controllers.ABWebController}!ABWebController@{ABWebController}}
+\index{ABWebController@{ABWebController}!InternalAPI.Controllers.ABWebController@{InternalAPI.Controllers.ABWebController}}
+\doxysubsubsection{\texorpdfstring{ABWebController()}{ABWebController()}}
+{\footnotesize\ttfamily Internal\+API.\+Controllers.\+ABWeb\+Controller.\+ABWeb\+Controller (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{Log\+Service}}}]{logger,  }\item[{\mbox{\hyperlink{class_internal_a_p_i_1_1_contexts_1_1_a_b_web_1_1_a_b_web_context}{ABWeb\+Context}}}]{context,  }\item[{IOptions$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_a_b_web_settings}{ABWeb\+Settings}} $>$}]{settings }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger\ =\ logger;}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \_context\ =\ context;}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \_settings\ =\ settings.Value;}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_a_b_web_controller_a234f237116b44ffa8dbcec5c54bd4b62}\label{class_internal_a_p_i_1_1_controllers_1_1_a_b_web_controller_a234f237116b44ffa8dbcec5c54bd4b62} 
+\index{InternalAPI.Controllers.ABWebController@{InternalAPI.Controllers.ABWebController}!OrderReport@{OrderReport}}
+\index{OrderReport@{OrderReport}!InternalAPI.Controllers.ABWebController@{InternalAPI.Controllers.ABWebController}}
+\doxysubsubsection{\texorpdfstring{OrderReport()}{OrderReport()}}
+{\footnotesize\ttfamily Action\+Result$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_a_b_web_1_1_web_shop_response}{Web\+Shop\+Response}} $>$ Internal\+API.\+Controllers.\+ABWeb\+Controller.\+Order\+Report (\begin{DoxyParamCaption}\item[{\mbox{[}\+From\+Route\mbox{]} string}]{branch,  }\item[{\mbox{[}\+From\+Query\mbox{]} string}]{start,  }\item[{\mbox{[}\+From\+Query\mbox{]} string}]{finish }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_acf860ff3326ea65346a173f3479c6e57}{LogDebug}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.ABWebController,\ \$\textcolor{stringliteral}{"{}request\ received\ on\ /abweb/\{branch\}/orderReport,\ \ TimeBoundsUTC:\ \{start\}\ -\/\ \{finish\}"{}});}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient(\_settings.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_a_b_web_settings_a58d11d481e02dadad18f7701898912a0}{APIBaseURL}});}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ client.Authenticator\ =\ \textcolor{keyword}{new}\ HttpBasicAuthenticator(\_settings.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_a_b_web_settings_a0a99b2c0fd76bbeb527e5140ae018eba}{APIUsername}},\ \_settings.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_a_b_web_settings_a5a4d4df4f1ee19092476df6c5d5b51b9}{APIPassword}});}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ var\ request\ =\ \textcolor{keyword}{new}\ RestRequest(\_settings.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_a_b_web_settings_a4cc30c0a2065c15b54d6e465f17abb38}{OrderReportEndpoint}},\ Method.GET);}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddUrlSegment(\textcolor{stringliteral}{"{}branch"{}},\ branch);}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddQueryParameter(\textcolor{stringliteral}{"{}start"{}},\ start);}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddQueryParameter(\textcolor{stringliteral}{"{}finish"{}},\ finish);}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ IRestResponse\ response\ =\ client.Execute(request);}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ var\ responseObject\ =\ JsonConvert.DeserializeObject(response.Content);}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response\ !=\ \textcolor{keyword}{null}\ \&\&\ response.IsSuccessful\ \&\&\ response.StatusCode\ ==\ HttpStatusCode.OK\ \&\&\ !\textcolor{keywordtype}{string}.IsNullOrEmpty(response.Content))}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Ok(responseObject);}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ BadRequest(responseObject);}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_internal_a_p_i_1_1_controllers_1_1_a_b_web_controller_a234f237116b44ffa8dbcec5c54bd4b62_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_a_b_web_controller_a8638e076ee45f86eb922864a478f6509}\label{class_internal_a_p_i_1_1_controllers_1_1_a_b_web_controller_a8638e076ee45f86eb922864a478f6509} 
+\index{InternalAPI.Controllers.ABWebController@{InternalAPI.Controllers.ABWebController}!ProductPriceList@{ProductPriceList}}
+\index{ProductPriceList@{ProductPriceList}!InternalAPI.Controllers.ABWebController@{InternalAPI.Controllers.ABWebController}}
+\doxysubsubsection{\texorpdfstring{ProductPriceList()}{ProductPriceList()}}
+{\footnotesize\ttfamily Action\+Result Internal\+API.\+Controllers.\+ABWeb\+Controller.\+Product\+Price\+List (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_acf860ff3326ea65346a173f3479c6e57}{LogDebug}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.ABWebController,\ \$\textcolor{stringliteral}{"{}request\ received\ on\ /abweb/productlist/pricelist"{}});}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient(\_settings.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_a_b_web_settings_a58d11d481e02dadad18f7701898912a0}{APIBaseURL}});}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ client.Authenticator\ =\ \textcolor{keyword}{new}\ HttpBasicAuthenticator(\_settings.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_a_b_web_settings_a0a99b2c0fd76bbeb527e5140ae018eba}{APIUsername}},\ \_settings.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_a_b_web_settings_a5a4d4df4f1ee19092476df6c5d5b51b9}{APIPassword}});}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ request\ =\ \textcolor{keyword}{new}\ RestRequest(\_settings.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_a_b_web_settings_ae97eb776d1af94df3c64a6d185b4de0f}{ProductPriceListEndpoint}},\ Method.GET);}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ IRestResponse\ response\ =\ client.Execute(request);}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response\ !=\ \textcolor{keyword}{null}\ \&\&\ response.IsSuccessful)}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Ok(JsonConvert.DeserializeObject(response.Content));}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a778dd1666ec20e3197598d7aa41e0cba}{LogError}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.ABWebController,}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}error\ getting\ product\ price\ list\ from\ ab\ web"{}},}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}status\ code:\ "{}}\ +\ response.StatusCode,}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}error\ message:\ "{}}\ +\ response.ErrorMessage,}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}content:\ "{}}\ +\ response.Content);}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ BadRequest(response?.Content);}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}(Exception\ ex)}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_ad25f9b254876bb11d042df6148dab40a}{LogException}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.ABWebController,}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}exception\ getting\ product\ price\ list\ from\ ab\ web"{}},}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ex);}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ BadRequest(\$\textcolor{stringliteral}{"{}exception\ occurred,\ \{ex\}"{}});}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_internal_a_p_i_1_1_controllers_1_1_a_b_web_controller_a8638e076ee45f86eb922864a478f6509_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_a_b_web_controller_a0e17b97985fac4957e421e82bafe74c3}\label{class_internal_a_p_i_1_1_controllers_1_1_a_b_web_controller_a0e17b97985fac4957e421e82bafe74c3} 
+\index{InternalAPI.Controllers.ABWebController@{InternalAPI.Controllers.ABWebController}!TrimDebugLogs@{TrimDebugLogs}}
+\index{TrimDebugLogs@{TrimDebugLogs}!InternalAPI.Controllers.ABWebController@{InternalAPI.Controllers.ABWebController}}
+\doxysubsubsection{\texorpdfstring{TrimDebugLogs()}{TrimDebugLogs()}}
+{\footnotesize\ttfamily int Internal\+API.\+Controllers.\+ABWeb\+Controller.\+Trim\+Debug\+Logs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ var\ keepDays\ =\ 14;}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ var\ trimDate\ =\ DateTime.Now.AddDays(-\/keepDays);}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ var\ deleteSql\ =\ \$\textcolor{stringliteral}{"{}delete\ from\ assetlistdebugdatas\ where\ debugtime\ <\ '\{trimDate.Year\}-\/\{trimDate.Month\}-\/\{trimDate.Day\}'"{}};}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_context.Database.ExecuteSqlRaw(deleteSql);}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_ad25f9b254876bb11d042df6148dab40a}{LogException}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.ABWebController,\ \$\textcolor{stringliteral}{"{}exception\ trimming\ abweb\ assetlist\ debug\ logs\ using\ sql:\ \{deleteSql\}"{}},\ ex);}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_internal_a_p_i_1_1_controllers_1_1_a_b_web_controller_a0e17b97985fac4957e421e82bafe74c3_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_a_b_web_controller_a29d4d64b45d7587cc97c6e0a5fc47063}\label{class_internal_a_p_i_1_1_controllers_1_1_a_b_web_controller_a29d4d64b45d7587cc97c6e0a5fc47063} 
+\index{InternalAPI.Controllers.ABWebController@{InternalAPI.Controllers.ABWebController}!TrimLogs@{TrimLogs}}
+\index{TrimLogs@{TrimLogs}!InternalAPI.Controllers.ABWebController@{InternalAPI.Controllers.ABWebController}}
+\doxysubsubsection{\texorpdfstring{TrimLogs()}{TrimLogs()}}
+{\footnotesize\ttfamily Action\+Result$<$ object $>$ Internal\+API.\+Controllers.\+ABWeb\+Controller.\+Trim\+Logs (\begin{DoxyParamCaption}\item[{\mbox{[}\+From\+Query\mbox{]} int}]{keep\+Days = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (keepDays\ <\ 7)}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ keepDays\ =\ 30;}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ var\ trimDate\ =\ DateTime.Now.AddDays(-\/keepDays);}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ var\ deleteSql\ =\ \$\textcolor{stringliteral}{"{}delete\ from\ ablogentry\ where\ created\ <\ '\{trimDate.Year\}-\/\{trimDate.Month\}-\/\{trimDate.Day\}'"{}};}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ var\ deletedLogs\ =\ 0;}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_acf860ff3326ea65346a173f3479c6e57}{LogDebug}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.ABWebController,\ \$\textcolor{stringliteral}{"{}request\ received\ on\ /abweb/trimlogs,\ using\ sql\ \{deleteSql\}"{}});}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ deletedLogs\ =\ \_context.Database.ExecuteSqlRaw(deleteSql);}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_ad25f9b254876bb11d042df6148dab40a}{LogException}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.ABWebController,\ \$\textcolor{stringliteral}{"{}exception\ trimming\ abweb\ logs\ using\ sql:\ \{deleteSql\}"{}},\ ex);}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \{\ error\ =\ \textcolor{keyword}{true},\ message\ =\ \$\textcolor{stringliteral}{"{}exception\ deleting\ logs\ on\ abweb:\ \{ex\}"{}}\ \};}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \{\ error\ =\ \textcolor{keyword}{false},\ message\ =\ \ \$\textcolor{stringliteral}{"{}deleted\ \{deletedLogs\}\ logs"{}}\ \};}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_internal_a_p_i_1_1_controllers_1_1_a_b_web_controller_a29d4d64b45d7587cc97c6e0a5fc47063_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+STRIDER/source/repos/\+Internal\+API/\+Internal\+API/\+Controllers/\mbox{\hyperlink{_a_b_web_controller_8cs}{ABWeb\+Controller.\+cs}}\end{DoxyCompactItemize}

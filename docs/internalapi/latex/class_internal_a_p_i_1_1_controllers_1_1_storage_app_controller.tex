@@ -1,0 +1,301 @@
+\doxysection{Internal\+API.\+Controllers.\+Storage\+App\+Controller Class Reference}
+\hypertarget{class_internal_a_p_i_1_1_controllers_1_1_storage_app_controller}{}\label{class_internal_a_p_i_1_1_controllers_1_1_storage_app_controller}\index{InternalAPI.Controllers.StorageAppController@{InternalAPI.Controllers.StorageAppController}}
+
+
+Inheritance diagram for Internal\+API.\+Controllers.\+Storage\+App\+Controller\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{class_internal_a_p_i_1_1_controllers_1_1_storage_app_controller__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Internal\+API.\+Controllers.\+Storage\+App\+Controller\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{class_internal_a_p_i_1_1_controllers_1_1_storage_app_controller__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_storage_app_controller_ab47e5189e54df608055d470b0efd8a89}{Storage\+App\+Controller}} (ILogger$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_storage_app_controller}{Storage\+App\+Controller}} $>$ logger, IConfiguration configuration)
+\item 
+Action\+Result$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_storage_app_1_1_unallocated_totals}{Unallocated\+Totals}} $>$ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_storage_app_controller_af59ef393d7b9372deb2dba52a95fa975}{Unallocated\+Totals}} (string type, string id)
+\begin{DoxyCompactList}\small\item\em \{type\} is either branch or account \{id\} is either bne/mel or an account number \end{DoxyCompactList}\item 
+Action\+Result$<$ List$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_storage_app_1_1_calculated_storage_fee}{Calculated\+Storage\+Fee}} $>$ $>$ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_storage_app_controller_a9dfb17ea92ae9cadc4e1dbb3cf2a631c}{Allocated\+Storage\+Fees}} (\mbox{[}From\+Body()\mbox{]} List$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_price_app_1_1_product}{Product}} $>$ product\+List)
+\begin{DoxyCompactList}\small\item\em POST a list of priceapp products in the body of the request. \end{DoxyCompactList}\item 
+Action\+Result$<$ List$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_storage_app_1_1_a_p_i_user_account}{APIUser\+Account}} $>$ $>$ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_storage_app_controller_a940b470dd4e721bc8f2e8a48eb9846e5}{Contact\+Accounts}} (string email\+Address)
+\begin{DoxyCompactList}\small\item\em return list of accounts for email address \end{DoxyCompactList}\item 
+Action\+Result$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_storage_app_1_1_a_p_i_result}{APIResult}} $>$ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_storage_app_controller_ae1361b9aa4a42ec9f0fa146688b53120}{Generate\+Token}} (\mbox{[}From\+Body()\mbox{]} \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_storage_app_1_1_a_p_i_token_user}{APIToken\+User}} token\+User)
+\begin{DoxyCompactList}\small\item\em POST an email in an apitokenuser object to generate a token email. \end{DoxyCompactList}\item 
+Action\+Result$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_storage_app_1_1_validate_a_p_i_token_response}{Validate\+APIToken\+Response}} $>$ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_storage_app_controller_a48bf015adb13a1a6dc9a45a7df61c564}{Validate\+Token}} (\mbox{[}From\+Body()\mbox{]} \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_storage_app_1_1_a_p_i_token_user}{APIToken\+User}} token\+User)
+\begin{DoxyCompactList}\small\item\em POST an email and a token in an apitokenuser object to retrieve validation and alist of accessible accounots. \end{DoxyCompactList}\item 
+Action\+Result$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_storage_app_1_1_a_p_i_result}{APIResult}} $>$ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_storage_app_controller_a35de5cd340e032b70655f4c11a794aff}{New\+Order}} (\mbox{[}From\+Body()\mbox{]} \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_storage_app_1_1_incoming_order}{Incoming\+Order}} incoming\+Order)
+\begin{DoxyCompactList}\small\item\em POST an email in an apitokenuser object to generate a token email. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_storage_app_controller_ab47e5189e54df608055d470b0efd8a89}\label{class_internal_a_p_i_1_1_controllers_1_1_storage_app_controller_ab47e5189e54df608055d470b0efd8a89} 
+\index{InternalAPI.Controllers.StorageAppController@{InternalAPI.Controllers.StorageAppController}!StorageAppController@{StorageAppController}}
+\index{StorageAppController@{StorageAppController}!InternalAPI.Controllers.StorageAppController@{InternalAPI.Controllers.StorageAppController}}
+\doxysubsubsection{\texorpdfstring{StorageAppController()}{StorageAppController()}}
+{\footnotesize\ttfamily Internal\+API.\+Controllers.\+Storage\+App\+Controller.\+Storage\+App\+Controller (\begin{DoxyParamCaption}\item[{ILogger$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_storage_app_controller}{Storage\+App\+Controller}} $>$}]{logger,  }\item[{IConfiguration}]{configuration }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger\ =\ logger;}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ BaseURL\ =\ configuration[\textcolor{stringliteral}{"{}StorageAppSettings:BaseURL"{}}];}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ UnallocatedTotalsEndpoint\ =\ configuration[\textcolor{stringliteral}{"{}StorageAppSettings:UnallocatedTotalsEndpoint"{}}];}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ StorageFeesEndpoint\ =\ configuration[\textcolor{stringliteral}{"{}StorageAppSettings:StorageFeesEndpoint"{}}];}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ ContactAccountsEndpoint\ =\ configuration[\textcolor{stringliteral}{"{}StorageAppSettings:ContactAccountsEndpoint"{}}];}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ GenerateAccessTokenEndpoint\ =\ configuration[\textcolor{stringliteral}{"{}StorageAppSettings:GenerateAccessTokenEndpoint"{}}];}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ ValidateAccessTokenEndpoint\ =\ configuration[\textcolor{stringliteral}{"{}StorageAppSettings:ValidateAccessTokenEndpoint"{}}];}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ NewOrderEndpoint\ =\ configuration[\textcolor{stringliteral}{"{}StorageAppSettings:NewOrderEndpoint"{}}];}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ authCookieService\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_ainslie_identity_1_1_auth_cookie_service}{AuthCookieService}}(configuration);}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_storage_app_controller_a9dfb17ea92ae9cadc4e1dbb3cf2a631c}\label{class_internal_a_p_i_1_1_controllers_1_1_storage_app_controller_a9dfb17ea92ae9cadc4e1dbb3cf2a631c} 
+\index{InternalAPI.Controllers.StorageAppController@{InternalAPI.Controllers.StorageAppController}!AllocatedStorageFees@{AllocatedStorageFees}}
+\index{AllocatedStorageFees@{AllocatedStorageFees}!InternalAPI.Controllers.StorageAppController@{InternalAPI.Controllers.StorageAppController}}
+\doxysubsubsection{\texorpdfstring{AllocatedStorageFees()}{AllocatedStorageFees()}}
+{\footnotesize\ttfamily Action\+Result$<$ List$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_storage_app_1_1_calculated_storage_fee}{Calculated\+Storage\+Fee}} $>$ $>$ Internal\+API.\+Controllers.\+Storage\+App\+Controller.\+Allocated\+Storage\+Fees (\begin{DoxyParamCaption}\item[{\mbox{[}\+From\+Body()\mbox{]} List$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_price_app_1_1_product}{Product}} $>$}]{product\+List }\end{DoxyParamCaption})}
+
+
+
+POST a list of priceapp products in the body of the request. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ List<CalculatedStorageFee>\ totals\ =\ \textcolor{keyword}{new}\ List<CalculatedStorageFee>();}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient();}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ client.CookieContainer\ =\ \textcolor{keyword}{new}\ System.Net.CookieContainer();}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_ainslie_identity_1_1_ainslie_identity_response}{AinslieIdentityResponse}}\ ainslieIdentityResponse\ =\ authCookieService.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_ainslie_identity_1_1_auth_cookie_service_af537910bbb6d29c4be84aa4670f5ab3c}{PopulateAuthCookie}}(client);}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ainslieIdentityResponse.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_ainslie_identity_1_1_ainslie_identity_response_a080fa484c6ce051c00c483e51ac7c05c}{success}})}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ client.BaseUrl\ =\ \textcolor{keyword}{new}\ Uri(BaseURL);}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ RestRequest\ request\ =\ \textcolor{keyword}{new}\ RestRequest(StorageFeesEndpoint,\ Method.POST);}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ request.AddJsonBody(productList);}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ request.AddHeader(\textcolor{stringliteral}{"{}Content-\/Type"{}},\ \textcolor{stringliteral}{"{}application/json"{}});}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ request.AddHeader(\textcolor{stringliteral}{"{}Accept"{}},\ \textcolor{stringliteral}{"{}application/json"{}});}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ response\ =\ client.Execute(request);}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ totals\ =\ JsonConvert.DeserializeObject<List<CalculatedStorageFee>>(response.Content);}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception)}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \}}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ totals;}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_internal_a_p_i_1_1_controllers_1_1_storage_app_controller_a9dfb17ea92ae9cadc4e1dbb3cf2a631c_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_storage_app_controller_a940b470dd4e721bc8f2e8a48eb9846e5}\label{class_internal_a_p_i_1_1_controllers_1_1_storage_app_controller_a940b470dd4e721bc8f2e8a48eb9846e5} 
+\index{InternalAPI.Controllers.StorageAppController@{InternalAPI.Controllers.StorageAppController}!ContactAccounts@{ContactAccounts}}
+\index{ContactAccounts@{ContactAccounts}!InternalAPI.Controllers.StorageAppController@{InternalAPI.Controllers.StorageAppController}}
+\doxysubsubsection{\texorpdfstring{ContactAccounts()}{ContactAccounts()}}
+{\footnotesize\ttfamily Action\+Result$<$ List$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_storage_app_1_1_a_p_i_user_account}{APIUser\+Account}} $>$ $>$ Internal\+API.\+Controllers.\+Storage\+App\+Controller.\+Contact\+Accounts (\begin{DoxyParamCaption}\item[{string}]{email\+Address }\end{DoxyParamCaption})}
+
+
+
+return list of accounts for email address 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ var\ apiResult\ =\ \textcolor{keyword}{new}\ List<APIUserAccount>();}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient();}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ client.CookieContainer\ =\ \textcolor{keyword}{new}\ System.Net.CookieContainer();}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_ainslie_identity_1_1_ainslie_identity_response}{AinslieIdentityResponse}}\ ainslieIdentityResponse\ =\ authCookieService.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_ainslie_identity_1_1_auth_cookie_service_af537910bbb6d29c4be84aa4670f5ab3c}{PopulateAuthCookie}}(client);}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ainslieIdentityResponse.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_ainslie_identity_1_1_ainslie_identity_response_a080fa484c6ce051c00c483e51ac7c05c}{success}})}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ client.BaseUrl\ =\ \textcolor{keyword}{new}\ Uri(BaseURL);}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ RestRequest\ request\ =\ \textcolor{keyword}{new}\ RestRequest(ContactAccountsEndpoint,\ Method.GET);}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ request.AddHeader(\textcolor{stringliteral}{"{}Content-\/Type"{}},\ \textcolor{stringliteral}{"{}application/json"{}});}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ request.AddHeader(\textcolor{stringliteral}{"{}Accept"{}},\ \textcolor{stringliteral}{"{}application/json"{}});}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ request.AddQueryParameter(\textcolor{stringliteral}{"{}emailaddress"{}},\ emailAddress);}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ response\ =\ client.Execute(request);}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ apiResult\ =\ JsonConvert.DeserializeObject<List<APIUserAccount>>(response.Content);}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \}}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ apiResult;}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_internal_a_p_i_1_1_controllers_1_1_storage_app_controller_a940b470dd4e721bc8f2e8a48eb9846e5_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_storage_app_controller_ae1361b9aa4a42ec9f0fa146688b53120}\label{class_internal_a_p_i_1_1_controllers_1_1_storage_app_controller_ae1361b9aa4a42ec9f0fa146688b53120} 
+\index{InternalAPI.Controllers.StorageAppController@{InternalAPI.Controllers.StorageAppController}!GenerateToken@{GenerateToken}}
+\index{GenerateToken@{GenerateToken}!InternalAPI.Controllers.StorageAppController@{InternalAPI.Controllers.StorageAppController}}
+\doxysubsubsection{\texorpdfstring{GenerateToken()}{GenerateToken()}}
+{\footnotesize\ttfamily Action\+Result$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_storage_app_1_1_a_p_i_result}{APIResult}} $>$ Internal\+API.\+Controllers.\+Storage\+App\+Controller.\+Generate\+Token (\begin{DoxyParamCaption}\item[{\mbox{[}\+From\+Body()\mbox{]} \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_storage_app_1_1_a_p_i_token_user}{APIToken\+User}}}]{token\+User }\end{DoxyParamCaption})}
+
+
+
+POST an email in an apitokenuser object to generate a token email. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_storage_app_1_1_a_p_i_result}{APIResult}}\ apiResult\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_storage_app_1_1_a_p_i_result}{APIResult}}\ \{\ Success\ =\ \textcolor{keyword}{false}\ \};}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient();}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ client.CookieContainer\ =\ \textcolor{keyword}{new}\ System.Net.CookieContainer();}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_ainslie_identity_1_1_ainslie_identity_response}{AinslieIdentityResponse}}\ ainslieIdentityResponse\ =\ authCookieService.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_ainslie_identity_1_1_auth_cookie_service_af537910bbb6d29c4be84aa4670f5ab3c}{PopulateAuthCookie}}(client);}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ainslieIdentityResponse.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_ainslie_identity_1_1_ainslie_identity_response_a080fa484c6ce051c00c483e51ac7c05c}{success}})}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ client.BaseUrl\ =\ \textcolor{keyword}{new}\ Uri(BaseURL);}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ RestRequest\ request\ =\ \textcolor{keyword}{new}\ RestRequest(GenerateAccessTokenEndpoint,\ Method.POST);}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ request.AddJsonBody(tokenUser);}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ request.AddHeader(\textcolor{stringliteral}{"{}Content-\/Type"{}},\ \textcolor{stringliteral}{"{}application/json"{}});}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ request.AddHeader(\textcolor{stringliteral}{"{}Accept"{}},\ \textcolor{stringliteral}{"{}application/json"{}});}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ response\ =\ client.Execute(request);}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ apiResult\ =\ JsonConvert.DeserializeObject<\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_storage_app_1_1_a_p_i_result}{APIResult}}>(response.Content);}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception)}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \}}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ apiResult;}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_internal_a_p_i_1_1_controllers_1_1_storage_app_controller_ae1361b9aa4a42ec9f0fa146688b53120_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_storage_app_controller_a35de5cd340e032b70655f4c11a794aff}\label{class_internal_a_p_i_1_1_controllers_1_1_storage_app_controller_a35de5cd340e032b70655f4c11a794aff} 
+\index{InternalAPI.Controllers.StorageAppController@{InternalAPI.Controllers.StorageAppController}!NewOrder@{NewOrder}}
+\index{NewOrder@{NewOrder}!InternalAPI.Controllers.StorageAppController@{InternalAPI.Controllers.StorageAppController}}
+\doxysubsubsection{\texorpdfstring{NewOrder()}{NewOrder()}}
+{\footnotesize\ttfamily Action\+Result$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_storage_app_1_1_a_p_i_result}{APIResult}} $>$ Internal\+API.\+Controllers.\+Storage\+App\+Controller.\+New\+Order (\begin{DoxyParamCaption}\item[{\mbox{[}\+From\+Body()\mbox{]} \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_storage_app_1_1_incoming_order}{Incoming\+Order}}}]{incoming\+Order }\end{DoxyParamCaption})}
+
+
+
+POST an email in an apitokenuser object to generate a token email. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_storage_app_1_1_a_p_i_result}{APIResult}}\ apiResult\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_storage_app_1_1_a_p_i_result}{APIResult}}\ \{\ Success\ =\ \textcolor{keyword}{false}\ \};}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient();}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \ \ \ \ client.CookieContainer\ =\ \textcolor{keyword}{new}\ System.Net.CookieContainer();}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_ainslie_identity_1_1_ainslie_identity_response}{AinslieIdentityResponse}}\ ainslieIdentityResponse\ =\ authCookieService.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_ainslie_identity_1_1_auth_cookie_service_af537910bbb6d29c4be84aa4670f5ab3c}{PopulateAuthCookie}}(client);}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ainslieIdentityResponse.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_ainslie_identity_1_1_ainslie_identity_response_a080fa484c6ce051c00c483e51ac7c05c}{success}})}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ client.BaseUrl\ =\ \textcolor{keyword}{new}\ Uri(BaseURL);}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ RestRequest\ request\ =\ \textcolor{keyword}{new}\ RestRequest(NewOrderEndpoint,\ Method.POST);}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ request.AddJsonBody(incomingOrder);}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ request.AddHeader(\textcolor{stringliteral}{"{}Content-\/Type"{}},\ \textcolor{stringliteral}{"{}application/json"{}});}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ request.AddHeader(\textcolor{stringliteral}{"{}Accept"{}},\ \textcolor{stringliteral}{"{}application/json"{}});}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ response\ =\ client.Execute(request);}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ apiResult\ =\ JsonConvert.DeserializeObject<\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_storage_app_1_1_a_p_i_result}{APIResult}}>(response.Content);}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception)}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \}}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ apiResult;}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_internal_a_p_i_1_1_controllers_1_1_storage_app_controller_a35de5cd340e032b70655f4c11a794aff_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_storage_app_controller_af59ef393d7b9372deb2dba52a95fa975}\label{class_internal_a_p_i_1_1_controllers_1_1_storage_app_controller_af59ef393d7b9372deb2dba52a95fa975} 
+\index{InternalAPI.Controllers.StorageAppController@{InternalAPI.Controllers.StorageAppController}!UnallocatedTotals@{UnallocatedTotals}}
+\index{UnallocatedTotals@{UnallocatedTotals}!InternalAPI.Controllers.StorageAppController@{InternalAPI.Controllers.StorageAppController}}
+\doxysubsubsection{\texorpdfstring{UnallocatedTotals()}{UnallocatedTotals()}}
+{\footnotesize\ttfamily Action\+Result$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_storage_app_1_1_unallocated_totals}{Unallocated\+Totals}} $>$ Internal\+API.\+Controllers.\+Storage\+App\+Controller.\+Unallocated\+Totals (\begin{DoxyParamCaption}\item[{string}]{type,  }\item[{string}]{id }\end{DoxyParamCaption})}
+
+
+
+\{type\} is either branch or account \{id\} is either bne/mel or an account number 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ GetUnallocatedTotals(type,\ \textcolor{keywordtype}{id});\ }
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_storage_app_controller_a48bf015adb13a1a6dc9a45a7df61c564}\label{class_internal_a_p_i_1_1_controllers_1_1_storage_app_controller_a48bf015adb13a1a6dc9a45a7df61c564} 
+\index{InternalAPI.Controllers.StorageAppController@{InternalAPI.Controllers.StorageAppController}!ValidateToken@{ValidateToken}}
+\index{ValidateToken@{ValidateToken}!InternalAPI.Controllers.StorageAppController@{InternalAPI.Controllers.StorageAppController}}
+\doxysubsubsection{\texorpdfstring{ValidateToken()}{ValidateToken()}}
+{\footnotesize\ttfamily Action\+Result$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_storage_app_1_1_validate_a_p_i_token_response}{Validate\+APIToken\+Response}} $>$ Internal\+API.\+Controllers.\+Storage\+App\+Controller.\+Validate\+Token (\begin{DoxyParamCaption}\item[{\mbox{[}\+From\+Body()\mbox{]} \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_storage_app_1_1_a_p_i_token_user}{APIToken\+User}}}]{token\+User }\end{DoxyParamCaption})}
+
+
+
+POST an email and a token in an apitokenuser object to retrieve validation and alist of accessible accounots. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_storage_app_1_1_validate_a_p_i_token_response}{ValidateAPITokenResponse}}\ validateTokenResponse\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_storage_app_1_1_validate_a_p_i_token_response}{ValidateAPITokenResponse}}\ \{\ Contact\ =\ tokenUser\ \};}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient();}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \ \ client.CookieContainer\ =\ \textcolor{keyword}{new}\ System.Net.CookieContainer();}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_ainslie_identity_1_1_ainslie_identity_response}{AinslieIdentityResponse}}\ ainslieIdentityResponse\ =\ authCookieService.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_ainslie_identity_1_1_auth_cookie_service_af537910bbb6d29c4be84aa4670f5ab3c}{PopulateAuthCookie}}(client);}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ainslieIdentityResponse.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_ainslie_identity_1_1_ainslie_identity_response_a080fa484c6ce051c00c483e51ac7c05c}{success}})}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ client.BaseUrl\ =\ \textcolor{keyword}{new}\ Uri(BaseURL);}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ RestRequest\ request\ =\ \textcolor{keyword}{new}\ RestRequest(ValidateAccessTokenEndpoint,\ Method.POST);}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ request.AddJsonBody(tokenUser);}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ request.AddHeader(\textcolor{stringliteral}{"{}Content-\/Type"{}},\ \textcolor{stringliteral}{"{}application/json"{}});}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ request.AddHeader(\textcolor{stringliteral}{"{}Accept"{}},\ \textcolor{stringliteral}{"{}application/json"{}});}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ response\ =\ client.Execute(request);}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ validateTokenResponse\ =\ JsonConvert.DeserializeObject<\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_storage_app_1_1_validate_a_p_i_token_response}{ValidateAPITokenResponse}}>(response.Content);}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception)}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \}}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ validateTokenResponse;}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_internal_a_p_i_1_1_controllers_1_1_storage_app_controller_a48bf015adb13a1a6dc9a45a7df61c564_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+STRIDER/source/repos/\+Internal\+API/\+Internal\+API/\+Controllers/\mbox{\hyperlink{_storage_app_controller_8cs}{Storage\+App\+Controller.\+cs}}\end{DoxyCompactItemize}

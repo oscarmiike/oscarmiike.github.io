@@ -1,0 +1,66 @@
+\chapter{node-\/uuid Benchmarks}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_212bfbf03e60792c7074528e707a6f996}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_212bfbf03e60792c7074528e707a6f996}\index{node-\/uuid Benchmarks@{node-\/uuid Benchmarks}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_212bfbf03e60792c7074528e707a6f996_autotoc_md3829}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_212bfbf03e60792c7074528e707a6f996_autotoc_md3829}%
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_212bfbf03e60792c7074528e707a6f996_autotoc_md3830}{}\doxysubsection{\texorpdfstring{Results}{Results}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_212bfbf03e60792c7074528e707a6f996_autotoc_md3830}
+To see the results of our benchmarks visit \href{https://github.com/broofa/node-uuid/wiki/Benchmark}{\texttt{ https\+://github.\+com/broofa/node-\/uuid/wiki/\+Benchmark}}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_212bfbf03e60792c7074528e707a6f996_autotoc_md3831}{}\doxysubsection{\texorpdfstring{Run them yourself}{Run them yourself}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_212bfbf03e60792c7074528e707a6f996_autotoc_md3831}
+node-\/uuid comes with some benchmarks to measure performance of generating UUIDs. These can be run using node.\+js. node-\/uuid is being benchmarked against some other uuid modules, that are available through npm namely {\ttfamily uuid} and {\ttfamily uuid-\/js}.
+
+To prepare and run the benchmark issue;
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{npm\ install\ uuid\ uuid-\/js}
+\DoxyCodeLine{node\ benchmark/benchmark.js}
+
+\end{DoxyCode}
+
+
+You\textquotesingle{}ll see an output like this one\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\ v4}
+\DoxyCodeLine{nodeuuid.v4():\ 854700\ uuids/second}
+\DoxyCodeLine{nodeuuid.v4('binary'):\ 788643\ uuids/second}
+\DoxyCodeLine{nodeuuid.v4('binary',\ buffer):\ 1336898\ uuids/second}
+\DoxyCodeLine{uuid():\ 479386\ uuids/second}
+\DoxyCodeLine{uuid('binary'):\ 582072\ uuids/second}
+\DoxyCodeLine{uuidjs.create(4):\ 312304\ uuids/second}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\ v1}
+\DoxyCodeLine{nodeuuid.v1():\ 938086\ uuids/second}
+\DoxyCodeLine{nodeuuid.v1('binary'):\ 683060\ uuids/second}
+\DoxyCodeLine{nodeuuid.v1('binary',\ buffer):\ 1644736\ uuids/second}
+\DoxyCodeLine{uuidjs.create(1):\ 190621\ uuids/second}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item The {\ttfamily uuid()} entries are for Nikhil Marathe\textquotesingle{}s \href{https://bitbucket.org/nikhilm/uuidjs}{\texttt{ uuid module}} which is a wrapper around the native libuuid library.
+\item The {\ttfamily uuidjs()} entries are for Patrick Negri\textquotesingle{}s \href{https://github.com/pnegri/uuid-js}{\texttt{ uuid-\/js module}} which is a pure javascript implementation based on \href{https://github.com/LiosK/UUID.js}{\texttt{ UUID.\+js}} by LiosK.
+\end{DoxyItemize}
+
+If you want to get more reliable results you can run the benchmark multiple times and write the output into a log file\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{for\ i\ in\ \{0..9\};\ do\ node\ benchmark/benchmark.js\ >>\ benchmark/bench\_0.4.12.log;\ done;}
+
+\end{DoxyCode}
+
+
+If you\textquotesingle{}re interested in how performance varies between different node versions, you can issue the above command multiple times.
+
+You can then use the shell script {\ttfamily bench.\+sh} provided in this directory to calculate the averages over all benchmark runs and draw a nice plot\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{(cd\ benchmark/\ \&\&\ ./bench.sh)}
+
+\end{DoxyCode}
+
+
+This assumes you have \href{http://www.gnuplot.info/}{\texttt{ gnuplot}} and \href{http://www.imagemagick.org/}{\texttt{ Image\+Magick}} installed. You\textquotesingle{}ll find a nice {\ttfamily bench.\+png} graph in the {\ttfamily benchmark/} directory then. 

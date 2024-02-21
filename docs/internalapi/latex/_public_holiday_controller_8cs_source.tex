@@ -1,0 +1,113 @@
+\doxysection{Public\+Holiday\+Controller.\+cs}
+\hypertarget{_public_holiday_controller_8cs_source}{}\label{_public_holiday_controller_8cs_source}\index{C:/Users/STRIDER/source/repos/InternalAPI/InternalAPI/Controllers/PublicHolidayController.cs@{C:/Users/STRIDER/source/repos/InternalAPI/InternalAPI/Controllers/PublicHolidayController.cs}}
+\mbox{\hyperlink{_public_holiday_controller_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }Microsoft.AspNetCore.Mvc;}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }System.Linq;}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }System.Threading.Tasks;}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00006}00006\ \textcolor{keyword}{using\ }Microsoft.Extensions.Logging;}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00007}00007\ \textcolor{keyword}{using\ }Microsoft.Extensions.Configuration;}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00008}00008\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_dto_1_1_public_holiday}{InternalAPI.Dto.PublicHoliday}};}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00009}00009\ \textcolor{keyword}{using\ }Newtonsoft.Json;}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00010}00010\ \textcolor{keyword}{using\ }RestSharp;}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00012}00012\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_controllers}{InternalAPI.Controllers}}}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00013}00013\ \{}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00014}00014\ \ \ \ \ [Route(\textcolor{stringliteral}{"{}v1/[controller]"{}})]}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00015}00015\ \ \ \ \ [ApiController]}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00016}\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_public_holiday_controller}{00016}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_public_holiday_controller}{PublicHolidayController}}\ :\ Controller}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00017}00017\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ readonly\ ILogger<PublicHolidayController>\ \_logger;}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{string}\ baseURL\ \{\ \textcolor{keyword}{get};\ \textcolor{keyword}{set};\ \}}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{string}\ apiKey\ \{\ \textcolor{keyword}{get};\ \textcolor{keyword}{set};\ \}}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{string}\ apiCountryCode\ =\ \textcolor{stringliteral}{"{}AU"{}};}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00025}\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_public_holiday_controller_a5a17e590a55f89d3e9ab6edbf8152db7}{00025}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_public_holiday_controller_a5a17e590a55f89d3e9ab6edbf8152db7}{PublicHolidayController}}(ILogger<PublicHolidayController>\ logger,\ IConfiguration\ configuration)}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger\ =\ logger;}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ baseURL\ =\ configuration[\textcolor{stringliteral}{"{}PublicHolidaySettings:BaseURL"{}}];}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ apiKey\ =\ configuration[\textcolor{stringliteral}{"{}PublicHolidaySettings:APIKey"{}}];}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ [HttpGet(\textcolor{stringliteral}{"{}getyear"{}})]}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00033}\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_public_holiday_controller_aaad7806dd6e638a90e8b90c02accd6ea}{00033}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ ActionResult\ <List<PublicHoldayResponse>>\ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_public_holiday_controller_aaad7806dd6e638a90e8b90c02accd6ea}{GetPublicHolidaysByYear}}(\textcolor{keywordtype}{int}?\ year)}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!year.HasValue\ ||\ year\ <\ 1970)}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ year\ =\ DateTime.Now.Year;}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient(\textcolor{keyword}{new}\ Uri(baseURL));\ }
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ RestRequest\ request\ =\ \textcolor{keyword}{new}\ RestRequest(\textcolor{stringliteral}{"{}"{}},\ Method.GET);}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddHeader(\textcolor{stringliteral}{"{}Content-\/Type"{}},\ \textcolor{stringliteral}{"{}application/json"{}});}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddHeader(\textcolor{stringliteral}{"{}Accept"{}},\ \textcolor{stringliteral}{"{}application/json"{}});}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddParameter(\textcolor{stringliteral}{"{}api\_key"{}},\ apiKey,\ ParameterType.QueryString);}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddParameter(\textcolor{stringliteral}{"{}country"{}},\ apiCountryCode,\ ParameterType.QueryString);}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddParameter(\textcolor{stringliteral}{"{}year"{}},\ year,\ ParameterType.QueryString);}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ var\ response\ =\ client.Execute(request);}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ List<PublicHoldayResponse>\ PL\ =\ \textcolor{keyword}{new}\ List<PublicHoldayResponse>\ \{\ \};}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response.Content.Contains(\textcolor{stringliteral}{"{}error"{}}))}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogError(\$\textcolor{stringliteral}{"{}Error\ returned\ from\ public\ holiday\ API:\ \{response.Content\}"{}});}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ PL;}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!response.IsSuccessful\ ||\ \textcolor{keywordtype}{string}.IsNullOrEmpty(response.Content))}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogError(\$\textcolor{stringliteral}{"{}Public\ holiday\ API\ call\ not\ successful.\ \ StatusCode:\ \{response.StatusCode\}\ -\/\ \{response.StatusDescription\},\ Message:\ \{response.ErrorMessage\}"{}});}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PL\ =\ JsonConvert.DeserializeObject<List<PublicHoldayResponse>>(response.Content);}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception)}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \_logger.LogError(\$\textcolor{stringliteral}{"{}Exception\ deserialising\ response\ from\ public\ holiday\ day\ API:\ \{response.Content\}"{}});\ \}}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ PL;}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ [HttpGet(\textcolor{stringliteral}{"{}getdate"{}})]}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00070}\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_public_holiday_controller_adca3481c1eb207668886db5b0a1d3514}{00070}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ ActionResult<List<PublicHoldayResponse>>\ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_public_holiday_controller_adca3481c1eb207668886db5b0a1d3514}{GetPublicHolidaysByDate}}(\textcolor{keywordtype}{int}?\ year,\ \textcolor{keywordtype}{int}?\ month,\ \textcolor{keywordtype}{int}?\ day)}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!year.HasValue\ ||\ year\ <\ 1970\ ||\ year\ >\ 2070)\ \{\ year\ =\ DateTime.Now.Year;\ \}}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!month.HasValue\ ||\ month\ <\ 1\ ||\ month\ >\ 12)\ \{\ month\ =\ DateTime.Now.Month;\ \}}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!day.HasValue\ ||\ day\ <\ 1\ ||\ day\ >\ 31)\ \{\ day\ =\ DateTime.Now.Day;\ \}}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient(\textcolor{keyword}{new}\ Uri(baseURL));}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ RestRequest\ request\ =\ \textcolor{keyword}{new}\ RestRequest(\textcolor{stringliteral}{"{}"{}},\ Method.GET);}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddHeader(\textcolor{stringliteral}{"{}Content-\/Type"{}},\ \textcolor{stringliteral}{"{}application/json"{}});}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddHeader(\textcolor{stringliteral}{"{}Accept"{}},\ \textcolor{stringliteral}{"{}application/json"{}});}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddParameter(\textcolor{stringliteral}{"{}api\_key"{}},\ apiKey,\ ParameterType.QueryString);}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddParameter(\textcolor{stringliteral}{"{}country"{}},\ apiCountryCode,\ ParameterType.QueryString);}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddParameter(\textcolor{stringliteral}{"{}year"{}},\ year,\ ParameterType.QueryString);}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddParameter(\textcolor{stringliteral}{"{}month"{}},\ month,\ ParameterType.QueryString);}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddParameter(\textcolor{stringliteral}{"{}day"{}},\ day,\ ParameterType.QueryString);}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ var\ response\ =\ client.Execute(request);}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ List<PublicHoldayResponse>\ PL\ =\ \textcolor{keyword}{new}\ List<PublicHoldayResponse>\ \{\ \};}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response.Content.Contains(\textcolor{stringliteral}{"{}error"{}}))\ \{\ }
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogError(\$\textcolor{stringliteral}{"{}Error\ returned\ from\ public\ holiday\ API:\ \{response.Content\}"{}});}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ PL;}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!response.IsSuccessful\ ||\ \textcolor{keywordtype}{string}.IsNullOrEmpty(response.Content))}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogError(\$\textcolor{stringliteral}{"{}Public\ holiday\ API\ call\ not\ successful.\ \ StatusCode:\ \{response.StatusCode\}\ -\/\ \{response.StatusDescription\},\ Message:\ \{response.ErrorMessage\}"{}});}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PL\ =\ JsonConvert.DeserializeObject<List<PublicHoldayResponse>>(response.Content);}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception)}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \_logger.LogError(\$\textcolor{stringliteral}{"{}Exception\ deserialising\ response\ from\ public\ holiday\ day\ API:\ \{response.Content\}"{}});\ \}}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ PL;}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00104}00104\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00105}00105\ }
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00106}00106\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_public_holiday_controller_8cs_source_l00107}00107\ \}}
+
+\end{DoxyCode}

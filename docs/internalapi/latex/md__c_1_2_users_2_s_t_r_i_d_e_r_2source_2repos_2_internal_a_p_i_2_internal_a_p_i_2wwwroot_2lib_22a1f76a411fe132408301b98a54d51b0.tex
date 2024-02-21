@@ -1,0 +1,99 @@
+\chapter{README}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_22a1f76a411fe132408301b98a54d51b0}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_22a1f76a411fe132408301b98a54d51b0}\index{README@{README}}
+
+
+\href{http://gulpjs.com}{\texttt{  }} \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_22a1f76a411fe132408301b98a54d51b0_autotoc_md8407}{}\doxysection{\texorpdfstring{flagged-\/respawn}{flagged-\/respawn}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_22a1f76a411fe132408301b98a54d51b0_autotoc_md8407}
+\href{https://www.npmjs.com/package/flagged-respawn}{\texttt{ }} \href{https://www.npmjs.com/package/flagged-respawn}{\texttt{ }} \href{https://travis-ci.org/gulpjs/flagged-respawn}{\texttt{ }} \href{https://ci.appveyor.com/project/gulpjs/flagged-respawn}{\texttt{ }} \href{https://coveralls.io/r/gulpjs/flagged-respawn}{\texttt{ }} \href{https://gitter.im/gulpjs/gulp}{\texttt{ }}
+
+A tool for respawning node binaries when special flags are present.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_22a1f76a411fe132408301b98a54d51b0_autotoc_md8408}{}\doxysubsection{\texorpdfstring{What is it?}{What is it?}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_22a1f76a411fe132408301b98a54d51b0_autotoc_md8408}
+Say you wrote a command line tool that runs arbitrary javascript (e.\+g. task runner, test framework, etc). For the sake of discussion, let\textquotesingle{}s pretend it\textquotesingle{}s a testing harness you\textquotesingle{}ve named {\ttfamily testify}.
+
+Everything is going splendidly until one day you decide to test some code that relies on a feature behind a v8 flag in node ({\ttfamily -\/-\/harmony}, for example). Without much thought, you run {\ttfamily testify -\/-\/harmony spec tests.\+js}.
+
+It doesn\textquotesingle{}t work. After digging around for a bit, you realize this produces a \href{http://nodejs.org/docs/latest/api/process.html\#process_process_argv}{\texttt{ {\ttfamily process.\+argv}}} of\+:
+
+`\mbox{[}\textquotesingle{}node', \textquotesingle{}/usr/local/bin/test\textquotesingle{}, \textquotesingle{}--harmony\textquotesingle{}, \textquotesingle{}spec\textquotesingle{}, \textquotesingle{}tests.\+js\textquotesingle{}\mbox{]}\`{}
+
+Crap. The {\ttfamily -\/-\/harmony} flag is in the wrong place! It should be applied to the {\bfseries{node}} command, not our binary. What we actually wanted was this\+:
+
+`\mbox{[}\textquotesingle{}node', \textquotesingle{}--harmony\textquotesingle{}, \textquotesingle{}/usr/local/bin/test\textquotesingle{}, \textquotesingle{}spec\textquotesingle{}, \textquotesingle{}tests.\+js\textquotesingle{}\mbox{]}\`{}
+
+Flagged-\/respawn fixes this problem and handles all the edge cases respawning creates, such as\+:
+\begin{DoxyItemize}
+\item Providing a method to determine if a respawn is needed.
+\item Piping stderr/stdout from the child into the parent.
+\item Making the parent process exit with the same code as the child.
+\item If the child is killed, making the parent exit with the same signal.
+\end{DoxyItemize}
+
+To see it in action, clone this repository and run {\ttfamily npm install} / {\ttfamily npm run respawn} / {\ttfamily npm run nospawn}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_22a1f76a411fe132408301b98a54d51b0_autotoc_md8409}{}\doxysubsection{\texorpdfstring{Sample Usage}{Sample Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_22a1f76a411fe132408301b98a54d51b0_autotoc_md8409}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#!/usr/bin/env\ node}
+\DoxyCodeLine{}
+\DoxyCodeLine{const\ flaggedRespawn\ =\ require('flagged-\/respawn');}
+\DoxyCodeLine{}
+\DoxyCodeLine{//\ get\ a\ list\ of\ all\ possible\ v8\ flags\ for\ the\ running\ version\ of\ node}
+\DoxyCodeLine{const\ v8flags\ =\ require('v8flags').fetch();}
+\DoxyCodeLine{}
+\DoxyCodeLine{flaggedRespawn(v8flags,\ process.argv,\ function\ (ready,\ child)\ \{}
+\DoxyCodeLine{\ \ if\ (ready)\ \{}
+\DoxyCodeLine{\ \ \ \ console.log('Running!');}
+\DoxyCodeLine{\ \ \ \ //\ your\ cli\ code\ here}
+\DoxyCodeLine{\ \ \}\ else\ \{}
+\DoxyCodeLine{\ \ \ \ console.log('Special\ flags\ found,\ respawning.');}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\ \ if\ (process.pid\ !==\ child.pid)\ \{}
+\DoxyCodeLine{\ \ \ \ console.log('Respawned\ to\ PID:',\ child.pid);}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_22a1f76a411fe132408301b98a54d51b0_autotoc_md8410}{}\doxysubsection{\texorpdfstring{API}{API}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_22a1f76a411fe132408301b98a54d51b0_autotoc_md8410}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_22a1f76a411fe132408301b98a54d51b0_autotoc_md8411}{}\doxysubsubsection{\texorpdfstring{\uline{flagged\+Respawn(flags, argv, \mbox{[} forced\+Flags, \mbox{]} callback) \+: Void}}{\uline{flagged\+Respawn(flags, argv, \mbox{[} forced\+Flags, \mbox{]} callback) \+: Void}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_22a1f76a411fe132408301b98a54d51b0_autotoc_md8411}
+Respawns the script itself when {\itshape argv} has special flag contained in {\itshape flags} and/or {\itshape forced\+Flags} is not empty. Because members of {\itshape flags} and {\itshape forced\+Flags} are passed to {\ttfamily node} command, each of them needs to be a node flag or a V8 flag.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_22a1f76a411fe132408301b98a54d51b0_autotoc_md8412}{}\doxyparagraph{\texorpdfstring{Forbid respawning}{Forbid respawning}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_22a1f76a411fe132408301b98a54d51b0_autotoc_md8412}
+If {\ttfamily -\/-\/no-\/respawning} flag is given in {\itshape argv}, this function does not respawned even if {\itshape argv} contains members of flags or {\itshape forced\+Flags} is not empty. (This flag is also used internally to prevent from respawning more than once).\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_22a1f76a411fe132408301b98a54d51b0_autotoc_md8413}{}\doxyparagraph{\texorpdfstring{Parameter\+:}{Parameter\+:}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_22a1f76a411fe132408301b98a54d51b0_autotoc_md8413}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\cellcolor{\tableheadbgcolor}\textbf{ Parameter   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Type   }&\cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\cellcolor{\tableheadbgcolor}\textbf{ Parameter   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Type   }&\cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-3}
+\endhead
+{\itshape flags}   &\PBS\centering Array   &An array of node flags and V8 flags which are available when present in {\itshape argv}.    \\\cline{1-3}
+{\itshape argv}   &\PBS\centering Array   &Command line arguments to respawn.    \\\cline{1-3}
+{\itshape forced\+Flags}   &\PBS\centering Array or String   &An array of node flags or a string of a single flag and V8 flags for respawning forcely.    \\\cline{1-3}
+{\itshape callback}   &\PBS\centering function   &A called function when not respawning or after respawned.   \\\cline{1-3}
+\end{longtabu}
+
+
+
+\begin{DoxyItemize}
+\item \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\uline{{\itshape callback}(ready, proc, argv) \+: Void}\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
+
+{\itshape callback} function is called both when respawned or not, and it can be distinguished by callback\textquotesingle{}s argument\+: {\itshape ready}. ({\itshape ready} indicates whether a process spawned its child process (false) or not (true), but it does not indicate whether a process is a spawned child process or not. {\itshape ready} for a spawned child process is true.)
+
+{\itshape argv} is an array of command line arguments which is respawned (when {\itshape ready} is false) or is passed current process except flags within {\itshape flags} and {\ttfamily -\/-\/no-\/respawning} (when {\itshape ready} is true).
+
+{\bfseries{Parameter\+:}}
+\end{DoxyItemize}
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\cellcolor{\tableheadbgcolor}\textbf{ Parameter   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Type   }&\cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\cellcolor{\tableheadbgcolor}\textbf{ Parameter   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Type   }&\cellcolor{\tableheadbgcolor}\textbf{ Description    }\\\cline{1-3}
+\endhead
+{\itshape ready}   &\PBS\centering boolean   &True, if not respawning and is ready to execute main function.    \\\cline{1-3}
+{\itshape proc}   &\PBS\centering object   &Child process object if respawned, otherwise current process object.    \\\cline{1-3}
+{\itshape argv}   &\PBS\centering Array   &An array of command line arguments.   \\\cline{1-3}
+\end{longtabu}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_22a1f76a411fe132408301b98a54d51b0_autotoc_md8414}{}\doxysubsection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_22a1f76a411fe132408301b98a54d51b0_autotoc_md8414}
+MIT 

@@ -1,0 +1,439 @@
+\doxysection{Internal\+API.\+Services.\+Log\+Service Class Reference}
+\hypertarget{class_internal_a_p_i_1_1_services_1_1_log_service}{}\label{class_internal_a_p_i_1_1_services_1_1_log_service}\index{InternalAPI.Services.LogService@{InternalAPI.Services.LogService}}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a6406d1f9154522a1f77a7ab5d52dae14}{Log\+Types}} \{ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a6406d1f9154522a1f77a7ab5d52dae14aa603905470e2a5b8c13e96b579ef0dba}{Debug}}
+, \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a6406d1f9154522a1f77a7ab5d52dae14aa82be0f551b8708bc08eb33cd9ded0cf}{Information}}
+, \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a6406d1f9154522a1f77a7ab5d52dae14ab47f6a6092c5d7e4bffec12dff309c3b}{Err}}
+, \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a6406d1f9154522a1f77a7ab5d52dae14ab0d4998a26f5b5742ad38c4af8817e32}{Exception}}
+ \}
+\item 
+enum \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{Log\+Sources}} \{ \newline
+\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1ac6ef9642548f75729bf2383425199c21}{Log\+Service}}
+, \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1a46344c586c0c36dce62cb8727758a525}{Netsuite\+Controller}}
+, \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1abb09ec910136bb71c0a2030bac680da2}{Netsuite\+Service}}
+, \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1afa3f5ad05f0e30e84c22797b0307e6e0}{Web\+Shop\+Controller}}
+, \newline
+\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1a5b8ca68f5304dc2aa37c0b4711d01b7a}{Netsuite\+Helper}}
+, \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1abddc3f07f95413eaaf0f3908cb5f276e}{FTXOTCController}}
+, \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1a7b743929bd622fa3d30f5b2ae398cc8e}{b\+Pay\+Controller}}
+, \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1aca7b0b578103b07ba945ada79681716f}{b\+Pay\+Service}}
+, \newline
+\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1abe7345c66fe9574d454298a08f8f36e2}{Email\+Service}}
+, \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1ae75873af5cb1d43e053875ee5368210f}{Email\+Controller}}
+, \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1ad7c88e60e20f7e5ab1fb821d37c8a5e8}{Logs\+Controller}}
+, \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1a5b8000729d84b57b04570efaf5c6beb2}{Task\+APIService}}
+, \newline
+\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1af73fcd01281b3ca05eb4511ecd3ede2e}{Auth0\+Controller}}
+, \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1ae50b0b4483c6a5f2089f768a198143f3}{Auth0\+Service}}
+, \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1aa4da5eec4fbb9bc9c4b59d6c57fcfdf9}{SMSController}}
+, \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1abf953e772472fabb17578196b8000e95}{SMSGlobal\+Service}}
+, \newline
+\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1a0b8b5d715aa73e3159cef26959f2576d}{Ainslie\+News\+Controller}}
+, \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1a5e38b3a12aedb37792f8c8f448b9e719}{Ainslie\+News\+Service}}
+, \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1aed20cca3787859a28580ca5c1fdac1b8}{Green\+IDDBController}}
+, \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1a651506a5f7be1c4e2e6bb3c7b9cda9ee}{Green\+IDDBHelper}}
+, \newline
+\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1a1449b1469b6d6dd93897297bcf29857f}{Green\+IDController}}
+, \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1a21ebd1ebd23990030e852950fb7b4448}{Green\+IDService}}
+, \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1ae46fc0f33140e811f589495fe3eb5873}{ABWeb\+Controller}}
+, \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1adb097e57965f02ce1b4e4ae03cd3b566}{Ainslie\+APIController}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_ab324b1cb2058aa44915b8d55a5878e7c}{Log\+Service}} (\mbox{\hyperlink{class_internal_a_p_i_1_1_contexts_1_1_internal_a_p_i_1_1_internal_a_p_i_context}{Internal\+APIContext}} context, IOptions$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_s_q_l_logger_settings}{SQLLogger\+Settings}} $>$ sql\+Logger\+Settings)
+\item 
+\mbox{\hyperlink{class_internal_a_p_i_1_1_models_1_1_internal_a_p_i_1_1_log_entry}{Log\+Entry}} \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_acf860ff3326ea65346a173f3479c6e57}{Log\+Debug}} (\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{Log\+Sources}} log\+Source, params object\mbox{[}$\,$\mbox{]} data\+List)
+\item 
+\mbox{\hyperlink{class_internal_a_p_i_1_1_models_1_1_internal_a_p_i_1_1_log_entry}{Log\+Entry}} \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_ae7208181482f25f801a9d637367cc5e7}{Log\+Information}} (\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{Log\+Sources}} log\+Source, params object\mbox{[}$\,$\mbox{]} data\+List)
+\item 
+\mbox{\hyperlink{class_internal_a_p_i_1_1_models_1_1_internal_a_p_i_1_1_log_entry}{Log\+Entry}} \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a778dd1666ec20e3197598d7aa41e0cba}{Log\+Error}} (\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{Log\+Sources}} log\+Source, params object\mbox{[}$\,$\mbox{]} data\+List)
+\item 
+\mbox{\hyperlink{class_internal_a_p_i_1_1_models_1_1_internal_a_p_i_1_1_log_entry}{Log\+Entry}} \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_ad25f9b254876bb11d042df6148dab40a}{Log\+Exception}} (\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{Log\+Sources}} log\+Source, params object\mbox{[}$\,$\mbox{]} data\+List)
+\item 
+\mbox{\hyperlink{class_internal_a_p_i_1_1_models_1_1_internal_a_p_i_1_1_log_entry}{Log\+Entry}} \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a65f60a581a2783a25374bf30c5030e52}{Insert\+Log}} (\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a6406d1f9154522a1f77a7ab5d52dae14}{Log\+Types}} log\+Type, int thread\+ID, \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{Log\+Sources}} log\+Source, params object\mbox{[}$\,$\mbox{]} Data\+List)
+\begin{DoxyCompactList}\small\item\em inserts log to database \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Enumeration Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}\label{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1} 
+\index{InternalAPI.Services.LogService@{InternalAPI.Services.LogService}!LogSources@{LogSources}}
+\index{LogSources@{LogSources}!InternalAPI.Services.LogService@{InternalAPI.Services.LogService}}
+\doxysubsubsection{\texorpdfstring{LogSources}{LogSources}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{Internal\+API.\+Services.\+Log\+Service.\+Log\+Sources}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LogService@{LogService}!InternalAPI.Services.LogService@{InternalAPI.Services.LogService}}\index{InternalAPI.Services.LogService@{InternalAPI.Services.LogService}!LogService@{LogService}}}\Hypertarget{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1ac6ef9642548f75729bf2383425199c21}\label{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1ac6ef9642548f75729bf2383425199c21} 
+Log\+Service&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NetsuiteController@{NetsuiteController}!InternalAPI.Services.LogService@{InternalAPI.Services.LogService}}\index{InternalAPI.Services.LogService@{InternalAPI.Services.LogService}!NetsuiteController@{NetsuiteController}}}\Hypertarget{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1a46344c586c0c36dce62cb8727758a525}\label{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1a46344c586c0c36dce62cb8727758a525} 
+Netsuite\+Controller&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NetsuiteService@{NetsuiteService}!InternalAPI.Services.LogService@{InternalAPI.Services.LogService}}\index{InternalAPI.Services.LogService@{InternalAPI.Services.LogService}!NetsuiteService@{NetsuiteService}}}\Hypertarget{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1abb09ec910136bb71c0a2030bac680da2}\label{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1abb09ec910136bb71c0a2030bac680da2} 
+Netsuite\+Service&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{WebShopController@{WebShopController}!InternalAPI.Services.LogService@{InternalAPI.Services.LogService}}\index{InternalAPI.Services.LogService@{InternalAPI.Services.LogService}!WebShopController@{WebShopController}}}\Hypertarget{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1afa3f5ad05f0e30e84c22797b0307e6e0}\label{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1afa3f5ad05f0e30e84c22797b0307e6e0} 
+Web\+Shop\+Controller&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NetsuiteHelper@{NetsuiteHelper}!InternalAPI.Services.LogService@{InternalAPI.Services.LogService}}\index{InternalAPI.Services.LogService@{InternalAPI.Services.LogService}!NetsuiteHelper@{NetsuiteHelper}}}\Hypertarget{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1a5b8ca68f5304dc2aa37c0b4711d01b7a}\label{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1a5b8ca68f5304dc2aa37c0b4711d01b7a} 
+Netsuite\+Helper&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FTXOTCController@{FTXOTCController}!InternalAPI.Services.LogService@{InternalAPI.Services.LogService}}\index{InternalAPI.Services.LogService@{InternalAPI.Services.LogService}!FTXOTCController@{FTXOTCController}}}\Hypertarget{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1abddc3f07f95413eaaf0f3908cb5f276e}\label{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1abddc3f07f95413eaaf0f3908cb5f276e} 
+FTXOTCController&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{bPayController@{bPayController}!InternalAPI.Services.LogService@{InternalAPI.Services.LogService}}\index{InternalAPI.Services.LogService@{InternalAPI.Services.LogService}!bPayController@{bPayController}}}\Hypertarget{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1a7b743929bd622fa3d30f5b2ae398cc8e}\label{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1a7b743929bd622fa3d30f5b2ae398cc8e} 
+b\+Pay\+Controller&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{bPayService@{bPayService}!InternalAPI.Services.LogService@{InternalAPI.Services.LogService}}\index{InternalAPI.Services.LogService@{InternalAPI.Services.LogService}!bPayService@{bPayService}}}\Hypertarget{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1aca7b0b578103b07ba945ada79681716f}\label{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1aca7b0b578103b07ba945ada79681716f} 
+b\+Pay\+Service&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EmailService@{EmailService}!InternalAPI.Services.LogService@{InternalAPI.Services.LogService}}\index{InternalAPI.Services.LogService@{InternalAPI.Services.LogService}!EmailService@{EmailService}}}\Hypertarget{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1abe7345c66fe9574d454298a08f8f36e2}\label{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1abe7345c66fe9574d454298a08f8f36e2} 
+Email\+Service&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EmailController@{EmailController}!InternalAPI.Services.LogService@{InternalAPI.Services.LogService}}\index{InternalAPI.Services.LogService@{InternalAPI.Services.LogService}!EmailController@{EmailController}}}\Hypertarget{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1ae75873af5cb1d43e053875ee5368210f}\label{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1ae75873af5cb1d43e053875ee5368210f} 
+Email\+Controller&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LogsController@{LogsController}!InternalAPI.Services.LogService@{InternalAPI.Services.LogService}}\index{InternalAPI.Services.LogService@{InternalAPI.Services.LogService}!LogsController@{LogsController}}}\Hypertarget{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1ad7c88e60e20f7e5ab1fb821d37c8a5e8}\label{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1ad7c88e60e20f7e5ab1fb821d37c8a5e8} 
+Logs\+Controller&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TaskAPIService@{TaskAPIService}!InternalAPI.Services.LogService@{InternalAPI.Services.LogService}}\index{InternalAPI.Services.LogService@{InternalAPI.Services.LogService}!TaskAPIService@{TaskAPIService}}}\Hypertarget{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1a5b8000729d84b57b04570efaf5c6beb2}\label{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1a5b8000729d84b57b04570efaf5c6beb2} 
+Task\+APIService&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Auth0Controller@{Auth0Controller}!InternalAPI.Services.LogService@{InternalAPI.Services.LogService}}\index{InternalAPI.Services.LogService@{InternalAPI.Services.LogService}!Auth0Controller@{Auth0Controller}}}\Hypertarget{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1af73fcd01281b3ca05eb4511ecd3ede2e}\label{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1af73fcd01281b3ca05eb4511ecd3ede2e} 
+Auth0\+Controller&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Auth0Service@{Auth0Service}!InternalAPI.Services.LogService@{InternalAPI.Services.LogService}}\index{InternalAPI.Services.LogService@{InternalAPI.Services.LogService}!Auth0Service@{Auth0Service}}}\Hypertarget{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1ae50b0b4483c6a5f2089f768a198143f3}\label{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1ae50b0b4483c6a5f2089f768a198143f3} 
+Auth0\+Service&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SMSController@{SMSController}!InternalAPI.Services.LogService@{InternalAPI.Services.LogService}}\index{InternalAPI.Services.LogService@{InternalAPI.Services.LogService}!SMSController@{SMSController}}}\Hypertarget{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1aa4da5eec4fbb9bc9c4b59d6c57fcfdf9}\label{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1aa4da5eec4fbb9bc9c4b59d6c57fcfdf9} 
+SMSController&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SMSGlobalService@{SMSGlobalService}!InternalAPI.Services.LogService@{InternalAPI.Services.LogService}}\index{InternalAPI.Services.LogService@{InternalAPI.Services.LogService}!SMSGlobalService@{SMSGlobalService}}}\Hypertarget{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1abf953e772472fabb17578196b8000e95}\label{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1abf953e772472fabb17578196b8000e95} 
+SMSGlobal\+Service&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AinslieNewsController@{AinslieNewsController}!InternalAPI.Services.LogService@{InternalAPI.Services.LogService}}\index{InternalAPI.Services.LogService@{InternalAPI.Services.LogService}!AinslieNewsController@{AinslieNewsController}}}\Hypertarget{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1a0b8b5d715aa73e3159cef26959f2576d}\label{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1a0b8b5d715aa73e3159cef26959f2576d} 
+Ainslie\+News\+Controller&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AinslieNewsService@{AinslieNewsService}!InternalAPI.Services.LogService@{InternalAPI.Services.LogService}}\index{InternalAPI.Services.LogService@{InternalAPI.Services.LogService}!AinslieNewsService@{AinslieNewsService}}}\Hypertarget{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1a5e38b3a12aedb37792f8c8f448b9e719}\label{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1a5e38b3a12aedb37792f8c8f448b9e719} 
+Ainslie\+News\+Service&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GreenIDDBController@{GreenIDDBController}!InternalAPI.Services.LogService@{InternalAPI.Services.LogService}}\index{InternalAPI.Services.LogService@{InternalAPI.Services.LogService}!GreenIDDBController@{GreenIDDBController}}}\Hypertarget{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1aed20cca3787859a28580ca5c1fdac1b8}\label{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1aed20cca3787859a28580ca5c1fdac1b8} 
+Green\+IDDBController&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GreenIDDBHelper@{GreenIDDBHelper}!InternalAPI.Services.LogService@{InternalAPI.Services.LogService}}\index{InternalAPI.Services.LogService@{InternalAPI.Services.LogService}!GreenIDDBHelper@{GreenIDDBHelper}}}\Hypertarget{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1a651506a5f7be1c4e2e6bb3c7b9cda9ee}\label{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1a651506a5f7be1c4e2e6bb3c7b9cda9ee} 
+Green\+IDDBHelper&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GreenIDController@{GreenIDController}!InternalAPI.Services.LogService@{InternalAPI.Services.LogService}}\index{InternalAPI.Services.LogService@{InternalAPI.Services.LogService}!GreenIDController@{GreenIDController}}}\Hypertarget{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1a1449b1469b6d6dd93897297bcf29857f}\label{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1a1449b1469b6d6dd93897297bcf29857f} 
+Green\+IDController&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GreenIDService@{GreenIDService}!InternalAPI.Services.LogService@{InternalAPI.Services.LogService}}\index{InternalAPI.Services.LogService@{InternalAPI.Services.LogService}!GreenIDService@{GreenIDService}}}\Hypertarget{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1a21ebd1ebd23990030e852950fb7b4448}\label{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1a21ebd1ebd23990030e852950fb7b4448} 
+Green\+IDService&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ABWebController@{ABWebController}!InternalAPI.Services.LogService@{InternalAPI.Services.LogService}}\index{InternalAPI.Services.LogService@{InternalAPI.Services.LogService}!ABWebController@{ABWebController}}}\Hypertarget{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1ae46fc0f33140e811f589495fe3eb5873}\label{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1ae46fc0f33140e811f589495fe3eb5873} 
+ABWeb\+Controller&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AinslieAPIController@{AinslieAPIController}!InternalAPI.Services.LogService@{InternalAPI.Services.LogService}}\index{InternalAPI.Services.LogService@{InternalAPI.Services.LogService}!AinslieAPIController@{AinslieAPIController}}}\Hypertarget{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1adb097e57965f02ce1b4e4ae03cd3b566}\label{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1adb097e57965f02ce1b4e4ae03cd3b566} 
+Ainslie\+APIController&\\
+\hline
+
+\end{DoxyEnumFields}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1ac6ef9642548f75729bf2383425199c21}{LogService}},}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1a46344c586c0c36dce62cb8727758a525}{NetsuiteController}},}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1abb09ec910136bb71c0a2030bac680da2}{NetsuiteService}},}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1afa3f5ad05f0e30e84c22797b0307e6e0}{WebShopController}},}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1a5b8ca68f5304dc2aa37c0b4711d01b7a}{NetsuiteHelper}},}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1abddc3f07f95413eaaf0f3908cb5f276e}{FTXOTCController}},}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1a7b743929bd622fa3d30f5b2ae398cc8e}{bPayController}},}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1aca7b0b578103b07ba945ada79681716f}{bPayService}},}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1abe7345c66fe9574d454298a08f8f36e2}{EmailService}},}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1ae75873af5cb1d43e053875ee5368210f}{EmailController}},}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1ad7c88e60e20f7e5ab1fb821d37c8a5e8}{LogsController}},}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1a5b8000729d84b57b04570efaf5c6beb2}{TaskAPIService}},}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1af73fcd01281b3ca05eb4511ecd3ede2e}{Auth0Controller}},}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1ae50b0b4483c6a5f2089f768a198143f3}{Auth0Service}},}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1aa4da5eec4fbb9bc9c4b59d6c57fcfdf9}{SMSController}},}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1abf953e772472fabb17578196b8000e95}{SMSGlobalService}},}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1a0b8b5d715aa73e3159cef26959f2576d}{AinslieNewsController}},}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1a5e38b3a12aedb37792f8c8f448b9e719}{AinslieNewsService}},}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1aed20cca3787859a28580ca5c1fdac1b8}{GreenIDDBController}},}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1a651506a5f7be1c4e2e6bb3c7b9cda9ee}{GreenIDDBHelper}},}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1a1449b1469b6d6dd93897297bcf29857f}{GreenIDController}},}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1a21ebd1ebd23990030e852950fb7b4448}{GreenIDService}},}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1ae46fc0f33140e811f589495fe3eb5873}{ABWebController}},}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1adb097e57965f02ce1b4e4ae03cd3b566}{AinslieAPIController}}}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_internal_a_p_i_1_1_services_1_1_log_service_a6406d1f9154522a1f77a7ab5d52dae14}\label{class_internal_a_p_i_1_1_services_1_1_log_service_a6406d1f9154522a1f77a7ab5d52dae14} 
+\index{InternalAPI.Services.LogService@{InternalAPI.Services.LogService}!LogTypes@{LogTypes}}
+\index{LogTypes@{LogTypes}!InternalAPI.Services.LogService@{InternalAPI.Services.LogService}}
+\doxysubsubsection{\texorpdfstring{LogTypes}{LogTypes}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a6406d1f9154522a1f77a7ab5d52dae14}{Internal\+API.\+Services.\+Log\+Service.\+Log\+Types}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Debug@{Debug}!InternalAPI.Services.LogService@{InternalAPI.Services.LogService}}\index{InternalAPI.Services.LogService@{InternalAPI.Services.LogService}!Debug@{Debug}}}\Hypertarget{class_internal_a_p_i_1_1_services_1_1_log_service_a6406d1f9154522a1f77a7ab5d52dae14aa603905470e2a5b8c13e96b579ef0dba}\label{class_internal_a_p_i_1_1_services_1_1_log_service_a6406d1f9154522a1f77a7ab5d52dae14aa603905470e2a5b8c13e96b579ef0dba} 
+Debug&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Information@{Information}!InternalAPI.Services.LogService@{InternalAPI.Services.LogService}}\index{InternalAPI.Services.LogService@{InternalAPI.Services.LogService}!Information@{Information}}}\Hypertarget{class_internal_a_p_i_1_1_services_1_1_log_service_a6406d1f9154522a1f77a7ab5d52dae14aa82be0f551b8708bc08eb33cd9ded0cf}\label{class_internal_a_p_i_1_1_services_1_1_log_service_a6406d1f9154522a1f77a7ab5d52dae14aa82be0f551b8708bc08eb33cd9ded0cf} 
+Information&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Err@{Err}!InternalAPI.Services.LogService@{InternalAPI.Services.LogService}}\index{InternalAPI.Services.LogService@{InternalAPI.Services.LogService}!Err@{Err}}}\Hypertarget{class_internal_a_p_i_1_1_services_1_1_log_service_a6406d1f9154522a1f77a7ab5d52dae14ab47f6a6092c5d7e4bffec12dff309c3b}\label{class_internal_a_p_i_1_1_services_1_1_log_service_a6406d1f9154522a1f77a7ab5d52dae14ab47f6a6092c5d7e4bffec12dff309c3b} 
+Err&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Exception@{Exception}!InternalAPI.Services.LogService@{InternalAPI.Services.LogService}}\index{InternalAPI.Services.LogService@{InternalAPI.Services.LogService}!Exception@{Exception}}}\Hypertarget{class_internal_a_p_i_1_1_services_1_1_log_service_a6406d1f9154522a1f77a7ab5d52dae14ab0d4998a26f5b5742ad38c4af8817e32}\label{class_internal_a_p_i_1_1_services_1_1_log_service_a6406d1f9154522a1f77a7ab5d52dae14ab0d4998a26f5b5742ad38c4af8817e32} 
+Exception&\\
+\hline
+
+\end{DoxyEnumFields}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a6406d1f9154522a1f77a7ab5d52dae14aa603905470e2a5b8c13e96b579ef0dba}{Debug}},}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a6406d1f9154522a1f77a7ab5d52dae14aa82be0f551b8708bc08eb33cd9ded0cf}{Information}},}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a6406d1f9154522a1f77a7ab5d52dae14ab47f6a6092c5d7e4bffec12dff309c3b}{Err}},}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a6406d1f9154522a1f77a7ab5d52dae14ab0d4998a26f5b5742ad38c4af8817e32}{Exception}}}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_services_1_1_log_service_ab324b1cb2058aa44915b8d55a5878e7c}\label{class_internal_a_p_i_1_1_services_1_1_log_service_ab324b1cb2058aa44915b8d55a5878e7c} 
+\index{InternalAPI.Services.LogService@{InternalAPI.Services.LogService}!LogService@{LogService}}
+\index{LogService@{LogService}!InternalAPI.Services.LogService@{InternalAPI.Services.LogService}}
+\doxysubsubsection{\texorpdfstring{LogService()}{LogService()}}
+{\footnotesize\ttfamily Internal\+API.\+Services.\+Log\+Service.\+Log\+Service (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_internal_a_p_i_1_1_contexts_1_1_internal_a_p_i_1_1_internal_a_p_i_context}{Internal\+APIContext}}}]{context,  }\item[{IOptions$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_s_q_l_logger_settings}{SQLLogger\+Settings}} $>$}]{sql\+Logger\+Settings }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \_context\ =\ context;}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \_sqlLoggerSettings\ =\ sqlLoggerSettings.Value;}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_services_1_1_log_service_a65f60a581a2783a25374bf30c5030e52}\label{class_internal_a_p_i_1_1_services_1_1_log_service_a65f60a581a2783a25374bf30c5030e52} 
+\index{InternalAPI.Services.LogService@{InternalAPI.Services.LogService}!InsertLog@{InsertLog}}
+\index{InsertLog@{InsertLog}!InternalAPI.Services.LogService@{InternalAPI.Services.LogService}}
+\doxysubsubsection{\texorpdfstring{InsertLog()}{InsertLog()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_internal_a_p_i_1_1_models_1_1_internal_a_p_i_1_1_log_entry}{Log\+Entry}} Internal\+API.\+Services.\+Log\+Service.\+Insert\+Log (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a6406d1f9154522a1f77a7ab5d52dae14}{Log\+Types}}}]{log\+Type,  }\item[{int}]{thread\+ID,  }\item[{\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{Log\+Sources}}}]{log\+Source,  }\item[{params object\mbox{[}$\,$\mbox{]}}]{Data\+List }\end{DoxyParamCaption})}
+
+
+
+inserts log to database 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Type} & an entry from the logtypes enum\\
+\hline
+{\em Source} & an entry from the the logsources enum\\
+\hline
+{\em Data\+List} & a paramarray containing any number of objects to be serialised. usually start with a string message\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_models_1_1_internal_a_p_i_1_1_log_entry}{LogEntry}}\ logEntry;}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//try\ to\ create\ log\ entry\ by\ deserialising\ objects\ in\ param\ array\ datalist}}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ logEntry\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_models_1_1_internal_a_p_i_1_1_log_entry}{LogEntry}}() }
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Created\ =\ DateTime.Now,}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Type\ =\ logType.ToString(),}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ThreadID\ =\ threadID,}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Source\ =\ logSource.ToString(),}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Data\ =\ JsonConvert.SerializeObject(DataList,\ \textcolor{keyword}{new}\ JsonSerializerSettings}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ReferenceLoopHandling\ =\ ReferenceLoopHandling.Ignore}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \})}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a6406d1f9154522a1f77a7ab5d52dae14ab0d4998a26f5b5742ad38c4af8817e32}{Exception}}\ ex)}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//create\ new\ logentry\ with\ exception}}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ logEntry\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_models_1_1_internal_a_p_i_1_1_log_entry}{LogEntry}}() }
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Created\ =\ DateTime.Now,}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Type\ =\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a6406d1f9154522a1f77a7ab5d52dae14}{LogTypes}}.Exception.ToString(),}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ThreadID\ =\ threadID,}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Source\ =\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.LogService.ToString(),}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Data\ =\ \$\textcolor{stringliteral}{"{}Exception\ creating\ logEntry:\ \{ex.ToString()\}"{}}}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_context.\mbox{\hyperlink{class_internal_a_p_i_1_1_contexts_1_1_internal_a_p_i_1_1_internal_a_p_i_context_ad79a5ad951fe31de5c20042a1fb05e8b}{LogEntries}}.Add(logEntry);}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_context.SaveChanges();}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ logEntry;}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a6406d1f9154522a1f77a7ab5d52dae14ab0d4998a26f5b5742ad38c4af8817e32}{Exception}}\ ex)}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ WriteLog(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a6406d1f9154522a1f77a7ab5d52dae14}{LogTypes}}.Exception,\ \textcolor{stringliteral}{"{}LogService"{}},\ \$\textcolor{stringliteral}{"{}Exception\ trying\ to\ insert\ log.\ \ Exception:\ \{ex.ToString()\}"{}});}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_internal_a_p_i_1_1_services_1_1_log_service_a65f60a581a2783a25374bf30c5030e52_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_internal_a_p_i_1_1_services_1_1_log_service_acf860ff3326ea65346a173f3479c6e57}\label{class_internal_a_p_i_1_1_services_1_1_log_service_acf860ff3326ea65346a173f3479c6e57} 
+\index{InternalAPI.Services.LogService@{InternalAPI.Services.LogService}!LogDebug@{LogDebug}}
+\index{LogDebug@{LogDebug}!InternalAPI.Services.LogService@{InternalAPI.Services.LogService}}
+\doxysubsubsection{\texorpdfstring{LogDebug()}{LogDebug()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_internal_a_p_i_1_1_models_1_1_internal_a_p_i_1_1_log_entry}{Log\+Entry}} Internal\+API.\+Services.\+Log\+Service.\+Log\+Debug (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{Log\+Sources}}}]{log\+Source,  }\item[{params object\mbox{[}$\,$\mbox{]}}]{data\+List }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\_sqlLoggerSettings.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_s_q_l_logger_settings_a4ab5043bd32bb3d277f9a353f8cd6e5a}{LogDebug}})\ \{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};\ \}}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ var\ threadID\ =\ System.Environment.CurrentManagedThreadId;}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a65f60a581a2783a25374bf30c5030e52}{InsertLog}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a6406d1f9154522a1f77a7ab5d52dae14}{LogTypes}}.Debug,\ threadID,\ logSource,\ dataList);}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_internal_a_p_i_1_1_services_1_1_log_service_acf860ff3326ea65346a173f3479c6e57_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_internal_a_p_i_1_1_services_1_1_log_service_acf860ff3326ea65346a173f3479c6e57_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_internal_a_p_i_1_1_services_1_1_log_service_a778dd1666ec20e3197598d7aa41e0cba}\label{class_internal_a_p_i_1_1_services_1_1_log_service_a778dd1666ec20e3197598d7aa41e0cba} 
+\index{InternalAPI.Services.LogService@{InternalAPI.Services.LogService}!LogError@{LogError}}
+\index{LogError@{LogError}!InternalAPI.Services.LogService@{InternalAPI.Services.LogService}}
+\doxysubsubsection{\texorpdfstring{LogError()}{LogError()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_internal_a_p_i_1_1_models_1_1_internal_a_p_i_1_1_log_entry}{Log\+Entry}} Internal\+API.\+Services.\+Log\+Service.\+Log\+Error (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{Log\+Sources}}}]{log\+Source,  }\item[{params object\mbox{[}$\,$\mbox{]}}]{data\+List }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ var\ threadID\ =\ System.Environment.CurrentManagedThreadId;}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a65f60a581a2783a25374bf30c5030e52}{InsertLog}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a6406d1f9154522a1f77a7ab5d52dae14}{LogTypes}}.Err,\ threadID,\ logSource,\ dataList);}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_internal_a_p_i_1_1_services_1_1_log_service_a778dd1666ec20e3197598d7aa41e0cba_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_internal_a_p_i_1_1_services_1_1_log_service_a778dd1666ec20e3197598d7aa41e0cba_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_internal_a_p_i_1_1_services_1_1_log_service_ad25f9b254876bb11d042df6148dab40a}\label{class_internal_a_p_i_1_1_services_1_1_log_service_ad25f9b254876bb11d042df6148dab40a} 
+\index{InternalAPI.Services.LogService@{InternalAPI.Services.LogService}!LogException@{LogException}}
+\index{LogException@{LogException}!InternalAPI.Services.LogService@{InternalAPI.Services.LogService}}
+\doxysubsubsection{\texorpdfstring{LogException()}{LogException()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_internal_a_p_i_1_1_models_1_1_internal_a_p_i_1_1_log_entry}{Log\+Entry}} Internal\+API.\+Services.\+Log\+Service.\+Log\+Exception (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{Log\+Sources}}}]{log\+Source,  }\item[{params object\mbox{[}$\,$\mbox{]}}]{data\+List }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ var\ threadID\ =\ System.Environment.CurrentManagedThreadId;}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a65f60a581a2783a25374bf30c5030e52}{InsertLog}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a6406d1f9154522a1f77a7ab5d52dae14}{LogTypes}}.Exception,\ threadID,\ logSource,\ dataList);}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_internal_a_p_i_1_1_services_1_1_log_service_ad25f9b254876bb11d042df6148dab40a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_internal_a_p_i_1_1_services_1_1_log_service_ad25f9b254876bb11d042df6148dab40a_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_internal_a_p_i_1_1_services_1_1_log_service_ae7208181482f25f801a9d637367cc5e7}\label{class_internal_a_p_i_1_1_services_1_1_log_service_ae7208181482f25f801a9d637367cc5e7} 
+\index{InternalAPI.Services.LogService@{InternalAPI.Services.LogService}!LogInformation@{LogInformation}}
+\index{LogInformation@{LogInformation}!InternalAPI.Services.LogService@{InternalAPI.Services.LogService}}
+\doxysubsubsection{\texorpdfstring{LogInformation()}{LogInformation()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_internal_a_p_i_1_1_models_1_1_internal_a_p_i_1_1_log_entry}{Log\+Entry}} Internal\+API.\+Services.\+Log\+Service.\+Log\+Information (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{Log\+Sources}}}]{log\+Source,  }\item[{params object\mbox{[}$\,$\mbox{]}}]{data\+List }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\_sqlLoggerSettings.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_s_q_l_logger_settings_a3672c93899c5a41f470c82428dc7de38}{LogInformation}})\ \{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};\ \}}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ var\ threadID\ =\ System.Environment.CurrentManagedThreadId;}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a65f60a581a2783a25374bf30c5030e52}{InsertLog}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a6406d1f9154522a1f77a7ab5d52dae14}{LogTypes}}.Information,\ threadID,\ logSource,\ dataList);}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_internal_a_p_i_1_1_services_1_1_log_service_ae7208181482f25f801a9d637367cc5e7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_internal_a_p_i_1_1_services_1_1_log_service_ae7208181482f25f801a9d637367cc5e7_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+STRIDER/source/repos/\+Internal\+API/\+Internal\+API/\+Services/\+Logger/\mbox{\hyperlink{_log_service_8cs}{Log\+Service.\+cs}}\end{DoxyCompactItemize}

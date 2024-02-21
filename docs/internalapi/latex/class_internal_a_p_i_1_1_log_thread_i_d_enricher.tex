@@ -1,0 +1,47 @@
+\doxysection{Internal\+API.\+Log\+Thread\+IDEnricher Class Reference}
+\hypertarget{class_internal_a_p_i_1_1_log_thread_i_d_enricher}{}\label{class_internal_a_p_i_1_1_log_thread_i_d_enricher}\index{InternalAPI.LogThreadIDEnricher@{InternalAPI.LogThreadIDEnricher}}
+
+
+Inheritance diagram for Internal\+API.\+Log\+Thread\+IDEnricher\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=236pt]{class_internal_a_p_i_1_1_log_thread_i_d_enricher__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Internal\+API.\+Log\+Thread\+IDEnricher\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=236pt]{class_internal_a_p_i_1_1_log_thread_i_d_enricher__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_internal_a_p_i_1_1_log_thread_i_d_enricher_ad44f8c4a91b18a78edf1f300bb3916ac}{Enrich}} (Log\+Event log\+Event, ILog\+Event\+Property\+Factory property\+Factory)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_log_thread_i_d_enricher_ad44f8c4a91b18a78edf1f300bb3916ac}\label{class_internal_a_p_i_1_1_log_thread_i_d_enricher_ad44f8c4a91b18a78edf1f300bb3916ac} 
+\index{InternalAPI.LogThreadIDEnricher@{InternalAPI.LogThreadIDEnricher}!Enrich@{Enrich}}
+\index{Enrich@{Enrich}!InternalAPI.LogThreadIDEnricher@{InternalAPI.LogThreadIDEnricher}}
+\doxysubsubsection{\texorpdfstring{Enrich()}{Enrich()}}
+{\footnotesize\ttfamily void Internal\+API.\+Log\+Thread\+IDEnricher.\+Enrich (\begin{DoxyParamCaption}\item[{Log\+Event}]{log\+Event,  }\item[{ILog\+Event\+Property\+Factory}]{property\+Factory }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ logEvent.AddPropertyIfAbsent(propertyFactory.CreateProperty(}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}ThreadID"{}},\ Thread.CurrentThread.ManagedThreadId.ToString(\textcolor{stringliteral}{"{}D5"{}})));}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+STRIDER/source/repos/\+Internal\+API/\+Internal\+API/\mbox{\hyperlink{_program_8cs}{Program.\+cs}}\end{DoxyCompactItemize}

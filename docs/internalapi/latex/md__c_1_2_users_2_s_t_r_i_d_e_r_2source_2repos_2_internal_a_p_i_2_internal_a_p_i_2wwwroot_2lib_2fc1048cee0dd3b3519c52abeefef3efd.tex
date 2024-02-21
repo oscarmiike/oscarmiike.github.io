@@ -1,0 +1,189 @@
+\chapter{random}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2fc1048cee0dd3b3519c52abeefef3efd}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2fc1048cee0dd3b3519c52abeefef3efd}\index{random@{random}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2fc1048cee0dd3b3519c52abeefef3efd_autotoc_md3683}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2fc1048cee0dd3b3519c52abeefef3efd_autotoc_md3683}%
+ Pseudo-\/random generators.
+
+mout uses {\ttfamily Math.\+random} by default on all the pseudo-\/random generators, if you need a seeded random or a better algorithm see the \`{}random()\`{} documentation for instructions.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2fc1048cee0dd3b3519c52abeefef3efd_autotoc_md3684}{}\doxysection{\texorpdfstring{choice(...\+items)\+:\texorpdfstring{$\ast$}{*}}{choice(...\+items)\+:\texorpdfstring{$\ast$}{*}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2fc1048cee0dd3b3519c52abeefef3efd_autotoc_md3684}
+Returns a random element from the supplied arguments or from an array if single argument is an array.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2fc1048cee0dd3b3519c52abeefef3efd_autotoc_md3685}{}\doxysubsection{\texorpdfstring{Example\+:}{Example\+:}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2fc1048cee0dd3b3519c52abeefef3efd_autotoc_md3685}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{choice(1,\ 2,\ 3,\ 4,\ 5);\ //\ 3}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ arr\ =\ ['lorem',\ 'ipsum',\ 'dolor'];}
+\DoxyCodeLine{choice(arr);\ //\ 'dolor'}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2fc1048cee0dd3b3519c52abeefef3efd_autotoc_md3686}{}\doxysection{\texorpdfstring{guid()\+:String}{guid()\+:String}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2fc1048cee0dd3b3519c52abeefef3efd_autotoc_md3686}
+Generates a pseudo-\/random \href{http://en.wikipedia.org/wiki/Globally_unique_identifier}{\texttt{ Globally Unique Identifier}} (v4).
+
+Since the total number of GUIDs is 2\textsuperscript{122} the chance of generating the same value twice is negligible.
+
+{\bfseries{Important\+:}} this method uses {\ttfamily Math.\+random} by default so the UUID isn\textquotesingle{}t {\itshape safe} (sequence of outputs can be predicted in some cases), check the \`{}random()\`{} documentation for more info on how to replace the default PRNG if you need extra safety or need {\itshape seeded} results.
+
+See\+: \`{}rand\+Hex()\`{}, \`{}random()\`{}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2fc1048cee0dd3b3519c52abeefef3efd_autotoc_md3687}{}\doxysubsection{\texorpdfstring{Example\+:}{Example\+:}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2fc1048cee0dd3b3519c52abeefef3efd_autotoc_md3687}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{guid();\ \ \ \ \ \ //\ 830e9f50-\/ac7f-\/4369-\/a14f-\/ed0e62b2fa0b}
+\DoxyCodeLine{guid();\ \ \ \ \ \ //\ 5de3d09b-\/e79c-\/4727-\/932b-\/48c49228d508}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2fc1048cee0dd3b3519c52abeefef3efd_autotoc_md3688}{}\doxysection{\texorpdfstring{rand(\mbox{[}min\mbox{]}, \mbox{[}max\mbox{]})\+:Number}{rand(\mbox{[}min\mbox{]}, \mbox{[}max\mbox{]})\+:Number}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2fc1048cee0dd3b3519c52abeefef3efd_autotoc_md3688}
+Gets a random number inside range or snap to min/max values.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2fc1048cee0dd3b3519c52abeefef3efd_autotoc_md3689}{}\doxysubsection{\texorpdfstring{Arguments\+:}{Arguments\+:}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2fc1048cee0dd3b3519c52abeefef3efd_autotoc_md3689}
+
+\begin{DoxyEnumerate}
+\item {\ttfamily \mbox{[}min\mbox{]}} (Number) \+: Minimum value. Defaults to {\ttfamily number/\+MIN\+\_\+\+INT}.
+\item {\ttfamily \mbox{[}max\mbox{]}} (Number) \+: Maximum value. Defaults to {\ttfamily number/\+MAX\+\_\+\+INT}.
+\end{DoxyEnumerate}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2fc1048cee0dd3b3519c52abeefef3efd_autotoc_md3690}{}\doxysubsection{\texorpdfstring{Example\+:}{Example\+:}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2fc1048cee0dd3b3519c52abeefef3efd_autotoc_md3690}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{rand();\ \ \ \ \ \ //\ 448740433.55274725}
+\DoxyCodeLine{rand();\ \ \ \ \ \ //\ -\/31797596.097682}
+\DoxyCodeLine{rand(0,\ 10);\ //\ 7.369723}
+\DoxyCodeLine{rand(0,\ 10);\ //\ 5.987042}
+
+\end{DoxyCode}
+
+
+See\+: \`{}random()\`{}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2fc1048cee0dd3b3519c52abeefef3efd_autotoc_md3691}{}\doxysection{\texorpdfstring{rand\+Bit()\+:Number}{rand\+Bit()\+:Number}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2fc1048cee0dd3b3519c52abeefef3efd_autotoc_md3691}
+Returns a random "{}bit"{} (0 or 1). Useful for addition/subtraction.
+
+It\textquotesingle{}s slightly faster than {\ttfamily choice(0, 1)} since implementation is simpler (not that it will make a huge difference in most cases).
+
+See\+: \`{}choice()\`{}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2fc1048cee0dd3b3519c52abeefef3efd_autotoc_md3692}{}\doxysubsection{\texorpdfstring{Example\+:}{Example\+:}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2fc1048cee0dd3b3519c52abeefef3efd_autotoc_md3692}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{randBit();\ //\ 1}
+\DoxyCodeLine{randBit();\ //\ 0}
+\DoxyCodeLine{}
+\DoxyCodeLine{//same\ effect\ as}
+\DoxyCodeLine{choice(0,\ 1);}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2fc1048cee0dd3b3519c52abeefef3efd_autotoc_md3693}{}\doxysection{\texorpdfstring{rand\+Bool()\+:Boolean}{rand\+Bool()\+:Boolean}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2fc1048cee0dd3b3519c52abeefef3efd_autotoc_md3693}
+Returns a random Boolean ({\ttfamily true} or {\ttfamily false}).
+
+Since this is very common it makes sense to abstract it into a discrete method.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2fc1048cee0dd3b3519c52abeefef3efd_autotoc_md3694}{}\doxysubsection{\texorpdfstring{Example\+:}{Example\+:}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2fc1048cee0dd3b3519c52abeefef3efd_autotoc_md3694}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{randBool();\ //\ true}
+\DoxyCodeLine{randBool();\ //\ false}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2fc1048cee0dd3b3519c52abeefef3efd_autotoc_md3695}{}\doxysection{\texorpdfstring{rand\+Hex(\mbox{[}size\mbox{]})\+:String}{rand\+Hex(\mbox{[}size\mbox{]})\+:String}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2fc1048cee0dd3b3519c52abeefef3efd_autotoc_md3695}
+Returns a random hexadecimal string.
+
+The default {\ttfamily size} is {\ttfamily 6}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2fc1048cee0dd3b3519c52abeefef3efd_autotoc_md3696}{}\doxysubsection{\texorpdfstring{Example\+:}{Example\+:}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2fc1048cee0dd3b3519c52abeefef3efd_autotoc_md3696}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{randHex();\ \ \ //\ "{}dd8575"{}}
+\DoxyCodeLine{randHex();\ \ \ //\ "{}e6baeb"{}}
+\DoxyCodeLine{randHex(2);\ \ //\ "{}a2"{}}
+\DoxyCodeLine{randHex(30);\ //\ "{}effd7e2ad9a4a3067e30525fab983a"{}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2fc1048cee0dd3b3519c52abeefef3efd_autotoc_md3697}{}\doxysection{\texorpdfstring{rand\+Int(\mbox{[}min\mbox{]}, \mbox{[}max\mbox{]})\+:Number}{rand\+Int(\mbox{[}min\mbox{]}, \mbox{[}max\mbox{]})\+:Number}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2fc1048cee0dd3b3519c52abeefef3efd_autotoc_md3697}
+Gets a random integer inside range or snap to min/max values.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2fc1048cee0dd3b3519c52abeefef3efd_autotoc_md3698}{}\doxysubsection{\texorpdfstring{Arguments\+:}{Arguments\+:}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2fc1048cee0dd3b3519c52abeefef3efd_autotoc_md3698}
+
+\begin{DoxyEnumerate}
+\item {\ttfamily \mbox{[}min\mbox{]}} (Number) \+: Minimum value. Defaults to {\ttfamily number/\+MIN\+\_\+\+INT}.
+\item {\ttfamily \mbox{[}max\mbox{]}} (Number) \+: Maximum value. Defaults to {\ttfamily number/\+MAX\+\_\+\+INT}.
+\end{DoxyEnumerate}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2fc1048cee0dd3b3519c52abeefef3efd_autotoc_md3699}{}\doxysubsection{\texorpdfstring{Example\+:}{Example\+:}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2fc1048cee0dd3b3519c52abeefef3efd_autotoc_md3699}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{randInt();\ \ \ \ \ \ //\ 448740433}
+\DoxyCodeLine{randInt();\ \ \ \ \ \ //\ -\/31797596}
+\DoxyCodeLine{randInt(0,\ 10);\ //\ 7}
+\DoxyCodeLine{randInt(0,\ 10);\ //\ 5}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2fc1048cee0dd3b3519c52abeefef3efd_autotoc_md3700}{}\doxysection{\texorpdfstring{rand\+Sign()\+:Number}{rand\+Sign()\+:Number}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2fc1048cee0dd3b3519c52abeefef3efd_autotoc_md3700}
+Returns a random "{}sign"{} (-\/1 or 1). Useful for multiplications.
+
+It\textquotesingle{}s slightly faster than {\ttfamily choice(-\/1, 1)} since implementation is simpler (not that it will make a huge difference in most cases).
+
+See\+: \`{}choice()\`{}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2fc1048cee0dd3b3519c52abeefef3efd_autotoc_md3701}{}\doxysubsection{\texorpdfstring{Example\+:}{Example\+:}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2fc1048cee0dd3b3519c52abeefef3efd_autotoc_md3701}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{randSign();\ //\ -\/1}
+\DoxyCodeLine{randSign();\ //\ 1}
+\DoxyCodeLine{}
+\DoxyCodeLine{//same\ effect\ as}
+\DoxyCodeLine{choice(-\/1,\ 1);}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2fc1048cee0dd3b3519c52abeefef3efd_autotoc_md3702}{}\doxysection{\texorpdfstring{random()\+:Number}{random()\+:Number}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2fc1048cee0dd3b3519c52abeefef3efd_autotoc_md3702}
+Returns a random number between {\ttfamily 0} and {\ttfamily 1}. Same as {\ttfamily Math.\+random()}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{random();\ //\ 0.35435103671625257}
+\DoxyCodeLine{random();\ //\ 0.8768321881070733}
+
+\end{DoxyCode}
+
+
+{\bfseries{Important\+:}} No methods inside mout should call {\ttfamily Math.\+random()} directly, they all use {\ttfamily random/random} as a proxy, that way we can inject/replace the pseudo-\/random number generator if needed (ie. in case we need a seeded random or a better algorithm than the native one).\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2fc1048cee0dd3b3519c52abeefef3efd_autotoc_md3703}{}\doxysubsection{\texorpdfstring{Replacing the PRNG}{Replacing the PRNG}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2fc1048cee0dd3b3519c52abeefef3efd_autotoc_md3703}
+In some cases we might need better/different algorithms than the one provided by {\ttfamily Math.\+random} (ie. safer, seeded).
+
+Because of licensing issues, file size limitations and different needs we decided to {\bfseries{not}} implement a custom PRNG and instead provide a easy way to override the default behavior. -\/ \href{https://github.com/millermedeiros/amd-utils/issues/99}{\texttt{ issue \#99}}
+
+If you are using mout with a loader that supports the \href{https://github.com/amdjs/amdjs-api/wiki/Common-Config}{\texttt{ AMD map config}}, such as \href{http://requirejs.org/}{\texttt{ Require\+JS}}, you can use it to replace the PRNG (recommended approach)\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{requirejs.config(\{}
+\DoxyCodeLine{\ \ \ \ map\ :\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ all\ modules\ will\ load\ "{}my\_custom\_prng"{}\ instead\ of}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ //\ "{}mout/random/random"{}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ '*'\ :\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ 'mout/random/random'\ :\ 'my\_custom\_prng'}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\});}
+
+\end{DoxyCode}
+
+
+You also have the option to override {\ttfamily random.\+get} in case you are using mout on node.\+js or with a loader which doesn\textquotesingle{}t support the map config\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{//\ replace\ the\ PRNG}
+\DoxyCodeLine{var\ n\ =\ 0;}
+\DoxyCodeLine{random.get\ =\ function()\{}
+\DoxyCodeLine{\ \ \ \ return\ ++n\ \%\ 2?\ 0\ :\ 1;\ //\ not\ so\ random\ :P}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{random();\ //\ 0}
+\DoxyCodeLine{random();\ //\ 1}
+\DoxyCodeLine{random();\ //\ 0}
+\DoxyCodeLine{random();\ //\ 1}
+
+\end{DoxyCode}
+
+
+See this \href{http://baagoe.org/en/w/index.php/Better_random_numbers_for_javascript}{\texttt{ detailed explanation about PRNG in Java\+Script}} to understand the issues with the native {\ttfamily Math.\+random} and also for a list of algorithms that could be used instead.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2fc1048cee0dd3b3519c52abeefef3efd_autotoc_md3704}{}\doxysection{\texorpdfstring{rand\+String(\mbox{[}length, dictionary\mbox{]})\+:String}{rand\+String(\mbox{[}length, dictionary\mbox{]})\+:String}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2fc1048cee0dd3b3519c52abeefef3efd_autotoc_md3704}
+Returns a random string.
+
+By default returns string containing alphanumeric characters (lowercase and uppercase) with a length of 8.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2fc1048cee0dd3b3519c52abeefef3efd_autotoc_md3705}{}\doxysubsection{\texorpdfstring{Arguments\+:}{Arguments\+:}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2fc1048cee0dd3b3519c52abeefef3efd_autotoc_md3705}
+
+\begin{DoxyEnumerate}
+\item {\ttfamily \mbox{[}length\mbox{]}} (number) \+: Length of the string to return. Defaults to 8.
+\item {\ttfamily \mbox{[}dictionary\mbox{]}} (string) \+: A string containing all characters used as a dictionary for the random string construction. Defaults to alphanumeric characters (lowercase and uppercase).
+\end{DoxyEnumerate}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2fc1048cee0dd3b3519c52abeefef3efd_autotoc_md3706}{}\doxysubsection{\texorpdfstring{Example\+:}{Example\+:}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2fc1048cee0dd3b3519c52abeefef3efd_autotoc_md3706}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{randString();\ \ \ \ \ \ \ \ \ \ \ \ \ //\ returns\ a\ string\ with\ length\ 8.}
+\DoxyCodeLine{randString(12);\ \ \ \ \ \ \ \ \ \ \ //\ returns\ a\ string\ of\ length\ 12.}
+\DoxyCodeLine{randString(-\/1);\ \ \ \ \ \ \ \ \ \ \ //\ returns\ a\ string\ of\ length\ 8.}
+\DoxyCodeLine{randString(null,\ 'pew!');\ //\ returns\ a\ random\ string\ of\ length\ 8\ composed\ of\ 'p',\ 'e',\ 'w'\ and\ '!'.}
+\DoxyCodeLine{randString(10,\ '0');\ \ \ \ \ \ //\ always\ returns\ '0's\ of\ length\ 10.}
+\DoxyCodeLine{randString(rand(8,\ 10));\ \ //\ returns\ a\ random\ string\ with\ length\ between\ 8\ and\ 10.}
+
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+
+
+For more usage examples check specs inside {\ttfamily /tests} folder. Unit tests are the best documentation you can get... 

@@ -1,0 +1,102 @@
+\doxysection{Internal\+API.\+Services.\+ABWeb\+Service Class Reference}
+\hypertarget{class_internal_a_p_i_1_1_services_1_1_a_b_web_service}{}\label{class_internal_a_p_i_1_1_services_1_1_a_b_web_service}\index{InternalAPI.Services.ABWebService@{InternalAPI.Services.ABWebService}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_a_b_web_service_acd2bd5666d255fa1bf1c85d557b61d01}{ABWeb\+Service}} (\mbox{\hyperlink{class_internal_a_p_i_1_1_contexts_1_1_a_b_web_1_1_a_b_web_context}{ABWeb\+Context}} context)
+\item 
+List$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_models_1_1_internal_a_p_i_1_1_log_entry}{Log\+Entry}} $>$ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_a_b_web_service_aae8b289eb39bd83667a5c569b58bc02f}{Get\+Logs}} (\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_log_viewer_1_1_log_request}{Log\+Request}} log\+Request)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_services_1_1_a_b_web_service_acd2bd5666d255fa1bf1c85d557b61d01}\label{class_internal_a_p_i_1_1_services_1_1_a_b_web_service_acd2bd5666d255fa1bf1c85d557b61d01} 
+\index{InternalAPI.Services.ABWebService@{InternalAPI.Services.ABWebService}!ABWebService@{ABWebService}}
+\index{ABWebService@{ABWebService}!InternalAPI.Services.ABWebService@{InternalAPI.Services.ABWebService}}
+\doxysubsubsection{\texorpdfstring{ABWebService()}{ABWebService()}}
+{\footnotesize\ttfamily Internal\+API.\+Services.\+ABWeb\+Service.\+ABWeb\+Service (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_internal_a_p_i_1_1_contexts_1_1_a_b_web_1_1_a_b_web_context}{ABWeb\+Context}}}]{context }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \_context\ =\ context;}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_services_1_1_a_b_web_service_aae8b289eb39bd83667a5c569b58bc02f}\label{class_internal_a_p_i_1_1_services_1_1_a_b_web_service_aae8b289eb39bd83667a5c569b58bc02f} 
+\index{InternalAPI.Services.ABWebService@{InternalAPI.Services.ABWebService}!GetLogs@{GetLogs}}
+\index{GetLogs@{GetLogs}!InternalAPI.Services.ABWebService@{InternalAPI.Services.ABWebService}}
+\doxysubsubsection{\texorpdfstring{GetLogs()}{GetLogs()}}
+{\footnotesize\ttfamily List$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_models_1_1_internal_a_p_i_1_1_log_entry}{Log\+Entry}} $>$ Internal\+API.\+Services.\+ABWeb\+Service.\+Get\+Logs (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_log_viewer_1_1_log_request}{Log\+Request}}}]{log\+Request }\end{DoxyParamCaption})}
+
+I think there was an issue with .Any() and .To\+Lower(), EF was breaking when trying to convert to SQL. Switching from DB exectued query to .As\+Enumerable() for the inital collection fixed the issue? Not 100\% sure what was going on here
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Convert\ dates\ from\ UTC\ to\ local\ and\ handle\ the\ start\ hour}}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ DateTime\ fromDateTimeUTC\ =\ logRequest.fromUnixUTCMilli\ >\ 0}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ?\ DateTimeOffset.FromUnixTimeMilliseconds(logRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_log_viewer_1_1_log_request_ae49fa22d472b680ab0c81d5cc8d9cc1e}{fromUnixUTCMilli}}).DateTime}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ DateTime.MinValue;}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ DateTime\ fromDateTimeLocal\ =\ fromDateTimeUTC.ToLocalTime();}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ DateTime\ dateRangeStart\ =\ logRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_log_viewer_1_1_log_request_ad997d7534dfd011aa1debfc5793f00e5}{dateRangeStartUTC}}.ToLocalTime();}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (logRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_log_viewer_1_1_log_request_a54222025f0494e6bf557606ff13f58a3}{startHour}}\ >\ -\/1)}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ dateRangeStart\ =\ dateRangeStart.AddHours(logRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_log_viewer_1_1_log_request_a54222025f0494e6bf557606ff13f58a3}{startHour}});}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ DateTime\ dateRangeEnd\ =\ logRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_log_viewer_1_1_log_request_adae3d611fe24f076bfea5ef7aa8c3348}{dateRangeEndUTC}}.ToLocalTime();}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ var\ logsQuery\ =\ \_context.\mbox{\hyperlink{class_internal_a_p_i_1_1_contexts_1_1_a_b_web_1_1_a_b_web_context_a18cb42f33a7d0760ca4da41856bf3c83}{ABLogEntries}}.AsNoTracking()}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ .Where(le\ =>\ le.Created\ >=\ dateRangeStart\ \&\&\ le.Created\ <=\ dateRangeEnd)}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ .AsEnumerable();}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (logRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_log_viewer_1_1_log_request_a3344f1427b23c67d9df0263f5a8c66b8}{initial}})}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ logsQuery\ =\ logsQuery}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .Where(le\ =>\ logRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_log_viewer_1_1_log_request_a2713f2af6470e79bd42b688f497e971f}{logType}}\ ==\ \textcolor{keyword}{null}\ ||\ logRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_log_viewer_1_1_log_request_a2713f2af6470e79bd42b688f497e971f}{logType}}.All(\textcolor{keywordtype}{string}.IsNullOrEmpty)\ ||\ logRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_log_viewer_1_1_log_request_a2713f2af6470e79bd42b688f497e971f}{logType}}.Any(lt\ =>\ le.Type.ToLower()\ ==\ lt.ToLower()))}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .Where(le\ =>\ logRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_log_viewer_1_1_log_request_a38b36bc2c5ad65ff7d3baf0ac91a9daa}{logSource}}\ ==\ \textcolor{keyword}{null}\ ||\ logRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_log_viewer_1_1_log_request_a38b36bc2c5ad65ff7d3baf0ac91a9daa}{logSource}}.All(\textcolor{keywordtype}{string}.IsNullOrEmpty)\ ||\ logRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_log_viewer_1_1_log_request_a38b36bc2c5ad65ff7d3baf0ac91a9daa}{logSource}}.Any(ls\ =>\ le.Source.ToLower()\ ==\ ls.ToLower()))}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .Where(le\ =>\ \textcolor{keywordtype}{string}.IsNullOrEmpty(logRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_log_viewer_1_1_log_request_a3e04f70a8bbc9a806f5ff99221959de4}{searchString}})\ ||\ le.Data.ToLower().Contains(logRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_log_viewer_1_1_log_request_a3e04f70a8bbc9a806f5ff99221959de4}{searchString}}.ToLower()));}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (logRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_log_viewer_1_1_log_request_a54222025f0494e6bf557606ff13f58a3}{startHour}}\ >\ -\/1)}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ logsQuery\ =\ logsQuery.Where(le\ =>\ le.Created\ >\ fromDateTimeLocal).Take(logRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_log_viewer_1_1_log_request_aff79f3802f871ca10c9a023cf22065d6}{maxLogs}});}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ logsQuery\ =\ logsQuery.OrderByDescending(le\ =>\ le.Created).Take(logRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_log_viewer_1_1_log_request_aff79f3802f871ca10c9a023cf22065d6}{maxLogs}});}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ logsQuery\ =\ logsQuery}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .Where(le\ =>\ le.Created\ >\ fromDateTimeLocal)}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .Where(le\ =>\ logRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_log_viewer_1_1_log_request_a2713f2af6470e79bd42b688f497e971f}{logType}}\ ==\ \textcolor{keyword}{null}\ ||\ logRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_log_viewer_1_1_log_request_a2713f2af6470e79bd42b688f497e971f}{logType}}.All(\textcolor{keywordtype}{string}.IsNullOrEmpty)\ ||\ logRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_log_viewer_1_1_log_request_a2713f2af6470e79bd42b688f497e971f}{logType}}.Any(lt\ =>\ le.Type.ToLower()\ ==\ lt.ToLower()))}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .Where(le\ =>\ logRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_log_viewer_1_1_log_request_a38b36bc2c5ad65ff7d3baf0ac91a9daa}{logSource}}\ ==\ \textcolor{keyword}{null}\ ||\ logRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_log_viewer_1_1_log_request_a38b36bc2c5ad65ff7d3baf0ac91a9daa}{logSource}}.All(\textcolor{keywordtype}{string}.IsNullOrEmpty)\ ||\ logRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_log_viewer_1_1_log_request_a38b36bc2c5ad65ff7d3baf0ac91a9daa}{logSource}}.Any(ls\ =>\ le.Source.ToLower()\ ==\ ls.ToLower()))}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .Where(le\ =>\ \textcolor{keywordtype}{string}.IsNullOrEmpty(logRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_log_viewer_1_1_log_request_a3e04f70a8bbc9a806f5ff99221959de4}{searchString}})\ ||\ le.Data.ToLower().Contains(logRequest.\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_log_viewer_1_1_log_request_a3e04f70a8bbc9a806f5ff99221959de4}{searchString}}.ToLower()))}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .OrderByDescending(le\ =>\ le.Created);}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Convert\ to\ LogEntry\ and\ return}}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ logsQuery.Select(le\ =>\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_models_1_1_internal_a_p_i_1_1_log_entry}{LogEntry}}}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ID\ =\ le.\mbox{\hyperlink{class_internal_a_p_i_1_1_models_1_1_internal_a_p_i_1_1_log_entry_ad08e8d686886467cce74f8027bfbe768}{ID}},}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Created\ =\ le.Created,}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Type\ =\ le.Type,}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ThreadID\ =\ le.ThreadID,}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Source\ =\ le.Source,}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Data\ =\ le.Data}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \}).ToList();}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_internal_a_p_i_1_1_services_1_1_a_b_web_service_aae8b289eb39bd83667a5c569b58bc02f_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+STRIDER/source/repos/\+Internal\+API/\+Internal\+API/\+Services/\+ABWeb/\mbox{\hyperlink{_a_b_web_service_8cs}{ABWeb\+Service.\+cs}}\end{DoxyCompactItemize}

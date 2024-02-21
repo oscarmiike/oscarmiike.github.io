@@ -1,0 +1,131 @@
+\doxysection{Internal\+API.\+Controllers.\+Green\+IDDBController Class Reference}
+\hypertarget{class_internal_a_p_i_1_1_controllers_1_1_green_i_d_d_b_controller}{}\label{class_internal_a_p_i_1_1_controllers_1_1_green_i_d_d_b_controller}\index{InternalAPI.Controllers.GreenIDDBController@{InternalAPI.Controllers.GreenIDDBController}}
+
+
+Inheritance diagram for Internal\+API.\+Controllers.\+Green\+IDDBController\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{class_internal_a_p_i_1_1_controllers_1_1_green_i_d_d_b_controller__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Internal\+API.\+Controllers.\+Green\+IDDBController\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{class_internal_a_p_i_1_1_controllers_1_1_green_i_d_d_b_controller__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_green_i_d_d_b_controller_ac4c91e8cd4a07af6d7c953a3ddbc92b9}{Green\+IDDBController}} (\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{Log\+Service}} log\+Service, \mbox{\hyperlink{class_internal_a_p_i_1_1_helpers_1_1_green_i_d_d_b_helper}{Green\+IDDBHelper}} gid\+Helper)
+\item 
+\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_d_b_1_1_post_customer}{Post\+Customer}} \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_green_i_d_d_b_controller_af1ab8ab8773355325bc3bec782e00d19}{User\+Exists}} (\mbox{[}From\+Body\mbox{]} \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_d_b_1_1_post_customer}{Post\+Customer}} customer)
+\begin{DoxyCompactList}\small\item\em checks if customer exists in local database \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_d_b_1_1_post_customer}{Post\+Customer}} \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_green_i_d_d_b_controller_a6782f76f0a8b7338c27a5880b9fef453}{Search\+Customers}} (\mbox{[}From\+Body\mbox{]} \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_d_b_1_1_post_customer}{Post\+Customer}} customer)
+\begin{DoxyCompactList}\small\item\em checks if customer exists in local database \end{DoxyCompactList}\item 
+Action\+Result$<$ object $>$ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_green_i_d_d_b_controller_a73056e3da1a857d34d9465686b3b8156}{Update\+Netsuite\+ID}} (string green\+IDRef, \mbox{[}From\+Query\mbox{]} int netsuiteid)
+\begin{DoxyCompactList}\small\item\em checks if customer exists in local database \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_green_i_d_d_b_controller_ac4c91e8cd4a07af6d7c953a3ddbc92b9}\label{class_internal_a_p_i_1_1_controllers_1_1_green_i_d_d_b_controller_ac4c91e8cd4a07af6d7c953a3ddbc92b9} 
+\index{InternalAPI.Controllers.GreenIDDBController@{InternalAPI.Controllers.GreenIDDBController}!GreenIDDBController@{GreenIDDBController}}
+\index{GreenIDDBController@{GreenIDDBController}!InternalAPI.Controllers.GreenIDDBController@{InternalAPI.Controllers.GreenIDDBController}}
+\doxysubsubsection{\texorpdfstring{GreenIDDBController()}{GreenIDDBController()}}
+{\footnotesize\ttfamily Internal\+API.\+Controllers.\+Green\+IDDBController.\+Green\+IDDBController (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{Log\+Service}}}]{log\+Service,  }\item[{\mbox{\hyperlink{class_internal_a_p_i_1_1_helpers_1_1_green_i_d_d_b_helper}{Green\+IDDBHelper}}}]{gid\+Helper }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ logger\ =\ logService;}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ greenIDDBHelper\ =\ gidHelper;}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_green_i_d_d_b_controller_a6782f76f0a8b7338c27a5880b9fef453}\label{class_internal_a_p_i_1_1_controllers_1_1_green_i_d_d_b_controller_a6782f76f0a8b7338c27a5880b9fef453} 
+\index{InternalAPI.Controllers.GreenIDDBController@{InternalAPI.Controllers.GreenIDDBController}!SearchCustomers@{SearchCustomers}}
+\index{SearchCustomers@{SearchCustomers}!InternalAPI.Controllers.GreenIDDBController@{InternalAPI.Controllers.GreenIDDBController}}
+\doxysubsubsection{\texorpdfstring{SearchCustomers()}{SearchCustomers()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_d_b_1_1_post_customer}{Post\+Customer}} Internal\+API.\+Controllers.\+Green\+IDDBController.\+Search\+Customers (\begin{DoxyParamCaption}\item[{\mbox{[}\+From\+Body\mbox{]} \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_d_b_1_1_post_customer}{Post\+Customer}}}]{customer }\end{DoxyParamCaption})}
+
+
+
+checks if customer exists in local database 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_ae7208181482f25f801a9d637367cc5e7}{LogInformation}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.GreenIDDBController,\ \$\textcolor{stringliteral}{"{}POST\ request\ received\ on\ GreenIDDBController\ on\ /searchcustomers"{}});}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ greenIDDBHelper.\mbox{\hyperlink{class_internal_a_p_i_1_1_helpers_1_1_green_i_d_d_b_helper_a6b4501300dd91cec08636000001b9209}{FindCustomer}}(customer);}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_internal_a_p_i_1_1_controllers_1_1_green_i_d_d_b_controller_a6782f76f0a8b7338c27a5880b9fef453_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_green_i_d_d_b_controller_a73056e3da1a857d34d9465686b3b8156}\label{class_internal_a_p_i_1_1_controllers_1_1_green_i_d_d_b_controller_a73056e3da1a857d34d9465686b3b8156} 
+\index{InternalAPI.Controllers.GreenIDDBController@{InternalAPI.Controllers.GreenIDDBController}!UpdateNetsuiteID@{UpdateNetsuiteID}}
+\index{UpdateNetsuiteID@{UpdateNetsuiteID}!InternalAPI.Controllers.GreenIDDBController@{InternalAPI.Controllers.GreenIDDBController}}
+\doxysubsubsection{\texorpdfstring{UpdateNetsuiteID()}{UpdateNetsuiteID()}}
+{\footnotesize\ttfamily Action\+Result$<$ object $>$ Internal\+API.\+Controllers.\+Green\+IDDBController.\+Update\+Netsuite\+ID (\begin{DoxyParamCaption}\item[{string}]{green\+IDRef,  }\item[{\mbox{[}\+From\+Query\mbox{]} int}]{netsuiteid }\end{DoxyParamCaption})}
+
+
+
+checks if customer exists in local database 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_ae7208181482f25f801a9d637367cc5e7}{LogInformation}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.GreenIDDBController,\ \$\textcolor{stringliteral}{"{}GET\ request\ received\ on\ user/\{greenIDRef\}/updatenetsuiteid\ with\ netsuiteId:\ \{netsuiteid\}"{}});}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \{\ success\ =\ greenIDDBHelper.\mbox{\hyperlink{class_internal_a_p_i_1_1_helpers_1_1_green_i_d_d_b_helper_adf83f81969e4157fa84a0eda747abd1d}{UpdateNetsuiteID}}(greenIDRef,\ netsuiteid)\ \};}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_internal_a_p_i_1_1_controllers_1_1_green_i_d_d_b_controller_a73056e3da1a857d34d9465686b3b8156_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_green_i_d_d_b_controller_af1ab8ab8773355325bc3bec782e00d19}\label{class_internal_a_p_i_1_1_controllers_1_1_green_i_d_d_b_controller_af1ab8ab8773355325bc3bec782e00d19} 
+\index{InternalAPI.Controllers.GreenIDDBController@{InternalAPI.Controllers.GreenIDDBController}!UserExists@{UserExists}}
+\index{UserExists@{UserExists}!InternalAPI.Controllers.GreenIDDBController@{InternalAPI.Controllers.GreenIDDBController}}
+\doxysubsubsection{\texorpdfstring{UserExists()}{UserExists()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_d_b_1_1_post_customer}{Post\+Customer}} Internal\+API.\+Controllers.\+Green\+IDDBController.\+User\+Exists (\begin{DoxyParamCaption}\item[{\mbox{[}\+From\+Body\mbox{]} \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_green_i_d_d_b_1_1_post_customer}{Post\+Customer}}}]{customer }\end{DoxyParamCaption})}
+
+
+
+checks if customer exists in local database 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_ae7208181482f25f801a9d637367cc5e7}{LogInformation}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.GreenIDDBController,\ \$\textcolor{stringliteral}{"{}POST\ request\ received\ on\ GreenIDDBController\ on\ /userexists"{}});}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ greenIDDBHelper.\mbox{\hyperlink{class_internal_a_p_i_1_1_helpers_1_1_green_i_d_d_b_helper_a6b4501300dd91cec08636000001b9209}{FindCustomer}}(customer);}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_internal_a_p_i_1_1_controllers_1_1_green_i_d_d_b_controller_af1ab8ab8773355325bc3bec782e00d19_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+STRIDER/source/repos/\+Internal\+API/\+Internal\+API/\+Controllers/\mbox{\hyperlink{_green_i_d_d_b_controller_8cs}{Green\+IDDBController.\+cs}}\end{DoxyCompactItemize}

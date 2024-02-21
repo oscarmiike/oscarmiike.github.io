@@ -1,0 +1,134 @@
+\doxysection{Ainslie\+APIService.\+cs}
+\hypertarget{_ainslie_a_p_i_service_8cs_source}{}\label{_ainslie_a_p_i_service_8cs_source}\index{C:/Users/STRIDER/source/repos/InternalAPI/InternalAPI/Services/AinslieAPI/AinslieAPIService.cs@{C:/Users/STRIDER/source/repos/InternalAPI/InternalAPI/Services/AinslieAPI/AinslieAPIService.cs}}
+\mbox{\hyperlink{_ainslie_a_p_i_service_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }System.Linq;}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }System.Threading.Tasks;}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_settings}{InternalAPI.Settings}};}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00006}00006\ \textcolor{keyword}{using\ }Microsoft.Extensions.Options;}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00007}00007\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_models_1_1_internal_a_p_i}{InternalAPI.Models.InternalAPI}};}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00008}00008\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_dto_1_1_log_viewer}{InternalAPI.Dto.LogViewer}};}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00009}00009\ \textcolor{keyword}{using\ }RestSharp;}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00010}00010\ \textcolor{keyword}{using\ }Newtonsoft.Json;}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00012}00012\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_services}{InternalAPI.Services}}}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00013}00013\ \{}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00014}\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_ainslie_a_p_i_service}{00014}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_ainslie_a_p_i_service}{AinslieAPIService}}}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00015}00015\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}\ \_logService;}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_ainslie_a_p_i_settings}{AinslieAPISettings}}\ \_ainslieAPISettings;}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00019}\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_ainslie_a_p_i_service_a5b032dafafe6553dfa8e5a236f79c8f8}{00019}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_ainslie_a_p_i_service_a5b032dafafe6553dfa8e5a236f79c8f8}{AinslieAPIService}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}\ logService,\ IOptions<AinslieAPISettings>\ ainslieAPISettings)}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \ \ \ \ \_logService\ =\ logService;}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \ \ \ \ \_ainslieAPISettings\ =\ ainslieAPISettings.Value;}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00025}\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_ainslie_a_p_i_service_a987fab0349b730badb2e0abdb174d8d8}{00025}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ List<LogEntry>\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_ainslie_a_p_i_service_a987fab0349b730badb2e0abdb174d8d8}{GetLogs}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_log_viewer_1_1_log_request}{LogRequest}}\ logRequest)}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ List<LogEntry>\ logs\ =\ \textcolor{keyword}{new}\ List<LogEntry>();}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient(\_ainslieAPISettings.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_ainslie_a_p_i_settings_a48b8f1743c24ec38edce0430668c94fc}{BaseURL}});}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ request\ =\ \textcolor{keyword}{new}\ RestRequest(\_ainslieAPISettings.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_ainslie_a_p_i_settings_a80af9b8cd8356e04d223d45b98b6f6cb}{Endpoint\_GetLogs}},\ Method.POST);}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ request.AddHeader(\textcolor{stringliteral}{"{}Accept"{}},\ \textcolor{stringliteral}{"{}*/*"{}});}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ request.AddHeader(\textcolor{stringliteral}{"{}Authorization"{}},\ \$\textcolor{stringliteral}{"{}Bearer\ \{\_ainslieAPISettings.BearerToken\}"{}});}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ request.AddJsonBody(logRequest);}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ logRequestJson\ =\ JsonConvert.SerializeObject(logRequest);}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a778dd1666ec20e3197598d7aa41e0cba}{LogError}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.TaskAPIService,\ \textcolor{stringliteral}{"{}Json\ Body\ Request\ -\/\ AinslieAPI"{}},\ logRequestJson);}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ IRestResponse\ response\ =\ client.Execute(request);}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response.IsSuccessful)}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ logs\ =\ JsonConvert.DeserializeObject<List<LogEntry>>(response.Content);}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ logs;}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a778dd1666ec20e3197598d7aa41e0cba}{LogError}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.TaskAPIService,\ \textcolor{stringliteral}{"{}unsuccessful\ response\ getting\ logs\ from\ ainslie\ api"{}},\ \$\textcolor{stringliteral}{"{}StatusCode:\ \{response.StatusCode\}\ Description:\ \{response.StatusDescription\}\ Content:\ \{response.Content\}"{}});}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_ad25f9b254876bb11d042df6148dab40a}{LogException}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.TaskAPIService,\ \textcolor{stringliteral}{"{}exception\ getting\ logs\ from\ ainslie\ api"{}},\ ex.ToString());}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ logs;}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00054}\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_ainslie_a_p_i_service_a51ec179fd77924b57c932d194e330b27}{00054}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ List<string>\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_ainslie_a_p_i_service_a51ec179fd77924b57c932d194e330b27}{GetLogSources}}()}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ List<string>\ logs\ =\ \textcolor{keyword}{new}\ List<string>();}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient(\_ainslieAPISettings.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_ainslie_a_p_i_settings_a48b8f1743c24ec38edce0430668c94fc}{BaseURL}});}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ request\ =\ \textcolor{keyword}{new}\ RestRequest(\_ainslieAPISettings.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_ainslie_a_p_i_settings_a9495303735dda5bb0778bb34646cc29f}{Endpoint\_GetLogSources}},\ Method.GET);}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ request.AddHeader(\textcolor{stringliteral}{"{}Accept"{}},\ \textcolor{stringliteral}{"{}*/*"{}});}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ request.AddHeader(\textcolor{stringliteral}{"{}Authorization"{}},\ \$\textcolor{stringliteral}{"{}Bearer\ \{\_ainslieAPISettings.BearerToken\}"{}});}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ IRestResponse\ response\ =\ client.Execute(request);}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response.IsSuccessful)}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ logs\ =\ JsonConvert.DeserializeObject<List<string>>(response.Content);}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ logs;}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a778dd1666ec20e3197598d7aa41e0cba}{LogError}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.TaskAPIService,\ \textcolor{stringliteral}{"{}unsuccessful\ response\ getting\ log\ sources\ from\ ainslie\ api"{}},\ \$\textcolor{stringliteral}{"{}StatusCode:\ \{response.StatusCode\}\ Description:\ \{response.StatusDescription\}\ Content:\ \{response.Content\}"{}});}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_ad25f9b254876bb11d042df6148dab40a}{LogException}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.TaskAPIService,\ \textcolor{stringliteral}{"{}exception\ getting\ log\ sources\ from\ ainslie\ api"{}},\ ex.ToString());}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ logs;}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00078}\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_ainslie_a_p_i_service_a19c0c6791fc5fa5e035eb52d255aca8b}{00078}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ List<string>\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_ainslie_a_p_i_service_a19c0c6791fc5fa5e035eb52d255aca8b}{GetLogTypes}}()}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ List<string>\ logs\ =\ \textcolor{keyword}{new}\ List<string>();}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient(\_ainslieAPISettings.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_ainslie_a_p_i_settings_a48b8f1743c24ec38edce0430668c94fc}{BaseURL}});}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ request\ =\ \textcolor{keyword}{new}\ RestRequest(\_ainslieAPISettings.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_ainslie_a_p_i_settings_a1be883c810f14e16023a79f5aaf43d4a}{Endpoint\_GetLogTypes}},\ Method.GET);}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ request.AddHeader(\textcolor{stringliteral}{"{}Accept"{}},\ \textcolor{stringliteral}{"{}*/*"{}});}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ request.AddHeader(\textcolor{stringliteral}{"{}Authorization"{}},\ \$\textcolor{stringliteral}{"{}Bearer\ \{\_ainslieAPISettings.BearerToken\}"{}});}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ IRestResponse\ response\ =\ client.Execute(request);}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response.IsSuccessful)}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ logs\ =\ JsonConvert.DeserializeObject<List<string>>(response.Content);}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ logs;}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a778dd1666ec20e3197598d7aa41e0cba}{LogError}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.TaskAPIService,\ \textcolor{stringliteral}{"{}unsuccessful\ response\ getting\ log\ types\ from\ ainslie\ api"{}},\ \$\textcolor{stringliteral}{"{}StatusCode:\ \{response.StatusCode\}\ Description:\ \{response.StatusDescription\}\ Content:\ \{response.Content\}"{}});}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_ad25f9b254876bb11d042df6148dab40a}{LogException}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.TaskAPIService,\ \textcolor{stringliteral}{"{}exception\ getting\ log\ types\ from\ ainslie\ api"{}},\ ex.ToString());}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ logs;}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00102}\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_ainslie_a_p_i_service_a23b5101881c3af4d6ee56dc879d09a17}{00102}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{object}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_ainslie_a_p_i_service_a23b5101881c3af4d6ee56dc879d09a17}{TrimLogs}}()}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00103}00103\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient(\_ainslieAPISettings.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_ainslie_a_p_i_settings_a48b8f1743c24ec38edce0430668c94fc}{BaseURL}});}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ request\ =\ \textcolor{keyword}{new}\ RestRequest(\_ainslieAPISettings.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_ainslie_a_p_i_settings_a3ead66f9deda56b858c67ba4f05b8827}{Endpoint\_TrimLogs}},\ Method.GET);}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00108}00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ request.AddHeader(\textcolor{stringliteral}{"{}Accept"{}},\ \textcolor{stringliteral}{"{}*/*"{}});}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ request.AddHeader(\textcolor{stringliteral}{"{}Authorization"{}},\ \$\textcolor{stringliteral}{"{}Bearer\ \{\_ainslieAPISettings.BearerToken\}"{}});}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00110}00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ IRestResponse\ response\ =\ client.Execute(request);}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response.IsSuccessful)}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00113}00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ JsonConvert.DeserializeObject<dynamic>(response.Content);}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00115}00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ errMsg\ =\ \$\textcolor{stringliteral}{"{}unsuccessful\ response\ trimming\ logs\ on\ ainslie\ api\ StatusCode:\ \{response.StatusCode\}\ Description:\ \{response.StatusDescription\}\ Content:\ \{response.Content\}"{}};}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00116}00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a778dd1666ec20e3197598d7aa41e0cba}{LogError}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.TaskAPIService,\ errMsg);}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00117}00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \{\ error\ =\ \textcolor{keyword}{true},\ message\ =\ errMsg\ \};}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00118}00118\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00120}00120\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00121}00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_ad25f9b254876bb11d042df6148dab40a}{LogException}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.TaskAPIService,\ \textcolor{stringliteral}{"{}exception\ trimming\ logs\ on\ ainslie\ api"{}},\ ex.ToString());}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00122}00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \{\ error\ =\ \textcolor{keyword}{true},\ message\ =\ \$\textcolor{stringliteral}{"{}exception\ trimming\ logs\ on\ ainslie\ api:\ \{ex\}"{}}\ \};}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00123}00123\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00124}00124\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00125}00125\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00126}00126\ \}}
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00127}00127\ }
+\DoxyCodeLine{\Hypertarget{_ainslie_a_p_i_service_8cs_source_l00128}00128\ }
+
+\end{DoxyCode}

@@ -1,0 +1,134 @@
+\doxysection{ABWeb\+Controller.\+cs}
+\hypertarget{_a_b_web_controller_8cs_source}{}\label{_a_b_web_controller_8cs_source}\index{C:/Users/STRIDER/source/repos/InternalAPI/InternalAPI/Controllers/ABWebController.cs@{C:/Users/STRIDER/source/repos/InternalAPI/InternalAPI/Controllers/ABWebController.cs}}
+\mbox{\hyperlink{_a_b_web_controller_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }Microsoft.AspNetCore.Mvc;}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }System.Linq;}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }System.Threading.Tasks;}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00006}00006\ \textcolor{keyword}{using\ }Microsoft.Extensions.Logging;}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00007}00007\ \textcolor{keyword}{using\ }Microsoft.Extensions.Configuration;}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00008}00008\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_dto_1_1_a_b_web}{InternalAPI.Dto.ABWeb}};}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00009}00009\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_dto_1_1_email}{InternalAPI.Dto.Email}};}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00010}00010\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_models_1_1_a_b_web}{InternalAPI.Models.ABWeb}};}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00011}00011\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_contexts_1_1_a_b_web}{InternalAPI.Contexts.ABWeb}};}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00012}00012\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_helpers}{InternalAPI.Helpers}};}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00013}00013\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_services}{InternalAPI.Services}};}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00014}00014\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_services_1_1_email}{InternalAPI.Services.Email}};}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00015}00015\ \textcolor{keyword}{using\ }Newtonsoft.Json;}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00016}00016\ \textcolor{keyword}{using\ }RestSharp;}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00017}00017\ \textcolor{keyword}{using\ }RestSharp.Authenticators;}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00018}00018\ \textcolor{keyword}{using\ }Microsoft.EntityFrameworkCore;}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00019}00019\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_settings}{InternalAPI.Settings}};}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00020}00020\ \textcolor{keyword}{using\ }Microsoft.Extensions.Options;}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00021}00021\ \textcolor{keyword}{using\ }System.Net;}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00023}\mbox{\hyperlink{namespace_internal_a_p_i_1_1_controllers}{00023}}\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_controllers}{InternalAPI.Controllers}}}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00024}00024\ \{}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00025}00025\ \ \ \ \ [Route(\textcolor{stringliteral}{"{}v1/[controller]"{}})]}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00026}00026\ \ \ \ \ [ApiController]}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00027}\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_a_b_web_controller}{00027}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_a_b_web_controller}{ABWebController}}\ :\ ControllerBase}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00028}00028\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}\ \_logger;}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_contexts_1_1_a_b_web_1_1_a_b_web_context}{ABWebContext}}\ \_context;}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_a_b_web_settings}{ABWebSettings}}\ \_settings;}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00033}\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_a_b_web_controller_a8f4c5b39c6d018ed280f11a78506cee5}{00033}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_a_b_web_controller_a8f4c5b39c6d018ed280f11a78506cee5}{ABWebController}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}\ logger,\ \mbox{\hyperlink{class_internal_a_p_i_1_1_contexts_1_1_a_b_web_1_1_a_b_web_context}{ABWebContext}}\ context,\ IOptions<ABWebSettings>\ settings)}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger\ =\ logger;}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \_context\ =\ context;}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \_settings\ =\ settings.Value;}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ [HttpGet(\textcolor{stringliteral}{"{}trimlogs"{}})]}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00041}\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_a_b_web_controller_a29d4d64b45d7587cc97c6e0a5fc47063}{00041}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ ActionResult<object>\ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_a_b_web_controller_a29d4d64b45d7587cc97c6e0a5fc47063}{TrimLogs}}([FromQuery]\ \textcolor{keywordtype}{int}\ keepDays\ =\ 0)}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (keepDays\ <\ 7)}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ keepDays\ =\ 30;}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ var\ trimDate\ =\ DateTime.Now.AddDays(-\/keepDays);}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ var\ deleteSql\ =\ \$\textcolor{stringliteral}{"{}delete\ from\ ablogentry\ where\ created\ <\ '\{trimDate.Year\}-\/\{trimDate.Month\}-\/\{trimDate.Day\}'"{}};}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ var\ deletedLogs\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_acf860ff3326ea65346a173f3479c6e57}{LogDebug}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.ABWebController,\ \$\textcolor{stringliteral}{"{}request\ received\ on\ /abweb/trimlogs,\ using\ sql\ \{deleteSql\}"{}});}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ deletedLogs\ =\ \_context.Database.ExecuteSqlRaw(deleteSql);}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_ad25f9b254876bb11d042df6148dab40a}{LogException}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.ABWebController,\ \$\textcolor{stringliteral}{"{}exception\ trimming\ abweb\ logs\ using\ sql:\ \{deleteSql\}"{}},\ ex);}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \{\ error\ =\ \textcolor{keyword}{true},\ message\ =\ \$\textcolor{stringliteral}{"{}exception\ deleting\ logs\ on\ abweb:\ \{ex\}"{}}\ \};}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \{\ error\ =\ \textcolor{keyword}{false},\ message\ =\ \ \$\textcolor{stringliteral}{"{}deleted\ \{deletedLogs\}\ logs"{}}\ \};}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00061}\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_a_b_web_controller_a0e17b97985fac4957e421e82bafe74c3}{00061}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_a_b_web_controller_a0e17b97985fac4957e421e82bafe74c3}{TrimDebugLogs}}()}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ var\ keepDays\ =\ 14;}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ var\ trimDate\ =\ DateTime.Now.AddDays(-\/keepDays);}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ var\ deleteSql\ =\ \$\textcolor{stringliteral}{"{}delete\ from\ assetlistdebugdatas\ where\ debugtime\ <\ '\{trimDate.Year\}-\/\{trimDate.Month\}-\/\{trimDate.Day\}'"{}};}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_context.Database.ExecuteSqlRaw(deleteSql);}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_ad25f9b254876bb11d042df6148dab40a}{LogException}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.ABWebController,\ \$\textcolor{stringliteral}{"{}exception\ trimming\ abweb\ assetlist\ debug\ logs\ using\ sql:\ \{deleteSql\}"{}},\ ex);}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ [HttpGet(\textcolor{stringliteral}{"{}orderreport/\{branch\}"{}})]}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00078}\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_a_b_web_controller_a234f237116b44ffa8dbcec5c54bd4b62}{00078}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ ActionResult<WebShopResponse>\ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_a_b_web_controller_a234f237116b44ffa8dbcec5c54bd4b62}{OrderReport}}([FromRoute]\ \textcolor{keywordtype}{string}\ branch,\ [FromQuery]\ \textcolor{keywordtype}{string}\ start,\ [FromQuery]\ \textcolor{keywordtype}{string}\ finish)}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_acf860ff3326ea65346a173f3479c6e57}{LogDebug}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.ABWebController,\ \$\textcolor{stringliteral}{"{}request\ received\ on\ /abweb/\{branch\}/orderReport,\ \ TimeBoundsUTC:\ \{start\}\ -\/\ \{finish\}"{}});}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient(\_settings.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_a_b_web_settings_a58d11d481e02dadad18f7701898912a0}{APIBaseURL}});}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ client.Authenticator\ =\ \textcolor{keyword}{new}\ HttpBasicAuthenticator(\_settings.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_a_b_web_settings_a0a99b2c0fd76bbeb527e5140ae018eba}{APIUsername}},\ \_settings.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_a_b_web_settings_a5a4d4df4f1ee19092476df6c5d5b51b9}{APIPassword}});}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ var\ request\ =\ \textcolor{keyword}{new}\ RestRequest(\_settings.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_a_b_web_settings_a4cc30c0a2065c15b54d6e465f17abb38}{OrderReportEndpoint}},\ Method.GET);}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddUrlSegment(\textcolor{stringliteral}{"{}branch"{}},\ branch);}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddQueryParameter(\textcolor{stringliteral}{"{}start"{}},\ start);}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddQueryParameter(\textcolor{stringliteral}{"{}finish"{}},\ finish);}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ IRestResponse\ response\ =\ client.Execute(request);}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ var\ responseObject\ =\ JsonConvert.DeserializeObject(response.Content);}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response\ !=\ \textcolor{keyword}{null}\ \&\&\ response.IsSuccessful\ \&\&\ response.StatusCode\ ==\ HttpStatusCode.OK\ \&\&\ !\textcolor{keywordtype}{string}.IsNullOrEmpty(response.Content))}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Ok(responseObject);}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ BadRequest(responseObject);}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00093}00093\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00094}00094\ }
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00095}00095\ \ \ \ \ \ \ \ \ [HttpGet(\textcolor{stringliteral}{"{}productlist/pricelist"{}})]}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00096}\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_a_b_web_controller_a8638e076ee45f86eb922864a478f6509}{00096}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ ActionResult\ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_a_b_web_controller_a8638e076ee45f86eb922864a478f6509}{ProductPriceList}}()}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00097}00097\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_acf860ff3326ea65346a173f3479c6e57}{LogDebug}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.ABWebController,\ \$\textcolor{stringliteral}{"{}request\ received\ on\ /abweb/productlist/pricelist"{}});}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient(\_settings.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_a_b_web_settings_a58d11d481e02dadad18f7701898912a0}{APIBaseURL}});}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ client.Authenticator\ =\ \textcolor{keyword}{new}\ HttpBasicAuthenticator(\_settings.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_a_b_web_settings_a0a99b2c0fd76bbeb527e5140ae018eba}{APIUsername}},\ \_settings.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_a_b_web_settings_a5a4d4df4f1ee19092476df6c5d5b51b9}{APIPassword}});}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ request\ =\ \textcolor{keyword}{new}\ RestRequest(\_settings.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_a_b_web_settings_ae97eb776d1af94df3c64a6d185b4de0f}{ProductPriceListEndpoint}},\ Method.GET);}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ IRestResponse\ response\ =\ client.Execute(request);}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response\ !=\ \textcolor{keyword}{null}\ \&\&\ response.IsSuccessful)}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Ok(JsonConvert.DeserializeObject(response.Content));}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00108}00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00110}00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a778dd1666ec20e3197598d7aa41e0cba}{LogError}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.ABWebController,}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}error\ getting\ product\ price\ list\ from\ ab\ web"{}},}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00113}00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}status\ code:\ "{}}\ +\ response.StatusCode,}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}error\ message:\ "{}}\ +\ response.ErrorMessage,}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00115}00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}content:\ "{}}\ +\ response.Content);}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00116}00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ BadRequest(response?.Content);}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00117}00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00118}00118\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}(Exception\ ex)}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00120}00120\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00121}00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_ad25f9b254876bb11d042df6148dab40a}{LogException}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.ABWebController,}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00122}00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}exception\ getting\ product\ price\ list\ from\ ab\ web"{}},}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00123}00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ex);}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00124}00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ BadRequest(\$\textcolor{stringliteral}{"{}exception\ occurred,\ \{ex\}"{}});}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00125}00125\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00126}00126\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00127}00127\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_a_b_web_controller_8cs_source_l00128}00128\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,79 @@
+\doxysection{Internal\+API.\+Services.\+Cin7.\+Cin7\+Service\+Base Class Reference}
+\hypertarget{class_internal_a_p_i_1_1_services_1_1_cin7_1_1_cin7_service_base}{}\label{class_internal_a_p_i_1_1_services_1_1_cin7_1_1_cin7_service_base}\index{InternalAPI.Services.Cin7.Cin7ServiceBase@{InternalAPI.Services.Cin7.Cin7ServiceBase}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_cin7_1_1_cin7_service_base_a61f4764e3009a67c715be6243fd7be4a}{Cin7\+Service\+Base}} (IOptions$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_cin7_settings}{Cin7\+Settings}} $>$ cin7\+Options)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+Rest\+Client \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_cin7_1_1_cin7_service_base_a80c30cd29f10f5573e7bf574b2257f5a}{Get\+Or\+Create\+Rest\+Client}} (\mbox{\hyperlink{namespace_internal_a_p_i_1_1_requests_adf51189d6a8e38adf5f9e6aced670be6}{Ainslie\+Company\+Option}} company)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_services_1_1_cin7_1_1_cin7_service_base_a61f4764e3009a67c715be6243fd7be4a}\label{class_internal_a_p_i_1_1_services_1_1_cin7_1_1_cin7_service_base_a61f4764e3009a67c715be6243fd7be4a} 
+\index{InternalAPI.Services.Cin7.Cin7ServiceBase@{InternalAPI.Services.Cin7.Cin7ServiceBase}!Cin7ServiceBase@{Cin7ServiceBase}}
+\index{Cin7ServiceBase@{Cin7ServiceBase}!InternalAPI.Services.Cin7.Cin7ServiceBase@{InternalAPI.Services.Cin7.Cin7ServiceBase}}
+\doxysubsubsection{\texorpdfstring{Cin7ServiceBase()}{Cin7ServiceBase()}}
+{\footnotesize\ttfamily Internal\+API.\+Services.\+Cin7.\+Cin7\+Service\+Base.\+Cin7\+Service\+Base (\begin{DoxyParamCaption}\item[{IOptions$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_cin7_settings}{Cin7\+Settings}} $>$}]{cin7\+Options }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ this.\_cin7Options\ =\ cin7Options.Value;}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_services_1_1_cin7_1_1_cin7_service_base_a80c30cd29f10f5573e7bf574b2257f5a}\label{class_internal_a_p_i_1_1_services_1_1_cin7_1_1_cin7_service_base_a80c30cd29f10f5573e7bf574b2257f5a} 
+\index{InternalAPI.Services.Cin7.Cin7ServiceBase@{InternalAPI.Services.Cin7.Cin7ServiceBase}!GetOrCreateRestClient@{GetOrCreateRestClient}}
+\index{GetOrCreateRestClient@{GetOrCreateRestClient}!InternalAPI.Services.Cin7.Cin7ServiceBase@{InternalAPI.Services.Cin7.Cin7ServiceBase}}
+\doxysubsubsection{\texorpdfstring{GetOrCreateRestClient()}{GetOrCreateRestClient()}}
+{\footnotesize\ttfamily Rest\+Client Internal\+API.\+Services.\+Cin7.\+Cin7\+Service\+Base.\+Get\+Or\+Create\+Rest\+Client (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_internal_a_p_i_1_1_requests_adf51189d6a8e38adf5f9e6aced670be6}{Ainslie\+Company\+Option}}}]{company }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Cin7\ services\ are\ registered\ as\ Transient.\ \ Therefore\ a\ new\ service\ is\ created\ for\ each\ inbound\ request}}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ It\ is\ safe\ to\ assume\ that\ the\ company\ option\ is\ consistent\ across\ all\ calls\ to\ GetOrCreateRestClient.}}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Therefore,\ we\ can\ cache\ the\ rest\ client\ between\ uses.}}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_restClient\ !=\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return}\ \_restClient;}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ ServicePointManager.SecurityProtocol\ =\ SecurityProtocolType.Tls12;}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \_restClient\ =\ \textcolor{keyword}{new}\ RestClient(\_cin7Options.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_cin7_settings_a9478f2d663344c61e575eaa2979a7c92}{APIBase}});}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (company)}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespace_internal_a_p_i_1_1_requests_adf51189d6a8e38adf5f9e6aced670be6}{AinslieCompanyOption}}.AB:}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_restClient.Authenticator\ =\ \textcolor{keyword}{new}\ HttpBasicAuthenticator(\_cin7Options.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_cin7_settings_aab62216ff7348024e090679316c7748f}{APIUserBullion}},\ \_cin7Options.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_cin7_settings_ab0acb94619976040d90c84f35034d9eb}{APIPassBullion}});}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespace_internal_a_p_i_1_1_requests_adf51189d6a8e38adf5f9e6aced670be6}{AinslieCompanyOption}}.AW:}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_restClient.Authenticator\ =\ \textcolor{keyword}{new}\ HttpBasicAuthenticator(\_cin7Options.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_cin7_settings_aff97a848ab01fb7a427593b5270240eb}{APIUserWealth}},\ \_cin7Options.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_cin7_settings_adce98c540ffd9e21c7b6bde27af35fc3}{APIPassWealth}});}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespace_internal_a_p_i_1_1_requests_adf51189d6a8e38adf5f9e6aced670be6}{AinslieCompanyOption}}.ABM:}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_restClient.Authenticator\ =\ \textcolor{keyword}{new}\ HttpBasicAuthenticator(\_cin7Options.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_cin7_settings_aa6326be8b73192d1d21b4846b7ae5699}{APIUserBullionMelbourne}},\ \_cin7Options.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_cin7_settings_a16be240ffe642cc6f7ef8575c510e059}{APIPassBullionMelbourne}});}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_restClient;}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+STRIDER/source/repos/\+Internal\+API/\+Internal\+API/\+Services/\+Cin7/\mbox{\hyperlink{_cin7_service_base_8cs}{Cin7\+Service\+Base.\+cs}}\end{DoxyCompactItemize}

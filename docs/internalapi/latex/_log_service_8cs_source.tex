@@ -1,0 +1,154 @@
+\doxysection{Log\+Service.\+cs}
+\hypertarget{_log_service_8cs_source}{}\label{_log_service_8cs_source}\index{C:/Users/STRIDER/source/repos/InternalAPI/InternalAPI/Services/Logger/LogService.cs@{C:/Users/STRIDER/source/repos/InternalAPI/InternalAPI/Services/Logger/LogService.cs}}
+\mbox{\hyperlink{_log_service_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }Microsoft.AspNetCore.Http;}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }Newtonsoft.Json;}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }System.IO;}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_contexts_1_1_internal_a_p_i}{InternalAPI.Contexts.InternalAPI}};}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00006}00006\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_models_1_1_internal_a_p_i}{InternalAPI.Models.InternalAPI}};}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00007}00007\ \textcolor{keyword}{using\ }System.Diagnostics;}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00008}00008\ \textcolor{keyword}{using\ }System.Reflection;}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00009}00009\ \textcolor{keyword}{using\ }System.Runtime.CompilerServices;}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00010}00010\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_settings}{InternalAPI.Settings}};}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00011}00011\ \textcolor{keyword}{using\ }Microsoft.Extensions.Options;}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00013}00013\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_services}{InternalAPI.Services}}}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00014}00014\ \{}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00015}\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{00015}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service}{LogService}}}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00016}00016\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00017}\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a6406d1f9154522a1f77a7ab5d52dae14}{00017}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a6406d1f9154522a1f77a7ab5d52dae14}{LogTypes}}}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a6406d1f9154522a1f77a7ab5d52dae14aa603905470e2a5b8c13e96b579ef0dba}{Debug}},}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a6406d1f9154522a1f77a7ab5d52dae14aa82be0f551b8708bc08eb33cd9ded0cf}{Information}},}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a6406d1f9154522a1f77a7ab5d52dae14ab47f6a6092c5d7e4bffec12dff309c3b}{Err}},}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a6406d1f9154522a1f77a7ab5d52dae14ab0d4998a26f5b5742ad38c4af8817e32}{Exception}}}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00025}\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{00025}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1ac6ef9642548f75729bf2383425199c21}{LogService}},}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1a46344c586c0c36dce62cb8727758a525}{NetsuiteController}},}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1abb09ec910136bb71c0a2030bac680da2}{NetsuiteService}},}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1afa3f5ad05f0e30e84c22797b0307e6e0}{WebShopController}},}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1a5b8ca68f5304dc2aa37c0b4711d01b7a}{NetsuiteHelper}},}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1abddc3f07f95413eaaf0f3908cb5f276e}{FTXOTCController}},}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1a7b743929bd622fa3d30f5b2ae398cc8e}{bPayController}},}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1aca7b0b578103b07ba945ada79681716f}{bPayService}},}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1abe7345c66fe9574d454298a08f8f36e2}{EmailService}},}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1ae75873af5cb1d43e053875ee5368210f}{EmailController}},}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1ad7c88e60e20f7e5ab1fb821d37c8a5e8}{LogsController}},}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1a5b8000729d84b57b04570efaf5c6beb2}{TaskAPIService}},}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1af73fcd01281b3ca05eb4511ecd3ede2e}{Auth0Controller}},}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1ae50b0b4483c6a5f2089f768a198143f3}{Auth0Service}},}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1aa4da5eec4fbb9bc9c4b59d6c57fcfdf9}{SMSController}},}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1abf953e772472fabb17578196b8000e95}{SMSGlobalService}},}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1a0b8b5d715aa73e3159cef26959f2576d}{AinslieNewsController}},}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1a5e38b3a12aedb37792f8c8f448b9e719}{AinslieNewsService}},}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1aed20cca3787859a28580ca5c1fdac1b8}{GreenIDDBController}},}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1a651506a5f7be1c4e2e6bb3c7b9cda9ee}{GreenIDDBHelper}},}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1a1449b1469b6d6dd93897297bcf29857f}{GreenIDController}},}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1a21ebd1ebd23990030e852950fb7b4448}{GreenIDService}},}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1ae46fc0f33140e811f589495fe3eb5873}{ABWebController}},}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1adb097e57965f02ce1b4e4ae03cd3b566}{AinslieAPIController}}}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_contexts_1_1_internal_a_p_i_1_1_internal_a_p_i_context}{InternalAPIContext}}\ \_context;}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_s_q_l_logger_settings}{SQLLoggerSettings}}\ \_sqlLoggerSettings;}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00056}\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_ab324b1cb2058aa44915b8d55a5878e7c}{00056}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_ab324b1cb2058aa44915b8d55a5878e7c}{LogService}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_contexts_1_1_internal_a_p_i_1_1_internal_a_p_i_context}{InternalAPIContext}}\ context,\ IOptions<SQLLoggerSettings>\ sqlLoggerSettings)}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \_context\ =\ context;}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \_sqlLoggerSettings\ =\ sqlLoggerSettings.Value;}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00062}\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_acf860ff3326ea65346a173f3479c6e57}{00062}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_models_1_1_internal_a_p_i_1_1_log_entry}{LogEntry}}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_acf860ff3326ea65346a173f3479c6e57}{LogDebug}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}\ logSource,\ params\ \textcolor{keywordtype}{object}[]\ dataList)}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\_sqlLoggerSettings.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_s_q_l_logger_settings_a4ab5043bd32bb3d277f9a353f8cd6e5a}{LogDebug}})\ \{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};\ \}}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ var\ threadID\ =\ System.Environment.CurrentManagedThreadId;}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a65f60a581a2783a25374bf30c5030e52}{InsertLog}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a6406d1f9154522a1f77a7ab5d52dae14}{LogTypes}}.Debug,\ threadID,\ logSource,\ dataList);}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00069}\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_ae7208181482f25f801a9d637367cc5e7}{00069}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_models_1_1_internal_a_p_i_1_1_log_entry}{LogEntry}}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_ae7208181482f25f801a9d637367cc5e7}{LogInformation}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}\ logSource,\ params\ \textcolor{keywordtype}{object}[]\ dataList)}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\_sqlLoggerSettings.\mbox{\hyperlink{class_internal_a_p_i_1_1_settings_1_1_s_q_l_logger_settings_a3672c93899c5a41f470c82428dc7de38}{LogInformation}})\ \{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};\ \}}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ var\ threadID\ =\ System.Environment.CurrentManagedThreadId;}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a65f60a581a2783a25374bf30c5030e52}{InsertLog}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a6406d1f9154522a1f77a7ab5d52dae14}{LogTypes}}.Information,\ threadID,\ logSource,\ dataList);}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00076}\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a778dd1666ec20e3197598d7aa41e0cba}{00076}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_models_1_1_internal_a_p_i_1_1_log_entry}{LogEntry}}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a778dd1666ec20e3197598d7aa41e0cba}{LogError}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}\ logSource,\ params\ \textcolor{keywordtype}{object}[]\ dataList)}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ var\ threadID\ =\ System.Environment.CurrentManagedThreadId;}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a65f60a581a2783a25374bf30c5030e52}{InsertLog}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a6406d1f9154522a1f77a7ab5d52dae14}{LogTypes}}.Err,\ threadID,\ logSource,\ dataList);}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00082}\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_ad25f9b254876bb11d042df6148dab40a}{00082}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_models_1_1_internal_a_p_i_1_1_log_entry}{LogEntry}}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_ad25f9b254876bb11d042df6148dab40a}{LogException}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}\ logSource,\ params\ \textcolor{keywordtype}{object}[]\ dataList)}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ var\ threadID\ =\ System.Environment.CurrentManagedThreadId;}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a65f60a581a2783a25374bf30c5030e52}{InsertLog}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a6406d1f9154522a1f77a7ab5d52dae14}{LogTypes}}.Exception,\ threadID,\ logSource,\ dataList);}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00094}\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a65f60a581a2783a25374bf30c5030e52}{00094}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_models_1_1_internal_a_p_i_1_1_log_entry}{LogEntry}}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a65f60a581a2783a25374bf30c5030e52}{InsertLog}}(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a6406d1f9154522a1f77a7ab5d52dae14}{LogTypes}}\ logType,\ \textcolor{keywordtype}{int}\ threadID,\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}\ logSource,\ params\ \textcolor{keywordtype}{object}[]\ DataList)}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00095}00095\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_models_1_1_internal_a_p_i_1_1_log_entry}{LogEntry}}\ logEntry;}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//try\ to\ create\ log\ entry\ by\ deserialising\ objects\ in\ param\ array\ datalist}}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ logEntry\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_models_1_1_internal_a_p_i_1_1_log_entry}{LogEntry}}()}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Created\ =\ DateTime.Now,}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Type\ =\ logType.ToString(),}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ThreadID\ =\ threadID,}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Source\ =\ logSource.ToString(),}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Data\ =\ JsonConvert.SerializeObject(DataList,\ \textcolor{keyword}{new}\ JsonSerializerSettings}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00108}00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ReferenceLoopHandling\ =\ ReferenceLoopHandling.Ignore}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \})}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00110}00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a6406d1f9154522a1f77a7ab5d52dae14ab0d4998a26f5b5742ad38c4af8817e32}{Exception}}\ ex)}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00113}00113\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//create\ new\ logentry\ with\ exception}}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00115}00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ logEntry\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_models_1_1_internal_a_p_i_1_1_log_entry}{LogEntry}}()}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00116}00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00117}00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Created\ =\ DateTime.Now,}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00118}00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Type\ =\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a6406d1f9154522a1f77a7ab5d52dae14}{LogTypes}}.Exception.ToString(),}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ThreadID\ =\ threadID,}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00120}00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Source\ =\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_afb23e0145d62cde8fc42bbf085b585f1}{LogSources}}.LogService.ToString(),}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00121}00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Data\ =\ \$\textcolor{stringliteral}{"{}Exception\ creating\ logEntry:\ \{ex.ToString()\}"{}}}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00122}00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00123}00123\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00124}00124\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00125}00125\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00126}00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_context.\mbox{\hyperlink{class_internal_a_p_i_1_1_contexts_1_1_internal_a_p_i_1_1_internal_a_p_i_context_ad79a5ad951fe31de5c20042a1fb05e8b}{LogEntries}}.Add(logEntry);}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00127}00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_context.SaveChanges();}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00128}00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ logEntry;}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00129}00129\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00130}00130\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a6406d1f9154522a1f77a7ab5d52dae14ab0d4998a26f5b5742ad38c4af8817e32}{Exception}}\ ex)}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00131}00131\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00132}00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ WriteLog(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a6406d1f9154522a1f77a7ab5d52dae14}{LogTypes}}.Exception,\ \textcolor{stringliteral}{"{}LogService"{}},\ \$\textcolor{stringliteral}{"{}Exception\ trying\ to\ insert\ log.\ \ Exception:\ \{ex.ToString()\}"{}});}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00133}00133\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00134}00134\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00135}00135\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00136}00136\ }
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00140}00140\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ WriteLog(\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a6406d1f9154522a1f77a7ab5d52dae14}{LogTypes}}\ Type,\ \textcolor{keywordtype}{string}\ Source,\ \textcolor{keywordtype}{string}\ Description)}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00141}00141\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ var\ LogPath\ =\ \$\textcolor{stringliteral}{"{}\{AppDomain.CurrentDomain.BaseDirectory\}/Log/"{}};}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00143}00143\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!Directory.Exists(LogPath))}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00144}00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Directory.CreateDirectory(LogPath);}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00145}00145\ \ \ \ \ \ \ \ \ \ \ \ \ var\ LogFile\ =\ \$\textcolor{stringliteral}{"{}InternalAPI.Log"{}};}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00146}00146\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00147}00147\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00148}00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ StreamWriter\ SW\ =\ File.AppendText(LogPath\ +\ LogFile);}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00149}00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SW.WriteLine(\$\textcolor{stringliteral}{"{}\{DateTime.Now.ToString()\}\ [\{Type.ToString()\}]\ \{Description\}"{}});}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00150}00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SW.Close();}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00151}00151\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00152}00152\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_log_service_a6406d1f9154522a1f77a7ab5d52dae14ab0d4998a26f5b5742ad38c4af8817e32}{Exception}}\ ex)}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00153}00153\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00154}00154\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00155}00155\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00156}00156\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_log_service_8cs_source_l00157}00157\ \}}
+
+\end{DoxyCode}

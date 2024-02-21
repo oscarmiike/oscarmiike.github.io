@@ -1,0 +1,166 @@
+\chapter{math}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23c648351250383a3496e3a0c096139e9}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23c648351250383a3496e3a0c096139e9}\index{math@{math}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23c648351250383a3496e3a0c096139e9_autotoc_md3568}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23c648351250383a3496e3a0c096139e9_autotoc_md3568}%
+ Math utilities.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23c648351250383a3496e3a0c096139e9_autotoc_md3569}{}\doxysection{\texorpdfstring{ceil(val\mbox{[}, step\mbox{]})\+:Number}{ceil(val\mbox{[}, step\mbox{]})\+:Number}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23c648351250383a3496e3a0c096139e9_autotoc_md3569}
+Round value up to full steps. Similar to {\ttfamily Math.\+ceil()} but can round value to an arbitrary {\itshape radix}. \begin{DoxyVerb}ceil(7.2);   // 8
+ceil(7.8);   // 8
+ceil(7, 5);  // 10
+ceil(11, 5); // 15
+ceil(15, 5); // 15
+\end{DoxyVerb}
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23c648351250383a3496e3a0c096139e9_autotoc_md3570}{}\doxysubsection{\texorpdfstring{Common use cases}{Common use cases}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23c648351250383a3496e3a0c096139e9_autotoc_md3570}
+Round values by increments of 5/10/1000/etc.
+
+See\+: \`{}round()\`{}, \`{}floor()\`{}, \`{}count\+Steps()\`{}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23c648351250383a3496e3a0c096139e9_autotoc_md3571}{}\doxysection{\texorpdfstring{clamp(val, min, max)\+:Number}{clamp(val, min, max)\+:Number}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23c648351250383a3496e3a0c096139e9_autotoc_md3571}
+Clamps value inside range.
+
+{\ttfamily clamp()} is extremely useful in cases where you need to limit a value inside a certain range. So instead of doing a complex {\ttfamily if/else} to filter/process the value you can restrict it to always be inside the desired range\+: \begin{DoxyVerb}clamp(-5, 0, 10); // 0
+clamp(7, 1, 10);  // 7
+clamp(8, 1, 10);  // 8
+clamp(10, 1, 10); // 10
+clamp(11, 1, 10); // 10
+\end{DoxyVerb}
+ If the value is smaller than {\ttfamily min} it returns the {\ttfamily min}, if {\ttfamily val} is higher than {\ttfamily max} it returns {\ttfamily max}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23c648351250383a3496e3a0c096139e9_autotoc_md3572}{}\doxysubsection{\texorpdfstring{Common use cases}{Common use cases}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23c648351250383a3496e3a0c096139e9_autotoc_md3572}
+Any situation where you need to limit a number inside a range like\+: slider position, image galleries 
+\footnotesize (so user can\textquotesingle{}t skip to an image that doesn\textquotesingle{}t exist)
+\normalsize , drag and drop, scroll boundaries, etc.
+
+See\+: \`{}loop()\`{}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23c648351250383a3496e3a0c096139e9_autotoc_md3573}{}\doxysection{\texorpdfstring{count\+Steps(val, step\mbox{[}, overflow\mbox{]})\+:Number}{count\+Steps(val, step\mbox{[}, overflow\mbox{]})\+:Number}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23c648351250383a3496e3a0c096139e9_autotoc_md3573}
+Count number of full steps.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23c648351250383a3496e3a0c096139e9_autotoc_md3574}{}\doxysubsection{\texorpdfstring{Arguments\+:}{Arguments\+:}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23c648351250383a3496e3a0c096139e9_autotoc_md3574}
+
+\begin{DoxyEnumerate}
+\item {\ttfamily val} (Number) \+: Value.
+\item {\ttfamily step} (Number) \+: Step size.
+\item {\ttfamily \mbox{[}overflow\mbox{]}} (Number) \+: Maximum number of steps, n\+Steps will loop if {\ttfamily \texorpdfstring{$>$}{>}=} than overflow.
+\end{DoxyEnumerate}
+
+Count steps is very useful for cases where you need to know how many "{}full steps"{} the number {\itshape completed}. Think of it as a division that only returns integers and ignore remainders. \begin{DoxyVerb}countSteps(3,  5);    // 0
+countSteps(6,  5);    // 1
+countSteps(12, 5);    // 2
+countSteps(18, 5);    // 3
+countSteps(21, 5);    // 4
+\end{DoxyVerb}
+ You can also set an {\ttfamily overflow} which will reset the {\itshape counter} before reaching this number. \begin{DoxyVerb}countSteps(3, 5, 3);  // 0
+countSteps(6, 5, 3);  // 1
+countSteps(12, 5, 3); // 2
+countSteps(18, 5, 3); // 0
+countSteps(21, 5, 3); // 1
+\end{DoxyVerb}
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23c648351250383a3496e3a0c096139e9_autotoc_md3575}{}\doxysubsection{\texorpdfstring{Common use cases}{Common use cases}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23c648351250383a3496e3a0c096139e9_autotoc_md3575}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23c648351250383a3496e3a0c096139e9_autotoc_md3576}{}\doxysubsubsection{\texorpdfstring{How many items fit inside an area\+:}{How many items fit inside an area\+:}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23c648351250383a3496e3a0c096139e9_autotoc_md3576}
+\begin{DoxyVerb}var containerWidth = 100;
+var itemWidth = 8;
+var howManyFit = countSteps(containerWidth, itemWidth); // 12
+\end{DoxyVerb}
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23c648351250383a3496e3a0c096139e9_autotoc_md3577}{}\doxysubsubsection{\texorpdfstring{Split value into different scales or convert value from one scale to another}{Split value into different scales or convert value from one scale to another}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23c648351250383a3496e3a0c096139e9_autotoc_md3577}
+From \href{time.html\#parseMs}{\texttt{ mout/time/parse\+Ms}}\+: \begin{DoxyVerb}function parseMs(ms){
+    return {
+        milliseconds : countSteps(ms, 1, 1000),
+        seconds      : countSteps(ms, 1000, 60),
+        minutes      : countSteps(ms, 60000, 60),
+        hours        : countSteps(ms, 3600000, 24),
+        days         : countSteps(ms, 86400000)
+    };
+}
+
+// {days:27, hours:4, minutes:26, seconds:5, milliseconds:454}
+parseMs(2348765454);
+\end{DoxyVerb}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23c648351250383a3496e3a0c096139e9_autotoc_md3578}{}\doxysection{\texorpdfstring{floor(val\mbox{[}, step\mbox{]})\+:Number}{floor(val\mbox{[}, step\mbox{]})\+:Number}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23c648351250383a3496e3a0c096139e9_autotoc_md3578}
+Round value down to full steps. Similar to {\ttfamily Math.\+floor()} but can round value to an arbitrary {\itshape radix}. (formerly {\ttfamily snap}) \begin{DoxyVerb}floor(7.2);   // 7
+floor(7.8);   // 7
+floor(7, 5);  // 5
+floor(11, 5); // 10
+floor(15, 5); // 15
+\end{DoxyVerb}
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23c648351250383a3496e3a0c096139e9_autotoc_md3579}{}\doxysubsection{\texorpdfstring{Common use cases}{Common use cases}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23c648351250383a3496e3a0c096139e9_autotoc_md3579}
+Round values by increments of 5/10/1000/etc.
+
+See\+: \`{}round()\`{}, \`{}ceil()\`{}, \`{}count\+Steps()\`{}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23c648351250383a3496e3a0c096139e9_autotoc_md3580}{}\doxysection{\texorpdfstring{in\+Range(val, min, max\mbox{[}, threshold\mbox{]})\+:Boolean}{in\+Range(val, min, max\mbox{[}, threshold\mbox{]})\+:Boolean}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23c648351250383a3496e3a0c096139e9_autotoc_md3580}
+Checks if value is inside the range. \begin{DoxyVerb}inRange(-6, 1, 10);    // false
+inRange( 5, 1, 10);    // true
+inRange(12, 1, 10);    // false
+\end{DoxyVerb}
+ The threshold can be useful when you want granular control of what should match and/or the precision could change at runtime or by some configuration option, avoids the clutter of adding/subtracting the {\ttfamily threshold} from {\ttfamily mix} and {\ttfamily max}. \begin{DoxyVerb}inRange(12, 1, 10, 2); // true
+inRange(13, 1, 10, 2); // false
+\end{DoxyVerb}
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23c648351250383a3496e3a0c096139e9_autotoc_md3581}{}\doxysubsection{\texorpdfstring{Common use cases}{Common use cases}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23c648351250383a3496e3a0c096139e9_autotoc_md3581}
+Anything that needs to check if value is inside a range, be it collision detection, limiting interaction by mouse position, ignoring parts of the logic that shouldn\textquotesingle{}t happen if value isn\textquotesingle{}t valid, simplify {\ttfamily if/else} conditions, making code more readable, etc...\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23c648351250383a3496e3a0c096139e9_autotoc_md3582}{}\doxysection{\texorpdfstring{is\+Near(val, target, threshold)\+:Boolean}{is\+Near(val, target, threshold)\+:Boolean}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23c648351250383a3496e3a0c096139e9_autotoc_md3582}
+Check if value is close to target.
+
+Similar to {\ttfamily in\+Range()} but used to check if value is close to a certain value or match the desired value. Basically to simplify {\ttfamily if/else} conditions and to make code clearer. \begin{DoxyVerb}isNear( 10.2, 10, 0.5); // true
+isNear( 10.5, 10, 0.5); // true
+isNear(10.51, 10, 0.5); // false
+\end{DoxyVerb}
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23c648351250383a3496e3a0c096139e9_autotoc_md3583}{}\doxysubsection{\texorpdfstring{Common use cases}{Common use cases}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23c648351250383a3496e3a0c096139e9_autotoc_md3583}
+Games where a certain action should happen if an {\itshape actor} is close to a target, gravity fields, any numeric check that has some tolerance.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23c648351250383a3496e3a0c096139e9_autotoc_md3584}{}\doxysection{\texorpdfstring{lerp(ratio, start, end)\+:Number}{lerp(ratio, start, end)\+:Number}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23c648351250383a3496e3a0c096139e9_autotoc_md3584}
+Linear interpolation. \begin{DoxyVerb}lerp(0.5, 0, 10);  // 5
+lerp(0.75, 0, 10); // 7.5
+\end{DoxyVerb}
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23c648351250383a3496e3a0c096139e9_autotoc_md3585}{}\doxysubsection{\texorpdfstring{Common use cases}{Common use cases}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23c648351250383a3496e3a0c096139e9_autotoc_md3585}
+Linear interpolation is commonly used to create animations of elements moving from one point to another, where you simply update the current ratio (which in this case represents time) and get back the position of the element at that "{}frame"{}.
+
+The core idea of {\ttfamily lerp} is that you are using a number that goes from {\ttfamily 0} to {\ttfamily 1} to specify a ratio inside that scale. This concept can be applied to convert numbers from different scales easily.
+
+See\+: \doxylink{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_map}{\`{}map()\`{}}, \`{}norm()\`{}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23c648351250383a3496e3a0c096139e9_autotoc_md3586}{}\doxysection{\texorpdfstring{loop(val, min, max)\+:Number}{loop(val, min, max)\+:Number}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23c648351250383a3496e3a0c096139e9_autotoc_md3586}
+Loops value inside range. Will return {\ttfamily min} if {\ttfamily val \texorpdfstring{$>$}{>} max} and {\ttfamily max} if {\ttfamily val \texorpdfstring{$<$}{<} min}, otherwise it returns {\ttfamily val}. \begin{DoxyVerb}loop(-1, 0, 10); // 10
+loop( 1, 0, 10); // 1
+loop( 5, 0, 10); // 5
+loop( 9, 0, 10); // 9
+loop(10, 0, 10); // 10
+loop(11, 0, 10); // 0
+\end{DoxyVerb}
+ Similar to \`{}clamp()\`{} but {\itshape loops} the value inside the range when an overflow occurs.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23c648351250383a3496e3a0c096139e9_autotoc_md3587}{}\doxysubsection{\texorpdfstring{Common use cases}{Common use cases}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23c648351250383a3496e3a0c096139e9_autotoc_md3587}
+Image galleries, infinite scroll, any kind of logic that requires that the first item should be displayed after the last one or the last one should be displayed after first if going on the opposite direction.
+
+See\+: \`{}clamp()\`{}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23c648351250383a3496e3a0c096139e9_autotoc_md3588}{}\doxysection{\texorpdfstring{map(val, min1, max1, min2, max2)\+:Number}{map(val, min1, max1, min2, max2)\+:Number}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23c648351250383a3496e3a0c096139e9_autotoc_md3588}
+Maps a number from one scale to another. \begin{DoxyVerb}map(3, 0, 4, -1, 1)   // 0.5
+map(3, 0, 10, 0, 100) // 30
+\end{DoxyVerb}
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23c648351250383a3496e3a0c096139e9_autotoc_md3589}{}\doxysubsection{\texorpdfstring{Common use cases}{Common use cases}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23c648351250383a3496e3a0c096139e9_autotoc_md3589}
+Very useful to convert values from/to multiple scales.
+
+Let\textquotesingle{}s suppose we have a slider that needs to go from {\ttfamily 2000} to {\ttfamily 5000} and that slider has {\ttfamily 300px} of width, here is how we would translate the knob position into the current value\+: \begin{DoxyVerb}var knobX = 123;
+var sliderWid = 300;
+var minVal = 2000;
+var maxVal = 5000;
+
+var curVal = map(knobX, 0, sliderWid, minVal, maxVal); // 3230
+\end{DoxyVerb}
+ See\+: \`{}lerp()\`{}, \`{}norm()\`{}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23c648351250383a3496e3a0c096139e9_autotoc_md3590}{}\doxysection{\texorpdfstring{norm(val, min, max)\+:Number}{norm(val, min, max)\+:Number}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23c648351250383a3496e3a0c096139e9_autotoc_md3590}
+Gets normalized ratio of value inside range.
+
+If {\ttfamily val \texorpdfstring{$<$}{<} min} or {\ttfamily val \texorpdfstring{$>$}{>} max} it will throw a {\ttfamily Range\+Error} since we can\textquotesingle{}t normalize the value. \begin{DoxyVerb}norm(50, 0, 100); // 0.5
+norm(75, 0, 100); // 0.75
+norm(100, 0, 100); // 1
+norm(-50, 0, 100); // RangeError: value (-50) must be between 0 and 100
+\end{DoxyVerb}
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23c648351250383a3496e3a0c096139e9_autotoc_md3591}{}\doxysubsection{\texorpdfstring{Common use cases}{Common use cases}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23c648351250383a3496e3a0c096139e9_autotoc_md3591}
+Convert values between scales, used by \doxylink{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_map}{\`{}map()\`{}} internally. Direct opposite of \`{}lerp()\`{}.
+
+See\+: \`{}lerp()\`{}, \doxylink{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2ba45078b330365fe0bd7d73192edd5b1_map}{\`{}map()\`{}}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23c648351250383a3496e3a0c096139e9_autotoc_md3592}{}\doxysection{\texorpdfstring{round(val\mbox{[}, step\mbox{]})\+:Number}{round(val\mbox{[}, step\mbox{]})\+:Number}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23c648351250383a3496e3a0c096139e9_autotoc_md3592}
+Round value to full steps. Similar to {\ttfamily Math.\+round()} but allow setting an arbitrary {\itshape radix}. \begin{DoxyVerb}// default
+round(0.22);      // 0
+round(0.49);      // 0
+round(0.51);      // 1
+
+// custom radix
+round(0.22, 0.5); // 0
+round(0.49, 0.5); // 0.5
+round(0.51, 0.5); // 0.5
+round(0.74, 0.5); // 0.5
+round(0.75, 0.5); // 1
+round(1.24, 0.5); // 1
+round(1.25, 0.5); // 1.5
+round(1.74, 0.5); // 1.5
+\end{DoxyVerb}
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23c648351250383a3496e3a0c096139e9_autotoc_md3593}{}\doxysubsection{\texorpdfstring{Common use cases}{Common use cases}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_23c648351250383a3496e3a0c096139e9_autotoc_md3593}
+Round values by increments of 0.\+5/5/10/1000/etc.
+
+See\+: \`{}floor()\`{}, \`{}ceil()\`{}, \`{}count\+Steps()\`{}
+
+\DoxyHorRuler{0}
+
+
+For more usage more info check the specs and source code. 

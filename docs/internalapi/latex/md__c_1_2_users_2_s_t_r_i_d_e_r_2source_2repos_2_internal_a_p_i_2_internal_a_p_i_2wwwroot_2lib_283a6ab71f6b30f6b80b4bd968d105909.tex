@@ -1,0 +1,45 @@
+\chapter{README}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_283a6ab71f6b30f6b80b4bd968d105909}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_283a6ab71f6b30f6b80b4bd968d105909}\index{README@{README}}
+
+
+\href{http://gulpjs.com}{\texttt{  }} \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_283a6ab71f6b30f6b80b4bd968d105909_autotoc_md11038}{}\doxysection{\texorpdfstring{rechoir}{rechoir}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_283a6ab71f6b30f6b80b4bd968d105909_autotoc_md11038}
+\href{https://www.npmjs.com/package/rechoir}{\texttt{ }} \href{https://www.npmjs.com/package/rechoir}{\texttt{ }} \href{https://travis-ci.org/gulpjs/rechoir}{\texttt{ }} \href{https://ci.appveyor.com/project/gulpjs/rechoir}{\texttt{ }} \href{https://coveralls.io/r/gulpjs/rechoir}{\texttt{ }} \href{https://gitter.im/gulpjs/gulp}{\texttt{ }}
+
+Prepare a node environment to require files with different extensions.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_283a6ab71f6b30f6b80b4bd968d105909_autotoc_md11039}{}\doxysubsection{\texorpdfstring{What is it?}{What is it?}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_283a6ab71f6b30f6b80b4bd968d105909_autotoc_md11039}
+This module, in conjunction with \href{http://github.com/gulpjs/interpret}{\texttt{ interpret}}-\/like objects, can register any filetype the npm ecosystem has a module loader for. This library is a dependency of \href{http://github.com/gulpjs/liftoff}{\texttt{ Liftoff}}.
+
+{\bfseries{Note\+:}} While {\ttfamily rechoir} will automatically load and register transpilers like {\ttfamily coffee-\/script}, you must provide a local installation. The transpilers are {\bfseries{not}} bundled with this module.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_283a6ab71f6b30f6b80b4bd968d105909_autotoc_md11040}{}\doxysubsection{\texorpdfstring{rechoir for enterprise}{rechoir for enterprise}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_283a6ab71f6b30f6b80b4bd968d105909_autotoc_md11040}
+Available as part of the Tidelift Subscription
+
+The maintainers of rechoir and thousands of other packages are working with Tidelift to deliver commercial support and maintenance for the open source dependencies you use to build your applications. Save time, reduce risk, and improve code health, while paying the maintainers of the exact dependencies you use. \href{https://tidelift.com/subscription/pkg/npm-rechoir?utm_source=npm-rechoir&utm_medium=referral&utm_campaign=enterprise&utm_term=repo}{\texttt{ Learn more.}}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_283a6ab71f6b30f6b80b4bd968d105909_autotoc_md11041}{}\doxysubsection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_283a6ab71f6b30f6b80b4bd968d105909_autotoc_md11041}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ config\ =\ require('interpret').extensions;}
+\DoxyCodeLine{const\ rechoir\ =\ require('rechoir');}
+\DoxyCodeLine{rechoir.prepare(config,\ './test/fixtures/test.coffee');}
+\DoxyCodeLine{rechoir.prepare(config,\ './test/fixtures/test.csv');}
+\DoxyCodeLine{rechoir.prepare(config,\ './test/fixtures/test.toml');}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log(require('./test/fixtures/test.coffee'));}
+\DoxyCodeLine{console.log(require('./test/fixtures/test.csv'));}
+\DoxyCodeLine{console.log(require('./test/fixtures/test.toml'));}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_283a6ab71f6b30f6b80b4bd968d105909_autotoc_md11042}{}\doxysubsection{\texorpdfstring{API}{API}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_283a6ab71f6b30f6b80b4bd968d105909_autotoc_md11042}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_283a6ab71f6b30f6b80b4bd968d105909_autotoc_md11043}{}\doxysubsubsection{\texorpdfstring{{\ttfamily prepare(config, filepath, \mbox{[}cwd\mbox{]}, \mbox{[}no\+Throw\mbox{]})}}{{\ttfamily prepare(config, filepath, \mbox{[}cwd\mbox{]}, \mbox{[}no\+Throw\mbox{]})}}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_283a6ab71f6b30f6b80b4bd968d105909_autotoc_md11043}
+Look for a module loader associated with the provided file and attempt require it. If necessary, run any setup required to inject it into \href{http://nodejs.org/api/globals.html\#globals_require_extensions}{\texttt{ require.\+extensions}}.
+
+{\ttfamily config} An \href{http://github.com/gulpjs/interpret}{\texttt{ interpret}}-\/like configuration object.
+
+{\ttfamily filepath} A file whose type you\textquotesingle{}d like to register a module loader for.
+
+{\ttfamily cwd} An optional path to start searching for the module required to load the requested file. Defaults to the directory of {\ttfamily filepath}.
+
+{\ttfamily no\+Throw} An optional boolean indicating if the method should avoid throwing.
+
+If calling this method is successful (e.\+g. it doesn\textquotesingle{}t throw), you can now require files of the type you requested natively.
+
+An error with a {\ttfamily failures} property will be thrown if the module loader(s) configured for a given extension cannot be registered.
+
+If a loader is already registered, this will simply return {\ttfamily true}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_283a6ab71f6b30f6b80b4bd968d105909_autotoc_md11044}{}\doxysubsection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_283a6ab71f6b30f6b80b4bd968d105909_autotoc_md11044}
+MIT 

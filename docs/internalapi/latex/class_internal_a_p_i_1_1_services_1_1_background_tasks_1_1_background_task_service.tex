@@ -1,0 +1,97 @@
+\doxysection{Internal\+API.\+Services.\+Background\+Tasks.\+Background\+Task\+Service Class Reference}
+\hypertarget{class_internal_a_p_i_1_1_services_1_1_background_tasks_1_1_background_task_service}{}\label{class_internal_a_p_i_1_1_services_1_1_background_tasks_1_1_background_task_service}\index{InternalAPI.Services.BackgroundTasks.BackgroundTaskService@{InternalAPI.Services.BackgroundTasks.BackgroundTaskService}}
+
+
+Inheritance diagram for Internal\+API.\+Services.\+Background\+Tasks.\+Background\+Task\+Service\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=238pt]{class_internal_a_p_i_1_1_services_1_1_background_tasks_1_1_background_task_service__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Internal\+API.\+Services.\+Background\+Tasks.\+Background\+Task\+Service\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=238pt]{class_internal_a_p_i_1_1_services_1_1_background_tasks_1_1_background_task_service__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_background_tasks_1_1_background_task_service_ab8ae3291998767c7d7f088e133b77587}{Background\+Task\+Service}} (\mbox{\hyperlink{interface_internal_a_p_i_1_1_services_1_1_background_tasks_1_1_i_background_task_queue}{IBackground\+Task\+Queue}} queue, ILogger$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_background_tasks_1_1_background_task_service}{Background\+Task\+Service}} $>$ logger)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+override async Task \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_background_tasks_1_1_background_task_service_ae6bc547e0c6810ea9c194d5ed46ba4f3}{Execute\+Async}} (Cancellation\+Token stopping\+Token)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_services_1_1_background_tasks_1_1_background_task_service_ab8ae3291998767c7d7f088e133b77587}\label{class_internal_a_p_i_1_1_services_1_1_background_tasks_1_1_background_task_service_ab8ae3291998767c7d7f088e133b77587} 
+\index{InternalAPI.Services.BackgroundTasks.BackgroundTaskService@{InternalAPI.Services.BackgroundTasks.BackgroundTaskService}!BackgroundTaskService@{BackgroundTaskService}}
+\index{BackgroundTaskService@{BackgroundTaskService}!InternalAPI.Services.BackgroundTasks.BackgroundTaskService@{InternalAPI.Services.BackgroundTasks.BackgroundTaskService}}
+\doxysubsubsection{\texorpdfstring{BackgroundTaskService()}{BackgroundTaskService()}}
+{\footnotesize\ttfamily Internal\+API.\+Services.\+Background\+Tasks.\+Background\+Task\+Service.\+Background\+Task\+Service (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interface_internal_a_p_i_1_1_services_1_1_background_tasks_1_1_i_background_task_queue}{IBackground\+Task\+Queue}}}]{queue,  }\item[{ILogger$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_background_tasks_1_1_background_task_service}{Background\+Task\+Service}} $>$}]{logger }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ this.queue\ =\ queue;}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ this.logger\ =\ logger;}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_services_1_1_background_tasks_1_1_background_task_service_ae6bc547e0c6810ea9c194d5ed46ba4f3}\label{class_internal_a_p_i_1_1_services_1_1_background_tasks_1_1_background_task_service_ae6bc547e0c6810ea9c194d5ed46ba4f3} 
+\index{InternalAPI.Services.BackgroundTasks.BackgroundTaskService@{InternalAPI.Services.BackgroundTasks.BackgroundTaskService}!ExecuteAsync@{ExecuteAsync}}
+\index{ExecuteAsync@{ExecuteAsync}!InternalAPI.Services.BackgroundTasks.BackgroundTaskService@{InternalAPI.Services.BackgroundTasks.BackgroundTaskService}}
+\doxysubsubsection{\texorpdfstring{ExecuteAsync()}{ExecuteAsync()}}
+{\footnotesize\ttfamily override async Task Internal\+API.\+Services.\+Background\+Tasks.\+Background\+Task\+Service.\+Execute\+Async (\begin{DoxyParamCaption}\item[{Cancellation\+Token}]{stopping\+Token }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ On\ stopping,\ complete\ adding\ to\ the\ queue}}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ This\ will\ mark\ the\ queue\ as\ close\ and\ exit\ the\ Dequeue()}}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ stoppingToken.Register(()\ =>\ queue.\mbox{\hyperlink{interface_internal_a_p_i_1_1_services_1_1_background_tasks_1_1_i_background_task_queue_a201b2b43d604d7f93c1fc7aff84feb4e}{Complete}}());}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Call\ await\ to\ tell\ aspnet\ to\ continue\ load\ sequence}}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ await\ Task.Delay(1,\ stoppingToken).ConfigureAwait(\textcolor{keyword}{false});}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (!stoppingToken.IsCancellationRequested)}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Task\ task;}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ task\ =\ queue.\mbox{\hyperlink{interface_internal_a_p_i_1_1_services_1_1_background_tasks_1_1_i_background_task_queue_a6371af3640d48a2c126c9c05b509afdc}{Dequeue}}(stoppingToken);}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (InvalidOperationException)}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ logger.LogInformation(\textcolor{stringliteral}{"{}Adding\ was\ completed!"{}});}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ task.Start();}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ await\ task.ConfigureAwait(\textcolor{keyword}{false});}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ e)}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ logger.LogError(e,\ \textcolor{stringliteral}{"{}Error\ occurred"{}});}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+STRIDER/source/repos/\+Internal\+API/\+Internal\+API/\+Services/\+Background\+Tasks/\mbox{\hyperlink{_background_task_service_8cs}{Background\+Task\+Service.\+cs}}\end{DoxyCompactItemize}

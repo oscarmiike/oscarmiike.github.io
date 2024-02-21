@@ -1,0 +1,109 @@
+\doxysection{Bitcoin\+Controller.\+cs}
+\hypertarget{_bitcoin_controller_8cs_source}{}\label{_bitcoin_controller_8cs_source}\index{C:/Users/STRIDER/source/repos/InternalAPI/InternalAPI/Controllers/BitcoinController.cs@{C:/Users/STRIDER/source/repos/InternalAPI/InternalAPI/Controllers/BitcoinController.cs}}
+\mbox{\hyperlink{_bitcoin_controller_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }Microsoft.AspNetCore.Http;}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }Microsoft.AspNetCore.Mvc;}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }System.Linq;}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00006}00006\ \textcolor{keyword}{using\ }System.Threading.Tasks;}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00007}00007\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_services}{InternalAPI.Services}};}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00008}00008\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_crypto_payment_gateway_1_1_models}{CryptoPaymentGateway.Models}};}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00009}00009\ \textcolor{keyword}{using\ }NBitcoin;}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00010}00010\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_crypto_payment_gateway_1_1_models_1_1_get_wallet_addresses}{CryptoPaymentGateway.Models.GetWalletAddresses}};}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00011}00011\ \textcolor{keyword}{using\ }Microsoft.Extensions.Configuration;}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00013}00013\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_internal_a_p_i_1_1_controllers}{InternalAPI.Controllers}}}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00014}00014\ \{}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00015}00015\ \ \ \ \ [Route(\textcolor{stringliteral}{"{}v1/[controller]"{}})]}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00016}00016\ \ \ \ \ [ApiController]}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00017}\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_bitcoin_controller}{00017}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_bitcoin_controller}{BitcoinController}}\ :\ ControllerBase}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00018}00018\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ IConfiguration\ configuration;}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00022}\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_bitcoin_controller_ac21ca9172d4fea7d3655ade67ab7d833}{00022}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_bitcoin_controller_ac21ca9172d4fea7d3655ade67ab7d833}{BitcoinController}}(IConfiguration\ \_configuration)}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \ \ \ \ configuration\ =\ \_configuration;}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ Network\ Network}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ network\ =\ configuration[\textcolor{stringliteral}{"{}BitcoinGatewaySettings:network"{}}];}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ network.ToLower()\ ==\ \textcolor{stringliteral}{"{}testnet"{}}\ ?\ Network.TestNet\ :\ Network.Main;}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_crypto_payment_gateway_1_1_models_1_1_credentials}{Credentials}}\ GetCredentials()}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ xPrivKey\ =\ configuration[\textcolor{stringliteral}{"{}BitcoinGatewaySettings:xprivkey"{}}];}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ name\ =\ configuration[\textcolor{stringliteral}{"{}BitcoinGatewaySettings:name"{}}];}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ RandomUtils.Random\ =\ \textcolor{keyword}{new}\ UnsecureRandom();}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ NBitcoin.Key\ walletPrivKey\ =\ NBitcoin.Key.Parse(configuration[\textcolor{stringliteral}{"{}BitcoinGatewaySettings:privatekey"{}}]);}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ var\ wif\ =\ walletPrivKey.GetWif(Network);}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_crypto_payment_gateway_1_1_models_1_1_credentials}{Credentials}}\ credentials\ =\ \mbox{\hyperlink{class_crypto_payment_gateway_1_1_models_1_1_credentials}{Credentials}}.\mbox{\hyperlink{class_crypto_payment_gateway_1_1_models_1_1_credentials_aa39181b8bb6124248f50d8e0e36c6a08}{FromExtendedPrivateKey}}(}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ xPrivKey,}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ walletPrivKey,}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ name,\ Network}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ credentials.copayerId\ =\ configuration[\textcolor{stringliteral}{"{}BitcoinGatewaySettings:copayerid"{}}];}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ credentials;}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ [HttpGet]}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00057}\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_bitcoin_controller_af9d345963c4ea88ed3be4120b1e51365}{00057}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ async\ Task<Int64>\ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_bitcoin_controller_af9d345963c4ea88ed3be4120b1e51365}{Get}}(\textcolor{keywordtype}{string}\ address)}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ QBitNinja.Client.QBitNinjaClient\ client\ =\ \textcolor{keyword}{new}\ QBitNinja.Client.QBitNinjaClient(Network);}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ var\ result\ =\ await\ client.GetBalanceSummary(\textcolor{keyword}{new}\ QBitNinja.Client.Models.BalanceSelector(address));}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result.Confirmed.Amount.Satoshi;}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ [HttpPost(\textcolor{stringliteral}{"{}Addresses"{}})]}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00066}\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_bitcoin_controller_af7aff2852e2059b461f623e0f56aa3d0}{00066}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ async\ Task<List<AddressDetails>>\ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_bitcoin_controller_af7aff2852e2059b461f623e0f56aa3d0}{Addresses}}()}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_co_pay_service}{CoPayService}}\ client\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_co_pay_service}{CoPayService}}(Network);}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ client.credentials\ =\ GetCredentials();}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//var\ result\ =\ await\ client.RequestNewAddress();}}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ addresses\ =\ await\ client.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_co_pay_service_ac30ff50ab78dd96332c5a0469e4a150e}{GetWalletAddresses}}();}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ addresses;}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//ex.Message;}}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ ex;}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ [HttpPost(\textcolor{stringliteral}{"{}NewAddress"{}})]}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00085}\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_bitcoin_controller_ad231d1de1c378a14f56d2f133b88704c}{00085}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ async\ Task<dynamic>\ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_bitcoin_controller_ad231d1de1c378a14f56d2f133b88704c}{NewAddress}}()}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_co_pay_service}{CoPayService}}\ client\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_co_pay_service}{CoPayService}}(Network);}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ client.credentials\ =\ GetCredentials();}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ result\ =\ await\ client.\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_co_pay_service_abc839fdce5339375b53327ca7f0c3a5d}{RequestNewAddress}}();}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//ex.Message;}}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ ex;}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00102}00102\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_bitcoin_controller_8cs_source_l00103}00103\ \}}
+
+\end{DoxyCode}

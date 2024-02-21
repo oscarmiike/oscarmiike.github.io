@@ -1,0 +1,224 @@
+\chapter{Tweet\+Na\+Cl.\+js}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7}\index{TweetNaCl.js@{TweetNaCl.js}}
+Port of \href{http://tweetnacl.cr.yp.to}{\texttt{ Tweet\+Na\+Cl}} / \href{http://nacl.cr.yp.to/}{\texttt{ Na\+Cl}} to Java\+Script for modern browsers and Node.\+js. Public domain.
+
+\href{https://travis-ci.org/dchest/tweetnacl-js}{\texttt{ }}
+
+Demo\+: \href{https://tweetnacl.js.org}{\texttt{ https\+://tweetnacl.\+js.\+org}}
+
+\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\+:warning\+: The library is stable and API is frozen, however it has not been independently reviewed. If you can help reviewing it, please \href{mailto:dmitry@codingrobots.com}{\texttt{ contact me}}.\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11812}{}\doxysection{\texorpdfstring{Documentation}{Documentation}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11812}
+
+\begin{DoxyItemize}
+\item \doxylink{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_212a00402a70296c5bb4a44319969c9f4_overview}{Overview}
+\item Installation
+\item Usage
+\begin{DoxyItemize}
+\item Public-\/key authenticated encryption (box)
+\item Secret-\/key authenticated encryption (secretbox)
+\item Scalar multiplication
+\item Signatures
+\item Hashing
+\item Random bytes generation
+\item Constant-\/time comparison
+\end{DoxyItemize}
+\item System requirements
+\item Development and testing
+\item Benchmarks
+\item Contributors
+\item Who uses it
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11813}{}\doxysubsection{\texorpdfstring{Overview}{Overview}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11813}
+The primary goal of this project is to produce a translation of Tweet\+Na\+Cl to Java\+Script which is as close as possible to the original C implementation, plus a thin layer of idiomatic high-\/level API on top of it.
+
+There are two versions, you can use either of them\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily nacl.\+js} is the port of Tweet\+Na\+Cl with minimum differences from the original + high-\/level API.
+\item {\ttfamily nacl-\/fast.\+js} is like {\ttfamily nacl.\+js}, but with some functions replaced with faster versions.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11814}{}\doxysubsection{\texorpdfstring{Installation}{Installation}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11814}
+You can install Tweet\+Na\+Cl.\+js via a package manager\+:
+
+\href{http://bower.io}{\texttt{ Bower}}\+: \begin{DoxyVerb}$ bower install tweetnacl
+\end{DoxyVerb}
+ \href{https://www.npmjs.org/}{\texttt{ NPM}}\+: \begin{DoxyVerb}$ npm install tweetnacl
+\end{DoxyVerb}
+ or \href{https://github.com/dchest/tweetnacl-js/releases}{\texttt{ download source code}}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11815}{}\doxysubsection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11815}
+All API functions accept and return bytes as {\ttfamily Uint8\+Array}s. If you need to encode or decode strings, use functions from \href{https://github.com/dchest/tweetnacl-util-js}{\texttt{ https\+://github.\+com/dchest/tweetnacl-\/util-\/js}} or one of the more robust codec packages.
+
+In Node.\+js v4 and later {\ttfamily Buffer} objects are backed by {\ttfamily Uint8\+Array}s, so you can freely pass them to Tweet\+Na\+Cl.\+js functions as arguments. The returned objects are still {\ttfamily Uint8\+Array}s, so if you need {\ttfamily Buffer}s, you\textquotesingle{}ll have to convert them manually; make sure to convert using copying\+: {\ttfamily new Buffer(array)}, instead of sharing\+: {\ttfamily new Buffer(array.\+buffer)}, because some functions return subarrays of their buffers.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11816}{}\doxysubsubsection{\texorpdfstring{Public-\/key authenticated encryption (box)}{Public-\/key authenticated encryption (box)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11816}
+Implements {\itshape curve25519-\/xsalsa20-\/poly1305}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11817}{}\doxyparagraph{\texorpdfstring{nacl.\+box.\+key\+Pair()}{nacl.\+box.\+key\+Pair()}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11817}
+Generates a new random key pair for box and returns it as an object with {\ttfamily public\+Key} and {\ttfamily secret\+Key} members\+: \begin{DoxyVerb}{
+   publicKey: ...,  // Uint8Array with 32-byte public key
+   secretKey: ...   // Uint8Array with 32-byte secret key
+}
+\end{DoxyVerb}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11818}{}\doxyparagraph{\texorpdfstring{nacl.\+box.\+key\+Pair.\+from\+Secret\+Key(secret\+Key)}{nacl.\+box.\+key\+Pair.\+from\+Secret\+Key(secret\+Key)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11818}
+Returns a key pair for box with public key corresponding to the given secret key.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11819}{}\doxyparagraph{\texorpdfstring{nacl.\+box(message, nonce, their\+Public\+Key, my\+Secret\+Key)}{nacl.\+box(message, nonce, their\+Public\+Key, my\+Secret\+Key)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11819}
+Encrypt and authenticates message using peer\textquotesingle{}s public key, our secret key, and the given nonce, which must be unique for each distinct message for a key pair.
+
+Returns an encrypted and authenticated message, which is {\ttfamily nacl.\+box.\+overhead\+Length} longer than the original message.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11820}{}\doxyparagraph{\texorpdfstring{nacl.\+box.\+open(box, nonce, their\+Public\+Key, my\+Secret\+Key)}{nacl.\+box.\+open(box, nonce, their\+Public\+Key, my\+Secret\+Key)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11820}
+Authenticates and decrypts the given box with peer\textquotesingle{}s public key, our secret key, and the given nonce.
+
+Returns the original message, or {\ttfamily false} if authentication fails.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11821}{}\doxyparagraph{\texorpdfstring{nacl.\+box.\+before(their\+Public\+Key, my\+Secret\+Key)}{nacl.\+box.\+before(their\+Public\+Key, my\+Secret\+Key)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11821}
+Returns a precomputed shared key which can be used in {\ttfamily nacl.\+box.\+after} and {\ttfamily nacl.\+box.\+open.\+after}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11822}{}\doxyparagraph{\texorpdfstring{nacl.\+box.\+after(message, nonce, shared\+Key)}{nacl.\+box.\+after(message, nonce, shared\+Key)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11822}
+Same as {\ttfamily nacl.\+box}, but uses a shared key precomputed with {\ttfamily nacl.\+box.\+before}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11823}{}\doxyparagraph{\texorpdfstring{nacl.\+box.\+open.\+after(box, nonce, shared\+Key)}{nacl.\+box.\+open.\+after(box, nonce, shared\+Key)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11823}
+Same as {\ttfamily nacl.\+box.\+open}, but uses a shared key precomputed with {\ttfamily nacl.\+box.\+before}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11824}{}\doxyparagraph{\texorpdfstring{nacl.\+box.\+public\+Key\+Length = 32}{nacl.\+box.\+public\+Key\+Length = 32}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11824}
+Length of public key in bytes.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11825}{}\doxyparagraph{\texorpdfstring{nacl.\+box.\+secret\+Key\+Length = 32}{nacl.\+box.\+secret\+Key\+Length = 32}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11825}
+Length of secret key in bytes.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11826}{}\doxyparagraph{\texorpdfstring{nacl.\+box.\+shared\+Key\+Length = 32}{nacl.\+box.\+shared\+Key\+Length = 32}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11826}
+Length of precomputed shared key in bytes.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11827}{}\doxyparagraph{\texorpdfstring{nacl.\+box.\+nonce\+Length = 24}{nacl.\+box.\+nonce\+Length = 24}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11827}
+Length of nonce in bytes.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11828}{}\doxyparagraph{\texorpdfstring{nacl.\+box.\+overhead\+Length = 16}{nacl.\+box.\+overhead\+Length = 16}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11828}
+Length of overhead added to box compared to original message.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11829}{}\doxysubsubsection{\texorpdfstring{Secret-\/key authenticated encryption (secretbox)}{Secret-\/key authenticated encryption (secretbox)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11829}
+Implements {\itshape xsalsa20-\/poly1305}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11830}{}\doxyparagraph{\texorpdfstring{nacl.\+secretbox(message, nonce, key)}{nacl.\+secretbox(message, nonce, key)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11830}
+Encrypt and authenticates message using the key and the nonce. The nonce must be unique for each distinct message for this key.
+
+Returns an encrypted and authenticated message, which is {\ttfamily nacl.\+secretbox.\+overhead\+Length} longer than the original message.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11831}{}\doxyparagraph{\texorpdfstring{nacl.\+secretbox.\+open(box, nonce, key)}{nacl.\+secretbox.\+open(box, nonce, key)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11831}
+Authenticates and decrypts the given secret box using the key and the nonce.
+
+Returns the original message, or {\ttfamily false} if authentication fails.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11832}{}\doxyparagraph{\texorpdfstring{nacl.\+secretbox.\+key\+Length = 32}{nacl.\+secretbox.\+key\+Length = 32}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11832}
+Length of key in bytes.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11833}{}\doxyparagraph{\texorpdfstring{nacl.\+secretbox.\+nonce\+Length = 24}{nacl.\+secretbox.\+nonce\+Length = 24}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11833}
+Length of nonce in bytes.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11834}{}\doxyparagraph{\texorpdfstring{nacl.\+secretbox.\+overhead\+Length = 16}{nacl.\+secretbox.\+overhead\+Length = 16}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11834}
+Length of overhead added to secret box compared to original message.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11835}{}\doxysubsubsection{\texorpdfstring{Scalar multiplication}{Scalar multiplication}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11835}
+Implements {\itshape curve25519}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11836}{}\doxyparagraph{\texorpdfstring{nacl.\+scalar\+Mult(n, p)}{nacl.\+scalar\+Mult(n, p)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11836}
+Multiplies an integer {\ttfamily n} by a group element {\ttfamily p} and returns the resulting group element.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11837}{}\doxyparagraph{\texorpdfstring{nacl.\+scalar\+Mult.\+base(n)}{nacl.\+scalar\+Mult.\+base(n)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11837}
+Multiplies an integer {\ttfamily n} by a standard group element and returns the resulting group element.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11838}{}\doxyparagraph{\texorpdfstring{nacl.\+scalar\+Mult.\+scalar\+Length = 32}{nacl.\+scalar\+Mult.\+scalar\+Length = 32}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11838}
+Length of scalar in bytes.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11839}{}\doxyparagraph{\texorpdfstring{nacl.\+scalar\+Mult.\+group\+Element\+Length = 32}{nacl.\+scalar\+Mult.\+group\+Element\+Length = 32}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11839}
+Length of group element in bytes.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11840}{}\doxysubsubsection{\texorpdfstring{Signatures}{Signatures}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11840}
+Implements \href{http://ed25519.cr.yp.to}{\texttt{ ed25519}}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11841}{}\doxyparagraph{\texorpdfstring{nacl.\+sign.\+key\+Pair()}{nacl.\+sign.\+key\+Pair()}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11841}
+Generates new random key pair for signing and returns it as an object with {\ttfamily public\+Key} and {\ttfamily secret\+Key} members\+: \begin{DoxyVerb}{
+   publicKey: ...,  // Uint8Array with 32-byte public key
+   secretKey: ...   // Uint8Array with 64-byte secret key
+}
+\end{DoxyVerb}
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11842}{}\doxyparagraph{\texorpdfstring{nacl.\+sign.\+key\+Pair.\+from\+Secret\+Key(secret\+Key)}{nacl.\+sign.\+key\+Pair.\+from\+Secret\+Key(secret\+Key)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11842}
+Returns a signing key pair with public key corresponding to the given 64-\/byte secret key. The secret key must have been generated by {\ttfamily nacl.\+sign.\+key\+Pair} or {\ttfamily nacl.\+sign.\+key\+Pair.\+from\+Seed}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11843}{}\doxyparagraph{\texorpdfstring{nacl.\+sign.\+key\+Pair.\+from\+Seed(seed)}{nacl.\+sign.\+key\+Pair.\+from\+Seed(seed)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11843}
+Returns a new signing key pair generated deterministically from a 32-\/byte seed. The seed must contain enough entropy to be secure. This method is not recommended for general use\+: instead, use {\ttfamily nacl.\+sign.\+key\+Pair} to generate a new key pair from a random seed.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11844}{}\doxyparagraph{\texorpdfstring{nacl.\+sign(message, secret\+Key)}{nacl.\+sign(message, secret\+Key)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11844}
+Signs the message using the secret key and returns a signed message.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11845}{}\doxyparagraph{\texorpdfstring{nacl.\+sign.\+open(signed\+Message, public\+Key)}{nacl.\+sign.\+open(signed\+Message, public\+Key)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11845}
+Verifies the signed message and returns the message without signature.
+
+Returns {\ttfamily null} if verification failed.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11846}{}\doxyparagraph{\texorpdfstring{nacl.\+sign.\+detached(message, secret\+Key)}{nacl.\+sign.\+detached(message, secret\+Key)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11846}
+Signs the message using the secret key and returns a signature.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11847}{}\doxyparagraph{\texorpdfstring{nacl.\+sign.\+detached.\+verify(message, signature, public\+Key)}{nacl.\+sign.\+detached.\+verify(message, signature, public\+Key)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11847}
+Verifies the signature for the message and returns {\ttfamily true} if verification succeeded or {\ttfamily false} if it failed.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11848}{}\doxyparagraph{\texorpdfstring{nacl.\+sign.\+public\+Key\+Length = 32}{nacl.\+sign.\+public\+Key\+Length = 32}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11848}
+Length of signing public key in bytes.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11849}{}\doxyparagraph{\texorpdfstring{nacl.\+sign.\+secret\+Key\+Length = 64}{nacl.\+sign.\+secret\+Key\+Length = 64}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11849}
+Length of signing secret key in bytes.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11850}{}\doxyparagraph{\texorpdfstring{nacl.\+sign.\+seed\+Length = 32}{nacl.\+sign.\+seed\+Length = 32}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11850}
+Length of seed for {\ttfamily nacl.\+sign.\+key\+Pair.\+from\+Seed} in bytes.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11851}{}\doxyparagraph{\texorpdfstring{nacl.\+sign.\+signature\+Length = 64}{nacl.\+sign.\+signature\+Length = 64}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11851}
+Length of signature in bytes.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11852}{}\doxysubsubsection{\texorpdfstring{Hashing}{Hashing}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11852}
+Implements {\itshape SHA-\/512}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11853}{}\doxyparagraph{\texorpdfstring{nacl.\+hash(message)}{nacl.\+hash(message)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11853}
+Returns SHA-\/512 hash of the message.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11854}{}\doxyparagraph{\texorpdfstring{nacl.\+hash.\+hash\+Length = 64}{nacl.\+hash.\+hash\+Length = 64}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11854}
+Length of hash in bytes.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11855}{}\doxysubsubsection{\texorpdfstring{Random bytes generation}{Random bytes generation}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11855}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11856}{}\doxyparagraph{\texorpdfstring{nacl.\+random\+Bytes(length)}{nacl.\+random\+Bytes(length)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11856}
+Returns a {\ttfamily Uint8\+Array} of the given length containing random bytes of cryptographic quality.
+
+{\bfseries{Implementation note}}
+
+Tweet\+Na\+Cl.\+js uses the following methods to generate random bytes, depending on the platform it runs on\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily window.\+crypto.\+get\+Random\+Values} (Web\+Crypto standard)
+\item {\ttfamily window.\+ms\+Crypto.\+get\+Random\+Values} (Internet Explorer 11)
+\item {\ttfamily crypto.\+random\+Bytes} (Node.\+js)
+\end{DoxyItemize}
+
+If the platform doesn\textquotesingle{}t provide a suitable PRNG, the following functions, which require random numbers, will throw exception\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily nacl.\+random\+Bytes}
+\item {\ttfamily nacl.\+box.\+key\+Pair}
+\item {\ttfamily nacl.\+sign.\+key\+Pair}
+\end{DoxyItemize}
+
+Other functions are deterministic and will continue working.
+
+If a platform you are targeting doesn\textquotesingle{}t implement secure random number generator, but you somehow have a cryptographically-\/strong source of entropy (not {\ttfamily Math.\+random}!), and you know what you are doing, you can plug it into Tweet\+Na\+Cl.\+js like this\+: \begin{DoxyVerb}nacl.setPRNG(function(x, n) {
+  // ... copy n random bytes into x ...
+});
+\end{DoxyVerb}
+ Note that {\ttfamily nacl.\+set\+PRNG} {\itshape completely replaces} internal random byte generator with the one provided.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11857}{}\doxysubsubsection{\texorpdfstring{Constant-\/time comparison}{Constant-\/time comparison}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11857}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11858}{}\doxyparagraph{\texorpdfstring{nacl.\+verify(x, y)}{nacl.\+verify(x, y)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11858}
+Compares {\ttfamily x} and {\ttfamily y} in constant time and returns {\ttfamily true} if their lengths are non-\/zero and equal, and their contents are equal.
+
+Returns {\ttfamily false} if either of the arguments has zero length, or arguments have different lengths, or their contents differ.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11859}{}\doxysubsection{\texorpdfstring{System requirements}{System requirements}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11859}
+Tweet\+Na\+Cl.\+js supports modern browsers that have a cryptographically secure pseudorandom number generator and typed arrays, including the latest versions of\+:
+
+
+\begin{DoxyItemize}
+\item Chrome
+\item Firefox
+\item Safari (Mac, i\+OS)
+\item Internet Explorer 11
+\end{DoxyItemize}
+
+Other systems\+:
+
+
+\begin{DoxyItemize}
+\item Node.\+js
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11860}{}\doxysubsection{\texorpdfstring{Development and testing}{Development and testing}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11860}
+Install NPM modules needed for development\+: \begin{DoxyVerb}$ npm install
+\end{DoxyVerb}
+ To build minified versions\+: \begin{DoxyVerb}$ npm run build
+\end{DoxyVerb}
+ Tests use minified version, so make sure to rebuild it every time you change {\ttfamily nacl.\+js} or {\ttfamily nacl-\/fast.\+js}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11861}{}\doxysubsubsection{\texorpdfstring{Testing}{Testing}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11861}
+To run tests in Node.\+js\+: \begin{DoxyVerb}$ npm run test-node
+\end{DoxyVerb}
+ By default all tests described here work on {\ttfamily nacl.\+min.\+js}. To test other versions, set environment variable {\ttfamily NACL\+\_\+\+SRC} to the file name you want to test. For example, the following command will test fast minified version\+: \begin{DoxyVerb}$ NACL_SRC=nacl-fast.min.js npm run test-node
+\end{DoxyVerb}
+ To run full suite of tests in Node.\+js, including comparing outputs of Java\+Script port to outputs of the original C version\+: \begin{DoxyVerb}$ npm run test-node-all
+\end{DoxyVerb}
+ To prepare tests for browsers\+: \begin{DoxyVerb}$ npm run build-test-browser
+\end{DoxyVerb}
+ and then open {\ttfamily test/browser/test.\+html} (or {\ttfamily test/browser/test-\/fast.\+html}) to run them.
+
+To run headless browser tests with {\ttfamily tape-\/run} (powered by Electron)\+: \begin{DoxyVerb}$ npm run test-browser
+\end{DoxyVerb}
+ (If you get {\ttfamily Error\+: spawn ENOENT}, install {\itshape xvfb}\+: {\ttfamily sudo apt-\/get install xvfb}.)
+
+To run tests in both Node and Electron\+: \begin{DoxyVerb}$ npm test
+\end{DoxyVerb}
+ \hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11862}{}\doxysubsubsection{\texorpdfstring{Benchmarking}{Benchmarking}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11862}
+To run benchmarks in Node.\+js\+: \begin{DoxyVerb}$ npm run bench
+$ NACL_SRC=nacl-fast.min.js npm run bench
+\end{DoxyVerb}
+ To run benchmarks in a browser, open {\ttfamily test/benchmark/bench.\+html} (or {\ttfamily test/benchmark/bench-\/fast.\+html}).\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11863}{}\doxysubsection{\texorpdfstring{Benchmarks}{Benchmarks}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11863}
+For reference, here are benchmarks from Mac\+Book Pro (Retina, 13-\/inch, Mid 2014) laptop with 2.\+6 GHz Intel Core i5 CPU (Intel) in Chrome 53/\+OS X and Xiaomi Redmi Note 3 smartphone with 1.\+8 GHz Qualcomm Snapdragon 650 64-\/bit CPU (ARM) in Chrome 52/\+Android\+:
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{5}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ nacl.\+js Intel   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ nacl-\/fast.\+js Intel   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ nacl.\+js ARM   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ nacl-\/fast.\+js ARM    }\\\cline{1-5}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ nacl.\+js Intel   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ nacl-\/fast.\+js Intel   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ nacl.\+js ARM   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ nacl-\/fast.\+js ARM    }\\\cline{1-5}
+\endhead
+salsa20   &\PBS\centering 1.\+3 MB/s   &\PBS\centering 128 MB/s   &\PBS\centering 0.\+4 MB/s   &\PBS\centering 43 MB/s    \\\cline{1-5}
+poly1305   &\PBS\centering 13 MB/s   &\PBS\centering 171 MB/s   &\PBS\centering 4 MB/s   &\PBS\centering 52 MB/s    \\\cline{1-5}
+hash   &\PBS\centering 4 MB/s   &\PBS\centering 34 MB/s   &\PBS\centering 0.\+9 MB/s   &\PBS\centering 12 MB/s    \\\cline{1-5}
+secretbox 1K   &\PBS\centering 1113 op/s   &\PBS\centering 57583 op/s   &\PBS\centering 334 op/s   &\PBS\centering 14227 op/s    \\\cline{1-5}
+box 1K   &\PBS\centering 145 op/s   &\PBS\centering 718 op/s   &\PBS\centering 37 op/s   &\PBS\centering 368 op/s    \\\cline{1-5}
+scalar\+Mult   &\PBS\centering 171 op/s   &\PBS\centering 733 op/s   &\PBS\centering 56 op/s   &\PBS\centering 380 op/s    \\\cline{1-5}
+sign   &\PBS\centering 77 op/s   &\PBS\centering 200 op/s   &\PBS\centering 20 op/s   &\PBS\centering 61 op/s    \\\cline{1-5}
+sign.\+open   &\PBS\centering 39 op/s   &\PBS\centering 102 op/s   &\PBS\centering 11 op/s   &\PBS\centering 31 op/s   \\\cline{1-5}
+\end{longtabu}
+
+
+(You can run benchmarks on your devices by clicking on the links at the bottom of the \href{https://tweetnacl.js.org}{\texttt{ home page}}).
+
+In short, with {\itshape nacl-\/fast.\+js} and 1024-\/byte messages you can expect to encrypt and authenticate more than 57000 messages per second on a typical laptop or more than 14000 messages per second on a \$170 smartphone, sign about 200 and verify 100 messages per second on a laptop or 60 and 30 messages per second on a smartphone, per CPU core (with Web Workers you can do these operations in parallel), which is good enough for most applications.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11864}{}\doxysubsection{\texorpdfstring{Contributors}{Contributors}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11864}
+See AUTHORS.\+md file.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11865}{}\doxysubsection{\texorpdfstring{Third-\/party libraries based on Tweet\+Na\+Cl.\+js}{Third-\/party libraries based on Tweet\+Na\+Cl.\+js}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11865}
+
+\begin{DoxyItemize}
+\item \href{https://github.com/alax/forward-secrecy}{\texttt{ forward-\/secrecy}} — Axolotl ratchet implementation
+\item \href{https://github.com/dchest/nacl-stream-js}{\texttt{ nacl-\/stream}} -\/ streaming encryption
+\item \href{https://github.com/dchest/tweetnacl-auth-js}{\texttt{ tweetnacl-\/auth-\/js}} — implementation of \href{http://nacl.cr.yp.to/auth.html}{\texttt{ {\ttfamily crypto\+\_\+auth}}}
+\item \href{https://github.com/dominictarr/chloride}{\texttt{ chloride}} -\/ unified API for various Na\+Cl modules
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11866}{}\doxysubsection{\texorpdfstring{Who uses it}{Who uses it}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_27b07529f7ce32cf8e68967a8e76e43a7_autotoc_md11866}
+Some notable users of Tweet\+Na\+Cl.\+js\+:
+
+
+\begin{DoxyItemize}
+\item \href{http://minilock.io/}{\texttt{ mini\+Lock}}
+\item \href{https://www.stellar.org/}{\texttt{ Stellar}} 
+\end{DoxyItemize}

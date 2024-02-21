@@ -1,0 +1,41 @@
+\chapter{sort-\/keys \texorpdfstring{$<$}{<}a href="{}https\+://travis-\/ci.\+org/sindresorhus/sort-\/keys"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://travis-\/ci.\+org/sindresorhus/sort-\/keys.\+svg?branch=master"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2075a311d5857c530fc49acf5a671fccb}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2075a311d5857c530fc49acf5a671fccb}\index{sort-\/keys $<$a href="{}https://travis-\/ci.org/sindresorhus/sort-\/keys"{} $>$$<$img src="{}https://travis-\/ci.org/sindresorhus/sort-\/keys.svg?branch=master"{} alt="{}Build Status"{}/$>$$<$/a$>$@{sort-\/keys $<$a href=""https://travis-\/ci.org/sindresorhus/sort-\/keys"" $>$$<$img src=""https://travis-\/ci.org/sindresorhus/sort-\/keys.svg?branch=master"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2075a311d5857c530fc49acf5a671fccb_autotoc_md4601}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2075a311d5857c530fc49acf5a671fccb_autotoc_md4601}%
+ \begin{quote}
+Sort the keys of an object \end{quote}
+Useful to get a deterministically ordered object, as the order of keys can vary between engines.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2075a311d5857c530fc49acf5a671fccb_autotoc_md4602}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2075a311d5857c530fc49acf5a671fccb_autotoc_md4602}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ -\/-\/save\ sort-\/keys}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2075a311d5857c530fc49acf5a671fccb_autotoc_md4603}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2075a311d5857c530fc49acf5a671fccb_autotoc_md4603}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ sortKeys\ =\ require('sort-\/keys');}
+\DoxyCodeLine{}
+\DoxyCodeLine{sortKeys(\{c:\ 0,\ a:\ 0,\ b:\ 0\});}
+\DoxyCodeLine{//=>\ \{a:\ 0,\ b:\ 0,\ c:\ 0\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{sortKeys(\{b:\ \{b:\ 0,\ a:\ 0\},\ a:\ 0\},\ \{deep:\ true\});}
+\DoxyCodeLine{//=>\ \{a:\ 0,\ b:\ \{a:\ 0,\ b:\ 0\}\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{sortKeys(\{c:\ 0,\ a:\ 0,\ b:\ 0\},\ \{}
+\DoxyCodeLine{\ \ \ \ compare:\ (a,\ b)\ =>\ -\/a.localeCompare(b)}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{//=>\ \{c:\ 0,\ b:\ 0,\ a:\ 0\}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2075a311d5857c530fc49acf5a671fccb_autotoc_md4604}{}\doxysection{\texorpdfstring{API}{API}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2075a311d5857c530fc49acf5a671fccb_autotoc_md4604}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2075a311d5857c530fc49acf5a671fccb_autotoc_md4605}{}\doxysubsection{\texorpdfstring{sort\+Keys(input, \mbox{[}options\mbox{]})}{sort\+Keys(input, \mbox{[}options\mbox{]})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2075a311d5857c530fc49acf5a671fccb_autotoc_md4605}
+Returns a new object with sorted keys.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2075a311d5857c530fc49acf5a671fccb_autotoc_md4606}{}\doxysubsubsection{\texorpdfstring{input}{input}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2075a311d5857c530fc49acf5a671fccb_autotoc_md4606}
+Type\+: {\ttfamily Object}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2075a311d5857c530fc49acf5a671fccb_autotoc_md4607}{}\doxysubsubsection{\texorpdfstring{options}{options}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2075a311d5857c530fc49acf5a671fccb_autotoc_md4607}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2075a311d5857c530fc49acf5a671fccb_autotoc_md4608}{}\doxyparagraph{\texorpdfstring{deep}{deep}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2075a311d5857c530fc49acf5a671fccb_autotoc_md4608}
+Type\+: {\ttfamily boolean}
+
+Recursively sort keys.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2075a311d5857c530fc49acf5a671fccb_autotoc_md4609}{}\doxyparagraph{\texorpdfstring{compare}{compare}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2075a311d5857c530fc49acf5a671fccb_autotoc_md4609}
+Type\+: {\ttfamily Function}
+
+\href{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort}{\texttt{ Compare function.}}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2075a311d5857c530fc49acf5a671fccb_autotoc_md4610}{}\doxysection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2075a311d5857c530fc49acf5a671fccb_autotoc_md4610}
+MIT © \href{https://sindresorhus.com}{\texttt{ Sindre Sorhus}} 

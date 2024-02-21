@@ -1,0 +1,143 @@
+\doxysection{Internal\+API.\+Controllers.\+Public\+Holiday\+Controller Class Reference}
+\hypertarget{class_internal_a_p_i_1_1_controllers_1_1_public_holiday_controller}{}\label{class_internal_a_p_i_1_1_controllers_1_1_public_holiday_controller}\index{InternalAPI.Controllers.PublicHolidayController@{InternalAPI.Controllers.PublicHolidayController}}
+
+
+Inheritance diagram for Internal\+API.\+Controllers.\+Public\+Holiday\+Controller\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=197pt]{class_internal_a_p_i_1_1_controllers_1_1_public_holiday_controller__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Internal\+API.\+Controllers.\+Public\+Holiday\+Controller\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=197pt]{class_internal_a_p_i_1_1_controllers_1_1_public_holiday_controller__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_public_holiday_controller_a5a17e590a55f89d3e9ab6edbf8152db7}{Public\+Holiday\+Controller}} (ILogger$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_public_holiday_controller}{Public\+Holiday\+Controller}} $>$ logger, IConfiguration configuration)
+\item 
+Action\+Result$<$ List$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_public_holiday_1_1_public_holday_response}{Public\+Holday\+Response}} $>$ $>$ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_public_holiday_controller_aaad7806dd6e638a90e8b90c02accd6ea}{Get\+Public\+Holidays\+By\+Year}} (int? year)
+\item 
+Action\+Result$<$ List$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_public_holiday_1_1_public_holday_response}{Public\+Holday\+Response}} $>$ $>$ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_public_holiday_controller_adca3481c1eb207668886db5b0a1d3514}{Get\+Public\+Holidays\+By\+Date}} (int? year, int? month, int? day)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_public_holiday_controller_a5a17e590a55f89d3e9ab6edbf8152db7}\label{class_internal_a_p_i_1_1_controllers_1_1_public_holiday_controller_a5a17e590a55f89d3e9ab6edbf8152db7} 
+\index{InternalAPI.Controllers.PublicHolidayController@{InternalAPI.Controllers.PublicHolidayController}!PublicHolidayController@{PublicHolidayController}}
+\index{PublicHolidayController@{PublicHolidayController}!InternalAPI.Controllers.PublicHolidayController@{InternalAPI.Controllers.PublicHolidayController}}
+\doxysubsubsection{\texorpdfstring{PublicHolidayController()}{PublicHolidayController()}}
+{\footnotesize\ttfamily Internal\+API.\+Controllers.\+Public\+Holiday\+Controller.\+Public\+Holiday\+Controller (\begin{DoxyParamCaption}\item[{ILogger$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_controllers_1_1_public_holiday_controller}{Public\+Holiday\+Controller}} $>$}]{logger,  }\item[{IConfiguration}]{configuration }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger\ =\ logger;}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ baseURL\ =\ configuration[\textcolor{stringliteral}{"{}PublicHolidaySettings:BaseURL"{}}];}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ apiKey\ =\ configuration[\textcolor{stringliteral}{"{}PublicHolidaySettings:APIKey"{}}];}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_public_holiday_controller_adca3481c1eb207668886db5b0a1d3514}\label{class_internal_a_p_i_1_1_controllers_1_1_public_holiday_controller_adca3481c1eb207668886db5b0a1d3514} 
+\index{InternalAPI.Controllers.PublicHolidayController@{InternalAPI.Controllers.PublicHolidayController}!GetPublicHolidaysByDate@{GetPublicHolidaysByDate}}
+\index{GetPublicHolidaysByDate@{GetPublicHolidaysByDate}!InternalAPI.Controllers.PublicHolidayController@{InternalAPI.Controllers.PublicHolidayController}}
+\doxysubsubsection{\texorpdfstring{GetPublicHolidaysByDate()}{GetPublicHolidaysByDate()}}
+{\footnotesize\ttfamily Action\+Result$<$ List$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_public_holiday_1_1_public_holday_response}{Public\+Holday\+Response}} $>$ $>$ Internal\+API.\+Controllers.\+Public\+Holiday\+Controller.\+Get\+Public\+Holidays\+By\+Date (\begin{DoxyParamCaption}\item[{int?}]{year,  }\item[{int?}]{month,  }\item[{int?}]{day }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!year.HasValue\ ||\ year\ <\ 1970\ ||\ year\ >\ 2070)\ \{\ year\ =\ DateTime.Now.Year;\ \}}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!month.HasValue\ ||\ month\ <\ 1\ ||\ month\ >\ 12)\ \{\ month\ =\ DateTime.Now.Month;\ \}}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!day.HasValue\ ||\ day\ <\ 1\ ||\ day\ >\ 31)\ \{\ day\ =\ DateTime.Now.Day;\ \}}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient(\textcolor{keyword}{new}\ Uri(baseURL));}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ RestRequest\ request\ =\ \textcolor{keyword}{new}\ RestRequest(\textcolor{stringliteral}{"{}"{}},\ Method.GET);}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddHeader(\textcolor{stringliteral}{"{}Content-\/Type"{}},\ \textcolor{stringliteral}{"{}application/json"{}});}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddHeader(\textcolor{stringliteral}{"{}Accept"{}},\ \textcolor{stringliteral}{"{}application/json"{}});}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddParameter(\textcolor{stringliteral}{"{}api\_key"{}},\ apiKey,\ ParameterType.QueryString);}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddParameter(\textcolor{stringliteral}{"{}country"{}},\ apiCountryCode,\ ParameterType.QueryString);}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddParameter(\textcolor{stringliteral}{"{}year"{}},\ year,\ ParameterType.QueryString);}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddParameter(\textcolor{stringliteral}{"{}month"{}},\ month,\ ParameterType.QueryString);}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddParameter(\textcolor{stringliteral}{"{}day"{}},\ day,\ ParameterType.QueryString);}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ var\ response\ =\ client.Execute(request);}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ List<PublicHoldayResponse>\ PL\ =\ \textcolor{keyword}{new}\ List<PublicHoldayResponse>\ \{\ \};}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response.Content.Contains(\textcolor{stringliteral}{"{}error"{}}))\ \{\ }
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogError(\$\textcolor{stringliteral}{"{}Error\ returned\ from\ public\ holiday\ API:\ \{response.Content\}"{}});}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ PL;}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!response.IsSuccessful\ ||\ \textcolor{keywordtype}{string}.IsNullOrEmpty(response.Content))}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogError(\$\textcolor{stringliteral}{"{}Public\ holiday\ API\ call\ not\ successful.\ \ StatusCode:\ \{response.StatusCode\}\ -\/\ \{response.StatusDescription\},\ Message:\ \{response.ErrorMessage\}"{}});}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PL\ =\ JsonConvert.DeserializeObject<List<PublicHoldayResponse>>(response.Content);}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception)}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \_logger.LogError(\$\textcolor{stringliteral}{"{}Exception\ deserialising\ response\ from\ public\ holiday\ day\ API:\ \{response.Content\}"{}});\ \}}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ PL;}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_internal_a_p_i_1_1_controllers_1_1_public_holiday_controller_aaad7806dd6e638a90e8b90c02accd6ea}\label{class_internal_a_p_i_1_1_controllers_1_1_public_holiday_controller_aaad7806dd6e638a90e8b90c02accd6ea} 
+\index{InternalAPI.Controllers.PublicHolidayController@{InternalAPI.Controllers.PublicHolidayController}!GetPublicHolidaysByYear@{GetPublicHolidaysByYear}}
+\index{GetPublicHolidaysByYear@{GetPublicHolidaysByYear}!InternalAPI.Controllers.PublicHolidayController@{InternalAPI.Controllers.PublicHolidayController}}
+\doxysubsubsection{\texorpdfstring{GetPublicHolidaysByYear()}{GetPublicHolidaysByYear()}}
+{\footnotesize\ttfamily Action\+Result$<$ List$<$ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_public_holiday_1_1_public_holday_response}{Public\+Holday\+Response}} $>$ $>$ Internal\+API.\+Controllers.\+Public\+Holiday\+Controller.\+Get\+Public\+Holidays\+By\+Year (\begin{DoxyParamCaption}\item[{int?}]{year }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!year.HasValue\ ||\ year\ <\ 1970)}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ year\ =\ DateTime.Now.Year;}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient(\textcolor{keyword}{new}\ Uri(baseURL));\ }
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ RestRequest\ request\ =\ \textcolor{keyword}{new}\ RestRequest(\textcolor{stringliteral}{"{}"{}},\ Method.GET);}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddHeader(\textcolor{stringliteral}{"{}Content-\/Type"{}},\ \textcolor{stringliteral}{"{}application/json"{}});}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddHeader(\textcolor{stringliteral}{"{}Accept"{}},\ \textcolor{stringliteral}{"{}application/json"{}});}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddParameter(\textcolor{stringliteral}{"{}api\_key"{}},\ apiKey,\ ParameterType.QueryString);}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddParameter(\textcolor{stringliteral}{"{}country"{}},\ apiCountryCode,\ ParameterType.QueryString);}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddParameter(\textcolor{stringliteral}{"{}year"{}},\ year,\ ParameterType.QueryString);}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ var\ response\ =\ client.Execute(request);}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ List<PublicHoldayResponse>\ PL\ =\ \textcolor{keyword}{new}\ List<PublicHoldayResponse>\ \{\ \};}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response.Content.Contains(\textcolor{stringliteral}{"{}error"{}}))}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogError(\$\textcolor{stringliteral}{"{}Error\ returned\ from\ public\ holiday\ API:\ \{response.Content\}"{}});}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ PL;}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!response.IsSuccessful\ ||\ \textcolor{keywordtype}{string}.IsNullOrEmpty(response.Content))}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.LogError(\$\textcolor{stringliteral}{"{}Public\ holiday\ API\ call\ not\ successful.\ \ StatusCode:\ \{response.StatusCode\}\ -\/\ \{response.StatusDescription\},\ Message:\ \{response.ErrorMessage\}"{}});}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PL\ =\ JsonConvert.DeserializeObject<List<PublicHoldayResponse>>(response.Content);}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception)}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \_logger.LogError(\$\textcolor{stringliteral}{"{}Exception\ deserialising\ response\ from\ public\ holiday\ day\ API:\ \{response.Content\}"{}});\ \}}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ PL;}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+STRIDER/source/repos/\+Internal\+API/\+Internal\+API/\+Controllers/\mbox{\hyperlink{_public_holiday_controller_8cs}{Public\+Holiday\+Controller.\+cs}}\end{DoxyCompactItemize}

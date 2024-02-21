@@ -1,0 +1,57 @@
+\chapter{stringify-\/object \texorpdfstring{$<$}{<}a href="{}http\+://travis-\/ci.\+org/yeoman/stringify-\/object"{} \texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}img src="{}https\+://secure.\+travis-\/ci.\+org/yeoman/stringify-\/object.\+svg?branch=master"{} alt="{}\+Build Status"{}/\texorpdfstring{$>$}{>}\texorpdfstring{$<$}{<}/a\texorpdfstring{$>$}{>}}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2e3c74d8f6d544d9129deeac288f77600}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2e3c74d8f6d544d9129deeac288f77600}\index{stringify-\/object $<$a href="{}http://travis-\/ci.org/yeoman/stringify-\/object"{} $>$$<$img src="{}https://secure.travis-\/ci.org/yeoman/stringify-\/object.svg?branch=master"{} alt="{}Build Status"{}/$>$$<$/a$>$@{stringify-\/object $<$a href=""http://travis-\/ci.org/yeoman/stringify-\/object"" $>$$<$img src=""https://secure.travis-\/ci.org/yeoman/stringify-\/object.svg?branch=master"" alt=""Build Status""/$>$$<$/a$>$}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2e3c74d8f6d544d9129deeac288f77600_autotoc_md4782}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2e3c74d8f6d544d9129deeac288f77600_autotoc_md4782}%
+ \begin{quote}
+Stringify an object/array like JSON.\+stringify just without all the double-\/quotes. \end{quote}
+Useful for when you want to get the string representation of an object in a formatted way.
+
+It also handles circular references and lets you specify quote type.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2e3c74d8f6d544d9129deeac288f77600_autotoc_md4783}{}\doxysection{\texorpdfstring{Install}{Install}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2e3c74d8f6d544d9129deeac288f77600_autotoc_md4783}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ -\/-\/save\ stringify-\/object}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2e3c74d8f6d544d9129deeac288f77600_autotoc_md4784}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2e3c74d8f6d544d9129deeac288f77600_autotoc_md4784}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{var\ obj\ =\ \{}
+\DoxyCodeLine{\ \ \ \ foo:\ 'bar',}
+\DoxyCodeLine{\ \ \ \ 'arr':\ [1,\ 2,\ 3],}
+\DoxyCodeLine{\ \ \ \ nested:\ \{\ hello:\ "{}world"{}\ \}}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{var\ pretty\ =\ stringifyObject(obj,\ \{}
+\DoxyCodeLine{\ \ \ \ indent:\ '\ \ ',}
+\DoxyCodeLine{\ \ \ \ singleQuotes:\ false}
+\DoxyCodeLine{\});}
+\DoxyCodeLine{}
+\DoxyCodeLine{console.log(pretty);}
+\DoxyCodeLine{/*}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ foo:\ "{}bar"{},}
+\DoxyCodeLine{\ \ arr:\ [}
+\DoxyCodeLine{\ \ \ \ 1,}
+\DoxyCodeLine{\ \ \ \ 2,}
+\DoxyCodeLine{\ \ \ \ 3}
+\DoxyCodeLine{\ \ ],}
+\DoxyCodeLine{\ \ nested:\ \{}
+\DoxyCodeLine{\ \ \ \ hello:\ "{}world"{}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{*/}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2e3c74d8f6d544d9129deeac288f77600_autotoc_md4785}{}\doxysection{\texorpdfstring{API}{API}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2e3c74d8f6d544d9129deeac288f77600_autotoc_md4785}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2e3c74d8f6d544d9129deeac288f77600_autotoc_md4786}{}\doxysubsection{\texorpdfstring{stringify\+Object(object, \mbox{[}options\mbox{]})}{stringify\+Object(object, \mbox{[}options\mbox{]})}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2e3c74d8f6d544d9129deeac288f77600_autotoc_md4786}
+Accepts an object to stringify and optionally an option object. Circular references will be replaced with {\ttfamily null}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2e3c74d8f6d544d9129deeac288f77600_autotoc_md4787}{}\doxysubsubsection{\texorpdfstring{options}{options}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2e3c74d8f6d544d9129deeac288f77600_autotoc_md4787}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2e3c74d8f6d544d9129deeac288f77600_autotoc_md4788}{}\doxyparagraph{\texorpdfstring{indent}{indent}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2e3c74d8f6d544d9129deeac288f77600_autotoc_md4788}
+Type\+: {\ttfamily string} ~\newline
+ Default\+: `'\textbackslash{}t\textquotesingle{}\`{}
+
+Choose the indentation you prefer.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2e3c74d8f6d544d9129deeac288f77600_autotoc_md4789}{}\doxyparagraph{\texorpdfstring{single\+Quotes}{single\+Quotes}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2e3c74d8f6d544d9129deeac288f77600_autotoc_md4789}
+Type\+: {\ttfamily boolean} ~\newline
+ Default\+: {\ttfamily true}
+
+Set to false to get double-\/quoted strings.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2e3c74d8f6d544d9129deeac288f77600_autotoc_md4790}{}\doxysection{\texorpdfstring{License}{License}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_2e3c74d8f6d544d9129deeac288f77600_autotoc_md4790}
+\href{http://opensource.org/licenses/bsd-license.php}{\texttt{ BSD license}} and copyright Google 

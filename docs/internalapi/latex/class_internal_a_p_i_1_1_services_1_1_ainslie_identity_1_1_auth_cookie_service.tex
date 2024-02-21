@@ -1,0 +1,69 @@
+\doxysection{Internal\+API.\+Services.\+Ainslie\+Identity.\+Auth\+Cookie\+Service Class Reference}
+\hypertarget{class_internal_a_p_i_1_1_services_1_1_ainslie_identity_1_1_auth_cookie_service}{}\label{class_internal_a_p_i_1_1_services_1_1_ainslie_identity_1_1_auth_cookie_service}\index{InternalAPI.Services.AinslieIdentity.AuthCookieService@{InternalAPI.Services.AinslieIdentity.AuthCookieService}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_ainslie_identity_1_1_auth_cookie_service_a1c35eba0fa55e5701d43d7b970a2f9b3}{Auth\+Cookie\+Service}} (IConfiguration configuration)
+\item 
+\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_ainslie_identity_1_1_ainslie_identity_response}{Ainslie\+Identity\+Response}} \mbox{\hyperlink{class_internal_a_p_i_1_1_services_1_1_ainslie_identity_1_1_auth_cookie_service_af537910bbb6d29c4be84aa4670f5ab3c}{Populate\+Auth\+Cookie}} (Rest\+Client client)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_services_1_1_ainslie_identity_1_1_auth_cookie_service_a1c35eba0fa55e5701d43d7b970a2f9b3}\label{class_internal_a_p_i_1_1_services_1_1_ainslie_identity_1_1_auth_cookie_service_a1c35eba0fa55e5701d43d7b970a2f9b3} 
+\index{InternalAPI.Services.AinslieIdentity.AuthCookieService@{InternalAPI.Services.AinslieIdentity.AuthCookieService}!AuthCookieService@{AuthCookieService}}
+\index{AuthCookieService@{AuthCookieService}!InternalAPI.Services.AinslieIdentity.AuthCookieService@{InternalAPI.Services.AinslieIdentity.AuthCookieService}}
+\doxysubsubsection{\texorpdfstring{AuthCookieService()}{AuthCookieService()}}
+{\footnotesize\ttfamily Internal\+API.\+Services.\+Ainslie\+Identity.\+Auth\+Cookie\+Service.\+Auth\+Cookie\+Service (\begin{DoxyParamCaption}\item[{IConfiguration}]{configuration }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ \_configuration\ =\ configuration;}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_internal_a_p_i_1_1_services_1_1_ainslie_identity_1_1_auth_cookie_service_af537910bbb6d29c4be84aa4670f5ab3c}\label{class_internal_a_p_i_1_1_services_1_1_ainslie_identity_1_1_auth_cookie_service_af537910bbb6d29c4be84aa4670f5ab3c} 
+\index{InternalAPI.Services.AinslieIdentity.AuthCookieService@{InternalAPI.Services.AinslieIdentity.AuthCookieService}!PopulateAuthCookie@{PopulateAuthCookie}}
+\index{PopulateAuthCookie@{PopulateAuthCookie}!InternalAPI.Services.AinslieIdentity.AuthCookieService@{InternalAPI.Services.AinslieIdentity.AuthCookieService}}
+\doxysubsubsection{\texorpdfstring{PopulateAuthCookie()}{PopulateAuthCookie()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_ainslie_identity_1_1_ainslie_identity_response}{Ainslie\+Identity\+Response}} Internal\+API.\+Services.\+Ainslie\+Identity.\+Auth\+Cookie\+Service.\+Populate\+Auth\+Cookie (\begin{DoxyParamCaption}\item[{Rest\+Client}]{client }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ var\ username\ =\ \_configuration[\textcolor{stringliteral}{"{}AinslieIdentitySettings:APIUser"{}}];}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ var\ password\ =\ \_configuration[\textcolor{stringliteral}{"{}AinslieIdentitySettings:APIPass"{}}];}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ var\ baseUrl\ =\ \ \_configuration[\textcolor{stringliteral}{"{}AinslieIdentitySettings:BaseURL"{}}];}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ var\ authCookieEndpoint\ =\ \_configuration[\textcolor{stringliteral}{"{}AinslieIdentitySettings:AuthCookieEndpoint"{}}];}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ client.BaseUrl\ =\ \textcolor{keyword}{new}\ Uri(baseUrl);\ }
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ RestRequest\ request\ =\ \textcolor{keyword}{new}\ RestRequest(authCookieEndpoint,\ Method.GET);}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddHeader(\textcolor{stringliteral}{"{}Content-\/Type"{}},\ \textcolor{stringliteral}{"{}application/json"{}});}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddHeader(\textcolor{stringliteral}{"{}Accept"{}},\ \textcolor{stringliteral}{"{}application/json"{}});}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddHeader(\textcolor{stringliteral}{"{}Authorization"{}},\ Base64EncodeCredentials(username,\ password));}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ var\ response\ =\ client.Execute(request);}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_ainslie_identity_1_1_ainslie_identity_response}{AinslieIdentityResponse}}\ ainslieIdentityResponse\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_ainslie_identity_1_1_ainslie_identity_response}{AinslieIdentityResponse}}();}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response.IsSuccessful)}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ainslieIdentityResponse\ =\ JsonConvert.DeserializeObject<\mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_ainslie_identity_1_1_ainslie_identity_response}{AinslieIdentityResponse}}>(response.Content);}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ ainslieIdentityResponse;}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_internal_a_p_i_1_1_services_1_1_ainslie_identity_1_1_auth_cookie_service_af537910bbb6d29c4be84aa4670f5ab3c_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+STRIDER/source/repos/\+Internal\+API/\+Internal\+API/\+Services/\+Ainslie\+Identity/\mbox{\hyperlink{_ainslie_identity_service_8cs}{Ainslie\+Identity\+Service.\+cs}}\end{DoxyCompactItemize}

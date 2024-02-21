@@ -1,0 +1,89 @@
+\chapter{eslint-\/visitor-\/keys}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_230cb8dd85f385b29c8fdd9cae2c0cdff}{}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_230cb8dd85f385b29c8fdd9cae2c0cdff}\index{eslint-\/visitor-\/keys@{eslint-\/visitor-\/keys}}
+\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_230cb8dd85f385b29c8fdd9cae2c0cdff_autotoc_md7979}%
+\Hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_230cb8dd85f385b29c8fdd9cae2c0cdff_autotoc_md7979}%
+ \href{https://www.npmjs.com/package/eslint-visitor-keys}{\texttt{ }} \href{http://www.npmtrends.com/eslint-visitor-keys}{\texttt{ }} \href{https://travis-ci.org/eslint/eslint-visitor-keys}{\texttt{ }} \href{https://david-dm.org/eslint/eslint-visitor-keys}{\texttt{ }}
+
+Constants and utilities about visitor keys to traverse AST.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_230cb8dd85f385b29c8fdd9cae2c0cdff_autotoc_md7980}{}\doxysection{\texorpdfstring{💿 Installation}{💿 Installation}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_230cb8dd85f385b29c8fdd9cae2c0cdff_autotoc_md7980}
+Use \href{https://www.npmjs.com/}{\texttt{ npm}} to install.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$\ npm\ install\ eslint-\/visitor-\/keys}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_230cb8dd85f385b29c8fdd9cae2c0cdff_autotoc_md7981}{}\doxysubsection{\texorpdfstring{Requirements}{Requirements}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_230cb8dd85f385b29c8fdd9cae2c0cdff_autotoc_md7981}
+
+\begin{DoxyItemize}
+\item \href{https://nodejs.org/en/}{\texttt{ Node.\+js}} 10.\+0.\+0 or later.
+\end{DoxyItemize}\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_230cb8dd85f385b29c8fdd9cae2c0cdff_autotoc_md7982}{}\doxysection{\texorpdfstring{📖 Usage}{📖 Usage}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_230cb8dd85f385b29c8fdd9cae2c0cdff_autotoc_md7982}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ evk\ =\ require("{}eslint-\/visitor-\/keys"{})}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_230cb8dd85f385b29c8fdd9cae2c0cdff_autotoc_md7983}{}\doxysubsection{\texorpdfstring{evk.\+KEYS}{evk.\+KEYS}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_230cb8dd85f385b29c8fdd9cae2c0cdff_autotoc_md7983}
+\begin{quote}
+type\+: {\ttfamily \{ \mbox{[}type\+: string\mbox{]}\+: string\mbox{[}\mbox{]} \texorpdfstring{$\vert$}{|} undefined \}} \end{quote}
+Visitor keys. This keys are frozen.
+
+This is an object. Keys are the type of \href{https://github.com/estree/estree}{\texttt{ ESTree}} nodes. Their values are an array of property names which have child nodes.
+
+For example\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{console.log(evk.KEYS.AssignmentExpression)\ //\ →\ ["{}left"{},\ "{}right"{}]}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_230cb8dd85f385b29c8fdd9cae2c0cdff_autotoc_md7984}{}\doxysubsection{\texorpdfstring{evk.\+get\+Keys(node)}{evk.\+get\+Keys(node)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_230cb8dd85f385b29c8fdd9cae2c0cdff_autotoc_md7984}
+\begin{quote}
+type\+: {\ttfamily (node\+: object) =\texorpdfstring{$>$}{>} string\mbox{[}\mbox{]}} \end{quote}
+Get the visitor keys of a given AST node.
+
+This is similar to {\ttfamily Object.\+keys(node)} of ES Standard, but some keys are excluded\+: {\ttfamily parent}, {\ttfamily leading\+Comments}, {\ttfamily trailing\+Comments}, and names which start with {\ttfamily \+\_\+}.
+
+This will be used to traverse unknown nodes.
+
+For example\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{const\ node\ =\ \{}
+\DoxyCodeLine{\ \ \ \ type:\ "{}AssignmentExpression"{},}
+\DoxyCodeLine{\ \ \ \ left:\ \{\ type:\ "{}Identifier"{},\ name:\ "{}foo"{}\ \},}
+\DoxyCodeLine{\ \ \ \ right:\ \{\ type:\ "{}Literal"{},\ value:\ 0\ \}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{console.log(evk.getKeys(node))\ //\ →\ ["{}type"{},\ "{}left"{},\ "{}right"{}]}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_230cb8dd85f385b29c8fdd9cae2c0cdff_autotoc_md7985}{}\doxysubsection{\texorpdfstring{evk.\+union\+With(additional\+Keys)}{evk.\+union\+With(additional\+Keys)}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_230cb8dd85f385b29c8fdd9cae2c0cdff_autotoc_md7985}
+\begin{quote}
+type\+: {\ttfamily (additional\+Keys\+: object) =\texorpdfstring{$>$}{>} \{ \mbox{[}type\+: string\mbox{]}\+: string\mbox{[}\mbox{]} \texorpdfstring{$\vert$}{|} undefined \}} \end{quote}
+Make the union set with {\ttfamily evk.\+KEYS} and the given keys.
+
+
+\begin{DoxyItemize}
+\item The order of keys is, {\ttfamily additional\+Keys} is at first, then {\ttfamily evk.\+KEYS} is concatenated after that.
+\item It removes duplicated keys as keeping the first one.
+\end{DoxyItemize}
+
+For example\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{console.log(evk.unionWith(\{}
+\DoxyCodeLine{\ \ \ \ MethodDefinition:\ ["{}decorators"{}]}
+\DoxyCodeLine{\}))\ //\ →\ \{\ ...,\ MethodDefinition:\ ["{}decorators"{},\ "{}key"{},\ "{}value"{}],\ ...\ \}}
+
+\end{DoxyCode}
+\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_230cb8dd85f385b29c8fdd9cae2c0cdff_autotoc_md7986}{}\doxysection{\texorpdfstring{📰 Change log}{📰 Change log}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_230cb8dd85f385b29c8fdd9cae2c0cdff_autotoc_md7986}
+See \href{https://github.com/eslint/eslint-visitor-keys/releases}{\texttt{ Git\+Hub releases}}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_230cb8dd85f385b29c8fdd9cae2c0cdff_autotoc_md7987}{}\doxysection{\texorpdfstring{🍻 Contributing}{🍻 Contributing}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_230cb8dd85f385b29c8fdd9cae2c0cdff_autotoc_md7987}
+Welcome. See \href{https://eslint.org/docs/developer-guide/contributing/}{\texttt{ ESLint contribution guidelines}}.\hypertarget{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_230cb8dd85f385b29c8fdd9cae2c0cdff_autotoc_md7988}{}\doxysubsection{\texorpdfstring{Development commands}{Development commands}}\label{md__c_1_2_users_2_s_t_r_i_d_e_r_2source_2repos_2_internal_a_p_i_2_internal_a_p_i_2wwwroot_2lib_230cb8dd85f385b29c8fdd9cae2c0cdff_autotoc_md7988}
+
+\begin{DoxyItemize}
+\item {\ttfamily npm test} runs tests and measures code coverage.
+\item {\ttfamily npm run lint} checks source codes with ESLint.
+\item {\ttfamily npm run coverage} opens the code coverage report of the previous test with your default browser.
+\item {\ttfamily npm run release} publishes this package to \href{https://www.npmjs.com/}{\texttt{ npm}} registory. 
+\end{DoxyItemize}
