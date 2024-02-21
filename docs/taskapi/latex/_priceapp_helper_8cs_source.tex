@@ -1,0 +1,108 @@
+\doxysection{Priceapp\+Helper.\+cs}
+\hypertarget{_priceapp_helper_8cs_source}{}\label{_priceapp_helper_8cs_source}\index{C:/Users/STRIDER/source/repos/TaskAPI/Helpers/PriceappHelper.cs@{C:/Users/STRIDER/source/repos/TaskAPI/Helpers/PriceappHelper.cs}}
+\mbox{\hyperlink{_priceapp_helper_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }Microsoft.Extensions.Options;}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_task_a_p_i_1_1_contexts}{TaskAPI.Contexts}};}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_task_a_p_i_1_1_helpers_1_1_settings}{TaskAPI.Helpers.Settings}};}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_task_a_p_i_1_1_services}{TaskAPI.Services}};}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }SelectPdf;}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00007}00007\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_task_a_p_i_1_1_helpers}{TaskAPI.Helpers}}}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00008}00008\ \{}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00009}\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_priceapp_helper}{00009}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_priceapp_helper}{PriceappHelper}}}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00010}00010\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00011}00011\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}\ \_logService;}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_forex_service}{ForexService}}\ \_forexService;}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00013}00013\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_alchemy_service}{AlchemyService}}\ \_alchemyService;}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_binance_service}{BinanceService}}\ \_binanceService;}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00015}00015\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings}{TaskAPISettings}}\ \_settings;}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_task_a_p_i_1_1_contexts_1_1_priceapp_context}{PriceappContext}}\ \_context;}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service}{InternalAPIService}}\ \_iapiService;}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ IWebHostEnvironment\ \_env;}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ tOzGrams\ =\ 31.1035;}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00022}\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_priceapp_helper_ae1744c4f6bb9153e927468611cba9ce5}{00022}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_priceapp_helper_ae1744c4f6bb9153e927468611cba9ce5}{PriceappHelper}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}\ logService,\ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_forex_service}{ForexService}}\ forexService,\ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_alchemy_service}{AlchemyService}}\ alchemyService,\ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_binance_service}{BinanceService}}\ binanceService,\ IOptions<TaskAPISettings>\ taskAPISettings,\ \mbox{\hyperlink{class_task_a_p_i_1_1_contexts_1_1_priceapp_context}{PriceappContext}}\ context,\ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service}{InternalAPIService}}\ iapiService,\ IWebHostEnvironment\ env)}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \ \ \ \ \_alchemyService\ =\ alchemyService;}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \ \ \ \ \_settings\ =\ taskAPISettings.Value;}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ \_logService\ =\ logService;}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ \_forexService\ =\ forexService;}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ \_binanceService\ =\ binanceService;}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ \_context\ =\ context;}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \_iapiService\ =\ iapiService;}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \_env\ =\ env;}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00034}\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_priceapp_helper_a11fefec93e8edfcd4f1d4c4d91180689}{00034}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ (\textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_priceapp_helper_a92393016a8925956a44271f4c9c0d9cc}{Error}},\ \textcolor{keywordtype}{object}\ Result)\ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_priceapp_helper_a11fefec93e8edfcd4f1d4c4d91180689}{CreateLivePricesheetPDF}}(\textcolor{keywordtype}{bool}?\ ignoreTime)}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ isDebug\ =\ \_env.IsDevelopment()\ ||\ \_env.IsStaging()\ ||\ (ignoreTime.HasValue\ \&\&\ ignoreTime.Value);}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//exit\ if\ not\ between\ 815\ and\ 845\ am}}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ DailyWindowOpen\ =\ \textcolor{keyword}{new}\ DateTime(DateTime.Now.Year,\ DateTime.Now.Month,\ DateTime.Now.Day,\ 8,\ 25,\ 0);}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ DailyWindowClose\ =\ \textcolor{keyword}{new}\ DateTime(DateTime.Now.Year,\ DateTime.Now.Month,\ DateTime.Now.Day,\ 8,\ 35,\ 0);}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ MonthlyWindowOpen\ =\ \textcolor{keyword}{new}\ DateTime(DateTime.Now.Year,\ DateTime.Now.Month,\ DateTime.DaysInMonth(DateTime.Now.Year,\ DateTime.Now.Month),\ 15,\ 55,\ 0);}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ MonthlyWindowClose\ =\ \textcolor{keyword}{new}\ DateTime(DateTime.Now.Year,\ DateTime.Now.Month,\ DateTime.DaysInMonth(DateTime.Now.Year,\ DateTime.Now.Month),\ 16,\ 05,\ 0);}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!isDebug\ \&\&\ (!(DateTime.Now\ >\ DailyWindowOpen\ \&\ DateTime.Now\ <\ DailyWindowClose)\ \&\ !(DateTime.Now\ >\ MonthlyWindowOpen\ \&\ DateTime.Now\ <\ MonthlyWindowClose)))}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\textcolor{keyword}{false},\ \textcolor{keyword}{new}\ \{\ success\ =\ \textcolor{keyword}{false},\ message\ =\ \textcolor{stringliteral}{"{}request\ does\ not\ fall\ within\ a\ valid\ time\ window"{}}\ \});}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//setup\ PDF\ location}}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!Directory.Exists(\_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_a5d429b089bd15c7c16f03c8e677f3c64}{PriceappSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_priceappsettings_ac56852d836c4c4616f05cca33e8014de}{LivePricesheetPDFPath}}\ +\ DateTime.Now.Year))}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Directory.CreateDirectory(\_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_a5d429b089bd15c7c16f03c8e677f3c64}{PriceappSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_priceappsettings_ac56852d836c4c4616f05cca33e8014de}{LivePricesheetPDFPath}}\ +\ DateTime.Now.Year);}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!Directory.Exists(\_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_a5d429b089bd15c7c16f03c8e677f3c64}{PriceappSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_priceappsettings_ac56852d836c4c4616f05cca33e8014de}{LivePricesheetPDFPath}}\ +\ DateTime.Now.Year\ +\ \textcolor{stringliteral}{@"{}\(\backslash\)"{}}\ +\ DateTime.Now.Month))}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Directory.CreateDirectory(\_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_a5d429b089bd15c7c16f03c8e677f3c64}{PriceappSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_priceappsettings_ac56852d836c4c4616f05cca33e8014de}{LivePricesheetPDFPath}}\ +\ DateTime.Now.Year\ +\ \textcolor{stringliteral}{@"{}\(\backslash\)"{}}\ +\ DateTime.Now.Month);}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ PDFPath\ =\ \_settings.PriceappSettings.LivePricesheetPDFPath\ +\ DateTime.Now.Year\ +\ \textcolor{stringliteral}{@"{}\(\backslash\)"{}}\ +\ DateTime.Now.Month\ +\ \textcolor{stringliteral}{@"{}\(\backslash\)"{}};}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//check\ latest\ file\ time}}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ DI\ =\ \textcolor{keyword}{new}\ DirectoryInfo(PDFPath);}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ LatestFile\ =\ DI.GetFiles(\textcolor{stringliteral}{"{}*.pdf"{}}).OrderByDescending(t\ =>\ t.LastWriteTime).FirstOrDefault();}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//if\ we\ are\ inside\ the\ daily\ time\ window}}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((DateTime.Now\ >\ DailyWindowOpen\ \&\ DateTime.Now\ <\ DailyWindowClose)\ ||\ isDebug)}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ PDFPathFile\ =\ PDFPath\ +\ \textcolor{stringliteral}{"{}Ainslie-\/Pricelist-\/"{}}\ +\ DateTime.Now.ToString(\textcolor{stringliteral}{"{}yyyy-\/MM-\/dd-\/hh-\/mm"{}})\ +\ \textcolor{stringliteral}{"{}.pdf"{}};}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//exit\ if\ file\ written\ during\ daily\ window}}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!isDebug\ \&\&\ LatestFile\ is\ not\ \textcolor{keyword}{null}\ \&\&\ LatestFile.LastWriteTime\ >\ DailyWindowOpen\ \&\ LatestFile.LastWriteTime\ <\ DailyWindowClose)}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\textcolor{keyword}{false},\ \textcolor{keyword}{new}\ \{\ success\ =\ \textcolor{keyword}{false},\ message\ =\ \textcolor{stringliteral}{"{}pricesheet\ PDF\ already\ created\ for\ this\ time\ window"{}}\ \});}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//get\ pricesheet\ and\ save\ to\ pdf}}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ PC\ =\ \textcolor{keyword}{new}\ HtmlToPdf();}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PC.Options.PdfPageSize\ =\ PdfPageSize.A4;}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PC.Options.MarginTop\ =\ 10;}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PC.Options.MarginRight\ =\ 10;}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PC.Options.MarginBottom\ =\ 10;}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PC.Options.MarginLeft\ =\ 10;}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ Doc\ =\ PC.ConvertUrl(\_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_a5d429b089bd15c7c16f03c8e677f3c64}{PriceappSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_priceappsettings_a143b469d89d5ad1fbe196571c4e3ebdb}{LivePricesheetURL}});}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Doc.Save(PDFPathFile);}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//if\ we\ are\ inside\ the\ monthly\ time\ window}}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ ((DateTime.Now\ >\ MonthlyWindowOpen\ \&\ DateTime.Now\ <\ MonthlyWindowClose)\ ||\ isDebug)}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ PDFPathFile\ =\ PDFPath\ +\ \textcolor{stringliteral}{"{}Monthly-\/Pricelist-\/"{}}\ +\ DateTime.Now.ToString(\textcolor{stringliteral}{"{}yyyy-\/MM-\/dd-\/hh-\/mm"{}})\ +\ \textcolor{stringliteral}{"{}.pdf"{}};}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//exit\ if\ file\ written\ during\ monthly\ window}}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!isDebug\ \&\&\ LatestFile\ is\ not\ \textcolor{keyword}{null}\ \&\&\ LatestFile.LastWriteTime\ >\ MonthlyWindowOpen\ \&\ LatestFile.LastWriteTime\ <\ MonthlyWindowClose)}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\textcolor{keyword}{true},\ \textcolor{keyword}{new}\ \{\ success\ =\ \textcolor{keyword}{true},\ message\ =\ \textcolor{stringliteral}{"{}pricesheet\ PDF\ already\ created\ for\ this\ time\ window"{}}\ \});}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ get\ pricesheet\ and\ save\ to\ pdf}}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ PC\ =\ \textcolor{keyword}{new}\ HtmlToPdf();}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PC.Options.PdfPageSize\ =\ PdfPageSize.A4;}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PC.Options.MarginTop\ =\ 10;}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PC.Options.MarginRight\ =\ 10;}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PC.Options.MarginBottom\ =\ 10;}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PC.Options.MarginLeft\ =\ 10;}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ Doc\ =\ PC.ConvertUrl(\_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_a5d429b089bd15c7c16f03c8e677f3c64}{PriceappSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_priceappsettings_a143b469d89d5ad1fbe196571c4e3ebdb}{LivePricesheetURL}});}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Doc.Save(PDFPathFile);}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\textcolor{keyword}{false},\ \textcolor{keyword}{new}\ \{\ success\ =\ \textcolor{keyword}{false},\ message\ =\ \textcolor{stringliteral}{"{}request\ does\ not\ fall\ within\ a\ valid\ time\ window"{}}\ \});}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a46dc9bf58bc9605c7e17dfee38b94354}{LogError}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.PriceappHelper,\ \textcolor{stringliteral}{"{}exception\ saving\ live\ pricesheet"{}},\ ex.ToString());}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\textcolor{keyword}{true},\ \textcolor{keyword}{new}\ \{\ success\ =\ \textcolor{keyword}{false},\ message\ =\ \textcolor{stringliteral}{"{}exception\ saving\ live\ pricesheet"{}},\ exception\ =\ ex.ToString()\ \});}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\textcolor{keyword}{false},\ \textcolor{keyword}{new}\ \{\ success\ =\ \textcolor{keyword}{true},\ message\ =\ \textcolor{stringliteral}{"{}pricesheet\ PDF\ created\ successfully"{}}\ \});}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00101}00101\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_priceapp_helper_8cs_source_l00102}00102\ \}}
+
+\end{DoxyCode}
