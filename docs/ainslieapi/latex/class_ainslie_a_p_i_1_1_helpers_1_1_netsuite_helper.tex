@@ -17,10 +17,6 @@ Provides functionalities to create requests for Netsuite operations, particularl
 \doxysubsection{Detailed Description}
 Provides functionalities to create requests for Netsuite operations, particularly for customer data management. 
 
-Definition at line \mbox{\hyperlink{_netsuite_helper_8cs_source_l00011}{11}} of file \mbox{\hyperlink{_netsuite_helper_8cs_source}{Netsuite\+Helper.\+cs}}.
-
-
-
 \doxysubsection{Constructor \& Destructor Documentation}
 \Hypertarget{class_ainslie_a_p_i_1_1_helpers_1_1_netsuite_helper_a58d3f1b43d3a3da38b17ad33fe238feb}\label{class_ainslie_a_p_i_1_1_helpers_1_1_netsuite_helper_a58d3f1b43d3a3da38b17ad33fe238feb} 
 \index{AinslieAPI.Helpers.NetsuiteHelper@{AinslieAPI.Helpers.NetsuiteHelper}!NetsuiteHelper@{NetsuiteHelper}}
@@ -33,9 +29,13 @@ Definition at line \mbox{\hyperlink{_netsuite_helper_8cs_source_l00011}{11}} of 
 Initialises a new instance of the Netsuite\+Helper with application settings and internal API service. 
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00020\ \ \ \ \ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \_appSettings\ =\ appSettings.Value;}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \_iaService\ =\ iaService;\ }
+\DoxyCodeLine{00023\ \ \ \ \ \}}
 
-Definition at line \mbox{\hyperlink{_netsuite_helper_8cs_source_l00019}{19}} of file \mbox{\hyperlink{_netsuite_helper_8cs_source}{Netsuite\+Helper.\+cs}}.
-
+\end{DoxyCode}
 
 
 \doxysubsection{Member Function Documentation}
@@ -64,11 +64,43 @@ A populated Netsuite\+Customer\+Request object.
 
 
 Maps Green ID customer data to the Netsuite customer request format, preparing data for integration with Netsuite CRM. Includes handling for personal details, contact information, and address, with specific attention to Netsuite\textquotesingle{}s data structure. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00039\ \ \ \ \ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_netsuite_customer_request}{NetsuiteCustomerRequest}}\ netsuiteCustomerRequest\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_netsuite_customer_request}{NetsuiteCustomerRequest}}() }
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ iscompany\ =\ \textcolor{keyword}{false},}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ custentity\_ab\_first\_name\ =\ greenIDCustomer.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_green_id_1_1_green_id_customer_a51b78da95314bd4fc824cfff5a1df09f}{givenName}}?.Trim(),}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ custentity\_ab\_last\_name\ =\ greenIDCustomer.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_green_id_1_1_green_id_customer_ad97cb58b40c0bdaee43669906691e0b0}{surname}}?.Trim(),}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ companyname\ =\ \$\textcolor{stringliteral}{"{}\{greenIDCustomer.givenName?.Trim()\}\ \{greenIDCustomer.surname?.Trim()\}"{}},}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ custentity\_ab\_green\_id\ =\ greenIDCustomer.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_green_id_1_1_green_id_customer_aaf65aa3d37fb164b54301cd47083244e}{verificationId}},}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ custentity\_ab\_phone\_pdf\ =\ greenIDCustomer.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_green_id_1_1_green_id_customer_a643d4f04dd62c864ef196fff0ef85ed6}{mobilePhone}}?.Trim().Replace(\textcolor{stringliteral}{"{}\ "{}},\ \textcolor{stringliteral}{"{}"{}}),}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ email\ =\ greenIDCustomer.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_green_id_1_1_green_id_customer_a44f729aafacbaae5add681feab1c0b91}{email}}?.Trim(),}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ subsidiary\ =\ (int)Enum.Parse<\mbox{\hyperlink{namespace_internal_a_p_i_1_1_dto_1_1_netsuite_a97b077ce706f3a2aa80f45dbf31fb8bf}{NetsuiteSubsidiaries}}>(branch.ToUpper()),}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ addressbook\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_address_book}{AddressBook}}()}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ items\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_address_book_item}{AddressBookItem}}[1]}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_address_book_item}{AddressBookItem}}() }
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ defaultBilling\ =\ \textcolor{keyword}{true},}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ defaultShipping\ =\ \textcolor{keyword}{true},}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ addressbookaddress\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_address_book_address}{AddressBookAddress}}() }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ addressee\ =\ \$\textcolor{stringliteral}{"{}\{greenIDCustomer.givenName?.Trim()\}\ \{greenIDCustomer.surname?.Trim()\}"{}},}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ addr1\ =\ \$\textcolor{stringliteral}{"{}\{greenIDCustomer.streetNumber?.Trim()\}\ \{greenIDCustomer.streetName?.Trim()\}\ \{greenIDCustomer.streetType?.Trim()\}"{}},}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ city\ =\ greenIDCustomer.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_green_id_1_1_green_id_customer_a85e462215e7890851670fe872c0b1419}{suburb}}?.Trim(),}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ state\ =\ greenIDCustomer.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_green_id_1_1_green_id_customer_aa1ab9b6c8b4afdb25581044861c0f992}{state}}?.Trim(),}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ zip\ =\ greenIDCustomer.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_green_id_1_1_green_id_customer_aa8410f0dee5e49e5820b66ba6bed8698}{postcode}}?.Trim()}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ netsuiteCustomerRequest;}
+\DoxyCodeLine{00071\ \ \ \ \ \}}
 
-Definition at line \mbox{\hyperlink{_netsuite_helper_8cs_source_l00038}{38}} of file \mbox{\hyperlink{_netsuite_helper_8cs_source}{Netsuite\+Helper.\+cs}}.
-
-Here is the caller graph for this function\+:
-\nopagebreak
+\end{DoxyCode}
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

@@ -7,8 +7,7 @@ Controller responsible for managing log-\/related actions, including retrieval a
 
 
 
-Inheritance diagram for Ainslie\+API.\+Controllers.\+Logs\+Controller\+:
-\nopagebreak
+Inheritance diagram for Ainslie\+API.\+Controllers.\+Logs\+Controller\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -17,8 +16,7 @@ Inheritance diagram for Ainslie\+API.\+Controllers.\+Logs\+Controller\+:
 \end{figure}
 
 
-Collaboration diagram for Ainslie\+API.\+Controllers.\+Logs\+Controller\+:
-\nopagebreak
+Collaboration diagram for Ainslie\+API.\+Controllers.\+Logs\+Controller\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -42,10 +40,6 @@ IAction\+Result \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_logs_co
 
 \doxysubsection{Detailed Description}
 Controller responsible for managing log-\/related actions, including retrieval and manipulation of log entries. 
-
-Definition at line \mbox{\hyperlink{_logs_controller_8cs_source_l00024}{24}} of file \mbox{\hyperlink{_logs_controller_8cs_source}{Logs\+Controller.\+cs}}.
-
-
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \Hypertarget{class_ainslie_a_p_i_1_1_controllers_1_1_logs_controller_afb713b2cb90756230e4704cffd8d613f}\label{class_ainslie_a_p_i_1_1_controllers_1_1_logs_controller_afb713b2cb90756230e4704cffd8d613f} 
@@ -72,9 +66,16 @@ Initialises a new instance of the Logs\+Controller class, injecting dependencies
 \hline
 \end{DoxyParams}
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00041\ \ \ \ \ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \_appSettings\ =\ appSettings.Value;}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \_jwtUtils\ =\ jwtUtils;}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \_logService\ =\ logService;\ \ \ }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \_context\ =\ localContext;}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \_iapiService\ =\ iapiService;}
+\DoxyCodeLine{00047\ \ \ \ \ \}}
 
-Definition at line \mbox{\hyperlink{_logs_controller_8cs_source_l00040}{40}} of file \mbox{\hyperlink{_logs_controller_8cs_source}{Logs\+Controller.\+cs}}.
-
+\end{DoxyCode}
 
 
 \doxysubsection{Member Function Documentation}
@@ -108,9 +109,54 @@ This method enables both initial and follow-\/up log retrieval, featuring\+:
 \item Descending order sorting by creation date for recent logs prioritisation. 
 \item Adaptation to request \textquotesingle{}max\+Logs\textquotesingle{} limit for controlled data retrieval. 
 \end{DoxyItemize}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00069\ \ \ \ \ \{}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ DateTime\ fromDateTimeUTC\ =\ DateTime.MinValue;}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (logRequest.fromUnixUTCMilli\ >\ 0)}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ fromDateTimeUTC\ =\ DateTimeOffset.FromUnixTimeMilliseconds(logRequest.fromUnixUTCMilli).DateTime;}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ DateTime\ fromDateTimeLocal\ =\ fromDateTimeUTC.ToLocalTime();}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ var\ dateRangeStart\ =\ logRequest.dateRangeStartUTC.ToLocalTime();}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (logRequest.startHour\ >\ -\/1)}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ dateRangeStart\ =\ dateRangeStart.AddHours(logRequest.startHour);}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ var\ dateRangeEnd\ =\ logRequest.dateRangeEndUTC.ToLocalTime();}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ var\ logsQuery\ =\ \_context.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_data_1_1_contexts_1_1_local_context_a07ac1cd14ee90d7465dd18a3669e0fa4}{LogEntries}}.AsNoTracking()}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ .Where(le\ =>\ le.Created\ >=\ dateRangeStart\ \&\&\ le.Created\ <=\ dateRangeEnd)}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ .AsEnumerable();}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (logRequest.initial)}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ logsQuery\ =\ logsQuery}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .Where(le\ =>\ logRequest.logType\ ==\ \textcolor{keyword}{null}\ ||\ logRequest.logType.All(\textcolor{keywordtype}{string}.IsNullOrEmpty)\ ||\ logRequest.logType.Any(lt\ =>\ le.Type.ToLower()\ ==\ lt.ToLower()))}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .Where(le\ =>\ logRequest.logSource\ ==\ \textcolor{keyword}{null}\ ||\ logRequest.logSource.All(\textcolor{keywordtype}{string}.IsNullOrEmpty)\ ||\ logRequest.logSource.Any(ls\ =>\ le.Source.ToLower()\ ==\ ls.ToLower()))}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .Where(le\ =>\ \textcolor{keywordtype}{string}.IsNullOrEmpty(logRequest.searchString)\ ||\ le.Data.ToLower().Contains(logRequest.searchString.ToLower()));}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (logRequest.startHour\ >\ -\/1)}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//if\ specifying\ a\ start\ hour,\ take\ logs\ from\ the\ start\ hour,\ then\ order\ by\ descending}}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ logsQuery\ =\ logsQuery.Take(logRequest.maxLogs).OrderByDescending(le\ =>\ le.Created).ToList();}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//if\ not\ specifying\ start\ hour,\ order\ by\ descending\ and\ then\ take\ latest}}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ logsQuery\ =\ logsQuery.OrderByDescending(le\ =>\ le.Created).Take(logRequest.maxLogs).ToList();}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ logsQuery\ =\ logsQuery}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .Where(le\ =>\ le.Created\ >\ fromDateTimeLocal)}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .Where(le\ =>\ logRequest.logType\ ==\ \textcolor{keyword}{null}\ ||\ logRequest.logType.All(\textcolor{keywordtype}{string}.IsNullOrEmpty)\ ||\ logRequest.logType.Any(lt\ =>\ le.Type.ToLower()\ ==\ lt.ToLower()))}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .Where(le\ =>\ logRequest.logSource\ ==\ \textcolor{keyword}{null}\ ||\ logRequest.logSource.All(\textcolor{keywordtype}{string}.IsNullOrEmpty)\ ||\ logRequest.logSource.Any(ls\ =>\ le.Source.ToLower()\ ==\ ls.ToLower()))}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .Where(le\ =>\ \textcolor{keywordtype}{string}.IsNullOrEmpty(logRequest.searchString)\ ||\ le.Data.ToLower().Contains(logRequest.searchString.ToLower()))}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .OrderByDescending(le\ =>\ le.Created);}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!logRequest.initial\ \&\&\ logsQuery.Count()\ <\ 1)}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Ok();}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Ok(logsQuery);}
+\DoxyCodeLine{00113\ \ \ \ \ \}}
 
-Definition at line \mbox{\hyperlink{_logs_controller_8cs_source_l00068}{68}} of file \mbox{\hyperlink{_logs_controller_8cs_source}{Logs\+Controller.\+cs}}.
-
+\end{DoxyCode}
 \Hypertarget{class_ainslie_a_p_i_1_1_controllers_1_1_logs_controller_a97c028c3db2a6e6190127d5a1a67cda3}\label{class_ainslie_a_p_i_1_1_controllers_1_1_logs_controller_a97c028c3db2a6e6190127d5a1a67cda3} 
 \index{AinslieAPI.Controllers.LogsController@{AinslieAPI.Controllers.LogsController}!GetLogSources@{GetLogSources}}
 \index{GetLogSources@{GetLogSources}!AinslieAPI.Controllers.LogsController@{AinslieAPI.Controllers.LogsController}}
@@ -127,9 +173,13 @@ An IAction\+Result containing unique log sources.
 
 
 This method queries the Log\+Entries table for distinct sources, facilitating filter creation on the client side. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00126\ \ \ \ \ \{}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ var\ logSources\ =\ \_context.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_data_1_1_contexts_1_1_local_context_a07ac1cd14ee90d7465dd18a3669e0fa4}{LogEntries}}.AsNoTracking().Select(le\ =>\ le.Source).Distinct();}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Ok(logSources);}
+\DoxyCodeLine{00129\ \ \ \ \ \}}
 
-Definition at line \mbox{\hyperlink{_logs_controller_8cs_source_l00125}{125}} of file \mbox{\hyperlink{_logs_controller_8cs_source}{Logs\+Controller.\+cs}}.
-
+\end{DoxyCode}
 \Hypertarget{class_ainslie_a_p_i_1_1_controllers_1_1_logs_controller_a950cc099b42028053588effab1e1c578}\label{class_ainslie_a_p_i_1_1_controllers_1_1_logs_controller_a950cc099b42028053588effab1e1c578} 
 \index{AinslieAPI.Controllers.LogsController@{AinslieAPI.Controllers.LogsController}!GetLogTypes@{GetLogTypes}}
 \index{GetLogTypes@{GetLogTypes}!AinslieAPI.Controllers.LogsController@{AinslieAPI.Controllers.LogsController}}
@@ -146,9 +196,13 @@ An IAction\+Result containing unique log types.
 
 
 Similar to Get\+Log\+Sources, this method aids in generating client-\/side filters by providing distinct log types. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00142\ \ \ \ \ \{}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ var\ logTypes\ =\ \_context.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_data_1_1_contexts_1_1_local_context_a07ac1cd14ee90d7465dd18a3669e0fa4}{LogEntries}}.AsNoTracking().Select(le\ =>\ le.Type).Distinct();}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Ok(logTypes);}
+\DoxyCodeLine{00145\ \ \ \ \ \}}
 
-Definition at line \mbox{\hyperlink{_logs_controller_8cs_source_l00141}{141}} of file \mbox{\hyperlink{_logs_controller_8cs_source}{Logs\+Controller.\+cs}}.
-
+\end{DoxyCode}
 \Hypertarget{class_ainslie_a_p_i_1_1_controllers_1_1_logs_controller_aea8072dbf59418b035df6b786ecae9c0}\label{class_ainslie_a_p_i_1_1_controllers_1_1_logs_controller_aea8072dbf59418b035df6b786ecae9c0} 
 \index{AinslieAPI.Controllers.LogsController@{AinslieAPI.Controllers.LogsController}!TrimLogs@{TrimLogs}}
 \index{TrimLogs@{TrimLogs}!AinslieAPI.Controllers.LogsController@{AinslieAPI.Controllers.LogsController}}
@@ -165,11 +219,19 @@ An IAction\+Result indicating the success or failure of the operation.
 
 
 Initiates a log trimming operation to remove older logs. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00158\ \ \ \ \ \{}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a917b9af360c0c6521ce36f4acbc72023}{LogInformation}}(LogService.LogSources.LogsController,\ \textcolor{stringliteral}{"{}log\ trim\ initiated"{}});}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ dynamic\ result\ =\ \_logService.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_aea52f6628afd6bcb55105bd0a2f1d8da}{TrimLogs}}();}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((\textcolor{keywordtype}{bool})result.error)}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ BadRequest(result);}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Ok(result);}
+\DoxyCodeLine{00166\ \ \ \ \ \}}
 
-Definition at line \mbox{\hyperlink{_logs_controller_8cs_source_l00157}{157}} of file \mbox{\hyperlink{_logs_controller_8cs_source}{Logs\+Controller.\+cs}}.
-
-Here is the call graph for this function\+:
-\nopagebreak
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

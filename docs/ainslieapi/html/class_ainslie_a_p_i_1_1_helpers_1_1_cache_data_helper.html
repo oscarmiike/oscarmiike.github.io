@@ -107,8 +107,6 @@ Properties</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Provides functionality to manage and refresh cached data, specifically for asset prices. </p>
-
-<p class="definition">Definition at line <a class="el" href="_cache_data_helper_8cs_source.html#l00014">14</a> of file <a class="el" href="_cache_data_helper_8cs_source.html">CacheDataHelper.cs</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="af2a6b056688fb01875c35f9088701439" name="af2a6b056688fb01875c35f9088701439"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af2a6b056688fb01875c35f9088701439">&#9670;&#160;</a></span>CacheDataHelper()</h2>
@@ -155,9 +153,14 @@ Properties</h2></td></tr>
   </table>
   </dd>
 </dl>
-
-<p class="definition">Definition at line <a class="el" href="_cache_data_helper_8cs_source.html#l00031">31</a> of file <a class="el" href="_cache_data_helper_8cs_source.html">CacheDataHelper.cs</a>.</p>
-
+<div class="fragment"><div class="line"><span class="lineno">   32</span>        {</div>
+<div class="line"><span class="lineno">   33</span>            _cachedData = cachedData;</div>
+<div class="line"><span class="lineno">   34</span>            _logService = logService;</div>
+<div class="line"><span class="lineno">   35</span>            _iapiService = iapiService;</div>
+<div class="line"><span class="lineno">   36</span>            _awapiService = awapiService;</div>
+<div class="line"><span class="lineno">   37</span>            _appSettings = appSettings.Value;</div>
+<div class="line"><span class="lineno">   38</span>        }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -185,9 +188,27 @@ Properties</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>GSSPriceData for the specified user.</dd></dl>
 <p>Attempts to fetch GSS pricing data for the given user from cache. If the data is expired, absent, or fails casting, it refreshes the cache with new data. </p>
-
-<p class="definition">Definition at line <a class="el" href="_cache_data_helper_8cs_source.html#l00233">233</a> of file <a class="el" href="_cache_data_helper_8cs_source.html">CacheDataHelper.cs</a>.</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">  234</span>        {</div>
+<div class="line"><span class="lineno">  235</span>            var gssPriceCache = _cachedData.<a class="code hl_property" href="class_ainslie_a_p_i_1_1_d_t_o_1_1_cache_1_1_cached_data.html#ae6381b3199018446551fd02d27609e61">CacheItems</a>.Where(ci =&gt; ci.CacheType == <a class="code hl_enumeration" href="namespace_ainslie_a_p_i_1_1_d_t_o_1_1_cache.html#a2b049336e292ef472431e865b772d5af">CacheType</a>.GSSPricing &amp;&amp; ((<a class="code hl_class" href="class_ainslie_a_p_i_1_1_d_t_o_1_1_g_s_s_1_1_g_s_s_price_data.html">GSSPriceData</a>?)ci.Data)?.UserName == userName).FirstOrDefault();</div>
+<div class="line"><span class="lineno">  236</span>            <span class="keywordflow">if</span> (gssPriceCache == <span class="keyword">null</span> || gssPriceCache.Expires &lt; DateAndTime.Now || gssPriceCache.Data == <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">  237</span>                <span class="keywordflow">return</span> RefreshGSSPricing(userName);</div>
+<div class="line"><span class="lineno">  238</span>            <span class="keywordflow">try</span></div>
+<div class="line"><span class="lineno">  239</span>            {</div>
+<div class="line"><span class="lineno">  240</span>                <span class="keywordflow">return</span> (<a class="code hl_class" href="class_ainslie_a_p_i_1_1_d_t_o_1_1_g_s_s_1_1_g_s_s_price_data.html">GSSPriceData</a>)gssPriceCache.Data ?? <span class="keyword">new</span> <a class="code hl_class" href="class_ainslie_a_p_i_1_1_d_t_o_1_1_g_s_s_1_1_g_s_s_price_data.html">GSSPriceData</a>();</div>
+<div class="line"><span class="lineno">  241</span>            }</div>
+<div class="line"><span class="lineno">  242</span>            <span class="keywordflow">catch</span> (Exception ex)</div>
+<div class="line"><span class="lineno">  243</span>            {</div>
+<div class="line"><span class="lineno">  244</span>                _logService.<a class="code hl_function" href="class_ainslie_a_p_i_1_1_services_1_1_log_service.html#a83bbf569dea7ea5a40e02fca200aad8c">LogException</a>(<a class="code hl_class" href="class_ainslie_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_ainslie_a_p_i_1_1_services_1_1_log_service.html#ab557dc1394f5cf56cfb78c765fdfffe6">LogSources</a>.CacheDataHelper, $<span class="stringliteral">&quot;exception casting and returning gss price data for {userName}&quot;</span>, gssPriceCache, ex);</div>
+<div class="line"><span class="lineno">  245</span>                <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code hl_class" href="class_ainslie_a_p_i_1_1_d_t_o_1_1_g_s_s_1_1_g_s_s_price_data.html">GSSPriceData</a>();</div>
+<div class="line"><span class="lineno">  246</span>            }</div>
+<div class="line"><span class="lineno">  247</span>        }</div>
+<div class="ttc" id="aclass_ainslie_a_p_i_1_1_d_t_o_1_1_cache_1_1_cached_data_html_ae6381b3199018446551fd02d27609e61"><div class="ttname"><a href="class_ainslie_a_p_i_1_1_d_t_o_1_1_cache_1_1_cached_data.html#ae6381b3199018446551fd02d27609e61">AinslieAPI.DTO.Cache.CachedData.CacheItems</a></div><div class="ttdeci">List&lt; CacheItem &gt; CacheItems</div><div class="ttdef"><b>Definition</b> CacheItem.cs:5</div></div>
+<div class="ttc" id="aclass_ainslie_a_p_i_1_1_d_t_o_1_1_g_s_s_1_1_g_s_s_price_data_html"><div class="ttname"><a href="class_ainslie_a_p_i_1_1_d_t_o_1_1_g_s_s_1_1_g_s_s_price_data.html">AinslieAPI.DTO.GSS.GSSPriceData</a></div><div class="ttdef"><b>Definition</b> GSSPriceData.cs:4</div></div>
+<div class="ttc" id="aclass_ainslie_a_p_i_1_1_services_1_1_log_service_html"><div class="ttname"><a href="class_ainslie_a_p_i_1_1_services_1_1_log_service.html">AinslieAPI.Services.LogService</a></div><div class="ttdef"><b>Definition</b> LogService.cs:20</div></div>
+<div class="ttc" id="aclass_ainslie_a_p_i_1_1_services_1_1_log_service_html_a83bbf569dea7ea5a40e02fca200aad8c"><div class="ttname"><a href="class_ainslie_a_p_i_1_1_services_1_1_log_service.html#a83bbf569dea7ea5a40e02fca200aad8c">AinslieAPI.Services.LogService.LogException</a></div><div class="ttdeci">LogEntry LogException(LogSources logSource, params object[] dataList)</div><div class="ttdef"><b>Definition</b> LogService.cs:72</div></div>
+<div class="ttc" id="aclass_ainslie_a_p_i_1_1_services_1_1_log_service_html_ab557dc1394f5cf56cfb78c765fdfffe6"><div class="ttname"><a href="class_ainslie_a_p_i_1_1_services_1_1_log_service.html#ab557dc1394f5cf56cfb78c765fdfffe6">AinslieAPI.Services.LogService.LogSources</a></div><div class="ttdeci">LogSources</div><div class="ttdef"><b>Definition</b> LogService.cs:30</div></div>
+<div class="ttc" id="anamespace_ainslie_a_p_i_1_1_d_t_o_1_1_cache_html_a2b049336e292ef472431e865b772d5af"><div class="ttname"><a href="namespace_ainslie_a_p_i_1_1_d_t_o_1_1_cache.html#a2b049336e292ef472431e865b772d5af">AinslieAPI.DTO.Cache.CacheType</a></div><div class="ttdeci">CacheType</div><div class="ttdef"><b>Definition</b> CacheItem.cs:17</div></div>
+</div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_ainslie_a_p_i_1_1_helpers_1_1_cache_data_helper_a533a0f6563d2e92e52c819c22c5009a6_cgraph.png" border="0" usemap="#aclass_ainslie_a_p_i_1_1_helpers_1_1_cache_data_helper_a533a0f6563d2e92e52c819c22c5009a6_cgraph" alt=""/></div>
@@ -236,9 +257,24 @@ Here is the caller graph for this function:</div>
 <p>Gets a list of asset prices, either from cache or by refreshing if necessary. </p>
 <dl class="section return"><dt>Returns</dt><dd>A list of AssetPrice from the cache or a refreshed list if the cache is expired or not present.</dd></dl>
 <p>Checks the cache for current asset prices; if the cache is expired or not found, it refreshes the cache by fetching new data. Implements thread-safe cache refresh using a lock to prevent concurrent refresh operations. </p>
-
-<p class="definition">Definition at line <a class="el" href="_cache_data_helper_8cs_source.html#l00050">50</a> of file <a class="el" href="_cache_data_helper_8cs_source.html">CacheDataHelper.cs</a>.</p>
-
+<div class="fragment"><div class="line"><span class="lineno">   51</span>        { </div>
+<div class="line"><span class="lineno">   52</span>            <span class="keyword">get</span> </div>
+<div class="line"><span class="lineno">   53</span>            {</div>
+<div class="line"><span class="lineno">   54</span>                var assetListCache = _cachedData.<a class="code hl_property" href="class_ainslie_a_p_i_1_1_d_t_o_1_1_cache_1_1_cached_data.html#ae6381b3199018446551fd02d27609e61">CacheItems</a>.Where(ci =&gt; ci.CacheType == <a class="code hl_enumeration" href="namespace_ainslie_a_p_i_1_1_d_t_o_1_1_cache.html#a2b049336e292ef472431e865b772d5af">CacheType</a>.AssetList).FirstOrDefault();</div>
+<div class="line"><span class="lineno">   55</span>                <span class="keywordflow">if</span> (assetListCache == <span class="keyword">null</span> || assetListCache.Expires &lt; DateAndTime.Now || assetListCache.Data == <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   56</span>                    <span class="keywordflow">return</span> RefreshPriceappAssets();</div>
+<div class="line"><span class="lineno">   57</span>                <span class="keywordflow">try</span></div>
+<div class="line"><span class="lineno">   58</span>                {</div>
+<div class="line"><span class="lineno">   59</span>                    <span class="keywordflow">return</span> (List&lt;AssetPrice&gt;)assetListCache.Data ?? <span class="keyword">new</span> List&lt;AssetPrice&gt;();</div>
+<div class="line"><span class="lineno">   60</span>                }</div>
+<div class="line"><span class="lineno">   61</span>                <span class="keywordflow">catch</span> (Exception ex)</div>
+<div class="line"><span class="lineno">   62</span>                {</div>
+<div class="line"><span class="lineno">   63</span>                    _logService.<a class="code hl_function" href="class_ainslie_a_p_i_1_1_services_1_1_log_service.html#a83bbf569dea7ea5a40e02fca200aad8c">LogException</a>(<a class="code hl_class" href="class_ainslie_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_ainslie_a_p_i_1_1_services_1_1_log_service.html#ab557dc1394f5cf56cfb78c765fdfffe6">LogSources</a>.CacheDataHelper, $<span class="stringliteral">&quot;exception casting and returning asset list cache data&quot;</span>, assetListCache, ex);</div>
+<div class="line"><span class="lineno">   64</span>                    <span class="keywordflow">return</span> <span class="keyword">new</span> List&lt;AssetPrice&gt;();</div>
+<div class="line"><span class="lineno">   65</span>                }</div>
+<div class="line"><span class="lineno">   66</span>            } </div>
+<div class="line"><span class="lineno">   67</span>        }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="aca65b242b68bf55a30418a0d09cd9552" name="aca65b242b68bf55a30418a0d09cd9552"></a>
@@ -264,13 +300,28 @@ Here is the caller graph for this function:</div>
 <p>Retrieves cached product prices, refreshing the cache as needed. </p>
 <dl class="section return"><dt>Returns</dt><dd>A list of ProductPrice, either cached or newly fetched.</dd></dl>
 <p>Checks for current product prices in the cache, refreshing if expired or missing. Exceptions during data retrieval are logged, ensuring stability by returning an initialised list in any scenario. </p>
-
-<p class="definition">Definition at line <a class="el" href="_cache_data_helper_8cs_source.html#l00142">142</a> of file <a class="el" href="_cache_data_helper_8cs_source.html">CacheDataHelper.cs</a>.</p>
-
+<div class="fragment"><div class="line"><span class="lineno">  143</span>        {</div>
+<div class="line"><span class="lineno">  144</span>            <span class="keyword">get</span></div>
+<div class="line"><span class="lineno">  145</span>            {</div>
+<div class="line"><span class="lineno">  146</span>                var productListCache = _cachedData.<a class="code hl_property" href="class_ainslie_a_p_i_1_1_d_t_o_1_1_cache_1_1_cached_data.html#ae6381b3199018446551fd02d27609e61">CacheItems</a>.Where(ci =&gt; ci.CacheType == <a class="code hl_enumeration" href="namespace_ainslie_a_p_i_1_1_d_t_o_1_1_cache.html#a2b049336e292ef472431e865b772d5af">CacheType</a>.ProductList).FirstOrDefault();</div>
+<div class="line"><span class="lineno">  147</span>                <span class="keywordflow">if</span> (productListCache == <span class="keyword">null</span> || productListCache.Expires &lt; DateAndTime.Now || productListCache.Data == <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">  148</span>                    <span class="keywordflow">return</span> RefreshPriceappProducts();</div>
+<div class="line"><span class="lineno">  149</span>                <span class="keywordflow">try</span></div>
+<div class="line"><span class="lineno">  150</span>                {</div>
+<div class="line"><span class="lineno">  151</span>                    <span class="keywordflow">return</span> (List&lt;ProductPrice&gt;)productListCache.Data ?? <span class="keyword">new</span> List&lt;ProductPrice&gt;();</div>
+<div class="line"><span class="lineno">  152</span>                }</div>
+<div class="line"><span class="lineno">  153</span>                <span class="keywordflow">catch</span> (Exception ex)</div>
+<div class="line"><span class="lineno">  154</span>                {</div>
+<div class="line"><span class="lineno">  155</span>                    _logService.<a class="code hl_function" href="class_ainslie_a_p_i_1_1_services_1_1_log_service.html#a83bbf569dea7ea5a40e02fca200aad8c">LogException</a>(<a class="code hl_class" href="class_ainslie_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_ainslie_a_p_i_1_1_services_1_1_log_service.html#ab557dc1394f5cf56cfb78c765fdfffe6">LogSources</a>.CacheDataHelper, $<span class="stringliteral">&quot;exception casting and returning product list cache data&quot;</span>, productListCache, ex);</div>
+<div class="line"><span class="lineno">  156</span>                    <span class="keywordflow">return</span> <span class="keyword">new</span> List&lt;ProductPrice&gt;();</div>
+<div class="line"><span class="lineno">  157</span>                }</div>
+<div class="line"><span class="lineno">  158</span>            }</div>
+<div class="line"><span class="lineno">  159</span>        }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>C:/Users/STRIDER/source/repos/AinslieAPI/Helpers/<a class="el" href="_cache_data_helper_8cs_source.html">CacheDataHelper.cs</a></li>
+<li>C:/Users/STRIDER/source/repos/AinslieAPI/Helpers/<a class="el" href="_cache_data_helper_8cs.html">CacheDataHelper.cs</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

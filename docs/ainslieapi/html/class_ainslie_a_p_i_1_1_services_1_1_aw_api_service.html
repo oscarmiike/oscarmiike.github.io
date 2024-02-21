@@ -97,8 +97,6 @@ Public Member Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Provides services for interacting with the AW API, including retrieving GSS pricing information. </p>
-
-<p class="definition">Definition at line <a class="el" href="_aw_api_service_8cs_source.html#l00019">19</a> of file <a class="el" href="_aw_api_service_8cs_source.html">AwApiService.cs</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a799cac6d2cd0c1e7a21f8f892740b343" name="a799cac6d2cd0c1e7a21f8f892740b343"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a799cac6d2cd0c1e7a21f8f892740b343">&#9670;&#160;</a></span>AwApiService()</h2>
@@ -127,9 +125,11 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-
-<p class="definition">Definition at line <a class="el" href="_aw_api_service_8cs_source.html#l00030">30</a> of file <a class="el" href="_aw_api_service_8cs_source.html">AwApiService.cs</a>.</p>
-
+<div class="fragment"><div class="line"><span class="lineno">   31</span>        {</div>
+<div class="line"><span class="lineno">   32</span>            _appSettings = appSettings.Value;</div>
+<div class="line"><span class="lineno">   33</span>            _logger = logService;</div>
+<div class="line"><span class="lineno">   34</span>        }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -157,9 +157,54 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>GSSPriceData containing the pricing information, or an empty GSSPriceData if the fetch fails.</dd></dl>
 <p>Makes a GET request to the AW API using basic authentication. Logs errors if the request fails or if parsing the response encounters issues. </p>
-
-<p class="definition">Definition at line <a class="el" href="_aw_api_service_8cs_source.html#l00047">47</a> of file <a class="el" href="_aw_api_service_8cs_source.html">AwApiService.cs</a>.</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">   48</span>        {</div>
+<div class="line"><span class="lineno">   49</span>            var gssPricing = <span class="keyword">new</span> <a class="code hl_class" href="class_ainslie_a_p_i_1_1_d_t_o_1_1_g_s_s_1_1_g_s_s_price_data.html">GSSPriceData</a>();</div>
+<div class="line"><span class="lineno">   50</span>            <span class="keywordflow">if</span> (<span class="keywordtype">string</span>.IsNullOrEmpty(userName))</div>
+<div class="line"><span class="lineno">   51</span>            <span class="keywordflow">return</span> gssPricing;</div>
+<div class="line"><span class="lineno">   52</span>            var client = <span class="keyword">new</span> RestClient(_appSettings.<a class="code hl_property" href="class_ainslie_a_p_i_1_1_helpers_1_1_app_settings.html#a40101ce107bba2b095e4196f0d1db3e9">AwApiSettings</a>.<a class="code hl_property" href="class_ainslie_a_p_i_1_1_helpers_1_1_aw_api_settings.html#a4c41784f49addb6d2b04b7e4d2418ca9">BaseUrl</a>);</div>
+<div class="line"><span class="lineno">   53</span>            var request = <span class="keyword">new</span> RestRequest(_appSettings.<a class="code hl_property" href="class_ainslie_a_p_i_1_1_helpers_1_1_app_settings.html#a40101ce107bba2b095e4196f0d1db3e9">AwApiSettings</a>.<a class="code hl_property" href="class_ainslie_a_p_i_1_1_helpers_1_1_aw_api_settings.html#a93dcc007ec0ab3b1175e0c6f0bb94fce">Endpoint_SpotAUD</a>, RestSharp.Method.Get);</div>
+<div class="line"><span class="lineno">   54</span>            request.AddQueryParameter(<span class="stringliteral">&quot;requestasuser&quot;</span>, userName);</div>
+<div class="line"><span class="lineno">   55</span>            request.Authenticator = <span class="keyword">new</span> HttpBasicAuthenticator(_appSettings.<a class="code hl_property" href="class_ainslie_a_p_i_1_1_helpers_1_1_app_settings.html#a40101ce107bba2b095e4196f0d1db3e9">AwApiSettings</a>.<a class="code hl_property" href="class_ainslie_a_p_i_1_1_helpers_1_1_aw_api_settings.html#a1d84dd087799f0c15afb23eb60dde18b">ApiUsername</a>, _appSettings.<a class="code hl_property" href="class_ainslie_a_p_i_1_1_helpers_1_1_app_settings.html#a40101ce107bba2b095e4196f0d1db3e9">AwApiSettings</a>.<a class="code hl_property" href="class_ainslie_a_p_i_1_1_helpers_1_1_aw_api_settings.html#a6aa5ce403a3f846aa40764b7ec57cb99">ApiPassword</a>);</div>
+<div class="line"><span class="lineno">   56</span>            RestResponse response;</div>
+<div class="line"><span class="lineno">   57</span>            <span class="keywordflow">try</span></div>
+<div class="line"><span class="lineno">   58</span>            {</div>
+<div class="line"><span class="lineno">   59</span>                response = client.Execute(request);</div>
+<div class="line"><span class="lineno">   60</span>                <span class="keywordflow">if</span> (response != <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   61</span>                {</div>
+<div class="line"><span class="lineno">   62</span>                    <span class="keywordflow">if</span> (response.IsSuccessful)</div>
+<div class="line"><span class="lineno">   63</span>                    {</div>
+<div class="line"><span class="lineno">   64</span>                        gssPricing = JsonConvert.DeserializeObject&lt;<a class="code hl_class" href="class_ainslie_a_p_i_1_1_d_t_o_1_1_g_s_s_1_1_g_s_s_price_data.html">GSSPriceData</a>&gt;(response.Content ?? <span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><span class="lineno">   65</span>                    }</div>
+<div class="line"><span class="lineno">   66</span>                    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">   67</span>                    {</div>
+<div class="line"><span class="lineno">   68</span>                        _logger.<a class="code hl_function" href="class_ainslie_a_p_i_1_1_services_1_1_log_service.html#a9bf79a218e0884ac9cabd3ac87b81321">LogError</a>(LogService.LogSources.AwApiService,</div>
+<div class="line"><span class="lineno">   69</span>                            $<span class="stringliteral">&quot;error getting gss pricing from aw api&quot;</span>,</div>
+<div class="line"><span class="lineno">   70</span>                            $<span class="stringliteral">&quot;StatusCode: {(int)response.StatusCode}&quot;</span>,</div>
+<div class="line"><span class="lineno">   71</span>                            $<span class="stringliteral">&quot;StatusDescription: {response.StatusDescription}&quot;</span>,</div>
+<div class="line"><span class="lineno">   72</span>                            $<span class="stringliteral">&quot;Content: {response.Content}&quot;</span>);</div>
+<div class="line"><span class="lineno">   73</span>                    }</div>
+<div class="line"><span class="lineno">   74</span>                }</div>
+<div class="line"><span class="lineno">   75</span>                <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">   76</span>                {</div>
+<div class="line"><span class="lineno">   77</span>                    _logger.<a class="code hl_function" href="class_ainslie_a_p_i_1_1_services_1_1_log_service.html#a9bf79a218e0884ac9cabd3ac87b81321">LogError</a>(LogService.LogSources.AwApiService,</div>
+<div class="line"><span class="lineno">   78</span>                        $<span class="stringliteral">&quot;error getting gss pricing from aw api, response object is null&quot;</span>);</div>
+<div class="line"><span class="lineno">   79</span>                }</div>
+<div class="line"><span class="lineno">   80</span>            }</div>
+<div class="line"><span class="lineno">   81</span>            <span class="keywordflow">catch</span> (Exception ex)</div>
+<div class="line"><span class="lineno">   82</span>            {</div>
+<div class="line"><span class="lineno">   83</span>                _logger.<a class="code hl_function" href="class_ainslie_a_p_i_1_1_services_1_1_log_service.html#a83bbf569dea7ea5a40e02fca200aad8c">LogException</a>(LogService.LogSources.AwApiService, $<span class="stringliteral">&quot;Exception getting green id customer from internal api&quot;</span>, ex.ToString());</div>
+<div class="line"><span class="lineno">   84</span>            }</div>
+<div class="line"><span class="lineno">   85</span>            <span class="keywordflow">return</span> gssPricing;</div>
+<div class="line"><span class="lineno">   86</span>        }</div>
+<div class="ttc" id="aclass_ainslie_a_p_i_1_1_d_t_o_1_1_g_s_s_1_1_g_s_s_price_data_html"><div class="ttname"><a href="class_ainslie_a_p_i_1_1_d_t_o_1_1_g_s_s_1_1_g_s_s_price_data.html">AinslieAPI.DTO.GSS.GSSPriceData</a></div><div class="ttdef"><b>Definition</b> GSSPriceData.cs:4</div></div>
+<div class="ttc" id="aclass_ainslie_a_p_i_1_1_helpers_1_1_app_settings_html_a40101ce107bba2b095e4196f0d1db3e9"><div class="ttname"><a href="class_ainslie_a_p_i_1_1_helpers_1_1_app_settings.html#a40101ce107bba2b095e4196f0d1db3e9">AinslieAPI.Helpers.AppSettings.AwApiSettings</a></div><div class="ttdeci">AwApiSettings AwApiSettings</div><div class="ttdef"><b>Definition</b> AppSettings.cs:13</div></div>
+<div class="ttc" id="aclass_ainslie_a_p_i_1_1_helpers_1_1_aw_api_settings_html_a1d84dd087799f0c15afb23eb60dde18b"><div class="ttname"><a href="class_ainslie_a_p_i_1_1_helpers_1_1_aw_api_settings.html#a1d84dd087799f0c15afb23eb60dde18b">AinslieAPI.Helpers.AwApiSettings.ApiUsername</a></div><div class="ttdeci">string ApiUsername</div><div class="ttdef"><b>Definition</b> AppSettings.cs:81</div></div>
+<div class="ttc" id="aclass_ainslie_a_p_i_1_1_helpers_1_1_aw_api_settings_html_a4c41784f49addb6d2b04b7e4d2418ca9"><div class="ttname"><a href="class_ainslie_a_p_i_1_1_helpers_1_1_aw_api_settings.html#a4c41784f49addb6d2b04b7e4d2418ca9">AinslieAPI.Helpers.AwApiSettings.BaseUrl</a></div><div class="ttdeci">string BaseUrl</div><div class="ttdef"><b>Definition</b> AppSettings.cs:79</div></div>
+<div class="ttc" id="aclass_ainslie_a_p_i_1_1_helpers_1_1_aw_api_settings_html_a6aa5ce403a3f846aa40764b7ec57cb99"><div class="ttname"><a href="class_ainslie_a_p_i_1_1_helpers_1_1_aw_api_settings.html#a6aa5ce403a3f846aa40764b7ec57cb99">AinslieAPI.Helpers.AwApiSettings.ApiPassword</a></div><div class="ttdeci">string ApiPassword</div><div class="ttdef"><b>Definition</b> AppSettings.cs:82</div></div>
+<div class="ttc" id="aclass_ainslie_a_p_i_1_1_helpers_1_1_aw_api_settings_html_a93dcc007ec0ab3b1175e0c6f0bb94fce"><div class="ttname"><a href="class_ainslie_a_p_i_1_1_helpers_1_1_aw_api_settings.html#a93dcc007ec0ab3b1175e0c6f0bb94fce">AinslieAPI.Helpers.AwApiSettings.Endpoint_SpotAUD</a></div><div class="ttdeci">string Endpoint_SpotAUD</div><div class="ttdef"><b>Definition</b> AppSettings.cs:80</div></div>
+<div class="ttc" id="aclass_ainslie_a_p_i_1_1_services_1_1_log_service_html_a83bbf569dea7ea5a40e02fca200aad8c"><div class="ttname"><a href="class_ainslie_a_p_i_1_1_services_1_1_log_service.html#a83bbf569dea7ea5a40e02fca200aad8c">AinslieAPI.Services.LogService.LogException</a></div><div class="ttdeci">LogEntry LogException(LogSources logSource, params object[] dataList)</div><div class="ttdef"><b>Definition</b> LogService.cs:72</div></div>
+<div class="ttc" id="aclass_ainslie_a_p_i_1_1_services_1_1_log_service_html_a9bf79a218e0884ac9cabd3ac87b81321"><div class="ttname"><a href="class_ainslie_a_p_i_1_1_services_1_1_log_service.html#a9bf79a218e0884ac9cabd3ac87b81321">AinslieAPI.Services.LogService.LogError</a></div><div class="ttdeci">LogEntry LogError(LogSources logSource, params object[] dataList)</div><div class="ttdef"><b>Definition</b> LogService.cs:66</div></div>
+</div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_ainslie_a_p_i_1_1_services_1_1_aw_api_service_a94685f746f003ef92fe3a7f4ef545efe_cgraph.png" border="0" usemap="#aclass_ainslie_a_p_i_1_1_services_1_1_aw_api_service_a94685f746f003ef92fe3a7f4ef545efe_cgraph" alt=""/></div>
@@ -178,7 +223,7 @@ Here is the call graph for this function:</div>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>C:/Users/STRIDER/source/repos/AinslieAPI/Services/<a class="el" href="_aw_api_service_8cs_source.html">AwApiService.cs</a></li>
+<li>C:/Users/STRIDER/source/repos/AinslieAPI/Services/<a class="el" href="_aw_api_service_8cs.html">AwApiService.cs</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

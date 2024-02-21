@@ -23,10 +23,6 @@ static Enum \mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_enums_helper_ad
 \doxysubsection{Detailed Description}
 Provides utility methods for working with enums, including conversion to dictionary, fetching descriptions, and parsing. 
 
-Definition at line \mbox{\hyperlink{_enums_helper_8cs_source_l00009}{9}} of file \mbox{\hyperlink{_enums_helper_8cs_source}{Enums\+Helper.\+cs}}.
-
-
-
 \doxysubsection{Member Function Documentation}
 \Hypertarget{class_ainslie_a_p_i_1_1_helpers_1_1_enums_helper_a1b24a227e189f2843f9f69389d76fb8c}\label{class_ainslie_a_p_i_1_1_helpers_1_1_enums_helper_a1b24a227e189f2843f9f69389d76fb8c} 
 \index{AinslieAPI.Helpers.EnumsHelper@{AinslieAPI.Helpers.EnumsHelper}!EnumToDict@{EnumToDict}}
@@ -51,9 +47,31 @@ A Dictionary$<$\+TKey, TValue$>$ with enum values as keys and descriptions or na
 
 
 Utilises the Description\+Attribute for the dictionary values when available; falls back to enum names otherwise. useage Enums.\+Enum\+To\+Dict(New Product\+Filters().Get\+Type) 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!enumType.IsEnum)}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ var\ EnumDict\ =\ \textcolor{keyword}{new}\ Dictionary<int,\ string>();}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ FieldInfo[]\ fields\ =\ enumType.GetFields();}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ x\ \textcolor{keywordflow}{in}\ fields)}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (x.IsLiteral)}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ EnumDescription\ =\ \textcolor{keywordtype}{string}.Empty;}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ EnumDescription\ =\ ((DescriptionAttribute)x.GetCustomAttributes(typeof(DescriptionAttribute),\ \textcolor{keyword}{false}).First()).Description;}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ EnumDict.Add((\textcolor{keywordtype}{int})x.GetValue(\textcolor{keyword}{null}),\ \textcolor{keywordtype}{string}.IsNullOrEmpty(EnumDescription)\ ?\ x.Name\ :\ EnumDescription);}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ EnumDict;}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \}}
 
-Definition at line \mbox{\hyperlink{_enums_helper_8cs_source_l00024}{24}} of file \mbox{\hyperlink{_enums_helper_8cs_source}{Enums\+Helper.\+cs}}.
-
+\end{DoxyCode}
 \Hypertarget{class_ainslie_a_p_i_1_1_helpers_1_1_enums_helper_aaf950fe96340a07fe99ce27fb5c1a441}\label{class_ainslie_a_p_i_1_1_helpers_1_1_enums_helper_aaf950fe96340a07fe99ce27fb5c1a441} 
 \index{AinslieAPI.Helpers.EnumsHelper@{AinslieAPI.Helpers.EnumsHelper}!GetEnumDescription@{GetEnumDescription}}
 \index{GetEnumDescription@{GetEnumDescription}!AinslieAPI.Helpers.EnumsHelper@{AinslieAPI.Helpers.EnumsHelper}}
@@ -77,9 +95,30 @@ The description attribute or name of the enum value as a string
 
 
 Prefers the Description\+Attribute value if present; otherwise, returns the enum\textquotesingle{}s name. useage Enums.\+Get\+Enum\+Description(Product\+Filters.\+Price\+Low\+High) 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ evtype\ =\ enumValue.GetType();}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ etype\ =\ Enum.GetUnderlyingType(evtype);}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ fi\ =\ evtype.GetField(enumValue.ToString());}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ DescriptionAttribute[]\ attributes\ =\ (DescriptionAttribute[])fi.GetCustomAttributes(typeof(DescriptionAttribute),\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (attributes\ !=\ \textcolor{keyword}{null}\ \&\&\ attributes.Count()\ >\ 0)}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ attributes.First().Description;}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ enumValue.ToString();}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keywordtype}{string}.Empty;}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \}}
 
-Definition at line \mbox{\hyperlink{_enums_helper_8cs_source_l00060}{60}} of file \mbox{\hyperlink{_enums_helper_8cs_source}{Enums\+Helper.\+cs}}.
-
+\end{DoxyCode}
 \Hypertarget{class_ainslie_a_p_i_1_1_helpers_1_1_enums_helper_aac0389e0dec0efd420ed77198f3b0b35}\label{class_ainslie_a_p_i_1_1_helpers_1_1_enums_helper_aac0389e0dec0efd420ed77198f3b0b35} 
 \index{AinslieAPI.Helpers.EnumsHelper@{AinslieAPI.Helpers.EnumsHelper}!GetEnumFromDescription@{GetEnumFromDescription}}
 \index{GetEnumFromDescription@{GetEnumFromDescription}!AinslieAPI.Helpers.EnumsHelper@{AinslieAPI.Helpers.EnumsHelper}}
@@ -105,9 +144,23 @@ The Enum value matching the description, or null if not found.
 
 
 Matches the enum value whose Description\+Attribute matches the provided description. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!enumType.IsEnum)}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ FieldInfo[]\ fields\ =\ enumType.GetFields();}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ field\ =\ fields.SelectMany(f\ =>\ f.GetCustomAttributes(typeof(DescriptionAttribute),\ \textcolor{keyword}{false}),\ (f,\ a)\ =>\ \textcolor{keyword}{new}\ \{\ Field\ =\ f,\ Att\ =\ \mbox{\hyperlink{namespacetest_a3ecd241c6e69707ba8433fcfae04e00c}{a}}\ \}).Where(a\ =>\ ((DescriptionAttribute)\mbox{\hyperlink{namespacetest_a3ecd241c6e69707ba8433fcfae04e00c}{a}}.Att).Description\ ==\ description).SingleOrDefault();}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (Enum)(field\ is\ \textcolor{keyword}{null}\ ?\ (object)\textcolor{keyword}{null}\ :\ Enum.Parse(enumType,\ field.Field.Name));}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \}}
 
-Definition at line \mbox{\hyperlink{_enums_helper_8cs_source_l00118}{118}} of file \mbox{\hyperlink{_enums_helper_8cs_source}{Enums\+Helper.\+cs}}.
-
+\end{DoxyCode}
 \Hypertarget{class_ainslie_a_p_i_1_1_helpers_1_1_enums_helper_ad8dc941f1c61a1a91146981461e822b6}\label{class_ainslie_a_p_i_1_1_helpers_1_1_enums_helper_ad8dc941f1c61a1a91146981461e822b6} 
 \index{AinslieAPI.Helpers.EnumsHelper@{AinslieAPI.Helpers.EnumsHelper}!GetEnumFromName@{GetEnumFromName}}
 \index{GetEnumFromName@{GetEnumFromName}!AinslieAPI.Helpers.EnumsHelper@{AinslieAPI.Helpers.EnumsHelper}}
@@ -133,9 +186,19 @@ The Enum value matching the name, or null if not found.
 
 
 Parses the string as an enum of the provided type. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (Enum)Enum.Parse(enumType,\ value);}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \}}
 
-Definition at line \mbox{\hyperlink{_enums_helper_8cs_source_l00146}{146}} of file \mbox{\hyperlink{_enums_helper_8cs_source}{Enums\+Helper.\+cs}}.
-
+\end{DoxyCode}
 \Hypertarget{class_ainslie_a_p_i_1_1_helpers_1_1_enums_helper_adaf2098c1345fac921d4fc308c581ade}\label{class_ainslie_a_p_i_1_1_helpers_1_1_enums_helper_adaf2098c1345fac921d4fc308c581ade} 
 \index{AinslieAPI.Helpers.EnumsHelper@{AinslieAPI.Helpers.EnumsHelper}!GetEnumValue@{GetEnumValue}}
 \index{GetEnumValue@{GetEnumValue}!AinslieAPI.Helpers.EnumsHelper@{AinslieAPI.Helpers.EnumsHelper}}
@@ -159,9 +222,19 @@ The int value of the enum.
 
 
 Converts the enum to its underlying integer value. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\textcolor{keywordtype}{int})Enum.Parse(enumValue.GetType(),\ enumValue.ToString());}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \}}
 
-Definition at line \mbox{\hyperlink{_enums_helper_8cs_source_l00094}{94}} of file \mbox{\hyperlink{_enums_helper_8cs_source}{Enums\+Helper.\+cs}}.
-
+\end{DoxyCode}
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

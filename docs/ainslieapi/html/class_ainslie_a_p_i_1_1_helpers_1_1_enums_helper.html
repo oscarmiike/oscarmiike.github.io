@@ -106,8 +106,6 @@ Static Public Member Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Provides utility methods for working with enums, including conversion to dictionary, fetching descriptions, and parsing. </p>
-
-<p class="definition">Definition at line <a class="el" href="_enums_helper_8cs_source.html#l00009">9</a> of file <a class="el" href="_enums_helper_8cs_source.html">EnumsHelper.cs</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a1b24a227e189f2843f9f69389d76fb8c" name="a1b24a227e189f2843f9f69389d76fb8c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1b24a227e189f2843f9f69389d76fb8c">&#9670;&#160;</a></span>EnumToDict()</h2>
@@ -141,9 +139,29 @@ Static Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A Dictionary&lt;TKey, TValue&gt; with enum values as keys and descriptions or names as values.</dd></dl>
 <p>Utilises the DescriptionAttribute for the dictionary values when available; falls back to enum names otherwise. useage Enums.EnumToDict(New ProductFilters().GetType) </p>
-
-<p class="definition">Definition at line <a class="el" href="_enums_helper_8cs_source.html#l00024">24</a> of file <a class="el" href="_enums_helper_8cs_source.html">EnumsHelper.cs</a>.</p>
-
+<div class="fragment"><div class="line"><span class="lineno">   25</span>        {</div>
+<div class="line"><span class="lineno">   26</span>            <span class="keywordflow">if</span> (!enumType.IsEnum)</div>
+<div class="line"><span class="lineno">   27</span>                <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><span class="lineno">   28</span>            var EnumDict = <span class="keyword">new</span> Dictionary&lt;int, string&gt;();</div>
+<div class="line"><span class="lineno">   29</span>            FieldInfo[] fields = enumType.GetFields();</div>
+<div class="line"><span class="lineno">   30</span>            <span class="keywordflow">foreach</span> (var x <span class="keywordflow">in</span> fields)</div>
+<div class="line"><span class="lineno">   31</span>            {</div>
+<div class="line"><span class="lineno">   32</span>                <span class="keywordflow">if</span> (x.IsLiteral)</div>
+<div class="line"><span class="lineno">   33</span>                {</div>
+<div class="line"><span class="lineno">   34</span>                    <span class="keywordtype">string</span> EnumDescription = <span class="keywordtype">string</span>.Empty;</div>
+<div class="line"><span class="lineno">   35</span>                    <span class="keywordflow">try</span></div>
+<div class="line"><span class="lineno">   36</span>                    {</div>
+<div class="line"><span class="lineno">   37</span>                        EnumDescription = ((DescriptionAttribute)x.GetCustomAttributes(typeof(DescriptionAttribute), <span class="keyword">false</span>).First()).Description;</div>
+<div class="line"><span class="lineno">   38</span>                    }</div>
+<div class="line"><span class="lineno">   39</span>                    <span class="keywordflow">catch</span> (Exception ex)</div>
+<div class="line"><span class="lineno">   40</span>                    {</div>
+<div class="line"><span class="lineno">   41</span>                    }</div>
+<div class="line"><span class="lineno">   42</span>                    EnumDict.Add((<span class="keywordtype">int</span>)x.GetValue(<span class="keyword">null</span>), <span class="keywordtype">string</span>.IsNullOrEmpty(EnumDescription) ? x.Name : EnumDescription);</div>
+<div class="line"><span class="lineno">   43</span>                }</div>
+<div class="line"><span class="lineno">   44</span>            }</div>
+<div class="line"><span class="lineno">   45</span>            <span class="keywordflow">return</span> EnumDict;</div>
+<div class="line"><span class="lineno">   46</span>        }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="aaf950fe96340a07fe99ce27fb5c1a441" name="aaf950fe96340a07fe99ce27fb5c1a441"></a>
@@ -178,9 +196,28 @@ Static Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The description attribute or name of the enum value as a string</dd></dl>
 <p>Prefers the DescriptionAttribute value if present; otherwise, returns the enum's name. useage Enums.GetEnumDescription(ProductFilters.PriceLowHigh) </p>
-
-<p class="definition">Definition at line <a class="el" href="_enums_helper_8cs_source.html#l00060">60</a> of file <a class="el" href="_enums_helper_8cs_source.html">EnumsHelper.cs</a>.</p>
-
+<div class="fragment"><div class="line"><span class="lineno">   61</span>        {</div>
+<div class="line"><span class="lineno">   62</span>            <span class="keywordflow">try</span></div>
+<div class="line"><span class="lineno">   63</span>            {</div>
+<div class="line"><span class="lineno">   64</span>                var evtype = enumValue.GetType();</div>
+<div class="line"><span class="lineno">   65</span>                var etype = Enum.GetUnderlyingType(evtype);</div>
+<div class="line"><span class="lineno">   66</span>                var fi = evtype.GetField(enumValue.ToString());</div>
+<div class="line"><span class="lineno">   67</span>                DescriptionAttribute[] attributes = (DescriptionAttribute[])fi.GetCustomAttributes(typeof(DescriptionAttribute), <span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">   68</span>                <span class="keywordflow">if</span> (attributes != <span class="keyword">null</span> &amp;&amp; attributes.Count() &gt; 0)</div>
+<div class="line"><span class="lineno">   69</span>                {</div>
+<div class="line"><span class="lineno">   70</span>                    <span class="keywordflow">return</span> attributes.First().Description;</div>
+<div class="line"><span class="lineno">   71</span>                }</div>
+<div class="line"><span class="lineno">   72</span>                <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">   73</span>                {</div>
+<div class="line"><span class="lineno">   74</span>                    <span class="keywordflow">return</span> enumValue.ToString();</div>
+<div class="line"><span class="lineno">   75</span>                }</div>
+<div class="line"><span class="lineno">   76</span>            }</div>
+<div class="line"><span class="lineno">   77</span>            <span class="keywordflow">catch</span> (Exception ex)</div>
+<div class="line"><span class="lineno">   78</span>            {</div>
+<div class="line"><span class="lineno">   79</span>                <span class="keywordflow">return</span> <span class="keywordtype">string</span>.Empty;</div>
+<div class="line"><span class="lineno">   80</span>            }</div>
+<div class="line"><span class="lineno">   81</span>        }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="aac0389e0dec0efd420ed77198f3b0b35" name="aac0389e0dec0efd420ed77198f3b0b35"></a>
@@ -220,9 +257,22 @@ Static Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The Enum value matching the description, or null if not found.</dd></dl>
 <p>Matches the enum value whose DescriptionAttribute matches the provided description. </p>
-
-<p class="definition">Definition at line <a class="el" href="_enums_helper_8cs_source.html#l00118">118</a> of file <a class="el" href="_enums_helper_8cs_source.html">EnumsHelper.cs</a>.</p>
-
+<div class="fragment"><div class="line"><span class="lineno">  119</span>        {</div>
+<div class="line"><span class="lineno">  120</span>            <span class="keywordflow">try</span></div>
+<div class="line"><span class="lineno">  121</span>            {</div>
+<div class="line"><span class="lineno">  122</span>                <span class="keywordflow">if</span> (!enumType.IsEnum)</div>
+<div class="line"><span class="lineno">  123</span>                    <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><span class="lineno">  124</span>                FieldInfo[] fields = enumType.GetFields();</div>
+<div class="line"><span class="lineno">  125</span>                var field = fields.SelectMany(f =&gt; f.GetCustomAttributes(typeof(DescriptionAttribute), <span class="keyword">false</span>), (f, a) =&gt; <span class="keyword">new</span> { Field = f, Att = <a class="code hl_variable" href="namespacetest.html#a3ecd241c6e69707ba8433fcfae04e00c">a</a> }).Where(a =&gt; ((DescriptionAttribute)<a class="code hl_variable" href="namespacetest.html#a3ecd241c6e69707ba8433fcfae04e00c">a</a>.Att).Description == description).SingleOrDefault();</div>
+<div class="line"><span class="lineno">  126</span>                <span class="keywordflow">return</span> (Enum)(field is <span class="keyword">null</span> ? (object)<span class="keyword">null</span> : Enum.Parse(enumType, field.Field.Name));</div>
+<div class="line"><span class="lineno">  127</span>            }</div>
+<div class="line"><span class="lineno">  128</span>            <span class="keywordflow">catch</span> (Exception ex)</div>
+<div class="line"><span class="lineno">  129</span>            {</div>
+<div class="line"><span class="lineno">  130</span>                <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><span class="lineno">  131</span>            }</div>
+<div class="line"><span class="lineno">  132</span>        }</div>
+<div class="ttc" id="anamespacetest_html_a3ecd241c6e69707ba8433fcfae04e00c"><div class="ttname"><a href="namespacetest.html#a3ecd241c6e69707ba8433fcfae04e00c">test.a</a></div><div class="ttdeci">list a</div><div class="ttdef"><b>Definition</b> test.py:8</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="ad8dc941f1c61a1a91146981461e822b6" name="ad8dc941f1c61a1a91146981461e822b6"></a>
@@ -262,9 +312,17 @@ Static Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The Enum value matching the name, or null if not found.</dd></dl>
 <p>Parses the string as an enum of the provided type. </p>
-
-<p class="definition">Definition at line <a class="el" href="_enums_helper_8cs_source.html#l00146">146</a> of file <a class="el" href="_enums_helper_8cs_source.html">EnumsHelper.cs</a>.</p>
-
+<div class="fragment"><div class="line"><span class="lineno">  147</span>        {</div>
+<div class="line"><span class="lineno">  148</span>            <span class="keywordflow">try</span></div>
+<div class="line"><span class="lineno">  149</span>            {</div>
+<div class="line"><span class="lineno">  150</span>                <span class="keywordflow">return</span> (Enum)Enum.Parse(enumType, value);</div>
+<div class="line"><span class="lineno">  151</span>            }</div>
+<div class="line"><span class="lineno">  152</span>            <span class="keywordflow">catch</span> (Exception ex)</div>
+<div class="line"><span class="lineno">  153</span>            {</div>
+<div class="line"><span class="lineno">  154</span>                <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><span class="lineno">  155</span>            }</div>
+<div class="line"><span class="lineno">  156</span>        }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="adaf2098c1345fac921d4fc308c581ade" name="adaf2098c1345fac921d4fc308c581ade"></a>
@@ -299,13 +357,21 @@ Static Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The int value of the enum.</dd></dl>
 <p>Converts the enum to its underlying integer value. </p>
-
-<p class="definition">Definition at line <a class="el" href="_enums_helper_8cs_source.html#l00094">94</a> of file <a class="el" href="_enums_helper_8cs_source.html">EnumsHelper.cs</a>.</p>
-
+<div class="fragment"><div class="line"><span class="lineno">   95</span>        {</div>
+<div class="line"><span class="lineno">   96</span>            <span class="keywordflow">try</span></div>
+<div class="line"><span class="lineno">   97</span>            {</div>
+<div class="line"><span class="lineno">   98</span>                <span class="keywordflow">return</span> (<span class="keywordtype">int</span>)Enum.Parse(enumValue.GetType(), enumValue.ToString());</div>
+<div class="line"><span class="lineno">   99</span>            }</div>
+<div class="line"><span class="lineno">  100</span>            <span class="keywordflow">catch</span> (Exception ex)</div>
+<div class="line"><span class="lineno">  101</span>            {</div>
+<div class="line"><span class="lineno">  102</span>                <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">  103</span>            }</div>
+<div class="line"><span class="lineno">  104</span>        }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>C:/Users/STRIDER/source/repos/AinslieAPI/Helpers/<a class="el" href="_enums_helper_8cs_source.html">EnumsHelper.cs</a></li>
+<li>C:/Users/STRIDER/source/repos/AinslieAPI/Helpers/<a class="el" href="_enums_helper_8cs.html">EnumsHelper.cs</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

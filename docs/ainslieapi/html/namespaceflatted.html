@@ -138,9 +138,15 @@ Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="flatted_8py_source.html#l00029">29</a> of file <a class="el" href="flatted_8py_source.html">flatted.py</a>.</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">   29</span><span class="keyword">def </span>_array_keys(value):</div>
+<div class="line"><span class="lineno">   30</span>    keys = []</div>
+<div class="line"><span class="lineno">   31</span>    i = 0</div>
+<div class="line"><span class="lineno">   32</span>    <span class="keywordflow">for</span> _ <span class="keywordflow">in</span> value:</div>
+<div class="line"><span class="lineno">   33</span>        keys.append(i)</div>
+<div class="line"><span class="lineno">   34</span>        i += 1</div>
+<div class="line"><span class="lineno">   35</span>    <span class="keywordflow">return</span> keys</div>
+<div class="line"><span class="lineno">   36</span> </div>
+</div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="namespaceflatted_ac519e883b493d4a80b5e692279bc8cd5_icgraph.png" border="0" usemap="#anamespaceflatted_ac519e883b493d4a80b5e692279bc8cd5_icgraph" alt=""/></div>
@@ -190,9 +196,14 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="flatted_8py_source.html#l00052">52</a> of file <a class="el" href="flatted_8py_source.html">flatted.py</a>.</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">   52</span><span class="keyword">def </span>_index(known, input, value):</div>
+<div class="line"><span class="lineno">   53</span>    input.append(value)</div>
+<div class="line"><span class="lineno">   54</span>    index = str(len(input) - 1)</div>
+<div class="line"><span class="lineno">   55</span>    known.key.append(value)</div>
+<div class="line"><span class="lineno">   56</span>    known.value.append(index)</div>
+<div class="line"><span class="lineno">   57</span>    <span class="keywordflow">return</span> index</div>
+<div class="line"><span class="lineno">   58</span> </div>
+</div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="namespaceflatted_af05ab31f0e87d7cccd13bde6f8c4b0bf_icgraph.png" border="0" usemap="#anamespaceflatted_af05ab31f0e87d7cccd13bde6f8c4b0bf_icgraph" alt=""/></div>
@@ -232,9 +243,10 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="flatted_8py_source.html#l00043">43</a> of file <a class="el" href="flatted_8py_source.html">flatted.py</a>.</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">   43</span><span class="keyword">def </span>_is_array(value):</div>
+<div class="line"><span class="lineno">   44</span>    <span class="keywordflow">return</span> isinstance(value, list) <span class="keywordflow">or</span> isinstance(value, tuple)</div>
+<div class="line"><span class="lineno">   45</span> </div>
+</div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="namespaceflatted_aa9e0f6bdd410c981176fd35934135275_icgraph.png" border="0" usemap="#anamespaceflatted_aa9e0f6bdd410c981176fd35934135275_icgraph" alt=""/></div>
@@ -286,9 +298,10 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="flatted_8py_source.html#l00046">46</a> of file <a class="el" href="flatted_8py_source.html">flatted.py</a>.</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">   46</span><span class="keyword">def </span>_is_object(value):</div>
+<div class="line"><span class="lineno">   47</span>    <span class="keywordflow">return</span> isinstance(value, dict)</div>
+<div class="line"><span class="lineno">   48</span> </div>
+</div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="namespaceflatted_af2ee527c66c20e7e38440129fa094067_icgraph.png" border="0" usemap="#anamespaceflatted_af2ee527c66c20e7e38440129fa094067_icgraph" alt=""/></div>
@@ -340,9 +353,10 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="flatted_8py_source.html#l00049">49</a> of file <a class="el" href="flatted_8py_source.html">flatted.py</a>.</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">   49</span><span class="keyword">def </span>_is_string(value):</div>
+<div class="line"><span class="lineno">   50</span>    <span class="keywordflow">return</span> isinstance(value, str)</div>
+<div class="line"><span class="lineno">   51</span> </div>
+</div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="namespaceflatted_a2c64f13b3d861c205c821e03fcd4376f_icgraph.png" border="0" usemap="#anamespaceflatted_a2c64f13b3d861c205c821e03fcd4376f_icgraph" alt=""/></div>
@@ -400,9 +414,15 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="flatted_8py_source.html#l00059">59</a> of file <a class="el" href="flatted_8py_source.html">flatted.py</a>.</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">   59</span><span class="keyword">def </span>_loop(keys, input, known, output):</div>
+<div class="line"><span class="lineno">   60</span>    <span class="keywordflow">for</span> key <span class="keywordflow">in</span> keys:</div>
+<div class="line"><span class="lineno">   61</span>        value = output[key]</div>
+<div class="line"><span class="lineno">   62</span>        <span class="keywordflow">if</span> isinstance(value, _String):</div>
+<div class="line"><span class="lineno">   63</span>            _ref(key, input[int(value.value)], input, known, output)</div>
+<div class="line"><span class="lineno">   64</span> </div>
+<div class="line"><span class="lineno">   65</span>    <span class="keywordflow">return</span> output</div>
+<div class="line"><span class="lineno">   66</span> </div>
+</div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="namespaceflatted_aecd75202b154514cfdaa0eee6a8dd8a0_cgraph.png" border="0" usemap="#anamespaceflatted_aecd75202b154514cfdaa0eee6a8dd8a0_cgraph" alt=""/></div>
@@ -459,9 +479,13 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="flatted_8py_source.html#l00037">37</a> of file <a class="el" href="flatted_8py_source.html">flatted.py</a>.</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">   37</span><span class="keyword">def </span>_object_keys(value):</div>
+<div class="line"><span class="lineno">   38</span>    keys = []</div>
+<div class="line"><span class="lineno">   39</span>    <span class="keywordflow">for</span> key <span class="keywordflow">in</span> value:</div>
+<div class="line"><span class="lineno">   40</span>        keys.append(key)</div>
+<div class="line"><span class="lineno">   41</span>    <span class="keywordflow">return</span> keys</div>
+<div class="line"><span class="lineno">   42</span> </div>
+</div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="namespaceflatted_a48139942bd2d19d86710899061eacba8_icgraph.png" border="0" usemap="#anamespaceflatted_a48139942bd2d19d86710899061eacba8_icgraph" alt=""/></div>
@@ -521,9 +545,17 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="flatted_8py_source.html#l00067">67</a> of file <a class="el" href="flatted_8py_source.html">flatted.py</a>.</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">   67</span><span class="keyword">def </span>_ref(key, value, input, known, output):</div>
+<div class="line"><span class="lineno">   68</span>    <span class="keywordflow">if</span> _is_array(value) <span class="keywordflow">and</span> <span class="keywordflow">not</span> value <span class="keywordflow">in</span> known:</div>
+<div class="line"><span class="lineno">   69</span>        known.append(value)</div>
+<div class="line"><span class="lineno">   70</span>        value = _loop(_array_keys(value), input, known, value)</div>
+<div class="line"><span class="lineno">   71</span>    <span class="keywordflow">elif</span> _is_object(value) <span class="keywordflow">and</span> <span class="keywordflow">not</span> value <span class="keywordflow">in</span> known:</div>
+<div class="line"><span class="lineno">   72</span>        known.append(value)</div>
+<div class="line"><span class="lineno">   73</span>        value = _loop(_object_keys(value), input, known, value)</div>
+<div class="line"><span class="lineno">   74</span> </div>
+<div class="line"><span class="lineno">   75</span>    output[key] = value</div>
+<div class="line"><span class="lineno">   76</span> </div>
+</div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="namespaceflatted_af74e45c06efe798d934f5a9a643329ec_cgraph.png" border="0" usemap="#anamespaceflatted_af74e45c06efe798d934f5a9a643329ec_cgraph" alt=""/></div>
@@ -589,9 +621,16 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="flatted_8py_source.html#l00077">77</a> of file <a class="el" href="flatted_8py_source.html">flatted.py</a>.</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">   77</span><span class="keyword">def </span>_relate(known, input, value):</div>
+<div class="line"><span class="lineno">   78</span>    <span class="keywordflow">if</span> _is_string(value) <span class="keywordflow">or</span> _is_array(value) <span class="keywordflow">or</span> _is_object(value):</div>
+<div class="line"><span class="lineno">   79</span>        <span class="keywordflow">try</span>:</div>
+<div class="line"><span class="lineno">   80</span>            <span class="keywordflow">return</span> known.value[known.key.index(value)]</div>
+<div class="line"><span class="lineno">   81</span>        <span class="keywordflow">except</span>:</div>
+<div class="line"><span class="lineno">   82</span>            <span class="keywordflow">return</span> _index(known, input, value)</div>
+<div class="line"><span class="lineno">   83</span> </div>
+<div class="line"><span class="lineno">   84</span>    <span class="keywordflow">return</span> value</div>
+<div class="line"><span class="lineno">   85</span> </div>
+</div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="namespaceflatted_a1c57a34a7bf724a855bd3f2a1fd98fc7_cgraph.png" border="0" usemap="#anamespaceflatted_a1c57a34a7bf724a855bd3f2a1fd98fc7_cgraph" alt=""/></div>
@@ -653,9 +692,22 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="flatted_8py_source.html#l00086">86</a> of file <a class="el" href="flatted_8py_source.html">flatted.py</a>.</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">   86</span><span class="keyword">def </span>_transform(known, input, value):</div>
+<div class="line"><span class="lineno">   87</span>    <span class="keywordflow">if</span> _is_array(value):</div>
+<div class="line"><span class="lineno">   88</span>        output = []</div>
+<div class="line"><span class="lineno">   89</span>        <span class="keywordflow">for</span> val <span class="keywordflow">in</span> value:</div>
+<div class="line"><span class="lineno">   90</span>            output.append(_relate(known, input, val))</div>
+<div class="line"><span class="lineno">   91</span>        <span class="keywordflow">return</span> output</div>
+<div class="line"><span class="lineno">   92</span> </div>
+<div class="line"><span class="lineno">   93</span>    <span class="keywordflow">if</span> _is_object(value):</div>
+<div class="line"><span class="lineno">   94</span>        obj = {}</div>
+<div class="line"><span class="lineno">   95</span>        <span class="keywordflow">for</span> key <span class="keywordflow">in</span> value:</div>
+<div class="line"><span class="lineno">   96</span>            obj[key] = _relate(known, input, value[key])</div>
+<div class="line"><span class="lineno">   97</span>        <span class="keywordflow">return</span> obj</div>
+<div class="line"><span class="lineno">   98</span> </div>
+<div class="line"><span class="lineno">   99</span>    <span class="keywordflow">return</span> value</div>
+<div class="line"><span class="lineno">  100</span> </div>
+</div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="namespaceflatted_a41da9bdca5096c88843590ce405b907f_cgraph.png" border="0" usemap="#anamespaceflatted_a41da9bdca5096c88843590ce405b907f_cgraph" alt=""/></div>
@@ -710,9 +762,23 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="flatted_8py_source.html#l00101">101</a> of file <a class="el" href="flatted_8py_source.html">flatted.py</a>.</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">  101</span><span class="keyword">def </span>_wrap(value):</div>
+<div class="line"><span class="lineno">  102</span>    <span class="keywordflow">if</span> _is_string(value):</div>
+<div class="line"><span class="lineno">  103</span>        <span class="keywordflow">return</span> _String(value)</div>
+<div class="line"><span class="lineno">  104</span> </div>
+<div class="line"><span class="lineno">  105</span>    <span class="keywordflow">if</span> _is_array(value):</div>
+<div class="line"><span class="lineno">  106</span>        i = 0</div>
+<div class="line"><span class="lineno">  107</span>        <span class="keywordflow">for</span> val <span class="keywordflow">in</span> value:</div>
+<div class="line"><span class="lineno">  108</span>            value[i] = _wrap(val)</div>
+<div class="line"><span class="lineno">  109</span>            i += 1</div>
+<div class="line"><span class="lineno">  110</span> </div>
+<div class="line"><span class="lineno">  111</span>    <span class="keywordflow">elif</span> _is_object(value):</div>
+<div class="line"><span class="lineno">  112</span>        <span class="keywordflow">for</span> key <span class="keywordflow">in</span> value:</div>
+<div class="line"><span class="lineno">  113</span>            value[key] = _wrap(value[key])</div>
+<div class="line"><span class="lineno">  114</span> </div>
+<div class="line"><span class="lineno">  115</span>    <span class="keywordflow">return</span> value</div>
+<div class="line"><span class="lineno">  116</span> </div>
+</div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="namespaceflatted_ac493ef170880e775025eb0b6f2bf3318_cgraph.png" border="0" usemap="#anamespaceflatted_ac493ef170880e775025eb0b6f2bf3318_cgraph" alt=""/></div>
@@ -764,9 +830,31 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="flatted_8py_source.html#l00117">117</a> of file <a class="el" href="flatted_8py_source.html">flatted.py</a>.</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">  117</span><span class="keyword">def </span>parse(value, *args, **kwargs):</div>
+<div class="line"><span class="lineno">  118</span>    json = _json.loads(value, *args, **kwargs)</div>
+<div class="line"><span class="lineno">  119</span>    wrapped = []</div>
+<div class="line"><span class="lineno">  120</span>    <span class="keywordflow">for</span> value <span class="keywordflow">in</span> json:</div>
+<div class="line"><span class="lineno">  121</span>        wrapped.append(_wrap(value))</div>
+<div class="line"><span class="lineno">  122</span> </div>
+<div class="line"><span class="lineno">  123</span>    input = []</div>
+<div class="line"><span class="lineno">  124</span>    <span class="keywordflow">for</span> value <span class="keywordflow">in</span> wrapped:</div>
+<div class="line"><span class="lineno">  125</span>        <span class="keywordflow">if</span> isinstance(value, _String):</div>
+<div class="line"><span class="lineno">  126</span>            input.append(value.value)</div>
+<div class="line"><span class="lineno">  127</span>        <span class="keywordflow">else</span>:</div>
+<div class="line"><span class="lineno">  128</span>            input.append(value)</div>
+<div class="line"><span class="lineno">  129</span> </div>
+<div class="line"><span class="lineno">  130</span>    value = input[0]</div>
+<div class="line"><span class="lineno">  131</span> </div>
+<div class="line"><span class="lineno">  132</span>    <span class="keywordflow">if</span> _is_array(value):</div>
+<div class="line"><span class="lineno">  133</span>        <span class="keywordflow">return</span> _loop(_array_keys(value), input, [value], value)</div>
+<div class="line"><span class="lineno">  134</span> </div>
+<div class="line"><span class="lineno">  135</span>    <span class="keywordflow">if</span> _is_object(value):</div>
+<div class="line"><span class="lineno">  136</span>        <span class="keywordflow">return</span> _loop(_object_keys(value), input, [value], value)</div>
+<div class="line"><span class="lineno">  137</span> </div>
+<div class="line"><span class="lineno">  138</span>    <span class="keywordflow">return</span> value</div>
+<div class="line"><span class="lineno">  139</span> </div>
+<div class="line"><span class="lineno">  140</span> </div>
+</div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="namespaceflatted_a8252c9a9e61809d65fc03c5bf815ad9e_cgraph.png" border="0" usemap="#anamespaceflatted_a8252c9a9e61809d65fc03c5bf815ad9e_cgraph" alt=""/></div>
@@ -824,9 +912,16 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="flatted_8py_source.html#l00141">141</a> of file <a class="el" href="flatted_8py_source.html">flatted.py</a>.</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">  141</span><span class="keyword">def </span>stringify(value, *args, **kwargs):</div>
+<div class="line"><span class="lineno">  142</span>    known = _Known()</div>
+<div class="line"><span class="lineno">  143</span>    input = []</div>
+<div class="line"><span class="lineno">  144</span>    output = []</div>
+<div class="line"><span class="lineno">  145</span>    i = int(_index(known, input, value))</div>
+<div class="line"><span class="lineno">  146</span>    <span class="keywordflow">while</span> i &lt; len(input):</div>
+<div class="line"><span class="lineno">  147</span>        output.append(_transform(known, input, input[i]))</div>
+<div class="line"><span class="lineno">  148</span>        i += 1</div>
+<div class="line"><span class="lineno">  149</span>    <span class="keywordflow">return</span> _json.dumps(output, *args, **kwargs)</div>
+</div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="namespaceflatted_a0f956bd4567258719b6151c1cb2f3220_cgraph.png" border="0" usemap="#anamespaceflatted_a0f956bd4567258719b6151c1cb2f3220_cgraph" alt=""/></div>

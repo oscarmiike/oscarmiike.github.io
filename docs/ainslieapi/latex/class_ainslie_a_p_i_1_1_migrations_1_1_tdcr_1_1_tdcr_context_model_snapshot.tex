@@ -2,8 +2,7 @@
 \hypertarget{class_ainslie_a_p_i_1_1_migrations_1_1_tdcr_1_1_tdcr_context_model_snapshot}{}\label{class_ainslie_a_p_i_1_1_migrations_1_1_tdcr_1_1_tdcr_context_model_snapshot}\index{AinslieAPI.Migrations.Tdcr.TdcrContextModelSnapshot@{AinslieAPI.Migrations.Tdcr.TdcrContextModelSnapshot}}
 
 
-Inheritance diagram for Ainslie\+API.\+Migrations.\+Tdcr.\+Tdcr\+Context\+Model\+Snapshot\+:
-\nopagebreak
+Inheritance diagram for Ainslie\+API.\+Migrations.\+Tdcr.\+Tdcr\+Context\+Model\+Snapshot\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for Ainslie\+API.\+Migrations.\+Tdcr.\+Tdcr\+Context\+Model\
 \end{figure}
 
 
-Collaboration diagram for Ainslie\+API.\+Migrations.\+Tdcr.\+Tdcr\+Context\+Model\+Snapshot\+:
-\nopagebreak
+Collaboration diagram for Ainslie\+API.\+Migrations.\+Tdcr.\+Tdcr\+Context\+Model\+Snapshot\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -27,13 +25,6 @@ override void \mbox{\hyperlink{class_ainslie_a_p_i_1_1_migrations_1_1_tdcr_1_1_t
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{Detailed Description}
-
-
-Definition at line \mbox{\hyperlink{_tdcr_context_model_snapshot_8cs_source_l00014}{14}} of file \mbox{\hyperlink{_tdcr_context_model_snapshot_8cs_source}{Tdcr\+Context\+Model\+Snapshot.\+cs}}.
-
-
-
 \doxysubsection{Member Function Documentation}
 \Hypertarget{class_ainslie_a_p_i_1_1_migrations_1_1_tdcr_1_1_tdcr_context_model_snapshot_a12bc3f47cd759c5cff480be19d5e2029}\label{class_ainslie_a_p_i_1_1_migrations_1_1_tdcr_1_1_tdcr_context_model_snapshot_a12bc3f47cd759c5cff480be19d5e2029} 
 \index{AinslieAPI.Migrations.Tdcr.TdcrContextModelSnapshot@{AinslieAPI.Migrations.Tdcr.TdcrContextModelSnapshot}!BuildModel@{BuildModel}}
@@ -42,9 +33,71 @@ Definition at line \mbox{\hyperlink{_tdcr_context_model_snapshot_8cs_source_l000
 {\footnotesize\ttfamily override void Ainslie\+API.\+Migrations.\+Tdcr.\+Tdcr\+Context\+Model\+Snapshot.\+Build\+Model (\begin{DoxyParamCaption}\item[{Model\+Builder}]{model\+Builder }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#pragma\ warning\ disable\ 612,\ 618 }}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ \ \ \ modelBuilder}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasAnnotation(\textcolor{stringliteral}{"{}ProductVersion"{}},\ \textcolor{stringliteral}{"{}7.0.5"{}})}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasAnnotation(\textcolor{stringliteral}{"{}Relational:MaxIdentifierLength"{}},\ 128);}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ modelBuilder.Entity(\textcolor{stringliteral}{"{}AinslieAPI.Data.Models.Tdcr.Order"{}},\ b\ =>}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacetest_a0f45e01f998f32bf815adc0cbe886405}{b}}.Property<\textcolor{keywordtype}{int}>(\textcolor{stringliteral}{"{}ID"{}})}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .ValueGeneratedOnAdd()}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasColumnType(\textcolor{stringliteral}{"{}int"{}});}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SqlServerPropertyBuilderExtensions.UseIdentityColumn(\mbox{\hyperlink{namespacetest_a0f45e01f998f32bf815adc0cbe886405}{b}}.Property<\textcolor{keywordtype}{int}>(\textcolor{stringliteral}{"{}ID"{}}));}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacetest_a0f45e01f998f32bf815adc0cbe886405}{b}}.Property<decimal>(\textcolor{stringliteral}{"{}AUDUSD"{}})}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasColumnType(\textcolor{stringliteral}{"{}decimal(18,\ 4)"{}});}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacetest_a0f45e01f998f32bf815adc0cbe886405}{b}}.Property<\textcolor{keywordtype}{bool}>(\textcolor{stringliteral}{"{}Completed"{}})}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasColumnType(\textcolor{stringliteral}{"{}bit"{}});}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacetest_a0f45e01f998f32bf815adc0cbe886405}{b}}.Property<\textcolor{keywordtype}{string}>(\textcolor{stringliteral}{"{}CompletedBy"{}})}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasMaxLength(100)}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasColumnType(\textcolor{stringliteral}{"{}nvarchar(100)"{}});}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacetest_a0f45e01f998f32bf815adc0cbe886405}{b}}.Property<DateTime>(\textcolor{stringliteral}{"{}Created"{}})}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasColumnType(\textcolor{stringliteral}{"{}DateTime2(3)"{}});}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacetest_a0f45e01f998f32bf815adc0cbe886405}{b}}.Property<decimal>(\textcolor{stringliteral}{"{}LiveComparisonPriceAUD"{}})}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasColumnType(\textcolor{stringliteral}{"{}decimal(18,\ 4)"{}});}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacetest_a0f45e01f998f32bf815adc0cbe886405}{b}}.Property<\textcolor{keywordtype}{string}>(\textcolor{stringliteral}{"{}Market"{}})}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .IsRequired()}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasMaxLength(50)}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasColumnType(\textcolor{stringliteral}{"{}nvarchar(50)"{}});}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacetest_a0f45e01f998f32bf815adc0cbe886405}{b}}.Property<decimal>(\textcolor{stringliteral}{"{}Price"{}})}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasColumnType(\textcolor{stringliteral}{"{}decimal(18,\ 4)"{}});}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacetest_a0f45e01f998f32bf815adc0cbe886405}{b}}.Property<decimal>(\textcolor{stringliteral}{"{}Quantity"{}})}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasColumnType(\textcolor{stringliteral}{"{}decimal(18,\ 4)"{}});}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacetest_a0f45e01f998f32bf815adc0cbe886405}{b}}.Property<\textcolor{keywordtype}{string}>(\textcolor{stringliteral}{"{}Side"{}})}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .IsRequired()}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasMaxLength(50)}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasColumnType(\textcolor{stringliteral}{"{}nvarchar(50)"{}});}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacetest_a0f45e01f998f32bf815adc0cbe886405}{b}}.Property<\textcolor{keywordtype}{string}>(\textcolor{stringliteral}{"{}TdcrId"{}})}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .IsRequired()}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasMaxLength(100)}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasColumnType(\textcolor{stringliteral}{"{}nvarchar(100)"{}});}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacetest_a0f45e01f998f32bf815adc0cbe886405}{b}}.Property<\textcolor{keywordtype}{long}>(\textcolor{stringliteral}{"{}TdcrTimestamp"{}})}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasColumnType(\textcolor{stringliteral}{"{}bigint"{}});}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacetest_a0f45e01f998f32bf815adc0cbe886405}{b}}.HasKey(\textcolor{stringliteral}{"{}ID"{}});}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacetest_a0f45e01f998f32bf815adc0cbe886405}{b}}.ToTable(\textcolor{stringliteral}{"{}Orders"{}});}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{00077\ \textcolor{preprocessor}{\#pragma\ warning\ restore\ 612,\ 618 }}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \}}
 
-Definition at line \mbox{\hyperlink{_tdcr_context_model_snapshot_8cs_source_l00016}{16}} of file \mbox{\hyperlink{_tdcr_context_model_snapshot_8cs_source}{Tdcr\+Context\+Model\+Snapshot.\+cs}}.
-
+\end{DoxyCode}
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

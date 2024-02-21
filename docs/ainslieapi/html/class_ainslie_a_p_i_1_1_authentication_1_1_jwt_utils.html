@@ -106,8 +106,6 @@ Public Member Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Utility class for JWT operations, including token generation and validation. </p>
-
-<p class="definition">Definition at line <a class="el" href="_jwt_utils_8cs_source.html#l00018">18</a> of file <a class="el" href="_jwt_utils_8cs_source.html">JwtUtils.cs</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a7e6794aab45891297310eac2de6db345" name="a7e6794aab45891297310eac2de6db345"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7e6794aab45891297310eac2de6db345">&#9670;&#160;</a></span>JwtUtils()</h2>
@@ -136,9 +134,11 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-
-<p class="definition">Definition at line <a class="el" href="_jwt_utils_8cs_source.html#l00029">29</a> of file <a class="el" href="_jwt_utils_8cs_source.html">JwtUtils.cs</a>.</p>
-
+<div class="fragment"><div class="line"><span class="lineno">   30</span>    {</div>
+<div class="line"><span class="lineno">   31</span>        _appSettings = appSettings.Value;</div>
+<div class="line"><span class="lineno">   32</span>        _provider = provider;</div>
+<div class="line"><span class="lineno">   33</span>    }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -165,9 +165,13 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The decrypted string.</dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="_jwt_utils_8cs_source.html#l00119">119</a> of file <a class="el" href="_jwt_utils_8cs_source.html">JwtUtils.cs</a>.</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">  120</span>    {</div>
+<div class="line"><span class="lineno">  121</span>        var protector = _provider.CreateProtector(_appSettings.<a class="code hl_property" href="class_ainslie_a_p_i_1_1_helpers_1_1_app_settings.html#a78d2c383be47a6098390109dfbbaefa6">JWTSettings</a>.<a class="code hl_property" href="class_ainslie_a_p_i_1_1_helpers_1_1_j_w_t_settings.html#a4591453aa1c37b86efdfe79f0a30de7b">Secret</a>);</div>
+<div class="line"><span class="lineno">  122</span>        <span class="keywordflow">return</span> protector.Unprotect(cipherText);</div>
+<div class="line"><span class="lineno">  123</span>    }</div>
+<div class="ttc" id="aclass_ainslie_a_p_i_1_1_helpers_1_1_app_settings_html_a78d2c383be47a6098390109dfbbaefa6"><div class="ttname"><a href="class_ainslie_a_p_i_1_1_helpers_1_1_app_settings.html#a78d2c383be47a6098390109dfbbaefa6">AinslieAPI.Helpers.AppSettings.JWTSettings</a></div><div class="ttdeci">JWTSettings JWTSettings</div><div class="ttdef"><b>Definition</b> AppSettings.cs:8</div></div>
+<div class="ttc" id="aclass_ainslie_a_p_i_1_1_helpers_1_1_j_w_t_settings_html_a4591453aa1c37b86efdfe79f0a30de7b"><div class="ttname"><a href="class_ainslie_a_p_i_1_1_helpers_1_1_j_w_t_settings.html#a4591453aa1c37b86efdfe79f0a30de7b">AinslieAPI.Helpers.JWTSettings.Secret</a></div><div class="ttdeci">string Secret</div><div class="ttdef"><b>Definition</b> AppSettings.cs:38</div></div>
+</div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils_afa1dbac5d4a38a9fd6d4283ba29a5683_icgraph.png" border="0" usemap="#aclass_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils_afa1dbac5d4a38a9fd6d4283ba29a5683_icgraph" alt=""/></div>
@@ -205,9 +209,11 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The encrypted string.</dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="_jwt_utils_8cs_source.html#l00106">106</a> of file <a class="el" href="_jwt_utils_8cs_source.html">JwtUtils.cs</a>.</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">  107</span>    {</div>
+<div class="line"><span class="lineno">  108</span>        var protector = _provider.CreateProtector(_appSettings.<a class="code hl_property" href="class_ainslie_a_p_i_1_1_helpers_1_1_app_settings.html#a78d2c383be47a6098390109dfbbaefa6">JWTSettings</a>.<a class="code hl_property" href="class_ainslie_a_p_i_1_1_helpers_1_1_j_w_t_settings.html#a4591453aa1c37b86efdfe79f0a30de7b">Secret</a>);</div>
+<div class="line"><span class="lineno">  109</span>        <span class="keywordflow">return</span> protector.Protect(plainText);</div>
+<div class="line"><span class="lineno">  110</span>    }</div>
+</div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils_aa124f3e1cb759c23d54327faccbee020_icgraph.png" border="0" usemap="#aclass_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils_aa124f3e1cb759c23d54327faccbee020_icgraph" alt=""/></div>
@@ -245,9 +251,23 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A JWT as a string.</dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="_jwt_utils_8cs_source.html#l00042">42</a> of file <a class="el" href="_jwt_utils_8cs_source.html">JwtUtils.cs</a>.</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">   43</span>    {</div>
+<div class="line"><span class="lineno">   44</span>        var tokenHandler = <span class="keyword">new</span> JwtSecurityTokenHandler();</div>
+<div class="line"><span class="lineno">   45</span>        var key = Encoding.ASCII.GetBytes(_appSettings.<a class="code hl_property" href="class_ainslie_a_p_i_1_1_helpers_1_1_app_settings.html#a78d2c383be47a6098390109dfbbaefa6">JWTSettings</a>.<a class="code hl_property" href="class_ainslie_a_p_i_1_1_helpers_1_1_j_w_t_settings.html#a4591453aa1c37b86efdfe79f0a30de7b">Secret</a>);</div>
+<div class="line"><span class="lineno">   46</span>        var tokenDescriptor = <span class="keyword">new</span> SecurityTokenDescriptor</div>
+<div class="line"><span class="lineno">   47</span>        {</div>
+<div class="line"><span class="lineno">   48</span>            Subject = <span class="keyword">new</span> ClaimsIdentity(<span class="keyword">new</span>[] { </div>
+<div class="line"><span class="lineno">   49</span>                <span class="keyword">new</span> Claim(<span class="stringliteral">&quot;email&quot;</span>, user.EmailAddress.ToString()),</div>
+<div class="line"><span class="lineno">   50</span>                <span class="keyword">new</span> Claim(<span class="stringliteral">&quot;data&quot;</span>, <a class="code hl_function" href="#aa124f3e1cb759c23d54327faccbee020">Encrypt</a>(JsonConvert.SerializeObject(user)))</div>
+<div class="line"><span class="lineno">   51</span>            }),</div>
+<div class="line"><span class="lineno">   52</span>            Expires = DateTime.UtcNow.AddYears(10),</div>
+<div class="line"><span class="lineno">   53</span>            SigningCredentials = <span class="keyword">new</span> SigningCredentials(<span class="keyword">new</span> SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)</div>
+<div class="line"><span class="lineno">   54</span>        };</div>
+<div class="line"><span class="lineno">   55</span>        var token = tokenHandler.CreateToken(tokenDescriptor);</div>
+<div class="line"><span class="lineno">   56</span>        <span class="keywordflow">return</span> tokenHandler.WriteToken(token);</div>
+<div class="line"><span class="lineno">   57</span>    }</div>
+<div class="ttc" id="aclass_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils_html_aa124f3e1cb759c23d54327faccbee020"><div class="ttname"><a href="#aa124f3e1cb759c23d54327faccbee020">AinslieAPI.Authentication.JwtUtils.Encrypt</a></div><div class="ttdeci">string Encrypt(string plainText)</div><div class="ttdoc">Encrypts a plaintext string using the application's data protection provider.</div><div class="ttdef"><b>Definition</b> JwtUtils.cs:106</div></div>
+</div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils_ac667c75c6805eb3e6943cc1e8aec0573_cgraph.png" border="0" usemap="#aclass_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils_ac667c75c6805eb3e6943cc1e8aec0573_cgraph" alt=""/></div>
@@ -293,9 +313,39 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>An AuthenticatedUser instance if the token is valid; otherwise, null.</dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="_jwt_utils_8cs_source.html#l00066">66</a> of file <a class="el" href="_jwt_utils_8cs_source.html">JwtUtils.cs</a>.</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">   67</span>    {</div>
+<div class="line"><span class="lineno">   68</span>        <span class="keywordflow">if</span> (token == <span class="keyword">null</span>) </div>
+<div class="line"><span class="lineno">   69</span>            <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><span class="lineno">   70</span> </div>
+<div class="line"><span class="lineno">   71</span>        var tokenHandler = <span class="keyword">new</span> JwtSecurityTokenHandler();</div>
+<div class="line"><span class="lineno">   72</span>        var key = Encoding.ASCII.GetBytes(_appSettings.<a class="code hl_property" href="class_ainslie_a_p_i_1_1_helpers_1_1_app_settings.html#a78d2c383be47a6098390109dfbbaefa6">JWTSettings</a>.<a class="code hl_property" href="class_ainslie_a_p_i_1_1_helpers_1_1_j_w_t_settings.html#a4591453aa1c37b86efdfe79f0a30de7b">Secret</a>);</div>
+<div class="line"><span class="lineno">   73</span>        <span class="keywordflow">try</span></div>
+<div class="line"><span class="lineno">   74</span>        {</div>
+<div class="line"><span class="lineno">   75</span>            tokenHandler.ValidateToken(token, <span class="keyword">new</span> TokenValidationParameters</div>
+<div class="line"><span class="lineno">   76</span>            {</div>
+<div class="line"><span class="lineno">   77</span>                ValidateIssuerSigningKey = <span class="keyword">true</span>,</div>
+<div class="line"><span class="lineno">   78</span>                IssuerSigningKey = <span class="keyword">new</span> SymmetricSecurityKey(key),</div>
+<div class="line"><span class="lineno">   79</span>                ValidateIssuer = <span class="keyword">false</span>,</div>
+<div class="line"><span class="lineno">   80</span>                ValidateAudience = <span class="keyword">false</span>,</div>
+<div class="line"><span class="lineno">   81</span>                <span class="comment">// set clockskew to zero so tokens expire exactly at token expiration time (instead of 5 minutes later)</span></div>
+<div class="line"><span class="lineno">   82</span>                ClockSkew = TimeSpan.Zero</div>
+<div class="line"><span class="lineno">   83</span>            }, out SecurityToken validatedToken);</div>
+<div class="line"><span class="lineno">   84</span> </div>
+<div class="line"><span class="lineno">   85</span>            var jwtToken = (JwtSecurityToken)validatedToken;</div>
+<div class="line"><span class="lineno">   86</span>            <span class="comment">//var email = jwtToken.Claims.First(x =&gt; x.Type == &quot;email&quot;)?.Value ?? null;</span></div>
+<div class="line"><span class="lineno">   87</span>            AuthenticatedUser? user = JsonConvert.DeserializeObject&lt;AuthenticatedUser&gt;(<a class="code hl_function" href="#afa1dbac5d4a38a9fd6d4283ba29a5683">Decrypt</a>(jwtToken.Claims.FirstOrDefault(x =&gt; x.Type == <span class="stringliteral">&quot;data&quot;</span>)?.Value ?? <span class="stringliteral">&quot;&quot;</span>));</div>
+<div class="line"><span class="lineno">   88</span> </div>
+<div class="line"><span class="lineno">   89</span>            <span class="comment">// return user id from JWT token if validation successful</span></div>
+<div class="line"><span class="lineno">   90</span>            <span class="keywordflow">return</span> user;</div>
+<div class="line"><span class="lineno">   91</span>        }</div>
+<div class="line"><span class="lineno">   92</span>        <span class="keywordflow">catch</span> (Exception ex)</div>
+<div class="line"><span class="lineno">   93</span>        {</div>
+<div class="line"><span class="lineno">   94</span>            <span class="comment">// return null if validation fails</span></div>
+<div class="line"><span class="lineno">   95</span>            <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><span class="lineno">   96</span>        }</div>
+<div class="line"><span class="lineno">   97</span>    }</div>
+<div class="ttc" id="aclass_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils_html_afa1dbac5d4a38a9fd6d4283ba29a5683"><div class="ttname"><a href="#afa1dbac5d4a38a9fd6d4283ba29a5683">AinslieAPI.Authentication.JwtUtils.Decrypt</a></div><div class="ttdeci">string Decrypt(string cipherText)</div><div class="ttdoc">Decrypts a ciphertext string using the application's data protection provider.</div><div class="ttdef"><b>Definition</b> JwtUtils.cs:119</div></div>
+</div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils_a1ed447f2fb5b17b1c8ce593034a61808_cgraph.png" border="0" usemap="#aclass_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils_a1ed447f2fb5b17b1c8ce593034a61808_cgraph" alt=""/></div>
@@ -319,7 +369,7 @@ Here is the caller graph for this function:</div>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>C:/Users/STRIDER/source/repos/AinslieAPI/Authentication/<a class="el" href="_jwt_utils_8cs_source.html">JwtUtils.cs</a></li>
+<li>C:/Users/STRIDER/source/repos/AinslieAPI/Authentication/<a class="el" href="_jwt_utils_8cs.html">JwtUtils.cs</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

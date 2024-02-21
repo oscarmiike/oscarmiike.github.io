@@ -112,10 +112,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:ac20bed843f55f212dfb5ffe45d411f8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves a list of current product prices.  <br /></td></tr>
 <tr class="separator:ac20bed843f55f212dfb5ffe45d411f8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_products_controller_8cs_source.html#l00022">22</a> of file <a class="el" href="_products_controller_8cs_source.html">ProductsController.cs</a>.</p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a902aa9119bd7712674f28f8b5a1a2fb0" name="a902aa9119bd7712674f28f8b5a1a2fb0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a902aa9119bd7712674f28f8b5a1a2fb0">&#9670;&#160;</a></span>ProductsController()</h2>
 
@@ -155,9 +152,15 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-
-<p class="definition">Definition at line <a class="el" href="_products_controller_8cs_source.html#l00038">38</a> of file <a class="el" href="_products_controller_8cs_source.html">ProductsController.cs</a>.</p>
-
+<div class="fragment"><div class="line"><span class="lineno">   39</span>        {</div>
+<div class="line"><span class="lineno">   40</span>            JwtUser = (<a class="code hl_class" href="class_ainslie_a_p_i_1_1_d_t_o_1_1_user_helper_1_1_authenticated_user.html">AuthenticatedUser</a>?)httpContextAccessor.HttpContext?.Items[<span class="stringliteral">&quot;user&quot;</span>];</div>
+<div class="line"><span class="lineno">   41</span>            _httpContext  = httpContextAccessor.HttpContext;</div>
+<div class="line"><span class="lineno">   42</span>            _appSettings = appSettings.Value;</div>
+<div class="line"><span class="lineno">   43</span>            _iaService = iaService;</div>
+<div class="line"><span class="lineno">   44</span>            _logger = logger;</div>
+<div class="line"><span class="lineno">   45</span>        }</div>
+<div class="ttc" id="aclass_ainslie_a_p_i_1_1_d_t_o_1_1_user_helper_1_1_authenticated_user_html"><div class="ttname"><a href="class_ainslie_a_p_i_1_1_d_t_o_1_1_user_helper_1_1_authenticated_user.html">AinslieAPI.DTO.UserHelper.AuthenticatedUser</a></div><div class="ttdef"><b>Definition</b> AuthenticatedUser.cs:6</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -179,9 +182,16 @@ Public Member Functions</h2></td></tr>
 <p>Retrieves a list of current product prices. </p>
 <dl class="section return"><dt>Returns</dt><dd>An IActionResult containing the product pricing information or an error message.</dd></dl>
 <p>This endpoint requires authorisation and is accessible only to users with specific roles. It fetches product pricing data using the InternalApiService and returns this data within an HTTP response. Logging is performed to capture the request context and authenticated user's details. </p>
-
-<p class="definition">Definition at line <a class="el" href="_products_controller_8cs_source.html#l00059">59</a> of file <a class="el" href="_products_controller_8cs_source.html">ProductsController.cs</a>.</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">   60</span>        {</div>
+<div class="line"><span class="lineno">   61</span>            _logger.<a class="code hl_function" href="class_ainslie_a_p_i_1_1_services_1_1_log_service.html#a917b9af360c0c6521ce36f4acbc72023">LogInformation</a>(<a class="code hl_class" href="class_ainslie_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_ainslie_a_p_i_1_1_services_1_1_log_service.html#ab557dc1394f5cf56cfb78c765fdfffe6">LogSources</a>.ProductsController, $<span class="stringliteral">&quot;request received on products/pricelist&quot;</span>, $<span class="stringliteral">&quot;authenticated user: {JwtUser?.EmailAddress}&quot;</span>);</div>
+<div class="line"><span class="lineno">   62</span>            var productPricing = _iaService.<a class="code hl_function" href="class_ainslie_a_p_i_1_1_services_1_1_internal_api_service.html#a0c4c5cccb2233540343e36fe0e8a0acc">GetProductPricing</a>();</div>
+<div class="line"><span class="lineno">   63</span>            <span class="keywordflow">return</span> Ok(productPricing);</div>
+<div class="line"><span class="lineno">   64</span>        }</div>
+<div class="ttc" id="aclass_ainslie_a_p_i_1_1_services_1_1_internal_api_service_html_a0c4c5cccb2233540343e36fe0e8a0acc"><div class="ttname"><a href="class_ainslie_a_p_i_1_1_services_1_1_internal_api_service.html#a0c4c5cccb2233540343e36fe0e8a0acc">AinslieAPI.Services.InternalApiService.GetProductPricing</a></div><div class="ttdeci">List&lt; ProductPrice &gt;? GetProductPricing()</div><div class="ttdoc">Fetches the current product pricing from the internal API and deserialises the response into a list o...</div><div class="ttdef"><b>Definition</b> InternalApiService.cs:238</div></div>
+<div class="ttc" id="aclass_ainslie_a_p_i_1_1_services_1_1_log_service_html"><div class="ttname"><a href="class_ainslie_a_p_i_1_1_services_1_1_log_service.html">AinslieAPI.Services.LogService</a></div><div class="ttdef"><b>Definition</b> LogService.cs:20</div></div>
+<div class="ttc" id="aclass_ainslie_a_p_i_1_1_services_1_1_log_service_html_a917b9af360c0c6521ce36f4acbc72023"><div class="ttname"><a href="class_ainslie_a_p_i_1_1_services_1_1_log_service.html#a917b9af360c0c6521ce36f4acbc72023">AinslieAPI.Services.LogService.LogInformation</a></div><div class="ttdeci">LogEntry LogInformation(LogSources logSource, params object[] dataList)</div><div class="ttdef"><b>Definition</b> LogService.cs:59</div></div>
+<div class="ttc" id="aclass_ainslie_a_p_i_1_1_services_1_1_log_service_html_ab557dc1394f5cf56cfb78c765fdfffe6"><div class="ttname"><a href="class_ainslie_a_p_i_1_1_services_1_1_log_service.html#ab557dc1394f5cf56cfb78c765fdfffe6">AinslieAPI.Services.LogService.LogSources</a></div><div class="ttdeci">LogSources</div><div class="ttdef"><b>Definition</b> LogService.cs:30</div></div>
+</div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_ainslie_a_p_i_1_1_controllers_1_1_products_controller_ac20bed843f55f212dfb5ffe45d411f8f_cgraph.png" border="0" usemap="#aclass_ainslie_a_p_i_1_1_controllers_1_1_products_controller_ac20bed843f55f212dfb5ffe45d411f8f_cgraph" alt=""/></div>
@@ -205,7 +215,7 @@ Here is the call graph for this function:</div>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>C:/Users/STRIDER/source/repos/AinslieAPI/Controllers/<a class="el" href="_products_controller_8cs_source.html">ProductsController.cs</a></li>
+<li>C:/Users/STRIDER/source/repos/AinslieAPI/Controllers/<a class="el" href="_products_controller_8cs.html">ProductsController.cs</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

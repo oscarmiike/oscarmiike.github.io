@@ -79,8 +79,7 @@ var \mbox{\hyperlink{_program_8cs_a7b225fcb720e4d5ed2bbf60e28a25e6d}{app}} = bui
 \doxysubsubsection{\texorpdfstring{AddAuth0WebAppAuthentication()}{AddAuth0WebAppAuthentication()}}
 {\footnotesize\ttfamily builder.\+Services. Add\+Auth0\+Web\+App\+Authentication (\begin{DoxyParamCaption}\item[{options}]{,  }\item[{\{ options.\+Domain=builder.\+Configuration\mbox{[}"{}App\+Settings\+:\+Auth0\+Settings\+:\+Domain"{}\mbox{]};options.\+Client\+Id=builder.\+Configuration\mbox{[}"{}App\+Settings\+:\+Auth0\+Settings\+:\+Web\+App\+Client\+Id"{}\mbox{]};options.\+Scope="{}openid profile email roles"{};options.\+Open\+Id\+Connect\+Events=new Open\+Id\+Connect\+Events() \{ On\+Ticket\+Received=context=$>$ \{ var user=(Claims\+Identity?) context.\+Principal?.Identity;var logger=context.\+Http\+Context.\+Request\+Services.\+Get\+Service$<$ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{Log\+Service}} $>$();logger?.Log\+Information(Log\+Service.\+Log\+Sources.\+Open\+Id\+Connect, \$"{}user \{user?.Find\+First(c =$>$ c.\+Type == Claim\+Types.\+Email)?.Value\} logged in"{});return Task.\+Completed\+Task;\} \};\}}]{ }\end{DoxyParamCaption})}
 
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -202,9 +201,14 @@ Here is the call graph for this function\+:
 {\footnotesize\ttfamily if (\begin{DoxyParamCaption}\item[{app\+::\+Environment\+::\+Is\+Development()}]{ }\end{DoxyParamCaption})}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00090\ \{}
+\DoxyCodeLine{00091\ \ \ \ \ \mbox{\hyperlink{_program_8cs_a7b225fcb720e4d5ed2bbf60e28a25e6d}{app}}.UseDeveloperExceptionPage();}
+\DoxyCodeLine{00092\ \ \ \ \ \mbox{\hyperlink{_program_8cs_a7b225fcb720e4d5ed2bbf60e28a25e6d}{app}}.UseSwagger();}
+\DoxyCodeLine{00093\ \ \ \ \ \mbox{\hyperlink{_program_8cs_a7b225fcb720e4d5ed2bbf60e28a25e6d}{app}}.UseSwaggerUI();}
+\DoxyCodeLine{00094\ \}}
 
-Definition at line \mbox{\hyperlink{_program_8cs_source_l00089}{89}} of file \mbox{\hyperlink{_program_8cs_source}{Program.\+cs}}.
-
+\end{DoxyCode}
 \Hypertarget{_program_8cs_a9e2ee3170aa6279b68eefd1651f7d96c}\label{_program_8cs_a9e2ee3170aa6279b68eefd1651f7d96c} 
 \index{Program.cs@{Program.cs}!MapControllers@{MapControllers}}
 \index{MapControllers@{MapControllers}!Program.cs@{Program.cs}}
@@ -268,19 +272,11 @@ Definition at line \mbox{\hyperlink{_program_8cs_source_l00089}{89}} of file \mb
 \doxysubsubsection{\texorpdfstring{app}{app}}
 {\footnotesize\ttfamily var app = builder.\+Build()}
 
-
-
-Definition at line \mbox{\hyperlink{_program_8cs_source_l00087}{87}} of file \mbox{\hyperlink{_program_8cs_source}{Program.\+cs}}.
-
 \Hypertarget{_program_8cs_a2f78352277081c620fd4cf92a5ce15e5}\label{_program_8cs_a2f78352277081c620fd4cf92a5ce15e5} 
 \index{Program.cs@{Program.cs}!builder@{builder}}
 \index{builder@{builder}!Program.cs@{Program.cs}}
 \doxysubsubsection{\texorpdfstring{builder}{builder}}
 {\footnotesize\ttfamily var builder = Web\+Application.\+Create\+Builder(args)}
-
-
-
-Definition at line \mbox{\hyperlink{_program_8cs_source_l00018}{18}} of file \mbox{\hyperlink{_program_8cs_source}{Program.\+cs}}.
 
 \Hypertarget{_program_8cs_a0544c3fe466e421738dae463968b70ba}\label{_program_8cs_a0544c3fe466e421738dae463968b70ba} 
 \index{Program.cs@{Program.cs}!else@{else}}
@@ -294,7 +290,3 @@ Definition at line \mbox{\hyperlink{_program_8cs_source_l00018}{18}} of file \mb
 \DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{_program_8cs_a7b225fcb720e4d5ed2bbf60e28a25e6d}{app}}.UseExceptionHandler(\textcolor{stringliteral}{"{}/Home/Error"{}})}
 
 \end{DoxyCode}
-
-
-Definition at line \mbox{\hyperlink{_program_8cs_source_l00095}{95}} of file \mbox{\hyperlink{_program_8cs_source}{Program.\+cs}}.
-

@@ -2,8 +2,7 @@
 \hypertarget{class_ainslie_a_p_i_1_1_controllers_1_1_green_id_controller}{}\label{class_ainslie_a_p_i_1_1_controllers_1_1_green_id_controller}\index{AinslieAPI.Controllers.GreenIdController@{AinslieAPI.Controllers.GreenIdController}}
 
 
-Inheritance diagram for Ainslie\+API.\+Controllers.\+Green\+Id\+Controller\+:
-\nopagebreak
+Inheritance diagram for Ainslie\+API.\+Controllers.\+Green\+Id\+Controller\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for Ainslie\+API.\+Controllers.\+Green\+Id\+Controller\+:
 \end{figure}
 
 
-Collaboration diagram for Ainslie\+API.\+Controllers.\+Green\+Id\+Controller\+:
-\nopagebreak
+Collaboration diagram for Ainslie\+API.\+Controllers.\+Green\+Id\+Controller\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -31,13 +29,6 @@ IAction\+Result \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_green_i
 \begin{DoxyCompactList}\small\item\em Tests the dynamic deserialisation and updating of Netsuite IDs. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{Detailed Description}
-
-
-Definition at line \mbox{\hyperlink{_green_id_controller_8cs_source_l00019}{19}} of file \mbox{\hyperlink{_green_id_controller_8cs_source}{Green\+Id\+Controller.\+cs}}.
-
-
-
 \doxysubsection{Constructor \& Destructor Documentation}
 \Hypertarget{class_ainslie_a_p_i_1_1_controllers_1_1_green_id_controller_abb01f2d22bd587bafddea00569983387}\label{class_ainslie_a_p_i_1_1_controllers_1_1_green_id_controller_abb01f2d22bd587bafddea00569983387} 
 \index{AinslieAPI.Controllers.GreenIdController@{AinslieAPI.Controllers.GreenIdController}!GreenIdController@{GreenIdController}}
@@ -46,9 +37,14 @@ Definition at line \mbox{\hyperlink{_green_id_controller_8cs_source_l00019}{19}}
 {\footnotesize\ttfamily Ainslie\+API.\+Controllers.\+Green\+Id\+Controller.\+Green\+Id\+Controller (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{Log\+Service}}}]{log\+Service,  }\item[{\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service}{Internal\+Api\+Service}}}]{ia\+Service,  }\item[{\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_netsuite_helper}{Netsuite\+Helper}}}]{netsuite\+Helper }\end{DoxyParamCaption})}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00026\ \ \ \ \ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \_logger\ =\ logService;}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \_iaService\ =\ iaService;}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \_netsuiteHelper\ =\ netsuiteHelper;}
+\DoxyCodeLine{00030\ \ \ \ \ \}}
 
-Definition at line \mbox{\hyperlink{_green_id_controller_8cs_source_l00025}{25}} of file \mbox{\hyperlink{_green_id_controller_8cs_source}{Green\+Id\+Controller.\+cs}}.
-
+\end{DoxyCode}
 
 
 \doxysubsection{Member Function Documentation}
@@ -82,11 +78,41 @@ This process involves\+:
 \item Retrieving and validating the customer\textquotesingle{}s data from Green ID. 
 \item Updating or adding the customer\textquotesingle{}s information to Netsuite through Internal API. 
 \end{DoxyItemize}Returns OK if the process is successful, otherwise logs the error details. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00054\ \ \ \ \ \{}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a917b9af360c0c6521ce36f4acbc72023}{LogInformation}}(\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_ab557dc1394f5cf56cfb78c765fdfffe6}{LogSources}}.GreenIdController,\ \$\textcolor{stringliteral}{"{}request\ received\ on\ greenid\ newverification\ endpoint\ branch:\ \{branch\}\ userid:\ \{userid\}"{}});}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ get\ customer\ object\ from\ green\ id\ and\ add\ to\ local\ greeniddb\ via\ internalapi}}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_green_id_1_1_green_id_customer}{GreenIdCustomer}}\ greenIDCustomer\ =\ \_iaService.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service_ac96a3e52c78c6b67de6a0f244fd70a60}{GetGreenIdCustomer}}(branch,\ userid);}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ post\ customer\ to\ internal\ api\ netsuite\ endpoint\ for\ add\ or\ update}}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (greenIDCustomer\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (greenIDCustomer.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_green_id_1_1_green_id_customer_aeacf026f275f7e1a2bbba243379919e2}{error}}\ ||\ \textcolor{keywordtype}{string}.IsNullOrEmpty(greenIDCustomer.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_green_id_1_1_green_id_customer_aaf65aa3d37fb164b54301cd47083244e}{verificationId}}))}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a9bf79a218e0884ac9cabd3ac87b81321}{LogError}}(\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_ab557dc1394f5cf56cfb78c765fdfffe6}{LogSources}}.GreenIdController,\ \$\textcolor{stringliteral}{"{}error\ getting\ customer\ from\ green\ id"{}},\ greenIDCustomer);}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a9898f5cd3f6b2ea29e40c885721f4a63}{LogDebug}}(\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_ab557dc1394f5cf56cfb78c765fdfffe6}{LogSources}}.GreenIdController,\ \$\textcolor{stringliteral}{"{}customer\ retrieved\ from\ green\ id"{}},\ greenIDCustomer);}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_netsuite_customer_request}{NetsuiteCustomerRequest}}\ netsuiteCustomerRequest\ =\ \_netsuiteHelper.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_netsuite_helper_aaade37ab8e2956507c377c5b30af6a0a}{CreateNetsuiteCustomerRequest}}(branch,\ greenIDCustomer);}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (netsuiteCustomerRequest\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ netsuiteInsertId\ =\ \_iaService.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service_a7a070bb565246fb698283432930d9cd1}{PostNetsuiteCustomer}}(netsuiteCustomerRequest);}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (netsuiteInsertId\ ==\ 0)}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a9bf79a218e0884ac9cabd3ac87b81321}{LogError}}(\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_ab557dc1394f5cf56cfb78c765fdfffe6}{LogSources}}.GreenIdController,\ \$\textcolor{stringliteral}{"{}error\ inserting\ customer\ to\ netsuite"{}},\ greenIDCustomer);}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a9898f5cd3f6b2ea29e40c885721f4a63}{LogDebug}}(\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_ab557dc1394f5cf56cfb78c765fdfffe6}{LogSources}}.GreenIdController,\ \$\textcolor{stringliteral}{"{}customer\ posted\ to\ netsuite\ successfully.\ \ id:\ \{netsuiteInsertId\}"{}});}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ updateNetsuiteIdOk\ =\ \_iaService.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service_aa8c183f663dbc4061a007aee4e5cf28e}{UpdateGreenIdDbNetsuiteId}}(greenIDCustomer.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_green_id_1_1_green_id_customer_aaf65aa3d37fb164b54301cd47083244e}{verificationId}},\ netsuiteInsertId);}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!updateNetsuiteIdOk)}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a9bf79a218e0884ac9cabd3ac87b81321}{LogError}}(\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_ab557dc1394f5cf56cfb78c765fdfffe6}{LogSources}}.GreenIdController,\ \$\textcolor{stringliteral}{"{}error\ updating\ greeniddb\ netsuite\ customer\ id:\ \{greenIDCustomer.verificationId\}/\{netsuiteInsertId\}"{}});}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Ok();}
+\DoxyCodeLine{00084\ \ \ \ \ \}}
 
-Definition at line \mbox{\hyperlink{_green_id_controller_8cs_source_l00053}{53}} of file \mbox{\hyperlink{_green_id_controller_8cs_source}{Green\+Id\+Controller.\+cs}}.
-
-Here is the call graph for this function\+:
-\nopagebreak
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -118,11 +144,27 @@ An IAction\+Result reflecting the success of the Netsuite ID update.
 
 
 Used for debugging, this method updates the Netsuite ID in the database and returns the operation\textquotesingle{}s success status. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00101\ \ \ \ \ \{}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \textcolor{comment}{//dynamic?\ result\ =\ null;}}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \textcolor{comment}{//var\ test\ =\ new\ \{\ Success\ =\ true\ \};}}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \textcolor{comment}{//string?\ response\ =\ "{}"{};\ //JsonConvert.SerializeObject(test);}}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \textcolor{comment}{//try}}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\{}}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ result\ =\ JsonConvert.DeserializeObject<dynamic>(response\ ??\ "{}"{});}}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\}}}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \textcolor{comment}{//catch\ \{\ \}}}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \textcolor{comment}{//return\ Ok(result?.Success\ ==\ true\ ?\ true\ :\ false);}}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ var\ result\ =\ \_iaService.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service_aa8c183f663dbc4061a007aee4e5cf28e}{UpdateGreenIdDbNetsuiteId}}(gid,\ nid);}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Ok(result);}
+\DoxyCodeLine{00117\ \ \ \ \ \}}
 
-Definition at line \mbox{\hyperlink{_green_id_controller_8cs_source_l00100}{100}} of file \mbox{\hyperlink{_green_id_controller_8cs_source}{Green\+Id\+Controller.\+cs}}.
-
-Here is the call graph for this function\+:
-\nopagebreak
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

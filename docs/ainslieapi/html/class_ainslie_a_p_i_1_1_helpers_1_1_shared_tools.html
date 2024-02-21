@@ -100,8 +100,6 @@ Static Public Member Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Provides utility methods for common data manipulation tasks, such as stripping HTML and removing non-alphanumeric characters from strings. </p>
-
-<p class="definition">Definition at line <a class="el" href="_shared_tools_8cs_source.html#l00009">9</a> of file <a class="el" href="_shared_tools_8cs_source.html">SharedTools.cs</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="ab5709314b631b14e5aa75638cc5f6352" name="ab5709314b631b14e5aa75638cc5f6352"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab5709314b631b14e5aa75638cc5f6352">&#9670;&#160;</a></span>RemoveNonAlphaChars()</h2>
@@ -139,9 +137,21 @@ Static Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A string with non-alphanumeric characters removed or replaced.</dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="_shared_tools_8cs_source.html#l00033">33</a> of file <a class="el" href="_shared_tools_8cs_source.html">SharedTools.cs</a>.</p>
-
+<div class="fragment"><div class="line"><span class="lineno">   34</span>        {</div>
+<div class="line"><span class="lineno">   35</span>            <span class="keywordtype">string</span> alphaString = Regex.Replace(oString ?? <span class="stringliteral">&quot;&quot;</span>, <span class="stringliteral">&quot;[^a-zA-Z0-9]+&quot;</span>, replaceWith);</div>
+<div class="line"><span class="lineno">   36</span>            <span class="comment">//remove leading hyphen</span></div>
+<div class="line"><span class="lineno">   37</span>            <span class="keywordflow">if</span> (alphaString.Length &gt; 0 &amp;&amp; alphaString[0].ToString() == replaceWith)</div>
+<div class="line"><span class="lineno">   38</span>            {</div>
+<div class="line"><span class="lineno">   39</span>                alphaString = alphaString.Substring(1);</div>
+<div class="line"><span class="lineno">   40</span>            }</div>
+<div class="line"><span class="lineno">   41</span>            <span class="comment">//remove trailing hyphen</span></div>
+<div class="line"><span class="lineno">   42</span>            <span class="keywordflow">if</span> (alphaString.Length &gt; 0 &amp;&amp; alphaString[alphaString.Length - 1].ToString() == replaceWith)</div>
+<div class="line"><span class="lineno">   43</span>            {</div>
+<div class="line"><span class="lineno">   44</span>                alphaString = alphaString.Substring(0, alphaString.Length - 1);</div>
+<div class="line"><span class="lineno">   45</span>            }</div>
+<div class="line"><span class="lineno">   46</span>            <span class="keywordflow">return</span> alphaString;</div>
+<div class="line"><span class="lineno">   47</span>        }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="ab15e610eab2e8c51c9b48d81b9da0104" name="ab15e610eab2e8c51c9b48d81b9da0104"></a>
@@ -175,9 +185,12 @@ Static Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A plain text string with HTML tags and entities removed.</dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="_shared_tools_8cs_source.html#l00018">18</a> of file <a class="el" href="_shared_tools_8cs_source.html">SharedTools.cs</a>.</p>
-
+<div class="fragment"><div class="line"><span class="lineno">   19</span>        {</div>
+<div class="line"><span class="lineno">   20</span>            strHTML = Regex.Replace(HttpUtility.HtmlDecode(strHTML), <span class="stringliteral">@&quot;&lt;(.|\n)*?&gt;&quot;</span>, <span class="keywordtype">string</span>.Empty);</div>
+<div class="line"><span class="lineno">   21</span>            strHTML = strHTML.Replace(<span class="stringliteral">&quot;&amp;#160;&quot;</span>, <span class="stringliteral">&quot; &quot;</span>);</div>
+<div class="line"><span class="lineno">   22</span>            <span class="keywordflow">return</span> strHTML;</div>
+<div class="line"><span class="lineno">   23</span>        }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a5d26beaa558c5d4b15370f0308f447bf" name="a5d26beaa558c5d4b15370f0308f447bf"></a>
@@ -212,13 +225,24 @@ Static Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The local DateTime representation of the Unix timestamp, or null if conversion fails.</dd></dl>
 <p>Assumes the timestamp is in seconds since the Unix epoch (1 January 1970). Returns null if the timestamp is zero or conversion fails. </p>
-
-<p class="definition">Definition at line <a class="el" href="_shared_tools_8cs_source.html#l00060">60</a> of file <a class="el" href="_shared_tools_8cs_source.html">SharedTools.cs</a>.</p>
-
+<div class="fragment"><div class="line"><span class="lineno">   61</span>        {</div>
+<div class="line"><span class="lineno">   62</span>            <span class="keywordflow">if</span> (unixTimestamp == 0) <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><span class="lineno">   63</span>            <span class="keywordflow">try</span></div>
+<div class="line"><span class="lineno">   64</span>            {</div>
+<div class="line"><span class="lineno">   65</span>                DateTime dateTime = <span class="keyword">new</span> DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);</div>
+<div class="line"><span class="lineno">   66</span>                dateTime = dateTime.AddSeconds(unixTimestamp).ToLocalTime();</div>
+<div class="line"><span class="lineno">   67</span>                <span class="keywordflow">return</span> dateTime;</div>
+<div class="line"><span class="lineno">   68</span>            }</div>
+<div class="line"><span class="lineno">   69</span>            <span class="keywordflow">catch</span></div>
+<div class="line"><span class="lineno">   70</span>            {</div>
+<div class="line"><span class="lineno">   71</span>                <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><span class="lineno">   72</span>            }</div>
+<div class="line"><span class="lineno">   73</span>        }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>C:/Users/STRIDER/source/repos/AinslieAPI/Helpers/<a class="el" href="_shared_tools_8cs_source.html">SharedTools.cs</a></li>
+<li>C:/Users/STRIDER/source/repos/AinslieAPI/Helpers/<a class="el" href="_shared_tools_8cs.html">SharedTools.cs</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

@@ -17,10 +17,6 @@ async Task \mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_middl
 \doxysubsection{Detailed Description}
 Middleware for JWT authentication, responsible for validating tokens and attaching the authenticated user to the HTTP context. 
 
-Definition at line \mbox{\hyperlink{_jwt_middleware_8cs_source_l00006}{6}} of file \mbox{\hyperlink{_jwt_middleware_8cs_source}{Jwt\+Middleware.\+cs}}.
-
-
-
 \doxysubsection{Constructor \& Destructor Documentation}
 \Hypertarget{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_middleware_a187ee68b4121e840300c03598913ab9f}\label{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_middleware_a187ee68b4121e840300c03598913ab9f} 
 \index{AinslieAPI.Authentication.JwtMiddleware@{AinslieAPI.Authentication.JwtMiddleware}!JwtMiddleware@{JwtMiddleware}}
@@ -38,9 +34,12 @@ Initializes a new instance of the Jwt\+Middleware class.
 \hline
 \end{DoxyParams}
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00016\ \ \ \ \ \{}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \_next\ =\ next;}
+\DoxyCodeLine{00018\ \ \ \ \ \}}
 
-Definition at line \mbox{\hyperlink{_jwt_middleware_8cs_source_l00015}{15}} of file \mbox{\hyperlink{_jwt_middleware_8cs_source}{Jwt\+Middleware.\+cs}}.
-
+\end{DoxyCode}
 
 
 \doxysubsection{Member Function Documentation}
@@ -69,11 +68,20 @@ A Task representing the asynchronous operation.
 
 
 This middleware extracts the JWT token from the Authorisation header, validates it, and, if successful, attaches the decoded Authenticated\+User object to the context for downstream use. Note\+: This does not integrate with .NET Core\textquotesingle{}s built-\/in authentication system and considers no user as authenticated by default. Future improvements may include integrating JWT authentication middleware to work alongside existing authentication mechanisms. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00036\ \ \ \ \ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ var\ token\ =\ context.Request.Headers[\textcolor{stringliteral}{"{}Authorization"{}}].FirstOrDefault()?.Split(\textcolor{stringliteral}{"{}\ "{}}).Last();}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ var\ user\ =\ jwtUtils.ValidateToken(token);}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!(user\ ==\ \textcolor{keyword}{null})\ \&\&\ !\textcolor{keywordtype}{string}.IsNullOrEmpty(user.EmailAddress))}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ attach\ user\ to\ context\ on\ successful\ jwt\ validation}}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ context.Items[\textcolor{stringliteral}{"{}user"{}}]\ =\ user;}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ await\ \_next(context);}
+\DoxyCodeLine{00045\ \ \ \ \ \}}
 
-Definition at line \mbox{\hyperlink{_jwt_middleware_8cs_source_l00035}{35}} of file \mbox{\hyperlink{_jwt_middleware_8cs_source}{Jwt\+Middleware.\+cs}}.
-
-Here is the call graph for this function\+:
-\nopagebreak
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

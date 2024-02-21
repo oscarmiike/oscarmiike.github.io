@@ -2,8 +2,7 @@
 \hypertarget{class_ainslie_a_p_i_1_1_migrations_1_1_local_context_model_snapshot}{}\label{class_ainslie_a_p_i_1_1_migrations_1_1_local_context_model_snapshot}\index{AinslieAPI.Migrations.LocalContextModelSnapshot@{AinslieAPI.Migrations.LocalContextModelSnapshot}}
 
 
-Inheritance diagram for Ainslie\+API.\+Migrations.\+Local\+Context\+Model\+Snapshot\+:
-\nopagebreak
+Inheritance diagram for Ainslie\+API.\+Migrations.\+Local\+Context\+Model\+Snapshot\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for Ainslie\+API.\+Migrations.\+Local\+Context\+Model\+Snaps
 \end{figure}
 
 
-Collaboration diagram for Ainslie\+API.\+Migrations.\+Local\+Context\+Model\+Snapshot\+:
-\nopagebreak
+Collaboration diagram for Ainslie\+API.\+Migrations.\+Local\+Context\+Model\+Snapshot\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -27,13 +25,6 @@ override void \mbox{\hyperlink{class_ainslie_a_p_i_1_1_migrations_1_1_local_cont
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{Detailed Description}
-
-
-Definition at line \mbox{\hyperlink{_local_context_model_snapshot_8cs_source_l00014}{14}} of file \mbox{\hyperlink{_local_context_model_snapshot_8cs_source}{Local\+Context\+Model\+Snapshot.\+cs}}.
-
-
-
 \doxysubsection{Member Function Documentation}
 \Hypertarget{class_ainslie_a_p_i_1_1_migrations_1_1_local_context_model_snapshot_ac2304ae73275e12769d4302136aa2028}\label{class_ainslie_a_p_i_1_1_migrations_1_1_local_context_model_snapshot_ac2304ae73275e12769d4302136aa2028} 
 \index{AinslieAPI.Migrations.LocalContextModelSnapshot@{AinslieAPI.Migrations.LocalContextModelSnapshot}!BuildModel@{BuildModel}}
@@ -42,9 +33,49 @@ Definition at line \mbox{\hyperlink{_local_context_model_snapshot_8cs_source_l00
 {\footnotesize\ttfamily override void Ainslie\+API.\+Migrations.\+Local\+Context\+Model\+Snapshot.\+Build\+Model (\begin{DoxyParamCaption}\item[{Model\+Builder}]{model\+Builder }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#pragma\ warning\ disable\ 612,\ 618 }}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ \ \ \ modelBuilder}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasAnnotation(\textcolor{stringliteral}{"{}ProductVersion"{}},\ \textcolor{stringliteral}{"{}7.0.5"{}})}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasAnnotation(\textcolor{stringliteral}{"{}Relational:MaxIdentifierLength"{}},\ 128);}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ modelBuilder.Entity(\textcolor{stringliteral}{"{}AinslieAPI.Data.Models.LogEntry"{}},\ b\ =>}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacetest_a0f45e01f998f32bf815adc0cbe886405}{b}}.Property<\textcolor{keywordtype}{int}>(\textcolor{stringliteral}{"{}ID"{}})}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .ValueGeneratedOnAdd()}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasColumnType(\textcolor{stringliteral}{"{}int"{}});}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SqlServerPropertyBuilderExtensions.UseIdentityColumn(\mbox{\hyperlink{namespacetest_a0f45e01f998f32bf815adc0cbe886405}{b}}.Property<\textcolor{keywordtype}{int}>(\textcolor{stringliteral}{"{}ID"{}}));}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacetest_a0f45e01f998f32bf815adc0cbe886405}{b}}.Property<DateTime>(\textcolor{stringliteral}{"{}Created"{}})}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasColumnType(\textcolor{stringliteral}{"{}DateTime2(3)"{}});}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacetest_a0f45e01f998f32bf815adc0cbe886405}{b}}.Property<\textcolor{keywordtype}{string}>(\textcolor{stringliteral}{"{}Data"{}})}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .IsRequired()}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasColumnType(\textcolor{stringliteral}{"{}nvarchar(max)"{}});}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacetest_a0f45e01f998f32bf815adc0cbe886405}{b}}.Property<\textcolor{keywordtype}{string}>(\textcolor{stringliteral}{"{}Source"{}})}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .IsRequired()}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasColumnType(\textcolor{stringliteral}{"{}nvarchar(max)"{}});}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacetest_a0f45e01f998f32bf815adc0cbe886405}{b}}.Property<\textcolor{keywordtype}{int}>(\textcolor{stringliteral}{"{}ThreadID"{}})}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasColumnType(\textcolor{stringliteral}{"{}int"{}});}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacetest_a0f45e01f998f32bf815adc0cbe886405}{b}}.Property<\textcolor{keywordtype}{string}>(\textcolor{stringliteral}{"{}Type"{}})}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .IsRequired()}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasColumnType(\textcolor{stringliteral}{"{}nvarchar(max)"{}});}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacetest_a0f45e01f998f32bf815adc0cbe886405}{b}}.HasKey(\textcolor{stringliteral}{"{}ID"{}});}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacetest_a0f45e01f998f32bf815adc0cbe886405}{b}}.ToTable(\textcolor{stringliteral}{"{}LogEntries"{}});}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#pragma\ warning\ restore\ 612,\ 618 }}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \}}
 
-Definition at line \mbox{\hyperlink{_local_context_model_snapshot_8cs_source_l00016}{16}} of file \mbox{\hyperlink{_local_context_model_snapshot_8cs_source}{Local\+Context\+Model\+Snapshot.\+cs}}.
-
+\end{DoxyCode}
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

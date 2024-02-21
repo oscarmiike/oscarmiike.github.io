@@ -97,8 +97,6 @@ Public Member Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Middleware for JWT authentication, responsible for validating tokens and attaching the authenticated user to the HTTP context. </p>
-
-<p class="definition">Definition at line <a class="el" href="_jwt_middleware_8cs_source.html#l00006">6</a> of file <a class="el" href="_jwt_middleware_8cs_source.html">JwtMiddleware.cs</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a187ee68b4121e840300c03598913ab9f" name="a187ee68b4121e840300c03598913ab9f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a187ee68b4121e840300c03598913ab9f">&#9670;&#160;</a></span>JwtMiddleware()</h2>
@@ -122,9 +120,10 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-
-<p class="definition">Definition at line <a class="el" href="_jwt_middleware_8cs_source.html#l00015">15</a> of file <a class="el" href="_jwt_middleware_8cs_source.html">JwtMiddleware.cs</a>.</p>
-
+<div class="fragment"><div class="line"><span class="lineno">   16</span>    {</div>
+<div class="line"><span class="lineno">   17</span>        _next = next;</div>
+<div class="line"><span class="lineno">   18</span>    }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -157,9 +156,17 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A Task representing the asynchronous operation.</dd></dl>
 <p>This middleware extracts the JWT token from the Authorisation header, validates it, and, if successful, attaches the decoded AuthenticatedUser object to the context for downstream use. Note: This does not integrate with .NET Core's built-in authentication system and considers no user as authenticated by default. Future improvements may include integrating JWT authentication middleware to work alongside existing authentication mechanisms. </p>
-
-<p class="definition">Definition at line <a class="el" href="_jwt_middleware_8cs_source.html#l00035">35</a> of file <a class="el" href="_jwt_middleware_8cs_source.html">JwtMiddleware.cs</a>.</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">   36</span>    {</div>
+<div class="line"><span class="lineno">   37</span>        var token = context.Request.Headers[<span class="stringliteral">&quot;Authorization&quot;</span>].FirstOrDefault()?.Split(<span class="stringliteral">&quot; &quot;</span>).Last();</div>
+<div class="line"><span class="lineno">   38</span>        var user = jwtUtils.ValidateToken(token);</div>
+<div class="line"><span class="lineno">   39</span>        <span class="keywordflow">if</span> (!(user == <span class="keyword">null</span>) &amp;&amp; !<span class="keywordtype">string</span>.IsNullOrEmpty(user.EmailAddress))</div>
+<div class="line"><span class="lineno">   40</span>        {</div>
+<div class="line"><span class="lineno">   41</span>            <span class="comment">// attach user to context on successful jwt validation</span></div>
+<div class="line"><span class="lineno">   42</span>            context.Items[<span class="stringliteral">&quot;user&quot;</span>] = user;</div>
+<div class="line"><span class="lineno">   43</span>        }</div>
+<div class="line"><span class="lineno">   44</span>        await _next(context);</div>
+<div class="line"><span class="lineno">   45</span>    }</div>
+</div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_ainslie_a_p_i_1_1_authentication_1_1_jwt_middleware_acde1344b114bea6f8a9c175b5e7b5b94_cgraph.png" border="0" usemap="#aclass_ainslie_a_p_i_1_1_authentication_1_1_jwt_middleware_acde1344b114bea6f8a9c175b5e7b5b94_cgraph" alt=""/></div>
@@ -175,7 +182,7 @@ Here is the call graph for this function:</div>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>C:/Users/STRIDER/source/repos/AinslieAPI/Authentication/<a class="el" href="_jwt_middleware_8cs_source.html">JwtMiddleware.cs</a></li>
+<li>C:/Users/STRIDER/source/repos/AinslieAPI/Authentication/<a class="el" href="_jwt_middleware_8cs.html">JwtMiddleware.cs</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

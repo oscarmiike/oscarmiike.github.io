@@ -9,13 +9,6 @@ static \mbox{\hyperlink{class_flatted_a02948b06481bc3d2118b61f83ccc26e8}{stringi
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{Detailed Description}
-
-
-Definition at line \mbox{\hyperlink{flatted_8php_source_l00028}{28}} of file \mbox{\hyperlink{flatted_8php_source}{flatted.\+php}}.
-
-
-
 \doxysubsection{Member Function Documentation}
 \Hypertarget{class_flatted_abda2f205b4a05f941504857868aa4435}\label{class_flatted_abda2f205b4a05f941504857868aa4435} 
 \index{Flatted@{Flatted}!parse@{parse}}
@@ -24,9 +17,26 @@ Definition at line \mbox{\hyperlink{flatted_8php_source_l00028}{28}} of file \mb
 {\footnotesize\ttfamily static Flatted\+::parse (\begin{DoxyParamCaption}\item[{}]{\$json,  }\item[{}]{\$assoc = {\ttfamily false},  }\item[{}]{\$depth = {\ttfamily 512},  }\item[{}]{\$options = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \$input\ =\ array\_map(}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \textcolor{stringliteral}{'Flatted::asString'},}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ array\_map(}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'Flatted::wrap'},}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ json\_decode(\$json,\ \$assoc,\ \$depth,\ \$options)}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ )}
+\DoxyCodeLine{00038\ \ \ \ \ );}
+\DoxyCodeLine{00039\ \ \ \ \ \$value\ =\ \&\$input[0];}
+\DoxyCodeLine{00040\ \ \ \ \ \$set\ =\ array();}
+\DoxyCodeLine{00041\ \ \ \ \ \$set[]\ =\ \&\$value;}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordflow}{if}\ (is\_array(\$value))}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Flatted::loop(\textcolor{keyword}{false},\ array\_keys(\$value),\ \$input,\ \$set,\ \$value);}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordflow}{if}\ (is\_object(\$value))}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Flatted::loop(\textcolor{keyword}{true},\ Flatted::keys(\$value),\ \$input,\ \$set,\ \$value);}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordflow}{return}\ \$value;}
+\DoxyCodeLine{00047\ \ \ \}}
 
-Definition at line \mbox{\hyperlink{flatted_8php_source_l00031}{31}} of file \mbox{\hyperlink{flatted_8php_source}{flatted.\+php}}.
-
+\end{DoxyCode}
 \Hypertarget{class_flatted_a02948b06481bc3d2118b61f83ccc26e8}\label{class_flatted_a02948b06481bc3d2118b61f83ccc26e8} 
 \index{Flatted@{Flatted}!stringify@{stringify}}
 \index{stringify@{stringify}!Flatted@{Flatted}}
@@ -34,9 +44,22 @@ Definition at line \mbox{\hyperlink{flatted_8php_source_l00031}{31}} of file \mb
 {\footnotesize\ttfamily static Flatted\+::stringify (\begin{DoxyParamCaption}\item[{}]{\$value,  }\item[{}]{\$options = {\ttfamily 0},  }\item[{}]{\$depth = {\ttfamily 512} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \$known\ =\ \textcolor{keyword}{new}\ stdClass;}
+\DoxyCodeLine{00051\ \ \ \ \ \$known-\/>key\ =\ array();}
+\DoxyCodeLine{00052\ \ \ \ \ \$known-\/>value\ =\ array();}
+\DoxyCodeLine{00053\ \ \ \ \ \$input\ =\ array();}
+\DoxyCodeLine{00054\ \ \ \ \ \$output\ =\ array();}
+\DoxyCodeLine{00055\ \ \ \ \ \$i\ =\ intval(Flatted::index(\$known,\ \$input,\ \$value));}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordflow}{while}\ (\$i\ <\ count(\$input))\ \{}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \$output[\$i]\ =\ Flatted::transform(\$known,\ \$input,\ \$input[\$i]);}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \$i++;}
+\DoxyCodeLine{00059\ \ \ \ \ \}}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordflow}{return}\ json\_encode(\$output,\ \$options,\ \$depth);}
+\DoxyCodeLine{00061\ \ \ \}}
 
-Definition at line \mbox{\hyperlink{flatted_8php_source_l00049}{49}} of file \mbox{\hyperlink{flatted_8php_source}{flatted.\+php}}.
-
+\end{DoxyCode}
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

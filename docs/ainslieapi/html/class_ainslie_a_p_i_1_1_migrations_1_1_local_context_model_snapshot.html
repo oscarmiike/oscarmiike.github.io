@@ -108,10 +108,7 @@ Protected Member Functions</h2></td></tr>
 <tr class="memitem:ac2304ae73275e12769d4302136aa2028" id="r_ac2304ae73275e12769d4302136aa2028"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac2304ae73275e12769d4302136aa2028">BuildModel</a> (ModelBuilder modelBuilder)</td></tr>
 <tr class="separator:ac2304ae73275e12769d4302136aa2028"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_local_context_model_snapshot_8cs_source.html#l00014">14</a> of file <a class="el" href="_local_context_model_snapshot_8cs_source.html">LocalContextModelSnapshot.cs</a>.</p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a id="ac2304ae73275e12769d4302136aa2028" name="ac2304ae73275e12769d4302136aa2028"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac2304ae73275e12769d4302136aa2028">&#9670;&#160;</a></span>BuildModel()</h2>
 
@@ -134,13 +131,52 @@ Protected Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_local_context_model_snapshot_8cs_source.html#l00016">16</a> of file <a class="el" href="_local_context_model_snapshot_8cs_source.html">LocalContextModelSnapshot.cs</a>.</p>
-
+<div class="fragment"><div class="line"><span class="lineno">   17</span>        {</div>
+<div class="line"><span class="lineno">   18</span><span class="preprocessor">#pragma warning disable 612, 618</span></div>
+<div class="line"><span class="lineno">   19</span>            modelBuilder</div>
+<div class="line"><span class="lineno">   20</span>                .HasAnnotation(<span class="stringliteral">&quot;ProductVersion&quot;</span>, <span class="stringliteral">&quot;7.0.5&quot;</span>)</div>
+<div class="line"><span class="lineno">   21</span>                .HasAnnotation(<span class="stringliteral">&quot;Relational:MaxIdentifierLength&quot;</span>, 128);</div>
+<div class="line"><span class="lineno">   22</span> </div>
+<div class="line"><span class="lineno">   23</span>            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);</div>
+<div class="line"><span class="lineno">   24</span> </div>
+<div class="line"><span class="lineno">   25</span>            modelBuilder.Entity(<span class="stringliteral">&quot;AinslieAPI.Data.Models.LogEntry&quot;</span>, b =&gt;</div>
+<div class="line"><span class="lineno">   26</span>                {</div>
+<div class="line"><span class="lineno">   27</span>                    <a class="code hl_variable" href="namespacetest.html#a0f45e01f998f32bf815adc0cbe886405">b</a>.Property&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;ID&quot;</span>)</div>
+<div class="line"><span class="lineno">   28</span>                        .ValueGeneratedOnAdd()</div>
+<div class="line"><span class="lineno">   29</span>                        .HasColumnType(<span class="stringliteral">&quot;int&quot;</span>);</div>
+<div class="line"><span class="lineno">   30</span> </div>
+<div class="line"><span class="lineno">   31</span>                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(<a class="code hl_variable" href="namespacetest.html#a0f45e01f998f32bf815adc0cbe886405">b</a>.Property&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;ID&quot;</span>));</div>
+<div class="line"><span class="lineno">   32</span> </div>
+<div class="line"><span class="lineno">   33</span>                    <a class="code hl_variable" href="namespacetest.html#a0f45e01f998f32bf815adc0cbe886405">b</a>.Property&lt;DateTime&gt;(<span class="stringliteral">&quot;Created&quot;</span>)</div>
+<div class="line"><span class="lineno">   34</span>                        .HasColumnType(<span class="stringliteral">&quot;DateTime2(3)&quot;</span>);</div>
+<div class="line"><span class="lineno">   35</span> </div>
+<div class="line"><span class="lineno">   36</span>                    <a class="code hl_variable" href="namespacetest.html#a0f45e01f998f32bf815adc0cbe886405">b</a>.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;Data&quot;</span>)</div>
+<div class="line"><span class="lineno">   37</span>                        .IsRequired()</div>
+<div class="line"><span class="lineno">   38</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(max)&quot;</span>);</div>
+<div class="line"><span class="lineno">   39</span> </div>
+<div class="line"><span class="lineno">   40</span>                    <a class="code hl_variable" href="namespacetest.html#a0f45e01f998f32bf815adc0cbe886405">b</a>.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;Source&quot;</span>)</div>
+<div class="line"><span class="lineno">   41</span>                        .IsRequired()</div>
+<div class="line"><span class="lineno">   42</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(max)&quot;</span>);</div>
+<div class="line"><span class="lineno">   43</span> </div>
+<div class="line"><span class="lineno">   44</span>                    <a class="code hl_variable" href="namespacetest.html#a0f45e01f998f32bf815adc0cbe886405">b</a>.Property&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;ThreadID&quot;</span>)</div>
+<div class="line"><span class="lineno">   45</span>                        .HasColumnType(<span class="stringliteral">&quot;int&quot;</span>);</div>
+<div class="line"><span class="lineno">   46</span> </div>
+<div class="line"><span class="lineno">   47</span>                    <a class="code hl_variable" href="namespacetest.html#a0f45e01f998f32bf815adc0cbe886405">b</a>.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;Type&quot;</span>)</div>
+<div class="line"><span class="lineno">   48</span>                        .IsRequired()</div>
+<div class="line"><span class="lineno">   49</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(max)&quot;</span>);</div>
+<div class="line"><span class="lineno">   50</span> </div>
+<div class="line"><span class="lineno">   51</span>                    <a class="code hl_variable" href="namespacetest.html#a0f45e01f998f32bf815adc0cbe886405">b</a>.HasKey(<span class="stringliteral">&quot;ID&quot;</span>);</div>
+<div class="line"><span class="lineno">   52</span> </div>
+<div class="line"><span class="lineno">   53</span>                    <a class="code hl_variable" href="namespacetest.html#a0f45e01f998f32bf815adc0cbe886405">b</a>.ToTable(<span class="stringliteral">&quot;LogEntries&quot;</span>);</div>
+<div class="line"><span class="lineno">   54</span>                });</div>
+<div class="line"><span class="lineno">   55</span><span class="preprocessor">#pragma warning restore 612, 618</span></div>
+<div class="line"><span class="lineno">   56</span>        }</div>
+<div class="ttc" id="anamespacetest_html_a0f45e01f998f32bf815adc0cbe886405"><div class="ttname"><a href="namespacetest.html#a0f45e01f998f32bf815adc0cbe886405">test.b</a></div><div class="ttdeci">b</div><div class="ttdef"><b>Definition</b> test.py:20</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>C:/Users/STRIDER/source/repos/AinslieAPI/Migrations/<a class="el" href="_local_context_model_snapshot_8cs_source.html">LocalContextModelSnapshot.cs</a></li>
+<li>C:/Users/STRIDER/source/repos/AinslieAPI/Migrations/<a class="el" href="_local_context_model_snapshot_8cs.html">LocalContextModelSnapshot.cs</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

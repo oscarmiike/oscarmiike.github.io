@@ -17,10 +17,6 @@ Provides services for interacting with the AW API, including retrieving GSS pric
 \doxysubsection{Detailed Description}
 Provides services for interacting with the AW API, including retrieving GSS pricing information. 
 
-Definition at line \mbox{\hyperlink{_aw_api_service_8cs_source_l00019}{19}} of file \mbox{\hyperlink{_aw_api_service_8cs_source}{Aw\+Api\+Service.\+cs}}.
-
-
-
 \doxysubsection{Constructor \& Destructor Documentation}
 \Hypertarget{class_ainslie_a_p_i_1_1_services_1_1_aw_api_service_a799cac6d2cd0c1e7a21f8f892740b343}\label{class_ainslie_a_p_i_1_1_services_1_1_aw_api_service_a799cac6d2cd0c1e7a21f8f892740b343} 
 \index{AinslieAPI.Services.AwApiService@{AinslieAPI.Services.AwApiService}!AwApiService@{AwApiService}}
@@ -40,9 +36,13 @@ Initialises a new instance of the Aw\+Api\+Service with application settings and
 \hline
 \end{DoxyParams}
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \_appSettings\ =\ appSettings.Value;}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger\ =\ logService;}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \}}
 
-Definition at line \mbox{\hyperlink{_aw_api_service_8cs_source_l00030}{30}} of file \mbox{\hyperlink{_aw_api_service_8cs_source}{Aw\+Api\+Service.\+cs}}.
-
+\end{DoxyCode}
 
 
 \doxysubsection{Member Function Documentation}
@@ -69,11 +69,49 @@ GSSPrice\+Data containing the pricing information, or an empty GSSPrice\+Data if
 
 
 Makes a GET request to the AW API using basic authentication. Logs errors if the request fails or if parsing the response encounters issues. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ var\ gssPricing\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_g_s_s_1_1_g_s_s_price_data}{GSSPriceData}}();}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keywordtype}{string}.IsNullOrEmpty(userName))}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ gssPricing;}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient(\_appSettings.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings_a40101ce107bba2b095e4196f0d1db3e9}{AwApiSettings}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_aw_api_settings_a4c41784f49addb6d2b04b7e4d2418ca9}{BaseUrl}});}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ var\ request\ =\ \textcolor{keyword}{new}\ RestRequest(\_appSettings.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings_a40101ce107bba2b095e4196f0d1db3e9}{AwApiSettings}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_aw_api_settings_a93dcc007ec0ab3b1175e0c6f0bb94fce}{Endpoint\_SpotAUD}},\ RestSharp.Method.Get);}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddQueryParameter(\textcolor{stringliteral}{"{}requestasuser"{}},\ userName);}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ request.Authenticator\ =\ \textcolor{keyword}{new}\ HttpBasicAuthenticator(\_appSettings.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings_a40101ce107bba2b095e4196f0d1db3e9}{AwApiSettings}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_aw_api_settings_a1d84dd087799f0c15afb23eb60dde18b}{ApiUsername}},\ \_appSettings.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings_a40101ce107bba2b095e4196f0d1db3e9}{AwApiSettings}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_aw_api_settings_a6aa5ce403a3f846aa40764b7ec57cb99}{ApiPassword}});}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ RestResponse\ response;}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ response\ =\ client.Execute(request);}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response.IsSuccessful)}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ gssPricing\ =\ JsonConvert.DeserializeObject<\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_g_s_s_1_1_g_s_s_price_data}{GSSPriceData}}>(response.Content\ ??\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a9bf79a218e0884ac9cabd3ac87b81321}{LogError}}(LogService.LogSources.AwApiService,}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}error\ getting\ gss\ pricing\ from\ aw\ api"{}},}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}StatusCode:\ \{(int)response.StatusCode\}"{}},}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}StatusDescription:\ \{response.StatusDescription\}"{}},}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}Content:\ \{response.Content\}"{}});}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a9bf79a218e0884ac9cabd3ac87b81321}{LogError}}(LogService.LogSources.AwApiService,}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}error\ getting\ gss\ pricing\ from\ aw\ api,\ response\ object\ is\ null"{}});}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a83bbf569dea7ea5a40e02fca200aad8c}{LogException}}(LogService.LogSources.AwApiService,\ \$\textcolor{stringliteral}{"{}Exception\ getting\ green\ id\ customer\ from\ internal\ api"{}},\ ex.ToString());}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ gssPricing;}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \}}
 
-Definition at line \mbox{\hyperlink{_aw_api_service_8cs_source_l00047}{47}} of file \mbox{\hyperlink{_aw_api_service_8cs_source}{Aw\+Api\+Service.\+cs}}.
-
-Here is the call graph for this function\+:
-\nopagebreak
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

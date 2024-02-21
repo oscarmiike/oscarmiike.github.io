@@ -2,8 +2,7 @@
 \hypertarget{class_ainslie_a_p_i_1_1_controllers_1_1_products_controller}{}\label{class_ainslie_a_p_i_1_1_controllers_1_1_products_controller}\index{AinslieAPI.Controllers.ProductsController@{AinslieAPI.Controllers.ProductsController}}
 
 
-Inheritance diagram for Ainslie\+API.\+Controllers.\+Products\+Controller\+:
-\nopagebreak
+Inheritance diagram for Ainslie\+API.\+Controllers.\+Products\+Controller\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for Ainslie\+API.\+Controllers.\+Products\+Controller\+:
 \end{figure}
 
 
-Collaboration diagram for Ainslie\+API.\+Controllers.\+Products\+Controller\+:
-\nopagebreak
+Collaboration diagram for Ainslie\+API.\+Controllers.\+Products\+Controller\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -27,13 +25,6 @@ Collaboration diagram for Ainslie\+API.\+Controllers.\+Products\+Controller\+:
 \begin{DoxyCompactList}\small\item\em Constructs the Products\+Controller with necessary dependencies for handling HTTP context, application settings, internal API services, and logging. \end{DoxyCompactList}\item 
 IAction\+Result \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_products_controller_ac20bed843f55f212dfb5ffe45d411f8f}{Price\+List}} ()
 \begin{DoxyCompactList}\small\item\em Retrieves a list of current product prices. \end{DoxyCompactList}\end{DoxyCompactItemize}
-
-
-\doxysubsection{Detailed Description}
-
-
-Definition at line \mbox{\hyperlink{_products_controller_8cs_source_l00022}{22}} of file \mbox{\hyperlink{_products_controller_8cs_source}{Products\+Controller.\+cs}}.
-
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
@@ -59,9 +50,16 @@ Constructs the Products\+Controller with necessary dependencies for handling HTT
 \hline
 \end{DoxyParams}
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ JwtUser\ =\ (\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_user_helper_1_1_authenticated_user}{AuthenticatedUser}}?)httpContextAccessor.HttpContext?.Items[\textcolor{stringliteral}{"{}user"{}}];}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \_httpContext\ \ =\ httpContextAccessor.HttpContext;}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \_appSettings\ =\ appSettings.Value;}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \_iaService\ =\ iaService;}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger\ =\ logger;}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \}}
 
-Definition at line \mbox{\hyperlink{_products_controller_8cs_source_l00038}{38}} of file \mbox{\hyperlink{_products_controller_8cs_source}{Products\+Controller.\+cs}}.
-
+\end{DoxyCode}
 
 
 \doxysubsection{Member Function Documentation}
@@ -81,11 +79,15 @@ An IAction\+Result containing the product pricing information or an error messag
 
 
 This endpoint requires authorisation and is accessible only to users with specific roles. It fetches product pricing data using the Internal\+Api\+Service and returns this data within an HTTP response. Logging is performed to capture the request context and authenticated user\textquotesingle{}s details. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a917b9af360c0c6521ce36f4acbc72023}{LogInformation}}(\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_ab557dc1394f5cf56cfb78c765fdfffe6}{LogSources}}.ProductsController,\ \$\textcolor{stringliteral}{"{}request\ received\ on\ products/pricelist"{}},\ \$\textcolor{stringliteral}{"{}authenticated\ user:\ \{JwtUser?.EmailAddress\}"{}});}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ var\ productPricing\ =\ \_iaService.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service_a0c4c5cccb2233540343e36fe0e8a0acc}{GetProductPricing}}();}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Ok(productPricing);}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \}}
 
-Definition at line \mbox{\hyperlink{_products_controller_8cs_source_l00059}{59}} of file \mbox{\hyperlink{_products_controller_8cs_source}{Products\+Controller.\+cs}}.
-
-Here is the call graph for this function\+:
-\nopagebreak
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

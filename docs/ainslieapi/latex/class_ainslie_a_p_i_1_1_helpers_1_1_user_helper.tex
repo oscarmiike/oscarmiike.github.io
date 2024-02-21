@@ -7,13 +7,6 @@ static \mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_user_helper_1_1_authen
 \begin{DoxyCompactList}\small\item\em Extracts and constructs an Authenticated\+User object from the security claims of the currently authenticated user. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{Detailed Description}
-
-
-Definition at line \mbox{\hyperlink{_user_helper_8cs_source_l00008}{8}} of file \mbox{\hyperlink{_user_helper_8cs_source}{User\+Helper.\+cs}}.
-
-
-
 \doxysubsection{Member Function Documentation}
 \Hypertarget{class_ainslie_a_p_i_1_1_helpers_1_1_user_helper_a5aef940b2585ea4d9472c9f3e89a860f}\label{class_ainslie_a_p_i_1_1_helpers_1_1_user_helper_a5aef940b2585ea4d9472c9f3e89a860f} 
 \index{AinslieAPI.Helpers.UserHelper@{AinslieAPI.Helpers.UserHelper}!GetAuthenticatedUser@{GetAuthenticatedUser}}
@@ -38,11 +31,21 @@ An Authenticated\+User populated with details from the user\textquotesingle{}s c
 
 
 This method parses claims to retrieve essential user information such as name, email address, profile image, and roles. It ensures that only authenticated users\textquotesingle{} details are processed. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (user\ ==\ \textcolor{keyword}{null}\ ||\ !user.Identity.IsAuthenticated)}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_user_helper_1_1_authenticated_user}{AuthenticatedUser}}}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Name\ =\ user.Identity.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_user_helper_1_1_authenticated_user_acb5634a86fcc32a706c11b581745f992}{Name}},}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ EmailAddress\ =\ user.Claims.FirstOrDefault(c\ =>\ c.Type\ ==\ ClaimTypes.Email)?.Value,}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ProfileImage\ =\ user.Claims.FirstOrDefault(c\ =>\ c.Type\ ==\ \textcolor{stringliteral}{"{}picture"{}})?.Value,}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Roles\ =\ user.Claims.Where(c\ =>\ c.Type\ ==\ ClaimTypes.Role).Select(role\ =>\ role.Value).ToList()}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \}}
 
-Definition at line \mbox{\hyperlink{_user_helper_8cs_source_l00022}{22}} of file \mbox{\hyperlink{_user_helper_8cs_source}{User\+Helper.\+cs}}.
-
-Here is the caller graph for this function\+:
-\nopagebreak
+\end{DoxyCode}
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

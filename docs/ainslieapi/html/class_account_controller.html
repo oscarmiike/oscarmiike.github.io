@@ -122,8 +122,6 @@ Public Member Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Controller responsible for handling account-related actions such as login, logout, and profile viewing, integrating Auth0 for authentication. </p>
-
-<p class="definition">Definition at line <a class="el" href="_account_controller_8cs_source.html#l00014">14</a> of file <a class="el" href="_account_controller_8cs_source.html">AccountController.cs</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a8a459b48676311f841121b3831f047da" name="a8a459b48676311f841121b3831f047da"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8a459b48676311f841121b3831f047da">&#9670;&#160;</a></span>AccessDenied()</h2>
@@ -142,9 +140,10 @@ Public Member Functions</h2></td></tr>
 
 <p>Displays the access denied view when a user tries to access resources without appropriate permissions. </p>
 <dl class="section return"><dt>Returns</dt><dd>The access denied view.</dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="_account_controller_8cs_source.html#l00089">89</a> of file <a class="el" href="_account_controller_8cs_source.html">AccountController.cs</a>.</p>
-
+<div class="fragment"><div class="line"><span class="lineno">   90</span>    {</div>
+<div class="line"><span class="lineno">   91</span>        <span class="keywordflow">return</span> View();</div>
+<div class="line"><span class="lineno">   92</span>    }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a08036d988f8cbbf5be7f256252470116" name="a08036d988f8cbbf5be7f256252470116"></a>
@@ -164,9 +163,12 @@ Public Member Functions</h2></td></tr>
 
 <p>Displays the admin profile page, accessible only by users with the "Admin" role. Demonstrates the use of the ASP.NET Core [Authorize] attribute with a policy. </p>
 <dl class="section return"><dt>Returns</dt><dd>The profile view for the authenticated admin.</dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="_account_controller_8cs_source.html#l00055">55</a> of file <a class="el" href="_account_controller_8cs_source.html">AccountController.cs</a>.</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">   56</span>    {</div>
+<div class="line"><span class="lineno">   57</span>        <span class="keywordflow">return</span> View(<span class="stringliteral">&quot;profile&quot;</span>, <a class="code hl_class" href="class_ainslie_a_p_i_1_1_helpers_1_1_user_helper.html">UserHelper</a>.<a class="code hl_function" href="class_ainslie_a_p_i_1_1_helpers_1_1_user_helper.html#a5aef940b2585ea4d9472c9f3e89a860f">GetAuthenticatedUser</a>(User));</div>
+<div class="line"><span class="lineno">   58</span>    }</div>
+<div class="ttc" id="aclass_ainslie_a_p_i_1_1_helpers_1_1_user_helper_html"><div class="ttname"><a href="class_ainslie_a_p_i_1_1_helpers_1_1_user_helper.html">AinslieAPI.Helpers.UserHelper</a></div><div class="ttdef"><b>Definition</b> UserHelper.cs:9</div></div>
+<div class="ttc" id="aclass_ainslie_a_p_i_1_1_helpers_1_1_user_helper_html_a5aef940b2585ea4d9472c9f3e89a860f"><div class="ttname"><a href="class_ainslie_a_p_i_1_1_helpers_1_1_user_helper.html#a5aef940b2585ea4d9472c9f3e89a860f">AinslieAPI.Helpers.UserHelper.GetAuthenticatedUser</a></div><div class="ttdeci">static AuthenticatedUser GetAuthenticatedUser(ClaimsPrincipal user)</div><div class="ttdoc">Extracts and constructs an AuthenticatedUser object from the security claims of the currently authent...</div><div class="ttdef"><b>Definition</b> UserHelper.cs:22</div></div>
+</div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_account_controller_a08036d988f8cbbf5be7f256252470116_cgraph.png" border="0" usemap="#aclass_account_controller_a08036d988f8cbbf5be7f256252470116_cgraph" alt=""/></div>
@@ -201,9 +203,20 @@ Here is the call graph for this function:</div>
   </table>
   </dd>
 </dl>
-
-<p class="definition">Definition at line <a class="el" href="_account_controller_8cs_source.html#l00022">22</a> of file <a class="el" href="_account_controller_8cs_source.html">AccountController.cs</a>.</p>
-
+<div class="fragment"><div class="line"><span class="lineno">   23</span>    {</div>
+<div class="line"><span class="lineno">   24</span>        var authenticationProperties = <span class="keyword">new</span> LoginAuthenticationPropertiesBuilder()</div>
+<div class="line"><span class="lineno">   25</span>          <span class="comment">// Indicate here where Auth0 should redirect the user after a login.</span></div>
+<div class="line"><span class="lineno">   26</span>          <span class="comment">// Note that the resulting absolute Uri must be added to the</span></div>
+<div class="line"><span class="lineno">   27</span>          <span class="comment">// **Allowed Callback URLs** settings for the app.</span></div>
+<div class="line"><span class="lineno">   28</span>          .WithRedirectUri(returnUrl)</div>
+<div class="line"><span class="lineno">   29</span>          .Build();</div>
+<div class="line"><span class="lineno">   30</span> </div>
+<div class="line"><span class="lineno">   31</span>        await HttpContext.ChallengeAsync(</div>
+<div class="line"><span class="lineno">   32</span>          Auth0Constants.AuthenticationScheme,</div>
+<div class="line"><span class="lineno">   33</span>          authenticationProperties</div>
+<div class="line"><span class="lineno">   34</span>        );</div>
+<div class="line"><span class="lineno">   35</span>    }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a3d41f9019393ea0c25a97021a9298501" name="a3d41f9019393ea0c25a97021a9298501"></a>
@@ -222,9 +235,25 @@ Here is the call graph for this function:</div>
 </div><div class="memdoc">
 
 <p>Logs the user out from both the application and Auth0, then redirects to the home page. </p>
-
-<p class="definition">Definition at line <a class="el" href="_account_controller_8cs_source.html#l00064">64</a> of file <a class="el" href="_account_controller_8cs_source.html">AccountController.cs</a>.</p>
-
+<div class="fragment"><div class="line"><span class="lineno">   65</span>    {</div>
+<div class="line"><span class="lineno">   66</span>        var authenticationProperties = <span class="keyword">new</span> LogoutAuthenticationPropertiesBuilder()</div>
+<div class="line"><span class="lineno">   67</span>        <span class="comment">// Indicate here where Auth0 should redirect the user after a logout.</span></div>
+<div class="line"><span class="lineno">   68</span>        <span class="comment">// Note that the resulting absolute Uri must be added to the</span></div>
+<div class="line"><span class="lineno">   69</span>        <span class="comment">// **Allowed Logout URLs** settings for the app.</span></div>
+<div class="line"><span class="lineno">   70</span>          .WithRedirectUri(Url.Action(<span class="stringliteral">&quot;Index&quot;</span>, <span class="stringliteral">&quot;Home&quot;</span>))</div>
+<div class="line"><span class="lineno">   71</span>          .Build();</div>
+<div class="line"><span class="lineno">   72</span> </div>
+<div class="line"><span class="lineno">   73</span>        <span class="comment">// Logout from Auth0</span></div>
+<div class="line"><span class="lineno">   74</span>        await HttpContext.SignOutAsync(</div>
+<div class="line"><span class="lineno">   75</span>          Auth0Constants.AuthenticationScheme,</div>
+<div class="line"><span class="lineno">   76</span>          authenticationProperties</div>
+<div class="line"><span class="lineno">   77</span>        );</div>
+<div class="line"><span class="lineno">   78</span>        <span class="comment">// Logout from the application</span></div>
+<div class="line"><span class="lineno">   79</span>        await HttpContext.SignOutAsync(</div>
+<div class="line"><span class="lineno">   80</span>          CookieAuthenticationDefaults.AuthenticationScheme</div>
+<div class="line"><span class="lineno">   81</span>        );</div>
+<div class="line"><span class="lineno">   82</span>    }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="ac7c9100b6447131f9569be8f76a8b49f" name="ac7c9100b6447131f9569be8f76a8b49f"></a>
@@ -244,9 +273,10 @@ Here is the call graph for this function:</div>
 
 <p>Displays the profile page for a logged-in user, restricted to users with the "User" role. </p>
 <dl class="section return"><dt>Returns</dt><dd>The profile view for the authenticated user.</dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="_account_controller_8cs_source.html#l00043">43</a> of file <a class="el" href="_account_controller_8cs_source.html">AccountController.cs</a>.</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">   44</span>    {</div>
+<div class="line"><span class="lineno">   45</span>        <span class="keywordflow">return</span> View(<a class="code hl_class" href="class_ainslie_a_p_i_1_1_helpers_1_1_user_helper.html">UserHelper</a>.<a class="code hl_function" href="class_ainslie_a_p_i_1_1_helpers_1_1_user_helper.html#a5aef940b2585ea4d9472c9f3e89a860f">GetAuthenticatedUser</a>(User));</div>
+<div class="line"><span class="lineno">   46</span>    }</div>
+</div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_account_controller_ac7c9100b6447131f9569be8f76a8b49f_cgraph.png" border="0" usemap="#aclass_account_controller_ac7c9100b6447131f9569be8f76a8b49f_cgraph" alt=""/></div>
@@ -260,7 +290,7 @@ Here is the call graph for this function:</div>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>C:/Users/STRIDER/source/repos/AinslieAPI/Controllers/<a class="el" href="_account_controller_8cs_source.html">AccountController.cs</a></li>
+<li>C:/Users/STRIDER/source/repos/AinslieAPI/Controllers/<a class="el" href="_account_controller_8cs.html">AccountController.cs</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

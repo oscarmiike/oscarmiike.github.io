@@ -7,8 +7,7 @@
 
 
 
-Inheritance diagram for Ainslie\+API.\+Migrations.\+Tdcr.\+updatetdcrordercompleted\+:
-\nopagebreak
+Inheritance diagram for Ainslie\+API.\+Migrations.\+Tdcr.\+updatetdcrordercompleted\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -17,8 +16,7 @@ Inheritance diagram for Ainslie\+API.\+Migrations.\+Tdcr.\+updatetdcrordercomple
 \end{figure}
 
 
-Collaboration diagram for Ainslie\+API.\+Migrations.\+Tdcr.\+updatetdcrordercompleted\+:
-\nopagebreak
+Collaboration diagram for Ainslie\+API.\+Migrations.\+Tdcr.\+updatetdcrordercompleted\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -39,10 +37,6 @@ override void \mbox{\hyperlink{class_ainslie_a_p_i_1_1_migrations_1_1_tdcr_1_1up
 \doxysubsection{Detailed Description}
 
 
-Definition at line \mbox{\hyperlink{20231130034215__update-tdcr-order-completed_8cs_source_l00008}{8}} of file \mbox{\hyperlink{20231130034215__update-tdcr-order-completed_8cs_source}{20231130034215\+\_\+update-\/tdcr-\/order-\/completed.\+cs}}.
-
-
-
 \doxysubsection{Member Function Documentation}
 \Hypertarget{class_ainslie_a_p_i_1_1_migrations_1_1_tdcr_1_1updatetdcrordercompleted_a6839c216f38bc3e5b747df48728f4771}\label{class_ainslie_a_p_i_1_1_migrations_1_1_tdcr_1_1updatetdcrordercompleted_a6839c216f38bc3e5b747df48728f4771} 
 \index{AinslieAPI.Migrations.Tdcr.updatetdcrordercompleted@{AinslieAPI.Migrations.Tdcr.updatetdcrordercompleted}!BuildTargetModel@{BuildTargetModel}}
@@ -55,9 +49,65 @@ Definition at line \mbox{\hyperlink{20231130034215__update-tdcr-order-completed_
 
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#pragma\ warning\ disable\ 612,\ 618 }}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ modelBuilder}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasAnnotation(\textcolor{stringliteral}{"{}ProductVersion"{}},\ \textcolor{stringliteral}{"{}7.0.5"{}})}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasAnnotation(\textcolor{stringliteral}{"{}Relational:MaxIdentifierLength"{}},\ 128);}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ modelBuilder.Entity(\textcolor{stringliteral}{"{}AinslieAPI.Data.Models.Tdcr.Order"{}},\ b\ =>}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacetest_a0f45e01f998f32bf815adc0cbe886405}{b}}.Property<\textcolor{keywordtype}{int}>(\textcolor{stringliteral}{"{}ID"{}})}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .ValueGeneratedOnAdd()}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasColumnType(\textcolor{stringliteral}{"{}int"{}});}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SqlServerPropertyBuilderExtensions.UseIdentityColumn(\mbox{\hyperlink{namespacetest_a0f45e01f998f32bf815adc0cbe886405}{b}}.Property<\textcolor{keywordtype}{int}>(\textcolor{stringliteral}{"{}ID"{}}));}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacetest_a0f45e01f998f32bf815adc0cbe886405}{b}}.Property<\textcolor{keywordtype}{bool}>(\textcolor{stringliteral}{"{}Completed"{}})}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasColumnType(\textcolor{stringliteral}{"{}bit"{}});}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacetest_a0f45e01f998f32bf815adc0cbe886405}{b}}.Property<\textcolor{keywordtype}{string}>(\textcolor{stringliteral}{"{}CompletedBy"{}})}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasMaxLength(100)}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasColumnType(\textcolor{stringliteral}{"{}nvarchar(100)"{}});}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacetest_a0f45e01f998f32bf815adc0cbe886405}{b}}.Property<DateTime>(\textcolor{stringliteral}{"{}Created"{}})}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasColumnType(\textcolor{stringliteral}{"{}DateTime2(3)"{}});}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacetest_a0f45e01f998f32bf815adc0cbe886405}{b}}.Property<\textcolor{keywordtype}{string}>(\textcolor{stringliteral}{"{}Market"{}})}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .IsRequired()}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasMaxLength(50)}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasColumnType(\textcolor{stringliteral}{"{}nvarchar(50)"{}});}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacetest_a0f45e01f998f32bf815adc0cbe886405}{b}}.Property<decimal>(\textcolor{stringliteral}{"{}Price"{}})}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasColumnType(\textcolor{stringliteral}{"{}decimal(18,\ 4)"{}});}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacetest_a0f45e01f998f32bf815adc0cbe886405}{b}}.Property<decimal>(\textcolor{stringliteral}{"{}Quantity"{}})}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasColumnType(\textcolor{stringliteral}{"{}decimal(18,\ 8)"{}});}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacetest_a0f45e01f998f32bf815adc0cbe886405}{b}}.Property<\textcolor{keywordtype}{string}>(\textcolor{stringliteral}{"{}Side"{}})}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .IsRequired()}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasMaxLength(50)}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasColumnType(\textcolor{stringliteral}{"{}nvarchar(50)"{}});}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacetest_a0f45e01f998f32bf815adc0cbe886405}{b}}.Property<\textcolor{keywordtype}{string}>(\textcolor{stringliteral}{"{}TdcrId"{}})}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .IsRequired()}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasMaxLength(100)}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasColumnType(\textcolor{stringliteral}{"{}nvarchar(100)"{}});}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacetest_a0f45e01f998f32bf815adc0cbe886405}{b}}.Property<\textcolor{keywordtype}{long}>(\textcolor{stringliteral}{"{}TdcrTimestamp"{}})}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasColumnType(\textcolor{stringliteral}{"{}bigint"{}});}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacetest_a0f45e01f998f32bf815adc0cbe886405}{b}}.HasKey(\textcolor{stringliteral}{"{}ID"{}});}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacetest_a0f45e01f998f32bf815adc0cbe886405}{b}}.ToTable(\textcolor{stringliteral}{"{}Orders"{}});}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{00074\ \textcolor{preprocessor}{\#pragma\ warning\ restore\ 612,\ 618 }}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \}}
 
-Definition at line \mbox{\hyperlink{20231130034215__update-tdcr-order-completed_8_designer_8cs_source_l00019}{19}} of file \mbox{\hyperlink{20231130034215__update-tdcr-order-completed_8_designer_8cs_source}{20231130034215\+\_\+update-\/tdcr-\/order-\/completed.\+Designer.\+cs}}.
-
+\end{DoxyCode}
 \Hypertarget{class_ainslie_a_p_i_1_1_migrations_1_1_tdcr_1_1updatetdcrordercompleted_ab5ff4b66f5c91120ac1d17bbb09f6238}\label{class_ainslie_a_p_i_1_1_migrations_1_1_tdcr_1_1updatetdcrordercompleted_ab5ff4b66f5c91120ac1d17bbb09f6238} 
 \index{AinslieAPI.Migrations.Tdcr.updatetdcrordercompleted@{AinslieAPI.Migrations.Tdcr.updatetdcrordercompleted}!Down@{Down}}
 \index{Down@{Down}!AinslieAPI.Migrations.Tdcr.updatetdcrordercompleted@{AinslieAPI.Migrations.Tdcr.updatetdcrordercompleted}}
@@ -69,9 +119,18 @@ Definition at line \mbox{\hyperlink{20231130034215__update-tdcr-order-completed_
 
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ migrationBuilder.DropColumn(}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ name:\ \textcolor{stringliteral}{"{}Completed"{}},}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ table:\ \textcolor{stringliteral}{"{}Orders"{}});}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ migrationBuilder.DropColumn(}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ name:\ \textcolor{stringliteral}{"{}CompletedBy"{}},}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ table:\ \textcolor{stringliteral}{"{}Orders"{}});}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \}}
 
-Definition at line \mbox{\hyperlink{20231130034215__update-tdcr-order-completed_8cs_source_l00029}{29}} of file \mbox{\hyperlink{20231130034215__update-tdcr-order-completed_8cs_source}{20231130034215\+\_\+update-\/tdcr-\/order-\/completed.\+cs}}.
-
+\end{DoxyCode}
 \Hypertarget{class_ainslie_a_p_i_1_1_migrations_1_1_tdcr_1_1updatetdcrordercompleted_a3fd16b518c2a8bcc48cb8db15b577ca5}\label{class_ainslie_a_p_i_1_1_migrations_1_1_tdcr_1_1updatetdcrordercompleted_a3fd16b518c2a8bcc48cb8db15b577ca5} 
 \index{AinslieAPI.Migrations.Tdcr.updatetdcrordercompleted@{AinslieAPI.Migrations.Tdcr.updatetdcrordercompleted}!Up@{Up}}
 \index{Up@{Up}!AinslieAPI.Migrations.Tdcr.updatetdcrordercompleted@{AinslieAPI.Migrations.Tdcr.updatetdcrordercompleted}}
@@ -83,9 +142,24 @@ Definition at line \mbox{\hyperlink{20231130034215__update-tdcr-order-completed_
 
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \ \ \ \ migrationBuilder.AddColumn<\textcolor{keywordtype}{bool}>(}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ name:\ \textcolor{stringliteral}{"{}Completed"{}},}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ table:\ \textcolor{stringliteral}{"{}Orders"{}},}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ type:\ \textcolor{stringliteral}{"{}bit"{}},}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ nullable:\ \textcolor{keyword}{false},}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ defaultValue:\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ migrationBuilder.AddColumn<\textcolor{keywordtype}{string}>(}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ name:\ \textcolor{stringliteral}{"{}CompletedBy"{}},}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ table:\ \textcolor{stringliteral}{"{}Orders"{}},}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ type:\ \textcolor{stringliteral}{"{}nvarchar(100)"{}},}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ maxLength:\ 100,}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ nullable:\ \textcolor{keyword}{true});}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \}}
 
-Definition at line \mbox{\hyperlink{20231130034215__update-tdcr-order-completed_8cs_source_l00011}{11}} of file \mbox{\hyperlink{20231130034215__update-tdcr-order-completed_8cs_source}{20231130034215\+\_\+update-\/tdcr-\/order-\/completed.\+cs}}.
-
+\end{DoxyCode}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

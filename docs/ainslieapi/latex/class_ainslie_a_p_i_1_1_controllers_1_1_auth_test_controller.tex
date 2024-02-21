@@ -2,8 +2,7 @@
 \hypertarget{class_ainslie_a_p_i_1_1_controllers_1_1_auth_test_controller}{}\label{class_ainslie_a_p_i_1_1_controllers_1_1_auth_test_controller}\index{AinslieAPI.Controllers.AuthTestController@{AinslieAPI.Controllers.AuthTestController}}
 
 
-Inheritance diagram for Ainslie\+API.\+Controllers.\+Auth\+Test\+Controller\+:
-\nopagebreak
+Inheritance diagram for Ainslie\+API.\+Controllers.\+Auth\+Test\+Controller\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for Ainslie\+API.\+Controllers.\+Auth\+Test\+Controller\+:
 \end{figure}
 
 
-Collaboration diagram for Ainslie\+API.\+Controllers.\+Auth\+Test\+Controller\+:
-\nopagebreak
+Collaboration diagram for Ainslie\+API.\+Controllers.\+Auth\+Test\+Controller\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -35,13 +33,6 @@ IAction\+Result \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_auth_te
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{Detailed Description}
-
-
-Definition at line \mbox{\hyperlink{_auth_test_controller_8cs_source_l00014}{14}} of file \mbox{\hyperlink{_auth_test_controller_8cs_source}{Auth\+Test\+Controller.\+cs}}.
-
-
-
 \doxysubsection{Constructor \& Destructor Documentation}
 \Hypertarget{class_ainslie_a_p_i_1_1_controllers_1_1_auth_test_controller_a184c807eb0194f3b5a33024bd7405883}\label{class_ainslie_a_p_i_1_1_controllers_1_1_auth_test_controller_a184c807eb0194f3b5a33024bd7405883} 
 \index{AinslieAPI.Controllers.AuthTestController@{AinslieAPI.Controllers.AuthTestController}!AuthTestController@{AuthTestController}}
@@ -50,9 +41,12 @@ Definition at line \mbox{\hyperlink{_auth_test_controller_8cs_source_l00014}{14}
 {\footnotesize\ttfamily Ainslie\+API.\+Controllers.\+Auth\+Test\+Controller.\+Auth\+Test\+Controller (\begin{DoxyParamCaption}\item[{IHttp\+Context\+Accessor}]{http\+Context\+Accessor }\end{DoxyParamCaption})}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ JwtUser\ =\ (\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_user_helper_1_1_authenticated_user}{AuthenticatedUser}})httpContextAccessor.HttpContext.Items[\textcolor{stringliteral}{"{}user"{}}];}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \}}
 
-Definition at line \mbox{\hyperlink{_auth_test_controller_8cs_source_l00018}{18}} of file \mbox{\hyperlink{_auth_test_controller_8cs_source}{Auth\+Test\+Controller.\+cs}}.
-
+\end{DoxyCode}
 
 
 \doxysubsection{Member Function Documentation}
@@ -63,9 +57,17 @@ Definition at line \mbox{\hyperlink{_auth_test_controller_8cs_source_l00018}{18}
 {\footnotesize\ttfamily IAction\+Result Ainslie\+API.\+Controllers.\+Auth\+Test\+Controller.\+Private (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Ok(\textcolor{keyword}{new}}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Message\ =\ \$\textcolor{stringliteral}{"{}Hello\ from\ a\ private\ endpoint\ \{JwtUser.EmailAddress\}!"{}},}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ User\ =\ JwtUser}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \}}
 
-Definition at line \mbox{\hyperlink{_auth_test_controller_8cs_source_l00034}{34}} of file \mbox{\hyperlink{_auth_test_controller_8cs_source}{Auth\+Test\+Controller.\+cs}}.
-
+\end{DoxyCode}
 \Hypertarget{class_ainslie_a_p_i_1_1_controllers_1_1_auth_test_controller_abc89679e197ca1493195b139981f4a2c}\label{class_ainslie_a_p_i_1_1_controllers_1_1_auth_test_controller_abc89679e197ca1493195b139981f4a2c} 
 \index{AinslieAPI.Controllers.AuthTestController@{AinslieAPI.Controllers.AuthTestController}!Public@{Public}}
 \index{Public@{Public}!AinslieAPI.Controllers.AuthTestController@{AinslieAPI.Controllers.AuthTestController}}
@@ -73,9 +75,15 @@ Definition at line \mbox{\hyperlink{_auth_test_controller_8cs_source_l00034}{34}
 {\footnotesize\ttfamily IAction\+Result Ainslie\+API.\+Controllers.\+Auth\+Test\+Controller.\+Public (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Ok(\textcolor{keyword}{new}}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Message\ =\ \textcolor{stringliteral}{"{}Hello\ from\ a\ public\ endpoint!"{}}}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \}}
 
-Definition at line \mbox{\hyperlink{_auth_test_controller_8cs_source_l00025}{25}} of file \mbox{\hyperlink{_auth_test_controller_8cs_source}{Auth\+Test\+Controller.\+cs}}.
-
+\end{DoxyCode}
 \Hypertarget{class_ainslie_a_p_i_1_1_controllers_1_1_auth_test_controller_a36613a44557819edaf647b9ca2d1a337}\label{class_ainslie_a_p_i_1_1_controllers_1_1_auth_test_controller_a36613a44557819edaf647b9ca2d1a337} 
 \index{AinslieAPI.Controllers.AuthTestController@{AinslieAPI.Controllers.AuthTestController}!Scoped@{Scoped}}
 \index{Scoped@{Scoped}!AinslieAPI.Controllers.AuthTestController@{AinslieAPI.Controllers.AuthTestController}}
@@ -83,9 +91,16 @@ Definition at line \mbox{\hyperlink{_auth_test_controller_8cs_source_l00025}{25}
 {\footnotesize\ttfamily IAction\+Result Ainslie\+API.\+Controllers.\+Auth\+Test\+Controller.\+Scoped (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Ok(\textcolor{keyword}{new}}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Message\ =\ \$\textcolor{stringliteral}{"{}Hello\ from\ a\ scoped\ endpoint\ \{JwtUser.EmailAddress\}!"{}},}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ User\ =\ JwtUser}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \}}
 
-Definition at line \mbox{\hyperlink{_auth_test_controller_8cs_source_l00046}{46}} of file \mbox{\hyperlink{_auth_test_controller_8cs_source}{Auth\+Test\+Controller.\+cs}}.
-
+\end{DoxyCode}
 \Hypertarget{class_ainslie_a_p_i_1_1_controllers_1_1_auth_test_controller_a50886d0c42d4c4a8403c4bc99599c128}\label{class_ainslie_a_p_i_1_1_controllers_1_1_auth_test_controller_a50886d0c42d4c4a8403c4bc99599c128} 
 \index{AinslieAPI.Controllers.AuthTestController@{AinslieAPI.Controllers.AuthTestController}!ScopedAdmin@{ScopedAdmin}}
 \index{ScopedAdmin@{ScopedAdmin}!AinslieAPI.Controllers.AuthTestController@{AinslieAPI.Controllers.AuthTestController}}
@@ -93,9 +108,16 @@ Definition at line \mbox{\hyperlink{_auth_test_controller_8cs_source_l00046}{46}
 {\footnotesize\ttfamily IAction\+Result Ainslie\+API.\+Controllers.\+Auth\+Test\+Controller.\+Scoped\+Admin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Ok(\textcolor{keyword}{new}}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Message\ =\ \$\textcolor{stringliteral}{"{}Hello\ from\ a\ scoped\ endpoint\ \{JwtUser.EmailAddress\}!"{}},}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ User\ =\ JwtUser}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \}}
 
-Definition at line \mbox{\hyperlink{_auth_test_controller_8cs_source_l00057}{57}} of file \mbox{\hyperlink{_auth_test_controller_8cs_source}{Auth\+Test\+Controller.\+cs}}.
-
+\end{DoxyCode}
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

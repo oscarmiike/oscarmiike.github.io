@@ -24,10 +24,6 @@ List$<$ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_priceapp_1_1_product_
 \doxysubsection{Detailed Description}
 Provides functionality to manage and refresh cached data, specifically for asset prices. 
 
-Definition at line \mbox{\hyperlink{_cache_data_helper_8cs_source_l00014}{14}} of file \mbox{\hyperlink{_cache_data_helper_8cs_source}{Cache\+Data\+Helper.\+cs}}.
-
-
-
 \doxysubsection{Constructor \& Destructor Documentation}
 \Hypertarget{class_ainslie_a_p_i_1_1_helpers_1_1_cache_data_helper_af2a6b056688fb01875c35f9088701439}\label{class_ainslie_a_p_i_1_1_helpers_1_1_cache_data_helper_af2a6b056688fb01875c35f9088701439} 
 \index{AinslieAPI.Helpers.CacheDataHelper@{AinslieAPI.Helpers.CacheDataHelper}!CacheDataHelper@{CacheDataHelper}}
@@ -53,9 +49,16 @@ Initialises a new instance of the Cache\+Data\+Helper with required services and
 \hline
 \end{DoxyParams}
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \_cachedData\ =\ cachedData;}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \_logService\ =\ logService;}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \_iapiService\ =\ iapiService;}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \_awapiService\ =\ awapiService;}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \_appSettings\ =\ appSettings.Value;}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \}}
 
-Definition at line \mbox{\hyperlink{_cache_data_helper_8cs_source_l00031}{31}} of file \mbox{\hyperlink{_cache_data_helper_8cs_source}{Cache\+Data\+Helper.\+cs}}.
-
+\end{DoxyCode}
 
 
 \doxysubsection{Member Function Documentation}
@@ -82,19 +85,31 @@ GSSPrice\+Data for the specified user.
 
 
 Attempts to fetch GSS pricing data for the given user from cache. If the data is expired, absent, or fails casting, it refreshes the cache with new data. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \ \ \ \ var\ gssPriceCache\ =\ \_cachedData.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_cache_1_1_cached_data_ae6381b3199018446551fd02d27609e61}{CacheItems}}.Where(ci\ =>\ ci.CacheType\ ==\ \mbox{\hyperlink{namespace_ainslie_a_p_i_1_1_d_t_o_1_1_cache_a2b049336e292ef472431e865b772d5af}{CacheType}}.GSSPricing\ \&\&\ ((\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_g_s_s_1_1_g_s_s_price_data}{GSSPriceData}}?)ci.Data)?.UserName\ ==\ userName).FirstOrDefault();}
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (gssPriceCache\ ==\ \textcolor{keyword}{null}\ ||\ gssPriceCache.Expires\ <\ DateAndTime.Now\ ||\ gssPriceCache.Data\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ RefreshGSSPricing(userName);}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_g_s_s_1_1_g_s_s_price_data}{GSSPriceData}})gssPriceCache.Data\ ??\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_g_s_s_1_1_g_s_s_price_data}{GSSPriceData}}();}
+\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a83bbf569dea7ea5a40e02fca200aad8c}{LogException}}(\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_ab557dc1394f5cf56cfb78c765fdfffe6}{LogSources}}.CacheDataHelper,\ \$\textcolor{stringliteral}{"{}exception\ casting\ and\ returning\ gss\ price\ data\ for\ \{userName\}"{}},\ gssPriceCache,\ ex);}
+\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_g_s_s_1_1_g_s_s_price_data}{GSSPriceData}}();}
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \}}
 
-Definition at line \mbox{\hyperlink{_cache_data_helper_8cs_source_l00233}{233}} of file \mbox{\hyperlink{_cache_data_helper_8cs_source}{Cache\+Data\+Helper.\+cs}}.
-
-Here is the call graph for this function\+:
-\nopagebreak
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{class_ainslie_a_p_i_1_1_helpers_1_1_cache_data_helper_a533a0f6563d2e92e52c819c22c5009a6_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -120,9 +135,26 @@ A list of Asset\+Price from the cache or a refreshed list if the cache is expire
 
 
 Checks the cache for current asset prices; if the cache is expired or not found, it refreshes the cache by fetching new data. Implements thread-\/safe cache refresh using a lock to prevent concurrent refresh operations. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \{\ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}\ }
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ assetListCache\ =\ \_cachedData.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_cache_1_1_cached_data_ae6381b3199018446551fd02d27609e61}{CacheItems}}.Where(ci\ =>\ ci.CacheType\ ==\ \mbox{\hyperlink{namespace_ainslie_a_p_i_1_1_d_t_o_1_1_cache_a2b049336e292ef472431e865b772d5af}{CacheType}}.AssetList).FirstOrDefault();}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (assetListCache\ ==\ \textcolor{keyword}{null}\ ||\ assetListCache.Expires\ <\ DateAndTime.Now\ ||\ assetListCache.Data\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ RefreshPriceappAssets();}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (List<AssetPrice>)assetListCache.Data\ ??\ \textcolor{keyword}{new}\ List<AssetPrice>();}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a83bbf569dea7ea5a40e02fca200aad8c}{LogException}}(\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_ab557dc1394f5cf56cfb78c765fdfffe6}{LogSources}}.CacheDataHelper,\ \$\textcolor{stringliteral}{"{}exception\ casting\ and\ returning\ asset\ list\ cache\ data"{}},\ assetListCache,\ ex);}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ List<AssetPrice>();}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \}}
 
-Definition at line \mbox{\hyperlink{_cache_data_helper_8cs_source_l00050}{50}} of file \mbox{\hyperlink{_cache_data_helper_8cs_source}{Cache\+Data\+Helper.\+cs}}.
-
+\end{DoxyCode}
 \Hypertarget{class_ainslie_a_p_i_1_1_helpers_1_1_cache_data_helper_aca65b242b68bf55a30418a0d09cd9552}\label{class_ainslie_a_p_i_1_1_helpers_1_1_cache_data_helper_aca65b242b68bf55a30418a0d09cd9552} 
 \index{AinslieAPI.Helpers.CacheDataHelper@{AinslieAPI.Helpers.CacheDataHelper}!PriceappProducts@{PriceappProducts}}
 \index{PriceappProducts@{PriceappProducts}!AinslieAPI.Helpers.CacheDataHelper@{AinslieAPI.Helpers.CacheDataHelper}}
@@ -139,9 +171,26 @@ A list of Product\+Price, either cached or newly fetched.
 
 
 Checks for current product prices in the cache, refreshing if expired or missing. Exceptions during data retrieval are logged, ensuring stability by returning an initialised list in any scenario. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ productListCache\ =\ \_cachedData.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_cache_1_1_cached_data_ae6381b3199018446551fd02d27609e61}{CacheItems}}.Where(ci\ =>\ ci.CacheType\ ==\ \mbox{\hyperlink{namespace_ainslie_a_p_i_1_1_d_t_o_1_1_cache_a2b049336e292ef472431e865b772d5af}{CacheType}}.ProductList).FirstOrDefault();}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (productListCache\ ==\ \textcolor{keyword}{null}\ ||\ productListCache.Expires\ <\ DateAndTime.Now\ ||\ productListCache.Data\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ RefreshPriceappProducts();}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (List<ProductPrice>)productListCache.Data\ ??\ \textcolor{keyword}{new}\ List<ProductPrice>();}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a83bbf569dea7ea5a40e02fca200aad8c}{LogException}}(\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_ab557dc1394f5cf56cfb78c765fdfffe6}{LogSources}}.CacheDataHelper,\ \$\textcolor{stringliteral}{"{}exception\ casting\ and\ returning\ product\ list\ cache\ data"{}},\ productListCache,\ ex);}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ List<ProductPrice>();}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \}}
 
-Definition at line \mbox{\hyperlink{_cache_data_helper_8cs_source_l00142}{142}} of file \mbox{\hyperlink{_cache_data_helper_8cs_source}{Cache\+Data\+Helper.\+cs}}.
-
+\end{DoxyCode}
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

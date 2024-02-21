@@ -126,8 +126,6 @@ Public Member Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Controller responsible for managing log-related actions, including retrieval and manipulation of log entries. </p>
-
-<p class="definition">Definition at line <a class="el" href="_logs_controller_8cs_source.html#l00024">24</a> of file <a class="el" href="_logs_controller_8cs_source.html">LogsController.cs</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="afb713b2cb90756230e4704cffd8d613f" name="afb713b2cb90756230e4704cffd8d613f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afb713b2cb90756230e4704cffd8d613f">&#9670;&#160;</a></span>LogsController()</h2>
@@ -174,9 +172,14 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-
-<p class="definition">Definition at line <a class="el" href="_logs_controller_8cs_source.html#l00040">40</a> of file <a class="el" href="_logs_controller_8cs_source.html">LogsController.cs</a>.</p>
-
+<div class="fragment"><div class="line"><span class="lineno">   41</span>    {</div>
+<div class="line"><span class="lineno">   42</span>        _appSettings = appSettings.Value;</div>
+<div class="line"><span class="lineno">   43</span>        _jwtUtils = jwtUtils;</div>
+<div class="line"><span class="lineno">   44</span>        _logService = logService;   </div>
+<div class="line"><span class="lineno">   45</span>        _context = localContext;</div>
+<div class="line"><span class="lineno">   46</span>        _iapiService = iapiService;</div>
+<div class="line"><span class="lineno">   47</span>    }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -215,9 +218,53 @@ Descending order sorting by creation date for recent logs prioritisation. </li>
 <li>
 Adaptation to request 'maxLogs' limit for controlled data retrieval. </li>
 </ul>
-
-<p class="definition">Definition at line <a class="el" href="_logs_controller_8cs_source.html#l00068">68</a> of file <a class="el" href="_logs_controller_8cs_source.html">LogsController.cs</a>.</p>
-
+<div class="fragment"><div class="line"><span class="lineno">   69</span>    {</div>
+<div class="line"><span class="lineno">   70</span>        DateTime fromDateTimeUTC = DateTime.MinValue;</div>
+<div class="line"><span class="lineno">   71</span>        <span class="keywordflow">if</span> (logRequest.fromUnixUTCMilli &gt; 0)</div>
+<div class="line"><span class="lineno">   72</span>        {</div>
+<div class="line"><span class="lineno">   73</span>            fromDateTimeUTC = DateTimeOffset.FromUnixTimeMilliseconds(logRequest.fromUnixUTCMilli).DateTime;</div>
+<div class="line"><span class="lineno">   74</span>        }</div>
+<div class="line"><span class="lineno">   75</span>        DateTime fromDateTimeLocal = fromDateTimeUTC.ToLocalTime();</div>
+<div class="line"><span class="lineno">   76</span>        var dateRangeStart = logRequest.dateRangeStartUTC.ToLocalTime();</div>
+<div class="line"><span class="lineno">   77</span>        <span class="keywordflow">if</span> (logRequest.startHour &gt; -1)</div>
+<div class="line"><span class="lineno">   78</span>            dateRangeStart = dateRangeStart.AddHours(logRequest.startHour);</div>
+<div class="line"><span class="lineno">   79</span>        var dateRangeEnd = logRequest.dateRangeEndUTC.ToLocalTime();</div>
+<div class="line"><span class="lineno">   80</span> </div>
+<div class="line"><span class="lineno">   81</span>        var logsQuery = _context.<a class="code hl_property" href="class_ainslie_a_p_i_1_1_data_1_1_contexts_1_1_local_context.html#a07ac1cd14ee90d7465dd18a3669e0fa4">LogEntries</a>.AsNoTracking()</div>
+<div class="line"><span class="lineno">   82</span>            .Where(le =&gt; le.Created &gt;= dateRangeStart &amp;&amp; le.Created &lt;= dateRangeEnd)</div>
+<div class="line"><span class="lineno">   83</span>            .AsEnumerable();</div>
+<div class="line"><span class="lineno">   84</span> </div>
+<div class="line"><span class="lineno">   85</span>        <span class="keywordflow">if</span> (logRequest.initial)</div>
+<div class="line"><span class="lineno">   86</span>        {</div>
+<div class="line"><span class="lineno">   87</span>            logsQuery = logsQuery</div>
+<div class="line"><span class="lineno">   88</span>                .Where(le =&gt; logRequest.logType == <span class="keyword">null</span> || logRequest.logType.All(<span class="keywordtype">string</span>.IsNullOrEmpty) || logRequest.logType.Any(lt =&gt; le.Type.ToLower() == lt.ToLower()))</div>
+<div class="line"><span class="lineno">   89</span>                .Where(le =&gt; logRequest.logSource == <span class="keyword">null</span> || logRequest.logSource.All(<span class="keywordtype">string</span>.IsNullOrEmpty) || logRequest.logSource.Any(ls =&gt; le.Source.ToLower() == ls.ToLower()))</div>
+<div class="line"><span class="lineno">   90</span>                .Where(le =&gt; <span class="keywordtype">string</span>.IsNullOrEmpty(logRequest.searchString) || le.Data.ToLower().Contains(logRequest.searchString.ToLower()));</div>
+<div class="line"><span class="lineno">   91</span> </div>
+<div class="line"><span class="lineno">   92</span>            <span class="keywordflow">if</span> (logRequest.startHour &gt; -1)</div>
+<div class="line"><span class="lineno">   93</span>                <span class="comment">//if specifying a start hour, take logs from the start hour, then order by descending</span></div>
+<div class="line"><span class="lineno">   94</span>                logsQuery = logsQuery.Take(logRequest.maxLogs).OrderByDescending(le =&gt; le.Created).ToList();</div>
+<div class="line"><span class="lineno">   95</span>            <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">   96</span>                <span class="comment">//if not specifying start hour, order by descending and then take latest</span></div>
+<div class="line"><span class="lineno">   97</span>                logsQuery = logsQuery.OrderByDescending(le =&gt; le.Created).Take(logRequest.maxLogs).ToList();</div>
+<div class="line"><span class="lineno">   98</span>        }</div>
+<div class="line"><span class="lineno">   99</span>        <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  100</span>        {</div>
+<div class="line"><span class="lineno">  101</span>            logsQuery = logsQuery</div>
+<div class="line"><span class="lineno">  102</span>                .Where(le =&gt; le.Created &gt; fromDateTimeLocal)</div>
+<div class="line"><span class="lineno">  103</span>                .Where(le =&gt; logRequest.logType == <span class="keyword">null</span> || logRequest.logType.All(<span class="keywordtype">string</span>.IsNullOrEmpty) || logRequest.logType.Any(lt =&gt; le.Type.ToLower() == lt.ToLower()))</div>
+<div class="line"><span class="lineno">  104</span>                .Where(le =&gt; logRequest.logSource == <span class="keyword">null</span> || logRequest.logSource.All(<span class="keywordtype">string</span>.IsNullOrEmpty) || logRequest.logSource.Any(ls =&gt; le.Source.ToLower() == ls.ToLower()))</div>
+<div class="line"><span class="lineno">  105</span>                .Where(le =&gt; <span class="keywordtype">string</span>.IsNullOrEmpty(logRequest.searchString) || le.Data.ToLower().Contains(logRequest.searchString.ToLower()))</div>
+<div class="line"><span class="lineno">  106</span>                .OrderByDescending(le =&gt; le.Created);</div>
+<div class="line"><span class="lineno">  107</span>        }</div>
+<div class="line"><span class="lineno">  108</span>        <span class="keywordflow">if</span> (!logRequest.initial &amp;&amp; logsQuery.Count() &lt; 1)</div>
+<div class="line"><span class="lineno">  109</span>        {</div>
+<div class="line"><span class="lineno">  110</span>            <span class="keywordflow">return</span> Ok();</div>
+<div class="line"><span class="lineno">  111</span>        }</div>
+<div class="line"><span class="lineno">  112</span>        <span class="keywordflow">return</span> Ok(logsQuery);</div>
+<div class="line"><span class="lineno">  113</span>    }</div>
+<div class="ttc" id="aclass_ainslie_a_p_i_1_1_data_1_1_contexts_1_1_local_context_html_a07ac1cd14ee90d7465dd18a3669e0fa4"><div class="ttname"><a href="class_ainslie_a_p_i_1_1_data_1_1_contexts_1_1_local_context.html#a07ac1cd14ee90d7465dd18a3669e0fa4">AinslieAPI.Data.Contexts.LocalContext.LogEntries</a></div><div class="ttdeci">virtual DbSet&lt; LogEntry &gt; LogEntries</div><div class="ttdef"><b>Definition</b> LocalContext.cs:21</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a97c028c3db2a6e6190127d5a1a67cda3" name="a97c028c3db2a6e6190127d5a1a67cda3"></a>
@@ -238,9 +285,11 @@ Adaptation to request 'maxLogs' limit for controlled data retrieval. </li>
 <p>Fetches distinct log sources from the database. </p>
 <dl class="section return"><dt>Returns</dt><dd>An IActionResult containing unique log sources.</dd></dl>
 <p>This method queries the LogEntries table for distinct sources, facilitating filter creation on the client side. </p>
-
-<p class="definition">Definition at line <a class="el" href="_logs_controller_8cs_source.html#l00125">125</a> of file <a class="el" href="_logs_controller_8cs_source.html">LogsController.cs</a>.</p>
-
+<div class="fragment"><div class="line"><span class="lineno">  126</span>    {</div>
+<div class="line"><span class="lineno">  127</span>        var logSources = _context.<a class="code hl_property" href="class_ainslie_a_p_i_1_1_data_1_1_contexts_1_1_local_context.html#a07ac1cd14ee90d7465dd18a3669e0fa4">LogEntries</a>.AsNoTracking().Select(le =&gt; le.Source).Distinct();</div>
+<div class="line"><span class="lineno">  128</span>        <span class="keywordflow">return</span> Ok(logSources);</div>
+<div class="line"><span class="lineno">  129</span>    }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a950cc099b42028053588effab1e1c578" name="a950cc099b42028053588effab1e1c578"></a>
@@ -261,9 +310,11 @@ Adaptation to request 'maxLogs' limit for controlled data retrieval. </li>
 <p>Retrieves distinct log types from the database. </p>
 <dl class="section return"><dt>Returns</dt><dd>An IActionResult containing unique log types.</dd></dl>
 <p>Similar to GetLogSources, this method aids in generating client-side filters by providing distinct log types. </p>
-
-<p class="definition">Definition at line <a class="el" href="_logs_controller_8cs_source.html#l00141">141</a> of file <a class="el" href="_logs_controller_8cs_source.html">LogsController.cs</a>.</p>
-
+<div class="fragment"><div class="line"><span class="lineno">  142</span>    {</div>
+<div class="line"><span class="lineno">  143</span>        var logTypes = _context.<a class="code hl_property" href="class_ainslie_a_p_i_1_1_data_1_1_contexts_1_1_local_context.html#a07ac1cd14ee90d7465dd18a3669e0fa4">LogEntries</a>.AsNoTracking().Select(le =&gt; le.Type).Distinct();</div>
+<div class="line"><span class="lineno">  144</span>        <span class="keywordflow">return</span> Ok(logTypes);</div>
+<div class="line"><span class="lineno">  145</span>    }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="aea8072dbf59418b035df6b786ecae9c0" name="aea8072dbf59418b035df6b786ecae9c0"></a>
@@ -284,9 +335,18 @@ Adaptation to request 'maxLogs' limit for controlled data retrieval. </li>
 <p>Trims logs based on predefined criteria to manage database size. </p>
 <dl class="section return"><dt>Returns</dt><dd>An IActionResult indicating the success or failure of the operation.</dd></dl>
 <p>Initiates a log trimming operation to remove older logs. </p>
-
-<p class="definition">Definition at line <a class="el" href="_logs_controller_8cs_source.html#l00157">157</a> of file <a class="el" href="_logs_controller_8cs_source.html">LogsController.cs</a>.</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">  158</span>    {</div>
+<div class="line"><span class="lineno">  159</span>        _logService.<a class="code hl_function" href="class_ainslie_a_p_i_1_1_services_1_1_log_service.html#a917b9af360c0c6521ce36f4acbc72023">LogInformation</a>(LogService.LogSources.LogsController, <span class="stringliteral">&quot;log trim initiated&quot;</span>);</div>
+<div class="line"><span class="lineno">  160</span>        dynamic result = _logService.<a class="code hl_function" href="class_ainslie_a_p_i_1_1_services_1_1_log_service.html#aea52f6628afd6bcb55105bd0a2f1d8da">TrimLogs</a>();</div>
+<div class="line"><span class="lineno">  161</span>        <span class="keywordflow">if</span> ((<span class="keywordtype">bool</span>)result.error)</div>
+<div class="line"><span class="lineno">  162</span>        {</div>
+<div class="line"><span class="lineno">  163</span>            <span class="keywordflow">return</span> BadRequest(result);</div>
+<div class="line"><span class="lineno">  164</span>        }</div>
+<div class="line"><span class="lineno">  165</span>        <span class="keywordflow">return</span> Ok(result);</div>
+<div class="line"><span class="lineno">  166</span>    }</div>
+<div class="ttc" id="aclass_ainslie_a_p_i_1_1_services_1_1_log_service_html_a917b9af360c0c6521ce36f4acbc72023"><div class="ttname"><a href="class_ainslie_a_p_i_1_1_services_1_1_log_service.html#a917b9af360c0c6521ce36f4acbc72023">AinslieAPI.Services.LogService.LogInformation</a></div><div class="ttdeci">LogEntry LogInformation(LogSources logSource, params object[] dataList)</div><div class="ttdef"><b>Definition</b> LogService.cs:59</div></div>
+<div class="ttc" id="aclass_ainslie_a_p_i_1_1_services_1_1_log_service_html_aea52f6628afd6bcb55105bd0a2f1d8da"><div class="ttname"><a href="class_ainslie_a_p_i_1_1_services_1_1_log_service.html#aea52f6628afd6bcb55105bd0a2f1d8da">AinslieAPI.Services.LogService.TrimLogs</a></div><div class="ttdeci">object TrimLogs()</div><div class="ttdef"><b>Definition</b> LogService.cs:147</div></div>
+</div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_ainslie_a_p_i_1_1_controllers_1_1_logs_controller_aea8072dbf59418b035df6b786ecae9c0_cgraph.png" border="0" usemap="#aclass_ainslie_a_p_i_1_1_controllers_1_1_logs_controller_aea8072dbf59418b035df6b786ecae9c0_cgraph" alt=""/></div>
@@ -307,7 +367,7 @@ Here is the call graph for this function:</div>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>C:/Users/STRIDER/source/repos/AinslieAPI/Controllers/<a class="el" href="_logs_controller_8cs_source.html">LogsController.cs</a></li>
+<li>C:/Users/STRIDER/source/repos/AinslieAPI/Controllers/<a class="el" href="_logs_controller_8cs.html">LogsController.cs</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

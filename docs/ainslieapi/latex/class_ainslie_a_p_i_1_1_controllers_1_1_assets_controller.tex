@@ -7,8 +7,7 @@ Controls asset-\/related endpoints, handling requests to fetch asset pricing dat
 
 
 
-Inheritance diagram for Ainslie\+API.\+Controllers.\+Assets\+Controller\+:
-\nopagebreak
+Inheritance diagram for Ainslie\+API.\+Controllers.\+Assets\+Controller\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -17,8 +16,7 @@ Inheritance diagram for Ainslie\+API.\+Controllers.\+Assets\+Controller\+:
 \end{figure}
 
 
-Collaboration diagram for Ainslie\+API.\+Controllers.\+Assets\+Controller\+:
-\nopagebreak
+Collaboration diagram for Ainslie\+API.\+Controllers.\+Assets\+Controller\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -36,10 +34,6 @@ IAction\+Result \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_assets_
 
 \doxysubsection{Detailed Description}
 Controls asset-\/related endpoints, handling requests to fetch asset pricing data. 
-
-Definition at line \mbox{\hyperlink{_assets_controller_8cs_source_l00020}{20}} of file \mbox{\hyperlink{_assets_controller_8cs_source}{Assets\+Controller.\+cs}}.
-
-
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \Hypertarget{class_ainslie_a_p_i_1_1_controllers_1_1_assets_controller_a34b276ad6cf56e732ea60044dfe9d1a4}\label{class_ainslie_a_p_i_1_1_controllers_1_1_assets_controller_a34b276ad6cf56e732ea60044dfe9d1a4} 
@@ -62,9 +56,15 @@ Initialises a new instance of the Assets\+Controller with necessary services.
 \hline
 \end{DoxyParams}
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ JwtUser\ =\ (\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_user_helper_1_1_authenticated_user}{AuthenticatedUser}}?)httpContextAccessor.HttpContext?.Items[\textcolor{stringliteral}{"{}user"{}}];}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \_httpContext\ \ =\ httpContextAccessor.HttpContext;}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \_iaService\ =\ iaService;}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger\ =\ logger;}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \}}
 
-Definition at line \mbox{\hyperlink{_assets_controller_8cs_source_l00034}{34}} of file \mbox{\hyperlink{_assets_controller_8cs_source}{Assets\+Controller.\+cs}}.
-
+\end{DoxyCode}
 
 
 \doxysubsection{Member Function Documentation}
@@ -84,11 +84,15 @@ An IAction\+Result with asset prices or an error message.
 
 
 The method logs the request and authenticated user\textquotesingle{}s email, retrieves asset pricing via Internal\+Api\+Service, and returns this data in an HTTP response. Access is secured through the \mbox{[}Api\+Authorize\mbox{]} attribute, ensuring only authorised roles have entry. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a917b9af360c0c6521ce36f4acbc72023}{LogInformation}}(\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_ab557dc1394f5cf56cfb78c765fdfffe6}{LogSources}}.AssetsController,\ \$\textcolor{stringliteral}{"{}request\ received\ on\ assets/pricelist"{}},\ \$\textcolor{stringliteral}{"{}authenticated\ user:\ \{JwtUser?.EmailAddress\}"{}});}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ var\ assetPricing\ =\ \_iaService.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service_a09c4662b56f1cf03cfecb9928e1e884a}{GetAssetPricing}}();}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Ok(assetPricing);}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \}}
 
-Definition at line \mbox{\hyperlink{_assets_controller_8cs_source_l00055}{55}} of file \mbox{\hyperlink{_assets_controller_8cs_source}{Assets\+Controller.\+cs}}.
-
-Here is the call graph for this function\+:
-\nopagebreak
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

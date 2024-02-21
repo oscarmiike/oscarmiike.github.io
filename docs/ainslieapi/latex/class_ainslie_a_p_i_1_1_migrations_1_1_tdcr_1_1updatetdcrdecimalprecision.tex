@@ -7,8 +7,7 @@
 
 
 
-Inheritance diagram for Ainslie\+API.\+Migrations.\+Tdcr.\+updatetdcrdecimalprecision\+:
-\nopagebreak
+Inheritance diagram for Ainslie\+API.\+Migrations.\+Tdcr.\+updatetdcrdecimalprecision\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -17,8 +16,7 @@ Inheritance diagram for Ainslie\+API.\+Migrations.\+Tdcr.\+updatetdcrdecimalprec
 \end{figure}
 
 
-Collaboration diagram for Ainslie\+API.\+Migrations.\+Tdcr.\+updatetdcrdecimalprecision\+:
-\nopagebreak
+Collaboration diagram for Ainslie\+API.\+Migrations.\+Tdcr.\+updatetdcrdecimalprecision\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -39,10 +37,6 @@ override void \mbox{\hyperlink{class_ainslie_a_p_i_1_1_migrations_1_1_tdcr_1_1up
 \doxysubsection{Detailed Description}
 
 
-Definition at line \mbox{\hyperlink{20231130030658__update-tdcr-decimal-precision_8cs_source_l00008}{8}} of file \mbox{\hyperlink{20231130030658__update-tdcr-decimal-precision_8cs_source}{20231130030658\+\_\+update-\/tdcr-\/decimal-\/precision.\+cs}}.
-
-
-
 \doxysubsection{Member Function Documentation}
 \Hypertarget{class_ainslie_a_p_i_1_1_migrations_1_1_tdcr_1_1updatetdcrdecimalprecision_a906db85f259862fc2931f8b77a6f5f2d}\label{class_ainslie_a_p_i_1_1_migrations_1_1_tdcr_1_1updatetdcrdecimalprecision_a906db85f259862fc2931f8b77a6f5f2d} 
 \index{AinslieAPI.Migrations.Tdcr.updatetdcrdecimalprecision@{AinslieAPI.Migrations.Tdcr.updatetdcrdecimalprecision}!BuildTargetModel@{BuildTargetModel}}
@@ -55,9 +49,58 @@ Definition at line \mbox{\hyperlink{20231130030658__update-tdcr-decimal-precisio
 
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#pragma\ warning\ disable\ 612,\ 618 }}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ modelBuilder}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasAnnotation(\textcolor{stringliteral}{"{}ProductVersion"{}},\ \textcolor{stringliteral}{"{}7.0.5"{}})}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasAnnotation(\textcolor{stringliteral}{"{}Relational:MaxIdentifierLength"{}},\ 128);}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ modelBuilder.Entity(\textcolor{stringliteral}{"{}AinslieAPI.Data.Models.Tdcr.Order"{}},\ b\ =>}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacetest_a0f45e01f998f32bf815adc0cbe886405}{b}}.Property<\textcolor{keywordtype}{int}>(\textcolor{stringliteral}{"{}ID"{}})}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .ValueGeneratedOnAdd()}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasColumnType(\textcolor{stringliteral}{"{}int"{}});}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SqlServerPropertyBuilderExtensions.UseIdentityColumn(\mbox{\hyperlink{namespacetest_a0f45e01f998f32bf815adc0cbe886405}{b}}.Property<\textcolor{keywordtype}{int}>(\textcolor{stringliteral}{"{}ID"{}}));}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacetest_a0f45e01f998f32bf815adc0cbe886405}{b}}.Property<DateTime>(\textcolor{stringliteral}{"{}Created"{}})}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasColumnType(\textcolor{stringliteral}{"{}DateTime2(3)"{}});}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacetest_a0f45e01f998f32bf815adc0cbe886405}{b}}.Property<\textcolor{keywordtype}{string}>(\textcolor{stringliteral}{"{}Market"{}})}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .IsRequired()}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasMaxLength(50)}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasColumnType(\textcolor{stringliteral}{"{}nvarchar(50)"{}});}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacetest_a0f45e01f998f32bf815adc0cbe886405}{b}}.Property<decimal>(\textcolor{stringliteral}{"{}Price"{}})}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasColumnType(\textcolor{stringliteral}{"{}decimal(18,\ 4)"{}});}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacetest_a0f45e01f998f32bf815adc0cbe886405}{b}}.Property<decimal>(\textcolor{stringliteral}{"{}Quantity"{}})}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasColumnType(\textcolor{stringliteral}{"{}decimal(18,\ 8)"{}});}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacetest_a0f45e01f998f32bf815adc0cbe886405}{b}}.Property<\textcolor{keywordtype}{string}>(\textcolor{stringliteral}{"{}Side"{}})}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .IsRequired()}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasMaxLength(50)}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasColumnType(\textcolor{stringliteral}{"{}nvarchar(50)"{}});}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacetest_a0f45e01f998f32bf815adc0cbe886405}{b}}.Property<\textcolor{keywordtype}{string}>(\textcolor{stringliteral}{"{}TdcrId"{}})}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .IsRequired()}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasMaxLength(100)}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasColumnType(\textcolor{stringliteral}{"{}nvarchar(100)"{}});}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacetest_a0f45e01f998f32bf815adc0cbe886405}{b}}.Property<\textcolor{keywordtype}{long}>(\textcolor{stringliteral}{"{}TdcrTimestamp"{}})}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .HasColumnType(\textcolor{stringliteral}{"{}bigint"{}});}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacetest_a0f45e01f998f32bf815adc0cbe886405}{b}}.HasKey(\textcolor{stringliteral}{"{}ID"{}});}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacetest_a0f45e01f998f32bf815adc0cbe886405}{b}}.ToTable(\textcolor{stringliteral}{"{}Orders"{}});}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{00067\ \textcolor{preprocessor}{\#pragma\ warning\ restore\ 612,\ 618 }}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \}}
 
-Definition at line \mbox{\hyperlink{20231130030658__update-tdcr-decimal-precision_8_designer_8cs_source_l00019}{19}} of file \mbox{\hyperlink{20231130030658__update-tdcr-decimal-precision_8_designer_8cs_source}{20231130030658\+\_\+update-\/tdcr-\/decimal-\/precision.\+Designer.\+cs}}.
-
+\end{DoxyCode}
 \Hypertarget{class_ainslie_a_p_i_1_1_migrations_1_1_tdcr_1_1updatetdcrdecimalprecision_a53d86e6ee62c492a62704ae865db496f}\label{class_ainslie_a_p_i_1_1_migrations_1_1_tdcr_1_1updatetdcrdecimalprecision_a53d86e6ee62c492a62704ae865db496f} 
 \index{AinslieAPI.Migrations.Tdcr.updatetdcrdecimalprecision@{AinslieAPI.Migrations.Tdcr.updatetdcrdecimalprecision}!Down@{Down}}
 \index{Down@{Down}!AinslieAPI.Migrations.Tdcr.updatetdcrdecimalprecision@{AinslieAPI.Migrations.Tdcr.updatetdcrdecimalprecision}}
@@ -69,9 +112,26 @@ Definition at line \mbox{\hyperlink{20231130030658__update-tdcr-decimal-precisio
 
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ migrationBuilder.AlterColumn<decimal>(}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ name:\ \textcolor{stringliteral}{"{}Quantity"{}},}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ table:\ \textcolor{stringliteral}{"{}Orders"{}},}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ type:\ \textcolor{stringliteral}{"{}decimal(18,2)"{}},}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ nullable:\ \textcolor{keyword}{false},}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oldClrType:\ typeof(decimal),}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oldType:\ \textcolor{stringliteral}{"{}decimal(18,8)"{}});}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ migrationBuilder.AlterColumn<decimal>(}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ name:\ \textcolor{stringliteral}{"{}Price"{}},}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ table:\ \textcolor{stringliteral}{"{}Orders"{}},}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ type:\ \textcolor{stringliteral}{"{}decimal(18,2)"{}},}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ nullable:\ \textcolor{keyword}{false},}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oldClrType:\ typeof(decimal),}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oldType:\ \textcolor{stringliteral}{"{}decimal(18,4)"{}});}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \}}
 
-Definition at line \mbox{\hyperlink{20231130030658__update-tdcr-decimal-precision_8cs_source_l00031}{31}} of file \mbox{\hyperlink{20231130030658__update-tdcr-decimal-precision_8cs_source}{20231130030658\+\_\+update-\/tdcr-\/decimal-\/precision.\+cs}}.
-
+\end{DoxyCode}
 \Hypertarget{class_ainslie_a_p_i_1_1_migrations_1_1_tdcr_1_1updatetdcrdecimalprecision_a5aa62730d9b50bb029db68b980a8cd22}\label{class_ainslie_a_p_i_1_1_migrations_1_1_tdcr_1_1updatetdcrdecimalprecision_a5aa62730d9b50bb029db68b980a8cd22} 
 \index{AinslieAPI.Migrations.Tdcr.updatetdcrdecimalprecision@{AinslieAPI.Migrations.Tdcr.updatetdcrdecimalprecision}!Up@{Up}}
 \index{Up@{Up}!AinslieAPI.Migrations.Tdcr.updatetdcrdecimalprecision@{AinslieAPI.Migrations.Tdcr.updatetdcrdecimalprecision}}
@@ -83,9 +143,26 @@ Definition at line \mbox{\hyperlink{20231130030658__update-tdcr-decimal-precisio
 
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \ \ \ \ migrationBuilder.AlterColumn<decimal>(}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ name:\ \textcolor{stringliteral}{"{}Quantity"{}},}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ table:\ \textcolor{stringliteral}{"{}Orders"{}},}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ type:\ \textcolor{stringliteral}{"{}decimal(18,8)"{}},}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ nullable:\ \textcolor{keyword}{false},}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oldClrType:\ typeof(decimal),}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oldType:\ \textcolor{stringliteral}{"{}decimal(18,2)"{}});}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ migrationBuilder.AlterColumn<decimal>(}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ name:\ \textcolor{stringliteral}{"{}Price"{}},}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ table:\ \textcolor{stringliteral}{"{}Orders"{}},}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ type:\ \textcolor{stringliteral}{"{}decimal(18,4)"{}},}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ nullable:\ \textcolor{keyword}{false},}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oldClrType:\ typeof(decimal),}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ oldType:\ \textcolor{stringliteral}{"{}decimal(18,2)"{}});}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \}}
 
-Definition at line \mbox{\hyperlink{20231130030658__update-tdcr-decimal-precision_8cs_source_l00011}{11}} of file \mbox{\hyperlink{20231130030658__update-tdcr-decimal-precision_8cs_source}{20231130030658\+\_\+update-\/tdcr-\/decimal-\/precision.\+cs}}.
-
+\end{DoxyCode}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

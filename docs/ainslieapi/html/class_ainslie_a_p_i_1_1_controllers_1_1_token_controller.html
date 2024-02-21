@@ -117,8 +117,6 @@ Public Member Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Controller responsible for generating authentication tokens for authorised users. </p>
-
-<p class="definition">Definition at line <a class="el" href="_token_controller_8cs_source.html#l00018">18</a> of file <a class="el" href="_token_controller_8cs_source.html">TokenController.cs</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a4ee708fb4e38986bb0b67119aaeb7e62" name="a4ee708fb4e38986bb0b67119aaeb7e62"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4ee708fb4e38986bb0b67119aaeb7e62">&#9670;&#160;</a></span>TokenController()</h2>
@@ -147,9 +145,11 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-
-<p class="definition">Definition at line <a class="el" href="_token_controller_8cs_source.html#l00029">29</a> of file <a class="el" href="_token_controller_8cs_source.html">TokenController.cs</a>.</p>
-
+<div class="fragment"><div class="line"><span class="lineno">   30</span>    {</div>
+<div class="line"><span class="lineno">   31</span>        _appSettings = appSettings.Value;   </div>
+<div class="line"><span class="lineno">   32</span>        _jwtUtils = jwtUtils;</div>
+<div class="line"><span class="lineno">   33</span>    }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -171,9 +171,14 @@ Public Member Functions</h2></td></tr>
 <p>Generates an authentication token for the current authenticated user. </p>
 <dl class="section return"><dt>Returns</dt><dd>An IActionResult containing the generated token or an Unauthorized result.</dd></dl>
 <p>This endpoint checks if the user is authenticated and generates a token using user details. The generated token enables the user to access protected resources. It requires the user to be previously authenticated. </p>
-
-<p class="definition">Definition at line <a class="el" href="_token_controller_8cs_source.html#l00046">46</a> of file <a class="el" href="_token_controller_8cs_source.html">TokenController.cs</a>.</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">   47</span>    {</div>
+<div class="line"><span class="lineno">   48</span>        <span class="keywordflow">if</span> (!User.Identity.IsAuthenticated)</div>
+<div class="line"><span class="lineno">   49</span>            <span class="keywordflow">return</span> Unauthorized();</div>
+<div class="line"><span class="lineno">   50</span>        var token = _jwtUtils.<a class="code hl_function" href="class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils.html#ac667c75c6805eb3e6943cc1e8aec0573">GenerateToken</a>(UserHelper.GetAuthenticatedUser(User));</div>
+<div class="line"><span class="lineno">   51</span>        <span class="keywordflow">return</span> Ok(token);</div>
+<div class="line"><span class="lineno">   52</span>    }</div>
+<div class="ttc" id="aclass_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils_html_ac667c75c6805eb3e6943cc1e8aec0573"><div class="ttname"><a href="class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils.html#ac667c75c6805eb3e6943cc1e8aec0573">AinslieAPI.Authentication.JwtUtils.GenerateToken</a></div><div class="ttdeci">string GenerateToken(AuthenticatedUser user)</div><div class="ttdoc">Generates a JWT for an authenticated user.</div><div class="ttdef"><b>Definition</b> JwtUtils.cs:42</div></div>
+</div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_ainslie_a_p_i_1_1_controllers_1_1_token_controller_a5df864329f89cc6a7320304a65cc9002_cgraph.png" border="0" usemap="#aclass_ainslie_a_p_i_1_1_controllers_1_1_token_controller_a5df864329f89cc6a7320304a65cc9002_cgraph" alt=""/></div>
@@ -191,7 +196,7 @@ Here is the call graph for this function:</div>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>C:/Users/STRIDER/source/repos/AinslieAPI/Controllers/<a class="el" href="_token_controller_8cs_source.html">TokenController.cs</a></li>
+<li>C:/Users/STRIDER/source/repos/AinslieAPI/Controllers/<a class="el" href="_token_controller_8cs.html">TokenController.cs</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

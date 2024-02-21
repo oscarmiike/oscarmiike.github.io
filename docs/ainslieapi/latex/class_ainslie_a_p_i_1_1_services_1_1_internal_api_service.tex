@@ -27,10 +27,6 @@ List$<$ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_priceapp_1_1_asset_pr
 \doxysubsection{Detailed Description}
 Provides services for interacting with Internal API, particularly for retrieving Green ID customer data. 
 
-Definition at line \mbox{\hyperlink{_internal_api_service_8cs_source_l00017}{17}} of file \mbox{\hyperlink{_internal_api_service_8cs_source}{Internal\+Api\+Service.\+cs}}.
-
-
-
 \doxysubsection{Constructor \& Destructor Documentation}
 \Hypertarget{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service_aa12cb20e0b39fccf99037e24cec32cda}\label{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service_aa12cb20e0b39fccf99037e24cec32cda} 
 \index{AinslieAPI.Services.InternalApiService@{AinslieAPI.Services.InternalApiService}!InternalApiService@{InternalApiService}}
@@ -50,9 +46,13 @@ Initialises a new instance of the Internal\+Api\+Service with application settin
 \hline
 \end{DoxyParams}
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \_appSettings\ =\ appSettings.Value;}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger\ =\ logService;}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \}}
 
-Definition at line \mbox{\hyperlink{_internal_api_service_8cs_source_l00028}{28}} of file \mbox{\hyperlink{_internal_api_service_8cs_source}{Internal\+Api\+Service.\+cs}}.
-
+\end{DoxyCode}
 
 
 \doxysubsection{Member Function Documentation}
@@ -72,19 +72,52 @@ A list of Asset\+Price objects, or null if the request fails or encounters an er
 
 
 Initiates a GET request to Internal API\textquotesingle{}s asset list endpoint. Errors during the request or deserialisation process are logged. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00285\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00286\ \ \ \ \ \ \ \ \ \ \ \ \ List<AssetPrice>?\ priceList\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{00287\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient(\_appSettings.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings_a51ac79da86ec47d7825bef5a33339cb9}{InternalApiSettings}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_internal_api_settings_a7ea819d8b324872a0ec9458348ceae97}{BaseUrl}});}
+\DoxyCodeLine{00288\ \ \ \ \ \ \ \ \ \ \ \ \ var\ request\ =\ \textcolor{keyword}{new}\ RestRequest(\_appSettings.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings_a51ac79da86ec47d7825bef5a33339cb9}{InternalApiSettings}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_internal_api_settings_a387a97c92a494cb529c4a9ff5acc1013}{Endpoint\_PriceappAssetList}},\ RestSharp.Method.Get);}
+\DoxyCodeLine{00289\ \ \ \ \ \ \ \ \ \ \ \ \ RestResponse\ response;}
+\DoxyCodeLine{00290\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00291\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00292\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ response\ =\ client.Execute(request);}
+\DoxyCodeLine{00293\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response?.Content\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00295\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response.IsSuccessful)}
+\DoxyCodeLine{00296\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00297\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ priceList\ =\ JsonConvert.DeserializeObject<List<AssetPrice>>(response.Content);}
+\DoxyCodeLine{00298\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00299\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00300\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00301\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a9bf79a218e0884ac9cabd3ac87b81321}{LogError}}(LogService.LogSources.InternalApiService,}
+\DoxyCodeLine{00302\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}error\ deserialising\ asset\ pricing\ from\ internal\ api\ asset\ list"{}},}
+\DoxyCodeLine{00303\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}StatusCode:\ \{(int)response.StatusCode\}"{}},}
+\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}StatusDescription:\ \{response.StatusDescription\}"{}},}
+\DoxyCodeLine{00305\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}Content:\ \{response.Content\}"{}});}
+\DoxyCodeLine{00306\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00307\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00308\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00309\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00310\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a9bf79a218e0884ac9cabd3ac87b81321}{LogError}}(LogService.LogSources.InternalApiService,}
+\DoxyCodeLine{00311\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}error\ getting\ asset\ list\ from\ internal\ api,\ response\ object\ is\ null"{}});}
+\DoxyCodeLine{00312\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00313\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00314\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{00315\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00316\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a83bbf569dea7ea5a40e02fca200aad8c}{LogException}}(LogService.LogSources.InternalApiService,\ \$\textcolor{stringliteral}{"{}exception\ getting\ asset\ list\ from\ internal\ api"{}},\ ex.ToString());}
+\DoxyCodeLine{00317\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00318\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ priceList;}
+\DoxyCodeLine{00319\ \ \ \ \ \ \ \ \ \}}
 
-Definition at line \mbox{\hyperlink{_internal_api_service_8cs_source_l00284}{284}} of file \mbox{\hyperlink{_internal_api_service_8cs_source}{Internal\+Api\+Service.\+cs}}.
-
-Here is the call graph for this function\+:
-\nopagebreak
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service_a09c4662b56f1cf03cfecb9928e1e884a_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -116,19 +149,56 @@ A Green\+Id\+Customer object containing the customer\textquotesingle{}s details,
 
 
 Makes a GET request to Internal API using branch and user ID as parameters. Logs detailed errors if the request fails. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_green_id_1_1_green_id_customer}{GreenIdCustomer}}\ greenIdCustomer\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keywordtype}{string}.IsNullOrEmpty(branch)\ ||\ \textcolor{keywordtype}{string}.IsNullOrEmpty(userId))}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ greenIdCustomer;}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient(\_appSettings.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings_a51ac79da86ec47d7825bef5a33339cb9}{InternalApiSettings}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_internal_api_settings_a7ea819d8b324872a0ec9458348ceae97}{BaseUrl}});}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ var\ request\ =\ \textcolor{keyword}{new}\ RestRequest(\_appSettings.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings_a51ac79da86ec47d7825bef5a33339cb9}{InternalApiSettings}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_internal_api_settings_a3b3c81d65b952ce0d7530e2da69bcf2b}{Endpoint\_GreenIdCustomer}},\ RestSharp.Method.Get);}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddUrlSegment(\textcolor{stringliteral}{"{}branch"{}},\ branch);}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddUrlSegment(\textcolor{stringliteral}{"{}userid"{}},\ userId);}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ RestResponse\ response\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ response\ =\ client.Execute(request);}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response.IsSuccessful)}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ greenIdCustomer\ =\ JsonConvert.DeserializeObject<\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_green_id_1_1_green_id_customer}{GreenIdCustomer}}>(response.Content);}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a9bf79a218e0884ac9cabd3ac87b81321}{LogError}}(LogService.LogSources.InternalApiService,}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}error\ getting\ greenid\ customer\ from\ internal\ api"{}},}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}StatusCode:\ \{(int)response.StatusCode\}"{}},}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}StatusDescription:\ \{response.StatusDescription\}"{}},}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}Content:\ \{response.Content\}"{}});}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a9bf79a218e0884ac9cabd3ac87b81321}{LogError}}(LogService.LogSources.InternalApiService,}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}error\ getting\ greenid\ customer\ from\ internal\ api,\ response\ object\ is\ null"{}});}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a83bbf569dea7ea5a40e02fca200aad8c}{LogException}}(LogService.LogSources.InternalApiService,\ \$\textcolor{stringliteral}{"{}Exception\ getting\ green\ id\ customer\ from\ internal\ api"{}},\ ex.ToString());}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ greenIdCustomer;}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \}}
 
-Definition at line \mbox{\hyperlink{_internal_api_service_8cs_source_l00046}{46}} of file \mbox{\hyperlink{_internal_api_service_8cs_source}{Internal\+Api\+Service.\+cs}}.
-
-Here is the call graph for this function\+:
-\nopagebreak
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service_ac96a3e52c78c6b67de6a0f244fd70a60_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -151,19 +221,52 @@ A list of Product\+Price objects, or null if the request fails or encounters an 
 
 
 Sends a GET request to the internal API\textquotesingle{}s product list endpoint. Logs errors or exceptions to aid in diagnosing issues with fetching or deserialising the data. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \ \ \ \ List<ProductPrice>?\ priceList\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient(\_appSettings.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings_a51ac79da86ec47d7825bef5a33339cb9}{InternalApiSettings}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_internal_api_settings_a7ea819d8b324872a0ec9458348ceae97}{BaseUrl}});}
+\DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ \ \ \ \ var\ request\ =\ \textcolor{keyword}{new}\ RestRequest(\_appSettings.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings_a51ac79da86ec47d7825bef5a33339cb9}{InternalApiSettings}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_internal_api_settings_a2a7258c704e05db98eb9bb29dab3db68}{Endpoint\_ABWebProductList}},\ RestSharp.Method.Get);}
+\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \ \ \ \ RestResponse\ response;}
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ response\ =\ client.Execute(request);}
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response?.Content\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response.IsSuccessful)}
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ priceList\ =\ JsonConvert.DeserializeObject<List<ProductPrice>>(response.Content);}
+\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a9bf79a218e0884ac9cabd3ac87b81321}{LogError}}(LogService.LogSources.InternalApiService,}
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}error\ deserialising\ product\ pricing\ from\ internal\ api\ product\ list"{}},}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}StatusCode:\ \{(int)response.StatusCode\}"{}},}
+\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}StatusDescription:\ \{response.StatusDescription\}"{}},}
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}Content:\ \{response.Content\}"{}});}
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00264\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a9bf79a218e0884ac9cabd3ac87b81321}{LogError}}(LogService.LogSources.InternalApiService,}
+\DoxyCodeLine{00265\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}error\ getting\ product\ list\ from\ internal\ api,\ response\ object\ is\ null"{}});}
+\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a83bbf569dea7ea5a40e02fca200aad8c}{LogException}}(LogService.LogSources.InternalApiService,\ \$\textcolor{stringliteral}{"{}exception\ getting\ product\ list\ from\ internal\ api"{}},\ ex.ToString());}
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00272\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ priceList;}
+\DoxyCodeLine{00273\ \ \ \ \ \ \ \ \ \}}
 
-Definition at line \mbox{\hyperlink{_internal_api_service_8cs_source_l00238}{238}} of file \mbox{\hyperlink{_internal_api_service_8cs_source}{Internal\+Api\+Service.\+cs}}.
-
-Here is the call graph for this function\+:
-\nopagebreak
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service_a0c4c5cccb2233540343e36fe0e8a0acc_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -193,19 +296,58 @@ The Netsuite customer ID on success, or 0 if the submission fails.
 
 
 This method attempts to post the provided customer data to Netsuite using an API call. It handles errors and exceptions by logging detailed messages for troubleshooting. Success or failure is determined by the response status. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ netsuiteCustomerId\ =\ 0;}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (netsuiteCustomerRequest\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a9bf79a218e0884ac9cabd3ac87b81321}{LogError}}(LogService.LogSources.InternalApiService,\ \$\textcolor{stringliteral}{"{}error\ posting\ customer\ to\ netsuite\ via\ internal\ api,\ netsuite\ customer\ is\ null"{}});}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ netsuiteCustomerId;}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient(\_appSettings.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings_a51ac79da86ec47d7825bef5a33339cb9}{InternalApiSettings}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_internal_api_settings_a7ea819d8b324872a0ec9458348ceae97}{BaseUrl}});}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ var\ request\ =\ \textcolor{keyword}{new}\ RestRequest(\_appSettings.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings_a51ac79da86ec47d7825bef5a33339cb9}{InternalApiSettings}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_internal_api_settings_a0476e4cb564fcb4a92e84a51d9208f53}{Endpoint\_NetsuiteCustomer}},\ RestSharp.Method.Post);}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddJsonBody(JsonConvert.SerializeObject(\ netsuiteCustomerRequest));}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ RestResponse\ response\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ response\ =\ client.Execute(request);}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response.IsSuccessful)}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ netsuiteCustomerId\ =\ JsonConvert.DeserializeObject<\textcolor{keywordtype}{int}>(response.Content);}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a9bf79a218e0884ac9cabd3ac87b81321}{LogError}}(LogService.LogSources.InternalApiService,}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}error\ posting\ customer\ to\ netsuite\ via\ internal\ api"{}},}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}StatusCode:\ \{(int)response.StatusCode\}"{}},}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}StatusDescription:\ \{response.StatusDescription\}"{}},}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}Content:\ \{response.Content\}"{}});}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a9bf79a218e0884ac9cabd3ac87b81321}{LogError}}(LogService.LogSources.InternalApiService,}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}error\ posting\ customer\ to\ netsuite\ via\ internal\ api,\ response\ object\ is\ null"{}});}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a83bbf569dea7ea5a40e02fca200aad8c}{LogException}}(LogService.LogSources.InternalApiService,\ \$\textcolor{stringliteral}{"{}Exception\ posting\ customer\ to\ netsuite\ via\ internal\ api"{}},\ ex.ToString());}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ netsuiteCustomerId;}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \}}
 
-Definition at line \mbox{\hyperlink{_internal_api_service_8cs_source_l00099}{99}} of file \mbox{\hyperlink{_internal_api_service_8cs_source}{Internal\+Api\+Service.\+cs}}.
-
-Here is the call graph for this function\+:
-\nopagebreak
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service_a7a070bb565246fb698283432930d9cd1_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -235,11 +377,29 @@ bool indicating success {\ttfamily (true)} or failure {\ttfamily (false)}
 
 
 Executes a POST request to Internal API\textquotesingle{}s email endpoint, serialising the Email\+Post object as JSON in the request body. Logs errors or exceptions encountered during the process. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient(\_appSettings.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings_a51ac79da86ec47d7825bef5a33339cb9}{InternalApiSettings}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_internal_api_settings_a7ea819d8b324872a0ec9458348ceae97}{BaseUrl}});}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ request\ =\ \textcolor{keyword}{new}\ RestRequest(\_appSettings.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings_a51ac79da86ec47d7825bef5a33339cb9}{InternalApiSettings}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_internal_api_settings_abf628e305958d76a6b0f1769ce132d1e}{Endpoint\_Email}},\ RestSharp.Method.Post);}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ request.AddJsonBody(email);}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ RestResponse\ response\ =\ client.Execute(request);}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response.IsSuccessStatusCode)}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a9bf79a218e0884ac9cabd3ac87b81321}{LogError}}(LogService.LogSources.InternalApiService,\ \textcolor{stringliteral}{"{}unsuccessful\ response\ sending\ email\ through\ internal\ api"{}},\ \$\textcolor{stringliteral}{"{}StatusCode:\ \{response.StatusCode\}\ Description:\ \{response.StatusDescription\}\ Content:\ \{response.Content\}"{}});}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a83bbf569dea7ea5a40e02fca200aad8c}{LogException}}(LogService.LogSources.InternalApiService,\ \textcolor{stringliteral}{"{}exception\ sending\ email\ through\ internal\ api"{}},\ ex.ToString());}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \}}
 
-Definition at line \mbox{\hyperlink{_internal_api_service_8cs_source_l00208}{208}} of file \mbox{\hyperlink{_internal_api_service_8cs_source}{Internal\+Api\+Service.\+cs}}.
-
-Here is the call graph for this function\+:
-\nopagebreak
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -271,19 +431,57 @@ bool indicating success {\ttfamily (true)} or failure {\ttfamily (false)}
 
 
 Attempts to update the Green ID database record with the specified Netsuite ID via Internal API call. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ dynamic?\ result\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (netsuiteId\ ==\ 0)\ }
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient(\_appSettings.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings_a51ac79da86ec47d7825bef5a33339cb9}{InternalApiSettings}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_internal_api_settings_a7ea819d8b324872a0ec9458348ceae97}{BaseUrl}});}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ var\ request\ =\ \textcolor{keyword}{new}\ RestRequest(\_appSettings.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings_a51ac79da86ec47d7825bef5a33339cb9}{InternalApiSettings}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_internal_api_settings_a8e7987d305669a17e80368284203ccac}{Endpoint\_UpdateGreenIdDbNetsuiteId}},\ RestSharp.Method.Get);}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddUrlSegment(\textcolor{stringliteral}{"{}greenidref"{}},\ greenIdRef);}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddQueryParameter(\textcolor{stringliteral}{"{}netsuiteid"{}},\ netsuiteId);}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \ \ \ \ RestResponse\ response;}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ response\ =\ client.Execute(request);}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response.IsSuccessful)}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ result\ =\ JsonConvert.DeserializeObject<dynamic>(response.Content\ ??\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a9bf79a218e0884ac9cabd3ac87b81321}{LogError}}(LogService.LogSources.InternalApiService,}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}error\ updating\ greeniddb\ customer\ with\ netsuiteid"{}},}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}StatusCode:\ \{(int)response.StatusCode\}"{}},}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}StatusDescription:\ \{response.StatusDescription\}"{}},}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}Content:\ \{response.Content\}"{}});}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a9bf79a218e0884ac9cabd3ac87b81321}{LogError}}(LogService.LogSources.InternalApiService,}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \$\textcolor{stringliteral}{"{}error\ updating\ greeniddb\ customer\ with\ netsuiteid,\ response\ object\ is\ null"{}});}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a83bbf569dea7ea5a40e02fca200aad8c}{LogException}}(LogService.LogSources.InternalApiService,\ \$\textcolor{stringliteral}{"{}exception\ updating\ greeniddb\ customer\ with\ netsuiteid"{}},\ ex.ToString());}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result?.success\ ==\ \textcolor{keyword}{true}\ ?\ true\ :\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \}}
 
-Definition at line \mbox{\hyperlink{_internal_api_service_8cs_source_l00154}{154}} of file \mbox{\hyperlink{_internal_api_service_8cs_source}{Internal\+Api\+Service.\+cs}}.
-
-Here is the call graph for this function\+:
-\nopagebreak
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service_aa8c183f663dbc4061a007aee4e5cf28e_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

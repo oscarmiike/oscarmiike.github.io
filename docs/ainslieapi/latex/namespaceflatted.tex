@@ -46,11 +46,18 @@ class \mbox{\hyperlink{classflatted_1_1___string}{\+\_\+\+String}}
 {\footnotesize\ttfamily flatted.\+\_\+array\+\_\+keys (\begin{DoxyParamCaption}\item[{}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00029\ \textcolor{keyword}{def\ }\_array\_keys(value):}
+\DoxyCodeLine{00030\ \ \ \ \ keys\ =\ []}
+\DoxyCodeLine{00031\ \ \ \ \ i\ =\ 0}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordflow}{for}\ \_\ \textcolor{keywordflow}{in}\ value:}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ keys.append(i)}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ i\ +=\ 1}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordflow}{return}\ keys}
+\DoxyCodeLine{00036\ }
 
-Definition at line \mbox{\hyperlink{flatted_8py_source_l00029}{29}} of file \mbox{\hyperlink{flatted_8py_source}{flatted.\+py}}.
-
-Here is the caller graph for this function\+:
-\nopagebreak
+\end{DoxyCode}
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -64,11 +71,17 @@ Here is the caller graph for this function\+:
 {\footnotesize\ttfamily flatted.\+\_\+index (\begin{DoxyParamCaption}\item[{}]{known,  }\item[{}]{input,  }\item[{}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00052\ \textcolor{keyword}{def\ }\_index(known,\ input,\ value):}
+\DoxyCodeLine{00053\ \ \ \ \ input.append(value)}
+\DoxyCodeLine{00054\ \ \ \ \ index\ =\ str(len(input)\ -\/\ 1)}
+\DoxyCodeLine{00055\ \ \ \ \ known.key.append(value)}
+\DoxyCodeLine{00056\ \ \ \ \ known.value.append(index)}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordflow}{return}\ index}
+\DoxyCodeLine{00058\ }
 
-Definition at line \mbox{\hyperlink{flatted_8py_source_l00052}{52}} of file \mbox{\hyperlink{flatted_8py_source}{flatted.\+py}}.
-
-Here is the caller graph for this function\+:
-\nopagebreak
+\end{DoxyCode}
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -82,11 +95,13 @@ Here is the caller graph for this function\+:
 {\footnotesize\ttfamily flatted.\+\_\+is\+\_\+array (\begin{DoxyParamCaption}\item[{}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00043\ \textcolor{keyword}{def\ }\_is\_array(value):}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordflow}{return}\ isinstance(value,\ list)\ \textcolor{keywordflow}{or}\ isinstance(value,\ tuple)}
+\DoxyCodeLine{00045\ }
 
-Definition at line \mbox{\hyperlink{flatted_8py_source_l00043}{43}} of file \mbox{\hyperlink{flatted_8py_source}{flatted.\+py}}.
-
-Here is the caller graph for this function\+:
-\nopagebreak
+\end{DoxyCode}
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -100,11 +115,13 @@ Here is the caller graph for this function\+:
 {\footnotesize\ttfamily flatted.\+\_\+is\+\_\+object (\begin{DoxyParamCaption}\item[{}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00046\ \textcolor{keyword}{def\ }\_is\_object(value):}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordflow}{return}\ isinstance(value,\ dict)}
+\DoxyCodeLine{00048\ }
 
-Definition at line \mbox{\hyperlink{flatted_8py_source_l00046}{46}} of file \mbox{\hyperlink{flatted_8py_source}{flatted.\+py}}.
-
-Here is the caller graph for this function\+:
-\nopagebreak
+\end{DoxyCode}
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -118,11 +135,13 @@ Here is the caller graph for this function\+:
 {\footnotesize\ttfamily flatted.\+\_\+is\+\_\+string (\begin{DoxyParamCaption}\item[{}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00049\ \textcolor{keyword}{def\ }\_is\_string(value):}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordflow}{return}\ isinstance(value,\ str)}
+\DoxyCodeLine{00051\ }
 
-Definition at line \mbox{\hyperlink{flatted_8py_source_l00049}{49}} of file \mbox{\hyperlink{flatted_8py_source}{flatted.\+py}}.
-
-Here is the caller graph for this function\+:
-\nopagebreak
+\end{DoxyCode}
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -136,19 +155,25 @@ Here is the caller graph for this function\+:
 {\footnotesize\ttfamily flatted.\+\_\+loop (\begin{DoxyParamCaption}\item[{}]{keys,  }\item[{}]{input,  }\item[{}]{known,  }\item[{}]{output }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00059\ \textcolor{keyword}{def\ }\_loop(keys,\ input,\ known,\ output):}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordflow}{for}\ key\ \textcolor{keywordflow}{in}\ keys:}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ value\ =\ output[key]}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ isinstance(value,\ \_String):}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \_ref(key,\ input[int(value.value)],\ input,\ known,\ output)}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordflow}{return}\ output}
+\DoxyCodeLine{00066\ }
 
-Definition at line \mbox{\hyperlink{flatted_8py_source_l00059}{59}} of file \mbox{\hyperlink{flatted_8py_source}{flatted.\+py}}.
-
-Here is the call graph for this function\+:
-\nopagebreak
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{namespaceflatted_aecd75202b154514cfdaa0eee6a8dd8a0_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -162,11 +187,16 @@ Here is the caller graph for this function\+:
 {\footnotesize\ttfamily flatted.\+\_\+object\+\_\+keys (\begin{DoxyParamCaption}\item[{}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00037\ \textcolor{keyword}{def\ }\_object\_keys(value):}
+\DoxyCodeLine{00038\ \ \ \ \ keys\ =\ []}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordflow}{for}\ key\ \textcolor{keywordflow}{in}\ value:}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ keys.append(key)}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordflow}{return}\ keys}
+\DoxyCodeLine{00042\ }
 
-Definition at line \mbox{\hyperlink{flatted_8py_source_l00037}{37}} of file \mbox{\hyperlink{flatted_8py_source}{flatted.\+py}}.
-
-Here is the caller graph for this function\+:
-\nopagebreak
+\end{DoxyCode}
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -180,19 +210,27 @@ Here is the caller graph for this function\+:
 {\footnotesize\ttfamily flatted.\+\_\+ref (\begin{DoxyParamCaption}\item[{}]{key,  }\item[{}]{value,  }\item[{}]{input,  }\item[{}]{known,  }\item[{}]{output }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00067\ \textcolor{keyword}{def\ }\_ref(key,\ value,\ input,\ known,\ output):}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordflow}{if}\ \_is\_array(value)\ \textcolor{keywordflow}{and}\ \textcolor{keywordflow}{not}\ value\ \textcolor{keywordflow}{in}\ known:}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ known.append(value)}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ value\ =\ \_loop(\_array\_keys(value),\ input,\ known,\ value)}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordflow}{elif}\ \_is\_object(value)\ \textcolor{keywordflow}{and}\ \textcolor{keywordflow}{not}\ value\ \textcolor{keywordflow}{in}\ known:}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ known.append(value)}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ value\ =\ \_loop(\_object\_keys(value),\ input,\ known,\ value)}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ output[key]\ =\ value}
+\DoxyCodeLine{00076\ }
 
-Definition at line \mbox{\hyperlink{flatted_8py_source_l00067}{67}} of file \mbox{\hyperlink{flatted_8py_source}{flatted.\+py}}.
-
-Here is the call graph for this function\+:
-\nopagebreak
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=280pt]{namespaceflatted_af74e45c06efe798d934f5a9a643329ec_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -206,19 +244,26 @@ Here is the caller graph for this function\+:
 {\footnotesize\ttfamily flatted.\+\_\+relate (\begin{DoxyParamCaption}\item[{}]{known,  }\item[{}]{input,  }\item[{}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00077\ \textcolor{keyword}{def\ }\_relate(known,\ input,\ value):}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordflow}{if}\ \_is\_string(value)\ \textcolor{keywordflow}{or}\ \_is\_array(value)\ \textcolor{keywordflow}{or}\ \_is\_object(value):}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}:}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ known.value[known.key.index(value)]}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{except}:}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_index(known,\ input,\ value)}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordflow}{return}\ value}
+\DoxyCodeLine{00085\ }
 
-Definition at line \mbox{\hyperlink{flatted_8py_source_l00077}{77}} of file \mbox{\hyperlink{flatted_8py_source}{flatted.\+py}}.
-
-Here is the call graph for this function\+:
-\nopagebreak
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=280pt]{namespaceflatted_a1c57a34a7bf724a855bd3f2a1fd98fc7_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -232,19 +277,32 @@ Here is the caller graph for this function\+:
 {\footnotesize\ttfamily flatted.\+\_\+transform (\begin{DoxyParamCaption}\item[{}]{known,  }\item[{}]{input,  }\item[{}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00086\ \textcolor{keyword}{def\ }\_transform(known,\ input,\ value):}
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordflow}{if}\ \_is\_array(value):}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ output\ =\ []}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ val\ \textcolor{keywordflow}{in}\ value:}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ output.append(\_relate(known,\ input,\ val))}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ output}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keywordflow}{if}\ \_is\_object(value):}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ obj\ =\ \{\}}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ key\ \textcolor{keywordflow}{in}\ value:}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ obj[key]\ =\ \_relate(known,\ input,\ value[key])}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ obj}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keywordflow}{return}\ value}
+\DoxyCodeLine{00100\ }
 
-Definition at line \mbox{\hyperlink{flatted_8py_source_l00086}{86}} of file \mbox{\hyperlink{flatted_8py_source}{flatted.\+py}}.
-
-Here is the call graph for this function\+:
-\nopagebreak
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{namespaceflatted_a41da9bdca5096c88843590ce405b907f_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -258,19 +316,33 @@ Here is the caller graph for this function\+:
 {\footnotesize\ttfamily flatted.\+\_\+wrap (\begin{DoxyParamCaption}\item[{}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00101\ \textcolor{keyword}{def\ }\_wrap(value):}
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keywordflow}{if}\ \_is\_string(value):}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_String(value)}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keywordflow}{if}\ \_is\_array(value):}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ i\ =\ 0}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ val\ \textcolor{keywordflow}{in}\ value:}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ value[i]\ =\ \_wrap(val)}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ i\ +=\ 1}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{keywordflow}{elif}\ \_is\_object(value):}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ key\ \textcolor{keywordflow}{in}\ value:}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ value[key]\ =\ \_wrap(value[key])}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ \ \ \ \ \textcolor{keywordflow}{return}\ value}
+\DoxyCodeLine{00116\ }
 
-Definition at line \mbox{\hyperlink{flatted_8py_source_l00101}{101}} of file \mbox{\hyperlink{flatted_8py_source}{flatted.\+py}}.
-
-Here is the call graph for this function\+:
-\nopagebreak
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=276pt]{namespaceflatted_ac493ef170880e775025eb0b6f2bf3318_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -284,11 +356,34 @@ Here is the caller graph for this function\+:
 {\footnotesize\ttfamily flatted.\+parse (\begin{DoxyParamCaption}\item[{}]{value,  }\item[{\texorpdfstring{$\ast$}{*}}]{args,  }\item[{\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{kwargs }\end{DoxyParamCaption})}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00117\ \textcolor{keyword}{def\ }parse(value,\ *args,\ **kwargs):}
+\DoxyCodeLine{00118\ \ \ \ \ json\ =\ \_json.loads(value,\ *args,\ **kwargs)}
+\DoxyCodeLine{00119\ \ \ \ \ wrapped\ =\ []}
+\DoxyCodeLine{00120\ \ \ \ \ \textcolor{keywordflow}{for}\ value\ \textcolor{keywordflow}{in}\ json:}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ wrapped.append(\_wrap(value))}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ \ \ \ \ input\ =\ []}
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{keywordflow}{for}\ value\ \textcolor{keywordflow}{in}\ wrapped:}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ isinstance(value,\ \_String):}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ input.append(value.value)}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ input.append(value)}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00130\ \ \ \ \ value\ =\ input[0]}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00132\ \ \ \ \ \textcolor{keywordflow}{if}\ \_is\_array(value):}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_loop(\_array\_keys(value),\ input,\ [value],\ value)}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00135\ \ \ \ \ \textcolor{keywordflow}{if}\ \_is\_object(value):}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_loop(\_object\_keys(value),\ input,\ [value],\ value)}
+\DoxyCodeLine{00137\ }
+\DoxyCodeLine{00138\ \ \ \ \ \textcolor{keywordflow}{return}\ value}
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00140\ }
 
-Definition at line \mbox{\hyperlink{flatted_8py_source_l00117}{117}} of file \mbox{\hyperlink{flatted_8py_source}{flatted.\+py}}.
-
-Here is the call graph for this function\+:
-\nopagebreak
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -302,11 +397,19 @@ Here is the call graph for this function\+:
 {\footnotesize\ttfamily flatted.\+stringify (\begin{DoxyParamCaption}\item[{}]{value,  }\item[{\texorpdfstring{$\ast$}{*}}]{args,  }\item[{\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{kwargs }\end{DoxyParamCaption})}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00141\ \textcolor{keyword}{def\ }stringify(value,\ *args,\ **kwargs):}
+\DoxyCodeLine{00142\ \ \ \ \ known\ =\ \_Known()}
+\DoxyCodeLine{00143\ \ \ \ \ input\ =\ []}
+\DoxyCodeLine{00144\ \ \ \ \ output\ =\ []}
+\DoxyCodeLine{00145\ \ \ \ \ i\ =\ int(\_index(known,\ input,\ value))}
+\DoxyCodeLine{00146\ \ \ \ \ \textcolor{keywordflow}{while}\ i\ <\ len(input):}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ output.append(\_transform(known,\ input,\ input[i]))}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ i\ +=\ 1}
+\DoxyCodeLine{00149\ \ \ \ \ \textcolor{keywordflow}{return}\ \_json.dumps(output,\ *args,\ **kwargs)}
 
-Definition at line \mbox{\hyperlink{flatted_8py_source_l00141}{141}} of file \mbox{\hyperlink{flatted_8py_source}{flatted.\+py}}.
-
-Here is the call graph for this function\+:
-\nopagebreak
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

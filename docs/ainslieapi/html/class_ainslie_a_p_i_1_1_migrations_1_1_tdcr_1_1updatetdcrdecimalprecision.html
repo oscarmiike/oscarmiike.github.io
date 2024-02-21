@@ -116,9 +116,7 @@ Protected Member Functions</h2></td></tr>
 <tr class="separator:a906db85f259862fc2931f8b77a6f5f2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="20231130030658__update-tdcr-decimal-precision_8cs_source.html#l00008">8</a> of file <a class="el" href="20231130030658__update-tdcr-decimal-precision_8cs_source.html">20231130030658_update-tdcr-decimal-precision.cs</a>.</p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+<div class="textblock"></div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a906db85f259862fc2931f8b77a6f5f2d" name="a906db85f259862fc2931f8b77a6f5f2d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a906db85f259862fc2931f8b77a6f5f2d">&#9670;&#160;</a></span>BuildTargetModel()</h2>
 
@@ -143,9 +141,57 @@ Protected Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p></p>
-
-<p class="definition">Definition at line <a class="el" href="20231130030658__update-tdcr-decimal-precision_8_designer_8cs_source.html#l00019">19</a> of file <a class="el" href="20231130030658__update-tdcr-decimal-precision_8_designer_8cs_source.html">20231130030658_update-tdcr-decimal-precision.Designer.cs</a>.</p>
-
+<div class="fragment"><div class="line"><span class="lineno">   20</span>        {</div>
+<div class="line"><span class="lineno">   21</span><span class="preprocessor">#pragma warning disable 612, 618</span></div>
+<div class="line"><span class="lineno">   22</span>            modelBuilder</div>
+<div class="line"><span class="lineno">   23</span>                .HasAnnotation(<span class="stringliteral">&quot;ProductVersion&quot;</span>, <span class="stringliteral">&quot;7.0.5&quot;</span>)</div>
+<div class="line"><span class="lineno">   24</span>                .HasAnnotation(<span class="stringliteral">&quot;Relational:MaxIdentifierLength&quot;</span>, 128);</div>
+<div class="line"><span class="lineno">   25</span> </div>
+<div class="line"><span class="lineno">   26</span>            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);</div>
+<div class="line"><span class="lineno">   27</span> </div>
+<div class="line"><span class="lineno">   28</span>            modelBuilder.Entity(<span class="stringliteral">&quot;AinslieAPI.Data.Models.Tdcr.Order&quot;</span>, b =&gt;</div>
+<div class="line"><span class="lineno">   29</span>                {</div>
+<div class="line"><span class="lineno">   30</span>                    <a class="code hl_variable" href="namespacetest.html#a0f45e01f998f32bf815adc0cbe886405">b</a>.Property&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;ID&quot;</span>)</div>
+<div class="line"><span class="lineno">   31</span>                        .ValueGeneratedOnAdd()</div>
+<div class="line"><span class="lineno">   32</span>                        .HasColumnType(<span class="stringliteral">&quot;int&quot;</span>);</div>
+<div class="line"><span class="lineno">   33</span> </div>
+<div class="line"><span class="lineno">   34</span>                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(<a class="code hl_variable" href="namespacetest.html#a0f45e01f998f32bf815adc0cbe886405">b</a>.Property&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;ID&quot;</span>));</div>
+<div class="line"><span class="lineno">   35</span> </div>
+<div class="line"><span class="lineno">   36</span>                    <a class="code hl_variable" href="namespacetest.html#a0f45e01f998f32bf815adc0cbe886405">b</a>.Property&lt;DateTime&gt;(<span class="stringliteral">&quot;Created&quot;</span>)</div>
+<div class="line"><span class="lineno">   37</span>                        .HasColumnType(<span class="stringliteral">&quot;DateTime2(3)&quot;</span>);</div>
+<div class="line"><span class="lineno">   38</span> </div>
+<div class="line"><span class="lineno">   39</span>                    <a class="code hl_variable" href="namespacetest.html#a0f45e01f998f32bf815adc0cbe886405">b</a>.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;Market&quot;</span>)</div>
+<div class="line"><span class="lineno">   40</span>                        .IsRequired()</div>
+<div class="line"><span class="lineno">   41</span>                        .HasMaxLength(50)</div>
+<div class="line"><span class="lineno">   42</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(50)&quot;</span>);</div>
+<div class="line"><span class="lineno">   43</span> </div>
+<div class="line"><span class="lineno">   44</span>                    <a class="code hl_variable" href="namespacetest.html#a0f45e01f998f32bf815adc0cbe886405">b</a>.Property&lt;decimal&gt;(<span class="stringliteral">&quot;Price&quot;</span>)</div>
+<div class="line"><span class="lineno">   45</span>                        .HasColumnType(<span class="stringliteral">&quot;decimal(18, 4)&quot;</span>);</div>
+<div class="line"><span class="lineno">   46</span> </div>
+<div class="line"><span class="lineno">   47</span>                    <a class="code hl_variable" href="namespacetest.html#a0f45e01f998f32bf815adc0cbe886405">b</a>.Property&lt;decimal&gt;(<span class="stringliteral">&quot;Quantity&quot;</span>)</div>
+<div class="line"><span class="lineno">   48</span>                        .HasColumnType(<span class="stringliteral">&quot;decimal(18, 8)&quot;</span>);</div>
+<div class="line"><span class="lineno">   49</span> </div>
+<div class="line"><span class="lineno">   50</span>                    <a class="code hl_variable" href="namespacetest.html#a0f45e01f998f32bf815adc0cbe886405">b</a>.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;Side&quot;</span>)</div>
+<div class="line"><span class="lineno">   51</span>                        .IsRequired()</div>
+<div class="line"><span class="lineno">   52</span>                        .HasMaxLength(50)</div>
+<div class="line"><span class="lineno">   53</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(50)&quot;</span>);</div>
+<div class="line"><span class="lineno">   54</span> </div>
+<div class="line"><span class="lineno">   55</span>                    <a class="code hl_variable" href="namespacetest.html#a0f45e01f998f32bf815adc0cbe886405">b</a>.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;TdcrId&quot;</span>)</div>
+<div class="line"><span class="lineno">   56</span>                        .IsRequired()</div>
+<div class="line"><span class="lineno">   57</span>                        .HasMaxLength(100)</div>
+<div class="line"><span class="lineno">   58</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(100)&quot;</span>);</div>
+<div class="line"><span class="lineno">   59</span> </div>
+<div class="line"><span class="lineno">   60</span>                    <a class="code hl_variable" href="namespacetest.html#a0f45e01f998f32bf815adc0cbe886405">b</a>.Property&lt;<span class="keywordtype">long</span>&gt;(<span class="stringliteral">&quot;TdcrTimestamp&quot;</span>)</div>
+<div class="line"><span class="lineno">   61</span>                        .HasColumnType(<span class="stringliteral">&quot;bigint&quot;</span>);</div>
+<div class="line"><span class="lineno">   62</span> </div>
+<div class="line"><span class="lineno">   63</span>                    <a class="code hl_variable" href="namespacetest.html#a0f45e01f998f32bf815adc0cbe886405">b</a>.HasKey(<span class="stringliteral">&quot;ID&quot;</span>);</div>
+<div class="line"><span class="lineno">   64</span> </div>
+<div class="line"><span class="lineno">   65</span>                    <a class="code hl_variable" href="namespacetest.html#a0f45e01f998f32bf815adc0cbe886405">b</a>.ToTable(<span class="stringliteral">&quot;Orders&quot;</span>);</div>
+<div class="line"><span class="lineno">   66</span>                });</div>
+<div class="line"><span class="lineno">   67</span><span class="preprocessor">#pragma warning restore 612, 618</span></div>
+<div class="line"><span class="lineno">   68</span>        }</div>
+<div class="ttc" id="anamespacetest_html_a0f45e01f998f32bf815adc0cbe886405"><div class="ttname"><a href="namespacetest.html#a0f45e01f998f32bf815adc0cbe886405">test.b</a></div><div class="ttdeci">b</div><div class="ttdef"><b>Definition</b> test.py:20</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a53d86e6ee62c492a62704ae865db496f" name="a53d86e6ee62c492a62704ae865db496f"></a>
@@ -172,9 +218,24 @@ Protected Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p></p>
-
-<p class="definition">Definition at line <a class="el" href="20231130030658__update-tdcr-decimal-precision_8cs_source.html#l00031">31</a> of file <a class="el" href="20231130030658__update-tdcr-decimal-precision_8cs_source.html">20231130030658_update-tdcr-decimal-precision.cs</a>.</p>
-
+<div class="fragment"><div class="line"><span class="lineno">   32</span>        {</div>
+<div class="line"><span class="lineno">   33</span>            migrationBuilder.AlterColumn&lt;decimal&gt;(</div>
+<div class="line"><span class="lineno">   34</span>                name: <span class="stringliteral">&quot;Quantity&quot;</span>,</div>
+<div class="line"><span class="lineno">   35</span>                table: <span class="stringliteral">&quot;Orders&quot;</span>,</div>
+<div class="line"><span class="lineno">   36</span>                type: <span class="stringliteral">&quot;decimal(18,2)&quot;</span>,</div>
+<div class="line"><span class="lineno">   37</span>                nullable: <span class="keyword">false</span>,</div>
+<div class="line"><span class="lineno">   38</span>                oldClrType: typeof(decimal),</div>
+<div class="line"><span class="lineno">   39</span>                oldType: <span class="stringliteral">&quot;decimal(18,8)&quot;</span>);</div>
+<div class="line"><span class="lineno">   40</span> </div>
+<div class="line"><span class="lineno">   41</span>            migrationBuilder.AlterColumn&lt;decimal&gt;(</div>
+<div class="line"><span class="lineno">   42</span>                name: <span class="stringliteral">&quot;Price&quot;</span>,</div>
+<div class="line"><span class="lineno">   43</span>                table: <span class="stringliteral">&quot;Orders&quot;</span>,</div>
+<div class="line"><span class="lineno">   44</span>                type: <span class="stringliteral">&quot;decimal(18,2)&quot;</span>,</div>
+<div class="line"><span class="lineno">   45</span>                nullable: <span class="keyword">false</span>,</div>
+<div class="line"><span class="lineno">   46</span>                oldClrType: typeof(decimal),</div>
+<div class="line"><span class="lineno">   47</span>                oldType: <span class="stringliteral">&quot;decimal(18,4)&quot;</span>);</div>
+<div class="line"><span class="lineno">   48</span>        }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a5aa62730d9b50bb029db68b980a8cd22" name="a5aa62730d9b50bb029db68b980a8cd22"></a>
@@ -201,14 +262,29 @@ Protected Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p></p>
-
-<p class="definition">Definition at line <a class="el" href="20231130030658__update-tdcr-decimal-precision_8cs_source.html#l00011">11</a> of file <a class="el" href="20231130030658__update-tdcr-decimal-precision_8cs_source.html">20231130030658_update-tdcr-decimal-precision.cs</a>.</p>
-
+<div class="fragment"><div class="line"><span class="lineno">   12</span>        {</div>
+<div class="line"><span class="lineno">   13</span>            migrationBuilder.AlterColumn&lt;decimal&gt;(</div>
+<div class="line"><span class="lineno">   14</span>                name: <span class="stringliteral">&quot;Quantity&quot;</span>,</div>
+<div class="line"><span class="lineno">   15</span>                table: <span class="stringliteral">&quot;Orders&quot;</span>,</div>
+<div class="line"><span class="lineno">   16</span>                type: <span class="stringliteral">&quot;decimal(18,8)&quot;</span>,</div>
+<div class="line"><span class="lineno">   17</span>                nullable: <span class="keyword">false</span>,</div>
+<div class="line"><span class="lineno">   18</span>                oldClrType: typeof(decimal),</div>
+<div class="line"><span class="lineno">   19</span>                oldType: <span class="stringliteral">&quot;decimal(18,2)&quot;</span>);</div>
+<div class="line"><span class="lineno">   20</span> </div>
+<div class="line"><span class="lineno">   21</span>            migrationBuilder.AlterColumn&lt;decimal&gt;(</div>
+<div class="line"><span class="lineno">   22</span>                name: <span class="stringliteral">&quot;Price&quot;</span>,</div>
+<div class="line"><span class="lineno">   23</span>                table: <span class="stringliteral">&quot;Orders&quot;</span>,</div>
+<div class="line"><span class="lineno">   24</span>                type: <span class="stringliteral">&quot;decimal(18,4)&quot;</span>,</div>
+<div class="line"><span class="lineno">   25</span>                nullable: <span class="keyword">false</span>,</div>
+<div class="line"><span class="lineno">   26</span>                oldClrType: typeof(decimal),</div>
+<div class="line"><span class="lineno">   27</span>                oldType: <span class="stringliteral">&quot;decimal(18,2)&quot;</span>);</div>
+<div class="line"><span class="lineno">   28</span>        }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>C:/Users/STRIDER/source/repos/AinslieAPI/Migrations/Tdcr/<a class="el" href="20231130030658__update-tdcr-decimal-precision_8cs_source.html">20231130030658_update-tdcr-decimal-precision.cs</a></li>
-<li>C:/Users/STRIDER/source/repos/AinslieAPI/Migrations/Tdcr/<a class="el" href="20231130030658__update-tdcr-decimal-precision_8_designer_8cs_source.html">20231130030658_update-tdcr-decimal-precision.Designer.cs</a></li>
+<li>C:/Users/STRIDER/source/repos/AinslieAPI/Migrations/Tdcr/<a class="el" href="20231130030658__update-tdcr-decimal-precision_8cs.html">20231130030658_update-tdcr-decimal-precision.cs</a></li>
+<li>C:/Users/STRIDER/source/repos/AinslieAPI/Migrations/Tdcr/<a class="el" href="20231130030658__update-tdcr-decimal-precision_8_designer_8cs.html">20231130030658_update-tdcr-decimal-precision.Designer.cs</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

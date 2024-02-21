@@ -89,10 +89,7 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memdesc:a5aef940b2585ea4d9472c9f3e89a860f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extracts and constructs an AuthenticatedUser object from the security claims of the currently authenticated user.  <br /></td></tr>
 <tr class="separator:a5aef940b2585ea4d9472c9f3e89a860f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_user_helper_8cs_source.html#l00008">8</a> of file <a class="el" href="_user_helper_8cs_source.html">UserHelper.cs</a>.</p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a id="a5aef940b2585ea4d9472c9f3e89a860f" name="a5aef940b2585ea4d9472c9f3e89a860f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5aef940b2585ea4d9472c9f3e89a860f">&#9670;&#160;</a></span>GetAuthenticatedUser()</h2>
 
@@ -125,9 +122,20 @@ Static Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>An AuthenticatedUser populated with details from the user's claims, or null if the user is not authenticated.</dd></dl>
 <p>This method parses claims to retrieve essential user information such as name, email address, profile image, and roles. It ensures that only authenticated users' details are processed. </p>
-
-<p class="definition">Definition at line <a class="el" href="_user_helper_8cs_source.html#l00022">22</a> of file <a class="el" href="_user_helper_8cs_source.html">UserHelper.cs</a>.</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">   23</span>        {</div>
+<div class="line"><span class="lineno">   24</span>            <span class="keywordflow">if</span> (user == <span class="keyword">null</span> || !user.Identity.IsAuthenticated)</div>
+<div class="line"><span class="lineno">   25</span>                <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><span class="lineno">   26</span>            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code hl_class" href="class_ainslie_a_p_i_1_1_d_t_o_1_1_user_helper_1_1_authenticated_user.html">AuthenticatedUser</a></div>
+<div class="line"><span class="lineno">   27</span>            {</div>
+<div class="line"><span class="lineno">   28</span>                Name = user.Identity.<a class="code hl_property" href="class_ainslie_a_p_i_1_1_d_t_o_1_1_user_helper_1_1_authenticated_user.html#acb5634a86fcc32a706c11b581745f992">Name</a>,</div>
+<div class="line"><span class="lineno">   29</span>                EmailAddress = user.Claims.FirstOrDefault(c =&gt; c.Type == ClaimTypes.Email)?.Value,</div>
+<div class="line"><span class="lineno">   30</span>                ProfileImage = user.Claims.FirstOrDefault(c =&gt; c.Type == <span class="stringliteral">&quot;picture&quot;</span>)?.Value,</div>
+<div class="line"><span class="lineno">   31</span>                Roles = user.Claims.Where(c =&gt; c.Type == ClaimTypes.Role).Select(role =&gt; role.Value).ToList()</div>
+<div class="line"><span class="lineno">   32</span>            };</div>
+<div class="line"><span class="lineno">   33</span>        }</div>
+<div class="ttc" id="aclass_ainslie_a_p_i_1_1_d_t_o_1_1_user_helper_1_1_authenticated_user_html"><div class="ttname"><a href="class_ainslie_a_p_i_1_1_d_t_o_1_1_user_helper_1_1_authenticated_user.html">AinslieAPI.DTO.UserHelper.AuthenticatedUser</a></div><div class="ttdef"><b>Definition</b> AuthenticatedUser.cs:6</div></div>
+<div class="ttc" id="aclass_ainslie_a_p_i_1_1_d_t_o_1_1_user_helper_1_1_authenticated_user_html_acb5634a86fcc32a706c11b581745f992"><div class="ttname"><a href="class_ainslie_a_p_i_1_1_d_t_o_1_1_user_helper_1_1_authenticated_user.html#acb5634a86fcc32a706c11b581745f992">AinslieAPI.DTO.UserHelper.AuthenticatedUser.Name</a></div><div class="ttdeci">string Name</div><div class="ttdef"><b>Definition</b> AuthenticatedUser.cs:7</div></div>
+</div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_ainslie_a_p_i_1_1_helpers_1_1_user_helper_a5aef940b2585ea4d9472c9f3e89a860f_icgraph.png" border="0" usemap="#aclass_ainslie_a_p_i_1_1_helpers_1_1_user_helper_a5aef940b2585ea4d9472c9f3e89a860f_icgraph" alt=""/></div>
@@ -147,7 +155,7 @@ Here is the caller graph for this function:</div>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>C:/Users/STRIDER/source/repos/AinslieAPI/Helpers/<a class="el" href="_user_helper_8cs_source.html">UserHelper.cs</a></li>
+<li>C:/Users/STRIDER/source/repos/AinslieAPI/Helpers/<a class="el" href="_user_helper_8cs.html">UserHelper.cs</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

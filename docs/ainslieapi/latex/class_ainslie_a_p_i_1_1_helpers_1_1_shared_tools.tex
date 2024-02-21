@@ -19,10 +19,6 @@ static ? Date\+Time \mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_shared_
 \doxysubsection{Detailed Description}
 Provides utility methods for common data manipulation tasks, such as stripping HTML and removing non-\/alphanumeric characters from strings. 
 
-Definition at line \mbox{\hyperlink{_shared_tools_8cs_source_l00009}{9}} of file \mbox{\hyperlink{_shared_tools_8cs_source}{Shared\+Tools.\+cs}}.
-
-
-
 \doxysubsection{Member Function Documentation}
 \Hypertarget{class_ainslie_a_p_i_1_1_helpers_1_1_shared_tools_ab5709314b631b14e5aa75638cc5f6352}\label{class_ainslie_a_p_i_1_1_helpers_1_1_shared_tools_ab5709314b631b14e5aa75638cc5f6352} 
 \index{AinslieAPI.Helpers.SharedTools@{AinslieAPI.Helpers.SharedTools}!RemoveNonAlphaChars@{RemoveNonAlphaChars}}
@@ -47,9 +43,23 @@ Removes all non-\/alphanumeric characters from a string, optionally replacing th
 A string with non-\/alphanumeric characters removed or replaced.
 \end{DoxyReturn}
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ alphaString\ =\ Regex.Replace(oString\ ??\ \textcolor{stringliteral}{"{}"{}},\ \textcolor{stringliteral}{"{}[\string^a-\/zA-\/Z0-\/9]+"{}},\ replaceWith);}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//remove\ leading\ hyphen}}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (alphaString.Length\ >\ 0\ \&\&\ alphaString[0].ToString()\ ==\ replaceWith)}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ alphaString\ =\ alphaString.Substring(1);}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//remove\ trailing\ hyphen}}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (alphaString.Length\ >\ 0\ \&\&\ alphaString[alphaString.Length\ -\/\ 1].ToString()\ ==\ replaceWith)}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ alphaString\ =\ alphaString.Substring(0,\ alphaString.Length\ -\/\ 1);}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ alphaString;}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \}}
 
-Definition at line \mbox{\hyperlink{_shared_tools_8cs_source_l00033}{33}} of file \mbox{\hyperlink{_shared_tools_8cs_source}{Shared\+Tools.\+cs}}.
-
+\end{DoxyCode}
 \Hypertarget{class_ainslie_a_p_i_1_1_helpers_1_1_shared_tools_ab15e610eab2e8c51c9b48d81b9da0104}\label{class_ainslie_a_p_i_1_1_helpers_1_1_shared_tools_ab15e610eab2e8c51c9b48d81b9da0104} 
 \index{AinslieAPI.Helpers.SharedTools@{AinslieAPI.Helpers.SharedTools}!StripHTML@{StripHTML}}
 \index{StripHTML@{StripHTML}!AinslieAPI.Helpers.SharedTools@{AinslieAPI.Helpers.SharedTools}}
@@ -71,9 +81,14 @@ Removes HTML tags from a string and decodes HTML entities.
 A plain text string with HTML tags and entities removed.
 \end{DoxyReturn}
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ strHTML\ =\ Regex.Replace(HttpUtility.HtmlDecode(strHTML),\ \textcolor{stringliteral}{@"{}<(.|\(\backslash\)n)*?>"{}},\ \textcolor{keywordtype}{string}.Empty);}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ strHTML\ =\ strHTML.Replace(\textcolor{stringliteral}{"{}\&\#160;"{}},\ \textcolor{stringliteral}{"{}\ "{}});}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ strHTML;}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \}}
 
-Definition at line \mbox{\hyperlink{_shared_tools_8cs_source_l00018}{18}} of file \mbox{\hyperlink{_shared_tools_8cs_source}{Shared\+Tools.\+cs}}.
-
+\end{DoxyCode}
 \Hypertarget{class_ainslie_a_p_i_1_1_helpers_1_1_shared_tools_a5d26beaa558c5d4b15370f0308f447bf}\label{class_ainslie_a_p_i_1_1_helpers_1_1_shared_tools_a5d26beaa558c5d4b15370f0308f447bf} 
 \index{AinslieAPI.Helpers.SharedTools@{AinslieAPI.Helpers.SharedTools}!UnixTimeSecondsToLocalTime@{UnixTimeSecondsToLocalTime}}
 \index{UnixTimeSecondsToLocalTime@{UnixTimeSecondsToLocalTime}!AinslieAPI.Helpers.SharedTools@{AinslieAPI.Helpers.SharedTools}}
@@ -97,9 +112,22 @@ The local Date\+Time representation of the Unix timestamp, or null if conversion
 
 
 Assumes the timestamp is in seconds since the Unix epoch (1 January 1970). Returns null if the timestamp is zero or conversion fails. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (unixTimestamp\ ==\ 0)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ DateTime\ dateTime\ =\ \textcolor{keyword}{new}\ DateTime(1970,\ 1,\ 1,\ 0,\ 0,\ 0,\ 0,\ DateTimeKind.Utc);}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ dateTime\ =\ dateTime.AddSeconds(unixTimestamp).ToLocalTime();}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ dateTime;}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \}}
 
-Definition at line \mbox{\hyperlink{_shared_tools_8cs_source_l00060}{60}} of file \mbox{\hyperlink{_shared_tools_8cs_source}{Shared\+Tools.\+cs}}.
-
+\end{DoxyCode}
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

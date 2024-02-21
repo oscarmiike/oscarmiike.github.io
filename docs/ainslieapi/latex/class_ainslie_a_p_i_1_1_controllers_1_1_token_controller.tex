@@ -7,8 +7,7 @@ Controller responsible for generating authentication tokens for authorised users
 
 
 
-Inheritance diagram for Ainslie\+API.\+Controllers.\+Token\+Controller\+:
-\nopagebreak
+Inheritance diagram for Ainslie\+API.\+Controllers.\+Token\+Controller\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -17,8 +16,7 @@ Inheritance diagram for Ainslie\+API.\+Controllers.\+Token\+Controller\+:
 \end{figure}
 
 
-Collaboration diagram for Ainslie\+API.\+Controllers.\+Token\+Controller\+:
-\nopagebreak
+Collaboration diagram for Ainslie\+API.\+Controllers.\+Token\+Controller\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -36,10 +34,6 @@ IAction\+Result \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_token_c
 
 \doxysubsection{Detailed Description}
 Controller responsible for generating authentication tokens for authorised users. 
-
-Definition at line \mbox{\hyperlink{_token_controller_8cs_source_l00018}{18}} of file \mbox{\hyperlink{_token_controller_8cs_source}{Token\+Controller.\+cs}}.
-
-
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \Hypertarget{class_ainslie_a_p_i_1_1_controllers_1_1_token_controller_a4ee708fb4e38986bb0b67119aaeb7e62}\label{class_ainslie_a_p_i_1_1_controllers_1_1_token_controller_a4ee708fb4e38986bb0b67119aaeb7e62} 
@@ -60,9 +54,13 @@ Initialises a new instance of the Token\+Controller with necessary configuration
 \hline
 \end{DoxyParams}
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00030\ \ \ \ \ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \_appSettings\ =\ appSettings.Value;\ \ \ }
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \_jwtUtils\ =\ jwtUtils;}
+\DoxyCodeLine{00033\ \ \ \ \ \}}
 
-Definition at line \mbox{\hyperlink{_token_controller_8cs_source_l00029}{29}} of file \mbox{\hyperlink{_token_controller_8cs_source}{Token\+Controller.\+cs}}.
-
+\end{DoxyCode}
 
 
 \doxysubsection{Member Function Documentation}
@@ -82,11 +80,16 @@ An IAction\+Result containing the generated token or an Unauthorized result.
 
 
 This endpoint checks if the user is authenticated and generates a token using user details. The generated token enables the user to access protected resources. It requires the user to be previously authenticated. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00047\ \ \ \ \ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!User.Identity.IsAuthenticated)}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Unauthorized();}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ var\ token\ =\ \_jwtUtils.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils_ac667c75c6805eb3e6943cc1e8aec0573}{GenerateToken}}(UserHelper.GetAuthenticatedUser(User));}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Ok(token);}
+\DoxyCodeLine{00052\ \ \ \ \ \}}
 
-Definition at line \mbox{\hyperlink{_token_controller_8cs_source_l00046}{46}} of file \mbox{\hyperlink{_token_controller_8cs_source}{Token\+Controller.\+cs}}.
-
-Here is the call graph for this function\+:
-\nopagebreak
+\end{DoxyCode}
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

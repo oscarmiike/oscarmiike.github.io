@@ -116,9 +116,7 @@ Protected Member Functions</h2></td></tr>
 <tr class="separator:a6eadf8994a24368b85dbf4cb5e476059"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="20231212042316__livecomparisonpriceaud_8cs_source.html#l00008">8</a> of file <a class="el" href="20231212042316__livecomparisonpriceaud_8cs_source.html">20231212042316_livecomparisonpriceaud.cs</a>.</p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+<div class="textblock"></div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a6eadf8994a24368b85dbf4cb5e476059" name="a6eadf8994a24368b85dbf4cb5e476059"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6eadf8994a24368b85dbf4cb5e476059">&#9670;&#160;</a></span>BuildTargetModel()</h2>
 
@@ -143,9 +141,70 @@ Protected Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p></p>
-
-<p class="definition">Definition at line <a class="el" href="20231212042316__livecomparisonpriceaud_8_designer_8cs_source.html#l00019">19</a> of file <a class="el" href="20231212042316__livecomparisonpriceaud_8_designer_8cs_source.html">20231212042316_livecomparisonpriceaud.Designer.cs</a>.</p>
-
+<div class="fragment"><div class="line"><span class="lineno">   20</span>        {</div>
+<div class="line"><span class="lineno">   21</span><span class="preprocessor">#pragma warning disable 612, 618</span></div>
+<div class="line"><span class="lineno">   22</span>            modelBuilder</div>
+<div class="line"><span class="lineno">   23</span>                .HasAnnotation(<span class="stringliteral">&quot;ProductVersion&quot;</span>, <span class="stringliteral">&quot;7.0.5&quot;</span>)</div>
+<div class="line"><span class="lineno">   24</span>                .HasAnnotation(<span class="stringliteral">&quot;Relational:MaxIdentifierLength&quot;</span>, 128);</div>
+<div class="line"><span class="lineno">   25</span> </div>
+<div class="line"><span class="lineno">   26</span>            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);</div>
+<div class="line"><span class="lineno">   27</span> </div>
+<div class="line"><span class="lineno">   28</span>            modelBuilder.Entity(<span class="stringliteral">&quot;AinslieAPI.Data.Models.Tdcr.Order&quot;</span>, b =&gt;</div>
+<div class="line"><span class="lineno">   29</span>                {</div>
+<div class="line"><span class="lineno">   30</span>                    <a class="code hl_variable" href="namespacetest.html#a0f45e01f998f32bf815adc0cbe886405">b</a>.Property&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;ID&quot;</span>)</div>
+<div class="line"><span class="lineno">   31</span>                        .ValueGeneratedOnAdd()</div>
+<div class="line"><span class="lineno">   32</span>                        .HasColumnType(<span class="stringliteral">&quot;int&quot;</span>);</div>
+<div class="line"><span class="lineno">   33</span> </div>
+<div class="line"><span class="lineno">   34</span>                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(<a class="code hl_variable" href="namespacetest.html#a0f45e01f998f32bf815adc0cbe886405">b</a>.Property&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;ID&quot;</span>));</div>
+<div class="line"><span class="lineno">   35</span> </div>
+<div class="line"><span class="lineno">   36</span>                    <a class="code hl_variable" href="namespacetest.html#a0f45e01f998f32bf815adc0cbe886405">b</a>.Property&lt;decimal&gt;(<span class="stringliteral">&quot;AUDUSD&quot;</span>)</div>
+<div class="line"><span class="lineno">   37</span>                        .HasColumnType(<span class="stringliteral">&quot;decimal(18, 4)&quot;</span>);</div>
+<div class="line"><span class="lineno">   38</span> </div>
+<div class="line"><span class="lineno">   39</span>                    <a class="code hl_variable" href="namespacetest.html#a0f45e01f998f32bf815adc0cbe886405">b</a>.Property&lt;<span class="keywordtype">bool</span>&gt;(<span class="stringliteral">&quot;Completed&quot;</span>)</div>
+<div class="line"><span class="lineno">   40</span>                        .HasColumnType(<span class="stringliteral">&quot;bit&quot;</span>);</div>
+<div class="line"><span class="lineno">   41</span> </div>
+<div class="line"><span class="lineno">   42</span>                    <a class="code hl_variable" href="namespacetest.html#a0f45e01f998f32bf815adc0cbe886405">b</a>.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;CompletedBy&quot;</span>)</div>
+<div class="line"><span class="lineno">   43</span>                        .HasMaxLength(100)</div>
+<div class="line"><span class="lineno">   44</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(100)&quot;</span>);</div>
+<div class="line"><span class="lineno">   45</span> </div>
+<div class="line"><span class="lineno">   46</span>                    <a class="code hl_variable" href="namespacetest.html#a0f45e01f998f32bf815adc0cbe886405">b</a>.Property&lt;DateTime&gt;(<span class="stringliteral">&quot;Created&quot;</span>)</div>
+<div class="line"><span class="lineno">   47</span>                        .HasColumnType(<span class="stringliteral">&quot;DateTime2(3)&quot;</span>);</div>
+<div class="line"><span class="lineno">   48</span> </div>
+<div class="line"><span class="lineno">   49</span>                    <a class="code hl_variable" href="namespacetest.html#a0f45e01f998f32bf815adc0cbe886405">b</a>.Property&lt;decimal&gt;(<span class="stringliteral">&quot;LiveComparisonPriceAUD&quot;</span>)</div>
+<div class="line"><span class="lineno">   50</span>                        .HasColumnType(<span class="stringliteral">&quot;decimal(18, 4)&quot;</span>);</div>
+<div class="line"><span class="lineno">   51</span> </div>
+<div class="line"><span class="lineno">   52</span>                    <a class="code hl_variable" href="namespacetest.html#a0f45e01f998f32bf815adc0cbe886405">b</a>.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;Market&quot;</span>)</div>
+<div class="line"><span class="lineno">   53</span>                        .IsRequired()</div>
+<div class="line"><span class="lineno">   54</span>                        .HasMaxLength(50)</div>
+<div class="line"><span class="lineno">   55</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(50)&quot;</span>);</div>
+<div class="line"><span class="lineno">   56</span> </div>
+<div class="line"><span class="lineno">   57</span>                    <a class="code hl_variable" href="namespacetest.html#a0f45e01f998f32bf815adc0cbe886405">b</a>.Property&lt;decimal&gt;(<span class="stringliteral">&quot;Price&quot;</span>)</div>
+<div class="line"><span class="lineno">   58</span>                        .HasColumnType(<span class="stringliteral">&quot;decimal(18, 4)&quot;</span>);</div>
+<div class="line"><span class="lineno">   59</span> </div>
+<div class="line"><span class="lineno">   60</span>                    <a class="code hl_variable" href="namespacetest.html#a0f45e01f998f32bf815adc0cbe886405">b</a>.Property&lt;decimal&gt;(<span class="stringliteral">&quot;Quantity&quot;</span>)</div>
+<div class="line"><span class="lineno">   61</span>                        .HasColumnType(<span class="stringliteral">&quot;decimal(18, 4)&quot;</span>);</div>
+<div class="line"><span class="lineno">   62</span> </div>
+<div class="line"><span class="lineno">   63</span>                    <a class="code hl_variable" href="namespacetest.html#a0f45e01f998f32bf815adc0cbe886405">b</a>.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;Side&quot;</span>)</div>
+<div class="line"><span class="lineno">   64</span>                        .IsRequired()</div>
+<div class="line"><span class="lineno">   65</span>                        .HasMaxLength(50)</div>
+<div class="line"><span class="lineno">   66</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(50)&quot;</span>);</div>
+<div class="line"><span class="lineno">   67</span> </div>
+<div class="line"><span class="lineno">   68</span>                    <a class="code hl_variable" href="namespacetest.html#a0f45e01f998f32bf815adc0cbe886405">b</a>.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;TdcrId&quot;</span>)</div>
+<div class="line"><span class="lineno">   69</span>                        .IsRequired()</div>
+<div class="line"><span class="lineno">   70</span>                        .HasMaxLength(100)</div>
+<div class="line"><span class="lineno">   71</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(100)&quot;</span>);</div>
+<div class="line"><span class="lineno">   72</span> </div>
+<div class="line"><span class="lineno">   73</span>                    <a class="code hl_variable" href="namespacetest.html#a0f45e01f998f32bf815adc0cbe886405">b</a>.Property&lt;<span class="keywordtype">long</span>&gt;(<span class="stringliteral">&quot;TdcrTimestamp&quot;</span>)</div>
+<div class="line"><span class="lineno">   74</span>                        .HasColumnType(<span class="stringliteral">&quot;bigint&quot;</span>);</div>
+<div class="line"><span class="lineno">   75</span> </div>
+<div class="line"><span class="lineno">   76</span>                    <a class="code hl_variable" href="namespacetest.html#a0f45e01f998f32bf815adc0cbe886405">b</a>.HasKey(<span class="stringliteral">&quot;ID&quot;</span>);</div>
+<div class="line"><span class="lineno">   77</span> </div>
+<div class="line"><span class="lineno">   78</span>                    <a class="code hl_variable" href="namespacetest.html#a0f45e01f998f32bf815adc0cbe886405">b</a>.ToTable(<span class="stringliteral">&quot;Orders&quot;</span>);</div>
+<div class="line"><span class="lineno">   79</span>                });</div>
+<div class="line"><span class="lineno">   80</span><span class="preprocessor">#pragma warning restore 612, 618</span></div>
+<div class="line"><span class="lineno">   81</span>        }</div>
+<div class="ttc" id="anamespacetest_html_a0f45e01f998f32bf815adc0cbe886405"><div class="ttname"><a href="namespacetest.html#a0f45e01f998f32bf815adc0cbe886405">test.b</a></div><div class="ttdeci">b</div><div class="ttdef"><b>Definition</b> test.py:20</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a9f6116f070ea9f3a556864dec984731c" name="a9f6116f070ea9f3a556864dec984731c"></a>
@@ -172,9 +231,12 @@ Protected Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p></p>
-
-<p class="definition">Definition at line <a class="el" href="20231212042316__livecomparisonpriceaud_8cs_source.html#l00022">22</a> of file <a class="el" href="20231212042316__livecomparisonpriceaud_8cs_source.html">20231212042316_livecomparisonpriceaud.cs</a>.</p>
-
+<div class="fragment"><div class="line"><span class="lineno">   23</span>        {</div>
+<div class="line"><span class="lineno">   24</span>            migrationBuilder.DropColumn(</div>
+<div class="line"><span class="lineno">   25</span>                name: <span class="stringliteral">&quot;LiveComparisonPriceAUD&quot;</span>,</div>
+<div class="line"><span class="lineno">   26</span>                table: <span class="stringliteral">&quot;Orders&quot;</span>);</div>
+<div class="line"><span class="lineno">   27</span>        }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="ad6f317acd7147426911d9d592f9b7805" name="ad6f317acd7147426911d9d592f9b7805"></a>
@@ -201,14 +263,20 @@ Protected Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p></p>
-
-<p class="definition">Definition at line <a class="el" href="20231212042316__livecomparisonpriceaud_8cs_source.html#l00011">11</a> of file <a class="el" href="20231212042316__livecomparisonpriceaud_8cs_source.html">20231212042316_livecomparisonpriceaud.cs</a>.</p>
-
+<div class="fragment"><div class="line"><span class="lineno">   12</span>        {</div>
+<div class="line"><span class="lineno">   13</span>            migrationBuilder.AddColumn&lt;decimal&gt;(</div>
+<div class="line"><span class="lineno">   14</span>                name: <span class="stringliteral">&quot;LiveComparisonPriceAUD&quot;</span>,</div>
+<div class="line"><span class="lineno">   15</span>                table: <span class="stringliteral">&quot;Orders&quot;</span>,</div>
+<div class="line"><span class="lineno">   16</span>                type: <span class="stringliteral">&quot;decimal(18,4)&quot;</span>,</div>
+<div class="line"><span class="lineno">   17</span>                nullable: <span class="keyword">false</span>,</div>
+<div class="line"><span class="lineno">   18</span>                defaultValue: 0m);</div>
+<div class="line"><span class="lineno">   19</span>        }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>C:/Users/STRIDER/source/repos/AinslieAPI/Migrations/Tdcr/<a class="el" href="20231212042316__livecomparisonpriceaud_8cs_source.html">20231212042316_livecomparisonpriceaud.cs</a></li>
-<li>C:/Users/STRIDER/source/repos/AinslieAPI/Migrations/Tdcr/<a class="el" href="20231212042316__livecomparisonpriceaud_8_designer_8cs_source.html">20231212042316_livecomparisonpriceaud.Designer.cs</a></li>
+<li>C:/Users/STRIDER/source/repos/AinslieAPI/Migrations/Tdcr/<a class="el" href="20231212042316__livecomparisonpriceaud_8cs.html">20231212042316_livecomparisonpriceaud.cs</a></li>
+<li>C:/Users/STRIDER/source/repos/AinslieAPI/Migrations/Tdcr/<a class="el" href="20231212042316__livecomparisonpriceaud_8_designer_8cs.html">20231212042316_livecomparisonpriceaud.Designer.cs</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
