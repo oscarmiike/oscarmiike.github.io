@@ -1,13 +1,23 @@
 \doxysection{Task\+API.\+Services.\+Alchemy\+Service Class Reference}
 \hypertarget{class_task_a_p_i_1_1_services_1_1_alchemy_service}{}\label{class_task_a_p_i_1_1_services_1_1_alchemy_service}\index{TaskAPI.Services.AlchemyService@{TaskAPI.Services.AlchemyService}}
+
+
+Provides functionality to interact with the Alchemy API for blockchain data retrieval.  
+
+
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_alchemy_service_a39b3842e6a2a143f5450f9eda643e0b0}{Alchemy\+Service}} (\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{Log\+Service}} log\+Service, IOptions$<$ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings}{Task\+APISettings}} $>$ task\+APISettings)
-\item 
+\begin{DoxyCompactList}\small\item\em Initialises a new instance of the Alchemy\+Service class. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_polygon_oracle_1_1_latest_round_data_response}{Latest\+Round\+Data\+Response}}? \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_alchemy_service_a8db06c3be654656ef61b3177a0624787}{Latest\+Round\+Data}} (string contract\+Address)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Retrieves the latest round data for a given smart contract address using the Alchemy API. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+Provides functionality to interact with the Alchemy API for blockchain data retrieval. 
+
+This service is responsible for accessing blockchain data through the Alchemy API. It utilises the Nethereum.\+Web3 library to connect to the Ethereum blockchain and execute smart contract functions. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \Hypertarget{class_task_a_p_i_1_1_services_1_1_alchemy_service_a39b3842e6a2a143f5450f9eda643e0b0}\label{class_task_a_p_i_1_1_services_1_1_alchemy_service_a39b3842e6a2a143f5450f9eda643e0b0} 
@@ -17,11 +27,22 @@
 {\footnotesize\ttfamily Task\+API.\+Services.\+Alchemy\+Service.\+Alchemy\+Service (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{Log\+Service}}}]{log\+Service,  }\item[{IOptions$<$ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings}{Task\+APISettings}} $>$}]{task\+APISettings }\end{DoxyParamCaption})}
 
 
+
+Initialises a new instance of the Alchemy\+Service class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em log\+Service} & The logging service for recording application logs.\\
+\hline
+{\em task\+APISettings} & The application settings, containing configuration for the Alchemy API and other services.\\
+\hline
+\end{DoxyParams}
+
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00018\ \ \ \ \ \{}
-\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \_logService\ =\ logService;}
-\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \_settings\ =\ taskAPISettings.Value;}
-\DoxyCodeLine{00021\ \ \ \ \ \}}
+\DoxyCodeLine{00030\ \ \ \ \ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \_logService\ =\ logService;}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \_settings\ =\ taskAPISettings.Value;}
+\DoxyCodeLine{00033\ \ \ \ \ \}}
 
 \end{DoxyCode}
 
@@ -34,23 +55,37 @@
 {\footnotesize\ttfamily \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_polygon_oracle_1_1_latest_round_data_response}{Latest\+Round\+Data\+Response}}? Task\+API.\+Services.\+Alchemy\+Service.\+Latest\+Round\+Data (\begin{DoxyParamCaption}\item[{string}]{contract\+Address }\end{DoxyParamCaption})}
 
 
+
+Retrieves the latest round data for a given smart contract address using the Alchemy API. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em contract\+Address} & The Ethereum contract address to query.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A Latest\+Round\+Data\+Response object containing the latest round data, or {\ttfamily null} if an error occurs or the data cannot be retrieved. 
+\end{DoxyReturn}
+
+
+This method attempts to call the \textquotesingle{}latest\+Round\+Data\textquotesingle{} function of the specified contract. It logs any exceptions that occur during the process. 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00024\ \ \ \ \ \{}
-\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_polygon_oracle_1_1_latest_round_data_response}{LatestRoundDataResponse}}\ latestRoundResponse\ =\ \textcolor{keyword}{null};}
-\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
-\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ var\ NWeb\ =\ \textcolor{keyword}{new}\ Web3(\$\textcolor{stringliteral}{"{}\{\_settings.AlchemySettings.Web3Endpoint\}\{\_settings.AlchemySettings.APIKey\}"{}});}
-\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ var\ abi\ =\ JsonConvert.SerializeObject(\_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_ac56f44c706202b85f9a949eefd802a4b}{PolygonOracleSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_polygonoraclesettings_a119acadd0ece87c491c7a0f227a421aa}{LatestRoundDataABI}});}
-\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ var\ Ct\ =\ NWeb.Eth.GetContract(abi,\ contractAddress);}
-\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ var\ Fn\ =\ Ct.GetFunction(\_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_ac56f44c706202b85f9a949eefd802a4b}{PolygonOracleSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_polygonoraclesettings_a119acadd0ece87c491c7a0f227a421aa}{LatestRoundDataABI}}[0].\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_polygonoraclesettings_1_1_a_b_i_a46802c8f262ff386414a7ce5298d747e}{name}});}
-\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ latestRoundResponse\ =\ Fn.CallDeserializingToObjectAsync<\mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_polygon_oracle_1_1_latest_round_data_response}{LatestRoundDataResponse}}>().Result;}
-\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
-\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a78c9df658858fa3099eed69421423898}{LogException}}(LogService.LogSources.AlchemyService,\ \textcolor{stringliteral}{"{}Exception\ getting\ latestRoundData"{}},\ contractAddress,\ ex);}
-\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ latestRoundResponse;}
-\DoxyCodeLine{00039\ \ \ \ \ \}}
+\DoxyCodeLine{00046\ \ \ \ \ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_polygon_oracle_1_1_latest_round_data_response}{LatestRoundDataResponse}}\ latestRoundResponse\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ var\ NWeb\ =\ \textcolor{keyword}{new}\ Web3(\$\textcolor{stringliteral}{"{}\{\_settings.AlchemySettings.Web3Endpoint\}\{\_settings.AlchemySettings.APIKey\}"{}});}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ var\ abi\ =\ JsonConvert.SerializeObject(\_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_ac56f44c706202b85f9a949eefd802a4b}{PolygonOracleSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_polygonoraclesettings_a119acadd0ece87c491c7a0f227a421aa}{LatestRoundDataABI}});}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ var\ Ct\ =\ NWeb.Eth.GetContract(abi,\ contractAddress);}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ var\ Fn\ =\ Ct.GetFunction(\_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_ac56f44c706202b85f9a949eefd802a4b}{PolygonOracleSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_polygonoraclesettings_a119acadd0ece87c491c7a0f227a421aa}{LatestRoundDataABI}}[0].\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_polygonoraclesettings_1_1_a_b_i_a46802c8f262ff386414a7ce5298d747e}{name}});}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ latestRoundResponse\ =\ Fn.CallDeserializingToObjectAsync<\mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_polygon_oracle_1_1_latest_round_data_response}{LatestRoundDataResponse}}>().Result;}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a78c9df658858fa3099eed69421423898}{LogException}}(LogService.LogSources.AlchemyService,\ \textcolor{stringliteral}{"{}Exception\ getting\ latestRoundData"{}},\ contractAddress,\ ex);}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ latestRoundResponse;}
+\DoxyCodeLine{00061\ \ \ \ \ \}}
 
 \end{DoxyCode}
 Here is the call graph for this function\+:

@@ -82,15 +82,23 @@ $(function() {
   <div class="headertitle"><div class="title">TaskAPI.Services.AlchemyService Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Provides functionality to interact with the Alchemy API for blockchain data retrieval.  
+ <a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a39b3842e6a2a143f5450f9eda643e0b0" id="r_a39b3842e6a2a143f5450f9eda643e0b0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a39b3842e6a2a143f5450f9eda643e0b0">AlchemyService</a> (<a class="el" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a> logService, IOptions&lt; <a class="el" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html">TaskAPISettings</a> &gt; taskAPISettings)</td></tr>
+<tr class="memdesc:a39b3842e6a2a143f5450f9eda643e0b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialises a new instance of the AlchemyService class.  <br /></td></tr>
 <tr class="separator:a39b3842e6a2a143f5450f9eda643e0b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8db06c3be654656ef61b3177a0624787" id="r_a8db06c3be654656ef61b3177a0624787"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_polygon_oracle_1_1_latest_round_data_response.html">LatestRoundDataResponse</a>?&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8db06c3be654656ef61b3177a0624787">LatestRoundData</a> (string contractAddress)</td></tr>
+<tr class="memdesc:a8db06c3be654656ef61b3177a0624787"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the latest round data for a given smart contract address using the Alchemy API.  <br /></td></tr>
 <tr class="separator:a8db06c3be654656ef61b3177a0624787"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Provides functionality to interact with the Alchemy API for blockchain data retrieval. </p>
+<p>This service is responsible for accessing blockchain data through the Alchemy API. It utilises the Nethereum.Web3 library to connect to the Ethereum blockchain and execute smart contract functions. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a39b3842e6a2a143f5450f9eda643e0b0" name="a39b3842e6a2a143f5450f9eda643e0b0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a39b3842e6a2a143f5450f9eda643e0b0">&#9670;&#160;</a></span>AlchemyService()</h2>
 
@@ -109,10 +117,19 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   18</span>    {</div>
-<div class="line"><span class="lineno">   19</span>        _logService = logService;</div>
-<div class="line"><span class="lineno">   20</span>        _settings = taskAPISettings.Value;</div>
-<div class="line"><span class="lineno">   21</span>    }</div>
+
+<p>Initialises a new instance of the AlchemyService class. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">logService</td><td>The logging service for recording application logs.</td></tr>
+    <tr><td class="paramname">taskAPISettings</td><td>The application settings, containing configuration for the Alchemy API and other services.</td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="fragment"><div class="line"><span class="lineno">   30</span>    {</div>
+<div class="line"><span class="lineno">   31</span>        _logService = logService;</div>
+<div class="line"><span class="lineno">   32</span>        _settings = taskAPISettings.Value;</div>
+<div class="line"><span class="lineno">   33</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -131,36 +148,46 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   24</span>    {</div>
-<div class="line"><span class="lineno">   25</span>        <a class="code hl_class" href="class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_polygon_oracle_1_1_latest_round_data_response.html">LatestRoundDataResponse</a> latestRoundResponse = <span class="keyword">null</span>;</div>
-<div class="line"><span class="lineno">   26</span>        <span class="keywordflow">try</span></div>
-<div class="line"><span class="lineno">   27</span>        {</div>
-<div class="line"><span class="lineno">   28</span>            var NWeb = <span class="keyword">new</span> Web3($<span class="stringliteral">&quot;{_settings.AlchemySettings.Web3Endpoint}{_settings.AlchemySettings.APIKey}&quot;</span>);</div>
-<div class="line"><span class="lineno">   29</span>            var abi = JsonConvert.SerializeObject(_settings.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#ac56f44c706202b85f9a949eefd802a4b">PolygonOracleSettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_polygonoraclesettings.html#a119acadd0ece87c491c7a0f227a421aa">LatestRoundDataABI</a>);</div>
-<div class="line"><span class="lineno">   30</span>            var Ct = NWeb.Eth.GetContract(abi, contractAddress);</div>
-<div class="line"><span class="lineno">   31</span>            var Fn = Ct.GetFunction(_settings.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#ac56f44c706202b85f9a949eefd802a4b">PolygonOracleSettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_polygonoraclesettings.html#a119acadd0ece87c491c7a0f227a421aa">LatestRoundDataABI</a>[0].<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_polygonoraclesettings_1_1_a_b_i.html#a46802c8f262ff386414a7ce5298d747e">name</a>);</div>
-<div class="line"><span class="lineno">   32</span>            latestRoundResponse = Fn.CallDeserializingToObjectAsync&lt;<a class="code hl_class" href="class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_polygon_oracle_1_1_latest_round_data_response.html">LatestRoundDataResponse</a>&gt;().Result;</div>
-<div class="line"><span class="lineno">   33</span>        }</div>
-<div class="line"><span class="lineno">   34</span>        <span class="keywordflow">catch</span> (Exception ex)</div>
-<div class="line"><span class="lineno">   35</span>        {</div>
-<div class="line"><span class="lineno">   36</span>            _logService.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a78c9df658858fa3099eed69421423898">LogException</a>(LogService.LogSources.AlchemyService, <span class="stringliteral">&quot;Exception getting latestRoundData&quot;</span>, contractAddress, ex);</div>
-<div class="line"><span class="lineno">   37</span>        }</div>
-<div class="line"><span class="lineno">   38</span>        <span class="keywordflow">return</span> latestRoundResponse;</div>
-<div class="line"><span class="lineno">   39</span>    }</div>
+
+<p>Retrieves the latest round data for a given smart contract address using the Alchemy API. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">contractAddress</td><td>The Ethereum contract address to query.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A LatestRoundDataResponse object containing the latest round data, or <code>null</code> if an error occurs or the data cannot be retrieved. </dd></dl>
+<p>This method attempts to call the 'latestRoundData' function of the specified contract. It logs any exceptions that occur during the process. </p>
+<div class="fragment"><div class="line"><span class="lineno">   46</span>    {</div>
+<div class="line"><span class="lineno">   47</span>        <a class="code hl_class" href="class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_polygon_oracle_1_1_latest_round_data_response.html">LatestRoundDataResponse</a> latestRoundResponse = <span class="keyword">null</span>;</div>
+<div class="line"><span class="lineno">   48</span>        <span class="keywordflow">try</span></div>
+<div class="line"><span class="lineno">   49</span>        {</div>
+<div class="line"><span class="lineno">   50</span>            var NWeb = <span class="keyword">new</span> Web3($<span class="stringliteral">&quot;{_settings.AlchemySettings.Web3Endpoint}{_settings.AlchemySettings.APIKey}&quot;</span>);</div>
+<div class="line"><span class="lineno">   51</span>            var abi = JsonConvert.SerializeObject(_settings.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#ac56f44c706202b85f9a949eefd802a4b">PolygonOracleSettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_polygonoraclesettings.html#a119acadd0ece87c491c7a0f227a421aa">LatestRoundDataABI</a>);</div>
+<div class="line"><span class="lineno">   52</span>            var Ct = NWeb.Eth.GetContract(abi, contractAddress);</div>
+<div class="line"><span class="lineno">   53</span>            var Fn = Ct.GetFunction(_settings.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#ac56f44c706202b85f9a949eefd802a4b">PolygonOracleSettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_polygonoraclesettings.html#a119acadd0ece87c491c7a0f227a421aa">LatestRoundDataABI</a>[0].<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_polygonoraclesettings_1_1_a_b_i.html#a46802c8f262ff386414a7ce5298d747e">name</a>);</div>
+<div class="line"><span class="lineno">   54</span>            latestRoundResponse = Fn.CallDeserializingToObjectAsync&lt;<a class="code hl_class" href="class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_polygon_oracle_1_1_latest_round_data_response.html">LatestRoundDataResponse</a>&gt;().Result;</div>
+<div class="line"><span class="lineno">   55</span>        }</div>
+<div class="line"><span class="lineno">   56</span>        <span class="keywordflow">catch</span> (Exception ex)</div>
+<div class="line"><span class="lineno">   57</span>        {</div>
+<div class="line"><span class="lineno">   58</span>            _logService.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a78c9df658858fa3099eed69421423898">LogException</a>(LogService.LogSources.AlchemyService, <span class="stringliteral">&quot;Exception getting latestRoundData&quot;</span>, contractAddress, ex);</div>
+<div class="line"><span class="lineno">   59</span>        }</div>
+<div class="line"><span class="lineno">   60</span>        <span class="keywordflow">return</span> latestRoundResponse;</div>
+<div class="line"><span class="lineno">   61</span>    }</div>
 <div class="ttc" id="aclass_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_polygonoraclesettings_1_1_a_b_i_html_a46802c8f262ff386414a7ce5298d747e"><div class="ttname"><a href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_polygonoraclesettings_1_1_a_b_i.html#a46802c8f262ff386414a7ce5298d747e">TaskAPI.Helpers.Settings.TaskAPISettings.Polygonoraclesettings.ABI.name</a></div><div class="ttdeci">string name</div><div class="ttdef"><b>Definition</b> TaskAPISettings.cs:96</div></div>
 <div class="ttc" id="aclass_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_polygonoraclesettings_html_a119acadd0ece87c491c7a0f227a421aa"><div class="ttname"><a href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_polygonoraclesettings.html#a119acadd0ece87c491c7a0f227a421aa">TaskAPI.Helpers.Settings.TaskAPISettings.Polygonoraclesettings.LatestRoundDataABI</a></div><div class="ttdeci">ABI[] LatestRoundDataABI</div><div class="ttdef"><b>Definition</b> TaskAPISettings.cs:91</div></div>
 <div class="ttc" id="aclass_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_html_ac56f44c706202b85f9a949eefd802a4b"><div class="ttname"><a href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#ac56f44c706202b85f9a949eefd802a4b">TaskAPI.Helpers.Settings.TaskAPISettings.PolygonOracleSettings</a></div><div class="ttdeci">Polygonoraclesettings PolygonOracleSettings</div><div class="ttdef"><b>Definition</b> TaskAPISettings.cs:12</div></div>
 <div class="ttc" id="aclass_task_a_p_i_1_1_models_1_1_d_t_o_1_1_polygon_oracle_1_1_latest_round_data_response_html"><div class="ttname"><a href="class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_polygon_oracle_1_1_latest_round_data_response.html">TaskAPI.Models.DTO.PolygonOracle.LatestRoundDataResponse</a></div><div class="ttdef"><b>Definition</b> LatestRoundDataResponse.cs:12</div></div>
-<div class="ttc" id="aclass_task_a_p_i_1_1_services_1_1_log_service_html_a78c9df658858fa3099eed69421423898"><div class="ttname"><a href="class_task_a_p_i_1_1_services_1_1_log_service.html#a78c9df658858fa3099eed69421423898">TaskAPI.Services.LogService.LogException</a></div><div class="ttdeci">LogEntry LogException(LogSources logSource, params object[] dataList)</div><div class="ttdef"><b>Definition</b> LogService.cs:80</div></div>
+<div class="ttc" id="aclass_task_a_p_i_1_1_services_1_1_log_service_html_a78c9df658858fa3099eed69421423898"><div class="ttname"><a href="class_task_a_p_i_1_1_services_1_1_log_service.html#a78c9df658858fa3099eed69421423898">TaskAPI.Services.LogService.LogException</a></div><div class="ttdeci">LogEntry LogException(LogSources logSource, params object[] dataList)</div><div class="ttdoc">Logs an exception to the database.</div><div class="ttdef"><b>Definition</b> LogService.cs:112</div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_task_a_p_i_1_1_services_1_1_alchemy_service_a8db06c3be654656ef61b3177a0624787_cgraph.png" border="0" usemap="#aclass_task_a_p_i_1_1_services_1_1_alchemy_service_a8db06c3be654656ef61b3177a0624787_cgraph" alt=""/></div>
 <map name="aclass_task_a_p_i_1_1_services_1_1_alchemy_service_a8db06c3be654656ef61b3177a0624787_cgraph" id="aclass_task_a_p_i_1_1_services_1_1_alchemy_service_a8db06c3be654656ef61b3177a0624787_cgraph">
-<area shape="rect" title=" " alt="" coords="5,5,184,48"/>
-<area shape="rect" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a78c9df658858fa3099eed69421423898" title=" " alt="" coords="232,5,426,48"/>
+<area shape="rect" title="Retrieves the latest round data for a given smart contract address using the Alchemy API." alt="" coords="5,5,184,48"/>
+<area shape="rect" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a78c9df658858fa3099eed69421423898" title="Logs an exception to the database." alt="" coords="232,5,426,48"/>
 <area shape="poly" title=" " alt="" coords="184,24,216,24,216,29,184,29"/>
-<area shape="rect" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a44f0fd9db1116257087ba59c836e22ea" title="inserts log to database" alt="" coords="474,5,668,48"/>
+<area shape="rect" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a44f0fd9db1116257087ba59c836e22ea" title="Directly inserts a log entry into the database." alt="" coords="474,5,668,48"/>
 <area shape="poly" title=" " alt="" coords="427,24,459,24,459,29,427,29"/>
 </map>
 </div>

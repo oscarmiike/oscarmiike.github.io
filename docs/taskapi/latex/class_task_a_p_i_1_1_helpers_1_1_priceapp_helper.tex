@@ -1,18 +1,26 @@
 \doxysection{Task\+API.\+Helpers.\+Priceapp\+Helper Class Reference}
 \hypertarget{class_task_a_p_i_1_1_helpers_1_1_priceapp_helper}{}\label{class_task_a_p_i_1_1_helpers_1_1_priceapp_helper}\index{TaskAPI.Helpers.PriceappHelper@{TaskAPI.Helpers.PriceappHelper}}
+
+
+Helper class for managing operations related to the Priceapp functionality.  
+
+
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_priceapp_helper_ae1744c4f6bb9153e927468611cba9ce5}{Priceapp\+Helper}} (\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{Log\+Service}} log\+Service, \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_forex_service}{Forex\+Service}} forex\+Service, \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_alchemy_service}{Alchemy\+Service}} alchemy\+Service, \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_binance_service}{Binance\+Service}} binance\+Service, IOptions$<$ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings}{Task\+APISettings}} $>$ task\+APISettings, \mbox{\hyperlink{class_task_a_p_i_1_1_contexts_1_1_priceapp_context}{Priceapp\+Context}} context, \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service}{Internal\+APIService}} iapi\+Service, IWeb\+Host\+Environment env)
-\item 
+\begin{DoxyCompactList}\small\item\em Initialises a new instance of the Priceapp\+Helper class. \end{DoxyCompactList}\item 
 bool object Result \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_priceapp_helper_a11fefec93e8edfcd4f1d4c4d91180689}{Create\+Live\+Pricesheet\+PDF}} (bool? ignore\+Time)
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
 bool \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_priceapp_helper_a92393016a8925956a44271f4c9c0d9cc}{Error}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Creates a live pricesheet PDF based on the current time window. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+Helper class for managing operations related to the Priceapp functionality. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \Hypertarget{class_task_a_p_i_1_1_helpers_1_1_priceapp_helper_ae1744c4f6bb9153e927468611cba9ce5}\label{class_task_a_p_i_1_1_helpers_1_1_priceapp_helper_ae1744c4f6bb9153e927468611cba9ce5} 
@@ -22,17 +30,40 @@ bool \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_priceapp_helper_a92393016
 {\footnotesize\ttfamily Task\+API.\+Helpers.\+Priceapp\+Helper.\+Priceapp\+Helper (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{Log\+Service}}}]{log\+Service,  }\item[{\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_forex_service}{Forex\+Service}}}]{forex\+Service,  }\item[{\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_alchemy_service}{Alchemy\+Service}}}]{alchemy\+Service,  }\item[{\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_binance_service}{Binance\+Service}}}]{binance\+Service,  }\item[{IOptions$<$ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings}{Task\+APISettings}} $>$}]{task\+APISettings,  }\item[{\mbox{\hyperlink{class_task_a_p_i_1_1_contexts_1_1_priceapp_context}{Priceapp\+Context}}}]{context,  }\item[{\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service}{Internal\+APIService}}}]{iapi\+Service,  }\item[{IWeb\+Host\+Environment}]{env }\end{DoxyParamCaption})}
 
 
+
+Initialises a new instance of the Priceapp\+Helper class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em log\+Service} & The log service.\\
+\hline
+{\em forex\+Service} & The forex service.\\
+\hline
+{\em alchemy\+Service} & The alchemy service.\\
+\hline
+{\em binance\+Service} & The binance service.\\
+\hline
+{\em task\+APISettings} & The task API settings.\\
+\hline
+{\em context} & The priceapp context.\\
+\hline
+{\em iapi\+Service} & The internal API service.\\
+\hline
+{\em env} & The hosting environment.\\
+\hline
+\end{DoxyParams}
+
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \_alchemyService\ =\ alchemyService;}
-\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \_settings\ =\ taskAPISettings.Value;}
-\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \_logService\ =\ logService;}
-\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \_forexService\ =\ forexService;}
-\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \_binanceService\ =\ binanceService;}
-\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \_context\ =\ context;}
-\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \_iapiService\ =\ iapiService;}
-\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \_env\ =\ env;}
-\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \_alchemyService\ =\ alchemyService;}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \_settings\ =\ taskAPISettings.Value;}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \_logService\ =\ logService;}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \_forexService\ =\ forexService;}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \_binanceService\ =\ binanceService;}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \_context\ =\ context;}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \_iapiService\ =\ iapiService;}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \_env\ =\ env;}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \}}
 
 \end{DoxyCode}
 
@@ -52,8 +83,7 @@ Here is the call graph for this function\+:
 \includegraphics[width=350pt]{class_task_a_p_i_1_1_helpers_1_1_priceapp_helper_a11fefec93e8edfcd4f1d4c4d91180689_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -70,6 +100,24 @@ Here is the caller graph for this function\+:
 {\footnotesize\ttfamily bool Task\+API.\+Helpers.\+Priceapp\+Helper.\+Error}
 
 
+
+Creates a live pricesheet PDF based on the current time window. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ignore\+Time} & A flag indicating whether to ignore time window restrictions for debugging purposes.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A tuple indicating the success status and result details of the operation. 
+\end{DoxyReturn}
+
+
+This method generates a live pricesheet PDF based on the current time window.
+
+It checks whether the current time falls within the daily or monthly time windows and proceeds accordingly.
+
+If the {\itshape ignore\+Time}  parameter is set to {\ttfamily true}, the method ignores time window restrictions for debugging purposes.
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 

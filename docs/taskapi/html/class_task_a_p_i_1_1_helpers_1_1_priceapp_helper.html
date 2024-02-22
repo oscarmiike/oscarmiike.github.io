@@ -83,10 +83,14 @@ $(function() {
   <div class="headertitle"><div class="title">TaskAPI.Helpers.PriceappHelper Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Helper class for managing operations related to the Priceapp functionality.  
+ <a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ae1744c4f6bb9153e927468611cba9ce5" id="r_ae1744c4f6bb9153e927468611cba9ce5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae1744c4f6bb9153e927468611cba9ce5">PriceappHelper</a> (<a class="el" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a> logService, <a class="el" href="class_task_a_p_i_1_1_services_1_1_forex_service.html">ForexService</a> forexService, <a class="el" href="class_task_a_p_i_1_1_services_1_1_alchemy_service.html">AlchemyService</a> alchemyService, <a class="el" href="class_task_a_p_i_1_1_services_1_1_binance_service.html">BinanceService</a> binanceService, IOptions&lt; <a class="el" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html">TaskAPISettings</a> &gt; taskAPISettings, <a class="el" href="class_task_a_p_i_1_1_contexts_1_1_priceapp_context.html">PriceappContext</a> context, <a class="el" href="class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service.html">InternalAPIService</a> iapiService, IWebHostEnvironment env)</td></tr>
+<tr class="memdesc:ae1744c4f6bb9153e927468611cba9ce5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialises a new instance of the PriceappHelper class.  <br /></td></tr>
 <tr class="separator:ae1744c4f6bb9153e927468611cba9ce5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a11fefec93e8edfcd4f1d4c4d91180689" id="r_a11fefec93e8edfcd4f1d4c4d91180689"><td class="memItemLeft" align="right" valign="top">bool object Result&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a11fefec93e8edfcd4f1d4c4d91180689">CreateLivePricesheetPDF</a> (bool? ignoreTime)</td></tr>
 <tr class="separator:a11fefec93e8edfcd4f1d4c4d91180689"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -94,9 +98,12 @@ Public Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a92393016a8925956a44271f4c9c0d9cc" id="r_a92393016a8925956a44271f4c9c0d9cc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a92393016a8925956a44271f4c9c0d9cc">Error</a></td></tr>
+<tr class="memdesc:a92393016a8925956a44271f4c9c0d9cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a live pricesheet PDF based on the current time window.  <br /></td></tr>
 <tr class="separator:a92393016a8925956a44271f4c9c0d9cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Helper class for managing operations related to the Priceapp functionality. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ae1744c4f6bb9153e927468611cba9ce5" name="ae1744c4f6bb9153e927468611cba9ce5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae1744c4f6bb9153e927468611cba9ce5">&#9670;&#160;</a></span>PriceappHelper()</h2>
 
@@ -145,16 +152,31 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   23</span>        {</div>
-<div class="line"><span class="lineno">   24</span>            _alchemyService = alchemyService;</div>
-<div class="line"><span class="lineno">   25</span>            _settings = taskAPISettings.Value;</div>
-<div class="line"><span class="lineno">   26</span>            _logService = logService;</div>
-<div class="line"><span class="lineno">   27</span>            _forexService = forexService;</div>
-<div class="line"><span class="lineno">   28</span>            _binanceService = binanceService;</div>
-<div class="line"><span class="lineno">   29</span>            _context = context;</div>
-<div class="line"><span class="lineno">   30</span>            _iapiService = iapiService;</div>
-<div class="line"><span class="lineno">   31</span>            _env = env;</div>
-<div class="line"><span class="lineno">   32</span>        }</div>
+
+<p>Initialises a new instance of the PriceappHelper class. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">logService</td><td>The log service.</td></tr>
+    <tr><td class="paramname">forexService</td><td>The forex service.</td></tr>
+    <tr><td class="paramname">alchemyService</td><td>The alchemy service.</td></tr>
+    <tr><td class="paramname">binanceService</td><td>The binance service.</td></tr>
+    <tr><td class="paramname">taskAPISettings</td><td>The task API settings.</td></tr>
+    <tr><td class="paramname">context</td><td>The priceapp context.</td></tr>
+    <tr><td class="paramname">iapiService</td><td>The internal API service.</td></tr>
+    <tr><td class="paramname">env</td><td>The hosting environment.</td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="fragment"><div class="line"><span class="lineno">   37</span>        {</div>
+<div class="line"><span class="lineno">   38</span>            _alchemyService = alchemyService;</div>
+<div class="line"><span class="lineno">   39</span>            _settings = taskAPISettings.Value;</div>
+<div class="line"><span class="lineno">   40</span>            _logService = logService;</div>
+<div class="line"><span class="lineno">   41</span>            _forexService = forexService;</div>
+<div class="line"><span class="lineno">   42</span>            _binanceService = binanceService;</div>
+<div class="line"><span class="lineno">   43</span>            _context = context;</div>
+<div class="line"><span class="lineno">   44</span>            _iapiService = iapiService;</div>
+<div class="line"><span class="lineno">   45</span>            _env = env;</div>
+<div class="line"><span class="lineno">   46</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -179,9 +201,9 @@ Here is the call graph for this function:</div>
 <div class="center"><img src="class_task_a_p_i_1_1_helpers_1_1_priceapp_helper_a11fefec93e8edfcd4f1d4c4d91180689_cgraph.png" border="0" usemap="#aclass_task_a_p_i_1_1_helpers_1_1_priceapp_helper_a11fefec93e8edfcd4f1d4c4d91180689_cgraph" alt=""/></div>
 <map name="aclass_task_a_p_i_1_1_helpers_1_1_priceapp_helper_a11fefec93e8edfcd4f1d4c4d91180689_cgraph" id="aclass_task_a_p_i_1_1_helpers_1_1_priceapp_helper_a11fefec93e8edfcd4f1d4c4d91180689_cgraph">
 <area shape="rect" title=" " alt="" coords="5,5,216,48"/>
-<area shape="rect" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a46dc9bf58bc9605c7e17dfee38b94354" title=" " alt="" coords="264,5,458,48"/>
+<area shape="rect" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a46dc9bf58bc9605c7e17dfee38b94354" title="Logs an error message to the database." alt="" coords="264,5,458,48"/>
 <area shape="poly" title=" " alt="" coords="216,24,248,24,248,29,216,29"/>
-<area shape="rect" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a44f0fd9db1116257087ba59c836e22ea" title="inserts log to database" alt="" coords="506,5,700,48"/>
+<area shape="rect" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a44f0fd9db1116257087ba59c836e22ea" title="Directly inserts a log entry into the database." alt="" coords="506,5,700,48"/>
 <area shape="poly" title=" " alt="" coords="459,24,491,24,491,29,459,29"/>
 </map>
 </div>
@@ -191,7 +213,7 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="class_task_a_p_i_1_1_helpers_1_1_priceapp_helper_a11fefec93e8edfcd4f1d4c4d91180689_icgraph.png" border="0" usemap="#aclass_task_a_p_i_1_1_helpers_1_1_priceapp_helper_a11fefec93e8edfcd4f1d4c4d91180689_icgraph" alt=""/></div>
 <map name="aclass_task_a_p_i_1_1_helpers_1_1_priceapp_helper_a11fefec93e8edfcd4f1d4c4d91180689_icgraph" id="aclass_task_a_p_i_1_1_helpers_1_1_priceapp_helper_a11fefec93e8edfcd4f1d4c4d91180689_icgraph">
 <area shape="rect" title=" " alt="" coords="245,5,455,48"/>
-<area shape="rect" href="class_task_a_p_i_1_1_controllers_1_1_priceapp_controller.html#a7a554328bc2c9f53d7791b214121982f" title=" " alt="" coords="5,5,197,48"/>
+<area shape="rect" href="class_task_a_p_i_1_1_controllers_1_1_priceapp_controller.html#a7a554328bc2c9f53d7791b214121982f" title="Saves the Priceapp pricesheet as a PDF." alt="" coords="5,5,197,48"/>
 <area shape="poly" title=" " alt="" coords="229,29,197,29,197,24,229,24"/>
 </map>
 </div>
@@ -210,6 +232,18 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Creates a live pricesheet PDF based on the current time window. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ignoreTime</td><td>A flag indicating whether to ignore time window restrictions for debugging purposes.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A tuple indicating the success status and result details of the operation. </dd></dl>
+<p>This method generates a live pricesheet PDF based on the current time window.</p>
+<p>It checks whether the current time falls within the daily or monthly time windows and proceeds accordingly.</p>
+<p>If the <em>ignoreTime</em>  parameter is set to <code>true</code>, the method ignores time window restrictions for debugging purposes.</p>
 
 </div>
 </div>

@@ -1,13 +1,21 @@
 \doxysection{Task\+API.\+Helpers.\+Alert\+Helper Class Reference}
 \hypertarget{class_task_a_p_i_1_1_helpers_1_1_alert_helper}{}\label{class_task_a_p_i_1_1_helpers_1_1_alert_helper}\index{TaskAPI.Helpers.AlertHelper@{TaskAPI.Helpers.AlertHelper}}
+
+
+Helper class for processing alerts based on log entries.  
+
+
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_alert_helper_addbf8755bb518d775ce73338b2e1117f}{Alert\+Helper}} (\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{Log\+Service}} log\+Service, \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service}{Internal\+APIService}} iapi\+Service, IOptions$<$ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings}{Task\+APISettings}} $>$ settings, \mbox{\hyperlink{class_task_a_p_i_1_1_contexts_1_1_task_a_p_i_context}{Task\+APIContext}} context, \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_log_notifications_settings}{Log\+Notifications\+Settings}} log\+Notifications\+Settings)
-\item 
+\begin{DoxyCompactList}\small\item\em Constructor for the Alert\+Helper class. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_alert_helper_acddc980d442b4344a8d9df5ba056276a}{Process\+Api\+Source}} (\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_api_source}{Api\+Source}} api\+Config)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Processes a single API source for alert generation. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+Helper class for processing alerts based on log entries. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \Hypertarget{class_task_a_p_i_1_1_helpers_1_1_alert_helper_addbf8755bb518d775ce73338b2e1117f}\label{class_task_a_p_i_1_1_helpers_1_1_alert_helper_addbf8755bb518d775ce73338b2e1117f} 
@@ -17,14 +25,31 @@ void \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_alert_helper_acddc980d442
 {\footnotesize\ttfamily Task\+API.\+Helpers.\+Alert\+Helper.\+Alert\+Helper (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{Log\+Service}}}]{log\+Service,  }\item[{\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service}{Internal\+APIService}}}]{iapi\+Service,  }\item[{IOptions$<$ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings}{Task\+APISettings}} $>$}]{settings,  }\item[{\mbox{\hyperlink{class_task_a_p_i_1_1_contexts_1_1_task_a_p_i_context}{Task\+APIContext}}}]{context,  }\item[{\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_log_notifications_settings}{Log\+Notifications\+Settings}}}]{log\+Notifications\+Settings }\end{DoxyParamCaption})}
 
 
+
+Constructor for the Alert\+Helper class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em log\+Service} & Instance of Log\+Service for logging.\\
+\hline
+{\em iapi\+Service} & Instance of Internal\+APIService for internal API service.\\
+\hline
+{\em settings} & Instance of IOptions$<$\+Task\+APISettings$>$ to access \doxylink{namespace_task_a_p_i}{Task\+API} settings.\\
+\hline
+{\em context} & Instance of Task\+APIContext for database context.\\
+\hline
+{\em log\+Notifications\+Settings} & Instance of Log\+Notifications\+Settings for log notifications settings.\\
+\hline
+\end{DoxyParams}
+
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \_logService\ =\ logService;}
-\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \_iapiService\ =\ iapiService;}
-\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \_settings\ =\ settings.Value;}
-\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \_context\ =\ context;}
-\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \_logNotificationsSettings\ =\ logNotificationsSettings;\ }
-\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \_logService\ =\ logService;}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \_iapiService\ =\ iapiService;}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \_settings\ =\ settings.Value;}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \_context\ =\ context;}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \_logNotificationsSettings\ =\ logNotificationsSettings;\ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \}}
 
 \end{DoxyCode}
 
@@ -36,21 +61,32 @@ void \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_alert_helper_acddc980d442
 \doxysubsubsection{\texorpdfstring{ProcessApiSource()}{ProcessApiSource()}}
 {\footnotesize\ttfamily void Task\+API.\+Helpers.\+Alert\+Helper.\+Process\+Api\+Source (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_api_source}{Api\+Source}}}]{api\+Config }\end{DoxyParamCaption})}
 
-Processes a single API source for alert generation. Fetches and processes logs, checks against thresholds, and sends alerts for the given API source. Logs information upon processing each API source. 
+
+
+Processes a single API source for alert generation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em api\+Config} & Configuration of the API source.\\
+\hline
+\end{DoxyParams}
+
+
+This method fetches and processes logs, checks against thresholds, and sends alerts for the given API source. It logs information upon processing each API source. 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ var\ apiSource\ =\ apiConfig.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_api_source_a3b6ccd01605139fcb2fd33c31e60d674}{Name}};}
-\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ var\ processedLogs\ =\ FetchAndProcessLogs(apiSource,\ apiConfig);}
-\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (processedLogs\ ==\ \textcolor{keyword}{null}\ ||\ !processedLogs.Any())}
-\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a5c2a67dbd8beb6f821c46b8d052d59ea}{LogInformation}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.AlertHelper,\ \$\textcolor{stringliteral}{"{}\{apiSource\}\ no\ logs\ to\ process\ for\ alerts."{}});}
-\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ var\ alertsToSend\ =\ CheckLogsAgainstThresholds(processedLogs,\ apiConfig);}
-\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ SendAlerts(alertsToSend,\ apiSource,\ apiConfig);}
-\DoxyCodeLine{00059\ }
-\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a5c2a67dbd8beb6f821c46b8d052d59ea}{LogInformation}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.AlertHelper,\ \$\textcolor{stringliteral}{"{}\{apiSource\}\ processed\ for\ alerts."{}});}
-\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ var\ apiSource\ =\ apiConfig.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_api_source_a3b6ccd01605139fcb2fd33c31e60d674}{Name}};}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ var\ processedLogs\ =\ FetchAndProcessLogs(apiSource,\ apiConfig);}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (processedLogs\ ==\ \textcolor{keyword}{null}\ ||\ !processedLogs.Any())}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a5c2a67dbd8beb6f821c46b8d052d59ea}{LogInformation}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.AlertHelper,\ \$\textcolor{stringliteral}{"{}\{apiSource\}\ no\ logs\ to\ process\ for\ alerts."{}});}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ var\ alertsToSend\ =\ CheckLogsAgainstThresholds(processedLogs,\ apiConfig);}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ SendAlerts(alertsToSend,\ apiSource,\ apiConfig);}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a5c2a67dbd8beb6f821c46b8d052d59ea}{LogInformation}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.AlertHelper,\ \$\textcolor{stringliteral}{"{}\{apiSource\}\ processed\ for\ alerts."{}});}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \}}
 
 \end{DoxyCode}
 Here is the caller graph for this function\+:

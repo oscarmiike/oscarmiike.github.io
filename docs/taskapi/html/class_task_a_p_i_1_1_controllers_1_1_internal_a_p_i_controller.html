@@ -82,12 +82,15 @@ $(function() {
   <div class="headertitle"><div class="title">TaskAPI.Controllers.InternalAPIController Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Manages log trimming and email notifications for Internal API.  
+ <a href="#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for TaskAPI.Controllers.InternalAPIController:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_task_a_p_i_1_1_controllers_1_1_internal_a_p_i_controller__inherit__graph.png" border="0" usemap="#a_task_a_p_i_8_controllers_8_internal_a_p_i_controller_inherit__map" alt="Inheritance graph"/></div>
 <map name="a_task_a_p_i_8_controllers_8_internal_a_p_i_controller_inherit__map" id="a_task_a_p_i_8_controllers_8_internal_a_p_i_controller_inherit__map">
-<area shape="rect" title=" " alt="" coords="5,80,188,123"/>
+<area shape="rect" title="Manages log trimming and email notifications for Internal API." alt="" coords="5,80,188,123"/>
 <area shape="rect" title=" " alt="" coords="43,5,150,32"/>
 <area shape="poly" title=" " alt="" coords="99,48,99,80,94,80,94,48"/>
 </map>
@@ -97,7 +100,7 @@ Collaboration diagram for TaskAPI.Controllers.InternalAPIController:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_task_a_p_i_1_1_controllers_1_1_internal_a_p_i_controller__coll__graph.png" border="0" usemap="#a_task_a_p_i_8_controllers_8_internal_a_p_i_controller_coll__map" alt="Collaboration graph"/></div>
 <map name="a_task_a_p_i_8_controllers_8_internal_a_p_i_controller_coll__map" id="a_task_a_p_i_8_controllers_8_internal_a_p_i_controller_coll__map">
-<area shape="rect" title=" " alt="" coords="5,80,188,123"/>
+<area shape="rect" title="Manages log trimming and email notifications for Internal API." alt="" coords="5,80,188,123"/>
 <area shape="rect" title=" " alt="" coords="43,5,150,32"/>
 <area shape="poly" title=" " alt="" coords="99,48,99,80,94,80,94,48"/>
 </map>
@@ -106,11 +109,15 @@ Collaboration diagram for TaskAPI.Controllers.InternalAPIController:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a4f25b0291848d91a8e6db0437abcbd8b" id="r_a4f25b0291848d91a8e6db0437abcbd8b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4f25b0291848d91a8e6db0437abcbd8b">InternalAPIController</a> (<a class="el" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a> logService, <a class="el" href="class_task_a_p_i_1_1_contexts_1_1_task_a_p_i_context.html">TaskAPIContext</a> context, <a class="el" href="class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service.html">InternalAPIService</a> internalAPIService, IOptions&lt; <a class="el" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html">TaskAPISettings</a> &gt; settings)</td></tr>
+<tr class="memdesc:a4f25b0291848d91a8e6db0437abcbd8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialises a new instance of the InternalAPIController class.  <br /></td></tr>
 <tr class="separator:a4f25b0291848d91a8e6db0437abcbd8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad77c1d71a0a8ba5393ee56bff0b81df1" id="r_ad77c1d71a0a8ba5393ee56bff0b81df1"><td class="memItemLeft" align="right" valign="top">ActionResult&lt; <a class="el" href="class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result.html">LogTrimResult</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad77c1d71a0a8ba5393ee56bff0b81df1">TrimLogs</a> ()</td></tr>
+<tr class="memdesc:ad77c1d71a0a8ba5393ee56bff0b81df1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Trims logs for Internal API based on predefined criteria.  <br /></td></tr>
 <tr class="separator:ad77c1d71a0a8ba5393ee56bff0b81df1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Manages log trimming and email notifications for Internal API. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a4f25b0291848d91a8e6db0437abcbd8b" name="a4f25b0291848d91a8e6db0437abcbd8b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4f25b0291848d91a8e6db0437abcbd8b">&#9670;&#160;</a></span>InternalAPIController()</h2>
 
@@ -139,12 +146,23 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   27</span>    {</div>
-<div class="line"><span class="lineno">   28</span>        _logService = logService;</div>
-<div class="line"><span class="lineno">   29</span>        _context = context;</div>
-<div class="line"><span class="lineno">   30</span>        _iapiService = internalAPIService;</div>
-<div class="line"><span class="lineno">   31</span>        _settings = settings.Value;</div>
-<div class="line"><span class="lineno">   32</span>    }</div>
+
+<p>Initialises a new instance of the InternalAPIController class. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">logService</td><td>The logging service.</td></tr>
+    <tr><td class="paramname">context</td><td>The database context.</td></tr>
+    <tr><td class="paramname">internalAPIService</td><td>The internal API service.</td></tr>
+    <tr><td class="paramname">settings</td><td>The application settings.</td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="fragment"><div class="line"><span class="lineno">   40</span>    {</div>
+<div class="line"><span class="lineno">   41</span>        _logService = logService;</div>
+<div class="line"><span class="lineno">   42</span>        _context = context;</div>
+<div class="line"><span class="lineno">   43</span>        _iapiService = internalAPIService;</div>
+<div class="line"><span class="lineno">   44</span>        _settings = settings.Value;</div>
+<div class="line"><span class="lineno">   45</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -163,24 +181,28 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   36</span>    {</div>
-<div class="line"><span class="lineno">   37</span>        _logService.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a5c2a67dbd8beb6f821c46b8d052d59ea">LogInformation</a>(<a class="code hl_class" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">LogSources</a>.InternalAPIController, <span class="stringliteral">&quot;internal api log trim initiated&quot;</span>);</div>
-<div class="line"><span class="lineno">   38</span>        <a class="code hl_class" href="class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result.html">LogTrimResult</a> result = _iapiService.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service.html#a0a18917a9a9834b9d1f62d96b3798912">InternalAPITrimLogs</a>();</div>
-<div class="line"><span class="lineno">   39</span>        <span class="keywordflow">if</span> (result.<a class="code hl_property" href="class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result.html#ac0dcb80f3d1f49fc0fdc79aca9faf210">error</a>)</div>
-<div class="line"><span class="lineno">   40</span>        {</div>
-<div class="line"><span class="lineno">   41</span>            _iapiService.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service.html#aeffeb1d3d59aeeab65dfe72691d21600">SendEmail</a>(<span class="keyword">new</span> <a class="code hl_class" href="class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_email_post.html">EmailPost</a>()</div>
-<div class="line"><span class="lineno">   42</span>            {</div>
-<div class="line"><span class="lineno">   43</span>                EmailFrom = _settings.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#af39dc0933cd608b26e7bc4f82951d356">GeneralSettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings.html#ac0a0b89d2e7cf7f820e5663a1a4cffbf">NotificationEmailFrom</a>,</div>
-<div class="line"><span class="lineno">   44</span>                EmailTo = _settings.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#af39dc0933cd608b26e7bc4f82951d356">GeneralSettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings.html#a25434a5471214771ae507f7152073898">NotificationEmailTo</a>,</div>
-<div class="line"><span class="lineno">   45</span>                NameFrom = _settings.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#af39dc0933cd608b26e7bc4f82951d356">GeneralSettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings.html#a082a8e92b97a7d83196f1d0056241042">NotificationEmailName</a>,</div>
-<div class="line"><span class="lineno">   46</span>                Subject = <span class="stringliteral">&quot;Error trimming internap api logs&quot;</span>,</div>
-<div class="line"><span class="lineno">   47</span>                HTMLBody = $<span class="stringliteral">&quot;Task API was unable to trim internal api logs&lt;br&gt;&lt;br&gt;{JsonConvert.SerializeObject(result)}&quot;</span></div>
-<div class="line"><span class="lineno">   48</span>            });</div>
-<div class="line"><span class="lineno">   49</span>        }</div>
-<div class="line"><span class="lineno">   50</span>  </div>
-<div class="line"><span class="lineno">   51</span>        _logService.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a5c2a67dbd8beb6f821c46b8d052d59ea">LogInformation</a>(<a class="code hl_class" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">LogSources</a>.InternalAPIController, $<span class="stringliteral">&quot;internal api log trim completed&quot;</span>, result);</div>
-<div class="line"><span class="lineno">   52</span>        <span class="keywordflow">return</span> Ok(result);</div>
-<div class="line"><span class="lineno">   53</span>    }</div>
+
+<p>Trims logs for Internal API based on predefined criteria. </p>
+<p>This method initiates the log trimming process for Internal API and handles any errors that occur during the process. </p>
+<dl class="section return"><dt>Returns</dt><dd>An ActionResult&lt;T&gt; containing the result of the log trimming operation.</dd></dl>
+<div class="fragment"><div class="line"><span class="lineno">   56</span>    {</div>
+<div class="line"><span class="lineno">   57</span>        _logService.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a5c2a67dbd8beb6f821c46b8d052d59ea">LogInformation</a>(<a class="code hl_class" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">LogSources</a>.InternalAPIController, <span class="stringliteral">&quot;internal api log trim initiated&quot;</span>);</div>
+<div class="line"><span class="lineno">   58</span>        <a class="code hl_class" href="class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result.html">LogTrimResult</a> result = _iapiService.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service.html#a0a18917a9a9834b9d1f62d96b3798912">InternalAPITrimLogs</a>();</div>
+<div class="line"><span class="lineno">   59</span>        <span class="keywordflow">if</span> (result.<a class="code hl_property" href="class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result.html#ac0dcb80f3d1f49fc0fdc79aca9faf210">error</a>)</div>
+<div class="line"><span class="lineno">   60</span>        {</div>
+<div class="line"><span class="lineno">   61</span>            _iapiService.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service.html#aeffeb1d3d59aeeab65dfe72691d21600">SendEmail</a>(<span class="keyword">new</span> <a class="code hl_class" href="class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_email_post.html">EmailPost</a>()</div>
+<div class="line"><span class="lineno">   62</span>            {</div>
+<div class="line"><span class="lineno">   63</span>                EmailFrom = _settings.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#af39dc0933cd608b26e7bc4f82951d356">GeneralSettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings.html#ac0a0b89d2e7cf7f820e5663a1a4cffbf">NotificationEmailFrom</a>,</div>
+<div class="line"><span class="lineno">   64</span>                EmailTo = _settings.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#af39dc0933cd608b26e7bc4f82951d356">GeneralSettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings.html#a25434a5471214771ae507f7152073898">NotificationEmailTo</a>,</div>
+<div class="line"><span class="lineno">   65</span>                NameFrom = _settings.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#af39dc0933cd608b26e7bc4f82951d356">GeneralSettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings.html#a082a8e92b97a7d83196f1d0056241042">NotificationEmailName</a>,</div>
+<div class="line"><span class="lineno">   66</span>                Subject = <span class="stringliteral">&quot;Error trimming internap api logs&quot;</span>,</div>
+<div class="line"><span class="lineno">   67</span>                HTMLBody = $<span class="stringliteral">&quot;Task API was unable to trim internal api logs&lt;br&gt;&lt;br&gt;{JsonConvert.SerializeObject(result)}&quot;</span></div>
+<div class="line"><span class="lineno">   68</span>            });</div>
+<div class="line"><span class="lineno">   69</span>        }</div>
+<div class="line"><span class="lineno">   70</span>  </div>
+<div class="line"><span class="lineno">   71</span>        _logService.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a5c2a67dbd8beb6f821c46b8d052d59ea">LogInformation</a>(<a class="code hl_class" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">LogSources</a>.InternalAPIController, $<span class="stringliteral">&quot;internal api log trim completed&quot;</span>, result);</div>
+<div class="line"><span class="lineno">   72</span>        <span class="keywordflow">return</span> Ok(result);</div>
+<div class="line"><span class="lineno">   73</span>    }</div>
 <div class="ttc" id="aclass_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings_html_a082a8e92b97a7d83196f1d0056241042"><div class="ttname"><a href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings.html#a082a8e92b97a7d83196f1d0056241042">TaskAPI.Helpers.Settings.TaskAPISettings.Generalsettings.NotificationEmailName</a></div><div class="ttdeci">string NotificationEmailName</div><div class="ttdef"><b>Definition</b> TaskAPISettings.cs:18</div></div>
 <div class="ttc" id="aclass_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings_html_a25434a5471214771ae507f7152073898"><div class="ttname"><a href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings.html#a25434a5471214771ae507f7152073898">TaskAPI.Helpers.Settings.TaskAPISettings.Generalsettings.NotificationEmailTo</a></div><div class="ttdeci">string NotificationEmailTo</div><div class="ttdef"><b>Definition</b> TaskAPISettings.cs:20</div></div>
 <div class="ttc" id="aclass_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings_html_ac0a0b89d2e7cf7f820e5663a1a4cffbf"><div class="ttname"><a href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings.html#ac0a0b89d2e7cf7f820e5663a1a4cffbf">TaskAPI.Helpers.Settings.TaskAPISettings.Generalsettings.NotificationEmailFrom</a></div><div class="ttdeci">string NotificationEmailFrom</div><div class="ttdef"><b>Definition</b> TaskAPISettings.cs:19</div></div>
@@ -188,28 +210,28 @@ Public Member Functions</h2></td></tr>
 <div class="ttc" id="aclass_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_email_post_html"><div class="ttname"><a href="class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_email_post.html">TaskAPI.Models.DTO.InternalAPI.EmailPost</a></div><div class="ttdef"><b>Definition</b> InternalAPI.cs:4</div></div>
 <div class="ttc" id="aclass_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result_html"><div class="ttname"><a href="class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result.html">TaskAPI.Models.DTO.LogTrimResult</a></div><div class="ttdef"><b>Definition</b> LogTrimResult.cs:4</div></div>
 <div class="ttc" id="aclass_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result_html_ac0dcb80f3d1f49fc0fdc79aca9faf210"><div class="ttname"><a href="class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result.html#ac0dcb80f3d1f49fc0fdc79aca9faf210">TaskAPI.Models.DTO.LogTrimResult.error</a></div><div class="ttdeci">bool error</div><div class="ttdef"><b>Definition</b> LogTrimResult.cs:5</div></div>
-<div class="ttc" id="aclass_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_html_a0a18917a9a9834b9d1f62d96b3798912"><div class="ttname"><a href="class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service.html#a0a18917a9a9834b9d1f62d96b3798912">TaskAPI.Services.InternalAPIService.InternalAPITrimLogs</a></div><div class="ttdeci">LogTrimResult InternalAPITrimLogs()</div><div class="ttdef"><b>Definition</b> InternalAPIService.cs:156</div></div>
-<div class="ttc" id="aclass_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_html_aeffeb1d3d59aeeab65dfe72691d21600"><div class="ttname"><a href="class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service.html#aeffeb1d3d59aeeab65dfe72691d21600">TaskAPI.Services.InternalAPIService.SendEmail</a></div><div class="ttdeci">bool SendEmail(EmailPost email)</div><div class="ttdef"><b>Definition</b> InternalAPIService.cs:32</div></div>
-<div class="ttc" id="aclass_task_a_p_i_1_1_services_1_1_log_service_html"><div class="ttname"><a href="class_task_a_p_i_1_1_services_1_1_log_service.html">TaskAPI.Services.LogService</a></div><div class="ttdef"><b>Definition</b> LogService.cs:24</div></div>
-<div class="ttc" id="aclass_task_a_p_i_1_1_services_1_1_log_service_html_a5c2a67dbd8beb6f821c46b8d052d59ea"><div class="ttname"><a href="class_task_a_p_i_1_1_services_1_1_log_service.html#a5c2a67dbd8beb6f821c46b8d052d59ea">TaskAPI.Services.LogService.LogInformation</a></div><div class="ttdeci">LogEntry LogInformation(LogSources logSource, params object[] dataList)</div><div class="ttdef"><b>Definition</b> LogService.cs:67</div></div>
-<div class="ttc" id="aclass_task_a_p_i_1_1_services_1_1_log_service_html_ac2b08e94307168cb702773d148d166ba"><div class="ttname"><a href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">TaskAPI.Services.LogService.LogSources</a></div><div class="ttdeci">LogSources</div><div class="ttdef"><b>Definition</b> LogService.cs:34</div></div>
+<div class="ttc" id="aclass_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_html_a0a18917a9a9834b9d1f62d96b3798912"><div class="ttname"><a href="class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service.html#a0a18917a9a9834b9d1f62d96b3798912">TaskAPI.Services.InternalAPIService.InternalAPITrimLogs</a></div><div class="ttdeci">LogTrimResult InternalAPITrimLogs()</div><div class="ttdoc">Initiates a log trimming operation via Internal API, targeting logs stored by Internal API itself.</div><div class="ttdef"><b>Definition</b> InternalAPIService.cs:190</div></div>
+<div class="ttc" id="aclass_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_html_aeffeb1d3d59aeeab65dfe72691d21600"><div class="ttname"><a href="class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service.html#aeffeb1d3d59aeeab65dfe72691d21600">TaskAPI.Services.InternalAPIService.SendEmail</a></div><div class="ttdeci">bool SendEmail(EmailPost email)</div><div class="ttdoc">Sends an email using Internal API's email endpoint.</div><div class="ttdef"><b>Definition</b> InternalAPIService.cs:45</div></div>
+<div class="ttc" id="aclass_task_a_p_i_1_1_services_1_1_log_service_html"><div class="ttname"><a href="class_task_a_p_i_1_1_services_1_1_log_service.html">TaskAPI.Services.LogService</a></div><div class="ttdoc">Provides logging services for various levels of application events, including debug,...</div><div class="ttdef"><b>Definition</b> LogService.cs:27</div></div>
+<div class="ttc" id="aclass_task_a_p_i_1_1_services_1_1_log_service_html_a5c2a67dbd8beb6f821c46b8d052d59ea"><div class="ttname"><a href="class_task_a_p_i_1_1_services_1_1_log_service.html#a5c2a67dbd8beb6f821c46b8d052d59ea">TaskAPI.Services.LogService.LogInformation</a></div><div class="ttdeci">LogEntry LogInformation(LogSources logSource, params object[] dataList)</div><div class="ttdoc">Logs an informational message to the database.</div><div class="ttdef"><b>Definition</b> LogService.cs:87</div></div>
+<div class="ttc" id="aclass_task_a_p_i_1_1_services_1_1_log_service_html_ac2b08e94307168cb702773d148d166ba"><div class="ttname"><a href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">TaskAPI.Services.LogService.LogSources</a></div><div class="ttdeci">LogSources</div><div class="ttdef"><b>Definition</b> LogService.cs:37</div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_task_a_p_i_1_1_controllers_1_1_internal_a_p_i_controller_ad77c1d71a0a8ba5393ee56bff0b81df1_cgraph.png" border="0" usemap="#aclass_task_a_p_i_1_1_controllers_1_1_internal_a_p_i_controller_ad77c1d71a0a8ba5393ee56bff0b81df1_cgraph" alt=""/></div>
 <map name="aclass_task_a_p_i_1_1_controllers_1_1_internal_a_p_i_controller_ad77c1d71a0a8ba5393ee56bff0b81df1_cgraph" id="aclass_task_a_p_i_1_1_controllers_1_1_internal_a_p_i_controller_ad77c1d71a0a8ba5393ee56bff0b81df1_cgraph">
-<area shape="rect" title=" " alt="" coords="5,72,188,115"/>
-<area shape="rect" href="class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service.html#a0a18917a9a9834b9d1f62d96b3798912" title=" " alt="" coords="236,72,440,115"/>
+<area shape="rect" title="Trims logs for Internal API based on predefined criteria." alt="" coords="5,72,188,115"/>
+<area shape="rect" href="class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service.html#a0a18917a9a9834b9d1f62d96b3798912" title="Initiates a log trimming operation via Internal API, targeting logs stored by Internal API itself." alt="" coords="236,72,440,115"/>
 <area shape="poly" title=" " alt="" coords="188,91,220,91,220,96,188,96"/>
-<area shape="rect" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a5c2a67dbd8beb6f821c46b8d052d59ea" title=" " alt="" coords="488,139,682,181"/>
+<area shape="rect" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a5c2a67dbd8beb6f821c46b8d052d59ea" title="Logs an informational message to the database." alt="" coords="488,139,682,181"/>
 <area shape="poly" title=" " alt="" coords="181,113,236,124,358,140,473,151,472,156,358,146,235,129,180,118"/>
-<area shape="rect" href="class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service.html#aeffeb1d3d59aeeab65dfe72691d21600" title=" " alt="" coords="253,5,423,48"/>
+<area shape="rect" href="class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service.html#aeffeb1d3d59aeeab65dfe72691d21600" title="Sends an email using Internal API&#39;s email endpoint." alt="" coords="253,5,423,48"/>
 <area shape="poly" title=" " alt="" coords="175,69,243,50,244,55,177,74"/>
-<area shape="rect" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a46dc9bf58bc9605c7e17dfee38b94354" title=" " alt="" coords="488,72,682,115"/>
+<area shape="rect" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a46dc9bf58bc9605c7e17dfee38b94354" title="Logs an error message to the database." alt="" coords="488,72,682,115"/>
 <area shape="poly" title=" " alt="" coords="440,91,472,91,472,96,440,96"/>
-<area shape="rect" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a78c9df658858fa3099eed69421423898" title=" " alt="" coords="488,5,682,48"/>
+<area shape="rect" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a78c9df658858fa3099eed69421423898" title="Logs an exception to the database." alt="" coords="488,5,682,48"/>
 <area shape="poly" title=" " alt="" coords="419,69,488,50,489,55,420,74"/>
-<area shape="rect" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a44f0fd9db1116257087ba59c836e22ea" title="inserts log to database" alt="" coords="730,72,925,115"/>
+<area shape="rect" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a44f0fd9db1116257087ba59c836e22ea" title="Directly inserts a log entry into the database." alt="" coords="730,72,925,115"/>
 <area shape="poly" title=" " alt="" coords="683,91,715,91,715,96,683,96"/>
 <area shape="poly" title=" " alt="" coords="666,46,733,65,732,70,664,51"/>
 <area shape="poly" title=" " alt="" coords="664,136,732,117,733,122,666,141"/>

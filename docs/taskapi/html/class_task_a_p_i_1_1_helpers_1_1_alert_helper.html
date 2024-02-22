@@ -82,15 +82,22 @@ $(function() {
   <div class="headertitle"><div class="title">TaskAPI.Helpers.AlertHelper Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Helper class for processing alerts based on log entries.  
+ <a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:addbf8755bb518d775ce73338b2e1117f" id="r_addbf8755bb518d775ce73338b2e1117f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#addbf8755bb518d775ce73338b2e1117f">AlertHelper</a> (<a class="el" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a> logService, <a class="el" href="class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service.html">InternalAPIService</a> iapiService, IOptions&lt; <a class="el" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html">TaskAPISettings</a> &gt; settings, <a class="el" href="class_task_a_p_i_1_1_contexts_1_1_task_a_p_i_context.html">TaskAPIContext</a> context, <a class="el" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_log_notifications_settings.html">LogNotificationsSettings</a> logNotificationsSettings)</td></tr>
+<tr class="memdesc:addbf8755bb518d775ce73338b2e1117f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for the AlertHelper class.  <br /></td></tr>
 <tr class="separator:addbf8755bb518d775ce73338b2e1117f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acddc980d442b4344a8d9df5ba056276a" id="r_acddc980d442b4344a8d9df5ba056276a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acddc980d442b4344a8d9df5ba056276a">ProcessApiSource</a> (<a class="el" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_api_source.html">ApiSource</a> apiConfig)</td></tr>
+<tr class="memdesc:acddc980d442b4344a8d9df5ba056276a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes a single API source for alert generation.  <br /></td></tr>
 <tr class="separator:acddc980d442b4344a8d9df5ba056276a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Helper class for processing alerts based on log entries. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="addbf8755bb518d775ce73338b2e1117f" name="addbf8755bb518d775ce73338b2e1117f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#addbf8755bb518d775ce73338b2e1117f">&#9670;&#160;</a></span>AlertHelper()</h2>
 
@@ -124,13 +131,25 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   35</span>        {</div>
-<div class="line"><span class="lineno">   36</span>            _logService = logService;</div>
-<div class="line"><span class="lineno">   37</span>            _iapiService = iapiService;</div>
-<div class="line"><span class="lineno">   38</span>            _settings = settings.Value;</div>
-<div class="line"><span class="lineno">   39</span>            _context = context;</div>
-<div class="line"><span class="lineno">   40</span>            _logNotificationsSettings = logNotificationsSettings; </div>
-<div class="line"><span class="lineno">   41</span>        }</div>
+
+<p>Constructor for the AlertHelper class. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">logService</td><td>Instance of LogService for logging.</td></tr>
+    <tr><td class="paramname">iapiService</td><td>Instance of InternalAPIService for internal API service.</td></tr>
+    <tr><td class="paramname">settings</td><td>Instance of IOptions&lt;TaskAPISettings&gt; to access <a class="el" href="namespace_task_a_p_i.html">TaskAPI</a> settings.</td></tr>
+    <tr><td class="paramname">context</td><td>Instance of TaskAPIContext for database context.</td></tr>
+    <tr><td class="paramname">logNotificationsSettings</td><td>Instance of LogNotificationsSettings for log notifications settings.</td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="fragment"><div class="line"><span class="lineno">   46</span>        {</div>
+<div class="line"><span class="lineno">   47</span>            _logService = logService;</div>
+<div class="line"><span class="lineno">   48</span>            _iapiService = iapiService;</div>
+<div class="line"><span class="lineno">   49</span>            _settings = settings.Value;</div>
+<div class="line"><span class="lineno">   50</span>            _context = context;</div>
+<div class="line"><span class="lineno">   51</span>            _logNotificationsSettings = logNotificationsSettings; </div>
+<div class="line"><span class="lineno">   52</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -149,31 +168,39 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Processes a single API source for alert generation. Fetches and processes logs, checks against thresholds, and sends alerts for the given API source. Logs information upon processing each API source. </p>
-<div class="fragment"><div class="line"><span class="lineno">   49</span>        {</div>
-<div class="line"><span class="lineno">   50</span>            var apiSource = apiConfig.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_api_source.html#a3b6ccd01605139fcb2fd33c31e60d674">Name</a>;</div>
-<div class="line"><span class="lineno">   51</span>            var processedLogs = FetchAndProcessLogs(apiSource, apiConfig);</div>
-<div class="line"><span class="lineno">   52</span>            <span class="keywordflow">if</span> (processedLogs == <span class="keyword">null</span> || !processedLogs.Any())</div>
-<div class="line"><span class="lineno">   53</span>            {</div>
-<div class="line"><span class="lineno">   54</span>                _logService.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a5c2a67dbd8beb6f821c46b8d052d59ea">LogInformation</a>(<a class="code hl_class" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">LogSources</a>.AlertHelper, $<span class="stringliteral">&quot;{apiSource} no logs to process for alerts.&quot;</span>);</div>
-<div class="line"><span class="lineno">   55</span>                <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   56</span>            }</div>
-<div class="line"><span class="lineno">   57</span>            var alertsToSend = CheckLogsAgainstThresholds(processedLogs, apiConfig);</div>
-<div class="line"><span class="lineno">   58</span>            SendAlerts(alertsToSend, apiSource, apiConfig);</div>
-<div class="line"><span class="lineno">   59</span> </div>
-<div class="line"><span class="lineno">   60</span>            _logService.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a5c2a67dbd8beb6f821c46b8d052d59ea">LogInformation</a>(<a class="code hl_class" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">LogSources</a>.AlertHelper, $<span class="stringliteral">&quot;{apiSource} processed for alerts.&quot;</span>);</div>
-<div class="line"><span class="lineno">   61</span>        }</div>
+
+<p>Processes a single API source for alert generation. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">apiConfig</td><td>Configuration of the API source.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>This method fetches and processes logs, checks against thresholds, and sends alerts for the given API source. It logs information upon processing each API source. </p>
+<div class="fragment"><div class="line"><span class="lineno">   63</span>        {</div>
+<div class="line"><span class="lineno">   64</span>            var apiSource = apiConfig.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_api_source.html#a3b6ccd01605139fcb2fd33c31e60d674">Name</a>;</div>
+<div class="line"><span class="lineno">   65</span>            var processedLogs = FetchAndProcessLogs(apiSource, apiConfig);</div>
+<div class="line"><span class="lineno">   66</span>            <span class="keywordflow">if</span> (processedLogs == <span class="keyword">null</span> || !processedLogs.Any())</div>
+<div class="line"><span class="lineno">   67</span>            {</div>
+<div class="line"><span class="lineno">   68</span>                _logService.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a5c2a67dbd8beb6f821c46b8d052d59ea">LogInformation</a>(<a class="code hl_class" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">LogSources</a>.AlertHelper, $<span class="stringliteral">&quot;{apiSource} no logs to process for alerts.&quot;</span>);</div>
+<div class="line"><span class="lineno">   69</span>                <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   70</span>            }</div>
+<div class="line"><span class="lineno">   71</span>            var alertsToSend = CheckLogsAgainstThresholds(processedLogs, apiConfig);</div>
+<div class="line"><span class="lineno">   72</span>            SendAlerts(alertsToSend, apiSource, apiConfig);</div>
+<div class="line"><span class="lineno">   73</span> </div>
+<div class="line"><span class="lineno">   74</span>            _logService.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a5c2a67dbd8beb6f821c46b8d052d59ea">LogInformation</a>(<a class="code hl_class" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">LogSources</a>.AlertHelper, $<span class="stringliteral">&quot;{apiSource} processed for alerts.&quot;</span>);</div>
+<div class="line"><span class="lineno">   75</span>        }</div>
 <div class="ttc" id="aclass_task_a_p_i_1_1_helpers_1_1_settings_1_1_api_source_html_a3b6ccd01605139fcb2fd33c31e60d674"><div class="ttname"><a href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_api_source.html#a3b6ccd01605139fcb2fd33c31e60d674">TaskAPI.Helpers.Settings.ApiSource.Name</a></div><div class="ttdeci">string Name</div><div class="ttdef"><b>Definition</b> AlertSettings.cs:23</div></div>
-<div class="ttc" id="aclass_task_a_p_i_1_1_services_1_1_log_service_html"><div class="ttname"><a href="class_task_a_p_i_1_1_services_1_1_log_service.html">TaskAPI.Services.LogService</a></div><div class="ttdef"><b>Definition</b> LogService.cs:24</div></div>
-<div class="ttc" id="aclass_task_a_p_i_1_1_services_1_1_log_service_html_a5c2a67dbd8beb6f821c46b8d052d59ea"><div class="ttname"><a href="class_task_a_p_i_1_1_services_1_1_log_service.html#a5c2a67dbd8beb6f821c46b8d052d59ea">TaskAPI.Services.LogService.LogInformation</a></div><div class="ttdeci">LogEntry LogInformation(LogSources logSource, params object[] dataList)</div><div class="ttdef"><b>Definition</b> LogService.cs:67</div></div>
-<div class="ttc" id="aclass_task_a_p_i_1_1_services_1_1_log_service_html_ac2b08e94307168cb702773d148d166ba"><div class="ttname"><a href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">TaskAPI.Services.LogService.LogSources</a></div><div class="ttdeci">LogSources</div><div class="ttdef"><b>Definition</b> LogService.cs:34</div></div>
+<div class="ttc" id="aclass_task_a_p_i_1_1_services_1_1_log_service_html"><div class="ttname"><a href="class_task_a_p_i_1_1_services_1_1_log_service.html">TaskAPI.Services.LogService</a></div><div class="ttdoc">Provides logging services for various levels of application events, including debug,...</div><div class="ttdef"><b>Definition</b> LogService.cs:27</div></div>
+<div class="ttc" id="aclass_task_a_p_i_1_1_services_1_1_log_service_html_a5c2a67dbd8beb6f821c46b8d052d59ea"><div class="ttname"><a href="class_task_a_p_i_1_1_services_1_1_log_service.html#a5c2a67dbd8beb6f821c46b8d052d59ea">TaskAPI.Services.LogService.LogInformation</a></div><div class="ttdeci">LogEntry LogInformation(LogSources logSource, params object[] dataList)</div><div class="ttdoc">Logs an informational message to the database.</div><div class="ttdef"><b>Definition</b> LogService.cs:87</div></div>
+<div class="ttc" id="aclass_task_a_p_i_1_1_services_1_1_log_service_html_ac2b08e94307168cb702773d148d166ba"><div class="ttname"><a href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">TaskAPI.Services.LogService.LogSources</a></div><div class="ttdeci">LogSources</div><div class="ttdef"><b>Definition</b> LogService.cs:37</div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_task_a_p_i_1_1_helpers_1_1_alert_helper_acddc980d442b4344a8d9df5ba056276a_icgraph.png" border="0" usemap="#aclass_task_a_p_i_1_1_helpers_1_1_alert_helper_acddc980d442b4344a8d9df5ba056276a_icgraph" alt=""/></div>
 <map name="aclass_task_a_p_i_1_1_helpers_1_1_alert_helper_acddc980d442b4344a8d9df5ba056276a_icgraph" id="aclass_task_a_p_i_1_1_helpers_1_1_alert_helper_acddc980d442b4344a8d9df5ba056276a_icgraph">
-<area shape="rect" title=" " alt="" coords="239,5,429,48"/>
-<area shape="rect" href="class_task_a_p_i_1_1_controllers_1_1_logs_controller.html#aa1bbb95b5f70e8d5a457fdca962479e3" title=" " alt="" coords="5,5,191,48"/>
+<area shape="rect" title="Processes a single API source for alert generation." alt="" coords="239,5,429,48"/>
+<area shape="rect" href="class_task_a_p_i_1_1_controllers_1_1_logs_controller.html#aa1bbb95b5f70e8d5a457fdca962479e3" title="Checks for alerts across all configured api sources." alt="" coords="5,5,191,48"/>
 <area shape="poly" title=" " alt="" coords="223,29,191,29,191,24,223,24"/>
 </map>
 </div>

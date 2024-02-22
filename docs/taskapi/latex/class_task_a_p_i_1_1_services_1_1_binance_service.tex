@@ -1,13 +1,23 @@
 \doxysection{Task\+API.\+Services.\+Binance\+Service Class Reference}
 \hypertarget{class_task_a_p_i_1_1_services_1_1_binance_service}{}\label{class_task_a_p_i_1_1_services_1_1_binance_service}\index{TaskAPI.Services.BinanceService@{TaskAPI.Services.BinanceService}}
+
+
+Provides access to Binance cryptocurrency data.  
+
+
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_binance_service_ac893592a5915de3b9cc0792e04de097d}{Binance\+Service}} (\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{Log\+Service}} log\+Service, IOptions$<$ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings}{Task\+APISettings}} $>$ task\+APISettings)
-\item 
+\begin{DoxyCompactList}\small\item\em Initialises a new instance of the Binance\+Service class. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_binance_response}{Binance\+Response}} \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_binance_service_a5863f72c89f66991b6ea2172de8e4687}{Pull\+Feed}} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Retrieves the latest cryptocurrency data feed from Binance. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+Provides access to Binance cryptocurrency data. 
+
+This service is responsible for fetching cryptocurrency data from the Binance API. 
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \Hypertarget{class_task_a_p_i_1_1_services_1_1_binance_service_ac893592a5915de3b9cc0792e04de097d}\label{class_task_a_p_i_1_1_services_1_1_binance_service_ac893592a5915de3b9cc0792e04de097d} 
@@ -17,11 +27,22 @@
 {\footnotesize\ttfamily Task\+API.\+Services.\+Binance\+Service.\+Binance\+Service (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{Log\+Service}}}]{log\+Service,  }\item[{IOptions$<$ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings}{Task\+APISettings}} $>$}]{task\+APISettings }\end{DoxyParamCaption})}
 
 
+
+Initialises a new instance of the Binance\+Service class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em log\+Service} & The service used for logging.\\
+\hline
+{\em task\+APISettings} & The application settings, containing configuration for the Binance API and other services.\\
+\hline
+\end{DoxyParams}
+
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00015\ \ \ \ \ \{}
-\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \_logService\ =\ logService;}
-\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \_settings\ =\ taskAPISettings.Value;}
-\DoxyCodeLine{00018\ \ \ \ \ \}}
+\DoxyCodeLine{00026\ \ \ \ \ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \_logService\ =\ logService;}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \_settings\ =\ taskAPISettings.Value;}
+\DoxyCodeLine{00029\ \ \ \ \ \}}
 
 \end{DoxyCode}
 
@@ -34,29 +55,38 @@
 {\footnotesize\ttfamily \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_binance_response}{Binance\+Response}} Task\+API.\+Services.\+Binance\+Service.\+Pull\+Feed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
+
+Retrieves the latest cryptocurrency data feed from Binance. 
+
+\begin{DoxyReturn}{Returns}
+A Binance\+Response object containing the latest cryptocurrency data. If an error occurs or the data cannot be retrieved, the method returns an object with empty data. 
+\end{DoxyReturn}
+
+
+The method attempts to fetch the latest data feed from Binance. It logs any errors or failures that occur during the process. 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00021\ \ \ \ \ \{}
-\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_binance_response}{BinanceResponse}}\ binanceResponse\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_binance_response}{BinanceResponse}}();}
-\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
-\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient(\_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_a127cce7c28a6e430b091679ca27ef9a7}{BinanceSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_binancesettings_ae835a22e33518d6c80c86f7fe2dda7b5}{FeedURL}});}
-\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ var\ request\ =\ \textcolor{keyword}{new}\ RestRequest(\textcolor{stringliteral}{"{}"{}},\ Method.Get);}
-\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ var\ response\ =\ client.Execute(request);}
-\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response.IsSuccessful\ \&\&\ response.IsSuccessStatusCode)}
-\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ binanceResponse.Assets\ =\ JsonConvert.DeserializeObject<\mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_binance_response}{BinanceResponse}}.\mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_binance_response_1_1_asset}{Asset}}[]>(response.Content);}
-\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
-\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a46dc9bf58bc9605c7e17dfee38b94354}{LogError}}(LogService.LogSources.BinanceService,\ \textcolor{stringliteral}{"{}error\ getting\ binance\ data\ feed,\ response\ was\ not\ successful"{}},\ \$\textcolor{stringliteral}{"{}response\ status:\ \{response.ResponseStatus\}"{}},\ \$\textcolor{stringliteral}{"{}response\ status\ description:\ \{response.StatusDescription\}"{}});}
-\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
-\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a78c9df658858fa3099eed69421423898}{LogException}}(LogService.LogSources.ForexService,\ \textcolor{stringliteral}{"{}exception\ getting\ binance\ feed\ data"{}},\ ex);}
-\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ binanceResponse;}
-\DoxyCodeLine{00042\ \ \ \ \ \}}
+\DoxyCodeLine{00041\ \ \ \ \ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_binance_response}{BinanceResponse}}\ binanceResponse\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_binance_response}{BinanceResponse}}();}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient(\_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_a127cce7c28a6e430b091679ca27ef9a7}{BinanceSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_binancesettings_ae835a22e33518d6c80c86f7fe2dda7b5}{FeedURL}});}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ var\ request\ =\ \textcolor{keyword}{new}\ RestRequest(\textcolor{stringliteral}{"{}"{}},\ Method.Get);}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ var\ response\ =\ client.Execute(request);}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response.IsSuccessful\ \&\&\ response.IsSuccessStatusCode)}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ binanceResponse.Assets\ =\ JsonConvert.DeserializeObject<\mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_binance_response}{BinanceResponse}}.\mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_binance_response_1_1_asset}{Asset}}[]>(response.Content);}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a46dc9bf58bc9605c7e17dfee38b94354}{LogError}}(LogService.LogSources.BinanceService,\ \textcolor{stringliteral}{"{}error\ getting\ binance\ data\ feed,\ response\ was\ not\ successful"{}},\ \$\textcolor{stringliteral}{"{}response\ status:\ \{response.ResponseStatus\}"{}},\ \$\textcolor{stringliteral}{"{}response\ status\ description:\ \{response.StatusDescription\}"{}});}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a78c9df658858fa3099eed69421423898}{LogException}}(LogService.LogSources.ForexService,\ \textcolor{stringliteral}{"{}exception\ getting\ binance\ feed\ data"{}},\ ex);}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ binanceResponse;}
+\DoxyCodeLine{00062\ \ \ \ \ \}}
 
 \end{DoxyCode}
 Here is the call graph for this function\+:

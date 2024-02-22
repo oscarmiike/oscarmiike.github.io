@@ -83,26 +83,33 @@ $(function() {
   <div class="headertitle"><div class="title">TaskAPI.Helpers.SpotHelper Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Helper class for managing operations related to spot prices.  
+ <a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ae5d7f0ba6759749953e94555c9557cfb" id="r_ae5d7f0ba6759749953e94555c9557cfb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae5d7f0ba6759749953e94555c9557cfb">SpotHelper</a> (<a class="el" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a> logService, <a class="el" href="class_task_a_p_i_1_1_services_1_1_forex_service.html">ForexService</a> forexService, <a class="el" href="class_task_a_p_i_1_1_services_1_1_alchemy_service.html">AlchemyService</a> alchemyService, <a class="el" href="class_task_a_p_i_1_1_services_1_1_binance_service.html">BinanceService</a> binanceService, IOptions&lt; <a class="el" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html">TaskAPISettings</a> &gt; taskAPISettings, <a class="el" href="class_task_a_p_i_1_1_contexts_1_1_priceapp_context.html">PriceappContext</a> context, <a class="el" href="class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service.html">InternalAPIService</a> iapiService, IWebHostEnvironment env)</td></tr>
+<tr class="memdesc:ae5d7f0ba6759749953e94555c9557cfb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialises a new instance of the SpotHelper class.  <br /></td></tr>
 <tr class="separator:ae5d7f0ba6759749953e94555c9557cfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7b75f44b3310036d4de7f0f2956bbac1" id="r_a7b75f44b3310036d4de7f0f2956bbac1"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="class_task_a_p_i_1_1_models_1_1_base_spot.html">BaseSpot</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7b75f44b3310036d4de7f0f2956bbac1">PullSaveTrim</a> ()</td></tr>
+<tr class="memdesc:a7b75f44b3310036d4de7f0f2956bbac1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pulls, saves, and trims spot data from various sources.  <br /></td></tr>
 <tr class="separator:a7b75f44b3310036d4de7f0f2956bbac1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6b975ced6fddc4826a8950c8a250b926" id="r_a6b975ced6fddc4826a8950c8a250b926"><td class="memItemLeft" align="right" valign="top">bool? object Result&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6b975ced6fddc4826a8950c8a250b926">SaveDailySpot</a> ()</td></tr>
 <tr class="separator:a6b975ced6fddc4826a8950c8a250b926"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a89a665897ed47f9b7065ce771100b83c" id="r_a89a665897ed47f9b7065ce771100b83c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a89a665897ed47f9b7065ce771100b83c">CanSync</a> ()</td></tr>
-<tr class="memdesc:a89a665897ed47f9b7065ce771100b83c"><td class="mdescLeft">&#160;</td><td class="mdescRight">uses global vars marketOpen and marketStatusOverride (set in priceapp) to determine if can sync  <br /></td></tr>
+<tr class="memdesc:a89a665897ed47f9b7065ce771100b83c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines whether synchronisation with the market is possible based on the current market status.  <br /></td></tr>
 <tr class="separator:a89a665897ed47f9b7065ce771100b83c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a1d8458171af3cac5a7fc1fc1f35de115" id="r_a1d8458171af3cac5a7fc1fc1f35de115"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1d8458171af3cac5a7fc1fc1f35de115">Error</a></td></tr>
-<tr class="memdesc:a1d8458171af3cac5a7fc1fc1f35de115"><td class="mdescLeft">&#160;</td><td class="mdescRight">exports all daily spot for gold, silver, plat and aud, in both AUD and USD and saves minified file for download  <br /></td></tr>
+<tr class="memdesc:a1d8458171af3cac5a7fc1fc1f35de115"><td class="mdescLeft">&#160;</td><td class="mdescRight">Saves daily spot data to the database and exports chart data.  <br /></td></tr>
 <tr class="separator:a1d8458171af3cac5a7fc1fc1f35de115"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Helper class for managing operations related to spot prices. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ae5d7f0ba6759749953e94555c9557cfb" name="ae5d7f0ba6759749953e94555c9557cfb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae5d7f0ba6759749953e94555c9557cfb">&#9670;&#160;</a></span>SpotHelper()</h2>
 
@@ -151,18 +158,33 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   43</span>    {</div>
-<div class="line"><span class="lineno">   44</span>        _alchemyService = alchemyService;</div>
-<div class="line"><span class="lineno">   45</span>        _settings = taskAPISettings.Value;</div>
-<div class="line"><span class="lineno">   46</span>        _logService = logService;</div>
-<div class="line"><span class="lineno">   47</span>        _forexService = forexService;</div>
-<div class="line"><span class="lineno">   48</span>        _binanceService = binanceService;</div>
-<div class="line"><span class="lineno">   49</span>        _context = context;</div>
-<div class="line"><span class="lineno">   50</span>        _iapiService = iapiService;</div>
-<div class="line"><span class="lineno">   51</span>        _env = env;</div>
-<div class="line"><span class="lineno">   52</span>        marketOpen = IsMarketOpen();</div>
-<div class="line"><span class="lineno">   53</span>        marketStatusOverride = MarketStatusOverride();</div>
-<div class="line"><span class="lineno">   54</span>    }</div>
+
+<p>Initialises a new instance of the SpotHelper class. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">logService</td><td>The log service.</td></tr>
+    <tr><td class="paramname">forexService</td><td>The forex service.</td></tr>
+    <tr><td class="paramname">alchemyService</td><td>The alchemy service.</td></tr>
+    <tr><td class="paramname">binanceService</td><td>The binance service.</td></tr>
+    <tr><td class="paramname">taskAPISettings</td><td>The task API settings.</td></tr>
+    <tr><td class="paramname">context</td><td>The priceapp context.</td></tr>
+    <tr><td class="paramname">iapiService</td><td>The internal API service.</td></tr>
+    <tr><td class="paramname">env</td><td>The hosting environment.</td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="fragment"><div class="line"><span class="lineno">   57</span>    {</div>
+<div class="line"><span class="lineno">   58</span>        _alchemyService = alchemyService;</div>
+<div class="line"><span class="lineno">   59</span>        _settings = taskAPISettings.Value;</div>
+<div class="line"><span class="lineno">   60</span>        _logService = logService;</div>
+<div class="line"><span class="lineno">   61</span>        _forexService = forexService;</div>
+<div class="line"><span class="lineno">   62</span>        _binanceService = binanceService;</div>
+<div class="line"><span class="lineno">   63</span>        _context = context;</div>
+<div class="line"><span class="lineno">   64</span>        _iapiService = iapiService;</div>
+<div class="line"><span class="lineno">   65</span>        _env = env;</div>
+<div class="line"><span class="lineno">   66</span>        marketOpen = IsMarketOpen();</div>
+<div class="line"><span class="lineno">   67</span>        marketStatusOverride = MarketStatusOverride();</div>
+<div class="line"><span class="lineno">   68</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -182,22 +204,23 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>uses global vars marketOpen and marketStatusOverride (set in priceapp) to determine if can sync </p>
-<dl class="section return"><dt>Returns</dt><dd></dd></dl>
-<div class="fragment"><div class="line"><span class="lineno">  760</span>    {</div>
-<div class="line"><span class="lineno">  761</span>        <span class="keywordflow">if</span> (marketStatusOverride == MarketStatusOverrides.ForceClosed)</div>
-<div class="line"><span class="lineno">  762</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  763</span>        <span class="keywordflow">if</span> (marketStatusOverride == MarketStatusOverrides.ForceOpen) </div>
-<div class="line"><span class="lineno">  764</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  765</span>        <span class="keywordflow">return</span> marketOpen;</div>
-<div class="line"><span class="lineno">  766</span>    }</div>
+<p>Determines whether synchronisation with the market is possible based on the current market status. </p>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if synchronisation is possible; otherwise, <code>false</code>.</dd></dl>
+<p>Returns <code>false</code> if the market is forced closed, <code>true</code> if forced open, and the current market status if neither forced. </p>
+<div class="fragment"><div class="line"><span class="lineno">  883</span>    {</div>
+<div class="line"><span class="lineno">  884</span>        <span class="keywordflow">if</span> (marketStatusOverride == MarketStatusOverrides.ForceClosed)</div>
+<div class="line"><span class="lineno">  885</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  886</span>        <span class="keywordflow">if</span> (marketStatusOverride == MarketStatusOverrides.ForceOpen) </div>
+<div class="line"><span class="lineno">  887</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  888</span>        <span class="keywordflow">return</span> marketOpen;</div>
+<div class="line"><span class="lineno">  889</span>    }</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_task_a_p_i_1_1_helpers_1_1_spot_helper_a89a665897ed47f9b7065ce771100b83c_icgraph.png" border="0" usemap="#aclass_task_a_p_i_1_1_helpers_1_1_spot_helper_a89a665897ed47f9b7065ce771100b83c_icgraph" alt=""/></div>
 <map name="aclass_task_a_p_i_1_1_helpers_1_1_spot_helper_a89a665897ed47f9b7065ce771100b83c_icgraph" id="aclass_task_a_p_i_1_1_helpers_1_1_spot_helper_a89a665897ed47f9b7065ce771100b83c_icgraph">
-<area shape="rect" title="uses global vars marketOpen and marketStatusOverride (set in priceapp) to determine if can sync" alt="" coords="221,5,411,48"/>
-<area shape="rect" href="class_task_a_p_i_1_1_controllers_1_1_spot_controller.html#adc5d733d4c39f2ecdaad8d8bf2231731" title=" " alt="" coords="5,5,173,48"/>
+<area shape="rect" title="Determines whether synchronisation with the market is possible based on the current market status." alt="" coords="221,5,411,48"/>
+<area shape="rect" href="class_task_a_p_i_1_1_controllers_1_1_spot_controller.html#adc5d733d4c39f2ecdaad8d8bf2231731" title="Initiates synchronisation of spot data." alt="" coords="5,5,173,48"/>
 <area shape="poly" title=" " alt="" coords="205,29,173,29,173,24,205,24"/>
 </map>
 </div>
@@ -218,180 +241,190 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   57</span>    {        </div>
-<div class="line"><span class="lineno">   58</span>        List&lt;BaseSpot&gt; finalSpotList = <span class="keyword">new</span> List&lt;BaseSpot&gt;();</div>
-<div class="line"><span class="lineno">   59</span>        var pullTime = DateTime.Now;</div>
-<div class="line"><span class="lineno">   60</span>        var forexData = PullForexData(pullTime);</div>
-<div class="line"><span class="lineno">   61</span>        var polygonOracleData = PullPolygonOracleData(pullTime);</div>
-<div class="line"><span class="lineno">   62</span>        var oandaData = PullOandaData(pullTime);</div>
-<div class="line"><span class="lineno">   63</span>        var binanceData = PullBinanceData(pullTime);</div>
-<div class="line"><span class="lineno">   64</span> </div>
-<div class="line"><span class="lineno">   65</span>        finalSpotList.AddRange(polygonOracleData);</div>
-<div class="line"><span class="lineno">   66</span>        finalSpotList.AddRange(forexData);</div>
-<div class="line"><span class="lineno">   67</span>        finalSpotList.AddRange(oandaData);</div>
-<div class="line"><span class="lineno">   68</span>        finalSpotList.AddRange(binanceData);</div>
-<div class="line"><span class="lineno">   69</span> </div>
-<div class="line"><span class="lineno">   70</span>        <span class="comment">//group by assetcode, take only groups &gt; 0 count</span></div>
-<div class="line"><span class="lineno">   71</span>        var assetGroups = finalSpotList.GroupBy(bs =&gt; bs.AssetCode).Where(grp =&gt; grp.Count() &gt; 1);</div>
-<div class="line"><span class="lineno">   72</span>        <span class="keywordflow">foreach</span> (var grp <span class="keywordflow">in</span> assetGroups)</div>
-<div class="line"><span class="lineno">   73</span>        {</div>
-<div class="line"><span class="lineno">   74</span>            <span class="keywordflow">if</span> (grp.Any(bs =&gt; bs.Spot == 0) &amp;&amp; !grp.All(bs =&gt; bs.Spot == 0))</div>
-<div class="line"><span class="lineno">   75</span>            {</div>
-<div class="line"><span class="lineno">   76</span>                <span class="comment">//group has some 0&#39;s but not all - remove 0&#39;s</span></div>
-<div class="line"><span class="lineno">   77</span>                <span class="keywordflow">foreach</span> (var bs <span class="keywordflow">in</span> grp.Where(bs =&gt; bs.Spot == 0))</div>
-<div class="line"><span class="lineno">   78</span>                {</div>
-<div class="line"><span class="lineno">   79</span>                    finalSpotList.Remove(bs);</div>
-<div class="line"><span class="lineno">   80</span>                }</div>
-<div class="line"><span class="lineno">   81</span>            }</div>
-<div class="line"><span class="lineno">   82</span>            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!grp.All(bs =&gt; bs.Spot == 0))</div>
-<div class="line"><span class="lineno">   83</span>            {</div>
-<div class="line"><span class="lineno">   84</span>                <span class="comment">//group has all 0&#39;s - remove all but one for placeholder</span></div>
-<div class="line"><span class="lineno">   85</span>                <span class="keywordflow">foreach</span> (var bs <span class="keywordflow">in</span> grp.Where(bs =&gt; bs.Spot == 0).Take(grp.Count() - 1))</div>
-<div class="line"><span class="lineno">   86</span>                {</div>
-<div class="line"><span class="lineno">   87</span>                    finalSpotList.Remove(bs);</div>
-<div class="line"><span class="lineno">   88</span>                }</div>
-<div class="line"><span class="lineno">   89</span>            }</div>
-<div class="line"><span class="lineno">   90</span>        }</div>
-<div class="line"><span class="lineno">   91</span> </div>
-<div class="line"><span class="lineno">   92</span>        <span class="keywordflow">foreach</span> (<a class="code hl_class" href="class_task_a_p_i_1_1_models_1_1_base_spot.html">BaseSpot</a> bs <span class="keywordflow">in</span> finalSpotList.Where(bs =&gt; bs.Spot == 0))</div>
-<div class="line"><span class="lineno">   93</span>        {</div>
-<div class="line"><span class="lineno">   94</span>            RecyclePreviousSpot(bs);</div>
-<div class="line"><span class="lineno">   95</span>        }</div>
-<div class="line"><span class="lineno">   96</span> </div>
-<div class="line"><span class="lineno">   97</span>        <span class="comment">//convert all usd and btc to aud excluding aud itself </span></div>
-<div class="line"><span class="lineno">   98</span>        <span class="keywordtype">double</span> audusd = Convert.ToDouble(finalSpotList.FirstOrDefault(bs =&gt; bs.AssetCode == <span class="stringliteral">&quot;AUD&quot;</span> &amp;&amp; bs.Source == _settings.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#ac56f44c706202b85f9a949eefd802a4b">PolygonOracleSettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_polygonoraclesettings.html#a9cce11d1062ce85664de5bf6bb1da49e">SourceName</a>)?.Spot);</div>
-<div class="line"><span class="lineno">   99</span>        <span class="keywordflow">if</span> (audusd == 0)</div>
-<div class="line"><span class="lineno">  100</span>        {</div>
-<div class="line"><span class="lineno">  101</span>            var fallbackAUD = finalSpotList.FirstOrDefault(bs =&gt; bs.AssetCode == <span class="stringliteral">&quot;AUD&quot;</span>);</div>
-<div class="line"><span class="lineno">  102</span>            audusd = Convert.ToDouble(fallbackAUD?.Spot);</div>
-<div class="line"><span class="lineno">  103</span>            <span class="keywordflow">if</span>(fallbackAUD == <span class="keyword">null</span>)</div>
-<div class="line"><span class="lineno">  104</span>                _logService.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a46dc9bf58bc9605c7e17dfee38b94354">LogError</a>(<a class="code hl_class" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">LogSources</a>.SpotHelper, $<span class="stringliteral">&quot;polygon oracle AUD unavailable, NO FALLBACK SOURCE AVAILABLE, price ${audusd}&quot;</span>);</div>
-<div class="line"><span class="lineno">  105</span>            <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  106</span>                _logService.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a5c2a67dbd8beb6f821c46b8d052d59ea">LogInformation</a>(<a class="code hl_class" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">LogSources</a>.SpotHelper, $<span class="stringliteral">&quot;polygon oracle AUD unavailable, falling back to {fallbackAUD.Source }, price ${audusd}&quot;</span>);</div>
-<div class="line"><span class="lineno">  107</span>        }</div>
-<div class="line"><span class="lineno">  108</span>        <span class="keywordtype">double</span> btcaud = Convert.ToDouble(finalSpotList.FirstOrDefault(bs =&gt; bs.AssetCode == <span class="stringliteral">&quot;BTC&quot;</span> &amp;&amp; bs.PairCode == <span class="stringliteral">&quot;AUD&quot;</span>)?.Spot);</div>
-<div class="line"><span class="lineno">  109</span>        <span class="keywordflow">if</span> (btcaud == 0 &amp;&amp; audusd &gt; 0)</div>
-<div class="line"><span class="lineno">  110</span>        {</div>
-<div class="line"><span class="lineno">  111</span>            <span class="keywordtype">double</span> btcusd = Convert.ToDouble(finalSpotList.FirstOrDefault(bs =&gt; bs.AssetCode == <span class="stringliteral">&quot;BTC&quot;</span> &amp;&amp; bs.PairCode == <span class="stringliteral">&quot;USD&quot;</span>)?.Spot);</div>
-<div class="line"><span class="lineno">  112</span>            btcaud = btcusd / audusd;</div>
-<div class="line"><span class="lineno">  113</span>            <span class="comment">//comment out while using USD as default market</span></div>
-<div class="line"><span class="lineno">  114</span>            <span class="comment">//_logService.LogError(LogService.LogSources.SpotHelper, $&quot;binance feed BTCAUD unavailable, falling back to BTCUSD&quot;);</span></div>
-<div class="line"><span class="lineno">  115</span>        }</div>
-<div class="line"><span class="lineno">  116</span>        <span class="keywordflow">if</span> (audusd &gt; 0)</div>
-<div class="line"><span class="lineno">  117</span>        {</div>
-<div class="line"><span class="lineno">  118</span>            <span class="comment">//convert usd values to aud except audusd</span></div>
-<div class="line"><span class="lineno">  119</span>            <span class="keywordflow">foreach</span> (var bs <span class="keywordflow">in</span> finalSpotList.Where(bs =&gt; bs.PairCode == <span class="stringliteral">&quot;USD&quot;</span> &amp;&amp; !(bs.AssetCode == <span class="stringliteral">&quot;AUD&quot;</span>)))</div>
-<div class="line"><span class="lineno">  120</span>            {</div>
-<div class="line"><span class="lineno">  121</span>                bs.Spot = bs.Spot / audusd;</div>
-<div class="line"><span class="lineno">  122</span>                bs.PairCode = <span class="stringliteral">&quot;AUD&quot;</span>;</div>
-<div class="line"><span class="lineno">  123</span>                _logService.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a6be037b34888bbcf6b47dca8eef472de">LogDebug</a>(<a class="code hl_class" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">LogSources</a>.SpotHelper, $<span class="stringliteral">&quot;converted {bs.AssetCode} from USD to AUD&quot;</span>);</div>
-<div class="line"><span class="lineno">  124</span>            }</div>
-<div class="line"><span class="lineno">  125</span>        }</div>
-<div class="line"><span class="lineno">  126</span>        <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  127</span>        {</div>
-<div class="line"><span class="lineno">  128</span>            _iapiService.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service.html#aeffeb1d3d59aeeab65dfe72691d21600">SendEmail</a>(<span class="keyword">new</span> <a class="code hl_class" href="class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_email_post.html">EmailPost</a>()</div>
-<div class="line"><span class="lineno">  129</span>            {</div>
-<div class="line"><span class="lineno">  130</span>                EmailFrom = _settings.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#af39dc0933cd608b26e7bc4f82951d356">GeneralSettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings.html#ac0a0b89d2e7cf7f820e5663a1a4cffbf">NotificationEmailFrom</a>,</div>
-<div class="line"><span class="lineno">  131</span>                EmailTo = _settings.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#af39dc0933cd608b26e7bc4f82951d356">GeneralSettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings.html#a25434a5471214771ae507f7152073898">NotificationEmailTo</a>,</div>
-<div class="line"><span class="lineno">  132</span>                NameFrom = _settings.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#af39dc0933cd608b26e7bc4f82951d356">GeneralSettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings.html#a082a8e92b97a7d83196f1d0056241042">NotificationEmailName</a>,</div>
-<div class="line"><span class="lineno">  133</span>                Subject = <span class="stringliteral">&quot;Error getting AUD from price feeds&quot;</span>,</div>
-<div class="line"><span class="lineno">  134</span>                HTMLBody = $<span class="stringliteral">&quot;Task API was unable to find the AUD price in this round&quot;</span></div>
-<div class="line"><span class="lineno">  135</span>            });</div>
-<div class="line"><span class="lineno">  136</span>            _logService.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a46dc9bf58bc9605c7e17dfee38b94354">LogError</a>(<a class="code hl_class" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">LogSources</a>.SpotHelper, $<span class="stringliteral">&quot;AUD not found, unable to convert USD and BTC values&quot;</span>);</div>
-<div class="line"><span class="lineno">  137</span>        }</div>
-<div class="line"><span class="lineno">  138</span>        <span class="keywordflow">if</span> (btcaud &gt; 0)</div>
+
+<p>Pulls, saves, and trims spot data from various sources. </p>
+<dl class="section return"><dt>Returns</dt><dd>A list of BaseSpot objects representing spot data after processing. </dd></dl>
+<p>This method pulls spot data from multiple sources including forex, Polygon Oracle, Oanda, and Binance.</p>
+<p>It groups spot data by asset code and removes redundant entries with zero values.</p>
+<p>If necessary, it retrieves the latest AUD price and BTC/AUD exchange rate for currency conversion.</p>
+<p>USD values are converted to AUD except for AUD itself, and BTC values are converted to AUD using the BTC/AUD exchange rate.</p>
+<p>It compares metal duplicates against threshold percentages and logs any variations beyond the thresholds.</p>
+<p>Redundant/duplicate assets are removed, selecting either the preferred source or the highest price.</p>
+<p>Finally, it generates special data, adds the processed spot data to the database, trims the spot data, and returns the final list.</p>
+<div class="fragment"><div class="line"><span class="lineno">   86</span>    {        </div>
+<div class="line"><span class="lineno">   87</span>        List&lt;BaseSpot&gt; finalSpotList = <span class="keyword">new</span> List&lt;BaseSpot&gt;();</div>
+<div class="line"><span class="lineno">   88</span>        var pullTime = DateTime.Now;</div>
+<div class="line"><span class="lineno">   89</span>        var forexData = PullForexData(pullTime);</div>
+<div class="line"><span class="lineno">   90</span>        var polygonOracleData = PullPolygonOracleData(pullTime);</div>
+<div class="line"><span class="lineno">   91</span>        var oandaData = PullOandaData(pullTime);</div>
+<div class="line"><span class="lineno">   92</span>        var binanceData = PullBinanceData(pullTime);</div>
+<div class="line"><span class="lineno">   93</span> </div>
+<div class="line"><span class="lineno">   94</span>        finalSpotList.AddRange(polygonOracleData);</div>
+<div class="line"><span class="lineno">   95</span>        finalSpotList.AddRange(forexData);</div>
+<div class="line"><span class="lineno">   96</span>        finalSpotList.AddRange(oandaData);</div>
+<div class="line"><span class="lineno">   97</span>        finalSpotList.AddRange(binanceData);</div>
+<div class="line"><span class="lineno">   98</span> </div>
+<div class="line"><span class="lineno">   99</span>        <span class="comment">//group by assetcode, take only groups &gt; 0 count</span></div>
+<div class="line"><span class="lineno">  100</span>        var assetGroups = finalSpotList.GroupBy(bs =&gt; bs.AssetCode).Where(grp =&gt; grp.Count() &gt; 1);</div>
+<div class="line"><span class="lineno">  101</span>        <span class="keywordflow">foreach</span> (var grp <span class="keywordflow">in</span> assetGroups)</div>
+<div class="line"><span class="lineno">  102</span>        {</div>
+<div class="line"><span class="lineno">  103</span>            <span class="keywordflow">if</span> (grp.Any(bs =&gt; bs.Spot == 0) &amp;&amp; !grp.All(bs =&gt; bs.Spot == 0))</div>
+<div class="line"><span class="lineno">  104</span>            {</div>
+<div class="line"><span class="lineno">  105</span>                <span class="comment">//group has some 0&#39;s but not all - remove 0&#39;s</span></div>
+<div class="line"><span class="lineno">  106</span>                <span class="keywordflow">foreach</span> (var bs <span class="keywordflow">in</span> grp.Where(bs =&gt; bs.Spot == 0))</div>
+<div class="line"><span class="lineno">  107</span>                {</div>
+<div class="line"><span class="lineno">  108</span>                    finalSpotList.Remove(bs);</div>
+<div class="line"><span class="lineno">  109</span>                }</div>
+<div class="line"><span class="lineno">  110</span>            }</div>
+<div class="line"><span class="lineno">  111</span>            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!grp.All(bs =&gt; bs.Spot == 0))</div>
+<div class="line"><span class="lineno">  112</span>            {</div>
+<div class="line"><span class="lineno">  113</span>                <span class="comment">//group has all 0&#39;s - remove all but one for placeholder</span></div>
+<div class="line"><span class="lineno">  114</span>                <span class="keywordflow">foreach</span> (var bs <span class="keywordflow">in</span> grp.Where(bs =&gt; bs.Spot == 0).Take(grp.Count() - 1))</div>
+<div class="line"><span class="lineno">  115</span>                {</div>
+<div class="line"><span class="lineno">  116</span>                    finalSpotList.Remove(bs);</div>
+<div class="line"><span class="lineno">  117</span>                }</div>
+<div class="line"><span class="lineno">  118</span>            }</div>
+<div class="line"><span class="lineno">  119</span>        }</div>
+<div class="line"><span class="lineno">  120</span> </div>
+<div class="line"><span class="lineno">  121</span>        <span class="keywordflow">foreach</span> (<a class="code hl_class" href="class_task_a_p_i_1_1_models_1_1_base_spot.html">BaseSpot</a> bs <span class="keywordflow">in</span> finalSpotList.Where(bs =&gt; bs.Spot == 0))</div>
+<div class="line"><span class="lineno">  122</span>        {</div>
+<div class="line"><span class="lineno">  123</span>            RecyclePreviousSpot(bs);</div>
+<div class="line"><span class="lineno">  124</span>        }</div>
+<div class="line"><span class="lineno">  125</span> </div>
+<div class="line"><span class="lineno">  126</span>        <span class="comment">//convert all usd and btc to aud excluding aud itself </span></div>
+<div class="line"><span class="lineno">  127</span>        <span class="keywordtype">double</span> audusd = Convert.ToDouble(finalSpotList.FirstOrDefault(bs =&gt; bs.AssetCode == <span class="stringliteral">&quot;AUD&quot;</span> &amp;&amp; bs.Source == _settings.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#ac56f44c706202b85f9a949eefd802a4b">PolygonOracleSettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_polygonoraclesettings.html#a9cce11d1062ce85664de5bf6bb1da49e">SourceName</a>)?.Spot);</div>
+<div class="line"><span class="lineno">  128</span>        <span class="keywordflow">if</span> (audusd == 0)</div>
+<div class="line"><span class="lineno">  129</span>        {</div>
+<div class="line"><span class="lineno">  130</span>            var fallbackAUD = finalSpotList.FirstOrDefault(bs =&gt; bs.AssetCode == <span class="stringliteral">&quot;AUD&quot;</span>);</div>
+<div class="line"><span class="lineno">  131</span>            audusd = Convert.ToDouble(fallbackAUD?.Spot);</div>
+<div class="line"><span class="lineno">  132</span>            <span class="keywordflow">if</span>(fallbackAUD == <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">  133</span>                _logService.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a46dc9bf58bc9605c7e17dfee38b94354">LogError</a>(<a class="code hl_class" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">LogSources</a>.SpotHelper, $<span class="stringliteral">&quot;polygon oracle AUD unavailable, NO FALLBACK SOURCE AVAILABLE, price ${audusd}&quot;</span>);</div>
+<div class="line"><span class="lineno">  134</span>            <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  135</span>                _logService.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a5c2a67dbd8beb6f821c46b8d052d59ea">LogInformation</a>(<a class="code hl_class" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">LogSources</a>.SpotHelper, $<span class="stringliteral">&quot;polygon oracle AUD unavailable, falling back to {fallbackAUD.Source }, price ${audusd}&quot;</span>);</div>
+<div class="line"><span class="lineno">  136</span>        }</div>
+<div class="line"><span class="lineno">  137</span>        <span class="keywordtype">double</span> btcaud = Convert.ToDouble(finalSpotList.FirstOrDefault(bs =&gt; bs.AssetCode == <span class="stringliteral">&quot;BTC&quot;</span> &amp;&amp; bs.PairCode == <span class="stringliteral">&quot;AUD&quot;</span>)?.Spot);</div>
+<div class="line"><span class="lineno">  138</span>        <span class="keywordflow">if</span> (btcaud == 0 &amp;&amp; audusd &gt; 0)</div>
 <div class="line"><span class="lineno">  139</span>        {</div>
-<div class="line"><span class="lineno">  140</span>            <span class="comment">//convert btc values to aud</span></div>
-<div class="line"><span class="lineno">  141</span>            <span class="keywordflow">foreach</span> (var bs <span class="keywordflow">in</span> finalSpotList.Where(bs =&gt; bs.PairCode == <span class="stringliteral">&quot;BTC&quot;</span>))</div>
-<div class="line"><span class="lineno">  142</span>            {</div>
-<div class="line"><span class="lineno">  143</span>                bs.Spot = bs.Spot * btcaud;</div>
-<div class="line"><span class="lineno">  144</span>                bs.PairCode = <span class="stringliteral">&quot;AUD&quot;</span>;</div>
-<div class="line"><span class="lineno">  145</span>                _logService.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a6be037b34888bbcf6b47dca8eef472de">LogDebug</a>(<a class="code hl_class" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">LogSources</a>.SpotHelper, $<span class="stringliteral">&quot;converted {bs.AssetCode} from BTC to AUD&quot;</span>);</div>
-<div class="line"><span class="lineno">  146</span>            }</div>
-<div class="line"><span class="lineno">  147</span>        }</div>
-<div class="line"><span class="lineno">  148</span> </div>
-<div class="line"><span class="lineno">  149</span>        <span class="comment">//compare metal duplcates against thresholds</span></div>
-<div class="line"><span class="lineno">  150</span>        var compareGroups = finalSpotList.GroupBy(bs =&gt; bs.AssetCode).Where(grp =&gt; grp.Count() &gt; 1);</div>
-<div class="line"><span class="lineno">  151</span>        <span class="comment">//XAU</span></div>
-<div class="line"><span class="lineno">  152</span>        var grpXAU = compareGroups.FirstOrDefault(grp =&gt; grp.Key ==<span class="stringliteral">&quot;XAU&quot;</span>);</div>
-<div class="line"><span class="lineno">  153</span>        <span class="keywordflow">if</span> (grpXAU != <span class="keyword">null</span>)</div>
-<div class="line"><span class="lineno">  154</span>        {</div>
-<div class="line"><span class="lineno">  155</span>            var variations = <span class="keyword">new</span> List&lt;(string description, double variation)&gt;();</div>
-<div class="line"><span class="lineno">  156</span>            <span class="comment">//primary value to compare all others against should be polygon oracle, otherwise choose first</span></div>
-<div class="line"><span class="lineno">  157</span>            <span class="keywordtype">double</span>? primaryValue = grpXAU.FirstOrDefault(bs =&gt; bs.Source==_settings.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#ac56f44c706202b85f9a949eefd802a4b">PolygonOracleSettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_polygonoraclesettings.html#a9cce11d1062ce85664de5bf6bb1da49e">SourceName</a>)?.Spot ??</div>
-<div class="line"><span class="lineno">  158</span>                grpXAU.FirstOrDefault()?.Spot;</div>
-<div class="line"><span class="lineno">  159</span>            <span class="keywordflow">if</span> (primaryValue != <span class="keyword">null</span>)</div>
-<div class="line"><span class="lineno">  160</span>            {</div>
-<div class="line"><span class="lineno">  161</span>                <span class="keywordflow">foreach</span> (var bs <span class="keywordflow">in</span> grpXAU)</div>
-<div class="line"><span class="lineno">  162</span>                {</div>
-<div class="line"><span class="lineno">  163</span>                    <span class="comment">//% difference calculation</span></div>
-<div class="line"><span class="lineno">  164</span>                    variations.Add(($<span class="stringliteral">&quot;AssetCode: {bs.AssetCode} Source: {bs.Source} Primary Value: {primaryValue.ToString()} Comparison Value: {bs.Spot}&quot;</span>, ((<span class="keywordtype">double</span>)primaryValue - bs.Spot) / (((<span class="keywordtype">double</span>)primaryValue + bs.Spot) / 2) * 100));</div>
-<div class="line"><span class="lineno">  165</span>                }</div>
-<div class="line"><span class="lineno">  166</span>            }</div>
-<div class="line"><span class="lineno">  167</span>            <span class="keywordflow">if</span> (variations.Any(var =&gt; var.variation &gt; _settings.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#abc5a23cce7a98ce3cd109ecb1c3122ae">SpotFeedSettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_spotfeedsettings.html#abce48cfdd32d7c339d09d27193deb7c4">XAUFeedVariationThresholdPercent</a> || var.variation &lt; -_settings.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#abc5a23cce7a98ce3cd109ecb1c3122ae">SpotFeedSettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_spotfeedsettings.html#abce48cfdd32d7c339d09d27193deb7c4">XAUFeedVariationThresholdPercent</a>))</div>
-<div class="line"><span class="lineno">  168</span>                _logService.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a46dc9bf58bc9605c7e17dfee38b94354">LogError</a>(<a class="code hl_class" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">LogSources</a>.SpotHelper, <span class="stringliteral">&quot;XAU feeds are outside variation threshold&quot;</span>, variations);</div>
-<div class="line"><span class="lineno">  169</span>        }</div>
-<div class="line"><span class="lineno">  170</span>        <span class="comment">//XAG</span></div>
-<div class="line"><span class="lineno">  171</span>        var grpXAG = compareGroups.FirstOrDefault(grp =&gt; grp.Key == <span class="stringliteral">&quot;XAG&quot;</span>);</div>
-<div class="line"><span class="lineno">  172</span>        <span class="keywordflow">if</span> (grpXAG != <span class="keyword">null</span>)</div>
-<div class="line"><span class="lineno">  173</span>        {</div>
-<div class="line"><span class="lineno">  174</span>            var variations = <span class="keyword">new</span> List&lt;(string description, double variation)&gt;();</div>
-<div class="line"><span class="lineno">  175</span>            <span class="comment">//primary value to compare all others against should be polygon oracle, otherwise choose first</span></div>
-<div class="line"><span class="lineno">  176</span>            <span class="keywordtype">double</span>? primaryValue = grpXAG.FirstOrDefault(bs =&gt; bs.Source == _settings.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#ac56f44c706202b85f9a949eefd802a4b">PolygonOracleSettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_polygonoraclesettings.html#a9cce11d1062ce85664de5bf6bb1da49e">SourceName</a>)?.Spot ??</div>
-<div class="line"><span class="lineno">  177</span>                grpXAG.FirstOrDefault()?.Spot;</div>
-<div class="line"><span class="lineno">  178</span>            <span class="keywordflow">if</span> (primaryValue != <span class="keyword">null</span>)</div>
-<div class="line"><span class="lineno">  179</span>            {</div>
-<div class="line"><span class="lineno">  180</span>                <span class="keywordflow">foreach</span> (var bs <span class="keywordflow">in</span> grpXAG)</div>
-<div class="line"><span class="lineno">  181</span>                {</div>
-<div class="line"><span class="lineno">  182</span>                    <span class="comment">//% difference calculation</span></div>
-<div class="line"><span class="lineno">  183</span>                    variations.Add(($<span class="stringliteral">&quot;AssetCode: {bs.AssetCode} Source: {bs.Source} Primary Value: {primaryValue.ToString()} Comparison Value: {bs.Spot}&quot;</span>, ((<span class="keywordtype">double</span>)primaryValue - bs.Spot) / (((<span class="keywordtype">double</span>)primaryValue + bs.Spot) / 2) * 100));</div>
-<div class="line"><span class="lineno">  184</span>                }</div>
-<div class="line"><span class="lineno">  185</span>            }</div>
-<div class="line"><span class="lineno">  186</span>            <span class="keywordflow">if</span> (variations.Any(var =&gt; var.variation &gt; _settings.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#abc5a23cce7a98ce3cd109ecb1c3122ae">SpotFeedSettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_spotfeedsettings.html#acf22a3188f3d0473175cbd5ac65dd2b9">XAGFeedVariationThresholdPercent</a> || var.variation &lt; -_settings.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#abc5a23cce7a98ce3cd109ecb1c3122ae">SpotFeedSettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_spotfeedsettings.html#acf22a3188f3d0473175cbd5ac65dd2b9">XAGFeedVariationThresholdPercent</a>))</div>
-<div class="line"><span class="lineno">  187</span>                _logService.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a46dc9bf58bc9605c7e17dfee38b94354">LogError</a>(<a class="code hl_class" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">LogSources</a>.SpotHelper, <span class="stringliteral">&quot;XAG feeds are outside variation threshold&quot;</span>, variations);</div>
-<div class="line"><span class="lineno">  188</span>        }</div>
-<div class="line"><span class="lineno">  189</span>        <span class="comment">//AUD</span></div>
-<div class="line"><span class="lineno">  190</span>        var grpAUD = compareGroups.FirstOrDefault(grp =&gt; grp.Key == <span class="stringliteral">&quot;AUD&quot;</span>);</div>
-<div class="line"><span class="lineno">  191</span>        <span class="keywordflow">if</span> (grpAUD != <span class="keyword">null</span>)</div>
-<div class="line"><span class="lineno">  192</span>        {</div>
-<div class="line"><span class="lineno">  193</span>            var variations = <span class="keyword">new</span> List&lt;(string description, double variation)&gt;();</div>
-<div class="line"><span class="lineno">  194</span>            <span class="comment">//primary value to compare all others against should be polygon oracle, otherwise choose first</span></div>
-<div class="line"><span class="lineno">  195</span>            <span class="keywordtype">double</span>? primaryValue = grpAUD.FirstOrDefault(bs =&gt; bs.Source == _settings.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#ac56f44c706202b85f9a949eefd802a4b">PolygonOracleSettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_polygonoraclesettings.html#a9cce11d1062ce85664de5bf6bb1da49e">SourceName</a>)?.Spot ??</div>
-<div class="line"><span class="lineno">  196</span>                grpAUD.FirstOrDefault()?.Spot;</div>
-<div class="line"><span class="lineno">  197</span>            <span class="keywordflow">if</span> (primaryValue != <span class="keyword">null</span>)</div>
-<div class="line"><span class="lineno">  198</span>            {</div>
-<div class="line"><span class="lineno">  199</span>                <span class="keywordflow">foreach</span> (var bs <span class="keywordflow">in</span> grpAUD)</div>
-<div class="line"><span class="lineno">  200</span>                {</div>
-<div class="line"><span class="lineno">  201</span>                    <span class="comment">//% difference calculation</span></div>
-<div class="line"><span class="lineno">  202</span>                    variations.Add(($<span class="stringliteral">&quot;AssetCode: {bs.AssetCode} Source: {bs.Source} Primary Value: {primaryValue.ToString()} Comparison Value: {bs.Spot}&quot;</span>, ((<span class="keywordtype">double</span>)primaryValue - bs.Spot) / (((<span class="keywordtype">double</span>)primaryValue + bs.Spot) / 2) * 100));</div>
-<div class="line"><span class="lineno">  203</span>                }</div>
-<div class="line"><span class="lineno">  204</span>            }</div>
-<div class="line"><span class="lineno">  205</span>            <span class="keywordflow">if</span> (variations.Any(var =&gt; var.variation &gt; _settings.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#abc5a23cce7a98ce3cd109ecb1c3122ae">SpotFeedSettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_spotfeedsettings.html#abe038aab4e92b88aab47caf734aa8a3e">AUDFeedVariationThresholdPercent</a> || var.variation &lt; -_settings.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#abc5a23cce7a98ce3cd109ecb1c3122ae">SpotFeedSettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_spotfeedsettings.html#abe038aab4e92b88aab47caf734aa8a3e">AUDFeedVariationThresholdPercent</a>))</div>
-<div class="line"><span class="lineno">  206</span>                _logService.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a46dc9bf58bc9605c7e17dfee38b94354">LogError</a>(<a class="code hl_class" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">LogSources</a>.SpotHelper, <span class="stringliteral">&quot;AUD feeds are outside variation threshold&quot;</span>, variations);</div>
-<div class="line"><span class="lineno">  207</span>        }</div>
-<div class="line"><span class="lineno">  208</span> </div>
-<div class="line"><span class="lineno">  209</span>        <span class="comment">//remove redundant/duplicate assets selecting preferred source or highest price</span></div>
-<div class="line"><span class="lineno">  210</span>        <span class="keywordflow">foreach</span> (var grp <span class="keywordflow">in</span> compareGroups)</div>
-<div class="line"><span class="lineno">  211</span>        {</div>
-<div class="line"><span class="lineno">  212</span>            <span class="comment">//polygon oracle is preferred source</span></div>
-<div class="line"><span class="lineno">  213</span>            <span class="keywordflow">if</span> (grp.Any(bs =&gt; bs.Source == _settings.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#ac56f44c706202b85f9a949eefd802a4b">PolygonOracleSettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_polygonoraclesettings.html#a9cce11d1062ce85664de5bf6bb1da49e">SourceName</a>))</div>
-<div class="line"><span class="lineno">  214</span>            {</div>
-<div class="line"><span class="lineno">  215</span>                <span class="comment">//group has preferred source - remove others</span></div>
-<div class="line"><span class="lineno">  216</span>                finalSpotList = finalSpotList.Except(grp.Where(bs =&gt; bs.Source != _settings.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#ac56f44c706202b85f9a949eefd802a4b">PolygonOracleSettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_polygonoraclesettings.html#a9cce11d1062ce85664de5bf6bb1da49e">SourceName</a>)).ToList();</div>
-<div class="line"><span class="lineno">  217</span>            }</div>
-<div class="line"><span class="lineno">  218</span>            <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  219</span>            {</div>
-<div class="line"><span class="lineno">  220</span>                <span class="comment">//group has no preferred source - remove all but most expensive</span></div>
-<div class="line"><span class="lineno">  221</span>                finalSpotList = finalSpotList.Except(grp.Where(bs =&gt; bs != grp.OrderByDescending(bs =&gt; bs.Spot).First())).ToList();</div>
-<div class="line"><span class="lineno">  222</span>            }</div>
-<div class="line"><span class="lineno">  223</span>        }</div>
-<div class="line"><span class="lineno">  224</span> </div>
-<div class="line"><span class="lineno">  225</span>        GenerateSpecialData(pullTime, finalSpotList);</div>
-<div class="line"><span class="lineno">  226</span>        _context.<a class="code hl_property" href="class_task_a_p_i_1_1_contexts_1_1_priceapp_context.html#a5e7d6eb59fabb7c28af0d9a97551a83d">BaseSpots</a>.AddRange(finalSpotList);</div>
-<div class="line"><span class="lineno">  227</span>        _context.SaveChanges();</div>
-<div class="line"><span class="lineno">  228</span>        TrimSpotData();</div>
-<div class="line"><span class="lineno">  229</span>        <span class="keywordflow">return</span> finalSpotList;</div>
-<div class="line"><span class="lineno">  230</span>    }</div>
+<div class="line"><span class="lineno">  140</span>            <span class="keywordtype">double</span> btcusd = Convert.ToDouble(finalSpotList.FirstOrDefault(bs =&gt; bs.AssetCode == <span class="stringliteral">&quot;BTC&quot;</span> &amp;&amp; bs.PairCode == <span class="stringliteral">&quot;USD&quot;</span>)?.Spot);</div>
+<div class="line"><span class="lineno">  141</span>            btcaud = btcusd / audusd;</div>
+<div class="line"><span class="lineno">  142</span>            <span class="comment">//comment out while using USD as default market</span></div>
+<div class="line"><span class="lineno">  143</span>            <span class="comment">//_logService.LogError(LogService.LogSources.SpotHelper, $&quot;binance feed BTCAUD unavailable, falling back to BTCUSD&quot;);</span></div>
+<div class="line"><span class="lineno">  144</span>        }</div>
+<div class="line"><span class="lineno">  145</span>        <span class="keywordflow">if</span> (audusd &gt; 0)</div>
+<div class="line"><span class="lineno">  146</span>        {</div>
+<div class="line"><span class="lineno">  147</span>            <span class="comment">//convert usd values to aud except audusd</span></div>
+<div class="line"><span class="lineno">  148</span>            <span class="keywordflow">foreach</span> (var bs <span class="keywordflow">in</span> finalSpotList.Where(bs =&gt; bs.PairCode == <span class="stringliteral">&quot;USD&quot;</span> &amp;&amp; !(bs.AssetCode == <span class="stringliteral">&quot;AUD&quot;</span>)))</div>
+<div class="line"><span class="lineno">  149</span>            {</div>
+<div class="line"><span class="lineno">  150</span>                bs.Spot = bs.Spot / audusd;</div>
+<div class="line"><span class="lineno">  151</span>                bs.PairCode = <span class="stringliteral">&quot;AUD&quot;</span>;</div>
+<div class="line"><span class="lineno">  152</span>                _logService.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a6be037b34888bbcf6b47dca8eef472de">LogDebug</a>(<a class="code hl_class" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">LogSources</a>.SpotHelper, $<span class="stringliteral">&quot;converted {bs.AssetCode} from USD to AUD&quot;</span>);</div>
+<div class="line"><span class="lineno">  153</span>            }</div>
+<div class="line"><span class="lineno">  154</span>        }</div>
+<div class="line"><span class="lineno">  155</span>        <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  156</span>        {</div>
+<div class="line"><span class="lineno">  157</span>            _iapiService.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service.html#aeffeb1d3d59aeeab65dfe72691d21600">SendEmail</a>(<span class="keyword">new</span> <a class="code hl_class" href="class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_email_post.html">EmailPost</a>()</div>
+<div class="line"><span class="lineno">  158</span>            {</div>
+<div class="line"><span class="lineno">  159</span>                EmailFrom = _settings.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#af39dc0933cd608b26e7bc4f82951d356">GeneralSettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings.html#ac0a0b89d2e7cf7f820e5663a1a4cffbf">NotificationEmailFrom</a>,</div>
+<div class="line"><span class="lineno">  160</span>                EmailTo = _settings.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#af39dc0933cd608b26e7bc4f82951d356">GeneralSettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings.html#a25434a5471214771ae507f7152073898">NotificationEmailTo</a>,</div>
+<div class="line"><span class="lineno">  161</span>                NameFrom = _settings.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#af39dc0933cd608b26e7bc4f82951d356">GeneralSettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings.html#a082a8e92b97a7d83196f1d0056241042">NotificationEmailName</a>,</div>
+<div class="line"><span class="lineno">  162</span>                Subject = <span class="stringliteral">&quot;Error getting AUD from price feeds&quot;</span>,</div>
+<div class="line"><span class="lineno">  163</span>                HTMLBody = $<span class="stringliteral">&quot;Task API was unable to find the AUD price in this round&quot;</span></div>
+<div class="line"><span class="lineno">  164</span>            });</div>
+<div class="line"><span class="lineno">  165</span>            _logService.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a46dc9bf58bc9605c7e17dfee38b94354">LogError</a>(<a class="code hl_class" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">LogSources</a>.SpotHelper, $<span class="stringliteral">&quot;AUD not found, unable to convert USD and BTC values&quot;</span>);</div>
+<div class="line"><span class="lineno">  166</span>        }</div>
+<div class="line"><span class="lineno">  167</span>        <span class="keywordflow">if</span> (btcaud &gt; 0)</div>
+<div class="line"><span class="lineno">  168</span>        {</div>
+<div class="line"><span class="lineno">  169</span>            <span class="comment">//convert btc values to aud</span></div>
+<div class="line"><span class="lineno">  170</span>            <span class="keywordflow">foreach</span> (var bs <span class="keywordflow">in</span> finalSpotList.Where(bs =&gt; bs.PairCode == <span class="stringliteral">&quot;BTC&quot;</span>))</div>
+<div class="line"><span class="lineno">  171</span>            {</div>
+<div class="line"><span class="lineno">  172</span>                bs.Spot = bs.Spot * btcaud;</div>
+<div class="line"><span class="lineno">  173</span>                bs.PairCode = <span class="stringliteral">&quot;AUD&quot;</span>;</div>
+<div class="line"><span class="lineno">  174</span>                _logService.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a6be037b34888bbcf6b47dca8eef472de">LogDebug</a>(<a class="code hl_class" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">LogSources</a>.SpotHelper, $<span class="stringliteral">&quot;converted {bs.AssetCode} from BTC to AUD&quot;</span>);</div>
+<div class="line"><span class="lineno">  175</span>            }</div>
+<div class="line"><span class="lineno">  176</span>        }</div>
+<div class="line"><span class="lineno">  177</span> </div>
+<div class="line"><span class="lineno">  178</span>        <span class="comment">//compare metal duplcates against thresholds</span></div>
+<div class="line"><span class="lineno">  179</span>        var compareGroups = finalSpotList.GroupBy(bs =&gt; bs.AssetCode).Where(grp =&gt; grp.Count() &gt; 1);</div>
+<div class="line"><span class="lineno">  180</span>        <span class="comment">//XAU</span></div>
+<div class="line"><span class="lineno">  181</span>        var grpXAU = compareGroups.FirstOrDefault(grp =&gt; grp.Key ==<span class="stringliteral">&quot;XAU&quot;</span>);</div>
+<div class="line"><span class="lineno">  182</span>        <span class="keywordflow">if</span> (grpXAU != <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">  183</span>        {</div>
+<div class="line"><span class="lineno">  184</span>            var variations = <span class="keyword">new</span> List&lt;(string description, double variation)&gt;();</div>
+<div class="line"><span class="lineno">  185</span>            <span class="comment">//primary value to compare all others against should be polygon oracle, otherwise choose first</span></div>
+<div class="line"><span class="lineno">  186</span>            <span class="keywordtype">double</span>? primaryValue = grpXAU.FirstOrDefault(bs =&gt; bs.Source==_settings.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#ac56f44c706202b85f9a949eefd802a4b">PolygonOracleSettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_polygonoraclesettings.html#a9cce11d1062ce85664de5bf6bb1da49e">SourceName</a>)?.Spot ??</div>
+<div class="line"><span class="lineno">  187</span>                grpXAU.FirstOrDefault()?.Spot;</div>
+<div class="line"><span class="lineno">  188</span>            <span class="keywordflow">if</span> (primaryValue != <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">  189</span>            {</div>
+<div class="line"><span class="lineno">  190</span>                <span class="keywordflow">foreach</span> (var bs <span class="keywordflow">in</span> grpXAU)</div>
+<div class="line"><span class="lineno">  191</span>                {</div>
+<div class="line"><span class="lineno">  192</span>                    <span class="comment">//% difference calculation</span></div>
+<div class="line"><span class="lineno">  193</span>                    variations.Add(($<span class="stringliteral">&quot;AssetCode: {bs.AssetCode} Source: {bs.Source} Primary Value: {primaryValue.ToString()} Comparison Value: {bs.Spot}&quot;</span>, ((<span class="keywordtype">double</span>)primaryValue - bs.Spot) / (((<span class="keywordtype">double</span>)primaryValue + bs.Spot) / 2) * 100));</div>
+<div class="line"><span class="lineno">  194</span>                }</div>
+<div class="line"><span class="lineno">  195</span>            }</div>
+<div class="line"><span class="lineno">  196</span>            <span class="keywordflow">if</span> (variations.Any(var =&gt; var.variation &gt; _settings.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#abc5a23cce7a98ce3cd109ecb1c3122ae">SpotFeedSettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_spotfeedsettings.html#abce48cfdd32d7c339d09d27193deb7c4">XAUFeedVariationThresholdPercent</a> || var.variation &lt; -_settings.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#abc5a23cce7a98ce3cd109ecb1c3122ae">SpotFeedSettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_spotfeedsettings.html#abce48cfdd32d7c339d09d27193deb7c4">XAUFeedVariationThresholdPercent</a>))</div>
+<div class="line"><span class="lineno">  197</span>                _logService.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a46dc9bf58bc9605c7e17dfee38b94354">LogError</a>(<a class="code hl_class" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">LogSources</a>.SpotHelper, <span class="stringliteral">&quot;XAU feeds are outside variation threshold&quot;</span>, variations);</div>
+<div class="line"><span class="lineno">  198</span>        }</div>
+<div class="line"><span class="lineno">  199</span>        <span class="comment">//XAG</span></div>
+<div class="line"><span class="lineno">  200</span>        var grpXAG = compareGroups.FirstOrDefault(grp =&gt; grp.Key == <span class="stringliteral">&quot;XAG&quot;</span>);</div>
+<div class="line"><span class="lineno">  201</span>        <span class="keywordflow">if</span> (grpXAG != <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">  202</span>        {</div>
+<div class="line"><span class="lineno">  203</span>            var variations = <span class="keyword">new</span> List&lt;(string description, double variation)&gt;();</div>
+<div class="line"><span class="lineno">  204</span>            <span class="comment">//primary value to compare all others against should be polygon oracle, otherwise choose first</span></div>
+<div class="line"><span class="lineno">  205</span>            <span class="keywordtype">double</span>? primaryValue = grpXAG.FirstOrDefault(bs =&gt; bs.Source == _settings.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#ac56f44c706202b85f9a949eefd802a4b">PolygonOracleSettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_polygonoraclesettings.html#a9cce11d1062ce85664de5bf6bb1da49e">SourceName</a>)?.Spot ??</div>
+<div class="line"><span class="lineno">  206</span>                grpXAG.FirstOrDefault()?.Spot;</div>
+<div class="line"><span class="lineno">  207</span>            <span class="keywordflow">if</span> (primaryValue != <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">  208</span>            {</div>
+<div class="line"><span class="lineno">  209</span>                <span class="keywordflow">foreach</span> (var bs <span class="keywordflow">in</span> grpXAG)</div>
+<div class="line"><span class="lineno">  210</span>                {</div>
+<div class="line"><span class="lineno">  211</span>                    <span class="comment">//% difference calculation</span></div>
+<div class="line"><span class="lineno">  212</span>                    variations.Add(($<span class="stringliteral">&quot;AssetCode: {bs.AssetCode} Source: {bs.Source} Primary Value: {primaryValue.ToString()} Comparison Value: {bs.Spot}&quot;</span>, ((<span class="keywordtype">double</span>)primaryValue - bs.Spot) / (((<span class="keywordtype">double</span>)primaryValue + bs.Spot) / 2) * 100));</div>
+<div class="line"><span class="lineno">  213</span>                }</div>
+<div class="line"><span class="lineno">  214</span>            }</div>
+<div class="line"><span class="lineno">  215</span>            <span class="keywordflow">if</span> (variations.Any(var =&gt; var.variation &gt; _settings.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#abc5a23cce7a98ce3cd109ecb1c3122ae">SpotFeedSettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_spotfeedsettings.html#acf22a3188f3d0473175cbd5ac65dd2b9">XAGFeedVariationThresholdPercent</a> || var.variation &lt; -_settings.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#abc5a23cce7a98ce3cd109ecb1c3122ae">SpotFeedSettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_spotfeedsettings.html#acf22a3188f3d0473175cbd5ac65dd2b9">XAGFeedVariationThresholdPercent</a>))</div>
+<div class="line"><span class="lineno">  216</span>                _logService.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a46dc9bf58bc9605c7e17dfee38b94354">LogError</a>(<a class="code hl_class" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">LogSources</a>.SpotHelper, <span class="stringliteral">&quot;XAG feeds are outside variation threshold&quot;</span>, variations);</div>
+<div class="line"><span class="lineno">  217</span>        }</div>
+<div class="line"><span class="lineno">  218</span>        <span class="comment">//AUD</span></div>
+<div class="line"><span class="lineno">  219</span>        var grpAUD = compareGroups.FirstOrDefault(grp =&gt; grp.Key == <span class="stringliteral">&quot;AUD&quot;</span>);</div>
+<div class="line"><span class="lineno">  220</span>        <span class="keywordflow">if</span> (grpAUD != <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">  221</span>        {</div>
+<div class="line"><span class="lineno">  222</span>            var variations = <span class="keyword">new</span> List&lt;(string description, double variation)&gt;();</div>
+<div class="line"><span class="lineno">  223</span>            <span class="comment">//primary value to compare all others against should be polygon oracle, otherwise choose first</span></div>
+<div class="line"><span class="lineno">  224</span>            <span class="keywordtype">double</span>? primaryValue = grpAUD.FirstOrDefault(bs =&gt; bs.Source == _settings.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#ac56f44c706202b85f9a949eefd802a4b">PolygonOracleSettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_polygonoraclesettings.html#a9cce11d1062ce85664de5bf6bb1da49e">SourceName</a>)?.Spot ??</div>
+<div class="line"><span class="lineno">  225</span>                grpAUD.FirstOrDefault()?.Spot;</div>
+<div class="line"><span class="lineno">  226</span>            <span class="keywordflow">if</span> (primaryValue != <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">  227</span>            {</div>
+<div class="line"><span class="lineno">  228</span>                <span class="keywordflow">foreach</span> (var bs <span class="keywordflow">in</span> grpAUD)</div>
+<div class="line"><span class="lineno">  229</span>                {</div>
+<div class="line"><span class="lineno">  230</span>                    <span class="comment">//% difference calculation</span></div>
+<div class="line"><span class="lineno">  231</span>                    variations.Add(($<span class="stringliteral">&quot;AssetCode: {bs.AssetCode} Source: {bs.Source} Primary Value: {primaryValue.ToString()} Comparison Value: {bs.Spot}&quot;</span>, ((<span class="keywordtype">double</span>)primaryValue - bs.Spot) / (((<span class="keywordtype">double</span>)primaryValue + bs.Spot) / 2) * 100));</div>
+<div class="line"><span class="lineno">  232</span>                }</div>
+<div class="line"><span class="lineno">  233</span>            }</div>
+<div class="line"><span class="lineno">  234</span>            <span class="keywordflow">if</span> (variations.Any(var =&gt; var.variation &gt; _settings.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#abc5a23cce7a98ce3cd109ecb1c3122ae">SpotFeedSettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_spotfeedsettings.html#abe038aab4e92b88aab47caf734aa8a3e">AUDFeedVariationThresholdPercent</a> || var.variation &lt; -_settings.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#abc5a23cce7a98ce3cd109ecb1c3122ae">SpotFeedSettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_spotfeedsettings.html#abe038aab4e92b88aab47caf734aa8a3e">AUDFeedVariationThresholdPercent</a>))</div>
+<div class="line"><span class="lineno">  235</span>                _logService.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a46dc9bf58bc9605c7e17dfee38b94354">LogError</a>(<a class="code hl_class" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">LogSources</a>.SpotHelper, <span class="stringliteral">&quot;AUD feeds are outside variation threshold&quot;</span>, variations);</div>
+<div class="line"><span class="lineno">  236</span>        }</div>
+<div class="line"><span class="lineno">  237</span> </div>
+<div class="line"><span class="lineno">  238</span>        <span class="comment">//remove redundant/duplicate assets selecting preferred source or highest price</span></div>
+<div class="line"><span class="lineno">  239</span>        <span class="keywordflow">foreach</span> (var grp <span class="keywordflow">in</span> compareGroups)</div>
+<div class="line"><span class="lineno">  240</span>        {</div>
+<div class="line"><span class="lineno">  241</span>            <span class="comment">//polygon oracle is preferred source</span></div>
+<div class="line"><span class="lineno">  242</span>            <span class="keywordflow">if</span> (grp.Any(bs =&gt; bs.Source == _settings.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#ac56f44c706202b85f9a949eefd802a4b">PolygonOracleSettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_polygonoraclesettings.html#a9cce11d1062ce85664de5bf6bb1da49e">SourceName</a>))</div>
+<div class="line"><span class="lineno">  243</span>            {</div>
+<div class="line"><span class="lineno">  244</span>                <span class="comment">//group has preferred source - remove others</span></div>
+<div class="line"><span class="lineno">  245</span>                finalSpotList = finalSpotList.Except(grp.Where(bs =&gt; bs.Source != _settings.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#ac56f44c706202b85f9a949eefd802a4b">PolygonOracleSettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_polygonoraclesettings.html#a9cce11d1062ce85664de5bf6bb1da49e">SourceName</a>)).ToList();</div>
+<div class="line"><span class="lineno">  246</span>            }</div>
+<div class="line"><span class="lineno">  247</span>            <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  248</span>            {</div>
+<div class="line"><span class="lineno">  249</span>                <span class="comment">//group has no preferred source - remove all but most expensive</span></div>
+<div class="line"><span class="lineno">  250</span>                finalSpotList = finalSpotList.Except(grp.Where(bs =&gt; bs != grp.OrderByDescending(bs =&gt; bs.Spot).First())).ToList();</div>
+<div class="line"><span class="lineno">  251</span>            }</div>
+<div class="line"><span class="lineno">  252</span>        }</div>
+<div class="line"><span class="lineno">  253</span> </div>
+<div class="line"><span class="lineno">  254</span>        GenerateSpecialData(pullTime, finalSpotList);</div>
+<div class="line"><span class="lineno">  255</span>        _context.<a class="code hl_property" href="class_task_a_p_i_1_1_contexts_1_1_priceapp_context.html#a5e7d6eb59fabb7c28af0d9a97551a83d">BaseSpots</a>.AddRange(finalSpotList);</div>
+<div class="line"><span class="lineno">  256</span>        _context.SaveChanges();</div>
+<div class="line"><span class="lineno">  257</span>        TrimSpotData();</div>
+<div class="line"><span class="lineno">  258</span>        <span class="keywordflow">return</span> finalSpotList;</div>
+<div class="line"><span class="lineno">  259</span>    }</div>
 <div class="ttc" id="aclass_task_a_p_i_1_1_contexts_1_1_priceapp_context_html_a5e7d6eb59fabb7c28af0d9a97551a83d"><div class="ttname"><a href="class_task_a_p_i_1_1_contexts_1_1_priceapp_context.html#a5e7d6eb59fabb7c28af0d9a97551a83d">TaskAPI.Contexts.PriceappContext.BaseSpots</a></div><div class="ttdeci">virtual DbSet&lt; BaseSpot &gt; BaseSpots</div><div class="ttdef"><b>Definition</b> PriceappContext.cs:39</div></div>
 <div class="ttc" id="aclass_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings_html_a082a8e92b97a7d83196f1d0056241042"><div class="ttname"><a href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings.html#a082a8e92b97a7d83196f1d0056241042">TaskAPI.Helpers.Settings.TaskAPISettings.Generalsettings.NotificationEmailName</a></div><div class="ttdeci">string NotificationEmailName</div><div class="ttdef"><b>Definition</b> TaskAPISettings.cs:18</div></div>
 <div class="ttc" id="aclass_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings_html_a25434a5471214771ae507f7152073898"><div class="ttname"><a href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings.html#a25434a5471214771ae507f7152073898">TaskAPI.Helpers.Settings.TaskAPISettings.Generalsettings.NotificationEmailTo</a></div><div class="ttdeci">string NotificationEmailTo</div><div class="ttdef"><b>Definition</b> TaskAPISettings.cs:20</div></div>
@@ -405,32 +438,32 @@ Here is the caller graph for this function:</div>
 <div class="ttc" id="aclass_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_html_af39dc0933cd608b26e7bc4f82951d356"><div class="ttname"><a href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#af39dc0933cd608b26e7bc4f82951d356">TaskAPI.Helpers.Settings.TaskAPISettings.GeneralSettings</a></div><div class="ttdeci">Generalsettings GeneralSettings</div><div class="ttdef"><b>Definition</b> TaskAPISettings.cs:5</div></div>
 <div class="ttc" id="aclass_task_a_p_i_1_1_models_1_1_base_spot_html"><div class="ttname"><a href="class_task_a_p_i_1_1_models_1_1_base_spot.html">TaskAPI.Models.BaseSpot</a></div><div class="ttdef"><b>Definition</b> BaseSpot.cs:11</div></div>
 <div class="ttc" id="aclass_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_email_post_html"><div class="ttname"><a href="class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_email_post.html">TaskAPI.Models.DTO.InternalAPI.EmailPost</a></div><div class="ttdef"><b>Definition</b> InternalAPI.cs:4</div></div>
-<div class="ttc" id="aclass_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_html_aeffeb1d3d59aeeab65dfe72691d21600"><div class="ttname"><a href="class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service.html#aeffeb1d3d59aeeab65dfe72691d21600">TaskAPI.Services.InternalAPIService.SendEmail</a></div><div class="ttdeci">bool SendEmail(EmailPost email)</div><div class="ttdef"><b>Definition</b> InternalAPIService.cs:32</div></div>
-<div class="ttc" id="aclass_task_a_p_i_1_1_services_1_1_log_service_html"><div class="ttname"><a href="class_task_a_p_i_1_1_services_1_1_log_service.html">TaskAPI.Services.LogService</a></div><div class="ttdef"><b>Definition</b> LogService.cs:24</div></div>
-<div class="ttc" id="aclass_task_a_p_i_1_1_services_1_1_log_service_html_a46dc9bf58bc9605c7e17dfee38b94354"><div class="ttname"><a href="class_task_a_p_i_1_1_services_1_1_log_service.html#a46dc9bf58bc9605c7e17dfee38b94354">TaskAPI.Services.LogService.LogError</a></div><div class="ttdeci">LogEntry LogError(LogSources logSource, params object[] dataList)</div><div class="ttdef"><b>Definition</b> LogService.cs:74</div></div>
-<div class="ttc" id="aclass_task_a_p_i_1_1_services_1_1_log_service_html_a5c2a67dbd8beb6f821c46b8d052d59ea"><div class="ttname"><a href="class_task_a_p_i_1_1_services_1_1_log_service.html#a5c2a67dbd8beb6f821c46b8d052d59ea">TaskAPI.Services.LogService.LogInformation</a></div><div class="ttdeci">LogEntry LogInformation(LogSources logSource, params object[] dataList)</div><div class="ttdef"><b>Definition</b> LogService.cs:67</div></div>
-<div class="ttc" id="aclass_task_a_p_i_1_1_services_1_1_log_service_html_a6be037b34888bbcf6b47dca8eef472de"><div class="ttname"><a href="class_task_a_p_i_1_1_services_1_1_log_service.html#a6be037b34888bbcf6b47dca8eef472de">TaskAPI.Services.LogService.LogDebug</a></div><div class="ttdeci">LogEntry LogDebug(LogSources logSource, params object[] dataList)</div><div class="ttdef"><b>Definition</b> LogService.cs:60</div></div>
-<div class="ttc" id="aclass_task_a_p_i_1_1_services_1_1_log_service_html_ac2b08e94307168cb702773d148d166ba"><div class="ttname"><a href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">TaskAPI.Services.LogService.LogSources</a></div><div class="ttdeci">LogSources</div><div class="ttdef"><b>Definition</b> LogService.cs:34</div></div>
+<div class="ttc" id="aclass_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_html_aeffeb1d3d59aeeab65dfe72691d21600"><div class="ttname"><a href="class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service.html#aeffeb1d3d59aeeab65dfe72691d21600">TaskAPI.Services.InternalAPIService.SendEmail</a></div><div class="ttdeci">bool SendEmail(EmailPost email)</div><div class="ttdoc">Sends an email using Internal API's email endpoint.</div><div class="ttdef"><b>Definition</b> InternalAPIService.cs:45</div></div>
+<div class="ttc" id="aclass_task_a_p_i_1_1_services_1_1_log_service_html"><div class="ttname"><a href="class_task_a_p_i_1_1_services_1_1_log_service.html">TaskAPI.Services.LogService</a></div><div class="ttdoc">Provides logging services for various levels of application events, including debug,...</div><div class="ttdef"><b>Definition</b> LogService.cs:27</div></div>
+<div class="ttc" id="aclass_task_a_p_i_1_1_services_1_1_log_service_html_a46dc9bf58bc9605c7e17dfee38b94354"><div class="ttname"><a href="class_task_a_p_i_1_1_services_1_1_log_service.html#a46dc9bf58bc9605c7e17dfee38b94354">TaskAPI.Services.LogService.LogError</a></div><div class="ttdeci">LogEntry LogError(LogSources logSource, params object[] dataList)</div><div class="ttdoc">Logs an error message to the database.</div><div class="ttdef"><b>Definition</b> LogService.cs:100</div></div>
+<div class="ttc" id="aclass_task_a_p_i_1_1_services_1_1_log_service_html_a5c2a67dbd8beb6f821c46b8d052d59ea"><div class="ttname"><a href="class_task_a_p_i_1_1_services_1_1_log_service.html#a5c2a67dbd8beb6f821c46b8d052d59ea">TaskAPI.Services.LogService.LogInformation</a></div><div class="ttdeci">LogEntry LogInformation(LogSources logSource, params object[] dataList)</div><div class="ttdoc">Logs an informational message to the database.</div><div class="ttdef"><b>Definition</b> LogService.cs:87</div></div>
+<div class="ttc" id="aclass_task_a_p_i_1_1_services_1_1_log_service_html_a6be037b34888bbcf6b47dca8eef472de"><div class="ttname"><a href="class_task_a_p_i_1_1_services_1_1_log_service.html#a6be037b34888bbcf6b47dca8eef472de">TaskAPI.Services.LogService.LogDebug</a></div><div class="ttdeci">LogEntry LogDebug(LogSources logSource, params object[] dataList)</div><div class="ttdoc">Logs a debug message to the database.</div><div class="ttdef"><b>Definition</b> LogService.cs:74</div></div>
+<div class="ttc" id="aclass_task_a_p_i_1_1_services_1_1_log_service_html_ac2b08e94307168cb702773d148d166ba"><div class="ttname"><a href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">TaskAPI.Services.LogService.LogSources</a></div><div class="ttdeci">LogSources</div><div class="ttdef"><b>Definition</b> LogService.cs:37</div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_task_a_p_i_1_1_helpers_1_1_spot_helper_a7b75f44b3310036d4de7f0f2956bbac1_cgraph.png" border="0" usemap="#aclass_task_a_p_i_1_1_helpers_1_1_spot_helper_a7b75f44b3310036d4de7f0f2956bbac1_cgraph" alt=""/></div>
 <map name="aclass_task_a_p_i_1_1_helpers_1_1_spot_helper_a7b75f44b3310036d4de7f0f2956bbac1_cgraph" id="aclass_task_a_p_i_1_1_helpers_1_1_spot_helper_a7b75f44b3310036d4de7f0f2956bbac1_cgraph">
-<area shape="rect" title=" " alt="" coords="5,93,196,136"/>
-<area shape="rect" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a6be037b34888bbcf6b47dca8eef472de" title=" " alt="" coords="244,5,438,48"/>
+<area shape="rect" title="Pulls, saves, and trims spot data from various sources." alt="" coords="5,93,196,136"/>
+<area shape="rect" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a6be037b34888bbcf6b47dca8eef472de" title="Logs a debug message to the database." alt="" coords="244,5,438,48"/>
 <area shape="poly" title=" " alt="" coords="160,90,265,51,267,56,162,95"/>
-<area shape="rect" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a46dc9bf58bc9605c7e17dfee38b94354" title=" " alt="" coords="486,64,680,107"/>
+<area shape="rect" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a46dc9bf58bc9605c7e17dfee38b94354" title="Logs an error message to the database." alt="" coords="486,64,680,107"/>
 <area shape="poly" title=" " alt="" coords="196,106,470,89,471,95,196,112"/>
-<area shape="rect" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a5c2a67dbd8beb6f821c46b8d052d59ea" title=" " alt="" coords="486,197,680,240"/>
+<area shape="rect" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a5c2a67dbd8beb6f821c46b8d052d59ea" title="Logs an informational message to the database." alt="" coords="486,197,680,240"/>
 <area shape="poly" title=" " alt="" coords="144,134,191,156,244,175,360,198,471,211,470,216,359,204,243,180,189,161,142,139"/>
-<area shape="rect" href="class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service.html#aeffeb1d3d59aeeab65dfe72691d21600" title=" " alt="" coords="256,123,426,165"/>
+<area shape="rect" href="class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service.html#aeffeb1d3d59aeeab65dfe72691d21600" title="Sends an email using Internal API&#39;s email endpoint." alt="" coords="256,123,426,165"/>
 <area shape="poly" title=" " alt="" coords="196,124,241,129,240,134,196,129"/>
-<area shape="rect" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a44f0fd9db1116257087ba59c836e22ea" title="inserts log to database" alt="" coords="728,97,923,140"/>
+<area shape="rect" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a44f0fd9db1116257087ba59c836e22ea" title="Directly inserts a log entry into the database." alt="" coords="728,97,923,140"/>
 <area shape="poly" title=" " alt="" coords="439,22,555,28,619,36,681,49,730,66,775,87,773,92,728,71,680,55,618,42,555,34,438,27"/>
 <area shape="poly" title=" " alt="" coords="681,96,713,101,713,106,681,101"/>
 <area shape="poly" title=" " alt="" coords="649,194,679,183,765,145,768,149,681,188,651,199"/>
 <area shape="poly" title=" " alt="" coords="425,121,477,108,479,113,427,126"/>
-<area shape="rect" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a78c9df658858fa3099eed69421423898" title=" " alt="" coords="486,131,680,173"/>
+<area shape="rect" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a78c9df658858fa3099eed69421423898" title="Logs an exception to the database." alt="" coords="486,131,680,173"/>
 <area shape="poly" title=" " alt="" coords="426,144,470,146,470,151,426,149"/>
 <area shape="poly" title=" " alt="" coords="681,136,713,131,713,137,681,141"/>
 </map>
@@ -440,8 +473,8 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_task_a_p_i_1_1_helpers_1_1_spot_helper_a7b75f44b3310036d4de7f0f2956bbac1_icgraph.png" border="0" usemap="#aclass_task_a_p_i_1_1_helpers_1_1_spot_helper_a7b75f44b3310036d4de7f0f2956bbac1_icgraph" alt=""/></div>
 <map name="aclass_task_a_p_i_1_1_helpers_1_1_spot_helper_a7b75f44b3310036d4de7f0f2956bbac1_icgraph" id="aclass_task_a_p_i_1_1_helpers_1_1_spot_helper_a7b75f44b3310036d4de7f0f2956bbac1_icgraph">
-<area shape="rect" title=" " alt="" coords="221,5,411,48"/>
-<area shape="rect" href="class_task_a_p_i_1_1_controllers_1_1_spot_controller.html#adc5d733d4c39f2ecdaad8d8bf2231731" title=" " alt="" coords="5,5,173,48"/>
+<area shape="rect" title="Pulls, saves, and trims spot data from various sources." alt="" coords="221,5,411,48"/>
+<area shape="rect" href="class_task_a_p_i_1_1_controllers_1_1_spot_controller.html#adc5d733d4c39f2ecdaad8d8bf2231731" title="Initiates synchronisation of spot data." alt="" coords="5,5,173,48"/>
 <area shape="poly" title=" " alt="" coords="205,29,173,29,173,24,205,24"/>
 </map>
 </div>
@@ -462,75 +495,75 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">  596</span>    {</div>
-<div class="line"><span class="lineno">  597</span>        <span class="keywordtype">bool</span> isDebug = _env.IsDevelopment() || _env.IsStaging();</div>
-<div class="line"><span class="lineno">  598</span>        <span class="keywordflow">try</span></div>
-<div class="line"><span class="lineno">  599</span>        {</div>
-<div class="line"><span class="lineno">  600</span>            <span class="keywordtype">int</span> Year = DateTime.Now.Year;</div>
-<div class="line"><span class="lineno">  601</span>            <span class="keywordtype">int</span> Month = DateTime.Now.Month;</div>
-<div class="line"><span class="lineno">  602</span>            <span class="keywordtype">int</span> Day = DateTime.Now.Day;</div>
-<div class="line"><span class="lineno">  603</span>            <span class="comment">//5 mins before is ok, allow 1 hr after in case retries are required</span></div>
-<div class="line"><span class="lineno">  604</span>            var WindowOpen = <span class="keyword">new</span> DateTime(Year, Month, Day, 15, 55, 0);</div>
-<div class="line"><span class="lineno">  605</span>            var WindowClose = <span class="keyword">new</span> DateTime(Year, Month, Day, 16, 05, 0);</div>
-<div class="line"><span class="lineno">  606</span>            <span class="keywordflow">if</span> (!isDebug &amp;&amp; !(DateTime.Now &gt; WindowOpen &amp; DateTime.Now &lt; WindowClose))</div>
-<div class="line"><span class="lineno">  607</span>                <span class="keywordflow">return</span> (<span class="keyword">false</span>, <span class="keyword">new</span> { success = <span class="keyword">false</span>, message = <span class="stringliteral">&quot;request does not fall within daily save time window&quot;</span> });</div>
-<div class="line"><span class="lineno">  608</span>            <span class="comment">//check if done today already</span></div>
-<div class="line"><span class="lineno">  609</span>            <span class="keywordflow">if</span> (!isDebug &amp;&amp; _context.<a class="code hl_property" href="class_task_a_p_i_1_1_contexts_1_1_priceapp_context.html#a0a63b303899246b496a42f08da57bd43">DailyCloses</a>.Where(dc =&gt; dc.Year == Year &amp;&amp; dc.Month == Month &amp;&amp; dc.Day == Day).Count() &gt; 0) </div>
-<div class="line"><span class="lineno">  610</span>                <span class="keywordflow">return</span> (<span class="keyword">false</span>, <span class="keyword">new</span> { success = <span class="keyword">false</span>, message = <span class="stringliteral">&quot;daily closes already completed for today&quot;</span>, Data = _context.<a class="code hl_property" href="class_task_a_p_i_1_1_contexts_1_1_priceapp_context.html#a0a63b303899246b496a42f08da57bd43">DailyCloses</a>.Where(dc =&gt; dc.Year == Year &amp;&amp; dc.Month == Month &amp;&amp; dc.Day == Day).ToList() });</div>
-<div class="line"><span class="lineno">  611</span>            <span class="comment">//get current asset list from priceapp</span></div>
-<div class="line"><span class="lineno">  612</span>            var assetList = _iapiService.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service.html#a7e3600841f53749e6c915ace609dfa11">PriceappAssets</a>();</div>
-<div class="line"><span class="lineno">  613</span>            <span class="keywordflow">if</span> (assetList == <span class="keyword">null</span> || assetList.Count == 0)</div>
-<div class="line"><span class="lineno">  614</span>            {</div>
-<div class="line"><span class="lineno">  615</span>                <span class="keywordflow">return</span> (<span class="keyword">true</span>, <span class="keyword">new</span> { success = <span class="keyword">false</span>, message = <span class="stringliteral">&quot;asset list from priceapp was null&quot;</span> });</div>
-<div class="line"><span class="lineno">  616</span>            }</div>
-<div class="line"><span class="lineno">  617</span>            List&lt;DailyClose&gt; dailyCloses = <span class="keyword">new</span> List&lt;DailyClose&gt;();</div>
-<div class="line"><span class="lineno">  618</span>            <span class="comment">//create a daily close for AUD</span></div>
-<div class="line"><span class="lineno">  619</span>            var first = assetList.FirstOrDefault();</div>
-<div class="line"><span class="lineno">  620</span>            var audusd = Math.Truncate(10000 * first.audusd) / 10000;</div>
-<div class="line"><span class="lineno">  621</span>            <a class="code hl_class" href="class_task_a_p_i_1_1_models_1_1_daily_close.html">DailyClose</a> AUDClose = <span class="keyword">new</span> <a class="code hl_class" href="class_task_a_p_i_1_1_models_1_1_daily_close.html">DailyClose</a>()</div>
-<div class="line"><span class="lineno">  622</span>            {</div>
-<div class="line"><span class="lineno">  623</span>                Year = Year,</div>
-<div class="line"><span class="lineno">  624</span>                Month = Month,</div>
-<div class="line"><span class="lineno">  625</span>                Day = Day,</div>
-<div class="line"><span class="lineno">  626</span>                AssetCode = <span class="stringliteral">&quot;AUD&quot;</span>,</div>
-<div class="line"><span class="lineno">  627</span>                PairCode = <span class="stringliteral">&quot;USD&quot;</span>,</div>
-<div class="line"><span class="lineno">  628</span>                Per = <span class="stringliteral">&quot;$&quot;</span>,</div>
-<div class="line"><span class="lineno">  629</span>                Buy = audusd,</div>
-<div class="line"><span class="lineno">  630</span>                Spot = audusd,</div>
-<div class="line"><span class="lineno">  631</span>                Sell = audusd</div>
-<div class="line"><span class="lineno">  632</span>            };</div>
-<div class="line"><span class="lineno">  633</span>            dailyCloses.Add(AUDClose);</div>
-<div class="line"><span class="lineno">  634</span>            <span class="comment">//create daily close for all else</span></div>
-<div class="line"><span class="lineno">  635</span>            <span class="keywordflow">foreach</span> (<a class="code hl_class" href="class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_priceapp_asset.html">PriceappAsset</a> x <span class="keywordflow">in</span> assetList)</div>
-<div class="line"><span class="lineno">  636</span>            {</div>
-<div class="line"><span class="lineno">  637</span>                <span class="keywordflow">if</span> (x.<a class="code hl_property" href="class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_priceapp_asset.html#acb2a7c7f2ddd8fa7c579322de264f035">assetCode</a> == <span class="stringliteral">&quot;XX1&quot;</span>)</div>
-<div class="line"><span class="lineno">  638</span>                    <span class="keywordflow">continue</span>;</div>
-<div class="line"><span class="lineno">  639</span>                <span class="comment">// all assets from internal api are AUD</span></div>
-<div class="line"><span class="lineno">  640</span>                <a class="code hl_class" href="class_task_a_p_i_1_1_models_1_1_daily_close.html">DailyClose</a> dc = <span class="keyword">new</span> <a class="code hl_class" href="class_task_a_p_i_1_1_models_1_1_daily_close.html">DailyClose</a>()</div>
-<div class="line"><span class="lineno">  641</span>                {</div>
-<div class="line"><span class="lineno">  642</span>                    Year = Year,</div>
-<div class="line"><span class="lineno">  643</span>                    Month = Month,</div>
-<div class="line"><span class="lineno">  644</span>                    Day = Day,</div>
-<div class="line"><span class="lineno">  645</span>                    AssetCode = x.<a class="code hl_property" href="class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_priceapp_asset.html#acb2a7c7f2ddd8fa7c579322de264f035">assetCode</a>,</div>
-<div class="line"><span class="lineno">  646</span>                    PairCode = <span class="stringliteral">&quot;AUD&quot;</span>,</div>
-<div class="line"><span class="lineno">  647</span>                    Per = x.<a class="code hl_property" href="class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_priceapp_asset.html#a74613f64ecc58f8cd0d4496e02d6fe30">spotUnit</a>?.<a class="code hl_property" href="class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_priceapp_asset_1_1_spotunit.html#a362ee02b811e851f1a58a49e5d4fac46">unitName</a> ?? <span class="stringliteral">&quot;&quot;</span> ,</div>
-<div class="line"><span class="lineno">  648</span>                    Buy = x.<a class="code hl_property" href="class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_priceapp_asset.html#a4bc64e34a3e1a3037fe6c618bef375f9">environmentBuy</a>,</div>
-<div class="line"><span class="lineno">  649</span>                    Spot = x.<a class="code hl_property" href="class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_priceapp_asset.html#a6843f4b4444d004a9e86462e1615a481">environmentSpot</a>,</div>
-<div class="line"><span class="lineno">  650</span>                    Sell = x.environmentSell</div>
-<div class="line"><span class="lineno">  651</span>                };</div>
-<div class="line"><span class="lineno">  652</span>                dailyCloses.Add(dc);</div>
-<div class="line"><span class="lineno">  653</span>            }</div>
-<div class="line"><span class="lineno">  654</span>            _context.<a class="code hl_property" href="class_task_a_p_i_1_1_contexts_1_1_priceapp_context.html#a0a63b303899246b496a42f08da57bd43">DailyCloses</a>.AddRange(dailyCloses);</div>
-<div class="line"><span class="lineno">  655</span>            _context.SaveChanges();</div>
-<div class="line"><span class="lineno">  656</span>            var exportResult = ExportChartData();</div>
-<div class="line"><span class="lineno">  657</span>            <span class="keywordflow">return</span> (exportResult.Error, <span class="keyword">new</span> { SaveDailtySpot = dailyCloses, ExportChartData = exportResult.Result });</div>
-<div class="line"><span class="lineno">  658</span>        }</div>
-<div class="line"><span class="lineno">  659</span>        <span class="keywordflow">catch</span> (Exception ex)</div>
-<div class="line"><span class="lineno">  660</span>        {</div>
-<div class="line"><span class="lineno">  661</span>            _logService.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a46dc9bf58bc9605c7e17dfee38b94354">LogError</a>(<a class="code hl_class" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">LogSources</a>.SpotHelper, <span class="stringliteral">&quot;exception saving daily spot&quot;</span>, ex.ToString());</div>
-<div class="line"><span class="lineno">  662</span>            <span class="keywordflow">return</span> (<span class="keyword">true</span>, ex.ToString());</div>
-<div class="line"><span class="lineno">  663</span>        }</div>
-<div class="line"><span class="lineno">  664</span>    }</div>
+<div class="fragment"><div class="line"><span class="lineno">  698</span>    {</div>
+<div class="line"><span class="lineno">  699</span>        <span class="keywordtype">bool</span> isDebug = _env.IsDevelopment() || _env.IsStaging();</div>
+<div class="line"><span class="lineno">  700</span>        <span class="keywordflow">try</span></div>
+<div class="line"><span class="lineno">  701</span>        {</div>
+<div class="line"><span class="lineno">  702</span>            <span class="keywordtype">int</span> Year = DateTime.Now.Year;</div>
+<div class="line"><span class="lineno">  703</span>            <span class="keywordtype">int</span> Month = DateTime.Now.Month;</div>
+<div class="line"><span class="lineno">  704</span>            <span class="keywordtype">int</span> Day = DateTime.Now.Day;</div>
+<div class="line"><span class="lineno">  705</span>            <span class="comment">//5 mins before is ok, allow 1 hr after in case retries are required</span></div>
+<div class="line"><span class="lineno">  706</span>            var WindowOpen = <span class="keyword">new</span> DateTime(Year, Month, Day, 15, 55, 0);</div>
+<div class="line"><span class="lineno">  707</span>            var WindowClose = <span class="keyword">new</span> DateTime(Year, Month, Day, 16, 05, 0);</div>
+<div class="line"><span class="lineno">  708</span>            <span class="keywordflow">if</span> (!isDebug &amp;&amp; !(DateTime.Now &gt; WindowOpen &amp; DateTime.Now &lt; WindowClose))</div>
+<div class="line"><span class="lineno">  709</span>                <span class="keywordflow">return</span> (<span class="keyword">false</span>, <span class="keyword">new</span> { success = <span class="keyword">false</span>, message = <span class="stringliteral">&quot;request does not fall within daily save time window&quot;</span> });</div>
+<div class="line"><span class="lineno">  710</span>            <span class="comment">//check if done today already</span></div>
+<div class="line"><span class="lineno">  711</span>            <span class="keywordflow">if</span> (!isDebug &amp;&amp; _context.<a class="code hl_property" href="class_task_a_p_i_1_1_contexts_1_1_priceapp_context.html#a0a63b303899246b496a42f08da57bd43">DailyCloses</a>.Where(dc =&gt; dc.Year == Year &amp;&amp; dc.Month == Month &amp;&amp; dc.Day == Day).Count() &gt; 0) </div>
+<div class="line"><span class="lineno">  712</span>                <span class="keywordflow">return</span> (<span class="keyword">false</span>, <span class="keyword">new</span> { success = <span class="keyword">false</span>, message = <span class="stringliteral">&quot;daily closes already completed for today&quot;</span>, Data = _context.<a class="code hl_property" href="class_task_a_p_i_1_1_contexts_1_1_priceapp_context.html#a0a63b303899246b496a42f08da57bd43">DailyCloses</a>.Where(dc =&gt; dc.Year == Year &amp;&amp; dc.Month == Month &amp;&amp; dc.Day == Day).ToList() });</div>
+<div class="line"><span class="lineno">  713</span>            <span class="comment">//get current asset list from priceapp</span></div>
+<div class="line"><span class="lineno">  714</span>            var assetList = _iapiService.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service.html#a7e3600841f53749e6c915ace609dfa11">PriceappAssets</a>();</div>
+<div class="line"><span class="lineno">  715</span>            <span class="keywordflow">if</span> (assetList == <span class="keyword">null</span> || assetList.Count == 0)</div>
+<div class="line"><span class="lineno">  716</span>            {</div>
+<div class="line"><span class="lineno">  717</span>                <span class="keywordflow">return</span> (<span class="keyword">true</span>, <span class="keyword">new</span> { success = <span class="keyword">false</span>, message = <span class="stringliteral">&quot;asset list from priceapp was null&quot;</span> });</div>
+<div class="line"><span class="lineno">  718</span>            }</div>
+<div class="line"><span class="lineno">  719</span>            List&lt;DailyClose&gt; dailyCloses = <span class="keyword">new</span> List&lt;DailyClose&gt;();</div>
+<div class="line"><span class="lineno">  720</span>            <span class="comment">//create a daily close for AUD</span></div>
+<div class="line"><span class="lineno">  721</span>            var first = assetList.FirstOrDefault();</div>
+<div class="line"><span class="lineno">  722</span>            var audusd = Math.Truncate(10000 * first.audusd) / 10000;</div>
+<div class="line"><span class="lineno">  723</span>            <a class="code hl_class" href="class_task_a_p_i_1_1_models_1_1_daily_close.html">DailyClose</a> AUDClose = <span class="keyword">new</span> <a class="code hl_class" href="class_task_a_p_i_1_1_models_1_1_daily_close.html">DailyClose</a>()</div>
+<div class="line"><span class="lineno">  724</span>            {</div>
+<div class="line"><span class="lineno">  725</span>                Year = Year,</div>
+<div class="line"><span class="lineno">  726</span>                Month = Month,</div>
+<div class="line"><span class="lineno">  727</span>                Day = Day,</div>
+<div class="line"><span class="lineno">  728</span>                AssetCode = <span class="stringliteral">&quot;AUD&quot;</span>,</div>
+<div class="line"><span class="lineno">  729</span>                PairCode = <span class="stringliteral">&quot;USD&quot;</span>,</div>
+<div class="line"><span class="lineno">  730</span>                Per = <span class="stringliteral">&quot;$&quot;</span>,</div>
+<div class="line"><span class="lineno">  731</span>                Buy = audusd,</div>
+<div class="line"><span class="lineno">  732</span>                Spot = audusd,</div>
+<div class="line"><span class="lineno">  733</span>                Sell = audusd</div>
+<div class="line"><span class="lineno">  734</span>            };</div>
+<div class="line"><span class="lineno">  735</span>            dailyCloses.Add(AUDClose);</div>
+<div class="line"><span class="lineno">  736</span>            <span class="comment">//create daily close for all else</span></div>
+<div class="line"><span class="lineno">  737</span>            <span class="keywordflow">foreach</span> (<a class="code hl_class" href="class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_priceapp_asset.html">PriceappAsset</a> x <span class="keywordflow">in</span> assetList)</div>
+<div class="line"><span class="lineno">  738</span>            {</div>
+<div class="line"><span class="lineno">  739</span>                <span class="keywordflow">if</span> (x.<a class="code hl_property" href="class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_priceapp_asset.html#acb2a7c7f2ddd8fa7c579322de264f035">assetCode</a> == <span class="stringliteral">&quot;XX1&quot;</span>)</div>
+<div class="line"><span class="lineno">  740</span>                    <span class="keywordflow">continue</span>;</div>
+<div class="line"><span class="lineno">  741</span>                <span class="comment">// all assets from internal api are AUD</span></div>
+<div class="line"><span class="lineno">  742</span>                <a class="code hl_class" href="class_task_a_p_i_1_1_models_1_1_daily_close.html">DailyClose</a> dc = <span class="keyword">new</span> <a class="code hl_class" href="class_task_a_p_i_1_1_models_1_1_daily_close.html">DailyClose</a>()</div>
+<div class="line"><span class="lineno">  743</span>                {</div>
+<div class="line"><span class="lineno">  744</span>                    Year = Year,</div>
+<div class="line"><span class="lineno">  745</span>                    Month = Month,</div>
+<div class="line"><span class="lineno">  746</span>                    Day = Day,</div>
+<div class="line"><span class="lineno">  747</span>                    AssetCode = x.<a class="code hl_property" href="class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_priceapp_asset.html#acb2a7c7f2ddd8fa7c579322de264f035">assetCode</a>,</div>
+<div class="line"><span class="lineno">  748</span>                    PairCode = <span class="stringliteral">&quot;AUD&quot;</span>,</div>
+<div class="line"><span class="lineno">  749</span>                    Per = x.<a class="code hl_property" href="class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_priceapp_asset.html#a74613f64ecc58f8cd0d4496e02d6fe30">spotUnit</a>?.<a class="code hl_property" href="class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_priceapp_asset_1_1_spotunit.html#a362ee02b811e851f1a58a49e5d4fac46">unitName</a> ?? <span class="stringliteral">&quot;&quot;</span> ,</div>
+<div class="line"><span class="lineno">  750</span>                    Buy = x.<a class="code hl_property" href="class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_priceapp_asset.html#a4bc64e34a3e1a3037fe6c618bef375f9">environmentBuy</a>,</div>
+<div class="line"><span class="lineno">  751</span>                    Spot = x.<a class="code hl_property" href="class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_priceapp_asset.html#a6843f4b4444d004a9e86462e1615a481">environmentSpot</a>,</div>
+<div class="line"><span class="lineno">  752</span>                    Sell = x.environmentSell</div>
+<div class="line"><span class="lineno">  753</span>                };</div>
+<div class="line"><span class="lineno">  754</span>                dailyCloses.Add(dc);</div>
+<div class="line"><span class="lineno">  755</span>            }</div>
+<div class="line"><span class="lineno">  756</span>            _context.<a class="code hl_property" href="class_task_a_p_i_1_1_contexts_1_1_priceapp_context.html#a0a63b303899246b496a42f08da57bd43">DailyCloses</a>.AddRange(dailyCloses);</div>
+<div class="line"><span class="lineno">  757</span>            _context.SaveChanges();</div>
+<div class="line"><span class="lineno">  758</span>            var exportResult = ExportChartData();</div>
+<div class="line"><span class="lineno">  759</span>            <span class="keywordflow">return</span> (exportResult.Error, <span class="keyword">new</span> { SaveDailtySpot = dailyCloses, ExportChartData = exportResult.Result });</div>
+<div class="line"><span class="lineno">  760</span>        }</div>
+<div class="line"><span class="lineno">  761</span>        <span class="keywordflow">catch</span> (Exception ex)</div>
+<div class="line"><span class="lineno">  762</span>        {</div>
+<div class="line"><span class="lineno">  763</span>            _logService.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a46dc9bf58bc9605c7e17dfee38b94354">LogError</a>(<a class="code hl_class" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">LogSources</a>.SpotHelper, <span class="stringliteral">&quot;exception saving daily spot&quot;</span>, ex.ToString());</div>
+<div class="line"><span class="lineno">  764</span>            <span class="keywordflow">return</span> (<span class="keyword">true</span>, ex.ToString());</div>
+<div class="line"><span class="lineno">  765</span>        }</div>
+<div class="line"><span class="lineno">  766</span>    }</div>
 <div class="ttc" id="aclass_task_a_p_i_1_1_contexts_1_1_priceapp_context_html_a0a63b303899246b496a42f08da57bd43"><div class="ttname"><a href="class_task_a_p_i_1_1_contexts_1_1_priceapp_context.html#a0a63b303899246b496a42f08da57bd43">TaskAPI.Contexts.PriceappContext.DailyCloses</a></div><div class="ttdeci">virtual DbSet&lt; DailyClose &gt; DailyCloses</div><div class="ttdef"><b>Definition</b> PriceappContext.cs:40</div></div>
 <div class="ttc" id="aclass_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_priceapp_asset_1_1_spotunit_html_a362ee02b811e851f1a58a49e5d4fac46"><div class="ttname"><a href="class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_priceapp_asset_1_1_spotunit.html#a362ee02b811e851f1a58a49e5d4fac46">TaskAPI.Models.DTO.InternalAPI.PriceappAsset.Spotunit.unitName</a></div><div class="ttdeci">string unitName</div><div class="ttdef"><b>Definition</b> InternalAPI.cs:49</div></div>
 <div class="ttc" id="aclass_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_priceapp_asset_html"><div class="ttname"><a href="class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_priceapp_asset.html">TaskAPI.Models.DTO.InternalAPI.PriceappAsset</a></div><div class="ttdef"><b>Definition</b> InternalAPI.cs:13</div></div>
@@ -539,14 +572,14 @@ Here is the caller graph for this function:</div>
 <div class="ttc" id="aclass_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_priceapp_asset_html_a74613f64ecc58f8cd0d4496e02d6fe30"><div class="ttname"><a href="class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_priceapp_asset.html#a74613f64ecc58f8cd0d4496e02d6fe30">TaskAPI.Models.DTO.InternalAPI.PriceappAsset.spotUnit</a></div><div class="ttdeci">Spotunit spotUnit</div><div class="ttdef"><b>Definition</b> InternalAPI.cs:20</div></div>
 <div class="ttc" id="aclass_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_priceapp_asset_html_acb2a7c7f2ddd8fa7c579322de264f035"><div class="ttname"><a href="class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_priceapp_asset.html#acb2a7c7f2ddd8fa7c579322de264f035">TaskAPI.Models.DTO.InternalAPI.PriceappAsset.assetCode</a></div><div class="ttdeci">string assetCode</div><div class="ttdef"><b>Definition</b> InternalAPI.cs:16</div></div>
 <div class="ttc" id="aclass_task_a_p_i_1_1_models_1_1_daily_close_html"><div class="ttname"><a href="class_task_a_p_i_1_1_models_1_1_daily_close.html">TaskAPI.Models.DailyClose</a></div><div class="ttdef"><b>Definition</b> DailyClose.cs:11</div></div>
-<div class="ttc" id="aclass_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_html_a7e3600841f53749e6c915ace609dfa11"><div class="ttname"><a href="class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service.html#a7e3600841f53749e6c915ace609dfa11">TaskAPI.Services.InternalAPIService.PriceappAssets</a></div><div class="ttdeci">List&lt; PriceappAsset &gt;? PriceappAssets()</div><div class="ttdef"><b>Definition</b> InternalAPIService.cs:53</div></div>
+<div class="ttc" id="aclass_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_html_a7e3600841f53749e6c915ace609dfa11"><div class="ttname"><a href="class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service.html#a7e3600841f53749e6c915ace609dfa11">TaskAPI.Services.InternalAPIService.PriceappAssets</a></div><div class="ttdeci">List&lt; PriceappAsset &gt;? PriceappAssets()</div><div class="ttdoc">Retrieves a list of Priceapp assets from Internal API.</div><div class="ttdef"><b>Definition</b> InternalAPIService.cs:70</div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_task_a_p_i_1_1_helpers_1_1_spot_helper_a6b975ced6fddc4826a8950c8a250b926_icgraph.png" border="0" usemap="#aclass_task_a_p_i_1_1_helpers_1_1_spot_helper_a6b975ced6fddc4826a8950c8a250b926_icgraph" alt=""/></div>
 <map name="aclass_task_a_p_i_1_1_helpers_1_1_spot_helper_a6b975ced6fddc4826a8950c8a250b926_icgraph" id="aclass_task_a_p_i_1_1_helpers_1_1_spot_helper_a6b975ced6fddc4826a8950c8a250b926_icgraph">
 <area shape="rect" title=" " alt="" coords="221,5,411,48"/>
-<area shape="rect" href="class_task_a_p_i_1_1_controllers_1_1_spot_controller.html#ac5b396e3a46352bf5dbe21701876f35c" title=" " alt="" coords="5,5,173,48"/>
+<area shape="rect" href="class_task_a_p_i_1_1_controllers_1_1_spot_controller.html#ac5b396e3a46352bf5dbe21701876f35c" title="Saves daily spot data." alt="" coords="5,5,173,48"/>
 <area shape="poly" title=" " alt="" coords="205,29,173,29,173,24,205,24"/>
 </map>
 </div>
@@ -566,7 +599,12 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>exports all daily spot for gold, silver, plat and aud, in both AUD and USD and saves minified file for download </p>
+<p>Saves daily spot data to the database and exports chart data. </p>
+<p>Exports chart data to JSON files for AUD and USD currencies.</p>
+<dl class="section return"><dt>Returns</dt><dd>A tuple indicating whether an error occurred during the process and providing details about the result of the operation. </dd></dl>
+<p>This method retrieves asset data from Priceapp, creates daily close records for each asset, saves them to the database, and exports chart data. It ensures that the operation falls within a specified time window and checks whether daily closes have already been completed for the current day. </p>
+<dl class="section return"><dt>Returns</dt><dd>A tuple indicating whether an error occurred during the export process and providing a message about the result. </dd></dl>
+<p>This method retrieves chart data from Internal API, groups it by metal, and orders it according to a specified mapping. Then, it converts the chart data to AUD and USD currencies, saves them as JSON files, and logs the export process. </p>
 
 </div>
 </div>

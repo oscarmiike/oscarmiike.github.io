@@ -1,5 +1,10 @@
 \doxysection{Task\+API.\+Services.\+Log\+Service Class Reference}
 \hypertarget{class_task_a_p_i_1_1_services_1_1_log_service}{}\label{class_task_a_p_i_1_1_services_1_1_log_service}\index{TaskAPI.Services.LogService@{TaskAPI.Services.LogService}}
+
+
+Provides logging services for various levels of application events, including debug, information, errors, and exceptions.  
+
+
 \doxysubsubsection*{Public Types}
 \begin{DoxyCompactItemize}
 \item 
@@ -33,22 +38,25 @@ enum \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_af08a5d1509ec7b24d3db78086610d4ec}{Log\+Service}} (\mbox{\hyperlink{class_task_a_p_i_1_1_contexts_1_1_task_a_p_i_context}{Task\+APIContext}} context, IOptions$<$ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings}{Task\+APISettings}} $>$ task\+APISettings)
-\item 
+\begin{DoxyCompactList}\small\item\em Initialises a new instance of the Log\+Service with the specified database context and application settings. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_log_entry}{Log\+Entry}} \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a6be037b34888bbcf6b47dca8eef472de}{Log\+Debug}} (\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{Log\+Sources}} log\+Source, params object\mbox{[}$\,$\mbox{]} data\+List)
-\item 
+\begin{DoxyCompactList}\small\item\em Logs a debug message to the database. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_log_entry}{Log\+Entry}} \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a5c2a67dbd8beb6f821c46b8d052d59ea}{Log\+Information}} (\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{Log\+Sources}} log\+Source, params object\mbox{[}$\,$\mbox{]} data\+List)
-\item 
+\begin{DoxyCompactList}\small\item\em Logs an informational message to the database. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_log_entry}{Log\+Entry}} \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a46dc9bf58bc9605c7e17dfee38b94354}{Log\+Error}} (\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{Log\+Sources}} log\+Source, params object\mbox{[}$\,$\mbox{]} data\+List)
-\item 
+\begin{DoxyCompactList}\small\item\em Logs an error message to the database. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_log_entry}{Log\+Entry}} \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a78c9df658858fa3099eed69421423898}{Log\+Exception}} (\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{Log\+Sources}} log\+Source, params object\mbox{[}$\,$\mbox{]} data\+List)
-\item 
+\begin{DoxyCompactList}\small\item\em Logs an exception to the database. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_log_entry}{Log\+Entry}} \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a44f0fd9db1116257087ba59c836e22ea}{Insert\+Log}} (\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a27f1ae7140528c73a0591095ff9f5bd6}{Log\+Types}} log\+Type, int thread\+ID, \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{Log\+Sources}} log\+Source, params object\mbox{[}$\,$\mbox{]} Data\+List)
-\begin{DoxyCompactList}\small\item\em inserts log to database \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Directly inserts a log entry into the database. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result}{Log\+Trim\+Result}} \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a1b84e4b268d6eb8f21ee2569e562fceb}{Trim\+Logs}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Removes log entries older than the configured retention period. \end{DoxyCompactList}\item 
 List$<$ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_log_entry}{Log\+Entry}} $>$ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a6fd34cc69d8b24f60a73f155365a9357}{Fetch\+Logs}} (Log\+Request log\+Request)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Fetches log entries based on specified criteria from the database. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+Provides logging services for various levels of application events, including debug, information, errors, and exceptions. 
 
 \doxysubsection{Member Enumeration Documentation}
 \Hypertarget{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}\label{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba} 
@@ -117,22 +125,22 @@ Alert\+Helper&\\
 \end{DoxyEnumFields}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00034\ \ \ \ \ \{}
-\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166baac6ef9642548f75729bf2383425199c21}{LogService}},}
-\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166baae5f9aa0036a51c90b656ce2c7da4a639}{SpotController}},}
-\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166baa3e0b562e737a1ea2d1b755114d8fa0d1}{PriceappController}},}
-\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166baa3bdfa91e615ada7f47b248e93a61c405}{AlchemyService}},}
-\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166baa806e6e1755d54a652fce3cb044c70a2a}{SpotHelper}},}
-\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166baa1ab879f6a570e479b141c89c18806d71}{ForexService}},}
-\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166baadbd0fa1467ba57d7fa5973c97532831a}{BinanceService}},}
-\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166baad8f05b19b2f42a6d27ee5bc11f0510fb}{InternalAPIService}},}
-\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166baa0e95193abff9bbf2fc4a1ae87b1098a3}{PriceappHelper}},}
-\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166baa640b962cc96e85c519b6ad337a3cb9c1}{InternalAPIController}},}
-\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166baad7c88e60e20f7e5ab1fb821d37c8a5e8}{LogsController}},}
-\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166baae46fc0f33140e811f589495fe3eb5873}{ABWebController}},}
-\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166baacefcb69a2bad7c083bea84db3b812e79}{AinslieApiController}},}
-\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_alert_helper}{AlertHelper}}}
-\DoxyCodeLine{00049\ \ \ \ \ \}}
+\DoxyCodeLine{00037\ \ \ \ \ \{}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166baac6ef9642548f75729bf2383425199c21}{LogService}},}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166baae5f9aa0036a51c90b656ce2c7da4a639}{SpotController}},}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166baa3e0b562e737a1ea2d1b755114d8fa0d1}{PriceappController}},}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166baa3bdfa91e615ada7f47b248e93a61c405}{AlchemyService}},}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166baa806e6e1755d54a652fce3cb044c70a2a}{SpotHelper}},}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166baa1ab879f6a570e479b141c89c18806d71}{ForexService}},}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166baadbd0fa1467ba57d7fa5973c97532831a}{BinanceService}},}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166baad8f05b19b2f42a6d27ee5bc11f0510fb}{InternalAPIService}},}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166baa0e95193abff9bbf2fc4a1ae87b1098a3}{PriceappHelper}},}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166baa640b962cc96e85c519b6ad337a3cb9c1}{InternalAPIController}},}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166baad7c88e60e20f7e5ab1fb821d37c8a5e8}{LogsController}},}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166baae46fc0f33140e811f589495fe3eb5873}{ABWebController}},}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166baacefcb69a2bad7c083bea84db3b812e79}{AinslieApiController}},}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_alert_helper}{AlertHelper}}}
+\DoxyCodeLine{00052\ \ \ \ \ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_task_a_p_i_1_1_services_1_1_log_service_a27f1ae7140528c73a0591095ff9f5bd6}\label{class_task_a_p_i_1_1_services_1_1_log_service_a27f1ae7140528c73a0591095ff9f5bd6} 
@@ -161,12 +169,12 @@ Exception&\\
 \end{DoxyEnumFields}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00026\ \ \ \ \ \{}
-\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a27f1ae7140528c73a0591095ff9f5bd6aa603905470e2a5b8c13e96b579ef0dba}{Debug}},}
-\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a27f1ae7140528c73a0591095ff9f5bd6aa82be0f551b8708bc08eb33cd9ded0cf}{Information}},}
-\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a27f1ae7140528c73a0591095ff9f5bd6ab47f6a6092c5d7e4bffec12dff309c3b}{Err}},}
-\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a27f1ae7140528c73a0591095ff9f5bd6ab0d4998a26f5b5742ad38c4af8817e32}{Exception}}}
-\DoxyCodeLine{00031\ \ \ \ \ \}}
+\DoxyCodeLine{00029\ \ \ \ \ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a27f1ae7140528c73a0591095ff9f5bd6aa603905470e2a5b8c13e96b579ef0dba}{Debug}},}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a27f1ae7140528c73a0591095ff9f5bd6aa82be0f551b8708bc08eb33cd9ded0cf}{Information}},}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a27f1ae7140528c73a0591095ff9f5bd6ab47f6a6092c5d7e4bffec12dff309c3b}{Err}},}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a27f1ae7140528c73a0591095ff9f5bd6ab0d4998a26f5b5742ad38c4af8817e32}{Exception}}}
+\DoxyCodeLine{00034\ \ \ \ \ \}}
 
 \end{DoxyCode}
 
@@ -179,11 +187,22 @@ Exception&\\
 {\footnotesize\ttfamily Task\+API.\+Services.\+Log\+Service.\+Log\+Service (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_task_a_p_i_1_1_contexts_1_1_task_a_p_i_context}{Task\+APIContext}}}]{context,  }\item[{IOptions$<$ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings}{Task\+APISettings}} $>$}]{task\+APISettings }\end{DoxyParamCaption})}
 
 
+
+Initialises a new instance of the Log\+Service with the specified database context and application settings. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em context} & The database context for log entries.\\
+\hline
+{\em task\+APISettings} & The application settings, containing log configuration.\\
+\hline
+\end{DoxyParams}
+
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00055\ \ \ \ \ \{}
-\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \_context\ =\ context;}
-\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \_settings\ =\ taskAPISettings.Value;}
-\DoxyCodeLine{00058\ \ \ \ \ \}}
+\DoxyCodeLine{00063\ \ \ \ \ \{}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \_context\ =\ context;}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \_settings\ =\ taskAPISettings.Value;}
+\DoxyCodeLine{00066\ \ \ \ \ \}}
 
 \end{DoxyCode}
 
@@ -196,55 +215,77 @@ Exception&\\
 {\footnotesize\ttfamily List$<$ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_log_entry}{Log\+Entry}} $>$ Task\+API.\+Services.\+Log\+Service.\+Fetch\+Logs (\begin{DoxyParamCaption}\item[{Log\+Request}]{log\+Request }\end{DoxyParamCaption})}
 
 
+
+Fetches log entries based on specified criteria from the database. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em log\+Request} & The criteria for fetching logs, which includes the date range, log type, log source, and a search string for filtering logs.\\
+\hline
+\end{DoxyParams}
+
+
+This method applies the specified filter criteria to retrieve relevant log entries. It supports filtering by\+: 
+\begin{DoxyItemize}
+\item Date range\+: Logs within the specified start and end dates are fetched. 
+\item Log type\+: Only logs matching the specified log types (if any) are included. 
+\item Log source\+: Logs originating from specified sources are selected. 
+\item Search string\+: Logs containing the specified text in their data are fetched. 
+\end{DoxyItemize}Additional logic is applied to adjust for time zones and to handle pagination and ordering, ensuring that the most relevant logs are retrieved efficiently. 
+
+\begin{DoxyReturn}{Returns}
+A list of Log\+Entry objects that match the specified criteria. The logs are returned in descending order by creation date, ensuring that the most recent logs are returned first.
+\end{DoxyReturn}
+
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00171\ \ \ \ \ \{}
-\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ DateTime\ fromDateTimeUTC\ =\ DateTime.MinValue;}
-\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (logRequest.fromUnixUTCMilli\ >\ 0)}
-\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \ \ \ \ fromDateTimeUTC\ =\ DateTimeOffset.FromUnixTimeMilliseconds(logRequest.fromUnixUTCMilli).DateTime;}
-\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ DateTime\ fromDateTimeLocal\ =\ fromDateTimeUTC.ToLocalTime();}
-\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ var\ dateRangeStart\ =\ logRequest.dateRangeStartUTC.ToLocalTime();}
-\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (logRequest.startHour\ >\ -\/1)}
-\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \ \ \ \ dateRangeStart\ =\ dateRangeStart.AddHours(logRequest.startHour);}
-\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ var\ dateRangeEnd\ =\ logRequest.dateRangeEndUTC.ToLocalTime();}
-\DoxyCodeLine{00184\ }
-\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ var\ logsQuery\ =\ \_context.\mbox{\hyperlink{class_task_a_p_i_1_1_contexts_1_1_task_a_p_i_context_af1d10bb6168269c37fefcdbd864f97e3}{LogEntries}}.AsNoTracking()}
-\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \ \ \ \ .Where(le\ =>\ le.Created\ >=\ dateRangeStart\ \&\&\ le.Created\ <=\ dateRangeEnd)}
-\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \ \ \ \ .AsEnumerable();}
-\DoxyCodeLine{00188\ }
-\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (logRequest.initial)}
-\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \ \ \ \ logsQuery\ =\ logsQuery}
-\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .Where(le\ =>\ logRequest.logType\ ==\ \textcolor{keyword}{null}\ ||\ logRequest.logType.All(\textcolor{keywordtype}{string}.IsNullOrEmpty)\ ||\ logRequest.logType.Any(lt\ =>\ le.Type.ToLower()\ ==\ lt.ToLower()))}
-\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .Where(le\ =>\ logRequest.logSource\ ==\ \textcolor{keyword}{null}\ ||\ logRequest.logSource.All(\textcolor{keywordtype}{string}.IsNullOrEmpty)\ ||\ logRequest.logSource.Any(ls\ =>\ le.Source.ToLower()\ ==\ ls.ToLower()))}
-\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .Where(le\ =>\ \textcolor{keywordtype}{string}.IsNullOrEmpty(logRequest.searchString)\ ||\ le.Data.ToLower().Contains(logRequest.searchString.ToLower()));}
-\DoxyCodeLine{00195\ }
-\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (logRequest.startHour\ >\ -\/1)}
-\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ If\ specifying\ a\ start\ hour,\ take\ logs\ from\ the\ start\ hour,\ then\ order\ by\ descending}}
-\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ logsQuery.Take(logRequest.maxLogs).OrderByDescending(le\ =>\ le.Created).ToList();}
-\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
-\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ If\ not\ specifying\ start\ hour,\ order\ by\ descending\ and\ then\ take\ latest}}
-\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ logsQuery.OrderByDescending(le\ =>\ le.Created).Take(logRequest.maxLogs).ToList();}
-\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
-\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \ \ \ \ logsQuery\ =\ logsQuery}
-\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .Where(le\ =>\ le.Created\ >\ fromDateTimeLocal)}
-\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .Where(le\ =>\ logRequest.logType\ ==\ \textcolor{keyword}{null}\ ||\ logRequest.logType.All(\textcolor{keywordtype}{string}.IsNullOrEmpty)\ ||\ logRequest.logType.Any(lt\ =>\ le.Type.ToLower()\ ==\ lt.ToLower()))}
-\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .Where(le\ =>\ logRequest.logSource\ ==\ \textcolor{keyword}{null}\ ||\ logRequest.logSource.All(\textcolor{keywordtype}{string}.IsNullOrEmpty)\ ||\ logRequest.logSource.Any(ls\ =>\ le.Source.ToLower()\ ==\ ls.ToLower()))}
-\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .Where(le\ =>\ \textcolor{keywordtype}{string}.IsNullOrEmpty(logRequest.searchString)\ ||\ le.Data.ToLower().Contains(logRequest.searchString.ToLower()))}
-\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .OrderByDescending(le\ =>\ le.Created);}
-\DoxyCodeLine{00215\ }
-\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ logsQuery.ToList();}
-\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00218\ \ \ \ \ \}}
+\DoxyCodeLine{00229\ \ \ \ \ \{}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ DateTime\ fromDateTimeUTC\ =\ DateTime.MinValue;}
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (logRequest.fromUnixUTCMilli\ >\ 0)}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \ \ \ \ fromDateTimeUTC\ =\ DateTimeOffset.FromUnixTimeMilliseconds(logRequest.fromUnixUTCMilli).DateTime;}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ DateTime\ fromDateTimeLocal\ =\ fromDateTimeUTC.ToLocalTime();}
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ var\ dateRangeStart\ =\ logRequest.dateRangeStartUTC.ToLocalTime();}
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (logRequest.startHour\ >\ -\/1)}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ \ \ \ \ dateRangeStart\ =\ dateRangeStart.AddHours(logRequest.startHour);}
+\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ var\ dateRangeEnd\ =\ logRequest.dateRangeEndUTC.ToLocalTime();}
+\DoxyCodeLine{00242\ }
+\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ var\ logsQuery\ =\ \_context.\mbox{\hyperlink{class_task_a_p_i_1_1_contexts_1_1_task_a_p_i_context_af1d10bb6168269c37fefcdbd864f97e3}{LogEntries}}.AsNoTracking()}
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \ \ \ \ .Where(le\ =>\ le.Created\ >=\ dateRangeStart\ \&\&\ le.Created\ <=\ dateRangeEnd)}
+\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \ \ \ \ .AsEnumerable();}
+\DoxyCodeLine{00246\ }
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (logRequest.initial)}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \ \ \ \ logsQuery\ =\ logsQuery}
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .Where(le\ =>\ logRequest.logType\ ==\ \textcolor{keyword}{null}\ ||\ logRequest.logType.All(\textcolor{keywordtype}{string}.IsNullOrEmpty)\ ||\ logRequest.logType.Any(lt\ =>\ le.Type.ToLower()\ ==\ lt.ToLower()))}
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .Where(le\ =>\ logRequest.logSource\ ==\ \textcolor{keyword}{null}\ ||\ logRequest.logSource.All(\textcolor{keywordtype}{string}.IsNullOrEmpty)\ ||\ logRequest.logSource.Any(ls\ =>\ le.Source.ToLower()\ ==\ ls.ToLower()))}
+\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .Where(le\ =>\ \textcolor{keywordtype}{string}.IsNullOrEmpty(logRequest.searchString)\ ||\ le.Data.ToLower().Contains(logRequest.searchString.ToLower()));}
+\DoxyCodeLine{00253\ }
+\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (logRequest.startHour\ >\ -\/1)}
+\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ If\ specifying\ a\ start\ hour,\ take\ logs\ from\ the\ start\ hour,\ then\ order\ by\ descending}}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ logsQuery.Take(logRequest.maxLogs).OrderByDescending(le\ =>\ le.Created).ToList();}
+\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ If\ not\ specifying\ start\ hour,\ order\ by\ descending\ and\ then\ take\ latest}}
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ logsQuery.OrderByDescending(le\ =>\ le.Created).Take(logRequest.maxLogs).ToList();}
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00264\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00265\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ \ \ \ \ logsQuery\ =\ logsQuery}
+\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .Where(le\ =>\ le.Created\ >\ fromDateTimeLocal)}
+\DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .Where(le\ =>\ logRequest.logType\ ==\ \textcolor{keyword}{null}\ ||\ logRequest.logType.All(\textcolor{keywordtype}{string}.IsNullOrEmpty)\ ||\ logRequest.logType.Any(lt\ =>\ le.Type.ToLower()\ ==\ lt.ToLower()))}
+\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .Where(le\ =>\ logRequest.logSource\ ==\ \textcolor{keyword}{null}\ ||\ logRequest.logSource.All(\textcolor{keywordtype}{string}.IsNullOrEmpty)\ ||\ logRequest.logSource.Any(ls\ =>\ le.Source.ToLower()\ ==\ ls.ToLower()))}
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .Where(le\ =>\ \textcolor{keywordtype}{string}.IsNullOrEmpty(logRequest.searchString)\ ||\ le.Data.ToLower().Contains(logRequest.searchString.ToLower()))}
+\DoxyCodeLine{00272\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .OrderByDescending(le\ =>\ le.Created);}
+\DoxyCodeLine{00273\ }
+\DoxyCodeLine{00274\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ logsQuery.ToList();}
+\DoxyCodeLine{00275\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00276\ \ \ \ \ \}}
 
 \end{DoxyCode}
 Here is the caller graph for this function\+:
@@ -263,60 +304,65 @@ Here is the caller graph for this function\+:
 
 
 
-inserts log to database 
+Directly inserts a log entry into the database. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em Type} & an entry from the logtypes enum\\
+{\em log\+Type} & The type of the log entry.\\
 \hline
-{\em Source} & an entry from the the logsources enum\\
+{\em thread\+ID} & The thread ID where the log originated.\\
 \hline
-{\em Data\+List} & a paramarray containing any number of objects to be serialised. usually start with a string message\\
+{\em log\+Source} & The source of the log entry.\\
+\hline
+{\em Data\+List} & The data to log.\\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A Log\+Entry object representing the logged information.
+\end{DoxyReturn}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00093\ \ \ \ \ \{}
-\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_log_entry}{LogEntry}}\ logEntry;}
-\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
-\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//try\ to\ create\ log\ entry\ by\ deserialising\ objects\ in\ param\ array\ datalist}}
-\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ logEntry\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_log_entry}{LogEntry}}() }
-\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Created\ =\ DateTime.Now,}
-\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Type\ =\ logType.ToString(),}
-\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ThreadID\ =\ threadID,}
-\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Source\ =\ logSource.ToString(),}
-\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Data\ =\ JsonConvert.SerializeObject(DataList,\ \textcolor{keyword}{new}\ JsonSerializerSettings}
-\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ReferenceLoopHandling\ =\ ReferenceLoopHandling.Ignore}
-\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \})}
-\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
-\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a27f1ae7140528c73a0591095ff9f5bd6ab0d4998a26f5b5742ad38c4af8817e32}{Exception}}\ ex)}
-\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//create\ new\ logentry\ with\ exception}}
-\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ logEntry\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_log_entry}{LogEntry}}() }
-\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Created\ =\ DateTime.Now,}
-\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Type\ =\ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a27f1ae7140528c73a0591095ff9f5bd6}{LogTypes}}.Exception.ToString(),}
-\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ThreadID\ =\ threadID,}
-\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Source\ =\ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.LogService.ToString(),}
-\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Data\ =\ \$\textcolor{stringliteral}{"{}Exception\ creating\ logEntry:\ \{ex.ToString()\}"{}}}
-\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
-\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
-\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \_context.\mbox{\hyperlink{class_task_a_p_i_1_1_contexts_1_1_task_a_p_i_context_af1d10bb6168269c37fefcdbd864f97e3}{LogEntries}}.Add(logEntry);}
-\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \_context.SaveChanges();}
-\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ logEntry;}
-\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a27f1ae7140528c73a0591095ff9f5bd6ab0d4998a26f5b5742ad38c4af8817e32}{Exception}}\ ex)}
-\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ WriteLog(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a27f1ae7140528c73a0591095ff9f5bd6}{LogTypes}}.Exception,\ \textcolor{stringliteral}{"{}LogService"{}},\ \$\textcolor{stringliteral}{"{}Exception\ trying\ to\ insert\ log.\ \ Exception:\ \{ex.ToString()\}"{}});}
-\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
-\DoxyCodeLine{00133\ \ \ \ \ \}}
+\DoxyCodeLine{00127\ \ \ \ \ \{}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_log_entry}{LogEntry}}\ logEntry;}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//try\ to\ create\ log\ entry\ by\ deserialising\ objects\ in\ param\ array\ datalist}}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ logEntry\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_log_entry}{LogEntry}}() }
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Created\ =\ DateTime.Now,}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Type\ =\ logType.ToString(),}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ThreadID\ =\ threadID,}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Source\ =\ logSource.ToString(),}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Data\ =\ JsonConvert.SerializeObject(DataList,\ \textcolor{keyword}{new}\ JsonSerializerSettings}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ReferenceLoopHandling\ =\ ReferenceLoopHandling.Ignore}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \})}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a27f1ae7140528c73a0591095ff9f5bd6ab0d4998a26f5b5742ad38c4af8817e32}{Exception}}\ ex)}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//create\ new\ logentry\ with\ exception}}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ logEntry\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_log_entry}{LogEntry}}() }
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Created\ =\ DateTime.Now,}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Type\ =\ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a27f1ae7140528c73a0591095ff9f5bd6}{LogTypes}}.Exception.ToString(),}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ThreadID\ =\ threadID,}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Source\ =\ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.LogService.ToString(),}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Data\ =\ \$\textcolor{stringliteral}{"{}Exception\ creating\ logEntry:\ \{ex.ToString()\}"{}}}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ \_context.\mbox{\hyperlink{class_task_a_p_i_1_1_contexts_1_1_task_a_p_i_context_af1d10bb6168269c37fefcdbd864f97e3}{LogEntries}}.Add(logEntry);}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \_context.SaveChanges();}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ logEntry;}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a27f1ae7140528c73a0591095ff9f5bd6ab0d4998a26f5b5742ad38c4af8817e32}{Exception}}\ ex)}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ WriteLog(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a27f1ae7140528c73a0591095ff9f5bd6}{LogTypes}}.Exception,\ \textcolor{stringliteral}{"{}LogService"{}},\ \$\textcolor{stringliteral}{"{}Exception\ trying\ to\ insert\ log.\ \ Exception:\ \{ex.ToString()\}"{}});}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{00167\ \ \ \ \ \}}
 
 \end{DoxyCode}
 Here is the caller graph for this function\+:
@@ -334,12 +380,26 @@ Here is the caller graph for this function\+:
 {\footnotesize\ttfamily \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_log_entry}{Log\+Entry}} Task\+API.\+Services.\+Log\+Service.\+Log\+Debug (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{Log\+Sources}}}]{log\+Source,  }\item[{params object\mbox{[}$\,$\mbox{]}}]{data\+List }\end{DoxyParamCaption})}
 
 
+
+Logs a debug message to the database. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em log\+Source} & The source of the log entry.\\
+\hline
+{\em data\+List} & The data to log, starting with a message and optionally including additional objects.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A Log\+Entry object if logging is successful; otherwise, null.
+\end{DoxyReturn}
+
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00061\ \ \ \ \ \{}
-\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_aa926b782ce19e10a18b3461b5ca2f5ab}{SQLLoggerSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_sqlloggersettings_aceadbe244f9ffa77369b5406d0ee162f}{LogDebug}})\ \{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};\ \}}
-\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ var\ threadID\ =\ System.Environment.CurrentManagedThreadId;}
-\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a44f0fd9db1116257087ba59c836e22ea}{InsertLog}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a27f1ae7140528c73a0591095ff9f5bd6}{LogTypes}}.Debug,\ threadID,\ logSource,\ dataList);}
-\DoxyCodeLine{00065\ \ \ \ \ \}}
+\DoxyCodeLine{00075\ \ \ \ \ \{}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_aa926b782ce19e10a18b3461b5ca2f5ab}{SQLLoggerSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_sqlloggersettings_aceadbe244f9ffa77369b5406d0ee162f}{LogDebug}})\ \{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};\ \}}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ var\ threadID\ =\ System.Environment.CurrentManagedThreadId;}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a44f0fd9db1116257087ba59c836e22ea}{InsertLog}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a27f1ae7140528c73a0591095ff9f5bd6}{LogTypes}}.Debug,\ threadID,\ logSource,\ dataList);}
+\DoxyCodeLine{00079\ \ \ \ \ \}}
 
 \end{DoxyCode}
 Here is the call graph for this function\+:
@@ -365,11 +425,25 @@ Here is the caller graph for this function\+:
 {\footnotesize\ttfamily \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_log_entry}{Log\+Entry}} Task\+API.\+Services.\+Log\+Service.\+Log\+Error (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{Log\+Sources}}}]{log\+Source,  }\item[{params object\mbox{[}$\,$\mbox{]}}]{data\+List }\end{DoxyParamCaption})}
 
 
+
+Logs an error message to the database. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em log\+Source} & The source of the log entry.\\
+\hline
+{\em data\+List} & The data to log, starting with a message and optionally including additional objects.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A Log\+Entry object if logging is successful; otherwise, null.
+\end{DoxyReturn}
+
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00075\ \ \ \ \ \{}
-\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ var\ threadID\ =\ System.Environment.CurrentManagedThreadId;}
-\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a44f0fd9db1116257087ba59c836e22ea}{InsertLog}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a27f1ae7140528c73a0591095ff9f5bd6}{LogTypes}}.Err,\ threadID,\ logSource,\ dataList);}
-\DoxyCodeLine{00078\ \ \ \ \ \}}
+\DoxyCodeLine{00101\ \ \ \ \ \{}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ var\ threadID\ =\ System.Environment.CurrentManagedThreadId;}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a44f0fd9db1116257087ba59c836e22ea}{InsertLog}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a27f1ae7140528c73a0591095ff9f5bd6}{LogTypes}}.Err,\ threadID,\ logSource,\ dataList);}
+\DoxyCodeLine{00104\ \ \ \ \ \}}
 
 \end{DoxyCode}
 Here is the call graph for this function\+:
@@ -395,11 +469,25 @@ Here is the caller graph for this function\+:
 {\footnotesize\ttfamily \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_log_entry}{Log\+Entry}} Task\+API.\+Services.\+Log\+Service.\+Log\+Exception (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{Log\+Sources}}}]{log\+Source,  }\item[{params object\mbox{[}$\,$\mbox{]}}]{data\+List }\end{DoxyParamCaption})}
 
 
+
+Logs an exception to the database. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em log\+Source} & The source of the log entry.\\
+\hline
+{\em data\+List} & The data to log, starting with a message and optionally including additional objects.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A Log\+Entry object if logging is successful; otherwise, null.
+\end{DoxyReturn}
+
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00081\ \ \ \ \ \{}
-\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ var\ threadID\ =\ System.Environment.CurrentManagedThreadId;}
-\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a44f0fd9db1116257087ba59c836e22ea}{InsertLog}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a27f1ae7140528c73a0591095ff9f5bd6}{LogTypes}}.Exception,\ threadID,\ logSource,\ dataList);}
-\DoxyCodeLine{00084\ \ \ \ \ \}}
+\DoxyCodeLine{00113\ \ \ \ \ \{}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ var\ threadID\ =\ System.Environment.CurrentManagedThreadId;}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a44f0fd9db1116257087ba59c836e22ea}{InsertLog}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a27f1ae7140528c73a0591095ff9f5bd6}{LogTypes}}.Exception,\ threadID,\ logSource,\ dataList);}
+\DoxyCodeLine{00116\ \ \ \ \ \}}
 
 \end{DoxyCode}
 Here is the call graph for this function\+:
@@ -425,12 +513,26 @@ Here is the caller graph for this function\+:
 {\footnotesize\ttfamily \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_log_entry}{Log\+Entry}} Task\+API.\+Services.\+Log\+Service.\+Log\+Information (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{Log\+Sources}}}]{log\+Source,  }\item[{params object\mbox{[}$\,$\mbox{]}}]{data\+List }\end{DoxyParamCaption})}
 
 
+
+Logs an informational message to the database. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em log\+Source} & The source of the log entry.\\
+\hline
+{\em data\+List} & The data to log, starting with a message and optionally including additional objects.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A Log\+Entry object if logging is successful; otherwise, null.
+\end{DoxyReturn}
+
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00068\ \ \ \ \ \{}
-\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_aa926b782ce19e10a18b3461b5ca2f5ab}{SQLLoggerSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_sqlloggersettings_a0c4ae9d968b29b6b4e5f148fd98fd177}{LogInformation}})\ \{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};\ \}}
-\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ var\ threadID\ =\ System.Environment.CurrentManagedThreadId;}
-\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a44f0fd9db1116257087ba59c836e22ea}{InsertLog}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a27f1ae7140528c73a0591095ff9f5bd6}{LogTypes}}.Information,\ threadID,\ logSource,\ dataList);}
-\DoxyCodeLine{00072\ \ \ \ \ \}}
+\DoxyCodeLine{00088\ \ \ \ \ \{}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_aa926b782ce19e10a18b3461b5ca2f5ab}{SQLLoggerSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_sqlloggersettings_a0c4ae9d968b29b6b4e5f148fd98fd177}{LogInformation}})\ \{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};\ \}}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ var\ threadID\ =\ System.Environment.CurrentManagedThreadId;}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a44f0fd9db1116257087ba59c836e22ea}{InsertLog}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a27f1ae7140528c73a0591095ff9f5bd6}{LogTypes}}.Information,\ threadID,\ logSource,\ dataList);}
+\DoxyCodeLine{00092\ \ \ \ \ \}}
 
 \end{DoxyCode}
 Here is the call graph for this function\+:
@@ -456,21 +558,28 @@ Here is the caller graph for this function\+:
 {\footnotesize\ttfamily \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result}{Log\+Trim\+Result}} Task\+API.\+Services.\+Log\+Service.\+Trim\+Logs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
+
+Removes log entries older than the configured retention period. 
+
+\begin{DoxyReturn}{Returns}
+A Log\+Trim\+Result indicating the success or failure of the log trimming operation.
+\end{DoxyReturn}
+
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00156\ \ \ \ \ \{}
-\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
-\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \_context.Database.SetCommandTimeout(TimeSpan.FromMinutes(2));}
-\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ var\ deletedLogs\ =\ \_context.Database.ExecuteSqlRaw(\textcolor{stringliteral}{"{}DELETE\ FROM\ LogEntries\ WHERE\ Created\ <\ @cutOff"{}},\ \textcolor{keyword}{new}\ SqlParameter(\textcolor{stringliteral}{"{}@cutOff"{}},\ DateTime.Now.AddDays(-\/\_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_af39dc0933cd608b26e7bc4f82951d356}{GeneralSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings_a5cf9e414e04335d15762b8551fac0ab4}{DaysToKeepLogs}})));}
-\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result}{LogTrimResult}}()\ \{\ error\ =\ \textcolor{keyword}{false},\ message\ =\ \$\textcolor{stringliteral}{"{}deleted\ \{deletedLogs\}\ logs"{}}\ \};}
-\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a27f1ae7140528c73a0591095ff9f5bd6ab0d4998a26f5b5742ad38c4af8817e32}{Exception}}\ ex)}
-\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ errMsg\ =\ \$\textcolor{stringliteral}{"{}exception\ trimming\ logs\ on\ task\ api\ \{ex\}"{}};}
-\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a78c9df658858fa3099eed69421423898}{LogException}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.LogService,\ errMsg);}
-\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result}{LogTrimResult}}()\ \{\ error\ =\ \textcolor{keyword}{true},\ message\ =\ errMsg\ \};}
-\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00169\ \ \ \ \ \}}
+\DoxyCodeLine{00197\ \ \ \ \ \{}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \ \ \ \ \_context.Database.SetCommandTimeout(TimeSpan.FromMinutes(2));}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \ \ \ \ var\ deletedLogs\ =\ \_context.Database.ExecuteSqlRaw(\textcolor{stringliteral}{"{}DELETE\ FROM\ LogEntries\ WHERE\ Created\ <\ @cutOff"{}},\ \textcolor{keyword}{new}\ SqlParameter(\textcolor{stringliteral}{"{}@cutOff"{}},\ DateTime.Now.AddDays(-\/\_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_af39dc0933cd608b26e7bc4f82951d356}{GeneralSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings_a5cf9e414e04335d15762b8551fac0ab4}{DaysToKeepLogs}})));}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result}{LogTrimResult}}()\ \{\ error\ =\ \textcolor{keyword}{false},\ message\ =\ \$\textcolor{stringliteral}{"{}deleted\ \{deletedLogs\}\ logs"{}}\ \};}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a27f1ae7140528c73a0591095ff9f5bd6ab0d4998a26f5b5742ad38c4af8817e32}{Exception}}\ ex)}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ errMsg\ =\ \$\textcolor{stringliteral}{"{}exception\ trimming\ logs\ on\ task\ api\ \{ex\}"{}};}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a78c9df658858fa3099eed69421423898}{LogException}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.LogService,\ errMsg);}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result}{LogTrimResult}}()\ \{\ error\ =\ \textcolor{keyword}{true},\ message\ =\ errMsg\ \};}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00210\ \ \ \ \ \}}
 
 \end{DoxyCode}
 Here is the call graph for this function\+:

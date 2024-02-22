@@ -82,12 +82,15 @@ $(function() {
   <div class="headertitle"><div class="title">TaskAPI.Controllers.AinslieApiController Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Handles log trimming and email notifications for Ainslie API.  
+ <a href="#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for TaskAPI.Controllers.AinslieApiController:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_task_a_p_i_1_1_controllers_1_1_ainslie_api_controller__inherit__graph.png" border="0" usemap="#a_task_a_p_i_8_controllers_8_ainslie_api_controller_inherit__map" alt="Inheritance graph"/></div>
 <map name="a_task_a_p_i_8_controllers_8_ainslie_api_controller_inherit__map" id="a_task_a_p_i_8_controllers_8_ainslie_api_controller_inherit__map">
-<area shape="rect" title=" " alt="" coords="5,80,185,123"/>
+<area shape="rect" title="Handles log trimming and email notifications for Ainslie API." alt="" coords="5,80,185,123"/>
 <area shape="rect" title=" " alt="" coords="42,5,148,32"/>
 <area shape="poly" title=" " alt="" coords="98,48,98,80,92,80,92,48"/>
 </map>
@@ -97,7 +100,7 @@ Collaboration diagram for TaskAPI.Controllers.AinslieApiController:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_task_a_p_i_1_1_controllers_1_1_ainslie_api_controller__coll__graph.png" border="0" usemap="#a_task_a_p_i_8_controllers_8_ainslie_api_controller_coll__map" alt="Collaboration graph"/></div>
 <map name="a_task_a_p_i_8_controllers_8_ainslie_api_controller_coll__map" id="a_task_a_p_i_8_controllers_8_ainslie_api_controller_coll__map">
-<area shape="rect" title=" " alt="" coords="5,80,185,123"/>
+<area shape="rect" title="Handles log trimming and email notifications for Ainslie API." alt="" coords="5,80,185,123"/>
 <area shape="rect" title=" " alt="" coords="42,5,148,32"/>
 <area shape="poly" title=" " alt="" coords="98,48,98,80,92,80,92,48"/>
 </map>
@@ -106,11 +109,15 @@ Collaboration diagram for TaskAPI.Controllers.AinslieApiController:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a5659b2ee9b31de60fd642ab0e61a0f75" id="r_a5659b2ee9b31de60fd642ab0e61a0f75"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5659b2ee9b31de60fd642ab0e61a0f75">AinslieApiController</a> (<a class="el" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a> logService, <a class="el" href="class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service.html">InternalAPIService</a> internalAPIService, IOptions&lt; <a class="el" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html">TaskAPISettings</a> &gt; settings)</td></tr>
+<tr class="memdesc:a5659b2ee9b31de60fd642ab0e61a0f75"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialises a new instance of the AinslieApiController class.  <br /></td></tr>
 <tr class="separator:a5659b2ee9b31de60fd642ab0e61a0f75"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6b53c8ff5898ee660ce3eec1d8e9d13e" id="r_a6b53c8ff5898ee660ce3eec1d8e9d13e"><td class="memItemLeft" align="right" valign="top">ActionResult&lt; <a class="el" href="class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result.html">LogTrimResult</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6b53c8ff5898ee660ce3eec1d8e9d13e">TrimLogs</a> ()</td></tr>
+<tr class="memdesc:a6b53c8ff5898ee660ce3eec1d8e9d13e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Trims logs for Ainslie API based on predefined criteria.  <br /></td></tr>
 <tr class="separator:a6b53c8ff5898ee660ce3eec1d8e9d13e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Handles log trimming and email notifications for Ainslie API. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a5659b2ee9b31de60fd642ab0e61a0f75" name="a5659b2ee9b31de60fd642ab0e61a0f75"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5659b2ee9b31de60fd642ab0e61a0f75">&#9670;&#160;</a></span>AinslieApiController()</h2>
 
@@ -134,11 +141,21 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   25</span>    {</div>
-<div class="line"><span class="lineno">   26</span>        _logService = logService;</div>
-<div class="line"><span class="lineno">   27</span>        _iapiService = internalAPIService;</div>
-<div class="line"><span class="lineno">   28</span>        _settings = settings.Value;</div>
-<div class="line"><span class="lineno">   29</span>    }</div>
+
+<p>Initialises a new instance of the AinslieApiController class. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">logService</td><td>The logging service.</td></tr>
+    <tr><td class="paramname">internalAPIService</td><td>The internal API service.</td></tr>
+    <tr><td class="paramname">settings</td><td>The application settings.</td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="fragment"><div class="line"><span class="lineno">   34</span>    {</div>
+<div class="line"><span class="lineno">   35</span>        _logService = logService;</div>
+<div class="line"><span class="lineno">   36</span>        _iapiService = internalAPIService;</div>
+<div class="line"><span class="lineno">   37</span>        _settings = settings.Value;</div>
+<div class="line"><span class="lineno">   38</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -157,24 +174,28 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   33</span>    {</div>
-<div class="line"><span class="lineno">   34</span>        _logService.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a5c2a67dbd8beb6f821c46b8d052d59ea">LogInformation</a>(<a class="code hl_class" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">LogSources</a>.AinslieApiController, <span class="stringliteral">&quot;ainslie api log trim initiated&quot;</span>);</div>
-<div class="line"><span class="lineno">   35</span>        <a class="code hl_class" href="class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result.html">LogTrimResult</a> result = _iapiService.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service.html#a8a31c4c8d5371ef13d5ab0da08186829">AinslieApiTrimLogs</a>();</div>
-<div class="line"><span class="lineno">   36</span>        <span class="keywordflow">if</span> (result.<a class="code hl_property" href="class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result.html#ac0dcb80f3d1f49fc0fdc79aca9faf210">error</a>)</div>
-<div class="line"><span class="lineno">   37</span>        {</div>
-<div class="line"><span class="lineno">   38</span>            _iapiService.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service.html#aeffeb1d3d59aeeab65dfe72691d21600">SendEmail</a>(<span class="keyword">new</span> <a class="code hl_class" href="class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_email_post.html">EmailPost</a>()</div>
-<div class="line"><span class="lineno">   39</span>            {</div>
-<div class="line"><span class="lineno">   40</span>                EmailFrom = _settings.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#af39dc0933cd608b26e7bc4f82951d356">GeneralSettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings.html#ac0a0b89d2e7cf7f820e5663a1a4cffbf">NotificationEmailFrom</a>,</div>
-<div class="line"><span class="lineno">   41</span>                EmailTo = _settings.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#af39dc0933cd608b26e7bc4f82951d356">GeneralSettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings.html#a25434a5471214771ae507f7152073898">NotificationEmailTo</a>,</div>
-<div class="line"><span class="lineno">   42</span>                NameFrom = _settings.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#af39dc0933cd608b26e7bc4f82951d356">GeneralSettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings.html#a082a8e92b97a7d83196f1d0056241042">NotificationEmailName</a>,</div>
-<div class="line"><span class="lineno">   43</span>                Subject = <span class="stringliteral">&quot;Error trimming ainslie api logs&quot;</span>,</div>
-<div class="line"><span class="lineno">   44</span>                HTMLBody = $<span class="stringliteral">&quot;Task API was unable to trim ainslie api logs&lt;br&gt;&lt;br&gt;{JsonConvert.SerializeObject(result)}&quot;</span></div>
-<div class="line"><span class="lineno">   45</span>            });</div>
-<div class="line"><span class="lineno">   46</span>        }</div>
-<div class="line"><span class="lineno">   47</span> </div>
-<div class="line"><span class="lineno">   48</span>        _logService.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a5c2a67dbd8beb6f821c46b8d052d59ea">LogInformation</a>(<a class="code hl_class" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">LogSources</a>.AinslieApiController, $<span class="stringliteral">&quot;ainslie api log trim completed&quot;</span>, result);</div>
-<div class="line"><span class="lineno">   49</span>        <span class="keywordflow">return</span> Ok(result);</div>
-<div class="line"><span class="lineno">   50</span>    }</div>
+
+<p>Trims logs for Ainslie API based on predefined criteria. </p>
+<p>This method initiates the log trimming process for Ainslie API and handles any errors that occur during the process. </p>
+<dl class="section return"><dt>Returns</dt><dd>An ActionResult&lt;T&gt; containing the result of the log trimming operation.</dd></dl>
+<div class="fragment"><div class="line"><span class="lineno">   49</span>    {</div>
+<div class="line"><span class="lineno">   50</span>        _logService.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a5c2a67dbd8beb6f821c46b8d052d59ea">LogInformation</a>(<a class="code hl_class" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">LogSources</a>.AinslieApiController, <span class="stringliteral">&quot;ainslie api log trim initiated&quot;</span>);</div>
+<div class="line"><span class="lineno">   51</span>        <a class="code hl_class" href="class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result.html">LogTrimResult</a> result = _iapiService.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service.html#a8a31c4c8d5371ef13d5ab0da08186829">AinslieApiTrimLogs</a>();</div>
+<div class="line"><span class="lineno">   52</span>        <span class="keywordflow">if</span> (result.<a class="code hl_property" href="class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result.html#ac0dcb80f3d1f49fc0fdc79aca9faf210">error</a>)</div>
+<div class="line"><span class="lineno">   53</span>        {</div>
+<div class="line"><span class="lineno">   54</span>            _iapiService.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service.html#aeffeb1d3d59aeeab65dfe72691d21600">SendEmail</a>(<span class="keyword">new</span> <a class="code hl_class" href="class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_email_post.html">EmailPost</a>()</div>
+<div class="line"><span class="lineno">   55</span>            {</div>
+<div class="line"><span class="lineno">   56</span>                EmailFrom = _settings.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#af39dc0933cd608b26e7bc4f82951d356">GeneralSettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings.html#ac0a0b89d2e7cf7f820e5663a1a4cffbf">NotificationEmailFrom</a>,</div>
+<div class="line"><span class="lineno">   57</span>                EmailTo = _settings.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#af39dc0933cd608b26e7bc4f82951d356">GeneralSettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings.html#a25434a5471214771ae507f7152073898">NotificationEmailTo</a>,</div>
+<div class="line"><span class="lineno">   58</span>                NameFrom = _settings.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#af39dc0933cd608b26e7bc4f82951d356">GeneralSettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings.html#a082a8e92b97a7d83196f1d0056241042">NotificationEmailName</a>,</div>
+<div class="line"><span class="lineno">   59</span>                Subject = <span class="stringliteral">&quot;Error trimming ainslie api logs&quot;</span>,</div>
+<div class="line"><span class="lineno">   60</span>                HTMLBody = $<span class="stringliteral">&quot;Task API was unable to trim ainslie api logs&lt;br&gt;&lt;br&gt;{JsonConvert.SerializeObject(result)}&quot;</span></div>
+<div class="line"><span class="lineno">   61</span>            });</div>
+<div class="line"><span class="lineno">   62</span>        }</div>
+<div class="line"><span class="lineno">   63</span> </div>
+<div class="line"><span class="lineno">   64</span>        _logService.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a5c2a67dbd8beb6f821c46b8d052d59ea">LogInformation</a>(<a class="code hl_class" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">LogSources</a>.AinslieApiController, $<span class="stringliteral">&quot;ainslie api log trim completed&quot;</span>, result);</div>
+<div class="line"><span class="lineno">   65</span>        <span class="keywordflow">return</span> Ok(result);</div>
+<div class="line"><span class="lineno">   66</span>    }</div>
 <div class="ttc" id="aclass_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings_html_a082a8e92b97a7d83196f1d0056241042"><div class="ttname"><a href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings.html#a082a8e92b97a7d83196f1d0056241042">TaskAPI.Helpers.Settings.TaskAPISettings.Generalsettings.NotificationEmailName</a></div><div class="ttdeci">string NotificationEmailName</div><div class="ttdef"><b>Definition</b> TaskAPISettings.cs:18</div></div>
 <div class="ttc" id="aclass_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings_html_a25434a5471214771ae507f7152073898"><div class="ttname"><a href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings.html#a25434a5471214771ae507f7152073898">TaskAPI.Helpers.Settings.TaskAPISettings.Generalsettings.NotificationEmailTo</a></div><div class="ttdeci">string NotificationEmailTo</div><div class="ttdef"><b>Definition</b> TaskAPISettings.cs:20</div></div>
 <div class="ttc" id="aclass_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings_html_ac0a0b89d2e7cf7f820e5663a1a4cffbf"><div class="ttname"><a href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings.html#ac0a0b89d2e7cf7f820e5663a1a4cffbf">TaskAPI.Helpers.Settings.TaskAPISettings.Generalsettings.NotificationEmailFrom</a></div><div class="ttdeci">string NotificationEmailFrom</div><div class="ttdef"><b>Definition</b> TaskAPISettings.cs:19</div></div>
@@ -182,28 +203,28 @@ Public Member Functions</h2></td></tr>
 <div class="ttc" id="aclass_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_email_post_html"><div class="ttname"><a href="class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_email_post.html">TaskAPI.Models.DTO.InternalAPI.EmailPost</a></div><div class="ttdef"><b>Definition</b> InternalAPI.cs:4</div></div>
 <div class="ttc" id="aclass_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result_html"><div class="ttname"><a href="class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result.html">TaskAPI.Models.DTO.LogTrimResult</a></div><div class="ttdef"><b>Definition</b> LogTrimResult.cs:4</div></div>
 <div class="ttc" id="aclass_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result_html_ac0dcb80f3d1f49fc0fdc79aca9faf210"><div class="ttname"><a href="class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result.html#ac0dcb80f3d1f49fc0fdc79aca9faf210">TaskAPI.Models.DTO.LogTrimResult.error</a></div><div class="ttdeci">bool error</div><div class="ttdef"><b>Definition</b> LogTrimResult.cs:5</div></div>
-<div class="ttc" id="aclass_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_html_a8a31c4c8d5371ef13d5ab0da08186829"><div class="ttname"><a href="class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service.html#a8a31c4c8d5371ef13d5ab0da08186829">TaskAPI.Services.InternalAPIService.AinslieApiTrimLogs</a></div><div class="ttdeci">LogTrimResult AinslieApiTrimLogs()</div><div class="ttdef"><b>Definition</b> InternalAPIService.cs:203</div></div>
-<div class="ttc" id="aclass_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_html_aeffeb1d3d59aeeab65dfe72691d21600"><div class="ttname"><a href="class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service.html#aeffeb1d3d59aeeab65dfe72691d21600">TaskAPI.Services.InternalAPIService.SendEmail</a></div><div class="ttdeci">bool SendEmail(EmailPost email)</div><div class="ttdef"><b>Definition</b> InternalAPIService.cs:32</div></div>
-<div class="ttc" id="aclass_task_a_p_i_1_1_services_1_1_log_service_html"><div class="ttname"><a href="class_task_a_p_i_1_1_services_1_1_log_service.html">TaskAPI.Services.LogService</a></div><div class="ttdef"><b>Definition</b> LogService.cs:24</div></div>
-<div class="ttc" id="aclass_task_a_p_i_1_1_services_1_1_log_service_html_a5c2a67dbd8beb6f821c46b8d052d59ea"><div class="ttname"><a href="class_task_a_p_i_1_1_services_1_1_log_service.html#a5c2a67dbd8beb6f821c46b8d052d59ea">TaskAPI.Services.LogService.LogInformation</a></div><div class="ttdeci">LogEntry LogInformation(LogSources logSource, params object[] dataList)</div><div class="ttdef"><b>Definition</b> LogService.cs:67</div></div>
-<div class="ttc" id="aclass_task_a_p_i_1_1_services_1_1_log_service_html_ac2b08e94307168cb702773d148d166ba"><div class="ttname"><a href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">TaskAPI.Services.LogService.LogSources</a></div><div class="ttdeci">LogSources</div><div class="ttdef"><b>Definition</b> LogService.cs:34</div></div>
+<div class="ttc" id="aclass_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_html_a8a31c4c8d5371ef13d5ab0da08186829"><div class="ttname"><a href="class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service.html#a8a31c4c8d5371ef13d5ab0da08186829">TaskAPI.Services.InternalAPIService.AinslieApiTrimLogs</a></div><div class="ttdeci">LogTrimResult AinslieApiTrimLogs()</div><div class="ttdoc">Initiates a log trimming operation for Ainslie API logs via Internal API.</div><div class="ttdef"><b>Definition</b> InternalAPIService.cs:245</div></div>
+<div class="ttc" id="aclass_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_html_aeffeb1d3d59aeeab65dfe72691d21600"><div class="ttname"><a href="class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service.html#aeffeb1d3d59aeeab65dfe72691d21600">TaskAPI.Services.InternalAPIService.SendEmail</a></div><div class="ttdeci">bool SendEmail(EmailPost email)</div><div class="ttdoc">Sends an email using Internal API's email endpoint.</div><div class="ttdef"><b>Definition</b> InternalAPIService.cs:45</div></div>
+<div class="ttc" id="aclass_task_a_p_i_1_1_services_1_1_log_service_html"><div class="ttname"><a href="class_task_a_p_i_1_1_services_1_1_log_service.html">TaskAPI.Services.LogService</a></div><div class="ttdoc">Provides logging services for various levels of application events, including debug,...</div><div class="ttdef"><b>Definition</b> LogService.cs:27</div></div>
+<div class="ttc" id="aclass_task_a_p_i_1_1_services_1_1_log_service_html_a5c2a67dbd8beb6f821c46b8d052d59ea"><div class="ttname"><a href="class_task_a_p_i_1_1_services_1_1_log_service.html#a5c2a67dbd8beb6f821c46b8d052d59ea">TaskAPI.Services.LogService.LogInformation</a></div><div class="ttdeci">LogEntry LogInformation(LogSources logSource, params object[] dataList)</div><div class="ttdoc">Logs an informational message to the database.</div><div class="ttdef"><b>Definition</b> LogService.cs:87</div></div>
+<div class="ttc" id="aclass_task_a_p_i_1_1_services_1_1_log_service_html_ac2b08e94307168cb702773d148d166ba"><div class="ttname"><a href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">TaskAPI.Services.LogService.LogSources</a></div><div class="ttdeci">LogSources</div><div class="ttdef"><b>Definition</b> LogService.cs:37</div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_task_a_p_i_1_1_controllers_1_1_ainslie_api_controller_a6b53c8ff5898ee660ce3eec1d8e9d13e_cgraph.png" border="0" usemap="#aclass_task_a_p_i_1_1_controllers_1_1_ainslie_api_controller_a6b53c8ff5898ee660ce3eec1d8e9d13e_cgraph" alt=""/></div>
 <map name="aclass_task_a_p_i_1_1_controllers_1_1_ainslie_api_controller_a6b53c8ff5898ee660ce3eec1d8e9d13e_cgraph" id="aclass_task_a_p_i_1_1_controllers_1_1_ainslie_api_controller_a6b53c8ff5898ee660ce3eec1d8e9d13e_cgraph">
-<area shape="rect" title=" " alt="" coords="5,72,185,115"/>
-<area shape="rect" href="class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service.html#a8a31c4c8d5371ef13d5ab0da08186829" title=" " alt="" coords="233,72,432,115"/>
+<area shape="rect" title="Trims logs for Ainslie API based on predefined criteria." alt="" coords="5,72,185,115"/>
+<area shape="rect" href="class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service.html#a8a31c4c8d5371ef13d5ab0da08186829" title="Initiates a log trimming operation for Ainslie API logs via Internal API." alt="" coords="233,72,432,115"/>
 <area shape="poly" title=" " alt="" coords="185,91,217,91,217,96,185,96"/>
-<area shape="rect" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a5c2a67dbd8beb6f821c46b8d052d59ea" title=" " alt="" coords="480,139,674,181"/>
+<area shape="rect" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a5c2a67dbd8beb6f821c46b8d052d59ea" title="Logs an informational message to the database." alt="" coords="480,139,674,181"/>
 <area shape="poly" title=" " alt="" coords="178,113,233,124,353,140,465,151,464,156,352,146,232,129,177,118"/>
-<area shape="rect" href="class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service.html#aeffeb1d3d59aeeab65dfe72691d21600" title=" " alt="" coords="248,5,417,48"/>
+<area shape="rect" href="class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service.html#aeffeb1d3d59aeeab65dfe72691d21600" title="Sends an email using Internal API&#39;s email endpoint." alt="" coords="248,5,417,48"/>
 <area shape="poly" title=" " alt="" coords="172,69,239,50,240,55,174,74"/>
-<area shape="rect" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a46dc9bf58bc9605c7e17dfee38b94354" title=" " alt="" coords="480,72,674,115"/>
+<area shape="rect" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a46dc9bf58bc9605c7e17dfee38b94354" title="Logs an error message to the database." alt="" coords="480,72,674,115"/>
 <area shape="poly" title=" " alt="" coords="433,91,465,91,465,96,433,96"/>
-<area shape="rect" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a78c9df658858fa3099eed69421423898" title=" " alt="" coords="480,5,674,48"/>
+<area shape="rect" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a78c9df658858fa3099eed69421423898" title="Logs an exception to the database." alt="" coords="480,5,674,48"/>
 <area shape="poly" title=" " alt="" coords="413,69,481,50,482,55,414,74"/>
-<area shape="rect" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a44f0fd9db1116257087ba59c836e22ea" title="inserts log to database" alt="" coords="722,72,917,115"/>
+<area shape="rect" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a44f0fd9db1116257087ba59c836e22ea" title="Directly inserts a log entry into the database." alt="" coords="722,72,917,115"/>
 <area shape="poly" title=" " alt="" coords="675,91,707,91,707,96,675,96"/>
 <area shape="poly" title=" " alt="" coords="658,46,725,65,724,70,656,51"/>
 <area shape="poly" title=" " alt="" coords="656,136,724,117,725,122,658,141"/>
