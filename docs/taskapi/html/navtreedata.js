@@ -26,8 +26,8 @@ var NAVTREE =
 [
   [ "TaskAPI", "index.html", [
     [ "TaskAPI Documentation", "index.html", null ],
-    [ "Packages", "namespaces.html", [
-      [ "Package List", "namespaces.html", "namespaces_dup" ]
+    [ "Namespaces", "namespaces.html", [
+      [ "Namespace List", "namespaces.html", "namespaces_dup" ]
     ] ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
