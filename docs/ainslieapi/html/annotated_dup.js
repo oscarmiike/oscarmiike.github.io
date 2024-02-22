@@ -102,10 +102,6 @@ var annotated_dup =
         [ "LogService", "class_ainslie_a_p_i_1_1_services_1_1_log_service.html", "class_ainslie_a_p_i_1_1_services_1_1_log_service" ]
       ] ]
     ] ],
-    [ "flatted", "namespaceflatted.html", [
-      [ "_Known", "classflatted_1_1___known.html", "classflatted_1_1___known" ],
-      [ "_String", "classflatted_1_1___string.html", "classflatted_1_1___string" ]
-    ] ],
     [ "InternalAPI", "namespace_internal_a_p_i.html", [
       [ "Dto", "namespace_internal_a_p_i_1_1_dto.html", [
         [ "Netsuite", "namespace_internal_a_p_i_1_1_dto_1_1_netsuite.html", [
@@ -116,8 +112,5 @@ var annotated_dup =
         ] ]
       ] ]
     ] ],
-    [ "AccountController", "class_account_controller.html", "class_account_controller" ],
-    [ "fixes", "classfixes.html", null ],
-    [ "Flatted", "class_flatted.html", "class_flatted" ],
-    [ "FlattedString", "class_flatted_string.html", "class_flatted_string" ]
+    [ "AccountController", "class_account_controller.html", "class_account_controller" ]
 ];

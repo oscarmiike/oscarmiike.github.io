@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['fixes_0',['fixes',['../classfixes.html',1,'']]],
-  ['flatted_1',['Flatted',['../class_flatted.html',1,'']]],
-  ['flattedstring_2',['FlattedString',['../class_flatted_string.html',1,'']]]
+  ['homecontroller_0',['HomeController',['../class_ainslie_a_p_i_1_1_controllers_1_1_home_controller.html',1,'AinslieAPI::Controllers']]]
 ];

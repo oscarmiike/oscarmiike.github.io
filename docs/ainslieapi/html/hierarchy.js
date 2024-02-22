@@ -1,7 +1,5 @@
 var hierarchy =
 [
-    [ "flatted._Known", "classflatted_1_1___known.html", null ],
-    [ "flatted._String", "classflatted_1_1___string.html", null ],
     [ "InternalAPI.Dto.Netsuite.AddressBook", "class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_address_book.html", null ],
     [ "InternalAPI.Dto.Netsuite.AddressBookAddress", "class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_address_book_address.html", null ],
     [ "InternalAPI.Dto.Netsuite.AddressBookItem", "class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_address_book_item.html", null ],
@@ -41,9 +39,6 @@ var hierarchy =
     ] ],
     [ "AinslieAPI.DTO.InternalApi.EmailPost", "class_ainslie_a_p_i_1_1_d_t_o_1_1_internal_api_1_1_email_post.html", null ],
     [ "AinslieAPI.Helpers.EnumsHelper", "class_ainslie_a_p_i_1_1_helpers_1_1_enums_helper.html", null ],
-    [ "fixes", "classfixes.html", null ],
-    [ "Flatted", "class_flatted.html", null ],
-    [ "FlattedString", "class_flatted_string.html", null ],
     [ "AinslieAPI.Helpers.GeneralSettings", "class_ainslie_a_p_i_1_1_helpers_1_1_general_settings.html", null ],
     [ "AinslieAPI.DTO.GreenId.GreenIdCustomer", "class_ainslie_a_p_i_1_1_d_t_o_1_1_green_id_1_1_green_id_customer.html", null ],
     [ "AinslieAPI.DTO.GSS.GSSAsset", "class_ainslie_a_p_i_1_1_d_t_o_1_1_g_s_s_1_1_g_s_s_asset.html", null ],

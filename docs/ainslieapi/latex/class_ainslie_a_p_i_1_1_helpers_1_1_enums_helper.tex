@@ -151,7 +151,7 @@ Matches the enum value whose Description\+Attribute matches the provided descrip
 \DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!enumType.IsEnum)}
 \DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
 \DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ FieldInfo[]\ fields\ =\ enumType.GetFields();}
-\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ field\ =\ fields.SelectMany(f\ =>\ f.GetCustomAttributes(typeof(DescriptionAttribute),\ \textcolor{keyword}{false}),\ (f,\ a)\ =>\ \textcolor{keyword}{new}\ \{\ Field\ =\ f,\ Att\ =\ \mbox{\hyperlink{namespacetest_a3ecd241c6e69707ba8433fcfae04e00c}{a}}\ \}).Where(a\ =>\ ((DescriptionAttribute)\mbox{\hyperlink{namespacetest_a3ecd241c6e69707ba8433fcfae04e00c}{a}}.Att).Description\ ==\ description).SingleOrDefault();}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ field\ =\ fields.SelectMany(f\ =>\ f.GetCustomAttributes(typeof(DescriptionAttribute),\ \textcolor{keyword}{false}),\ (f,\ a)\ =>\ \textcolor{keyword}{new}\ \{\ Field\ =\ f,\ Att\ =\ a\ \}).Where(a\ =>\ ((DescriptionAttribute)a.Att).Description\ ==\ description).SingleOrDefault();}
 \DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (Enum)(field\ is\ \textcolor{keyword}{null}\ ?\ (object)\textcolor{keyword}{null}\ :\ Enum.Parse(enumType,\ field.Field.Name));}
 \DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}

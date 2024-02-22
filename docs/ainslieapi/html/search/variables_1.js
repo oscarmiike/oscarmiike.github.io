@@ -1,13 +1,4 @@
 var searchData=
 [
-  ['_5fappsettings_0',['_appSettings',['../class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils.html#a333f092396187a69fca19240e7b651bd',1,'AinslieAPI.Authentication.JwtUtils._appSettings'],['../class_ainslie_a_p_i_1_1_controllers_1_1_logs_controller.html#ab4390ef81597bce8fe0c699dd4ca00b2',1,'AinslieAPI.Controllers.LogsController._appSettings'],['../class_ainslie_a_p_i_1_1_controllers_1_1_token_controller.html#a6a714c364f26b591371252c578ece2f2',1,'AinslieAPI.Controllers.TokenController._appSettings'],['../class_ainslie_a_p_i_1_1_helpers_1_1_netsuite_helper.html#a5d46fe7f63e90722fe7e4965118611d6',1,'AinslieAPI.Helpers.NetsuiteHelper._appSettings']]],
-  ['_5fcontext_1',['_context',['../class_ainslie_a_p_i_1_1_controllers_1_1_logs_controller.html#a8884cc5e94cd4c049cda42e509ff1eac',1,'AinslieAPI.Controllers.LogsController._context'],['../class_ainslie_a_p_i_1_1_services_1_1_log_service.html#ad043c16a8ac7c14674752735ccd8d0ae',1,'AinslieAPI.Services.LogService._context']]],
-  ['_5fiapiservice_2',['_iapiService',['../class_ainslie_a_p_i_1_1_controllers_1_1_logs_controller.html#a9b78eef175f533c6050f842b84a78dfe',1,'AinslieAPI::Controllers::LogsController']]],
-  ['_5fiaservice_3',['_iaService',['../class_ainslie_a_p_i_1_1_helpers_1_1_netsuite_helper.html#a842eb7d7980a8e6ec0fa1962c07f4545',1,'AinslieAPI::Helpers::NetsuiteHelper']]],
-  ['_5fjwtutils_4',['_jwtUtils',['../class_ainslie_a_p_i_1_1_controllers_1_1_logs_controller.html#a3ff4f2e29cc11437d9ada1b879cb37ff',1,'AinslieAPI.Controllers.LogsController._jwtUtils'],['../class_ainslie_a_p_i_1_1_controllers_1_1_token_controller.html#a3c3200807e7f5c042f5b7eea42a9a502',1,'AinslieAPI.Controllers.TokenController._jwtUtils']]],
-  ['_5flogservice_5',['_logService',['../class_ainslie_a_p_i_1_1_controllers_1_1_logs_controller.html#a98fabaeb72c680148f8d5f9e4c463656',1,'AinslieAPI::Controllers::LogsController']]],
-  ['_5fnext_6',['_next',['../class_ainslie_a_p_i_1_1_authentication_1_1_jwt_middleware.html#a677ee94d5751ccc2590b2e23d25a5bae',1,'AinslieAPI::Authentication::JwtMiddleware']]],
-  ['_5fprovider_7',['_provider',['../class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils.html#ab04d093db9df18cbd4e2eee6c4fbf8c5',1,'AinslieAPI::Authentication::JwtUtils']]],
-  ['_5frequiredroles_8',['_requiredRoles',['../class_ainslie_a_p_i_1_1_authentication_1_1_authorization_1_1_api_authorize_attribute.html#adee859b03894000e15df721af1fcf07b',1,'AinslieAPI::Authentication::Authorization::ApiAuthorizeAttribute']]],
-  ['_5fsettings_9',['_settings',['../class_ainslie_a_p_i_1_1_services_1_1_log_service.html#a39b15a45ee8b3ad77eaab2d3607cb894',1,'AinslieAPI::Services::LogService']]]
+  ['app_0',['app',['../_program_8cs.html#a7b225fcb720e4d5ed2bbf60e28a25e6d',1,'Program.cs']]]
 ];

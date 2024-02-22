@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['jwtuser_0',['JwtUser',['../class_ainslie_a_p_i_1_1_controllers_1_1_assets_controller.html#a336665b7112ab225d8e38b497e05831b',1,'AinslieAPI.Controllers.AssetsController.JwtUser'],['../class_ainslie_a_p_i_1_1_controllers_1_1_auth_test_controller.html#ab27647fc6a6ce01da9d45822e31f7e14',1,'AinslieAPI.Controllers.AuthTestController.JwtUser'],['../class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller.html#a7114721dd614937f38ea1757206cc31e',1,'AinslieAPI.Controllers.GSS.TdcrController.JwtUser'],['../class_ainslie_a_p_i_1_1_controllers_1_1_products_controller.html#a542f95009f56933c5b848fb81017d01f',1,'AinslieAPI.Controllers.ProductsController.JwtUser']]]
+  ['padlock_5fassetprice_0',['Padlock_AssetPrice',['../class_ainslie_a_p_i_1_1_helpers_1_1_cache_data_helper.html#af215c1b74a1837f05b2e733361861481',1,'AinslieAPI::Helpers::CacheDataHelper']]],
+  ['padlock_5fgsspricing_1',['Padlock_GSSPricing',['../class_ainslie_a_p_i_1_1_helpers_1_1_cache_data_helper.html#abea5eb18c30e2ea26c679f004d295209',1,'AinslieAPI::Helpers::CacheDataHelper']]],
+  ['padlock_5fproductprice_2',['Padlock_ProductPrice',['../class_ainslie_a_p_i_1_1_helpers_1_1_cache_data_helper.html#a755d53f22be21477d7cee6a5f2d001ec',1,'AinslieAPI::Helpers::CacheDataHelper']]]
 ];

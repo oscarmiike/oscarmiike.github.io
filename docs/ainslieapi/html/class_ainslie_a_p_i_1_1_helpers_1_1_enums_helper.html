@@ -279,7 +279,7 @@ Static Public Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">  122</span>                <span class="keywordflow">if</span> (!enumType.IsEnum)</div>
 <div class="line"><span class="lineno">  123</span>                    <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
 <div class="line"><span class="lineno">  124</span>                FieldInfo[] fields = enumType.GetFields();</div>
-<div class="line"><span class="lineno">  125</span>                var field = fields.SelectMany(f =&gt; f.GetCustomAttributes(typeof(DescriptionAttribute), <span class="keyword">false</span>), (f, a) =&gt; <span class="keyword">new</span> { Field = f, Att = <a class="code hl_variable" href="namespacetest.html#a3ecd241c6e69707ba8433fcfae04e00c">a</a> }).Where(a =&gt; ((DescriptionAttribute)<a class="code hl_variable" href="namespacetest.html#a3ecd241c6e69707ba8433fcfae04e00c">a</a>.Att).Description == description).SingleOrDefault();</div>
+<div class="line"><span class="lineno">  125</span>                var field = fields.SelectMany(f =&gt; f.GetCustomAttributes(typeof(DescriptionAttribute), <span class="keyword">false</span>), (f, a) =&gt; <span class="keyword">new</span> { Field = f, Att = a }).Where(a =&gt; ((DescriptionAttribute)a.Att).Description == description).SingleOrDefault();</div>
 <div class="line"><span class="lineno">  126</span>                <span class="keywordflow">return</span> (Enum)(field is <span class="keyword">null</span> ? (object)<span class="keyword">null</span> : Enum.Parse(enumType, field.Field.Name));</div>
 <div class="line"><span class="lineno">  127</span>            }</div>
 <div class="line"><span class="lineno">  128</span>            <span class="keywordflow">catch</span> (Exception ex)</div>
@@ -287,7 +287,6 @@ Static Public Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">  130</span>                <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
 <div class="line"><span class="lineno">  131</span>            }</div>
 <div class="line"><span class="lineno">  132</span>        }</div>
-<div class="ttc" id="anamespacetest_html_a3ecd241c6e69707ba8433fcfae04e00c"><div class="ttname"><a href="namespacetest.html#a3ecd241c6e69707ba8433fcfae04e00c">test.a</a></div><div class="ttdeci">list a</div><div class="ttdef"><b>Definition</b> test.py:8</div></div>
 </div><!-- fragment -->
 </div>
 </div>

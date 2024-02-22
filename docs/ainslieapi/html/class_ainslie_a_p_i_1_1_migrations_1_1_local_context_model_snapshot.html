@@ -147,37 +147,36 @@ Protected Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">   24</span> </div>
 <div class="line"><span class="lineno">   25</span>            modelBuilder.Entity(<span class="stringliteral">&quot;AinslieAPI.Data.Models.LogEntry&quot;</span>, b =&gt;</div>
 <div class="line"><span class="lineno">   26</span>                {</div>
-<div class="line"><span class="lineno">   27</span>                    <a class="code hl_variable" href="namespacetest.html#a0f45e01f998f32bf815adc0cbe886405">b</a>.Property&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;ID&quot;</span>)</div>
+<div class="line"><span class="lineno">   27</span>                    b.Property&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;ID&quot;</span>)</div>
 <div class="line"><span class="lineno">   28</span>                        .ValueGeneratedOnAdd()</div>
 <div class="line"><span class="lineno">   29</span>                        .HasColumnType(<span class="stringliteral">&quot;int&quot;</span>);</div>
 <div class="line"><span class="lineno">   30</span> </div>
-<div class="line"><span class="lineno">   31</span>                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(<a class="code hl_variable" href="namespacetest.html#a0f45e01f998f32bf815adc0cbe886405">b</a>.Property&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;ID&quot;</span>));</div>
+<div class="line"><span class="lineno">   31</span>                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;ID&quot;</span>));</div>
 <div class="line"><span class="lineno">   32</span> </div>
-<div class="line"><span class="lineno">   33</span>                    <a class="code hl_variable" href="namespacetest.html#a0f45e01f998f32bf815adc0cbe886405">b</a>.Property&lt;DateTime&gt;(<span class="stringliteral">&quot;Created&quot;</span>)</div>
+<div class="line"><span class="lineno">   33</span>                    b.Property&lt;DateTime&gt;(<span class="stringliteral">&quot;Created&quot;</span>)</div>
 <div class="line"><span class="lineno">   34</span>                        .HasColumnType(<span class="stringliteral">&quot;DateTime2(3)&quot;</span>);</div>
 <div class="line"><span class="lineno">   35</span> </div>
-<div class="line"><span class="lineno">   36</span>                    <a class="code hl_variable" href="namespacetest.html#a0f45e01f998f32bf815adc0cbe886405">b</a>.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;Data&quot;</span>)</div>
+<div class="line"><span class="lineno">   36</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;Data&quot;</span>)</div>
 <div class="line"><span class="lineno">   37</span>                        .IsRequired()</div>
 <div class="line"><span class="lineno">   38</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(max)&quot;</span>);</div>
 <div class="line"><span class="lineno">   39</span> </div>
-<div class="line"><span class="lineno">   40</span>                    <a class="code hl_variable" href="namespacetest.html#a0f45e01f998f32bf815adc0cbe886405">b</a>.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;Source&quot;</span>)</div>
+<div class="line"><span class="lineno">   40</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;Source&quot;</span>)</div>
 <div class="line"><span class="lineno">   41</span>                        .IsRequired()</div>
 <div class="line"><span class="lineno">   42</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(max)&quot;</span>);</div>
 <div class="line"><span class="lineno">   43</span> </div>
-<div class="line"><span class="lineno">   44</span>                    <a class="code hl_variable" href="namespacetest.html#a0f45e01f998f32bf815adc0cbe886405">b</a>.Property&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;ThreadID&quot;</span>)</div>
+<div class="line"><span class="lineno">   44</span>                    b.Property&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;ThreadID&quot;</span>)</div>
 <div class="line"><span class="lineno">   45</span>                        .HasColumnType(<span class="stringliteral">&quot;int&quot;</span>);</div>
 <div class="line"><span class="lineno">   46</span> </div>
-<div class="line"><span class="lineno">   47</span>                    <a class="code hl_variable" href="namespacetest.html#a0f45e01f998f32bf815adc0cbe886405">b</a>.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;Type&quot;</span>)</div>
+<div class="line"><span class="lineno">   47</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;Type&quot;</span>)</div>
 <div class="line"><span class="lineno">   48</span>                        .IsRequired()</div>
 <div class="line"><span class="lineno">   49</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(max)&quot;</span>);</div>
 <div class="line"><span class="lineno">   50</span> </div>
-<div class="line"><span class="lineno">   51</span>                    <a class="code hl_variable" href="namespacetest.html#a0f45e01f998f32bf815adc0cbe886405">b</a>.HasKey(<span class="stringliteral">&quot;ID&quot;</span>);</div>
+<div class="line"><span class="lineno">   51</span>                    b.HasKey(<span class="stringliteral">&quot;ID&quot;</span>);</div>
 <div class="line"><span class="lineno">   52</span> </div>
-<div class="line"><span class="lineno">   53</span>                    <a class="code hl_variable" href="namespacetest.html#a0f45e01f998f32bf815adc0cbe886405">b</a>.ToTable(<span class="stringliteral">&quot;LogEntries&quot;</span>);</div>
+<div class="line"><span class="lineno">   53</span>                    b.ToTable(<span class="stringliteral">&quot;LogEntries&quot;</span>);</div>
 <div class="line"><span class="lineno">   54</span>                });</div>
 <div class="line"><span class="lineno">   55</span><span class="preprocessor">#pragma warning restore 612, 618</span></div>
 <div class="line"><span class="lineno">   56</span>        }</div>
-<div class="ttc" id="anamespacetest_html_a0f45e01f998f32bf815adc0cbe886405"><div class="ttname"><a href="namespacetest.html#a0f45e01f998f32bf815adc0cbe886405">test.b</a></div><div class="ttdeci">b</div><div class="ttdef"><b>Definition</b> test.py:20</div></div>
 </div><!-- fragment -->
 </div>
 </div>

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['benchmark_2dnative_2ec_0',['benchmark-native.c',['../node-uuid_2benchmark_2benchmark-native_8c.html',1,'(Global Namespace)'],['../uuid_2benchmark_2benchmark-native_8c.html',1,'(Global Namespace)']]]
+  ['cachedatahelper_2ecs_0',['CacheDataHelper.cs',['../_cache_data_helper_8cs.html',1,'']]],
+  ['cacheitem_2ecs_1',['CacheItem.cs',['../_cache_item_8cs.html',1,'']]]
 ];

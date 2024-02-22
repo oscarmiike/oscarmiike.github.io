@@ -9,6 +9,5 @@ var dir_e5b579712323dc20d096970fc4c8cb37 =
     [ "Models", "dir_0616951610be99f512cb5b4cf3aace9b.html", "dir_0616951610be99f512cb5b4cf3aace9b" ],
     [ "obj", "dir_1e991ae963838b31373615377490190f.html", "dir_1e991ae963838b31373615377490190f" ],
     [ "Services", "dir_39832828939f87d2b79939de885e8daa.html", "dir_39832828939f87d2b79939de885e8daa" ],
-    [ "wwwroot", "dir_86706ac2bc3281a6d29ba796cc2504fb.html", "dir_86706ac2bc3281a6d29ba796cc2504fb" ],
     [ "Program.cs", "_program_8cs.html", "_program_8cs" ]
 ];
