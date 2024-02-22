@@ -25,6 +25,7 @@
 var NAVTREE =
 [
   [ "AinslieAPI", "index.html", [
+    [ "AinslieAPI Documentation", "index.html", null ],
     [ "Packages", "namespaces.html", [
       [ "Package List", "namespaces.html", "namespaces_dup" ],
       [ "Package Members", "namespacemembers.html", [
