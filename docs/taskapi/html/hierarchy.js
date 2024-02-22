@@ -1,0 +1,85 @@
+var hierarchy =
+[
+    [ "TaskAPI.Helpers.Settings.TaskAPISettings.Polygonoraclesettings.ABI", "class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_polygonoraclesettings_1_1_a_b_i.html", null ],
+    [ "TaskAPI.Services.AlchemyService", "class_task_a_p_i_1_1_services_1_1_alchemy_service.html", null ],
+    [ "TaskAPI.Helpers.Settings.TaskAPISettings.Alchemysettings", "class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_alchemysettings.html", null ],
+    [ "TaskAPI.Controllers.LogsController.Alert", "class_task_a_p_i_1_1_controllers_1_1_logs_controller_1_1_alert.html", null ],
+    [ "TaskAPI.Helpers.AlertHelper", "class_task_a_p_i_1_1_helpers_1_1_alert_helper.html", null ],
+    [ "TaskAPI.Models.AlertNotification", "class_task_a_p_i_1_1_models_1_1_alert_notification.html", null ],
+    [ "TaskAPI.Helpers.Settings.ApiSource", "class_task_a_p_i_1_1_helpers_1_1_settings_1_1_api_source.html", null ],
+    [ "TaskAPI.Models.DTO.Oanda.InstrumentPrice.Price.Ask", "class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_oanda_1_1_instrument_price_1_1_price_1_1_ask.html", null ],
+    [ "TaskAPI.Helpers.Settings.TaskAPISettings.Asset", "class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_asset.html", null ],
+    [ "TaskAPI.Models.DTO.BinanceResponse.Asset", "class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_binance_response_1_1_asset.html", null ],
+    [ "TaskAPI.Models.DTO.InternalAPI.PriceappAsset.AssetType", "class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_priceapp_asset_1_1_asset_type.html", null ],
+    [ "TaskAPI.Models.BaseSpot", "class_task_a_p_i_1_1_models_1_1_base_spot.html", null ],
+    [ "TaskAPI.Models.DTO.Oanda.InstrumentPrice.Price.Bid", "class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_oanda_1_1_instrument_price_1_1_price_1_1_bid.html", null ],
+    [ "TaskAPI.Models.DTO.BinanceResponse", "class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_binance_response.html", null ],
+    [ "TaskAPI.Services.BinanceService", "class_task_a_p_i_1_1_services_1_1_binance_service.html", null ],
+    [ "TaskAPI.Helpers.Settings.TaskAPISettings.Binancesettings", "class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_binancesettings.html", null ],
+    [ "ControllerBase", null, [
+      [ "TaskAPI.Controllers.AbWebController", "class_task_a_p_i_1_1_controllers_1_1_ab_web_controller.html", null ],
+      [ "TaskAPI.Controllers.AinslieApiController", "class_task_a_p_i_1_1_controllers_1_1_ainslie_api_controller.html", null ],
+      [ "TaskAPI.Controllers.InternalAPIController", "class_task_a_p_i_1_1_controllers_1_1_internal_a_p_i_controller.html", null ],
+      [ "TaskAPI.Controllers.LogsController", "class_task_a_p_i_1_1_controllers_1_1_logs_controller.html", null ],
+      [ "TaskAPI.Controllers.PriceappController", "class_task_a_p_i_1_1_controllers_1_1_priceapp_controller.html", null ],
+      [ "TaskAPI.Controllers.SpotController", "class_task_a_p_i_1_1_controllers_1_1_spot_controller.html", null ]
+    ] ],
+    [ "TaskAPI.Models.DailyClose", "class_task_a_p_i_1_1_models_1_1_daily_close.html", null ],
+    [ "TaskAPI.Models.DTO.InternalAPI.DailyCloseChartItem", "class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_daily_close_chart_item.html", null ],
+    [ "TaskAPI.Models.DTO.ForexResponse.Data", "class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_forex_response_1_1_data.html", null ],
+    [ "DbContext", null, [
+      [ "TaskAPI.Contexts.PriceappContext", "class_task_a_p_i_1_1_contexts_1_1_priceapp_context.html", null ],
+      [ "TaskAPI.Contexts.TaskAPIContext", "class_task_a_p_i_1_1_contexts_1_1_task_a_p_i_context.html", null ]
+    ] ],
+    [ "TaskAPI.Helpers.Settings.DefaultNotification", "class_task_a_p_i_1_1_helpers_1_1_settings_1_1_default_notification.html", null ],
+    [ "TaskAPI.Models.DTO.InternalAPI.EmailPost", "class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_email_post.html", null ],
+    [ "TaskAPI.Models.DTO.ForexResponse", "class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_forex_response.html", null ],
+    [ "TaskAPI.Services.ForexService", "class_task_a_p_i_1_1_services_1_1_forex_service.html", null ],
+    [ "TaskAPI.Helpers.Settings.TaskAPISettings.Forexsettings", "class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_forexsettings.html", null ],
+    [ "TaskAPI.Helpers.Settings.GeneralSettings", "class_task_a_p_i_1_1_helpers_1_1_settings_1_1_general_settings.html", null ],
+    [ "TaskAPI.Helpers.Settings.TaskAPISettings.Generalsettings", "class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings.html", null ],
+    [ "TaskAPI.Models.DTO.ForexResponse.Head", "class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_forex_response_1_1_head.html", null ],
+    [ "IFunctionOutputDTO", null, [
+      [ "TaskAPI.Models.DTO.PolygonOracle.LatestRoundDataResponse", "class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_polygon_oracle_1_1_latest_round_data_response.html", null ]
+    ] ],
+    [ "TaskAPI.Helpers.Settings.TaskAPISettings.Polygonoraclesettings.ABI.Input", "class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_polygonoraclesettings_1_1_a_b_i_1_1_input.html", null ],
+    [ "TaskAPI.Models.DTO.Oanda.InstrumentPrice", "class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_oanda_1_1_instrument_price.html", null ],
+    [ "TaskAPI.Services.InternalAPIService", "class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service.html", null ],
+    [ "TaskAPI.Helpers.Settings.TaskAPISettings.Internalapisettings", "class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings.html", null ],
+    [ "JsonConverter", null, [
+      [ "TaskAPI.Helpers.Extensions.BigIntegerConverter", "class_task_a_p_i_1_1_helpers_1_1_extensions_1_1_big_integer_converter.html", null ]
+    ] ],
+    [ "TaskAPI.Models.LogEntry", "class_task_a_p_i_1_1_models_1_1_log_entry.html", null ],
+    [ "TaskAPI.Helpers.Settings.LogNotifications", "class_task_a_p_i_1_1_helpers_1_1_settings_1_1_log_notifications.html", null ],
+    [ "TaskAPI.Helpers.Settings.LogNotificationsSettings", "class_task_a_p_i_1_1_helpers_1_1_settings_1_1_log_notifications_settings.html", null ],
+    [ "TaskAPI.Controllers.LogsController.LogRequest", "class_task_a_p_i_1_1_controllers_1_1_logs_controller_1_1_log_request.html", null ],
+    [ "TaskAPI.Services.LogService", "class_task_a_p_i_1_1_services_1_1_log_service.html", null ],
+    [ "TaskAPI.Helpers.Settings.LogSourceNotification", "class_task_a_p_i_1_1_helpers_1_1_settings_1_1_log_source_notification.html", null ],
+    [ "TaskAPI.Models.DTO.LogTrimResult", "class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result.html", null ],
+    [ "TaskAPI.Helpers.Settings.LogTypeEntry", "class_task_a_p_i_1_1_helpers_1_1_settings_1_1_log_type_entry.html", null ],
+    [ "Migration", null, [
+      [ "TaskAPI.Migrations.AddNotificationMinimumFrequency", "class_task_a_p_i_1_1_migrations_1_1_add_notification_minimum_frequency.html", null ],
+      [ "TaskAPI.Migrations.initial", "class_task_a_p_i_1_1_migrations_1_1initial.html", null ],
+      [ "TaskAPI.Migrations.renamealertnotifications", "class_task_a_p_i_1_1_migrations_1_1renamealertnotifications.html", null ]
+    ] ],
+    [ "ModelSnapshot", null, [
+      [ "TaskAPI.Migrations.TaskAPIContextModelSnapshot", "class_task_a_p_i_1_1_migrations_1_1_task_a_p_i_context_model_snapshot.html", null ]
+    ] ],
+    [ "TaskAPI.Helpers.Settings.TaskAPISettings.Oandasettings", "class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_oandasettings.html", null ],
+    [ "TaskAPI.Helpers.Settings.TaskAPISettings.Polygonoraclesettings.ABI.Output", "class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_polygonoraclesettings_1_1_a_b_i_1_1_output.html", null ],
+    [ "TaskAPI.Helpers.Settings.TaskAPISettings.Polygonoraclesettings", "class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_polygonoraclesettings.html", null ],
+    [ "TaskAPI.Models.DTO.Oanda.InstrumentPrice.Price", "class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_oanda_1_1_instrument_price_1_1_price.html", null ],
+    [ "TaskAPI.Models.DTO.InternalAPI.PriceappAsset.PriceAdjustment", "class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_priceapp_asset_1_1_price_adjustment.html", null ],
+    [ "TaskAPI.Models.DTO.InternalAPI.PriceappAsset", "class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_priceapp_asset.html", null ],
+    [ "TaskAPI.Helpers.PriceappHelper", "class_task_a_p_i_1_1_helpers_1_1_priceapp_helper.html", null ],
+    [ "TaskAPI.Helpers.Settings.TaskAPISettings.Priceappsettings", "class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_priceappsettings.html", null ],
+    [ "TaskAPI.Models.DTO.InternalAPI.PriceappAsset.Pricemode", "class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_priceapp_asset_1_1_pricemode.html", null ],
+    [ "TaskAPI.Helpers.Settings.TaskAPISettings.Spotfeedsettings", "class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_spotfeedsettings.html", null ],
+    [ "TaskAPI.Helpers.SpotHelper", "class_task_a_p_i_1_1_helpers_1_1_spot_helper.html", null ],
+    [ "TaskAPI.Models.DTO.ForexResponse.Data.SpotInstance", "class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_forex_response_1_1_data_1_1_spot_instance.html", null ],
+    [ "TaskAPI.Models.DTO.InternalAPI.PriceappAsset.Spotunit", "class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_priceapp_asset_1_1_spotunit.html", null ],
+    [ "TaskAPI.Models.DTO.InternalAPI.PriceappAsset.Spread", "class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_priceapp_asset_1_1_spread.html", null ],
+    [ "TaskAPI.Models.DTO.InternalAPI.PriceappAsset.Spreadunit", "class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_priceapp_asset_1_1_spreadunit.html", null ],
+    [ "TaskAPI.Helpers.Settings.TaskAPISettings.Sqlloggersettings", "class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_sqlloggersettings.html", null ],
+    [ "TaskAPI.Helpers.Settings.TaskAPISettings", "class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html", null ]
+];
