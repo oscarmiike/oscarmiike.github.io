@@ -5,6 +5,16 @@
 Helper class for processing alerts based on log entries.  
 
 
+
+
+Collaboration diagram for Task\+API.\+Helpers.\+Alert\+Helper\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_task_a_p_i_1_1_helpers_1_1_alert_helper__coll__graph}
+\end{center}
+\end{figure}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -12,6 +22,34 @@ Helper class for processing alerts based on log entries.
 \begin{DoxyCompactList}\small\item\em Constructor for the Alert\+Helper class. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_alert_helper_acddc980d442b4344a8d9df5ba056276a}{Process\+Api\+Source}} (\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_api_source}{Api\+Source}} api\+Config)
 \begin{DoxyCompactList}\small\item\em Processes a single API source for alert generation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+List$<$ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_log_entry}{Log\+Entry}} $>$? \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_alert_helper_a6288723babbbadebdd77681b41122d79}{Fetch\+And\+Process\+Logs}} (string api\+Source, \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_api_source}{Api\+Source}} config)
+\begin{DoxyCompactList}\small\item\em Fetches and processes log entries for a given API source based on the specified configuration. \end{DoxyCompactList}\item 
+List$<$ Alert $>$ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_alert_helper_a8ee2d4a6c728bc688207f3e0f777b03f}{Check\+Logs\+Against\+Thresholds}} (List$<$ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_log_entry}{Log\+Entry}} $>$ logs, \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_api_source}{Api\+Source}} config)
+\begin{DoxyCompactList}\small\item\em Analyses a list of log entries against specified thresholds to determine if alerts should be generated. \end{DoxyCompactList}\item 
+List$<$ string $>$ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_alert_helper_a5e60f4242d52c0642c789ff7ca332e51}{Send\+Alerts}} (List$<$ Alert $>$ alerts, string api\+Source, \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_api_source}{Api\+Source}} config)
+\begin{DoxyCompactList}\small\item\em Sends alerts based on the provided list of alerts, API source, and configuration. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_alert_helper_aab637efba5397e174f0a891ad60429cd}{Format\+Json\+As\+Html}} (string json)
+\begin{DoxyCompactList}\small\item\em Formats a JSON string as HTML table for better readability. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_alert_helper_ad4d3668cc82bd01a9599f40ffed568f3}{Format\+Json\+Value}} (JToken value)
+\begin{DoxyCompactList}\small\item\em Formats a JSON value for HTML presentation, applying different colors based on data types. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+readonly \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{Log\+Service}} \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_alert_helper_a4b45e67a9ed5801fda472de1e48b6a66}{\+\_\+log\+Service}}
+\item 
+readonly \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service}{Internal\+APIService}} \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_alert_helper_a08ecdc0873cc34912cf352dbe0998706}{\+\_\+iapi\+Service}}
+\item 
+readonly \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings}{Task\+APISettings}} \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_alert_helper_a9f9daf92c3728066a64ca2722b6a891c}{\+\_\+settings}}
+\item 
+readonly \mbox{\hyperlink{class_task_a_p_i_1_1_contexts_1_1_task_a_p_i_context}{Task\+APIContext}} \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_alert_helper_a938de9ee39ea512751cd7b5acb1cb379}{\+\_\+context}}
+\item 
+readonly \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_logs_controller}{Logs\+Controller}} \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_alert_helper_a9e30e3a1b93853ebf111ca3e9471695d}{\+\_\+logs\+Controller}}
+\item 
+readonly \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_log_notifications_settings}{Log\+Notifications\+Settings}} \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_alert_helper_a6e5cf0d5643fc9556d7fc4214c74ac1c}{\+\_\+log\+Notifications\+Settings}}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -44,17 +82,336 @@ Constructor for the Alert\+Helper class.
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \_logService\ =\ logService;}
-\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \_iapiService\ =\ iapiService;}
-\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \_settings\ =\ settings.Value;}
-\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \_context\ =\ context;}
-\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \_logNotificationsSettings\ =\ logNotificationsSettings;\ }
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_alert_helper_a4b45e67a9ed5801fda472de1e48b6a66}{\_logService}}\ =\ logService;}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_alert_helper_a08ecdc0873cc34912cf352dbe0998706}{\_iapiService}}\ =\ iapiService;}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_alert_helper_a9f9daf92c3728066a64ca2722b6a891c}{\_settings}}\ =\ settings.Value;}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_alert_helper_a938de9ee39ea512751cd7b5acb1cb379}{\_context}}\ =\ context;}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_alert_helper_a6e5cf0d5643fc9556d7fc4214c74ac1c}{\_logNotificationsSettings}}\ =\ logNotificationsSettings;\ }
 \DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \}}
 
 \end{DoxyCode}
 
 
 \doxysubsection{Member Function Documentation}
+\Hypertarget{class_task_a_p_i_1_1_helpers_1_1_alert_helper_a8ee2d4a6c728bc688207f3e0f777b03f}\label{class_task_a_p_i_1_1_helpers_1_1_alert_helper_a8ee2d4a6c728bc688207f3e0f777b03f} 
+\index{TaskAPI.Helpers.AlertHelper@{TaskAPI.Helpers.AlertHelper}!CheckLogsAgainstThresholds@{CheckLogsAgainstThresholds}}
+\index{CheckLogsAgainstThresholds@{CheckLogsAgainstThresholds}!TaskAPI.Helpers.AlertHelper@{TaskAPI.Helpers.AlertHelper}}
+\doxysubsubsection{\texorpdfstring{CheckLogsAgainstThresholds()}{CheckLogsAgainstThresholds()}}
+{\footnotesize\ttfamily List$<$ Alert $>$ Task\+API.\+Helpers.\+Alert\+Helper.\+Check\+Logs\+Against\+Thresholds (\begin{DoxyParamCaption}\item[{List$<$ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_log_entry}{Log\+Entry}} $>$}]{logs,  }\item[{\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_api_source}{Api\+Source}}}]{config }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Analyses a list of log entries against specified thresholds to determine if alerts should be generated. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em logs} & The list of log entries to analyse.\\
+\hline
+{\em config} & The configuration of the API source.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list of alerts generated based on the analysis.
+\end{DoxyReturn}
+
+
+This method ensures that alerts are generated for all log types that exceed specified thresholds, taking into account both specific log source settings and default settings. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ var\ alerts\ =\ \textcolor{keyword}{new}\ List<Alert>();}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//var\ dateTime\ =\ DateTime.UtcNow.ToLocalTime();}}
+\DoxyCodeLine{00145\ }
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (logs\ ==\ \textcolor{keyword}{null}\ ||\ !logs.Any())}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_alert_helper_a4b45e67a9ed5801fda472de1e48b6a66}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a5c2a67dbd8beb6f821c46b8d052d59ea}{LogInformation}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.AlertHelper,\ \textcolor{stringliteral}{"{}No\ logs\ were\ fetched."{}});}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ alerts;}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Apply\ Specific\ Log\ Source\ Notification\ settings}}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ logSourceNotification\ \textcolor{keywordflow}{in}\ config.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_api_source_a071e4820334120ad0e809f049578dfe1}{LogSourceNotifications}}\ ??\ \textcolor{keyword}{new}\ List<LogSourceNotification>())}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ get\ logs\ that\ are\ in\ the\ specified\ log\ source,\ and\ are\ of\ a\ type\ that\ exists\ in\ the\ specified\ notification\ config,\ and\ fall\ withing\ the\ specified\ time\ window}}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ specificNotificationLogs\ =\ logs.Where(log\ =>}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ log.Source\ ==\ logSourceNotification.Name\ \&\&}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (logSourceNotification.LogTypes?.Any(lt\ =>\ lt.LogType\ ==\ log.Type)\ ??\ \textcolor{keyword}{false})\ \&\&}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ log.Created\ >=\ DateTime.Now.AddMinutes(-\/logSourceNotification.WindowMinutes));}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (specificNotificationLogs\ !=\ \textcolor{keyword}{null}\ \&\&\ specificNotificationLogs.Any())}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ get\ logs\ for\ each\ type\ specified\ in\ notification\ config}}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ logType\ \textcolor{keywordflow}{in}\ logSourceNotification.LogTypes\ ??\ \textcolor{keyword}{new}\ List<LogTypeEntry>())}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ relevantLogs\ =\ specificNotificationLogs.Where(log\ =>\ log.Type\ ==\ logType.LogType);}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ enough\ logs\ to\ satisfy\ notification\ type\ count,\ create\ an\ alert}}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (relevantLogs\ !=\ \textcolor{keyword}{null}\ \&\&\ relevantLogs.Count()\ >=\ logType.Count)}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ alerts.Add(\textcolor{keyword}{new}\ Alert}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ LogSource\ =\ logSourceNotification.Name,}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ LogType\ =\ logType.LogType,}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Count\ =\ relevantLogs.Count(),}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TriggeringLogs\ =\ relevantLogs.ToList()}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00181\ }
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Apply\ DefaultNotification\ settings}}
+\DoxyCodeLine{00183\ }
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ get\ logs\ that\ are\ not\ in\ any\ specified\ log\ sources,\ and\ are\ of\ a\ type\ that\ exists\ in\ the\ default\ notification\ config,\ and\ fall\ withing\ the\ default\ time\ window}}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \ \ \ \ var\ defaultNotificationLogs\ =\ logs.Where(log\ =>\ }
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (!config.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_api_source_a071e4820334120ad0e809f049578dfe1}{LogSourceNotifications}}?.Any(lsn\ =>\ lsn.Name\ ==\ log.Source)\ ??\ \textcolor{keyword}{true})\ \&\&\ }
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ config.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_api_source_a1e6c1ef69ca61247d9c93cc2bde3c82a}{DefaultNotification}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_default_notification_a08ac0d5c3a2336f810711fcec46bbcea}{LogTypes}}.Any(lt\ =>\ lt.LogType\ ==\ log.Type)\ \&\&}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ log.Created\ >=\ DateTime.Now.AddMinutes(-\/config.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_api_source_a1e6c1ef69ca61247d9c93cc2bde3c82a}{DefaultNotification}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_default_notification_a4159205f74475afc04bbe5951f683897}{WindowMinutes}}));}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (defaultNotificationLogs\ !=\ \textcolor{keyword}{null}\ \&\&\ defaultNotificationLogs.Any())}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ get\ logs\ for\ each\ type\ specified\ in\ default\ notification\ settings}}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ logType\ \textcolor{keywordflow}{in}\ config.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_api_source_a1e6c1ef69ca61247d9c93cc2bde3c82a}{DefaultNotification}}?.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_default_notification_a08ac0d5c3a2336f810711fcec46bbcea}{LogTypes}}\ ??\ \textcolor{keyword}{new}\ List<LogTypeEntry>())}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ relevantLogs\ =\ defaultNotificationLogs.Where(log\ =>\ log.Type\ ==\ logType.LogType);}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ enough\ logs\ to\ satisfy\ default\ notification\ type\ count,\ create\ an\ alert}}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (relevantLogs\ !=\ \textcolor{keyword}{null}\ \&\&\ relevantLogs.Count()\ >=\ logType.Count)}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ alerts.Add(\textcolor{keyword}{new}\ Alert}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ LogSource\ =\ \textcolor{stringliteral}{"{}Default"{}},}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ LogType\ =\ logType.LogType,}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Count\ =\ relevantLogs.Count(),}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TriggeringLogs\ =\ relevantLogs.ToList()}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ alerts;}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_task_a_p_i_1_1_helpers_1_1_alert_helper_a8ee2d4a6c728bc688207f3e0f777b03f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_task_a_p_i_1_1_helpers_1_1_alert_helper_a8ee2d4a6c728bc688207f3e0f777b03f_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_task_a_p_i_1_1_helpers_1_1_alert_helper_a6288723babbbadebdd77681b41122d79}\label{class_task_a_p_i_1_1_helpers_1_1_alert_helper_a6288723babbbadebdd77681b41122d79} 
+\index{TaskAPI.Helpers.AlertHelper@{TaskAPI.Helpers.AlertHelper}!FetchAndProcessLogs@{FetchAndProcessLogs}}
+\index{FetchAndProcessLogs@{FetchAndProcessLogs}!TaskAPI.Helpers.AlertHelper@{TaskAPI.Helpers.AlertHelper}}
+\doxysubsubsection{\texorpdfstring{FetchAndProcessLogs()}{FetchAndProcessLogs()}}
+{\footnotesize\ttfamily List$<$ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_log_entry}{Log\+Entry}} $>$? Task\+API.\+Helpers.\+Alert\+Helper.\+Fetch\+And\+Process\+Logs (\begin{DoxyParamCaption}\item[{string}]{api\+Source,  }\item[{\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_api_source}{Api\+Source}}}]{config }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Fetches and processes log entries for a given API source based on the specified configuration. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em api\+Source} & Name of the API source.\\
+\hline
+{\em config} & Configuration of the API source.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+List of processed log entries.
+\end{DoxyReturn}
+
+
+This method ensures that all relevant logs are fetched for the given API source, considering both specific and default log settings. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ var\ maxWindowMinutes\ =\ (\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_alert_helper_a6e5cf0d5643fc9556d7fc4214c74ac1c}{\_logNotificationsSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_log_notifications_settings_ad241f792ec89b6ab436064bb2ae572ac}{LogNotifications}}?.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_log_notifications_ae7300dad9396cfa9a40cd971ba611f05}{ApiSources}}?}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .SelectMany(apiSrc\ =>\ (apiSrc.LogSourceNotifications?.Select(ln\ =>\ ln.WindowMinutes)\ ??\ \textcolor{keyword}{new}\ List<int>())}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .Append(apiSrc.DefaultNotification.WindowMinutes))}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .Max())\ ??\ 0;}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ var\ allLogTypes\ =\ (config.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_api_source_a1e6c1ef69ca61247d9c93cc2bde3c82a}{DefaultNotification}}?.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_default_notification_a08ac0d5c3a2336f810711fcec46bbcea}{LogTypes}}?.Select(lt\ =>\ lt.LogType)\ ??\ \textcolor{keyword}{new}\ List<string>())}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .Union(config.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_api_source_a071e4820334120ad0e809f049578dfe1}{LogSourceNotifications}}?.SelectMany(ln\ =>\ ln.LogTypes?.Select(lt\ =>\ lt.LogType)\ ??\ \textcolor{keyword}{new}\ List<string>())\ ??\ \textcolor{keyword}{new}\ List<string>())?}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .ToList()\ ??\ \textcolor{keyword}{new}\ List<string>();}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (maxWindowMinutes\ ==\ 0\ ||\ !allLogTypes.Any())\ }
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ var\ UTCTimeNow\ =\ DateTime.UtcNow;}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ var\ logRequest\ =\ \textcolor{keyword}{new}\ LogRequest}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ dateRangeStartUTC\ =\ UTCTimeNow.AddMinutes(-\/maxWindowMinutes),}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ dateRangeEndUTC\ =\ UTCTimeNow,}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ logType\ =\ allLogTypes,}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ maxLogs\ =\ 100,}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ startHour\ =\ -\/1,}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ logSource\ =\ \textcolor{keyword}{new}\ List<string>(),}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ searchString\ =\ \textcolor{stringliteral}{"{}"{}}}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ if\ the\ apiSource\ is\ TaskAPI}}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (apiSource.Equals(\textcolor{stringliteral}{"{}TaskAPI"{}},\ StringComparison.OrdinalIgnoreCase))}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ logs\ =\ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_alert_helper_a4b45e67a9ed5801fda472de1e48b6a66}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a6fd34cc69d8b24f60a73f155365a9357}{FetchLogs}}(logRequest);}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ logs;}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Use\ InternalAPIService\ for\ other\ ApiSources}}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ logs\ =\ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_alert_helper_a08ecdc0873cc34912cf352dbe0998706}{\_iapiService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_a01d6e21d8a6368eb448cb401630cf033}{GetUnifiedLogs}}(logRequest,\ apiSource);}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//if\ (logs\ ==\ null\ ||\ !logs.Any())}}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\{}}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \_logService.LogError(LogService.LogSources.AlertHelper,\ \$"{}Failed\ to\ fetch\ logs\ from\ \{apiSource\}."{});}}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ return\ new\ List<LogEntry>();}}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\}}}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ logs;}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_task_a_p_i_1_1_helpers_1_1_alert_helper_a6288723babbbadebdd77681b41122d79_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_task_a_p_i_1_1_helpers_1_1_alert_helper_a6288723babbbadebdd77681b41122d79_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_task_a_p_i_1_1_helpers_1_1_alert_helper_aab637efba5397e174f0a891ad60429cd}\label{class_task_a_p_i_1_1_helpers_1_1_alert_helper_aab637efba5397e174f0a891ad60429cd} 
+\index{TaskAPI.Helpers.AlertHelper@{TaskAPI.Helpers.AlertHelper}!FormatJsonAsHtml@{FormatJsonAsHtml}}
+\index{FormatJsonAsHtml@{FormatJsonAsHtml}!TaskAPI.Helpers.AlertHelper@{TaskAPI.Helpers.AlertHelper}}
+\doxysubsubsection{\texorpdfstring{FormatJsonAsHtml()}{FormatJsonAsHtml()}}
+{\footnotesize\ttfamily string Task\+API.\+Helpers.\+Alert\+Helper.\+Format\+Json\+As\+Html (\begin{DoxyParamCaption}\item[{string}]{json }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Formats a JSON string as HTML table for better readability. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em json} & The JSON string to format.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The JSON formatted as an HTML table.
+\end{DoxyReturn}
+
+
+This method converts the JSON string into an HTML table format with alternating row colors for better visual distinction. It also applies different text colors based on the data types of JSON values for improved readability. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00313\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00314\ \ \ \ \ \ \ \ \ \ \ \ \ var\ sb\ =\ \textcolor{keyword}{new}\ StringBuilder();}
+\DoxyCodeLine{00315\ \ \ \ \ \ \ \ \ \ \ \ \ sb.AppendLine(\textcolor{stringliteral}{"{}<table\ style='border-\/collapse:\ collapse;\ width:\ 100\%;\ font-\/family:\ Arial,\ sans-\/serif;\ font-\/size:\ 14px;'>"{}});}
+\DoxyCodeLine{00316\ }
+\DoxyCodeLine{00317\ \ \ \ \ \ \ \ \ \ \ \ \ var\ jsonArray\ =\ JArray.Parse(json);}
+\DoxyCodeLine{00318\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ isGrey\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00319\ }
+\DoxyCodeLine{00320\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ jt\ \textcolor{keywordflow}{in}\ jsonArray.Children<JObject>())}
+\DoxyCodeLine{00321\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00322\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ bgColor\ =\ isGrey\ ?\ \textcolor{stringliteral}{"{}\#f2f2f2"{}}\ :\ \textcolor{stringliteral}{"{}\#ffffff"{}};}
+\DoxyCodeLine{00323\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sb.AppendLine(\$\textcolor{stringliteral}{"{}<tr\ style='background-\/color:\ \{bgColor\};'>"{}});}
+\DoxyCodeLine{00324\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sb.Append(\textcolor{stringliteral}{"{}<td\ style='border:\ 1px\ solid\ \#dddddd;\ text-\/align:\ left;\ padding:\ 8px;'><pre>\{"{}});}
+\DoxyCodeLine{00325\ }
+\DoxyCodeLine{00326\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ jprop\ \textcolor{keywordflow}{in}\ jt.Properties())}
+\DoxyCodeLine{00327\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00328\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ formattedValue\ =\ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_alert_helper_ad4d3668cc82bd01a9599f40ffed568f3}{FormatJsonValue}}(jprop.Value);}
+\DoxyCodeLine{00329\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sb.Append(\$\textcolor{stringliteral}{"{}<br>\ \ \ \ \(\backslash\)"{}\{System.Net.WebUtility.HtmlEncode(jprop.Name)\}\(\backslash\)"{}:\ \{formattedValue\}"{}});}
+\DoxyCodeLine{00330\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (jprop\ !=\ jt.Properties().Last())}
+\DoxyCodeLine{00331\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00332\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sb.Append(\textcolor{stringliteral}{"{},"{}});}
+\DoxyCodeLine{00333\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00334\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00335\ }
+\DoxyCodeLine{00336\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sb.Append(\textcolor{stringliteral}{"{}<br>\}</pre></td>"{}});}
+\DoxyCodeLine{00337\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sb.AppendLine(\textcolor{stringliteral}{"{}</tr>"{}});}
+\DoxyCodeLine{00338\ }
+\DoxyCodeLine{00339\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ isGrey\ =\ !isGrey;}
+\DoxyCodeLine{00340\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00341\ }
+\DoxyCodeLine{00342\ \ \ \ \ \ \ \ \ \ \ \ \ sb.AppendLine(\textcolor{stringliteral}{"{}</table>"{}});}
+\DoxyCodeLine{00343\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ sb.ToString();}
+\DoxyCodeLine{00344\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_task_a_p_i_1_1_helpers_1_1_alert_helper_aab637efba5397e174f0a891ad60429cd_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_task_a_p_i_1_1_helpers_1_1_alert_helper_aab637efba5397e174f0a891ad60429cd_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_task_a_p_i_1_1_helpers_1_1_alert_helper_ad4d3668cc82bd01a9599f40ffed568f3}\label{class_task_a_p_i_1_1_helpers_1_1_alert_helper_ad4d3668cc82bd01a9599f40ffed568f3} 
+\index{TaskAPI.Helpers.AlertHelper@{TaskAPI.Helpers.AlertHelper}!FormatJsonValue@{FormatJsonValue}}
+\index{FormatJsonValue@{FormatJsonValue}!TaskAPI.Helpers.AlertHelper@{TaskAPI.Helpers.AlertHelper}}
+\doxysubsubsection{\texorpdfstring{FormatJsonValue()}{FormatJsonValue()}}
+{\footnotesize\ttfamily string Task\+API.\+Helpers.\+Alert\+Helper.\+Format\+Json\+Value (\begin{DoxyParamCaption}\item[{JToken}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Formats a JSON value for HTML presentation, applying different colors based on data types. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & The JSON value to format.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The formatted HTML representation of the JSON value.
+\end{DoxyReturn}
+
+
+This method formats JSON values with different text colors based on their data types\+: 
+\begin{DoxyItemize}
+\item String values are displayed in green. 
+\item Numeric values (integer and float) are displayed in purple. 
+\item Date values are displayed in blue. 
+\item Other data types are HTML encoded and displayed as is. 
+\end{DoxyItemize}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00361\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00362\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (value.Type)}
+\DoxyCodeLine{00363\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00364\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ JTokenType.String:}
+\DoxyCodeLine{00365\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$\textcolor{stringliteral}{"{}\(\backslash\)"{}<span\ style='color:green;'>\{System.Net.WebUtility.HtmlEncode(value.ToString())\}</span>\(\backslash\)"{}"{}};}
+\DoxyCodeLine{00366\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ JTokenType.Integer:}
+\DoxyCodeLine{00367\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ JTokenType.Float:\ }
+\DoxyCodeLine{00368\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$\textcolor{stringliteral}{"{}<span\ style='color:purple;'>\{value\}</span>"{}};}
+\DoxyCodeLine{00369\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ JTokenType.Date:\ }
+\DoxyCodeLine{00370\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$\textcolor{stringliteral}{"{}\(\backslash\)"{}<span\ style='color:blue;'>\{value\}</span>\(\backslash\)"{}"{}};}
+\DoxyCodeLine{00371\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00372\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ System.Net.WebUtility.HtmlEncode(value.ToString());}
+\DoxyCodeLine{00373\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00374\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_task_a_p_i_1_1_helpers_1_1_alert_helper_ad4d3668cc82bd01a9599f40ffed568f3_icgraph}
+\end{center}
+\end{figure}
 \Hypertarget{class_task_a_p_i_1_1_helpers_1_1_alert_helper_acddc980d442b4344a8d9df5ba056276a}\label{class_task_a_p_i_1_1_helpers_1_1_alert_helper_acddc980d442b4344a8d9df5ba056276a} 
 \index{TaskAPI.Helpers.AlertHelper@{TaskAPI.Helpers.AlertHelper}!ProcessApiSource@{ProcessApiSource}}
 \index{ProcessApiSource@{ProcessApiSource}!TaskAPI.Helpers.AlertHelper@{TaskAPI.Helpers.AlertHelper}}
@@ -76,27 +433,196 @@ This method fetches and processes logs, checks against thresholds, and sends ale
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \{}
 \DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ var\ apiSource\ =\ apiConfig.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_api_source_a3b6ccd01605139fcb2fd33c31e60d674}{Name}};}
-\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ var\ processedLogs\ =\ FetchAndProcessLogs(apiSource,\ apiConfig);}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ var\ processedLogs\ =\ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_alert_helper_a6288723babbbadebdd77681b41122d79}{FetchAndProcessLogs}}(apiSource,\ apiConfig);}
 \DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (processedLogs\ ==\ \textcolor{keyword}{null}\ ||\ !processedLogs.Any())}
 \DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a5c2a67dbd8beb6f821c46b8d052d59ea}{LogInformation}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.AlertHelper,\ \$\textcolor{stringliteral}{"{}\{apiSource\}\ no\ logs\ to\ process\ for\ alerts."{}});}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_alert_helper_a4b45e67a9ed5801fda472de1e48b6a66}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a5c2a67dbd8beb6f821c46b8d052d59ea}{LogInformation}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.AlertHelper,\ \$\textcolor{stringliteral}{"{}\{apiSource\}\ no\ logs\ to\ process\ for\ alerts."{}});}
 \DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
 \DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ var\ alertsToSend\ =\ CheckLogsAgainstThresholds(processedLogs,\ apiConfig);}
-\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ SendAlerts(alertsToSend,\ apiSource,\ apiConfig);}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ var\ alertsToSend\ =\ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_alert_helper_a8ee2d4a6c728bc688207f3e0f777b03f}{CheckLogsAgainstThresholds}}(processedLogs,\ apiConfig);}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_alert_helper_a5e60f4242d52c0642c789ff7ca332e51}{SendAlerts}}(alertsToSend,\ apiSource,\ apiConfig);}
 \DoxyCodeLine{00073\ }
-\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a5c2a67dbd8beb6f821c46b8d052d59ea}{LogInformation}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.AlertHelper,\ \$\textcolor{stringliteral}{"{}\{apiSource\}\ processed\ for\ alerts."{}});}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_alert_helper_a4b45e67a9ed5801fda472de1e48b6a66}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a5c2a67dbd8beb6f821c46b8d052d59ea}{LogInformation}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.AlertHelper,\ \$\textcolor{stringliteral}{"{}\{apiSource\}\ processed\ for\ alerts."{}});}
 \DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \}}
 
 \end{DoxyCode}
-Here is the caller graph for this function\+:
+Here is the call graph for this function\+:
 \nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_task_a_p_i_1_1_helpers_1_1_alert_helper_acddc980d442b4344a8d9df5ba056276a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{class_task_a_p_i_1_1_helpers_1_1_alert_helper_acddc980d442b4344a8d9df5ba056276a_icgraph}
 \end{center}
 \end{figure}
+\Hypertarget{class_task_a_p_i_1_1_helpers_1_1_alert_helper_a5e60f4242d52c0642c789ff7ca332e51}\label{class_task_a_p_i_1_1_helpers_1_1_alert_helper_a5e60f4242d52c0642c789ff7ca332e51} 
+\index{TaskAPI.Helpers.AlertHelper@{TaskAPI.Helpers.AlertHelper}!SendAlerts@{SendAlerts}}
+\index{SendAlerts@{SendAlerts}!TaskAPI.Helpers.AlertHelper@{TaskAPI.Helpers.AlertHelper}}
+\doxysubsubsection{\texorpdfstring{SendAlerts()}{SendAlerts()}}
+{\footnotesize\ttfamily List$<$ string $>$ Task\+API.\+Helpers.\+Alert\+Helper.\+Send\+Alerts (\begin{DoxyParamCaption}\item[{List$<$ Alert $>$}]{alerts,  }\item[{string}]{api\+Source,  }\item[{\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_api_source}{Api\+Source}}}]{config }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Sends alerts based on the provided list of alerts, API source, and configuration. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em alerts} & The list of alerts to send.\\
+\hline
+{\em api\+Source} & The name of the API source.\\
+\hline
+{\em config} & The configuration of the API source.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list containing details of alerts that were successfully sent.
+\end{DoxyReturn}
+
+
+This method processes each alert in the provided list and sends notifications via email if certain conditions are met. It also updates the alert notification history in the database for tracking purposes. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \ \ \ \ var\ sentAlertDetails\ =\ \textcolor{keyword}{new}\ List<string>();}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \ \ \ \ var\ failedAlerts\ =\ \textcolor{keyword}{new}\ List<string>();}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \ \ \ \ var\ dateTime\ =\ DateTime.UtcNow.ToLocalTime();}
+\DoxyCodeLine{00227\ }
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ alert\ \textcolor{keywordflow}{in}\ alerts)}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Determine\ the\ notification\ minimum\ frequency\ for\ the\ alert}}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ notificationMinimumFrequency\ =\ config.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_api_source_a1e6c1ef69ca61247d9c93cc2bde3c82a}{DefaultNotification}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_default_notification_ac148198bd1411d5b297d5e1327dbfa35}{NotificationMinimumFrequency}};}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ specificLogSourceNotification\ =\ config.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_api_source_a071e4820334120ad0e809f049578dfe1}{LogSourceNotifications}}?}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .FirstOrDefault(lsn\ =>\ lsn.Name\ ==\ alert.LogSource);}
+\DoxyCodeLine{00236\ }
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (specificLogSourceNotification\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ notificationMinimumFrequency\ =\ specificLogSourceNotification.NotificationMinimumFrequency;}
+\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (notificationMinimumFrequency\ ==\ 0)}
+\DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00243\ }
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ if\ notification\ frequency\ conditions\ are\ met\ -\/\ if\ null\ lastNotification,\ send\ alert}}
+\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ lastNotification\ =\ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_alert_helper_a938de9ee39ea512751cd7b5acb1cb379}{\_context}}.\mbox{\hyperlink{class_task_a_p_i_1_1_contexts_1_1_task_a_p_i_context_a9ca55bd9621741f7c87bfa8afa8a94b0}{AlertNotifications}}.AsNoTracking()}
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .Where(n\ =>\ n.ApiSource\ ==\ apiSource\ \&\&\ n.LogSource\ ==\ alert.LogSource\ \&\&\ n.LogType\ ==\ alert.LogType)}
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .OrderByDescending(n\ =>\ n.LastNotification)}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .FirstOrDefault();}
+\DoxyCodeLine{00249\ }
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (lastNotification\ !=\ \textcolor{keyword}{null}\ \&\&\ (dateTime\ -\/\ lastNotification.LastNotification).TotalMinutes\ <\ notificationMinimumFrequency)}
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Skip\ sending\ the\ alert\ as\ the\ minimum\ frequency\ condition\ is\ not\ met}}
+\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00255\ }
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ subject\ =\ \$\textcolor{stringliteral}{"{}\{apiSource\}\ Alert:\ \{alert.Count\}\ \{alert.LogType\}\ logs\ detected\ from\ \{alert.LogSource\}"{}};}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ logsDetailsJson\ =\ JsonConvert.SerializeObject(alert.TriggeringLogs,\ Formatting.Indented);}
+\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ logsDetailsHtml\ =\ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_alert_helper_aab637efba5397e174f0a891ad60429cd}{FormatJsonAsHtml}}(logsDetailsJson);\ \textcolor{comment}{//\ Convert\ JSON\ to\ HTML}}
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ body\ =\ \$\textcolor{stringliteral}{"{}Triggering\ Logs:<br>\{logsDetailsHtml\}"{}};\ \textcolor{comment}{//\ Use\ the\ HTML\ in\ the\ email\ body}}
+\DoxyCodeLine{00260\ }
+\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\textcolor{keywordtype}{string}\ emailAddress\ \textcolor{keywordflow}{in}\ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_alert_helper_a6e5cf0d5643fc9556d7fc4214c74ac1c}{\_logNotificationsSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_log_notifications_settings_ad241f792ec89b6ab436064bb2ae572ac}{LogNotifications}}?.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_log_notifications_a21a6297ed56a929b95e8105b0efc9649}{GeneralSettings}}?.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_general_settings_ae2ab7e64e2d2d4a3d487c1b292f5b097}{NotificationEmails}}\ ??\ \textcolor{keyword}{new}\ List<string>())}
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_alert_helper_a08ecdc0873cc34912cf352dbe0998706}{\_iapiService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_aeffeb1d3d59aeeab65dfe72691d21600}{SendEmail}}(\textcolor{keyword}{new}\ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_email_post}{EmailPost}}()}
+\DoxyCodeLine{00264\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00265\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ NameFrom\ =\ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_alert_helper_a9f9daf92c3728066a64ca2722b6a891c}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_af39dc0933cd608b26e7bc4f82951d356}{GeneralSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings_a082a8e92b97a7d83196f1d0056241042}{NotificationEmailName}},}
+\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ EmailFrom\ =\ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_alert_helper_a9f9daf92c3728066a64ca2722b6a891c}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_af39dc0933cd608b26e7bc4f82951d356}{GeneralSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings_ac0a0b89d2e7cf7f820e5663a1a4cffbf}{NotificationEmailFrom}},}
+\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ EmailTo\ =\ emailAddress,}
+\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Subject\ =\ subject,}
+\DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ HTMLBody\ =\ body}
+\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00272\ }
+\DoxyCodeLine{00273\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ add\ new\ each\ time\ to\ keep\ a\ basic\ history\ }}
+\DoxyCodeLine{00274\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_alert_helper_a938de9ee39ea512751cd7b5acb1cb379}{\_context}}.\mbox{\hyperlink{class_task_a_p_i_1_1_contexts_1_1_task_a_p_i_context_a9ca55bd9621741f7c87bfa8afa8a94b0}{AlertNotifications}}.Add(\textcolor{keyword}{new}\ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_alert_notification}{AlertNotification}}}
+\DoxyCodeLine{00275\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_api_source}{ApiSource}}\ =\ apiSource,}
+\DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ LogSource\ =\ alert.LogSource,}
+\DoxyCodeLine{00278\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ LogType\ =\ alert.LogType,}
+\DoxyCodeLine{00279\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ LastNotification\ =\ dateTime}
+\DoxyCodeLine{00280\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{00281\ }
+\DoxyCodeLine{00282\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_alert_helper_a938de9ee39ea512751cd7b5acb1cb379}{\_context}}.SaveChanges();}
+\DoxyCodeLine{00283\ }
+\DoxyCodeLine{00284\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sentAlertDetails.Add(\$\textcolor{stringliteral}{"{}Sent\ alert:\ \{subject\}"{}});}
+\DoxyCodeLine{00285\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_alert_helper_a4b45e67a9ed5801fda472de1e48b6a66}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a5c2a67dbd8beb6f821c46b8d052d59ea}{LogInformation}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.AlertHelper,\ \$\textcolor{stringliteral}{"{}Sent\ alert:\ \{subject\}"{}});}
+\DoxyCodeLine{00286\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00287\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{00288\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00289\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ errorSubject\ =\ \$\textcolor{stringliteral}{"{}Failed\ to\ send\ \{apiSource\}\ alert:\ \{alert.Count\}\ \{alert.LogType\}\ logs\ in\ \{alert.LogSource\}"{}};}
+\DoxyCodeLine{00290\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_alert_helper_a4b45e67a9ed5801fda472de1e48b6a66}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a46dc9bf58bc9605c7e17dfee38b94354}{LogError}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.AlertHelper,\ \$\textcolor{stringliteral}{"{}\{errorSubject\}.\ Error:\ \{ex\}"{}});}
+\DoxyCodeLine{00291\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ failedAlerts.Add(errorSubject);}
+\DoxyCodeLine{00292\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00293\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00294\ }
+\DoxyCodeLine{00295\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (failedAlerts.Any())}
+\DoxyCodeLine{00296\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00297\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sentAlertDetails.Add(\$\textcolor{stringliteral}{"{}Failed\ to\ send\ some\ alerts.\ See\ logs\ for\ details."{}});}
+\DoxyCodeLine{00298\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00299\ }
+\DoxyCodeLine{00300\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ sentAlertDetails;}
+\DoxyCodeLine{00301\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_task_a_p_i_1_1_helpers_1_1_alert_helper_a5e60f4242d52c0642c789ff7ca332e51_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_task_a_p_i_1_1_helpers_1_1_alert_helper_a5e60f4242d52c0642c789ff7ca332e51_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_task_a_p_i_1_1_helpers_1_1_alert_helper_a938de9ee39ea512751cd7b5acb1cb379}\label{class_task_a_p_i_1_1_helpers_1_1_alert_helper_a938de9ee39ea512751cd7b5acb1cb379} 
+\index{TaskAPI.Helpers.AlertHelper@{TaskAPI.Helpers.AlertHelper}!\_context@{\_context}}
+\index{\_context@{\_context}!TaskAPI.Helpers.AlertHelper@{TaskAPI.Helpers.AlertHelper}}
+\doxysubsubsection{\texorpdfstring{\_context}{\_context}}
+{\footnotesize\ttfamily readonly \mbox{\hyperlink{class_task_a_p_i_1_1_contexts_1_1_task_a_p_i_context}{Task\+APIContext}} Task\+API.\+Helpers.\+Alert\+Helper.\+\_\+context\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_task_a_p_i_1_1_helpers_1_1_alert_helper_a08ecdc0873cc34912cf352dbe0998706}\label{class_task_a_p_i_1_1_helpers_1_1_alert_helper_a08ecdc0873cc34912cf352dbe0998706} 
+\index{TaskAPI.Helpers.AlertHelper@{TaskAPI.Helpers.AlertHelper}!\_iapiService@{\_iapiService}}
+\index{\_iapiService@{\_iapiService}!TaskAPI.Helpers.AlertHelper@{TaskAPI.Helpers.AlertHelper}}
+\doxysubsubsection{\texorpdfstring{\_iapiService}{\_iapiService}}
+{\footnotesize\ttfamily readonly \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service}{Internal\+APIService}} Task\+API.\+Helpers.\+Alert\+Helper.\+\_\+iapi\+Service\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_task_a_p_i_1_1_helpers_1_1_alert_helper_a6e5cf0d5643fc9556d7fc4214c74ac1c}\label{class_task_a_p_i_1_1_helpers_1_1_alert_helper_a6e5cf0d5643fc9556d7fc4214c74ac1c} 
+\index{TaskAPI.Helpers.AlertHelper@{TaskAPI.Helpers.AlertHelper}!\_logNotificationsSettings@{\_logNotificationsSettings}}
+\index{\_logNotificationsSettings@{\_logNotificationsSettings}!TaskAPI.Helpers.AlertHelper@{TaskAPI.Helpers.AlertHelper}}
+\doxysubsubsection{\texorpdfstring{\_logNotificationsSettings}{\_logNotificationsSettings}}
+{\footnotesize\ttfamily readonly \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_log_notifications_settings}{Log\+Notifications\+Settings}} Task\+API.\+Helpers.\+Alert\+Helper.\+\_\+log\+Notifications\+Settings\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_task_a_p_i_1_1_helpers_1_1_alert_helper_a9e30e3a1b93853ebf111ca3e9471695d}\label{class_task_a_p_i_1_1_helpers_1_1_alert_helper_a9e30e3a1b93853ebf111ca3e9471695d} 
+\index{TaskAPI.Helpers.AlertHelper@{TaskAPI.Helpers.AlertHelper}!\_logsController@{\_logsController}}
+\index{\_logsController@{\_logsController}!TaskAPI.Helpers.AlertHelper@{TaskAPI.Helpers.AlertHelper}}
+\doxysubsubsection{\texorpdfstring{\_logsController}{\_logsController}}
+{\footnotesize\ttfamily readonly \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_logs_controller}{Logs\+Controller}} Task\+API.\+Helpers.\+Alert\+Helper.\+\_\+logs\+Controller\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_task_a_p_i_1_1_helpers_1_1_alert_helper_a4b45e67a9ed5801fda472de1e48b6a66}\label{class_task_a_p_i_1_1_helpers_1_1_alert_helper_a4b45e67a9ed5801fda472de1e48b6a66} 
+\index{TaskAPI.Helpers.AlertHelper@{TaskAPI.Helpers.AlertHelper}!\_logService@{\_logService}}
+\index{\_logService@{\_logService}!TaskAPI.Helpers.AlertHelper@{TaskAPI.Helpers.AlertHelper}}
+\doxysubsubsection{\texorpdfstring{\_logService}{\_logService}}
+{\footnotesize\ttfamily readonly \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{Log\+Service}} Task\+API.\+Helpers.\+Alert\+Helper.\+\_\+log\+Service\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_task_a_p_i_1_1_helpers_1_1_alert_helper_a9f9daf92c3728066a64ca2722b6a891c}\label{class_task_a_p_i_1_1_helpers_1_1_alert_helper_a9f9daf92c3728066a64ca2722b6a891c} 
+\index{TaskAPI.Helpers.AlertHelper@{TaskAPI.Helpers.AlertHelper}!\_settings@{\_settings}}
+\index{\_settings@{\_settings}!TaskAPI.Helpers.AlertHelper@{TaskAPI.Helpers.AlertHelper}}
+\doxysubsubsection{\texorpdfstring{\_settings}{\_settings}}
+{\footnotesize\ttfamily readonly \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings}{Task\+APISettings}} Task\+API.\+Helpers.\+Alert\+Helper.\+\_\+settings\hspace{0.3cm}{\ttfamily [private]}}
+
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

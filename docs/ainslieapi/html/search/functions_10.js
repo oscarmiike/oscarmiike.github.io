@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['tdcrcontext_0',['TdcrContext',['../class_ainslie_a_p_i_1_1_data_1_1_contexts_1_1_tdcr_context.html#a38bd99b708cb0a5214ae839575ae376d',1,'AinslieAPI.Data.Contexts.TdcrContext.TdcrContext()'],['../class_ainslie_a_p_i_1_1_data_1_1_contexts_1_1_tdcr_context.html#a96a6b530e4ac834b967e666287c5ea88',1,'AinslieAPI.Data.Contexts.TdcrContext.TdcrContext(DbContextOptions&lt; TdcrContext &gt; options)']]],
-  ['tdcrcontroller_1',['TdcrController',['../class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller.html#a837b3bc6be2af122cb619aa347094ad7',1,'AinslieAPI::Controllers::GSS::TdcrController']]],
-  ['testdynamic_2',['testdynamic',['../class_ainslie_a_p_i_1_1_controllers_1_1_green_id_controller.html#a41817b6b59661b9f6e71d2358bac56f5',1,'AinslieAPI::Controllers::GreenIdController']]],
-  ['tokencontroller_3',['TokenController',['../class_ainslie_a_p_i_1_1_controllers_1_1_token_controller.html#a4ee708fb4e38986bb0b67119aaeb7e62',1,'AinslieAPI::Controllers::TokenController']]],
-  ['trimlogs_4',['TrimLogs',['../class_ainslie_a_p_i_1_1_controllers_1_1_logs_controller.html#aea8072dbf59418b035df6b786ecae9c0',1,'AinslieAPI.Controllers.LogsController.TrimLogs()'],['../class_ainslie_a_p_i_1_1_services_1_1_log_service.html#aea52f6628afd6bcb55105bd0a2f1d8da',1,'AinslieAPI.Services.LogService.TrimLogs()']]]
+  ['scoped_0',['Scoped',['../class_ainslie_a_p_i_1_1_controllers_1_1_auth_test_controller.html#a36613a44557819edaf647b9ca2d1a337',1,'AinslieAPI::Controllers::AuthTestController']]],
+  ['scopedadmin_1',['ScopedAdmin',['../class_ainslie_a_p_i_1_1_controllers_1_1_auth_test_controller.html#a50886d0c42d4c4a8403c4bc99599c128',1,'AinslieAPI::Controllers::AuthTestController']]],
+  ['sendemail_2',['SendEmail',['../class_ainslie_a_p_i_1_1_services_1_1_internal_api_service.html#af507e96372a12f14e6ae166a5d495ef2',1,'AinslieAPI::Services::InternalApiService']]],
+  ['stringify_3',['stringify',['../class_flatted.html#a02948b06481bc3d2118b61f83ccc26e8',1,'Flatted\stringify()'],['../namespaceflatted.html#a0f956bd4567258719b6151c1cb2f3220',1,'flatted.stringify()'],['../namespacetest.html#a3e9643329e363118815480e8a80f85e5',1,'test.stringify()']]],
+  ['striphtml_4',['StripHTML',['../class_ainslie_a_p_i_1_1_helpers_1_1_shared_tools.html#ab15e610eab2e8c51c9b48d81b9da0104',1,'AinslieAPI::Helpers::SharedTools']]]
 ];

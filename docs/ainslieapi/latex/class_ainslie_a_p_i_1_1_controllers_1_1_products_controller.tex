@@ -11,11 +11,12 @@ Inheritance diagram for Ainslie\+API.\+Controllers.\+Products\+Controller\+:\nop
 \end{figure}
 
 
-Collaboration diagram for Ainslie\+API.\+Controllers.\+Products\+Controller\+:\nopagebreak
+Collaboration diagram for Ainslie\+API.\+Controllers.\+Products\+Controller\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=233pt]{class_ainslie_a_p_i_1_1_controllers_1_1_products_controller__coll__graph}
+\includegraphics[width=316pt]{class_ainslie_a_p_i_1_1_controllers_1_1_products_controller__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsubsection*{Public Member Functions}
@@ -25,6 +26,22 @@ Collaboration diagram for Ainslie\+API.\+Controllers.\+Products\+Controller\+:\n
 \begin{DoxyCompactList}\small\item\em Constructs the Products\+Controller with necessary dependencies for handling HTTP context, application settings, internal API services, and logging. \end{DoxyCompactList}\item 
 IAction\+Result \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_products_controller_ac20bed843f55f212dfb5ffe45d411f8f}{Price\+List}} ()
 \begin{DoxyCompactList}\small\item\em Retrieves a list of current product prices. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+Http\+Context? \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_products_controller_a09aca89be9800173a5600945b1bdd792}{\+\_\+http\+Context}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings}{App\+Settings}} \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_products_controller_afa74262c705f97c8c4aa68b11e9df3f4}{\+\_\+app\+Settings}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service}{Internal\+Api\+Service}} \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_products_controller_af44d11d13f15428708fd9e4926c61ceb}{\+\_\+ia\+Service}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{Log\+Service}} \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_products_controller_a1aeb0edf8e583675f9b093ffe7074e14}{\+\_\+logger}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_user_helper_1_1_authenticated_user}{Authenticated\+User}}? \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_products_controller_a542f95009f56933c5b848fb81017d01f}{Jwt\+User}}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
@@ -52,11 +69,11 @@ Constructs the Products\+Controller with necessary dependencies for handling HTT
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ JwtUser\ =\ (\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_user_helper_1_1_authenticated_user}{AuthenticatedUser}}?)httpContextAccessor.HttpContext?.Items[\textcolor{stringliteral}{"{}user"{}}];}
-\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \_httpContext\ \ =\ httpContextAccessor.HttpContext;}
-\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \_appSettings\ =\ appSettings.Value;}
-\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \_iaService\ =\ iaService;}
-\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger\ =\ logger;}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_products_controller_a542f95009f56933c5b848fb81017d01f}{JwtUser}}\ =\ (\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_user_helper_1_1_authenticated_user}{AuthenticatedUser}}?)httpContextAccessor.HttpContext?.Items[\textcolor{stringliteral}{"{}user"{}}];}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_products_controller_a09aca89be9800173a5600945b1bdd792}{\_httpContext}}\ \ =\ httpContextAccessor.HttpContext;}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_products_controller_afa74262c705f97c8c4aa68b11e9df3f4}{\_appSettings}}\ =\ appSettings.Value;}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_products_controller_af44d11d13f15428708fd9e4926c61ceb}{\_iaService}}\ =\ iaService;}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_products_controller_a1aeb0edf8e583675f9b093ffe7074e14}{\_logger}}\ =\ logger;}
 \DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \}}
 
 \end{DoxyCode}
@@ -81,19 +98,76 @@ An IAction\+Result containing the product pricing information or an error messag
 This endpoint requires authorisation and is accessible only to users with specific roles. It fetches product pricing data using the Internal\+Api\+Service and returns this data within an HTTP response. Logging is performed to capture the request context and authenticated user\textquotesingle{}s details. 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a917b9af360c0c6521ce36f4acbc72023}{LogInformation}}(\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_ab557dc1394f5cf56cfb78c765fdfffe6}{LogSources}}.ProductsController,\ \$\textcolor{stringliteral}{"{}request\ received\ on\ products/pricelist"{}},\ \$\textcolor{stringliteral}{"{}authenticated\ user:\ \{JwtUser?.EmailAddress\}"{}});}
-\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ var\ productPricing\ =\ \_iaService.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service_a0c4c5cccb2233540343e36fe0e8a0acc}{GetProductPricing}}();}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_products_controller_a1aeb0edf8e583675f9b093ffe7074e14}{\_logger}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a917b9af360c0c6521ce36f4acbc72023}{LogInformation}}(\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_ab557dc1394f5cf56cfb78c765fdfffe6}{LogSources}}.ProductsController,\ \$\textcolor{stringliteral}{"{}request\ received\ on\ products/pricelist"{}},\ \$\textcolor{stringliteral}{"{}authenticated\ user:\ \{JwtUser?.EmailAddress\}"{}});}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ var\ productPricing\ =\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_products_controller_af44d11d13f15428708fd9e4926c61ceb}{\_iaService}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service_a0c4c5cccb2233540343e36fe0e8a0acc}{GetProductPricing}}();}
 \DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Ok(productPricing);}
 \DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \}}
 
 \end{DoxyCode}
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{class_ainslie_a_p_i_1_1_controllers_1_1_products_controller_ac20bed843f55f212dfb5ffe45d411f8f_cgraph}
 \end{center}
 \end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_ainslie_a_p_i_1_1_controllers_1_1_products_controller_a542f95009f56933c5b848fb81017d01f}\label{class_ainslie_a_p_i_1_1_controllers_1_1_products_controller_a542f95009f56933c5b848fb81017d01f} 
+\index{AinslieAPI.Controllers.ProductsController@{AinslieAPI.Controllers.ProductsController}!JwtUser@{JwtUser}}
+\index{JwtUser@{JwtUser}!AinslieAPI.Controllers.ProductsController@{AinslieAPI.Controllers.ProductsController}}
+\doxysubsubsection{\texorpdfstring{JwtUser}{JwtUser}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_user_helper_1_1_authenticated_user}{Authenticated\+User}}? Ainslie\+API.\+Controllers.\+Products\+Controller.\+Jwt\+User\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxysubsection{Property Documentation}
+\Hypertarget{class_ainslie_a_p_i_1_1_controllers_1_1_products_controller_afa74262c705f97c8c4aa68b11e9df3f4}\label{class_ainslie_a_p_i_1_1_controllers_1_1_products_controller_afa74262c705f97c8c4aa68b11e9df3f4} 
+\index{AinslieAPI.Controllers.ProductsController@{AinslieAPI.Controllers.ProductsController}!\_appSettings@{\_appSettings}}
+\index{\_appSettings@{\_appSettings}!AinslieAPI.Controllers.ProductsController@{AinslieAPI.Controllers.ProductsController}}
+\doxysubsubsection{\texorpdfstring{\_appSettings}{\_appSettings}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings}{App\+Settings}} Ainslie\+API.\+Controllers.\+Products\+Controller.\+\_\+app\+Settings\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}, {\ttfamily [private]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00027\ \{\ \textcolor{keyword}{get};\ \textcolor{keyword}{set};\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_ainslie_a_p_i_1_1_controllers_1_1_products_controller_a09aca89be9800173a5600945b1bdd792}\label{class_ainslie_a_p_i_1_1_controllers_1_1_products_controller_a09aca89be9800173a5600945b1bdd792} 
+\index{AinslieAPI.Controllers.ProductsController@{AinslieAPI.Controllers.ProductsController}!\_httpContext@{\_httpContext}}
+\index{\_httpContext@{\_httpContext}!AinslieAPI.Controllers.ProductsController@{AinslieAPI.Controllers.ProductsController}}
+\doxysubsubsection{\texorpdfstring{\_httpContext}{\_httpContext}}
+{\footnotesize\ttfamily Http\+Context? Ainslie\+API.\+Controllers.\+Products\+Controller.\+\_\+http\+Context\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}, {\ttfamily [private]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00026\ \{\ \textcolor{keyword}{get};\ \textcolor{keyword}{set};\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_ainslie_a_p_i_1_1_controllers_1_1_products_controller_af44d11d13f15428708fd9e4926c61ceb}\label{class_ainslie_a_p_i_1_1_controllers_1_1_products_controller_af44d11d13f15428708fd9e4926c61ceb} 
+\index{AinslieAPI.Controllers.ProductsController@{AinslieAPI.Controllers.ProductsController}!\_iaService@{\_iaService}}
+\index{\_iaService@{\_iaService}!AinslieAPI.Controllers.ProductsController@{AinslieAPI.Controllers.ProductsController}}
+\doxysubsubsection{\texorpdfstring{\_iaService}{\_iaService}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service}{Internal\+Api\+Service}} Ainslie\+API.\+Controllers.\+Products\+Controller.\+\_\+ia\+Service\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}, {\ttfamily [private]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00028\ \{\ \textcolor{keyword}{get};\ \textcolor{keyword}{set};\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_ainslie_a_p_i_1_1_controllers_1_1_products_controller_a1aeb0edf8e583675f9b093ffe7074e14}\label{class_ainslie_a_p_i_1_1_controllers_1_1_products_controller_a1aeb0edf8e583675f9b093ffe7074e14} 
+\index{AinslieAPI.Controllers.ProductsController@{AinslieAPI.Controllers.ProductsController}!\_logger@{\_logger}}
+\index{\_logger@{\_logger}!AinslieAPI.Controllers.ProductsController@{AinslieAPI.Controllers.ProductsController}}
+\doxysubsubsection{\texorpdfstring{\_logger}{\_logger}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{Log\+Service}} Ainslie\+API.\+Controllers.\+Products\+Controller.\+\_\+logger\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}, {\ttfamily [private]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00029\ \{\ \textcolor{keyword}{get};\ \textcolor{keyword}{set};\ \}}
+
+\end{DoxyCode}
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

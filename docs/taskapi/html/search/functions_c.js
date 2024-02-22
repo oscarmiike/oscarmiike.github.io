@@ -1,5 +1,11 @@
 var searchData=
 [
-  ['taskapicontext_0',['TaskAPIContext',['../class_task_a_p_i_1_1_contexts_1_1_task_a_p_i_context.html#a28d512b3613c07c8c8ee536eb3af77ca',1,'TaskAPI.Contexts.TaskAPIContext.TaskAPIContext()'],['../class_task_a_p_i_1_1_contexts_1_1_task_a_p_i_context.html#a56414de68b0a0a5676c1338a0bd11aed',1,'TaskAPI.Contexts.TaskAPIContext.TaskAPIContext(DbContextOptions&lt; TaskAPIContext &gt; options)']]],
-  ['trimlogs_1',['TrimLogs',['../class_task_a_p_i_1_1_controllers_1_1_ab_web_controller.html#a788bdc1e575ec2e04d9d2a767c68e287',1,'TaskAPI.Controllers.AbWebController.TrimLogs()'],['../class_task_a_p_i_1_1_controllers_1_1_ainslie_api_controller.html#a6b53c8ff5898ee660ce3eec1d8e9d13e',1,'TaskAPI.Controllers.AinslieApiController.TrimLogs()'],['../class_task_a_p_i_1_1_controllers_1_1_internal_a_p_i_controller.html#ad77c1d71a0a8ba5393ee56bff0b81df1',1,'TaskAPI.Controllers.InternalAPIController.TrimLogs()'],['../class_task_a_p_i_1_1_controllers_1_1_logs_controller.html#af8b7f41074892eb4a70a447d64a055c6',1,'TaskAPI.Controllers.LogsController.TrimLogs()'],['../class_task_a_p_i_1_1_controllers_1_1_priceapp_controller.html#a25e45ae0b01fc8e2c7aa8ec7e30d59a9',1,'TaskAPI.Controllers.PriceappController.TrimLogs()'],['../class_task_a_p_i_1_1_services_1_1_log_service.html#a1b84e4b268d6eb8f21ee2569e562fceb',1,'TaskAPI.Services.LogService.TrimLogs()']]]
+  ['savedaily_0',['SaveDaily',['../class_task_a_p_i_1_1_controllers_1_1_spot_controller.html#ac5b396e3a46352bf5dbe21701876f35c',1,'TaskAPI::Controllers::SpotController']]],
+  ['savedailyspot_1',['SaveDailySpot',['../class_task_a_p_i_1_1_helpers_1_1_spot_helper.html#a6b975ced6fddc4826a8950c8a250b926',1,'TaskAPI::Helpers::SpotHelper']]],
+  ['savepricesheet_2',['SavePricesheet',['../class_task_a_p_i_1_1_controllers_1_1_priceapp_controller.html#a7a554328bc2c9f53d7791b214121982f',1,'TaskAPI::Controllers::PriceappController']]],
+  ['sendalerts_3',['SendAlerts',['../class_task_a_p_i_1_1_helpers_1_1_alert_helper.html#a5e60f4242d52c0642c789ff7ca332e51',1,'TaskAPI::Helpers::AlertHelper']]],
+  ['sendemail_4',['SendEmail',['../class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service.html#aeffeb1d3d59aeeab65dfe72691d21600',1,'TaskAPI::Services::InternalAPIService']]],
+  ['spotcontroller_5',['SpotController',['../class_task_a_p_i_1_1_controllers_1_1_spot_controller.html#a619cb6a4f328cb89727d19e7cf83dc28',1,'TaskAPI::Controllers::SpotController']]],
+  ['spothelper_6',['SpotHelper',['../class_task_a_p_i_1_1_helpers_1_1_spot_helper.html#ae5d7f0ba6759749953e94555c9557cfb',1,'TaskAPI::Helpers::SpotHelper']]],
+  ['sync_7',['Sync',['../class_task_a_p_i_1_1_controllers_1_1_spot_controller.html#adc5d733d4c39f2ecdaad8d8bf2231731',1,'TaskAPI::Controllers::SpotController']]]
 ];

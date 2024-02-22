@@ -32,6 +32,11 @@ Collaboration diagram for Ainslie\+API.\+Authentication.\+Authorization.\+Api\+A
 \begin{DoxyCompactList}\small\item\em Initializes a new instance of Api\+Authorize\+Attribute, specifying required roles. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_authorization_1_1_api_authorize_attribute_a4b1fdfb6a2c2c0549e48a267b3aa1750}{On\+Authorization}} (Authorization\+Filter\+Context context)
 \begin{DoxyCompactList}\small\item\em Executes the authorization check when an action is being accessed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+readonly List$<$ string $>$ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_authorization_1_1_api_authorize_attribute_adee859b03894000e15df721af1fcf07b}{\+\_\+required\+Roles}} = new List$<$string$>$()
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -72,7 +77,7 @@ Initializes a new instance of Api\+Authorize\+Attribute, specifying required rol
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00034\ \ \ \ \ \{}
-\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \_requiredRoles\ =\ roles.Split(\textcolor{stringliteral}{"{},"{}}).Select(role\ =>\ role.Trim()).ToList();}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_authorization_1_1_api_authorize_attribute_adee859b03894000e15df721af1fcf07b}{\_requiredRoles}}\ =\ roles.Split(\textcolor{stringliteral}{"{},"{}}).Select(role\ =>\ role.Trim()).ToList();}
 \DoxyCodeLine{00036\ \ \ \ \ \}}
 
 \end{DoxyCode}
@@ -108,7 +113,7 @@ Skips authorization if the action is decorated with the Allow\+Anonymous\+Attrib
 \DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (user\ ==\ \textcolor{keyword}{null})}
 \DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ try\ authenticate\ via\ jwt\ second}}
 \DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ user\ =\ (\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_user_helper_1_1_authenticated_user}{AuthenticatedUser}}?)context.HttpContext.Items[\textcolor{stringliteral}{"{}user"{}}];}
-\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (user\ ==\ \textcolor{keyword}{null}\ ||\ (\_requiredRoles.Count\ >\ 0\ \&\&\ !user.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_user_helper_1_1_authenticated_user_a55ecb49775511e5752b250ebad9d7dc5}{Roles}}.Intersect(\_requiredRoles).Any()))\ }
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (user\ ==\ \textcolor{keyword}{null}\ ||\ (\mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_authorization_1_1_api_authorize_attribute_adee859b03894000e15df721af1fcf07b}{\_requiredRoles}}.Count\ >\ 0\ \&\&\ !user.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_user_helper_1_1_authenticated_user_a55ecb49775511e5752b250ebad9d7dc5}{Roles}}.Intersect(\mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_authorization_1_1_api_authorize_attribute_adee859b03894000e15df721af1fcf07b}{\_requiredRoles}}).Any()))\ }
 \DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ context.Result\ =\ \textcolor{keyword}{new}\ JsonResult(\textcolor{keyword}{new}\ \{\ message\ =\ \textcolor{stringliteral}{"{}Unauthorized"{}}\ \})\ \{\ StatusCode\ =\ StatusCodes.Status401Unauthorized\ \};}
 \DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//context.Result\ =\ new\ UnauthorizedResult();}}
 \DoxyCodeLine{00063\ \ \ \ \ \}}
@@ -121,6 +126,15 @@ Here is the call graph for this function\+:\nopagebreak
 \includegraphics[width=350pt]{class_ainslie_a_p_i_1_1_authentication_1_1_authorization_1_1_api_authorize_attribute_a4b1fdfb6a2c2c0549e48a267b3aa1750_cgraph}
 \end{center}
 \end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_ainslie_a_p_i_1_1_authentication_1_1_authorization_1_1_api_authorize_attribute_adee859b03894000e15df721af1fcf07b}\label{class_ainslie_a_p_i_1_1_authentication_1_1_authorization_1_1_api_authorize_attribute_adee859b03894000e15df721af1fcf07b} 
+\index{AinslieAPI.Authentication.Authorization.ApiAuthorizeAttribute@{AinslieAPI.Authentication.Authorization.ApiAuthorizeAttribute}!\_requiredRoles@{\_requiredRoles}}
+\index{\_requiredRoles@{\_requiredRoles}!AinslieAPI.Authentication.Authorization.ApiAuthorizeAttribute@{AinslieAPI.Authentication.Authorization.ApiAuthorizeAttribute}}
+\doxysubsubsection{\texorpdfstring{\_requiredRoles}{\_requiredRoles}}
+{\footnotesize\ttfamily readonly List$<$string$>$ Ainslie\+API.\+Authentication.\+Authorization.\+Api\+Authorize\+Attribute.\+\_\+required\+Roles = new List$<$string$>$()\hspace{0.3cm}{\ttfamily [private]}}
+
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

@@ -1,13 +1,17 @@
 var searchData=
 [
-  ['generalsettings_0',['GeneralSettings',['../class_task_a_p_i_1_1_helpers_1_1_settings_1_1_general_settings.html',1,'TaskAPI::Helpers::Settings']]],
-  ['generalsettings_1',['Generalsettings',['../class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings.html',1,'TaskAPI::Helpers::Settings::TaskAPISettings']]],
-  ['generalsettings_2',['GeneralSettings',['../class_task_a_p_i_1_1_helpers_1_1_settings_1_1_log_notifications.html#a21a6297ed56a929b95e8105b0efc9649',1,'TaskAPI.Helpers.Settings.LogNotifications.GeneralSettings'],['../class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#af39dc0933cd608b26e7bc4f82951d356',1,'TaskAPI.Helpers.Settings.TaskAPISettings.GeneralSettings']]],
-  ['getlogs_3',['GetLogs',['../class_task_a_p_i_1_1_controllers_1_1_logs_controller.html#a7b16dda3feb664234c4307c88b54dbc5',1,'TaskAPI::Controllers::LogsController']]],
-  ['getlogsources_4',['GetLogSources',['../class_task_a_p_i_1_1_controllers_1_1_logs_controller.html#a12e6a10e13d0182e8d356f0679bb85b1',1,'TaskAPI::Controllers::LogsController']]],
-  ['getlogtypes_5',['GetLogTypes',['../class_task_a_p_i_1_1_controllers_1_1_logs_controller.html#acbc81c5d0d03a76497d699754de63afd',1,'TaskAPI::Controllers::LogsController']]],
-  ['getoandainstrumentpriceusd_6',['GetOandaInstrumentPriceUSD',['../class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service.html#aa614614518048e1244ae357de18425df',1,'TaskAPI::Services::InternalAPIService']]],
-  ['getpriceappmarketstatusoverride_7',['GetPriceappMarketStatusOverride',['../class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service.html#a55b9f5404586ba97531f1cdc013ecaed',1,'TaskAPI::Services::InternalAPIService']]],
-  ['getunifiedlogs_8',['GetUnifiedLogs',['../class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service.html#a01d6e21d8a6368eb448cb401630cf033',1,'TaskAPI::Services::InternalAPIService']]],
-  ['grams_9',['grams',['../class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_priceapp_asset_1_1_spotunit.html#ac5845e19af482f520f2cd0d1dcaf06bb',1,'TaskAPI.Models.DTO.InternalAPI.PriceappAsset.Spotunit.grams'],['../class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_priceapp_asset_1_1_spreadunit.html#ae0ae3976176126ed90d7aed3724d7a79',1,'TaskAPI.Models.DTO.InternalAPI.PriceappAsset.Spreadunit.grams']]]
+  ['feedurl_0',['FeedURL',['../class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_forexsettings.html#ad4123f4462401f82896a80d9f2028814',1,'TaskAPI.Helpers.Settings.TaskAPISettings.Forexsettings.FeedURL'],['../class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_binancesettings.html#ae835a22e33518d6c80c86f7fe2dda7b5',1,'TaskAPI.Helpers.Settings.TaskAPISettings.Binancesettings.FeedURL']]],
+  ['fetchandprocesslogs_1',['FetchAndProcessLogs',['../class_task_a_p_i_1_1_helpers_1_1_alert_helper.html#a6288723babbbadebdd77681b41122d79',1,'TaskAPI::Helpers::AlertHelper']]],
+  ['fetchlogs_2',['FetchLogs',['../class_task_a_p_i_1_1_services_1_1_log_service.html#a6fd34cc69d8b24f60a73f155365a9357',1,'TaskAPI::Services::LogService']]],
+  ['forceclosed_3',['ForceClosed',['../class_task_a_p_i_1_1_helpers_1_1_spot_helper.html#a072bb87250d0da4285bfe85c69fa479caa283c513b6e585afe879ec049fd5a7a3',1,'TaskAPI::Helpers::SpotHelper']]],
+  ['forceopen_4',['ForceOpen',['../class_task_a_p_i_1_1_helpers_1_1_spot_helper.html#a072bb87250d0da4285bfe85c69fa479caf50776d312645720efdea21abfc7b98a',1,'TaskAPI::Helpers::SpotHelper']]],
+  ['forexresponse_5',['ForexResponse',['../class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_forex_response.html',1,'TaskAPI::Models::DTO']]],
+  ['forexresponse_2ecs_6',['ForexResponse.cs',['../_forex_response_8cs.html',1,'']]],
+  ['forexservice_7',['ForexService',['../class_task_a_p_i_1_1_services_1_1_forex_service.html',1,'TaskAPI.Services.ForexService'],['../class_task_a_p_i_1_1_services_1_1_forex_service.html#a01dc8f1f84152b5bf6a7f35e4838f31f',1,'TaskAPI.Services.ForexService.ForexService()'],['../class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166baa1ab879f6a570e479b141c89c18806d71',1,'TaskAPI.Services.LogService.ForexService']]],
+  ['forexservice_2ecs_8',['ForexService.cs',['../_forex_service_8cs.html',1,'']]],
+  ['forexsettings_9',['Forexsettings',['../class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_forexsettings.html',1,'TaskAPI::Helpers::Settings::TaskAPISettings']]],
+  ['forexsettings_10',['ForexSettings',['../class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#a0eb4318ad18306881384e7097caaa9f0',1,'TaskAPI::Helpers::Settings::TaskAPISettings']]],
+  ['formatjsonashtml_11',['FormatJsonAsHtml',['../class_task_a_p_i_1_1_helpers_1_1_alert_helper.html#aab637efba5397e174f0a891ad60429cd',1,'TaskAPI::Helpers::AlertHelper']]],
+  ['formatjsonvalue_12',['FormatJsonValue',['../class_task_a_p_i_1_1_helpers_1_1_alert_helper.html#ad4d3668cc82bd01a9599f40ffed568f3',1,'TaskAPI::Helpers::AlertHelper']]],
+  ['fromunixutcmilli_13',['fromUnixUTCMilli',['../class_task_a_p_i_1_1_controllers_1_1_logs_controller_1_1_log_request.html#a57f3d4c12c6a72e57b8304b5e0807b0a',1,'TaskAPI::Controllers::LogsController::LogRequest']]]
 ];

@@ -1,7 +1,9 @@
 var searchData=
 [
-  ['hasweight_0',['hasWeight',['../class_ainslie_a_p_i_1_1_d_t_o_1_1_priceapp_1_1_asset_price_1_1_spot_unit.html#a1fe67655bff04467c7e6f36ec3b99ab3',1,'AinslieAPI.DTO.Priceapp.AssetPrice.SpotUnit.hasWeight'],['../class_ainslie_a_p_i_1_1_d_t_o_1_1_priceapp_1_1_product_price.html#a64223bc8eed6441510736e6f2b7d988f',1,'AinslieAPI.DTO.Priceapp.ProductPrice.hasWeight'],['../class_ainslie_a_p_i_1_1_d_t_o_1_1_priceapp_1_1_product_price_1_1_weight_unit.html#aa1b63520559077b0ea62dfe8201b3eec',1,'AinslieAPI.DTO.Priceapp.ProductPrice.WeightUnit.hasWeight']]],
-  ['heightmm_1',['heightmm',['../class_ainslie_a_p_i_1_1_d_t_o_1_1_priceapp_1_1_product_price.html#a5e9eed26b0854ddaa01c823f78d34675',1,'AinslieAPI::DTO::Priceapp::ProductPrice']]],
-  ['htmlbody_2',['HTMLBody',['../class_ainslie_a_p_i_1_1_d_t_o_1_1_internal_api_1_1_email_post.html#aa095e29764e8a0cf2b2975caf7fca07c',1,'AinslieAPI::DTO::InternalApi::EmailPost']]],
-  ['httpmethod_3',['HTTPMethod',['../class_ainslie_a_p_i_1_1_d_t_o_1_1_g_s_s_1_1_g_s_s_price_data.html#ada45438f08e3cb42c56ffbd35cad2926',1,'AinslieAPI::DTO::GSS::GSSPriceData']]]
+  ['generalsettings_0',['GeneralSettings',['../class_ainslie_a_p_i_1_1_helpers_1_1_app_settings.html#ac5d8eb3593c0b360319c10c22cc3dea8',1,'AinslieAPI::Helpers::AppSettings']]],
+  ['givenname_1',['givenName',['../class_ainslie_a_p_i_1_1_d_t_o_1_1_green_id_1_1_green_id_customer.html#a51b78da95314bd4fc824cfff5a1df09f',1,'AinslieAPI::DTO::GreenId::GreenIdCustomer']]],
+  ['grams_2',['grams',['../class_ainslie_a_p_i_1_1_d_t_o_1_1_priceapp_1_1_asset_price_1_1_spot_unit.html#a4b7ad219a899e37d30cb771ed7953b92',1,'AinslieAPI.DTO.Priceapp.AssetPrice.SpotUnit.grams'],['../class_ainslie_a_p_i_1_1_d_t_o_1_1_priceapp_1_1_product_price_1_1_weight_unit.html#ac7f61d80daa7a05ee44e82d8bbff7b00',1,'AinslieAPI.DTO.Priceapp.ProductPrice.WeightUnit.grams']]],
+  ['grossweight_3',['grossWeight',['../class_ainslie_a_p_i_1_1_d_t_o_1_1_priceapp_1_1_product_price.html#a1e9fbeacbd38448eac38319440a97a33',1,'AinslieAPI::DTO::Priceapp::ProductPrice']]],
+  ['grossweightunit_4',['grossWeightUnit',['../class_ainslie_a_p_i_1_1_d_t_o_1_1_priceapp_1_1_product_price.html#ab7ee733963708cfe393709bb74f1863e',1,'AinslieAPI::DTO::Priceapp::ProductPrice']]],
+  ['gsspricingcachesec_5',['GSSPricingCacheSec',['../class_ainslie_a_p_i_1_1_helpers_1_1_cache_data_settings.html#af177125aafff21fb7cf4355e0038e935',1,'AinslieAPI::Helpers::CacheDataSettings']]]
 ];

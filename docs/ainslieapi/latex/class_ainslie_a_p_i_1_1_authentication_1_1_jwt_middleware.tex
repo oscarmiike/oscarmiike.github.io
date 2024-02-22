@@ -12,6 +12,11 @@ Middleware for JWT authentication, responsible for validating tokens and attachi
 \begin{DoxyCompactList}\small\item\em Initializes a new instance of the Jwt\+Middleware class. \end{DoxyCompactList}\item 
 async Task \mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_middleware_acde1344b114bea6f8a9c175b5e7b5b94}{Invoke}} (Http\+Context context, \mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils}{Jwt\+Utils}} jwt\+Utils)
 \begin{DoxyCompactList}\small\item\em Processes each HTTP request, attempting to validate JWT tokens and attach authenticated users to the context. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+readonly Request\+Delegate \mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_middleware_a677ee94d5751ccc2590b2e23d25a5bae}{\+\_\+next}}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -36,7 +41,7 @@ Initializes a new instance of the Jwt\+Middleware class.
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00016\ \ \ \ \ \{}
-\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \_next\ =\ next;}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_middleware_a677ee94d5751ccc2590b2e23d25a5bae}{\_next}}\ =\ next;}
 \DoxyCodeLine{00018\ \ \ \ \ \}}
 
 \end{DoxyCode}
@@ -77,7 +82,7 @@ This middleware extracts the JWT token from the Authorisation header, validates 
 \DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ attach\ user\ to\ context\ on\ successful\ jwt\ validation}}
 \DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ context.Items[\textcolor{stringliteral}{"{}user"{}}]\ =\ user;}
 \DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ await\ \_next(context);}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ await\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_middleware_a677ee94d5751ccc2590b2e23d25a5bae}{\_next}}(context);}
 \DoxyCodeLine{00045\ \ \ \ \ \}}
 
 \end{DoxyCode}
@@ -88,6 +93,15 @@ Here is the call graph for this function\+:\nopagebreak
 \includegraphics[width=350pt]{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_middleware_acde1344b114bea6f8a9c175b5e7b5b94_cgraph}
 \end{center}
 \end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_middleware_a677ee94d5751ccc2590b2e23d25a5bae}\label{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_middleware_a677ee94d5751ccc2590b2e23d25a5bae} 
+\index{AinslieAPI.Authentication.JwtMiddleware@{AinslieAPI.Authentication.JwtMiddleware}!\_next@{\_next}}
+\index{\_next@{\_next}!AinslieAPI.Authentication.JwtMiddleware@{AinslieAPI.Authentication.JwtMiddleware}}
+\doxysubsubsection{\texorpdfstring{\_next}{\_next}}
+{\footnotesize\ttfamily readonly Request\+Delegate Ainslie\+API.\+Authentication.\+Jwt\+Middleware.\+\_\+next\hspace{0.3cm}{\ttfamily [private]}}
+
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

@@ -7,9 +7,126 @@ static \mbox{\hyperlink{class_flatted_abda2f205b4a05f941504857868aa4435}{parse}}
 \item 
 static \mbox{\hyperlink{class_flatted_a02948b06481bc3d2118b61f83ccc26e8}{stringify}} (\$value, \$options=0, \$depth=512)
 \end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_flatted_a6b5653daf198b02f5d72a8a5100b7c77}{as\+String}} (\$value)
+\item 
+static \mbox{\hyperlink{class_flatted_a788b21b4b5be51310dc2f38fa0cd1d1b}{index}} (\&\$known, \&\$input, \&\$value)
+\item 
+static \mbox{\hyperlink{class_flatted_a66ec2202ad9de929cc4802996fd2e3ea}{keys}} (\&\$value)
+\item 
+static \mbox{\hyperlink{class_flatted_a71d799a680c7adf89e9559e045138b9e}{loop}} (\$obj, \$\mbox{\hyperlink{class_flatted_a66ec2202ad9de929cc4802996fd2e3ea}{keys}}, \&\$input, \&\$set, \&\$output)
+\item 
+static \mbox{\hyperlink{class_flatted_a008f2a38bb722e4ce7ff2d13dab9cac8}{relate}} (\&\$known, \&\$input, \&\$value)
+\item 
+static \mbox{\hyperlink{class_flatted_a2383280951ac4457a7a823647e30d0ed}{ref}} (\$obj, \&\$key, \&\$value, \&\$input, \&\$set, \&\$output)
+\item 
+static \mbox{\hyperlink{class_flatted_ae60904e02c57006e7edbe60ad994c75d}{transform}} (\&\$known, \&\$input, \&\$value)
+\item 
+static \mbox{\hyperlink{class_flatted_ab56c8d777b63d15fbfc22e6e0f034d91}{wrap}} (\$value)
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Member Function Documentation}
+\Hypertarget{class_flatted_a6b5653daf198b02f5d72a8a5100b7c77}\label{class_flatted_a6b5653daf198b02f5d72a8a5100b7c77} 
+\index{Flatted@{Flatted}!asString@{asString}}
+\index{asString@{asString}!Flatted@{Flatted}}
+\doxysubsubsection{\texorpdfstring{asString()}{asString()}}
+{\footnotesize\ttfamily static Flatted\+::as\+String (\begin{DoxyParamCaption}\item[{}]{\$value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordflow}{return}\ \$value\ instanceof\ \mbox{\hyperlink{class_flatted_string}{FlattedString}}\ ?\ \$value-\/>value\ :\ \$value;}
+\DoxyCodeLine{00066\ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_flatted_a788b21b4b5be51310dc2f38fa0cd1d1b}\label{class_flatted_a788b21b4b5be51310dc2f38fa0cd1d1b} 
+\index{Flatted@{Flatted}!index@{index}}
+\index{index@{index}!Flatted@{Flatted}}
+\doxysubsubsection{\texorpdfstring{index()}{index()}}
+{\footnotesize\ttfamily static Flatted\+::index (\begin{DoxyParamCaption}\item[{\&}]{\$known,  }\item[{\&}]{\$input,  }\item[{\&}]{\$value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00069\ \ \ \ \ \$input[]\ =\ \&\$value;}
+\DoxyCodeLine{00070\ \ \ \ \ \$index\ =\ strval(count(\$input)\ -\/\ 1);}
+\DoxyCodeLine{00071\ \ \ \ \ \$known-\/>key[]\ =\ \&\$value;}
+\DoxyCodeLine{00072\ \ \ \ \ \$known-\/>value[]\ =\ \&\$index;}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordflow}{return}\ \$index;}
+\DoxyCodeLine{00074\ \ \ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_flatted_a788b21b4b5be51310dc2f38fa0cd1d1b_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_flatted_a66ec2202ad9de929cc4802996fd2e3ea}\label{class_flatted_a66ec2202ad9de929cc4802996fd2e3ea} 
+\index{Flatted@{Flatted}!keys@{keys}}
+\index{keys@{keys}!Flatted@{Flatted}}
+\doxysubsubsection{\texorpdfstring{keys()}{keys()}}
+{\footnotesize\ttfamily static Flatted\+::keys (\begin{DoxyParamCaption}\item[{\&}]{\$value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00077\ \ \ \ \ \$obj\ =\ \textcolor{keyword}{new}\ ReflectionObject(\$value);}
+\DoxyCodeLine{00078\ \ \ \ \ \$props\ =\ \$obj-\/>getProperties();}
+\DoxyCodeLine{00079\ \ \ \ \ \$keys\ =\ array();}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\$props\ as\ \$prop)}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \$keys[]\ =\ \$prop-\/>getName();}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordflow}{return}\ \$keys;}
+\DoxyCodeLine{00083\ \ \ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_flatted_a66ec2202ad9de929cc4802996fd2e3ea_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_flatted_a71d799a680c7adf89e9559e045138b9e}\label{class_flatted_a71d799a680c7adf89e9559e045138b9e} 
+\index{Flatted@{Flatted}!loop@{loop}}
+\index{loop@{loop}!Flatted@{Flatted}}
+\doxysubsubsection{\texorpdfstring{loop()}{loop()}}
+{\footnotesize\ttfamily static Flatted\+::loop (\begin{DoxyParamCaption}\item[{}]{\$obj,  }\item[{}]{\$keys,  }\item[{\&}]{\$input,  }\item[{\&}]{\$set,  }\item[{\&}]{\$output }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\$keys\ as\ \$key)\ \{}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \$value\ =\ \$obj\ ?\ \$output-\/>\$key\ :\ \$output[\$key];}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\$value\ instanceof\ \mbox{\hyperlink{class_flatted_string}{FlattedString}})}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_flatted_a2383280951ac4457a7a823647e30d0ed}{Flatted::ref}}(\$obj,\ \$key,\ \$input[\$value-\/>value],\ \$input,\ \$set,\ \$output);}
+\DoxyCodeLine{00090\ \ \ \ \ \}}
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keywordflow}{return}\ \$output;}
+\DoxyCodeLine{00092\ \ \ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=349pt]{class_flatted_a71d799a680c7adf89e9559e045138b9e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=256pt]{class_flatted_a71d799a680c7adf89e9559e045138b9e_icgraph}
+\end{center}
+\end{figure}
 \Hypertarget{class_flatted_abda2f205b4a05f941504857868aa4435}\label{class_flatted_abda2f205b4a05f941504857868aa4435} 
 \index{Flatted@{Flatted}!parse@{parse}}
 \index{parse@{parse}!Flatted@{Flatted}}
@@ -30,13 +147,98 @@ static \mbox{\hyperlink{class_flatted_a02948b06481bc3d2118b61f83ccc26e8}{stringi
 \DoxyCodeLine{00040\ \ \ \ \ \$set\ =\ array();}
 \DoxyCodeLine{00041\ \ \ \ \ \$set[]\ =\ \&\$value;}
 \DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordflow}{if}\ (is\_array(\$value))}
-\DoxyCodeLine{00043\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Flatted::loop(\textcolor{keyword}{false},\ array\_keys(\$value),\ \$input,\ \$set,\ \$value);}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_flatted_a71d799a680c7adf89e9559e045138b9e}{Flatted::loop}}(\textcolor{keyword}{false},\ array\_keys(\$value),\ \$input,\ \$set,\ \$value);}
 \DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordflow}{if}\ (is\_object(\$value))}
-\DoxyCodeLine{00045\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Flatted::loop(\textcolor{keyword}{true},\ Flatted::keys(\$value),\ \$input,\ \$set,\ \$value);}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_flatted_a71d799a680c7adf89e9559e045138b9e}{Flatted::loop}}(\textcolor{keyword}{true},\ \mbox{\hyperlink{class_flatted_a66ec2202ad9de929cc4802996fd2e3ea}{Flatted::keys}}(\$value),\ \$input,\ \$set,\ \$value);}
 \DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordflow}{return}\ \$value;}
 \DoxyCodeLine{00047\ \ \ \}}
 
 \end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_flatted_abda2f205b4a05f941504857868aa4435_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_flatted_a2383280951ac4457a7a823647e30d0ed}\label{class_flatted_a2383280951ac4457a7a823647e30d0ed} 
+\index{Flatted@{Flatted}!ref@{ref}}
+\index{ref@{ref}!Flatted@{Flatted}}
+\doxysubsubsection{\texorpdfstring{ref()}{ref()}}
+{\footnotesize\ttfamily static Flatted\+::ref (\begin{DoxyParamCaption}\item[{}]{\$obj,  }\item[{\&}]{\$key,  }\item[{\&}]{\$value,  }\item[{\&}]{\$input,  }\item[{\&}]{\$set,  }\item[{\&}]{\$output }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keywordflow}{if}\ (is\_array(\$value)\ \&\&\ !in\_array(\$value,\ \$set,\ \textcolor{keyword}{true}))\ \{}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \$set[]\ =\ \$value;}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \$value\ =\ \mbox{\hyperlink{class_flatted_a71d799a680c7adf89e9559e045138b9e}{Flatted::loop}}(\textcolor{keyword}{false},\ array\_keys(\$value),\ \$input,\ \$set,\ \$value);}
+\DoxyCodeLine{00108\ \ \ \ \ \}}
+\DoxyCodeLine{00109\ \ \ \ \ elseif\ (is\_object(\$value)\ \&\&\ !in\_array(\$value,\ \$set,\ \textcolor{keyword}{true}))\ \{}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \$set[]\ =\ \$value;}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \$value\ =\ \mbox{\hyperlink{class_flatted_a71d799a680c7adf89e9559e045138b9e}{Flatted::loop}}(\textcolor{keyword}{true},\ \mbox{\hyperlink{class_flatted_a66ec2202ad9de929cc4802996fd2e3ea}{Flatted::keys}}(\$value),\ \$input,\ \$set,\ \$value);}
+\DoxyCodeLine{00112\ \ \ \ \ \}}
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keywordflow}{if}\ (\$obj)\ \{}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \$output-\/>\$key\ =\ \&\$value;}
+\DoxyCodeLine{00115\ \ \ \ \ \}}
+\DoxyCodeLine{00116\ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \$output[\$key]\ =\ \&\$value;}
+\DoxyCodeLine{00118\ \ \ \ \ \}}
+\DoxyCodeLine{00119\ \ \ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=246pt]{class_flatted_a2383280951ac4457a7a823647e30d0ed_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_flatted_a2383280951ac4457a7a823647e30d0ed_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_flatted_a008f2a38bb722e4ce7ff2d13dab9cac8}\label{class_flatted_a008f2a38bb722e4ce7ff2d13dab9cac8} 
+\index{Flatted@{Flatted}!relate@{relate}}
+\index{relate@{relate}!Flatted@{Flatted}}
+\doxysubsubsection{\texorpdfstring{relate()}{relate()}}
+{\footnotesize\ttfamily static Flatted\+::relate (\begin{DoxyParamCaption}\item[{\&}]{\$known,  }\item[{\&}]{\$input,  }\item[{\&}]{\$value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keywordflow}{if}\ (is\_string(\$value)\ ||\ is\_array(\$value)\ ||\ is\_object(\$value))\ \{}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \$key\ =\ array\_search(\$value,\ \$known-\/>key,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\$key\ !==\ \textcolor{keyword}{false})}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$known-\/>value[\$key];}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_flatted_a788b21b4b5be51310dc2f38fa0cd1d1b}{Flatted::index}}(\$known,\ \$input,\ \$value);}
+\DoxyCodeLine{00100\ \ \ \ \ \}}
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keywordflow}{return}\ \$value;}
+\DoxyCodeLine{00102\ \ \ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=261pt]{class_flatted_a008f2a38bb722e4ce7ff2d13dab9cac8_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_flatted_a008f2a38bb722e4ce7ff2d13dab9cac8_icgraph}
+\end{center}
+\end{figure}
 \Hypertarget{class_flatted_a02948b06481bc3d2118b61f83ccc26e8}\label{class_flatted_a02948b06481bc3d2118b61f83ccc26e8} 
 \index{Flatted@{Flatted}!stringify@{stringify}}
 \index{stringify@{stringify}!Flatted@{Flatted}}
@@ -51,15 +253,108 @@ static \mbox{\hyperlink{class_flatted_a02948b06481bc3d2118b61f83ccc26e8}{stringi
 \DoxyCodeLine{00052\ \ \ \ \ \$known-\/>value\ =\ array();}
 \DoxyCodeLine{00053\ \ \ \ \ \$input\ =\ array();}
 \DoxyCodeLine{00054\ \ \ \ \ \$output\ =\ array();}
-\DoxyCodeLine{00055\ \ \ \ \ \$i\ =\ intval(Flatted::index(\$known,\ \$input,\ \$value));}
+\DoxyCodeLine{00055\ \ \ \ \ \$i\ =\ intval(\mbox{\hyperlink{class_flatted_a788b21b4b5be51310dc2f38fa0cd1d1b}{Flatted::index}}(\$known,\ \$input,\ \$value));}
 \DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordflow}{while}\ (\$i\ <\ count(\$input))\ \{}
-\DoxyCodeLine{00057\ \ \ \ \ \ \ \$output[\$i]\ =\ Flatted::transform(\$known,\ \$input,\ \$input[\$i]);}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \$output[\$i]\ =\ \mbox{\hyperlink{class_flatted_ae60904e02c57006e7edbe60ad994c75d}{Flatted::transform}}(\$known,\ \$input,\ \$input[\$i]);}
 \DoxyCodeLine{00058\ \ \ \ \ \ \ \$i++;}
 \DoxyCodeLine{00059\ \ \ \ \ \}}
 \DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordflow}{return}\ json\_encode(\$output,\ \$options,\ \$depth);}
 \DoxyCodeLine{00061\ \ \ \}}
 
 \end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_flatted_a02948b06481bc3d2118b61f83ccc26e8_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_flatted_ae60904e02c57006e7edbe60ad994c75d}\label{class_flatted_ae60904e02c57006e7edbe60ad994c75d} 
+\index{Flatted@{Flatted}!transform@{transform}}
+\index{transform@{transform}!Flatted@{Flatted}}
+\doxysubsubsection{\texorpdfstring{transform()}{transform()}}
+{\footnotesize\ttfamily static Flatted\+::transform (\begin{DoxyParamCaption}\item[{\&}]{\$known,  }\item[{\&}]{\$input,  }\item[{\&}]{\$value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{keywordflow}{if}\ (is\_array(\$value))\ \{}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ array\_map(}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \textcolor{keyword}{function}\ (\$value)\ use(\&\$known,\ \&\$input)\ \{}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_flatted_a008f2a38bb722e4ce7ff2d13dab9cac8}{Flatted::relate}}(\$known,\ \$input,\ \$value);}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \},}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \$value}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ );}
+\DoxyCodeLine{00129\ \ \ \ \ \}}
+\DoxyCodeLine{00130\ \ \ \ \ \textcolor{keywordflow}{if}\ (is\_object(\$value))\ \{}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \$object\ =\ \textcolor{keyword}{new}\ stdClass;}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \$keys\ =\ \mbox{\hyperlink{class_flatted_a66ec2202ad9de929cc4802996fd2e3ea}{Flatted::keys}}(\$value);}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\$keys\ as\ \$key)}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \$object-\/>\$key\ =\ \mbox{\hyperlink{class_flatted_a008f2a38bb722e4ce7ff2d13dab9cac8}{Flatted::relate}}(\$known,\ \$input,\ \$value-\/>\$key);}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$object;}
+\DoxyCodeLine{00136\ \ \ \ \ \}}
+\DoxyCodeLine{00137\ \ \ \ \ \textcolor{keywordflow}{return}\ \$value;}
+\DoxyCodeLine{00138\ \ \ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_flatted_ae60904e02c57006e7edbe60ad994c75d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=288pt]{class_flatted_ae60904e02c57006e7edbe60ad994c75d_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_flatted_ab56c8d777b63d15fbfc22e6e0f034d91}\label{class_flatted_ab56c8d777b63d15fbfc22e6e0f034d91} 
+\index{Flatted@{Flatted}!wrap@{wrap}}
+\index{wrap@{wrap}!Flatted@{Flatted}}
+\doxysubsubsection{\texorpdfstring{wrap()}{wrap()}}
+{\footnotesize\ttfamily static Flatted\+::wrap (\begin{DoxyParamCaption}\item[{}]{\$value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00141\ \ \ \ \ \textcolor{keywordflow}{if}\ (is\_string(\$value))\ \{}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_flatted_string}{FlattedString}}(\$value);}
+\DoxyCodeLine{00143\ \ \ \ \ \}}
+\DoxyCodeLine{00144\ \ \ \ \ \textcolor{keywordflow}{if}\ (is\_array(\$value))\ \{}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ array\_map(\textcolor{stringliteral}{'Flatted::wrap'},\ \$value);}
+\DoxyCodeLine{00146\ \ \ \ \ \}}
+\DoxyCodeLine{00147\ \ \ \ \ \textcolor{keywordflow}{if}\ (is\_object(\$value))\ \{}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \$keys\ =\ \mbox{\hyperlink{class_flatted_a66ec2202ad9de929cc4802996fd2e3ea}{Flatted::keys}}(\$value);}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\$keys\ as\ \$key)\ \{}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \$value-\/>\$key\ =\ \mbox{\hyperlink{class_flatted_ab56c8d777b63d15fbfc22e6e0f034d91}{self::wrap}}(\$value-\/>\$key);}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00152\ \ \ \ \ \}}
+\DoxyCodeLine{00153\ \ \ \ \ \textcolor{keywordflow}{return}\ \$value;}
+\DoxyCodeLine{00154\ \ \ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=255pt]{class_flatted_ab56c8d777b63d15fbfc22e6e0f034d91_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=149pt]{class_flatted_ab56c8d777b63d15fbfc22e6e0f034d91_icgraph}
+\end{center}
+\end{figure}
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

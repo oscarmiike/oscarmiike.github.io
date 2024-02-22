@@ -78,6 +78,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">AinslieAPI.Authentication.JwtUtils Class Reference</div></div>
 </div><!--header-->
@@ -85,6 +86,16 @@ $(function() {
 
 <p>Utility class for JWT operations, including token generation and validation.  
  <a href="#details">More...</a></p>
+<div class="dynheader">
+Collaboration diagram for AinslieAPI.Authentication.JwtUtils:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils__coll__graph.png" border="0" usemap="#a_ainslie_a_p_i_8_authentication_8_jwt_utils_coll__map" alt="Collaboration graph"/></div>
+<map name="a_ainslie_a_p_i_8_authentication_8_jwt_utils_coll__map" id="a_ainslie_a_p_i_8_authentication_8_jwt_utils_coll__map">
+<area shape="rect" title="Utility class for JWT operations, including token generation and validation." alt="" coords="21,96,194,139"/>
+<area shape="rect" href="class_ainslie_a_p_i_1_1_helpers_1_1_app_settings.html" title=" " alt="" coords="5,5,210,32"/>
+<area shape="poly" title=" " alt="" coords="110,48,110,95,105,95,105,48"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -103,6 +114,13 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:afa1dbac5d4a38a9fd6d4283ba29a5683" id="r_afa1dbac5d4a38a9fd6d4283ba29a5683"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afa1dbac5d4a38a9fd6d4283ba29a5683">Decrypt</a> (string cipherText)</td></tr>
 <tr class="memdesc:afa1dbac5d4a38a9fd6d4283ba29a5683"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decrypts a ciphertext string using the application's data protection provider.  <br /></td></tr>
 <tr class="separator:afa1dbac5d4a38a9fd6d4283ba29a5683"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a333f092396187a69fca19240e7b651bd" id="r_a333f092396187a69fca19240e7b651bd"><td class="memItemLeft" align="right" valign="top">readonly <a class="el" href="class_ainslie_a_p_i_1_1_helpers_1_1_app_settings.html">AppSettings</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a333f092396187a69fca19240e7b651bd">_appSettings</a></td></tr>
+<tr class="separator:a333f092396187a69fca19240e7b651bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab04d093db9df18cbd4e2eee6c4fbf8c5" id="r_ab04d093db9df18cbd4e2eee6c4fbf8c5"><td class="memItemLeft" align="right" valign="top">readonly IDataProtectionProvider&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab04d093db9df18cbd4e2eee6c4fbf8c5">_provider</a></td></tr>
+<tr class="separator:ab04d093db9df18cbd4e2eee6c4fbf8c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Utility class for JWT operations, including token generation and validation. </p>
@@ -135,9 +153,11 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 <div class="fragment"><div class="line"><span class="lineno">   30</span>    {</div>
-<div class="line"><span class="lineno">   31</span>        _appSettings = appSettings.Value;</div>
-<div class="line"><span class="lineno">   32</span>        _provider = provider;</div>
+<div class="line"><span class="lineno">   31</span>        <a class="code hl_variable" href="#a333f092396187a69fca19240e7b651bd">_appSettings</a> = appSettings.Value;</div>
+<div class="line"><span class="lineno">   32</span>        <a class="code hl_variable" href="#ab04d093db9df18cbd4e2eee6c4fbf8c5">_provider</a> = provider;</div>
 <div class="line"><span class="lineno">   33</span>    }</div>
+<div class="ttc" id="aclass_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils_html_a333f092396187a69fca19240e7b651bd"><div class="ttname"><a href="#a333f092396187a69fca19240e7b651bd">AinslieAPI.Authentication.JwtUtils._appSettings</a></div><div class="ttdeci">readonly AppSettings _appSettings</div><div class="ttdef"><b>Definition</b> JwtUtils.cs:20</div></div>
+<div class="ttc" id="aclass_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils_html_ab04d093db9df18cbd4e2eee6c4fbf8c5"><div class="ttname"><a href="#ab04d093db9df18cbd4e2eee6c4fbf8c5">AinslieAPI.Authentication.JwtUtils._provider</a></div><div class="ttdeci">readonly IDataProtectionProvider _provider</div><div class="ttdef"><b>Definition</b> JwtUtils.cs:21</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -166,7 +186,7 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The decrypted string.</dd></dl>
 <div class="fragment"><div class="line"><span class="lineno">  120</span>    {</div>
-<div class="line"><span class="lineno">  121</span>        var protector = _provider.CreateProtector(_appSettings.<a class="code hl_property" href="class_ainslie_a_p_i_1_1_helpers_1_1_app_settings.html#a78d2c383be47a6098390109dfbbaefa6">JWTSettings</a>.<a class="code hl_property" href="class_ainslie_a_p_i_1_1_helpers_1_1_j_w_t_settings.html#a4591453aa1c37b86efdfe79f0a30de7b">Secret</a>);</div>
+<div class="line"><span class="lineno">  121</span>        var protector = <a class="code hl_variable" href="#ab04d093db9df18cbd4e2eee6c4fbf8c5">_provider</a>.CreateProtector(<a class="code hl_variable" href="#a333f092396187a69fca19240e7b651bd">_appSettings</a>.<a class="code hl_property" href="class_ainslie_a_p_i_1_1_helpers_1_1_app_settings.html#a78d2c383be47a6098390109dfbbaefa6">JWTSettings</a>.<a class="code hl_property" href="class_ainslie_a_p_i_1_1_helpers_1_1_j_w_t_settings.html#a4591453aa1c37b86efdfe79f0a30de7b">Secret</a>);</div>
 <div class="line"><span class="lineno">  122</span>        <span class="keywordflow">return</span> protector.Unprotect(cipherText);</div>
 <div class="line"><span class="lineno">  123</span>    }</div>
 <div class="ttc" id="aclass_ainslie_a_p_i_1_1_helpers_1_1_app_settings_html_a78d2c383be47a6098390109dfbbaefa6"><div class="ttname"><a href="class_ainslie_a_p_i_1_1_helpers_1_1_app_settings.html#a78d2c383be47a6098390109dfbbaefa6">AinslieAPI.Helpers.AppSettings.JWTSettings</a></div><div class="ttdeci">JWTSettings JWTSettings</div><div class="ttdef"><b>Definition</b> AppSettings.cs:8</div></div>
@@ -210,7 +230,7 @@ Here is the caller graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The encrypted string.</dd></dl>
 <div class="fragment"><div class="line"><span class="lineno">  107</span>    {</div>
-<div class="line"><span class="lineno">  108</span>        var protector = _provider.CreateProtector(_appSettings.<a class="code hl_property" href="class_ainslie_a_p_i_1_1_helpers_1_1_app_settings.html#a78d2c383be47a6098390109dfbbaefa6">JWTSettings</a>.<a class="code hl_property" href="class_ainslie_a_p_i_1_1_helpers_1_1_j_w_t_settings.html#a4591453aa1c37b86efdfe79f0a30de7b">Secret</a>);</div>
+<div class="line"><span class="lineno">  108</span>        var protector = <a class="code hl_variable" href="#ab04d093db9df18cbd4e2eee6c4fbf8c5">_provider</a>.CreateProtector(<a class="code hl_variable" href="#a333f092396187a69fca19240e7b651bd">_appSettings</a>.<a class="code hl_property" href="class_ainslie_a_p_i_1_1_helpers_1_1_app_settings.html#a78d2c383be47a6098390109dfbbaefa6">JWTSettings</a>.<a class="code hl_property" href="class_ainslie_a_p_i_1_1_helpers_1_1_j_w_t_settings.html#a4591453aa1c37b86efdfe79f0a30de7b">Secret</a>);</div>
 <div class="line"><span class="lineno">  109</span>        <span class="keywordflow">return</span> protector.Protect(plainText);</div>
 <div class="line"><span class="lineno">  110</span>    }</div>
 </div><!-- fragment --><div class="dynheader">
@@ -253,7 +273,7 @@ Here is the caller graph for this function:</div>
 <dl class="section return"><dt>Returns</dt><dd>A JWT as a string.</dd></dl>
 <div class="fragment"><div class="line"><span class="lineno">   43</span>    {</div>
 <div class="line"><span class="lineno">   44</span>        var tokenHandler = <span class="keyword">new</span> JwtSecurityTokenHandler();</div>
-<div class="line"><span class="lineno">   45</span>        var key = Encoding.ASCII.GetBytes(_appSettings.<a class="code hl_property" href="class_ainslie_a_p_i_1_1_helpers_1_1_app_settings.html#a78d2c383be47a6098390109dfbbaefa6">JWTSettings</a>.<a class="code hl_property" href="class_ainslie_a_p_i_1_1_helpers_1_1_j_w_t_settings.html#a4591453aa1c37b86efdfe79f0a30de7b">Secret</a>);</div>
+<div class="line"><span class="lineno">   45</span>        var key = Encoding.ASCII.GetBytes(<a class="code hl_variable" href="#a333f092396187a69fca19240e7b651bd">_appSettings</a>.<a class="code hl_property" href="class_ainslie_a_p_i_1_1_helpers_1_1_app_settings.html#a78d2c383be47a6098390109dfbbaefa6">JWTSettings</a>.<a class="code hl_property" href="class_ainslie_a_p_i_1_1_helpers_1_1_j_w_t_settings.html#a4591453aa1c37b86efdfe79f0a30de7b">Secret</a>);</div>
 <div class="line"><span class="lineno">   46</span>        var tokenDescriptor = <span class="keyword">new</span> SecurityTokenDescriptor</div>
 <div class="line"><span class="lineno">   47</span>        {</div>
 <div class="line"><span class="lineno">   48</span>            Subject = <span class="keyword">new</span> ClaimsIdentity(<span class="keyword">new</span>[] { </div>
@@ -318,7 +338,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">   69</span>            <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
 <div class="line"><span class="lineno">   70</span> </div>
 <div class="line"><span class="lineno">   71</span>        var tokenHandler = <span class="keyword">new</span> JwtSecurityTokenHandler();</div>
-<div class="line"><span class="lineno">   72</span>        var key = Encoding.ASCII.GetBytes(_appSettings.<a class="code hl_property" href="class_ainslie_a_p_i_1_1_helpers_1_1_app_settings.html#a78d2c383be47a6098390109dfbbaefa6">JWTSettings</a>.<a class="code hl_property" href="class_ainslie_a_p_i_1_1_helpers_1_1_j_w_t_settings.html#a4591453aa1c37b86efdfe79f0a30de7b">Secret</a>);</div>
+<div class="line"><span class="lineno">   72</span>        var key = Encoding.ASCII.GetBytes(<a class="code hl_variable" href="#a333f092396187a69fca19240e7b651bd">_appSettings</a>.<a class="code hl_property" href="class_ainslie_a_p_i_1_1_helpers_1_1_app_settings.html#a78d2c383be47a6098390109dfbbaefa6">JWTSettings</a>.<a class="code hl_property" href="class_ainslie_a_p_i_1_1_helpers_1_1_j_w_t_settings.html#a4591453aa1c37b86efdfe79f0a30de7b">Secret</a>);</div>
 <div class="line"><span class="lineno">   73</span>        <span class="keywordflow">try</span></div>
 <div class="line"><span class="lineno">   74</span>        {</div>
 <div class="line"><span class="lineno">   75</span>            tokenHandler.ValidateToken(token, <span class="keyword">new</span> TokenValidationParameters</div>
@@ -365,6 +385,51 @@ Here is the caller graph for this function:</div>
 <area shape="poly" title=" " alt="" coords="210,29,178,29,178,24,210,24"/>
 </map>
 </div>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a333f092396187a69fca19240e7b651bd" name="a333f092396187a69fca19240e7b651bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a333f092396187a69fca19240e7b651bd">&#9670;&#160;</a></span>_appSettings</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly <a class="el" href="class_ainslie_a_p_i_1_1_helpers_1_1_app_settings.html">AppSettings</a> AinslieAPI.Authentication.JwtUtils._appSettings</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab04d093db9df18cbd4e2eee6c4fbf8c5" name="ab04d093db9df18cbd4e2eee6c4fbf8c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab04d093db9df18cbd4e2eee6c4fbf8c5">&#9670;&#160;</a></span>_provider</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly IDataProtectionProvider AinslieAPI.Authentication.JwtUtils._provider</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>

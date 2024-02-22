@@ -16,11 +16,12 @@ Inheritance diagram for Task\+API.\+Controllers.\+Ab\+Web\+Controller\+:\nopageb
 \end{figure}
 
 
-Collaboration diagram for Task\+API.\+Controllers.\+Ab\+Web\+Controller\+:\nopagebreak
+Collaboration diagram for Task\+API.\+Controllers.\+Ab\+Web\+Controller\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=218pt]{class_task_a_p_i_1_1_controllers_1_1_ab_web_controller__coll__graph}
+\includegraphics[width=350pt]{class_task_a_p_i_1_1_controllers_1_1_ab_web_controller__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsubsection*{Public Member Functions}
@@ -30,6 +31,15 @@ Collaboration diagram for Task\+API.\+Controllers.\+Ab\+Web\+Controller\+:\nopag
 \begin{DoxyCompactList}\small\item\em Initialises a new instance of the Ab\+Web\+Controller class. \end{DoxyCompactList}\item 
 Action\+Result$<$ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result}{Log\+Trim\+Result}} $>$ \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_ab_web_controller_a788bdc1e575ec2e04d9d2a767c68e287}{Trim\+Logs}} ()
 \begin{DoxyCompactList}\small\item\em Trims logs for Ab\+Web based on predefined criteria. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{Log\+Service}} \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_ab_web_controller_a5a66157693b478e5fc19099bfdd1dcfe}{\+\_\+log\+Service}}
+\item 
+\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service}{Internal\+APIService}} \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_ab_web_controller_a44debdcb943d0d5810a9057dbf2b0551}{\+\_\+iapi\+Service}}
+\item 
+\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings}{Task\+APISettings}} \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_ab_web_controller_a02b2fb86976665b2ffec84e02139bd03}{\+\_\+settings}}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -58,9 +68,9 @@ Initialises a new instance of the Ab\+Web\+Controller class.
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00034\ \ \ \ \ \{}
-\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \_logService\ =\ logService;}
-\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \_iapiService\ =\ internalAPIService;}
-\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \_settings\ =\ settings.Value;}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_ab_web_controller_a5a66157693b478e5fc19099bfdd1dcfe}{\_logService}}\ =\ logService;}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_ab_web_controller_a44debdcb943d0d5810a9057dbf2b0551}{\_iapiService}}\ =\ internalAPIService;}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_ab_web_controller_a02b2fb86976665b2ffec84e02139bd03}{\_settings}}\ =\ settings.Value;}
 \DoxyCodeLine{00038\ \ \ \ \ \}}
 
 \end{DoxyCode}
@@ -85,21 +95,21 @@ An Action\+Result$<$\+T$>$ containing the result of the log trimming operation.
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00049\ \ \ \ \ \{}
-\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a5c2a67dbd8beb6f821c46b8d052d59ea}{LogInformation}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.ABWebController,\ \textcolor{stringliteral}{"{}abweb\ log\ trim\ initiated"{}});}
-\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result}{LogTrimResult}}\ result\ =\ \_iapiService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_aafa740a340a6a25e1f8ac8a766d186f9}{AbWebTrimLogs}}();}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_ab_web_controller_a5a66157693b478e5fc19099bfdd1dcfe}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a5c2a67dbd8beb6f821c46b8d052d59ea}{LogInformation}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.ABWebController,\ \textcolor{stringliteral}{"{}abweb\ log\ trim\ initiated"{}});}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result}{LogTrimResult}}\ result\ =\ \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_ab_web_controller_a44debdcb943d0d5810a9057dbf2b0551}{\_iapiService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_aafa740a340a6a25e1f8ac8a766d186f9}{AbWebTrimLogs}}();}
 \DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (result\ !=\ \textcolor{keyword}{null}\ \&\&\ result.\mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result_ac0dcb80f3d1f49fc0fdc79aca9faf210}{error}})}
 \DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \_iapiService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_aeffeb1d3d59aeeab65dfe72691d21600}{SendEmail}}(\textcolor{keyword}{new}\ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_email_post}{EmailPost}}()}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_ab_web_controller_a44debdcb943d0d5810a9057dbf2b0551}{\_iapiService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_aeffeb1d3d59aeeab65dfe72691d21600}{SendEmail}}(\textcolor{keyword}{new}\ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_email_post}{EmailPost}}()}
 \DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ EmailFrom\ =\ \_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_af39dc0933cd608b26e7bc4f82951d356}{GeneralSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings_ac0a0b89d2e7cf7f820e5663a1a4cffbf}{NotificationEmailFrom}},}
-\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ EmailTo\ =\ \_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_af39dc0933cd608b26e7bc4f82951d356}{GeneralSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings_a25434a5471214771ae507f7152073898}{NotificationEmailTo}},}
-\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ NameFrom\ =\ \_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_af39dc0933cd608b26e7bc4f82951d356}{GeneralSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings_a082a8e92b97a7d83196f1d0056241042}{NotificationEmailName}},}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ EmailFrom\ =\ \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_ab_web_controller_a02b2fb86976665b2ffec84e02139bd03}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_af39dc0933cd608b26e7bc4f82951d356}{GeneralSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings_ac0a0b89d2e7cf7f820e5663a1a4cffbf}{NotificationEmailFrom}},}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ EmailTo\ =\ \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_ab_web_controller_a02b2fb86976665b2ffec84e02139bd03}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_af39dc0933cd608b26e7bc4f82951d356}{GeneralSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings_a25434a5471214771ae507f7152073898}{NotificationEmailTo}},}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ NameFrom\ =\ \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_ab_web_controller_a02b2fb86976665b2ffec84e02139bd03}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_af39dc0933cd608b26e7bc4f82951d356}{GeneralSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings_a082a8e92b97a7d83196f1d0056241042}{NotificationEmailName}},}
 \DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Subject\ =\ \textcolor{stringliteral}{"{}Error\ trimming\ abweb\ logs"{}},}
 \DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ HTMLBody\ =\ \$\textcolor{stringliteral}{"{}Task\ API\ was\ unable\ to\ trim\ abweb\ logs<br><br>\{JsonConvert.SerializeObject(result)\}"{}}}
 \DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \});}
 \DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00063\ }
-\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a5c2a67dbd8beb6f821c46b8d052d59ea}{LogInformation}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.ABWebController,\ \$\textcolor{stringliteral}{"{}abweb\ log\ trim\ completed"{}},\ result);}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_ab_web_controller_a5a66157693b478e5fc19099bfdd1dcfe}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a5c2a67dbd8beb6f821c46b8d052d59ea}{LogInformation}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.ABWebController,\ \$\textcolor{stringliteral}{"{}abweb\ log\ trim\ completed"{}},\ result);}
 \DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Ok(result);}
 \DoxyCodeLine{00066\ \ \ \ \ \}}
 
@@ -112,6 +122,27 @@ Here is the call graph for this function\+:
 \includegraphics[width=350pt]{class_task_a_p_i_1_1_controllers_1_1_ab_web_controller_a788bdc1e575ec2e04d9d2a767c68e287_cgraph}
 \end{center}
 \end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_task_a_p_i_1_1_controllers_1_1_ab_web_controller_a44debdcb943d0d5810a9057dbf2b0551}\label{class_task_a_p_i_1_1_controllers_1_1_ab_web_controller_a44debdcb943d0d5810a9057dbf2b0551} 
+\index{TaskAPI.Controllers.AbWebController@{TaskAPI.Controllers.AbWebController}!\_iapiService@{\_iapiService}}
+\index{\_iapiService@{\_iapiService}!TaskAPI.Controllers.AbWebController@{TaskAPI.Controllers.AbWebController}}
+\doxysubsubsection{\texorpdfstring{\_iapiService}{\_iapiService}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service}{Internal\+APIService}} Task\+API.\+Controllers.\+Ab\+Web\+Controller.\+\_\+iapi\+Service\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_task_a_p_i_1_1_controllers_1_1_ab_web_controller_a5a66157693b478e5fc19099bfdd1dcfe}\label{class_task_a_p_i_1_1_controllers_1_1_ab_web_controller_a5a66157693b478e5fc19099bfdd1dcfe} 
+\index{TaskAPI.Controllers.AbWebController@{TaskAPI.Controllers.AbWebController}!\_logService@{\_logService}}
+\index{\_logService@{\_logService}!TaskAPI.Controllers.AbWebController@{TaskAPI.Controllers.AbWebController}}
+\doxysubsubsection{\texorpdfstring{\_logService}{\_logService}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{Log\+Service}} Task\+API.\+Controllers.\+Ab\+Web\+Controller.\+\_\+log\+Service\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_task_a_p_i_1_1_controllers_1_1_ab_web_controller_a02b2fb86976665b2ffec84e02139bd03}\label{class_task_a_p_i_1_1_controllers_1_1_ab_web_controller_a02b2fb86976665b2ffec84e02139bd03} 
+\index{TaskAPI.Controllers.AbWebController@{TaskAPI.Controllers.AbWebController}!\_settings@{\_settings}}
+\index{\_settings@{\_settings}!TaskAPI.Controllers.AbWebController@{TaskAPI.Controllers.AbWebController}}
+\doxysubsubsection{\texorpdfstring{\_settings}{\_settings}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings}{Task\+APISettings}} Task\+API.\+Controllers.\+Ab\+Web\+Controller.\+\_\+settings\hspace{0.3cm}{\ttfamily [private]}}
+
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

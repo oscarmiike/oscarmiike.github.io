@@ -16,11 +16,12 @@ Inheritance diagram for Ainslie\+API.\+Controllers.\+Assets\+Controller\+:\nopag
 \end{figure}
 
 
-Collaboration diagram for Ainslie\+API.\+Controllers.\+Assets\+Controller\+:\nopagebreak
+Collaboration diagram for Ainslie\+API.\+Controllers.\+Assets\+Controller\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=224pt]{class_ainslie_a_p_i_1_1_controllers_1_1_assets_controller__coll__graph}
+\includegraphics[width=316pt]{class_ainslie_a_p_i_1_1_controllers_1_1_assets_controller__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsubsection*{Public Member Functions}
@@ -30,6 +31,20 @@ Collaboration diagram for Ainslie\+API.\+Controllers.\+Assets\+Controller\+:\nop
 \begin{DoxyCompactList}\small\item\em Initialises a new instance of the Assets\+Controller with necessary services. \end{DoxyCompactList}\item 
 IAction\+Result \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_assets_controller_a0c9bb1df19027458fd189101528c48c9}{Price\+List}} ()
 \begin{DoxyCompactList}\small\item\em Fetches current asset prices. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+Http\+Context? \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_assets_controller_a53f00458654c02ace83c264be8b1d3fd}{\+\_\+http\+Context}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service}{Internal\+Api\+Service}} \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_assets_controller_a125311487636fce894cde5d17ba043f3}{\+\_\+ia\+Service}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{Log\+Service}} \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_assets_controller_a0be110061a73caa2e376230716b27466}{\+\_\+logger}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_user_helper_1_1_authenticated_user}{Authenticated\+User}}? \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_assets_controller_a336665b7112ab225d8e38b497e05831b}{Jwt\+User}}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -58,10 +73,10 @@ Initialises a new instance of the Assets\+Controller with necessary services.
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ JwtUser\ =\ (\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_user_helper_1_1_authenticated_user}{AuthenticatedUser}}?)httpContextAccessor.HttpContext?.Items[\textcolor{stringliteral}{"{}user"{}}];}
-\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \_httpContext\ \ =\ httpContextAccessor.HttpContext;}
-\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \_iaService\ =\ iaService;}
-\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger\ =\ logger;}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_assets_controller_a336665b7112ab225d8e38b497e05831b}{JwtUser}}\ =\ (\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_user_helper_1_1_authenticated_user}{AuthenticatedUser}}?)httpContextAccessor.HttpContext?.Items[\textcolor{stringliteral}{"{}user"{}}];}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_assets_controller_a53f00458654c02ace83c264be8b1d3fd}{\_httpContext}}\ \ =\ httpContextAccessor.HttpContext;}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_assets_controller_a125311487636fce894cde5d17ba043f3}{\_iaService}}\ =\ iaService;}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_assets_controller_a0be110061a73caa2e376230716b27466}{\_logger}}\ =\ logger;}
 \DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \}}
 
 \end{DoxyCode}
@@ -86,19 +101,65 @@ An IAction\+Result with asset prices or an error message.
 The method logs the request and authenticated user\textquotesingle{}s email, retrieves asset pricing via Internal\+Api\+Service, and returns this data in an HTTP response. Access is secured through the \mbox{[}Api\+Authorize\mbox{]} attribute, ensuring only authorised roles have entry. 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a917b9af360c0c6521ce36f4acbc72023}{LogInformation}}(\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_ab557dc1394f5cf56cfb78c765fdfffe6}{LogSources}}.AssetsController,\ \$\textcolor{stringliteral}{"{}request\ received\ on\ assets/pricelist"{}},\ \$\textcolor{stringliteral}{"{}authenticated\ user:\ \{JwtUser?.EmailAddress\}"{}});}
-\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ var\ assetPricing\ =\ \_iaService.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service_a09c4662b56f1cf03cfecb9928e1e884a}{GetAssetPricing}}();}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_assets_controller_a0be110061a73caa2e376230716b27466}{\_logger}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a917b9af360c0c6521ce36f4acbc72023}{LogInformation}}(\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_ab557dc1394f5cf56cfb78c765fdfffe6}{LogSources}}.AssetsController,\ \$\textcolor{stringliteral}{"{}request\ received\ on\ assets/pricelist"{}},\ \$\textcolor{stringliteral}{"{}authenticated\ user:\ \{JwtUser?.EmailAddress\}"{}});}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ var\ assetPricing\ =\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_assets_controller_a125311487636fce894cde5d17ba043f3}{\_iaService}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service_a09c4662b56f1cf03cfecb9928e1e884a}{GetAssetPricing}}();}
 \DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Ok(assetPricing);}
 \DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \}}
 
 \end{DoxyCode}
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{class_ainslie_a_p_i_1_1_controllers_1_1_assets_controller_a0c9bb1df19027458fd189101528c48c9_cgraph}
 \end{center}
 \end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_ainslie_a_p_i_1_1_controllers_1_1_assets_controller_a336665b7112ab225d8e38b497e05831b}\label{class_ainslie_a_p_i_1_1_controllers_1_1_assets_controller_a336665b7112ab225d8e38b497e05831b} 
+\index{AinslieAPI.Controllers.AssetsController@{AinslieAPI.Controllers.AssetsController}!JwtUser@{JwtUser}}
+\index{JwtUser@{JwtUser}!AinslieAPI.Controllers.AssetsController@{AinslieAPI.Controllers.AssetsController}}
+\doxysubsubsection{\texorpdfstring{JwtUser}{JwtUser}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_user_helper_1_1_authenticated_user}{Authenticated\+User}}? Ainslie\+API.\+Controllers.\+Assets\+Controller.\+Jwt\+User\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxysubsection{Property Documentation}
+\Hypertarget{class_ainslie_a_p_i_1_1_controllers_1_1_assets_controller_a53f00458654c02ace83c264be8b1d3fd}\label{class_ainslie_a_p_i_1_1_controllers_1_1_assets_controller_a53f00458654c02ace83c264be8b1d3fd} 
+\index{AinslieAPI.Controllers.AssetsController@{AinslieAPI.Controllers.AssetsController}!\_httpContext@{\_httpContext}}
+\index{\_httpContext@{\_httpContext}!AinslieAPI.Controllers.AssetsController@{AinslieAPI.Controllers.AssetsController}}
+\doxysubsubsection{\texorpdfstring{\_httpContext}{\_httpContext}}
+{\footnotesize\ttfamily Http\+Context? Ainslie\+API.\+Controllers.\+Assets\+Controller.\+\_\+http\+Context\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}, {\ttfamily [private]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00024\ \{\ \textcolor{keyword}{get};\ \textcolor{keyword}{set};\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_ainslie_a_p_i_1_1_controllers_1_1_assets_controller_a125311487636fce894cde5d17ba043f3}\label{class_ainslie_a_p_i_1_1_controllers_1_1_assets_controller_a125311487636fce894cde5d17ba043f3} 
+\index{AinslieAPI.Controllers.AssetsController@{AinslieAPI.Controllers.AssetsController}!\_iaService@{\_iaService}}
+\index{\_iaService@{\_iaService}!AinslieAPI.Controllers.AssetsController@{AinslieAPI.Controllers.AssetsController}}
+\doxysubsubsection{\texorpdfstring{\_iaService}{\_iaService}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_internal_api_service}{Internal\+Api\+Service}} Ainslie\+API.\+Controllers.\+Assets\+Controller.\+\_\+ia\+Service\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}, {\ttfamily [private]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00025\ \{\ \textcolor{keyword}{get};\ \textcolor{keyword}{set};\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_ainslie_a_p_i_1_1_controllers_1_1_assets_controller_a0be110061a73caa2e376230716b27466}\label{class_ainslie_a_p_i_1_1_controllers_1_1_assets_controller_a0be110061a73caa2e376230716b27466} 
+\index{AinslieAPI.Controllers.AssetsController@{AinslieAPI.Controllers.AssetsController}!\_logger@{\_logger}}
+\index{\_logger@{\_logger}!AinslieAPI.Controllers.AssetsController@{AinslieAPI.Controllers.AssetsController}}
+\doxysubsubsection{\texorpdfstring{\_logger}{\_logger}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{Log\+Service}} Ainslie\+API.\+Controllers.\+Assets\+Controller.\+\_\+logger\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}, {\ttfamily [private]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00026\ \{\ \textcolor{keyword}{get};\ \textcolor{keyword}{set};\ \}}
+
+\end{DoxyCode}
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

@@ -1,5 +1,15 @@
 var searchData=
 [
-  ['read_0',['Read',['../class_task_a_p_i_1_1_helpers_1_1_extensions_1_1_big_integer_converter.html#a43d97a9f4710e5a1d844778fab4e636f',1,'TaskAPI::Helpers::Extensions::BigIntegerConverter']]],
-  ['run_1',['Run',['../_program_8cs.html#aaa3dbf02e269c3ef7e8546d290c6b3dd',1,'Program.cs']]]
+  ['priceappassets_0',['PriceappAssets',['../class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service.html#a7e3600841f53749e6c915ace609dfa11',1,'TaskAPI::Services::InternalAPIService']]],
+  ['priceappcontext_1',['PriceappContext',['../class_task_a_p_i_1_1_contexts_1_1_priceapp_context.html#a547da5f89d5b46aa5450c449c47ff5f3',1,'TaskAPI.Contexts.PriceappContext.PriceappContext()'],['../class_task_a_p_i_1_1_contexts_1_1_priceapp_context.html#a4b083cf75c8a72ea0003cced3d1848b7',1,'TaskAPI.Contexts.PriceappContext.PriceappContext(DbContextOptions&lt; PriceappContext &gt; options)']]],
+  ['priceappcontroller_2',['PriceappController',['../class_task_a_p_i_1_1_controllers_1_1_priceapp_controller.html#aa1b6143ea6c43b0c70161ec0af8b528c',1,'TaskAPI::Controllers::PriceappController']]],
+  ['priceapphelper_3',['PriceappHelper',['../class_task_a_p_i_1_1_helpers_1_1_priceapp_helper.html#ae1744c4f6bb9153e927468611cba9ce5',1,'TaskAPI::Helpers::PriceappHelper']]],
+  ['priceapptrimlogs_4',['PriceappTrimLogs',['../class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service.html#a8806289389207c5a3ed1e203f1bcbc5c',1,'TaskAPI::Services::InternalAPIService']]],
+  ['processapisource_5',['ProcessApiSource',['../class_task_a_p_i_1_1_helpers_1_1_alert_helper.html#acddc980d442b4344a8d9df5ba056276a',1,'TaskAPI::Helpers::AlertHelper']]],
+  ['pullbinancedata_6',['PullBinanceData',['../class_task_a_p_i_1_1_helpers_1_1_spot_helper.html#a701fc9c0beaecff83beb2c806b8581d5',1,'TaskAPI::Helpers::SpotHelper']]],
+  ['pullfeed_7',['PullFeed',['../class_task_a_p_i_1_1_services_1_1_binance_service.html#a5863f72c89f66991b6ea2172de8e4687',1,'TaskAPI.Services.BinanceService.PullFeed()'],['../class_task_a_p_i_1_1_services_1_1_forex_service.html#a45ca436cc529b87e410d8b208abea3b1',1,'TaskAPI.Services.ForexService.PullFeed()']]],
+  ['pullforexdata_8',['PullForexData',['../class_task_a_p_i_1_1_helpers_1_1_spot_helper.html#a51135865d712678dee52479c109a61fb',1,'TaskAPI::Helpers::SpotHelper']]],
+  ['pulloandadata_9',['PullOandaData',['../class_task_a_p_i_1_1_helpers_1_1_spot_helper.html#a0fd06a80c097c9b6fcd5ddd8b1889c18',1,'TaskAPI::Helpers::SpotHelper']]],
+  ['pullpolygonoracledata_10',['PullPolygonOracleData',['../class_task_a_p_i_1_1_helpers_1_1_spot_helper.html#a2ad64affbfeec15e4217d8bfccd982ff',1,'TaskAPI::Helpers::SpotHelper']]],
+  ['pullsavetrim_11',['PullSaveTrim',['../class_task_a_p_i_1_1_helpers_1_1_spot_helper.html#a7b75f44b3310036d4de7f0f2956bbac1',1,'TaskAPI::Helpers::SpotHelper']]]
 ];

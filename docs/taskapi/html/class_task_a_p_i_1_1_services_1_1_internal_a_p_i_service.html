@@ -78,6 +78,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">TaskAPI.Services.InternalAPIService Class Reference</div></div>
 </div><!--header-->
@@ -85,6 +86,23 @@ $(function() {
 
 <p>Provides a collection of services for interacting with internal API endpoints, including sending emails, fetching asset information, and managing logs.  
  <a href="#details">More...</a></p>
+<div class="dynheader">
+Collaboration diagram for TaskAPI.Services.InternalAPIService:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service__coll__graph.png" border="0" usemap="#a_task_a_p_i_8_services_8_internal_a_p_i_service_coll__map" alt="Collaboration graph"/></div>
+<map name="a_task_a_p_i_8_services_8_internal_a_p_i_service_coll__map" id="a_task_a_p_i_8_services_8_internal_a_p_i_service_coll__map">
+<area shape="rect" title="Provides a collection of services for interacting with internal API endpoints, including sending emai..." alt="" coords="186,279,356,321"/>
+<area shape="rect" href="class_task_a_p_i_1_1_services_1_1_log_service.html" title="Provides logging services for various levels of application events, including debug,..." alt="" coords="104,188,294,215"/>
+<area shape="poly" title=" " alt="" coords="219,226,257,276,253,280,215,229"/>
+<area shape="rect" href="class_task_a_p_i_1_1_contexts_1_1_task_a_p_i_context.html" title=" " alt="" coords="5,89,230,116"/>
+<area shape="poly" title=" " alt="" coords="139,127,168,162,189,186,185,189,164,166,135,130"/>
+<area shape="rect" title=" " alt="" coords="76,5,159,32"/>
+<area shape="poly" title=" " alt="" coords="120,47,120,89,115,89,115,47"/>
+<area shape="rect" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html" title=" " alt="" coords="254,81,429,124"/>
+<area shape="poly" title=" " alt="" coords="343,140,335,196,327,227,314,256,297,280,292,277,310,253,322,225,330,195,337,139"/>
+<area shape="poly" title=" " alt="" coords="292,134,267,150,215,190,212,185,264,146,289,130"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -121,6 +139,13 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a01d6e21d8a6368eb448cb401630cf033" id="r_a01d6e21d8a6368eb448cb401630cf033"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="class_task_a_p_i_1_1_models_1_1_log_entry.html">LogEntry</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a01d6e21d8a6368eb448cb401630cf033">GetUnifiedLogs</a> (LogRequest logRequest, string apiSource)</td></tr>
 <tr class="memdesc:a01d6e21d8a6368eb448cb401630cf033"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves unified logs from Internal API for a specified API source.  <br /></td></tr>
 <tr class="separator:a01d6e21d8a6368eb448cb401630cf033"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:ae6eb67908ecf2aa66a8df5c07a5741d6" id="r_ae6eb67908ecf2aa66a8df5c07a5741d6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae6eb67908ecf2aa66a8df5c07a5741d6">_logService</a></td></tr>
+<tr class="separator:ae6eb67908ecf2aa66a8df5c07a5741d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:addd42c8e56ccd8483dabbd2b29d9aa54" id="r_addd42c8e56ccd8483dabbd2b29d9aa54"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html">TaskAPISettings</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#addd42c8e56ccd8483dabbd2b29d9aa54">_settings</a></td></tr>
+<tr class="separator:addd42c8e56ccd8483dabbd2b29d9aa54"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Provides a collection of services for interacting with internal API endpoints, including sending emails, fetching asset information, and managing logs. </p>
@@ -153,9 +178,11 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 <div class="fragment"><div class="line"><span class="lineno">   35</span>    {</div>
-<div class="line"><span class="lineno">   36</span>        _settings = taskAPISettings.Value;</div>
-<div class="line"><span class="lineno">   37</span>        _logService = logService;</div>
+<div class="line"><span class="lineno">   36</span>        <a class="code hl_variable" href="#addd42c8e56ccd8483dabbd2b29d9aa54">_settings</a> = taskAPISettings.Value;</div>
+<div class="line"><span class="lineno">   37</span>        <a class="code hl_variable" href="#ae6eb67908ecf2aa66a8df5c07a5741d6">_logService</a> = logService;</div>
 <div class="line"><span class="lineno">   38</span>    }</div>
+<div class="ttc" id="aclass_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_html_addd42c8e56ccd8483dabbd2b29d9aa54"><div class="ttname"><a href="#addd42c8e56ccd8483dabbd2b29d9aa54">TaskAPI.Services.InternalAPIService._settings</a></div><div class="ttdeci">TaskAPISettings _settings</div><div class="ttdef"><b>Definition</b> InternalAPIService.cs:27</div></div>
+<div class="ttc" id="aclass_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_html_ae6eb67908ecf2aa66a8df5c07a5741d6"><div class="ttname"><a href="#ae6eb67908ecf2aa66a8df5c07a5741d6">TaskAPI.Services.InternalAPIService._logService</a></div><div class="ttdeci">LogService _logService</div><div class="ttdef"><b>Definition</b> InternalAPIService.cs:26</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -180,21 +207,21 @@ Public Member Functions</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">  273</span>    {</div>
 <div class="line"><span class="lineno">  274</span>        <span class="keywordflow">try</span></div>
 <div class="line"><span class="lineno">  275</span>        {</div>
-<div class="line"><span class="lineno">  276</span>            var client = <span class="keyword">new</span> RestClient(_settings.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#a4a03da42d86717f1a6b1cdec0710666b">InternalAPISettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings.html#ac52d86bbf73045bfed0110c3f161b435">BaseURL</a>);</div>
-<div class="line"><span class="lineno">  277</span>            var request = <span class="keyword">new</span> RestRequest(_settings.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#a4a03da42d86717f1a6b1cdec0710666b">InternalAPISettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings.html#a092c06ea4fb1e77efeab74a113b1d303">Endpoint_AbWebTrimLogs</a>, Method.Get);</div>
+<div class="line"><span class="lineno">  276</span>            var client = <span class="keyword">new</span> RestClient(<a class="code hl_variable" href="#addd42c8e56ccd8483dabbd2b29d9aa54">_settings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#a4a03da42d86717f1a6b1cdec0710666b">InternalAPISettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings.html#ac52d86bbf73045bfed0110c3f161b435">BaseURL</a>);</div>
+<div class="line"><span class="lineno">  277</span>            var request = <span class="keyword">new</span> RestRequest(<a class="code hl_variable" href="#addd42c8e56ccd8483dabbd2b29d9aa54">_settings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#a4a03da42d86717f1a6b1cdec0710666b">InternalAPISettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings.html#a092c06ea4fb1e77efeab74a113b1d303">Endpoint_AbWebTrimLogs</a>, Method.Get);</div>
 <div class="line"><span class="lineno">  278</span>            RestResponse response = client.Execute(request);</div>
 <div class="line"><span class="lineno">  279</span>            <span class="keywordflow">if</span> (response.IsSuccessStatusCode &amp;&amp; !<span class="keywordtype">string</span>.IsNullOrEmpty(response.Content))</div>
 <div class="line"><span class="lineno">  280</span>            {</div>
 <div class="line"><span class="lineno">  281</span>                <span class="keywordflow">return</span> JsonConvert.DeserializeObject&lt;<a class="code hl_class" href="class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result.html">LogTrimResult</a>&gt;(response.Content);</div>
 <div class="line"><span class="lineno">  282</span>            }</div>
 <div class="line"><span class="lineno">  283</span>            <span class="keywordtype">string</span> errMsg = $<span class="stringliteral">&quot;unsuccessful response trimming logs on abweb. StatusCode: {response.StatusCode} Description: {response.StatusDescription} Content: {response.Content}&quot;</span>;</div>
-<div class="line"><span class="lineno">  284</span>            _logService.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a46dc9bf58bc9605c7e17dfee38b94354">LogError</a>(<a class="code hl_class" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">LogSources</a>.InternalAPIService, errMsg);</div>
+<div class="line"><span class="lineno">  284</span>            <a class="code hl_variable" href="#ae6eb67908ecf2aa66a8df5c07a5741d6">_logService</a>.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a46dc9bf58bc9605c7e17dfee38b94354">LogError</a>(<a class="code hl_class" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">LogSources</a>.InternalAPIService, errMsg);</div>
 <div class="line"><span class="lineno">  285</span>            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code hl_class" href="class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result.html">LogTrimResult</a>() { error = <span class="keyword">true</span>, message = errMsg };</div>
 <div class="line"><span class="lineno">  286</span>        }</div>
 <div class="line"><span class="lineno">  287</span>        <span class="keywordflow">catch</span> (Exception ex)</div>
 <div class="line"><span class="lineno">  288</span>        {</div>
 <div class="line"><span class="lineno">  289</span>            <span class="keywordtype">string</span> errMsg = $<span class="stringliteral">&quot;exception trimming logs on abweb {ex}&quot;</span>;</div>
-<div class="line"><span class="lineno">  290</span>            _logService.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a78c9df658858fa3099eed69421423898">LogException</a>(<a class="code hl_class" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">LogSources</a>.InternalAPIService, errMsg);</div>
+<div class="line"><span class="lineno">  290</span>            <a class="code hl_variable" href="#ae6eb67908ecf2aa66a8df5c07a5741d6">_logService</a>.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a78c9df658858fa3099eed69421423898">LogException</a>(<a class="code hl_class" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">LogSources</a>.InternalAPIService, errMsg);</div>
 <div class="line"><span class="lineno">  291</span>            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code hl_class" href="class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result.html">LogTrimResult</a>() { error = <span class="keyword">true</span>, message = errMsg };</div>
 <div class="line"><span class="lineno">  292</span>        }</div>
 <div class="line"><span class="lineno">  293</span>    }</div>
@@ -218,6 +245,8 @@ Here is the call graph for this function:</div>
 <area shape="poly" title=" " alt="" coords="191,70,223,75,222,80,190,76"/>
 <area shape="rect" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a44f0fd9db1116257087ba59c836e22ea" title="Directly inserts a log entry into the database." alt="" coords="480,39,674,81"/>
 <area shape="poly" title=" " alt="" coords="433,37,465,42,464,47,432,43"/>
+<area shape="rect" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a20f6ab73ae5cc69273da4416da65f94d" title="Writes a log entry to a local text file as a fallback or additional logging method." alt="" coords="722,39,917,81"/>
+<area shape="poly" title=" " alt="" coords="675,57,707,57,707,63,675,63"/>
 <area shape="poly" title=" " alt="" coords="432,77,464,73,465,78,433,83"/>
 </map>
 </div>
@@ -254,21 +283,21 @@ Here is the caller graph for this function:</div>
 <div class="fragment"><div class="line"><span class="lineno">  246</span>    {</div>
 <div class="line"><span class="lineno">  247</span>        <span class="keywordflow">try</span></div>
 <div class="line"><span class="lineno">  248</span>        {</div>
-<div class="line"><span class="lineno">  249</span>            var client = <span class="keyword">new</span> RestClient(_settings.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#a4a03da42d86717f1a6b1cdec0710666b">InternalAPISettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings.html#ac52d86bbf73045bfed0110c3f161b435">BaseURL</a>);</div>
-<div class="line"><span class="lineno">  250</span>            var request = <span class="keyword">new</span> RestRequest(_settings.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#a4a03da42d86717f1a6b1cdec0710666b">InternalAPISettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings.html#ac11bec42f3a403c041777f16f494bed1">Endpoint_AinslieApiTrimLogs</a>, Method.Get);</div>
+<div class="line"><span class="lineno">  249</span>            var client = <span class="keyword">new</span> RestClient(<a class="code hl_variable" href="#addd42c8e56ccd8483dabbd2b29d9aa54">_settings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#a4a03da42d86717f1a6b1cdec0710666b">InternalAPISettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings.html#ac52d86bbf73045bfed0110c3f161b435">BaseURL</a>);</div>
+<div class="line"><span class="lineno">  250</span>            var request = <span class="keyword">new</span> RestRequest(<a class="code hl_variable" href="#addd42c8e56ccd8483dabbd2b29d9aa54">_settings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#a4a03da42d86717f1a6b1cdec0710666b">InternalAPISettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings.html#ac11bec42f3a403c041777f16f494bed1">Endpoint_AinslieApiTrimLogs</a>, Method.Get);</div>
 <div class="line"><span class="lineno">  251</span>            RestResponse response = client.Execute(request);</div>
 <div class="line"><span class="lineno">  252</span>            <span class="keywordflow">if</span> (response.IsSuccessStatusCode &amp;&amp; !<span class="keywordtype">string</span>.IsNullOrEmpty(response.Content))</div>
 <div class="line"><span class="lineno">  253</span>            {</div>
 <div class="line"><span class="lineno">  254</span>                <span class="keywordflow">return</span> JsonConvert.DeserializeObject&lt;<a class="code hl_class" href="class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result.html">LogTrimResult</a>&gt;(response.Content);</div>
 <div class="line"><span class="lineno">  255</span>            }</div>
 <div class="line"><span class="lineno">  256</span>            <span class="keywordtype">string</span> errMsg = $<span class="stringliteral">&quot;unsuccessful response trimming logs on ainslie api. StatusCode: {response.StatusCode} Description: {response.StatusDescription} Content: {response.Content}&quot;</span>;</div>
-<div class="line"><span class="lineno">  257</span>            _logService.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a46dc9bf58bc9605c7e17dfee38b94354">LogError</a>(<a class="code hl_class" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">LogSources</a>.InternalAPIService, errMsg);</div>
+<div class="line"><span class="lineno">  257</span>            <a class="code hl_variable" href="#ae6eb67908ecf2aa66a8df5c07a5741d6">_logService</a>.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a46dc9bf58bc9605c7e17dfee38b94354">LogError</a>(<a class="code hl_class" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">LogSources</a>.InternalAPIService, errMsg);</div>
 <div class="line"><span class="lineno">  258</span>            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code hl_class" href="class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result.html">LogTrimResult</a>() { error = <span class="keyword">true</span>, message = errMsg };</div>
 <div class="line"><span class="lineno">  259</span>        }</div>
 <div class="line"><span class="lineno">  260</span>        <span class="keywordflow">catch</span> (Exception ex)</div>
 <div class="line"><span class="lineno">  261</span>        {</div>
 <div class="line"><span class="lineno">  262</span>            <span class="keywordtype">string</span> errMsg = $<span class="stringliteral">&quot;exception trimming logs on ainslie api {ex}&quot;</span>;</div>
-<div class="line"><span class="lineno">  263</span>            _logService.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a78c9df658858fa3099eed69421423898">LogException</a>(<a class="code hl_class" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">LogSources</a>.InternalAPIService, errMsg);</div>
+<div class="line"><span class="lineno">  263</span>            <a class="code hl_variable" href="#ae6eb67908ecf2aa66a8df5c07a5741d6">_logService</a>.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a78c9df658858fa3099eed69421423898">LogException</a>(<a class="code hl_class" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">LogSources</a>.InternalAPIService, errMsg);</div>
 <div class="line"><span class="lineno">  264</span>            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code hl_class" href="class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result.html">LogTrimResult</a>()  { error = <span class="keyword">true</span>, message = errMsg };</div>
 <div class="line"><span class="lineno">  265</span>        }</div>
 <div class="line"><span class="lineno">  266</span>    }</div>
@@ -285,6 +314,8 @@ Here is the call graph for this function:</div>
 <area shape="poly" title=" " alt="" coords="206,71,238,75,237,81,205,76"/>
 <area shape="rect" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a44f0fd9db1116257087ba59c836e22ea" title="Directly inserts a log entry into the database." alt="" coords="495,39,689,81"/>
 <area shape="poly" title=" " alt="" coords="448,37,480,42,479,47,447,43"/>
+<area shape="rect" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a20f6ab73ae5cc69273da4416da65f94d" title="Writes a log entry to a local text file as a fallback or additional logging method." alt="" coords="737,39,932,81"/>
+<area shape="poly" title=" " alt="" coords="690,57,722,57,722,63,690,63"/>
 <area shape="poly" title=" " alt="" coords="447,77,479,73,480,78,448,83"/>
 </map>
 </div>
@@ -319,8 +350,8 @@ Here is the caller graph for this function:</div>
 <p>Fetches daily close chart data from Internal API. </p>
 <dl class="section return"><dt>Returns</dt><dd>A list of DailyCloseChartItem objects representing the daily close data.</dd></dl>
 <div class="fragment"><div class="line"><span class="lineno">   97</span>    {</div>
-<div class="line"><span class="lineno">   98</span>        var client = <span class="keyword">new</span> RestClient(_settings.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#a4a03da42d86717f1a6b1cdec0710666b">InternalAPISettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings.html#ac52d86bbf73045bfed0110c3f161b435">BaseURL</a>);</div>
-<div class="line"><span class="lineno">   99</span>        var request = <span class="keyword">new</span> RestRequest(_settings.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#a4a03da42d86717f1a6b1cdec0710666b">InternalAPISettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings.html#a327cb2b2b53bb653d8ac1d71f3407faf">Endpoint_PriceappChartData</a>, Method.Get);</div>
+<div class="line"><span class="lineno">   98</span>        var client = <span class="keyword">new</span> RestClient(<a class="code hl_variable" href="#addd42c8e56ccd8483dabbd2b29d9aa54">_settings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#a4a03da42d86717f1a6b1cdec0710666b">InternalAPISettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings.html#ac52d86bbf73045bfed0110c3f161b435">BaseURL</a>);</div>
+<div class="line"><span class="lineno">   99</span>        var request = <span class="keyword">new</span> RestRequest(<a class="code hl_variable" href="#addd42c8e56ccd8483dabbd2b29d9aa54">_settings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#a4a03da42d86717f1a6b1cdec0710666b">InternalAPISettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings.html#a327cb2b2b53bb653d8ac1d71f3407faf">Endpoint_PriceappChartData</a>, Method.Get);</div>
 <div class="line"><span class="lineno">  100</span>        var response = client.Execute(request);</div>
 <div class="line"><span class="lineno">  101</span>        var dailyCloseChartData = <span class="keyword">new</span> List&lt;DailyCloseChartItem&gt;();</div>
 <div class="line"><span class="lineno">  102</span>        <span class="keywordflow">if</span> (response.IsSuccessful &amp;&amp; response.Content.Length &gt; 0)</div>
@@ -331,7 +362,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  107</span>            }</div>
 <div class="line"><span class="lineno">  108</span>            <span class="keywordflow">catch</span> (Exception ex)</div>
 <div class="line"><span class="lineno">  109</span>            {</div>
-<div class="line"><span class="lineno">  110</span>                _logService.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a78c9df658858fa3099eed69421423898">LogException</a>(<a class="code hl_class" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">LogSources</a>.InternalAPIService,</div>
+<div class="line"><span class="lineno">  110</span>                <a class="code hl_variable" href="#ae6eb67908ecf2aa66a8df5c07a5741d6">_logService</a>.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a78c9df658858fa3099eed69421423898">LogException</a>(<a class="code hl_class" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">LogSources</a>.InternalAPIService,</div>
 <div class="line"><span class="lineno">  111</span>                    <span class="stringliteral">&quot;Exception getting daily close chart data through internal api&quot;</span>,</div>
 <div class="line"><span class="lineno">  112</span>                    ex.ToString()</div>
 <div class="line"><span class="lineno">  113</span>                );</div>
@@ -339,7 +370,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">  115</span>        }</div>
 <div class="line"><span class="lineno">  116</span>        <span class="keywordflow">else</span></div>
 <div class="line"><span class="lineno">  117</span>        {</div>
-<div class="line"><span class="lineno">  118</span>            _logService.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a46dc9bf58bc9605c7e17dfee38b94354">LogError</a>(<a class="code hl_class" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">LogSources</a>.InternalAPIService,</div>
+<div class="line"><span class="lineno">  118</span>            <a class="code hl_variable" href="#ae6eb67908ecf2aa66a8df5c07a5741d6">_logService</a>.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a46dc9bf58bc9605c7e17dfee38b94354">LogError</a>(<a class="code hl_class" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">LogSources</a>.InternalAPIService,</div>
 <div class="line"><span class="lineno">  119</span>                <span class="stringliteral">&quot;unsuccessful response getting daily close chart data through internal api&quot;</span>,</div>
 <div class="line"><span class="lineno">  120</span>                response.ResponseStatus,</div>
 <div class="line"><span class="lineno">  121</span>                response.StatusCode.ToString(),</div>
@@ -361,7 +392,19 @@ Here is the call graph for this function:</div>
 <area shape="poly" title=" " alt="" coords="214,71,246,76,246,81,214,77"/>
 <area shape="rect" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a44f0fd9db1116257087ba59c836e22ea" title="Directly inserts a log entry into the database." alt="" coords="504,39,698,81"/>
 <area shape="poly" title=" " alt="" coords="457,37,489,42,488,47,456,43"/>
+<area shape="rect" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a20f6ab73ae5cc69273da4416da65f94d" title="Writes a log entry to a local text file as a fallback or additional logging method." alt="" coords="746,39,941,81"/>
+<area shape="poly" title=" " alt="" coords="699,57,731,57,731,63,699,63"/>
 <area shape="poly" title=" " alt="" coords="456,77,488,73,489,78,457,83"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_a79988bdd459de2ee2b545fa7cac3d92a_icgraph.png" border="0" usemap="#aclass_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_a79988bdd459de2ee2b545fa7cac3d92a_icgraph" alt=""/></div>
+<map name="aclass_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_a79988bdd459de2ee2b545fa7cac3d92a_icgraph" id="aclass_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_a79988bdd459de2ee2b545fa7cac3d92a_icgraph">
+<area shape="rect" title="Fetches daily close chart data from Internal API." alt="" coords="244,5,452,48"/>
+<area shape="rect" href="class_task_a_p_i_1_1_helpers_1_1_spot_helper.html#a0a13962d034427b5047452856eb3198d" title=" " alt="" coords="5,5,196,48"/>
+<area shape="poly" title=" " alt="" coords="228,29,196,29,196,24,228,24"/>
 </map>
 </div>
 
@@ -393,8 +436,8 @@ Here is the call graph for this function:</div>
 <div class="fragment"><div class="line"><span class="lineno">  134</span>    {</div>
 <div class="line"><span class="lineno">  135</span>        <span class="keywordflow">try</span></div>
 <div class="line"><span class="lineno">  136</span>        {</div>
-<div class="line"><span class="lineno">  137</span>            var client = <span class="keyword">new</span> RestClient(_settings.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#a4a03da42d86717f1a6b1cdec0710666b">InternalAPISettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings.html#ac52d86bbf73045bfed0110c3f161b435">BaseURL</a>);</div>
-<div class="line"><span class="lineno">  138</span>            var request = <span class="keyword">new</span> RestRequest(_settings.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#a4a03da42d86717f1a6b1cdec0710666b">InternalAPISettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings.html#a8daebfb7169842f2dc08e8c14c21d4df">Endpoint_OandaInstrumentPricing</a>, Method.Get);</div>
+<div class="line"><span class="lineno">  137</span>            var client = <span class="keyword">new</span> RestClient(<a class="code hl_variable" href="#addd42c8e56ccd8483dabbd2b29d9aa54">_settings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#a4a03da42d86717f1a6b1cdec0710666b">InternalAPISettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings.html#ac52d86bbf73045bfed0110c3f161b435">BaseURL</a>);</div>
+<div class="line"><span class="lineno">  138</span>            var request = <span class="keyword">new</span> RestRequest(<a class="code hl_variable" href="#addd42c8e56ccd8483dabbd2b29d9aa54">_settings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#a4a03da42d86717f1a6b1cdec0710666b">InternalAPISettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings.html#a8daebfb7169842f2dc08e8c14c21d4df">Endpoint_OandaInstrumentPricing</a>, Method.Get);</div>
 <div class="line"><span class="lineno">  139</span>            request.AddQueryParameter(<span class="stringliteral">&quot;instruments&quot;</span>, $<span class="stringliteral">&quot;{assetCode}_USD&quot;</span>);</div>
 <div class="line"><span class="lineno">  140</span>            RestResponse response = client.Execute(request);</div>
 <div class="line"><span class="lineno">  141</span>            <span class="keywordflow">if</span> (response.IsSuccessStatusCode &amp;&amp; !<span class="keywordtype">string</span>.IsNullOrEmpty(response.Content))</div>
@@ -403,13 +446,13 @@ Here is the call graph for this function:</div>
 <div class="line"><span class="lineno">  144</span>                <span class="keywordflow">return</span> instrumentPrice;</div>
 <div class="line"><span class="lineno">  145</span>            }</div>
 <div class="line"><span class="lineno">  146</span>            <span class="keywordtype">string</span> errMsg = $<span class="stringliteral">&quot;unsuccessful response getting oanda instrument pricing for {assetCode} from internal api. StatusCode: {response.StatusCode} Description: {response.StatusDescription} Content: {response.Content}&quot;</span>;</div>
-<div class="line"><span class="lineno">  147</span>            _logService.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a46dc9bf58bc9605c7e17dfee38b94354">LogError</a>(<a class="code hl_class" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">LogSources</a>.InternalAPIService, errMsg);</div>
+<div class="line"><span class="lineno">  147</span>            <a class="code hl_variable" href="#ae6eb67908ecf2aa66a8df5c07a5741d6">_logService</a>.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a46dc9bf58bc9605c7e17dfee38b94354">LogError</a>(<a class="code hl_class" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">LogSources</a>.InternalAPIService, errMsg);</div>
 <div class="line"><span class="lineno">  148</span>            <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
 <div class="line"><span class="lineno">  149</span>        }</div>
 <div class="line"><span class="lineno">  150</span>        <span class="keywordflow">catch</span> (Exception ex)</div>
 <div class="line"><span class="lineno">  151</span>        {</div>
 <div class="line"><span class="lineno">  152</span>            <span class="keywordtype">string</span> errMsg = $<span class="stringliteral">&quot;exception getting oanda instrument pricing for {assetCode} on internal api {ex}&quot;</span>;</div>
-<div class="line"><span class="lineno">  153</span>            _logService.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a78c9df658858fa3099eed69421423898">LogException</a>(<a class="code hl_class" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">LogSources</a>.InternalAPIService, errMsg);</div>
+<div class="line"><span class="lineno">  153</span>            <a class="code hl_variable" href="#ae6eb67908ecf2aa66a8df5c07a5741d6">_logService</a>.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a78c9df658858fa3099eed69421423898">LogException</a>(<a class="code hl_class" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">LogSources</a>.InternalAPIService, errMsg);</div>
 <div class="line"><span class="lineno">  154</span>            <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
 <div class="line"><span class="lineno">  155</span>        }</div>
 <div class="line"><span class="lineno">  156</span>    }</div>
@@ -427,7 +470,27 @@ Here is the call graph for this function:</div>
 <area shape="poly" title=" " alt="" coords="272,73,303,77,303,82,271,79"/>
 <area shape="rect" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a44f0fd9db1116257087ba59c836e22ea" title="Directly inserts a log entry into the database." alt="" coords="561,39,755,81"/>
 <area shape="poly" title=" " alt="" coords="514,37,546,42,545,47,513,43"/>
+<area shape="rect" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a20f6ab73ae5cc69273da4416da65f94d" title="Writes a log entry to a local text file as a fallback or additional logging method." alt="" coords="803,39,998,81"/>
+<area shape="poly" title=" " alt="" coords="756,57,788,57,788,63,756,63"/>
 <area shape="poly" title=" " alt="" coords="513,77,545,73,546,78,514,83"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_aa614614518048e1244ae357de18425df_icgraph.png" border="0" usemap="#aclass_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_aa614614518048e1244ae357de18425df_icgraph" alt=""/></div>
+<map name="aclass_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_aa614614518048e1244ae357de18425df_icgraph" id="aclass_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_aa614614518048e1244ae357de18425df_icgraph">
+<area shape="rect" title="Retrieves the price of a specified OANDA instrument in USD." alt="" coords="697,39,963,81"/>
+<area shape="rect" href="class_task_a_p_i_1_1_helpers_1_1_spot_helper.html#a249585457b73bcd269d8644a8120465e" title="Determines if the market for a specific instrument is currently open." alt="" coords="459,5,649,48"/>
+<area shape="poly" title=" " alt="" coords="681,45,650,41,650,36,682,39"/>
+<area shape="rect" href="class_task_a_p_i_1_1_helpers_1_1_spot_helper.html#a0fd06a80c097c9b6fcd5ddd8b1889c18" title="Retrieves spot data from Oanda for each specified asset." alt="" coords="459,72,649,115"/>
+<area shape="poly" title=" " alt="" coords="682,81,650,84,650,79,681,75"/>
+<area shape="rect" href="class_task_a_p_i_1_1_helpers_1_1_spot_helper.html#ae5d7f0ba6759749953e94555c9557cfb" title="Initialises a new instance of the SpotHelper class." alt="" coords="221,5,411,48"/>
+<area shape="poly" title=" " alt="" coords="443,29,411,29,411,24,443,24"/>
+<area shape="rect" href="class_task_a_p_i_1_1_helpers_1_1_spot_helper.html#a7b75f44b3310036d4de7f0f2956bbac1" title="Pulls, saves, and trims spot data from various sources." alt="" coords="221,72,411,115"/>
+<area shape="poly" title=" " alt="" coords="443,96,411,96,411,91,443,91"/>
+<area shape="rect" href="class_task_a_p_i_1_1_controllers_1_1_spot_controller.html#adc5d733d4c39f2ecdaad8d8bf2231731" title="Initiates synchronisation of spot data." alt="" coords="5,72,173,115"/>
+<area shape="poly" title=" " alt="" coords="205,96,173,96,173,91,205,91"/>
 </map>
 </div>
 
@@ -453,8 +516,8 @@ Here is the call graph for this function:</div>
 <div class="fragment"><div class="line"><span class="lineno">  163</span>    {</div>
 <div class="line"><span class="lineno">  164</span>        <span class="keywordflow">try</span></div>
 <div class="line"><span class="lineno">  165</span>        {</div>
-<div class="line"><span class="lineno">  166</span>            var client = <span class="keyword">new</span> RestClient(_settings.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#a4a03da42d86717f1a6b1cdec0710666b">InternalAPISettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings.html#ac52d86bbf73045bfed0110c3f161b435">BaseURL</a>);</div>
-<div class="line"><span class="lineno">  167</span>            var request = <span class="keyword">new</span> RestRequest(_settings.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#a4a03da42d86717f1a6b1cdec0710666b">InternalAPISettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings.html#ad0e29ce5b266bbf0f341aa6011f08ff8">Endpoint_PriceappMarketStatusOverride</a>, Method.Get);</div>
+<div class="line"><span class="lineno">  166</span>            var client = <span class="keyword">new</span> RestClient(<a class="code hl_variable" href="#addd42c8e56ccd8483dabbd2b29d9aa54">_settings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#a4a03da42d86717f1a6b1cdec0710666b">InternalAPISettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings.html#ac52d86bbf73045bfed0110c3f161b435">BaseURL</a>);</div>
+<div class="line"><span class="lineno">  167</span>            var request = <span class="keyword">new</span> RestRequest(<a class="code hl_variable" href="#addd42c8e56ccd8483dabbd2b29d9aa54">_settings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#a4a03da42d86717f1a6b1cdec0710666b">InternalAPISettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings.html#ad0e29ce5b266bbf0f341aa6011f08ff8">Endpoint_PriceappMarketStatusOverride</a>, Method.Get);</div>
 <div class="line"><span class="lineno">  168</span>            RestResponse response = client.Execute(request);</div>
 <div class="line"><span class="lineno">  169</span>            <span class="keywordflow">if</span> (response.IsSuccessStatusCode &amp;&amp; !<span class="keywordtype">string</span>.IsNullOrEmpty(response.Content))</div>
 <div class="line"><span class="lineno">  170</span>            {</div>
@@ -462,13 +525,13 @@ Here is the call graph for this function:</div>
 <div class="line"><span class="lineno">  172</span>                <span class="keywordflow">return</span> statusOverride;</div>
 <div class="line"><span class="lineno">  173</span>            }</div>
 <div class="line"><span class="lineno">  174</span>            <span class="keywordtype">string</span> errMsg = $<span class="stringliteral">&quot;unsuccessful response getting priceapp market status override from internal api. StatusCode: {response.StatusCode} Description: {response.StatusDescription} Content: {response.Content}&quot;</span>;</div>
-<div class="line"><span class="lineno">  175</span>            _logService.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a46dc9bf58bc9605c7e17dfee38b94354">LogError</a>(<a class="code hl_class" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">LogSources</a>.InternalAPIService, errMsg);</div>
+<div class="line"><span class="lineno">  175</span>            <a class="code hl_variable" href="#ae6eb67908ecf2aa66a8df5c07a5741d6">_logService</a>.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a46dc9bf58bc9605c7e17dfee38b94354">LogError</a>(<a class="code hl_class" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">LogSources</a>.InternalAPIService, errMsg);</div>
 <div class="line"><span class="lineno">  176</span>            <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
 <div class="line"><span class="lineno">  177</span>        }</div>
 <div class="line"><span class="lineno">  178</span>        <span class="keywordflow">catch</span> (Exception ex)</div>
 <div class="line"><span class="lineno">  179</span>        {</div>
 <div class="line"><span class="lineno">  180</span>            <span class="keywordtype">string</span> errMsg = $<span class="stringliteral">&quot;exception getting priceapp market status override on internal api {ex}&quot;</span>;</div>
-<div class="line"><span class="lineno">  181</span>            _logService.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a78c9df658858fa3099eed69421423898">LogException</a>(<a class="code hl_class" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">LogSources</a>.InternalAPIService, errMsg);</div>
+<div class="line"><span class="lineno">  181</span>            <a class="code hl_variable" href="#ae6eb67908ecf2aa66a8df5c07a5741d6">_logService</a>.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a78c9df658858fa3099eed69421423898">LogException</a>(<a class="code hl_class" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">LogSources</a>.InternalAPIService, errMsg);</div>
 <div class="line"><span class="lineno">  182</span>            <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
 <div class="line"><span class="lineno">  183</span>        }</div>
 <div class="line"><span class="lineno">  184</span>    }</div>
@@ -485,7 +548,21 @@ Here is the call graph for this function:</div>
 <area shape="poly" title=" " alt="" coords="244,72,277,77,276,82,244,78"/>
 <area shape="rect" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a44f0fd9db1116257087ba59c836e22ea" title="Directly inserts a log entry into the database." alt="" coords="534,39,728,81"/>
 <area shape="poly" title=" " alt="" coords="487,37,519,42,518,47,486,43"/>
+<area shape="rect" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a20f6ab73ae5cc69273da4416da65f94d" title="Writes a log entry to a local text file as a fallback or additional logging method." alt="" coords="776,39,971,81"/>
+<area shape="poly" title=" " alt="" coords="729,57,761,57,761,63,729,63"/>
 <area shape="poly" title=" " alt="" coords="486,77,518,73,519,78,487,83"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_a55b9f5404586ba97531f1cdc013ecaed_icgraph.png" border="0" usemap="#aclass_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_a55b9f5404586ba97531f1cdc013ecaed_icgraph" alt=""/></div>
+<map name="aclass_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_a55b9f5404586ba97531f1cdc013ecaed_icgraph" id="aclass_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_a55b9f5404586ba97531f1cdc013ecaed_icgraph">
+<area shape="rect" title="Gets the market status override setting from Internal API." alt="" coords="482,5,720,64"/>
+<area shape="rect" href="class_task_a_p_i_1_1_helpers_1_1_spot_helper.html#a7ff886c42d0b6aba649b98f9935772bc" title="Retrieves the current market status override from an external service." alt="" coords="244,13,434,56"/>
+<area shape="poly" title=" " alt="" coords="466,37,434,37,434,32,466,32"/>
+<area shape="rect" href="class_task_a_p_i_1_1_helpers_1_1_spot_helper.html#ae5d7f0ba6759749953e94555c9557cfb" title="Initialises a new instance of the SpotHelper class." alt="" coords="5,13,196,56"/>
+<area shape="poly" title=" " alt="" coords="228,37,196,37,196,32,228,32"/>
 </map>
 </div>
 
@@ -523,7 +600,7 @@ Here is the call graph for this function:</div>
 <div class="fragment"><div class="line"><span class="lineno">  303</span>    {</div>
 <div class="line"><span class="lineno">  304</span>        <span class="keywordflow">try</span></div>
 <div class="line"><span class="lineno">  305</span>        {</div>
-<div class="line"><span class="lineno">  306</span>            var client = <span class="keyword">new</span> RestClient(_settings.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#a4a03da42d86717f1a6b1cdec0710666b">InternalAPISettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings.html#ac52d86bbf73045bfed0110c3f161b435">BaseURL</a>);</div>
+<div class="line"><span class="lineno">  306</span>            var client = <span class="keyword">new</span> RestClient(<a class="code hl_variable" href="#addd42c8e56ccd8483dabbd2b29d9aa54">_settings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#a4a03da42d86717f1a6b1cdec0710666b">InternalAPISettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings.html#ac52d86bbf73045bfed0110c3f161b435">BaseURL</a>);</div>
 <div class="line"><span class="lineno">  307</span> </div>
 <div class="line"><span class="lineno">  308</span>            <span class="keywordtype">string</span> endpoint = $<span class="stringliteral">&quot;{_settings.InternalAPISettings.Endpoint_GetUnifiedLogs}/{apiSource}&quot;</span>;</div>
 <div class="line"><span class="lineno">  309</span>            var request = <span class="keyword">new</span> RestRequest(endpoint, Method.Post);</div>
@@ -536,11 +613,11 @@ Here is the call graph for this function:</div>
 <div class="line"><span class="lineno">  316</span>                var logs = JsonConvert.DeserializeObject&lt;List&lt;LogEntry&gt;&gt;(response.Content);</div>
 <div class="line"><span class="lineno">  317</span>                <span class="keywordflow">return</span> logs;</div>
 <div class="line"><span class="lineno">  318</span>            }</div>
-<div class="line"><span class="lineno">  319</span>            _logService.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a46dc9bf58bc9605c7e17dfee38b94354">LogError</a>(<a class="code hl_class" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">LogSources</a>.InternalAPIService, <span class="stringliteral">&quot;Unsuccessful response retrieving unified logs&quot;</span>, $<span class="stringliteral">&quot;StatusCode: {response.StatusCode} Description: {response.StatusDescription} Content: {response.Content}&quot;</span>);</div>
+<div class="line"><span class="lineno">  319</span>            <a class="code hl_variable" href="#ae6eb67908ecf2aa66a8df5c07a5741d6">_logService</a>.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a46dc9bf58bc9605c7e17dfee38b94354">LogError</a>(<a class="code hl_class" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">LogSources</a>.InternalAPIService, <span class="stringliteral">&quot;Unsuccessful response retrieving unified logs&quot;</span>, $<span class="stringliteral">&quot;StatusCode: {response.StatusCode} Description: {response.StatusDescription} Content: {response.Content}&quot;</span>);</div>
 <div class="line"><span class="lineno">  320</span>        }</div>
 <div class="line"><span class="lineno">  321</span>        <span class="keywordflow">catch</span> (Exception ex)</div>
 <div class="line"><span class="lineno">  322</span>        {</div>
-<div class="line"><span class="lineno">  323</span>            _logService.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a78c9df658858fa3099eed69421423898">LogException</a>(<a class="code hl_class" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">LogSources</a>.InternalAPIService, <span class="stringliteral">&quot;Exception retrieving unified logs&quot;</span>, ex.ToString());</div>
+<div class="line"><span class="lineno">  323</span>            <a class="code hl_variable" href="#ae6eb67908ecf2aa66a8df5c07a5741d6">_logService</a>.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a78c9df658858fa3099eed69421423898">LogException</a>(<a class="code hl_class" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">LogSources</a>.InternalAPIService, <span class="stringliteral">&quot;Exception retrieving unified logs&quot;</span>, ex.ToString());</div>
 <div class="line"><span class="lineno">  324</span>        }</div>
 <div class="line"><span class="lineno">  325</span>        <span class="keywordflow">return</span> <span class="keyword">new</span> List&lt;LogEntry&gt;();</div>
 <div class="line"><span class="lineno">  326</span>    }</div>
@@ -556,7 +633,23 @@ Here is the call graph for this function:</div>
 <area shape="poly" title=" " alt="" coords="182,70,215,75,214,80,182,75"/>
 <area shape="rect" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a44f0fd9db1116257087ba59c836e22ea" title="Directly inserts a log entry into the database." alt="" coords="472,39,666,81"/>
 <area shape="poly" title=" " alt="" coords="425,37,457,42,456,47,424,43"/>
+<area shape="rect" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a20f6ab73ae5cc69273da4416da65f94d" title="Writes a log entry to a local text file as a fallback or additional logging method." alt="" coords="714,39,909,81"/>
+<area shape="poly" title=" " alt="" coords="667,57,699,57,699,63,667,63"/>
 <area shape="poly" title=" " alt="" coords="424,77,456,73,457,78,425,83"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_a01d6e21d8a6368eb448cb401630cf033_icgraph.png" border="0" usemap="#aclass_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_a01d6e21d8a6368eb448cb401630cf033_icgraph" alt=""/></div>
+<map name="aclass_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_a01d6e21d8a6368eb448cb401630cf033_icgraph" id="aclass_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_a01d6e21d8a6368eb448cb401630cf033_icgraph">
+<area shape="rect" title="Retrieves unified logs from Internal API for a specified API source." alt="" coords="715,5,892,48"/>
+<area shape="rect" href="class_task_a_p_i_1_1_helpers_1_1_alert_helper.html#a6288723babbbadebdd77681b41122d79" title="Fetches and processes log entries for a given API source based on the specified configuration." alt="" coords="477,5,667,48"/>
+<area shape="poly" title=" " alt="" coords="700,29,668,29,668,24,700,24"/>
+<area shape="rect" href="class_task_a_p_i_1_1_helpers_1_1_alert_helper.html#acddc980d442b4344a8d9df5ba056276a" title="Processes a single API source for alert generation." alt="" coords="239,5,429,48"/>
+<area shape="poly" title=" " alt="" coords="461,29,429,29,429,24,461,24"/>
+<area shape="rect" href="class_task_a_p_i_1_1_controllers_1_1_logs_controller.html#aa1bbb95b5f70e8d5a457fdca962479e3" title="Checks for alerts across all configured api sources." alt="" coords="5,5,191,48"/>
+<area shape="poly" title=" " alt="" coords="223,29,191,29,191,24,223,24"/>
 </map>
 </div>
 
@@ -582,22 +675,22 @@ Here is the call graph for this function:</div>
 <div class="fragment"><div class="line"><span class="lineno">  191</span>    {</div>
 <div class="line"><span class="lineno">  192</span>        <span class="keywordflow">try</span></div>
 <div class="line"><span class="lineno">  193</span>        {</div>
-<div class="line"><span class="lineno">  194</span>            var client = <span class="keyword">new</span> RestClient(_settings.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#a4a03da42d86717f1a6b1cdec0710666b">InternalAPISettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings.html#ac52d86bbf73045bfed0110c3f161b435">BaseURL</a>);</div>
-<div class="line"><span class="lineno">  195</span>            var request = <span class="keyword">new</span> RestRequest(_settings.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#a4a03da42d86717f1a6b1cdec0710666b">InternalAPISettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings.html#a51a12129a28d3dadba61eda6672d7523">Endpoint_TrimLogs</a>, Method.Get);</div>
-<div class="line"><span class="lineno">  196</span>            request.AddQueryParameter(<span class="stringliteral">&quot;keepDays&quot;</span>, _settings.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#a4a03da42d86717f1a6b1cdec0710666b">InternalAPISettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings.html#a0c02fb8a3cffdf328e2120fa3373372e">DaysToKeepLogs</a>);</div>
+<div class="line"><span class="lineno">  194</span>            var client = <span class="keyword">new</span> RestClient(<a class="code hl_variable" href="#addd42c8e56ccd8483dabbd2b29d9aa54">_settings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#a4a03da42d86717f1a6b1cdec0710666b">InternalAPISettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings.html#ac52d86bbf73045bfed0110c3f161b435">BaseURL</a>);</div>
+<div class="line"><span class="lineno">  195</span>            var request = <span class="keyword">new</span> RestRequest(<a class="code hl_variable" href="#addd42c8e56ccd8483dabbd2b29d9aa54">_settings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#a4a03da42d86717f1a6b1cdec0710666b">InternalAPISettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings.html#a51a12129a28d3dadba61eda6672d7523">Endpoint_TrimLogs</a>, Method.Get);</div>
+<div class="line"><span class="lineno">  196</span>            request.AddQueryParameter(<span class="stringliteral">&quot;keepDays&quot;</span>, <a class="code hl_variable" href="#addd42c8e56ccd8483dabbd2b29d9aa54">_settings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#a4a03da42d86717f1a6b1cdec0710666b">InternalAPISettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings.html#a0c02fb8a3cffdf328e2120fa3373372e">DaysToKeepLogs</a>);</div>
 <div class="line"><span class="lineno">  197</span>            RestResponse response = client.Execute(request);</div>
 <div class="line"><span class="lineno">  198</span>            <span class="keywordflow">if</span> (response.IsSuccessStatusCode &amp;&amp; !<span class="keywordtype">string</span>.IsNullOrEmpty(response.Content))</div>
 <div class="line"><span class="lineno">  199</span>            {</div>
 <div class="line"><span class="lineno">  200</span>                <span class="keywordflow">return</span> JsonConvert.DeserializeObject&lt;<a class="code hl_class" href="class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result.html">LogTrimResult</a>&gt;(response.Content);</div>
 <div class="line"><span class="lineno">  201</span>            }</div>
 <div class="line"><span class="lineno">  202</span>            <span class="keywordtype">string</span> errMsg = $<span class="stringliteral">&quot;unsuccessful response trimming logs on internal api. StatusCode: {response.StatusCode} Description: {response.StatusDescription} Content: {response.Content}&quot;</span>;</div>
-<div class="line"><span class="lineno">  203</span>            _logService.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a46dc9bf58bc9605c7e17dfee38b94354">LogError</a>(<a class="code hl_class" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">LogSources</a>.InternalAPIService, errMsg);</div>
+<div class="line"><span class="lineno">  203</span>            <a class="code hl_variable" href="#ae6eb67908ecf2aa66a8df5c07a5741d6">_logService</a>.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a46dc9bf58bc9605c7e17dfee38b94354">LogError</a>(<a class="code hl_class" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">LogSources</a>.InternalAPIService, errMsg);</div>
 <div class="line"><span class="lineno">  204</span>            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code hl_class" href="class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result.html">LogTrimResult</a>() { error = <span class="keyword">true</span>, message = errMsg };</div>
 <div class="line"><span class="lineno">  205</span>        }</div>
 <div class="line"><span class="lineno">  206</span>        <span class="keywordflow">catch</span> (Exception ex)</div>
 <div class="line"><span class="lineno">  207</span>        {</div>
 <div class="line"><span class="lineno">  208</span>            <span class="keywordtype">string</span> errMsg = $<span class="stringliteral">&quot;exception trimming logs on internal api {ex}&quot;</span>;</div>
-<div class="line"><span class="lineno">  209</span>            _logService.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a78c9df658858fa3099eed69421423898">LogException</a>(<a class="code hl_class" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">LogSources</a>.InternalAPIService, errMsg);</div>
+<div class="line"><span class="lineno">  209</span>            <a class="code hl_variable" href="#ae6eb67908ecf2aa66a8df5c07a5741d6">_logService</a>.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a78c9df658858fa3099eed69421423898">LogException</a>(<a class="code hl_class" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">LogSources</a>.InternalAPIService, errMsg);</div>
 <div class="line"><span class="lineno">  210</span>            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code hl_class" href="class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result.html">LogTrimResult</a>() { error = <span class="keyword">true</span>, message = errMsg };</div>
 <div class="line"><span class="lineno">  211</span>        }</div>
 <div class="line"><span class="lineno">  212</span>    }</div>
@@ -615,6 +708,8 @@ Here is the call graph for this function:</div>
 <area shape="poly" title=" " alt="" coords="210,71,242,76,242,81,210,76"/>
 <area shape="rect" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a44f0fd9db1116257087ba59c836e22ea" title="Directly inserts a log entry into the database." alt="" coords="500,39,694,81"/>
 <area shape="poly" title=" " alt="" coords="453,37,485,42,484,47,452,43"/>
+<area shape="rect" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a20f6ab73ae5cc69273da4416da65f94d" title="Writes a log entry to a local text file as a fallback or additional logging method." alt="" coords="742,39,937,81"/>
+<area shape="poly" title=" " alt="" coords="695,57,727,57,727,63,695,63"/>
 <area shape="poly" title=" " alt="" coords="452,77,484,73,485,78,453,83"/>
 </map>
 </div>
@@ -652,19 +747,19 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">   72</span>        <span class="keywordflow">try</span></div>
 <div class="line"><span class="lineno">   73</span>        {</div>
 <div class="line"><span class="lineno">   74</span>            List&lt;PriceappAsset&gt;? assets = <span class="keyword">new</span> List&lt;PriceappAsset&gt;();</div>
-<div class="line"><span class="lineno">   75</span>            var client = <span class="keyword">new</span> RestClient(_settings.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#a4a03da42d86717f1a6b1cdec0710666b">InternalAPISettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings.html#ac52d86bbf73045bfed0110c3f161b435">BaseURL</a>);</div>
-<div class="line"><span class="lineno">   76</span>            var request = <span class="keyword">new</span> RestRequest(_settings.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#a4a03da42d86717f1a6b1cdec0710666b">InternalAPISettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings.html#a0be830e3100b27b5d8f34b55eda664b8">Endpoint_PriceappAssets</a>, Method.Get);</div>
+<div class="line"><span class="lineno">   75</span>            var client = <span class="keyword">new</span> RestClient(<a class="code hl_variable" href="#addd42c8e56ccd8483dabbd2b29d9aa54">_settings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#a4a03da42d86717f1a6b1cdec0710666b">InternalAPISettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings.html#ac52d86bbf73045bfed0110c3f161b435">BaseURL</a>);</div>
+<div class="line"><span class="lineno">   76</span>            var request = <span class="keyword">new</span> RestRequest(<a class="code hl_variable" href="#addd42c8e56ccd8483dabbd2b29d9aa54">_settings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#a4a03da42d86717f1a6b1cdec0710666b">InternalAPISettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings.html#a0be830e3100b27b5d8f34b55eda664b8">Endpoint_PriceappAssets</a>, Method.Get);</div>
 <div class="line"><span class="lineno">   77</span>            RestResponse response = client.Execute(request);</div>
 <div class="line"><span class="lineno">   78</span>            <span class="keywordflow">if</span> (response.IsSuccessStatusCode)</div>
 <div class="line"><span class="lineno">   79</span>            {</div>
 <div class="line"><span class="lineno">   80</span>                assets = JsonConvert.DeserializeObject&lt;List&lt;PriceappAsset&gt;&gt;(response.Content);</div>
 <div class="line"><span class="lineno">   81</span>                <span class="keywordflow">return</span> assets;</div>
 <div class="line"><span class="lineno">   82</span>            }</div>
-<div class="line"><span class="lineno">   83</span>            _logService.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a46dc9bf58bc9605c7e17dfee38b94354">LogError</a>(<a class="code hl_class" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">LogSources</a>.InternalAPIService, <span class="stringliteral">&quot;unsuccessful response getting priceapp asset list through internal api&quot;</span>, $<span class="stringliteral">&quot;StatusCode: {response.StatusCode} Description: {response.StatusDescription} Content: {response.Content}&quot;</span>);</div>
+<div class="line"><span class="lineno">   83</span>            <a class="code hl_variable" href="#ae6eb67908ecf2aa66a8df5c07a5741d6">_logService</a>.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a46dc9bf58bc9605c7e17dfee38b94354">LogError</a>(<a class="code hl_class" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">LogSources</a>.InternalAPIService, <span class="stringliteral">&quot;unsuccessful response getting priceapp asset list through internal api&quot;</span>, $<span class="stringliteral">&quot;StatusCode: {response.StatusCode} Description: {response.StatusDescription} Content: {response.Content}&quot;</span>);</div>
 <div class="line"><span class="lineno">   84</span>        }</div>
 <div class="line"><span class="lineno">   85</span>        <span class="keywordflow">catch</span> (Exception ex)</div>
 <div class="line"><span class="lineno">   86</span>        {</div>
-<div class="line"><span class="lineno">   87</span>            _logService.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a78c9df658858fa3099eed69421423898">LogException</a>(<a class="code hl_class" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">LogSources</a>.InternalAPIService, <span class="stringliteral">&quot;exception getting priceapp asset list through internal api&quot;</span>, ex.ToString());</div>
+<div class="line"><span class="lineno">   87</span>            <a class="code hl_variable" href="#ae6eb67908ecf2aa66a8df5c07a5741d6">_logService</a>.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a78c9df658858fa3099eed69421423898">LogException</a>(<a class="code hl_class" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">LogSources</a>.InternalAPIService, <span class="stringliteral">&quot;exception getting priceapp asset list through internal api&quot;</span>, ex.ToString());</div>
 <div class="line"><span class="lineno">   88</span>        }</div>
 <div class="line"><span class="lineno">   89</span>        <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
 <div class="line"><span class="lineno">   90</span>    }</div>
@@ -681,6 +776,8 @@ Here is the call graph for this function:</div>
 <area shape="poly" title=" " alt="" coords="187,70,218,75,218,80,186,75"/>
 <area shape="rect" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a44f0fd9db1116257087ba59c836e22ea" title="Directly inserts a log entry into the database." alt="" coords="476,39,670,81"/>
 <area shape="poly" title=" " alt="" coords="429,37,461,42,460,47,428,43"/>
+<area shape="rect" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a20f6ab73ae5cc69273da4416da65f94d" title="Writes a log entry to a local text file as a fallback or additional logging method." alt="" coords="718,39,913,81"/>
+<area shape="poly" title=" " alt="" coords="671,57,703,57,703,63,671,63"/>
 <area shape="poly" title=" " alt="" coords="428,77,460,73,461,78,429,83"/>
 </map>
 </div>
@@ -707,21 +804,21 @@ Here is the call graph for this function:</div>
 <div class="fragment"><div class="line"><span class="lineno">  219</span>    {</div>
 <div class="line"><span class="lineno">  220</span>        <span class="keywordflow">try</span></div>
 <div class="line"><span class="lineno">  221</span>        {</div>
-<div class="line"><span class="lineno">  222</span>            var client = <span class="keyword">new</span> RestClient(_settings.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#a4a03da42d86717f1a6b1cdec0710666b">InternalAPISettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings.html#ac52d86bbf73045bfed0110c3f161b435">BaseURL</a>);</div>
-<div class="line"><span class="lineno">  223</span>            var request = <span class="keyword">new</span> RestRequest(_settings.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#a4a03da42d86717f1a6b1cdec0710666b">InternalAPISettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings.html#a6b8bd4c293db7a08e544f92fd8f3f411">Endpoint_PriceappTrimLogs</a>, Method.Get);</div>
+<div class="line"><span class="lineno">  222</span>            var client = <span class="keyword">new</span> RestClient(<a class="code hl_variable" href="#addd42c8e56ccd8483dabbd2b29d9aa54">_settings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#a4a03da42d86717f1a6b1cdec0710666b">InternalAPISettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings.html#ac52d86bbf73045bfed0110c3f161b435">BaseURL</a>);</div>
+<div class="line"><span class="lineno">  223</span>            var request = <span class="keyword">new</span> RestRequest(<a class="code hl_variable" href="#addd42c8e56ccd8483dabbd2b29d9aa54">_settings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#a4a03da42d86717f1a6b1cdec0710666b">InternalAPISettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings.html#a6b8bd4c293db7a08e544f92fd8f3f411">Endpoint_PriceappTrimLogs</a>, Method.Get);</div>
 <div class="line"><span class="lineno">  224</span>            RestResponse response = client.Execute(request);</div>
 <div class="line"><span class="lineno">  225</span>            <span class="keywordflow">if</span> (response.IsSuccessStatusCode &amp;&amp; !<span class="keywordtype">string</span>.IsNullOrEmpty(response.Content))</div>
 <div class="line"><span class="lineno">  226</span>            {</div>
 <div class="line"><span class="lineno">  227</span>                <span class="keywordflow">return</span> JsonConvert.DeserializeObject&lt;<a class="code hl_class" href="class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result.html">LogTrimResult</a>&gt;(response.Content);</div>
 <div class="line"><span class="lineno">  228</span>            }</div>
 <div class="line"><span class="lineno">  229</span>            <span class="keywordtype">string</span> errMsg = $<span class="stringliteral">&quot;unsuccessful response trimming logs on priceapp. StatusCode: {response.StatusCode} Description: {response.StatusDescription} Content: {response.Content}&quot;</span>;</div>
-<div class="line"><span class="lineno">  230</span>            _logService.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a46dc9bf58bc9605c7e17dfee38b94354">LogError</a>(<a class="code hl_class" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">LogSources</a>.InternalAPIService, errMsg);</div>
+<div class="line"><span class="lineno">  230</span>            <a class="code hl_variable" href="#ae6eb67908ecf2aa66a8df5c07a5741d6">_logService</a>.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a46dc9bf58bc9605c7e17dfee38b94354">LogError</a>(<a class="code hl_class" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">LogSources</a>.InternalAPIService, errMsg);</div>
 <div class="line"><span class="lineno">  231</span>            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code hl_class" href="class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result.html">LogTrimResult</a>() { error = <span class="keyword">true</span>, message = errMsg };</div>
 <div class="line"><span class="lineno">  232</span>        }</div>
 <div class="line"><span class="lineno">  233</span>        <span class="keywordflow">catch</span> (Exception ex)</div>
 <div class="line"><span class="lineno">  234</span>        {</div>
 <div class="line"><span class="lineno">  235</span>            <span class="keywordtype">string</span> errMsg = $<span class="stringliteral">&quot;exception trimming logs on priceapp {ex}&quot;</span>;</div>
-<div class="line"><span class="lineno">  236</span>            _logService.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a78c9df658858fa3099eed69421423898">LogException</a>(<a class="code hl_class" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">LogSources</a>.InternalAPIService, errMsg);</div>
+<div class="line"><span class="lineno">  236</span>            <a class="code hl_variable" href="#ae6eb67908ecf2aa66a8df5c07a5741d6">_logService</a>.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a78c9df658858fa3099eed69421423898">LogException</a>(<a class="code hl_class" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">LogSources</a>.InternalAPIService, errMsg);</div>
 <div class="line"><span class="lineno">  237</span>            <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code hl_class" href="class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result.html">LogTrimResult</a>() { error = <span class="keyword">true</span>, message = errMsg };</div>
 <div class="line"><span class="lineno">  238</span>        }</div>
 <div class="line"><span class="lineno">  239</span>    }</div>
@@ -738,6 +835,8 @@ Here is the call graph for this function:</div>
 <area shape="poly" title=" " alt="" coords="199,71,230,75,230,80,198,76"/>
 <area shape="rect" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a44f0fd9db1116257087ba59c836e22ea" title="Directly inserts a log entry into the database." alt="" coords="488,39,682,81"/>
 <area shape="poly" title=" " alt="" coords="441,37,473,42,472,47,440,43"/>
+<area shape="rect" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a20f6ab73ae5cc69273da4416da65f94d" title="Writes a log entry to a local text file as a fallback or additional logging method." alt="" coords="730,39,925,81"/>
+<area shape="poly" title=" " alt="" coords="683,57,715,57,715,63,683,63"/>
 <area shape="poly" title=" " alt="" coords="440,77,472,73,473,78,441,83"/>
 </map>
 </div>
@@ -780,19 +879,19 @@ Here is the caller graph for this function:</div>
 <div class="fragment"><div class="line"><span class="lineno">   46</span>    {</div>
 <div class="line"><span class="lineno">   47</span>        <span class="keywordflow">try</span></div>
 <div class="line"><span class="lineno">   48</span>        {</div>
-<div class="line"><span class="lineno">   49</span>            var client = <span class="keyword">new</span> RestClient(_settings.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#a4a03da42d86717f1a6b1cdec0710666b">InternalAPISettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings.html#ac52d86bbf73045bfed0110c3f161b435">BaseURL</a>);</div>
-<div class="line"><span class="lineno">   50</span>            var request = <span class="keyword">new</span> RestRequest(_settings.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#a4a03da42d86717f1a6b1cdec0710666b">InternalAPISettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings.html#a00b3b80971ef972a4a4874d1a85afed3">Endpoint_Email</a>, Method.Post);</div>
+<div class="line"><span class="lineno">   49</span>            var client = <span class="keyword">new</span> RestClient(<a class="code hl_variable" href="#addd42c8e56ccd8483dabbd2b29d9aa54">_settings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#a4a03da42d86717f1a6b1cdec0710666b">InternalAPISettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings.html#ac52d86bbf73045bfed0110c3f161b435">BaseURL</a>);</div>
+<div class="line"><span class="lineno">   50</span>            var request = <span class="keyword">new</span> RestRequest(<a class="code hl_variable" href="#addd42c8e56ccd8483dabbd2b29d9aa54">_settings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#a4a03da42d86717f1a6b1cdec0710666b">InternalAPISettings</a>.<a class="code hl_property" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings.html#a00b3b80971ef972a4a4874d1a85afed3">Endpoint_Email</a>, Method.Post);</div>
 <div class="line"><span class="lineno">   51</span>            request.AddJsonBody(email);</div>
 <div class="line"><span class="lineno">   52</span>            RestResponse response = client.Execute(request);</div>
 <div class="line"><span class="lineno">   53</span>            <span class="keywordflow">if</span> (response.IsSuccessStatusCode)</div>
 <div class="line"><span class="lineno">   54</span>            {</div>
 <div class="line"><span class="lineno">   55</span>                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><span class="lineno">   56</span>            }</div>
-<div class="line"><span class="lineno">   57</span>            _logService.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a46dc9bf58bc9605c7e17dfee38b94354">LogError</a>(<a class="code hl_class" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">LogSources</a>.InternalAPIService, <span class="stringliteral">&quot;unsuccessful response sending email through internal api&quot;</span>, $<span class="stringliteral">&quot;StatusCode: {response.StatusCode} Description: {response.StatusDescription} Content: {response.Content}&quot;</span>);</div>
+<div class="line"><span class="lineno">   57</span>            <a class="code hl_variable" href="#ae6eb67908ecf2aa66a8df5c07a5741d6">_logService</a>.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a46dc9bf58bc9605c7e17dfee38b94354">LogError</a>(<a class="code hl_class" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">LogSources</a>.InternalAPIService, <span class="stringliteral">&quot;unsuccessful response sending email through internal api&quot;</span>, $<span class="stringliteral">&quot;StatusCode: {response.StatusCode} Description: {response.StatusDescription} Content: {response.Content}&quot;</span>);</div>
 <div class="line"><span class="lineno">   58</span>        }</div>
 <div class="line"><span class="lineno">   59</span>        <span class="keywordflow">catch</span> (Exception ex)</div>
 <div class="line"><span class="lineno">   60</span>        {</div>
-<div class="line"><span class="lineno">   61</span>            _logService.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a78c9df658858fa3099eed69421423898">LogException</a>(<a class="code hl_class" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">LogSources</a>.InternalAPIService, <span class="stringliteral">&quot;exception sending email through internal api&quot;</span>, ex.ToString());</div>
+<div class="line"><span class="lineno">   61</span>            <a class="code hl_variable" href="#ae6eb67908ecf2aa66a8df5c07a5741d6">_logService</a>.<a class="code hl_function" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a78c9df658858fa3099eed69421423898">LogException</a>(<a class="code hl_class" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a>.<a class="code hl_enumeration" href="class_task_a_p_i_1_1_services_1_1_log_service.html#ac2b08e94307168cb702773d148d166ba">LogSources</a>.InternalAPIService, <span class="stringliteral">&quot;exception sending email through internal api&quot;</span>, ex.ToString());</div>
 <div class="line"><span class="lineno">   62</span>        }</div>
 <div class="line"><span class="lineno">   63</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><span class="lineno">   64</span>    }</div>
@@ -809,6 +908,8 @@ Here is the call graph for this function:</div>
 <area shape="poly" title=" " alt="" coords="176,70,208,74,207,80,175,75"/>
 <area shape="rect" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a44f0fd9db1116257087ba59c836e22ea" title="Directly inserts a log entry into the database." alt="" coords="465,39,659,81"/>
 <area shape="poly" title=" " alt="" coords="418,37,450,42,449,47,417,43"/>
+<area shape="rect" href="class_task_a_p_i_1_1_services_1_1_log_service.html#a20f6ab73ae5cc69273da4416da65f94d" title="Writes a log entry to a local text file as a fallback or additional logging method." alt="" coords="707,39,902,81"/>
+<area shape="poly" title=" " alt="" coords="660,57,692,57,692,63,660,63"/>
 <area shape="poly" title=" " alt="" coords="417,77,449,73,450,78,418,83"/>
 </map>
 </div>
@@ -817,27 +918,78 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_aeffeb1d3d59aeeab65dfe72691d21600_icgraph.png" border="0" usemap="#aclass_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_aeffeb1d3d59aeeab65dfe72691d21600_icgraph" alt=""/></div>
 <map name="aclass_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_aeffeb1d3d59aeeab65dfe72691d21600_icgraph" id="aclass_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_aeffeb1d3d59aeeab65dfe72691d21600_icgraph">
-<area shape="rect" title="Sends an email using Internal API&#39;s email endpoint." alt="" coords="460,239,629,281"/>
-<area shape="rect" href="class_task_a_p_i_1_1_helpers_1_1_spot_helper.html#a7b75f44b3310036d4de7f0f2956bbac1" title="Pulls, saves, and trims spot data from various sources." alt="" coords="221,5,412,48"/>
-<area shape="poly" title=" " alt="" coords="526,226,508,188,482,144,449,100,410,62,393,51,396,46,414,58,453,96,486,141,512,185,531,224"/>
-<area shape="rect" href="class_task_a_p_i_1_1_controllers_1_1_spot_controller.html#ac5b396e3a46352bf5dbe21701876f35c" title="Saves daily spot data." alt="" coords="233,72,400,115"/>
-<area shape="poly" title=" " alt="" coords="516,228,470,177,441,151,411,129,389,118,392,113,413,124,445,147,473,173,519,224"/>
-<area shape="rect" href="class_task_a_p_i_1_1_controllers_1_1_priceapp_controller.html#a7a554328bc2c9f53d7791b214121982f" title="Saves the Priceapp pricesheet as a PDF." alt="" coords="221,139,412,181"/>
-<area shape="poly" title=" " alt="" coords="489,234,411,196,382,184,384,179,413,191,492,229"/>
-<area shape="rect" href="class_task_a_p_i_1_1_controllers_1_1_ab_web_controller.html#a788bdc1e575ec2e04d9d2a767c68e287" title="Trims logs for AbWeb based on predefined criteria." alt="" coords="225,205,408,248"/>
-<area shape="poly" title=" " alt="" coords="445,248,408,243,409,237,446,243"/>
-<area shape="rect" href="class_task_a_p_i_1_1_controllers_1_1_ainslie_api_controller.html#a6b53c8ff5898ee660ce3eec1d8e9d13e" title="Trims logs for Ainslie API based on predefined criteria." alt="" coords="227,272,406,315"/>
-<area shape="poly" title=" " alt="" coords="445,277,407,283,406,278,445,272"/>
-<area shape="rect" href="class_task_a_p_i_1_1_controllers_1_1_internal_a_p_i_controller.html#ad77c1d71a0a8ba5393ee56bff0b81df1" title="Trims logs for Internal API based on predefined criteria." alt="" coords="225,339,408,381"/>
-<area shape="poly" title=" " alt="" coords="492,291,413,329,384,341,382,336,411,324,489,286"/>
-<area shape="rect" href="class_task_a_p_i_1_1_controllers_1_1_logs_controller.html#af8b7f41074892eb4a70a447d64a055c6" title="Trims logs based on predefined criteria." alt="" coords="232,405,401,448"/>
-<area shape="poly" title=" " alt="" coords="519,296,473,347,445,373,413,396,392,407,389,402,411,391,441,369,470,343,516,292"/>
-<area shape="rect" href="class_task_a_p_i_1_1_controllers_1_1_priceapp_controller.html#a25e45ae0b01fc8e2c7aa8ec7e30d59a9" title="Trims logs for Priceapp based on predefined criteria." alt="" coords="221,472,412,515"/>
-<area shape="poly" title=" " alt="" coords="531,296,512,335,486,379,453,424,414,462,396,474,393,469,410,458,449,420,482,376,508,332,526,294"/>
-<area shape="rect" href="class_task_a_p_i_1_1_controllers_1_1_spot_controller.html#adc5d733d4c39f2ecdaad8d8bf2231731" title="Initiates synchronisation of spot data." alt="" coords="5,5,173,48"/>
-<area shape="poly" title=" " alt="" coords="206,29,173,29,173,24,206,24"/>
+<area shape="rect" title="Sends an email using Internal API&#39;s email endpoint." alt="" coords="716,272,886,315"/>
+<area shape="rect" href="class_task_a_p_i_1_1_helpers_1_1_spot_helper.html#a7b75f44b3310036d4de7f0f2956bbac1" title="Pulls, saves, and trims spot data from various sources." alt="" coords="478,5,668,48"/>
+<area shape="poly" title=" " alt="" coords="786,258,769,213,743,161,709,108,667,62,650,51,653,46,670,58,714,105,748,158,774,211,791,256"/>
+<area shape="rect" href="class_task_a_p_i_1_1_controllers_1_1_spot_controller.html#ac5b396e3a46352bf5dbe21701876f35c" title="Saves daily spot data." alt="" coords="489,72,656,115"/>
+<area shape="poly" title=" " alt="" coords="778,260,732,193,702,159,667,129,647,117,650,113,670,124,705,155,737,190,783,257"/>
+<area shape="rect" href="class_task_a_p_i_1_1_controllers_1_1_priceapp_controller.html#a7a554328bc2c9f53d7791b214121982f" title="Saves the Priceapp pricesheet as a PDF." alt="" coords="477,139,668,181"/>
+<area shape="poly" title=" " alt="" coords="763,264,719,229,667,196,643,184,645,180,670,191,722,224,766,260"/>
+<area shape="rect" href="class_task_a_p_i_1_1_helpers_1_1_alert_helper.html#a5e60f4242d52c0642c789ff7ca332e51" title="Sends alerts based on the provided list of alerts, API source, and configuration." alt="" coords="478,205,668,248"/>
+<area shape="poly" title=" " alt="" coords="711,270,648,251,649,246,712,265"/>
+<area shape="rect" href="class_task_a_p_i_1_1_controllers_1_1_ab_web_controller.html#a788bdc1e575ec2e04d9d2a767c68e287" title="Trims logs for AbWeb based on predefined criteria." alt="" coords="481,272,664,315"/>
+<area shape="poly" title=" " alt="" coords="701,296,665,296,665,291,701,291"/>
+<area shape="rect" href="class_task_a_p_i_1_1_controllers_1_1_ainslie_api_controller.html#a6b53c8ff5898ee660ce3eec1d8e9d13e" title="Trims logs for Ainslie API based on predefined criteria." alt="" coords="483,339,662,381"/>
+<area shape="poly" title=" " alt="" coords="712,322,649,341,648,335,711,317"/>
+<area shape="rect" href="class_task_a_p_i_1_1_controllers_1_1_internal_a_p_i_controller.html#ad77c1d71a0a8ba5393ee56bff0b81df1" title="Trims logs for Internal API based on predefined criteria." alt="" coords="482,405,664,448"/>
+<area shape="poly" title=" " alt="" coords="766,327,722,362,670,396,645,407,643,402,667,391,719,358,763,323"/>
+<area shape="rect" href="class_task_a_p_i_1_1_controllers_1_1_logs_controller.html#af8b7f41074892eb4a70a447d64a055c6" title="Trims logs based on predefined criteria." alt="" coords="489,472,657,515"/>
+<area shape="poly" title=" " alt="" coords="783,330,737,397,705,432,670,462,650,474,647,469,667,458,702,428,732,393,778,327"/>
+<area shape="rect" href="class_task_a_p_i_1_1_controllers_1_1_priceapp_controller.html#a25e45ae0b01fc8e2c7aa8ec7e30d59a9" title="Trims logs for Priceapp based on predefined criteria." alt="" coords="477,539,668,581"/>
+<area shape="poly" title=" " alt="" coords="791,330,774,375,748,428,714,482,670,529,653,540,650,536,667,525,709,479,743,426,769,373,786,328"/>
+<area shape="rect" href="class_task_a_p_i_1_1_controllers_1_1_spot_controller.html#adc5d733d4c39f2ecdaad8d8bf2231731" title="Initiates synchronisation of spot data." alt="" coords="250,5,418,48"/>
+<area shape="poly" title=" " alt="" coords="462,29,418,29,418,24,462,24"/>
+<area shape="rect" href="class_task_a_p_i_1_1_helpers_1_1_alert_helper.html#acddc980d442b4344a8d9df5ba056276a" title="Processes a single API source for alert generation." alt="" coords="239,205,429,248"/>
+<area shape="poly" title=" " alt="" coords="462,229,429,229,429,224,462,224"/>
+<area shape="rect" href="class_task_a_p_i_1_1_controllers_1_1_logs_controller.html#aa1bbb95b5f70e8d5a457fdca962479e3" title="Checks for alerts across all configured api sources." alt="" coords="5,205,191,248"/>
+<area shape="poly" title=" " alt="" coords="223,229,191,229,191,224,223,224"/>
 </map>
 </div>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="ae6eb67908ecf2aa66a8df5c07a5741d6" name="ae6eb67908ecf2aa66a8df5c07a5741d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6eb67908ecf2aa66a8df5c07a5741d6">&#9670;&#160;</a></span>_logService</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_task_a_p_i_1_1_services_1_1_log_service.html">LogService</a> TaskAPI.Services.InternalAPIService._logService</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="addd42c8e56ccd8483dabbd2b29d9aa54" name="addd42c8e56ccd8483dabbd2b29d9aa54"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#addd42c8e56ccd8483dabbd2b29d9aa54">&#9670;&#160;</a></span>_settings</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html">TaskAPISettings</a> TaskAPI.Services.InternalAPIService._settings</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>

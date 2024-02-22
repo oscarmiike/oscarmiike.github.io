@@ -5,6 +5,16 @@
 Provides access to Binance cryptocurrency data.  
 
 
+
+
+Collaboration diagram for Task\+API.\+Services.\+Binance\+Service\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_task_a_p_i_1_1_services_1_1_binance_service__coll__graph}
+\end{center}
+\end{figure}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -12,6 +22,13 @@ Provides access to Binance cryptocurrency data.
 \begin{DoxyCompactList}\small\item\em Initialises a new instance of the Binance\+Service class. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_binance_response}{Binance\+Response}} \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_binance_service_a5863f72c89f66991b6ea2172de8e4687}{Pull\+Feed}} ()
 \begin{DoxyCompactList}\small\item\em Retrieves the latest cryptocurrency data feed from Binance. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{Log\+Service}} \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_binance_service_a3bc53c0b84d11ed82bdf51544d45b8cc}{\+\_\+log\+Service}}
+\item 
+\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings}{Task\+APISettings}} \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_binance_service_a0d83591eae2539c24dda6d67d58deef4}{\+\_\+settings}}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -40,8 +57,8 @@ Initialises a new instance of the Binance\+Service class.
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00026\ \ \ \ \ \{}
-\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \_logService\ =\ logService;}
-\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \_settings\ =\ taskAPISettings.Value;}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_binance_service_a3bc53c0b84d11ed82bdf51544d45b8cc}{\_logService}}\ =\ logService;}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_binance_service_a0d83591eae2539c24dda6d67d58deef4}{\_settings}}\ =\ taskAPISettings.Value;}
 \DoxyCodeLine{00029\ \ \ \ \ \}}
 
 \end{DoxyCode}
@@ -69,7 +86,7 @@ The method attempts to fetch the latest data feed from Binance. It logs any erro
 \DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_binance_response}{BinanceResponse}}\ binanceResponse\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_binance_response}{BinanceResponse}}();}
 \DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
 \DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient(\_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_a127cce7c28a6e430b091679ca27ef9a7}{BinanceSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_binancesettings_ae835a22e33518d6c80c86f7fe2dda7b5}{FeedURL}});}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_binance_service_a0d83591eae2539c24dda6d67d58deef4}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_a127cce7c28a6e430b091679ca27ef9a7}{BinanceSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_binancesettings_ae835a22e33518d6c80c86f7fe2dda7b5}{FeedURL}});}
 \DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ var\ request\ =\ \textcolor{keyword}{new}\ RestRequest(\textcolor{stringliteral}{"{}"{}},\ Method.Get);}
 \DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ var\ response\ =\ client.Execute(request);}
 \DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response.IsSuccessful\ \&\&\ response.IsSuccessStatusCode)}
@@ -78,12 +95,12 @@ The method attempts to fetch the latest data feed from Binance. It logs any erro
 \DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
 \DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a46dc9bf58bc9605c7e17dfee38b94354}{LogError}}(LogService.LogSources.BinanceService,\ \textcolor{stringliteral}{"{}error\ getting\ binance\ data\ feed,\ response\ was\ not\ successful"{}},\ \$\textcolor{stringliteral}{"{}response\ status:\ \{response.ResponseStatus\}"{}},\ \$\textcolor{stringliteral}{"{}response\ status\ description:\ \{response.StatusDescription\}"{}});}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_binance_service_a3bc53c0b84d11ed82bdf51544d45b8cc}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a46dc9bf58bc9605c7e17dfee38b94354}{LogError}}(LogService.LogSources.BinanceService,\ \textcolor{stringliteral}{"{}error\ getting\ binance\ data\ feed,\ response\ was\ not\ successful"{}},\ \$\textcolor{stringliteral}{"{}response\ status:\ \{response.ResponseStatus\}"{}},\ \$\textcolor{stringliteral}{"{}response\ status\ description:\ \{response.StatusDescription\}"{}});}
 \DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
 \DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a78c9df658858fa3099eed69421423898}{LogException}}(LogService.LogSources.ForexService,\ \textcolor{stringliteral}{"{}exception\ getting\ binance\ feed\ data"{}},\ ex);}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_binance_service_a3bc53c0b84d11ed82bdf51544d45b8cc}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a78c9df658858fa3099eed69421423898}{LogException}}(LogService.LogSources.ForexService,\ \textcolor{stringliteral}{"{}exception\ getting\ binance\ feed\ data"{}},\ ex);}
 \DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ binanceResponse;}
 \DoxyCodeLine{00062\ \ \ \ \ \}}
@@ -97,6 +114,29 @@ Here is the call graph for this function\+:
 \includegraphics[width=350pt]{class_task_a_p_i_1_1_services_1_1_binance_service_a5863f72c89f66991b6ea2172de8e4687_cgraph}
 \end{center}
 \end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_task_a_p_i_1_1_services_1_1_binance_service_a5863f72c89f66991b6ea2172de8e4687_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_task_a_p_i_1_1_services_1_1_binance_service_a3bc53c0b84d11ed82bdf51544d45b8cc}\label{class_task_a_p_i_1_1_services_1_1_binance_service_a3bc53c0b84d11ed82bdf51544d45b8cc} 
+\index{TaskAPI.Services.BinanceService@{TaskAPI.Services.BinanceService}!\_logService@{\_logService}}
+\index{\_logService@{\_logService}!TaskAPI.Services.BinanceService@{TaskAPI.Services.BinanceService}}
+\doxysubsubsection{\texorpdfstring{\_logService}{\_logService}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{Log\+Service}} Task\+API.\+Services.\+Binance\+Service.\+\_\+log\+Service\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_task_a_p_i_1_1_services_1_1_binance_service_a0d83591eae2539c24dda6d67d58deef4}\label{class_task_a_p_i_1_1_services_1_1_binance_service_a0d83591eae2539c24dda6d67d58deef4} 
+\index{TaskAPI.Services.BinanceService@{TaskAPI.Services.BinanceService}!\_settings@{\_settings}}
+\index{\_settings@{\_settings}!TaskAPI.Services.BinanceService@{TaskAPI.Services.BinanceService}}
+\doxysubsubsection{\texorpdfstring{\_settings}{\_settings}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings}{Task\+APISettings}} Task\+API.\+Services.\+Binance\+Service.\+\_\+settings\hspace{0.3cm}{\ttfamily [private]}}
+
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

@@ -11,11 +11,12 @@ Inheritance diagram for Task\+API.\+Controllers.\+Priceapp\+Controller\+:\nopage
 \end{figure}
 
 
-Collaboration diagram for Task\+API.\+Controllers.\+Priceapp\+Controller\+:\nopagebreak
+Collaboration diagram for Task\+API.\+Controllers.\+Priceapp\+Controller\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=224pt]{class_task_a_p_i_1_1_controllers_1_1_priceapp_controller__coll__graph}
+\includegraphics[width=350pt]{class_task_a_p_i_1_1_controllers_1_1_priceapp_controller__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsubsection*{Public Member Functions}
@@ -27,6 +28,17 @@ IAction\+Result \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_priceapp_c
 \begin{DoxyCompactList}\small\item\em Saves the Priceapp pricesheet as a PDF. \end{DoxyCompactList}\item 
 Action\+Result$<$ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result}{Log\+Trim\+Result}} $>$ \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_priceapp_controller_a25e45ae0b01fc8e2c7aa8ec7e30d59a9}{Trim\+Logs}} ()
 \begin{DoxyCompactList}\small\item\em Trims logs for Priceapp based on predefined criteria. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{Log\+Service}} \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_priceapp_controller_accc7b9cdff0ebee62bc65366dc832f7f}{\+\_\+log\+Service}}
+\item 
+\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_priceapp_helper}{Priceapp\+Helper}} \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_priceapp_controller_a29ded9c8d76b74b49ee9c5a7e1346204}{\+\_\+priceapp\+Helper}}
+\item 
+\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service}{Internal\+APIService}} \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_priceapp_controller_a52fa81aaf5103a25549d167e169ce94c}{\+\_\+iapi\+Service}}
+\item 
+\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings}{Task\+APISettings}} \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_priceapp_controller_ac60e4af07ba09fc40bd70a1e348a699e}{\+\_\+settings}}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
@@ -54,10 +66,10 @@ Constructor for the Priceapp\+Controller.
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00033\ \ \ \ \ \{}
-\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \_logService\ =\ logService;}
-\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \_priceappHelper\ =\ priceappHelper;}
-\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \_iapiService\ =\ iapiService;}
-\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \_settings\ =\ settings.Value;}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_priceapp_controller_accc7b9cdff0ebee62bc65366dc832f7f}{\_logService}}\ =\ logService;}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_priceapp_controller_a29ded9c8d76b74b49ee9c5a7e1346204}{\_priceappHelper}}\ =\ priceappHelper;}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_priceapp_controller_a52fa81aaf5103a25549d167e169ce94c}{\_iapiService}}\ =\ iapiService;}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_priceapp_controller_ac60e4af07ba09fc40bd70a1e348a699e}{\_settings}}\ =\ settings.Value;}
 \DoxyCodeLine{00038\ \ \ \ \ \}}
 
 \end{DoxyCode}
@@ -85,20 +97,20 @@ An IAction\+Result indicating the result of the operation.
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00047\ \ \ \ \ \{}
-\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a5c2a67dbd8beb6f821c46b8d052d59ea}{LogInformation}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.PriceappController,\ \textcolor{stringliteral}{"{}price\ sheet\ save\ initiated"{}});}
-\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ var\ result\ =\ \_priceappHelper.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_priceapp_helper_a11fefec93e8edfcd4f1d4c4d91180689}{CreateLivePricesheetPDF}}(ignoreTime);}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_priceapp_controller_accc7b9cdff0ebee62bc65366dc832f7f}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a5c2a67dbd8beb6f821c46b8d052d59ea}{LogInformation}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.PriceappController,\ \textcolor{stringliteral}{"{}price\ sheet\ save\ initiated"{}});}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ var\ result\ =\ \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_priceapp_controller_a29ded9c8d76b74b49ee9c5a7e1346204}{\_priceappHelper}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_priceapp_helper_a11fefec93e8edfcd4f1d4c4d91180689}{CreateLivePricesheetPDF}}(ignoreTime);}
 \DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (result.Error)}
 \DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \_iapiService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_aeffeb1d3d59aeeab65dfe72691d21600}{SendEmail}}(\textcolor{keyword}{new}\ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_email_post}{EmailPost}}()}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_priceapp_controller_a52fa81aaf5103a25549d167e169ce94c}{\_iapiService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_aeffeb1d3d59aeeab65dfe72691d21600}{SendEmail}}(\textcolor{keyword}{new}\ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_email_post}{EmailPost}}()}
 \DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ EmailFrom\ =\ \_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_af39dc0933cd608b26e7bc4f82951d356}{GeneralSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings_ac0a0b89d2e7cf7f820e5663a1a4cffbf}{NotificationEmailFrom}},}
-\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ EmailTo\ =\ \_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_af39dc0933cd608b26e7bc4f82951d356}{GeneralSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings_a25434a5471214771ae507f7152073898}{NotificationEmailTo}},}
-\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ NameFrom\ =\ \_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_af39dc0933cd608b26e7bc4f82951d356}{GeneralSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings_a082a8e92b97a7d83196f1d0056241042}{NotificationEmailName}},}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ EmailFrom\ =\ \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_priceapp_controller_ac60e4af07ba09fc40bd70a1e348a699e}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_af39dc0933cd608b26e7bc4f82951d356}{GeneralSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings_ac0a0b89d2e7cf7f820e5663a1a4cffbf}{NotificationEmailFrom}},}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ EmailTo\ =\ \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_priceapp_controller_ac60e4af07ba09fc40bd70a1e348a699e}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_af39dc0933cd608b26e7bc4f82951d356}{GeneralSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings_a25434a5471214771ae507f7152073898}{NotificationEmailTo}},}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ NameFrom\ =\ \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_priceapp_controller_ac60e4af07ba09fc40bd70a1e348a699e}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_af39dc0933cd608b26e7bc4f82951d356}{GeneralSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings_a082a8e92b97a7d83196f1d0056241042}{NotificationEmailName}},}
 \DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Subject\ =\ \textcolor{stringliteral}{"{}Error\ saving\ pricesheet\ PDF"{}},}
 \DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ HTMLBody\ =\ \$\textcolor{stringliteral}{"{}Task\ API\ was\ unable\ to\ save\ the\ Pricesheet\ PDF<br><br>\{JsonConvert.SerializeObject(result)\}"{}}}
 \DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \});}
 \DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a5c2a67dbd8beb6f821c46b8d052d59ea}{LogInformation}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.PriceappController,\ \textcolor{stringliteral}{"{}price\ sheet\ save\ completed"{}},\ result);}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_priceapp_controller_accc7b9cdff0ebee62bc65366dc832f7f}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a5c2a67dbd8beb6f821c46b8d052d59ea}{LogInformation}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.PriceappController,\ \textcolor{stringliteral}{"{}price\ sheet\ save\ completed"{}},\ result);}
 \DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Ok(result.Result);}
 \DoxyCodeLine{00063\ \ \ \ \ \}}
 
@@ -129,21 +141,21 @@ An Action\+Result$<$\+T$>$ containing the result of the log trimming operation.
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00074\ \ \ \ \ \{}
-\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a5c2a67dbd8beb6f821c46b8d052d59ea}{LogInformation}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.PriceappController,\ \textcolor{stringliteral}{"{}priceapp\ log\ trim\ initiated"{}});}
-\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result}{LogTrimResult}}\ result\ =\ \_iapiService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_a8806289389207c5a3ed1e203f1bcbc5c}{PriceappTrimLogs}}();}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_priceapp_controller_accc7b9cdff0ebee62bc65366dc832f7f}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a5c2a67dbd8beb6f821c46b8d052d59ea}{LogInformation}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.PriceappController,\ \textcolor{stringliteral}{"{}priceapp\ log\ trim\ initiated"{}});}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result}{LogTrimResult}}\ result\ =\ \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_priceapp_controller_a52fa81aaf5103a25549d167e169ce94c}{\_iapiService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_a8806289389207c5a3ed1e203f1bcbc5c}{PriceappTrimLogs}}();}
 \DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (result.\mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result_ac0dcb80f3d1f49fc0fdc79aca9faf210}{error}})}
 \DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \_iapiService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_aeffeb1d3d59aeeab65dfe72691d21600}{SendEmail}}(\textcolor{keyword}{new}\ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_email_post}{EmailPost}}()}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_priceapp_controller_a52fa81aaf5103a25549d167e169ce94c}{\_iapiService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_aeffeb1d3d59aeeab65dfe72691d21600}{SendEmail}}(\textcolor{keyword}{new}\ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_email_post}{EmailPost}}()}
 \DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ EmailFrom\ =\ \_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_af39dc0933cd608b26e7bc4f82951d356}{GeneralSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings_ac0a0b89d2e7cf7f820e5663a1a4cffbf}{NotificationEmailFrom}},}
-\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ EmailTo\ =\ \_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_af39dc0933cd608b26e7bc4f82951d356}{GeneralSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings_a25434a5471214771ae507f7152073898}{NotificationEmailTo}},}
-\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ NameFrom\ =\ \_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_af39dc0933cd608b26e7bc4f82951d356}{GeneralSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings_a082a8e92b97a7d83196f1d0056241042}{NotificationEmailName}},}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ EmailFrom\ =\ \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_priceapp_controller_ac60e4af07ba09fc40bd70a1e348a699e}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_af39dc0933cd608b26e7bc4f82951d356}{GeneralSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings_ac0a0b89d2e7cf7f820e5663a1a4cffbf}{NotificationEmailFrom}},}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ EmailTo\ =\ \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_priceapp_controller_ac60e4af07ba09fc40bd70a1e348a699e}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_af39dc0933cd608b26e7bc4f82951d356}{GeneralSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings_a25434a5471214771ae507f7152073898}{NotificationEmailTo}},}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ NameFrom\ =\ \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_priceapp_controller_ac60e4af07ba09fc40bd70a1e348a699e}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_af39dc0933cd608b26e7bc4f82951d356}{GeneralSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings_a082a8e92b97a7d83196f1d0056241042}{NotificationEmailName}},}
 \DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Subject\ =\ \textcolor{stringliteral}{"{}Error\ trimming\ priceapp\ logs"{}},}
 \DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ HTMLBody\ =\ \$\textcolor{stringliteral}{"{}Task\ API\ was\ unable\ to\ trim\ priceapp\ logs<br><br>\{JsonConvert.SerializeObject(result)\}"{}}}
 \DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \});}
 \DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00088\ }
-\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a5c2a67dbd8beb6f821c46b8d052d59ea}{LogInformation}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.PriceappController,\ \$\textcolor{stringliteral}{"{}priceapp\ log\ trim\ completed"{}},\ result);}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_priceapp_controller_accc7b9cdff0ebee62bc65366dc832f7f}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a5c2a67dbd8beb6f821c46b8d052d59ea}{LogInformation}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.PriceappController,\ \$\textcolor{stringliteral}{"{}priceapp\ log\ trim\ completed"{}},\ result);}
 \DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Ok(result);}
 \DoxyCodeLine{00091\ \ \ \ \ \}}
 
@@ -156,6 +168,33 @@ Here is the call graph for this function\+:
 \includegraphics[width=350pt]{class_task_a_p_i_1_1_controllers_1_1_priceapp_controller_a25e45ae0b01fc8e2c7aa8ec7e30d59a9_cgraph}
 \end{center}
 \end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_task_a_p_i_1_1_controllers_1_1_priceapp_controller_a52fa81aaf5103a25549d167e169ce94c}\label{class_task_a_p_i_1_1_controllers_1_1_priceapp_controller_a52fa81aaf5103a25549d167e169ce94c} 
+\index{TaskAPI.Controllers.PriceappController@{TaskAPI.Controllers.PriceappController}!\_iapiService@{\_iapiService}}
+\index{\_iapiService@{\_iapiService}!TaskAPI.Controllers.PriceappController@{TaskAPI.Controllers.PriceappController}}
+\doxysubsubsection{\texorpdfstring{\_iapiService}{\_iapiService}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service}{Internal\+APIService}} Task\+API.\+Controllers.\+Priceapp\+Controller.\+\_\+iapi\+Service\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_task_a_p_i_1_1_controllers_1_1_priceapp_controller_accc7b9cdff0ebee62bc65366dc832f7f}\label{class_task_a_p_i_1_1_controllers_1_1_priceapp_controller_accc7b9cdff0ebee62bc65366dc832f7f} 
+\index{TaskAPI.Controllers.PriceappController@{TaskAPI.Controllers.PriceappController}!\_logService@{\_logService}}
+\index{\_logService@{\_logService}!TaskAPI.Controllers.PriceappController@{TaskAPI.Controllers.PriceappController}}
+\doxysubsubsection{\texorpdfstring{\_logService}{\_logService}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{Log\+Service}} Task\+API.\+Controllers.\+Priceapp\+Controller.\+\_\+log\+Service\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_task_a_p_i_1_1_controllers_1_1_priceapp_controller_a29ded9c8d76b74b49ee9c5a7e1346204}\label{class_task_a_p_i_1_1_controllers_1_1_priceapp_controller_a29ded9c8d76b74b49ee9c5a7e1346204} 
+\index{TaskAPI.Controllers.PriceappController@{TaskAPI.Controllers.PriceappController}!\_priceappHelper@{\_priceappHelper}}
+\index{\_priceappHelper@{\_priceappHelper}!TaskAPI.Controllers.PriceappController@{TaskAPI.Controllers.PriceappController}}
+\doxysubsubsection{\texorpdfstring{\_priceappHelper}{\_priceappHelper}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_priceapp_helper}{Priceapp\+Helper}} Task\+API.\+Controllers.\+Priceapp\+Controller.\+\_\+priceapp\+Helper\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_task_a_p_i_1_1_controllers_1_1_priceapp_controller_ac60e4af07ba09fc40bd70a1e348a699e}\label{class_task_a_p_i_1_1_controllers_1_1_priceapp_controller_ac60e4af07ba09fc40bd70a1e348a699e} 
+\index{TaskAPI.Controllers.PriceappController@{TaskAPI.Controllers.PriceappController}!\_settings@{\_settings}}
+\index{\_settings@{\_settings}!TaskAPI.Controllers.PriceappController@{TaskAPI.Controllers.PriceappController}}
+\doxysubsubsection{\texorpdfstring{\_settings}{\_settings}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings}{Task\+APISettings}} Task\+API.\+Controllers.\+Priceapp\+Controller.\+\_\+settings\hspace{0.3cm}{\ttfamily [private]}}
+
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

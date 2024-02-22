@@ -1,5 +1,15 @@
 \doxysection{Ainslie\+API.\+Services.\+Log\+Service Class Reference}
 \hypertarget{class_ainslie_a_p_i_1_1_services_1_1_log_service}{}\label{class_ainslie_a_p_i_1_1_services_1_1_log_service}\index{AinslieAPI.Services.LogService@{AinslieAPI.Services.LogService}}
+
+
+Collaboration diagram for Ainslie\+API.\+Services.\+Log\+Service\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_ainslie_a_p_i_1_1_services_1_1_log_service__coll__graph}
+\end{center}
+\end{figure}
 \doxysubsubsection*{Public Types}
 \begin{DoxyCompactItemize}
 \item 
@@ -40,6 +50,18 @@ enum \mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_ab557dc13
 \mbox{\hyperlink{class_ainslie_a_p_i_1_1_data_1_1_models_1_1_log_entry}{Log\+Entry}} \mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a3c2dce5ed306365dfa416f700e5360cf}{Insert\+Log}} (\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_ad84b4e28e72830a4e61727a4b16a847a}{Log\+Types}} log\+Type, int thread\+ID, \mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_ab557dc1394f5cf56cfb78c765fdfffe6}{Log\+Sources}} log\+Source, params object\mbox{[}$\,$\mbox{]} Data\+List)
 \begin{DoxyCompactList}\small\item\em inserts log to database \end{DoxyCompactList}\item 
 object \mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_aea52f6628afd6bcb55105bd0a2f1d8da}{Trim\+Logs}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a6342d4add22dfffd5dadb5a7b3f112bc}{Write\+Log}} (\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_ad84b4e28e72830a4e61727a4b16a847a}{Log\+Types}} Type, string Source, string Description)
+\begin{DoxyCompactList}\small\item\em writes a text file log to \mbox{[}App home directory\mbox{]}/log \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_ainslie_a_p_i_1_1_data_1_1_contexts_1_1_local_context}{Local\+Context}} \mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_ad043c16a8ac7c14674752735ccd8d0ae}{\+\_\+context}}
+\item 
+\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings}{App\+Settings}} \mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a39b15a45ee8b3ad77eaab2d3607cb894}{\+\_\+settings}}
 \end{DoxyCompactItemize}
 
 
@@ -154,8 +176,8 @@ Exception&\\
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00047\ \ \ \ \ \{}
-\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \_context\ =\ context;}
-\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \_settings\ =\ ainslieApiSettings.Value;}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_ad043c16a8ac7c14674752735ccd8d0ae}{\_context}}\ =\ context;}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a39b15a45ee8b3ad77eaab2d3607cb894}{\_settings}}\ =\ ainslieApiSettings.Value;}
 \DoxyCodeLine{00050\ \ \ \ \ \}}
 
 \end{DoxyCode}
@@ -214,19 +236,28 @@ inserts log to database
 \DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
 \DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \_context.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_data_1_1_contexts_1_1_local_context_a07ac1cd14ee90d7465dd18a3669e0fa4}{LogEntries}}.Add(logEntry);}
-\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \_context.SaveChanges();}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_ad043c16a8ac7c14674752735ccd8d0ae}{\_context}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_data_1_1_contexts_1_1_local_context_a07ac1cd14ee90d7465dd18a3669e0fa4}{LogEntries}}.Add(logEntry);}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_ad043c16a8ac7c14674752735ccd8d0ae}{\_context}}.SaveChanges();}
 \DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ logEntry;}
 \DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_ad84b4e28e72830a4e61727a4b16a847aab0d4998a26f5b5742ad38c4af8817e32}{Exception}}\ ex)}
 \DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ WriteLog(\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_ad84b4e28e72830a4e61727a4b16a847a}{LogTypes}}.Exception,\ \textcolor{stringliteral}{"{}LogService"{}},\ \$\textcolor{stringliteral}{"{}Exception\ trying\ to\ insert\ log.\ \ Exception:\ \{ex.ToString()\}"{}});}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a6342d4add22dfffd5dadb5a7b3f112bc}{WriteLog}}(\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_ad84b4e28e72830a4e61727a4b16a847a}{LogTypes}}.Exception,\ \textcolor{stringliteral}{"{}LogService"{}},\ \$\textcolor{stringliteral}{"{}Exception\ trying\ to\ insert\ log.\ \ Exception:\ \{ex.ToString()\}"{}});}
 \DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
 \DoxyCodeLine{00125\ \ \ \ \ \}}
 
 \end{DoxyCode}
-Here is the caller graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_ainslie_a_p_i_1_1_services_1_1_log_service_a3c2dce5ed306365dfa416f700e5360cf_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -242,13 +273,14 @@ Here is the caller graph for this function\+:\nopagebreak
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00053\ \ \ \ \ \{}
-\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\_settings.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings_afbce144b7ab28f6830d88b7e644ff955}{SQLLoggerSettings}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_s_q_l_logger_settings_a37af8ba1fd0728aee03d32821d29e727}{LogDebug}})\ \{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};\ \}}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a39b15a45ee8b3ad77eaab2d3607cb894}{\_settings}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings_afbce144b7ab28f6830d88b7e644ff955}{SQLLoggerSettings}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_s_q_l_logger_settings_a37af8ba1fd0728aee03d32821d29e727}{LogDebug}})\ \{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};\ \}}
 \DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ var\ threadID\ =\ System.Environment.CurrentManagedThreadId;}
 \DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a3c2dce5ed306365dfa416f700e5360cf}{InsertLog}}(\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_ad84b4e28e72830a4e61727a4b16a847a}{LogTypes}}.Debug,\ threadID,\ logSource,\ dataList);}
 \DoxyCodeLine{00057\ \ \ \ \ \}}
 
 \end{DoxyCode}
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -276,14 +308,16 @@ Here is the caller graph for this function\+:\nopagebreak
 \DoxyCodeLine{00070\ \ \ \ \ \}}
 
 \end{DoxyCode}
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{class_ainslie_a_p_i_1_1_services_1_1_log_service_a9bf79a218e0884ac9cabd3ac87b81321_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -304,14 +338,16 @@ Here is the caller graph for this function\+:\nopagebreak
 \DoxyCodeLine{00076\ \ \ \ \ \}}
 
 \end{DoxyCode}
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{class_ainslie_a_p_i_1_1_services_1_1_log_service_a83bbf569dea7ea5a40e02fca200aad8c_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -327,20 +363,22 @@ Here is the caller graph for this function\+:\nopagebreak
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00060\ \ \ \ \ \{}
-\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\_settings.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings_afbce144b7ab28f6830d88b7e644ff955}{SQLLoggerSettings}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_s_q_l_logger_settings_a99a0b8df6d162ae514519f9a26b8be40}{LogInformation}})\ \{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};\ \}}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a39b15a45ee8b3ad77eaab2d3607cb894}{\_settings}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings_afbce144b7ab28f6830d88b7e644ff955}{SQLLoggerSettings}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_s_q_l_logger_settings_a99a0b8df6d162ae514519f9a26b8be40}{LogInformation}})\ \{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};\ \}}
 \DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ var\ threadID\ =\ System.Environment.CurrentManagedThreadId;}
 \DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a3c2dce5ed306365dfa416f700e5360cf}{InsertLog}}(\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_ad84b4e28e72830a4e61727a4b16a847a}{LogTypes}}.Information,\ threadID,\ logSource,\ dataList);}
 \DoxyCodeLine{00064\ \ \ \ \ \}}
 
 \end{DoxyCode}
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{class_ainslie_a_p_i_1_1_services_1_1_log_service_a917b9af360c0c6521ce36f4acbc72023_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -358,8 +396,8 @@ Here is the caller graph for this function\+:\nopagebreak
 \DoxyCodeLine{00148\ \ \ \ \ \{}
 \DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
 \DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \_context.Database.SetCommandTimeout(TimeSpan.FromMinutes(2));}
-\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ var\ deleteCount\ =\ \_context.Database.ExecuteSqlRaw(\textcolor{stringliteral}{"{}DELETE\ FROM\ LogEntries\ WHERE\ Created\ <\ @cutOff"{}},\ \textcolor{keyword}{new}\ SqlParameter(\textcolor{stringliteral}{"{}@cutOff"{}},\ DateTime.Now.AddDays(-\/\_settings.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings_ac5d8eb3593c0b360319c10c22cc3dea8}{GeneralSettings}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_general_settings_a25d689b56613693dc6f5201dd66f06d7}{DaysToKeepLogs}})));}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_ad043c16a8ac7c14674752735ccd8d0ae}{\_context}}.Database.SetCommandTimeout(TimeSpan.FromMinutes(2));}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ var\ deleteCount\ =\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_ad043c16a8ac7c14674752735ccd8d0ae}{\_context}}.Database.ExecuteSqlRaw(\textcolor{stringliteral}{"{}DELETE\ FROM\ LogEntries\ WHERE\ Created\ <\ @cutOff"{}},\ \textcolor{keyword}{new}\ SqlParameter(\textcolor{stringliteral}{"{}@cutOff"{}},\ DateTime.Now.AddDays(-\/\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a39b15a45ee8b3ad77eaab2d3607cb894}{\_settings}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings_ac5d8eb3593c0b360319c10c22cc3dea8}{GeneralSettings}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_general_settings_a25d689b56613693dc6f5201dd66f06d7}{DaysToKeepLogs}})));}
 \DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \{\ error\ =\ \textcolor{keyword}{false},\ message\ =\ \$\textcolor{stringliteral}{"{}deleted\ \{deleteCount\}\ logs"{}}\ \};}
 \DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_ad84b4e28e72830a4e61727a4b16a847aab0d4998a26f5b5742ad38c4af8817e32}{Exception}}\ ex)}
@@ -371,7 +409,8 @@ Here is the caller graph for this function\+:\nopagebreak
 \DoxyCodeLine{00161\ \ \ \ \ \}}
 
 \end{DoxyCode}
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -385,6 +424,58 @@ Here is the caller graph for this function\+:\nopagebreak
 \includegraphics[width=350pt]{class_ainslie_a_p_i_1_1_services_1_1_log_service_aea52f6628afd6bcb55105bd0a2f1d8da_icgraph}
 \end{center}
 \end{figure}
+\Hypertarget{class_ainslie_a_p_i_1_1_services_1_1_log_service_a6342d4add22dfffd5dadb5a7b3f112bc}\label{class_ainslie_a_p_i_1_1_services_1_1_log_service_a6342d4add22dfffd5dadb5a7b3f112bc} 
+\index{AinslieAPI.Services.LogService@{AinslieAPI.Services.LogService}!WriteLog@{WriteLog}}
+\index{WriteLog@{WriteLog}!AinslieAPI.Services.LogService@{AinslieAPI.Services.LogService}}
+\doxysubsubsection{\texorpdfstring{WriteLog()}{WriteLog()}}
+{\footnotesize\ttfamily void Ainslie\+API.\+Services.\+Log\+Service.\+Write\+Log (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_ad84b4e28e72830a4e61727a4b16a847a}{Log\+Types}}}]{Type,  }\item[{string}]{Source,  }\item[{string}]{Description }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+writes a text file log to \mbox{[}App home directory\mbox{]}/log 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00131\ \ \ \ \ \{}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ var\ LogPath\ =\ \$\textcolor{stringliteral}{"{}\{AppDomain.CurrentDomain.BaseDirectory\}/Log/"{}};}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!Directory.Exists(LogPath))}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ Directory.CreateDirectory(LogPath);}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ var\ LogFile\ =\ \$\textcolor{stringliteral}{"{}AinslieAPI.Log"{}};}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ StreamWriter\ SW\ =\ File.AppendText(LogPath\ +\ LogFile);}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ SW.WriteLine(\$\textcolor{stringliteral}{"{}\{DateTime.Now.ToString()\}\ [\{Type.ToString()\}]\ \{Description\}"{}});}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ SW.Close();}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_ad84b4e28e72830a4e61727a4b16a847aab0d4998a26f5b5742ad38c4af8817e32}{Exception}}\ ex)}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00145\ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_ainslie_a_p_i_1_1_services_1_1_log_service_a6342d4add22dfffd5dadb5a7b3f112bc_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_ainslie_a_p_i_1_1_services_1_1_log_service_ad043c16a8ac7c14674752735ccd8d0ae}\label{class_ainslie_a_p_i_1_1_services_1_1_log_service_ad043c16a8ac7c14674752735ccd8d0ae} 
+\index{AinslieAPI.Services.LogService@{AinslieAPI.Services.LogService}!\_context@{\_context}}
+\index{\_context@{\_context}!AinslieAPI.Services.LogService@{AinslieAPI.Services.LogService}}
+\doxysubsubsection{\texorpdfstring{\_context}{\_context}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_ainslie_a_p_i_1_1_data_1_1_contexts_1_1_local_context}{Local\+Context}} Ainslie\+API.\+Services.\+Log\+Service.\+\_\+context\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_ainslie_a_p_i_1_1_services_1_1_log_service_a39b15a45ee8b3ad77eaab2d3607cb894}\label{class_ainslie_a_p_i_1_1_services_1_1_log_service_a39b15a45ee8b3ad77eaab2d3607cb894} 
+\index{AinslieAPI.Services.LogService@{AinslieAPI.Services.LogService}!\_settings@{\_settings}}
+\index{\_settings@{\_settings}!AinslieAPI.Services.LogService@{AinslieAPI.Services.LogService}}
+\doxysubsubsection{\texorpdfstring{\_settings}{\_settings}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings}{App\+Settings}} Ainslie\+API.\+Services.\+Log\+Service.\+\_\+settings\hspace{0.3cm}{\ttfamily [private]}}
+
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

@@ -5,6 +5,16 @@
 Provides methods for interacting with a Forex data feed.  
 
 
+
+
+Collaboration diagram for Task\+API.\+Services.\+Forex\+Service\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_task_a_p_i_1_1_services_1_1_forex_service__coll__graph}
+\end{center}
+\end{figure}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -12,6 +22,13 @@ Provides methods for interacting with a Forex data feed.
 \begin{DoxyCompactList}\small\item\em Initialises a new instance of the Forex\+Service class. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_forex_response}{Forex\+Response}} \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_forex_service_a45ca436cc529b87e410d8b208abea3b1}{Pull\+Feed}} ()
 \begin{DoxyCompactList}\small\item\em Retrieves the latest Forex data from the configured feed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{Log\+Service}} \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_forex_service_a978f8f903b7a700e82a13b04a5e874da}{\+\_\+log\+Service}}
+\item 
+\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings}{Task\+APISettings}} \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_forex_service_a2d65632d3d9387a9746574af5b481d54}{\+\_\+settings}}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -40,8 +57,8 @@ Initialises a new instance of the Forex\+Service class.
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00026\ \ \ \ \ \{}
-\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \_logService\ =\ logService;}
-\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \_settings\ =\ taskAPISettings.Value;}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_forex_service_a978f8f903b7a700e82a13b04a5e874da}{\_logService}}\ =\ logService;}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_forex_service_a2d65632d3d9387a9746574af5b481d54}{\_settings}}\ =\ taskAPISettings.Value;}
 \DoxyCodeLine{00029\ \ \ \ \ \}}
 
 \end{DoxyCode}
@@ -69,7 +86,7 @@ Attempts to fetch the latest Forex data. If the request is successful, it deseri
 \DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_forex_response}{ForexResponse}}\ forexResponse\ =\ \textcolor{keyword}{null};}
 \DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
 \DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient(\_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_a0eb4318ad18306881384e7097caaa9f0}{ForexSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_forexsettings_ad4123f4462401f82896a80d9f2028814}{FeedURL}});}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_forex_service_a2d65632d3d9387a9746574af5b481d54}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_a0eb4318ad18306881384e7097caaa9f0}{ForexSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_forexsettings_ad4123f4462401f82896a80d9f2028814}{FeedURL}});}
 \DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ var\ request\ =\ \textcolor{keyword}{new}\ RestRequest(\textcolor{stringliteral}{"{}"{}},\ Method.Get);}
 \DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ var\ response\ =\ client.Execute(request);}
 \DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response.IsSuccessful\ \&\&\ response.IsSuccessStatusCode)}
@@ -78,12 +95,12 @@ Attempts to fetch the latest Forex data. If the request is successful, it deseri
 \DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
 \DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a46dc9bf58bc9605c7e17dfee38b94354}{LogError}}(LogService.LogSources.ForexService,\ \textcolor{stringliteral}{"{}error\ getting\ forex\ data\ feed,\ response\ was\ not\ successful"{}},\ \$\textcolor{stringliteral}{"{}response\ status:\ \{response.ResponseStatus\}"{}},\ \$\textcolor{stringliteral}{"{}response\ status\ description:\ \{response.StatusDescription\}"{}});}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_forex_service_a978f8f903b7a700e82a13b04a5e874da}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a46dc9bf58bc9605c7e17dfee38b94354}{LogError}}(LogService.LogSources.ForexService,\ \textcolor{stringliteral}{"{}error\ getting\ forex\ data\ feed,\ response\ was\ not\ successful"{}},\ \$\textcolor{stringliteral}{"{}response\ status:\ \{response.ResponseStatus\}"{}},\ \$\textcolor{stringliteral}{"{}response\ status\ description:\ \{response.StatusDescription\}"{}});}
 \DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
 \DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a78c9df658858fa3099eed69421423898}{LogException}}(LogService.LogSources.ForexService,\ \textcolor{stringliteral}{"{}exception\ getting\ forex\ feed\ data"{}},\ ex);}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_forex_service_a978f8f903b7a700e82a13b04a5e874da}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a78c9df658858fa3099eed69421423898}{LogException}}(LogService.LogSources.ForexService,\ \textcolor{stringliteral}{"{}exception\ getting\ forex\ feed\ data"{}},\ ex);}
 \DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ forexResponse;}
 \DoxyCodeLine{00060\ \ \ \ \ \}}
@@ -97,6 +114,29 @@ Here is the call graph for this function\+:
 \includegraphics[width=350pt]{class_task_a_p_i_1_1_services_1_1_forex_service_a45ca436cc529b87e410d8b208abea3b1_cgraph}
 \end{center}
 \end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_task_a_p_i_1_1_services_1_1_forex_service_a45ca436cc529b87e410d8b208abea3b1_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_task_a_p_i_1_1_services_1_1_forex_service_a978f8f903b7a700e82a13b04a5e874da}\label{class_task_a_p_i_1_1_services_1_1_forex_service_a978f8f903b7a700e82a13b04a5e874da} 
+\index{TaskAPI.Services.ForexService@{TaskAPI.Services.ForexService}!\_logService@{\_logService}}
+\index{\_logService@{\_logService}!TaskAPI.Services.ForexService@{TaskAPI.Services.ForexService}}
+\doxysubsubsection{\texorpdfstring{\_logService}{\_logService}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{Log\+Service}} Task\+API.\+Services.\+Forex\+Service.\+\_\+log\+Service\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_task_a_p_i_1_1_services_1_1_forex_service_a2d65632d3d9387a9746574af5b481d54}\label{class_task_a_p_i_1_1_services_1_1_forex_service_a2d65632d3d9387a9746574af5b481d54} 
+\index{TaskAPI.Services.ForexService@{TaskAPI.Services.ForexService}!\_settings@{\_settings}}
+\index{\_settings@{\_settings}!TaskAPI.Services.ForexService@{TaskAPI.Services.ForexService}}
+\doxysubsubsection{\texorpdfstring{\_settings}{\_settings}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings}{Task\+APISettings}} Task\+API.\+Services.\+Forex\+Service.\+\_\+settings\hspace{0.3cm}{\ttfamily [private]}}
+
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

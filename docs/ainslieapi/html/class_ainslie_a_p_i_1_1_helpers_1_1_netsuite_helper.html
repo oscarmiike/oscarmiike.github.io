@@ -78,6 +78,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_ainslie_a_p_i_1_1_helpers_1_1_netsuite_helper-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">AinslieAPI.Helpers.NetsuiteHelper Class Reference</div></div>
 </div><!--header-->
@@ -85,6 +86,18 @@ $(function() {
 
 <p>Provides functionalities to create requests for Netsuite operations, particularly for customer data management.  
  <a href="#details">More...</a></p>
+<div class="dynheader">
+Collaboration diagram for AinslieAPI.Helpers.NetsuiteHelper:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_ainslie_a_p_i_1_1_helpers_1_1_netsuite_helper__coll__graph.png" border="0" usemap="#a_ainslie_a_p_i_8_helpers_8_netsuite_helper_coll__map" alt="Collaboration graph"/></div>
+<map name="a_ainslie_a_p_i_8_helpers_8_netsuite_helper_coll__map" id="a_ainslie_a_p_i_8_helpers_8_netsuite_helper_coll__map">
+<area shape="rect" title="Provides functionalities to create requests for Netsuite operations, particularly for customer data m..." alt="" coords="125,112,306,155"/>
+<area shape="rect" href="class_ainslie_a_p_i_1_1_helpers_1_1_app_settings.html" title=" " alt="" coords="5,13,210,40"/>
+<area shape="poly" title=" " alt="" coords="133,49,196,110,192,113,129,52"/>
+<area shape="rect" href="class_ainslie_a_p_i_1_1_services_1_1_internal_api_service.html" title="Provides services for interacting with Internal API, particularly for retrieving Green ID customer da..." alt="" coords="233,5,414,48"/>
+<area shape="poly" title=" " alt="" coords="293,61,239,113,235,110,289,57"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -94,6 +107,13 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aaade37ab8e2956507c377c5b30af6a0a" id="r_aaade37ab8e2956507c377c5b30af6a0a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_internal_a_p_i_1_1_dto_1_1_netsuite_1_1_netsuite_customer_request.html">NetsuiteCustomerRequest</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaade37ab8e2956507c377c5b30af6a0a">CreateNetsuiteCustomerRequest</a> (string branch, <a class="el" href="class_ainslie_a_p_i_1_1_d_t_o_1_1_green_id_1_1_green_id_customer.html">GreenIdCustomer</a> greenIDCustomer)</td></tr>
 <tr class="memdesc:aaade37ab8e2956507c377c5b30af6a0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a request object for creating or updating a customer in Netsuite based on Green ID verification data.  <br /></td></tr>
 <tr class="separator:aaade37ab8e2956507c377c5b30af6a0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a5d46fe7f63e90722fe7e4965118611d6" id="r_a5d46fe7f63e90722fe7e4965118611d6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_ainslie_a_p_i_1_1_helpers_1_1_app_settings.html">AppSettings</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5d46fe7f63e90722fe7e4965118611d6">_appSettings</a></td></tr>
+<tr class="separator:a5d46fe7f63e90722fe7e4965118611d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a842eb7d7980a8e6ec0fa1962c07f4545" id="r_a842eb7d7980a8e6ec0fa1962c07f4545"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_ainslie_a_p_i_1_1_services_1_1_internal_api_service.html">InternalApiService</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a842eb7d7980a8e6ec0fa1962c07f4545">_iaService</a></td></tr>
+<tr class="separator:a842eb7d7980a8e6ec0fa1962c07f4545"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Provides functionalities to create requests for Netsuite operations, particularly for customer data management. </p>
@@ -119,9 +139,11 @@ Public Member Functions</h2></td></tr>
 
 <p>Initialises a new instance of the NetsuiteHelper with application settings and internal API service. </p>
 <div class="fragment"><div class="line"><span class="lineno">   20</span>    {</div>
-<div class="line"><span class="lineno">   21</span>        _appSettings = appSettings.Value;</div>
-<div class="line"><span class="lineno">   22</span>        _iaService = iaService; </div>
+<div class="line"><span class="lineno">   21</span>        <a class="code hl_variable" href="#a5d46fe7f63e90722fe7e4965118611d6">_appSettings</a> = appSettings.Value;</div>
+<div class="line"><span class="lineno">   22</span>        <a class="code hl_variable" href="#a842eb7d7980a8e6ec0fa1962c07f4545">_iaService</a> = iaService; </div>
 <div class="line"><span class="lineno">   23</span>    }</div>
+<div class="ttc" id="aclass_ainslie_a_p_i_1_1_helpers_1_1_netsuite_helper_html_a5d46fe7f63e90722fe7e4965118611d6"><div class="ttname"><a href="#a5d46fe7f63e90722fe7e4965118611d6">AinslieAPI.Helpers.NetsuiteHelper._appSettings</a></div><div class="ttdeci">AppSettings _appSettings</div><div class="ttdef"><b>Definition</b> NetsuiteHelper.cs:13</div></div>
+<div class="ttc" id="aclass_ainslie_a_p_i_1_1_helpers_1_1_netsuite_helper_html_a842eb7d7980a8e6ec0fa1962c07f4545"><div class="ttname"><a href="#a842eb7d7980a8e6ec0fa1962c07f4545">AinslieAPI.Helpers.NetsuiteHelper._iaService</a></div><div class="ttdeci">InternalApiService _iaService</div><div class="ttdef"><b>Definition</b> NetsuiteHelper.cs:14</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -211,6 +233,51 @@ Here is the caller graph for this function:</div>
 <area shape="poly" title=" " alt="" coords="224,29,192,29,192,24,224,24"/>
 </map>
 </div>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a5d46fe7f63e90722fe7e4965118611d6" name="a5d46fe7f63e90722fe7e4965118611d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d46fe7f63e90722fe7e4965118611d6">&#9670;&#160;</a></span>_appSettings</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_ainslie_a_p_i_1_1_helpers_1_1_app_settings.html">AppSettings</a> AinslieAPI.Helpers.NetsuiteHelper._appSettings</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a842eb7d7980a8e6ec0fa1962c07f4545" name="a842eb7d7980a8e6ec0fa1962c07f4545"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a842eb7d7980a8e6ec0fa1962c07f4545">&#9670;&#160;</a></span>_iaService</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_ainslie_a_p_i_1_1_services_1_1_internal_api_service.html">InternalApiService</a> AinslieAPI.Helpers.NetsuiteHelper._iaService</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>

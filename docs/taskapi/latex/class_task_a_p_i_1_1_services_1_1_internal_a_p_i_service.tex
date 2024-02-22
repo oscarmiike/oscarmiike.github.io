@@ -5,6 +5,16 @@
 Provides a collection of services for interacting with internal API endpoints, including sending emails, fetching asset information, and managing logs.  
 
 
+
+
+Collaboration diagram for Task\+API.\+Services.\+Internal\+APIService\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service__coll__graph}
+\end{center}
+\end{figure}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -30,6 +40,13 @@ int? \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_a
 \begin{DoxyCompactList}\small\item\em Initiates a log trimming operation for AB Web logs via Internal API. \end{DoxyCompactList}\item 
 List$<$ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_log_entry}{Log\+Entry}} $>$ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_a01d6e21d8a6368eb448cb401630cf033}{Get\+Unified\+Logs}} (Log\+Request log\+Request, string api\+Source)
 \begin{DoxyCompactList}\small\item\em Retrieves unified logs from Internal API for a specified API source. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{Log\+Service}} \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_ae6eb67908ecf2aa66a8df5c07a5741d6}{\+\_\+log\+Service}}
+\item 
+\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings}{Task\+APISettings}} \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_addd42c8e56ccd8483dabbd2b29d9aa54}{\+\_\+settings}}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -56,8 +73,8 @@ Initialises a new instance of the Internal\+APIService, configuring it with nece
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00035\ \ \ \ \ \{}
-\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \_settings\ =\ taskAPISettings.Value;}
-\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \_logService\ =\ logService;}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_addd42c8e56ccd8483dabbd2b29d9aa54}{\_settings}}\ =\ taskAPISettings.Value;}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_ae6eb67908ecf2aa66a8df5c07a5741d6}{\_logService}}\ =\ logService;}
 \DoxyCodeLine{00038\ \ \ \ \ \}}
 
 \end{DoxyCode}
@@ -82,21 +99,21 @@ A Log\+Trim\+Result object indicating the success or failure of the log trimming
 \DoxyCodeLine{00273\ \ \ \ \ \{}
 \DoxyCodeLine{00274\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
 \DoxyCodeLine{00275\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient(\_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_a4a03da42d86717f1a6b1cdec0710666b}{InternalAPISettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings_ac52d86bbf73045bfed0110c3f161b435}{BaseURL}});}
-\DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ \ \ \ \ var\ request\ =\ \textcolor{keyword}{new}\ RestRequest(\_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_a4a03da42d86717f1a6b1cdec0710666b}{InternalAPISettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings_a092c06ea4fb1e77efeab74a113b1d303}{Endpoint\_AbWebTrimLogs}},\ Method.Get);}
+\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_addd42c8e56ccd8483dabbd2b29d9aa54}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_a4a03da42d86717f1a6b1cdec0710666b}{InternalAPISettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings_ac52d86bbf73045bfed0110c3f161b435}{BaseURL}});}
+\DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ \ \ \ \ var\ request\ =\ \textcolor{keyword}{new}\ RestRequest(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_addd42c8e56ccd8483dabbd2b29d9aa54}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_a4a03da42d86717f1a6b1cdec0710666b}{InternalAPISettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings_a092c06ea4fb1e77efeab74a113b1d303}{Endpoint\_AbWebTrimLogs}},\ Method.Get);}
 \DoxyCodeLine{00278\ \ \ \ \ \ \ \ \ \ \ \ \ RestResponse\ response\ =\ client.Execute(request);}
 \DoxyCodeLine{00279\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response.IsSuccessStatusCode\ \&\&\ !\textcolor{keywordtype}{string}.IsNullOrEmpty(response.Content))}
 \DoxyCodeLine{00280\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
 \DoxyCodeLine{00281\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ JsonConvert.DeserializeObject<\mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result}{LogTrimResult}}>(response.Content);}
 \DoxyCodeLine{00282\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00283\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ errMsg\ =\ \$\textcolor{stringliteral}{"{}unsuccessful\ response\ trimming\ logs\ on\ abweb.\ StatusCode:\ \{response.StatusCode\}\ Description:\ \{response.StatusDescription\}\ Content:\ \{response.Content\}"{}};}
-\DoxyCodeLine{00284\ \ \ \ \ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a46dc9bf58bc9605c7e17dfee38b94354}{LogError}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.InternalAPIService,\ errMsg);}
+\DoxyCodeLine{00284\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_ae6eb67908ecf2aa66a8df5c07a5741d6}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a46dc9bf58bc9605c7e17dfee38b94354}{LogError}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.InternalAPIService,\ errMsg);}
 \DoxyCodeLine{00285\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result}{LogTrimResult}}()\ \{\ error\ =\ \textcolor{keyword}{true},\ message\ =\ errMsg\ \};}
 \DoxyCodeLine{00286\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00287\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
 \DoxyCodeLine{00288\ \ \ \ \ \ \ \ \ \{}
 \DoxyCodeLine{00289\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ errMsg\ =\ \$\textcolor{stringliteral}{"{}exception\ trimming\ logs\ on\ abweb\ \{ex\}"{}};}
-\DoxyCodeLine{00290\ \ \ \ \ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a78c9df658858fa3099eed69421423898}{LogException}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.InternalAPIService,\ errMsg);}
+\DoxyCodeLine{00290\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_ae6eb67908ecf2aa66a8df5c07a5741d6}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a78c9df658858fa3099eed69421423898}{LogException}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.InternalAPIService,\ errMsg);}
 \DoxyCodeLine{00291\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result}{LogTrimResult}}()\ \{\ error\ =\ \textcolor{keyword}{true},\ message\ =\ errMsg\ \};}
 \DoxyCodeLine{00292\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00293\ \ \ \ \ \}}
@@ -110,8 +127,7 @@ Here is the call graph for this function\+:
 \includegraphics[width=350pt]{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_aafa740a340a6a25e1f8ac8a766d186f9_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -136,21 +152,21 @@ A Log\+Trim\+Result object indicating the success or failure of the log trimming
 \DoxyCodeLine{00246\ \ \ \ \ \{}
 \DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
 \DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient(\_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_a4a03da42d86717f1a6b1cdec0710666b}{InternalAPISettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings_ac52d86bbf73045bfed0110c3f161b435}{BaseURL}});}
-\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \ \ \ \ var\ request\ =\ \textcolor{keyword}{new}\ RestRequest(\_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_a4a03da42d86717f1a6b1cdec0710666b}{InternalAPISettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings_ac11bec42f3a403c041777f16f494bed1}{Endpoint\_AinslieApiTrimLogs}},\ Method.Get);}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_addd42c8e56ccd8483dabbd2b29d9aa54}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_a4a03da42d86717f1a6b1cdec0710666b}{InternalAPISettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings_ac52d86bbf73045bfed0110c3f161b435}{BaseURL}});}
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \ \ \ \ var\ request\ =\ \textcolor{keyword}{new}\ RestRequest(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_addd42c8e56ccd8483dabbd2b29d9aa54}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_a4a03da42d86717f1a6b1cdec0710666b}{InternalAPISettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings_ac11bec42f3a403c041777f16f494bed1}{Endpoint\_AinslieApiTrimLogs}},\ Method.Get);}
 \DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ \ \ \ \ RestResponse\ response\ =\ client.Execute(request);}
 \DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response.IsSuccessStatusCode\ \&\&\ !\textcolor{keywordtype}{string}.IsNullOrEmpty(response.Content))}
 \DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
 \DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ JsonConvert.DeserializeObject<\mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result}{LogTrimResult}}>(response.Content);}
 \DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ errMsg\ =\ \$\textcolor{stringliteral}{"{}unsuccessful\ response\ trimming\ logs\ on\ ainslie\ api.\ StatusCode:\ \{response.StatusCode\}\ Description:\ \{response.StatusDescription\}\ Content:\ \{response.Content\}"{}};}
-\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a46dc9bf58bc9605c7e17dfee38b94354}{LogError}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.InternalAPIService,\ errMsg);}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_ae6eb67908ecf2aa66a8df5c07a5741d6}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a46dc9bf58bc9605c7e17dfee38b94354}{LogError}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.InternalAPIService,\ errMsg);}
 \DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result}{LogTrimResult}}()\ \{\ error\ =\ \textcolor{keyword}{true},\ message\ =\ errMsg\ \};}
 \DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
 \DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ \{}
 \DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ errMsg\ =\ \$\textcolor{stringliteral}{"{}exception\ trimming\ logs\ on\ ainslie\ api\ \{ex\}"{}};}
-\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a78c9df658858fa3099eed69421423898}{LogException}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.InternalAPIService,\ errMsg);}
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_ae6eb67908ecf2aa66a8df5c07a5741d6}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a78c9df658858fa3099eed69421423898}{LogException}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.InternalAPIService,\ errMsg);}
 \DoxyCodeLine{00264\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result}{LogTrimResult}}()\ \ \{\ error\ =\ \textcolor{keyword}{true},\ message\ =\ errMsg\ \};}
 \DoxyCodeLine{00265\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00266\ \ \ \ \ \}}
@@ -164,8 +180,7 @@ Here is the call graph for this function\+:
 \includegraphics[width=350pt]{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_a8a31c4c8d5371ef13d5ab0da08186829_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -188,8 +203,8 @@ A list of Daily\+Close\+Chart\+Item objects representing the daily close data.
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00097\ \ \ \ \ \{}
-\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient(\_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_a4a03da42d86717f1a6b1cdec0710666b}{InternalAPISettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings_ac52d86bbf73045bfed0110c3f161b435}{BaseURL}});}
-\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ var\ request\ =\ \textcolor{keyword}{new}\ RestRequest(\_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_a4a03da42d86717f1a6b1cdec0710666b}{InternalAPISettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings_a327cb2b2b53bb653d8ac1d71f3407faf}{Endpoint\_PriceappChartData}},\ Method.Get);}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_addd42c8e56ccd8483dabbd2b29d9aa54}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_a4a03da42d86717f1a6b1cdec0710666b}{InternalAPISettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings_ac52d86bbf73045bfed0110c3f161b435}{BaseURL}});}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ var\ request\ =\ \textcolor{keyword}{new}\ RestRequest(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_addd42c8e56ccd8483dabbd2b29d9aa54}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_a4a03da42d86717f1a6b1cdec0710666b}{InternalAPISettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings_a327cb2b2b53bb653d8ac1d71f3407faf}{Endpoint\_PriceappChartData}},\ Method.Get);}
 \DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ var\ response\ =\ client.Execute(request);}
 \DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ var\ dailyCloseChartData\ =\ \textcolor{keyword}{new}\ List<DailyCloseChartItem>();}
 \DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response.IsSuccessful\ \&\&\ response.Content.Length\ >\ 0)}
@@ -200,7 +215,7 @@ A list of Daily\+Close\+Chart\+Item objects representing the daily close data.
 \DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
 \DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a78c9df658858fa3099eed69421423898}{LogException}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.InternalAPIService,}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_ae6eb67908ecf2aa66a8df5c07a5741d6}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a78c9df658858fa3099eed69421423898}{LogException}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.InternalAPIService,}
 \DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Exception\ getting\ daily\ close\ chart\ data\ through\ internal\ api"{}},}
 \DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ex.ToString()}
 \DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
@@ -208,7 +223,7 @@ A list of Daily\+Close\+Chart\+Item objects representing the daily close data.
 \DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
 \DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a46dc9bf58bc9605c7e17dfee38b94354}{LogError}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.InternalAPIService,}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_ae6eb67908ecf2aa66a8df5c07a5741d6}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a46dc9bf58bc9605c7e17dfee38b94354}{LogError}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.InternalAPIService,}
 \DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}unsuccessful\ response\ getting\ daily\ close\ chart\ data\ through\ internal\ api"{}},}
 \DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ response.ResponseStatus,}
 \DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ response.StatusCode.ToString(),}
@@ -225,6 +240,14 @@ Here is the call graph for this function\+:
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_a79988bdd459de2ee2b545fa7cac3d92a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_a79988bdd459de2ee2b545fa7cac3d92a_icgraph}
 \end{center}
 \end{figure}
 \Hypertarget{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_aa614614518048e1244ae357de18425df}\label{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_aa614614518048e1244ae357de18425df} 
@@ -250,8 +273,8 @@ An Instrument\+Price object containing the instrument\textquotesingle{}s price, 
 \DoxyCodeLine{00134\ \ \ \ \ \{}
 \DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
 \DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient(\_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_a4a03da42d86717f1a6b1cdec0710666b}{InternalAPISettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings_ac52d86bbf73045bfed0110c3f161b435}{BaseURL}});}
-\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ var\ request\ =\ \textcolor{keyword}{new}\ RestRequest(\_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_a4a03da42d86717f1a6b1cdec0710666b}{InternalAPISettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings_a8daebfb7169842f2dc08e8c14c21d4df}{Endpoint\_OandaInstrumentPricing}},\ Method.Get);}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_addd42c8e56ccd8483dabbd2b29d9aa54}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_a4a03da42d86717f1a6b1cdec0710666b}{InternalAPISettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings_ac52d86bbf73045bfed0110c3f161b435}{BaseURL}});}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ var\ request\ =\ \textcolor{keyword}{new}\ RestRequest(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_addd42c8e56ccd8483dabbd2b29d9aa54}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_a4a03da42d86717f1a6b1cdec0710666b}{InternalAPISettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings_a8daebfb7169842f2dc08e8c14c21d4df}{Endpoint\_OandaInstrumentPricing}},\ Method.Get);}
 \DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddQueryParameter(\textcolor{stringliteral}{"{}instruments"{}},\ \$\textcolor{stringliteral}{"{}\{assetCode\}\_USD"{}});}
 \DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ RestResponse\ response\ =\ client.Execute(request);}
 \DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response.IsSuccessStatusCode\ \&\&\ !\textcolor{keywordtype}{string}.IsNullOrEmpty(response.Content))}
@@ -260,13 +283,13 @@ An Instrument\+Price object containing the instrument\textquotesingle{}s price, 
 \DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ instrumentPrice;}
 \DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ errMsg\ =\ \$\textcolor{stringliteral}{"{}unsuccessful\ response\ getting\ oanda\ instrument\ pricing\ for\ \{assetCode\}\ from\ internal\ api.\ StatusCode:\ \{response.StatusCode\}\ Description:\ \{response.StatusDescription\}\ Content:\ \{response.Content\}"{}};}
-\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a46dc9bf58bc9605c7e17dfee38b94354}{LogError}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.InternalAPIService,\ errMsg);}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_ae6eb67908ecf2aa66a8df5c07a5741d6}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a46dc9bf58bc9605c7e17dfee38b94354}{LogError}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.InternalAPIService,\ errMsg);}
 \DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
 \DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
 \DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \{}
 \DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ errMsg\ =\ \$\textcolor{stringliteral}{"{}exception\ getting\ oanda\ instrument\ pricing\ for\ \{assetCode\}\ on\ internal\ api\ \{ex\}"{}};}
-\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a78c9df658858fa3099eed69421423898}{LogException}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.InternalAPIService,\ errMsg);}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_ae6eb67908ecf2aa66a8df5c07a5741d6}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a78c9df658858fa3099eed69421423898}{LogException}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.InternalAPIService,\ errMsg);}
 \DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
 \DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00156\ \ \ \ \ \}}
@@ -278,6 +301,14 @@ Here is the call graph for this function\+:
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_aa614614518048e1244ae357de18425df_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_aa614614518048e1244ae357de18425df_icgraph}
 \end{center}
 \end{figure}
 \Hypertarget{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_a55b9f5404586ba97531f1cdc013ecaed}\label{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_a55b9f5404586ba97531f1cdc013ecaed} 
@@ -298,8 +329,8 @@ The market status override as an integer, or {\ttfamily null} if the request fai
 \DoxyCodeLine{00163\ \ \ \ \ \{}
 \DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
 \DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient(\_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_a4a03da42d86717f1a6b1cdec0710666b}{InternalAPISettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings_ac52d86bbf73045bfed0110c3f161b435}{BaseURL}});}
-\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ var\ request\ =\ \textcolor{keyword}{new}\ RestRequest(\_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_a4a03da42d86717f1a6b1cdec0710666b}{InternalAPISettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings_ad0e29ce5b266bbf0f341aa6011f08ff8}{Endpoint\_PriceappMarketStatusOverride}},\ Method.Get);}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_addd42c8e56ccd8483dabbd2b29d9aa54}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_a4a03da42d86717f1a6b1cdec0710666b}{InternalAPISettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings_ac52d86bbf73045bfed0110c3f161b435}{BaseURL}});}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ var\ request\ =\ \textcolor{keyword}{new}\ RestRequest(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_addd42c8e56ccd8483dabbd2b29d9aa54}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_a4a03da42d86717f1a6b1cdec0710666b}{InternalAPISettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings_ad0e29ce5b266bbf0f341aa6011f08ff8}{Endpoint\_PriceappMarketStatusOverride}},\ Method.Get);}
 \DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ RestResponse\ response\ =\ client.Execute(request);}
 \DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response.IsSuccessStatusCode\ \&\&\ !\textcolor{keywordtype}{string}.IsNullOrEmpty(response.Content))}
 \DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
@@ -307,13 +338,13 @@ The market status override as an integer, or {\ttfamily null} if the request fai
 \DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ statusOverride;}
 \DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ errMsg\ =\ \$\textcolor{stringliteral}{"{}unsuccessful\ response\ getting\ priceapp\ market\ status\ override\ from\ internal\ api.\ StatusCode:\ \{response.StatusCode\}\ Description:\ \{response.StatusDescription\}\ Content:\ \{response.Content\}"{}};}
-\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a46dc9bf58bc9605c7e17dfee38b94354}{LogError}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.InternalAPIService,\ errMsg);}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_ae6eb67908ecf2aa66a8df5c07a5741d6}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a46dc9bf58bc9605c7e17dfee38b94354}{LogError}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.InternalAPIService,\ errMsg);}
 \DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
 \DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
 \DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \{}
 \DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ errMsg\ =\ \$\textcolor{stringliteral}{"{}exception\ getting\ priceapp\ market\ status\ override\ on\ internal\ api\ \{ex\}"{}};}
-\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a78c9df658858fa3099eed69421423898}{LogException}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.InternalAPIService,\ errMsg);}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_ae6eb67908ecf2aa66a8df5c07a5741d6}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a78c9df658858fa3099eed69421423898}{LogException}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.InternalAPIService,\ errMsg);}
 \DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
 \DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00184\ \ \ \ \ \}}
@@ -325,6 +356,14 @@ Here is the call graph for this function\+:
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_a55b9f5404586ba97531f1cdc013ecaed_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_a55b9f5404586ba97531f1cdc013ecaed_icgraph}
 \end{center}
 \end{figure}
 \Hypertarget{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_a01d6e21d8a6368eb448cb401630cf033}\label{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_a01d6e21d8a6368eb448cb401630cf033} 
@@ -354,7 +393,7 @@ Utilised during the Check\+Alerts workflow
 \DoxyCodeLine{00303\ \ \ \ \ \{}
 \DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
 \DoxyCodeLine{00305\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00306\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient(\_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_a4a03da42d86717f1a6b1cdec0710666b}{InternalAPISettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings_ac52d86bbf73045bfed0110c3f161b435}{BaseURL}});}
+\DoxyCodeLine{00306\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_addd42c8e56ccd8483dabbd2b29d9aa54}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_a4a03da42d86717f1a6b1cdec0710666b}{InternalAPISettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings_ac52d86bbf73045bfed0110c3f161b435}{BaseURL}});}
 \DoxyCodeLine{00307\ }
 \DoxyCodeLine{00308\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ endpoint\ =\ \$\textcolor{stringliteral}{"{}\{\_settings.InternalAPISettings.Endpoint\_GetUnifiedLogs\}/\{apiSource\}"{}};}
 \DoxyCodeLine{00309\ \ \ \ \ \ \ \ \ \ \ \ \ var\ request\ =\ \textcolor{keyword}{new}\ RestRequest(endpoint,\ Method.Post);}
@@ -367,11 +406,11 @@ Utilised during the Check\+Alerts workflow
 \DoxyCodeLine{00316\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ logs\ =\ JsonConvert.DeserializeObject<List<LogEntry>>(response.Content);}
 \DoxyCodeLine{00317\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ logs;}
 \DoxyCodeLine{00318\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00319\ \ \ \ \ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a46dc9bf58bc9605c7e17dfee38b94354}{LogError}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.InternalAPIService,\ \textcolor{stringliteral}{"{}Unsuccessful\ response\ retrieving\ unified\ logs"{}},\ \$\textcolor{stringliteral}{"{}StatusCode:\ \{response.StatusCode\}\ Description:\ \{response.StatusDescription\}\ Content:\ \{response.Content\}"{}});}
+\DoxyCodeLine{00319\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_ae6eb67908ecf2aa66a8df5c07a5741d6}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a46dc9bf58bc9605c7e17dfee38b94354}{LogError}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.InternalAPIService,\ \textcolor{stringliteral}{"{}Unsuccessful\ response\ retrieving\ unified\ logs"{}},\ \$\textcolor{stringliteral}{"{}StatusCode:\ \{response.StatusCode\}\ Description:\ \{response.StatusDescription\}\ Content:\ \{response.Content\}"{}});}
 \DoxyCodeLine{00320\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00321\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
 \DoxyCodeLine{00322\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00323\ \ \ \ \ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a78c9df658858fa3099eed69421423898}{LogException}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.InternalAPIService,\ \textcolor{stringliteral}{"{}Exception\ retrieving\ unified\ logs"{}},\ ex.ToString());}
+\DoxyCodeLine{00323\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_ae6eb67908ecf2aa66a8df5c07a5741d6}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a78c9df658858fa3099eed69421423898}{LogException}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.InternalAPIService,\ \textcolor{stringliteral}{"{}Exception\ retrieving\ unified\ logs"{}},\ ex.ToString());}
 \DoxyCodeLine{00324\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00325\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ List<LogEntry>();}
 \DoxyCodeLine{00326\ \ \ \ \ \}}
@@ -383,6 +422,14 @@ Here is the call graph for this function\+:
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_a01d6e21d8a6368eb448cb401630cf033_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_a01d6e21d8a6368eb448cb401630cf033_icgraph}
 \end{center}
 \end{figure}
 \Hypertarget{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_a0a18917a9a9834b9d1f62d96b3798912}\label{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_a0a18917a9a9834b9d1f62d96b3798912} 
@@ -403,22 +450,22 @@ A Log\+Trim\+Result object indicating the success or failure of the log trimming
 \DoxyCodeLine{00191\ \ \ \ \ \{}
 \DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
 \DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient(\_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_a4a03da42d86717f1a6b1cdec0710666b}{InternalAPISettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings_ac52d86bbf73045bfed0110c3f161b435}{BaseURL}});}
-\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \ \ \ \ var\ request\ =\ \textcolor{keyword}{new}\ RestRequest(\_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_a4a03da42d86717f1a6b1cdec0710666b}{InternalAPISettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings_a51a12129a28d3dadba61eda6672d7523}{Endpoint\_TrimLogs}},\ Method.Get);}
-\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddQueryParameter(\textcolor{stringliteral}{"{}keepDays"{}},\ \_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_a4a03da42d86717f1a6b1cdec0710666b}{InternalAPISettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings_a0c02fb8a3cffdf328e2120fa3373372e}{DaysToKeepLogs}});}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_addd42c8e56ccd8483dabbd2b29d9aa54}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_a4a03da42d86717f1a6b1cdec0710666b}{InternalAPISettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings_ac52d86bbf73045bfed0110c3f161b435}{BaseURL}});}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \ \ \ \ var\ request\ =\ \textcolor{keyword}{new}\ RestRequest(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_addd42c8e56ccd8483dabbd2b29d9aa54}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_a4a03da42d86717f1a6b1cdec0710666b}{InternalAPISettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings_a51a12129a28d3dadba61eda6672d7523}{Endpoint\_TrimLogs}},\ Method.Get);}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddQueryParameter(\textcolor{stringliteral}{"{}keepDays"{}},\ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_addd42c8e56ccd8483dabbd2b29d9aa54}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_a4a03da42d86717f1a6b1cdec0710666b}{InternalAPISettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings_a0c02fb8a3cffdf328e2120fa3373372e}{DaysToKeepLogs}});}
 \DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \ \ \ \ RestResponse\ response\ =\ client.Execute(request);}
 \DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response.IsSuccessStatusCode\ \&\&\ !\textcolor{keywordtype}{string}.IsNullOrEmpty(response.Content))}
 \DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
 \DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ JsonConvert.DeserializeObject<\mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result}{LogTrimResult}}>(response.Content);}
 \DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ errMsg\ =\ \$\textcolor{stringliteral}{"{}unsuccessful\ response\ trimming\ logs\ on\ internal\ api.\ StatusCode:\ \{response.StatusCode\}\ Description:\ \{response.StatusDescription\}\ Content:\ \{response.Content\}"{}};}
-\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a46dc9bf58bc9605c7e17dfee38b94354}{LogError}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.InternalAPIService,\ errMsg);}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_ae6eb67908ecf2aa66a8df5c07a5741d6}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a46dc9bf58bc9605c7e17dfee38b94354}{LogError}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.InternalAPIService,\ errMsg);}
 \DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result}{LogTrimResult}}()\ \{\ error\ =\ \textcolor{keyword}{true},\ message\ =\ errMsg\ \};}
 \DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
 \DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \{}
 \DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ errMsg\ =\ \$\textcolor{stringliteral}{"{}exception\ trimming\ logs\ on\ internal\ api\ \{ex\}"{}};}
-\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a78c9df658858fa3099eed69421423898}{LogException}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.InternalAPIService,\ errMsg);}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_ae6eb67908ecf2aa66a8df5c07a5741d6}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a78c9df658858fa3099eed69421423898}{LogException}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.InternalAPIService,\ errMsg);}
 \DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result}{LogTrimResult}}()\ \{\ error\ =\ \textcolor{keyword}{true},\ message\ =\ errMsg\ \};}
 \DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00212\ \ \ \ \ \}}
@@ -432,8 +479,7 @@ Here is the call graph for this function\+:
 \includegraphics[width=350pt]{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_a0a18917a9a9834b9d1f62d96b3798912_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -459,19 +505,19 @@ A list of Priceapp\+Asset objects, or {\ttfamily null} if the request fails.
 \DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
 \DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \{}
 \DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ List<PriceappAsset>?\ assets\ =\ \textcolor{keyword}{new}\ List<PriceappAsset>();}
-\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient(\_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_a4a03da42d86717f1a6b1cdec0710666b}{InternalAPISettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings_ac52d86bbf73045bfed0110c3f161b435}{BaseURL}});}
-\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ var\ request\ =\ \textcolor{keyword}{new}\ RestRequest(\_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_a4a03da42d86717f1a6b1cdec0710666b}{InternalAPISettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings_a0be830e3100b27b5d8f34b55eda664b8}{Endpoint\_PriceappAssets}},\ Method.Get);}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_addd42c8e56ccd8483dabbd2b29d9aa54}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_a4a03da42d86717f1a6b1cdec0710666b}{InternalAPISettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings_ac52d86bbf73045bfed0110c3f161b435}{BaseURL}});}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ var\ request\ =\ \textcolor{keyword}{new}\ RestRequest(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_addd42c8e56ccd8483dabbd2b29d9aa54}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_a4a03da42d86717f1a6b1cdec0710666b}{InternalAPISettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings_a0be830e3100b27b5d8f34b55eda664b8}{Endpoint\_PriceappAssets}},\ Method.Get);}
 \DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ RestResponse\ response\ =\ client.Execute(request);}
 \DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response.IsSuccessStatusCode)}
 \DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
 \DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ assets\ =\ JsonConvert.DeserializeObject<List<PriceappAsset>>(response.Content);}
 \DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ assets;}
 \DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a46dc9bf58bc9605c7e17dfee38b94354}{LogError}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.InternalAPIService,\ \textcolor{stringliteral}{"{}unsuccessful\ response\ getting\ priceapp\ asset\ list\ through\ internal\ api"{}},\ \$\textcolor{stringliteral}{"{}StatusCode:\ \{response.StatusCode\}\ Description:\ \{response.StatusDescription\}\ Content:\ \{response.Content\}"{}});}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_ae6eb67908ecf2aa66a8df5c07a5741d6}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a46dc9bf58bc9605c7e17dfee38b94354}{LogError}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.InternalAPIService,\ \textcolor{stringliteral}{"{}unsuccessful\ response\ getting\ priceapp\ asset\ list\ through\ internal\ api"{}},\ \$\textcolor{stringliteral}{"{}StatusCode:\ \{response.StatusCode\}\ Description:\ \{response.StatusDescription\}\ Content:\ \{response.Content\}"{}});}
 \DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
 \DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a78c9df658858fa3099eed69421423898}{LogException}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.InternalAPIService,\ \textcolor{stringliteral}{"{}exception\ getting\ priceapp\ asset\ list\ through\ internal\ api"{}},\ ex.ToString());}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_ae6eb67908ecf2aa66a8df5c07a5741d6}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a78c9df658858fa3099eed69421423898}{LogException}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.InternalAPIService,\ \textcolor{stringliteral}{"{}exception\ getting\ priceapp\ asset\ list\ through\ internal\ api"{}},\ ex.ToString());}
 \DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
 \DoxyCodeLine{00090\ \ \ \ \ \}}
@@ -503,21 +549,21 @@ A Log\+Trim\+Result object indicating the success or failure of the log trimming
 \DoxyCodeLine{00219\ \ \ \ \ \{}
 \DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
 \DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient(\_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_a4a03da42d86717f1a6b1cdec0710666b}{InternalAPISettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings_ac52d86bbf73045bfed0110c3f161b435}{BaseURL}});}
-\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \ \ \ \ var\ request\ =\ \textcolor{keyword}{new}\ RestRequest(\_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_a4a03da42d86717f1a6b1cdec0710666b}{InternalAPISettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings_a6b8bd4c293db7a08e544f92fd8f3f411}{Endpoint\_PriceappTrimLogs}},\ Method.Get);}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_addd42c8e56ccd8483dabbd2b29d9aa54}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_a4a03da42d86717f1a6b1cdec0710666b}{InternalAPISettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings_ac52d86bbf73045bfed0110c3f161b435}{BaseURL}});}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \ \ \ \ var\ request\ =\ \textcolor{keyword}{new}\ RestRequest(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_addd42c8e56ccd8483dabbd2b29d9aa54}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_a4a03da42d86717f1a6b1cdec0710666b}{InternalAPISettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings_a6b8bd4c293db7a08e544f92fd8f3f411}{Endpoint\_PriceappTrimLogs}},\ Method.Get);}
 \DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \ \ \ \ RestResponse\ response\ =\ client.Execute(request);}
 \DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response.IsSuccessStatusCode\ \&\&\ !\textcolor{keywordtype}{string}.IsNullOrEmpty(response.Content))}
 \DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
 \DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ JsonConvert.DeserializeObject<\mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result}{LogTrimResult}}>(response.Content);}
 \DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ errMsg\ =\ \$\textcolor{stringliteral}{"{}unsuccessful\ response\ trimming\ logs\ on\ priceapp.\ StatusCode:\ \{response.StatusCode\}\ Description:\ \{response.StatusDescription\}\ Content:\ \{response.Content\}"{}};}
-\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a46dc9bf58bc9605c7e17dfee38b94354}{LogError}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.InternalAPIService,\ errMsg);}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_ae6eb67908ecf2aa66a8df5c07a5741d6}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a46dc9bf58bc9605c7e17dfee38b94354}{LogError}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.InternalAPIService,\ errMsg);}
 \DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result}{LogTrimResult}}()\ \{\ error\ =\ \textcolor{keyword}{true},\ message\ =\ errMsg\ \};}
 \DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
 \DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \{}
 \DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ errMsg\ =\ \$\textcolor{stringliteral}{"{}exception\ trimming\ logs\ on\ priceapp\ \{ex\}"{}};}
-\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a78c9df658858fa3099eed69421423898}{LogException}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.InternalAPIService,\ errMsg);}
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_ae6eb67908ecf2aa66a8df5c07a5741d6}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a78c9df658858fa3099eed69421423898}{LogException}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.InternalAPIService,\ errMsg);}
 \DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result}{LogTrimResult}}()\ \{\ error\ =\ \textcolor{keyword}{true},\ message\ =\ errMsg\ \};}
 \DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00239\ \ \ \ \ \}}
@@ -531,8 +577,7 @@ Here is the call graph for this function\+:
 \includegraphics[width=350pt]{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_a8806289389207c5a3ed1e203f1bcbc5c_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -562,19 +607,19 @@ Sends an email using Internal API\textquotesingle{}s email endpoint.
 \DoxyCodeLine{00046\ \ \ \ \ \{}
 \DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
 \DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient(\_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_a4a03da42d86717f1a6b1cdec0710666b}{InternalAPISettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings_ac52d86bbf73045bfed0110c3f161b435}{BaseURL}});}
-\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ var\ request\ =\ \textcolor{keyword}{new}\ RestRequest(\_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_a4a03da42d86717f1a6b1cdec0710666b}{InternalAPISettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings_a00b3b80971ef972a4a4874d1a85afed3}{Endpoint\_Email}},\ Method.Post);}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ var\ client\ =\ \textcolor{keyword}{new}\ RestClient(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_addd42c8e56ccd8483dabbd2b29d9aa54}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_a4a03da42d86717f1a6b1cdec0710666b}{InternalAPISettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings_ac52d86bbf73045bfed0110c3f161b435}{BaseURL}});}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ var\ request\ =\ \textcolor{keyword}{new}\ RestRequest(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_addd42c8e56ccd8483dabbd2b29d9aa54}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_a4a03da42d86717f1a6b1cdec0710666b}{InternalAPISettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_internalapisettings_a00b3b80971ef972a4a4874d1a85afed3}{Endpoint\_Email}},\ Method.Post);}
 \DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ request.AddJsonBody(email);}
 \DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ RestResponse\ response\ =\ client.Execute(request);}
 \DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (response.IsSuccessStatusCode)}
 \DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
 \DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
 \DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a46dc9bf58bc9605c7e17dfee38b94354}{LogError}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.InternalAPIService,\ \textcolor{stringliteral}{"{}unsuccessful\ response\ sending\ email\ through\ internal\ api"{}},\ \$\textcolor{stringliteral}{"{}StatusCode:\ \{response.StatusCode\}\ Description:\ \{response.StatusDescription\}\ Content:\ \{response.Content\}"{}});}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_ae6eb67908ecf2aa66a8df5c07a5741d6}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a46dc9bf58bc9605c7e17dfee38b94354}{LogError}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.InternalAPIService,\ \textcolor{stringliteral}{"{}unsuccessful\ response\ sending\ email\ through\ internal\ api"{}},\ \$\textcolor{stringliteral}{"{}StatusCode:\ \{response.StatusCode\}\ Description:\ \{response.StatusDescription\}\ Content:\ \{response.Content\}"{}});}
 \DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
 \DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a78c9df658858fa3099eed69421423898}{LogException}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.InternalAPIService,\ \textcolor{stringliteral}{"{}exception\ sending\ email\ through\ internal\ api"{}},\ ex.ToString());}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_ae6eb67908ecf2aa66a8df5c07a5741d6}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a78c9df658858fa3099eed69421423898}{LogException}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.InternalAPIService,\ \textcolor{stringliteral}{"{}exception\ sending\ email\ through\ internal\ api"{}},\ ex.ToString());}
 \DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
 \DoxyCodeLine{00064\ \ \ \ \ \}}
@@ -596,6 +641,21 @@ Here is the caller graph for this function\+:
 \includegraphics[width=350pt]{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_aeffeb1d3d59aeeab65dfe72691d21600_icgraph}
 \end{center}
 \end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_ae6eb67908ecf2aa66a8df5c07a5741d6}\label{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_ae6eb67908ecf2aa66a8df5c07a5741d6} 
+\index{TaskAPI.Services.InternalAPIService@{TaskAPI.Services.InternalAPIService}!\_logService@{\_logService}}
+\index{\_logService@{\_logService}!TaskAPI.Services.InternalAPIService@{TaskAPI.Services.InternalAPIService}}
+\doxysubsubsection{\texorpdfstring{\_logService}{\_logService}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{Log\+Service}} Task\+API.\+Services.\+Internal\+APIService.\+\_\+log\+Service\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_addd42c8e56ccd8483dabbd2b29d9aa54}\label{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_addd42c8e56ccd8483dabbd2b29d9aa54} 
+\index{TaskAPI.Services.InternalAPIService@{TaskAPI.Services.InternalAPIService}!\_settings@{\_settings}}
+\index{\_settings@{\_settings}!TaskAPI.Services.InternalAPIService@{TaskAPI.Services.InternalAPIService}}
+\doxysubsubsection{\texorpdfstring{\_settings}{\_settings}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings}{Task\+APISettings}} Task\+API.\+Services.\+Internal\+APIService.\+\_\+settings\hspace{0.3cm}{\ttfamily [private]}}
+
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

@@ -16,11 +16,12 @@ Inheritance diagram for Ainslie\+API.\+Controllers.\+GSS.\+Tdcr\+Controller\+:\n
 \end{figure}
 
 
-Collaboration diagram for Ainslie\+API.\+Controllers.\+GSS.\+Tdcr\+Controller\+:\nopagebreak
+Collaboration diagram for Ainslie\+API.\+Controllers.\+GSS.\+Tdcr\+Controller\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=218pt]{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller__coll__graph}
+\includegraphics[width=316pt]{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsubsection*{Public Member Functions}
@@ -30,6 +31,39 @@ Collaboration diagram for Ainslie\+API.\+Controllers.\+GSS.\+Tdcr\+Controller\+:
 \begin{DoxyCompactList}\small\item\em Sets up controller with dependencies for processing TDCR transactions. \end{DoxyCompactList}\item 
 IAction\+Result \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_a9eba319227d13605723ee5253d17b014}{Orders}} (\mbox{[}From\+Body\mbox{]} \mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_tdcr_1_1_order_request}{Order\+Request}} order\+Request)
 \begin{DoxyCompactList}\small\item\em Processes incoming order requests, validating and saving them to the database. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+Http\+Context? \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_acdd9fb842325482d76f3b37934d1142d}{\+\_\+http\+Context}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\mbox{\hyperlink{class_ainslie_a_p_i_1_1_data_1_1_contexts_1_1_tdcr_context}{Tdcr\+Context}} \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_afd3391f35cb75042f825d2ce9f88d670}{\+\_\+tdcr\+Context}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_cache_data_helper}{Cache\+Data\+Helper}} \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_a8719413e16c851137491d336b2c593d3}{\+\_\+cache\+Data\+Helper}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings}{App\+Settings}} \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_a83bdb97c7c1b4a05e61ebd8deaf06ed6}{\+\_\+app\+Settings}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{Log\+Service}} \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_aa38b13d3e5bdb9801cee343984590d69}{\+\_\+logger}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_g_s_s_1_1_g_s_s_price_data}{GSSPrice\+Data}}? \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_a3c7188de077e7385a6b1498191b40e4e}{\+\_\+live\+Price\+Data}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_acdce12cbf8d3ceb33fc727648bf58fc8}{Validate\+Order\+Request}} (\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_tdcr_1_1_order_request}{Order\+Request}} order\+Request)
+\begin{DoxyCompactList}\small\item\em Validates the provided order request against business rules. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_a5425d57dc6e7f08c36785f3ca41d30ab}{Price\+Outside\+Threshold}} (\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_tdcr_1_1_order_request}{Order\+Request}} order\+Request)
+\begin{DoxyCompactList}\small\item\em Determines whether the price specified in an order request falls outside the acceptable threshold as defined by the system\textquotesingle{}s configuration. \end{DoxyCompactList}\item 
+decimal \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_a2afd83d8bf3e0f4695d32ea1f255f4a5}{Order\+Live\+Price\+AUD}} (\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_tdcr_1_1_order_request}{Order\+Request}} order\+Request)
+\begin{DoxyCompactList}\small\item\em Fetches the current live price in AUD for a given asset based on the order request\textquotesingle{}s market and side. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_a464a5d3df062bef894118260d86989f3}{Tdcr\+Order\+Exists}} (string Tdcr\+Id)
+\begin{DoxyCompactList}\small\item\em Checks if an order with the specified TDCR ID exists in the database. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_a1ed8b7c2d20c40b06f57b02cd97058f0}{Build\+Error\+String}} (\mbox{\hyperlink{namespace_ainslie_a_p_i_1_1_d_t_o_1_1_tdcr_af45942b6855ea8af3128b86e0f6c2a03}{Error\+Codes}} error\+Code)
+\begin{DoxyCompactList}\small\item\em Constructs an error string based on the provided error code. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_user_helper_1_1_authenticated_user}{Authenticated\+User}}? \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_a7114721dd614937f38ea1757206cc31e}{Jwt\+User}}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -49,24 +83,25 @@ Sets up controller with dependencies for processing TDCR transactions.
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \_httpContext\ =\ httpContextAccessor.HttpContext;}
-\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ JwtUser\ =\ (\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_user_helper_1_1_authenticated_user}{AuthenticatedUser}}?)\_httpContext?.Items[\textcolor{stringliteral}{"{}user"{}}];}
-\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \_tdcrContext\ =\ tdcrContext;}
-\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \_cacheDataHelper\ =\ cacheDataHelper;}
-\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \_appSettings\ =\ appSettings.Value;}
-\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger\ =\ logger;}
-\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \_livePriceData\ =\ \_cacheDataHelper.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_cache_data_helper_a533a0f6563d2e92e52c819c22c5009a6}{GSSPricing}}(\_appSettings.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings_a40101ce107bba2b095e4196f0d1db3e9}{AwApiSettings}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_aw_api_settings_a6ca6415b8e06af68870f32cd63e466cc}{TdcrUserName}});}
-\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_livePriceData\ ==\ \textcolor{keyword}{null}\ ||}
-\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (\_livePriceData?.AUDUSD\ ??\ 0)\ ==\ 0\ ||}
-\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (\_livePriceData?.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_g_s_s_1_1_g_s_s_price_data_ae1752c3e772a310c0bc629076b110bbf}{AssetList}}?.Where(al\ =>\ al.AssetSymbol.ToLower()\ ==\ \textcolor{stringliteral}{"{}aus"{}}).FirstOrDefault()?.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_g_s_s_1_1_g_s_s_asset_a3bdbcb10d93ed6aa54928f0cd54166c2}{Sell}}\ ??\ 0)\ ==\ 0\ ||}
-\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (\_livePriceData?.AssetList?.Where(al\ =>\ al.AssetSymbol.ToLower()\ ==\ \textcolor{stringliteral}{"{}aus"{}}).FirstOrDefault()?.Buy\ ??\ 0)\ ==\ 0)}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_acdd9fb842325482d76f3b37934d1142d}{\_httpContext}}\ =\ httpContextAccessor.HttpContext;}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_a7114721dd614937f38ea1757206cc31e}{JwtUser}}\ =\ (\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_user_helper_1_1_authenticated_user}{AuthenticatedUser}}?)\mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_acdd9fb842325482d76f3b37934d1142d}{\_httpContext}}?.Items[\textcolor{stringliteral}{"{}user"{}}];}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_afd3391f35cb75042f825d2ce9f88d670}{\_tdcrContext}}\ =\ tdcrContext;}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_a8719413e16c851137491d336b2c593d3}{\_cacheDataHelper}}\ =\ cacheDataHelper;}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_a83bdb97c7c1b4a05e61ebd8deaf06ed6}{\_appSettings}}\ =\ appSettings.Value;}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_aa38b13d3e5bdb9801cee343984590d69}{\_logger}}\ =\ logger;}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_a3c7188de077e7385a6b1498191b40e4e}{\_livePriceData}}\ =\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_a8719413e16c851137491d336b2c593d3}{\_cacheDataHelper}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_cache_data_helper_a533a0f6563d2e92e52c819c22c5009a6}{GSSPricing}}(\mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_a83bdb97c7c1b4a05e61ebd8deaf06ed6}{\_appSettings}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings_a40101ce107bba2b095e4196f0d1db3e9}{AwApiSettings}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_aw_api_settings_a6ca6415b8e06af68870f32cd63e466cc}{TdcrUserName}});}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_a3c7188de077e7385a6b1498191b40e4e}{\_livePriceData}}\ ==\ \textcolor{keyword}{null}\ ||}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (\mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_a3c7188de077e7385a6b1498191b40e4e}{\_livePriceData}}?.AUDUSD\ ??\ 0)\ ==\ 0\ ||}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (\mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_a3c7188de077e7385a6b1498191b40e4e}{\_livePriceData}}?.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_g_s_s_1_1_g_s_s_price_data_ae1752c3e772a310c0bc629076b110bbf}{AssetList}}?.Where(al\ =>\ al.AssetSymbol.ToLower()\ ==\ \textcolor{stringliteral}{"{}aus"{}}).FirstOrDefault()?.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_g_s_s_1_1_g_s_s_asset_a3bdbcb10d93ed6aa54928f0cd54166c2}{Sell}}\ ??\ 0)\ ==\ 0\ ||}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (\mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_a3c7188de077e7385a6b1498191b40e4e}{\_livePriceData}}?.AssetList?.Where(al\ =>\ al.AssetSymbol.ToLower()\ ==\ \textcolor{stringliteral}{"{}aus"{}}).FirstOrDefault()?.Buy\ ??\ 0)\ ==\ 0)}
 \DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a9bf79a218e0884ac9cabd3ac87b81321}{LogError}}(\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_ab557dc1394f5cf56cfb78c765fdfffe6}{LogSources}}.TdcrController,\ \$\textcolor{stringliteral}{"{}live\ price\ data\ is\ bad"{}});}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_aa38b13d3e5bdb9801cee343984590d69}{\_logger}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a9bf79a218e0884ac9cabd3ac87b81321}{LogError}}(\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_ab557dc1394f5cf56cfb78c765fdfffe6}{LogSources}}.TdcrController,\ \$\textcolor{stringliteral}{"{}live\ price\ data\ is\ bad"{}});}
 \DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \}}
 
 \end{DoxyCode}
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -76,6 +111,127 @@ Here is the call graph for this function\+:\nopagebreak
 
 
 \doxysubsection{Member Function Documentation}
+\Hypertarget{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_a1ed8b7c2d20c40b06f57b02cd97058f0}\label{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_a1ed8b7c2d20c40b06f57b02cd97058f0} 
+\index{AinslieAPI.Controllers.GSS.TdcrController@{AinslieAPI.Controllers.GSS.TdcrController}!BuildErrorString@{BuildErrorString}}
+\index{BuildErrorString@{BuildErrorString}!AinslieAPI.Controllers.GSS.TdcrController@{AinslieAPI.Controllers.GSS.TdcrController}}
+\doxysubsubsection{\texorpdfstring{BuildErrorString()}{BuildErrorString()}}
+{\footnotesize\ttfamily string Ainslie\+API.\+Controllers.\+GSS.\+Tdcr\+Controller.\+Build\+Error\+String (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_ainslie_a_p_i_1_1_d_t_o_1_1_tdcr_af45942b6855ea8af3128b86e0f6c2a03}{Error\+Codes}}}]{error\+Code }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Constructs an error string based on the provided error code. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em error\+Code} & The error code for which to build the error string.\\
+\hline
+\end{DoxyParams}
+
+
+\begin{DoxyReturn}{Returns}
+A string representing the error, formatted as \textquotesingle{}Error\+Code\+\_\+\+Error\+Description\textquotesingle{}. Returns an empty string if the error code is 0.
+\end{DoxyReturn}
+
+
+Utilises helper methods to retrieve both the numeric value and the descriptive text of the given error code enum. Catches and logs exceptions that occur during the error string construction process, rethrowing a general exception to indicate failure. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00319\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00320\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00321\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00322\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (errorCode\ ==\ 0)\ \textcolor{keywordflow}{return}\ \textcolor{keywordtype}{string}.Empty;}
+\DoxyCodeLine{00323\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \$\textcolor{stringliteral}{"{}\{EnumsHelper.GetEnumValue(errorCode)\}\_\{EnumsHelper.GetEnumDescription(errorCode)\}"{}};}
+\DoxyCodeLine{00324\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00325\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{00326\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00327\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_aa38b13d3e5bdb9801cee343984590d69}{\_logger}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a83bbf569dea7ea5a40e02fca200aad8c}{LogException}}(\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_ab557dc1394f5cf56cfb78c765fdfffe6}{LogSources}}.TdcrController,\ \$\textcolor{stringliteral}{"{}exception\ building\ tdcr\ order\ error\ string"{}},\ ex);}
+\DoxyCodeLine{00328\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \textcolor{keyword}{new}\ Exception(\textcolor{stringliteral}{"{}exception\ building\ tdcr\ order\ error\ string"{}});}
+\DoxyCodeLine{00329\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00330\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_a1ed8b7c2d20c40b06f57b02cd97058f0_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_a1ed8b7c2d20c40b06f57b02cd97058f0_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_a2afd83d8bf3e0f4695d32ea1f255f4a5}\label{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_a2afd83d8bf3e0f4695d32ea1f255f4a5} 
+\index{AinslieAPI.Controllers.GSS.TdcrController@{AinslieAPI.Controllers.GSS.TdcrController}!OrderLivePriceAUD@{OrderLivePriceAUD}}
+\index{OrderLivePriceAUD@{OrderLivePriceAUD}!AinslieAPI.Controllers.GSS.TdcrController@{AinslieAPI.Controllers.GSS.TdcrController}}
+\doxysubsubsection{\texorpdfstring{OrderLivePriceAUD()}{OrderLivePriceAUD()}}
+{\footnotesize\ttfamily decimal Ainslie\+API.\+Controllers.\+GSS.\+Tdcr\+Controller.\+Order\+Live\+Price\+AUD (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_tdcr_1_1_order_request}{Order\+Request}}}]{order\+Request }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Fetches the current live price in AUD for a given asset based on the order request\textquotesingle{}s market and side. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em order\+Request} & The order request detailing the market and whether it\textquotesingle{}s a buy or sell order.\\
+\hline
+\end{DoxyParams}
+
+
+\begin{DoxyReturn}{Returns}
+The live price in AUD of the requested asset.
+\end{DoxyReturn}
+
+
+Determines the live price by\+: 
+\begin{DoxyItemize}
+\item Identifying the asset within the live price data based on the market specified in the order request. 
+\item Selecting the appropriate price (buy for buy orders, sell for sell orders) for the identified asset. 
+\end{DoxyItemize}Exceptions during price retrieval are logged and rethrown to indicate failure in obtaining live pricing data. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \ \ \ \ decimal\ livePriceAUD\ =\ 0m;}
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (orderRequest.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_tdcr_1_1_order_request_a8777634497484b0b905c8b21853ab8c3}{side}})}
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00264\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{keywordtype}{string}\ side\ when\ side.ToLower().Contains(\textcolor{stringliteral}{"{}buy"{}}):\ \textcolor{comment}{//buy\ from\ ainslie,\ use\ buy\ in\ gss\ pricing\ response}}
+\DoxyCodeLine{00265\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ livePriceAUD\ =\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_a3c7188de077e7385a6b1498191b40e4e}{\_livePriceData}}?.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_g_s_s_1_1_g_s_s_price_data_ae1752c3e772a310c0bc629076b110bbf}{AssetList}}?.Where(al\ =>\ orderRequest.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_tdcr_1_1_order_request_a8820b48159005031f60bcb46aee243bc}{market}}.ToLower().Contains(al.AssetSymbol.ToLower()))?.FirstOrDefault()?.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_g_s_s_1_1_g_s_s_asset_a68d2eac5a8fb16e760992f000b5b0561}{Buy}}\ ??\ 0;}
+\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{keywordtype}{string}\ side\ when\ side.ToLower().Contains(\textcolor{stringliteral}{"{}sell"{}}):\ \textcolor{comment}{//sell\ to\ ainslie,\ use\ sell\ in\ gss\ pricing\ response}}
+\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ livePriceAUD\ =\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_a3c7188de077e7385a6b1498191b40e4e}{\_livePriceData}}?.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_g_s_s_1_1_g_s_s_price_data_ae1752c3e772a310c0bc629076b110bbf}{AssetList}}?.Where(al\ =>\ orderRequest.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_tdcr_1_1_order_request_a8820b48159005031f60bcb46aee243bc}{market}}.ToLower().Contains(al.AssetSymbol.ToLower()))?.FirstOrDefault()?.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_g_s_s_1_1_g_s_s_asset_a3bdbcb10d93ed6aa54928f0cd54166c2}{Sell}}\ ??\ 0;}
+\DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00272\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{00273\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00274\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_aa38b13d3e5bdb9801cee343984590d69}{\_logger}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a83bbf569dea7ea5a40e02fca200aad8c}{LogException}}(\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_ab557dc1394f5cf56cfb78c765fdfffe6}{LogSources}}.TdcrController,\ \$\textcolor{stringliteral}{"{}exception\ finding\ order\ live\ price"{}},\ ex);}
+\DoxyCodeLine{00275\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \textcolor{keyword}{new}\ Exception(\textcolor{stringliteral}{"{}exception\ finding\ order\ live\ price"{}});}
+\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ livePriceAUD;}
+\DoxyCodeLine{00278\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_a2afd83d8bf3e0f4695d32ea1f255f4a5_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_a2afd83d8bf3e0f4695d32ea1f255f4a5_icgraph}
+\end{center}
+\end{figure}
 \Hypertarget{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_a9eba319227d13605723ee5253d17b014}\label{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_a9eba319227d13605723ee5253d17b014} 
 \index{AinslieAPI.Controllers.GSS.TdcrController@{AinslieAPI.Controllers.GSS.TdcrController}!Orders@{Orders}}
 \index{Orders@{Orders}!AinslieAPI.Controllers.GSS.TdcrController@{AinslieAPI.Controllers.GSS.TdcrController}}
@@ -106,16 +262,16 @@ Processes the order by\+:
 \end{DoxyItemize}Directly returns a Bad\+Request for null requests, indicating an invalid input. 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a917b9af360c0c6521ce36f4acbc72023}{LogInformation}}(\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_ab557dc1394f5cf56cfb78c765fdfffe6}{LogSources}}.TdcrController,\ \$\textcolor{stringliteral}{"{}request\ received\ on\ tdcr/order"{}},\ \$\textcolor{stringliteral}{"{}authenticated\ user:\ \{JwtUser?.EmailAddress\}"{}},\ orderRequest);}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_aa38b13d3e5bdb9801cee343984590d69}{\_logger}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a917b9af360c0c6521ce36f4acbc72023}{LogInformation}}(\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_ab557dc1394f5cf56cfb78c765fdfffe6}{LogSources}}.TdcrController,\ \$\textcolor{stringliteral}{"{}request\ received\ on\ tdcr/order"{}},\ \$\textcolor{stringliteral}{"{}authenticated\ user:\ \{JwtUser?.EmailAddress\}"{}},\ orderRequest);}
 \DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ var\ orderResponse\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_tdcr_1_1_order_response}{OrderResponse}}();}
 \DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (orderRequest\ !=\ \textcolor{keyword}{null})\ \{}
 \DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
 \DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
 \DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ orderResponse.transaction\_id=orderRequest.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_tdcr_1_1_order_request_a04727ed78b39f29cb32765bcaf3238f4}{transaction\_id}};}
-\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ validationErrors\ =\ ValidateOrderRequest(orderRequest);}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ validationErrors\ =\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_acdce12cbf8d3ceb33fc727648bf58fc8}{ValidateOrderRequest}}(orderRequest);}
 \DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keywordtype}{string}.IsNullOrWhiteSpace(validationErrors))\ }
 \DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ AUDUSD\ =\ \_livePriceData?.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_g_s_s_1_1_g_s_s_price_data_aaedea497be994b66523a8e355e201fe4}{AUDUSD}}\ ??\ 0m;}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ AUDUSD\ =\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_a3c7188de077e7385a6b1498191b40e4e}{\_livePriceData}}?.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_g_s_s_1_1_g_s_s_price_data_aaedea497be994b66523a8e355e201fe4}{AUDUSD}}\ ??\ 0m;}
 \DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ tcdrOrder\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_data_1_1_models_1_1_tdcr_1_1_order}{Order}}() }
 \DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
 \DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Created\ =\ DateTime.Now,}
@@ -124,12 +280,12 @@ Processes the order by\+:
 \DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Price\ =\ orderRequest.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_tdcr_1_1_order_request_ae6e3c5e914ba77964bc11f3d7e733b4b}{price}},}
 \DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Market\ =\ orderRequest.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_tdcr_1_1_order_request_a8820b48159005031f60bcb46aee243bc}{market}},}
 \DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ AUDUSD\ =\ AUDUSD,}
-\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ LiveComparisonPriceAUD\ =\ OrderLivePriceAUD(orderRequest),}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ LiveComparisonPriceAUD\ =\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_a2afd83d8bf3e0f4695d32ea1f255f4a5}{OrderLivePriceAUD}}(orderRequest),}
 \DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TdcrTimestamp\ =\ orderRequest.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_tdcr_1_1_order_request_a80e92c27d262d6746827928dafc3e8de}{created\_at}},}
 \DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Quantity\ =\ orderRequest.quantity}
 \DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \};}
-\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_tdcrContext.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_data_1_1_contexts_1_1_tdcr_context_ac1241755f276b0fc4d324a60dc685c54}{Orders}}.Add(tcdrOrder);}
-\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_tdcrContext.SaveChanges();}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_afd3391f35cb75042f825d2ce9f88d670}{\_tdcrContext}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_data_1_1_contexts_1_1_tdcr_context_ac1241755f276b0fc4d324a60dc685c54}{Orders}}.Add(tcdrOrder);}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_afd3391f35cb75042f825d2ce9f88d670}{\_tdcrContext}}.SaveChanges();}
 \DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ orderResponse.success\ =\ \textcolor{keyword}{true};}
 \DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Ok(orderResponse);}
 \DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
@@ -137,34 +293,333 @@ Processes the order by\+:
 \DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
 \DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ orderResponse.success\ =\ \textcolor{keyword}{false};}
 \DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ orderResponse.message\ =\ validationErrors;}
-\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a9bf79a218e0884ac9cabd3ac87b81321}{LogError}}(\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_ab557dc1394f5cf56cfb78c765fdfffe6}{LogSources}}.TdcrController,\ \$\textcolor{stringliteral}{"{}order\ request\ validation\ failure"{}},\ \$\textcolor{stringliteral}{"{}authenticated\ user:\ \{JwtUser?.EmailAddress\}"{}},\ orderResponse);}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_aa38b13d3e5bdb9801cee343984590d69}{\_logger}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a9bf79a218e0884ac9cabd3ac87b81321}{LogError}}(\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_ab557dc1394f5cf56cfb78c765fdfffe6}{LogSources}}.TdcrController,\ \$\textcolor{stringliteral}{"{}order\ request\ validation\ failure"{}},\ \$\textcolor{stringliteral}{"{}authenticated\ user:\ \{JwtUser?.EmailAddress\}"{}},\ orderResponse);}
 \DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
 \DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a83bbf569dea7ea5a40e02fca200aad8c}{LogException}}(\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_ab557dc1394f5cf56cfb78c765fdfffe6}{LogSources}}.TdcrController,\ \$\textcolor{stringliteral}{"{}exception\ building\ and\ inserting\ tdcr\ order"{}},\ ex);}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_aa38b13d3e5bdb9801cee343984590d69}{\_logger}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a83bbf569dea7ea5a40e02fca200aad8c}{LogException}}(\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_ab557dc1394f5cf56cfb78c765fdfffe6}{LogSources}}.TdcrController,\ \$\textcolor{stringliteral}{"{}exception\ building\ and\ inserting\ tdcr\ order"{}},\ ex);}
 \DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ orderResponse.success\ =\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ orderResponse.message\ =\ BuildErrorString(\mbox{\hyperlink{namespace_ainslie_a_p_i_1_1_d_t_o_1_1_tdcr_af45942b6855ea8af3128b86e0f6c2a03}{ErrorCodes}}.SERVER\_ERROR);}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ orderResponse.message\ =\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_a1ed8b7c2d20c40b06f57b02cd97058f0}{BuildErrorString}}(\mbox{\hyperlink{namespace_ainslie_a_p_i_1_1_d_t_o_1_1_tdcr_af45942b6855ea8af3128b86e0f6c2a03}{ErrorCodes}}.SERVER\_ERROR);}
 \DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ BadRequest(orderResponse);}
 \DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
 \DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
 \DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ orderResponse.success\ =\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ orderResponse.message\ =\ BuildErrorString(\mbox{\hyperlink{namespace_ainslie_a_p_i_1_1_d_t_o_1_1_tdcr_af45942b6855ea8af3128b86e0f6c2a03}{ErrorCodes}}.INVALID\_REQUEST\_BODY);}
-\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a9bf79a218e0884ac9cabd3ac87b81321}{LogError}}(\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_ab557dc1394f5cf56cfb78c765fdfffe6}{LogSources}}.TdcrController,\ \$\textcolor{stringliteral}{"{}order\ request\ was\ null"{}},\ \$\textcolor{stringliteral}{"{}authenticated\ user:\ \{JwtUser?.EmailAddress\}"{}},\ orderResponse);}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ orderResponse.message\ =\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_a1ed8b7c2d20c40b06f57b02cd97058f0}{BuildErrorString}}(\mbox{\hyperlink{namespace_ainslie_a_p_i_1_1_d_t_o_1_1_tdcr_af45942b6855ea8af3128b86e0f6c2a03}{ErrorCodes}}.INVALID\_REQUEST\_BODY);}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_aa38b13d3e5bdb9801cee343984590d69}{\_logger}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a9bf79a218e0884ac9cabd3ac87b81321}{LogError}}(\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_ab557dc1394f5cf56cfb78c765fdfffe6}{LogSources}}.TdcrController,\ \$\textcolor{stringliteral}{"{}order\ request\ was\ null"{}},\ \$\textcolor{stringliteral}{"{}authenticated\ user:\ \{JwtUser?.EmailAddress\}"{}},\ orderResponse);}
 \DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ BadRequest(orderResponse);}
 \DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \}}
 
 \end{DoxyCode}
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_a9eba319227d13605723ee5253d17b014_cgraph}
 \end{center}
 \end{figure}
+\Hypertarget{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_a5425d57dc6e7f08c36785f3ca41d30ab}\label{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_a5425d57dc6e7f08c36785f3ca41d30ab} 
+\index{AinslieAPI.Controllers.GSS.TdcrController@{AinslieAPI.Controllers.GSS.TdcrController}!PriceOutsideThreshold@{PriceOutsideThreshold}}
+\index{PriceOutsideThreshold@{PriceOutsideThreshold}!AinslieAPI.Controllers.GSS.TdcrController@{AinslieAPI.Controllers.GSS.TdcrController}}
+\doxysubsubsection{\texorpdfstring{PriceOutsideThreshold()}{PriceOutsideThreshold()}}
+{\footnotesize\ttfamily bool Ainslie\+API.\+Controllers.\+GSS.\+Tdcr\+Controller.\+Price\+Outside\+Threshold (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_tdcr_1_1_order_request}{Order\+Request}}}]{order\+Request }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Determines whether the price specified in an order request falls outside the acceptable threshold as defined by the system\textquotesingle{}s configuration. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em order\+Request} & The order request containing the market, price, and side (buy/sell) details.\\
+\hline
+\end{DoxyParams}
+
+
+\begin{DoxyReturn}{Returns}
+A bool value indicating whether the order price is outside the defined threshold.
+\end{DoxyReturn}
+
+
+Executes a streamlined validation process to assess order price validity against system thresholds and market rates, focusing on\+: 
+\begin{DoxyItemize}
+\item Immediate validation of order price positivity. 
+\item Conversion of order price to AUD for unified comparison, when applicable. 
+\item Comparison against live prices, adjusting for buy or sell side specifics. 
+\item Utilisation of configured thresholds to ascertain acceptability of price deviation. 
+\end{DoxyItemize}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (orderRequest.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_tdcr_1_1_order_request_ae6e3c5e914ba77964bc11f3d7e733b4b}{price}}\ <=\ 0)}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ AUDUSD\ =\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_a3c7188de077e7385a6b1498191b40e4e}{\_livePriceData}}?.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_g_s_s_1_1_g_s_s_price_data_aaedea497be994b66523a8e355e201fe4}{AUDUSD}}\ ??\ 0;}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (AUDUSD\ ==\ 0\ \&\&\ orderRequest.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_tdcr_1_1_order_request_a8820b48159005031f60bcb46aee243bc}{market}}.Contains(\textcolor{stringliteral}{"{}usd"{}}))}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ \textcolor{comment}{//cant\ do\ check\ -\/\ default\ to\ allow}}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ orderPriceAUD\ =\ orderRequest.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_tdcr_1_1_order_request_a8820b48159005031f60bcb46aee243bc}{market}}.ToLower().Contains(\textcolor{stringliteral}{"{}usd"{}})\ ?\ orderRequest.price\ /\ AUDUSD\ :\ orderRequest.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_tdcr_1_1_order_request_ae6e3c5e914ba77964bc11f3d7e733b4b}{price}};}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ decimal\ comparisonPriceAUD\ =\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_a2afd83d8bf3e0f4695d32ea1f255f4a5}{OrderLivePriceAUD}}(orderRequest);}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (comparisonPriceAUD\ <=\ 0)}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ \textcolor{comment}{//cant\ do\ check\ -\/\ default\ to\ allow}}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (orderRequest.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_tdcr_1_1_order_request_a8777634497484b0b905c8b21853ab8c3}{side}})}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{keywordtype}{string}\ side\ when\ side.ToLower().Contains(\textcolor{stringliteral}{"{}buy"{}}):\ \textcolor{comment}{//buy\ from\ ainslie}}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//only\ concerned\ if\ order\ is\ below\ our\ sell\ price}}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (orderPriceAUD\ <\ comparisonPriceAUD)}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ percentBelow\ =\ Math.Abs(comparisonPriceAUD\ -\/\ orderPriceAUD)\ /\ ((comparisonPriceAUD\ +\ orderPriceAUD)\ /\ 2)\ *\ 100;}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//find\ sell\ threshold\ in\ config,\ if\ breaks\ the\ threshold,\ return\ true}}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ threshold\ =\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_a83bdb97c7c1b4a05e61ebd8deaf06ed6}{\_appSettings}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings_a7361d15c00c5d16a9baad3ac50607cd8}{TDCROrderSettings}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_t_d_c_r_order_settings_a09ae7cd72cde8df7c237585023db14c2}{TokenThresholds}}?.Where(tt\ =>\ orderRequest.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_tdcr_1_1_order_request_a8820b48159005031f60bcb46aee243bc}{market}}.ToLower().Contains(tt.AssetCode.ToLower())).FirstOrDefault();}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (threshold\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (percentBelow\ >\ threshold.Sell)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{keywordtype}{string}\ side\ when\ side.ToLower().Contains(\textcolor{stringliteral}{"{}sell"{}}):\ \textcolor{comment}{//sell\ to\ ainslie}}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//only\ concerned\ if\ order\ price\ is\ above\ our\ buyback\ price}}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (orderPriceAUD\ >\ comparisonPriceAUD)}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ percentAbove\ =\ Math.Abs(comparisonPriceAUD\ -\/\ orderPriceAUD)\ /\ ((comparisonPriceAUD\ +\ orderPriceAUD)\ /\ 2)\ *\ 100;}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//find\ buyback\ threshold\ in\ config,\ if\ breaks\ the\ threshold,\ return\ true}}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ threshold\ =\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_a83bdb97c7c1b4a05e61ebd8deaf06ed6}{\_appSettings}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings_a7361d15c00c5d16a9baad3ac50607cd8}{TDCROrderSettings}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_t_d_c_r_order_settings_a09ae7cd72cde8df7c237585023db14c2}{TokenThresholds}}?.Where(tt\ =>\ orderRequest.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_tdcr_1_1_order_request_a8820b48159005031f60bcb46aee243bc}{market}}.ToLower().Contains(tt.AssetCode.ToLower())).FirstOrDefault();}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (threshold\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (percentAbove\ >\ threshold.Buy)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_aa38b13d3e5bdb9801cee343984590d69}{\_logger}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a83bbf569dea7ea5a40e02fca200aad8c}{LogException}}(\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_ab557dc1394f5cf56cfb78c765fdfffe6}{LogSources}}.TdcrController,\ \$\textcolor{stringliteral}{"{}exception\ checking\ price\ threshold"{}},\ ex);}
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \textcolor{keyword}{new}\ Exception(\textcolor{stringliteral}{"{}exception\ checking\ price\ threshold"{}});}
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_a5425d57dc6e7f08c36785f3ca41d30ab_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_a5425d57dc6e7f08c36785f3ca41d30ab_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_a464a5d3df062bef894118260d86989f3}\label{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_a464a5d3df062bef894118260d86989f3} 
+\index{AinslieAPI.Controllers.GSS.TdcrController@{AinslieAPI.Controllers.GSS.TdcrController}!TdcrOrderExists@{TdcrOrderExists}}
+\index{TdcrOrderExists@{TdcrOrderExists}!AinslieAPI.Controllers.GSS.TdcrController@{AinslieAPI.Controllers.GSS.TdcrController}}
+\doxysubsubsection{\texorpdfstring{TdcrOrderExists()}{TdcrOrderExists()}}
+{\footnotesize\ttfamily bool Ainslie\+API.\+Controllers.\+GSS.\+Tdcr\+Controller.\+Tdcr\+Order\+Exists (\begin{DoxyParamCaption}\item[{string}]{Tdcr\+Id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Checks if an order with the specified TDCR ID exists in the database. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Tdcr\+Id} & The TDCR ID of the order to check.\\
+\hline
+\end{DoxyParams}
+
+
+\begin{DoxyReturn}{Returns}
+A bool value indicating whether an order with the given TDCR ID exists.
+\end{DoxyReturn}
+
+
+Performs a straightforward database query to count orders matching the provided TDCR ID, returning true if at least one match is found. Exception handling is implemented to log any errors encountered during the query process and rethrow a generic exception to signal the failure. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00293\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00295\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00296\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_afd3391f35cb75042f825d2ce9f88d670}{\_tdcrContext}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_data_1_1_contexts_1_1_tdcr_context_ac1241755f276b0fc4d324a60dc685c54}{Orders}}.AsNoTracking().Count(ord\ =>\ ord.TdcrId\ ==\ TdcrId)\ >\ 0)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00297\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00298\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{00299\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00300\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_aa38b13d3e5bdb9801cee343984590d69}{\_logger}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a83bbf569dea7ea5a40e02fca200aad8c}{LogException}}(\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_ab557dc1394f5cf56cfb78c765fdfffe6}{LogSources}}.TdcrController,\ \$\textcolor{stringliteral}{"{}exception\ checking\ if\ tdcr\ order\ exists"{}},\ ex);}
+\DoxyCodeLine{00301\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \textcolor{keyword}{new}\ Exception(\textcolor{stringliteral}{"{}exception\ checking\ if\ tdcr\ order\ exists"{}});}
+\DoxyCodeLine{00302\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00303\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_a464a5d3df062bef894118260d86989f3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_a464a5d3df062bef894118260d86989f3_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_acdce12cbf8d3ceb33fc727648bf58fc8}\label{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_acdce12cbf8d3ceb33fc727648bf58fc8} 
+\index{AinslieAPI.Controllers.GSS.TdcrController@{AinslieAPI.Controllers.GSS.TdcrController}!ValidateOrderRequest@{ValidateOrderRequest}}
+\index{ValidateOrderRequest@{ValidateOrderRequest}!AinslieAPI.Controllers.GSS.TdcrController@{AinslieAPI.Controllers.GSS.TdcrController}}
+\doxysubsubsection{\texorpdfstring{ValidateOrderRequest()}{ValidateOrderRequest()}}
+{\footnotesize\ttfamily string Ainslie\+API.\+Controllers.\+GSS.\+Tdcr\+Controller.\+Validate\+Order\+Request (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_tdcr_1_1_order_request}{Order\+Request}}}]{order\+Request }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Validates the provided order request against business rules. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em order\+Request} & The order request to validate.\\
+\hline
+\end{DoxyParams}
+
+
+\begin{DoxyReturn}{Returns}
+A string containing error messages if validation fails; otherwise, an empty string.
+\end{DoxyReturn}
+
+
+This validation checks for\+: 
+\begin{DoxyItemize}
+\item Existence of the transaction ID. 
+\item Validity of transaction ID, side, price, market, created\+\_\+at timestamp, and quantity. 
+\item Order price against the threshold for the specified market and side. 
+\end{DoxyItemize}Errors are aggregated and returned as a single string. Throws an exception if an unexpected error occurs. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ var\ err\ =\ \textcolor{keyword}{new}\ List<string>();}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ List<string>\ markets\ =\ \textcolor{keyword}{new}\ List<string>()\ \{\ \textcolor{stringliteral}{"{}AUSUSD"{}},\ \textcolor{stringliteral}{"{}AGSUSD"{}},\ \textcolor{stringliteral}{"{}AUSAUD"{}},\ \textcolor{stringliteral}{"{}AGSAUD"{}}\ \};}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ List<string>\ sides\ =\ \textcolor{keyword}{new}\ List<string>()\ \{\ \textcolor{stringliteral}{"{}BUY"{}},\ \textcolor{stringliteral}{"{}SELL"{}}\ \};}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_a464a5d3df062bef894118260d86989f3}{TdcrOrderExists}}(orderRequest.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_tdcr_1_1_order_request_a04727ed78b39f29cb32765bcaf3238f4}{transaction\_id}}))\ err.Add(\$\textcolor{stringliteral}{"{}\{BuildErrorString(ErrorCodes.TRANSACTION\_ID\_ALREADY\_EXISTS)\}"{}});}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keywordtype}{string}.IsNullOrWhiteSpace(orderRequest.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_tdcr_1_1_order_request_a04727ed78b39f29cb32765bcaf3238f4}{transaction\_id}}))\ err.Add(\$\textcolor{stringliteral}{"{}\{BuildErrorString(ErrorCodes.INVALID\_FIELD\_VALUE\_TRANSACTIONID)\}"{}});}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keywordtype}{string}.IsNullOrWhiteSpace(orderRequest.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_tdcr_1_1_order_request_a8777634497484b0b905c8b21853ab8c3}{side}})\ ||\ !sides.Any(s\ =>\ s\ ==\ orderRequest.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_tdcr_1_1_order_request_a8777634497484b0b905c8b21853ab8c3}{side}}))\ err.Add(\$\textcolor{stringliteral}{"{}\{BuildErrorString(ErrorCodes.INVALID\_FIELD\_VALUE\_SIDE)\}"{}});}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (orderRequest.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_tdcr_1_1_order_request_ae6e3c5e914ba77964bc11f3d7e733b4b}{price}}\ <=\ 0)\ err.Add(\$\textcolor{stringliteral}{"{}\{BuildErrorString(ErrorCodes.INVALID\_FIELD\_VALUE\_PRICE)\}"{}});}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keywordtype}{string}.IsNullOrWhiteSpace(orderRequest.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_tdcr_1_1_order_request_a8820b48159005031f60bcb46aee243bc}{market}})\ ||\ !markets.Any(m\ =>\ m\ ==\ orderRequest.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_tdcr_1_1_order_request_a8820b48159005031f60bcb46aee243bc}{market}}))\ err.Add(\$\textcolor{stringliteral}{"{}\{BuildErrorString(ErrorCodes.INVALID\_FIELD\_VALUE\_MARKET)\}"{}});}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_shared_tools}{SharedTools}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_shared_tools_a5d26beaa558c5d4b15370f0308f447bf}{UnixTimeSecondsToLocalTime}}(orderRequest.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_tdcr_1_1_order_request_a80e92c27d262d6746827928dafc3e8de}{created\_at}})\ ==\ \textcolor{keyword}{null})\ err.Add(\$\textcolor{stringliteral}{"{}\{BuildErrorString(ErrorCodes.INVALID\_FIELD\_VALUE\_CREATED\_AT)\}"{}});}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (orderRequest.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_tdcr_1_1_order_request_ad471150c2f427690fbe6e03082d5e577}{quantity}}\ <=\ 0)\ err.Add(\$\textcolor{stringliteral}{"{}\{BuildErrorString(ErrorCodes.INVALID\_FIELD\_VALUE\_QUANTITY)\}"{}});}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_a5425d57dc6e7f08c36785f3ca41d30ab}{PriceOutsideThreshold}}(orderRequest))\ err.Add(\$\textcolor{stringliteral}{"{}\{BuildErrorString(ErrorCodes.PRICE\_OUTSIDE\_THRESHOLD)\}"{}});}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_aa38b13d3e5bdb9801cee343984590d69}{\_logger}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_a83bbf569dea7ea5a40e02fca200aad8c}{LogException}}(\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service_ab557dc1394f5cf56cfb78c765fdfffe6}{LogSources}}.TdcrController,\ \$\textcolor{stringliteral}{"{}exception\ validating\ order"{}},\ ex);}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ \textcolor{keyword}{new}\ Exception(\textcolor{stringliteral}{"{}exception\ validating\ order"{}});}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keywordtype}{string}.Join(\textcolor{stringliteral}{"{},\ "{}},\ err);}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_acdce12cbf8d3ceb33fc727648bf58fc8_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_acdce12cbf8d3ceb33fc727648bf58fc8_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_a7114721dd614937f38ea1757206cc31e}\label{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_a7114721dd614937f38ea1757206cc31e} 
+\index{AinslieAPI.Controllers.GSS.TdcrController@{AinslieAPI.Controllers.GSS.TdcrController}!JwtUser@{JwtUser}}
+\index{JwtUser@{JwtUser}!AinslieAPI.Controllers.GSS.TdcrController@{AinslieAPI.Controllers.GSS.TdcrController}}
+\doxysubsubsection{\texorpdfstring{JwtUser}{JwtUser}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_user_helper_1_1_authenticated_user}{Authenticated\+User}}? Ainslie\+API.\+Controllers.\+GSS.\+Tdcr\+Controller.\+Jwt\+User\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxysubsection{Property Documentation}
+\Hypertarget{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_a83bdb97c7c1b4a05e61ebd8deaf06ed6}\label{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_a83bdb97c7c1b4a05e61ebd8deaf06ed6} 
+\index{AinslieAPI.Controllers.GSS.TdcrController@{AinslieAPI.Controllers.GSS.TdcrController}!\_appSettings@{\_appSettings}}
+\index{\_appSettings@{\_appSettings}!AinslieAPI.Controllers.GSS.TdcrController@{AinslieAPI.Controllers.GSS.TdcrController}}
+\doxysubsubsection{\texorpdfstring{\_appSettings}{\_appSettings}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings}{App\+Settings}} Ainslie\+API.\+Controllers.\+GSS.\+Tdcr\+Controller.\+\_\+app\+Settings\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}, {\ttfamily [private]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00036\ \{\ \textcolor{keyword}{get};\ \textcolor{keyword}{set};\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_a8719413e16c851137491d336b2c593d3}\label{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_a8719413e16c851137491d336b2c593d3} 
+\index{AinslieAPI.Controllers.GSS.TdcrController@{AinslieAPI.Controllers.GSS.TdcrController}!\_cacheDataHelper@{\_cacheDataHelper}}
+\index{\_cacheDataHelper@{\_cacheDataHelper}!AinslieAPI.Controllers.GSS.TdcrController@{AinslieAPI.Controllers.GSS.TdcrController}}
+\doxysubsubsection{\texorpdfstring{\_cacheDataHelper}{\_cacheDataHelper}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_cache_data_helper}{Cache\+Data\+Helper}} Ainslie\+API.\+Controllers.\+GSS.\+Tdcr\+Controller.\+\_\+cache\+Data\+Helper\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}, {\ttfamily [private]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00035\ \{\ \textcolor{keyword}{get};\ \textcolor{keyword}{set};\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_acdd9fb842325482d76f3b37934d1142d}\label{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_acdd9fb842325482d76f3b37934d1142d} 
+\index{AinslieAPI.Controllers.GSS.TdcrController@{AinslieAPI.Controllers.GSS.TdcrController}!\_httpContext@{\_httpContext}}
+\index{\_httpContext@{\_httpContext}!AinslieAPI.Controllers.GSS.TdcrController@{AinslieAPI.Controllers.GSS.TdcrController}}
+\doxysubsubsection{\texorpdfstring{\_httpContext}{\_httpContext}}
+{\footnotesize\ttfamily Http\+Context? Ainslie\+API.\+Controllers.\+GSS.\+Tdcr\+Controller.\+\_\+http\+Context\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}, {\ttfamily [private]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00033\ \{\ \textcolor{keyword}{get};\ \textcolor{keyword}{set};\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_a3c7188de077e7385a6b1498191b40e4e}\label{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_a3c7188de077e7385a6b1498191b40e4e} 
+\index{AinslieAPI.Controllers.GSS.TdcrController@{AinslieAPI.Controllers.GSS.TdcrController}!\_livePriceData@{\_livePriceData}}
+\index{\_livePriceData@{\_livePriceData}!AinslieAPI.Controllers.GSS.TdcrController@{AinslieAPI.Controllers.GSS.TdcrController}}
+\doxysubsubsection{\texorpdfstring{\_livePriceData}{\_livePriceData}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_g_s_s_1_1_g_s_s_price_data}{GSSPrice\+Data}}? Ainslie\+API.\+Controllers.\+GSS.\+Tdcr\+Controller.\+\_\+live\+Price\+Data\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}, {\ttfamily [private]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00038\ \{\ \textcolor{keyword}{get};\ \textcolor{keyword}{set};\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_aa38b13d3e5bdb9801cee343984590d69}\label{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_aa38b13d3e5bdb9801cee343984590d69} 
+\index{AinslieAPI.Controllers.GSS.TdcrController@{AinslieAPI.Controllers.GSS.TdcrController}!\_logger@{\_logger}}
+\index{\_logger@{\_logger}!AinslieAPI.Controllers.GSS.TdcrController@{AinslieAPI.Controllers.GSS.TdcrController}}
+\doxysubsubsection{\texorpdfstring{\_logger}{\_logger}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_ainslie_a_p_i_1_1_services_1_1_log_service}{Log\+Service}} Ainslie\+API.\+Controllers.\+GSS.\+Tdcr\+Controller.\+\_\+logger\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}, {\ttfamily [private]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00037\ \{\ \textcolor{keyword}{get};\ \textcolor{keyword}{set};\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_afd3391f35cb75042f825d2ce9f88d670}\label{class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller_afd3391f35cb75042f825d2ce9f88d670} 
+\index{AinslieAPI.Controllers.GSS.TdcrController@{AinslieAPI.Controllers.GSS.TdcrController}!\_tdcrContext@{\_tdcrContext}}
+\index{\_tdcrContext@{\_tdcrContext}!AinslieAPI.Controllers.GSS.TdcrController@{AinslieAPI.Controllers.GSS.TdcrController}}
+\doxysubsubsection{\texorpdfstring{\_tdcrContext}{\_tdcrContext}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_ainslie_a_p_i_1_1_data_1_1_contexts_1_1_tdcr_context}{Tdcr\+Context}} Ainslie\+API.\+Controllers.\+GSS.\+Tdcr\+Controller.\+\_\+tdcr\+Context\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}, {\ttfamily [private]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00034\ \{\ \textcolor{keyword}{get};\ \textcolor{keyword}{set};\ \}}
+
+\end{DoxyCode}
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

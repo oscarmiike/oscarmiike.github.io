@@ -11,11 +11,12 @@ Inheritance diagram for Ainslie\+API.\+Controllers.\+Auth\+Test\+Controller\+:\n
 \end{figure}
 
 
-Collaboration diagram for Ainslie\+API.\+Controllers.\+Auth\+Test\+Controller\+:\nopagebreak
+Collaboration diagram for Ainslie\+API.\+Controllers.\+Auth\+Test\+Controller\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=214pt]{class_ainslie_a_p_i_1_1_controllers_1_1_auth_test_controller__coll__graph}
+\includegraphics[width=316pt]{class_ainslie_a_p_i_1_1_controllers_1_1_auth_test_controller__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsubsection*{Public Member Functions}
@@ -31,6 +32,11 @@ IAction\+Result \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_auth_te
 \item 
 IAction\+Result \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_auth_test_controller_a50886d0c42d4c4a8403c4bc99599c128}{Scoped\+Admin}} ()
 \end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_user_helper_1_1_authenticated_user}{Authenticated\+User}} \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_auth_test_controller_ab27647fc6a6ce01da9d45822e31f7e14}{Jwt\+User}}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
@@ -43,7 +49,7 @@ IAction\+Result \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_auth_te
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ JwtUser\ =\ (\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_user_helper_1_1_authenticated_user}{AuthenticatedUser}})httpContextAccessor.HttpContext.Items[\textcolor{stringliteral}{"{}user"{}}];}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_auth_test_controller_ab27647fc6a6ce01da9d45822e31f7e14}{JwtUser}}\ =\ (\mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_user_helper_1_1_authenticated_user}{AuthenticatedUser}})httpContextAccessor.HttpContext.Items[\textcolor{stringliteral}{"{}user"{}}];}
 \DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \}}
 
 \end{DoxyCode}
@@ -63,7 +69,7 @@ IAction\+Result \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_auth_te
 \DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Ok(\textcolor{keyword}{new}}
 \DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
 \DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Message\ =\ \$\textcolor{stringliteral}{"{}Hello\ from\ a\ private\ endpoint\ \{JwtUser.EmailAddress\}!"{}},}
-\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ User\ =\ JwtUser}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ User\ =\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_auth_test_controller_ab27647fc6a6ce01da9d45822e31f7e14}{JwtUser}}}
 \DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \});}
 \DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \}}
 
@@ -96,7 +102,7 @@ IAction\+Result \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_auth_te
 \DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Ok(\textcolor{keyword}{new}}
 \DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
 \DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Message\ =\ \$\textcolor{stringliteral}{"{}Hello\ from\ a\ scoped\ endpoint\ \{JwtUser.EmailAddress\}!"{}},}
-\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ User\ =\ JwtUser}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ User\ =\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_auth_test_controller_ab27647fc6a6ce01da9d45822e31f7e14}{JwtUser}}}
 \DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \});}
 \DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \}}
 
@@ -113,11 +119,20 @@ IAction\+Result \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_auth_te
 \DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Ok(\textcolor{keyword}{new}}
 \DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
 \DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Message\ =\ \$\textcolor{stringliteral}{"{}Hello\ from\ a\ scoped\ endpoint\ \{JwtUser.EmailAddress\}!"{}},}
-\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ User\ =\ JwtUser}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ User\ =\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_controllers_1_1_auth_test_controller_ab27647fc6a6ce01da9d45822e31f7e14}{JwtUser}}}
 \DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \});}
 \DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \}}
 
 \end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_ainslie_a_p_i_1_1_controllers_1_1_auth_test_controller_ab27647fc6a6ce01da9d45822e31f7e14}\label{class_ainslie_a_p_i_1_1_controllers_1_1_auth_test_controller_ab27647fc6a6ce01da9d45822e31f7e14} 
+\index{AinslieAPI.Controllers.AuthTestController@{AinslieAPI.Controllers.AuthTestController}!JwtUser@{JwtUser}}
+\index{JwtUser@{JwtUser}!AinslieAPI.Controllers.AuthTestController@{AinslieAPI.Controllers.AuthTestController}}
+\doxysubsubsection{\texorpdfstring{JwtUser}{JwtUser}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_ainslie_a_p_i_1_1_d_t_o_1_1_user_helper_1_1_authenticated_user}{Authenticated\+User}} Ainslie\+API.\+Controllers.\+Auth\+Test\+Controller.\+Jwt\+User\hspace{0.3cm}{\ttfamily [private]}}
+
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

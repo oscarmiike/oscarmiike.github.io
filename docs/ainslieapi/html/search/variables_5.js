@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['o_0',['o',['../namespacetest.html#a0c69b21477794c3ee99267b898ed0e32',1,'test']]],
-  ['o2_1',['o2',['../namespacetest.html#a387ba17f1b041bf5b6915bef14d47154',1,'test']]],
-  ['oo_2',['oo',['../namespacetest.html#ac59bf2908b7b0d4a8b7d22460f8624d8',1,'test']]]
+  ['jwtuser_0',['JwtUser',['../class_ainslie_a_p_i_1_1_controllers_1_1_assets_controller.html#a336665b7112ab225d8e38b497e05831b',1,'AinslieAPI.Controllers.AssetsController.JwtUser'],['../class_ainslie_a_p_i_1_1_controllers_1_1_auth_test_controller.html#ab27647fc6a6ce01da9d45822e31f7e14',1,'AinslieAPI.Controllers.AuthTestController.JwtUser'],['../class_ainslie_a_p_i_1_1_controllers_1_1_g_s_s_1_1_tdcr_controller.html#a7114721dd614937f38ea1757206cc31e',1,'AinslieAPI.Controllers.GSS.TdcrController.JwtUser'],['../class_ainslie_a_p_i_1_1_controllers_1_1_products_controller.html#a542f95009f56933c5b848fb81017d01f',1,'AinslieAPI.Controllers.ProductsController.JwtUser']]]
 ];

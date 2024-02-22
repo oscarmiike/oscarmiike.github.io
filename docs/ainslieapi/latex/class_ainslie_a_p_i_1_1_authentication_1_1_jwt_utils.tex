@@ -5,6 +5,16 @@
 Utility class for JWT operations, including token generation and validation.  
 
 
+
+
+Collaboration diagram for Ainslie\+API.\+Authentication.\+Jwt\+Utils\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=233pt]{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils__coll__graph}
+\end{center}
+\end{figure}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -18,6 +28,13 @@ string \mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils_aa1
 \begin{DoxyCompactList}\small\item\em Encrypts a plaintext string using the application\textquotesingle{}s data protection provider. \end{DoxyCompactList}\item 
 string \mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils_afa1dbac5d4a38a9fd6d4283ba29a5683}{Decrypt}} (string cipher\+Text)
 \begin{DoxyCompactList}\small\item\em Decrypts a ciphertext string using the application\textquotesingle{}s data protection provider. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+readonly \mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings}{App\+Settings}} \mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils_a333f092396187a69fca19240e7b651bd}{\+\_\+app\+Settings}}
+\item 
+readonly IData\+Protection\+Provider \mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils_ab04d093db9df18cbd4e2eee6c4fbf8c5}{\+\_\+provider}}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -44,8 +61,8 @@ Initialises a new instance of the Jwt\+Utils class.
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00030\ \ \ \ \ \{}
-\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \_appSettings\ =\ appSettings.Value;}
-\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \_provider\ =\ provider;}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils_a333f092396187a69fca19240e7b651bd}{\_appSettings}}\ =\ appSettings.Value;}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils_ab04d093db9df18cbd4e2eee6c4fbf8c5}{\_provider}}\ =\ provider;}
 \DoxyCodeLine{00033\ \ \ \ \ \}}
 
 \end{DoxyCode}
@@ -75,7 +92,7 @@ The decrypted string.
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00120\ \ \ \ \ \{}
-\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ var\ protector\ =\ \_provider.CreateProtector(\_appSettings.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings_a78d2c383be47a6098390109dfbbaefa6}{JWTSettings}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_j_w_t_settings_a4591453aa1c37b86efdfe79f0a30de7b}{Secret}});}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ var\ protector\ =\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils_ab04d093db9df18cbd4e2eee6c4fbf8c5}{\_provider}}.CreateProtector(\mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils_a333f092396187a69fca19240e7b651bd}{\_appSettings}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings_a78d2c383be47a6098390109dfbbaefa6}{JWTSettings}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_j_w_t_settings_a4591453aa1c37b86efdfe79f0a30de7b}{Secret}});}
 \DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ protector.Unprotect(cipherText);}
 \DoxyCodeLine{00123\ \ \ \ \ \}}
 
@@ -110,7 +127,7 @@ The encrypted string.
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00107\ \ \ \ \ \{}
-\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ var\ protector\ =\ \_provider.CreateProtector(\_appSettings.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings_a78d2c383be47a6098390109dfbbaefa6}{JWTSettings}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_j_w_t_settings_a4591453aa1c37b86efdfe79f0a30de7b}{Secret}});}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ var\ protector\ =\ \mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils_ab04d093db9df18cbd4e2eee6c4fbf8c5}{\_provider}}.CreateProtector(\mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils_a333f092396187a69fca19240e7b651bd}{\_appSettings}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings_a78d2c383be47a6098390109dfbbaefa6}{JWTSettings}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_j_w_t_settings_a4591453aa1c37b86efdfe79f0a30de7b}{Secret}});}
 \DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ protector.Protect(plainText);}
 \DoxyCodeLine{00110\ \ \ \ \ \}}
 
@@ -146,7 +163,7 @@ A JWT as a string.
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00043\ \ \ \ \ \{}
 \DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ var\ tokenHandler\ =\ \textcolor{keyword}{new}\ JwtSecurityTokenHandler();}
-\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ var\ key\ =\ Encoding.ASCII.GetBytes(\_appSettings.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings_a78d2c383be47a6098390109dfbbaefa6}{JWTSettings}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_j_w_t_settings_a4591453aa1c37b86efdfe79f0a30de7b}{Secret}});}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ var\ key\ =\ Encoding.ASCII.GetBytes(\mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils_a333f092396187a69fca19240e7b651bd}{\_appSettings}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings_a78d2c383be47a6098390109dfbbaefa6}{JWTSettings}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_j_w_t_settings_a4591453aa1c37b86efdfe79f0a30de7b}{Secret}});}
 \DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ var\ tokenDescriptor\ =\ \textcolor{keyword}{new}\ SecurityTokenDescriptor}
 \DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \{}
 \DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ Subject\ =\ \textcolor{keyword}{new}\ ClaimsIdentity(\textcolor{keyword}{new}[]\ \{\ }
@@ -202,7 +219,7 @@ An Authenticated\+User instance if the token is valid; otherwise, null.
 \DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
 \DoxyCodeLine{00070\ }
 \DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ var\ tokenHandler\ =\ \textcolor{keyword}{new}\ JwtSecurityTokenHandler();}
-\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ var\ key\ =\ Encoding.ASCII.GetBytes(\_appSettings.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings_a78d2c383be47a6098390109dfbbaefa6}{JWTSettings}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_j_w_t_settings_a4591453aa1c37b86efdfe79f0a30de7b}{Secret}});}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ var\ key\ =\ Encoding.ASCII.GetBytes(\mbox{\hyperlink{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils_a333f092396187a69fca19240e7b651bd}{\_appSettings}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings_a78d2c383be47a6098390109dfbbaefa6}{JWTSettings}}.\mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_j_w_t_settings_a4591453aa1c37b86efdfe79f0a30de7b}{Secret}});}
 \DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
 \DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \{}
 \DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ tokenHandler.ValidateToken(token,\ \textcolor{keyword}{new}\ TokenValidationParameters}
@@ -244,6 +261,21 @@ Here is the caller graph for this function\+:\nopagebreak
 \includegraphics[width=350pt]{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils_a1ed447f2fb5b17b1c8ce593034a61808_icgraph}
 \end{center}
 \end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils_a333f092396187a69fca19240e7b651bd}\label{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils_a333f092396187a69fca19240e7b651bd} 
+\index{AinslieAPI.Authentication.JwtUtils@{AinslieAPI.Authentication.JwtUtils}!\_appSettings@{\_appSettings}}
+\index{\_appSettings@{\_appSettings}!AinslieAPI.Authentication.JwtUtils@{AinslieAPI.Authentication.JwtUtils}}
+\doxysubsubsection{\texorpdfstring{\_appSettings}{\_appSettings}}
+{\footnotesize\ttfamily readonly \mbox{\hyperlink{class_ainslie_a_p_i_1_1_helpers_1_1_app_settings}{App\+Settings}} Ainslie\+API.\+Authentication.\+Jwt\+Utils.\+\_\+app\+Settings\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils_ab04d093db9df18cbd4e2eee6c4fbf8c5}\label{class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils_ab04d093db9df18cbd4e2eee6c4fbf8c5} 
+\index{AinslieAPI.Authentication.JwtUtils@{AinslieAPI.Authentication.JwtUtils}!\_provider@{\_provider}}
+\index{\_provider@{\_provider}!AinslieAPI.Authentication.JwtUtils@{AinslieAPI.Authentication.JwtUtils}}
+\doxysubsubsection{\texorpdfstring{\_provider}{\_provider}}
+{\footnotesize\ttfamily readonly IData\+Protection\+Provider Ainslie\+API.\+Authentication.\+Jwt\+Utils.\+\_\+provider\hspace{0.3cm}{\ttfamily [private]}}
+
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

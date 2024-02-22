@@ -5,6 +5,16 @@
 Helper class for managing operations related to spot prices.  
 
 
+
+
+Collaboration diagram for Task\+API.\+Helpers.\+Spot\+Helper\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_task_a_p_i_1_1_helpers_1_1_spot_helper__coll__graph}
+\end{center}
+\end{figure}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -21,10 +31,103 @@ bool \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a89a665897ed4
 \item 
 bool \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a1d8458171af3cac5a7fc1fc1f35de115}{Error}}
 \begin{DoxyCompactList}\small\item\em Saves daily spot data to the database and exports chart data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a072bb87250d0da4285bfe85c69fa479c}{Market\+Status\+Overrides}} \{ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a072bb87250d0da4285bfe85c69fa479caa283c513b6e585afe879ec049fd5a7a3}{Force\+Closed}} = 0
+, \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a072bb87250d0da4285bfe85c69fa479ca2660a1b21997f580b332f076d5c3a289}{Use\+Market}} = 1
+, \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a072bb87250d0da4285bfe85c69fa479caf50776d312645720efdea21abfc7b98a}{Force\+Open}} = 2
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+List$<$ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_base_spot}{Base\+Spot}} $>$ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a2ad64affbfeec15e4217d8bfccd982ff}{Pull\+Polygon\+Oracle\+Data}} (Date\+Time pull\+Time)
+\begin{DoxyCompactList}\small\item\em Pulls spot data from Polygon Oracle for each specified asset. \end{DoxyCompactList}\item 
+List$<$ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_base_spot}{Base\+Spot}} $>$ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a51135865d712678dee52479c109a61fb}{Pull\+Forex\+Data}} (Date\+Time pull\+Time)
+\begin{DoxyCompactList}\small\item\em pull data from forexfeed in one hit, check single time variation is within threshold add items to spotlist, 0 value if time threshold error \end{DoxyCompactList}\item 
+List$<$ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_base_spot}{Base\+Spot}} $>$ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a0fd06a80c097c9b6fcd5ddd8b1889c18}{Pull\+Oanda\+Data}} (Date\+Time pull\+Time)
+\begin{DoxyCompactList}\small\item\em Retrieves spot data from Oanda for each specified asset. \end{DoxyCompactList}\item 
+List$<$ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_base_spot}{Base\+Spot}} $>$ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a701fc9c0beaecff83beb2c806b8581d5}{Pull\+Binance\+Data}} (Date\+Time pull\+Time)
+\begin{DoxyCompactList}\small\item\em Retrieves spot data from Binance for each specified asset. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a2d5da5f529f7ec58c18cefb373466d99}{Generate\+Special\+Data}} (Date\+Time pull\+Time, List$<$ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_base_spot}{Base\+Spot}} $>$ final\+Spot\+List)
+\begin{DoxyCompactList}\small\item\em Generates special spot data entries and adds them to the final spot list. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a95400211c9214b34c8427e09776449a9}{Recycle\+Previous\+Spot}} (\mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_base_spot}{Base\+Spot}} bs)
+\begin{DoxyCompactList}\small\item\em Recycles the previous spot data for the given Base\+Spot from the database. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_adeeda07d908e3644d9ba13213077d205}{Trim\+Spot\+Data}} ()
+\begin{DoxyCompactList}\small\item\em Removes spot data entries older than a specified number of days from the database. \end{DoxyCompactList}\item 
+bool? object Result \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a0a13962d034427b5047452856eb3198d}{Export\+Chart\+Data}} ()
+\item 
+decimal \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a8840f6557abefd786be545a44454e246}{Convert\+Chart\+Data\+Currency}} (string convert\+To, \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_daily_close_chart_item}{Daily\+Close\+Chart\+Item}} convert\+Item, List$<$ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_daily_close_chart_item}{Daily\+Close\+Chart\+Item}} $>$ metal\+Prices)
+\begin{DoxyCompactList}\small\item\em Converts the spot price of chart data to the specified currency. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a249585457b73bcd269d8644a8120465e}{Is\+Market\+Open}} ()
+\begin{DoxyCompactList}\small\item\em Determines if the market for a specific instrument is currently open. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a072bb87250d0da4285bfe85c69fa479c}{Market\+Status\+Overrides}} \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a7ff886c42d0b6aba649b98f9935772bc}{Market\+Status\+Override}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves the current market status override from an external service. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{Log\+Service}} \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a49deee18d15ec2cb2b1dd2dd9058cd1f}{\+\_\+log\+Service}}
+\item 
+\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_forex_service}{Forex\+Service}} \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a47a7675b28528fddd0add10e0daceb3a}{\+\_\+forex\+Service}}
+\item 
+\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_alchemy_service}{Alchemy\+Service}} \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_ac6e63479696a9f01dc08d8bcf7fe6038}{\+\_\+alchemy\+Service}}
+\item 
+\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_binance_service}{Binance\+Service}} \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_ae2c3fbeea2c16cbaa6206ff9aaebb5fe}{\+\_\+binance\+Service}}
+\item 
+\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings}{Task\+APISettings}} \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a2160130492346bd22d7ce8a4ede1bf67}{\+\_\+settings}}
+\item 
+\mbox{\hyperlink{class_task_a_p_i_1_1_contexts_1_1_priceapp_context}{Priceapp\+Context}} \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_aa365640b2ac3e3f84df34e8a27817f81}{\+\_\+context}}
+\item 
+\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service}{Internal\+APIService}} \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a7bbe8203a7ccd78f59b904ab1c6389bb}{\+\_\+iapi\+Service}}
+\item 
+IWeb\+Host\+Environment \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a91a44041fb2de73102a3319f9edf4258}{\+\_\+env}}
+\item 
+bool \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_adf1fe67d03462035d8a1c48897dd2104}{market\+Open}}
+\item 
+\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a072bb87250d0da4285bfe85c69fa479c}{Market\+Status\+Overrides}} \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_adc630a604ed0b8c9e1090e965363e841}{market\+Status\+Override}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const double \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_aef6b7b6e86e3a962f65aa9f929b8f49a}{t\+Oz\+Grams}} = 31.\+1035
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 Helper class for managing operations related to spot prices. 
+
+\doxysubsection{Member Enumeration Documentation}
+\Hypertarget{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a072bb87250d0da4285bfe85c69fa479c}\label{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a072bb87250d0da4285bfe85c69fa479c} 
+\index{TaskAPI.Helpers.SpotHelper@{TaskAPI.Helpers.SpotHelper}!MarketStatusOverrides@{MarketStatusOverrides}}
+\index{MarketStatusOverrides@{MarketStatusOverrides}!TaskAPI.Helpers.SpotHelper@{TaskAPI.Helpers.SpotHelper}}
+\doxysubsubsection{\texorpdfstring{MarketStatusOverrides}{MarketStatusOverrides}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a072bb87250d0da4285bfe85c69fa479c}{Task\+API.\+Helpers.\+Spot\+Helper.\+Market\+Status\+Overrides}}\hspace{0.3cm}{\ttfamily [private]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ForceClosed@{ForceClosed}!TaskAPI.Helpers.SpotHelper@{TaskAPI.Helpers.SpotHelper}}\index{TaskAPI.Helpers.SpotHelper@{TaskAPI.Helpers.SpotHelper}!ForceClosed@{ForceClosed}}}\Hypertarget{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a072bb87250d0da4285bfe85c69fa479caa283c513b6e585afe879ec049fd5a7a3}\label{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a072bb87250d0da4285bfe85c69fa479caa283c513b6e585afe879ec049fd5a7a3} 
+Force\+Closed&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UseMarket@{UseMarket}!TaskAPI.Helpers.SpotHelper@{TaskAPI.Helpers.SpotHelper}}\index{TaskAPI.Helpers.SpotHelper@{TaskAPI.Helpers.SpotHelper}!UseMarket@{UseMarket}}}\Hypertarget{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a072bb87250d0da4285bfe85c69fa479ca2660a1b21997f580b332f076d5c3a289}\label{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a072bb87250d0da4285bfe85c69fa479ca2660a1b21997f580b332f076d5c3a289} 
+Use\+Market&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ForceOpen@{ForceOpen}!TaskAPI.Helpers.SpotHelper@{TaskAPI.Helpers.SpotHelper}}\index{TaskAPI.Helpers.SpotHelper@{TaskAPI.Helpers.SpotHelper}!ForceOpen@{ForceOpen}}}\Hypertarget{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a072bb87250d0da4285bfe85c69fa479caf50776d312645720efdea21abfc7b98a}\label{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a072bb87250d0da4285bfe85c69fa479caf50776d312645720efdea21abfc7b98a} 
+Force\+Open&\\
+\hline
+
+\end{DoxyEnumFields}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00039\ \ \ \ \ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a072bb87250d0da4285bfe85c69fa479caa283c513b6e585afe879ec049fd5a7a3}{ForceClosed}}\ =\ 0,}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a072bb87250d0da4285bfe85c69fa479ca2660a1b21997f580b332f076d5c3a289}{UseMarket}}\ =\ 1,}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a072bb87250d0da4285bfe85c69fa479caf50776d312645720efdea21abfc7b98a}{ForceOpen}}\ =\ 2}
+\DoxyCodeLine{00043\ \ \ \ \ \}}
+
+\end{DoxyCode}
+
 
 \doxysubsection{Constructor \& Destructor Documentation}
 \Hypertarget{class_task_a_p_i_1_1_helpers_1_1_spot_helper_ae5d7f0ba6759749953e94555c9557cfb}\label{class_task_a_p_i_1_1_helpers_1_1_spot_helper_ae5d7f0ba6759749953e94555c9557cfb} 
@@ -59,19 +162,27 @@ Initialises a new instance of the Spot\+Helper class.
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00057\ \ \ \ \ \{}
-\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \_alchemyService\ =\ alchemyService;}
-\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \_settings\ =\ taskAPISettings.Value;}
-\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \_logService\ =\ logService;}
-\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \_forexService\ =\ forexService;}
-\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \_binanceService\ =\ binanceService;}
-\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \_context\ =\ context;}
-\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \_iapiService\ =\ iapiService;}
-\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \_env\ =\ env;}
-\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ marketOpen\ =\ IsMarketOpen();}
-\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ marketStatusOverride\ =\ MarketStatusOverride();}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_ac6e63479696a9f01dc08d8bcf7fe6038}{\_alchemyService}}\ =\ alchemyService;}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a2160130492346bd22d7ce8a4ede1bf67}{\_settings}}\ =\ taskAPISettings.Value;}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a49deee18d15ec2cb2b1dd2dd9058cd1f}{\_logService}}\ =\ logService;}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a47a7675b28528fddd0add10e0daceb3a}{\_forexService}}\ =\ forexService;}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_ae2c3fbeea2c16cbaa6206ff9aaebb5fe}{\_binanceService}}\ =\ binanceService;}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_aa365640b2ac3e3f84df34e8a27817f81}{\_context}}\ =\ context;}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a7bbe8203a7ccd78f59b904ab1c6389bb}{\_iapiService}}\ =\ iapiService;}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a91a44041fb2de73102a3319f9edf4258}{\_env}}\ =\ env;}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_adf1fe67d03462035d8a1c48897dd2104}{marketOpen}}\ =\ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a249585457b73bcd269d8644a8120465e}{IsMarketOpen}}();}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_adc630a604ed0b8c9e1090e965363e841}{marketStatusOverride}}\ =\ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a7ff886c42d0b6aba649b98f9935772bc}{MarketStatusOverride}}();}
 \DoxyCodeLine{00068\ \ \ \ \ \}}
 
 \end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_task_a_p_i_1_1_helpers_1_1_spot_helper_ae5d7f0ba6759749953e94555c9557cfb_cgraph}
+\end{center}
+\end{figure}
 
 
 \doxysubsection{Member Function Documentation}
@@ -93,11 +204,11 @@ Determines whether synchronisation with the market is possible based on the curr
 Returns {\ttfamily false} if the market is forced closed, {\ttfamily true} if forced open, and the current market status if neither forced. 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00883\ \ \ \ \ \{}
-\DoxyCodeLine{00884\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (marketStatusOverride\ ==\ MarketStatusOverrides.ForceClosed)}
+\DoxyCodeLine{00884\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_adc630a604ed0b8c9e1090e965363e841}{marketStatusOverride}}\ ==\ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a072bb87250d0da4285bfe85c69fa479c}{MarketStatusOverrides}}.ForceClosed)}
 \DoxyCodeLine{00885\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00886\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (marketStatusOverride\ ==\ MarketStatusOverrides.ForceOpen)\ }
+\DoxyCodeLine{00886\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_adc630a604ed0b8c9e1090e965363e841}{marketStatusOverride}}\ ==\ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a072bb87250d0da4285bfe85c69fa479c}{MarketStatusOverrides}}.ForceOpen)\ }
 \DoxyCodeLine{00887\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00888\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ marketOpen;}
+\DoxyCodeLine{00888\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_adf1fe67d03462035d8a1c48897dd2104}{marketOpen}};}
 \DoxyCodeLine{00889\ \ \ \ \ \}}
 
 \end{DoxyCode}
@@ -107,6 +218,759 @@ Here is the caller graph for this function\+:
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a89a665897ed47f9b7065ce771100b83c_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a8840f6557abefd786be545a44454e246}\label{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a8840f6557abefd786be545a44454e246} 
+\index{TaskAPI.Helpers.SpotHelper@{TaskAPI.Helpers.SpotHelper}!ConvertChartDataCurrency@{ConvertChartDataCurrency}}
+\index{ConvertChartDataCurrency@{ConvertChartDataCurrency}!TaskAPI.Helpers.SpotHelper@{TaskAPI.Helpers.SpotHelper}}
+\doxysubsubsection{\texorpdfstring{ConvertChartDataCurrency()}{ConvertChartDataCurrency()}}
+{\footnotesize\ttfamily decimal Task\+API.\+Helpers.\+Spot\+Helper.\+Convert\+Chart\+Data\+Currency (\begin{DoxyParamCaption}\item[{string}]{convert\+To,  }\item[{\mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_daily_close_chart_item}{Daily\+Close\+Chart\+Item}}}]{convert\+Item,  }\item[{List$<$ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_daily_close_chart_item}{Daily\+Close\+Chart\+Item}} $>$}]{metal\+Prices }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Converts the spot price of chart data to the specified currency. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em convert\+To} & The currency to which the spot price should be converted.\\
+\hline
+{\em convert\+Item} & The chart data item to be converted.\\
+\hline
+{\em metal\+Prices} & The list of metal prices.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The spot price converted to the specified currency. 
+\end{DoxyReturn}
+
+
+This method converts the spot price of chart data to the specified currency, using AUD as the reference currency for conversion. If the specified currency is AUD or the chart data item\textquotesingle{}s currency is AUD, no conversion is performed. If the conversion is not possible due to missing AUD spot price data, the method tries to find the closest available AUD spot price. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00848\ \ \ \ \ \{}
+\DoxyCodeLine{00849\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (convertTo.ToLower()\ ==\ convertItem.\mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_daily_close_chart_item_ab2620dd19ff6e6f1513f9a1fbbfe58ee}{Currency}}.ToLower()\ ||\ convertItem.\mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_daily_close_chart_item_a5be5b645aa46c882e0e412c018c19689}{Metal}}.ToLower()\ ==\ \textcolor{stringliteral}{"{}aud"{}})}
+\DoxyCodeLine{00850\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ convertItem.\mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_daily_close_chart_item_af18cc37b4117018e2737b4d4227666a6}{Spot}};}
+\DoxyCodeLine{00851\ \ \ \ \ \ \ \ \ var\ audUsd\ =\ metalPrices.FirstOrDefault(mp\ =>\ mp.Timestamp\ ==\ convertItem.\mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_daily_close_chart_item_a4a91da49271c810a5bf525182543b08b}{Timestamp}}\ \&\&\ mp.Metal.ToLower()\ ==\ \textcolor{stringliteral}{"{}aud"{}})?.Spot;}
+\DoxyCodeLine{00852\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (audUsd\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00853\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00854\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//find\ closest\ with\ later\ date\ as\ preference}}
+\DoxyCodeLine{00855\ \ \ \ \ \ \ \ \ \ \ \ \ audUsd\ =\ metalPrices.Where(mp\ =>\ mp.Metal.ToLower()\ ==\ \textcolor{stringliteral}{"{}aud"{}}\ \&\&\ mp.Timestamp\ >\ convertItem.\mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_daily_close_chart_item_a4a91da49271c810a5bf525182543b08b}{Timestamp}})?.OrderBy(mp\ =>\ mp.Timestamp).FirstOrDefault()?.Spot;}
+\DoxyCodeLine{00856\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (audUsd\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00857\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00858\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//find\ closest\ with\ earlier\ date}}
+\DoxyCodeLine{00859\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ audUsd\ =\ metalPrices.Where(mp\ =>\ mp.Metal.ToLower()\ ==\ \textcolor{stringliteral}{"{}aud"{}}\ \&\&\ mp.Timestamp\ <\ convertItem.\mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_daily_close_chart_item_a4a91da49271c810a5bf525182543b08b}{Timestamp}})?.OrderByDescending(mp\ =>\ mp.Timestamp).FirstOrDefault()?.Spot;}
+\DoxyCodeLine{00860\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00861\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00862\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (audUsd\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00863\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00864\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (convertTo.ToLower())}
+\DoxyCodeLine{00865\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00866\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{stringliteral}{"{}aud"{}}:}
+\DoxyCodeLine{00867\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ convertItem.Spot\ /\ (decimal)audUsd;}
+\DoxyCodeLine{00868\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00869\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ convertItem.Spot\ *\ (decimal)audUsd;}
+\DoxyCodeLine{00870\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00871\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00872\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ convertItem.\mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_daily_close_chart_item_af18cc37b4117018e2737b4d4227666a6}{Spot}};}
+\DoxyCodeLine{00873\ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a8840f6557abefd786be545a44454e246_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a0a13962d034427b5047452856eb3198d}\label{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a0a13962d034427b5047452856eb3198d} 
+\index{TaskAPI.Helpers.SpotHelper@{TaskAPI.Helpers.SpotHelper}!ExportChartData@{ExportChartData}}
+\index{ExportChartData@{ExportChartData}!TaskAPI.Helpers.SpotHelper@{TaskAPI.Helpers.SpotHelper}}
+\doxysubsubsection{\texorpdfstring{ExportChartData()}{ExportChartData()}}
+{\footnotesize\ttfamily bool? object Result Task\+API.\+Helpers.\+Spot\+Helper.\+Export\+Chart\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00779\ \ \ \ \ \{}
+\DoxyCodeLine{00780\ \ \ \ \ \ \ \ \ \textcolor{comment}{//used\ for\ name\ mapping\ but\ also\ used\ for\ ordering\ results}}
+\DoxyCodeLine{00781\ \ \ \ \ \ \ \ \ Dictionary<string,\ string>\ assetCodeToNameMap\ =\ \textcolor{keyword}{new}\ Dictionary<string,\ string>}
+\DoxyCodeLine{00782\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00783\ \ \ \ \ \ \ \ \ \ \ \ \ [\textcolor{stringliteral}{"{}XAU"{}}]\ =\ \textcolor{stringliteral}{"{}gold"{}},}
+\DoxyCodeLine{00784\ \ \ \ \ \ \ \ \ \ \ \ \ [\textcolor{stringliteral}{"{}XAG"{}}]\ =\ \textcolor{stringliteral}{"{}silver"{}},}
+\DoxyCodeLine{00785\ \ \ \ \ \ \ \ \ \ \ \ \ [\textcolor{stringliteral}{"{}XPT"{}}]\ =\ \textcolor{stringliteral}{"{}platinum"{}},}
+\DoxyCodeLine{00786\ \ \ \ \ \ \ \ \ \ \ \ \ [\textcolor{stringliteral}{"{}AUD"{}}]\ =\ \textcolor{stringliteral}{"{}AUD"{}}}
+\DoxyCodeLine{00787\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00788\ \ \ \ \ \ \ \ \ \textcolor{comment}{//use\ iapiservice\ to\ get\ chart\ data,\ order\ it\ by\ timestamp}}
+\DoxyCodeLine{00789\ \ \ \ \ \ \ \ \ var\ dailyCloseChartData\ =\ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a7bbe8203a7ccd78f59b904ab1c6389bb}{\_iapiService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_a79988bdd459de2ee2b545fa7cac3d92a}{DailyCloseChartData}}().OrderBy(ci\ =>\ ci.Timestamp).ToList();}
+\DoxyCodeLine{00790\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dailyCloseChartData\ ==\ \textcolor{keyword}{null}\ ||\ dailyCloseChartData.Count()\ <\ 1)}
+\DoxyCodeLine{00791\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00792\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a49deee18d15ec2cb2b1dd2dd9058cd1f}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a46dc9bf58bc9605c7e17dfee38b94354}{LogError}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.SpotHelper,\ \textcolor{stringliteral}{"{}could\ not\ export\ chart\ data,\ response\ from\ internal\ api\ service\ was\ null\ or\ empty"{}});}
+\DoxyCodeLine{00793\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\textcolor{keyword}{true},\ \textcolor{stringliteral}{"{}chart\ data\ was\ null\ from\ internal\ api\ service"{}});}
+\DoxyCodeLine{00794\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00795\ \ \ \ \ \ \ \ \ \textcolor{comment}{//group\ by\ metal,\ order\ by\ assetcodetonamemap\ dictionary\ elements,\ flatten\ the\ igrouping}}
+\DoxyCodeLine{00796\ \ \ \ \ \ \ \ \ var\ dailyCloseChartDataSorted\ =\ dailyCloseChartData}
+\DoxyCodeLine{00797\ \ \ \ \ \ \ \ \ \ \ \ \ .GroupBy(ci\ =>\ \textcolor{keyword}{new}\ \{\ metal\ =\ ci.Metal,\ order\ =\ assetCodeToNameMap.ToList().IndexOf(assetCodeToNameMap.First(map\ =>\ map.Key\ ==\ ci.Metal))\ \})}
+\DoxyCodeLine{00798\ \ \ \ \ \ \ \ \ \ \ \ \ .OrderBy(grp\ =>\ grp.Key.order)}
+\DoxyCodeLine{00799\ \ \ \ \ \ \ \ \ \ \ \ \ .SelectMany(grp\ =>\ grp);}
+\DoxyCodeLine{00800\ \ \ \ \ \ \ \ \ \textcolor{comment}{//select\ new\ list\ for\ AUD\ currency\ convert\ and\ asset\ code\ to\ name\ map\ at\ same\ time}}
+\DoxyCodeLine{00801\ \ \ \ \ \ \ \ \ var\ dailyCloseChartDataAUD\ =\ dailyCloseChartDataSorted.ToList().Select(ci\ =>\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_daily_close_chart_item}{DailyCloseChartItem}}()}
+\DoxyCodeLine{00802\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00803\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Currency\ =\ \textcolor{stringliteral}{"{}AUD"{}},}
+\DoxyCodeLine{00804\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Metal\ =\ assetCodeToNameMap[ci.Metal],}
+\DoxyCodeLine{00805\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Spot\ =\ decimal.Round(\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a8840f6557abefd786be545a44454e246}{ConvertChartDataCurrency}}(\textcolor{stringliteral}{"{}AUD"{}},\ ci,\ dailyCloseChartData),\ 4),}
+\DoxyCodeLine{00806\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Timestamp\ =\ ci.\mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_daily_close_chart_item_a4a91da49271c810a5bf525182543b08b}{Timestamp}}}
+\DoxyCodeLine{00807\ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{00808\ \ \ \ \ \ \ \ \ \textcolor{comment}{//select\ new\ list\ for\ USD\ currency\ convert\ and\ asset\ code\ to\ name\ map\ at\ same\ time}}
+\DoxyCodeLine{00809\ \ \ \ \ \ \ \ \ var\ dailyCloseChartDataUSD\ =\ dailyCloseChartDataSorted.ToList().Select(ci\ =>\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_daily_close_chart_item}{DailyCloseChartItem}}()}
+\DoxyCodeLine{00810\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00811\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Currency\ =\ \textcolor{stringliteral}{"{}USD"{}},}
+\DoxyCodeLine{00812\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Metal\ =\ assetCodeToNameMap[ci.Metal],}
+\DoxyCodeLine{00813\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Spot\ =\ decimal.Round(\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a8840f6557abefd786be545a44454e246}{ConvertChartDataCurrency}}(\textcolor{stringliteral}{"{}USD"{}},\ ci,\ dailyCloseChartData),\ 4),}
+\DoxyCodeLine{00814\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Timestamp\ =\ ci.\mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_daily_close_chart_item_a4a91da49271c810a5bf525182543b08b}{Timestamp}}}
+\DoxyCodeLine{00815\ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{00816\ \ \ \ \ \ \ \ \ \textcolor{comment}{//save\ files}}
+\DoxyCodeLine{00817\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00818\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00819\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!Directory.Exists(\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a2160130492346bd22d7ce8a4ede1bf67}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_a5d429b089bd15c7c16f03c8e677f3c64}{PriceappSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_priceappsettings_a867349af7d125c704bd2513a3f3a9e70}{ChartDataExportPath}}))}
+\DoxyCodeLine{00820\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Directory.CreateDirectory(\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a2160130492346bd22d7ce8a4ede1bf67}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_a5d429b089bd15c7c16f03c8e677f3c64}{PriceappSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_priceappsettings_a867349af7d125c704bd2513a3f3a9e70}{ChartDataExportPath}});}
+\DoxyCodeLine{00821\ \ \ \ \ \ \ \ \ \ \ \ \ File.WriteAllText(\$\textcolor{stringliteral}{"{}\{\_settings.PriceappSettings.ChartDataExportPath\}ChartData\_AUD.json"{}},\ JsonConvert.SerializeObject(dailyCloseChartDataAUD,\ Formatting.None));}
+\DoxyCodeLine{00822\ \ \ \ \ \ \ \ \ \ \ \ \ File.WriteAllText(\$\textcolor{stringliteral}{"{}\{\_settings.PriceappSettings.ChartDataExportPath\}ChartData\_USD.json"{}},\ JsonConvert.SerializeObject(dailyCloseChartDataUSD,\ Formatting.None));}
+\DoxyCodeLine{00823\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a49deee18d15ec2cb2b1dd2dd9058cd1f}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a6be037b34888bbcf6b47dca8eef472de}{LogDebug}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.SpotHelper,\ \textcolor{stringliteral}{"{}chart\ data\ exported"{}});}
+\DoxyCodeLine{00824\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\textcolor{keyword}{false},\ \$\textcolor{stringliteral}{"{}chart\ data\ exported"{}});}
+\DoxyCodeLine{00825\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00826\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{00827\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00828\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a49deee18d15ec2cb2b1dd2dd9058cd1f}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a46dc9bf58bc9605c7e17dfee38b94354}{LogError}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.SpotHelper,\ \textcolor{stringliteral}{"{}exception\ exporting\ chart\ data"{}},\ ex.ToString());}
+\DoxyCodeLine{00829\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\textcolor{keyword}{true},\ \$\textcolor{stringliteral}{"{}exception\ saving\ daily\ spot:\ \{ex.ToString()\}"{}});}
+\DoxyCodeLine{00830\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00831\ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a0a13962d034427b5047452856eb3198d_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a2d5da5f529f7ec58c18cefb373466d99}\label{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a2d5da5f529f7ec58c18cefb373466d99} 
+\index{TaskAPI.Helpers.SpotHelper@{TaskAPI.Helpers.SpotHelper}!GenerateSpecialData@{GenerateSpecialData}}
+\index{GenerateSpecialData@{GenerateSpecialData}!TaskAPI.Helpers.SpotHelper@{TaskAPI.Helpers.SpotHelper}}
+\doxysubsubsection{\texorpdfstring{GenerateSpecialData()}{GenerateSpecialData()}}
+{\footnotesize\ttfamily void Task\+API.\+Helpers.\+Spot\+Helper.\+Generate\+Special\+Data (\begin{DoxyParamCaption}\item[{Date\+Time}]{pull\+Time,  }\item[{List$<$ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_base_spot}{Base\+Spot}} $>$}]{final\+Spot\+List }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Generates special spot data entries and adds them to the final spot list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pull\+Time} & The date and time at which the special data is generated.\\
+\hline
+{\em final\+Spot\+List} & The list of Base\+Spot objects to which the special data entries will be added.\\
+\hline
+\end{DoxyParams}
+
+
+This method creates and appends special spot data entries to the final spot list.
+
+It generates spot data for\+:
+
+
+\begin{DoxyItemize}
+\item USDTAUD\+: Converts the existing spot data for AUDUSD to generate spot data for USDTAUD.  
+\item GSS tokens (AUS, AGS)\+: Copies spot data from XAU (gold) and XAG (silver) entries, converting them to grams and assigns it to the respective GSS tokens.  
+\item AUDD Token\+: Adds a static spot data entry for AUDD (Australian Dollar Digital), with the spot value set to 1 AUD.  
+\end{DoxyItemize}
+
+If a suitable pair is not found for any special data entry, a dummy entry is created with a spot value of 0, and appropriate error logging is performed.
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00582\ \ \ \ \ \{}
+\DoxyCodeLine{00583\ \ \ \ \ \ \ \ \ \textcolor{comment}{//USDTAUD}}
+\DoxyCodeLine{00584\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_base_spot}{BaseSpot}}\ bs\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_base_spot}{BaseSpot}}();}
+\DoxyCodeLine{00585\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_base_spot}{BaseSpot}}?\ bsOriginal\ =\ finalSpotList.FirstOrDefault(bs\ =>\ bs.\mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_base_spot_a9fa574ef36b5343f32a53d5edd7addb4}{AssetCode}}\ ==\ \textcolor{stringliteral}{"{}AUD"{}}\ \&\&\ bs.\mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_base_spot_a53103d0d5c3876af06947e4d7be0d541}{PairCode}}\ ==\ \textcolor{stringliteral}{"{}USD"{}});}
+\DoxyCodeLine{00586\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (bsOriginal\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00587\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00588\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//cant\ find\ match,\ create\ dummy\ entry}}
+\DoxyCodeLine{00589\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a49deee18d15ec2cb2b1dd2dd9058cd1f}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a46dc9bf58bc9605c7e17dfee38b94354}{LogError}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.SpotHelper,\ \$\textcolor{stringliteral}{"{}unable\ to\ find\ suitable\ pair\ in\ finalSpotList\ feed\ for\ USDT"{}});}
+\DoxyCodeLine{00590\ \ \ \ \ \ \ \ \ \ \ \ \ bs.AssetCode\ =\ \textcolor{stringliteral}{"{}USDT"{}};}
+\DoxyCodeLine{00591\ \ \ \ \ \ \ \ \ \ \ \ \ bs.PairCode\ =\ \textcolor{stringliteral}{"{}AUD"{}};}
+\DoxyCodeLine{00592\ \ \ \ \ \ \ \ \ \ \ \ \ bs.Per\ =\ \textcolor{stringliteral}{"{}coin"{}};}
+\DoxyCodeLine{00593\ \ \ \ \ \ \ \ \ \ \ \ \ bs.Source\ =\ \textcolor{stringliteral}{"{}None"{}};}
+\DoxyCodeLine{00594\ \ \ \ \ \ \ \ \ \ \ \ \ bs.PullTime\ =\ pullTime;}
+\DoxyCodeLine{00595\ \ \ \ \ \ \ \ \ \ \ \ \ bs.Spot\ =\ 0;}
+\DoxyCodeLine{00596\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00597\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00598\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00599\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//use\ current\ matching\ metal\ spot\ and\ convert\ to\ grams}}
+\DoxyCodeLine{00600\ \ \ \ \ \ \ \ \ \ \ \ \ bs.AssetCode\ =\ \textcolor{stringliteral}{"{}USDT"{}};}
+\DoxyCodeLine{00601\ \ \ \ \ \ \ \ \ \ \ \ \ bs.PairCode\ =\ \textcolor{stringliteral}{"{}AUD"{}};}
+\DoxyCodeLine{00602\ \ \ \ \ \ \ \ \ \ \ \ \ bs.Per\ =\ \textcolor{stringliteral}{"{}coin"{}};}
+\DoxyCodeLine{00603\ \ \ \ \ \ \ \ \ \ \ \ \ bs.Source\ =\ bsOriginal.\mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_base_spot_a53f94494658ba0a6bb555b7d0346f60d}{Source}};}
+\DoxyCodeLine{00604\ \ \ \ \ \ \ \ \ \ \ \ \ bs.PullTime\ =\ bsOriginal.\mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_base_spot_abbb6466c0a299a01a982efb772382e5d}{PullTime}};}
+\DoxyCodeLine{00605\ \ \ \ \ \ \ \ \ \ \ \ \ bs.Spot\ =\ 1\ /\ bsOriginal.\mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_base_spot_ac34435c653855618d7586ac10a5f7218}{Spot}};}
+\DoxyCodeLine{00606\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00607\ \ \ \ \ \ \ \ \ finalSpotList.Add(bs);}
+\DoxyCodeLine{00608\ \ \ \ \ \ \ \ \ \textcolor{comment}{//GSS\ tokens}}
+\DoxyCodeLine{00609\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ x\ \textcolor{keywordflow}{in}\ \textcolor{keyword}{new}[]\ \{\ \textcolor{keyword}{new}\ \{\ AssetCode\ =\ \textcolor{stringliteral}{"{}AUS"{}},\ Copy\ =\ \textcolor{stringliteral}{"{}XAU"{}}\ \},\ \textcolor{keyword}{new}\ \{\ AssetCode\ =\ \textcolor{stringliteral}{"{}AGS"{}},\ Copy\ =\ \textcolor{stringliteral}{"{}XAG"{}}\ \}\ \})}
+\DoxyCodeLine{00610\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00611\ \ \ \ \ \ \ \ \ \ \ \ \ bs\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_base_spot}{BaseSpot}}();}
+\DoxyCodeLine{00612\ \ \ \ \ \ \ \ \ \ \ \ \ bsOriginal\ =\ finalSpotList.FirstOrDefault(bs\ =>\ bs.\mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_base_spot_a9fa574ef36b5343f32a53d5edd7addb4}{AssetCode}}\ ==\ x.Copy);}
+\DoxyCodeLine{00613\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (bsOriginal\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00614\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00615\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//cant\ find\ match,\ create\ dummy\ entry}}
+\DoxyCodeLine{00616\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a49deee18d15ec2cb2b1dd2dd9058cd1f}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a46dc9bf58bc9605c7e17dfee38b94354}{LogError}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.SpotHelper,\ \$\textcolor{stringliteral}{"{}unable\ to\ find\ suitable\ pair\ in\ finalSpotList\ feed\ for\ \{x.AssetCode\}"{}});}
+\DoxyCodeLine{00617\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bs.AssetCode\ =\ x.AssetCode;}
+\DoxyCodeLine{00618\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bs.PairCode\ =\ \textcolor{stringliteral}{"{}AUD"{}};}
+\DoxyCodeLine{00619\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bs.Per\ =\ \textcolor{stringliteral}{"{}coin"{}};}
+\DoxyCodeLine{00620\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bs.Source\ =\ \textcolor{stringliteral}{"{}none"{}};}
+\DoxyCodeLine{00621\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bs.PullTime\ =\ pullTime;}
+\DoxyCodeLine{00622\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bs.Spot\ =\ 0;}
+\DoxyCodeLine{00623\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00624\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00625\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00626\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//use\ current\ matching\ metal\ spot\ and\ convert\ to\ grams}}
+\DoxyCodeLine{00627\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bs.AssetCode\ =\ x.AssetCode;}
+\DoxyCodeLine{00628\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bs.PairCode\ =\ bsOriginal.\mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_base_spot_a53103d0d5c3876af06947e4d7be0d541}{PairCode}};}
+\DoxyCodeLine{00629\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bs.Per\ =\ \textcolor{stringliteral}{"{}coin"{}};}
+\DoxyCodeLine{00630\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bs.Source\ =\ bsOriginal.\mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_base_spot_a53f94494658ba0a6bb555b7d0346f60d}{Source}};}
+\DoxyCodeLine{00631\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bs.PullTime\ =\ bsOriginal.\mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_base_spot_abbb6466c0a299a01a982efb772382e5d}{PullTime}};}
+\DoxyCodeLine{00632\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bs.Spot\ =\ bsOriginal.Spot\ /\ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_aef6b7b6e86e3a962f65aa9f929b8f49a}{tOzGrams}};}
+\DoxyCodeLine{00633\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00634\ \ \ \ \ \ \ \ \ \ \ \ \ finalSpotList.Add(bs);}
+\DoxyCodeLine{00635\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00636\ \ \ \ \ \ \ \ \ \textcolor{comment}{//AUDD\ Token}}
+\DoxyCodeLine{00637\ \ \ \ \ \ \ \ \ bs\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_base_spot}{BaseSpot}}() }
+\DoxyCodeLine{00638\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00639\ \ \ \ \ \ \ \ \ \ \ \ \ AssetCode\ =\ \textcolor{stringliteral}{"{}AUDD"{}},}
+\DoxyCodeLine{00640\ \ \ \ \ \ \ \ \ \ \ \ \ PairCode\ =\ \textcolor{stringliteral}{"{}AUD"{}},}
+\DoxyCodeLine{00641\ \ \ \ \ \ \ \ \ \ \ \ \ Per\ =\ \textcolor{stringliteral}{"{}coin"{}},}
+\DoxyCodeLine{00642\ \ \ \ \ \ \ \ \ \ \ \ \ Source\ =\ \textcolor{stringliteral}{"{}Static"{}},}
+\DoxyCodeLine{00643\ \ \ \ \ \ \ \ \ \ \ \ \ PullTime\ =\ pullTime,}
+\DoxyCodeLine{00644\ \ \ \ \ \ \ \ \ \ \ \ \ Spot\ =\ 1}
+\DoxyCodeLine{00645\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00646\ \ \ \ \ \ \ \ \ finalSpotList.Add(bs);}
+\DoxyCodeLine{00647\ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a2d5da5f529f7ec58c18cefb373466d99_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a2d5da5f529f7ec58c18cefb373466d99_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a249585457b73bcd269d8644a8120465e}\label{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a249585457b73bcd269d8644a8120465e} 
+\index{TaskAPI.Helpers.SpotHelper@{TaskAPI.Helpers.SpotHelper}!IsMarketOpen@{IsMarketOpen}}
+\index{IsMarketOpen@{IsMarketOpen}!TaskAPI.Helpers.SpotHelper@{TaskAPI.Helpers.SpotHelper}}
+\doxysubsubsection{\texorpdfstring{IsMarketOpen()}{IsMarketOpen()}}
+{\footnotesize\ttfamily bool Task\+API.\+Helpers.\+Spot\+Helper.\+Is\+Market\+Open (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Determines if the market for a specific instrument is currently open. 
+
+\begin{DoxyReturn}{Returns}
+A bool indicating whether the market for the specified instrument is open. Returns {\ttfamily true} if the market is open and tradeable; otherwise, returns {\ttfamily false}. 
+\end{DoxyReturn}
+
+
+This method checks the tradeability of the instrument \textquotesingle{}XAU\textquotesingle{} (Gold) against USD by querying the OANDA API for its current price and tradeable status. It utilises the IApi\+Service.\+Get\+Oanda\+Instrument\+Price\+USD method to retrieve the price information. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00903\ \ \ \ \ \{}
+\DoxyCodeLine{00904\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_oanda_1_1_instrument_price}{InstrumentPrice}}?\ oandaXAUUSD\ =\ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a7bbe8203a7ccd78f59b904ab1c6389bb}{\_iapiService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_aa614614518048e1244ae357de18425df}{GetOandaInstrumentPriceUSD}}(\textcolor{stringliteral}{"{}XAU"{}});}
+\DoxyCodeLine{00905\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ oandaXAUUSD?.\mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_oanda_1_1_instrument_price_a107de5614f0f7dddc66c2aaa583d9b78}{prices}}?[0].\mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_oanda_1_1_instrument_price_1_1_price_a023b866f0cbd286e306e9441910da314}{tradeable}}\ ??\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00906\ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a249585457b73bcd269d8644a8120465e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a249585457b73bcd269d8644a8120465e_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a7ff886c42d0b6aba649b98f9935772bc}\label{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a7ff886c42d0b6aba649b98f9935772bc} 
+\index{TaskAPI.Helpers.SpotHelper@{TaskAPI.Helpers.SpotHelper}!MarketStatusOverride@{MarketStatusOverride}}
+\index{MarketStatusOverride@{MarketStatusOverride}!TaskAPI.Helpers.SpotHelper@{TaskAPI.Helpers.SpotHelper}}
+\doxysubsubsection{\texorpdfstring{MarketStatusOverride()}{MarketStatusOverride()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a072bb87250d0da4285bfe85c69fa479c}{Market\+Status\+Overrides}} Task\+API.\+Helpers.\+Spot\+Helper.\+Market\+Status\+Override (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Retrieves the current market status override from an external service. 
+
+\begin{DoxyReturn}{Returns}
+A Market\+Status\+Overrides value representing the current market status override. If no override is set, returns Market\+Status\+Overrides.\+Use\+Market. 
+\end{DoxyReturn}
+
+
+This method queries Internal API service to determine if there are any overrides on the market status. The method uses the IApi\+Service.\+Get\+Priceapp\+Market\+Status\+Override to fetch the override status. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00920\ \ \ \ \ \{}
+\DoxyCodeLine{00921\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}?\ statusOverrideResponse\ =\ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a7bbe8203a7ccd78f59b904ab1c6389bb}{\_iapiService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_a55b9f5404586ba97531f1cdc013ecaed}{GetPriceappMarketStatusOverride}}();}
+\DoxyCodeLine{00922\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (statusOverrideResponse.HasValue)}
+\DoxyCodeLine{00923\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00924\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a072bb87250d0da4285bfe85c69fa479c}{MarketStatusOverrides}}\ statusOverride\ =\ (\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a072bb87250d0da4285bfe85c69fa479c}{MarketStatusOverrides}})statusOverrideResponse;}
+\DoxyCodeLine{00925\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ statusOverride;}
+\DoxyCodeLine{00926\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00927\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a072bb87250d0da4285bfe85c69fa479c}{MarketStatusOverrides}}.UseMarket;}
+\DoxyCodeLine{00928\ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a7ff886c42d0b6aba649b98f9935772bc_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a7ff886c42d0b6aba649b98f9935772bc_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a701fc9c0beaecff83beb2c806b8581d5}\label{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a701fc9c0beaecff83beb2c806b8581d5} 
+\index{TaskAPI.Helpers.SpotHelper@{TaskAPI.Helpers.SpotHelper}!PullBinanceData@{PullBinanceData}}
+\index{PullBinanceData@{PullBinanceData}!TaskAPI.Helpers.SpotHelper@{TaskAPI.Helpers.SpotHelper}}
+\doxysubsubsection{\texorpdfstring{PullBinanceData()}{PullBinanceData()}}
+{\footnotesize\ttfamily List$<$ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_base_spot}{Base\+Spot}} $>$ Task\+API.\+Helpers.\+Spot\+Helper.\+Pull\+Binance\+Data (\begin{DoxyParamCaption}\item[{Date\+Time}]{pull\+Time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Retrieves spot data from Binance for each specified asset. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pull\+Time} & The date and time at which the data is pulled.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list of Base\+Spot objects containing spot data from Binance. 
+\end{DoxyReturn}
+
+
+This method fetches spot data from Binance for each asset specified in the Binance settings.
+
+First, it checks if there is any error in retrieving the feed response from Binance. If an error occurs, the method logs it and sets a flag to indicate the error.
+
+If there is no feed error, the method attempts to retrieve the spot value for each asset from the Binance feed response, prioritising different currency pairs.
+
+If the spot value cannot be obtained or parsed, appropriate error logging is performed.
+
+Each Base\+Spot object is assigned the source name from the Binance settings, the pull time, and the spot value obtained.
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00500\ \ \ \ \ \{}
+\DoxyCodeLine{00501\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ feedError\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00502\ \ \ \ \ \ \ \ \ List<BaseSpot>\ spotList\ =\ \textcolor{keyword}{new}\ List<BaseSpot>();}
+\DoxyCodeLine{00503\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_binance_response}{BinanceResponse}}\ binanceResponse\ =\ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_ae2c3fbeea2c16cbaa6206ff9aaebb5fe}{\_binanceService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_binance_service_a5863f72c89f66991b6ea2172de8e4687}{PullFeed}}();}
+\DoxyCodeLine{00504\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a49deee18d15ec2cb2b1dd2dd9058cd1f}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a6be037b34888bbcf6b47dca8eef472de}{LogDebug}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.SpotHelper,\ \$\textcolor{stringliteral}{"{}latest\ data\ from\ binance\ feed"{}},\ binanceResponse);}
+\DoxyCodeLine{00505\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (binanceResponse\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00506\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00507\ \ \ \ \ \ \ \ \ \ \ \ \ feedError\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00508\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a49deee18d15ec2cb2b1dd2dd9058cd1f}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a46dc9bf58bc9605c7e17dfee38b94354}{LogError}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.SpotHelper,\ \textcolor{stringliteral}{"{}response\ from\ binance\ feed\ service\ is\ null"{}});}
+\DoxyCodeLine{00509\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00510\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ x\ \textcolor{keywordflow}{in}\ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a2160130492346bd22d7ce8a4ede1bf67}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_a127cce7c28a6e430b091679ca27ef9a7}{BinanceSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_binancesettings_a0359754b8dd571a50996e9d5fdf21c24}{Assets}})}
+\DoxyCodeLine{00511\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00512\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ spot\ =\ 0;}
+\DoxyCodeLine{00513\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ pairCode\ =\ \textcolor{stringliteral}{"{}USD"{}};}
+\DoxyCodeLine{00514\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!feedError)}
+\DoxyCodeLine{00515\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00516\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00517\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00518\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\textcolor{keywordtype}{double}.TryParse(binanceResponse.\mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_binance_response_abcf25f174de498b1b8b35ed21ad8ad44}{Assets}}.FirstOrDefault(ass\ =>\ ass.symbol\ ==\ \$\textcolor{stringliteral}{"{}\{x.AssetCode\}USDT"{}})?.\mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_binance_response_1_1_asset_aff5192e877aa1a4560e421e50df0b59d}{price}},\ out\ spot))}
+\DoxyCodeLine{00519\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00520\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\textcolor{keywordtype}{double}.TryParse(binanceResponse.\mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_binance_response_abcf25f174de498b1b8b35ed21ad8ad44}{Assets}}.FirstOrDefault(ass\ =>\ ass.symbol\ ==\ \$\textcolor{stringliteral}{"{}\{x.AssetCode\}AUD"{}})?.\mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_binance_response_1_1_asset_aff5192e877aa1a4560e421e50df0b59d}{price}},\ out\ spot))}
+\DoxyCodeLine{00521\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00522\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\textcolor{keywordtype}{double}.TryParse(binanceResponse.\mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_binance_response_abcf25f174de498b1b8b35ed21ad8ad44}{Assets}}.FirstOrDefault(ass\ =>\ ass.symbol\ ==\ \$\textcolor{stringliteral}{"{}\{x.AssetCode\}BTC"{}})?.\mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_binance_response_1_1_asset_aff5192e877aa1a4560e421e50df0b59d}{price}},\ out\ spot))}
+\DoxyCodeLine{00523\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00524\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a49deee18d15ec2cb2b1dd2dd9058cd1f}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a46dc9bf58bc9605c7e17dfee38b94354}{LogError}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.SpotHelper,\ \$\textcolor{stringliteral}{"{}unable\ to\ find\ suitable\ pair\ in\ binance\ feed\ for\ \{x.AssetCode\}"{}});}
+\DoxyCodeLine{00525\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00526\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{comment}{//btc\ pair\ matched}}
+\DoxyCodeLine{00527\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00528\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pairCode\ =\ \textcolor{stringliteral}{"{}BTC"{}};}
+\DoxyCodeLine{00529\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00530\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00531\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{comment}{//usdt\ pair\ matched}}
+\DoxyCodeLine{00532\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00533\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pairCode\ =\ \textcolor{stringliteral}{"{}AUD"{}};}
+\DoxyCodeLine{00534\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00535\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00536\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00537\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}(Exception\ ex)}
+\DoxyCodeLine{00538\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00539\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a49deee18d15ec2cb2b1dd2dd9058cd1f}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a78c9df658858fa3099eed69421423898}{LogException}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.SpotHelper,\ \$\textcolor{stringliteral}{"{}exception\ reading\ spot\ from\ binance\ feed\ response\ for\ \{x.AssetCode\}"{}},\ ex);}
+\DoxyCodeLine{00540\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00541\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00542\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_base_spot}{BaseSpot}}\ bs\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_base_spot}{BaseSpot}}() }
+\DoxyCodeLine{00543\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00544\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ AssetCode\ =\ x.\mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_base_spot_a9fa574ef36b5343f32a53d5edd7addb4}{AssetCode}},}
+\DoxyCodeLine{00545\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PairCode\ =\ pairCode,}
+\DoxyCodeLine{00546\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Per\ =\ \textcolor{stringliteral}{"{}coin"{}},}
+\DoxyCodeLine{00547\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Source\ =\ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a2160130492346bd22d7ce8a4ede1bf67}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_a127cce7c28a6e430b091679ca27ef9a7}{BinanceSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_binancesettings_a599c1e6c9503b054c6805069f0b7c787}{SourceName}},}
+\DoxyCodeLine{00548\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PullTime\ =\ pullTime,}
+\DoxyCodeLine{00549\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Spot\ =\ spot\ \textcolor{comment}{//if\ error,\ enter\ 0\ value}}
+\DoxyCodeLine{00550\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00551\ \ \ \ \ \ \ \ \ \ \ \ \ spotList.Add(bs);}
+\DoxyCodeLine{00552\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00553\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ spotList;}
+\DoxyCodeLine{00554\ \ \ \ \ \ \ \ \ \textcolor{comment}{//DEBUG}}
+\DoxyCodeLine{00555\ \ \ \ \ \ \ \ \ \textcolor{comment}{//spotList.First(x\ =>\ x.AssetCode\ ==\ "{}ETH"{}).Spot\ =\ 0;}}
+\DoxyCodeLine{00556\ \ \ \ \ \ \ \ \ \textcolor{comment}{//spotList.First(x\ =>\ x.AssetCode\ ==\ "{}BTC"{}).Spot\ =\ 0;}}
+\DoxyCodeLine{00557\ \ \ \ \ \ \ \ \ \textcolor{comment}{//return\ spotList;}}
+\DoxyCodeLine{00558\ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a701fc9c0beaecff83beb2c806b8581d5_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a701fc9c0beaecff83beb2c806b8581d5_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a51135865d712678dee52479c109a61fb}\label{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a51135865d712678dee52479c109a61fb} 
+\index{TaskAPI.Helpers.SpotHelper@{TaskAPI.Helpers.SpotHelper}!PullForexData@{PullForexData}}
+\index{PullForexData@{PullForexData}!TaskAPI.Helpers.SpotHelper@{TaskAPI.Helpers.SpotHelper}}
+\doxysubsubsection{\texorpdfstring{PullForexData()}{PullForexData()}}
+{\footnotesize\ttfamily List$<$ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_base_spot}{Base\+Spot}} $>$ Task\+API.\+Helpers.\+Spot\+Helper.\+Pull\+Forex\+Data (\begin{DoxyParamCaption}\item[{Date\+Time}]{pull\+Time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+pull data from forexfeed in one hit, check single time variation is within threshold add items to spotlist, 0 value if time threshold error 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00335\ \ \ \ \ \{}
+\DoxyCodeLine{00336\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ feedError\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00337\ \ \ \ \ \ \ \ \ List<BaseSpot>\ spotList\ =\ \textcolor{keyword}{new}\ List<BaseSpot>();}
+\DoxyCodeLine{00338\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_forex_response}{ForexResponse}}?\ forexResponse\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{00339\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ market\ open,\ pull\ data,\ otherwise\ leave\ forexResponse\ as\ null}}
+\DoxyCodeLine{00340\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a89a665897ed47f9b7065ce771100b83c}{CanSync}}())\ \{\ }
+\DoxyCodeLine{00341\ \ \ \ \ \ \ \ \ \ \ \ \ forexResponse\ =\ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a47a7675b28528fddd0add10e0daceb3a}{\_forexService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_forex_service_a45ca436cc529b87e410d8b208abea3b1}{PullFeed}}();}
+\DoxyCodeLine{00342\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a49deee18d15ec2cb2b1dd2dd9058cd1f}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a6be037b34888bbcf6b47dca8eef472de}{LogDebug}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.SpotHelper,\ \$\textcolor{stringliteral}{"{}latest\ data\ from\ forex\ feed\ for"{}},\ forexResponse);}
+\DoxyCodeLine{00343\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (forexResponse\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00344\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00345\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ feedError\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00346\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a49deee18d15ec2cb2b1dd2dd9058cd1f}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a46dc9bf58bc9605c7e17dfee38b94354}{LogError}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.SpotHelper,\ \textcolor{stringliteral}{"{}response\ from\ forex\ feed\ service\ is\ null"{}},\ forexResponse);}
+\DoxyCodeLine{00347\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00348\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00349\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00350\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00351\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00352\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//check\ feed\ time\ variation}}
+\DoxyCodeLine{00353\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ feedTime\ =\ DateTimeOffset.FromUnixTimeSeconds(\textcolor{keywordtype}{long}.Parse(forexResponse.\mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_forex_response_a887a42c887a5585d9c99c9d8694fa263}{head}}.\mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_forex_response_1_1_head_adf13bd6ff354f29411018a289d04143f}{utc\_time}}.ToString())).UtcDateTime.ToLocalTime();}
+\DoxyCodeLine{00354\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((pullTime\ -\/\ feedTime).TotalMinutes\ >\ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a2160130492346bd22d7ce8a4ede1bf67}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_abc5a23cce7a98ce3cd109ecb1c3122ae}{SpotFeedSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_spotfeedsettings_ab263694d641e1015ecc390a0f685d585}{TimeDifferenceThresholdMinutes}})}
+\DoxyCodeLine{00355\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00356\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ feedError\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00357\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a49deee18d15ec2cb2b1dd2dd9058cd1f}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a46dc9bf58bc9605c7e17dfee38b94354}{LogError}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.SpotHelper,\ \textcolor{stringliteral}{"{}time\ variation\ beyond\ threshold\ for\ forex\ feed\ data"{}},\ forexResponse);}
+\DoxyCodeLine{00358\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00359\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00360\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}(Exception\ ex)}
+\DoxyCodeLine{00361\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00362\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ feedError\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00363\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a49deee18d15ec2cb2b1dd2dd9058cd1f}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a78c9df658858fa3099eed69421423898}{LogException}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.SpotHelper,\ \textcolor{stringliteral}{"{}exception\ checking\ feed\ time\ from\ forex\ feed\ response"{}},\ forexResponse,\ ex);}
+\DoxyCodeLine{00364\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00365\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00366\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00367\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ x\ \textcolor{keywordflow}{in}\ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a2160130492346bd22d7ce8a4ede1bf67}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_a0eb4318ad18306881384e7097caaa9f0}{ForexSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_forexsettings_aac3ce432f05195e369540151cedc8c23}{Assets}})}
+\DoxyCodeLine{00368\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00369\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ spot\ =\ 0;}
+\DoxyCodeLine{00370\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ pairCode\ =\ \textcolor{stringliteral}{"{}AUD"{}};}
+\DoxyCodeLine{00371\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ forexResponse\ popualted,\ create\ basespots\ with\ live\ data.\ \ if\ forexResponse\ is\ null,\ create\ dummy\ basespots\ with\ 0}}
+\DoxyCodeLine{00372\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!feedError\ \&\&\ forexResponse\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00373\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00374\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00375\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00376\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!\textcolor{keywordtype}{double}.TryParse(((\mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_forex_response}{ForexResponse}}.\mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_forex_response_1_1_data}{Data}}.\mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_forex_response_1_1_data_1_1_spot_instance}{SpotInstance}}[])forexResponse.\mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_forex_response_a945a66fb427a67f5d20d34c39b869d74}{data}}.GetType().GetProperty(\$\textcolor{stringliteral}{"{}\{x.AssetCode\}AUD"{}})?.GetValue(forexResponse.\mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_forex_response_a945a66fb427a67f5d20d34c39b869d74}{data}}))?[0].ask,\ out\ spot))}
+\DoxyCodeLine{00377\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00378\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\textcolor{keywordtype}{double}.TryParse(((\mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_forex_response}{ForexResponse}}.\mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_forex_response_1_1_data}{Data}}.\mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_forex_response_1_1_data_1_1_spot_instance}{SpotInstance}}[])forexResponse.\mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_forex_response_a945a66fb427a67f5d20d34c39b869d74}{data}}.GetType().GetProperty(\$\textcolor{stringliteral}{"{}\{x.AssetCode\}USD"{}})?.GetValue(forexResponse.\mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_forex_response_a945a66fb427a67f5d20d34c39b869d74}{data}}))?[0].ask,\ out\ spot))}
+\DoxyCodeLine{00379\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00380\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a49deee18d15ec2cb2b1dd2dd9058cd1f}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a46dc9bf58bc9605c7e17dfee38b94354}{LogError}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.SpotHelper,\ \$\textcolor{stringliteral}{"{}unable\ to\ find\ suitable\ pair\ in\ forex\ feed\ for\ \{x.AssetCode\}"{}},\ forexResponse);}
+\DoxyCodeLine{00381\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00382\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00383\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00384\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pairCode\ =\ \textcolor{stringliteral}{"{}USD"{}};}
+\DoxyCodeLine{00385\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00386\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00387\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00388\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}(Exception\ ex)}
+\DoxyCodeLine{00389\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00390\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a49deee18d15ec2cb2b1dd2dd9058cd1f}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a78c9df658858fa3099eed69421423898}{LogException}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.SpotHelper,\ \$\textcolor{stringliteral}{"{}exception\ reading\ spot\ from\ forex\ feed\ response\ for\ \{x.AssetCode\}"{}},\ forexResponse,\ ex);}
+\DoxyCodeLine{00391\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00392\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00393\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_base_spot}{BaseSpot}}\ bs\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_base_spot}{BaseSpot}}() }
+\DoxyCodeLine{00394\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00395\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ AssetCode\ =\ x.\mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_base_spot_a9fa574ef36b5343f32a53d5edd7addb4}{AssetCode}},}
+\DoxyCodeLine{00396\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PairCode\ =\ pairCode,}
+\DoxyCodeLine{00397\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Per\ =\ x.AssetCode\ ==\ \textcolor{stringliteral}{"{}AUD"{}}\ ?\ \textcolor{stringliteral}{"{}\$"{}}\ :\ \textcolor{stringliteral}{"{}oz"{}},}
+\DoxyCodeLine{00398\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Source\ =\ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a2160130492346bd22d7ce8a4ede1bf67}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_a0eb4318ad18306881384e7097caaa9f0}{ForexSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_forexsettings_a81e4b95c98d601fcb21cc42c2b4a32ba}{SourceName}},}
+\DoxyCodeLine{00399\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PullTime\ =\ pullTime,}
+\DoxyCodeLine{00400\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Spot\ =\ spot}
+\DoxyCodeLine{00401\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00402\ \ \ \ \ \ \ \ \ \ \ \ \ spotList.Add(bs);}
+\DoxyCodeLine{00403\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00404\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ spotList;}
+\DoxyCodeLine{00405\ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a51135865d712678dee52479c109a61fb_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a51135865d712678dee52479c109a61fb_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a0fd06a80c097c9b6fcd5ddd8b1889c18}\label{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a0fd06a80c097c9b6fcd5ddd8b1889c18} 
+\index{TaskAPI.Helpers.SpotHelper@{TaskAPI.Helpers.SpotHelper}!PullOandaData@{PullOandaData}}
+\index{PullOandaData@{PullOandaData}!TaskAPI.Helpers.SpotHelper@{TaskAPI.Helpers.SpotHelper}}
+\doxysubsubsection{\texorpdfstring{PullOandaData()}{PullOandaData()}}
+{\footnotesize\ttfamily List$<$ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_base_spot}{Base\+Spot}} $>$ Task\+API.\+Helpers.\+Spot\+Helper.\+Pull\+Oanda\+Data (\begin{DoxyParamCaption}\item[{Date\+Time}]{pull\+Time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Retrieves spot data from Oanda for each specified asset. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pull\+Time} & The date and time at which the data is pulled.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list of Base\+Spot objects containing spot data from Oanda. 
+\end{DoxyReturn}
+
+
+This method fetches spot data from Oanda for each asset specified in the Oanda settings.
+
+If the method Can\+Sync returns true, indicating that data synchronization is allowed, it proceeds to fetch data.
+
+The spot data retrieved includes the asset\textquotesingle{}s spot value and pair code.
+
+For each asset, the method attempts to retrieve the spot value from Oanda\textquotesingle{}s feed, prioritising different price sources.
+
+If the spot value cannot be obtained or is zero, appropriate error logging is performed.
+
+Each Base\+Spot object is assigned the source name from the Oanda settings and the pull time.
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00423\ \ \ \ \ \{}
+\DoxyCodeLine{00424\ \ \ \ \ \ \ \ \ List<BaseSpot>\ spotList\ =\ \textcolor{keyword}{new}\ List<BaseSpot>();}
+\DoxyCodeLine{00425\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a89a665897ed47f9b7065ce771100b83c}{CanSync}}())}
+\DoxyCodeLine{00426\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00427\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ x\ \textcolor{keywordflow}{in}\ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a2160130492346bd22d7ce8a4ede1bf67}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_a5dfa2605f71620cafd59a7159f2c3488}{OandaSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_oandasettings_ab542487a4c6f5b4e9e39d2d63b70bf14}{Assets}})}
+\DoxyCodeLine{00428\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00429\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ spot\ =\ 0;}
+\DoxyCodeLine{00430\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ oandaAssetResponse\ =\ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a7bbe8203a7ccd78f59b904ab1c6389bb}{\_iapiService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_aa614614518048e1244ae357de18425df}{GetOandaInstrumentPriceUSD}}(x.AssetCode);}
+\DoxyCodeLine{00431\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a49deee18d15ec2cb2b1dd2dd9058cd1f}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a6be037b34888bbcf6b47dca8eef472de}{LogDebug}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.SpotHelper,\ \$\textcolor{stringliteral}{"{}latest\ data\ from\ oanda\ feed\ for\ \{x.AssetCode\}"{}},\ oandaAssetResponse);}
+\DoxyCodeLine{00432\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (oandaAssetResponse\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00433\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00434\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a49deee18d15ec2cb2b1dd2dd9058cd1f}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a46dc9bf58bc9605c7e17dfee38b94354}{LogError}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.SpotHelper,\ \$\textcolor{stringliteral}{"{}response\ from\ oanda\ via\ internalapi\ for\ asset\ \{x.AssetCode\}\ is\ null"{}});}
+\DoxyCodeLine{00435\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00436\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00437\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00438\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00439\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00440\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00441\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//check\ feed\ time\ variation}}
+\DoxyCodeLine{00442\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ feedTime\ =\ Convert.ToDateTime(oandaAssetResponse.prices?.FirstOrDefault()?.time).ToLocalTime();}
+\DoxyCodeLine{00443\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((pullTime\ -\/\ feedTime).TotalMinutes\ >\ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a2160130492346bd22d7ce8a4ede1bf67}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_abc5a23cce7a98ce3cd109ecb1c3122ae}{SpotFeedSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_spotfeedsettings_ab263694d641e1015ecc390a0f685d585}{TimeDifferenceThresholdMinutes}})}
+\DoxyCodeLine{00444\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00445\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a49deee18d15ec2cb2b1dd2dd9058cd1f}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a46dc9bf58bc9605c7e17dfee38b94354}{LogError}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.SpotHelper,\ \$\textcolor{stringliteral}{"{}time\ variation\ beyond\ threshold\ for\ oanda\ feed\ data\ for\ asset\ \{x.AssetCode\}"{}},\ oandaAssetResponse);}
+\DoxyCodeLine{00446\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00447\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00448\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{00449\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00450\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a49deee18d15ec2cb2b1dd2dd9058cd1f}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a78c9df658858fa3099eed69421423898}{LogException}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.SpotHelper,\ \$\textcolor{stringliteral}{"{}exception\ checking\ feed\ time\ from\ oanda\ feed\ response\ for\ asset\ \{x.AssetCode\}"{}},\ oandaAssetResponse,\ ex);}
+\DoxyCodeLine{00451\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00452\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//try\ first\ ask}}
+\DoxyCodeLine{00453\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\textcolor{keywordtype}{double}.TryParse(oandaAssetResponse?.prices?.FirstOrDefault()?.asks?.OrderBy(ask\ =>\ ask.price).FirstOrDefault()?.price\ ??\ \textcolor{stringliteral}{"{}0"{}},\ out\ spot)\ ||\ spot\ ==\ 0)}
+\DoxyCodeLine{00454\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00455\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//try\ closeoutask}}
+\DoxyCodeLine{00456\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\textcolor{keywordtype}{double}.TryParse(oandaAssetResponse?.prices?.FirstOrDefault()?.closeoutAsk\ ??\ \textcolor{stringliteral}{"{}0"{}},\ out\ spot)\ ||\ spot\ ==\ 0)}
+\DoxyCodeLine{00457\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00458\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//try\ first\ bid}}
+\DoxyCodeLine{00459\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\textcolor{keywordtype}{double}.TryParse(oandaAssetResponse?.prices?.FirstOrDefault()?.bids?.OrderByDescending(bid\ =>\ bid.price).FirstOrDefault()?.price\ ??\ \textcolor{stringliteral}{"{}0"{}},\ out\ spot)\ ||\ spot\ ==\ 0)}
+\DoxyCodeLine{00460\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00461\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a49deee18d15ec2cb2b1dd2dd9058cd1f}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a46dc9bf58bc9605c7e17dfee38b94354}{LogError}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.SpotHelper,\ \$\textcolor{stringliteral}{"{}unable\ to\ find\ suitable\ price\ in\ oanda\ feed\ for\ \{x.AssetCode\}"{}},\ oandaAssetResponse);}
+\DoxyCodeLine{00462\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00463\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00464\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00465\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00466\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{00467\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00468\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a49deee18d15ec2cb2b1dd2dd9058cd1f}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a78c9df658858fa3099eed69421423898}{LogException}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.SpotHelper,\ \$\textcolor{stringliteral}{"{}exception\ getting\ spot\ from\ oanda\ feed\ for\ \{x.AssetCode\}"{}},\ oandaAssetResponse,\ ex);}
+\DoxyCodeLine{00469\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00470\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_base_spot}{BaseSpot}}\ bs\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_base_spot}{BaseSpot}}() }
+\DoxyCodeLine{00471\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00472\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ AssetCode\ =\ x.\mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_base_spot_a9fa574ef36b5343f32a53d5edd7addb4}{AssetCode}},}
+\DoxyCodeLine{00473\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PairCode\ =\ \textcolor{stringliteral}{"{}USD"{}},}
+\DoxyCodeLine{00474\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Per\ =\ x.AssetCode\ ==\ \textcolor{stringliteral}{"{}AUD"{}}\ ?\ \textcolor{stringliteral}{"{}\$"{}}\ :\ \textcolor{stringliteral}{"{}oz"{}},}
+\DoxyCodeLine{00475\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Source\ =\ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a2160130492346bd22d7ce8a4ede1bf67}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_a5dfa2605f71620cafd59a7159f2c3488}{OandaSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_oandasettings_af22b7fd07aa26d2b2fd4d28c4179f83b}{SourceName}},}
+\DoxyCodeLine{00476\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PullTime\ =\ pullTime,}
+\DoxyCodeLine{00477\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Spot\ =\ spot}
+\DoxyCodeLine{00478\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00479\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ spotList.Add(bs);}
+\DoxyCodeLine{00480\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00481\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00482\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ spotList;}
+\DoxyCodeLine{00483\ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a0fd06a80c097c9b6fcd5ddd8b1889c18_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a0fd06a80c097c9b6fcd5ddd8b1889c18_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a2ad64affbfeec15e4217d8bfccd982ff}\label{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a2ad64affbfeec15e4217d8bfccd982ff} 
+\index{TaskAPI.Helpers.SpotHelper@{TaskAPI.Helpers.SpotHelper}!PullPolygonOracleData@{PullPolygonOracleData}}
+\index{PullPolygonOracleData@{PullPolygonOracleData}!TaskAPI.Helpers.SpotHelper@{TaskAPI.Helpers.SpotHelper}}
+\doxysubsubsection{\texorpdfstring{PullPolygonOracleData()}{PullPolygonOracleData()}}
+{\footnotesize\ttfamily List$<$ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_base_spot}{Base\+Spot}} $>$ Task\+API.\+Helpers.\+Spot\+Helper.\+Pull\+Polygon\+Oracle\+Data (\begin{DoxyParamCaption}\item[{Date\+Time}]{pull\+Time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pulls spot data from Polygon Oracle for each specified asset. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pull\+Time} & The date and time at which the data is pulled.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list of Base\+Spot objects containing spot data from Polygon Oracle. 
+\end{DoxyReturn}
+
+
+This method iterates through each asset specified in the Polygon Oracle settings.
+
+If the market is open, it retrieves the latest round data from Polygon Oracle for the asset.
+
+The retrieved data includes the asset\textquotesingle{}s spot value and pair code.
+
+If the market is closed or no data is available, it creates a dummy Base\+Spot object with a spot value of 0.
+
+The spot value is converted to the appropriate unit of measurement based on the asset code.
+
+Each Base\+Spot object is assigned the source name from the Polygon Oracle settings and the pull time.
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00277\ \ \ \ \ \{}
+\DoxyCodeLine{00278\ \ \ \ \ \ \ \ \ List<BaseSpot>\ spotList\ =\ \textcolor{keyword}{new}\ List<BaseSpot>();}
+\DoxyCodeLine{00279\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ x\ \textcolor{keywordflow}{in}\ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a2160130492346bd22d7ce8a4ede1bf67}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_ac56f44c706202b85f9a949eefd802a4b}{PolygonOracleSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_polygonoraclesettings_acd65b4bef8f036a74d81ec16546914ac}{Assets}})}
+\DoxyCodeLine{00280\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00281\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ spot\ =\ 0;}
+\DoxyCodeLine{00282\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ pairCode\ =\ \textcolor{stringliteral}{"{}USD"{}};}
+\DoxyCodeLine{00283\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//if\ market\ open,\ pull\ data\ and\ create\ basespot\ with\ live\ data,\ otherwise\ create\ dummy\ basespot\ with\ 0}}
+\DoxyCodeLine{00284\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a89a665897ed47f9b7065ce771100b83c}{CanSync}}())}
+\DoxyCodeLine{00285\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00286\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_polygon_oracle_1_1_latest_round_data_response}{LatestRoundDataResponse}}\ latestRoundResponse\ =\ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_ac6e63479696a9f01dc08d8bcf7fe6038}{\_alchemyService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_alchemy_service_a8db06c3be654656ef61b3177a0624787}{LatestRoundData}}(x.Contract);}
+\DoxyCodeLine{00287\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a49deee18d15ec2cb2b1dd2dd9058cd1f}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a6be037b34888bbcf6b47dca8eef472de}{LogDebug}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.SpotHelper,\ \$\textcolor{stringliteral}{"{}latest\ round\ data\ from\ polygon\ oracle\ for\ \{x.AssetCode\}"{}},\ latestRoundResponse);}
+\DoxyCodeLine{00288\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (latestRoundResponse\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00289\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00290\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a49deee18d15ec2cb2b1dd2dd9058cd1f}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a46dc9bf58bc9605c7e17dfee38b94354}{LogError}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.SpotHelper,\ \textcolor{stringliteral}{"{}response\ from\ polygon\ oracle\ service\ is\ null"{}});}
+\DoxyCodeLine{00291\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00292\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00293\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00295\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00296\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//check\ feed\ time\ variation}}
+\DoxyCodeLine{00297\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ feedTime\ =\ DateTimeOffset.FromUnixTimeSeconds(\textcolor{keywordtype}{long}.Parse(latestRoundResponse.\mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_polygon_oracle_1_1_latest_round_data_response_a7db191933c35e3102a10675915da067b}{updatedAt}}.ToString())).UtcDateTime.ToLocalTime();}
+\DoxyCodeLine{00298\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((pullTime\ -\/\ feedTime).TotalMinutes\ >\ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a2160130492346bd22d7ce8a4ede1bf67}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_abc5a23cce7a98ce3cd109ecb1c3122ae}{SpotFeedSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_spotfeedsettings_ab263694d641e1015ecc390a0f685d585}{TimeDifferenceThresholdMinutes}})}
+\DoxyCodeLine{00299\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00300\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a49deee18d15ec2cb2b1dd2dd9058cd1f}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a46dc9bf58bc9605c7e17dfee38b94354}{LogError}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.SpotHelper,\ \textcolor{stringliteral}{"{}polygon\ oracle\ time\ variation\ is\ above\ threshold"{}});}
+\DoxyCodeLine{00301\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00302\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00303\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ spot\ =\ Convert.ToDouble(latestRoundResponse.\mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_polygon_oracle_1_1_latest_round_data_response_a8fe6a5db07c172b21544944fb620cbaa}{answer}}.ToString())\ /\ Math.Pow(10,\ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a2160130492346bd22d7ce8a4ede1bf67}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_ac56f44c706202b85f9a949eefd802a4b}{PolygonOracleSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_polygonoraclesettings_a4f533d1a75a099c6f314b5b176b3c468}{ContractDecimals}});}
+\DoxyCodeLine{00305\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00306\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00307\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
+\DoxyCodeLine{00308\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00309\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a49deee18d15ec2cb2b1dd2dd9058cd1f}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a78c9df658858fa3099eed69421423898}{LogException}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.SpotHelper,\ \textcolor{stringliteral}{"{}exception\ reading\ values\ from\ polygon\ oracle\ response"{}},\ ex);}
+\DoxyCodeLine{00310\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00311\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00312\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00313\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_base_spot}{BaseSpot}}\ bs\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_base_spot}{BaseSpot}}() }
+\DoxyCodeLine{00314\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00315\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ AssetCode\ =\ x.\mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_base_spot_a9fa574ef36b5343f32a53d5edd7addb4}{AssetCode}},}
+\DoxyCodeLine{00316\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PairCode\ =\ pairCode,}
+\DoxyCodeLine{00317\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Per\ =\ x.AssetCode\ ==\ \textcolor{stringliteral}{"{}AUD"{}}\ ?\ \textcolor{stringliteral}{"{}\$"{}}\ :\ \textcolor{stringliteral}{"{}oz"{}},}
+\DoxyCodeLine{00318\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Source\ =\ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a2160130492346bd22d7ce8a4ede1bf67}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_ac56f44c706202b85f9a949eefd802a4b}{PolygonOracleSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_polygonoraclesettings_a9cce11d1062ce85664de5bf6bb1da49e}{SourceName}},}
+\DoxyCodeLine{00319\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PullTime\ =\ pullTime,}
+\DoxyCodeLine{00320\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Spot\ =\ spot}
+\DoxyCodeLine{00321\ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00322\ \ \ \ \ \ \ \ \ \ \ \ \ spotList.Add(bs);}
+\DoxyCodeLine{00323\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00324\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ spotList;}
+\DoxyCodeLine{00325\ \ \ \ \ \ \ \ \ \textcolor{comment}{//DEBUG}}
+\DoxyCodeLine{00326\ \ \ \ \ \ \ \ \ \textcolor{comment}{//spotList.First(x\ =>\ x.AssetCode\ ==\ "{}AUD"{}).Spot\ =\ 0;}}
+\DoxyCodeLine{00327\ \ \ \ \ \ \ \ \ \textcolor{comment}{//return\ spotList;}}
+\DoxyCodeLine{00328\ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a2ad64affbfeec15e4217d8bfccd982ff_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a2ad64affbfeec15e4217d8bfccd982ff_icgraph}
 \end{center}
 \end{figure}
 \Hypertarget{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a7b75f44b3310036d4de7f0f2956bbac1}\label{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a7b75f44b3310036d4de7f0f2956bbac1} 
@@ -141,10 +1005,10 @@ Finally, it generates special data, adds the processed spot data to the database
 \DoxyCodeLine{00086\ \ \ \ \ \{\ \ \ \ \ \ \ \ }
 \DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ List<BaseSpot>\ finalSpotList\ =\ \textcolor{keyword}{new}\ List<BaseSpot>();}
 \DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ var\ pullTime\ =\ DateTime.Now;}
-\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ var\ forexData\ =\ PullForexData(pullTime);}
-\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ var\ polygonOracleData\ =\ PullPolygonOracleData(pullTime);}
-\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ var\ oandaData\ =\ PullOandaData(pullTime);}
-\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ var\ binanceData\ =\ PullBinanceData(pullTime);}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ var\ forexData\ =\ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a51135865d712678dee52479c109a61fb}{PullForexData}}(pullTime);}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ var\ polygonOracleData\ =\ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a2ad64affbfeec15e4217d8bfccd982ff}{PullPolygonOracleData}}(pullTime);}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ var\ oandaData\ =\ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a0fd06a80c097c9b6fcd5ddd8b1889c18}{PullOandaData}}(pullTime);}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ var\ binanceData\ =\ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a701fc9c0beaecff83beb2c806b8581d5}{PullBinanceData}}(pullTime);}
 \DoxyCodeLine{00093\ }
 \DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ finalSpotList.AddRange(polygonOracleData);}
 \DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ finalSpotList.AddRange(forexData);}
@@ -175,19 +1039,19 @@ Finally, it generates special data, adds the processed spot data to the database
 \DoxyCodeLine{00120\ }
 \DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_base_spot}{BaseSpot}}\ bs\ \textcolor{keywordflow}{in}\ finalSpotList.Where(bs\ =>\ bs.Spot\ ==\ 0))}
 \DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ RecyclePreviousSpot(bs);}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a95400211c9214b34c8427e09776449a9}{RecyclePreviousSpot}}(bs);}
 \DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00125\ }
 \DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \textcolor{comment}{//convert\ all\ usd\ and\ btc\ to\ aud\ excluding\ aud\ itself\ }}
-\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ audusd\ =\ Convert.ToDouble(finalSpotList.FirstOrDefault(bs\ =>\ bs.AssetCode\ ==\ \textcolor{stringliteral}{"{}AUD"{}}\ \&\&\ bs.Source\ ==\ \_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_ac56f44c706202b85f9a949eefd802a4b}{PolygonOracleSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_polygonoraclesettings_a9cce11d1062ce85664de5bf6bb1da49e}{SourceName}})?.Spot);}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ audusd\ =\ Convert.ToDouble(finalSpotList.FirstOrDefault(bs\ =>\ bs.AssetCode\ ==\ \textcolor{stringliteral}{"{}AUD"{}}\ \&\&\ bs.Source\ ==\ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a2160130492346bd22d7ce8a4ede1bf67}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_ac56f44c706202b85f9a949eefd802a4b}{PolygonOracleSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_polygonoraclesettings_a9cce11d1062ce85664de5bf6bb1da49e}{SourceName}})?.Spot);}
 \DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (audusd\ ==\ 0)}
 \DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \{}
 \DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ var\ fallbackAUD\ =\ finalSpotList.FirstOrDefault(bs\ =>\ bs.AssetCode\ ==\ \textcolor{stringliteral}{"{}AUD"{}});}
 \DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ audusd\ =\ Convert.ToDouble(fallbackAUD?.Spot);}
 \DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(fallbackAUD\ ==\ \textcolor{keyword}{null})}
-\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a46dc9bf58bc9605c7e17dfee38b94354}{LogError}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.SpotHelper,\ \$\textcolor{stringliteral}{"{}polygon\ oracle\ AUD\ unavailable,\ NO\ FALLBACK\ SOURCE\ AVAILABLE,\ price\ \$\{audusd\}"{}});}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a49deee18d15ec2cb2b1dd2dd9058cd1f}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a46dc9bf58bc9605c7e17dfee38b94354}{LogError}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.SpotHelper,\ \$\textcolor{stringliteral}{"{}polygon\ oracle\ AUD\ unavailable,\ NO\ FALLBACK\ SOURCE\ AVAILABLE,\ price\ \$\{audusd\}"{}});}
 \DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
-\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a5c2a67dbd8beb6f821c46b8d052d59ea}{LogInformation}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.SpotHelper,\ \$\textcolor{stringliteral}{"{}polygon\ oracle\ AUD\ unavailable,\ falling\ back\ to\ \{fallbackAUD.Source\ \},\ price\ \$\{audusd\}"{}});}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a49deee18d15ec2cb2b1dd2dd9058cd1f}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a5c2a67dbd8beb6f821c46b8d052d59ea}{LogInformation}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.SpotHelper,\ \$\textcolor{stringliteral}{"{}polygon\ oracle\ AUD\ unavailable,\ falling\ back\ to\ \{fallbackAUD.Source\ \},\ price\ \$\{audusd\}"{}});}
 \DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ btcaud\ =\ Convert.ToDouble(finalSpotList.FirstOrDefault(bs\ =>\ bs.AssetCode\ ==\ \textcolor{stringliteral}{"{}BTC"{}}\ \&\&\ bs.PairCode\ ==\ \textcolor{stringliteral}{"{}AUD"{}})?.Spot);}
 \DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (btcaud\ ==\ 0\ \&\&\ audusd\ >\ 0)}
@@ -204,20 +1068,20 @@ Finally, it generates special data, adds the processed spot data to the database
 \DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
 \DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bs.Spot\ =\ bs.Spot\ /\ audusd;}
 \DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bs.PairCode\ =\ \textcolor{stringliteral}{"{}AUD"{}};}
-\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a6be037b34888bbcf6b47dca8eef472de}{LogDebug}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.SpotHelper,\ \$\textcolor{stringliteral}{"{}converted\ \{bs.AssetCode\}\ from\ USD\ to\ AUD"{}});}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a49deee18d15ec2cb2b1dd2dd9058cd1f}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a6be037b34888bbcf6b47dca8eef472de}{LogDebug}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.SpotHelper,\ \$\textcolor{stringliteral}{"{}converted\ \{bs.AssetCode\}\ from\ USD\ to\ AUD"{}});}
 \DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
 \DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ \_iapiService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_aeffeb1d3d59aeeab65dfe72691d21600}{SendEmail}}(\textcolor{keyword}{new}\ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_email_post}{EmailPost}}()}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a7bbe8203a7ccd78f59b904ab1c6389bb}{\_iapiService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_aeffeb1d3d59aeeab65dfe72691d21600}{SendEmail}}(\textcolor{keyword}{new}\ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_email_post}{EmailPost}}()}
 \DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ EmailFrom\ =\ \_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_af39dc0933cd608b26e7bc4f82951d356}{GeneralSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings_ac0a0b89d2e7cf7f820e5663a1a4cffbf}{NotificationEmailFrom}},}
-\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ EmailTo\ =\ \_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_af39dc0933cd608b26e7bc4f82951d356}{GeneralSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings_a25434a5471214771ae507f7152073898}{NotificationEmailTo}},}
-\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ NameFrom\ =\ \_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_af39dc0933cd608b26e7bc4f82951d356}{GeneralSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings_a082a8e92b97a7d83196f1d0056241042}{NotificationEmailName}},}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ EmailFrom\ =\ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a2160130492346bd22d7ce8a4ede1bf67}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_af39dc0933cd608b26e7bc4f82951d356}{GeneralSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings_ac0a0b89d2e7cf7f820e5663a1a4cffbf}{NotificationEmailFrom}},}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ EmailTo\ =\ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a2160130492346bd22d7ce8a4ede1bf67}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_af39dc0933cd608b26e7bc4f82951d356}{GeneralSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings_a25434a5471214771ae507f7152073898}{NotificationEmailTo}},}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ NameFrom\ =\ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a2160130492346bd22d7ce8a4ede1bf67}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_af39dc0933cd608b26e7bc4f82951d356}{GeneralSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings_a082a8e92b97a7d83196f1d0056241042}{NotificationEmailName}},}
 \DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Subject\ =\ \textcolor{stringliteral}{"{}Error\ getting\ AUD\ from\ price\ feeds"{}},}
 \DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ HTMLBody\ =\ \$\textcolor{stringliteral}{"{}Task\ API\ was\ unable\ to\ find\ the\ AUD\ price\ in\ this\ round"{}}}
 \DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ \});}
-\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a46dc9bf58bc9605c7e17dfee38b94354}{LogError}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.SpotHelper,\ \$\textcolor{stringliteral}{"{}AUD\ not\ found,\ unable\ to\ convert\ USD\ and\ BTC\ values"{}});}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a49deee18d15ec2cb2b1dd2dd9058cd1f}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a46dc9bf58bc9605c7e17dfee38b94354}{LogError}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.SpotHelper,\ \$\textcolor{stringliteral}{"{}AUD\ not\ found,\ unable\ to\ convert\ USD\ and\ BTC\ values"{}});}
 \DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (btcaud\ >\ 0)}
 \DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \{}
@@ -226,7 +1090,7 @@ Finally, it generates special data, adds the processed spot data to the database
 \DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
 \DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bs.Spot\ =\ bs.Spot\ *\ btcaud;}
 \DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bs.PairCode\ =\ \textcolor{stringliteral}{"{}AUD"{}};}
-\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a6be037b34888bbcf6b47dca8eef472de}{LogDebug}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.SpotHelper,\ \$\textcolor{stringliteral}{"{}converted\ \{bs.AssetCode\}\ from\ BTC\ to\ AUD"{}});}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a49deee18d15ec2cb2b1dd2dd9058cd1f}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a6be037b34888bbcf6b47dca8eef472de}{LogDebug}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.SpotHelper,\ \$\textcolor{stringliteral}{"{}converted\ \{bs.AssetCode\}\ from\ BTC\ to\ AUD"{}});}
 \DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00177\ }
@@ -238,7 +1102,7 @@ Finally, it generates special data, adds the processed spot data to the database
 \DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \{}
 \DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \ \ var\ variations\ =\ \textcolor{keyword}{new}\ List<(string\ description,\ double\ variation)>();}
 \DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//primary\ value\ to\ compare\ all\ others\ against\ should\ be\ polygon\ oracle,\ otherwise\ choose\ first}}
-\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}?\ primaryValue\ =\ grpXAU.FirstOrDefault(bs\ =>\ bs.Source==\_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_ac56f44c706202b85f9a949eefd802a4b}{PolygonOracleSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_polygonoraclesettings_a9cce11d1062ce85664de5bf6bb1da49e}{SourceName}})?.Spot\ ??}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}?\ primaryValue\ =\ grpXAU.FirstOrDefault(bs\ =>\ bs.Source==\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a2160130492346bd22d7ce8a4ede1bf67}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_ac56f44c706202b85f9a949eefd802a4b}{PolygonOracleSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_polygonoraclesettings_a9cce11d1062ce85664de5bf6bb1da49e}{SourceName}})?.Spot\ ??}
 \DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ grpXAU.FirstOrDefault()?.Spot;}
 \DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (primaryValue\ !=\ \textcolor{keyword}{null})}
 \DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
@@ -248,8 +1112,8 @@ Finally, it generates special data, adds the processed spot data to the database
 \DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ variations.Add((\$\textcolor{stringliteral}{"{}AssetCode:\ \{bs.AssetCode\}\ Source:\ \{bs.Source\}\ Primary\ Value:\ \{primaryValue.ToString()\}\ Comparison\ Value:\ \{bs.Spot\}"{}},\ ((\textcolor{keywordtype}{double})primaryValue\ -\/\ bs.Spot)\ /\ (((\textcolor{keywordtype}{double})primaryValue\ +\ bs.Spot)\ /\ 2)\ *\ 100));}
 \DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (variations.Any(var\ =>\ var.variation\ >\ \_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_abc5a23cce7a98ce3cd109ecb1c3122ae}{SpotFeedSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_spotfeedsettings_abce48cfdd32d7c339d09d27193deb7c4}{XAUFeedVariationThresholdPercent}}\ ||\ var.variation\ <\ -\/\_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_abc5a23cce7a98ce3cd109ecb1c3122ae}{SpotFeedSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_spotfeedsettings_abce48cfdd32d7c339d09d27193deb7c4}{XAUFeedVariationThresholdPercent}}))}
-\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a46dc9bf58bc9605c7e17dfee38b94354}{LogError}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.SpotHelper,\ \textcolor{stringliteral}{"{}XAU\ feeds\ are\ outside\ variation\ threshold"{}},\ variations);}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (variations.Any(var\ =>\ var.variation\ >\ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a2160130492346bd22d7ce8a4ede1bf67}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_abc5a23cce7a98ce3cd109ecb1c3122ae}{SpotFeedSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_spotfeedsettings_abce48cfdd32d7c339d09d27193deb7c4}{XAUFeedVariationThresholdPercent}}\ ||\ var.variation\ <\ -\/\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a2160130492346bd22d7ce8a4ede1bf67}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_abc5a23cce7a98ce3cd109ecb1c3122ae}{SpotFeedSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_spotfeedsettings_abce48cfdd32d7c339d09d27193deb7c4}{XAUFeedVariationThresholdPercent}}))}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a49deee18d15ec2cb2b1dd2dd9058cd1f}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a46dc9bf58bc9605c7e17dfee38b94354}{LogError}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.SpotHelper,\ \textcolor{stringliteral}{"{}XAU\ feeds\ are\ outside\ variation\ threshold"{}},\ variations);}
 \DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \textcolor{comment}{//XAG}}
 \DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ var\ grpXAG\ =\ compareGroups.FirstOrDefault(grp\ =>\ grp.Key\ ==\ \textcolor{stringliteral}{"{}XAG"{}});}
@@ -257,7 +1121,7 @@ Finally, it generates special data, adds the processed spot data to the database
 \DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \{}
 \DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \ \ \ \ var\ variations\ =\ \textcolor{keyword}{new}\ List<(string\ description,\ double\ variation)>();}
 \DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//primary\ value\ to\ compare\ all\ others\ against\ should\ be\ polygon\ oracle,\ otherwise\ choose\ first}}
-\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}?\ primaryValue\ =\ grpXAG.FirstOrDefault(bs\ =>\ bs.Source\ ==\ \_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_ac56f44c706202b85f9a949eefd802a4b}{PolygonOracleSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_polygonoraclesettings_a9cce11d1062ce85664de5bf6bb1da49e}{SourceName}})?.Spot\ ??}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}?\ primaryValue\ =\ grpXAG.FirstOrDefault(bs\ =>\ bs.Source\ ==\ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a2160130492346bd22d7ce8a4ede1bf67}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_ac56f44c706202b85f9a949eefd802a4b}{PolygonOracleSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_polygonoraclesettings_a9cce11d1062ce85664de5bf6bb1da49e}{SourceName}})?.Spot\ ??}
 \DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ grpXAG.FirstOrDefault()?.Spot;}
 \DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (primaryValue\ !=\ \textcolor{keyword}{null})}
 \DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
@@ -267,8 +1131,8 @@ Finally, it generates special data, adds the processed spot data to the database
 \DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ variations.Add((\$\textcolor{stringliteral}{"{}AssetCode:\ \{bs.AssetCode\}\ Source:\ \{bs.Source\}\ Primary\ Value:\ \{primaryValue.ToString()\}\ Comparison\ Value:\ \{bs.Spot\}"{}},\ ((\textcolor{keywordtype}{double})primaryValue\ -\/\ bs.Spot)\ /\ (((\textcolor{keywordtype}{double})primaryValue\ +\ bs.Spot)\ /\ 2)\ *\ 100));}
 \DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (variations.Any(var\ =>\ var.variation\ >\ \_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_abc5a23cce7a98ce3cd109ecb1c3122ae}{SpotFeedSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_spotfeedsettings_acf22a3188f3d0473175cbd5ac65dd2b9}{XAGFeedVariationThresholdPercent}}\ ||\ var.variation\ <\ -\/\_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_abc5a23cce7a98ce3cd109ecb1c3122ae}{SpotFeedSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_spotfeedsettings_acf22a3188f3d0473175cbd5ac65dd2b9}{XAGFeedVariationThresholdPercent}}))}
-\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a46dc9bf58bc9605c7e17dfee38b94354}{LogError}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.SpotHelper,\ \textcolor{stringliteral}{"{}XAG\ feeds\ are\ outside\ variation\ threshold"{}},\ variations);}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (variations.Any(var\ =>\ var.variation\ >\ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a2160130492346bd22d7ce8a4ede1bf67}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_abc5a23cce7a98ce3cd109ecb1c3122ae}{SpotFeedSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_spotfeedsettings_acf22a3188f3d0473175cbd5ac65dd2b9}{XAGFeedVariationThresholdPercent}}\ ||\ var.variation\ <\ -\/\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a2160130492346bd22d7ce8a4ede1bf67}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_abc5a23cce7a98ce3cd109ecb1c3122ae}{SpotFeedSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_spotfeedsettings_acf22a3188f3d0473175cbd5ac65dd2b9}{XAGFeedVariationThresholdPercent}}))}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a49deee18d15ec2cb2b1dd2dd9058cd1f}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a46dc9bf58bc9605c7e17dfee38b94354}{LogError}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.SpotHelper,\ \textcolor{stringliteral}{"{}XAG\ feeds\ are\ outside\ variation\ threshold"{}},\ variations);}
 \DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \textcolor{comment}{//AUD}}
 \DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ var\ grpAUD\ =\ compareGroups.FirstOrDefault(grp\ =>\ grp.Key\ ==\ \textcolor{stringliteral}{"{}AUD"{}});}
@@ -276,7 +1140,7 @@ Finally, it generates special data, adds the processed spot data to the database
 \DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \{}
 \DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ var\ variations\ =\ \textcolor{keyword}{new}\ List<(string\ description,\ double\ variation)>();}
 \DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//primary\ value\ to\ compare\ all\ others\ against\ should\ be\ polygon\ oracle,\ otherwise\ choose\ first}}
-\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}?\ primaryValue\ =\ grpAUD.FirstOrDefault(bs\ =>\ bs.Source\ ==\ \_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_ac56f44c706202b85f9a949eefd802a4b}{PolygonOracleSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_polygonoraclesettings_a9cce11d1062ce85664de5bf6bb1da49e}{SourceName}})?.Spot\ ??}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}?\ primaryValue\ =\ grpAUD.FirstOrDefault(bs\ =>\ bs.Source\ ==\ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a2160130492346bd22d7ce8a4ede1bf67}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_ac56f44c706202b85f9a949eefd802a4b}{PolygonOracleSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_polygonoraclesettings_a9cce11d1062ce85664de5bf6bb1da49e}{SourceName}})?.Spot\ ??}
 \DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ grpAUD.FirstOrDefault()?.Spot;}
 \DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (primaryValue\ !=\ \textcolor{keyword}{null})}
 \DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
@@ -286,18 +1150,18 @@ Finally, it generates special data, adds the processed spot data to the database
 \DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ variations.Add((\$\textcolor{stringliteral}{"{}AssetCode:\ \{bs.AssetCode\}\ Source:\ \{bs.Source\}\ Primary\ Value:\ \{primaryValue.ToString()\}\ Comparison\ Value:\ \{bs.Spot\}"{}},\ ((\textcolor{keywordtype}{double})primaryValue\ -\/\ bs.Spot)\ /\ (((\textcolor{keywordtype}{double})primaryValue\ +\ bs.Spot)\ /\ 2)\ *\ 100));}
 \DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (variations.Any(var\ =>\ var.variation\ >\ \_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_abc5a23cce7a98ce3cd109ecb1c3122ae}{SpotFeedSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_spotfeedsettings_abe038aab4e92b88aab47caf734aa8a3e}{AUDFeedVariationThresholdPercent}}\ ||\ var.variation\ <\ -\/\_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_abc5a23cce7a98ce3cd109ecb1c3122ae}{SpotFeedSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_spotfeedsettings_abe038aab4e92b88aab47caf734aa8a3e}{AUDFeedVariationThresholdPercent}}))}
-\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a46dc9bf58bc9605c7e17dfee38b94354}{LogError}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.SpotHelper,\ \textcolor{stringliteral}{"{}AUD\ feeds\ are\ outside\ variation\ threshold"{}},\ variations);}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (variations.Any(var\ =>\ var.variation\ >\ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a2160130492346bd22d7ce8a4ede1bf67}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_abc5a23cce7a98ce3cd109ecb1c3122ae}{SpotFeedSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_spotfeedsettings_abe038aab4e92b88aab47caf734aa8a3e}{AUDFeedVariationThresholdPercent}}\ ||\ var.variation\ <\ -\/\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a2160130492346bd22d7ce8a4ede1bf67}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_abc5a23cce7a98ce3cd109ecb1c3122ae}{SpotFeedSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_spotfeedsettings_abe038aab4e92b88aab47caf734aa8a3e}{AUDFeedVariationThresholdPercent}}))}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a49deee18d15ec2cb2b1dd2dd9058cd1f}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a46dc9bf58bc9605c7e17dfee38b94354}{LogError}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.SpotHelper,\ \textcolor{stringliteral}{"{}AUD\ feeds\ are\ outside\ variation\ threshold"{}},\ variations);}
 \DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00237\ }
 \DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \textcolor{comment}{//remove\ redundant/duplicate\ assets\ selecting\ preferred\ source\ or\ highest\ price}}
 \DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ grp\ \textcolor{keywordflow}{in}\ compareGroups)}
 \DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \{}
 \DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//polygon\ oracle\ is\ preferred\ source}}
-\DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (grp.Any(bs\ =>\ bs.Source\ ==\ \_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_ac56f44c706202b85f9a949eefd802a4b}{PolygonOracleSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_polygonoraclesettings_a9cce11d1062ce85664de5bf6bb1da49e}{SourceName}}))}
+\DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (grp.Any(bs\ =>\ bs.Source\ ==\ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a2160130492346bd22d7ce8a4ede1bf67}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_ac56f44c706202b85f9a949eefd802a4b}{PolygonOracleSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_polygonoraclesettings_a9cce11d1062ce85664de5bf6bb1da49e}{SourceName}}))}
 \DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
 \DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//group\ has\ preferred\ source\ -\/\ remove\ others}}
-\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ finalSpotList\ =\ finalSpotList.Except(grp.Where(bs\ =>\ bs.Source\ !=\ \_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_ac56f44c706202b85f9a949eefd802a4b}{PolygonOracleSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_polygonoraclesettings_a9cce11d1062ce85664de5bf6bb1da49e}{SourceName}})).ToList();}
+\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ finalSpotList\ =\ finalSpotList.Except(grp.Where(bs\ =>\ bs.Source\ !=\ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a2160130492346bd22d7ce8a4ede1bf67}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_ac56f44c706202b85f9a949eefd802a4b}{PolygonOracleSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_polygonoraclesettings_a9cce11d1062ce85664de5bf6bb1da49e}{SourceName}})).ToList();}
 \DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
 \DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
@@ -306,10 +1170,10 @@ Finally, it generates special data, adds the processed spot data to the database
 \DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00253\ }
-\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ GenerateSpecialData(pullTime,\ finalSpotList);}
-\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ \_context.\mbox{\hyperlink{class_task_a_p_i_1_1_contexts_1_1_priceapp_context_a5e7d6eb59fabb7c28af0d9a97551a83d}{BaseSpots}}.AddRange(finalSpotList);}
-\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \_context.SaveChanges();}
-\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ TrimSpotData();}
+\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a2d5da5f529f7ec58c18cefb373466d99}{GenerateSpecialData}}(pullTime,\ finalSpotList);}
+\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_aa365640b2ac3e3f84df34e8a27817f81}{\_context}}.\mbox{\hyperlink{class_task_a_p_i_1_1_contexts_1_1_priceapp_context_a5e7d6eb59fabb7c28af0d9a97551a83d}{BaseSpots}}.AddRange(finalSpotList);}
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_aa365640b2ac3e3f84df34e8a27817f81}{\_context}}.SaveChanges();}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_adeeda07d908e3644d9ba13213077d205}{TrimSpotData}}();}
 \DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ finalSpotList;}
 \DoxyCodeLine{00259\ \ \ \ \ \}}
 
@@ -322,12 +1186,66 @@ Here is the call graph for this function\+:
 \includegraphics[width=350pt]{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a7b75f44b3310036d4de7f0f2956bbac1_cgraph}
 \end{center}
 \end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a7b75f44b3310036d4de7f0f2956bbac1_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a95400211c9214b34c8427e09776449a9}\label{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a95400211c9214b34c8427e09776449a9} 
+\index{TaskAPI.Helpers.SpotHelper@{TaskAPI.Helpers.SpotHelper}!RecyclePreviousSpot@{RecyclePreviousSpot}}
+\index{RecyclePreviousSpot@{RecyclePreviousSpot}!TaskAPI.Helpers.SpotHelper@{TaskAPI.Helpers.SpotHelper}}
+\doxysubsubsection{\texorpdfstring{RecyclePreviousSpot()}{RecyclePreviousSpot()}}
+{\footnotesize\ttfamily void Task\+API.\+Helpers.\+Spot\+Helper.\+Recycle\+Previous\+Spot (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_base_spot}{Base\+Spot}}}]{bs }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Recycles the previous spot data for the given Base\+Spot from the database. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bs} & The Base\+Spot object for which the previous spot data will be recycled.\\
+\hline
+\end{DoxyParams}
+
+
+This method retrieves the most recent spot data entry for the specified {\itshape bs}  from the database and updates the provided {\itshape bs}  object with the recycled spot data.
+
+If a previous spot data entry is found in the database for the same asset code, the method updates the {\itshape bs}  object with the recycled data, including pair code, source, and spot value.
+
+If no previous spot data entry is found for the specified asset code, the method logs an error indicating that recycling is not possible.
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00659\ \ \ \ \ \{}
+\DoxyCodeLine{00660\ \ \ \ \ \ \ \ \ var\ bsRecycle\ =\ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_aa365640b2ac3e3f84df34e8a27817f81}{\_context}}.\mbox{\hyperlink{class_task_a_p_i_1_1_contexts_1_1_priceapp_context_a5e7d6eb59fabb7c28af0d9a97551a83d}{BaseSpots}}.Where(bsr\ =>\ bsr.AssetCode\ ==\ bs.\mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_base_spot_a9fa574ef36b5343f32a53d5edd7addb4}{AssetCode}})?.OrderByDescending(bs\ =>\ bs.\mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_base_spot_abbb6466c0a299a01a982efb772382e5d}{PullTime}}).Take(1)?.FirstOrDefault();}
+\DoxyCodeLine{00661\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (bsRecycle\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00662\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00663\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a49deee18d15ec2cb2b1dd2dd9058cd1f}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a6be037b34888bbcf6b47dca8eef472de}{LogDebug}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.SpotHelper,\ \$\textcolor{stringliteral}{"{}recycling\ spot\ for\ \{bs.AssetCode\}\ from\ database"{}},\ bsRecycle);}
+\DoxyCodeLine{00664\ \ \ \ \ \ \ \ \ \ \ \ \ bs.PairCode\ =\ bsRecycle.PairCode;}
+\DoxyCodeLine{00665\ \ \ \ \ \ \ \ \ \ \ \ \ bs.Source\ =\ \textcolor{stringliteral}{"{}database"{}};}
+\DoxyCodeLine{00666\ \ \ \ \ \ \ \ \ \ \ \ \ bs.Spot\ =\ bsRecycle.Spot;}
+\DoxyCodeLine{00667\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00668\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00669\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00670\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a49deee18d15ec2cb2b1dd2dd9058cd1f}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a46dc9bf58bc9605c7e17dfee38b94354}{LogError}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.SpotHelper,\ \$\textcolor{stringliteral}{"{}cannot\ recycle\ spot\ for\ \{bs.AssetCode\}\ from\ database"{}});}
+\DoxyCodeLine{00671\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00672\ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a95400211c9214b34c8427e09776449a9_cgraph}
+\end{center}
+\end{figure}
 Here is the caller graph for this function\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a7b75f44b3310036d4de7f0f2956bbac1_icgraph}
+\includegraphics[width=350pt]{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a95400211c9214b34c8427e09776449a9_icgraph}
 \end{center}
 \end{figure}
 \Hypertarget{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a6b975ced6fddc4826a8950c8a250b926}\label{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a6b975ced6fddc4826a8950c8a250b926} 
@@ -339,7 +1257,7 @@ Here is the caller graph for this function\+:
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00698\ \ \ \ \ \{}
-\DoxyCodeLine{00699\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ isDebug\ =\ \_env.IsDevelopment()\ ||\ \_env.IsStaging();}
+\DoxyCodeLine{00699\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ isDebug\ =\ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a91a44041fb2de73102a3319f9edf4258}{\_env}}.IsDevelopment()\ ||\ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a91a44041fb2de73102a3319f9edf4258}{\_env}}.IsStaging();}
 \DoxyCodeLine{00700\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
 \DoxyCodeLine{00701\ \ \ \ \ \ \ \ \ \{}
 \DoxyCodeLine{00702\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ Year\ =\ DateTime.Now.Year;}
@@ -351,10 +1269,10 @@ Here is the caller graph for this function\+:
 \DoxyCodeLine{00708\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!isDebug\ \&\&\ !(DateTime.Now\ >\ WindowOpen\ \&\ DateTime.Now\ <\ WindowClose))}
 \DoxyCodeLine{00709\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\textcolor{keyword}{false},\ \textcolor{keyword}{new}\ \{\ success\ =\ \textcolor{keyword}{false},\ message\ =\ \textcolor{stringliteral}{"{}request\ does\ not\ fall\ within\ daily\ save\ time\ window"{}}\ \});}
 \DoxyCodeLine{00710\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//check\ if\ done\ today\ already}}
-\DoxyCodeLine{00711\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!isDebug\ \&\&\ \_context.\mbox{\hyperlink{class_task_a_p_i_1_1_contexts_1_1_priceapp_context_a0a63b303899246b496a42f08da57bd43}{DailyCloses}}.Where(dc\ =>\ dc.Year\ ==\ Year\ \&\&\ dc.Month\ ==\ Month\ \&\&\ dc.Day\ ==\ Day).Count()\ >\ 0)\ }
-\DoxyCodeLine{00712\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\textcolor{keyword}{false},\ \textcolor{keyword}{new}\ \{\ success\ =\ \textcolor{keyword}{false},\ message\ =\ \textcolor{stringliteral}{"{}daily\ closes\ already\ completed\ for\ today"{}},\ Data\ =\ \_context.\mbox{\hyperlink{class_task_a_p_i_1_1_contexts_1_1_priceapp_context_a0a63b303899246b496a42f08da57bd43}{DailyCloses}}.Where(dc\ =>\ dc.Year\ ==\ Year\ \&\&\ dc.Month\ ==\ Month\ \&\&\ dc.Day\ ==\ Day).ToList()\ \});}
+\DoxyCodeLine{00711\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!isDebug\ \&\&\ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_aa365640b2ac3e3f84df34e8a27817f81}{\_context}}.\mbox{\hyperlink{class_task_a_p_i_1_1_contexts_1_1_priceapp_context_a0a63b303899246b496a42f08da57bd43}{DailyCloses}}.Where(dc\ =>\ dc.Year\ ==\ Year\ \&\&\ dc.Month\ ==\ Month\ \&\&\ dc.Day\ ==\ Day).Count()\ >\ 0)\ }
+\DoxyCodeLine{00712\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\textcolor{keyword}{false},\ \textcolor{keyword}{new}\ \{\ success\ =\ \textcolor{keyword}{false},\ message\ =\ \textcolor{stringliteral}{"{}daily\ closes\ already\ completed\ for\ today"{}},\ Data\ =\ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_aa365640b2ac3e3f84df34e8a27817f81}{\_context}}.\mbox{\hyperlink{class_task_a_p_i_1_1_contexts_1_1_priceapp_context_a0a63b303899246b496a42f08da57bd43}{DailyCloses}}.Where(dc\ =>\ dc.Year\ ==\ Year\ \&\&\ dc.Month\ ==\ Month\ \&\&\ dc.Day\ ==\ Day).ToList()\ \});}
 \DoxyCodeLine{00713\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//get\ current\ asset\ list\ from\ priceapp}}
-\DoxyCodeLine{00714\ \ \ \ \ \ \ \ \ \ \ \ \ var\ assetList\ =\ \_iapiService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_a7e3600841f53749e6c915ace609dfa11}{PriceappAssets}}();}
+\DoxyCodeLine{00714\ \ \ \ \ \ \ \ \ \ \ \ \ var\ assetList\ =\ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a7bbe8203a7ccd78f59b904ab1c6389bb}{\_iapiService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_a7e3600841f53749e6c915ace609dfa11}{PriceappAssets}}();}
 \DoxyCodeLine{00715\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (assetList\ ==\ \textcolor{keyword}{null}\ ||\ assetList.Count\ ==\ 0)}
 \DoxyCodeLine{00716\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
 \DoxyCodeLine{00717\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\textcolor{keyword}{true},\ \textcolor{keyword}{new}\ \{\ success\ =\ \textcolor{keyword}{false},\ message\ =\ \textcolor{stringliteral}{"{}asset\ list\ from\ priceapp\ was\ null"{}}\ \});}
@@ -396,14 +1314,14 @@ Here is the caller graph for this function\+:
 \DoxyCodeLine{00753\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \};}
 \DoxyCodeLine{00754\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ dailyCloses.Add(dc);}
 \DoxyCodeLine{00755\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00756\ \ \ \ \ \ \ \ \ \ \ \ \ \_context.\mbox{\hyperlink{class_task_a_p_i_1_1_contexts_1_1_priceapp_context_a0a63b303899246b496a42f08da57bd43}{DailyCloses}}.AddRange(dailyCloses);}
-\DoxyCodeLine{00757\ \ \ \ \ \ \ \ \ \ \ \ \ \_context.SaveChanges();}
-\DoxyCodeLine{00758\ \ \ \ \ \ \ \ \ \ \ \ \ var\ exportResult\ =\ ExportChartData();}
+\DoxyCodeLine{00756\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_aa365640b2ac3e3f84df34e8a27817f81}{\_context}}.\mbox{\hyperlink{class_task_a_p_i_1_1_contexts_1_1_priceapp_context_a0a63b303899246b496a42f08da57bd43}{DailyCloses}}.AddRange(dailyCloses);}
+\DoxyCodeLine{00757\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_aa365640b2ac3e3f84df34e8a27817f81}{\_context}}.SaveChanges();}
+\DoxyCodeLine{00758\ \ \ \ \ \ \ \ \ \ \ \ \ var\ exportResult\ =\ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a0a13962d034427b5047452856eb3198d}{ExportChartData}}();}
 \DoxyCodeLine{00759\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (exportResult.Error,\ \textcolor{keyword}{new}\ \{\ SaveDailtySpot\ =\ dailyCloses,\ ExportChartData\ =\ exportResult.Result\ \});}
 \DoxyCodeLine{00760\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00761\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
 \DoxyCodeLine{00762\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00763\ \ \ \ \ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a46dc9bf58bc9605c7e17dfee38b94354}{LogError}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.SpotHelper,\ \textcolor{stringliteral}{"{}exception\ saving\ daily\ spot"{}},\ ex.ToString());}
+\DoxyCodeLine{00763\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a49deee18d15ec2cb2b1dd2dd9058cd1f}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a46dc9bf58bc9605c7e17dfee38b94354}{LogError}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.SpotHelper,\ \textcolor{stringliteral}{"{}exception\ saving\ daily\ spot"{}},\ ex.ToString());}
 \DoxyCodeLine{00764\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\textcolor{keyword}{true},\ ex.ToString());}
 \DoxyCodeLine{00765\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00766\ \ \ \ \ \}}
@@ -416,9 +1334,83 @@ Here is the caller graph for this function\+:\nopagebreak
 \includegraphics[width=350pt]{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a6b975ced6fddc4826a8950c8a250b926_icgraph}
 \end{center}
 \end{figure}
+\Hypertarget{class_task_a_p_i_1_1_helpers_1_1_spot_helper_adeeda07d908e3644d9ba13213077d205}\label{class_task_a_p_i_1_1_helpers_1_1_spot_helper_adeeda07d908e3644d9ba13213077d205} 
+\index{TaskAPI.Helpers.SpotHelper@{TaskAPI.Helpers.SpotHelper}!TrimSpotData@{TrimSpotData}}
+\index{TrimSpotData@{TrimSpotData}!TaskAPI.Helpers.SpotHelper@{TaskAPI.Helpers.SpotHelper}}
+\doxysubsubsection{\texorpdfstring{TrimSpotData()}{TrimSpotData()}}
+{\footnotesize\ttfamily void Task\+API.\+Helpers.\+Spot\+Helper.\+Trim\+Spot\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Removes spot data entries older than a specified number of days from the database. 
+
+This method deletes spot data entries where \doxylink{class_task_a_p_i_1_1_models_1_1_base_spot_abbb6466c0a299a01a982efb772382e5d}{Base\+Spot.\+Pull\+Time} is older than the defined threshold. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00681\ \ \ \ \ \{}
+\DoxyCodeLine{00682\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\_context.Database.ExecuteSqlAsync(\$"{}delete\ from\ basespots\ where\ pulltime\ <\ \{DateTime.Now.AddDays(-\/\_settings.SpotFeedSettings.DaysToKeepSpotData)\}"{});}}
+\DoxyCodeLine{00683\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_aa365640b2ac3e3f84df34e8a27817f81}{\_context}}.\mbox{\hyperlink{class_task_a_p_i_1_1_contexts_1_1_priceapp_context_a5e7d6eb59fabb7c28af0d9a97551a83d}{BaseSpots}}.Where(bs\ =>\ bs.PullTime\ <\ DateTime.Now.AddDays(-\/\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a2160130492346bd22d7ce8a4ede1bf67}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_abc5a23cce7a98ce3cd109ecb1c3122ae}{SpotFeedSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_spotfeedsettings_abb0c70613a3122807a0a9f0b4dd57b50}{DaysToKeepSpotData}})).ExecuteDelete();}
+\DoxyCodeLine{00684\ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_task_a_p_i_1_1_helpers_1_1_spot_helper_adeeda07d908e3644d9ba13213077d205_icgraph}
+\end{center}
+\end{figure}
 
 
 \doxysubsection{Member Data Documentation}
+\Hypertarget{class_task_a_p_i_1_1_helpers_1_1_spot_helper_ac6e63479696a9f01dc08d8bcf7fe6038}\label{class_task_a_p_i_1_1_helpers_1_1_spot_helper_ac6e63479696a9f01dc08d8bcf7fe6038} 
+\index{TaskAPI.Helpers.SpotHelper@{TaskAPI.Helpers.SpotHelper}!\_alchemyService@{\_alchemyService}}
+\index{\_alchemyService@{\_alchemyService}!TaskAPI.Helpers.SpotHelper@{TaskAPI.Helpers.SpotHelper}}
+\doxysubsubsection{\texorpdfstring{\_alchemyService}{\_alchemyService}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_alchemy_service}{Alchemy\+Service}} Task\+API.\+Helpers.\+Spot\+Helper.\+\_\+alchemy\+Service\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_task_a_p_i_1_1_helpers_1_1_spot_helper_ae2c3fbeea2c16cbaa6206ff9aaebb5fe}\label{class_task_a_p_i_1_1_helpers_1_1_spot_helper_ae2c3fbeea2c16cbaa6206ff9aaebb5fe} 
+\index{TaskAPI.Helpers.SpotHelper@{TaskAPI.Helpers.SpotHelper}!\_binanceService@{\_binanceService}}
+\index{\_binanceService@{\_binanceService}!TaskAPI.Helpers.SpotHelper@{TaskAPI.Helpers.SpotHelper}}
+\doxysubsubsection{\texorpdfstring{\_binanceService}{\_binanceService}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_binance_service}{Binance\+Service}} Task\+API.\+Helpers.\+Spot\+Helper.\+\_\+binance\+Service\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_task_a_p_i_1_1_helpers_1_1_spot_helper_aa365640b2ac3e3f84df34e8a27817f81}\label{class_task_a_p_i_1_1_helpers_1_1_spot_helper_aa365640b2ac3e3f84df34e8a27817f81} 
+\index{TaskAPI.Helpers.SpotHelper@{TaskAPI.Helpers.SpotHelper}!\_context@{\_context}}
+\index{\_context@{\_context}!TaskAPI.Helpers.SpotHelper@{TaskAPI.Helpers.SpotHelper}}
+\doxysubsubsection{\texorpdfstring{\_context}{\_context}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_task_a_p_i_1_1_contexts_1_1_priceapp_context}{Priceapp\+Context}} Task\+API.\+Helpers.\+Spot\+Helper.\+\_\+context\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a91a44041fb2de73102a3319f9edf4258}\label{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a91a44041fb2de73102a3319f9edf4258} 
+\index{TaskAPI.Helpers.SpotHelper@{TaskAPI.Helpers.SpotHelper}!\_env@{\_env}}
+\index{\_env@{\_env}!TaskAPI.Helpers.SpotHelper@{TaskAPI.Helpers.SpotHelper}}
+\doxysubsubsection{\texorpdfstring{\_env}{\_env}}
+{\footnotesize\ttfamily IWeb\+Host\+Environment Task\+API.\+Helpers.\+Spot\+Helper.\+\_\+env\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a47a7675b28528fddd0add10e0daceb3a}\label{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a47a7675b28528fddd0add10e0daceb3a} 
+\index{TaskAPI.Helpers.SpotHelper@{TaskAPI.Helpers.SpotHelper}!\_forexService@{\_forexService}}
+\index{\_forexService@{\_forexService}!TaskAPI.Helpers.SpotHelper@{TaskAPI.Helpers.SpotHelper}}
+\doxysubsubsection{\texorpdfstring{\_forexService}{\_forexService}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_forex_service}{Forex\+Service}} Task\+API.\+Helpers.\+Spot\+Helper.\+\_\+forex\+Service\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a7bbe8203a7ccd78f59b904ab1c6389bb}\label{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a7bbe8203a7ccd78f59b904ab1c6389bb} 
+\index{TaskAPI.Helpers.SpotHelper@{TaskAPI.Helpers.SpotHelper}!\_iapiService@{\_iapiService}}
+\index{\_iapiService@{\_iapiService}!TaskAPI.Helpers.SpotHelper@{TaskAPI.Helpers.SpotHelper}}
+\doxysubsubsection{\texorpdfstring{\_iapiService}{\_iapiService}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service}{Internal\+APIService}} Task\+API.\+Helpers.\+Spot\+Helper.\+\_\+iapi\+Service\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a49deee18d15ec2cb2b1dd2dd9058cd1f}\label{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a49deee18d15ec2cb2b1dd2dd9058cd1f} 
+\index{TaskAPI.Helpers.SpotHelper@{TaskAPI.Helpers.SpotHelper}!\_logService@{\_logService}}
+\index{\_logService@{\_logService}!TaskAPI.Helpers.SpotHelper@{TaskAPI.Helpers.SpotHelper}}
+\doxysubsubsection{\texorpdfstring{\_logService}{\_logService}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{Log\+Service}} Task\+API.\+Helpers.\+Spot\+Helper.\+\_\+log\+Service\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a2160130492346bd22d7ce8a4ede1bf67}\label{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a2160130492346bd22d7ce8a4ede1bf67} 
+\index{TaskAPI.Helpers.SpotHelper@{TaskAPI.Helpers.SpotHelper}!\_settings@{\_settings}}
+\index{\_settings@{\_settings}!TaskAPI.Helpers.SpotHelper@{TaskAPI.Helpers.SpotHelper}}
+\doxysubsubsection{\texorpdfstring{\_settings}{\_settings}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings}{Task\+APISettings}} Task\+API.\+Helpers.\+Spot\+Helper.\+\_\+settings\hspace{0.3cm}{\ttfamily [private]}}
+
 \Hypertarget{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a1d8458171af3cac5a7fc1fc1f35de115}\label{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a1d8458171af3cac5a7fc1fc1f35de115} 
 \index{TaskAPI.Helpers.SpotHelper@{TaskAPI.Helpers.SpotHelper}!Error@{Error}}
 \index{Error@{Error}!TaskAPI.Helpers.SpotHelper@{TaskAPI.Helpers.SpotHelper}}
@@ -443,7 +1435,25 @@ A tuple indicating whether an error occurred during the export process and provi
 \end{DoxyReturn}
 
 
-This method retrieves chart data from Internal API, groups it by metal, and orders it according to a specified mapping. Then, it converts the chart data to AUD and USD currencies, saves them as JSON files, and logs the export process. 
+This method retrieves chart data from Internal API, groups it by metal, and orders it according to a specified mapping. Then, it converts the chart data to AUD and USD currencies, saves them as JSON files, and logs the export process. \Hypertarget{class_task_a_p_i_1_1_helpers_1_1_spot_helper_adf1fe67d03462035d8a1c48897dd2104}\label{class_task_a_p_i_1_1_helpers_1_1_spot_helper_adf1fe67d03462035d8a1c48897dd2104} 
+\index{TaskAPI.Helpers.SpotHelper@{TaskAPI.Helpers.SpotHelper}!marketOpen@{marketOpen}}
+\index{marketOpen@{marketOpen}!TaskAPI.Helpers.SpotHelper@{TaskAPI.Helpers.SpotHelper}}
+\doxysubsubsection{\texorpdfstring{marketOpen}{marketOpen}}
+{\footnotesize\ttfamily bool Task\+API.\+Helpers.\+Spot\+Helper.\+market\+Open\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_task_a_p_i_1_1_helpers_1_1_spot_helper_adc630a604ed0b8c9e1090e965363e841}\label{class_task_a_p_i_1_1_helpers_1_1_spot_helper_adc630a604ed0b8c9e1090e965363e841} 
+\index{TaskAPI.Helpers.SpotHelper@{TaskAPI.Helpers.SpotHelper}!marketStatusOverride@{marketStatusOverride}}
+\index{marketStatusOverride@{marketStatusOverride}!TaskAPI.Helpers.SpotHelper@{TaskAPI.Helpers.SpotHelper}}
+\doxysubsubsection{\texorpdfstring{marketStatusOverride}{marketStatusOverride}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_spot_helper_a072bb87250d0da4285bfe85c69fa479c}{Market\+Status\+Overrides}} Task\+API.\+Helpers.\+Spot\+Helper.\+market\+Status\+Override\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_task_a_p_i_1_1_helpers_1_1_spot_helper_aef6b7b6e86e3a962f65aa9f929b8f49a}\label{class_task_a_p_i_1_1_helpers_1_1_spot_helper_aef6b7b6e86e3a962f65aa9f929b8f49a} 
+\index{TaskAPI.Helpers.SpotHelper@{TaskAPI.Helpers.SpotHelper}!tOzGrams@{tOzGrams}}
+\index{tOzGrams@{tOzGrams}!TaskAPI.Helpers.SpotHelper@{TaskAPI.Helpers.SpotHelper}}
+\doxysubsubsection{\texorpdfstring{tOzGrams}{tOzGrams}}
+{\footnotesize\ttfamily const double Task\+API.\+Helpers.\+Spot\+Helper.\+t\+Oz\+Grams = 31.\+1035\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 

@@ -1,7 +1,14 @@
 var searchData=
 [
-  ['hasweight_0',['hasWeight',['../class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_priceapp_asset_1_1_asset_type.html#a7374f297b57cd5b40721e41e9f644ddd',1,'TaskAPI.Models.DTO.InternalAPI.PriceappAsset.AssetType.hasWeight'],['../class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_priceapp_asset_1_1_spotunit.html#a4dc38feb366da918d87783293b472bde',1,'TaskAPI.Models.DTO.InternalAPI.PriceappAsset.Spotunit.hasWeight'],['../class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_priceapp_asset_1_1_spreadunit.html#ae6972e2ca097bce49e92ba424d2f5448',1,'TaskAPI.Models.DTO.InternalAPI.PriceappAsset.Spreadunit.hasWeight']]],
-  ['head_1',['Head',['../class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_forex_response_1_1_head.html',1,'TaskAPI::Models::DTO::ForexResponse']]],
-  ['head_2',['head',['../class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_forex_response.html#a887a42c887a5585d9c99c9d8694fa263',1,'TaskAPI::Models::DTO::ForexResponse']]],
-  ['htmlbody_3',['HTMLBody',['../class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_email_post.html#a85ed4241439d21bb271c55c4fd672fa8',1,'TaskAPI::Models::DTO::InternalAPI::EmailPost']]]
+  ['generalsettings_0',['GeneralSettings',['../class_task_a_p_i_1_1_helpers_1_1_settings_1_1_general_settings.html',1,'TaskAPI::Helpers::Settings']]],
+  ['generalsettings_1',['Generalsettings',['../class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings.html',1,'TaskAPI::Helpers::Settings::TaskAPISettings']]],
+  ['generalsettings_2',['GeneralSettings',['../class_task_a_p_i_1_1_helpers_1_1_settings_1_1_log_notifications.html#a21a6297ed56a929b95e8105b0efc9649',1,'TaskAPI.Helpers.Settings.LogNotifications.GeneralSettings'],['../class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings.html#af39dc0933cd608b26e7bc4f82951d356',1,'TaskAPI.Helpers.Settings.TaskAPISettings.GeneralSettings']]],
+  ['generatespecialdata_3',['GenerateSpecialData',['../class_task_a_p_i_1_1_helpers_1_1_spot_helper.html#a2d5da5f529f7ec58c18cefb373466d99',1,'TaskAPI::Helpers::SpotHelper']]],
+  ['getlogs_4',['GetLogs',['../class_task_a_p_i_1_1_controllers_1_1_logs_controller.html#a7b16dda3feb664234c4307c88b54dbc5',1,'TaskAPI::Controllers::LogsController']]],
+  ['getlogsources_5',['GetLogSources',['../class_task_a_p_i_1_1_controllers_1_1_logs_controller.html#a12e6a10e13d0182e8d356f0679bb85b1',1,'TaskAPI::Controllers::LogsController']]],
+  ['getlogtypes_6',['GetLogTypes',['../class_task_a_p_i_1_1_controllers_1_1_logs_controller.html#acbc81c5d0d03a76497d699754de63afd',1,'TaskAPI::Controllers::LogsController']]],
+  ['getoandainstrumentpriceusd_7',['GetOandaInstrumentPriceUSD',['../class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service.html#aa614614518048e1244ae357de18425df',1,'TaskAPI::Services::InternalAPIService']]],
+  ['getpriceappmarketstatusoverride_8',['GetPriceappMarketStatusOverride',['../class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service.html#a55b9f5404586ba97531f1cdc013ecaed',1,'TaskAPI::Services::InternalAPIService']]],
+  ['getunifiedlogs_9',['GetUnifiedLogs',['../class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service.html#a01d6e21d8a6368eb448cb401630cf033',1,'TaskAPI::Services::InternalAPIService']]],
+  ['grams_10',['grams',['../class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_priceapp_asset_1_1_spotunit.html#ac5845e19af482f520f2cd0d1dcaf06bb',1,'TaskAPI.Models.DTO.InternalAPI.PriceappAsset.Spotunit.grams'],['../class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_priceapp_asset_1_1_spreadunit.html#ae0ae3976176126ed90d7aed3724d7a79',1,'TaskAPI.Models.DTO.InternalAPI.PriceappAsset.Spreadunit.grams']]]
 ];

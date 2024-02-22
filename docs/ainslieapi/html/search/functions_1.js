@@ -22,6 +22,7 @@ var searchData=
   ['adminprofile_19',['AdminProfile',['../class_account_controller.html#a08036d988f8cbbf5be7f256252470116',1,'AccountController']]],
   ['apiauthorizeattribute_20',['ApiAuthorizeAttribute',['../class_ainslie_a_p_i_1_1_authentication_1_1_authorization_1_1_api_authorize_attribute.html#ab556c47c48998eacd84d3d00c8cc67e3',1,'AinslieAPI.Authentication.Authorization.ApiAuthorizeAttribute.ApiAuthorizeAttribute()'],['../class_ainslie_a_p_i_1_1_authentication_1_1_authorization_1_1_api_authorize_attribute.html#a742cbf3356588eff30118d3f1ea7b75a',1,'AinslieAPI.Authentication.Authorization.ApiAuthorizeAttribute.ApiAuthorizeAttribute(string roles)']]],
   ['assetscontroller_21',['AssetsController',['../class_ainslie_a_p_i_1_1_controllers_1_1_assets_controller.html#a34b276ad6cf56e732ea60044dfe9d1a4',1,'AinslieAPI::Controllers::AssetsController']]],
-  ['authtestcontroller_22',['AuthTestController',['../class_ainslie_a_p_i_1_1_controllers_1_1_auth_test_controller.html#a184c807eb0194f3b5a33024bd7405883',1,'AinslieAPI::Controllers::AuthTestController']]],
-  ['awapiservice_23',['AwApiService',['../class_ainslie_a_p_i_1_1_services_1_1_aw_api_service.html#a799cac6d2cd0c1e7a21f8f892740b343',1,'AinslieAPI::Services::AwApiService']]]
+  ['asstring_22',['asString',['../class_flatted.html#a6b5653daf198b02f5d72a8a5100b7c77',1,'Flatted']]],
+  ['authtestcontroller_23',['AuthTestController',['../class_ainslie_a_p_i_1_1_controllers_1_1_auth_test_controller.html#a184c807eb0194f3b5a33024bd7405883',1,'AinslieAPI::Controllers::AuthTestController']]],
+  ['awapiservice_24',['AwApiService',['../class_ainslie_a_p_i_1_1_services_1_1_aw_api_service.html#a799cac6d2cd0c1e7a21f8f892740b343',1,'AinslieAPI::Services::AwApiService']]]
 ];

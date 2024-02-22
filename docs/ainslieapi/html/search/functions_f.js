@@ -1,8 +1,10 @@
 var searchData=
 [
-  ['scoped_0',['Scoped',['../class_ainslie_a_p_i_1_1_controllers_1_1_auth_test_controller.html#a36613a44557819edaf647b9ca2d1a337',1,'AinslieAPI::Controllers::AuthTestController']]],
-  ['scopedadmin_1',['ScopedAdmin',['../class_ainslie_a_p_i_1_1_controllers_1_1_auth_test_controller.html#a50886d0c42d4c4a8403c4bc99599c128',1,'AinslieAPI::Controllers::AuthTestController']]],
-  ['sendemail_2',['SendEmail',['../class_ainslie_a_p_i_1_1_services_1_1_internal_api_service.html#af507e96372a12f14e6ae166a5d495ef2',1,'AinslieAPI::Services::InternalApiService']]],
-  ['stringify_3',['stringify',['../class_flatted.html#a02948b06481bc3d2118b61f83ccc26e8',1,'Flatted\stringify()'],['../namespaceflatted.html#a0f956bd4567258719b6151c1cb2f3220',1,'flatted.stringify()'],['../namespacetest.html#a3e9643329e363118815480e8a80f85e5',1,'test.stringify()']]],
-  ['striphtml_4',['StripHTML',['../class_ainslie_a_p_i_1_1_helpers_1_1_shared_tools.html#ab15e610eab2e8c51c9b48d81b9da0104',1,'AinslieAPI::Helpers::SharedTools']]]
+  ['ref_0',['ref',['../class_flatted.html#a2383280951ac4457a7a823647e30d0ed',1,'Flatted']]],
+  ['refreshgsspricing_1',['RefreshGSSPricing',['../class_ainslie_a_p_i_1_1_helpers_1_1_cache_data_helper.html#a603725b5f3104a2056b255d5ba62b145',1,'AinslieAPI::Helpers::CacheDataHelper']]],
+  ['refreshpriceappassets_2',['RefreshPriceappAssets',['../class_ainslie_a_p_i_1_1_helpers_1_1_cache_data_helper.html#a4528db84b99bf010dff2409e3339ba91',1,'AinslieAPI::Helpers::CacheDataHelper']]],
+  ['refreshpriceappproducts_3',['RefreshPriceappProducts',['../class_ainslie_a_p_i_1_1_helpers_1_1_cache_data_helper.html#a467891c45e271be3b54049e3a66ae7cc',1,'AinslieAPI::Helpers::CacheDataHelper']]],
+  ['relate_4',['relate',['../class_flatted.html#a008f2a38bb722e4ce7ff2d13dab9cac8',1,'Flatted']]],
+  ['removenonalphachars_5',['RemoveNonAlphaChars',['../class_ainslie_a_p_i_1_1_helpers_1_1_shared_tools.html#ab5709314b631b14e5aa75638cc5f6352',1,'AinslieAPI::Helpers::SharedTools']]],
+  ['run_6',['Run',['../_program_8cs.html#aaa3dbf02e269c3ef7e8546d290c6b3dd',1,'Program.cs']]]
 ];

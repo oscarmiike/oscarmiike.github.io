@@ -16,11 +16,12 @@ Inheritance diagram for Task\+API.\+Controllers.\+Logs\+Controller\+:\nopagebrea
 \end{figure}
 
 
-Collaboration diagram for Task\+API.\+Controllers.\+Logs\+Controller\+:\nopagebreak
+Collaboration diagram for Task\+API.\+Controllers.\+Logs\+Controller\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=206pt]{class_task_a_p_i_1_1_controllers_1_1_logs_controller__coll__graph}
+\includegraphics[width=350pt]{class_task_a_p_i_1_1_controllers_1_1_logs_controller__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsubsection*{Classes}
@@ -45,6 +46,21 @@ Action\+Result$<$ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log
 \begin{DoxyCompactList}\small\item\em Trims logs based on predefined criteria. \end{DoxyCompactList}\item 
 IAction\+Result \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_logs_controller_aa1bbb95b5f70e8d5a457fdca962479e3}{Check\+For\+All\+Alerts}} ()
 \begin{DoxyCompactList}\small\item\em Checks for alerts across all configured api sources. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{Log\+Service}} \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_logs_controller_a0545bca6123c4fba34c11fc861cdf949}{\+\_\+log\+Service}}
+\item 
+\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service}{Internal\+APIService}} \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_logs_controller_ab23ae16aff217df5bebe38d9bd36ace1}{\+\_\+iapi\+Service}}
+\item 
+\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings}{Task\+APISettings}} \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_logs_controller_ab21f82c882084087fcaca7fd70fdb120}{\+\_\+settings}}
+\item 
+\mbox{\hyperlink{class_task_a_p_i_1_1_contexts_1_1_task_a_p_i_context}{Task\+APIContext}} \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_logs_controller_ac3f7613a99622727a93e33bc026bcaaf}{\+\_\+context}}
+\item 
+\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_alert_helper}{Alert\+Helper}} \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_logs_controller_a4dfb033b83de3c00e159ed5a6d9d1749}{\+\_\+alert\+Helper}}
+\item 
+\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_log_notifications_settings}{Log\+Notifications\+Settings}} \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_logs_controller_ab83b0f8b6e6b222801fa90b3e1d262df}{\+\_\+log\+Notifications\+Settings}}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -77,12 +93,12 @@ Constructor for Logs\+Controller.
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00051\ \ \ \ \ \{}
-\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \_logService\ =\ logService;}
-\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \_iapiService\ =\ internalAPIService;}
-\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \_settings\ =\ settings.Value;}
-\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \_context\ =\ context;}
-\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \_logNotificationsSettings\ =\ logNotificationsSettings;\ }
-\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \_alertHelper\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_alert_helper}{AlertHelper}}(logService,\ internalAPIService,\ settings,\ context,\ logNotificationsSettings);}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_logs_controller_a0545bca6123c4fba34c11fc861cdf949}{\_logService}}\ =\ logService;}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_logs_controller_ab23ae16aff217df5bebe38d9bd36ace1}{\_iapiService}}\ =\ internalAPIService;}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_logs_controller_ab21f82c882084087fcaca7fd70fdb120}{\_settings}}\ =\ settings.Value;}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_logs_controller_ac3f7613a99622727a93e33bc026bcaaf}{\_context}}\ =\ context;}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_logs_controller_ab83b0f8b6e6b222801fa90b3e1d262df}{\_logNotificationsSettings}}\ =\ logNotificationsSettings;\ }
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_logs_controller_a4dfb033b83de3c00e159ed5a6d9d1749}{\_alertHelper}}\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_alert_helper}{AlertHelper}}(logService,\ internalAPIService,\ settings,\ context,\ logNotificationsSettings);}
 \DoxyCodeLine{00058\ \ \ \ \ \}}
 
 \end{DoxyCode}
@@ -108,17 +124,17 @@ An IAction\+Result indicating the result of alert processing.
 \DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ var\ processedSources\ =\ \textcolor{keyword}{new}\ List<string>();}
 \DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ var\ failedSources\ =\ \textcolor{keyword}{new}\ List<string>();}
 \DoxyCodeLine{00151\ }
-\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ apiConfig\ \textcolor{keywordflow}{in}\ \_logNotificationsSettings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_log_notifications_settings_ad241f792ec89b6ab436064bb2ae572ac}{LogNotifications}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_log_notifications_ae7300dad9396cfa9a40cd971ba611f05}{ApiSources}})}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ apiConfig\ \textcolor{keywordflow}{in}\ \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_logs_controller_ab83b0f8b6e6b222801fa90b3e1d262df}{\_logNotificationsSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_log_notifications_settings_ad241f792ec89b6ab436064bb2ae572ac}{LogNotifications}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_log_notifications_ae7300dad9396cfa9a40cd971ba611f05}{ApiSources}})}
 \DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \{}
 \DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
 \DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
 \DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Use\ AlertHelper\ to\ process\ the\ API\ source}}
-\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_alertHelper.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_alert_helper_acddc980d442b4344a8d9df5ba056276a}{ProcessApiSource}}(apiConfig);}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_logs_controller_a4dfb033b83de3c00e159ed5a6d9d1749}{\_alertHelper}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_alert_helper_acddc980d442b4344a8d9df5ba056276a}{ProcessApiSource}}(apiConfig);}
 \DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ processedSources.Add(apiConfig.Name);}
 \DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
 \DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a78c9df658858fa3099eed69421423898}{LogException}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.LogsController,\ \$\textcolor{stringliteral}{"{}Error\ processing\ \{apiConfig.Name\}:\ \{ex\}"{}});}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_logs_controller_a0545bca6123c4fba34c11fc861cdf949}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a78c9df658858fa3099eed69421423898}{LogException}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.LogsController,\ \$\textcolor{stringliteral}{"{}Error\ processing\ \{apiConfig.Name\}:\ \{ex\}"{}});}
 \DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ failedSources.Add(apiConfig.Name);}
 \DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \}}
@@ -161,13 +177,12 @@ An IAction\+Result containing the retrieved logs.
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00090\ \ \ \ \ \{}
-\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ var\ logs\ =\ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a6fd34cc69d8b24f60a73f155365a9357}{FetchLogs}}(logRequest);}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ var\ logs\ =\ \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_logs_controller_a0545bca6123c4fba34c11fc861cdf949}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a6fd34cc69d8b24f60a73f155365a9357}{FetchLogs}}(logRequest);}
 \DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Ok(logs);}
 \DoxyCodeLine{00093\ \ \ \ \ \}}
 
 \end{DoxyCode}
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -190,7 +205,7 @@ An IAction\+Result containing distinct log sources.
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00101\ \ \ \ \ \{}
-\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ var\ logSources\ =\ \_context.\mbox{\hyperlink{class_task_a_p_i_1_1_contexts_1_1_task_a_p_i_context_af1d10bb6168269c37fefcdbd864f97e3}{LogEntries}}.AsNoTracking().Select(le\ =>\ le.Source).Distinct();}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ var\ logSources\ =\ \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_logs_controller_ac3f7613a99622727a93e33bc026bcaaf}{\_context}}.\mbox{\hyperlink{class_task_a_p_i_1_1_contexts_1_1_task_a_p_i_context_af1d10bb6168269c37fefcdbd864f97e3}{LogEntries}}.AsNoTracking().Select(le\ =>\ le.Source).Distinct();}
 \DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Ok(logSources);}
 \DoxyCodeLine{00104\ \ \ \ \ \}}
 
@@ -211,7 +226,7 @@ An IAction\+Result containing distinct log types.
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00112\ \ \ \ \ \{}
-\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ var\ logTypes\ =\ \_context.\mbox{\hyperlink{class_task_a_p_i_1_1_contexts_1_1_task_a_p_i_context_af1d10bb6168269c37fefcdbd864f97e3}{LogEntries}}.AsNoTracking().Select(le\ =>\ le.Type).Distinct();}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ var\ logTypes\ =\ \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_logs_controller_ac3f7613a99622727a93e33bc026bcaaf}{\_context}}.\mbox{\hyperlink{class_task_a_p_i_1_1_contexts_1_1_task_a_p_i_context_af1d10bb6168269c37fefcdbd864f97e3}{LogEntries}}.AsNoTracking().Select(le\ =>\ le.Type).Distinct();}
 \DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Ok(logTypes);}
 \DoxyCodeLine{00115\ \ \ \ \ \}}
 
@@ -232,21 +247,21 @@ An Action\+Result$<$\+TValue$>$ containing the result of log trimming operation 
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00123\ \ \ \ \ \{}
-\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a5c2a67dbd8beb6f821c46b8d052d59ea}{LogInformation}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.LogsController,\ \textcolor{stringliteral}{"{}task\ api\ log\ trim\ initiated"{}});}
-\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result}{LogTrimResult}}\ result\ =\ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a1b84e4b268d6eb8f21ee2569e562fceb}{TrimLogs}}();}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_logs_controller_a0545bca6123c4fba34c11fc861cdf949}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a5c2a67dbd8beb6f821c46b8d052d59ea}{LogInformation}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.LogsController,\ \textcolor{stringliteral}{"{}task\ api\ log\ trim\ initiated"{}});}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result}{LogTrimResult}}\ result\ =\ \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_logs_controller_a0545bca6123c4fba34c11fc861cdf949}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a1b84e4b268d6eb8f21ee2569e562fceb}{TrimLogs}}();}
 \DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (result.\mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result_ac0dcb80f3d1f49fc0fdc79aca9faf210}{error}})}
 \DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \_iapiService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_aeffeb1d3d59aeeab65dfe72691d21600}{SendEmail}}(\textcolor{keyword}{new}\ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_email_post}{EmailPost}}()}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_logs_controller_ab23ae16aff217df5bebe38d9bd36ace1}{\_iapiService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service_aeffeb1d3d59aeeab65dfe72691d21600}{SendEmail}}(\textcolor{keyword}{new}\ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_internal_a_p_i_1_1_email_post}{EmailPost}}()}
 \DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ EmailFrom\ =\ \_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_af39dc0933cd608b26e7bc4f82951d356}{GeneralSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings_ac0a0b89d2e7cf7f820e5663a1a4cffbf}{NotificationEmailFrom}},}
-\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ EmailTo\ =\ \_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_af39dc0933cd608b26e7bc4f82951d356}{GeneralSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings_a25434a5471214771ae507f7152073898}{NotificationEmailTo}},}
-\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ NameFrom\ =\ \_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_af39dc0933cd608b26e7bc4f82951d356}{GeneralSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings_a082a8e92b97a7d83196f1d0056241042}{NotificationEmailName}},}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ EmailFrom\ =\ \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_logs_controller_ab21f82c882084087fcaca7fd70fdb120}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_af39dc0933cd608b26e7bc4f82951d356}{GeneralSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings_ac0a0b89d2e7cf7f820e5663a1a4cffbf}{NotificationEmailFrom}},}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ EmailTo\ =\ \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_logs_controller_ab21f82c882084087fcaca7fd70fdb120}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_af39dc0933cd608b26e7bc4f82951d356}{GeneralSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings_a25434a5471214771ae507f7152073898}{NotificationEmailTo}},}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ NameFrom\ =\ \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_logs_controller_ab21f82c882084087fcaca7fd70fdb120}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_af39dc0933cd608b26e7bc4f82951d356}{GeneralSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings_a082a8e92b97a7d83196f1d0056241042}{NotificationEmailName}},}
 \DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Subject\ =\ \textcolor{stringliteral}{"{}Error\ trimming\ task\ api\ logs"{}},}
 \DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ HTMLBody\ =\ \$\textcolor{stringliteral}{"{}Task\ API\ was\ unable\ to\ trim\ task\ api\ logs<br><br>\{result\}"{}}}
 \DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \});}
 \DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00137\ }
-\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a5c2a67dbd8beb6f821c46b8d052d59ea}{LogInformation}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.LogsController,\ \textcolor{stringliteral}{"{}task\ api\ log\ trim\ successful"{}},\ result);}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_controllers_1_1_logs_controller_a0545bca6123c4fba34c11fc861cdf949}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a5c2a67dbd8beb6f821c46b8d052d59ea}{LogInformation}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{LogService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307168cb702773d148d166ba}{LogSources}}.LogsController,\ \textcolor{stringliteral}{"{}task\ api\ log\ trim\ successful"{}},\ result);}
 \DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Ok(result);}
 \DoxyCodeLine{00140\ \ \ \ \ \}}
 
@@ -259,6 +274,45 @@ Here is the call graph for this function\+:
 \includegraphics[width=350pt]{class_task_a_p_i_1_1_controllers_1_1_logs_controller_af8b7f41074892eb4a70a447d64a055c6_cgraph}
 \end{center}
 \end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_task_a_p_i_1_1_controllers_1_1_logs_controller_a4dfb033b83de3c00e159ed5a6d9d1749}\label{class_task_a_p_i_1_1_controllers_1_1_logs_controller_a4dfb033b83de3c00e159ed5a6d9d1749} 
+\index{TaskAPI.Controllers.LogsController@{TaskAPI.Controllers.LogsController}!\_alertHelper@{\_alertHelper}}
+\index{\_alertHelper@{\_alertHelper}!TaskAPI.Controllers.LogsController@{TaskAPI.Controllers.LogsController}}
+\doxysubsubsection{\texorpdfstring{\_alertHelper}{\_alertHelper}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_alert_helper}{Alert\+Helper}} Task\+API.\+Controllers.\+Logs\+Controller.\+\_\+alert\+Helper\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_task_a_p_i_1_1_controllers_1_1_logs_controller_ac3f7613a99622727a93e33bc026bcaaf}\label{class_task_a_p_i_1_1_controllers_1_1_logs_controller_ac3f7613a99622727a93e33bc026bcaaf} 
+\index{TaskAPI.Controllers.LogsController@{TaskAPI.Controllers.LogsController}!\_context@{\_context}}
+\index{\_context@{\_context}!TaskAPI.Controllers.LogsController@{TaskAPI.Controllers.LogsController}}
+\doxysubsubsection{\texorpdfstring{\_context}{\_context}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_task_a_p_i_1_1_contexts_1_1_task_a_p_i_context}{Task\+APIContext}} Task\+API.\+Controllers.\+Logs\+Controller.\+\_\+context\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_task_a_p_i_1_1_controllers_1_1_logs_controller_ab23ae16aff217df5bebe38d9bd36ace1}\label{class_task_a_p_i_1_1_controllers_1_1_logs_controller_ab23ae16aff217df5bebe38d9bd36ace1} 
+\index{TaskAPI.Controllers.LogsController@{TaskAPI.Controllers.LogsController}!\_iapiService@{\_iapiService}}
+\index{\_iapiService@{\_iapiService}!TaskAPI.Controllers.LogsController@{TaskAPI.Controllers.LogsController}}
+\doxysubsubsection{\texorpdfstring{\_iapiService}{\_iapiService}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_internal_a_p_i_service}{Internal\+APIService}} Task\+API.\+Controllers.\+Logs\+Controller.\+\_\+iapi\+Service\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_task_a_p_i_1_1_controllers_1_1_logs_controller_ab83b0f8b6e6b222801fa90b3e1d262df}\label{class_task_a_p_i_1_1_controllers_1_1_logs_controller_ab83b0f8b6e6b222801fa90b3e1d262df} 
+\index{TaskAPI.Controllers.LogsController@{TaskAPI.Controllers.LogsController}!\_logNotificationsSettings@{\_logNotificationsSettings}}
+\index{\_logNotificationsSettings@{\_logNotificationsSettings}!TaskAPI.Controllers.LogsController@{TaskAPI.Controllers.LogsController}}
+\doxysubsubsection{\texorpdfstring{\_logNotificationsSettings}{\_logNotificationsSettings}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_log_notifications_settings}{Log\+Notifications\+Settings}} Task\+API.\+Controllers.\+Logs\+Controller.\+\_\+log\+Notifications\+Settings\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_task_a_p_i_1_1_controllers_1_1_logs_controller_a0545bca6123c4fba34c11fc861cdf949}\label{class_task_a_p_i_1_1_controllers_1_1_logs_controller_a0545bca6123c4fba34c11fc861cdf949} 
+\index{TaskAPI.Controllers.LogsController@{TaskAPI.Controllers.LogsController}!\_logService@{\_logService}}
+\index{\_logService@{\_logService}!TaskAPI.Controllers.LogsController@{TaskAPI.Controllers.LogsController}}
+\doxysubsubsection{\texorpdfstring{\_logService}{\_logService}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{Log\+Service}} Task\+API.\+Controllers.\+Logs\+Controller.\+\_\+log\+Service\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_task_a_p_i_1_1_controllers_1_1_logs_controller_ab21f82c882084087fcaca7fd70fdb120}\label{class_task_a_p_i_1_1_controllers_1_1_logs_controller_ab21f82c882084087fcaca7fd70fdb120} 
+\index{TaskAPI.Controllers.LogsController@{TaskAPI.Controllers.LogsController}!\_settings@{\_settings}}
+\index{\_settings@{\_settings}!TaskAPI.Controllers.LogsController@{TaskAPI.Controllers.LogsController}}
+\doxysubsubsection{\texorpdfstring{\_settings}{\_settings}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings}{Task\+APISettings}} Task\+API.\+Controllers.\+Logs\+Controller.\+\_\+settings\hspace{0.3cm}{\ttfamily [private]}}
+
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

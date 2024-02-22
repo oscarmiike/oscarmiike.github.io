@@ -78,6 +78,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_ainslie_a_p_i_1_1_controllers_1_1_token_controller-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">AinslieAPI.Controllers.TokenController Class Reference</div></div>
 </div><!--header-->
@@ -100,9 +101,14 @@ Collaboration diagram for AinslieAPI.Controllers.TokenController:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_ainslie_a_p_i_1_1_controllers_1_1_token_controller__coll__graph.png" border="0" usemap="#a_ainslie_a_p_i_8_controllers_8_token_controller_coll__map" alt="Collaboration graph"/></div>
 <map name="a_ainslie_a_p_i_8_controllers_8_token_controller_coll__map" id="a_ainslie_a_p_i_8_controllers_8_token_controller_coll__map">
-<area shape="rect" title="Controller responsible for generating authentication tokens for authorised users." alt="" coords="5,80,192,123"/>
-<area shape="rect" title=" " alt="" coords="45,5,152,32"/>
-<area shape="poly" title=" " alt="" coords="101,48,101,80,96,80,96,48"/>
+<area shape="rect" title="Controller responsible for generating authentication tokens for authorised users." alt="" coords="67,203,253,245"/>
+<area shape="rect" title=" " alt="" coords="5,104,112,131"/>
+<area shape="poly" title=" " alt="" coords="83,140,142,200,138,204,79,144"/>
+<area shape="rect" href="class_ainslie_a_p_i_1_1_helpers_1_1_app_settings.html" title=" " alt="" coords="79,5,283,32"/>
+<area shape="poly" title=" " alt="" coords="180,48,174,96,164,202,159,202,169,96,175,47"/>
+<area shape="rect" href="class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils.html" title="Utility class for JWT operations, including token generation and validation." alt="" coords="264,96,437,139"/>
+<area shape="poly" title=" " alt="" coords="218,38,315,93,313,98,215,42"/>
+<area shape="poly" title=" " alt="" coords="301,149,199,205,196,200,298,144"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -114,6 +120,13 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a5df864329f89cc6a7320304a65cc9002" id="r_a5df864329f89cc6a7320304a65cc9002"><td class="memItemLeft" align="right" valign="top">IActionResult&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5df864329f89cc6a7320304a65cc9002">GenerateToken</a> ()</td></tr>
 <tr class="memdesc:a5df864329f89cc6a7320304a65cc9002"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generates an authentication token for the current authenticated user.  <br /></td></tr>
 <tr class="separator:a5df864329f89cc6a7320304a65cc9002"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a6a714c364f26b591371252c578ece2f2" id="r_a6a714c364f26b591371252c578ece2f2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_ainslie_a_p_i_1_1_helpers_1_1_app_settings.html">AppSettings</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6a714c364f26b591371252c578ece2f2">_appSettings</a></td></tr>
+<tr class="separator:a6a714c364f26b591371252c578ece2f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c3200807e7f5c042f5b7eea42a9a502" id="r_a3c3200807e7f5c042f5b7eea42a9a502"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils.html">JwtUtils</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3c3200807e7f5c042f5b7eea42a9a502">_jwtUtils</a></td></tr>
+<tr class="separator:a3c3200807e7f5c042f5b7eea42a9a502"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Controller responsible for generating authentication tokens for authorised users. </p>
@@ -146,9 +159,11 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 <div class="fragment"><div class="line"><span class="lineno">   30</span>    {</div>
-<div class="line"><span class="lineno">   31</span>        _appSettings = appSettings.Value;   </div>
-<div class="line"><span class="lineno">   32</span>        _jwtUtils = jwtUtils;</div>
+<div class="line"><span class="lineno">   31</span>        <a class="code hl_variable" href="#a6a714c364f26b591371252c578ece2f2">_appSettings</a> = appSettings.Value;   </div>
+<div class="line"><span class="lineno">   32</span>        <a class="code hl_variable" href="#a3c3200807e7f5c042f5b7eea42a9a502">_jwtUtils</a> = jwtUtils;</div>
 <div class="line"><span class="lineno">   33</span>    }</div>
+<div class="ttc" id="aclass_ainslie_a_p_i_1_1_controllers_1_1_token_controller_html_a3c3200807e7f5c042f5b7eea42a9a502"><div class="ttname"><a href="#a3c3200807e7f5c042f5b7eea42a9a502">AinslieAPI.Controllers.TokenController._jwtUtils</a></div><div class="ttdeci">JwtUtils _jwtUtils</div><div class="ttdef"><b>Definition</b> TokenController.cs:21</div></div>
+<div class="ttc" id="aclass_ainslie_a_p_i_1_1_controllers_1_1_token_controller_html_a6a714c364f26b591371252c578ece2f2"><div class="ttname"><a href="#a6a714c364f26b591371252c578ece2f2">AinslieAPI.Controllers.TokenController._appSettings</a></div><div class="ttdeci">AppSettings _appSettings</div><div class="ttdef"><b>Definition</b> TokenController.cs:20</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -174,7 +189,7 @@ Public Member Functions</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">   47</span>    {</div>
 <div class="line"><span class="lineno">   48</span>        <span class="keywordflow">if</span> (!User.Identity.IsAuthenticated)</div>
 <div class="line"><span class="lineno">   49</span>            <span class="keywordflow">return</span> Unauthorized();</div>
-<div class="line"><span class="lineno">   50</span>        var token = _jwtUtils.<a class="code hl_function" href="class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils.html#ac667c75c6805eb3e6943cc1e8aec0573">GenerateToken</a>(UserHelper.GetAuthenticatedUser(User));</div>
+<div class="line"><span class="lineno">   50</span>        var token = <a class="code hl_variable" href="#a3c3200807e7f5c042f5b7eea42a9a502">_jwtUtils</a>.<a class="code hl_function" href="class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils.html#ac667c75c6805eb3e6943cc1e8aec0573">GenerateToken</a>(UserHelper.GetAuthenticatedUser(User));</div>
 <div class="line"><span class="lineno">   51</span>        <span class="keywordflow">return</span> Ok(token);</div>
 <div class="line"><span class="lineno">   52</span>    }</div>
 <div class="ttc" id="aclass_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils_html_ac667c75c6805eb3e6943cc1e8aec0573"><div class="ttname"><a href="class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils.html#ac667c75c6805eb3e6943cc1e8aec0573">AinslieAPI.Authentication.JwtUtils.GenerateToken</a></div><div class="ttdeci">string GenerateToken(AuthenticatedUser user)</div><div class="ttdoc">Generates a JWT for an authenticated user.</div><div class="ttdef"><b>Definition</b> JwtUtils.cs:42</div></div>
@@ -192,6 +207,51 @@ Here is the call graph for this function:</div>
 <area shape="poly" title=" " alt="" coords="427,24,474,24,474,29,427,29"/>
 </map>
 </div>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a6a714c364f26b591371252c578ece2f2" name="a6a714c364f26b591371252c578ece2f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a714c364f26b591371252c578ece2f2">&#9670;&#160;</a></span>_appSettings</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_ainslie_a_p_i_1_1_helpers_1_1_app_settings.html">AppSettings</a> AinslieAPI.Controllers.TokenController._appSettings</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3c3200807e7f5c042f5b7eea42a9a502" name="a3c3200807e7f5c042f5b7eea42a9a502"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c3200807e7f5c042f5b7eea42a9a502">&#9670;&#160;</a></span>_jwtUtils</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_ainslie_a_p_i_1_1_authentication_1_1_jwt_utils.html">JwtUtils</a> AinslieAPI.Controllers.TokenController._jwtUtils</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>

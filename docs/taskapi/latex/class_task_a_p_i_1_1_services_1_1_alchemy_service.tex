@@ -5,6 +5,16 @@
 Provides functionality to interact with the Alchemy API for blockchain data retrieval.  
 
 
+
+
+Collaboration diagram for Task\+API.\+Services.\+Alchemy\+Service\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_task_a_p_i_1_1_services_1_1_alchemy_service__coll__graph}
+\end{center}
+\end{figure}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -12,6 +22,13 @@ Provides functionality to interact with the Alchemy API for blockchain data retr
 \begin{DoxyCompactList}\small\item\em Initialises a new instance of the Alchemy\+Service class. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_polygon_oracle_1_1_latest_round_data_response}{Latest\+Round\+Data\+Response}}? \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_alchemy_service_a8db06c3be654656ef61b3177a0624787}{Latest\+Round\+Data}} (string contract\+Address)
 \begin{DoxyCompactList}\small\item\em Retrieves the latest round data for a given smart contract address using the Alchemy API. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{Log\+Service}} \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_alchemy_service_a96d02629d9ea43b4c8ebb7941a74f085}{\+\_\+log\+Service}}
+\item 
+\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings}{Task\+APISettings}} \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_alchemy_service_a5932a52c6b8c216d993f96081f272cae}{\+\_\+settings}}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -40,8 +57,8 @@ Initialises a new instance of the Alchemy\+Service class.
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00030\ \ \ \ \ \{}
-\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \_logService\ =\ logService;}
-\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \_settings\ =\ taskAPISettings.Value;}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_alchemy_service_a96d02629d9ea43b4c8ebb7941a74f085}{\_logService}}\ =\ logService;}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_alchemy_service_a5932a52c6b8c216d993f96081f272cae}{\_settings}}\ =\ taskAPISettings.Value;}
 \DoxyCodeLine{00033\ \ \ \ \ \}}
 
 \end{DoxyCode}
@@ -75,14 +92,14 @@ This method attempts to call the \textquotesingle{}latest\+Round\+Data\textquote
 \DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
 \DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \{}
 \DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ var\ NWeb\ =\ \textcolor{keyword}{new}\ Web3(\$\textcolor{stringliteral}{"{}\{\_settings.AlchemySettings.Web3Endpoint\}\{\_settings.AlchemySettings.APIKey\}"{}});}
-\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ var\ abi\ =\ JsonConvert.SerializeObject(\_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_ac56f44c706202b85f9a949eefd802a4b}{PolygonOracleSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_polygonoraclesettings_a119acadd0ece87c491c7a0f227a421aa}{LatestRoundDataABI}});}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ var\ abi\ =\ JsonConvert.SerializeObject(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_alchemy_service_a5932a52c6b8c216d993f96081f272cae}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_ac56f44c706202b85f9a949eefd802a4b}{PolygonOracleSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_polygonoraclesettings_a119acadd0ece87c491c7a0f227a421aa}{LatestRoundDataABI}});}
 \DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ var\ Ct\ =\ NWeb.Eth.GetContract(abi,\ contractAddress);}
-\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ var\ Fn\ =\ Ct.GetFunction(\_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_ac56f44c706202b85f9a949eefd802a4b}{PolygonOracleSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_polygonoraclesettings_a119acadd0ece87c491c7a0f227a421aa}{LatestRoundDataABI}}[0].\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_polygonoraclesettings_1_1_a_b_i_a46802c8f262ff386414a7ce5298d747e}{name}});}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ var\ Fn\ =\ Ct.GetFunction(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_alchemy_service_a5932a52c6b8c216d993f96081f272cae}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_ac56f44c706202b85f9a949eefd802a4b}{PolygonOracleSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_polygonoraclesettings_a119acadd0ece87c491c7a0f227a421aa}{LatestRoundDataABI}}[0].\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_polygonoraclesettings_1_1_a_b_i_a46802c8f262ff386414a7ce5298d747e}{name}});}
 \DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ latestRoundResponse\ =\ Fn.CallDeserializingToObjectAsync<\mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_polygon_oracle_1_1_latest_round_data_response}{LatestRoundDataResponse}}>().Result;}
 \DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (Exception\ ex)}
 \DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \_logService.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a78c9df658858fa3099eed69421423898}{LogException}}(LogService.LogSources.AlchemyService,\ \textcolor{stringliteral}{"{}Exception\ getting\ latestRoundData"{}},\ contractAddress,\ ex);}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_alchemy_service_a96d02629d9ea43b4c8ebb7941a74f085}{\_logService}}.\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a78c9df658858fa3099eed69421423898}{LogException}}(LogService.LogSources.AlchemyService,\ \textcolor{stringliteral}{"{}Exception\ getting\ latestRoundData"{}},\ contractAddress,\ ex);}
 \DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ latestRoundResponse;}
 \DoxyCodeLine{00061\ \ \ \ \ \}}
@@ -96,6 +113,29 @@ Here is the call graph for this function\+:
 \includegraphics[width=350pt]{class_task_a_p_i_1_1_services_1_1_alchemy_service_a8db06c3be654656ef61b3177a0624787_cgraph}
 \end{center}
 \end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_task_a_p_i_1_1_services_1_1_alchemy_service_a8db06c3be654656ef61b3177a0624787_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_task_a_p_i_1_1_services_1_1_alchemy_service_a96d02629d9ea43b4c8ebb7941a74f085}\label{class_task_a_p_i_1_1_services_1_1_alchemy_service_a96d02629d9ea43b4c8ebb7941a74f085} 
+\index{TaskAPI.Services.AlchemyService@{TaskAPI.Services.AlchemyService}!\_logService@{\_logService}}
+\index{\_logService@{\_logService}!TaskAPI.Services.AlchemyService@{TaskAPI.Services.AlchemyService}}
+\doxysubsubsection{\texorpdfstring{\_logService}{\_logService}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service}{Log\+Service}} Task\+API.\+Services.\+Alchemy\+Service.\+\_\+log\+Service\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_task_a_p_i_1_1_services_1_1_alchemy_service_a5932a52c6b8c216d993f96081f272cae}\label{class_task_a_p_i_1_1_services_1_1_alchemy_service_a5932a52c6b8c216d993f96081f272cae} 
+\index{TaskAPI.Services.AlchemyService@{TaskAPI.Services.AlchemyService}!\_settings@{\_settings}}
+\index{\_settings@{\_settings}!TaskAPI.Services.AlchemyService@{TaskAPI.Services.AlchemyService}}
+\doxysubsubsection{\texorpdfstring{\_settings}{\_settings}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings}{Task\+APISettings}} Task\+API.\+Services.\+Alchemy\+Service.\+\_\+settings\hspace{0.3cm}{\ttfamily [private]}}
+
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

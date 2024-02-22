@@ -5,6 +5,16 @@
 Provides logging services for various levels of application events, including debug, information, errors, and exceptions.  
 
 
+
+
+Collaboration diagram for Task\+API.\+Services.\+Log\+Service\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_task_a_p_i_1_1_services_1_1_log_service__coll__graph}
+\end{center}
+\end{figure}
 \doxysubsubsection*{Public Types}
 \begin{DoxyCompactItemize}
 \item 
@@ -53,6 +63,18 @@ enum \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_ac2b08e94307
 \begin{DoxyCompactList}\small\item\em Removes log entries older than the configured retention period. \end{DoxyCompactList}\item 
 List$<$ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_log_entry}{Log\+Entry}} $>$ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a6fd34cc69d8b24f60a73f155365a9357}{Fetch\+Logs}} (Log\+Request log\+Request)
 \begin{DoxyCompactList}\small\item\em Fetches log entries based on specified criteria from the database. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a20f6ab73ae5cc69273da4416da65f94d}{Write\+Log}} (\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a27f1ae7140528c73a0591095ff9f5bd6}{Log\+Types}} Type, string Source, string Description)
+\begin{DoxyCompactList}\small\item\em Writes a log entry to a local text file as a fallback or additional logging method. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_task_a_p_i_1_1_contexts_1_1_task_a_p_i_context}{Task\+APIContext}} \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_aff72e5635ee28e9af2eb78347b170d50}{\+\_\+context}}
+\item 
+\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings}{Task\+APISettings}} \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a8ab0b580e6d5ee56cd7f6c37c856bb63}{\+\_\+settings}}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -200,8 +222,8 @@ Initialises a new instance of the Log\+Service with the specified database conte
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00063\ \ \ \ \ \{}
-\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \_context\ =\ context;}
-\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \_settings\ =\ taskAPISettings.Value;}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_aff72e5635ee28e9af2eb78347b170d50}{\_context}}\ =\ context;}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a8ab0b580e6d5ee56cd7f6c37c856bb63}{\_settings}}\ =\ taskAPISettings.Value;}
 \DoxyCodeLine{00066\ \ \ \ \ \}}
 
 \end{DoxyCode}
@@ -252,7 +274,7 @@ A list of Log\+Entry objects that match the specified criteria. The logs are ret
 \DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ var\ dateRangeEnd\ =\ logRequest.dateRangeEndUTC.ToLocalTime();}
 \DoxyCodeLine{00242\ }
-\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ var\ logsQuery\ =\ \_context.\mbox{\hyperlink{class_task_a_p_i_1_1_contexts_1_1_task_a_p_i_context_af1d10bb6168269c37fefcdbd864f97e3}{LogEntries}}.AsNoTracking()}
+\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ var\ logsQuery\ =\ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_aff72e5635ee28e9af2eb78347b170d50}{\_context}}.\mbox{\hyperlink{class_task_a_p_i_1_1_contexts_1_1_task_a_p_i_context_af1d10bb6168269c37fefcdbd864f97e3}{LogEntries}}.AsNoTracking()}
 \DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \ \ \ \ .Where(le\ =>\ le.Created\ >=\ dateRangeStart\ \&\&\ le.Created\ <=\ dateRangeEnd)}
 \DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \ \ \ \ .AsEnumerable();}
 \DoxyCodeLine{00246\ }
@@ -353,18 +375,26 @@ A Log\+Entry object representing the logged information.
 \DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
 \DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ \_context.\mbox{\hyperlink{class_task_a_p_i_1_1_contexts_1_1_task_a_p_i_context_af1d10bb6168269c37fefcdbd864f97e3}{LogEntries}}.Add(logEntry);}
-\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \_context.SaveChanges();}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_aff72e5635ee28e9af2eb78347b170d50}{\_context}}.\mbox{\hyperlink{class_task_a_p_i_1_1_contexts_1_1_task_a_p_i_context_af1d10bb6168269c37fefcdbd864f97e3}{LogEntries}}.Add(logEntry);}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_aff72e5635ee28e9af2eb78347b170d50}{\_context}}.SaveChanges();}
 \DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ logEntry;}
 \DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a27f1ae7140528c73a0591095ff9f5bd6ab0d4998a26f5b5742ad38c4af8817e32}{Exception}}\ ex)}
 \DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ WriteLog(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a27f1ae7140528c73a0591095ff9f5bd6}{LogTypes}}.Exception,\ \textcolor{stringliteral}{"{}LogService"{}},\ \$\textcolor{stringliteral}{"{}Exception\ trying\ to\ insert\ log.\ \ Exception:\ \{ex.ToString()\}"{}});}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a20f6ab73ae5cc69273da4416da65f94d}{WriteLog}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a27f1ae7140528c73a0591095ff9f5bd6}{LogTypes}}.Exception,\ \textcolor{stringliteral}{"{}LogService"{}},\ \$\textcolor{stringliteral}{"{}Exception\ trying\ to\ insert\ log.\ \ Exception:\ \{ex.ToString()\}"{}});}
 \DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
 \DoxyCodeLine{00167\ \ \ \ \ \}}
 
 \end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_task_a_p_i_1_1_services_1_1_log_service_a44f0fd9db1116257087ba59c836e22ea_cgraph}
+\end{center}
+\end{figure}
 Here is the caller graph for this function\+:
 \nopagebreak
 \begin{figure}[H]
@@ -396,7 +426,7 @@ A Log\+Entry object if logging is successful; otherwise, null.
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00075\ \ \ \ \ \{}
-\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_aa926b782ce19e10a18b3461b5ca2f5ab}{SQLLoggerSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_sqlloggersettings_aceadbe244f9ffa77369b5406d0ee162f}{LogDebug}})\ \{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};\ \}}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a8ab0b580e6d5ee56cd7f6c37c856bb63}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_aa926b782ce19e10a18b3461b5ca2f5ab}{SQLLoggerSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_sqlloggersettings_aceadbe244f9ffa77369b5406d0ee162f}{LogDebug}})\ \{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};\ \}}
 \DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ var\ threadID\ =\ System.Environment.CurrentManagedThreadId;}
 \DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a44f0fd9db1116257087ba59c836e22ea}{InsertLog}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a27f1ae7140528c73a0591095ff9f5bd6}{LogTypes}}.Debug,\ threadID,\ logSource,\ dataList);}
 \DoxyCodeLine{00079\ \ \ \ \ \}}
@@ -529,7 +559,7 @@ A Log\+Entry object if logging is successful; otherwise, null.
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00088\ \ \ \ \ \{}
-\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_aa926b782ce19e10a18b3461b5ca2f5ab}{SQLLoggerSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_sqlloggersettings_a0c4ae9d968b29b6b4e5f148fd98fd177}{LogInformation}})\ \{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};\ \}}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a8ab0b580e6d5ee56cd7f6c37c856bb63}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_aa926b782ce19e10a18b3461b5ca2f5ab}{SQLLoggerSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_sqlloggersettings_a0c4ae9d968b29b6b4e5f148fd98fd177}{LogInformation}})\ \{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};\ \}}
 \DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ var\ threadID\ =\ System.Environment.CurrentManagedThreadId;}
 \DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a44f0fd9db1116257087ba59c836e22ea}{InsertLog}}(\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a27f1ae7140528c73a0591095ff9f5bd6}{LogTypes}}.Information,\ threadID,\ logSource,\ dataList);}
 \DoxyCodeLine{00092\ \ \ \ \ \}}
@@ -569,8 +599,8 @@ A Log\+Trim\+Result indicating the success or failure of the log trimming operat
 \DoxyCodeLine{00197\ \ \ \ \ \{}
 \DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
 \DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \ \ \ \ \_context.Database.SetCommandTimeout(TimeSpan.FromMinutes(2));}
-\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \ \ \ \ var\ deletedLogs\ =\ \_context.Database.ExecuteSqlRaw(\textcolor{stringliteral}{"{}DELETE\ FROM\ LogEntries\ WHERE\ Created\ <\ @cutOff"{}},\ \textcolor{keyword}{new}\ SqlParameter(\textcolor{stringliteral}{"{}@cutOff"{}},\ DateTime.Now.AddDays(-\/\_settings.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_af39dc0933cd608b26e7bc4f82951d356}{GeneralSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings_a5cf9e414e04335d15762b8551fac0ab4}{DaysToKeepLogs}})));}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_aff72e5635ee28e9af2eb78347b170d50}{\_context}}.Database.SetCommandTimeout(TimeSpan.FromMinutes(2));}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \ \ \ \ var\ deletedLogs\ =\ \mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_aff72e5635ee28e9af2eb78347b170d50}{\_context}}.Database.ExecuteSqlRaw(\textcolor{stringliteral}{"{}DELETE\ FROM\ LogEntries\ WHERE\ Created\ <\ @cutOff"{}},\ \textcolor{keyword}{new}\ SqlParameter(\textcolor{stringliteral}{"{}@cutOff"{}},\ DateTime.Now.AddDays(-\/\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a8ab0b580e6d5ee56cd7f6c37c856bb63}{\_settings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_af39dc0933cd608b26e7bc4f82951d356}{GeneralSettings}}.\mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings_1_1_generalsettings_a5cf9e414e04335d15762b8551fac0ab4}{DaysToKeepLogs}})));}
 \DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_task_a_p_i_1_1_models_1_1_d_t_o_1_1_log_trim_result}{LogTrimResult}}()\ \{\ error\ =\ \textcolor{keyword}{false},\ message\ =\ \$\textcolor{stringliteral}{"{}deleted\ \{deletedLogs\}\ logs"{}}\ \};}
 \DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a27f1ae7140528c73a0591095ff9f5bd6ab0d4998a26f5b5742ad38c4af8817e32}{Exception}}\ ex)}
@@ -590,14 +620,74 @@ Here is the call graph for this function\+:
 \includegraphics[width=350pt]{class_task_a_p_i_1_1_services_1_1_log_service_a1b84e4b268d6eb8f21ee2569e562fceb_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{class_task_a_p_i_1_1_services_1_1_log_service_a1b84e4b268d6eb8f21ee2569e562fceb_icgraph}
 \end{center}
 \end{figure}
+\Hypertarget{class_task_a_p_i_1_1_services_1_1_log_service_a20f6ab73ae5cc69273da4416da65f94d}\label{class_task_a_p_i_1_1_services_1_1_log_service_a20f6ab73ae5cc69273da4416da65f94d} 
+\index{TaskAPI.Services.LogService@{TaskAPI.Services.LogService}!WriteLog@{WriteLog}}
+\index{WriteLog@{WriteLog}!TaskAPI.Services.LogService@{TaskAPI.Services.LogService}}
+\doxysubsubsection{\texorpdfstring{WriteLog()}{WriteLog()}}
+{\footnotesize\ttfamily void Task\+API.\+Services.\+Log\+Service.\+Write\+Log (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a27f1ae7140528c73a0591095ff9f5bd6}{Log\+Types}}}]{Type,  }\item[{string}]{Source,  }\item[{string}]{Description }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Writes a log entry to a local text file as a fallback or additional logging method. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Type} & The type of log entry.\\
+\hline
+{\em Source} & The source of the log entry.\\
+\hline
+{\em Description} & The log message.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00176\ \ \ \ \ \{}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ var\ LogPath\ =\ \$\textcolor{stringliteral}{"{}\{AppDomain.CurrentDomain.BaseDirectory\}/Log/"{}};}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!Directory.Exists(LogPath))}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \ \ \ \ Directory.CreateDirectory(LogPath);}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ var\ LogFile\ =\ \$\textcolor{stringliteral}{"{}TaskAPI.Log"{}};}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \ \ \ \ StreamWriter\ SW\ =\ File.AppendText(LogPath\ +\ LogFile);}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \ \ SW.WriteLine(\$\textcolor{stringliteral}{"{}\{DateTime.Now.ToString()\}\ [\{Type.ToString()\}]\ \{Description\}"{}});}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \ \ \ \ SW.Close();}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (\mbox{\hyperlink{class_task_a_p_i_1_1_services_1_1_log_service_a27f1ae7140528c73a0591095ff9f5bd6ab0d4998a26f5b5742ad38c4af8817e32}{Exception}}\ ex)}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00190\ \ \ \ \ \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_task_a_p_i_1_1_services_1_1_log_service_a20f6ab73ae5cc69273da4416da65f94d_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_task_a_p_i_1_1_services_1_1_log_service_aff72e5635ee28e9af2eb78347b170d50}\label{class_task_a_p_i_1_1_services_1_1_log_service_aff72e5635ee28e9af2eb78347b170d50} 
+\index{TaskAPI.Services.LogService@{TaskAPI.Services.LogService}!\_context@{\_context}}
+\index{\_context@{\_context}!TaskAPI.Services.LogService@{TaskAPI.Services.LogService}}
+\doxysubsubsection{\texorpdfstring{\_context}{\_context}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_task_a_p_i_1_1_contexts_1_1_task_a_p_i_context}{Task\+APIContext}} Task\+API.\+Services.\+Log\+Service.\+\_\+context\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_task_a_p_i_1_1_services_1_1_log_service_a8ab0b580e6d5ee56cd7f6c37c856bb63}\label{class_task_a_p_i_1_1_services_1_1_log_service_a8ab0b580e6d5ee56cd7f6c37c856bb63} 
+\index{TaskAPI.Services.LogService@{TaskAPI.Services.LogService}!\_settings@{\_settings}}
+\index{\_settings@{\_settings}!TaskAPI.Services.LogService@{TaskAPI.Services.LogService}}
+\doxysubsubsection{\texorpdfstring{\_settings}{\_settings}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_task_a_p_i_1_1_helpers_1_1_settings_1_1_task_a_p_i_settings}{Task\+APISettings}} Task\+API.\+Services.\+Log\+Service.\+\_\+settings\hspace{0.3cm}{\ttfamily [private]}}
+
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

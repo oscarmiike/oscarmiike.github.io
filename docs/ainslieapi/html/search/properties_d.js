@@ -1,11 +1,12 @@
 var searchData=
 [
-  ['name_0',['Name',['../class_ainslie_a_p_i_1_1_d_t_o_1_1_user_helper_1_1_authenticated_user.html#acb5634a86fcc32a706c11b581745f992',1,'AinslieAPI::DTO::UserHelper::AuthenticatedUser']]],
-  ['name_1',['name',['../class_ainslie_a_p_i_1_1_d_t_o_1_1_priceapp_1_1_asset_price_1_1_asset_type.html#ab6eed42ca7bba4427f14186861c2799c',1,'AinslieAPI.DTO.Priceapp.AssetPrice.AssetType.name'],['../class_ainslie_a_p_i_1_1_d_t_o_1_1_priceapp_1_1_product_price.html#aca37430cba30561dabe354da96cb8988',1,'AinslieAPI.DTO.Priceapp.ProductPrice.name'],['../class_ainslie_a_p_i_1_1_d_t_o_1_1_priceapp_1_1_product_price_1_1_sub_category.html#a574e389c2740da7f648c7b59a15c81cd',1,'AinslieAPI.DTO.Priceapp.ProductPrice.SubCategory.name'],['../class_ainslie_a_p_i_1_1_d_t_o_1_1_priceapp_1_1_product_price_1_1_keyword.html#aae164b7454a5a8baedf8a5d41aa0a9a8',1,'AinslieAPI.DTO.Priceapp.ProductPrice.Keyword.name']]],
-  ['namefrom_2',['NameFrom',['../class_ainslie_a_p_i_1_1_d_t_o_1_1_internal_api_1_1_email_post.html#a07f803d64e4ef5051de7ec32e40ff162',1,'AinslieAPI::DTO::InternalApi::EmailPost']]],
-  ['netweight_3',['netWeight',['../class_ainslie_a_p_i_1_1_d_t_o_1_1_priceapp_1_1_product_price.html#a3299335a1033ed7d1af63854b73b65da',1,'AinslieAPI::DTO::Priceapp::ProductPrice']]],
-  ['netweightunit_4',['netWeightUnit',['../class_ainslie_a_p_i_1_1_d_t_o_1_1_priceapp_1_1_product_price.html#a4837255432c66d1a907187e4e41360c8',1,'AinslieAPI::DTO::Priceapp::ProductPrice']]],
-  ['notificationemailfrom_5',['NotificationEmailFrom',['../class_ainslie_a_p_i_1_1_helpers_1_1_general_settings.html#a45343f3bfa9c54c40d6ecd39d4ceedba',1,'AinslieAPI::Helpers::GeneralSettings']]],
-  ['notificationemailname_6',['NotificationEmailName',['../class_ainslie_a_p_i_1_1_helpers_1_1_general_settings.html#a37f43ff4078f1e5176296400da029886',1,'AinslieAPI::Helpers::GeneralSettings']]],
-  ['notificationemailto_7',['NotificationEmailTo',['../class_ainslie_a_p_i_1_1_helpers_1_1_general_settings.html#adf5e98f5f072c11ea01023c163bd0b3c',1,'AinslieAPI::Helpers::GeneralSettings']]]
+  ['market_0',['Market',['../class_ainslie_a_p_i_1_1_data_1_1_models_1_1_tdcr_1_1_order.html#a9b3bff49f4e0480154e8def9d1f88b60',1,'AinslieAPI::Data::Models::Tdcr::Order']]],
+  ['market_1',['market',['../class_ainslie_a_p_i_1_1_d_t_o_1_1_tdcr_1_1_order_request.html#a8820b48159005031f60bcb46aee243bc',1,'AinslieAPI::DTO::Tdcr::OrderRequest']]],
+  ['marketcap_2',['MarketCap',['../class_ainslie_a_p_i_1_1_d_t_o_1_1_g_s_s_1_1_g_s_s_asset.html#a3baf8857a96e302c048ee8df4bc9dde3',1,'AinslieAPI::DTO::GSS::GSSAsset']]],
+  ['maxlogs_3',['maxLogs',['../class_ainslie_a_p_i_1_1_d_t_o_1_1_internal_api_1_1_log_request.html#a0a5bf5e90f4435e3e7b974b68c84003e',1,'AinslieAPI::DTO::InternalApi::LogRequest']]],
+  ['message_4',['message',['../class_ainslie_a_p_i_1_1_d_t_o_1_1_tdcr_1_1_order_response.html#a1c1c46e1085cad9e1df98c5fbb6da842',1,'AinslieAPI::DTO::Tdcr::OrderResponse']]],
+  ['middlenames_5',['middleNames',['../class_ainslie_a_p_i_1_1_d_t_o_1_1_green_id_1_1_green_id_customer.html#a146c67885f08f45050900f35e7830586',1,'AinslieAPI::DTO::GreenId::GreenIdCustomer']]],
+  ['mobilephone_6',['mobilePhone',['../class_ainslie_a_p_i_1_1_d_t_o_1_1_green_id_1_1_green_id_customer.html#a643d4f04dd62c864ef196fff0ef85ed6',1,'AinslieAPI::DTO::GreenId::GreenIdCustomer']]],
+  ['multiple_7',['multiple',['../class_ainslie_a_p_i_1_1_d_t_o_1_1_priceapp_1_1_product_price_1_1_multiple.html#acc91d65b4aa2439553b547de514f9857',1,'AinslieAPI::DTO::Priceapp::ProductPrice::Multiple']]],
+  ['multiples_8',['multiples',['../class_ainslie_a_p_i_1_1_d_t_o_1_1_priceapp_1_1_product_price.html#a3343731b1277e0afad0a9663f2aa7e21',1,'AinslieAPI::DTO::Priceapp::ProductPrice']]]
 ];
